@@ -1,7 +1,7 @@
-require( "game_carddeck" );
-module("game_poker", package.seeall(game_carddeck))
+local cardDeck = require("game_carddeck")
+local M = {}
 
-function newPokerTable( 
+function M.newPokerTable( 
                         npcDealer,           -- Dealer npc
                         hundredthId,         -- id of one hundredth money unit, e.g. id of copper coins
                         unitId,              -- id of one money unit, e.g. id of silver coins
@@ -58,8 +58,8 @@ function newPokerTable(
         rake               = rake/100,
         fileRake           = fileRake,
         initialDelay       = 100,
-        cardDeck13         = newCardDeck13(),
-        cardDeck52         = newCardDeck52(),
+        cardDeck13         = cardDeck.newCardDeck13(),
+        cardDeck52         = cardDeck.newCardDeck52(),
         timeoutWarning1    = 200,
         timeoutWarning2    = 600,
         timeoutFinal       = 800,
@@ -995,3 +995,5 @@ function newPokerTable(
         beforeReload = beforeReload,
     };
 end
+
+return M

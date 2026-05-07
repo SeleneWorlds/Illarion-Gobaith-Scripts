@@ -1,4 +1,6 @@
-function giveUniqueItem( User, ItemID, Data, De, En, QuestId, QuestFlag )
+local M = {}
+
+function M.giveUniqueItem( User, ItemID, Data, De, En, QuestId, QuestFlag )
 
     local progress = User:getQuestProgress( QuestId );
     if LuaAnd( progress, QuestFlag ) == 0  then
@@ -20,3 +22,5 @@ function giveUniqueItem( User, ItemID, Data, De, En, QuestId, QuestFlag )
     end;
 
 end
+
+return M

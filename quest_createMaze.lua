@@ -1,6 +1,8 @@
 -- creates a maze
 
-function createWaterCaveMaze()
+local M = {}
+
+function M.createWaterCaveMaze()
     local maze = {};
     for x=-26,0 do
         maze[x]={}
@@ -73,3 +75,5 @@ function createWaterCaveMaze()
         end;
     end;
 end
+
+return M

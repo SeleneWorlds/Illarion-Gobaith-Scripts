@@ -1,7 +1,9 @@
 -- Seil
 require("base.common")
-dofile( "lte_tying_capturer.lua" );
+local tyingCapturer = require("lte.tying_capturer")
 dofile("quest_aquest28.lua");    --the quest file for the Farmer quest
+
+local M = {}
 
 -- UPDATE common SET com_script='I_2760_seil.lua' WHERE com_itemid=2760;
 
@@ -11,7 +13,7 @@ tyingQuality[1] = {"strong", "stable", "", "threadbare", "weak"};
 -- index of limit adresses a quality string in field 0 or 1
 tyingQuality["limits"] = {15,10,5,2,0};
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     local gText = "Du siehst ";
 	local eText = "You see ";
 	if Item.data == 1 then
@@ -33,9 +35,9 @@ function LookAtItem(User,Item)
 	world:itemInform(User,Item,base.common.GetNLS(User,gText,eText));
 end
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     
-	TyingDataHandler(User, SourceItem, nil, TargetItem);
+	M.TyingDataHandler(User, SourceItem, nil, TargetItem);
 	
 	if ( TargetItem.id ~= 2207 ) or SourceItem.data == 1 then
 		return false;
@@ -69,7 +71,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
     end
 end
 
-function MoveItemBeforeMove( User, SourceItem, TargetItem )
+function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
 	
 	if SourceItem.data == 1 then
 		
@@ -82,7 +84,7 @@ function MoveItemBeforeMove( User, SourceItem, TargetItem )
 	return true;
 end
 
-function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate )
+function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate )
 	
 	-- check if rope is in hands
 	if SourceItem:getType() ~= 4 then
@@ -94,8 +96,8 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 	
 	-- check for abort
 	if (ltstate == Action.abort) then
-		gText = GetRaceGenderText(0,Target);
-		eText = GetRaceGenderText(1,Target);
+		gText = M.GetRaceGenderText(0,Target);
+		eText = M.GetRaceGenderText(1,Target);
 		base.common.TempInformNLS ( User,
 			"Dir gelingt es nicht "..gText.." zu fesseln.",
 			"You don't succeed in tying up "..eText..".");
@@ -111,7 +113,7 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 	end
 	
 	-- check for special datas
-	if TyingDataHandler(User, SourceItem, Target) then
+	if M.TyingDataHandler(User, SourceItem, Target) then
 		return;
 	end
 	
@@ -140,12 +142,12 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 	-- Check if User is in attackmode
 	if User.attackmode then
 		base.common.TempInformNLS ( User,
-			"Du kannst niemanden fesseln, w‰hrend du k‰mpfst.",
+			"Du kannst niemanden fesseln, w√§hrend du k√§mpfst.",
 			"You can't tie someone up while you are fighting." );
 		return;
 	end
 	
-	if HasEnoughCapturers(Target) then
+	if tyingCapturer.HasEnoughCapturers(Target) then
 		base.common.TempInformNLS(User,
 			"Der Gefangene ist nun schon ausreichend gefesselt.",
 			"The captive is now sufficiently tied up already.");
@@ -154,7 +156,7 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 	
 	if User.effects:find(24) then
 		base.common.TempInformNLS(User,
-			"Dir sind leider die H‰nde gebunden.",
+			"Dir sind leider die H√§nde gebunden.",
 			"Unfortunately your hands are tied.");
 		return;
 	end
@@ -178,8 +180,8 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 		
 		User:startAction(Time,0,0,0,0);
 		
-		gText = GetRaceGenderText(0,Target);
-		eText = GetRaceGenderText(1,Target);
+		gText = M.GetRaceGenderText(0,Target);
+		eText = M.GetRaceGenderText(1,Target);
 		User:talkLanguage(CCharacter.say, CPlayer.german, "#me versucht "..gText.." zu fesseln.");
 		User:talkLanguage(CCharacter.say, CPlayer.english, "#me tries to tie up "..eText..".");
 		
@@ -231,7 +233,7 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 			if item.id > 0 and item.id ~= 228 then
 				world:createItemFromItem(item,Target.pos,true);
 				base.common.TempInformNLS(Target,
-					"Du kannst nichts mehr in den H‰nden halten.",
+					"Du kannst nichts mehr in den H√§nden halten.",
 					"You can't carry anything any more in your hands.");
 			end
 			item.id = 228;
@@ -247,7 +249,7 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 	Tying:addValue("Captive",Target.id);
 	
 	if not foundEffectTarget then
-		gText = "#me hat ein festes Seil um die H‰nde.";
+		gText = "#me hat ein festes Seil um die H√§nde.";
 		eText = "#me has a tight rope around the hands.";
 		base.common.TempInformNLS(User,
 			"Der Gefangene folgt nun dir.",
@@ -260,14 +262,14 @@ function UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate
 	Target:talkLanguage(CCharacter.say, CPlayer.english, eText);
 	if Target.effects:find(26) then
 		base.common.TempInformNLS(Target,
-			"Du kannst deinen Gefangenen nicht mehr halten und l‰sst ihn frei.",
+			"Du kannst deinen Gefangenen nicht mehr halten und l√§sst ihn frei.",
 			"You can't hold your captive any more. You release him.");
 		Target.effects:removeEffect(26);
 	end
 end
 
 -- return if something was done
-function TyingDataHandler(User, Rope, Target, TargetItem)
+function M.TyingDataHandler(User, Rope, Target, TargetItem)
 	
 	local foundEffect, Tying = User.effects:find(26);
 	if not foundEffect then
@@ -279,14 +281,14 @@ function TyingDataHandler(User, Rope, Target, TargetItem)
 		if TargetItem.id == 2760 then
 			if TargetItem.data == 1 and Rope.data == 0 then
 				foundCaptive, Captive = Tying:findValue("Captive");
-				Target = IsCharidInRangeOf(Captive,User.pos,5);
+				Target = tyingCapturer.IsCharidInRangeOf(Captive,User.pos,5);
 				if Target then
-					local AttribOffset = GetBestAttribOffset(User,Target,{"strength","dexterity"});
+					local AttribOffset = tyingCapturer.GetBestAttribOffset(User,Target,{"strength","dexterity"});
 					local Quality = math.min(600,120+math.random(25,35)*AttribOffset);
 					TargetItem.quality = math.min(2500,TargetItem.quality+(Quality*2));
 					world:changeItem(TargetItem);
 					base.common.TempInformNLS(User,
-						"Du verst‰rkst den Knoten mit dem neuen Seil.",
+						"Du verst√§rkst den Knoten mit dem neuen Seil.",
 						"You strengthen the knot with the new rope.");
 					world:erase(Rope,1);
 					return true;
@@ -307,14 +309,14 @@ function TyingDataHandler(User, Rope, Target, TargetItem)
 	if foundCaptive then
 		if Tying:findValue("logout") then
 			base.common.TempInformNLS(User,
-				"Du l‰sst deinen Gefangenen frei.",
+				"Du l√§sst deinen Gefangenen frei.",
 				"You release your captive.");
 			User.effects:removeEffect(26);
 			return true;
 		end
 		
 		if not Target then
-			Target = IsCharidInRangeOf(Captive,User.pos,5);
+			Target = tyingCapturer.IsCharidInRangeOf(Captive,User.pos,5);
 			if Target then
 				foundEffect, Tying = Target.effects:find(24);
 				if foundEffect then
@@ -323,7 +325,7 @@ function TyingDataHandler(User, Rope, Target, TargetItem)
 				end
 				User:talkLanguage(CCharacter.say, CPlayer.german, "#me zieht das Seil straff.");
 				User:talkLanguage(CCharacter.say, CPlayer.english, "#me tightens the rope.");
-				local rope = GetRope(User);
+				local rope = tyingCapturer.GetRope(User);
 				if rope then
 					rope.quality = math.max(104,rope.quality-60);
 					world:changeItem(rope);
@@ -333,8 +335,8 @@ function TyingDataHandler(User, Rope, Target, TargetItem)
 		end
 		
 		if Target.id == Captive then
-			gText = GetRaceGenderText(0,Target);
-			eText = GetRaceGenderText(1,Target);
+			gText = M.GetRaceGenderText(0,Target);
+			eText = M.GetRaceGenderText(1,Target);
 			User:talkLanguage(CCharacter.say, CPlayer.german, "#me bindet "..gText.." los.");
 			User:talkLanguage(CCharacter.say, CPlayer.english, "#me unties "..eText..".");
 			foundEffect, Tying = Target.effects:find(24);
@@ -349,7 +351,7 @@ function TyingDataHandler(User, Rope, Target, TargetItem)
 				local foundValue, CaptiveTarget = Tying:findValue("Captive");
 				if foundValue then
 					if Captive == CaptiveTarget then -- Target char has the same captive!
-						CaptiveChar = IsCharidInRangeOf(Captive,User.pos,5);
+						CaptiveChar = tyingCapturer.IsCharidInRangeOf(Captive,User.pos,5);
 						if CaptiveChar then
 							foundEffect, Tying = CaptiveChar.effects:find(24);
 							if foundEffect then
@@ -357,9 +359,9 @@ function TyingDataHandler(User, Rope, Target, TargetItem)
 								if foundCapturer then
 									if Capturer == User.id then -- User is leading capturer!
 										Tying:addValue("Capturer", Target.id);
-										gText = GetRaceGenderText(0,Target);
-										eText = GetRaceGenderText(1,Target);
-										User:talkLanguage(CCharacter.say, CPlayer.german, "#me ¸bergibt das Seil an "..gText..".");
+										gText = M.GetRaceGenderText(0,Target);
+										eText = M.GetRaceGenderText(1,Target);
+										User:talkLanguage(CCharacter.say, CPlayer.german, "#me √ºbergibt das Seil an "..gText..".");
 										User:talkLanguage(CCharacter.say, CPlayer.english, "#me hands the rope to "..eText..".");
 										base.common.TempInformNLS(User,
 											"Der Gefangene folgt dir nun nicht mehr.",
@@ -381,7 +383,7 @@ function TyingDataHandler(User, Rope, Target, TargetItem)
 end
 
 -- Language=0 for German, otherwise English
-function GetRaceGenderText( Language, Character )
+function M.GetRaceGenderText( Language, Character )
 	
 	if not InitRaceGenderText then
 		InitRaceGenderText = true;
@@ -409,3 +411,5 @@ function GetRaceGenderText( Language, Character )
 	
 	return outText;
 end
+
+return M

@@ -6,11 +6,13 @@ local ENGLISH_VALUE={"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Quee
 local ENGLISH_COLOR_SHORT={"D", "H", "S", "C"}
 local ENGLISH_VALUE_SHORT={"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
 local GERMAN_COLOR={"Karo ", "Herz ", "Pik ", "Kreuz "}
-local GERMAN_VALUE={"2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "König", "As"}
+local GERMAN_VALUE={"2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "KÃ¶nig", "As"}
 local GERMAN_COLOR_SHORT={"Ka", "H", "P", "Kr"}
 local GERMAN_VALUE_SHORT={"2", "3", "4", "5", "6", "7", "8", "9", "10", "B", "D", "K", "A"}
 
-function newCard( color, value )
+local M = {}
+
+function M.newCard( color, value )
     local self = {
         color = color,
         value = value,
@@ -49,3 +51,5 @@ function newCard( color, value )
         getGermanShort = getGermanShort,        
     }
 end
+
+return M

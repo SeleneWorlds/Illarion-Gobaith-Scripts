@@ -1,6 +1,7 @@
-dofile( "game_card.lua" );
+local card = require("game_card")
+local M = {}
 
-function newCardDeck( cardList )
+function M.newCardDeck( cardList )
     local self = {
         cardList = cardList,
         numCards = table.getn( cardList ),
@@ -40,39 +41,41 @@ function newCardDeck( cardList )
 end
 
 -- This is a 13 card deck for high card decisions
-function newCardDeck13()
+function M.newCardDeck13()
     local value;
     local cardList13 = {};
     for value=1,13 do
-        cardList13[value] = newCard( 4, value );
+        cardList13[value] = card.newCard( 4, value );
     end;
-    return newCardDeck( cardList13 );
+    return M.newCardDeck( cardList13 );
 end
 
 -- This is a 52 card deck usable for e. g. texas hold'em
-function newCardDeck52()
+function M.newCardDeck52()
     local color, value;
     local cardList52 = {};
     local i=0;
     for color=1,4 do
         for value=1,13 do
             i = i + 1;
-            cardList52[i] = newCard( color, value );
+            cardList52[i] = card.newCard( color, value );
         end;
     end;
-    return newCardDeck( cardList52 );
+    return M.newCardDeck( cardList52 );
 end
 
 -- This is a 32 card deck usable for e. g. skat
-function newCardDeck32()
+function M.newCardDeck32()
     local color, value;
     local cardList32 = {};
     local i=0;
     for color=1,4 do
         for value=6,13 do
             i = i + 1;
-            cardList32[i] = newCard( color, value );
+            cardList32[i] = card.newCard( color, value );
         end;
     end;
-    return newCardDeck( cardList32 );
+    return M.newCardDeck( cardList32 );
 end
+
+return M

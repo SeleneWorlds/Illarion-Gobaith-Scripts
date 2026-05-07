@@ -5,8 +5,9 @@
 
 require("base.common")
 
+local M = {}
 
-function CharacterOnField( User )
+function M.CharacterOnField( User )
     local SetOff=false;
     repeat
     
@@ -34,4 +35,6 @@ function CharacterOnField( User )
     until ( SetOff == true )
     User.movepoints=User.movepoints-10;
 end
+
+return M
 

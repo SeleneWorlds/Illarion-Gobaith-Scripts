@@ -1,4 +1,6 @@
-function callEffect( effect, target )
+local M = {}
+
+function M.callEffect( effect, target )
     found,value = effect:findValue("testvalue");
     if ( found  ) then --check if we have the testvalue 
         target:inform("lteffect called: " .. value); --inform about the testvalue
@@ -26,24 +28,26 @@ function callEffect( effect, target )
     end
 end
 
-function addEffect( effect, target)
+function M.addEffect( effect, target)
     target:inform("effect with id 1 added");
 end
 
-function removeEffect( effect, target )
+function M.removeEffect( effect, target )
     target:inform("effect with id 1 removed");
 end
 
-function doubleEffect( effect, target )
+function M.doubleEffect( effect, target )
     target:inform("effect with id 1 doubled added");
     effect:addValue("testvalue2",200);
     effect:addValue("testvalue3",450);
     target:inform("effect with id 1 doubled added end");
 end
 
-function loadEffect(effect, target)
+function M.loadEffect(effect, target)
     target:inform("effect with id 1 was loaded");
 end
+
+return M
 
 
     
