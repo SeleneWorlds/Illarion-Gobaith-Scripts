@@ -8,13 +8,13 @@
 
 require("base.common")
 require("content.jewelbonus")
-module("lte.gembonus", package.seeall)
+local M = {}
 
-function addEffect(gemBonus, User)         -- Infection starts
+function M.addEffect(gemBonus, User)         -- Infection starts
     --User:inform("effect started");
 end
 
-function doRemaining(gemBonus,User)
+function M.doRemaining(gemBonus,User)
     -- go through all remaining attributes and lower them
     attList={"intelligence","willpower","perception","essence","dexterity","strength","constitution","agility"};
     for index,attrName in attList do
@@ -25,9 +25,9 @@ function doRemaining(gemBonus,User)
     end
 end
 
-function callEffect(gemBonus, User)                     -- Effect wird ausgeführt
+function M.callEffect(gemBonus, User)                     -- Effect wird ausgeführt
     --User:inform("checking...");
-    doRemaining(gemBonus,User);
+    M.doRemaining(gemBonus,User);
     fndLeft,gemType=gemBonus:findValue("hand1gem");     -- check if there was something for left hand
     if fndLeft then                                     -- if so...
         leftItem=User:getItemAt(7);                     -- ... get right finger item
@@ -86,11 +86,11 @@ function callEffect(gemBonus, User)                     -- Effect wird ausgeführ
     return true;
 end
 
-function removeEffect( gemBonus, User ) -- do nothing
+function M.removeEffect( gemBonus, User ) -- do nothing
     
 end
 
-function loadEffect(gemBonus, User)     -- load altered stats by ONLY looking at the rings and giving their boni
+function M.loadEffect(gemBonus, User)     -- load altered stats by ONLY looking at the rings and giving their boni
                                         -- thus: doing the same as if moved onto fingers.
     leftRing=User:getItemAt(7);
     rightRing=User:getItemAt(8);
@@ -106,3 +106,5 @@ function loadEffect(gemBonus, User)     -- load altered stats by ONLY looking at
     end
 
 end
+
+return M

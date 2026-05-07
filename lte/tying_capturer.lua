@@ -1,5 +1,6 @@
 require("base.common")
-module("lte.tying_capturer", package.seeall)
+local M = {}
+
 --[[ LTE 26
      tying up: capturer
     @value Captive - id of the char that is tied up
@@ -7,12 +8,12 @@ module("lte.tying_capturer", package.seeall)
     @value logout - set when captive is disappeared
 ]]
 
-function addEffect( Tying, Capturer )
+function M.addEffect( Tying, Capturer )
 	
 	-- nothing
 end
 
-function callEffect( Tying, Capturer )
+function M.callEffect( Tying, Capturer )
 	
 	local foundEscape, escape = Tying:findValue("escape");
 	local foundLogout = Tying:findValue("logout");
@@ -20,10 +21,10 @@ function callEffect( Tying, Capturer )
 	Tying.nextCalled = 5;
 	
 	if foundCaptive then
-		Captive = IsCharidInRangeOf(Captive,Capturer.pos,5);
+		Captive = M.IsCharidInRangeOf(Captive,Capturer.pos,5);
 		if Captive then
 			if Captive:get_race() == 13 then
-				InformW(Capturer,
+				M.InformW(Capturer,
 					"Du bindest den Gefangenen los.",
 					"You untie the captive.");
 				return false;
@@ -34,18 +35,18 @@ function callEffect( Tying, Capturer )
 				Tying:removeValue("logout");
 				local foundEffect = Captive.effects:find(24);
 				if not foundEffect then
-					InformW(Capturer,
+					M.InformW(Capturer,
 						"Der Gefangene ist nicht mehr gefesselt.",
 						"The captive isn't tied up any more.")
 					return false;
 				end
-				if HasEnoughCapturers(Captive,Capturer.id) then
-					InformW(Capturer,
+				if M.HasEnoughCapturers(Captive,Capturer.id) then
+					M.InformW(Capturer,
 						"Der Gefangene ist nun schon ausreichend gefesselt.",
 						"The captive is now sufficiently tied up already.")
 					return false;
 				else
-					InformW(Capturer,
+					M.InformW(Capturer,
 						"Du hast den Gefangenen wiedergefunden.",
 						"You have found the captive.");
 				end
@@ -54,13 +55,13 @@ function callEffect( Tying, Capturer )
 			
 			-- ## BEGIN ## rope handling
 			if not foundLogout then
-				local Rope = GetRope(Capturer);
+				local Rope = M.GetRope(Capturer);
 				if not Rope then
 					Capturer:inform("Error: no rope found. Please inform a developer.");
 					return false;
 				end
 				if Tying.numberCalled == 0 then -- first call (set in I_2760_seil.lua), calculate duration
-					local AttribOffset = GetBestAttribOffset(Capturer,Captive,{"strength","dexterity"});
+					local AttribOffset = M.GetBestAttribOffset(Capturer,Captive,{"strength","dexterity"});
 					local Quality = math.min(1200,120+math.random(55,65)*AttribOffset);
 					Rope.quality = (Quality*2)+100; -- *2 -> nextCalled = 5. Duration min=2minutes max=20minutes
 				elseif Rope.quality == 100 then -- break rope
@@ -84,7 +85,7 @@ function callEffect( Tying, Capturer )
 						local addVal = math.random(30,60); -- next escape cycle
 						if foundEscape then
 							if escape == 0 then -- cycle is over, check for escape
-								local AttribOffset = GetBestAttribOffset(Captive,Capturer,{"strength","dexterity","agility"});
+								local AttribOffset = M.GetBestAttribOffset(Captive,Capturer,{"strength","dexterity","agility"});
 								-- can the captive escape?
 								local perc = Capturer:increaseAttrib("perception",0);
 								local tellEscape = false;
@@ -101,7 +102,7 @@ function callEffect( Tying, Capturer )
 									end
 								end
 								if tellEscape then
-									InformW(Capturer,
+									M.InformW(Capturer,
 										"Du spürst einen ungewöhnlichen Zug auf dem Seil. Ob das ein Fluchtversuch sein kann?",
 										"You feel an unusual pull on the rope. May that be an escape attempt?");
 								end
@@ -120,7 +121,7 @@ function callEffect( Tying, Capturer )
 		-- no captive near
 		local foundLogout = Tying:findValue("logout");
 		if not foundLogout then -- first call after captive disappeared, inform player
-			InformW(Capturer,
+			M.InformW(Capturer,
 				"Der Gefangene ist nicht mehr bei dir! Warte oder suche ihn oder benutze das Seil, um ihn freizulassen.",
 				"The captive isn't near you any more! Wait or seek him or use the rope to release him.");
 			Tying:addValue("logout",1);
@@ -130,9 +131,9 @@ function callEffect( Tying, Capturer )
 	return false;
 end
 
-function removeEffect( Tying, Capturer )
+function M.removeEffect( Tying, Capturer )
 	
-	local rope = GetRope(Capturer);
+	local rope = M.GetRope(Capturer);
 	if rope then
 		local eraseIt = true;
 		local qual = rope.quality;
@@ -146,7 +147,7 @@ function removeEffect( Tying, Capturer )
 		end
 		if eraseIt then
 			world:erase(rope,1);
-			InformW(Capturer,
+			M.InformW(Capturer,
 				"Das Seil zerreißt.",
 				"The rope breaks.");
 		else
@@ -157,7 +158,7 @@ function removeEffect( Tying, Capturer )
 	end
 end
 
-function loadEffect( Tying, Capturer )
+function M.loadEffect( Tying, Capturer )
 	
 	Tying:removeValue("logout");
 end
@@ -174,7 +175,7 @@ end
     @param integer - radius of the circle that shall be checked
     @return CaptiveStruct - the Character if he was found, false if not found
 ]]
-function IsCharidInRangeOf( CharID, Position, Range )
+function M.IsCharidInRangeOf( CharID, Position, Range )
 	
 	CharID = CharID+1-1;
 	local CharList = world:getCharactersInRangeOf(Position,Range);
@@ -189,7 +190,7 @@ end
 --[[ Compare all attribs in AttribList from Char1 and Char2.
 Return the best (highest) Offset for Char1, at least 0.
 ]]
-function GetBestAttribOffset( Char1, Char2, AttribList )
+function M.GetBestAttribOffset( Char1, Char2, AttribList )
 	
 	local bestOffset = 0;
 	local currentOffset;
@@ -205,11 +206,11 @@ function GetBestAttribOffset( Char1, Char2, AttribList )
 	return math.max(bestOffset,addVal);
 end
 
-function InformW( User, textInDe, textInEn )
+function M.InformW( User, textInDe, textInEn )
     User:inform( "#w "..base.common.GetNLS( User, textInDe, textInEn ) );
 end
 
-function GetRope( Character )
+function M.GetRope( Character )
 	
 	local Rope = Character:getItemAt(5);
 	if not ( Rope.id == 2760 and Rope.data == 1 ) then
@@ -221,7 +222,7 @@ function GetRope( Character )
 	return Rope;
 end
 
-function HasEnoughCapturers( Character, excludedId )
+function M.HasEnoughCapturers( Character, excludedId )
 	
 	local limit = 2;
 	local retVal = 0;
@@ -247,3 +248,5 @@ function HasEnoughCapturers( Character, excludedId )
 	end
 	return (retVal >= limit);
 end
+
+return M

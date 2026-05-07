@@ -1,16 +1,17 @@
-module("lte.diet", package.seeall)
+local M = {}
+
 -- Long Time Effect Script: Diet System
 -- Effect ID: 12
 
-function addEffect(dietEffect,Character)
+function M.addEffect(dietEffect,Character)
 end
 
-function callEffect(dietEffect,Character)
+function M.callEffect(dietEffect,Character)
 	dietEffect.nextCalled=2147483640; -- ( 2^31 - 8 )
 	return true;
 end
 
-function removeEffect(dietEffect,Character)
+function M.removeEffect(dietEffect,Character)
     -- something kills out script, lets store everything and reload the effect
     found_constMod,constMod = dietEffect:findValue("constMod");
     found_dom,dom = dietEffect:findValue("dom");
@@ -30,7 +31,7 @@ function removeEffect(dietEffect,Character)
     User.effects:addEffect(newEffect);
 end
 
-function loadEffect(dietEffect,Character)
+function M.loadEffect(dietEffect,Character)
 	found,constMod = dietEffect:findValue("constMod");
 	if found then
 		Character:setAttrib("constitution",Character:increaseAttrib("constitution",0)+constMod);
@@ -39,3 +40,4 @@ function loadEffect(dietEffect,Character)
 		end
 	end
 end
+return M

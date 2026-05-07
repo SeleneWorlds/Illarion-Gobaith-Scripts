@@ -1,5 +1,6 @@
-module("lte.segen", package.seeall)
-function initBlessings()
+local M = {}
+
+function M.initBlessings()
     Blessings = {};
     Blessings[1001] = {};
     Blessings[1001]["attribs"] = {};
@@ -11,11 +12,11 @@ function initBlessings()
     isBlessingsInit = 1;
 end
 
-function bless(User, blessEffect)
+function M.bless(User, blessEffect)
 User:inform("1");
     if isBlessingsInit == nil then
     User:inform("2");
-        initBlessings();
+        M.initBlessings();
     User:inform("3");
     end;
     User:inform("4");
@@ -34,18 +35,18 @@ User:inform("1");
     end;
 end
 
-function addEffect(blessEffect, Blessed)         -- Infection starts
+function M.addEffect(blessEffect, Blessed)         -- Infection starts
     --base.common.InformNLS(Blessed,
     --"Du bist gesegnet.",
     --"You feel blessed.");
     blessEffect:addValue("blessStr",100);
-    bless( Blessed, blessEffect );
+    M.bless( Blessed, blessEffect );
 end
 
-function callEffect(blessEffect, Blessed)       -- Effect wird ausgefhrt
+function M.callEffect(blessEffect, Blessed)       -- Effect wird ausgefhrt
     found,value=blessEffect:findValue("blessStr");
     if value == 101 then
-        bless(Blessed, blessEffect);
+        M.bless(Blessed, blessEffect);
     end;
     termVal, dummy = blessEffect:findValue("terminate");
     if value>1 and not termVal then
@@ -59,12 +60,13 @@ function callEffect(blessEffect, Blessed)       -- Effect wird ausgefhrt
     return true;
 end
 
-function removeEffect( blessEffect, Blessed)
+function M.removeEffect( blessEffect, Blessed)
     Blessed:inform("weg damit.");
     
 end
 
-function loadEffect(blessEffect, Blessed)
+function M.loadEffect(blessEffect, Blessed)
     Blessed:inform("load");
-    bless( Blessed, blessEffect );
+    M.bless( Blessed, blessEffect );
 end
+return M

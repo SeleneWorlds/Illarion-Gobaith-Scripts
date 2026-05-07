@@ -1,10 +1,10 @@
 require("base.common")
-module("lte.magic", package.seeall)
+local M = {}
 
 ---------------------------
 ---- Long time effect for each magic char
 -----------------------------
-function addEffect(magicEffect, Character)
+function M.addEffect(magicEffect, Character)
     magicEffect:addValue("magicWater",50);
     magicEffect:addValue("magicFire",50);
 --    magicEffect:addValue("magicAir",50);
@@ -16,16 +16,18 @@ end
 -----------------------------------------------
 ---- Character is affected by the effect --
 -------------------------------------------------
-function callEffect(magicEffect, Character)    -- Effekt wird ausgeführt
+function M.callEffect(magicEffect, Character)    -- Effekt wird ausgeführt
 return true;
 end
 
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
 
 end
 
-function loadEffect(Effect, Character)
+function M.loadEffect(Effect, Character)
 
 end
 
+
+return M

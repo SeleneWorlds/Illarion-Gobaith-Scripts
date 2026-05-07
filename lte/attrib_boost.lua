@@ -1,9 +1,8 @@
 require("base.common")
-module("lte.attrib_boost", package.seeall)
-
+local M = {}
 
 -- Character bekommt einen Attributs-Boost, der erst ansteigt und dann sinkt --
-function initBoost(User)
+function M.initBoost(User)
    User:inform("function initBoost erreicht")
    --if firsttime == nil then
       --firsttime = 1
@@ -16,9 +15,9 @@ function initBoost(User)
 end   
 
 
-function addEffect(addPerc, User)    -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
+function M.addEffect(addPerc, User)    -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
     User:inform("function addEffect erreicht")
-    AttribToBoost, boostSteps, boostValue, reboostValue = initBoost(User)
+    AttribToBoost, boostSteps, boostValue, reboostValue = M.initBoost(User)
     base.common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticably.");
     User:increaseAttrib(AttribToBoost,boostValue);    -- (erste Steigerung)
 end
@@ -26,7 +25,7 @@ end
 
 -- Wird regelmaessig aufgerufen (das erste mal nach einer Minute)
 
-function callEffect(percBoost, User)                    -- Effect wird ausgeführt
+function M.callEffect(percBoost, User)                    -- Effect wird ausgeführt
     User:inform("function callEffect erreicht")
     percBoost.nextCalled = 60;                          -- Erneut in einer Minute aufrufen
     found,addPerc = percBoost:findValue("addPerc");     -- Wieviel wurde bisher "geboostet"?
@@ -48,14 +47,16 @@ function callEffect(percBoost, User)                    -- Effect wird ausgeführ
     end
 end
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     -- do nothing
 end
 
-function loadEffect(Effect, Character)                  -- wenn der Charakter einloggt...
+function M.loadEffect(Effect, Character)                  -- wenn der Charakter einloggt...
     found,addPerc = coldEffect:findValue("addPerc");
     if found then
         User:increaseAttrib(AttribToBoost,addPerc);     -- Buchhaltung: Auslesen der aktuellen "steigerung" und steigern
         percBoost.nextCalled = 600;                     -- in einer Minute wieder aufrufen
     end
 end
+
+return M

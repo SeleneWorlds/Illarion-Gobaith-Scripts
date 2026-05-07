@@ -1,7 +1,8 @@
-module("lte.no_idea", package.seeall)
+local M = {}
+
 --lte_06.lua
 
-function addEffect(addPerc, User)           -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
+function M.addEffect(addPerc, User)           -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
     --base.common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticably.");
               User:inform("Marke 2 07")
 end
@@ -9,7 +10,7 @@ end
 
 -- Wird regelmaessig aufgerufen
 
-function callEffect(percBoost, User)                    -- Effect wird ausgeführt
+function M.callEffect(percBoost, User)                    -- Effect wird ausgeführt
               User:inform("Marke 4")
     percBoost.nextCalled = 60;                         -- Erneut in einer Minute aufrufen
     found,addPerc = percBoost:findValue("addPerc");    -- Wieviel wurde bisher "geboostet"?
@@ -33,14 +34,15 @@ function callEffect(percBoost, User)                    -- Effect wird ausgeführ
 
 end
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     -- do nothing
 end
 
-function loadEffect(Effect, Character)                  -- wenn der Charakter einloggt...
+function M.loadEffect(Effect, Character)                  -- wenn der Charakter einloggt...
     found,addPerc = coldEffect:findValue("addPerc");
     if found then
         User:increaseAttrib("perception",addPerc);      -- Buchhaltung: Auslesen der aktuellen "steigerung" und steigern
         percBoost.nextCalled = 10;                     -- in einer Minute wieder aufrufen
     end
 end
+return M

@@ -1,11 +1,12 @@
-module("lte.base_raid", package.seeall)
+local M = {}
+
 --[[ 
     Basis RAID effekt der die Konsequenzen durch den tod 
     ausschlaltet/einschaltet und dem spieler nach beendigung wieder
     zum ausgangsort teleportiert
     ]]--
     
-function callEffect(eff, User)
+function M.callEffect(eff, User)
     --erst wenn der Start Wert auf true gesetzt wurde die Todes consequenzen auf false setzen
    if (eff:findValue("start")) then
         User.death_consequences = false;
@@ -18,7 +19,7 @@ function callEffect(eff, User)
     return true;
 end
 
-function addEffect (eff, User)
+function M.addEffect(eff, User)
     --beim hinzufügen die alte Position speichern
     eff:addValue("old-pos-x",User.pos.x);
     eff:addValue("old-pos-y",User.pos.y);
@@ -32,7 +33,7 @@ function addEffect (eff, User)
     end
 end
 
-function removeEffect (eff,User)
+function M.removeEffect(eff,User)
     --beim entfernen den User zurück warpen
     local found1,oposx = eff:findValue("old-pos-x");
     local found2,oposy = eff:findValue("old-pos-y");
@@ -44,7 +45,8 @@ function removeEffect (eff,User)
     User.death_consequences = true;
 end
 
-function loadEffect (eff, User)
+function M.loadEffect(eff, User)
     --beim neuladen den Effekt löschen.
     User.effects:removeEffect(eff);
 end
+return M

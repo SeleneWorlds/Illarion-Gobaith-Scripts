@@ -3,18 +3,18 @@
 -- Values: newbiePosX, newbiePosY, newbiePosZ, itemid_1, itemnumber_1, itemdata_1, itemquality_1 (1-18)
 
 require("base.common")
-module("lte.newbieisland", package.seeall)
+local M = {}
 
-function addEffect(newbieEffect, Character)
+function M.addEffect(newbieEffect, Character)
 
 	newbieEffect.nextCalled=100;
-	setNewbiePos(newbieEffect, Character);
+	M.setNewbiePos(newbieEffect, Character);
 end
 
-function callEffect(newbieEffect,Character)
+function M.callEffect(newbieEffect,Character)
 
 	if Character:getQuestProgress(2) == 2 then
-		foundPos,newbiePos=loadNewbiePos(newbieEffect);
+		foundPos,newbiePos=M.loadNewbiePos(newbieEffect);
 		if foundPos then
 			if equapos(Character.pos,newbiePos) then
 				base.common.InformNLS(Character,
@@ -29,7 +29,7 @@ function callEffect(newbieEffect,Character)
 	return true;
 end
 
-function removeEffect(newbieEffect, Character)
+function M.removeEffect(newbieEffect, Character)
 
 	if Character:isAdmin() then
 		base.common.TempInformNLS(Character,
@@ -174,10 +174,10 @@ function removeEffect(newbieEffect, Character)
 	end
 end
 
-function loadEffect(newbieEffect,Character)
+function M.loadEffect(newbieEffect,Character)
 end
 
-function loadNewbiePos(newbieEffect)
+function M.loadNewbiePos(newbieEffect)
     foundPosX,newbiePosX=newbieEffect:findValue("newbiePosX");
  	foundPosY,newbiePosY=newbieEffect:findValue("newbiePosY");
  	foundPosZ,newbiePosZ=newbieEffect:findValue("newbiePosZ");
@@ -189,7 +189,7 @@ function loadNewbiePos(newbieEffect)
 	end
 end
 
-function setNewbiePos(newbieEffect,Character)
+function M.setNewbiePos(newbieEffect,Character)
 
 	newbieEffect:addValue("newbiePosX",Character.pos.x);
 	newbieEffect:addValue("newbiePosY",Character.pos.y);
@@ -197,3 +197,5 @@ function setNewbiePos(newbieEffect,Character)
 end
 
 
+
+return M

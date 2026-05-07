@@ -1,11 +1,12 @@
-module("lte.fighting", package.seeall)
+local M = {}
+
 -- Fighting LTE
 
-function addEffect( Effect, Character)
+function M.addEffect( Effect, Character)
     -- silence
 end
 
-function callEffect( Effect, Char )
+function M.callEffect( Effect, Char )
     found,value = Effect:findValue( "stop" );
     if found then
         Char:inform("Stop for: "..(value-1));
@@ -31,6 +32,7 @@ function callEffect( Effect, Char )
     return true;
 end
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     -- silence
 end
+return M

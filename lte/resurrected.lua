@@ -1,9 +1,9 @@
 require("base.common")
-module("lte.resurrected", package.seeall)
+local M = {}
 
 attribs={"strength","dexterity","constitution","agility","intelligence","perception","willpower","essence"};
 
-function addEffect( rebirthEffect, Reborn )
+function M.addEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
         Reborn:inform("woopss admin...");
 	  return false;
@@ -42,7 +42,7 @@ function addEffect( rebirthEffect, Reborn )
     return true;
 end;
 
-function loadEffect( rebirthEffect, Reborn )
+function M.loadEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
     Reborn:inform("loading...");
 	  return;
@@ -87,7 +87,7 @@ function loadEffect( rebirthEffect, Reborn )
     end;
 end;
 
-function callEffect( rebirthEffect, Reborn )
+function M.callEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
     Reborn:inform("calls....");
 	  return false;
@@ -138,7 +138,7 @@ function callEffect( rebirthEffect, Reborn )
     return callAgain;
 end;
 
-function removeEffect( rebirthEffect, Reborn )
+function M.removeEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
     Reborn:inform("removing...");
 	  return;
@@ -162,7 +162,7 @@ function removeEffect( rebirthEffect, Reborn )
 end;
 
 -- NOTE: function is saved locally in npc_yellowcross.lua; Workaround for Mantis issue #451
-function doubleEffect( rebirthEffect, Reborn )
+function M.doubleEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
     Reborn:inform("double...");
 	  return false;
@@ -201,3 +201,4 @@ function doubleEffect( rebirthEffect, Reborn )
 	Reborn:setQuestProgress(20,base.common.GetCurrentTimestamp());
     return true;
 end
+return M

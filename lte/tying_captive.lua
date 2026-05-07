@@ -1,5 +1,6 @@
 require("base.common")
-module("lte.tying_captive", package.seeall)
+local M = {}
+
 --[[ LTE 24
      tying up: captive
     @value Capturer - id of the char that the captive follows
@@ -8,11 +9,11 @@ module("lte.tying_captive", package.seeall)
     @value logout - set when all capturers are away.
     @value logyear, logmonth, logday, loghour, logminute, logsecond - exact date when waiting time for capturers ends.
 ]]
-function addEffect( Tying, Captive )
+function M.addEffect( Tying, Captive )
 	-- nothing
 end
 
-function callEffect( Tying, Captive )
+function M.callEffect( Tying, Captive )
 	
 	local foundEscape, escape = Tying:findValue("escape");
 	Tying.nextCalled = 5;
@@ -22,10 +23,10 @@ function callEffect( Tying, Captive )
 		local range = 2;
 		local XOff;
 		local YOff;
-		Capturer = IsCharidInRangeOf(Capturer,Captive.pos,5);
+		Capturer = M.IsCharidInRangeOf(Capturer,Captive.pos,5);
 		if Capturer then
 			if not Capturer.effects:find(26) then
-				return checkForCapturers(Tying, Captive);
+				return M.checkForCapturers(Tying, Captive);
 			end
 			
 			Tying:removeValue("logout");
@@ -33,8 +34,8 @@ function callEffect( Tying, Captive )
 			if foundEscape then
 				if not foundSuccess then -- first call during escape time
 					-- check for other capturers
-					if escapeSuccess(Tying,Captive,Capturer) then
-						InformW(Captive,
+					if M.escapeSuccess(Tying,Captive,Capturer) then
+						M.InformW(Captive,
 							"Das Seil scheint etwas locker zu sein. Wenn du jetzt wegrennst, kannst du dich bestimmt losreißen!",
 							"The rope seems to be somewhat loose. If you run now, you can surely break away!");
 						Tying:addValue("success",1); -- do not call again.
@@ -52,12 +53,12 @@ function callEffect( Tying, Captive )
 			end
 			XOff = Captive.pos.x - Capturer.pos.x; -- standard coordinates we have to stick to
 			YOff = Captive.pos.y - Capturer.pos.y;
-			MoveCharacter(Captive,Tying,XOff,YOff,range);
+			M.MoveCharacter(Captive,Tying,XOff,YOff,range);
 			return true;
 		end
 		
 		-- capturer not near, check for others
-		if checkForCapturers(Tying, Captive) then
+		if M.checkForCapturers(Tying, Captive) then
 			return true;
 		end
 		
@@ -78,11 +79,11 @@ function callEffect( Tying, Captive )
 			PosY = Captive.pos.y+500;
 			Tying:addValue("logposx",PosX);
 			Tying:addValue("logposy",PosY);
-			InformW(Captive,
+			M.InformW(Captive,
 				"Deine Hände sind immernoch gefesselt, doch das Seil scheint sich langsam zu lösen.",
 				"Your hands are still tied together, but you feel that the rope gets more and more loose.");
 		end
-		if IsEffectInLogoutTime(Tying, Character) then
+		if M.IsEffectInLogoutTime(Tying, Character) then
 			foundPosX, PosX = Tying:findValue("logposx");
 			foundPosY, PosY = Tying:findValue("logposy");
 			if not foundPosX or not foundPosY then
@@ -93,18 +94,18 @@ function callEffect( Tying, Captive )
 			end
 			XOff = Captive.pos.x - (PosX-500);
 			YOff = Captive.pos.y - (PosY-500);
-			MoveCharacter(Captive,Tying,XOff,YOff,range);
+			M.MoveCharacter(Captive,Tying,XOff,YOff,range);
 			return true;
 		end
 	else
-		return checkForCapturers(Tying, Captive);
+		return M.checkForCapturers(Tying, Captive);
 	end
 	return false;
 end
 
-function removeEffect( Tying, Captive )
+function M.removeEffect( Tying, Captive )
 	
-	InformW(Captive,
+	M.InformW(Captive,
 		"Du bist frei!",
 		"You are free!");
 	for i=5,6 do
@@ -115,15 +116,15 @@ function removeEffect( Tying, Captive )
 	end
 end
 
-function loadEffect( Tying, Captive )
+function M.loadEffect( Tying, Captive )
 	
 	foundCapturer, Capturer = Tying:findValue("Capturer");
-	if not IsEffectInLogoutTime(Tying, Captive) then
+	if not M.IsEffectInLogoutTime(Tying, Captive) then
 		local logText = os.date()..": "..Captive.name.." logs in again. "..(foundCapturer and " Capturer: "..Capturer or "").." Time limit exceeded"
-		logToFile(logText);
+		M.logToFile(logText);
 	else
 		local logText = os.date()..": "..Captive.name.." logs in again. "..(foundCapturer and " Capturer: "..Capturer or "").." Within time limit"
-		logToFile(logText);
+		M.logToFile(logText);
 	end
 	Tying:removeValue("logout");
 end
@@ -140,7 +141,7 @@ end
     @param integer - radius of the circle that shall be checked
     @return CaptiveStruct - the Character if he was found, false if not found
 ]]
-function IsCharidInRangeOf( CharID, Position, Range )
+function M.IsCharidInRangeOf( CharID, Position, Range )
 	
 	CharID = CharID+1-1;
 	local CharList = world:getCharactersInRangeOf(Position,Range);
@@ -155,7 +156,7 @@ end
 --[[ Compare all attribs in AttribList from Char1 and Char2.
 Return the best (highest) Offset for Char1, at least 0.
 ]]
-function GetBestAttribOffset( Char1, Char2, AttribList )
+function M.GetBestAttribOffset( Char1, Char2, AttribList )
 	
 	local bestOffset = 0;
 	local currentOffset;
@@ -171,7 +172,7 @@ function GetBestAttribOffset( Char1, Char2, AttribList )
 	return math.max(bestOffset,addVal);
 end
 
-function MoveX(Character,XOff,forced)
+function M.MoveX(Character,XOff,forced)
     if (XOff == 0) and not forced then
         return false;
     end
@@ -195,7 +196,7 @@ function MoveX(Character,XOff,forced)
     end
 end
 
-function MoveY(Character,YOff,forced)
+function M.MoveY(Character,YOff,forced)
     if (YOff == 0) and not forced then
         return false;
     end
@@ -219,16 +220,16 @@ function MoveY(Character,YOff,forced)
     end
 end
 
-function MoveCharacter( Character, Effect, XOff, YOff, range )
+function M.MoveCharacter( Character, Effect, XOff, YOff, range )
 	
 	local blocked, blockVal = Effect:findValue("blocked");
 	local saveAP = Character.movepoints; -- need normal AP, even for forced moving
 	Character.movepoints = 21;
 	if (math.sqrt(XOff*XOff + YOff*YOff) > range) then
 		if ((math.abs(XOff) < math.abs(YOff)) and not blocked) or ((math.abs(XOff) > math.abs(YOff)) and blocked) then
-			if not MoveX(Character,XOff,false) then
-				if not MoveY(Character,YOff,false) then
-					MoveX(Character,XOff,true);
+			if not M.MoveX(Character,XOff,false) then
+				if not M.MoveY(Character,YOff,false) then
+					M.MoveX(Character,XOff,true);
 					blocked = true;
 				else
 					blocked = false;
@@ -237,9 +238,9 @@ function MoveCharacter( Character, Effect, XOff, YOff, range )
 				blocked = false;
 			end
 		else
-			if not MoveY(Character,YOff,false) then
-				if not MoveX(Character,XOff,false) then
-					MoveY(Character,YOff,true);
+			if not M.MoveY(Character,YOff,false) then
+				if not M.MoveX(Character,XOff,false) then
+					M.MoveY(Character,YOff,true);
 					blocked = true;
 				else
 					blocked = false;
@@ -257,11 +258,11 @@ function MoveCharacter( Character, Effect, XOff, YOff, range )
 	end
 end
 
-function InformW( User, textInDe, textInEn )
+function M.InformW( User, textInDe, textInEn )
     User:inform( "#w "..base.common.GetNLS( User, textInDe, textInEn ) );
 end
 
-function IsEffectInLogoutTime( Effect, Character )
+function M.IsEffectInLogoutTime( Effect, Character )
 
 	local foundYears, years = Effect:findValue("logyears");
 	local foundMonths, months = Effect:findValue("logmonths");
@@ -320,7 +321,7 @@ function IsEffectInLogoutTime( Effect, Character )
 	return false;
 end
 
-function escapeSuccess( Effect, Captive, Capturer )
+function M.escapeSuccess( Effect, Captive, Capturer )
 	
 	local perc;
 	local AttribOffset;
@@ -333,13 +334,13 @@ function escapeSuccess( Effect, Captive, Capturer )
 				if foundCaptive then
 					if CaptiveId == Captive.id then
 						-- found another Capturer! Check for escape success
-						AttribOffset = GetBestAttribOffset(Captive,Char,{"strength","dexterity","agility"});
+						AttribOffset = M.GetBestAttribOffset(Captive,Char,{"strength","dexterity","agility"});
 						if ( math.random(30) > math.min(20,AttribOffset) ) then
 							return false;
 						else
 							perc = Char:increaseAttrib("perception",0);
 							if math.random(50) <= math.min(20,perc) then
-								InformW(Char,
+								M.InformW(Char,
 									"Du spürst einen ungewöhnlichen Zug auf dem Seil. Ob das ein Fluchtversuch sein kann?",
 									"You feel an unusual pull on the rope. May that be an escape attempt?");
 							end
@@ -352,7 +353,7 @@ function escapeSuccess( Effect, Captive, Capturer )
 	return true;
 end
 
-function checkForCapturers( Tying, Captive )
+function M.checkForCapturers( Tying, Captive )
 	
 	local CharList = world:getCharactersInRangeOf(Captive.pos,5);
 	for i,Char in CharList do
@@ -363,7 +364,7 @@ function checkForCapturers( Tying, Captive )
 				if foundCaptive then
 					if CaptiveId == Captive.id then
 						Tying:addValue("Capturer",Char.id);
-						InformW(Char,
+						M.InformW(Char,
 							"Der Gefangene folgt nun dir.",
 							"Now the captive follows you.");
 						Tying:removeValue("escape");
@@ -377,7 +378,7 @@ function checkForCapturers( Tying, Captive )
 	return false;
 end
 
-function logToFile(theString)
+function M.logToFile(theString)
 	
 	coldLog,errMsg=io.open("/home/nitram/logs/tying_log.txt","a");
     if (coldLog~=nil) then
@@ -385,3 +386,5 @@ function logToFile(theString)
         coldLog:close();
 	end
 end
+
+return M

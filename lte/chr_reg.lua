@@ -2,7 +2,8 @@
 -- by Nitram
 
 require("base.common")
-module("lte.chr_reg", package.seeall)
+local M = {}
+
 --dofile( "p_basics.lua" );
 
 crossPosition={};
@@ -11,13 +12,13 @@ crossPosition={};
 
 crossPosition[0]= position(0,0,0);       -- Default
 
-function addEffect( Effect, Character)
+function M.addEffect( Effect, Character)
     -- it is needed to add at least value to make sure the effect does not get deleted right after
     -- the first call
     Effect:addValue("10",0);
 end;
 
-function callEffect( Effect, Char ) -- Effect wird ausgef�hrt
+function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
     -----------------------EINLESEN ANFANG------------------------------------
     local Hitpoints   = Char:increaseAttrib("hitpoints",0);   -- Hitpoints einlesen    ( 0 - 10000 )
     local Manapoints  = Char:increaseAttrib("mana",0);        -- Manapoints einlesen   ( 0 - 10000 )
@@ -30,9 +31,9 @@ function callEffect( Effect, Char ) -- Effect wird ausgef�hrt
     -----------------------EINLESEN FERTIG------------------------------------
 
     -----------------------GRENZWERTE VORBEREITEN-----------------------------
-    local maxHitpoints = getLimit( Effect, "maxHP", 10000 );
-    local maxManapoints = getLimit( Effect, "maxMP", 10000 );
-    local maxFoodvalue = getLimit( Effect, "maxFP", 60000 );
+    local maxHitpoints = M.getLimit( Effect, "maxHP", 10000 );
+    local maxManapoints = M.getLimit( Effect, "maxMP", 10000 );
+    local maxFoodvalue = M.getLimit( Effect, "maxFP", 60000 );
     --------------------------GRENZWERTE FERTIG-------------------------------
 
 
@@ -46,9 +47,9 @@ function callEffect( Effect, Char ) -- Effect wird ausgef�hrt
 
 	
     if ( Hitpoints == 0 ) then -- Charakter ist tot
-        leadToCross( Char , Effect ); -- Warp char to cross
+        M.leadToCross( Char , Effect ); -- Warp char to cross
 
-		return leaveSavely( Effect );
+		return M.leaveSavely( Effect );
     else
     
         local foundValue, cycleCounter = Effect:findValue( "cycleCounter" ); --Is the cycleCounter still there? Can happen when somebody is revived by another method than the cross or runs to the cross himself
@@ -59,8 +60,8 @@ function callEffect( Effect, Char ) -- Effect wird ausgef�hrt
 
     end
 
-    if no_regeneration( Effect ) then -- Regeneration via LTE Variable unterbunden
-        return leaveSavely( Effect );
+    if M.no_regeneration( Effect ) then -- Regeneration via LTE Variable unterbunden
+        return M.leaveSavely( Effect );
     end
 
     -----------------------HITPOINTS ANFANG-----------------------------------
@@ -275,21 +276,21 @@ function callEffect( Effect, Char ) -- Effect wird ausgef�hrt
     -----------------------OVERLOAD SCHUTZ FERTIG-----------------------------
 
     --------------�NDERUNGEN PR�FEN UND DURCHF�HREN ANFANG--------------------
-    if ( getWounds( Char, Effect ) == 0 ) then
-        ChangeAttrib( Char, "hitpoints", Hitpoints );
+    if ( M.getWounds( Char, Effect ) == 0 ) then
+        M.ChangeAttrib( Char, "hitpoints", Hitpoints );
     end
-    ChangeAttrib( Char, "mana", Manapoints );
+    M.ChangeAttrib( Char, "mana", Manapoints );
     if ( Char:getPoisonValue() ~= Poisonvalue ) then
         Char:setPoisonValue( Poisonvalue );
     end
-    ChangeAttrib( Char, "foodlevel", Foodvalue );
+    M.ChangeAttrib( Char, "foodlevel", Foodvalue );
 
     --------------�NDERUNGEN PR�FEN UND DURCHF�HREN FERTIG--------------------
 
-    return leaveSavely( Effect );
+    return M.leaveSavely( Effect );
 end
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     local newEffect = CLongTimeEffect(2,50);
     local found = false;
     local value = 0;
@@ -325,11 +326,11 @@ function removeEffect( Effect, Character )
     Character.effects:addEffect( newEffect );
 end
 
-function loadEffect(Effect, Character)
+function M.loadEffect(Effect, Character)
 
 end
 
-function getLimit( Effect, name, default )
+function M.getLimit( Effect, name, default )
     local foundValue, Value = Effect:findValue( name );
     if foundValue and Value > 0 and Value < default then
         return Value;
@@ -338,7 +339,7 @@ function getLimit( Effect, name, default )
     end
 end
 
-function leadToCross( Char , Effect )
+function M.leadToCross( Char , Effect )
 
     local foundValue, cycleCounter = Effect:findValue( "cycleCounter" ); --Read the cycleCounter
     
@@ -363,7 +364,7 @@ function leadToCross( Char , Effect )
 end
 
 
-function leaveSavely( Effect )
+function M.leaveSavely( Effect )
 	if ( Effect.numberCalled <= 254 ) then
         Effect.nextCalled = 50;
         return true
@@ -372,7 +373,7 @@ function leaveSavely( Effect )
     end
 end
 
-function no_regeneration( Effect )
+function M.no_regeneration( Effect )
     local foundValue, Value = Effect:findValue( "no_reg" );
     if not foundValue then
         return false;
@@ -385,13 +386,13 @@ function no_regeneration( Effect )
     return true;
 end
 
-function ChangeAttrib( Char, name, newVal )
+function M.ChangeAttrib( Char, name, newVal )
     if ( Char:increaseAttrib(name,0) ~= newVal ) then
         Char:increaseAttrib(name,-(Char:increaseAttrib(name,0)-newVal));
     end
 end
 
-function getWounds( Char, Effect )
+function M.getWounds( Char, Effect )
     local foundEffect, bleedingEffect = Char.effects:find( 21 );
     if not foundEffect then
         return 0;
@@ -403,3 +404,5 @@ function getWounds( Char, Effect )
     end
     return Wounds;
 end
+
+return M

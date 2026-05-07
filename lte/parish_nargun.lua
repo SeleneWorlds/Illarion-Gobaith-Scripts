@@ -2,15 +2,15 @@
 -- Effects for parish of Nargun
 
 require("base.common")
-module("lte.parish_nargun", package.seeall)
+local M = {}
 
 cycleCounter = {};
 PN_FriendlyRaces = {18,24,37,38};
 PN_Waypoints = {position(-80,-207,0), position(-222,-196,0), position(-200,-270,0), position(-384,-206,0)};
 
-function addEffect(Effect, Char)
+function M.addEffect(Effect, Char)
 	
-	local effectType = PN_GetEffectType(Effect);
+	local effectType = M.PN_GetEffectType(Effect);
 	
 	if effectType >= 1 and effectType <= 4 then
 		Effect:addValue("saveRace", Char:get_race() );
@@ -23,17 +23,17 @@ function addEffect(Effect, Char)
 	end
 end
 
-function callEffect(Effect, Char)
-	local effectType = PN_GetEffectType(Effect);
+function M.callEffect(Effect, Char)
+	local effectType = M.PN_GetEffectType(Effect);
 	Effect.nextCalled = 10;
 	if effectType >= 1 and effectType <= 4 then
-		return PN_LeadToPoint(Char, effectType);
+		return M.PN_LeadToPoint(Char, effectType);
 	end
 	return false;
 end
 
-function removeEffect(Effect, Char)
-	local effectType = PN_GetEffectType(Effect);
+function M.removeEffect(Effect, Char)
+	local effectType = M.PN_GetEffectType(Effect);
 	if effectType >= 1 and effectType <= 4 then
 		local foundSaveRace, saveRace = Effect:findValue("saveRace");
 		if not foundSaveRace then
@@ -59,14 +59,14 @@ function removeEffect(Effect, Char)
 	end
 end
 
-function loadEffect(Effect, Char)
-	local effectType = PN_GetEffectType(Effect);
+function M.loadEffect(Effect, Char)
+	local effectType = M.PN_GetEffectType(Effect);
 	if effectType >= 1 and effectType <= 4 then
 		Char.effects:removeEffect(29);
 	end
 end
 
-function PN_GetEffectType(Effect)
+function M.PN_GetEffectType(Effect)
 	
 	local foundEffectType, effectType = Effect:findValue("effectType");
 	if not foundEffectType then
@@ -75,7 +75,7 @@ function PN_GetEffectType(Effect)
 	return effectType;
 end
 
-function PN_LeadToPoint( Char, effectType )
+function M.PN_LeadToPoint( Char, effectType )
     if (cycleCounter[Char.id]==nil) then
         cycleCounter[Char.id]=40;
     end
@@ -127,3 +127,4 @@ function PN_LeadToPoint( Char, effectType )
     end
 	return true;
 end
+return M

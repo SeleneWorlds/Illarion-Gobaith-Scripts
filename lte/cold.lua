@@ -1,13 +1,13 @@
 -- Include common methods
 require("base.common")
-module("lte.cold", package.seeall)
+local M = {}
 
 -- Include functions for handling odds arrays (such as illnessMessages)
 -- dofile( "base_odds.lua" ); "DOES NOT EXIST", says vilarion
 
 
 -- Initialize different important values for the levels of the illness.
-function init()
+function M.init()
 	-- The attribute penalties for reaching the given level of the illness.
 	-- These stack, so a character with a level 6 illness (heavy pneumonia)
 	-- will have lost 8-9 points of costitution.
@@ -182,7 +182,7 @@ function init()
 end
 
 -- Called when the user's illness reaches the given level (on the way UP, not down!)
-function enterLevel(effect, user, level, updateDuration)
+function M.enterLevel(effect, user, level, updateDuration)
 	updateDuration = updateDuration or true;
 	for diff, attr in pairs(penalties) do
 		val = user:increaseAttrib(attr, 0);
@@ -202,9 +202,9 @@ function enterLevel(effect, user, level, updateDuration)
 end
 
 -- Called when the user's illness leaves the given level (on the way DOWN, not up!)
-function leaveLevel(effect, user, level)
+function M.leaveLevel(effect, user, level)
 	for v, attr in pairs(penalties) do
-		found, diff = getOrWarn(effect, user, attr);
+		found, diff = M.getOrWarn(effect, user, attr);
 		if(found == true) then
 			user:increaseAttrib(attr, diff);
 		end
@@ -216,8 +216,8 @@ function leaveLevel(effect, user, level)
 end
 
 -- Informs the user about the ill effects the illness is having on him.
-function informUser(effect, user)
-	found, level = getOrWarn(effect, user, "level");
+function M.informUser(effect, user)
+	found, level = M.getOrWarn(effect, user, "level");
 	if(found) then
 		oddsArray = illnessMessages[level];
 		message = getFromOddsArray(oddsArray);
@@ -230,7 +230,7 @@ function informUser(effect, user)
 end
 
 -- Called the first time when the effect is added to the user.
-function addEffect(effect, user)
+function M.addEffect(effect, user)
 	-- Initialize some global values
 --	init();
 
@@ -246,20 +246,20 @@ function addEffect(effect, user)
 	effect:addValue("level", 1);
 
 	-- Automatic handling of duration and penalties when entering an illness level 
---	enterLevel(effect, user, 1);
+--	M.enterLevel(effect, user, 1);
 end
 
 -- Entry point for the longtime effect
-function callEffect(effect, user)
+function M.callEffect(effect, user)
 	-- Call every 10 seconds
 	effect.nextCalled = 100;
 
 	if true then return true; end
 
-	found, duration = getOrWarn(effect, user, "duration");
+	found, duration = M.getOrWarn(effect, user, "duration");
 	if(duration < 1) then
-		found, level = getOrWarn(effect, user, "level");
-		leaveLevel(effect, user, level);
+		found, level = M.getOrWarn(effect, user, "level");
+		M.leaveLevel(effect, user, level);
 		if(level <= 1) then
 			user.effects:removeEffect(effect.effectId);
 			return(false);
@@ -268,38 +268,38 @@ function callEffect(effect, user)
 	found, over = effect:findValue("over");
 	if(found and over==1) then
 		effect:addValue("over", false);
-		found, level = getOrWarn(effect, user, "level");
+		found, level = M.getOrWarn(effect, user, "level");
 		if(found) then
 			for i=level,1,-1 do
-				leaveLevel(effect, user, i, false);	
+				M.leaveLevel(effect, user, i, false);	
 			end
 		end
 		return("false");
 	end
-	informUser(effect, user);
+	M.informUser(effect, user);
 	return(true);
 end
 
-function removeEffect(effect, user)
+function M.removeEffect(effect, user)
 end
 
 -- Lower the attributes again, according to the saved illness level, because the attribute changes
 -- are not saved to the database when the user logs out.
-function loadEffect(effect, user)
-	found, level = getOrWarn(effect, user, "level");
+function M.loadEffect(effect, user)
+	found, level = M.getOrWarn(effect, user, "level");
 	if(found) then 
 		for i=1,level do
-			enterLevel(effect, user, i, false);
+			M.enterLevel(effect, user, i, false);
 		end
 	end
 end
 
-function doubleEffect(effect, user)
+function M.doubleEffect(effect, user)
 -- TODO: Increase the level of the illness. This is called when the effect is added to a user who already has it.
 end
 
 -- Get a value from the effect. Warn the user that the value has not been found if it's not there.
-function getOrWarn(effect, user, attribute)
+function M.getOrWarn(effect, user, attribute)
 	found, value = effect:findValue(attribute);
 	if(found == false) then
 		base.common.InformNLS(user, 
@@ -308,3 +308,5 @@ function getOrWarn(effect, user, attribute)
 	end
 	return found, value
 end
+
+return M

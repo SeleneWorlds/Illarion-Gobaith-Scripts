@@ -1,7 +1,7 @@
 require("base.common")
-module("lte.succubus_effect", package.seeall)
+local M = {}
 
-function createAmulett( Target )
+function M.createAmulett( Target )
     oldItem = Target:getItemAt(2);
     if ( oldItem.id ~= 0 ) then
         world:createItemFromItem(oldItem, Target.pos, true);
@@ -16,9 +16,9 @@ function createAmulett( Target )
     base.common.InformNLS(Target,"Die macht des Dämons hält deinen Hals fest im Griff","The power of the Demon holds your neck in a strong grasp");
 end
 
-function addEffect( theEffect, Target )
+function M.addEffect( theEffect, Target )
     Target:inform("suceffect");
-    createAmulett( Target );
+    M.createAmulett( Target );
     Target:inform("cA");
     --store the old/new values and change the attribs
     oldVal = Target:increaseAttrib("strength",0);
@@ -38,16 +38,16 @@ function addEffect( theEffect, Target )
     
 end
 
-function callEffect( theEffect, Target)
+function M.callEffect( theEffect, Target)
     theEffect.nextCalled = 9999999;
     return true;
 end
 
-function doubleEffect( theEffect, Target)
+function M.doubleEffect( theEffect, Target)
 
 end
 
-function removeEffect( theEffect, Target)
+function M.removeEffect( theEffect, Target)
     fnd, val = theEffect:findValue("oldStr");
     if (fnd) then
         Target:setAttrib("strength", val );
@@ -63,7 +63,7 @@ function removeEffect( theEffect, Target)
     base.common.InformNLS( Target,"Du fühlst dich wieder genauso stark wie vor dem Kuss des Dämons", "You feel as Strong as before the kiss of the Demon");
 end
 
-function loadEffect( theEffect, Target)
+function M.loadEffect( theEffect, Target)
     fnd, val = theEffect:findValue("Str");
     if (fnd) then
         Target:setAttrib("strength", val );
@@ -79,3 +79,5 @@ function loadEffect( theEffect, Target)
     base.common.InformNLS( Target, "Du fühlst dich schwächer als normal", "You feel weaker than normal");
 end
 
+
+return M

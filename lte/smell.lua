@@ -1,10 +1,10 @@
 require("base.common")
-module("lte.smell", package.seeall)
+local M = {}
 
 ---------------------------
 ---- Character begins to smell --
 -----------------------------
-function addEffect(stinkEffect, Character)         -- Smell starts
+function M.addEffect(stinkEffect, Character)         -- Smell starts
     --base.common.InformNLS(Character,
     --"Du fühlst dich etwas unwohl.",
     --"You feel a little sickish.");
@@ -15,7 +15,7 @@ end
 -----------------------------------------------
 ---- Character is affected by the smell he got. --
 -------------------------------------------------
-function callEffect(stinkEffect, Character)    -- Effect wird ausgeführt
+function M.callEffect(stinkEffect, Character)    -- Effect wird ausgeführt
    -- Character:inform("callEffect 1");
     found,stinkIndex_n = stinkEffect:findValue("stinkIndex");    -- get the strength of the effect
     if found then
@@ -52,7 +52,7 @@ function callEffect(stinkEffect, Character)    -- Effect wird ausgeführt
 end
 
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     LogString=os.date()..": Patient "..Character.name.."completely healed because the cold ended.\n";
     logToFile(LogString);
     --base.common.InformNLS(Character,
@@ -60,7 +60,9 @@ function removeEffect( Effect, Character )
     --"You finally feel better now.");
 end
 
-function loadEffect(Effect, Character)
+function M.loadEffect(Effect, Character)
 
 end
 
+
+return M

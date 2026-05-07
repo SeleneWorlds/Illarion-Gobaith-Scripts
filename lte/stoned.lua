@@ -1,10 +1,10 @@
 require("base.common")
-module("lte.stoned", package.seeall)
+local M = {}
 
 ---------------------------
 ------ Character starts to smoke
 -------------------------------
-function addEffect(stonedEffect, Character)       
+function M.addEffect(stonedEffect, Character)       
     Character:inform("AddEffect ausgeführt");
     stonedEffect:addValue("stonedIndex",1);
     stonedEffect:addValue("clearIndex",1);
@@ -13,7 +13,7 @@ end
 -----------------------------------------------
 ------ Character is affected 
 -----------------------------------------------
-function callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
+function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
 
     if (Character:increaseAttrib("sex",0) == 0) then
         gText = "seine";
@@ -135,7 +135,7 @@ end
 ---- Character lost effect
 ----------------------------------------------
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     LogString=os.date()..": Patient "..Character.name.."completely healed because the cold ended.\n";
     logToFile(LogString);
     --base.common.InformNLS(Character,
@@ -143,7 +143,9 @@ function removeEffect( Effect, Character )
     --"You finally feel sober now.");
 end
 	 
-function loadEffect(Effect, Character)
+function M.loadEffect(Effect, Character)
 end
 
 
+
+return M

@@ -1,13 +1,14 @@
-module("lte.cursed_ring", package.seeall)
+local M = {}
+
 -- In work! By Avalyon
 -- Boni or curse for the cursed ring
 
-function callEffect(eff, User)
+function M.callEffect(eff, User)
  eff.nextCalled = 65535;
    return true;
 end
 
-function addEffect (eff, User)
+function M.addEffect(eff, User)
 eff:addValue( "curse", 1)
       if (User:getItemAt( 8 ).data == User.id) or (User:getItemAt( 7 ).data == User.id) then
                 User:increaseAttrib ("agility", 3);
@@ -22,11 +23,13 @@ eff:addValue( "curse", 1)
    return true
 end
 
-function removeEffect (eff,User)
+function M.removeEffect(eff,User)
 eff:removeValue ("curse");
 end
 
-function loadEffect (eff, User)
+function M.loadEffect(eff, User)
 end
 
 
+
+return M

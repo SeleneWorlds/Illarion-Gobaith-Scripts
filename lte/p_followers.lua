@@ -1,19 +1,21 @@
-module("lte.p_followers", package.seeall)
+local M = {}
+
 -- INSERT INTO longtimeeffects VALUES (6,'followers','lte_p_followers.lua');
 
 --dofile("p_basics.lua");
 
-function addEffect(Effect,Char)
+function M.addEffect(Effect,Char)
 	Char:inform("Follower effect added");
 end
 
-function callEffect(Effect,Char)
+function M.callEffect(Effect,Char)
 	Effect.nextCalled = 100;
 	if string.find(Char.lastSpokenText,"remove follower") then
 		Char.effects:removeEffect(6);
 	end
 end
 
-function removeEffect(Effect,Char)
+function M.removeEffect(Effect,Char)
 	Char:inform("Follower effect removed");
 end
+return M

@@ -1,17 +1,19 @@
-module("lte.lasttier", package.seeall)
+local M = {}
+
 -- Langzeit Effekt für Lasttier
 
 -- Aufgabe: Speichern und Übergeben des Lasttierbesitzers
 
-function addEffect(Effect, Carrier)
+function M.addEffect(Effect, Carrier)
     return true;
 end
 
-function callEffect(Effect, Carrier)
+function M.callEffect(Effect, Carrier)
     Effect.nextCalled = 360000;
     return true;
 end
 
-function removeEffect(Effect, Carrier)
+function M.removeEffect(Effect, Carrier)
     return true;
 end
+return M

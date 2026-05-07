@@ -1,10 +1,10 @@
 require("base.common")
-module("lte.spookey", package.seeall)
+local M = {}
 
 ---------------------------
 ---- Spook starts --
 -----------------------------
-function addEffect(spookeyEffect, Character)         -- Smell starts
+function M.addEffect(spookeyEffect, Character)         -- Smell starts
     --base.common.InformNLS(Character,
     --"Du fühlst dich etwas unwohl.",
     --"You feel a little sickish.");
@@ -16,20 +16,22 @@ end
 -----------------------------------------------
 ---- Character is affected by the smell he got. --
 -------------------------------------------------
-function callEffect(spookeyEffect, Character)    -- Effect wird ausgeführt
+function M.callEffect(spookeyEffect, Character)    -- Effect wird ausgeführt
     spookeyEffect.nextCalled =math.random(3000,6000);       -- call it again in 300-600 seconds
 
     return true;
 end
 
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     --base.common.InformNLS(Character,
     --"Du fühlst dich endlich wieder besser.",
     --"You finally feel better now.");
 end
 
-function loadEffect(Effect, Character)
+function M.loadEffect(Effect, Character)
 
 end
 
+
+return M

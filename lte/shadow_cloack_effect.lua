@@ -1,11 +1,12 @@
-module("lte.shadow_cloack_effect", package.seeall)
-function addEffect( theEffect, User )
+local M = {}
+
+function M.addEffect( theEffect, User )
     User:inform("effect start");
     User.isinvisible = true;
     User:inform("setInvisible = true");
 end
 
-function callEffect(theEffect, User )
+function M.callEffect(theEffect, User )
     theEffect.nextCalled = 10; --erneut in 1 sec
     ringItemL = User:getItemAt( 4 );
     ringItemR = User:getItemAt( 5 );
@@ -28,10 +29,12 @@ function callEffect(theEffect, User )
     end
 end
 
-function removeEffect( theEffect, User )
+function M.removeEffect( theEffect, User )
     User.isinvisible = false;
 end
 
-function loadEffect( theEffect, User)
+function M.loadEffect( theEffect, User)
     User.isinvisible = true;
 end
+
+return M

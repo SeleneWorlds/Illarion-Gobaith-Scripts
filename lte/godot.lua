@@ -1,15 +1,16 @@
-module("lte.godot", package.seeall)
+local M = {}
+
 -- LTE Warten auf Godot
 -- by Falk
 
 -- ein LTE, der lediglich die Zeit vergehen lässt
 
 
-function addEffect(eineZaehlVar, User) -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
+function M.addEffect(eineZaehlVar, User) -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
    User:inform("Aufwärmphase") 
 end
 
-function callEffect(wartezeit,User)                            -- Effect wird ausgeführt
+function M.callEffect(wartezeit,User)                            -- Effect wird ausgeführt
    intervall = 60   -- Wiederholung alle intervall/10 sec.
       runden = 9    -- Anzahl Wiederholungen
                     -- => intervall x runden = Dauer
@@ -30,12 +31,12 @@ function callEffect(wartezeit,User)                            -- Effect wird au
     end
 end
 
-function removeEffect(wartezeit,User)
+function M.removeEffect(wartezeit,User)
    User:inform("Alles aufgeräumt")
    -- do nothing
 end
 
-function loadEffect(wartezeit,User)                  -- wenn der Charakter einloggt...
+function M.loadEffect(wartezeit,User)                  -- wenn der Charakter einloggt...
     User:inform("Welcome back to the show")
     found,eineZaehlVar = coldEffect:findValue("eineZaehlVar");
     if found then
@@ -44,3 +45,4 @@ function loadEffect(wartezeit,User)                  -- wenn der Charakter einlo
         wartezeit.nextCalled = intervall          -- in einer Minute wieder aufrufen
     end
 end
+return M

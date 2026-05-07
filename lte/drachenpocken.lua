@@ -2,20 +2,19 @@
 
 
 require("base.common")
-module("lte.drachenpocken", package.seeall)
-
+local M = {}
 
 ------------------------------
 -- Character gets a disease --
 ------------------------------
-function addEffect(diseaseEffect, Patient)         -- Infection starts
+function M.addEffect(diseaseEffect, Patient)         -- Infection starts
     diseaseEffect:addValue("diseaseStr",2);
 end
 
 ------------------------
 -- Infect player char --
 ------------------------
-function infect(Char)
+function M.infect(Char)
     found,diseaseEffect = Char.effects:find(28);    -- look if he already has disease
     if not found then                               -- if not...
         Char.effects:addEffect(CLongTimeEffect(28,math.random(30000,40000)));    -- give disease to the patient
@@ -26,7 +25,7 @@ end
 ------------------------------------
 -- Searches for players to infect --
 ------------------------------------
-function startInfection(User,InfectRange)
+function M.startInfection(User,InfectRange)
     newPatients = world:getPlayersInRangeOf(User.pos,InfectRange);    -- get list of all player around
             -- found at least one
     for i, newPat in pairs(newPatients) do
@@ -34,7 +33,7 @@ function startInfection(User,InfectRange)
             foundSchn, eff=newPat.effects:find(3);  -- does the new patient already have the infection?
             if not foundSchn then
                 if (math.random(1,2)==2) then       -- infect with 50% chance
-                    infect(newPat);
+                    M.infect(newPat);
                 end
             end
         end 
@@ -42,14 +41,14 @@ function startInfection(User,InfectRange)
 end
 
 
-function heal(User)     -- check if a fire is near the character
+function M.heal(User)     -- check if a fire is near the character
     retVal=false;
     -- do the healing process
     return retVal;
 end
 
 
-function logToFile(theString)
+function M.logToFile(theString)
     if true then
         return true;
     end
@@ -68,13 +67,13 @@ end
 --------------------------------------------------
 -- Character is affected by the disease he got. --
 --------------------------------------------------
-function callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
+function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
     Patient:inform("callEffect called");
     found,diseaseStr = diseaseEffect:findValue("diseaseStr");   -- get the strength of the effect
     diseaseEffect.nextCalled =math.random(150,250);            -- call it again in 15-25 seconds
     if found then           --  still having the disease?
-        startInfection(Patient,2);  -- infection Range
-        if (not heal(Patient)) then             -- will he be healed?
+        M.startInfection(Patient,2);  -- infection Range
+        if (not M.heal(Patient)) then             -- will he be healed?
             --if (not Patient:isAdmin()) then     -- is he admin? admins do not sneeze.
                 rnd=math.random(1,10);
                 if rnd==2 then
@@ -114,11 +113,11 @@ function callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
     end
 end
 
-function removeEffect( Effect, Character )
+function M.removeEffect( Effect, Character )
     
 end
 
-function loadEffect(diseaseEffect, Patient)     -- load altered stats
+function M.loadEffect(diseaseEffect, Patient)     -- load altered stats
     found,diseaseStr = diseaseEffect:findValue("diseaseStr");
     if found then
         if diseaseStr==2 then
@@ -138,3 +137,4 @@ function loadEffect(diseaseEffect, Patient)     -- load altered stats
         end
     end
 end
+return M
