@@ -2,11 +2,13 @@
 
 -- Eingestellt auf: Wahl des Statthalters von TB
 
-function UseItem(User,SourceItem,TargetItem,counter,param)
+local M = {}
+
+function M.UseItem(User,SourceItem,TargetItem,counter,param)
     if (UserStat == nil) then
         UserStat = {};
     end
-    if (VotingTargets(SourceItem.data) == "") then
+    if (M.VotingTargets(SourceItem.data) == "") then
         return
     end
     if ((world:getTime("month")<=9) and (world:getTime("year")<=19) and (world:getTime("day")<9)) then
@@ -25,9 +27,9 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
         end
         return
     end
-    if not (CheckAllowed(User.id)) then
+    if not (M.CheckAllowed(User.id)) then
         if (User:getPlayerLanguage()==0) then
-            User:inform("Du versuchst in das Buch zu schreiben, aber auf dem Pergament scheint keine Tinte zu haften. Stattdessen erscheint kurz die Zeile \"Ihr dürft hier nicht abstimmen.\"");
+            User:inform("Du versuchst in das Buch zu schreiben, aber auf dem Pergament scheint keine Tinte zu haften. Stattdessen erscheint kurz die Zeile \"Ihr dÃ¼rft hier nicht abstimmen.\"");
         else
             User:inform("You try to write into the book, the ink doesn't stay on the pergament. Instead of it the line appears: \"You are not allowed to vote here.\"");
         end
@@ -37,16 +39,16 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
         if (UserStat[User.id]~=SourceItem.data) then
             UserStat[User.id]=SourceItem.data;
             if (User:getPlayerLanguage()==0) then
-                User:inform("Möchtest du wirklich für "..VotingTargets(SourceItem.data).." abstimmen? Dann benutze das Lesepult erneut");
+                User:inform("MÃ¶chtest du wirklich fÃ¼r "..M.VotingTargets(SourceItem.data).." abstimmen? Dann benutze das Lesepult erneut");
             else
-                User:inform("Do you really want to vote for "..VotingTargets(SourceItem.data).."? Then use the bookrest again");
+                User:inform("Do you really want to vote for "..M.VotingTargets(SourceItem.data).."? Then use the bookrest again");
             end
         else
             User:setQuestProgress(100,SourceItem.data);
             if (User:getPlayerLanguage()==0) then
-                User:inform("Du schreibst deinen Namen auf das Pergament und deine Schrift ist nur einen Moment sichtbar ehe sie verschwindet. Trotzdem bist du dir nun sicher für "..VotingTargets(SourceItem.data).." abgestimmt zu haben.");
+                User:inform("Du schreibst deinen Namen auf das Pergament und deine Schrift ist nur einen Moment sichtbar ehe sie verschwindet. Trotzdem bist du dir nun sicher fÃ¼r "..M.VotingTargets(SourceItem.data).." abgestimmt zu haben.");
             else
-                User:inform("You write your name on the pergament and your writing is just a moment visible, before it disappears. But your are sure, you voted for "..VotingTargets(SourceItem.data)..".");
+                User:inform("You write your name on the pergament and your writing is just a moment visible, before it disappears. But your are sure, you voted for "..M.VotingTargets(SourceItem.data)..".");
             end
             UserStat[User.id]=nil;
         end
@@ -59,7 +61,7 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
     end
 end
 
-function CheckAllowed(CharID)
+function M.CheckAllowed(CharID)
     if (AllowedChar == nil) then
         AllowedChar = {};
         AllowedChar[249155209] = true;
@@ -145,7 +147,7 @@ function CheckAllowed(CharID)
     end
 end
 
-function VotingTargets(TarID)
+function M.VotingTargets(TarID)
     if (TarID == 1) then
         return "Brer Beothach";
     elseif (TarID == 2) then
@@ -155,14 +157,16 @@ function VotingTargets(TarID)
     end
 end
 
-function LookAtItem(User,Item)
-    if (VotingTargets(Item.data) ~= "") then
+function M.LookAtItem(User,Item)
+    if (M.VotingTargets(Item.data) ~= "") then
         if (User:getPlayerLanguage()==0) then
-            world:itemInform(User,Item,"Du siehst ein fast leeres Buch. Nur eine Zeile steht dort: \"Schreibt hier euren Namen ein um für "..VotingTargets(Item.data).." zu stimmen.\"");
+            world:itemInform(User,Item,"Du siehst ein fast leeres Buch. Nur eine Zeile steht dort: \"Schreibt hier euren Namen ein um fÃ¼r "..M.VotingTargets(Item.data).." zu stimmen.\"");
         else
-            world:itemInform(User,Item,"You see a nearly empty book. Only one line is written: \"Write down your name here to vote for "..VotingTargets(Item.data)..".\"");
+            world:itemInform(User,Item,"You see a nearly empty book. Only one line is written: \"Write down your name here to vote for "..M.VotingTargets(Item.data)..".\"");
         end
     else
         world:itemInform(User,Item,world:getItemName(Item.id,User:getPlayerLanguage()));
     end
 end
+
+return M

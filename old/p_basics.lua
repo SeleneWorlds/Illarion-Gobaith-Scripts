@@ -9,11 +9,13 @@ QuestProgress: 18
 require("base.common")
 dofile("p_constants.lua");
 
+local M = {}
+
 --[[
 @param string
 @return string/nil
 ]]
-function P_GetConversionSkill(text)
+function M.P_GetConversionSkill(text)
 	local ret = nil;
 	text = string.lower(text);
 	for _,this in PRAYER_CONVERSION do
@@ -30,14 +32,14 @@ end
 @param boolean  if a helping inform shall be shown
 @return boolean
 ]]
-function P_CheckAltarConversion(Char,Info)
-	local god = P_GetDevotion(Char,false,true);
+function M.P_CheckAltarConversion(Char,Info)
+	local god = M.P_GetDevotion(Char,false,true);
 	if god then
 		if Char:isInRangeToPosition(ALTARS[god],2) then
 			return true;
 		elseif Info then
 			base.common.TempInformNLS(Char,
-				"Für dieses Gebet solltest du den Altar deines Gottes aufsuchen.",
+				"FÃ¼r dieses Gebet solltest du den Altar deines Gottes aufsuchen.",
 				"For this prayer you should seek the altar of your god.");
 		end
 	end
@@ -50,7 +52,7 @@ end
 @param boolean  if priest devotion shall be checked
 @return int/nil  the god constant if the char is properly devoted, else nil
 ]]
-function P_GetDevotion(Char,followers,priests)
+function M.P_GetDevotion(Char,followers,priests)
 	local god = Char:getQuestProgress(18);
 	if god==0 then
 		return nil;
@@ -74,7 +76,7 @@ end
 @param int
 @return boolean
 ]]
-function P_CheckPrayerFollower(Char,God)
+function M.P_CheckPrayerFollower(Char,God)
 	local text = string.lower(Char.lastSpokenText);
 	local curGod = 0;
 	local this = PRAYER_FOLLOWER[God];
@@ -87,7 +89,7 @@ end
 --[[
 
 ]]
-function P_CheckItemsFollower(Char,God,Info)
+function M.P_CheckItemsFollower(Char,God,Info)
 	local ret = true;
 	for _,item in ITEMS_FOLLOWER[God] do
 		if Char:countItem(item.id)<item.number then
@@ -103,7 +105,7 @@ function P_CheckItemsFollower(Char,God,Info)
 	return ret;
 end
 
-function P_CheckItemsPriest(Char,God,Info)
+function M.P_CheckItemsPriest(Char,God,Info)
 	local ret = true;
 	for _,item in ITEMS_PRIEST[God] do
 		if Char:countItem(item.id)<item.number then
@@ -120,10 +122,10 @@ function P_CheckItemsPriest(Char,God,Info)
 end
 
 -- char, god
-function P_CheckDevotionTime(Char,God,Info)
-	local d = P_GetDevotion(Char,true,false);
+function M.P_CheckDevotionTime(Char,God,Info)
+	local d = M.P_GetDevotion(Char,true,false);
 	if d and d~=God then
-		local days = P_GetFollowerElapsedDays(Char);
+		local days = M.P_GetFollowerElapsedDays(Char);
 		if days and days<25 then
 			base.common.TempInformNLS(Char,
 				"Der Segen eines anderen Gottes liegt bereits auf dir. Versuche es in ".. 25-days .. ((25-days==1) and "Tag" or "Tagen") .. "wieder.",
@@ -138,24 +140,24 @@ end
 @param charStruct
 @return int/nil
 ]]
-function P_GetFollowerElapsedDays(Char)
-	local fEffect = P_GetFollowerEffect(Char);
+function M.P_GetFollowerElapsedDays(Char)
+	local fEffect = M.P_GetFollowerEffect(Char);
 	if fEffect then
 		local foundDay,day = fEffect:findValue("day");
 		local foundMonth,month = fEffect:findValue("month");
 		local foundYear,year = fEffect:findValue("year");
 		if foundDay and foundMonth and foundYear then
-			return P_GetElapsedDays(day,month,year);
+			return M.P_GetElapsedDays(day,month,year);
 		end
 	end
 	return nil;
 end
 
-function P_GetElapsedDays(year,month,day)
-	return P_GetElapsedDaysIt(year,month,day,0);
+function M.P_GetElapsedDays(year,month,day)
+	return M.P_GetElapsedDaysIt(year,month,day,0);
 end
 
-function P_GetElapsedDaysIt(year,month,day,elapsed)
+function M.P_GetElapsedDaysIt(year,month,day,elapsed)
 	local curYear = world:getTime("year");
 	local curMonth = world:getTime("month");
 	local curDay = world:getTime("day");
@@ -176,14 +178,14 @@ function P_GetElapsedDaysIt(year,month,day,elapsed)
 			year = year + 1;
 		end
 	end
-	return P_GetElapsedDaysIt(year,month,day,elapsed);
+	return M.P_GetElapsedDaysIt(year,month,day,elapsed);
 end
 
 --[[
 @param charStruct
 @return effect,nil
 ]]
-function P_GetFollowerEffect(Char)
+function M.P_GetFollowerEffect(Char)
 	local found,effect = Char.effects:find(6);
 	if found then
 		return effect;
@@ -195,7 +197,7 @@ end
 @param charStruct
 @return effect,nil
 ]]
-function P_GetEffectPriest(Char)
+function M.P_GetEffectPriest(Char)
 	local found,effect = Char.effects:find(17);
 	if found then
 		return effect;
@@ -203,22 +205,22 @@ function P_GetEffectPriest(Char)
 	return nil;
 end
 
-function P_DeleteItemsFollower(Char,God)
+function M.P_DeleteItemsFollower(Char,God)
 	for _,item in ITEMS_FOLLOWER[God] do
 		Char:eraseItem(item.id,item.number);
 	end
 end
 
-function P_DeleteItemsPriest(Char,God)
+function M.P_DeleteItemsPriest(Char,God)
 	for _,item in ITEMS_PRIEST[God] do
 		Char:eraseItem(item.id,item.number);
 	end
 end
 
 -- char, god
-function P_DevoteFollower(Char,God)
+function M.P_DevoteFollower(Char,God)
 	Char:setQuestProgress(18,God);
-	local fEffect = P_GetFollowerEffect(Char);
+	local fEffect = M.P_GetFollowerEffect(Char);
 	if not fEffect then
 		fEffect = CLongTimeEffect(6,10);
 		Char.effects:addEffect(fEffect);
@@ -231,7 +233,7 @@ function P_DevoteFollower(Char,God)
 end
 
 -- char, god
-function P_CheckPrayerPriest(Char,God)
+function M.P_CheckPrayerPriest(Char,God)
 	local text = string.lower(Char.lastSpokenText);
 	local curGod = 0;
 	local this = PRAYER_PRIEST[God];
@@ -245,7 +247,7 @@ end
 @param charStruct
 @return int/nil
 ]]
-function P_GetGodOfAltar(Char)
+function M.P_GetGodOfAltar(Char)
 	for god,pos in ALTARS do
 		if Char:isInRangeToPosition(pos,2) then
 			return god;
@@ -255,11 +257,11 @@ function P_GetGodOfAltar(Char)
 end
 
 -- char, god
-function P_CheckDevotionForOrdination(Char,God,Info)
-	local cGod = P_GetDevotion(Char,true,false);
+function M.P_CheckDevotionForOrdination(Char,God,Info)
+	local cGod = M.P_GetDevotion(Char,true,false);
 	if cGod then
 		if cGod==God then
-			local days = P_GetFollowerElapsedDays(Char);
+			local days = M.P_GetFollowerElapsedDays(Char);
 			if days and days>=25 then
 				return true;
 			elseif Info then
@@ -272,25 +274,25 @@ function P_CheckDevotionForOrdination(Char,God,Info)
 	end
 	if Info then
 		base.common.TempInformNLS(Char,
-			"Du bist nicht einmal ein Anhänger dieses Gottes.",
+			"Du bist nicht einmal ein AnhÃ¤nger dieses Gottes.",
 			"You aren't even a follower of this god.");
 	end
 	return false;
 end
 
 -- char, god
-function P_GetChanceForOrdination(Char,God,Info)
+function M.P_GetChanceForOrdination(Char,God,Info)
 	local players = world:getPlayersInRangeOf(Char.pos,5);
 	local followers = {};
 	local priests = {};
 	local d = nil;
 	for _,player in players do
 		if player.id~=Char.id then
-			d = P_GetDevotion(player,true,false);
+			d = M.P_GetDevotion(player,true,false);
 			if d and d==God then
 				table.insert(followers,player);
 			else
-				d = P_GetDevotion(player,false,true);
+				d = M.P_GetDevotion(player,false,true);
 				if d and d==God then
 					table.insert(priests,player);
 				end
@@ -302,14 +304,14 @@ function P_GetChanceForOrdination(Char,God,Info)
 	end
 	if Info then
 		base.common.TempInformNLS(Char,
-			"Für eine Messe brauchst du mindestens noch zwei weitere Anhänger.",
+			"FÃ¼r eine Messe brauchst du mindestens noch zwei weitere AnhÃ¤nger.",
 			"For a mass you need at least two other followers.");
 	end
 	return nil;
 end
 
 -- char, god
-function P_CharToPriest(Char,God)
+function M.P_CharToPriest(Char,God)
 	Char:setQuestProgress(18,100+God);
 	Char.effects:removeEffect(6);
 	Char.effects:addEffect(CLongTimeEffect(17,10));
@@ -322,3 +324,5 @@ function P_CharToPriest(Char,God)
 	world:gfx(46,Char.pos);
 	world:makeSound(13,Char.pos);
 end
+
+return M

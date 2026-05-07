@@ -1,4 +1,6 @@
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
+local M = {}
+
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
     neckItem=TargetCharacter:getItemAt(2);
     if neckItem.id==222 and neckItem.data==Caster.id and neckItem.quality==1000 then
         found, reg_effect = player.effects:find(1000);      -- gesegnet LTE
@@ -9,3 +11,5 @@ function CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
         end
     end
 end
+
+return M

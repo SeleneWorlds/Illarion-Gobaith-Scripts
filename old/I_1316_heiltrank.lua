@@ -4,6 +4,8 @@
 -- include base.common for additional functions
 require("base.common")
 
+local M = {}
+
 
 -- UserItem --> drink the potion
 -- Parameters:
@@ -12,14 +14,14 @@ require("base.common")
 -- -- TargetItem  - Item the potion is used with ( should be nothing normaly )
 -- -- Param       - ItemID of the Item selected from a possible menu. Useless for this script.
 -- -- ltstate     - LongTime State for interrupted scripts
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
     -- check for ltstate == Action.abort
     -- means the script got interrupted before the time needed was up (-> drinking was not finished!)
     if (ltstate == Action.abort) then
 
         -- Cast forced emotes from the Charakter who uses our potion (german for germans, english for the rest)
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me verschüttet den Trank.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me verschÃ¼ttet den Trank.");
         User:talkLanguage(CCharacter.say, CPlayer.english, "#me spills the potion.");
 
         -- remove the potion item
@@ -49,7 +51,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- So he can't drink something
         -- Lets tell him about that...
         base.common.InformNLS(User,
-        "Du kannst nichts trinken während du kämpfst.",
+        "Du kannst nichts trinken wÃ¤hrend du kÃ¤mpfst.",
         "You can't drink something while fighting.");
 
         -- We are done with the script, lets leave. The user fights so he gets no additional health
@@ -130,7 +132,9 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     else
         -- Still much space in the stomach. Just say him what the potion does to his body
         base.common.InformNLS( User,
-        "Du trinkst die Flasche aus und fühlst wie neue Stärke dich durchströmt.",
+        "Du trinkst die Flasche aus und fÃ¼hlst wie neue StÃ¤rke dich durchstrÃ¶mt.",
         "You drink up the bottle, and you feel the new strength that flows through your body.");
     end
 end
+
+return M
