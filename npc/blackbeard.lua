@@ -1,10 +1,14 @@
+local M = {}
+npc = npc or {}
+npc.blackbeard = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- Schiffkaptain Blackbeard
 
 -- Route: Hafen - Greenbriar
 
-require("npc.base.ships");
+local ships = require("npc.base.ships");
 require("npc.base.functions");
-module("npc.blackbeard", package.seeall, package.seeall(npc.base.ships));
 
 -- Insert Statements für Nötige NPCs
 -- INSERT INTO npc VALUES (1000,2,-401,-489,0,0,'f','Ship NPC',NULL,0);
@@ -21,15 +25,15 @@ module("npc.blackbeard", package.seeall, package.seeall(npc.base.ships));
 -- INSERT INTO npc VALUES (1011,2,-406,-489,0,0,'f','Ship NPC',NULL,0);
 -- INSERT INTO npc VALUES (1012,0,-281,53,0,0,'f','Capitain Blackbeard','npc_blackbeard.lua',0);
 
-function useNPC( User , Counter , Param )
+function M.useNPC( User , Counter , Param )
     User:introduce(thisNPC);
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Fass mich an und ich schneid dir die Augen raus, Landratte.");
     thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "Touch me, and i will cut out your eyes, landlubber.");
 end
 
-function nextCycle()
-    if InitShips() then
+function M.nextCycle()
+    if ships.InitShips() then
         anchor = position(-290,53,0);
         route = {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4, -- 49x Süden
                  6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6, -- 52x Westen
@@ -62,16 +66,16 @@ function nextCycle()
         AddShipPosition({-1,2},world:getCharacterOnField(position(-405,-488,0)));
         AddShipPosition({0,3},world:getCharacterOnField(position(-406,-489,0)));
 		]]
-        AddPassangerPosition({1,-1});
-        AddPassangerPosition({-1,-1});
-        AddPassangerPosition({1,0});
-        AddPassangerPosition({-1,0});
-        AddPassangerPosition({1,1});
-        AddPassangerPosition({-1,1});
-        AddPassangerPosition({0,-1});
-        AddPassangerPosition({0,0});
-        AddPassangerPosition({0,1});
-        InitShipPos(route[1]);
+        ships.AddPassangerPosition({1,-1});
+        ships.AddPassangerPosition({-1,-1});
+        ships.AddPassangerPosition({1,0});
+        ships.AddPassangerPosition({-1,0});
+        ships.AddPassangerPosition({1,1});
+        ships.AddPassangerPosition({-1,1});
+        ships.AddPassangerPosition({0,-1});
+        ships.AddPassangerPosition({0,0});
+        ships.AddPassangerPosition({0,1});
+        ships.InitShipPos(route[1]);
         ---------------------------------- Schiffteil fertig -------------------------------------
 
         ---------------------------------- Sprachteil anfang -------------------------------------
@@ -101,26 +105,26 @@ function nextCycle()
             if ((ListDir == 1) and (step == #route)) then
                 ShipDrive = false;
                 thisNPC:warp(captain_harbor_pos[2]);
-                WarpPassangersToo(passenger_landing[2]);
+                ships.WarpPassangersToo(passenger_landing[2]);
                 ListDir=-1;
-                ClearPassengers();
+                ships.ClearPassengers();
                 step = step + 1;
             elseif ((ListDir == -1) and (step == 1)) then
                 ShipDrive = false;
                 thisNPC:warp(captain_harbor_pos[1]);
-                WarpPassangersToo(passenger_landing[1]);
+                ships.WarpPassangersToo(passenger_landing[1]);
                 ListDir=1;
-                ClearPassengers();
+                ships.ClearPassengers();
                 step = step - 1;
             else
-                DoNextMove();
+                ships.DoNextMove();
             end
             zaehler = 0;
         end
     end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     originator:introduce(thisNPC);
     AddPassanger(originator,message);
     Start(originator,message);
@@ -129,22 +133,22 @@ end
 
 
 
-function AddPassanger(originator,message)
+function M.AddPassanger(originator,message)
     if (string.find(message,"[Ss]chiff") ~= nil) then
-        if not CheckForPassanger(originator.id) then
-            if (GetPassanger(1) == nil) then
+        if not ships.CheckForPassanger(originator.id) then
+            if (ships.GetPassanger(1) == nil) then
                 thisNPC:talk(CCharacter.say,"Aye. Du fährst mit und würdest zahlen. Noch wer?");
             else
                 thisNPC:talk(CCharacter.say,"Aye. Du fährst mit. Noch wer?");
             end
-            TryAddPassanger(originator);
+            ships.TryAddPassanger(originator);
         else
             thisNPC:talk(CCharacter.say,"Du fährst doch schon mit! Arr. Verscheisser mich nich!");
         end
     elseif (string.find(message,"[Ii]ch") ~= nil) then
-        if not CheckForPassanger(originator.id) then
-            if (GetPassanger(1) ~= nil) then
-                if TryAddPassanger(originator) then
+        if not ships.CheckForPassanger(originator.id) then
+            if (ships.GetPassanger(1) ~= nil) then
+                if ships.TryAddPassanger(originator) then
                     thisNPC:talk(CCharacter.say,"Aye. Du fährst mit. Noch wer?");
                 else
                     thisNPC:talk(CCharacter.say,"Das schiff is' voll.");
@@ -158,7 +162,7 @@ function AddPassanger(originator,message)
     end
 end
 
-function Start(originator,message)
+function M.Start(originator,message)
     if (string.find(message,"[Ll]os") ~= nil) then
         if (ListDir==1) then
             RotateTo(route[1]);
@@ -172,7 +176,7 @@ function Start(originator,message)
     end
 end
 
-function Debug(message)
+function M.Debug(message)
     if (string.find(message,"rotate %d") ~= nil) then
         a,b,value = string.find(message,"(%d)");
         value = value +1 -1;
@@ -180,6 +184,8 @@ function Debug(message)
     elseif (string.find(message,"move %d") ~= nil) then
         a,b,value = string.find(message,"(%d)");
         value = value +1 -1;
-        MoveShip(value);
+        ships.MoveShip(value);
     end
 end
+
+return M

@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.feliam_wardstrok = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Feliam Wardstrok
 --Race:        Halfling
 --Town:        Trolls Bane
@@ -9,23 +14,22 @@
 
 require("npc.base.trader_functions")
 require("npc.base.functions")
-module("npc.feliam_wardstrok", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     -- logToFile("start useNPC (faliam)");
     local value = useNPC_debug(user,counter,param)
     -- logToFile("end useNPC (faliam)");
     return value;
 end
 
-function useNPC_debug(user,counter,param)
+function M.useNPC_debug(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Finger weg!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     npc.base.trader_functions.InitItemLists()
 
@@ -104,14 +108,14 @@ end
 
 --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     -- logToFile("start nextCycle (feliam)");
     local value = nextCycle_debug()
     -- logToFile("end nextCycle (feliam)");
     return value;
 end
 
-function nextCycle_debug()
+function M.nextCycle_debug()
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -122,14 +126,14 @@ function nextCycle_debug()
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     -- logToFile("start receiveText (maris)");
     local value = receiveText_debug(texttype, message, originator)
     -- logToFile("end receiveText (maris)");
     return value;
 end
 
-function receiveText_debug(texttype, message, originator)
+function M.receiveText_debug(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -240,7 +244,7 @@ function receiveText_debug(texttype, message, originator)
     end
 end--function
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Ein kleiner Mann, kleiner als ein Zwerg, mit gewaltigem Strohhut, der ihn vor der Sonne schützt. Aus einer Tasche auf seinem Rücken schauen einige Bauernswerkzeuge hervor. Er macht wohl grad Pause.";
@@ -250,3 +254,5 @@ function lookAtNpc(Char, mode)
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
+
+return M

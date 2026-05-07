@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.yastahl = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Yastahl
 --Race:        Elf
 --Town:        Far in the North
@@ -8,16 +13,15 @@
 --Update by:   Nitram
 
 require("npc.base.functions")
-module("npc.yastahl", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fast mich nicht an!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     StudentStats={};
 
@@ -59,7 +63,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -68,7 +72,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -159,7 +163,7 @@ function receiveText(texttype, message, originator)
     end --id
 end--function
 
-function StartLearning(originator,message)
+function M.StartLearning(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -175,7 +179,7 @@ function StartLearning(originator,message)
     return retVal
 end
 
-function FirnisGeben(originator,message)
+function M.FirnisGeben(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -203,7 +207,7 @@ function FirnisGeben(originator,message)
     return retVal
 end
 
-function NachtGeben(originator,message)
+function M.NachtGeben(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -231,7 +235,7 @@ function NachtGeben(originator,message)
     return retVal
 end
 
-function SibanacGeben(originator,message)
+function M.SibanacGeben(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -251,7 +255,7 @@ function SibanacGeben(originator,message)
     return retVal
 end
 
-function GenLangSkill(User)
+function M.GenLangSkill(User)
     local retVal=10;
     if (firstLearn==nil) then
         ListOfRaces={0 ,1 ,2 ,3  ,4,5,6,7 ,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
@@ -278,3 +282,5 @@ function GenLangSkill(User)
     end
     return retVal
 end
+
+return M

@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.findecano_melwasul = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --[[ INSERT INTO npc VALUES (nextval('npc_seq'),3,-101,-133,0,4,false,'Findecáno Melwasúl','npc_findecano_melwasul.lua',0);
 name=Findecáno Melwasúl
 position=-101,-133,0
@@ -10,15 +15,14 @@ function: newbie island NPC; last NPC, telling about craftmasters
 
 require("npc.base.autonpcfunctions")
 require("base.common")
-module("npc.findecano_melwasul", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont you touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -129,12 +133,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
             npc.base.autonpcfunctions.TellSmallTalk(message,originator);
@@ -153,3 +157,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end
+
+return M

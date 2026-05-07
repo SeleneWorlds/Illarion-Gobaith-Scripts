@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.rian_delarn = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Rian Delarn
 --Race:        Mensch
 --Town:        Magische Akademie - Arena
@@ -10,16 +15,15 @@
 require("npc.base.functions")
 require("npc.base.autonpcfunctions")
 require("magic.base.basics");
-module("npc.rian_delarn", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger wech oder du bist ein Kopf kürzer!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont ya' touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -135,7 +139,7 @@ function initializeNpc()
 end
 
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if ( TraderInit == nil) then
         TraderInit = {};
     end
@@ -201,7 +205,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.autonpcfunctions.npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.autonpcfunctions.npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -221,7 +225,7 @@ function receiveText(texttype, message, originator)
 end
 
 
-function SayPrice(message, originator)
+function M.SayPrice(message, originator)
 	if (string.find(message,"koste")~=nil) or (string.find(message,"costs")~=nil) then
         thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Wenn ich dir eine harmlose Kreatur beschwören soll, bekomme ich "..PreisHarmlKrea.." Kupferstücke von dir. Für eine aggressive Kreatur möchte ich "..PreisAggrKrea.." Kupferstücke haben.");
         thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "If I should summon a harmles creature for you, I get "..PreisHarmlKrea.." coppercoins. For a aggressive creature one I take "..PreisAggrKrea.." coppercoins.");
@@ -231,7 +235,7 @@ function SayPrice(message, originator)
 end
 
 
-function getCreature (message, originator)
+function M.getCreature(message, originator)
      message = string.lower( message );
      if (string.find(message,"harmlos.+kreatur.+beschwör")~=nil) 
      	or (string.find(message,"beschwör.+harmlos.+kreatur")~=nil)
@@ -296,7 +300,7 @@ function npc.base.autonpcfunctions.CheckMoney(User,Gold,Silber,Kupfer)
     end
 end
 
-function Pay(User,Gold,Silber,Kupfer)
+function M.Pay(User,Gold,Silber,Kupfer)
     local GoldID=61;
     local SilberID=3077;
     local KupferID=3076;
@@ -371,14 +375,14 @@ function Pay(User,Gold,Silber,Kupfer)
 end
 
 
-function CalcSilverCopper(CAmount)
+function M.CalcSilverCopper(CAmount)
     local GAmount=math.floor(CAmount/10000);
     local SAmount=math.floor((CAmount-GAmount*10000)/100);
     local CAmount=CAmount-(SAmount*100+GAmount*10000);
     return GAmount,SAmount,CAmount
 end
 
-function logToFile_npc(theString)
+function M.logToFile_npc(theString)
     coldLog,errMsg=io.open("/home/kadiya/ask_npc.txt","a");
     if (coldLog~=nil) then
         coldLog:write(theString);
@@ -388,6 +392,4 @@ function logToFile_npc(theString)
     return false;
 end
 
-
-
-
+return M

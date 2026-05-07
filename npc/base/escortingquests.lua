@@ -1,7 +1,12 @@
-require("base.common")
-module("npc.base.escortingquests", package.seeall)
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.escortingquests = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function initEscorting()
+require("base.common")
+
+function M.initEscorting()
 	spawnlist    = {}; --holds a list with the MonsterAmount that shall be created with Monsterid as key for the list
 	waypoints    = {}; --holds the waypoints till reaching target destination for every escorted npc
     SpawnAtWP    = {}; --holds which spawnID shall be spawned at WP position(=false if no monsters shall be spawned)
@@ -21,28 +26,28 @@ function initEscorting()
 	----------------------
 end
 
-function AddToSpawn(SpawnID, MonsterID, MonsterAmount) --adds a monster to a spawn
+function M.AddToSpawn(SpawnID, MonsterID, MonsterAmount) --adds a monster to a spawn
 	if spawnlist[SpawnID]==nil then
 		table.insert(spawnlist,SpawnID,{});
 	end
 	spawnlist[SpawnID][MonsterID] = MonsterAmount;--adds the amount of monsters with key MonsterID to this Spawn
 end
 
-function Spawn(SpawnID,thisNPC) --Spawns all monsters from a Spawn
+function M.Spawn(SpawnID,thisNPC) --Spawns all monsters from a Spawn
 	if spawnlist[SpawnID] == nil then return; end --nil prevention
 	for monID, monAmount in pairs(spawnlist[SpawnID]) do
 	    ReleaseMonster(monID,monAmount,thisNPC);
 	end
 end
 
-function ReleaseMonster(monID,monAmount,thisNPC) --creates the monsters for the spawn
+function M.ReleaseMonster(monID,monAmount,thisNPC) --creates the monsters for the spawn
 	for i=1, monAmount do
 	    world:createMonster(monID, position(thisNPC.pos.x+math.random(1,6), thisNPC.pos.y+math.random(1,6),thisNPC.pos.z), 10); --create monsters
 	end
 end
 
 --[[
-function AddWaypoint(thisNPC,posstruct, SpawnedMonAtWP) --Adds a waypoint, SpawnedMonAtWP is false or holds the SpawnID if monsters shall be created at this WP
+function M.AddWaypoint(thisNPC,posstruct, SpawnedMonAtWP) --Adds a waypoint, SpawnedMonAtWP is false or holds the SpawnID if monsters shall be created at this WP
 	if waypoints[thisNPC.id]==nil then
 		table.insert(waypoints,thisNPC.id,{});
 	end
@@ -56,7 +61,7 @@ function AddWaypoint(thisNPC,posstruct, SpawnedMonAtWP) --Adds a waypoint, Spawn
 	table.insert(SpawnAtWP[thisNPC.id],SpawnedMonAtWP); --spawnID or false if no monster shall be spawned
 end
 ]]--
-function AddWaypoint(thisNPC,posstruct, SpawnedMonAtWP) --Adds a waypoint, SpawnedMonAtWP is false or holds the SpawnID if monsters shall be created at this WP
+function M.AddWaypoint(thisNPC,posstruct, SpawnedMonAtWP) --Adds a waypoint, SpawnedMonAtWP is false or holds the SpawnID if monsters shall be created at this WP
 	--if waypoints[thisNPC.id]==nil then
 	--	table.insert(waypoints,thisNPC.id,{});
 	--end
@@ -70,11 +75,11 @@ function AddWaypoint(thisNPC,posstruct, SpawnedMonAtWP) --Adds a waypoint, Spawn
 	--table.insert(SpawnAtWP[thisNPC.id],{SpawnedMonAtWP}); --spawnID or false if no monster shall be spawned
 end
 
-function SpawnAtRoutePercentage(thisNPC,percent,SpawnID) --spawns the monsters from a Spawn at percent Percentage of the Route
+function M.SpawnAtRoutePercentage(thisNPC,percent,SpawnID) --spawns the monsters from a Spawn at percent Percentage of the Route
 	percentSpawn[thisNPC.id][percent] = SpawnID;
 end
 
-function GetDirToNextWP(thisNPC) --returns the direction to the next waypoint
+function M.GetDirToNextWP(thisNPC) --returns the direction to the next waypoint
 	local RangeToCheck = 100;
 	if #waypoints[thisNPC.id]>0 then
         --thisNPC:talk(CCharacter.say,"Calculating route to point: x="..waypoints[thisNPC.id][1].x ..", y="..waypoints[thisNPC.id][1].y);
@@ -99,7 +104,7 @@ function GetDirToNextWP(thisNPC) --returns the direction to the next waypoint
 
 end
 
-function GetDirToPosition(thisNPC,desPos) --returns the direction to the desired position
+function M.GetDirToPosition(thisNPC,desPos) --returns the direction to the desired position
 	local RangeToCheck = 100;
         --thisNPC:talk(CCharacter.say,"Calculating route to point: x="..waypoints[thisNPC.id][1].x ..", y="..waypoints[thisNPC.id][1].y);
 		fnd,dir = thisNPC:getNextStepDir(desPos,RangeToCheck);
@@ -122,7 +127,7 @@ function GetDirToPosition(thisNPC,desPos) --returns the direction to the desired
 end
 
 
-function RemoveWaypoint(thisNPC, amountElements) --removes amountElements Waypoint from the waypoints list, because the NPC reached this position
+function M.RemoveWaypoint(thisNPC, amountElements) --removes amountElements Waypoint from the waypoints list, because the NPC reached this position
 	if amountElements == nil then amountElements = 1; end
 	for i=1, amountElements do
 		table.remove(waypoints[thisNPC.id], 1); --removes the first WP of the list and moves up the remaining indices
@@ -131,7 +136,7 @@ function RemoveWaypoint(thisNPC, amountElements) --removes amountElements Waypoi
 end
 
 
-function BE_nextCycle(thisNPC)
+function M.BE_nextCycle(thisNPC)
   	move[thisNPC.id].nextCycle();
     if wait(1,1) then
 		local dirger,direng,dir = GetDirToNextWP(thisNPC);
@@ -145,7 +150,7 @@ function BE_nextCycle(thisNPC)
 end
 
 
-function IsEscortingPlayerOnline(thisNPC) --looks whether the Escorting Player is still online
+function M.IsEscortingPlayerOnline(thisNPC) --looks whether the Escorting Player is still online
 	local playerlist = world:getCharactersInRangeOf(thisNPC.pos, MaxOffsetToPlayer);
 	local PlayerOnline = false;
 
@@ -158,17 +163,19 @@ function IsEscortingPlayerOnline(thisNPC) --looks whether the Escorting Player i
 end
 
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if BasicNPCChecks(originator,2) then
     	myOrderNPC:receiveText(originator,message);
         TellSmallTalk(message,originator);
 	end
 end
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     if ( myOrderNPC:checkOrder(user) == true ) then
 
     else
         thisNPC:talk(CCharacter.say,"Lass mich in ruhe wenn du nichts für mich hast");
     end
 end
+
+return M

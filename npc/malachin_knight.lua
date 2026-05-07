@@ -1,9 +1,12 @@
+local M = {}
+npc = npc or {}
+npc.malachin_knight = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),25, 30, -37, -6,4,false,'Ethereal Presence','npc_malachin_knight.lua',0);
 -- INSERT INTO npc VALUES (116,25, 30, -37, -6,4,false,'Ethereal Presence','npc_malachin_knight.lua',0);
 
-module("npc.malachin_knight", package.seeall)
-
-function receiveText( texttype, message, originator )
+function M.receiveText( texttype, message, originator )
     thicCounter = 0;
     currentOriginator = originator;
 
@@ -73,7 +76,7 @@ function receiveText( texttype, message, originator )
     end;
 end;
 
-function nextCycle()
+function M.nextCycle()
     -- kill monsters if anyone is near
     if not thisCounter then
         thisCounter = 0;
@@ -144,3 +147,5 @@ function nextCycle()
         thisCounter = thisCounter + 1;
     end;
 end;
+
+return M

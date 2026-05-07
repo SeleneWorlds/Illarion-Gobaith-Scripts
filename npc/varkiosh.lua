@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.varkiosh = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- In work! by avalyon
 -- Varkiosh the Forsaken.
 
@@ -5,15 +10,14 @@
 
 require("npc.base.autonpcfunctions")
 -- require("npc.base.autonpcfunctions")
-module("npc.varkiosh", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Don't you touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -146,12 +150,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
             npc.base.autonpcfunctions.TellSmallTalk(message,originator);
@@ -163,3 +167,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end
+
+return M

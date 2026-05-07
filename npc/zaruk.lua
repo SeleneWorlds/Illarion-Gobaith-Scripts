@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.zaruk = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Zaruk
 --Race:        Human
 --Town:        Harbour
@@ -9,16 +14,15 @@
 
 require("npc.base.trader_functions")
 require("npc.base.functions")
-module("npc.zaruk", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fast mich nicht an!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     npc.base.trader_functions.InitItemLists()
 
@@ -80,7 +84,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -91,7 +95,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -200,3 +204,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end--function
+
+return M

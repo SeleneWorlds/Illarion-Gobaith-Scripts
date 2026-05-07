@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.warkol_hammerfaust = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,49, 51, 100,4,false,'Warkol Hammerfaust','npc_warkol_hammerfaust.lua',0);
 
 --Der NPC beginnt mit der QuestID 2 mit QuestProgress=25 als Startwert
@@ -12,9 +17,8 @@
 
 require("npc.base.autonpcfunctions")
 require("base.common")
-module("npc.warkol_hammerfaust", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fasst mich nicht an!") end
@@ -22,7 +26,7 @@ function useNPC(user,counter,param)
 end
 
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.autonpcfunctions.InitTalkLists();
 
 QuestID= 2
@@ -89,7 +93,7 @@ npc.base.autonpcfunctions.AddCondition("lang","english");
 	greeting_list={};
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang)
@@ -143,7 +147,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
   Progress=originator:getQuestProgress(2);
   if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         thisNPC.activeLanguage=originator.activeLanguage;
@@ -359,7 +363,7 @@ function receiveText(texttype, message, originator)
   end
 end
 
-function checkEquipment(originator)
+function M.checkEquipment(originator)
     helmet=originator:getItemAt(CCharacter.head);
     sword=originator:getItemAt(CCharacter.left_tool);
         if (sword.id~=2701) then
@@ -398,7 +402,7 @@ function checkEquipment(originator)
     return retVarA, retVarB, retVarC, retVarD;
 end
 
-function wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
+function M.wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
         if (cycleCounter==nil) then
             cycleCounter=0;
 			return false;
@@ -411,7 +415,7 @@ function wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
 		end
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Ein junger überaus kräftig gebauter Zwerg. Am Gürtel sind ein Hammer und eine Tiegelzange befestigt.";
@@ -422,3 +426,5 @@ function lookAtNpc(Char, mode)
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
+
+return M

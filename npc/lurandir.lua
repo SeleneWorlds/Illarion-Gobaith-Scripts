@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.lurandir = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Lurandir
 --Race:        Elf
 --Town:        West of Trolls Bane (Lake Adron)
@@ -7,18 +12,16 @@
 --Last Update: 05/16/2006
 --Update by:   vilarion
 
-module("npc.lurandir", package.seeall)
-
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talk(CCharacter.say, "Don't touch me!");
 end
 
-function nextCycle()
+function M.nextCycle()
     -- nothing
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     -- printerr("from"..originator.name.."to"..thisNPC.name);
 
     if (NPCfirst == nil) then
@@ -97,3 +100,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end
+
+return M

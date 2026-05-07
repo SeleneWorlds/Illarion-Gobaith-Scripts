@@ -1,16 +1,20 @@
+local M = {}
+npc = npc or {}
+npc.bippi_aquest28 = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),2,787,795,0,4,false,'Bippi','npc_bippi_aquest28.lua',0);
 
 require("npc.base.autonpcfunctions")
 require("quest_aquest28");    --the quest file
-module("npc.bippi_aquest28", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Don't you touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -131,12 +135,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
 			if string.find(message,"reset") then
@@ -208,7 +212,7 @@ function receiveText(texttype, message, originator)
     end
 end
 
-function TaskText(taskid)
+function M.TaskText(taskid)
 	if not TaskInit then
 		TaskInit = true;
 		gTask ={};
@@ -277,3 +281,5 @@ function TaskText(taskid)
 	end
 	return gTask[taskid].desctxt, eTask[taskid].desctxt, gTask[taskid].helptxt, eTask[taskid].helptxt;
 end
+
+return M

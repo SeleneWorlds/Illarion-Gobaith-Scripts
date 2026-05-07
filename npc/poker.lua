@@ -1,9 +1,13 @@
-require("game_poker")
-module("npc.poker", package.seeall, package.seeall(game_poker))
+local M = {}
+npc = npc or {}
+npc.poker = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function npcInit(npcDealer)
+local game_poker = require("game_poker")
+
+function M.npcInit(npcDealer)
     if not isInit then
-        pokerTable = newPokerTable( npcDealer, 3076, 3077, 61, 462, 1, 2,{
+        pokerTable = game_poker.newPokerTable( npcDealer, 3076, 3077, 61, 462, 1, 2,{
             position(13, 8,30),
             position(13, 9,30),
             position(13,10,30),
@@ -41,15 +45,17 @@ function npcInit(npcDealer)
     end; 
 end
 
-function nextCycle()
+function M.nextCycle()
     npcInit(thisNPC);
     pokerTable.nextCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     pokerTable.receiveText(texttype, message, originator);
 end
 
-function beforeReload()
+function M.beforeReload()
     pokerTable.beforeReload();
 end
+
+return M

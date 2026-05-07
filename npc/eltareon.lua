@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.eltareon = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Eltareon
 --Race:        Human
 --Town:        Trolls Bane
@@ -8,16 +13,15 @@
 --Update by:   Nitram
 
 require("npc.base.functions")
-module("npc.eltareon", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Finger weg!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     --    HistTextD={};
     --    HistTextE={};
@@ -60,7 +64,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -69,7 +73,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -109,3 +113,5 @@ end--function
 --        return 0
 --    end
 --end
+
+return M

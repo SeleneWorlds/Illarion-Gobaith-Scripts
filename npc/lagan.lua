@@ -1,9 +1,12 @@
-function useNPC(user,counter,param)
+local M = {}
+npc = npc or {}
+npc.lagan = M
+local _ENV = setmetatable(M, { __index = _G })
+
+function M.useNPC(user,counter,param)
     --thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talk(CCharacter.say, "Don't you touch me!");
 end
-
-module("npc.lagan", package.seeall)
 
 --function checkSurround(playerID)
 --    foundHim=false;
@@ -22,7 +25,7 @@ module("npc.lagan", package.seeall)
 --    return foundHim;
 --end
 
-function initializeNpc()
+function M.initializeNpc()
     TraderItemPrice={};
     TraderItemId={};
     TraderItemTrig={};
@@ -176,7 +179,7 @@ function initializeNpc()
     TraderText[12]="'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'";
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (cycCount==nil) then
         cycCount=1;
         nextDelivery=math.random(40000);
@@ -197,13 +200,13 @@ function nextCycle()  -- ~10 times per second
     end
 end
 
-function refill(itNumb)
+function M.refill(itNumb)
     TraderItemNumber[itNumb]=TraderItemNumber[itNumb]+TraderItemStandard[itNumb];
     --thisNPC:talk(CCharacter.say,"refilled "..TraderItemName[itNumb].." to "..TraderItemNumber[itNumb]);
     if TraderItemNumber[itNumb]>TraderItemStandard[itNumb]*5 then TraderItemNumber[itNumb]=TraderItemStandard[itNumb]*5 end
 end
 
-function CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPrice(TraderItemPrice[..],TraderItemNumber[..],TraderItemStandard);
+function M.CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPrice(TraderItemPrice[..],TraderItemNumber[..],TraderItemStandard);
     diffAmount=stdAmount-actAmount;
     if (actAmount*3<stdAmount) then        --less than 1/3 of standard
         return stdPrice*3;
@@ -218,7 +221,7 @@ function CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPr
     end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
  -- printerr("from"..originator.name.."to"..thisNPC.name);
     --originator:introduce(thisNPC);
     if (TraderFirst == nil) then
@@ -440,3 +443,5 @@ function receiveText(texttype, message, originator)
         end --id
     end-- range
 end--function
+
+return M

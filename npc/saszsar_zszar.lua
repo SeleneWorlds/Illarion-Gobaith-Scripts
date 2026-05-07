@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.saszsar_zszar = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),5,-113,-121,0,6,false,'Saszsar Zszar','npc_saszsar_zszar.lua',0);
 -- newbie island NPC
 -- telling about the cross
@@ -5,15 +10,14 @@
 
 require("npc.base.autonpcfunctions")
 -- require("npc.base.autonpcfunctions")
-module("npc.saszsar_zszar", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ssss! Wass wollt Ihr?");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Ssss! What do you want?");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -158,12 +162,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
             npc.base.autonpcfunctions.TellSmallTalk(message,originator);
@@ -177,7 +181,7 @@ function receiveText(texttype, message, originator)
 end
 
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Ein schuppiger junger Echsenmann. Er sitzt im Schneidersitz auf den Boden und betrachtet mit seinen grünleuchtenden Augen fasziniert die Säule.";
@@ -188,3 +192,5 @@ function lookAtNpc(Char, mode)
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
+
+return M

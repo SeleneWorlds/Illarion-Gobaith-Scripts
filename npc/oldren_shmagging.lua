@@ -1,18 +1,22 @@
+local M = {}
+npc = npc or {}
+npc.oldren_shmagging = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),2,-67,-104,0,4,false,'Oldren Shmagging','npc_oldren_shmagging.lua',0);
 -- NPC craftmaster for newbie island
 -- cooking and baking
 
 require("npc.base.autonpcfunctions")
 -- dofile("/usr/share/servers/illarionserver/scripts/npc_autonpcfunctions.lua");
-module("npc.oldren_shmagging", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont you touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -341,12 +345,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
             local state = NPCStatus[originator.id];
@@ -388,7 +392,7 @@ function receiveText(texttype, message, originator)
     end
 end
 
-function CountItemsWithQuality( Character, ItemID, Quality, Compare )
+function M.CountItemsWithQuality( Character, ItemID, Quality, Compare )
 	
 	local count = 0;
 	local i;
@@ -440,3 +444,5 @@ function CountItemsWithQuality( Character, ItemID, Quality, Compare )
 	end
 	return count;
 end
+
+return M

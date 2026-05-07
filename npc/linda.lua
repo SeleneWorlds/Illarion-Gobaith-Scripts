@@ -1,6 +1,9 @@
-module("npc.linda", package.seeall)
+local M = {}
+npc = npc or {}
+npc.linda = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     if ( User:getPlayerLanguage()==0 ) then
         thisNPC:talk(CCharacter.say, "Finger weg! Hilf mir lieber.");
@@ -9,7 +12,7 @@ function useNPC(user,counter,param)
     end
 end
 
-function nextCycle()
+function M.nextCycle()
 --    if (cycCount==nil) then
 --        cycCount=1;
 --        thisNPC:increaseSkill(1,"common language",100);
@@ -31,7 +34,7 @@ function nextCycle()
 --    end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
  -- printerr("from"..originator.name.."to"..thisNPC.name);
 
     if (originator.id ~= thisNPC.id) then                                                  --avoid talking to himself.
@@ -45,3 +48,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end
+
+return M

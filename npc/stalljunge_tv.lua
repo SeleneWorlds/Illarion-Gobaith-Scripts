@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.stalljunge_tv = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Stalljunge
 --Race:        Elf
 --Town:        Tol Vanima
@@ -9,16 +14,15 @@
 
 
 require("npc.base.functions")
-module("npc.stalljunge_tv", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Finger weg!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
@@ -61,7 +65,7 @@ function initializeNpc()
     Kaution = 200;
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if ( TraderInit == nil) then
         TraderInit = {};
     end
@@ -75,7 +79,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -95,7 +99,7 @@ function receiveText(texttype, message, originator)
     end
 end
 
-function SayPrice(message, originator)
+function M.SayPrice(message, originator)
     if (string.find(message,"koste")~=nil) or (string.find(message,"costs")~=nil) then
         thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ein Esel kostet "..PreisProKuh.." Kupferstücke. Außerdem müsst ihr "..(Kaution/100).." Silberstücke als Kaution hinterlegen die ihr aber wieder bekommt, wenn ihr den Esel sicher wieder hier her bringt.");
         thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "A mule costs "..PreisProKuh.." coppercoins. Furthermore you have to pay "..(Kaution/100).." silvercoins as surety, but you get these coins back in case you bring the mule safely back to me.");
@@ -104,7 +108,7 @@ function SayPrice(message, originator)
     return false
 end
 
-function createCow( player )
+function M.createCow( player )
     
     posList = { 0, 1, -1, 2, -2 };
     for i, XPos in pairs(posList) do
@@ -123,7 +127,7 @@ function createCow( player )
     return false;
 end
 
-function GetCow(message, originator)
+function M.GetCow(message, originator)
     message = string.lower( message );
     if (string.find(message,"esel.+leihen")~=nil)
     or (string.find(message,"leihe.+esel")~=nil)
@@ -203,7 +207,7 @@ function GetCow(message, originator)
     return false
 end
 
-function returnCow(message, originator)
+function M.returnCow(message, originator)
     message = string.lower( message );
     if (string.find(message,"esel.+zurück")~=nil)
     or (string.find(message,"esel.+verkaufen")~=nil)
@@ -250,7 +254,7 @@ function returnCow(message, originator)
 end
             
 
-function CheckMoney(User,Gold,Silber,Kupfer)
+function M.CheckMoney(User,Gold,Silber,Kupfer)
     local UserGold=User:countItem(61);
     local UserSilber=User:countItem(3077);
     local UserKupfer=User:countItem(3076);
@@ -263,7 +267,7 @@ function CheckMoney(User,Gold,Silber,Kupfer)
     end
 end
 
-function Pay(User,Gold,Silber,Kupfer)    
+function M.Pay(User,Gold,Silber,Kupfer)    
     local GoldID=61;
     local SilberID=3077;
     local KupferID=3076;
@@ -337,9 +341,11 @@ function Pay(User,Gold,Silber,Kupfer)
     end
 end
 
-function CalcSilverCopper(CAmount)
+function M.CalcSilverCopper(CAmount)
     local GAmount=math.floor(CAmount/10000);
     local SAmount=math.floor((CAmount-GAmount*10000)/100);
     local CAmount=CAmount-(SAmount*100+GAmount*10000);
     return GAmount,SAmount,CAmount
 end
+
+return M

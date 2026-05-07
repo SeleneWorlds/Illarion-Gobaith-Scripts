@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.grushub = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Gru'shub
 --Race:        Orc
 --Town:        Varshikar
@@ -8,16 +13,15 @@
 --Update by:   Markous
 
 require("npc.base.trader_functions")
-module("npc.grushub", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Geh weg!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Nhub touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     TraderItemPrice={};
     TraderItemId={};
     TraderItemNumber={};
@@ -1483,7 +1487,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (cycCount==nil) then
     	initializeNpc();
         cycCount=1;
@@ -1505,7 +1509,7 @@ function nextCycle()  -- ~10 times per second
     end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     lang=originator:getPlayerLanguage();
     --originator:introduce(thisNPC);
     if (TraderFirst == nil) then
@@ -1669,3 +1673,5 @@ function receiveText(texttype, message, originator)
         end --id
     end-- range
 end--function
+
+return M

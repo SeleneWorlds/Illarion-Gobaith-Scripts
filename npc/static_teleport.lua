@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.static_teleport = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        TeleporterNPC
 --Race:        invisble
 --Town:        Troll's Bane, Silverbrand, Tol Vanima, Greenbriar, Varshikar
@@ -13,15 +18,13 @@
 -- INSERT INTO npc VALUES (66,25,-433,  40,0,0,'f','GB Teleporter','npc_static_teleport.lua',0);
 -- INSERT INTO npc VALUES (67,25, 262,-264,0,0,'f','V Teleporter' ,'npc_static_teleport.lua',0);
 
-module("npc.static_teleport", package.seeall)
-
-function initializeNpc()
+function M.initializeNpc()
 		Teleportation=TeleportationFunction(thisNPC); --initialize the teleportation
 		Teleportation.initializeNpc(thisNPC);
 		thisNPC:talk(CCharacter.say, "debugmsg");
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if not initDone then
         initDone = { };
     end
@@ -34,11 +37,11 @@ function nextCycle()  -- ~10 times per second
 
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 	Teleportation.receiveText(texttype,message,originator);
 end --function
 
-function ShowAnimationFrame( frame, posi )
+function M.ShowAnimationFrame( frame, posi )
     if ( frame <= 6) then
         world:gfx(41,position(posi.x+1,posi.y+1,posi.z));
         world:gfx(41,position(posi.x-1,posi.y-1,posi.z));
@@ -81,7 +84,7 @@ function ShowAnimationFrame( frame, posi )
     end
 end
 
-function CheckAndRemoveItem( posi, itemid )
+function M.CheckAndRemoveItem( posi, itemid )
     if world:isItemOnField(posi) then
         local checkItem = world:getItemOnField( posi );
         if ( checkItem.id == itemid ) then
@@ -90,7 +93,7 @@ function CheckAndRemoveItem( posi, itemid )
     end
 end
 
-function CreateCircle(gfxid,CenterPos,Radius)
+function M.CreateCircle(gfxid,CenterPos,Radius)
 	local irad = math.ceil(Radius);
 	local dim = 2*(irad+1);
 	local x;
@@ -115,7 +118,7 @@ function CreateCircle(gfxid,CenterPos,Radius)
 	end;
 end
 
-function InformNLS( User, textInDe, textInEn )
+function M.InformNLS( User, textInDe, textInEn )
 	if User:getPlayerLanguage()==0 then
 		User:inform(textInDe);
 	else
@@ -124,7 +127,7 @@ function InformNLS( User, textInDe, textInEn )
 end
 
 
-function TeleportationFunction(thisNPC)
+function M.TeleportationFunction(thisNPC)
 
     local self = {
         targetPosition 	   = { },
@@ -332,3 +335,5 @@ function TeleportationFunction(thisNPC)
 		initializeNpc= initializeNpc,
     };
 end
+
+return M

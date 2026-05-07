@@ -1,10 +1,13 @@
+local M = {}
+npc = npc or {}
+npc.yellowcross = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- Basiscript für die Kreuze
 
 require("base.common")
 
-module("npc.yellowcross", package.seeall)
-
-function nextCycle()
+function M.nextCycle()
 
     EffectArea = 3;
 
@@ -60,7 +63,7 @@ end
 
 attribs={"strength","dexterity","constitution","agility","intelligence","perception","willpower","essence"};
 
-function doubleEffect( rebirthEffect, Reborn )
+function M.doubleEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
     Reborn:inform("double...");
 	  return false;
@@ -100,7 +103,7 @@ function doubleEffect( rebirthEffect, Reborn )
     return true;
 end
 
-function LangSkillName(Race)
+function M.LangSkillName(Race)
     if (Race == 0) then return "human language"
     elseif (Race == 1) then return "dwarf language"
     elseif (Race == 2) then return "halfling language"
@@ -113,7 +116,7 @@ function LangSkillName(Race)
     end
 end
 
-function CreateCircle(GFXid,CenterPos,Radius)
+function M.CreateCircle(GFXid,CenterPos,Radius)
     local irad = math.ceil(Radius);
     local dim = 2*(irad+1);
     local x;
@@ -136,7 +139,7 @@ function CreateCircle(GFXid,CenterPos,Radius)
     end
 end
 
-function CalcNewPos(StartPosi,TargetPosi,MoveRange)
+function M.CalcNewPos(StartPosi,TargetPosi,MoveRange)
     if not equapos(StartPosi,TargetPosi) then
         local XAbweich=StartPosi.x-TargetPosi.x;
         local YAbweich=StartPosi.y-TargetPosi.y;
@@ -149,7 +152,7 @@ function CalcNewPos(StartPosi,TargetPosi,MoveRange)
     end
 end
 
-function CreateLineofFligth(StartPos,TargetPos,GFXID)
+function M.CreateLineofFligth(StartPos,TargetPos,GFXID)
     XDiff=StartPos.x-TargetPos.x;
     YDiff=StartPos.y-TargetPos.y;
     XDiff2=math.max(StartPos.x,TargetPos.x)-math.min(StartPos.x,TargetPos.x);
@@ -169,3 +172,5 @@ function CreateLineofFligth(StartPos,TargetPos,GFXID)
         world:gfx(GFXID,PathPos);
     end
 end
+
+return M

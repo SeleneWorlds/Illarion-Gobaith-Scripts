@@ -1,16 +1,20 @@
+local M = {}
+npc = npc or {}
+npc.henry_cunningan = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- NPC for tutorial island
 
 require("npc.base.autonpcfunctions")
 require("base.common")
-module("npc.henry_cunningan", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont you touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -104,12 +108,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 	if (npc.base.autonpcfunctions.BasicNPCChecks(originator,2)) then
 		Progress=originator:getQuestProgress(2);
 		if (NPCStatus[originator.id]==nil) then
@@ -420,7 +424,7 @@ function receiveText(texttype, message, originator)
 	end
 end--function
 
-function createBreadRoll(newb)
+function M.createBreadRoll(newb)
 	ItemPos = position(thisNPC.pos.x, thisNPC.pos.y+1, thisNPC.pos.z);
 	if world:isCharacterOnField(ItemPos) then
 		ItemPos = position(thisNPC.pos.x, thisNPC.pos.y-1, thisNPC.pos.z);
@@ -434,7 +438,7 @@ function createBreadRoll(newb)
 	end
 end
 
-function HenryCheck(originator)
+function M.HenryCheck(originator)
 	
 	if not originator:isInRangeToPosition(position(33,22,100),5) then
 		return false;
@@ -451,3 +455,5 @@ function HenryCheck(originator)
     originator:introduce(thisNPC);
     return true;
 end
+
+return M

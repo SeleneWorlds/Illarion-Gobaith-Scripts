@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.eliza = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Eliza
 --Race:        Lizard
 --Town:        Troll's Bane
@@ -10,7 +15,6 @@
 require("npc.base.trader_functions")
 require("npc.base.functions")
 require("base.common")
-module("npc.eliza", package.seeall)
 
 TraderInterface = {};
 TraderInterface["page"] = {};
@@ -22,14 +26,14 @@ end
 Wares = {};
 --Wares["page"]
 
-function lookAtNpc( player, mode )
+function M.lookAtNpc( player, mode )
 	player:sendCharDescription( thisNPC.id , "Hier steht ein Fisch auf dem Flur." );
 	base.common.InformNLS(player,
 		"#b|0|61|Hier können Infos und Hilfe stehen.",
 		"#b|0|62|Here you could read info and help.");
 end
 
-function useNPC(User,counter,param)
+function M.useNPC(User,counter,param)
     if npc.base.functions.BasicNPCChecks(User,2) then
         if (npc.base.functions.LangOK(User,TradSpeakLang)==true) then
             User:inform("param "..param);
@@ -57,7 +61,7 @@ end
 
 
 
-function GetItems( User, ItemID, DataValue )
+function M.GetItems( User, ItemID, DataValue )
     local retList = {};
 	local addItem =	function( theItem, bag )
 						table.insert( retList, { ["item"]=theItem, ["bag"]=bag } );
@@ -95,7 +99,7 @@ function GetItems( User, ItemID, DataValue )
     return retList;
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     npc.base.trader_functions.InitItemLists()
 
@@ -180,7 +184,7 @@ end
 
 --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -191,7 +195,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -241,3 +245,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end--function
+
+return M

@@ -1,19 +1,23 @@
+local M = {}
+npc = npc or {}
+npc.arkil = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Arkil
 --Race:        Human
 --Town:        ???
 --Function:    Miniquestgiver 1
 
 require("npc.base.functions")
-module("npc.arkil", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "He, nicht kitzeln!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Hey, don't tickle me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists();
     npcstatus={};
 	
@@ -50,7 +54,7 @@ function initializeNpc()
     --ancient language=10
 end
     
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -59,7 +63,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end	
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -138,3 +142,5 @@ function receiveText(texttype, message, originator)
 		if (normalerweise==true) then  npc.base.functions.TellSmallTalk(message); end
     end
 end--function
+
+return M

@@ -1,6 +1,10 @@
-module("npc.base.functions", package.seeall)
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.functions = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function GetNLS( User, textInDe, textInEn )
+function M.GetNLS( User, textInDe, textInEn )
     local textNLS = "";
     if User:getPlayerLanguage()==0 then
         textNLS = textInDe;
@@ -10,7 +14,7 @@ function GetNLS( User, textInDe, textInEn )
     return textNLS;
 end
 
-function InitTalkLists()
+function M.InitTalkLists()
     TraderTrig={};
     TraderText={};
     CycleText={};
@@ -19,11 +23,11 @@ function InitTalkLists()
     TraderFirst=true;
 end
 
-function AddCycleText(gText,eText)
+function M.AddCycleText(gText,eText)
     table.insert(CycleText,{gText,eText});
 end
 
-function increaseLangSkill(LangList)
+function M.increaseLangSkill(LangList)
     for i=1,#LangList do
         setLang=true;
         if (LangList[i]==0) then LangSkill="common language";
@@ -43,7 +47,7 @@ function increaseLangSkill(LangList)
     end
 end
 
-function LangOK(User,LangList)
+function M.LangOK(User,LangList)
     --User:inform("LangOK Start")
     local retVal=false;
     for i=1,#LangList do
@@ -54,7 +58,7 @@ function LangOK(User,LangList)
     return retVal
 end
 
-function AddTraderTrigger(Trigger,Answer,newState, stateCondition)
+function M.AddTraderTrigger(Trigger,Answer,newState, stateCondition)
     --thisNPC:talk(CCharacter.say,"Adding new trigger");
     table.insert(TraderTrig,{string.gsub(string.lower(Trigger)," ",".+")});
     table.insert(TraderText,{Answer});
@@ -72,11 +76,11 @@ function AddTraderTrigger(Trigger,Answer,newState, stateCondition)
 end
 
 
-function AddAdditionalText(Answer)
+function M.AddAdditionalText(Answer)
     table.insert(TraderText[#TraderText],Answer)
 end
 
-function AddAdditionalTrigger(Trigger)
+function M.AddAdditionalTrigger(Trigger)
     --thisNPC:talk(CCharacter.say,"Adding add trigger"..#TraderTrig);
     --for i, j in TraderTrig[#TraderTrig] do
          --thisNPC:talk(CCharacter.say,"Adding add trigger  here "..j);
@@ -87,7 +91,7 @@ function AddAdditionalTrigger(Trigger)
     --thisNPC:talk(CCharacter.say,"through add trigger");
 end
 
-function TellSmallTalk(message,userID)     -- searches for fitting answer to "message"...
+function M.TellSmallTalk(message,userID)     -- searches for fitting answer to "message"...
     local i=1;
     local ready=false;
     local Texts=0;
@@ -116,7 +120,7 @@ function TellSmallTalk(message,userID)     -- searches for fitting answer to "me
     until ((i==#TraderTrig+1) or ready)
 end
 
-function CheckForTrigger(message,ListIndex)
+function M.CheckForTrigger(message,ListIndex)
     local k=0;
     local done=false;
     local retVal=false;
@@ -135,7 +139,7 @@ function CheckForTrigger(message,ListIndex)
     return retVal;
 end
 
-function NPCTalking(NPC,Text)
+function M.NPCTalking(NPC,Text)
     local done=false;
     local outputted=false;
     repeat
@@ -165,7 +169,7 @@ function NPCTalking(NPC,Text)
     until done
 end
 
-function SpeakerCycle()
+function M.SpeakerCycle()
     if (speakCount==nil) then
         speakCount=1;
         verwirrt=false;
@@ -187,7 +191,7 @@ function SpeakerCycle()
 end
 
 -- Fügt einer Zahl das Englische Anhängsel an
-function EnglDigit(Zahl)
+function M.EnglDigit(Zahl)
     local retVal="th";
     local calcZahl=Zahl;
     if (calcZahl>19) then
@@ -212,7 +216,7 @@ end
 --   Liste {Tag (Int),Monatsnamen (Str), Jahr (Int)}
 --  Bei Status 0:
 --   Liste {nil}
-function TellDate(originator,message,monthnames)
+function M.TellDate(originator,message,monthnames)
     local retStatus=0;
     local retValues={};
     if (string.find(message,"[Ww]hat.+day.+today.+") ~= nil or string.find(message,"[Ww]hat.+[Tt]oday.+[Dd]ay.+")~=nil or
@@ -230,7 +234,7 @@ end
 
 -- Funktion zur Rückgabe eines eingegebenen Wertes anhand des Genus des Items
 -- Return 1: Wort (Str)
-function GenusSel(ItemID,mWord,fWord,nWord)
+function M.GenusSel(ItemID,mWord,fWord,nWord)
     Gen=GenusData(ItemID)
     if (Gen==0) then
         return mWord
@@ -241,7 +245,7 @@ function GenusSel(ItemID,mWord,fWord,nWord)
     end
 end
 
-function BasicNPCChecks(originator,NPCRange)
+function M.BasicNPCChecks(originator,NPCRange)
     local retVal=false;
     if (thisNPC:isInRange(originator,NPCRange)) then
         if (originator.id ~= thisNPC.id) then
@@ -251,3 +255,5 @@ function BasicNPCChecks(originator,NPCRange)
     end
     return retVal
 end
+
+return M

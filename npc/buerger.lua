@@ -1,6 +1,9 @@
-module("npc.buerger", package.seeall)
+local M = {}
+npc = npc or {}
+npc.buerger = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function InitWalkNPC()
+function M.InitWalkNPC()
     thisNPC:increaseSkill(1,"common language",100);
     WalkList={};
     WalkList[1] = {4,4,4,4,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,0};
@@ -43,7 +46,7 @@ function InitWalkNPC()
 
 end
 
-function RunSettings()
+function M.RunSettings()
     warten[thisNPC.id] = true;
     waitTime[thisNPC.id] = math.random(0,400);
     laufen[thisNPC.id] = false;
@@ -52,7 +55,7 @@ function RunSettings()
     zaehler[thisNPC.id] = 0;
 end
 
-function InitLists()
+function M.InitLists()
     warten={};
     waitTime={};
     laufen={};
@@ -70,7 +73,7 @@ function InitLists()
     CurrentRoute={}; --for debugging
 end
 
-function ChoseWaitPos()
+function M.ChoseWaitPos()
     local foundPos=false;
     local i=0;
     local retVal=nil;
@@ -87,7 +90,7 @@ function ChoseWaitPos()
     return retVal
 end
 
-function nextCycle()
+function M.nextCycle()
     if (firstrun==nil) then
         InitWalkNPC();
     end
@@ -136,7 +139,7 @@ function nextCycle()
     end -- zaehler
 end -- function nextCycle()
 
-function CheckWalk()
+function M.CheckWalk()
     if (OldPos[thisNPC.id]==nil) then
         OldPos[thisNPC.id]=thisNPC.pos;
         return
@@ -183,7 +186,7 @@ function CheckWalk()
     end
 end
 
-function GetNextPos(TargetPos,stepping)
+function M.GetNextPos(TargetPos,stepping)
     if (WalkPath[thisNPC.id][stepping]==0) then
         return position(TargetPos.x,TargetPos.y-1,TargetPos.z)
     elseif (WalkPath[thisNPC.id][stepping]==2) then
@@ -197,8 +200,10 @@ function GetNextPos(TargetPos,stepping)
     end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if (message=="route") then
         thisNPC:talk(CCharacter.say,"Current Route: "..CurrentRoute[thisNPC.id]);
     end
 end
+
+return M

@@ -1,12 +1,15 @@
-module("npc.wesley", package.seeall)
+local M = {}
+npc = npc or {}
+npc.wesley = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     --thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talk(CCharacter.say, "Don't you touch me!");
 end
 
 
-function initializeNpc()
+function M.initializeNpc()
     TraderItemPrice={};
     TraderItemId={};
     TraderItemTrig={};
@@ -133,7 +136,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         TraderFirst=1;
@@ -158,7 +161,7 @@ function nextCycle()  -- ~10 times per second
     end
 end
 
-function refill(itNumb)
+function M.refill(itNumb)
     if TraderCopper<1000 then
         TraderCopper=TraderCopper+math.random(20,150);
     else
@@ -169,7 +172,7 @@ function refill(itNumb)
     if TraderItemNumber[itNumb]>TraderItemStandard[itNumb]*5 then TraderItemNumber[itNumb]=TraderItemStandard[itNumb]*5 end
 end
 
-function CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPrice(TraderItemPrice[..],TraderItemNumber[..],TraderItemStandard);
+function M.CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPrice(TraderItemPrice[..],TraderItemNumber[..],TraderItemStandard);
     diffAmount=stdAmount-actAmount;
     if (actAmount*3<stdAmount) then        --less than 1/3 of standard
         return stdPrice*3;
@@ -184,7 +187,7 @@ function CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPr
     end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     --originator:introduce(thisNPC);
     if (TraderFirst == nil) then
         --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
@@ -402,3 +405,5 @@ function receiveText(texttype, message, originator)
         end --id
     end-- range
 end--function
+
+return M

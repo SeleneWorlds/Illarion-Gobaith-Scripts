@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.tihgorac = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Tihgorac
 --Race:        Orc
 --Town:        Somewhere near Varshikar
@@ -8,16 +13,15 @@
 --Update by:   Nitram
 
 require("npc.base.functions")
-module("npc.tihgorac", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fast mich nicht an!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     StudentStats={};
 
@@ -52,7 +56,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -61,7 +65,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -142,7 +146,7 @@ function receiveText(texttype, message, originator)
     end --id
 end--function
 
-function StartLearning(originator,message)
+function M.StartLearning(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -160,7 +164,7 @@ function StartLearning(originator,message)
     return retVal
 end
 
-function AcceptLearning(originator,message)
+function M.AcceptLearning(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -176,7 +180,7 @@ function AcceptLearning(originator,message)
     return retVal
 end
 
-function EingeweideGeben(originator,message)
+function M.EingeweideGeben(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -202,7 +206,7 @@ function EingeweideGeben(originator,message)
     return retVal
 end
 
-function AxtGeben(originator,message)
+function M.AxtGeben(originator,message)
     local retVal=0;
     if (StudentStats[originator.id]==nil) then
         StudentStats[originator.id]={};
@@ -224,7 +228,7 @@ function AxtGeben(originator,message)
     return retVal
 end
 
-function CheckAxt(User)
+function M.CheckAxt(User)
     if (ListofAxe==nil) then
         ListofAxe={74, 88, 188, 205, 383, 2625, 2626, 2627, 2628, 2629, 2630, 2631, 2634, 2635, 2636, 2637, 2639, 2640, 2641, 2642, 2643, 2644, 2645, 2946};
     end
@@ -237,7 +241,7 @@ function CheckAxt(User)
     return found
 end
 
-function Teach(User)
+function M.Teach(User)
     local retVal=0;
     Skill=User:getSkill("concussion weapons");
     if (Skill<=25) then
@@ -249,7 +253,7 @@ function Teach(User)
     return retVal
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Ein Hüne von einem Ork, der bedrohlich seine Hauer fletscht. Sein Blick wirkt dennoch etwas unsicher, wenn er an seinen Gürtel greift, wo allerdings nur eine leere Öse zu sehen ist. Etwas scheint zu fehlen.";
@@ -259,3 +263,5 @@ function lookAtNpc(Char, mode)
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
+
+return M

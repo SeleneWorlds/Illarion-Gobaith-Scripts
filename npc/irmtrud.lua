@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.irmtrud = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --[[name="Irmtrud"
 position=136,-161,-9
 sex=female 
@@ -11,15 +16,14 @@ last updated: 17/04/08
 require("base.common")
 require("npc.base.autonpcfunctions")
 require("base.keys")
-module("npc.irmtrud", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger wech oder du bist ein Kopf kürzer!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont ya' touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -119,12 +123,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nächster Nähe angesprochen
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then		
 		  if (originator.activeLanguage==2) then --If the Character speaks dwarfish then...	
@@ -382,3 +386,5 @@ function receiveText(texttype, message, originator)
 		end
 	end
 end
+
+return M

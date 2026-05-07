@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.kronk_orcguard = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --[[name="Kronk "
 position=162,-448,-1
 sex=male 
@@ -12,15 +17,14 @@ by: Juniper Onyx
 require("base.common")
 require("npc.base.autonpcfunctions")
 require("base.keys")
-module("npc.kronk_orcguard", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Nimm Greifer deine weg, sonst du haben gleich keine mehr!"); 
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Nub touch meh, stoopid!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -155,12 +159,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
  
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nächster Nähe angesprochen
 		  if (originator.activeLanguage==5) then --If the Character speaks orcisch then...
@@ -204,7 +208,7 @@ end
     
     @return boolean - true in case message can be counted to the answertype else false
 ]]
-function standardAnswer(message,answertype)
+function M.standardAnswer(message,answertype)
 
 	if (answertype==1) then --answertype 1 == standardphrases for "open door"
 		     if (string.find(message,"[Bb]roth[ae].+[Oo]pen.+[Gg]ate.*")~=nil or string.find(message,"[Oo]pen.+[Gg]ate.+[Bb]roth[ae].*")~=nil
@@ -238,7 +242,7 @@ end
     
     @return true in case the NPC said one of the mean triggers else false
 ]]
-function mainTask(message, originator)
+function M.mainTask(message, originator)
 	if (standardAnswer(message,1)) then  --Open gate
 		doora=world:getItemOnField(doorapos);
 		doorb=world:getItemOnField(doorbpos);
@@ -293,3 +297,5 @@ function mainTask(message, originator)
 		return true;
 	end
 end
+
+return M

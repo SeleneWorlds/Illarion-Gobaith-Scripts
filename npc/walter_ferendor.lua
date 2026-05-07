@@ -1,18 +1,22 @@
+local M = {}
+npc = npc or {}
+npc.walter_ferendor = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),0,-120,-93,0,2,false,'Walter Ferendor','npc_walter_ferendor.lua',0);
 
 -- nutrition
 
 require("base.common")
 require("npc.base.autonpcfunctions")
-module("npc.walter_ferendor", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Oh! So macht Ihr das also.");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Oh! So that's the way you do it.");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -165,12 +169,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
 		if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
             local status = 0;
@@ -250,7 +254,7 @@ function receiveText(texttype, message, originator)
     end
 end
 
-function tellDiet(User)
+function M.tellDiet(User)
 	foundEffect, dietEffect = User.effects:find(12);
 	if foundEffect then
 		foundConstMod, constMod = dietEffect:findValue("constMod");
@@ -308,3 +312,5 @@ function tellDiet(User)
 	thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "My professional services cost "..service[5].." copper coins.");
 	thisNPC:talk(CCharacter.whisper, dietText[lang+1][constMod+1].." "..tipText[lang+1][constMod+1]..( tellRace and raceText[lang+1][race+1] or "" ).."!");
 end
+
+return M

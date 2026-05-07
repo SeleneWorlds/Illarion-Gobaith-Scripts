@@ -1,7 +1,12 @@
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.patrol = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- base script for patrolling npcs or monsters
 require("npc.base.waypoints");
 require("base.doors")
-module("npc.base.patrol", package.seeall)
 
 -- ** defaults **
 PatrolPointer = 0;				--
@@ -23,7 +28,7 @@ PatrolList = {};
 
 
 -- replace position data in PatrolList with waypoints and delete those which have no respective waypoint
-function BP_PatrolInit(guard)
+function M.BP_PatrolInit(guard)
 	if patrolInit~=nil then
 		return;
 	end
@@ -62,7 +67,7 @@ end
 starts the patrol and initializes the PatrolList and WaypointList
   @return boolean  if the patrol has been started
 ]]
-function BP_StartPatrol(guard)
+function M.BP_StartPatrol(guard)
 	if firstStartPatrol==nil then
 		firstStartPatrol = 1;
 		BWP_Init();
@@ -91,7 +96,7 @@ If you want to define an own algorithm, define a function BP_ChooseCustomPatrol(
 It should set WpPointer,WpDone,WpMax,PatrolPointer and return if something was done.
 If not, the regular function will continue.
 ]]
-function BP_ChooseNewPatrol(guard)
+function M.BP_ChooseNewPatrol(guard)
 	if BP_ChooseCustomPatrol then
 		if BP_ChooseCustomPatrol(guard) then
 			return;
@@ -118,7 +123,7 @@ function BP_ChooseNewPatrol(guard)
 end
 
 -- choose a new waypoint as destination, sequentially or randomly
-function BP_ChooseNewWp()
+function M.BP_ChooseNewWp()
 	--npcdebug("ChooseNewWp");
 	local l = #PatrolList[PatrolPointer];
 	if PatrolList[PatrolPointer].base[1] then
@@ -132,7 +137,7 @@ function BP_ChooseNewWp()
 end
 
 -- get the respective waypoint or nil if noone exists
-function BP_GetWpFromPos(pos)
+function M.BP_GetWpFromPos(pos)
 	local index = BWP_PosToIndex(pos);
 	for _,area in pairs(WaypointList) do
 		if area[index] then
@@ -146,7 +151,7 @@ end
 choose and set a new (temporary) waypoint.
 NextWp has to be set (which is actually the current waypoint)
 ]]
-function BP_SetNewWp(guard)
+function M.BP_SetNewWp(guard)
 	if equapos(guard.pos,PatrolList[PatrolPointer][WpPointer].pos) then
 		WpDone = WpDone + 1;
 		if WpDone>=WpMax then
@@ -170,7 +175,7 @@ end
 continues patrol when route is aborted (set new wp, warp or restart patrol)
 should be called in the respective function of the monster/npc OR in base_guard.lua
 ]]
-function BP_AbortRoute(guard)
+function M.BP_AbortRoute(guard)
 	if equapos(guard.pos,NextWp.pos) then
 		npcdebug("try OK");
 		WpTry = 0;
@@ -199,7 +204,7 @@ function BP_AbortRoute(guard)
 end
 
 -- open the door of curWp
-function BP_OpenDoor()
+function M.BP_OpenDoor()
 	local door = CurWp.data.door;
 	if door and equapos(door.toPos,NextWp.pos) then
 		local item = BP_GetDoorItem(door.pos);
@@ -208,7 +213,7 @@ function BP_OpenDoor()
 end
 
 -- close the door of NextWp
-function BP_CloseDoor()
+function M.BP_CloseDoor()
 	local door = NextWp.data.door;
 	if door and equapos(door.toPos,CurWp.pos) then
 		local item = world:getItemOnField(door.pos);
@@ -217,7 +222,7 @@ function BP_CloseDoor()
 end
 
 -- get the door item, works only if it is on top
-function BP_GetDoorItem(Posi)
+function M.BP_GetDoorItem(Posi)
     local item = world:getItemOnField(Posi);
 	if (base.doors.CheckOpenDoor(item.id) or base.doors.CheckClosedDoor(item.id)) then
 		return item;
@@ -225,7 +230,7 @@ function BP_GetDoorItem(Posi)
     return nil;
 end;
 
-function BP_CharacterNear(guard,char)
+function M.BP_CharacterNear(guard,char)
 	--npcdebug("char near");
 	if equapos(NextWp.pos,char.pos) then
 		npcdebug("char on waypoint, abort route!");
@@ -233,10 +238,12 @@ function BP_CharacterNear(guard,char)
 	end
 end
 
-function npcdebug(text)
+function M.npcdebug(text)
 	thisNPC:talk(CCharacter.say,"[DEBUG] ".. text);
 end
 
-function getPos(pos)
+function M.getPos(pos)
 	return pos.x ..",".. pos.y;
 end
+
+return M

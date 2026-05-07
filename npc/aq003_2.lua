@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.aq003_2 = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Clarissa Bigglefoot
 --Race:        Halfling
 --Town:        Trolls Bane
@@ -8,16 +13,15 @@
 --Update by:   Markous
 
 require("npc.base.functions_RS")
-module("npc.aq003_2", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fasst mich nicht an!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     InitTalkLists()
     StudentStats={};
 
@@ -57,7 +61,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions_RS.increaseLangSkill(TradSpeakLang);
@@ -66,7 +70,7 @@ function nextCycle()  -- ~10 times per second
     SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if BasicNPCChecks(originator,2) then
         if (LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -103,7 +107,7 @@ function receiveText(texttype, message, originator)
     end --id
 end--function
 
-function NachrichtGeben(originator,message)
+function M.NachrichtGeben(originator,message)
     mess = math.random(3);
     local retVal=0;
     if (string.find(message,"[Ii]ch.+[Nn]achricht") ~= nil) or (string.find(message,"[Ii].+[Mm]essage") ~= nil) then
@@ -126,3 +130,5 @@ function NachrichtGeben(originator,message)
     end
     return retVal
 end
+
+return M

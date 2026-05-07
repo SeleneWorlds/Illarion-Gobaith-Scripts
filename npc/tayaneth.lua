@@ -1,16 +1,19 @@
-module("npc.tayaneth", package.seeall)
+local M = {}
+npc = npc or {}
+npc.tayaneth = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     --user:talk(CCharacter.say, "test");
     thisNPC:increaseSkill(1,"common language",100);
     originator:inform( "Don't dare to touch me!");
 end
 
-function nextCycle()
+function M.nextCycle()
 
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 
     if (librfirst == nil) then
 
@@ -77,3 +80,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end
+
+return M

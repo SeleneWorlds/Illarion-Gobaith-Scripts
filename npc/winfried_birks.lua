@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.winfried_birks = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Magister Winfried Birks
 --Race:        Male Human
 --Town:        Free University of Varshikar (Library)
@@ -9,16 +14,15 @@
 
 require("npc.base.autonpcfunctions")
 require("base.common")
-module("npc.winfried_birks", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ich würde es bevorzugen, wenn ihr mich nicht anfasst!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Ich would prefer, that you don't touch me!!");
 	
 end
                 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -453,12 +457,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 	Progress=originator:getQuestProgress(2111);			
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
@@ -526,3 +530,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end
+
+return M

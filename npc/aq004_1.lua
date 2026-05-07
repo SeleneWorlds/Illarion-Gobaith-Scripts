@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.aq004_1 = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Teophus
 --Race:        Human
 --Town:        Somewhere
@@ -8,16 +13,15 @@
 --Update by:   Markous
 
 require("npc.base.functions_RS")
-module("npc.aq004_1", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fasst mich nicht an!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     InitTalkLists()
 
     --originator:inform("Init()");
@@ -66,7 +70,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (cycCount==nil) then
         cycCount=1;
         nextDelivery=math.random(10000,40000);
@@ -85,7 +89,7 @@ function nextCycle()  -- ~10 times per second
     end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     local lang=originator:getPlayerLanguage();
     --originator:introduce(thisNPC);
     if (TraderFirst == nil) then
@@ -147,7 +151,7 @@ function receiveText(texttype, message, originator)
     end-- range
 end--function
 
-function Abgeben(originator,message)
+function M.Abgeben(originator,message)
     local retVal=0;
     if (string.find(message,"[Hh]ilfsmittel") ~= nil) or (string.find(message,"[Aa]id") ~= nil) then
     if (originator:countItem(3109) == 0) then
@@ -167,3 +171,5 @@ function Abgeben(originator,message)
    end
    return retVal
 end
+
+return M

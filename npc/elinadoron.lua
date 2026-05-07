@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.elinadoron = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Elina Doron
 --Race:        Female Human
 --Town:        Northern Woods
@@ -8,16 +13,15 @@
 --Update by:   Nitram
 
 require("npc.base.functions")
-module("npc.elinadoron", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fasst mich nicht an!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     
     npc.base.functions.AddTraderTrigger("[Gg]rüß","Scht! Ihr verscheucht die Tiere.");
@@ -47,7 +51,7 @@ function initializeNpc()
     --ancient language=10
 end
     
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -56,7 +60,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end		
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -92,7 +96,7 @@ function receiveText(texttype, message, originator)
     end
 end--function
 
-function IrundarInfo(originator, message)
+function M.IrundarInfo(originator, message)
     if (string.find(message,"[Ii]rundar")~=nil) then
         return 1;
     else
@@ -100,7 +104,7 @@ function IrundarInfo(originator, message)
     end
 end
 
-function Arrows(originator, message)
+function M.Arrows(originator, message)
     if (string.find(message,"[Pp]feil")~=nil or string.find(message,"[Aa]rrow")~=nil) then
         if (originator:countItem(64) >= 5) then
             originator:eraseItem(64, 5);
@@ -113,7 +117,7 @@ function Arrows(originator, message)
     end
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Eine junge, hübsche Frau, die sich der Umgebung angemessen in Grün und Braun gekleidet hat. Um ihre Schulter hängt ein Bogen, sie scheint jedoch sehr versunken in den Anblick des sie umgebenen Waldes.";
@@ -123,3 +127,5 @@ function lookAtNpc(Char, mode)
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
+
+return M

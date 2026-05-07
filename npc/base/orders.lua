@@ -1,5 +1,10 @@
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.orders = M
+local _ENV = setmetatable(M, { __index = _G })
+
 require("base.common")
-module("npc.base.orders", package.seeall)
 
 --Welches Item ist ein Auftrag (Schriftrolle)
 OrderItem = 3110;
@@ -35,11 +40,11 @@ GoodOrderChangeAfterRetentionPeriod = -50;
 --Erzeugt ein item f�r eine Bestellung
 --@param itemid die id des zu liefernden items
 --@param amount die anzahl der zu liefernden items
-function OrderItemStruct(itemid, amount)
+function M.OrderItemStruct(itemid, amount)
     return {id=itemid,count=amount};
 end
 
-function TimeStruct(nday,nmonth,nyear,nhour)
+function M.TimeStruct(nday,nmonth,nyear,nhour)
     return {day=nday,month=(nmonth-1),year=nyear,hour=nhour};
 end
 
@@ -55,7 +60,7 @@ end
 --     CoinsModStruct(2,100)
 --     f�r je 2 Stunden �ber den Auftrag w�rde 100 abgezogen werden
 --     bei 5 Stunden sind das 200 weniger also noch 800 Gold.
-function CoinsModStruct(qualmod,mvalue)
+function M.CoinsModStruct(qualmod,mvalue)
     return {mod=qualmod,value=mvalue};
 end
 
@@ -66,7 +71,7 @@ end
     @param ntwn der neue Vertrauensw�rdigkeitswert
     @param ngoodorders der neue Wert f�r Gute Auftr�ge
 ]]--
-function setThrustWorthyness(user,ntwn,ngoodorders)
+function M.setThrustWorthyness(user,ntwn,ngoodorders)
     local qp = user:getQuestProgress(61);
     --Vertrauensw�rdigkeit herausmasken
     twn = LuaAnd(qp,255);
@@ -261,7 +266,7 @@ function OrderNPC:showStats(who)
    self.orderPool:inform(who);
 end
 
-function getNumberInString(thestring)
+function M.getNumberInString(thestring)
     local a,b,value = string.find(thestring,"(%d+)");
     return tonumber(value);
 end
@@ -605,7 +610,7 @@ end
 
 
 
-function OrderStateStruct()
+function M.OrderStateStruct()
     return {
         --besitzt der Char einige Items
         someItems = false,
@@ -834,7 +839,7 @@ end
 
 --konvertiert Preise in Gold,Silber,Kufer
 --@return gold,silver,kupfer anteil von coins
-function CoinsToGSC(coins)
+function M.CoinsToGSC(coins)
     local gold = math.floor(coins/10000);
     local rest = coins%10000;
     local silver = math.floor(rest/100);
@@ -1153,7 +1158,7 @@ end
              nprice, ntime bezieht sich auf 1 gegenstand der menge nnumber und wird �ber die tats�chliche Anzahl
              aufmultipliziert
     ]]--
-function OrderPoolItem(nid,nnumber,nprice,ntime,nchance,nmincount,nmaxcount,nmincoins)
+function M.OrderPoolItem(nid,nnumber,nprice,ntime,nchance,nmincount,nmaxcount,nmincoins)
     ret =  {
         id = nid,
         number = nnumber,
@@ -1398,7 +1403,7 @@ function OrderPool:generateOrder()
     return order;
 end
 
-function getDigitName(number,lang) --returns a digit from 0-9 as text
+function M.getDigitName(number,lang) --returns a digit from 0-9 as text
 
 if number<10 then
 	if not InitDigitNames then
@@ -1418,9 +1423,11 @@ end
 
 end
 
-function ConvertDateToHourOffset(year, month, day, hour)
+function M.ConvertDateToHourOffset(year, month, day, hour)
 	DeliverTimestamp = (year*365+(month-1)*24+day)*24+hour;
 	curHourTimestamp = (world:getTime("year")*365+(world:getTime("month")-1)*24+world:getTime("day"))*24+world:getTime("hour");
 	HoursTillInvalidOrder = DeliverTimestamp - curHourTimestamp;
 	return HoursTillInvalidOrder;
 end
+
+return M

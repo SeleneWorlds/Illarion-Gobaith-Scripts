@@ -1,6 +1,9 @@
-module("npc.mathilda", package.seeall)
+local M = {}
+npc = npc or {}
+npc.mathilda = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     if ( User:getPlayerLanguage()==0 ) then
          thisNPC:talk(CCharacter.say, "Rede doch lieber mit mir anstatt mich zu begrapschen.");
@@ -9,7 +12,7 @@ function useNPC(user,counter,param)
     end
 end
 
-function nextCycle()
+function M.nextCycle()
      if cycCount==nil then
         cycCount=1;
         thisNPC:increaseSkill(1,"common language",100);
@@ -34,7 +37,7 @@ function nextCycle()
     end
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
  -- printerr("from"..originator.name.."to"..thisNPC.name);
 
     if originator.id ~= thisNPC.id then                                                  --avoid talking to herself.
@@ -156,3 +159,5 @@ thisNPC:introduce(originator);
    end
    end
 end
+
+return M

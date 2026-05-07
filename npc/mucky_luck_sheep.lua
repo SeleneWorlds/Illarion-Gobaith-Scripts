@@ -1,11 +1,15 @@
+local M = {}
+npc = npc or {}
+npc.mucky_luck_sheep = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- dynamic sheep
 -- for Nargun Parish
 -- game "mucky luck"
 
 require("base.common")
-module("npc.mucky_luck_sheep", package.seeall)
 
-function InitNPC()
+function M.InitNPC()
 
 	if not InitDone then
 		InitDone = true;
@@ -37,7 +41,7 @@ function InitNPC()
 	end
 end
 
-function nextCycle()
+function M.nextCycle()
 
 	InitNPC();
 
@@ -77,7 +81,7 @@ function nextCycle()
 	nextCheck[thisNPC.id] = nextCheck[thisNPC.id] - 1;
 end
 
-function eat()
+function M.eat()
 
 	if eatAt[thisNPC.id][endGame[thisNPC.id]] then
 		local foodItems = {158,159,162};
@@ -102,7 +106,7 @@ function eat()
 	end
 end
 
-function moveSheep()
+function M.moveSheep()
 
 	local nextPos = getPosList(thisNPC.pos);
 
@@ -111,7 +115,7 @@ function moveSheep()
 	thisNPC:move(base.common.GetDirection(thisNPC.pos,nextPos),true);
 end
 
-function getPosList(curPos)
+function M.getPosList(curPos)
 
 	local radius = 2;
 	local retList = {};
@@ -130,3 +134,5 @@ function getPosList(curPos)
 	checkPos(position(curPos.x,curPos.y-1,curPos.z));
 	return retList;
 end
+
+return M

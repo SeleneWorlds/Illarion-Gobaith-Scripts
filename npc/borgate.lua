@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.borgate = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Borgate Northoff
 --Race:        Dwarf
 --Town:        Trolls Bane
@@ -9,9 +14,8 @@
 
 require("npc.base.trader_functions")
 require("npc.base.functions")
-module("npc.borgate", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Finger weg!") end
@@ -19,7 +23,7 @@ function useNPC(user,counter,param)
 end
 
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     npc.base.trader_functions.InitItemLists()
 
@@ -109,7 +113,7 @@ end
 
 --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -120,7 +124,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -231,7 +235,7 @@ function receiveText(texttype, message, originator)
     end
 end--function
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Ein breit lächelnder Zwergenwirt, dessen prächtiger Bart und Kleidung von Bierflecken übersät ist.";
@@ -242,3 +246,5 @@ function lookAtNpc(Char, mode)
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
+
+return M

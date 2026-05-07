@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.mondosch = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Mondosch
 --Race:        Dwarf
 --Town:        Silverbrand
@@ -10,16 +15,15 @@
 -- INSERT INTO npc VALUES (74, 1, 137,-212,-3,4,'f','Mondosch','npc_mondosch.lua',0);
 
 require("npc.base.functions")
-module("npc.mondosch", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Finger weg!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
@@ -74,7 +78,7 @@ end
 
 --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -83,7 +87,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -147,14 +151,14 @@ function receiveText(texttype, message, originator)
     end --id
 end--function
 
-function CalcSilverCopper(CAmount)
+function M.CalcSilverCopper(CAmount)
     local GAmount=math.floor(CAmount/10000);
     local SAmount=math.floor((CAmount-GAmount*10000)/100);
     local CAmount=CAmount-(SAmount*100+GAmount*10000);
     return GAmount,SAmount,CAmount
 end
 
-function TakeTaxes(originator, message)
+function M.TakeTaxes(originator, message)
     if ((string.find(message,"[Tt]ax") ~= nil) or (string.find(message,"[St]euer") ~= nil)) then
         if not AllowedTaxCollectors[originator.id] then
             return 1,nil;
@@ -194,7 +198,7 @@ end
 --TLang={"Gold,"gold","Silber","silver","Kupfer","copper","stücke","pieces"};
 -- Erstellt Text für die Kosten
 -- Return 1: Text(Str)
-function MoneyText(lang,Gold,Silver,Copper,TLang)
+function M.MoneyText(lang,Gold,Silver,Copper,TLang)
     local retText="";
     local GText="";
     local SText="";
@@ -245,7 +249,7 @@ end
 
 -- Erstellt Sigular von Wörtern
 -- Funktionstüchtig in Deutsch und englisch
-function Zeitform(Zahl,Word)
+function M.Zeitform(Zahl,Word)
     if (Zahl==1) then
         local retStr="";
         local cursor=string.len(Word);
@@ -264,3 +268,5 @@ function Zeitform(Zahl,Word)
         return Word;
     end
 end
+
+return M

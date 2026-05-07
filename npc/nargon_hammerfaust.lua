@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.nargon_hammerfaust = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,42, 49, 100,6,false,"Nargon Hammerfaust","npc_nargon_hammerfaust.lua",0);
 
 --Der NPC starts with the QuestID 2 and QuestProgress=20
@@ -15,9 +20,8 @@
 
 require("npc.base.autonpcfunctions")
 require("base.common")
-module("npc.nargon_hammerfaust", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fasst mich nicht an!") end
@@ -25,7 +29,7 @@ function useNPC(user,counter,param)
 end
 
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.autonpcfunctions.InitTalkLists();
 
 QuestID= 2
@@ -98,7 +102,7 @@ end
 		--border-Xpos-left, border-Xpos-right, border-Ypos-left, border-Ypos-right
 border={                27,                34,               41,                51};
 end
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang)
@@ -210,7 +214,7 @@ end
 
 
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
   Progress=originator:getQuestProgress(2);
   if npc.base.autonpcfunctions.BasicNPCChecks(originator,3) then
         thisNPC.activeLanguage=originator.activeLanguage;
@@ -682,7 +686,7 @@ end
 
 
 
-function createCoins(originator)
+function M.createCoins(originator)
 	ItemPos = position(thisNPC.pos.x, thisNPC.pos.y+1, thisNPC.pos.z);
 
        if world:isCharacterOnField(ItemPos) then
@@ -697,7 +701,7 @@ function createCoins(originator)
     end
 end
 
-function SmallTalkDuringQuest(originator,message) 
+function M.SmallTalkDuringQuest(originator,message) 
 
    if (standardAnswer(message,8)==true) then
 		if (math.random(2)==1) then
@@ -724,7 +728,7 @@ function SmallTalkDuringQuest(originator,message)
 end
 
 
-function wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
+function M.wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
         if (cycleCounter==nil) then
             cycleCounter=0;
 			return false;
@@ -737,7 +741,7 @@ function wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
 		end
 end
 
-function IsInArena(newb)  --checks if the newb is in the Arena and returns either "true" or "false"
+function M.IsInArena(newb)  --checks if the newb is in the Arena and returns either "true" or "false"
 
 	if newb.pos.x>border[1] and newb.pos.x<border[2] then         --checks the x-Coordinates with the borders
 	    if newb.pos.y>border[3] and newb.pos.y<border[4] then     --checks the y-Coordinates with the borders
@@ -750,7 +754,7 @@ function IsInArena(newb)  --checks if the newb is in the Arena and returns eithe
 	end
 end
 
-function standardAnswer(message,answertype)
+function M.standardAnswer(message,answertype)
 	if (answertype==1) then --answertype 1 == standardwords for "yes"
          if (string.find(message,"[Jj]a")~=nil or string.find(message,"[Yy]es")~=nil or
              string.find(message,"[Kk]lar")~=nil or string.find(message,"[Ss]icher")~=nil or
@@ -835,7 +839,7 @@ function standardAnswer(message,answertype)
    end
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Ein mittelgroßer, muskulöser Zwerg. Sein angegrauter Vollbart ist zu Zöpfen gebunden. In den Händen hält er eine glänzende Zwergenaxt.";
@@ -847,7 +851,7 @@ function lookAtNpc(Char, mode)
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
 
-function createMonster()
+function M.createMonster()
 	world:createMonster(101,monsterpos,20);
 	world:gfx(7,monsterpos);
     world:makeSound(4,monsterpos);
@@ -862,3 +866,4 @@ function createMonster()
 	return mummyCreated;
 end
 
+return M

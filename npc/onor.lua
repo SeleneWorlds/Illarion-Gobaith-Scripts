@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.onor = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Onor
 --Race:        Human
 --Town:        Troll's Bane
@@ -9,16 +14,15 @@
 
 require("npc.base.trader_functions")
 require("npc.base.functions")
-module("npc.onor", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german , "Fasst mich nicht an!" );
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Don't you touch me!" );
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     npc.base.trader_functions.InitItemLists()
 
@@ -76,7 +80,7 @@ end
 
 --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -87,7 +91,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -197,3 +201,5 @@ function receiveText(texttype, message, originator)
         end
     end
 end--function
+
+return M

@@ -1,6 +1,10 @@
--- base script for waypoints
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.waypoints = M
+local _ENV = setmetatable(M, { __index = _G })
 
-module("npc.base.waypoints", package.seeall)
+-- base script for waypoints
 
 -------------------------
 -- *** DEFINITIONS *** --
@@ -154,7 +158,7 @@ end
 This function should be called after all waypoints have been set.
 It connects the waypoints as neighbourhoods and bridges and the areas using a Dijkstra algorhithm.
 ]]
-function BWP_Init()
+function M.BWP_Init()
 	for _,area in pairs(WaypointList) do
 		for _,this in pairs(area) do
 			if this.data.bridge then
@@ -190,7 +194,7 @@ function BWP_Init()
 end
 
 -- calculate a distinct index for the given position
-function BWP_PosToIndex(pos)
+function M.BWP_PosToIndex(pos)
 	local index = 0;
 	if pos.x<0 then
 		index = index + 100000000000000;
@@ -206,7 +210,7 @@ function BWP_PosToIndex(pos)
 end
 
 -- recalculate the distinct index and return the posStruct
-function BWP_IndexToPos(index)
+function M.BWP_IndexToPos(index)
 	local x,y,z;
 	x = math.floor((index % 100000000000000)/10000000000);
 	if index>=100000000000000 then
@@ -224,3 +228,5 @@ function BWP_IndexToPos(index)
 	end
 	return position(x,y,z);
 end
+
+return M

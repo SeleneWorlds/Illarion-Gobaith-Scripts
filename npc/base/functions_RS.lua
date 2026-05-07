@@ -1,6 +1,10 @@
-module("npc.base.functions_RS", package.seeall)
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.functions_RS = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function GetNLS( User, textInDe, textInEn )
+function M.GetNLS( User, textInDe, textInEn )
     local textNLS = "";
     if User:getPlayerLanguage()==0 then
         textNLS = textInDe;
@@ -10,12 +14,12 @@ function GetNLS( User, textInDe, textInEn )
     return textNLS;
 end
 
-function InitTalkLists()
+function M.InitTalkLists()
     TraderTrig={};
     TraderText={};
 end
 
-function increaseLangSkill(NPC,LangList)
+function M.increaseLangSkill(NPC,LangList)
     for i=1,#LangList do
         setLang=true;
         if (LangList[i]==0) then LangSkill="common language";
@@ -35,7 +39,7 @@ function increaseLangSkill(NPC,LangList)
     end
 end
 
-function LangOK(User,LangList)
+function M.LangOK(User,LangList)
     --User:inform("LangOK Start")
     local retVal=false;
     for i=1,#LangList do
@@ -46,12 +50,12 @@ function LangOK(User,LangList)
     return retVal
 end
 
-function AddTraderTrigger(Trigger,Answer)
+function M.AddTraderTrigger(Trigger,Answer)
     table.insert(TraderTrig,Trigger);
     table.insert(TraderText,Answer);
 end
 
-function AddAdditionalText(Answer)
+function M.AddAdditionalText(Answer)
     local ListCnt=#TraderText
     local i=0;
     local done=false;
@@ -64,7 +68,7 @@ function AddAdditionalText(Answer)
     until done
 end
 
-function TellSmallTalk(message)
+function M.TellSmallTalk(message)
     local i=1;
     local ready=false;
     local Texts=0;
@@ -88,7 +92,7 @@ function TellSmallTalk(message)
     until ((i==#TraderTrig+1) or ready)
 end
 
-function NPCTalking(NPC,Text)
+function M.NPCTalking(NPC,Text)
     local done=false;
     local outputted=false;
     repeat
@@ -117,3 +121,5 @@ function NPCTalking(NPC,Text)
         end
     until done
 end
+
+return M

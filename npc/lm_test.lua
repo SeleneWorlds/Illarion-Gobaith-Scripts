@@ -1,5 +1,9 @@
+local M = {}
+npc = npc or {}
+npc.lm_test = M
+local _ENV = setmetatable(M, { __index = _G })
+
 require("npc.lightmaster");
-module("npc.lm_test", package.seeall)
 
 WaypointList[1] = {}; -- Troll's Bane
 WaitingList[1] = {}; -- Troll's Bane
@@ -38,26 +42,28 @@ DAWN = 0;
 BLOCKING_TIME = 100;
 PATROL = 0;
 
-function InitializeNpc()
+function M.InitializeNpc()
 	AddTraderTrigger("test","TEST!");
 end
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
 	npc.lightmaster.LM_useNPC(user,counter,param);
 end
 
-function nextCycle()
+function M.nextCycle()
 	npc.lightmaster.LM_nextCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 	npc.lightmaster.LM_receiveText(texttype, message, originator);
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
 	npc.lightmaster.LM_lookAtNpc(Char, mode);
 end
 
-function Invoke(event,args)
+function M.Invoke(event,args)
 	return false;
 end
+
+return M

@@ -1,8 +1,12 @@
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.ships = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- Basisfunktion für Passagierschiffe aller Art
 
-module("npc.base.ships", package.seeall)
-
-function InitShips()
+function M.InitShips()
     if (ShipMask == nil) then
         ShipMask = { };
         PassangerMask = { };
@@ -20,7 +24,7 @@ end
 -- Rechte Seite: x>0
 
 -- Syntax: AddShipPosition({x,y})
-function AddShipPosition(RelativPosition,Char)
+function M.AddShipPosition(RelativPosition,Char)
     Char:setAttrib("agility",5);
     table.insert(ShipMask,{RelativPosition,Char});
 end
@@ -33,11 +37,11 @@ end
 -- Rechte Seite: x>0
 
 -- Syntax: AddPassangerPosition({x,y})
-function AddPassangerPosition(RelativPosition)
+function M.AddPassangerPosition(RelativPosition)
     table.insert(PassangerMask,RelativPosition);
 end
 
-function TryAddPassanger(Char)
+function M.TryAddPassanger(Char)
     if (#PassangerMask >= #Passangers) then
         table.insert(Passangers,Char);
         return true
@@ -46,11 +50,11 @@ function TryAddPassanger(Char)
     end
 end
 
-function GetPassanger(nr)
+function M.GetPassanger(nr)
     return Passangers[nr];
 end
 
-function CheckForPassanger(CharID)
+function M.CheckForPassanger(CharID)
     local retVal = false;
     for i, Passanger in pairs(Passangers) do
         if (Passanger.id == CharID) then
@@ -60,14 +64,14 @@ function CheckForPassanger(CharID)
     return retVal;
 end
 
-function WarpPassangersToo(Posi)
+function M.WarpPassangersToo(Posi)
     for i, Passanger in pairs(Passangers) do
         Passanger:warp(Posi);
         Passanger:setQuestProgress(7,0);
     end
 end
 
-function ClearPassengers()
+function M.ClearPassengers()
     Passangers = nil;
     Passangers = {};
 end
@@ -80,7 +84,7 @@ end
 -- -- 6 = Westen
 
 -- Syntax: MoveShip(Richtung)
-function MoveShip(Direction)
+function M.MoveShip(Direction)
     for i, ShipPart in pairs(ShipMask) do
         if (Direction == 0) then
             NeedPos = position(oldcenterpos.x+ShipPart[1][1],oldcenterpos.y+ShipPart[1][2],oldcenterpos.z);
@@ -144,11 +148,11 @@ function MoveShip(Direction)
     end
 end
 
-function PlaceJesusItem(Posi)
+function M.PlaceJesusItem(Posi)
     return world:createItemFromId(42, 1, Posi, true, 333, 0);
 end
 
-function RotateTo(newDir)
+function M.RotateTo(newDir)
     for i, ShipPart in pairs(ShipMask) do
         if (newDir == 0) then
             NeedPos = position(oldcenterpos.x+ShipPart[1][1],oldcenterpos.y+ShipPart[1][2],oldcenterpos.z);
@@ -189,7 +193,7 @@ function RotateTo(newDir)
     end
 end
 
-function InitShipPos(Dir)
+function M.InitShipPos(Dir)
     for i, ShipPart in pairs(ShipMask) do
         if (Dir == 0) then
             NeedPos = position(oldcenterpos.x+ShipPart[1][1],oldcenterpos.y+ShipPart[1][2],oldcenterpos.z);
@@ -209,7 +213,7 @@ function InitShipPos(Dir)
     end
 end
 
-function DoNextMove()
+function M.DoNextMove()
     step = step + ListDir;
     currStep = StepDir(route[step],ListDir);
     prevStep = StepDir(route[step-ListDir],ListDir);
@@ -222,7 +226,7 @@ function DoNextMove()
     MoveShip(currStep);
 end
 
-function StepDir(Dir,ListDir)
+function M.StepDir(Dir,ListDir)
     if (Dir == 0) then
         return (ListDir==1 and 0 or 4);
     elseif (Dir == 2) then
@@ -235,3 +239,5 @@ function StepDir(Dir,ListDir)
         return nil;
     end
 end
+
+return M

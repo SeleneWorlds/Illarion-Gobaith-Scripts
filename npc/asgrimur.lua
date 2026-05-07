@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.asgrimur = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --name="Asgrimur"
 --race=dwarf
 --position=137, -191, -3
@@ -12,9 +17,8 @@
 
 require("npc.base.autonpcfunctions")
 require("base.common")
-module("npc.asgrimur", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Fasst mich nicht an!") end
@@ -22,7 +26,7 @@ function useNPC(user,counter,param)
 end
 
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.autonpcfunctions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
@@ -62,7 +66,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang)
@@ -71,7 +75,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,1) then
 
              	local players = world:getPlayersInRangeOf(thisNPC.pos, 10);
@@ -108,3 +112,5 @@ function receiveText(texttype, message, originator)
 
     end
 end
+
+return M

@@ -1,5 +1,9 @@
+local M = {}
+npc = npc or {}
+npc.lm_merald_thigwart = M
+local _ENV = setmetatable(M, { __index = _G })
+
 require("npc.lightmaster");
-module("npc.lm_merald_thigwart", package.seeall)
 
 WaypointList[1] = {}; -- Troll's Bane
 WaitingList[1] = {}; -- Troll's Bane
@@ -36,18 +40,20 @@ WAITING = -1;
 DUSK = 20;
 DAWN = 6;
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
 	npc.lightmaster.LM_useNPC(user,counter,param);
 end
 
-function nextCycle()
+function M.nextCycle()
 	npc.lightmaster.LM_nextCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 	npc.lightmaster.LM_receiveText(texttype, message, originator);
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
 	npc.lightmaster.LM_lookAtNpc(Char, mode);
 end
+
+return M

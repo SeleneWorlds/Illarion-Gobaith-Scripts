@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.amelia_kolodem = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),0,-102,-110,0,4,false,'Amelia Kolodem','npc_amelia_kolodem.lua',1);
 -- newbie island NPC
 -- teaching how to cut down a tree and start a campfire
@@ -5,16 +10,14 @@
 
 require("npc.base.autonpcfunctions")
 require("base.common")
-module("npc.amelia_kolodem", package.seeall)
 
-
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont you touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -398,12 +401,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
             if NPCStatus[originator.id]==3 then
@@ -422,7 +425,7 @@ function receiveText(texttype, message, originator)
     end
 end
 
-function checkCampfire(Position)
+function M.checkCampfire(Position)
 	
 	local itemList = base.common.GetItemsOnField(Position);
 	if itemList[1]==nil then
@@ -435,3 +438,5 @@ function checkCampfire(Position)
 		end
 	end
 end
+
+return M

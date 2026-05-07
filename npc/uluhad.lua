@@ -1,13 +1,17 @@
+local M = {}
+npc = npc or {}
+npc.uluhad = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),0,1,1,0,4,false,'Uluhad','npc_uluhad.lua',0);
 require("npc.base.autonpcfunctions")
-module("npc.uluhad", package.seeall)
 
-function buyIn( amount )
+function M.buyIn( amount )
     User:setQuestProgress(playerBuyInID, User:getQuestProgress(playerBuyInID)+amount);
     return amount;
 end
 
-function cashOut()
+function M.cashOut()
     playerMoney = User:getQuestProgress(playerMoneyID);
     playerBuyIn = User:getQuestProgress(playerBuyInID);
     playerWonMon = playerMoney - playerBuyIn;
@@ -32,13 +36,13 @@ function cashOut()
     return playerMoney;
 end
 
- function useNPC(user,counter,param)
+ function M.useNPC(user,counter,param)
    thisNPC:increaseSkill(1,"common language",100);
    thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
    thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Don't you touch me!");
  end
 
- function initializeNpc()
+ function M.initializeNpc()
    if TraderFirst then
        TraderFirst=1;
        return true;
@@ -105,12 +109,12 @@ end
    thisNPC.activeLanguage=TradStdLang;
  end
 
- function nextCycle() -- ~10 times per second
+ function M.nextCycle() -- ~10 times per second
    initializeNpc();
    npc.base.autonpcfunctions.SpeakerCycle();
  end
 
- function receiveText(texttype, message, originator)
+ function M.receiveText(texttype, message, originator)
    if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
   if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
  debugText="";
@@ -142,3 +146,5 @@ end
   end
    end
  end
+
+return M

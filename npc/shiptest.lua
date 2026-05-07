@@ -1,11 +1,14 @@
-module("npc.shiptest", package.seeall)
+local M = {}
+npc = npc or {}
+npc.shiptest = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function useNPC(user,Counter,Param)
+function M.useNPC(user,Counter,Param)
        -- user:talk(CCharacter.say, "test");
        thisNPC:talk(CCharacter.say, "I am used by " .. user.name .. " !");
 end
 
-function nextCycle()
+function M.nextCycle()
 	--stand=2;
 	if stand ~= nil then					-- if stand was already defined in receiveMessage.
 		if stand ~= 1 then
@@ -62,7 +65,7 @@ function nextCycle()
 	
 end					-- End of function
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 
 	thisNPC:increaseSkill(1,"common language",100);
 
@@ -81,3 +84,5 @@ function receiveText(texttype, message, originator)
         end
 
 end
+
+return M

@@ -1,12 +1,15 @@
-module("npc.skill", package.seeall)
+local M = {}
+npc = npc or {}
+npc.skill = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     --thisNPC:increaseSkill(1,"common language",100);
     
     thisNPC:talk(CCharacter.say, "Don't you touch me!");    
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (cycCount==nil) then
         cycCount=1;
         --nextDelivery=math.random(40000);
@@ -17,7 +20,7 @@ end
 
 
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
  -- printerr("from"..originator.name.."to"..thisNPC.name);
     --originator:introduce(thisNPC);
     if (TraderFirst == nil) then
@@ -71,3 +74,4 @@ function receiveText(texttype, message, originator)
     end
 end
 
+return M

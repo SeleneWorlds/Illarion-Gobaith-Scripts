@@ -1,16 +1,20 @@
+local M = {}
+npc = npc or {}
+npc.ward_blankman = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- INSERT INTO npc VALUES (nextval('npc_seq'),0,68,62,100,4,false,'Ward Blankman','npc_ward_blankman.lua',0);
 
 require("npc.base.autonpcfunctions")
 -- dofile("/usr/share/servers/illarionserver/scripts/npc_autonpcfunctions.lua");
-module("npc.ward_blankman", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont you touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -87,12 +91,12 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
             npc.base.autonpcfunctions.TellSmallTalk(message,originator);
@@ -105,7 +109,7 @@ function receiveText(texttype, message, originator)
     end
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Ein recht alter Mann, gehüllt in einen dunklen Mantel mit Kapuze, der mit trüben Augen zu den Kreaturen auf der anderen Seite der Höhle hinübersieht.";
@@ -115,3 +119,5 @@ function lookAtNpc(Char, mode)
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end
+
+return M

@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.foo_barlini = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Foo Barlini
 --Race:        Mensch
 --Town:        Magische Akademie - Übungsplatz
@@ -10,16 +15,15 @@
 require("npc.base.functions")
 require("npc.base.autonpcfunctions")
 require("magic.base.basics");
-module("npc.foo_barlini", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger wech!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont ya' touch me!");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -156,7 +160,7 @@ function initializeNpc()
 end
 
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if ( TraderInit == nil) then
         TraderInit = {};
     end
@@ -304,7 +308,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.autonpcfunctions.npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.autonpcfunctions.npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -324,7 +328,7 @@ function receiveText(texttype, message, originator)
 end
 
 
-function SayPrice(message, originator)
+function M.SayPrice(message, originator)
 	if (string.find(message,"koste")~=nil) or (string.find(message,"[Pp]reis")~=nil) or (string.find(message,"[Ww]ieviel")~=nil) or (string.find(message,"costs")~=nil) or (string.find(message,"[Hh]ow much")~=nil) then
         thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Hrm...Ich würd sagen...gib mit 10 Kupfer für ein paar Steinmauern, 15  für Feuerflammen, 20  für Eisflammen und 25 Kupferstücke, wenn ich dir ein Giftfeld erschaffen soll.");
         thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "Hrm...I would say...give me 10 coppercoins for some stone walls, 15 for fire flames, 20 for ice flames and 25 coppercoins, when I should summon a poison field for you..");
@@ -334,7 +338,7 @@ function SayPrice(message, originator)
 end
 
 
-function getCreature (message, originator)
+function M.getCreature(message, originator)
      message = string.lower( message );
     if (string.find(message,"steinmauer.+beschwör")~=nil)
         or (string.find(message,"beschwör.+steinmauer")~=nil)
@@ -481,7 +485,7 @@ function npc.base.autonpcfunctions.CheckMoney(User,Gold,Silber,Kupfer)
     end
 end
 
-function Pay(User,Gold,Silber,Kupfer)
+function M.Pay(User,Gold,Silber,Kupfer)
     local GoldID=61;
     local SilberID=3077;
     local KupferID=3076;
@@ -556,14 +560,14 @@ function Pay(User,Gold,Silber,Kupfer)
 end
 
 
-function CalcSilverCopper(CAmount)
+function M.CalcSilverCopper(CAmount)
     local GAmount=math.floor(CAmount/10000);
     local SAmount=math.floor((CAmount-GAmount*10000)/100);
     local CAmount=CAmount-(SAmount*100+GAmount*10000);
     return GAmount,SAmount,CAmount
 end
 
-function logToFile_npc(theString)
+function M.logToFile_npc(theString)
     coldLog,errMsg=io.open("/home/kadiya/ask_npc.txt","a");
     if (coldLog~=nil) then
        coldLog:write(theString);
@@ -573,4 +577,4 @@ function logToFile_npc(theString)
     return false;
 end
 
-
+return M

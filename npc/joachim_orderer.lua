@@ -1,8 +1,12 @@
+local M = {}
+npc = npc or {}
+npc.joachim_orderer = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Script zum testen der Bestellungen für npc
 --[[
-module("npc.joachim_orderer", package.seeall, package.seeall("npc.base.orders", package.seeall))
 
-function init()
+function M.init()
     joachim_init = true;
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC.activeLanguage = 0;
@@ -26,7 +30,7 @@ function init()
     myOrderNPC.orderPool:setQualityChancesForPool(2,{5,20,15,15,10,10,10,5,5,5});
 end
 
-function nextCycle()
+function M.nextCycle()
     if ( joachim_init == nil) then
         init();
     end
@@ -36,12 +40,12 @@ function nextCycle()
    
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     myOrderNPC:receiveText(originator,message);
     
 end
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     if ( myOrderNPC:checkOrder(user) == true ) then
         
     else
@@ -51,9 +55,8 @@ end
 	]]--
 	
 require("npc.base.orders");
-module("npc.joachim_orderer", package.seeall, package.seeall(npc.base.orders))
 
-function init()
+function M.init()
     joachim_init = true;
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC.activeLanguage = 0;
@@ -80,7 +83,7 @@ function init()
     --myOrderNPC.orderPool.valuelossfortime = { {300,300},{200,400},{150,500},{100,600},{100,800} };
 end
 
-function nextCycle()
+function M.nextCycle()
     if ( joachim_init == nil) then
         init();
     end
@@ -90,15 +93,17 @@ function nextCycle()
    
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     myOrderNPC:receiveText(originator,message);
     
 end
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     if ( myOrderNPC:checkOrder(user) == true ) then
         
     else
         thisNPC:talk(CCharacter.say,"Lass mich in ruhe wenn du nichts für mich hast");
     end
 end
+
+return M

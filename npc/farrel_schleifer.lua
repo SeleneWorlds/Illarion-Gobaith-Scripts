@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.farrel_schleifer = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Farrel Schleifer
 --Race:        Mensch
 --Town:        Newbie Insel
@@ -9,16 +14,15 @@
 
 
 require("npc.base.autonpcfunctions")
-module("npc.farrel_schleifer", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Bitte nicht anfassen");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Please don't touch.");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -173,12 +177,12 @@ function initializeNpc()
     thisNPC.activeLanguage=TradStdLang;
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
              local state = NPCStatus[originator.id];
@@ -201,7 +205,7 @@ function receiveText(texttype, message, originator)
     end
 end
 
-function CountItemsWithQuality( Character, ItemID, Quality, Compare )
+function M.CountItemsWithQuality( Character, ItemID, Quality, Compare )
     local count = 0;
     local i;
     local item;
@@ -252,3 +256,5 @@ function CountItemsWithQuality( Character, ItemID, Quality, Compare )
     end
     return count;
 end
+
+return M

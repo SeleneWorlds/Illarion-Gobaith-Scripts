@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.maris = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Maris Maroqu
 --Race:        Human
 --Town:        Trolls Bane
@@ -9,23 +14,22 @@
 
 require("npc.base.trader_functions")
 require("npc.base.functions")
-module("npc.maris", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     -- logToFile("start useNPC (maris)");
     local value = useNPC_debug(user,counter,param)
     -- logToFile("end useNPC (maris)");
     return value;
 end
 
-function useNPC_debug(user,counter,param)
+function M.useNPC_debug(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     if (lang==0) then thisNPC:talk(CCharacter.say, "Finger weg!") end
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-function initializeNpc()
+function M.initializeNpc()
     npc.base.functions.InitTalkLists()
     npc.base.trader_functions.InitItemLists()
 
@@ -106,14 +110,14 @@ end
 
 --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     -- logToFile("start nextCycle (maris)");
     local value = nextCycle_debug()
     -- logToFile("end nextCycle (maris)");
     return value;
 end
 
-function nextCycle_debug()
+function M.nextCycle_debug()
     if (TraderFirst == nil) then
         initializeNpc();
         npc.base.functions.increaseLangSkill(TradSpeakLang)
@@ -124,14 +128,14 @@ function nextCycle_debug()
     npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     -- logToFile("start receiveText (maris)");
     local value = receiveText_debug(texttype, message, originator)
     -- logToFile("end receiveText (maris)");
     return value;
 end
 
-function receiveText_debug(texttype, message, originator)
+function M.receiveText_debug(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -240,3 +244,5 @@ function receiveText_debug(texttype, message, originator)
         end
     end --id
 end--function
+
+return M

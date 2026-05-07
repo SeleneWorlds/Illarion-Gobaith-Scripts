@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.lasttier = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:        Transportkuh
 --Race:        Esel
 --Town:        Wo immer eine Kuh gebraucht wird
@@ -7,9 +12,7 @@
 --Last Update: 05/26/2007
 --Update by:   Nitram
 
-module("npc.lasttier", package.seeall)
-
-function useNPC(User,Counter,Param)
+function M.useNPC(User,Counter,Param)
     if lost[thisNPC.id] then -- Kuh wurde zurück gelassen
         find_transporter, effect_transporter = thisNPC.effects:find(10);
         if not find_transporter then
@@ -30,7 +33,7 @@ function useNPC(User,Counter,Param)
     end
 end
 
-function InitNPC()
+function M.InitNPC()
     if not InitDone then
         InitDone = true;
 
@@ -61,7 +64,7 @@ function InitNPC()
     end
 end
 
-function receiveText(Texttype, Message, Originator)
+function M.receiveText(Texttype, Message, Originator)
     if (Originator:getQuestProgress(8) == 0) then
         return
     end
@@ -134,7 +137,7 @@ function receiveText(Texttype, Message, Originator)
     end
 end
 
-function genDepotPos( )
+function M.genDepotPos( )
     npc_look_at = thisNPC:get_face_to();
     if (npc_look_at == 0) then
         return position(thisNPC.pos.x + 1,thisNPC.pos.y,thisNPC.pos.z);
@@ -149,7 +152,7 @@ function genDepotPos( )
 end
 
 
-function nextCycle()
+function M.nextCycle()
     InitNPC();
     cnt[thisNPC.id] = cnt[thisNPC.id] + 1;
     if (cnt[thisNPC.id] == ( CyclesBetweenSteps + GetTileMod( ) ) ) then
@@ -300,7 +303,7 @@ function nextCycle()
     end
 end
 
-function MoveX(XOff,forced)
+function M.MoveX(XOff,forced)
     if (XOff == 0) and not forced then
         return false;
     end
@@ -334,7 +337,7 @@ function MoveX(XOff,forced)
     end
 end
 
-function MoveY(YOff,forced)
+function M.MoveY(YOff,forced)
     if (YOff == 0) and not forced then
         return false;
     end
@@ -368,7 +371,7 @@ function MoveY(YOff,forced)
     end
 end
 
-function CheckItem( posi )
+function M.CheckItem( posi )
     local fld = world:getField(posi);
     local cnt = fld:countItems();
     local i;
@@ -380,7 +383,7 @@ function CheckItem( posi )
     return true;
 end
 
-function isPassable( id , lower, upper )
+function M.isPassable( id , lower, upper )
     if lower > upper then
         return false;
     end;
@@ -394,7 +397,7 @@ function isPassable( id , lower, upper )
     end;
 end
 
-function GetTileMod( )
+function M.GetTileMod( )
 
     local Field = world:getField( thisNPC.pos )
     local TileID = Field:tile();
@@ -409,3 +412,5 @@ function GetTileMod( )
     end
     return 0
 end
+
+return M

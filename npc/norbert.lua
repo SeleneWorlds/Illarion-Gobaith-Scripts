@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.norbert = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --Name:	       Norbert        
 --Race:        Mensch
 --Town:        Magische Akademie - Denkgarten
@@ -10,16 +15,15 @@
 require("npc.base.functions")
 require("npc.base.autonpcfunctions")
 require("magic.base.basics");
-module("npc.norbert", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "#me kuschelt sich an "..user.name.." an.");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "#me cuddles up to "..user.name..".");
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -132,7 +136,7 @@ function initializeNpc()
 end
 
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if ( TraderInit == nil) then
         TraderInit = {};
     end
@@ -147,7 +151,7 @@ function nextCycle()  -- ~10 times per second
     npc.base.autonpcfunctions.npc.base.functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
     if npc.base.autonpcfunctions.npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.autonpcfunctions.npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
@@ -167,7 +171,7 @@ function receiveText(texttype, message, originator)
 end
 
 
-function SayRow(message, originator)
+function M.SayRow(message, originator)
 	if (string.find(message,"rätsel")~=nil) or (string.find(message,"riddle")~=nil) then
 	one=math.random(1,30);
 	two=math.random(1,10);
@@ -183,7 +187,7 @@ function SayRow(message, originator)
     return false;
 end
 
-function getRow(one,two,type)
+function M.getRow(one,two,type)
     if (type==1) then
         first=one*two;
         second=first*one;
@@ -200,7 +204,4 @@ function getRow(one,two,type)
     return first, second, third, fourth, fifth;
 end
 
-
-
-
-
+return M

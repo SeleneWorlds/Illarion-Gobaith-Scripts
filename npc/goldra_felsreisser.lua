@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.goldra_felsreisser = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --[[name="Goldra Felsreisser"
 position=112,-198,-3
 sex=female
@@ -12,9 +17,8 @@ require("base.common")
 require("npc.base.autonpcfunctions")
 require("base.keys")
 require("base.doors")
-module("npc.goldra_felsreisser", package.seeall)
 
-function useNPC(user,counter,param)
+function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
 
 	user:talkLanguage(CCharacter.say, CPlayer.german, "#me packt sie an den Armen und schüttelt sie kräftig.");
@@ -27,7 +31,7 @@ function useNPC(user,counter,param)
 
 end
 
-function initializeNpc()
+function M.initializeNpc()
     if TraderFirst then
         return true;
     end
@@ -254,7 +258,7 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 
@@ -308,7 +312,7 @@ function nextCycle()  -- ~10 times per second
 	game1.nextCycle();--game Function
 end
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 		if (thisNPC.pos.y>=-199) then
 				NpcOutside=true;
 		else
@@ -379,7 +383,7 @@ end
 
     @return true in case the NPC said one of the mean triggers else false
 ]]
-function mainTask(message, originator)
+function M.mainTask(message, originator)
 	if (originator.activeLanguage==2 or originator:isAdmin()==true) then --If the Character speaks dwarfish then...
 		if (standardAnswer(message,1)==true) then
 
@@ -553,7 +557,7 @@ end
 
     @return boolean - true in case message can be counted to the answertype else false
 ]]
-function standardAnswer(message,answertype)
+function M.standardAnswer(message,answertype)
 
 	if (answertype==1) then --answertype 1 == standardphrases for "open door"
 		     if (string.find(message,"[Gg]oldra.+[Tt][üo]r.+[Aa]uf.*")~=nil or string.find(message,"[Gg]oldra.+[Oo]pen.+[Gg]ate.*")~=nil
@@ -634,7 +638,7 @@ end
 
     @return nothing
 ]]
-function keinBock(originator)
+function M.keinBock(originator)
 
 	if (math.random(0,10)==1) then
         gText="#me hält ihren Kopf \"Nay,"..hicks().."bin heut nich im Stimmung"..hicks()..", hab Kopfweh! Beweg deinen Hintern selber!\".";
@@ -656,7 +660,7 @@ end
 
     @return true in case the NPC finished the break else false
 ]]
-function wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
+function M.wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
         if (cycleCounter==nil) then
             cycleCounter=0;
 			return false;
@@ -669,7 +673,7 @@ function wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
 		end
 end
 
-function checkGender(originator,returnType)
+function M.checkGender(originator,returnType)
 
 	if returnType==0 then
         if (originator:increaseAttrib("sex",0) == 0) then
@@ -719,13 +723,13 @@ end
 
     @return nothing
 ]]
-function drinkBeer()
+function M.drinkBeer()
     		world:makeSound(12,thisNPC.pos); -- Trinkgeräusch machen
 			thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me holt eine Flasche Bier aus ihrer Tasche und nimmt einen großzügigen Schluck.");
            	thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me pulls a bottle of beer out of her bag and takes a generous sip.");
 end
 
-function lookAtNpc(Char, mode)
+function M.lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
         output[0]="Sie trägt eine neu aussehende Wächterrobe mit einem aufgestickten Wappen Silberbrands darauf. In der Hand hält die grimmig blickende Zwergin eine große, doppelschneidige Axt, während sie ihren Blick aufmerksam schweifen lässt.";
@@ -740,7 +744,7 @@ end
 
 
 
-function drinkGame()
+function M.drinkGame()
 
     local self = {
         gameState          = 0,     -- 0: inactive, 1: playing
@@ -1123,7 +1127,7 @@ function drinkGame()
     };
 end
 
-function hicks()
+function M.hicks()
 	if game1.drunk() then
 		rand=math.random(2);
 		if rand==1 then
@@ -1144,7 +1148,7 @@ end
 
 
 
-function moveFunction(doorapos,doorbpos,itemlist)
+function M.moveFunction(doorapos,doorbpos,itemlist)
 
     local self = {
         moving             = false,     -- false: npc not moving, true: npc is moving
@@ -1179,7 +1183,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 		self.blocked=false;
 	end
 
-	function isPassable( id , lower, upper )  --returns true if Item with Id "id" non-passable!
+	function M.isPassable( id , lower, upper )  --returns true if Item with Id "id" non-passable!
 	    if lower > upper then
 	        return false;
 	    end;
@@ -1661,7 +1665,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 
 end
 
-function tellJoke()
+function M.tellJoke()
 	rand=math.random(1,14);
 	thisNPC:talkLanguage(CCharacter.say,CPlayer.german,jokelist_de[rand]);
 	if jokelist_en[rand]~=nil then
@@ -1669,7 +1673,7 @@ function tellJoke()
 	end
 end
 
-function initJoke()
+function M.initJoke()
 	jokelist_de[1]="Die letzten Worte eines"..hicks().."Langohrs mit Liebespech \"Hmm, spinn ick oder hat"..hicks().."dat Astloch Zähne?\""
 	jokelist_de[2]="Der holde Elbenjüngling zu seiner Freundin \"Willst du sehen wo mich der Heiler damals operiert hat?\". Sie senkt schüchtern den Blick, errötet und haucht \"Ja.\" Der Jüngling zeigt zu nem nahen Baum und meint trocken \"Da drüben im Moos.\"";
 	jokelist_de[3]="Wieviele"..hicks().."Orks braucht es um in ein"..hicks().."Haus einzudringen? 300 oder mehr. 5 halten den Rammbock"..hicks().."der Rest hebt dat Haus an und stößt es jegen den Rammbock bis die Tür nachjibt!";
@@ -1696,3 +1700,5 @@ function initJoke()
 	jokelist_en[9]="How can you keep a"..hicks().."longear occupied for years? Hand him a"..hicks().."parchment reading \"Please turn over!\" on"..hicks().."both sides.";
     jokelist_en[10]="An elf npc.base.autonpcfunctions.walks into a tavern, carrying a big pile of"..hicks().."cowdung in his hand and cries out:\"Guys! Look what I nearly stepped into!\"";
 end
+
+return M

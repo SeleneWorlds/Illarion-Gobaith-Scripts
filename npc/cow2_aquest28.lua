@@ -1,11 +1,15 @@
+local M = {}
+npc = npc or {}
+npc.cow2_aquest28 = M
+local _ENV = setmetatable(M, { __index = _G })
+
 --37 cow id, faceto= 6 (west)
 --775,793,0
 --Mjilka
 require("npc.base.autonpcfunctions")
 require("quest_aquest28");    --the quest file
-module("npc.cow2_aquest28", package.seeall)
 
-function InitNPC()
+function M.InitNPC()
     if not InitDone then
         InitDone = true;
         CowID = 2; --id of this cow NEEDS TO BE CHANGED AT EACH COW
@@ -22,19 +26,21 @@ function InitNPC()
     end
 end 
 
-function useNPC(originator,Counter,Param)
+function M.useNPC(originator,Counter,Param)
   	User = getCharForId(originator.id);  --create a save copy of the char struct
 	quest_aquest28.Cow_useNPC(User, Counter, Param);
 end
 
 
-function receiveText(texttype, message, originator)
+function M.receiveText(texttype, message, originator)
 	quest_aquest28.Cow_receiveText(texttype,message,originator);
 end
 
-function nextCycle()
+function M.nextCycle()
 -- see cow1
 --    InitNPC();
 
 --    quest_aquest28.Cow_NextCycle(User);
 end
+
+return M

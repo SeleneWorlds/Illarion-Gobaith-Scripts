@@ -1,12 +1,16 @@
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.trader_functions = M
+local _ENV = setmetatable(M, { __index = _G })
+
 -- Basisscript f�r NPC H�ndlerfunktionen
 -- Nitram
 
 require("content.genus")
 
-module("npc.base.trader_functions", package.seeall)
-
 -- Auff�llen der Itembest�nde
-function refillItems(itNumb)
+function M.refillItems(itNumb)
     if (TraderItemNumber[itNumb] == 4294967295) then
         return
     end
@@ -18,7 +22,7 @@ function refillItems(itNumb)
 end
 
 -- Auff�llen der Geldbest�nde
-function refillMoney()
+function M.refillMoney()
     if TraderCopper<TraderStdCopper/2 then
         TraderCopper=TraderCopper+math.random(TraderStdCopper/100,TraderStdCopper/10);
     elseif TraderCopper>2*TraderStdCopper then
@@ -27,7 +31,7 @@ function refillMoney()
 end
 
 -- Definieren aller H�ndler relevanter Listen
-function InitItemLists()
+function M.InitItemLists()
     TraderItemPrice={};
     TraderItemId={};
     TraderItemNumber={};
@@ -44,7 +48,7 @@ end
 -- Preiskalkulation
 -- Preis abh�nig von Itembestand und Standartbestand
 -- Return 1: Preis(Int)
-function CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPrice(TraderItemPrice[..],TraderItemNumber[..],TraderItemStandard);
+function M.CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPrice(TraderItemPrice[..],TraderItemNumber[..],TraderItemStandard);
     if (stdAmount == 4294967295) then
         return stdPrice;
     else
@@ -64,7 +68,7 @@ end
 -- Return 1: Goldm�nzen(Int)
 -- Return 2: Silberm�nzen(Int)
 -- Return 3: Kupferm�nzen(Int)
-function CalcSilverCopper(CAmount)
+function M.CalcSilverCopper(CAmount)
     local GAmount=math.floor(CAmount/10000);
     local SAmount=math.floor((CAmount-GAmount*10000)/100);
     local CAmount=CAmount-(SAmount*100+GAmount*10000);
@@ -74,7 +78,7 @@ end
 --TLang={"Gold,"gold","Silber","silver","Kupfer","copper","st�cke","pieces"};
 -- Erstellt Text f�r die Kosten
 -- Return 1: Text(Str)
-function MoneyText(lang,Gold,Silver,Copper,TLang)
+function M.MoneyText(lang,Gold,Silver,Copper,TLang)
     local retText="";
     local GText="";
     local SText="";
@@ -125,7 +129,7 @@ end
 
 -- Erstellt Sigular von W�rtern
 -- Funktionst�chtig in Deutsch und englisch
-function Zeitform(Zahl,Word)
+function M.Zeitform(Zahl,Word)
     if (Zahl==1) then
         local retStr="";
         local cursor=string.len(Word);
@@ -147,7 +151,7 @@ end
 
 -- Geldpr�fung
 -- Return 1 (bool) genug Geld - nicht genug Geld
-function CheckMoney(User,Gold,Silber,Kupfer)
+function M.CheckMoney(User,Gold,Silber,Kupfer)
     local UserGold=User:countItem(61);
     local UserSilber=User:countItem(3077);
     local UserKupfer=User:countItem(3076);
@@ -166,7 +170,7 @@ end
 
 -- Folgende Liste wird nicht korrekt zur�ckgegeben (Gold fehlt). Die ts-Version hat sie nicht (Schlamperei).  An Vilarion wenden(dalli).
 -- Return 1: Liste {Bezahltes Silber (int), Bezahltes Kupfer (int)}
-function Pay(User,Gold,Silber,Kupfer)
+function M.Pay(User,Gold,Silber,Kupfer)
 
     local GoldID=61;
     local SilberID=3077;
@@ -242,7 +246,7 @@ function Pay(User,Gold,Silber,Kupfer)
 end
 
 -- Generiert aus ItemID passenden TriggerText, f�r die Suche nach dem Item im Text
-function MakeTrigger(ItemID,lang)
+function M.MakeTrigger(ItemID,lang)
     local retString="";
     ItemName=world:getItemName(ItemID,lang);
     for i=1,string.len(ItemName) do
@@ -275,7 +279,7 @@ function MakeTrigger(ItemID,lang)
 end
 
 -- Erstellt Item Quality Wert aus den Gegebenen Gr��en
-function GenQual(QualList,DuraList)
+function M.GenQual(QualList,DuraList)
     local Qualcount=#QualList;
     local Duracount=#DuraList;
     local retQual=0;
@@ -330,7 +334,7 @@ end
 --   Liste: {Anzahl der verkauften Items (Int),ItemID (Int),Kosten Silberst�cke (Int),Kosten Kupferst�cke (Int)}
 --  Bei Status 0 oder 2-5:
 --   Liste: {nil}
-function Buying(originator, message)
+function M.Buying(originator, message)
     local a=nil;
     local retStatus=0;
     local retValues={};
@@ -408,7 +412,7 @@ end
 --   Liste: {ItemID (Int),Kosten Silberst�cke (Int),Kosten Kupferst�cke (Int)}
 --  Bei Status 0,5:
 --   Liste: {nil}
-function SayPriceSell(originator, message)
+function M.SayPriceSell(originator, message)
     local foundItem=false;
     local retStatus=0;
     local retValues={};
@@ -448,7 +452,7 @@ end
 --   Liste: {Engl. Artikel (Str),ItemID (Int),Kosten Silberst�cke (Int),Kosten Kupferst�cke (Int)}
 --  Bei Status 0,12:
 --   Liste: {nil}
-function SayPriceBuy(originator, message)
+function M.SayPriceBuy(originator, message)
     local foundItem=false;
     local retStatus=0;
     local retValues={};
@@ -494,7 +498,7 @@ end
 --   Liste: {Anzahl der eingekauften Items (Int),ItemID (Int),Kosten Silberst�cke (Int),Kosten Kupferst�cke (Int)}
 --  Bei Status 0,2,10,11,12:
 --   Liste: {nil}
-function Selling(originator, message)
+function M.Selling(originator, message)
     local retStatus=0;
     local retValues={};
     local a=nil;
@@ -568,7 +572,7 @@ end
 --  0 - keine Aktion
 --  16 - Liste enth�lt Items
 --  17 - Liste leer
-function ShowItemList(originator,message)
+function M.ShowItemList(originator,message)
     if not NPCStatus then
         NPCStatus = { };
     end
@@ -667,7 +671,7 @@ end
 --      Listen Format 1: {max. Haltbarkeit (Int), min. Haltbarkeit(Int)}
 --      Listen Format 2: {Haltbarkeit (Int)}
 --  8. Datawert des Items (Int)
-function AddTraderItem(BuyPrice,ItemId,ItemNumber,SellPrice,ItemStandard,Qual,Dura,DataVal,Category)
+function M.AddTraderItem(BuyPrice,ItemId,ItemNumber,SellPrice,ItemStandard,Qual,Dura,DataVal,Category)
     table.insert(TraderItemPrice,BuyPrice);
     table.insert(TraderItemId,ItemId);
     table.insert(TraderItemNumber,ItemNumber);
@@ -684,7 +688,7 @@ function AddTraderItem(BuyPrice,ItemId,ItemNumber,SellPrice,ItemStandard,Qual,Du
 end
 
 -- Next Cycle Funktion f�r H�ndler
-function TraderCycle()
+function M.TraderCycle()
 --[[ Whoever wrote this crap can fix this himself. Hint: You might want to google what a 'parameter' is
     if (cycCount==nil or nextDelivery==nil) then
         cycCount=1;
@@ -708,7 +712,7 @@ end
 -- Zus�tzlichen ItemTrigger Anf�gen
 -- Eingabe Werte:
 --  1. Trigger Text
-function AddItemTrigger(TrigText)
+function M.AddItemTrigger(TrigText)
     local CurrentItem=#TraderItemId
     if (TraderItemName[CurrentItem]==nil) then
         TraderItemName[CurrentItem]={};
@@ -719,11 +723,11 @@ end
 -- Erstellt neue Item Kategorie
 -- Input als Liste
 -- Englische und Deutsche Begriffe als Kategorie Trigger in Liste
-function CreateCategory(CatItemID,CatNames,Buy,Sell)
+function M.CreateCategory(CatItemID,CatNames,Buy,Sell)
     table.insert(TraderCat,{CatItemID,CatNames,Buy,Sell});
 end
 
-function CheckCatTrigger(message,Category)
+function M.CheckCatTrigger(message,Category)
     local TriggerList=TraderCat[Catagory][2]
     local found=false;
     local k=1;
@@ -738,7 +742,7 @@ function CheckCatTrigger(message,Category)
 end
 
 -- �berpr�ft ob der Text einen ItemTrigger enth�lt
-function CheckItemTrigger(message,ItemPoint)
+function M.CheckItemTrigger(message,ItemPoint)
     if (string.find(message,MakeTrigger(TraderItemId[ItemPoint],0))~=nil or
     string.find(message,MakeTrigger(TraderItemId[ItemPoint],1))~=nil) then
         return true
@@ -759,7 +763,7 @@ function CheckItemTrigger(message,ItemPoint)
     end
 end
 
-function NPCUsed(user,counter,param)
+function M.NPCUsed(user,counter,param)
     if not NPCStatus then
         NPCStatus = { };
     end
@@ -781,7 +785,7 @@ function NPCUsed(user,counter,param)
     end;
 end
 
-function EngGenusSel(ItemID)
+function M.EngGenusSel(ItemID)
 	local ItemName=world:getItemName(ItemID,1);
 	local vocals={"[Aa]","[Ee]","[Ii]","[Oo]","[Uu]"};
 	local vocalFound=false;
@@ -802,3 +806,5 @@ function EngGenusSel(ItemID)
 
 	return artic;
 end
+
+return M

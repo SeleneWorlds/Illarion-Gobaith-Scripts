@@ -1,7 +1,11 @@
--- NPC for Dungeon Monster Control
-module("npc.dungeon", package.seeall)
+local M = {}
+npc = npc or {}
+npc.dungeon = M
+local _ENV = setmetatable(M, { __index = _G })
 
-function Settings()
+-- NPC for Dungeon Monster Control
+
+function M.Settings()
     Location={};
     Location[1]=position(0,0,88);
     Location[2]=position(80,80,94);
@@ -13,7 +17,7 @@ function Settings()
     MaxMonsters=60;
 end
 
-function LiveSettings(Type,Setting,Count)
+function M.LiveSettings(Type,Setting,Count)
     if (Type=="set") then
         if (Setting=="spawn_off") then Spawn=0 end
         if (Setting=="spawn_only") then Spawn=Count end
@@ -28,14 +32,14 @@ function LiveSettings(Type,Setting,Count)
     end
 end
 
-function SetSpawnLoc()
+function M.SetSpawnLoc()
     PosX=math.random(Location[1].x,Location[2].x);
     PosY=math.random(Location[1].y,Location[2].y);
     PosZ=math.random(Location[1].z,Location[2].z);
     return position(PosX,PosY,PosZ)
 end
 
-function GoodGround(TileID)
+function M.GoodGround(TileID)
     if (TileID==6) or (TileID==105) or (TileID==42) or
     (TileID==0) or (TileID==3) or (TileID==56) then
         return false
@@ -44,7 +48,7 @@ function GoodGround(TileID)
     end
 end
 
-function GoodItem(Loc)
+function M.GoodItem(Loc)
     if not world:isItemOnField(Loc) then
         return true
     else
@@ -77,7 +81,7 @@ function GoodItem(Loc)
     end
 end
 
-function GoodSpawnField(TargetLoc)
+function M.GoodSpawnField(TargetLoc)
     local retval=false;
     Field=world:getField(TargetLoc)
     if GoodGround(Field.id) then
@@ -90,12 +94,12 @@ function GoodSpawnField(TargetLoc)
     return retval
 end
 
-function SelectMonster()
+function M.SelectMonster()
     MonNr=math.random(1,#MonsterID);
     return MonsterID[MonNr]
 end
 
-function nextCycle()
+function M.nextCycle()
     if (firstRun==nil) then
         firstRun=true;
         thisNPC:increaseSkill(1,"common language",100);
@@ -142,7 +146,7 @@ function nextCycle()
     end
 end
 
-function receiveText(TextTyp, Message, Originator)
+function M.receiveText(TextTyp, Message, Originator)
     if (Originator.id~=thisNPC.id) then
         if (string.find(Message,"[Cc]ommands")~=nil) then
             thisNPC:talk(CCharacter.say,"List of commands: 'current settings', 'spawn on', 'spawn off', 'spawn only <monster id>', 'debug on', 'debug off', 'max monsters <number>', 'reset'");
@@ -206,3 +210,5 @@ function receiveText(TextTyp, Message, Originator)
         end
     end
 end
+
+return M

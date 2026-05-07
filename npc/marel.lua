@@ -1,3 +1,8 @@
+local M = {}
+npc = npc or {}
+npc.marel = M
+local _ENV = setmetatable(M, { __index = _G })
+
 	--position: 236	-220	0
 	
 	
@@ -11,14 +16,13 @@
 --	dofile("npc_nanginis_nargunpriest.lua");
 require("base.common")
 require("npc.base.autonpcfunctions") --für die Funktion npc.base.autonpcfunctions.increaseLangSkill
-module("npc.marel", package.seeall)
 
-function nextCycle()
+function M.nextCycle()
 end
 
 
 
-function receiveText(texttype, message, originator) 
+function M.receiveText(texttype, message, originator) 
 
 	thisNPC:increaseSkill(1,"common language",100); 
 	Face_Direction = originator:get_face_to() 
@@ -76,7 +80,4 @@ function receiveText(texttype, message, originator)
    
 end
 
-
-
-
-
+return M

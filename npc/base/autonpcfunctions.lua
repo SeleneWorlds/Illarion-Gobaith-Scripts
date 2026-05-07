@@ -1,9 +1,14 @@
+local M = {}
+npc = npc or {}
+npc.base = npc.base or {}
+npc.base.autonpcfunctions = M
+local _ENV = setmetatable(M, { __index = _G })
+
 ---------------------------------------------------------------------------
 -- Core Script for Simple npc script language
 --
 -- By martin and nitram
 ---------------------------------------------------------------------------
-module("npc.base.autonpcfunctions", package.seeall)
 
 --[[
 - GetNLS
@@ -12,7 +17,7 @@ module("npc.base.autonpcfunctions", package.seeall)
 - @param textInEn string english text
 - @return string one of the input strings depending on the User language
 ]]
-function GetNLS( User, textInDe, textInEn )
+function M.GetNLS( User, textInDe, textInEn )
     if User:getPlayerLanguage()==0 then
         return textInDe;
     else
@@ -25,7 +30,7 @@ end
 - InitTalkLists
 - Preparing the arrays for talk npcs
 ]]
-function InitTalkLists()
+function M.InitTalkLists()
     TraderTrig   = { };
     TraderText   = { };
 	TraderInform = { };
@@ -54,7 +59,7 @@ end
 - Adds the german and english text to the list of texts the npc says
   randomly from time to time
 ]]
-function AddCycleText(gText,eText)
+function M.AddCycleText(gText,eText)
     table.insert(CycleText,{gText,eText});
 end
 
@@ -64,7 +69,7 @@ end
 - increases the language skills of the characters so he can speak the
   chosen languages
 ]]
-function increaseLangSkill(LangList)
+function M.increaseLangSkill(LangList)
     for i=1,#LangList do
         setLang=true;
         if (LangList[i]==0) then LangSkill="common language";
@@ -93,7 +98,7 @@ end
 - Checks if the active language of the User is in the list of languages the
   npc is able to speak
 ]]
-function LangOK(User,LangList)
+function M.LangOK(User,LangList)
     for i=1,#LangList do
         if (User.activeLanguage==LangList[i]) then
             thisNPC.activeLanguage=User.activeLanguage;
@@ -108,7 +113,7 @@ end
 - @param value number of the new radius
 - Makes the npc walking around automatically
 ]]
-function SetRadius( value )
+function M.SetRadius( value )
     value = value * 1;
     if ( value > 0 ) then
         radius = value;
@@ -124,7 +129,7 @@ end
 - Adds a Trigger with answer, new state and condition to the list of
   NPC Triggers
 ]]
-function AddTraderTrigger(Trigger,Answer)
+function M.AddTraderTrigger(Trigger,Answer)
     Trigger = string.gsub(Trigger,"%%NUMBER","(%%d+)");
     Trigger = string.gsub(string.lower( Trigger )," ",".+");
     table.insert(TraderTrig,{Trigger});
@@ -135,7 +140,7 @@ end
 - AddAdditionalText
 - @param Answer string add a Additional Answer to the last added trigger
 ]]
-function AddAdditionalText(Answer)
+function M.AddAdditionalText(Answer)
     table.insert(TraderText[#TraderText],Answer)
 end
 
@@ -143,7 +148,7 @@ end
 - AddAdditionalTrigger
 - @param Trigger string add a Additional Patters to the last added trigger
 ]]
-function AddAdditionalTrigger(Trigger)
+function M.AddAdditionalTrigger(Trigger)
     Trigger = string.gsub(Trigger,"%%NUMBER","(%%d+)");
     Trigger = string.gsub(string.lower( Trigger )," ",".+");
     table.insert(TraderTrig[#TraderTrig],Trigger)
@@ -156,7 +161,7 @@ end
 - [@param string] Comparing Kind
 - @param int compare value
 ]]
-function AddCondition( ... )
+function M.AddCondition( ... )
     offset = # TraderTrig ;
     if not Conditions[offset] then
         Conditions[offset] = { };
@@ -170,7 +175,7 @@ end
 - [@param string] Additional Consequence Value
 - @param int new value
 ]]
-function AddConsequence( ... )
+function M.AddConsequence( ... )
     offset = # TraderTrig ;
     if not Consequences[offset] then
         Consequences[offset] = { };
@@ -184,7 +189,7 @@ end
 - @param User CharStruct the User who spoke
 - makes the npc reacting on a message
 ]]
-function TellSmallTalk(message,Char)
+function M.TellSmallTalk(message,Char)
     --User = Char; -- global User for external function calls
     User = getCharForId(Char.id);
 	local i=1;
@@ -234,7 +239,7 @@ end
 - @param ListIndex int the Index of the trigger in the triggerlist
 - @return boolean returns true of a fitting Trigger was found, else false
 ]]
-function CheckForTrigger(message,User,ListIndex)
+function M.CheckForTrigger(message,User,ListIndex)
     for i,pattern in pairs(TraderTrig[ListIndex]) do
 		a,b= string.find( message, pattern );
 		_DummyA,_DummyB,saidNumber = string.find(message, "(%d+)"); --a,b,saidNumber = string.find( message, pattern );
@@ -252,7 +257,7 @@ end
 - @param ListIndex int the Index of the trigger in the triggerlist
 - @return boolean true for conditions fullfilled, else false
 ]]
-function CheckConditions( User, ListIndex )
+function M.CheckConditions( User, ListIndex )
     trigger_conditions = Conditions[ ListIndex ];
     if ( trigger_conditions == nil ) then
         return true;
@@ -274,7 +279,7 @@ end
 - @return boolean true for condition fullfilled, else false
 - Checks a single condietion
 ]]
-function CheckCondition( User, condition )
+function M.CheckCondition( User, condition )
     if ( condition[1] == "state" ) then
         if ( NPCStatus[User.id] == nil ) then
             NPCStatus[User.id] = 0;
@@ -359,7 +364,7 @@ end
 - @param Value int the Value the Skill is compared with
 - @return boolean true if the user has enougth skillpoints, else false
 ]]--
-function CompareSkill( User, Skillname, CompareType, Value )
+function M.CompareSkill( User, Skillname, CompareType, Value )
     local Skillvalue = User:getSkill( Skillname );
     return CompareValues( Skillvalue, Value, CompareType );
 end
@@ -372,7 +377,7 @@ end
 - @param Value int the Value the Attribut is compared with
 - @return boolean true if the user has enougth attribpoints, else false
 ]]
-function CompareAttrib( User, Attribname, CompareType, Value )
+function M.CompareAttrib( User, Attribname, CompareType, Value )
     local Attribvalue = User:increaseAttrib( Attribname, 0 );
     return CompareValues( Attribvalue, Value, CompareType );
 end
@@ -386,7 +391,7 @@ end
 - @param Amount int the Value the Skill is compared with
 - @return boolean true if the user has enougth items, else false
 ]]
-function CompareItem( User, ItemID, ItemLocation, CompareType, Amount)
+function M.CompareItem( User, ItemID, ItemLocation, CompareType, Amount)
     local ItemAmm = User:countItemAt( ItemLocation, ItemID );
     return CompareValues( ItemAmm, getNumber(Amount), CompareType );
 end
@@ -398,7 +403,7 @@ end
 - @param CompareType string kind of comparing
 - @return boolean true if the comparing is correct, false if not
 ]]
-function CompareValues( Value1, Value2, CompareType )
+function M.CompareValues( Value1, Value2, CompareType )
     Value1 = tonumber(Value1);
     Value2 = tonumber(Value2);
 	if ( CompareType == "=" ) then
@@ -424,7 +429,7 @@ end
 - @param User CharStruct The User who receives the consequeces
 - @param ListIndex integer the position in the list of conequences
 ]]
-function PerformConsequences( User, ListIndex )
+function M.PerformConsequences( User, ListIndex )
     trigger_consequences = Consequences[ ListIndex ];
     if ( trigger_consequences == nil ) then
         return true;
@@ -534,7 +539,7 @@ end
 - @return integer ID of the skillgroup
 - translates the name of a skillgroup to the number for it
 ]]
-function translateSkillgroup( GroupName )
+function M.translateSkillgroup( GroupName )
     if ( GroupName == "language" ) then
         return 1;
     elseif ( GroupName == "crafts" ) then
@@ -561,7 +566,7 @@ end
 - @return integer ID of the magic type
 - translates the name of a magic type to the number for it
 ]]--
-function translateMagictype( TypeName )
+function M.translateMagictype( TypeName )
     if ( TypeName == "mage" ) then
         return 0;
     elseif ( TypeName == "priest" ) then
@@ -580,7 +585,7 @@ end
 - @return integer the real number. Eighter the last spoken one or the
                   param value.
 ]]
-function getNumber( value )
+function M.getNumber( value )
 if ( type( value ) == "function" ) then
     return value( saidNumber ); -- DO NOT CALL value() anywhere else
    elseif ( value == "%NUMBER" ) then
@@ -596,7 +601,7 @@ end
 - Makes the NPC Saying something from time to time on its own
 - Users the cycled text
 ]]--
-function SpeakerCycle()
+function M.SpeakerCycle()
     if not speakCount then
         InitTalkLists()
     end
@@ -669,7 +674,7 @@ end
 - TurnAround
 - Makes the NPC Turning
 ]]
-function TurnAround()
+function M.TurnAround()
     faceTo = thisNPC:get_face_to();
     possDirs = {};
     if ( faceTo == 0 ) or ( faceTo == 4 ) then
@@ -707,7 +712,7 @@ end
 - Walk
 - makes the Character walking around. But not out of range
 ]]
-function walk()
+function M.walk()
     faceTo = thisNPC:get_face_to();
     if ( faceTo == 0 ) then
         newPos = position( thisNPC.pos.x, thisNPC.pos.y - 1,
@@ -737,7 +742,7 @@ end
 - @param pos2 position
 - @return distance between both positions
 ]]
-function Distance( pos1, pos2 )
+function M.Distance( pos1, pos2 )
     xOff = math.abs( pos1.x - pos2.x );
     yOff = math.abs( pos1.y - pos2.y );
     return math.sqrt( xOff^2 + yOff^2 );
@@ -748,7 +753,7 @@ end
 - @param player characterstruct Charakter the npc has to look at.
 - Makes the npc turning towards a character
 ]]
-function TurnToPlayer( player )
+function M.TurnToPlayer( player )
     xOff = math.abs( player.pos.x - thisNPC.pos.x );
     yOff = math.abs( player.pos.y - thisNPC.pos.y );
     if ( xOff > yOff ) then
@@ -776,7 +781,7 @@ end
 - @param NPCRange int Talking Range of the NPC
 - @return boolean true for talking is okay, false for not okay.
 ]]
-function BasicNPCChecks(originator,NPCRange)
+function M.BasicNPCChecks(originator,NPCRange)
     if not thisNPC:isInRange(originator,NPCRange) then
         return false;
     end
@@ -800,7 +805,7 @@ end
 - makes the NPC telling the speak that he does not understand his language
   with spamming protection
 ]]
-function Confused( gText, eText )
+function M.Confused( gText, eText )
     if not verwirrt then
         thisNPC:talkLanguage( CCharacter.say, CPlayer.german, gText );
         thisNPC:talkLanguage( CCharacter.say, CPlayer.english, eText );
@@ -814,7 +819,7 @@ end
 - @param Copper int amount of needed money
 - @return boolean true of the User has enougth money, else false
 ]]
-function CheckMoney(User,Copper)
+function M.CheckMoney(User,Copper)
     local Amount = ( User:countItem(61) * 10000 );
     Amount = Amount + ( User:countItem(3077) * 100 );
     Amount = Amount + ( User:countItem(3076) );
@@ -833,7 +838,7 @@ end
 - @return int copper coins
 - Splits a amount of copper up into gold, silver and copper
 ]]
-function SplitMoney(Copper)
+function M.SplitMoney(Copper)
     local GAmount=math.floor(Copper/10000);
     local SAmount=math.floor((Copper-GAmount*10000)/100);
     local CAmount=Copper-(SAmount*100+GAmount*10000);
@@ -846,7 +851,7 @@ end
 - @param Copper int amount of money thats payed
 - Takes away the amount of copper from the player inventory
 ]]
-function PayTheNPC(User,Copper)
+function M.PayTheNPC(User,Copper)
     if not CheckMoney( User, Copper ) then
         return false;
     end
@@ -941,7 +946,7 @@ end
 - @param User CharStruct User who gets the money
 - @param Copper int amount of money that is created
 ]]
-function PayThePlayer(User,Copper)
+function M.PayThePlayer(User,Copper)
     local Gold = 0;
     local Silver = 0;
     Gold, Silver, Copper = SplitMoney( Copper );
@@ -965,7 +970,7 @@ end
 - @param Text string the Text that shall be spoken
 - Splits up to long texts and makes the character saying the parts.
 ]]
-function NPCTalking(NPC,Text)
+function M.NPCTalking(NPC,Text)
     local done=false;
     local outputted=false;
     repeat
@@ -999,7 +1004,7 @@ end
 - CharInform
 - @param Char CharStruct The Char that will get the whisper inform
 ]]
-function CharInform(Char)
+function M.CharInform(Char)
 	if #TraderInform>0 then
 		local inform = TraderInform[ math.random(1,#TraderInform) ];
 		Char:inform("#w "..inform);
@@ -1013,7 +1018,7 @@ end
 - @param value int
 - @return int a value between ScBegin and ScEnd related to value
 ]]
-function Scale(ScBegin, ScEnd, value)
+function M.Scale(ScBegin, ScEnd, value)
     value = ( ( ScEnd - ScBegin ) / 100 ) * value + ScBegin;
     if (ScBegin < ScEnd) then
         return math.min( ScEnd, math.max( ScBegin, value ) );
@@ -1021,3 +1026,5 @@ function Scale(ScBegin, ScEnd, value)
         return math.max( ScEnd, math.min( ScBegin, value ) );
     end
 end
+
+return M
