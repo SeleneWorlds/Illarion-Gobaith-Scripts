@@ -58,18 +58,7 @@ function UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	if this then
 		local ok, wear = checkReq(User,SourceItem,this)
 		if ok then
-
-            --Quest 105: NPC Gregor Remethar "A light at the end of the tunnel
-
-            if SourceItem.id == 395 and (SourceItem.pos == position (906, 823, -3) or SourceItem.pos == position (906, 825, -3) ) and User:getQuestProgress(105) == 1 then
-                base.common.TempInformNLS(User, "[Queststatus] Du entfachst die Ehrenfeuer von Runewick. Kehre zu Gregor Remethar zur�ck, um deine Belohnung einzufordern.", "[Quest status] You lit the lights of honour of Runewick. Return to Gregor Remethar to claim your reward.")
-                User:setQuestProgress(105,2);
-            end
-
-            --Quest end
-
 			putOn(SourceItem,wear,false);
-
 		elseif this.req then
 			base.common.TempInformNLS(User,
 				"Daf�r brauchst du ".. ReqTexts.german[this.req.id] .. " in der Hand oder im G�rtel.",
