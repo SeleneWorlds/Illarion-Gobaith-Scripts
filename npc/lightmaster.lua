@@ -1,5 +1,4 @@
 require("npc.base.functions")
-require("npc.base.guards");
 module("npc.lightmaster", package.seeall)
 
 Waypoint:new(position(122,604,0),1);
@@ -85,8 +84,8 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Hh]ello","Hello, Hello");
     npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
     npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Grüße euch!");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
+    npc.base.functions.AddTraderTrigger("[Hh]allo","Grï¿½ï¿½e euch!");
+    npc.base.functions.AddAdditionalTrigger("[Gg]r[uï¿½][sï¿½]+");
     npc.base.functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name.."");
     npc.base.functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..".");
     npc.base.functions.AddTraderTrigger("[Bb]ye ","Be well");
@@ -98,7 +97,7 @@ function initializeNpc()
     npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     npc.base.functions.AddAdditionalText("Auf bald");
     npc.base.functions.AddAdditionalText("Auf balde");
-    npc.base.functions.AddTraderTrigger("[Kk]uh","Ich habe keine Kühe, ich habe nur Esel hier.");
+    npc.base.functions.AddTraderTrigger("[Kk]uh","Ich habe keine Kï¿½he, ich habe nur Esel hier.");
     npc.base.functions.AddTraderTrigger("cow","I have no cows, I have just mules.")
 
     TradSpeakLang={0,1};
@@ -124,7 +123,6 @@ function nextCycle()  -- ~10 times per second
 		action = false;
         npc.base.functions.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
-		npc.base.guards.BG_StartGuard(thisNPC);
 		thisNPC:setAttrib("agility",15);
 		thisNPC:createAtPos(5,392,1);
 		local torch = thisNPC:getItemAt(5);
@@ -154,16 +152,4 @@ function receiveText(texttype, message, originator)
             end
         end
     end
-end
-
-function abortRoute(theNPC)
-	npc.base.guards.BG_AbortRoute(theNPC);
-end
-
-function characterOnSight(npc,enemy)
-	npc.base.guards.BG_CharacterOnSight(npc,enemy);
-end
-
-function characterNear(npc,enemy)
-	npc.base.guards.BG_CharacterNear(npc,enemy);
 end
