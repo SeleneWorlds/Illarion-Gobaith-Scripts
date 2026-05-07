@@ -4,9 +4,9 @@
 
 require("base.common")
 
-module("tile.id_6_water", package.seeall)
+local M = {}
 
-Interrupt_Messages = { 	add = function (self,gText,eText)
+local Interrupt_Messages = { 	add = function (self,gText,eText)
 							table.insert(self, {["german"] = gText, ["english"] = eText});
 						end,
 						getRandom = function (self)
@@ -22,13 +22,13 @@ Interrupt_Messages:add(	"Dein Blick verliert sich f�r kurze Zeit in deinem Spi
 Interrupt_Messages:add(	"Der Boden unter dir rutscht leicht weg, sodass du gerade noch das Gleichgewicht halten kannst.",
 						"Some stones slip away from the bank, disturbing all the fish.");
 
-function GenWorkTime(User) -- generate work time
+function M.GenWorkTime(User) -- generate work time
 	local Skill  = User:getSkill( "fishing" );
 	local Attrib = User:increaseAttrib( "dexterity", 0 );
 	return math.floor( ( ( -0.2 * (Skill+Attrib) + 50) + math.random(0,40) )/2);
 end
 
-function useTile(User,Position,counter,param,ltstate)
+function M.useTile(User,Position,counter,param,ltstate)
 	if (User:get_race()~=5) then
 	    return
 	end
@@ -65,7 +65,7 @@ function useTile(User,Position,counter,param,ltstate)
     end
 
     if ( ltstate == Action.none ) then -- Arbeit noch nicht begonnen -> Los gehts
-        User:startAction( GenWorkTime(User), 0, 0, 0, 0);
+        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu fischen.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts fishing.");
         return
@@ -129,3 +129,5 @@ function useTile(User,Position,counter,param,ltstate)
         base.common.GetHungry( User, 100 ); -- Hunger
     end
 end
+
+return M

@@ -2,13 +2,15 @@
 -- tiles during this time.
 
 -- UPDATE tiles SET til_script='tile.id_11_gras' WHERE til_id = 11;
-require("tile.id_10_snow")
+local snowTile = require("tile.id_10_snow")
 
-module("tile.id_11_gras", package.seeall)
+local M = {}
 
-function useTile(User,Position,counter,param)
+function M.useTile(User,Position,counter,param)
 	if (world:getTime("month") <= 13) then
-		tile.id_10_snow.useTile(User, Position, counter, param)
+		snowTile.useTile(User, Position, counter, param)
 		return;
 	end;
 end
+
+return M
