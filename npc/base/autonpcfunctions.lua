@@ -3,7 +3,6 @@
 --
 -- By martin and nitram
 ---------------------------------------------------------------------------
-require("base.factions")
 module("npc.base.autonpcfunctions", package.seeall)
 
 --[[
@@ -333,15 +332,6 @@ function CheckCondition( User, condition )
         else
             return ( User:increaseAttrib( "sex", 0 ) == 1 );
         end
-    elseif ( condition[1] == "fraction" ) then
-        fractionID = translateFractionname( condition[2] );
-        if ( fractionID == 0 ) then
-            return false;
-        end
-        if not CompareValues( User:getQuestProgress( fractionID ),
-                              condition[4], condition[3] ) then
-            return false;
-        end
     elseif ( condition[1] == "number" ) then
         if not CompareValues( tonumber(saidNumber), tonumber(condition[3]), condition[2] ) then
             return false;
@@ -358,22 +348,6 @@ function CheckCondition( User, condition )
             end
             return not idle;
         end
-    elseif ( condition[1] == "town" ) then
-    	local Faction = BF_get_Faction(User); local townID = translateFractionname( condition[3] );
-    	if not CompareValues( Faction.tid, townID, condition[2]) then
-    		return false;
-    	end
-	elseif ( condition[1] == "rank" or condition[1] == "rang") then
-		local Faction = BF_get_Faction(User);
-		local theName = condition[2];
-		if condition[2] == "hometown" then
-			if Faction.tid==0 then return false; end
-			theName = TownNameEList[Faction.tid][1];
-		end
-	 	local townID = translateFractionname( theName );
-		if not CompareValues ( Faction[DigitToIndex[RANK_OFFSET+townID]] , condition[4], condition[3] ) then
-			return false;
-		end
 	end
     return true;
 end
@@ -538,21 +512,6 @@ function PerformConsequences( User, ListIndex )
         elseif ( consequence[1] == "rune" ) then
             User:teachMagic( translateMagictype( consequence[2] ),
                              consequence[3] );
-        elseif ( consequence[1] == "fraction" ) then
-            fractionID = translateFractionname( consequence[2] );
-            if ( fractionID == 0 ) then
-                return false;
-            end
-            FractionState = User:getQuestProgress( fractionID );
-            if ( consequence[3] == "=" ) then
-                User:setQuestProgress( fractionID, consequence[4] );
-            elseif ( consequence[3] == "+" ) then
-                newQuest = FractionState + consequence[4];
-                User:setQuestProgress( fractionID, newQuest );
-            elseif ( consequence[3] == "-" ) then
-                newQuest = FractionState - consequence[4];
-                User:setQuestProgress( fractionID, newQuest );
-            end
         elseif ( consequence[1] == "talk" ) then
             if ( consequence[2] == "begin" ) then
                 currentTalk = User.id;
@@ -563,38 +522,6 @@ function PerformConsequences( User, ListIndex )
             end
         elseif ( consequence[1] == "inform" ) then
 			table.insert( TraderInform, consequence[2] );
-		elseif ( consequence[1] == "rankpoints" ) then
-			local Faction = BF_get(User); 
-			local theName = consequence[2];
-			if consequence[2] == "hometown" then
-				if Faction.tid==0 then return false; end
-				theName = TownNameEList[Faction.tid][1];
-			end
-			local townID = translateFractionname( theName ); 
-            if ( consequence[3] == "+" ) then
-				Faction[DigitToIndex[RANKPOINTS_OFFSET+townID]] = Faction[DigitToIndex[RANKPOINTS_OFFSET+townID]] + (consequence[4]);
-            elseif ( consequence[3] == "-" ) then
-				Faction[DigitToIndex[RANKPOINTS_OFFSET+townID]] = Faction[DigitToIndex[RANKPOINTS_OFFSET+townID]] - (consequence[4]);
-            end
-			Faction = BF_put(User,Faction);			
-		elseif ( consequence[1] == "rank" or consequence[1] == "rang") then		
-			
-			local Faction = BF_get_Faction(User); 
-			local theName = consequence[2];
-			if consequence[2] == "hometown" then
-				if Faction.tid==0 then return false; end
-				theName = TownNameEList[Faction.tid][1];
-			end
-			local townID = translateFractionname( theName );				    
-			if ( consequence[3] == "=" ) then
-
- 				Faction[DigitToIndex[RANK_OFFSET+townID]] = consequence[4];
-            elseif ( consequence[3] == "+" ) then
-				Faction[DigitToIndex[RANK_OFFSET+townID]] = Faction[DigitToIndex[RANK_OFFSET+townID]] + (consequence[4]);
-            elseif ( consequence[3] == "-" ) then
-				Faction[DigitToIndex[RANK_OFFSET+townID]] = Faction[DigitToIndex[RANK_OFFSET+townID]] - (consequence[4]);
-            end
-			Faction = BF_put_Faction(User,Faction);			
 		else
 			return;
 		end       
@@ -643,34 +570,6 @@ function translateMagictype( TypeName )
         return 2;
     elseif ( TypeName == "druid" ) then
         return 3;
-    end
-    return 0;
-end
-
---[[
-- translateFractionname
-- @param FractionName string name of the Fraction
-- @return integer ID of the Fraction Queststatus
-- translates the name of a Fraction to the number for it
-]]
-function translateFractionname( FractionName )
-    FractionName = string.lower( FractionName );
-    if ( FractionName == "cadomyr" ) then
-		return 1;
-	elseif ( FractionName == "runewick" ) then
-        return 2;	
-	elseif ( FractionName == "galmair" ) then
-        return 3;		   
-	elseif ( FractionName == "albar" ) then
-        return 12;
-    elseif ( FractionName == "salkamar" ) then
-        return 13;
-    elseif ( FractionName == "thief" ) then
-        return 14;
-    elseif ( FractionName == "explorer" ) then
-        return 15;
-    elseif ( FractionName == "gynk" ) then
-        return 16;
     end
     return 0;
 end

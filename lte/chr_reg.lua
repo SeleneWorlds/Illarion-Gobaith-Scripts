@@ -2,7 +2,6 @@
 -- by Nitram
 
 require("base.common")
-require("base.factions")
 module("lte.chr_reg", package.seeall)
 --dofile( "p_basics.lua" );
 
@@ -11,9 +10,6 @@ crossPosition={};
 -- No final values!
 
 crossPosition[0]= position(0,0,0);       -- Default
-crossPosition[1]= position(0,1,0);       -- Cadomyr
-crossPosition[2]= position(1,0,0);       -- Runewick
-crossPosition[3]= position(1,1,0);       -- Galmair
 
 function addEffect( Effect, Character)
     -- it is needed to add at least value to make sure the effect does not get deleted right after
@@ -356,8 +352,6 @@ function leadToCross( Char , Effect )
         base.common.TempInformNLS( Char,"[Wiederbelebung] Der Eintritt in Chergas Reich der Toten wird dir verwehrt. Deine Taten auf Illarion sind noch nicht vor�ber. Die G�tter gew�hren dir eine weitere Chance auf die Ebene der Lebenden zur�ckzukehren.","[Respawn] You are denied access to Cherga's Realm of the Death. Your deeds on Illarion are not over. The gods grant you another chance to return to the Mortal Plane.");
         world:gfx(31,Char.pos); --GFX, alternatively 16
         world:makeSound(13,Char.pos); --Healing sound
-        factionValues=BF_get_Faction(Char); --reading the faction values
-        Char:warp(crossPosition[factionValues.tid]); --warp to home cross
         Effect:removeValue("cycleCounter"); --stop counting
 
     elseif cycleCounter<12 then

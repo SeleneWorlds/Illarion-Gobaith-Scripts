@@ -1,149 +1,58 @@
 -- UPDATE common SET com_script='gm.items.id_382_ceilingtrowel' WHERE com_itemid IN (382);
 
 require("gm.base.log")
-require("base.factions")
 
 module("gm.items.id_382_ceilingtrowel", package.seeall, package.seeall(gm.base.log))
 
 function UseItemWithCharacter(User,SourceItem,TargetCharacter,Counter,Param)
-	if SourceItem.data==2 then --faction system trowel  
-        if (string.find(User.lastSpokenText,"help")~=nil) then
-			Page = {};
-			Page[1] = "To look through the commands increase the counter value and use this Item again."
-			Page[2] = "Set rank in faction: \"setrank <townname> <townrank>\" - range of townrank: 0 - 9";
-			Page[3] = "Set hometown: \"settown <townname>\"";
-			Page[4] = "Add rankpoints for a Char in a town: \"addpoints <townname> <value>\" - range of value: 0 - 100";
-			Page[5] = "Remove rankpoints for the Char in a town: \"removepoints <townname> <value>\" - range of value: 0 - 100";
-			Page[6] = "If you \"use\" the item without targeting a character with the command addpoints or removepoints...";
-			Page[7] = "...for ALL characters within a radius of <Counter> the rankpoints get added or removed!";
-			Page[8] = "Set the guild: \"setguild <guildid> <guildrank>\" - range of guildrank: 0 - 2"
-            
-			if Counter<8 then
-        	User:inform("#b|"..Counter.."|382|"..Page[Counter]);
-        	else
-        	User:inform("This documentation has only 8 pages!");
-        	end
+    User:setAttrib("strength",TargetCharacter:increaseAttrib("strength",0));
+    User:setAttrib("constitution",TargetCharacter:increaseAttrib("constitution",0));
+    User:setAttrib("perception",TargetCharacter:increaseAttrib("perception",0));
+    User:setAttrib("intelligence",TargetCharacter:increaseAttrib("intelligence",0));
+    User:setAttrib("agility",TargetCharacter:increaseAttrib("agility",0));
+    User:setAttrib("dexterity",TargetCharacter:increaseAttrib("dexterity",0));
+    skSlashGM=User:increaseSkill(5,"slashing weapons",0);
+    skParryGM=User:increaseSkill(5,"parry",0);
+    skConcuGM=User:increaseSkill(5,"concussion weapons",0);
+    skPiercGM=User:increaseSkill(5,"puncture weapons",0);
+    skDodgeGM=User:increaseSkill(5,"dodge",0);
+    skTactiGM=User:increaseSkill(5,"tactics",0);
+    skDistaGM=User:increaseSkill(5,"distance weapons",0);
+    skWrestGM=User:increaseSkill(5,"wrestling",0);
+    DSlashTC=TargetCharacter:increaseSkill(5,"slashing weapons",0)-skSlashGM;
+    DParryTC=TargetCharacter:increaseSkill(5,"parry",0)-skParryGM;
+    DConcuTC=TargetCharacter:increaseSkill(5,"concussion weapons",0)-skConcuGM;
+    DPiercTC=TargetCharacter:increaseSkill(5,"puncture weapons",0)-skPiercGM;
+    DDodgeTC=TargetCharacter:increaseSkill(5,"dodge",0)-skDodgeGM;
+    DTactiTC=TargetCharacter:increaseSkill(5,"tactics",0)-skTactiGM;
+    DDistaTC=TargetCharacter:increaseSkill(5,"distance weapons",0)-skDistaGM;
+    DWrestTC=TargetCharacter:increaseSkill(5,"wrestling",0)-skWrestGM;
+
+    User:increaseSkill(5,"slashing weapons",DSlashTC);
+    User:increaseSkill(5,"parry",DParryTC);
+    User:increaseSkill(5,"concussion weapons",DConcuTC);
+    User:increaseSkill(5,"puncture weapons",DPiercTC);
+    User:increaseSkill(5,"dodge",DDodgeTC);
+    User:increaseSkill(5,"tactics",DTactiTC);
+    User:increaseSkill(5,"distance weapons",DDistaTC);
+    User:increaseSkill(5,"wrestling",DWrestTC);
+    User:inform("...done with skills and stats");
+
+    for i=1,11 do
+        Item = TargetCharacter:getItemAt(i);
+        if ((Item ~= nil) and (Item.id ~= 0)) then
+            BlockItem = User:getItemAt(i);
+            if ((BlockItem ~= nil) and (BlockItem.id ~= 0)) then
+                world:erase(BlockItem,BlockItem.number);
+            end
+            User:createAtPos(i,Item.id,Item.number);
+            NewItem = User:getItemAt(i);
+            NewItem.quality = Item.quality;
+            NewItem.data = Item.data;
+            world:changeItem(NewItem);
         end
-
-
-		if (string.find(User.lastSpokenText,"addpoints")~=nil or string.find(User.lastSpokenText,"removepoints")~=nil) then --add rankpoints to TargetChar
-            a,b,value = string.find(User.lastSpokenText,"(%d+)");
-            value=value+1-1;
-			if (value<101 and value>-1) then	    	
-				--changes the rankpoints
-				local CheckTown = CheckTownTrigger(User);
-				if CheckTown > 0 then
-					
-					if (string.find(User.lastSpokenText,"removepoints")~=nil) then value = -value; end
-					
-					Factionvalues = BF_get(TargetCharacter); --get rankpoints				
-						
-					Factionvalues[ DigitToIndex[CheckTown+RANKPOINTS_OFFSET] ]= 
-					     		Factionvalues[ DigitToIndex[CheckTown+RANKPOINTS_OFFSET] ] +value; --add or remove rankpoints
-							
-					BF_put(TargetCharacter,Factionvalues); --save rankpoints
-				--	LogGMAction(User,User.name.."("..User.id..") added "..value.." Rankpoints for "..TownNameGList[CheckTown][1].." to the Player"..TargetCharacter.name.."("..TargetCharacter.id..")");
-			    	User:inform("Added "..value.." rankpoints to "..TownNameGList[CheckTown][1].." to the Player "..TargetCharacter.name);
-				end
-            else
-                User:inform("Failed adding rankpoints: rankpoint range can be 0-100")
-			end
-			
-    	elseif (string.find(User.lastSpokenText,"settown")~=nil) then --set hometown of TargetChar
-				
-				local CheckTown = CheckTownTrigger(User);
-				if CheckTown > 0 then
-					Factionvalues = BF_get(TargetCharacter); --get Factionvalues
-				    Factionvalues.tid = CheckTown;
-				    BF_put(TargetCharacter,Factionvalues); --save changes
-				
-				--	LogGMAction(User,User.name.."("..User.id..") made "..TargetCharacter.name.."("..TargetCharacter.id..") member of the Town "..TownNameGList[CheckTown][1]);
-					User:inform(TargetCharacter.name.." is now member of "..TownNameGList[CheckTown][1]);
-				end
-    	elseif (string.find(User.lastSpokenText,"setrank")~=nil) then --set rank of TargetChar
-            a,b,value = string.find(User.lastSpokenText,"(%d+)");
-            value=value+1-1;
-			if (value<10 and value>-1) then
-				local CheckTown = CheckTownTrigger(User);
-				if CheckTown > 0 then
-					Factionvalues = BF_get(TargetCharacter); --get Rank
-					Factionvalues[DigitToIndex[CheckTown+RANK_OFFSET]] = value; --set rank to value
-					Factionvalues = BF_put(TargetCharacter,Factionvalues); --write faction values
-					User:inform(TargetCharacter.name.." has now the rank "..value.." in "..TownNameGList[CheckTown][1]);
-				
-				--	LogGMAction(User,User.name.."("..User.id..") set the rank of "..TargetCharacter.name.."("..TargetCharacter.id..") to "..value.." in "..TownNameGList[CheckTown][1]);		
-				end
-			else
-                User:inform("Failed changing rank: town rank can be 0-9")
-			end	
-    	elseif (string.find(User.lastSpokenText,"setguild")~=nil) then --set rank of TargetChar in Guild
-			a,b,guildid,value=string.find(User.lastSpokenText,"(%d+) (%d+)");
-			guildid = guildid+1-1; value = value+1-1;
-			if (guildid<11 or guildid>99) then User:inform("Failed changing guild rank: guildid out of range, 11-99 only"); return; end
-			
-			if (value<3 and value >-1) then
-				Factionvalues = BF_get(TargetCharacter);
-				Factionvalues.gid = guildid;
-				Factionvalues.rankGuild = value;
-				Factionvalues = BF_put(TargetCharacter,Factionvalues); --write faction values
-				
-				User:inform(TargetCharacter.name.." has now the rank "..value.." in the Guild "..GuildNameGList[guildid][1].."(ID: "..guildid..")");
-					
-			--	LogGMAction(User,User.name.."("..User.id..") made "..TargetCharacter.name.."("..TargetCharacter.id..") member of the Guild with the ID"..guildid.." and Rank"..value);		
-			else
-                User:inform("Failed changing Guild rank: town rank can be 0-2")
-			end			
-		end
-	else
-		User:setAttrib("strength",TargetCharacter:increaseAttrib("strength",0));
-	    User:setAttrib("constitution",TargetCharacter:increaseAttrib("constitution",0));
-	    User:setAttrib("perception",TargetCharacter:increaseAttrib("perception",0));
-	    User:setAttrib("intelligence",TargetCharacter:increaseAttrib("intelligence",0));
-	    User:setAttrib("agility",TargetCharacter:increaseAttrib("agility",0));
-	    User:setAttrib("dexterity",TargetCharacter:increaseAttrib("dexterity",0));
-	    skSlashGM=User:increaseSkill(5,"slashing weapons",0);
-	    skParryGM=User:increaseSkill(5,"parry",0);
-	    skConcuGM=User:increaseSkill(5,"concussion weapons",0);
-	    skPiercGM=User:increaseSkill(5,"puncture weapons",0);
-	    skDodgeGM=User:increaseSkill(5,"dodge",0);
-	    skTactiGM=User:increaseSkill(5,"tactics",0);
-	    skDistaGM=User:increaseSkill(5,"distance weapons",0);
-	    skWrestGM=User:increaseSkill(5,"wrestling",0);
-	    DSlashTC=TargetCharacter:increaseSkill(5,"slashing weapons",0)-skSlashGM;
-	    DParryTC=TargetCharacter:increaseSkill(5,"parry",0)-skParryGM;
-	    DConcuTC=TargetCharacter:increaseSkill(5,"concussion weapons",0)-skConcuGM;
-	    DPiercTC=TargetCharacter:increaseSkill(5,"puncture weapons",0)-skPiercGM;
-	    DDodgeTC=TargetCharacter:increaseSkill(5,"dodge",0)-skDodgeGM;
-	    DTactiTC=TargetCharacter:increaseSkill(5,"tactics",0)-skTactiGM;
-	    DDistaTC=TargetCharacter:increaseSkill(5,"distance weapons",0)-skDistaGM;
-	    DWrestTC=TargetCharacter:increaseSkill(5,"wrestling",0)-skWrestGM;
-
-	    User:increaseSkill(5,"slashing weapons",DSlashTC);
-	    User:increaseSkill(5,"parry",DParryTC);
-	    User:increaseSkill(5,"concussion weapons",DConcuTC);
-	    User:increaseSkill(5,"puncture weapons",DPiercTC);
-	    User:increaseSkill(5,"dodge",DDodgeTC);
-	    User:increaseSkill(5,"tactics",DTactiTC);
-	    User:increaseSkill(5,"distance weapons",DDistaTC);
-	    User:increaseSkill(5,"wrestling",DWrestTC);
-	    User:inform("...done with skills and stats");
-
-	    for i=1,11 do
-	        Item = TargetCharacter:getItemAt(i);
-	        if ((Item ~= nil) and (Item.id ~= 0)) then
-	            BlockItem = User:getItemAt(i);
-	            if ((BlockItem ~= nil) and (BlockItem.id ~= 0)) then
-	                world:erase(BlockItem,BlockItem.number);
-	            end
-	            User:createAtPos(i,Item.id,Item.number);
-	            NewItem = User:getItemAt(i);
-	            NewItem.quality = Item.quality;
-	            NewItem.data = Item.data;
-	            world:changeItem(NewItem);
-	        end
-	    end
-	    -- LogGMAction(User,User.name.."("..User.id..") copied "..TargetCharacter.name.."("..TargetCharacter.id..")");
-	end
+    end
+    -- LogGMAction(User,User.name.."("..User.id..") copied "..TargetCharacter.name.."("..TargetCharacter.id..")");
 end
 
 function UseItem(User,SourceItem,TargetItem,Counter,Param)
@@ -338,44 +247,6 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
             end
             world:setWeather(currWeather);
         end
-    elseif (SourceItem.data==2) then  --ranksystem
-        
-        if (string.find(User.lastSpokenText,"help")~=nil) then
-			Page = {};
-			Page[1] = "To look through the commands increase the counter value and use this Item again."
-			Page[2] = "Set rank in faction: \"setrank <townname> <townrank>\" - range of townrank: 0 - 9";
-			Page[3] = "Set hometown: \"settown <townname>\"";
-			Page[4] = "Add rankpoints for a Char in a town: \"addpoints <townname> <value>\" - range of value: 0 - 100";
-			Page[5] = "Remove rankpoints for the Char in a town: \"removepoints <townname> <value>\" - range of value: 0 - 100";
-			Page[6] = "If you \"use\" the item without targeting a character with the command addpoints or removepoints...";
-			Page[7] = "...for ALL characters within a radius of <Counter> the rankpoints get added or removed!";
-			Page[8] = "Set the guild: \"setguild <guildid> <guildrank>\" - range of guildrank: 0 - 2"
-            
-			if Counter<8 then
-        	User:inform("#b|"..Counter.."|382|"..Page[Counter]);
-        	else
-        	User:inform("This documentation has only 8 pages!");
-        	end
-        end
-        
-		if (string.find(User.lastSpokenText,"addpoints")~=nil) then --add rankpoints within a radius Counter
-            a,b,value = string.find(User.lastSpokenText,"(%d+)");
-            value=value+1-1;
-			if (value<101 and value>-1) then
-			   ChangeRankpoints(User,Counter,true, value);
-            else
-                User:inform("Failed adding rankpoints: max. 100 rankpoints")
-			end
-        
-    	elseif (string.find(User.lastSpokenText,"removepoints")~=nil) then --remove rankpoints within a radius Counter
-            a,b,value = string.find(User.lastSpokenText,"(%d+)");
-            value=value+1-1;
-			if (value<101 and value>-1) then
-			   ChangeRankpoints(User,Counter,false, value);
-            else
-                User:inform("Failed removing rankpoints: You can only remove 1-100 rankpoints")
-			end
-        end
 	end
 end
 
@@ -404,46 +275,4 @@ end
 function UseItemWithField(User,SourceItem,TargetPos,Counter,param)
     local Field=world:getField(TargetPos)
     User:inform("This field has the ID: "..Field:tile());
-end
-
-function ChangeRankpoints(User, Counter, Increase,value)
-	--check if the points shall be added or removed
-	if Increase then
-		text = "added";
-	else
-		text = "removed";
-		value = -value;
-	end
-	
-	--changes the rankpoints
-	local CheckTown = CheckTownTrigger(User);
-	
-	if CheckTown > 0 then
-		player_list=world:getPlayersInRangeOf(User.pos, Counter);
-		if player_list[1]~=nil then
-			 for i, player in pairs(player_list) do
-			    Factionvalues = BF_get(player_list[i]); --get rankpoints
-				
-				Factionvalues[ DigitToIndex[CheckTown+RANKPOINTS_OFFSET] ]= 
-		     		Factionvalues[ DigitToIndex[CheckTown+RANKPOINTS_OFFSET] ] +value; --add or remove rankpoints
-				
-				BF_put(player_list[i],Factionvalues); --save rankpoints
-		--		LogGMAction(User,User.name.."("..User.id..")"..text.." "..value.." Rankpoints for "..TownNameGList[CheckTown][1].." to the Player"..player_list[i].name.."("..player_list[i].id..")");
-			 end
-        	User:inform("Added "..value.." rankpoints to "..TownNameGList[CheckTown][1].." for the characters within "..Counter.." radius.");
-	    end
-	end
-	
-end
-
-
-function CheckTownTrigger(User)
-	if (string.find(string.lower(User.lastSpokenText), string.lower(TownNameGList[1][1]))~=nil) then  --cadomyr?
-		return 1;
-	elseif (string.find(string.lower(User.lastSpokenText),string.lower(TownNameGList[2][1]) )~=nil) then --runewick?
-	    return 2;
-	elseif (string.find(string.lower(User.lastSpokenText),string.lower(TownNameGList[3][1]) )~=nil) then --galmair?
-	    return 3;
-	end
-	return 0; --no townname
 end

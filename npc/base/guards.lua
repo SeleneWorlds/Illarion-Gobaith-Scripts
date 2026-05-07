@@ -2,7 +2,6 @@
 
 require("npc.base.patrol");
 require("base.common")
-require("base.factions");
 module("npc.base.guards", package.seeall)
 
 BG_Faction = 0;						-- faction of the guard

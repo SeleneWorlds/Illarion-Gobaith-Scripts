@@ -9,7 +9,6 @@
 
 require("content.genus")
 require("base.common")
-require("base.factions")
 require("content.lookat.custom")
 require("content.uniquechardescription")
 
@@ -101,16 +100,6 @@ function lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     end
     output=output..". "; --..getClothesText(qual, dura, lang, TargetCharacter:increaseAttrib( "sex", 0 ),SourceCharacter);
     output=output..getWeaponText( TargetCharacter, lang, SourceCharacter );
-    
-		--faction additions
-	Faction = BF_get(TargetCharacter);
-	if Faction.rankTown == 0 then
-		factiontext = ( lang ==0 and "("..TownRankList[Faction.rankTown].gRank..")" or "("..TownRankList[Faction.rankTown].eRank..")" );
-	else
-		factiontext = ( (lang ==0 and "("..TownRankList[Faction.rankTown].gRank.." "..TownNameGList[Faction.tid][1].."s)" ) 
-				or 	"("..TownRankList[Faction.rankTown].eRank.." of "..TownNameEList[Faction.tid][1]..")" );
-	end
-	output = output .. factiontext;
 	
     checkCustomInventory(TargetCharacter, SourceCharacter);
 	  
