@@ -1,10 +1,8 @@
-require("monster.base.drop")
+local drop = require("monster.base.drop")
 require("monster.base.lookat")
 require("base.messages");
-module("monster.mon_50_elementary")
-
-
-function ini(Monster)
+local M = {}
+function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
@@ -16,13 +14,13 @@ msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte f�r Er
 
 end
 
-function enemyNear(Monster,Enemy)
+function M.enemyNear(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if (MonID==501) or (MonID==502) then -- Fire Elementaries
@@ -38,14 +36,14 @@ function enemyNear(Monster,Enemy)
         if (math.random(1,15) == 1) then
             if (MonID == 502) then
                 old_mon_pos = Monster.pos;
-                monster.base.drop.SuddenWarp(Monster,Enemy,false);
+                drop.SuddenWarp(Monster,Enemy,false);
                 CreateLineofFligth(old_mon_pos,Monster.pos,44);
                 CreateLineofFligth(position(old_mon_pos.x - 1,old_mon_pos.y,old_mon_pos.z),position(Monster.pos.x - 1,Monster.pos.y,Monster.pos.z),44);
                 CreateLineofFligth(position(old_mon_pos.x + 1,old_mon_pos.y,old_mon_pos.z),position(Monster.pos.x + 1,Monster.pos.y,Monster.pos.z),44);
                 CreateLineofFligth(position(old_mon_pos.x,old_mon_pos.y - 1,old_mon_pos.z),position(Monster.pos.x,Monster.pos.y - 1,Monster.pos.z),44);
                 CreateLineofFligth(position(old_mon_pos.x,old_mon_pos.y + 1,old_mon_pos.z),position(Monster.pos.x,Monster.pos.y + 1,Monster.pos.z),44);
             else
-                monster.base.drop.SuddenWarp(Monster,Enemy,true);
+                drop.SuddenWarp(Monster,Enemy,true);
             end
             return true;
         end
@@ -55,7 +53,7 @@ function enemyNear(Monster,Enemy)
             world:gfx(4,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         return false;
@@ -64,7 +62,7 @@ function enemyNear(Monster,Enemy)
             world:gfx(7,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         return false;
@@ -73,7 +71,7 @@ function enemyNear(Monster,Enemy)
             world:gfx(5,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         return false;
@@ -82,7 +80,7 @@ function enemyNear(Monster,Enemy)
             world:gfx(46,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         return false;
@@ -91,13 +89,13 @@ function enemyNear(Monster,Enemy)
     end
 end
 
-function enemyOnSight(Monster,Enemy)
+function M.enemyOnSight(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if (MonID==501) or (MonID==502) then -- Fire Elementaries
@@ -113,14 +111,14 @@ function enemyOnSight(Monster,Enemy)
         if (math.random(1,15) == 1) then
             if (MonID == 502) then
                 old_mon_pos = Monster.pos;
-                monster.base.drop.SuddenWarp(Monster,Enemy,false);
+                drop.SuddenWarp(Monster,Enemy,false);
                 CreateLineofFligth(old_mon_pos,Monster.pos,44);
                 CreateLineofFligth(position(old_mon_pos.x - 1,old_mon_pos.y,old_mon_pos.z),position(Monster.pos.x - 1,Monster.pos.y,Monster.pos.z),44);
                 CreateLineofFligth(position(old_mon_pos.x + 1,old_mon_pos.y,old_mon_pos.z),position(Monster.pos.x + 1,Monster.pos.y,Monster.pos.z),44);
                 CreateLineofFligth(position(old_mon_pos.x,old_mon_pos.y - 1,old_mon_pos.z),position(Monster.pos.x,Monster.pos.y - 1,Monster.pos.z),44);
                 CreateLineofFligth(position(old_mon_pos.x,old_mon_pos.y + 1,old_mon_pos.z),position(Monster.pos.x,Monster.pos.y + 1,Monster.pos.z),44);
             else
-                monster.base.drop.SuddenWarp(Monster,Enemy,true);
+                drop.SuddenWarp(Monster,Enemy,true);
             end
             return true;
         end
@@ -138,7 +136,7 @@ function enemyOnSight(Monster,Enemy)
             world:gfx(4,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         if (MonID==504) then
@@ -155,7 +153,7 @@ function enemyOnSight(Monster,Enemy)
             world:gfx(7,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         if (MonID==506) then
@@ -172,7 +170,7 @@ function enemyOnSight(Monster,Enemy)
             world:gfx(5,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         if (MonID==508) then
@@ -189,7 +187,7 @@ function enemyOnSight(Monster,Enemy)
             world:gfx(46,Monster.pos);
         end
         if (math.random(1,15) == 1) then
-            monster.base.drop.SuddenWarp(Monster,Enemy,true);
+            drop.SuddenWarp(Monster,Enemy,true);
             return true;
         end
         if (MonID==510) then
@@ -219,25 +217,25 @@ function enemyOnSight(Monster,Enemy)
     end
 end
 
-function onAttacked(Monster,Enemy)
+function M.onAttacked(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
-function onCasted(Monster,Enemy)
+function M.onCasted(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
-function onDeath(Monster)
+function M.onDeath(Monster)
 
     if killer[Monster.id] ~= nil then
 
@@ -250,156 +248,158 @@ function onDeath(Monster)
         end
     end
 
-    monster.base.drop.Clearmonster.base.drop.Dropping();
+    drop.ClearDropping();
     local MonID=Monster:get_mon_type();
     if (MonID==501) then --Lower Fire Elementary, Level: 4, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(431,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --wax
-        if not done then done=monster.base.drop.AddDropItem(390,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --lamp oil
-        if not done then done=monster.base.drop.AddDropItem(359,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --flame
-        if not done then done=monster.base.drop.AddDropItem(43,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --candles
-        if not done then done=monster.base.drop.AddDropItem(391,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --torch
+        local done=drop.AddDropItem(431,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --wax
+        if not done then done=drop.AddDropItem(390,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --lamp oil
+        if not done then done=drop.AddDropItem(359,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --flame
+        if not done then done=drop.AddDropItem(43,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --candles
+        if not done then done=drop.AddDropItem(391,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --torch
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(314,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --pott ash
-        if not done then done=monster.base.drop.AddDropItem(1840,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper goblet
-        if not done then done=monster.base.drop.AddDropItem(2536,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper ore
-        if not done then done=monster.base.drop.AddDropItem(2550,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper ingot
-        if not done then done=monster.base.drop.AddDropItem(104,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --silver ingot
+        local done=drop.AddDropItem(314,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --pott ash
+        if not done then done=drop.AddDropItem(1840,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper goblet
+        if not done then done=drop.AddDropItem(2536,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper ore
+        if not done then done=drop.AddDropItem(2550,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper ingot
+        if not done then done=drop.AddDropItem(104,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --silver ingot
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(255,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --raw ruby
-        if not done then done=monster.base.drop.AddDropItem(46,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby
-        if not done then done=monster.base.drop.AddDropItem(68,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby ring
-        if not done then done=monster.base.drop.AddDropItem(67,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby amulet
-        if not done then done=monster.base.drop.AddDropItem(447,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby powder
+        local done=drop.AddDropItem(255,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --raw ruby
+        if not done then done=drop.AddDropItem(46,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby
+        if not done then done=drop.AddDropItem(68,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby ring
+        if not done then done=drop.AddDropItem(67,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby amulet
+        if not done then done=drop.AddDropItem(447,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby powder
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
 
 
     elseif (MonID==502) then --Higher Fire Elementary, Level: 4, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(43,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --candles
-        if not done then done=monster.base.drop.AddDropItem(359,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --flame
-        if not done then done=monster.base.drop.AddDropItem(2553,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --pure fire
-        if not done then done=monster.base.drop.AddDropItem(431,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --wax
-        if not done then done=monster.base.drop.AddDropItem(390,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --lamp oil
+        local done=drop.AddDropItem(43,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --candles
+        if not done then done=drop.AddDropItem(359,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --flame
+        if not done then done=drop.AddDropItem(2553,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --pure fire
+        if not done then done=drop.AddDropItem(431,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --wax
+        if not done then done=drop.AddDropItem(390,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --lamp oil
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(2536,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --copper ore
-        if not done then done=monster.base.drop.AddDropItem(2550,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper ingot
-        if not done then done=monster.base.drop.AddDropItem(1840,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper goblet
-        if not done then done=monster.base.drop.AddDropItem(314,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --pott ash
-        if not done then done=monster.base.drop.AddDropItem(104,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --silver ingot
+        local done=drop.AddDropItem(2536,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --copper ore
+        if not done then done=drop.AddDropItem(2550,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper ingot
+        if not done then done=drop.AddDropItem(1840,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --copper goblet
+        if not done then done=drop.AddDropItem(314,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --pott ash
+        if not done then done=drop.AddDropItem(104,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --silver ingot
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(68,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --ruby ring
-        if not done then done=monster.base.drop.AddDropItem(67,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby amulet
-        if not done then done=monster.base.drop.AddDropItem(255,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --raw ruby
-        if not done then done=monster.base.drop.AddDropItem(46,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby
-        if not done then done=monster.base.drop.AddDropItem(447,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby powder
+        local done=drop.AddDropItem(68,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --ruby ring
+        if not done then done=drop.AddDropItem(67,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby amulet
+        if not done then done=drop.AddDropItem(255,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --raw ruby
+        if not done then done=drop.AddDropItem(46,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby
+        if not done then done=drop.AddDropItem(447,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --ruby powder
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
 
 
     elseif (MonID==503) then --Lower Water Elementary, Level: 4, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(26,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --clay
-        if not done then done=monster.base.drop.AddDropItem(355,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --salmon
-        if not done then done=monster.base.drop.AddDropItem(360,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --iceflame
-        if not done then done=monster.base.drop.AddDropItem(54,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --bucket with water
-        if not done then done=monster.base.drop.AddDropItem(73,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --trout
+        local done=drop.AddDropItem(26,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --clay
+        if not done then done=drop.AddDropItem(355,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --salmon
+        if not done then done=drop.AddDropItem(360,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --iceflame
+        if not done then done=drop.AddDropItem(54,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --bucket with water
+        if not done then done=drop.AddDropItem(73,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --trout
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(2186,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(1854,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(1841,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(1855,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(2058,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --glass with water
+        local done=drop.AddDropItem(2186,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --goblet with water
+        if not done then done=drop.AddDropItem(1854,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
+        if not done then done=drop.AddDropItem(1841,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
+        if not done then done=drop.AddDropItem(1855,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
+        if not done then done=drop.AddDropItem(2058,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --glass with water
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(253,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --raw bluestone
-        if not done then done=monster.base.drop.AddDropItem(284,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone
-        if not done then done=monster.base.drop.AddDropItem(279,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone ring
-        if not done then done=monster.base.drop.AddDropItem(71,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone amulet
-        if not done then done=monster.base.drop.AddDropItem(446,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone powder
+        local done=drop.AddDropItem(253,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --raw bluestone
+        if not done then done=drop.AddDropItem(284,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone
+        if not done then done=drop.AddDropItem(279,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone ring
+        if not done then done=drop.AddDropItem(71,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone amulet
+        if not done then done=drop.AddDropItem(446,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone powder
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
 
 
     elseif (MonID==504) then --Higher Water Elementary, Level: 4, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(54,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --bucket with water
-        if not done then done=monster.base.drop.AddDropItem(360,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --iceflame
-        if not done then done=monster.base.drop.AddDropItem(2554,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --pure water
-        if not done then done=monster.base.drop.AddDropItem(26,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --clay
-        if not done then done=monster.base.drop.AddDropItem(355,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --salmon
+        local done=drop.AddDropItem(54,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --bucket with water
+        if not done then done=drop.AddDropItem(360,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --iceflame
+        if not done then done=drop.AddDropItem(2554,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --pure water
+        if not done then done=drop.AddDropItem(26,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --clay
+        if not done then done=drop.AddDropItem(355,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --salmon
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(1841,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(1855,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(2186,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(1854,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
-        if not done then done=monster.base.drop.AddDropItem(2186,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --cup with water
+        local done=drop.AddDropItem(1841,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --goblet with water
+        if not done then done=drop.AddDropItem(1855,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
+        if not done then done=drop.AddDropItem(2186,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
+        if not done then done=drop.AddDropItem(1854,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --goblet with water
+        if not done then done=drop.AddDropItem(2186,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --cup with water
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(279,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --bluestone ring
-        if not done then done=monster.base.drop.AddDropItem(71,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone amulet
-        if not done then done=monster.base.drop.AddDropItem(253,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --raw bluestone
-        if not done then done=monster.base.drop.AddDropItem(284,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone
-        if not done then done=monster.base.drop.AddDropItem(446,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone powder
+        local done=drop.AddDropItem(279,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --bluestone ring
+        if not done then done=drop.AddDropItem(71,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone amulet
+        if not done then done=drop.AddDropItem(253,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --raw bluestone
+        if not done then done=drop.AddDropItem(284,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone
+        if not done then done=drop.AddDropItem(446,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --bluestone powder
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
 
 
     elseif (MonID==505) then --Lower Wind Elementary, Level: 4, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(2786,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --branch
-        if not done then done=monster.base.drop.AddDropItem(56,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --bough
-        if not done then done=monster.base.drop.AddDropItem(372,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --poison cloud
-        if not done then done=monster.base.drop.AddDropItem(2745,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --parchment
-        if not done then done=monster.base.drop.AddDropItem(155,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --sibanac leaf
+        local done=drop.AddDropItem(2786,1,20,(100*math.random(3,4)+math.random(33,44)),0,1); --branch
+        if not done then done=drop.AddDropItem(56,1,10,(100*math.random(3,4)+math.random(33,44)),0,1); end --bough
+        if not done then done=drop.AddDropItem(372,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --poison cloud
+        if not done then done=drop.AddDropItem(2745,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --parchment
+        if not done then done=drop.AddDropItem(155,1,1,(100*math.random(3,4)+math.random(33,44)),0,1); end --sibanac leaf
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(314,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --pott ash
-        if not done then done=monster.base.drop.AddDropItem(316,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --sand
-        if not done then done=monster.base.drop.AddDropItem(2055,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --glass
-        if not done then done=monster.base.drop.AddDropItem(41,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --glass ingot
-        if not done then done=monster.base.drop.AddDropItem(726,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --coarse sand
+        local done=drop.AddDropItem(314,1,20,(100*math.random(3,4)+math.random(33,44)),0,2); --pott ash
+        if not done then done=drop.AddDropItem(316,1,10,(100*math.random(3,4)+math.random(33,44)),0,2); end --sand
+        if not done then done=drop.AddDropItem(2055,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --glass
+        if not done then done=drop.AddDropItem(41,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --glass ingot
+        if not done then done=drop.AddDropItem(726,1,1,(100*math.random(3,4)+math.random(33,44)),0,2); end --coarse sand
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(256,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --raw emerald
-        if not done then done=monster.base.drop.AddDropItem(45,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald
-        if not done then done=monster.base.drop.AddDropItem(281,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald ring
-        if not done then done=monster.base.drop.AddDropItem(62,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald amulet
-        if not done then done=monster.base.drop.AddDropItem(448,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald powder
+        local done=drop.AddDropItem(256,1,20,(100*math.random(3,4)+math.random(33,44)),0,3); --raw emerald
+        if not done then done=drop.AddDropItem(45,1,10,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald
+        if not done then done=drop.AddDropItem(281,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald ring
+        if not done then done=drop.AddDropItem(62,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald amulet
+        if not done then done=drop.AddDropItem(448,1,1,(100*math.random(3,4)+math.random(33,44)),0,3); end --emerald powder
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
     end
-    monster.base.drop.Dropping(Monster);
+    drop.Dropping(Monster);
 end
+
+return M

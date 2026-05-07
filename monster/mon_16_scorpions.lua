@@ -1,10 +1,8 @@
-require("monster.base.drop")
+local drop = require("monster.base.drop")
 require("monster.base.lookat")
 require("base.messages");
-module("monster.mon_16_scorpions")
-
-
-function ini(Monster)
+local M = {}
+function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
@@ -26,51 +24,51 @@ msgs:addMessage("#me kriecht mit acht feingeliederten Beinen �ber den Boden.",
 end
 
 
-function enemyNear(Monster,Enemy)
+function M.enemyNear(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     return false
 end
 
-function enemyOnSight(Monster,Enemy)
+function M.enemyOnSight(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
-    if monster.base.drop.DefaultSlowdown( Monster ) then
+    if drop.DefaultSlowdown( Monster ) then
         return true
     else
         return false
     end
 end
 
-function onAttacked(Monster,Enemy)
+function M.onAttacked(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
-function onCasted(Monster,Enemy)
+function M.onCasted(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
-function onDeath(Monster)
+function M.onDeath(Monster)
 
     if killer[Monster.id] ~= nil then
 
@@ -83,9 +81,11 @@ function onDeath(Monster)
         end
     end
 
-    monster.base.drop.Clearmonster.base.drop.Dropping();
+    drop.ClearDropping();
 
 --No drops
 
-    monster.base.drop.Dropping(Monster);
+    drop.Dropping(Monster);
 end
+
+return M

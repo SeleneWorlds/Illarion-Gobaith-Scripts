@@ -1,17 +1,16 @@
 -- monster lookat
-module("monster.base.lookat")
-
+local M = {}
 -- mode is always 0
-function lookAtMonster( player, monster, mode )
+function M.lookAtMonster( player, monster, mode )
 	
 	player:inform("name: ".. monster.name .. "; ID: ".. monster:get_mon_type());
 	local output = "";
 	
 	local lang = player:getPlayerLanguage();
 	if lang==0 then
-		output = output .. "Dieses Wesen scheint " .. getHPText(monster:increaseAttrib("hitpoints",0),lang) .. " zu sein."
+		output = output .. "Dieses Wesen scheint " .. M.getHPText(monster:increaseAttrib("hitpoints",0),lang) .. " zu sein."
 	elseif lang==1 then
-		output = output .. "This creature appears to be " .. getHPText(monster:increaseAttrib("hitpoints",0),lang) .. ".";
+		output = output .. "This creature appears to be " .. M.getHPText(monster:increaseAttrib("hitpoints",0),lang) .. ".";
 	end
 	
 	if output~="" then
@@ -19,7 +18,7 @@ function lookAtMonster( player, monster, mode )
 	end
 end
 
-function getHPText(HP,language)
+function M.getHPText(HP,language)
     if HPText==nil then
         HPText={};
         HPText[0]={};
@@ -40,3 +39,5 @@ function getHPText(HP,language)
     local interval=math.ceil(HP/1700);
     return HPText[language][interval];
 end
+
+return M

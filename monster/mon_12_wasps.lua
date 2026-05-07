@@ -1,10 +1,8 @@
-require("monster.base.drop")
+local drop = require("monster.base.drop")
 require("monster.base.lookat")
 require("base.messages");
-module("monster.mon_12_wasps")
-
-
-function ini(Monster)
+local M = {}
+function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
@@ -25,13 +23,13 @@ msgs:addMessage("#mes Fl�gel verbreiten ein hochfrequentes Summen, welches in 
 
 end
 
-function enemyNear(Monster,Enemy)
+function M.enemyNear(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if (MonID==126) then
@@ -40,19 +38,19 @@ function enemyNear(Monster,Enemy)
     return false
 end
 
-function enemyOnSight(Monster,Enemy)
+function M.enemyOnSight(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if (MonID==126) then
         world:gfx(9,Monster.pos);
     end
-    if monster.base.drop.DefaultSlowdown( Monster ) then
+    if drop.DefaultSlowdown( Monster ) then
         return true
     else
         return false
@@ -60,26 +58,26 @@ function enemyOnSight(Monster,Enemy)
 end
 
 
-function onAttacked(Monster,Enemy)
+function M.onAttacked(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
-function onCasted(Monster,Enemy)
+function M.onCasted(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
 
-function onDeath(Monster)
+function M.onDeath(Monster)
 
     if killer[Monster.id] ~= nil then
 
@@ -92,25 +90,25 @@ function onDeath(Monster)
         end
     end
 
-    monster.base.drop.Clearmonster.base.drop.Dropping();
+    drop.ClearDropping();
     local MonID=Monster:get_mon_type();
 
-    monster.base.drop.AddDropItem(2529,1,100,333,0,1); --honeycombs
+    drop.AddDropItem(2529,1,100,333,0,1); --honeycombs
 
     if (MonID==126) then -- wasp of Fire!!!
 
-        CreateCircle( 1, 250,Monster.pos,3,false);
-        CreateCircle( 9, 750,Monster.pos,2,true);
-        CreateCircle(44,1000,Monster.pos,1,true);
+        M.CreateCircle( 1, 250,Monster.pos,3,false);
+        M.CreateCircle( 9, 750,Monster.pos,2,true);
+        M.CreateCircle(44,1000,Monster.pos,1,true);
         world:gfx(36,Monster.pos);
         world:makeSound(5,Monster.pos);
-        HitChar(SourceItem.pos,3000,Monster.pos);
+        M.HitChar(SourceItem.pos,3000,Monster.pos);
 
     end
-    monster.base.drop.Dropping(Monster);
+    drop.Dropping(Monster);
 end
 
-function CreateCircle(gfxid,Damage,CenterPos,Radius,setFlames)
+function M.CreateCircle(gfxid,Damage,CenterPos,Radius,setFlames)
     local irad = math.ceil(Radius);
     local dim = 2*(irad+1);
     local x;
@@ -128,8 +126,8 @@ function CreateCircle(gfxid,Damage,CenterPos,Radius,setFlames)
                and( map[x][y] or   map[x-1][y] or  map[x][y-1] or  map[x-1][y-1] ) then
                 HitPos=position( CenterPos.x + x, CenterPos.y + y, CenterPos.z );
                 world:gfx(gfxid,HitPos);
-                HitChar(HitPos,Damage,CenterPos);
-                if not SetNextTrap(HitPos,CenterPos) then
+                M.HitChar(HitPos,Damage,CenterPos);
+                if not M.SetNextTrap(HitPos,CenterPos) then
                     if setFlames then
                         if (math.random(1,5)==1) then
                             world:createItemFromId(359,1,HitPos,true,math.random(200,600),0);
@@ -141,7 +139,7 @@ function CreateCircle(gfxid,Damage,CenterPos,Radius,setFlames)
     end;
 end;
 
-function HitChar(Posi,Hitpoints,CenterPos)
+function M.HitChar(Posi,Hitpoints,CenterPos)
     if world:isCharacterOnField(Posi) then
         local Character = world:getCharacterOnField(Posi);
         if (Character:get_type()==1) then
@@ -177,7 +175,7 @@ function HitChar(Posi,Hitpoints,CenterPos)
     end;
 end;
 
-function SetNextTrap(Posi,CenterPos)
+function M.SetNextTrap(Posi,CenterPos)
     if equapos(Posi,CenterPos) then
         return false
     end
@@ -200,3 +198,5 @@ function SetNextTrap(Posi,CenterPos)
     end
     return false
 end
+
+return M

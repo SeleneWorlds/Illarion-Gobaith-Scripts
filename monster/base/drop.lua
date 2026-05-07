@@ -1,12 +1,11 @@
 require("base.common")
-module("monster.base.drop")
-
-function ClearDropping()
+local M = {}
+function M.ClearDropping()
     SelItemValue={};
     Catsdone={};
 end
 
-function AddDropItem(ItemID,Amount,Prob,Qual,DataValue,Category)
+function M.AddDropItem(ItemID,Amount,Prob,Qual,DataValue,Category)
     if( Amount == nil ) then
         return false;
     elseif (Amount>0) then
@@ -27,7 +26,7 @@ function AddDropItem(ItemID,Amount,Prob,Qual,DataValue,Category)
     return false;
 end
 
-function Dropping(Char)
+function M.Dropping(Char)
     if ((dropped == nil) or (dropped ~= Char.id)) then
         dropped = Char.id;
         first = true
@@ -67,29 +66,29 @@ function Dropping(Char)
     end
 end
 
-function SpellResistence( Char )
+function M.SpellResistence( Char )
     local CInt   = Char:increaseAttrib("intelligence",0);
     local CEss   = Char:increaseAttrib("essence",0);
     local CSkill = Char:getSkill("magic resistance") ;
-    CSkill = base.common.Limit( CSkill, 0, MaximalMagicResistance( Char ) );
+    CSkill = base.common.Limit( CSkill, 0, M.MaximalMagicResistance( Char ) );
 
     local ResTry=base.common.Limit(CSkill * ( ( CEss*3 + CInt*2 ) / 63 ), 0, 100 );
 
     return base.common.Limit( math.floor( ResTry * math.random(8,12)/10 ), 0, 100 );
 end
 
-function LearnMagicResistance( Char )
-    if (MaximalMagicResistance( Char ) > Char:getSkill("magic resistance")) then
+function M.LearnMagicResistance( Char )
+    if (M.MaximalMagicResistance( Char ) > Char:getSkill("magic resistance")) then
         Char:learn(3,"magic resistance",2,100);
     end
 end
 
-function MaximalMagicResistance( Char )
+function M.MaximalMagicResistance( Char )
     local maxMagicResist = 1.4 * ( Char:increaseAttrib("intelligence",0) + ( Char:increaseAttrib("willpower",0) * 1.75 ) + ( Char:increaseAttrib("essence",0) * 2 ) ) + 5;
     return base.common.Limit( maxMagicResist, 0, 100 );
 end
 
-function CastLargeAreaMagic( monster, rndTry, LoadupRounds, LoadupEffect, DamageRange, Range, Effect, AP, CastingTry )
+function M.CastLargeAreaMagic( monster, rndTry, LoadupRounds, LoadupEffect, DamageRange, Range, Effect, AP, CastingTry )
     if (loadingMonsters == nil) then
         loadingMonsters = {};
     end;
@@ -129,12 +128,12 @@ function CastLargeAreaMagic( monster, rndTry, LoadupRounds, LoadupEffect, Damage
     local CastTry = 0;
     local Damage = 0;
     for i,target in pairs(targets) do
-        local CastTry = math.random(CastingTry[1],CastingTry[2]) - SpellResistence( target );
+        local CastTry = math.random(CastingTry[1],CastingTry[2]) - M.SpellResistence( target );
         CastTry = ( CastTry - CastingTry[1] ) / ( CastingTry[2] - CastingTry[1] ) * 100;
         local Damage = base.common.ScaleUnlimited( DamageRange[1], DamageRange[2], CastTry );
         if Damage > 0 then
             target:increaseAttrib("hitpoints",-Damage);
-            LearnMagicResistance( target );
+            M.LearnMagicResistance( target );
             if ( Effect[1] > 0 ) then
                 world:gfx(Effect[1],target.pos);
             end
@@ -150,7 +149,7 @@ function CastLargeAreaMagic( monster, rndTry, LoadupRounds, LoadupEffect, Damage
     return true;
 end
 
-function CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFlight,CastingTry)
+function M.CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFlight,CastingTry)
     if (math.random(1,rndTry)==1) and (Monster.pos.z==Enemy.pos.z) then
         local EffectTry=math.random(1,#Effect+#Item);
         if ( EffectTry > #Effect ) then
@@ -181,12 +180,12 @@ function CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFlig
             base.common.CreateLine(Monster.pos,Enemy.pos, function( targetPos )
                 if world:isCharacterOnField( targetPos ) then
                     local Enemy = world:getCharacterOnField( targetPos );
-                    local CastTry = math.random(CastingTry[1],CastingTry[2]) - SpellResistence( Enemy );
+                    local CastTry = math.random(CastingTry[1],CastingTry[2]) - M.SpellResistence( Enemy );
                     CastTry = ( CastTry - CastingTry[1] ) / ( CastingTry[2] - CastingTry[1] ) * 100;
                     local Damage = base.common.ScaleUnlimited( DamageRange[1], DamageRange[2], CastTry );
                     if Damage > 0 then
                         Enemy:increaseAttrib("hitpoints",-Damage);
-                        LearnMagicResistance( Enemy );
+                        M.LearnMagicResistance( Enemy );
                         if ( Effect[EffectTry][1] > 0 ) then
                             world:gfx(Effect[EffectTry][1],targetPos);
                         end
@@ -213,7 +212,7 @@ function CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFlig
     return false;
 end
 
-function CastHealing( Caster, rndTry, HealAmmount, Range, Effect, AP )
+function M.CastHealing( Caster, rndTry, HealAmmount, Range, Effect, AP )
     if (math.random(1,rndTry)~=1) then
         return false;
     end
@@ -256,14 +255,14 @@ function CastHealing( Caster, rndTry, HealAmmount, Range, Effect, AP )
     return true;
 end
 
-function CastParalyze( Caster, Enemy, rndTry, APPunishment, Range, Effect, AP ,CastingTry )
+function M.CastParalyze( Caster, Enemy, rndTry, APPunishment, Range, Effect, AP ,CastingTry )
     if (math.random(1,rndTry)==1) and (Monster.pos.z==Enemy.pos.z) then
-        local CastTry = math.random(CastingTry[1],CastingTry[2]) - SpellResistence( Enemy );
+        local CastTry = math.random(CastingTry[1],CastingTry[2]) - M.SpellResistence( Enemy );
         CastTry = ( CastTry - CastingTry[1] ) / ( CastingTry[2] - CastingTry[1] ) * 100;
         local Damage = base.common.ScaleUnlimited( APPunishment[1], APPunishment[2], CastTry );
         if Damage > 0 then
             Enemy.movepoints = Enemy.movepoints - Damage;
-            LearnMagicResistance( Enemy );
+            M.LearnMagicResistance( Enemy );
             if ( Effect[EffectTry][1] > 0 ) then
                 world:gfx(Effect[EffectTry][1],targetPos);
             end
@@ -280,7 +279,7 @@ function CastParalyze( Caster, Enemy, rndTry, APPunishment, Range, Effect, AP ,C
     return false;
 end
 
-function Stealing(Monster,Enemy)
+function M.Stealing(Monster,Enemy)
     if not FirstThief then
         StealAmmG={};
         StealAmmS={};
@@ -324,7 +323,7 @@ function Stealing(Monster,Enemy)
     return false;
 end
 
-function CastMonster(Monster,Enemy,rndTry,monsters,AP)
+function M.CastMonster(Monster,Enemy,rndTry,monsters,AP)
     --if (math.random(1,rndTry)~=1) then
     --    return false;
     --end
@@ -360,7 +359,7 @@ function CastMonster(Monster,Enemy,rndTry,monsters,AP)
     return true;
 end
 
-function SuddenWarp(Monster,Enemy,showGFX)
+function M.SuddenWarp(Monster,Enemy,showGFX)
     if (math.random(10) == 1) then
         local XOffset = math.random(-5,5);
         local YOffset = math.random(-5,5);
@@ -376,7 +375,7 @@ function SuddenWarp(Monster,Enemy,showGFX)
     return false;
 end
 
-function DefaultSlowdown( monster )
+function M.DefaultSlowdown( monster )
     if (math.random(1,30)==1) then
         monster.movepoints = monster.movepoints - 40;
         return true;
@@ -386,7 +385,7 @@ end
 
 --Addition by Estralis: A function that makes a monster speak a random message
 
-function MonsterRandomTalk(Monster,msgs)
+function M.MonsterRandomTalk(Monster,msgs)
 
     if (math.random(1,12) == 1 ) then --once each 20 minutes in average a message is spoken
 
@@ -398,3 +397,5 @@ function MonsterRandomTalk(Monster,msgs)
     end
 
 end
+
+return M

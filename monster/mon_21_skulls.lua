@@ -1,10 +1,8 @@
-require("monster.base.drop")
+local drop = require("monster.base.drop")
 require("monster.base.lookat")
 require("base.messages");
-module("monster.mon_21_skulls")
-
-
-function ini(Monster)
+local M = {}
+function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
@@ -31,63 +29,63 @@ msgs:addMessage("Er verbleibt - nichts.", "Nothing... left...");
 
 end
 
-function enemyNear(Monster,Enemy)
+function M.enemyNear(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if (MonID==214) then
-        return ( monster.base.drop.CastMonMagic(Monster,Enemy,10,{300,500},{{9,5}},{},40,9,{0,40}) == true );
+        return ( drop.CastMonMagic(Monster,Enemy,10,{300,500},{{9,5}},{},40,9,{0,40}) == true );
     elseif (MonID==215) then
-        return ( monster.base.drop.CastMonMagic(Monster,Enemy,6,{800,1500},{{9,5}},{},40,9,{20,60}) == true );
+        return ( drop.CastMonMagic(Monster,Enemy,6,{800,1500},{{9,5}},{},40,9,{20,60}) == true );
     else
         return false;
     end
 end
 
-function enemyOnSight(Monster,Enemy)
+function M.enemyOnSight(Monster,Enemy)
     local MonID=Monster:get_mon_type();
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
-    monster.base.drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
+    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
-    if monster.base.drop.DefaultSlowdown( Monster ) then
+    if drop.DefaultSlowdown( Monster ) then
         return true
     elseif (MonID==214) then
-        return ( monster.base.drop.CastMonMagic(Monster,Enemy,7,{300,500},{{9,5}},{},40,9,{0,40}) == true );
+        return ( drop.CastMonMagic(Monster,Enemy,7,{300,500},{{9,5}},{},40,9,{0,40}) == true );
     elseif (MonID==215) then
-        return ( monster.base.drop.CastMonMagic(Monster,Enemy,4,{800,1900},{{9,5}},{},40,9,{20,60}) == true );
+        return ( drop.CastMonMagic(Monster,Enemy,4,{800,1900},{{9,5}},{},40,9,{20,60}) == true );
     else
         return false
     end
 end
 
-function onAttacked(Monster,Enemy)
+function M.onAttacked(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
-function onCasted(Monster,Enemy)
+function M.onCasted(Monster,Enemy)
 
     if init==nil then
-        ini(Monster);
+        M.ini(Monster);
     end
 
     killer[Monster.id]=Enemy.id; --Keeps track who attacked the monster last
 end
 
-function onDeath(Monster)
+function M.onDeath(Monster)
 
     if killer[Monster.id] ~= nil then
 
@@ -100,156 +98,156 @@ function onDeath(Monster)
         end
     end
 
-    monster.base.drop.Clearmonster.base.drop.Dropping();
+    drop.ClearDropping();
     local MonID=Monster:get_mon_type();
     if (MonID==211) then --Skull, Level: 2, Armourtype: medium, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(324,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --chain helmet
-        if not done then done=monster.base.drop.AddDropItem(2302,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --gynkese mercenarie's helmet
-        if not done then done=monster.base.drop.AddDropItem(7,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
-        if not done then done=monster.base.drop.AddDropItem(2290,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --round steel hat
-        if not done then done=monster.base.drop.AddDropItem(202,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --steel cap
+        local done=drop.AddDropItem(324,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --chain helmet
+        if not done then done=drop.AddDropItem(2302,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --gynkese mercenarie's helmet
+        if not done then done=drop.AddDropItem(7,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
+        if not done then done=drop.AddDropItem(2290,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --round steel hat
+        if not done then done=drop.AddDropItem(202,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --steel cap
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(255,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw ruby
-        if not done then done=monster.base.drop.AddDropItem(253,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw bluestone
-        if not done then done=monster.base.drop.AddDropItem(257,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw topaz
-        if not done then done=monster.base.drop.AddDropItem(252,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw blackstone
-        if not done then done=monster.base.drop.AddDropItem(256,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw emerald
+        local done=drop.AddDropItem(255,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw ruby
+        if not done then done=drop.AddDropItem(253,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw bluestone
+        if not done then done=drop.AddDropItem(257,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw topaz
+        if not done then done=drop.AddDropItem(252,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw blackstone
+        if not done then done=drop.AddDropItem(256,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw emerald
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(46,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --ruby
-        if not done then done=monster.base.drop.AddDropItem(284,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --bluestone
-        if not done then done=monster.base.drop.AddDropItem(198,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --topaz
-        if not done then done=monster.base.drop.AddDropItem(283,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --blackstone
-        if not done then done=monster.base.drop.AddDropItem(45,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --emerald
+        local done=drop.AddDropItem(46,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --ruby
+        if not done then done=drop.AddDropItem(284,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --bluestone
+        if not done then done=drop.AddDropItem(198,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --topaz
+        if not done then done=drop.AddDropItem(283,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --blackstone
+        if not done then done=drop.AddDropItem(45,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --emerald
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
 
 
     elseif (MonID==212) then --Evil Skull, Level: 2, Armourtype: light, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(356,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --slouch hat
-        if not done then done=monster.base.drop.AddDropItem(7,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
-        if not done then done=monster.base.drop.AddDropItem(324,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --chain helmet
-        if not done then done=monster.base.drop.AddDropItem(2290,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --round steel hat
-        if not done then done=monster.base.drop.AddDropItem(2302,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --gynkese mercenarie's helmet
+        local done=drop.AddDropItem(356,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --slouch hat
+        if not done then done=drop.AddDropItem(7,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
+        if not done then done=drop.AddDropItem(324,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --chain helmet
+        if not done then done=drop.AddDropItem(2290,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --round steel hat
+        if not done then done=drop.AddDropItem(2302,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --gynkese mercenarie's helmet
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(251,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw amethyst
-        if not done then done=monster.base.drop.AddDropItem(256,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw emerald
-        if not done then done=monster.base.drop.AddDropItem(255,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw ruby
-        if not done then done=monster.base.drop.AddDropItem(254,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw diamond
-        if not done then done=monster.base.drop.AddDropItem(257,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw topaz
+        local done=drop.AddDropItem(251,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw amethyst
+        if not done then done=drop.AddDropItem(256,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw emerald
+        if not done then done=drop.AddDropItem(255,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw ruby
+        if not done then done=drop.AddDropItem(254,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw diamond
+        if not done then done=drop.AddDropItem(257,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw topaz
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(197,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --amethyst
-        if not done then done=monster.base.drop.AddDropItem(45,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --emerald
-        if not done then done=monster.base.drop.AddDropItem(46,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --ruby
-        if not done then done=monster.base.drop.AddDropItem(285,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --diamond
-        if not done then done=monster.base.drop.AddDropItem(198,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --topaz
+        local done=drop.AddDropItem(197,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --amethyst
+        if not done then done=drop.AddDropItem(45,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --emerald
+        if not done then done=drop.AddDropItem(46,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --ruby
+        if not done then done=drop.AddDropItem(285,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --diamond
+        if not done then done=drop.AddDropItem(198,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --topaz
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
 
 
     elseif (MonID==213) then --Skull Ram, Level: 2, Armourtype: heavy, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(2290,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --round steel hat
-        if not done then done=monster.base.drop.AddDropItem(202,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --steel cap
-        if not done then done=monster.base.drop.AddDropItem(324,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --chain helmet
-        if not done then done=monster.base.drop.AddDropItem(7,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
-        if not done then done=monster.base.drop.AddDropItem(2302,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --gynkese mercenarie's helmet
+        local done=drop.AddDropItem(2290,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --round steel hat
+        if not done then done=drop.AddDropItem(202,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --steel cap
+        if not done then done=drop.AddDropItem(324,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --chain helmet
+        if not done then done=drop.AddDropItem(7,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
+        if not done then done=drop.AddDropItem(2302,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --gynkese mercenarie's helmet
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(256,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw emerald
-        if not done then done=monster.base.drop.AddDropItem(252,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw blackstone
-        if not done then done=monster.base.drop.AddDropItem(253,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw bluestone
-        if not done then done=monster.base.drop.AddDropItem(257,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw topaz
-        if not done then done=monster.base.drop.AddDropItem(254,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw diamond
+        local done=drop.AddDropItem(256,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw emerald
+        if not done then done=drop.AddDropItem(252,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw blackstone
+        if not done then done=drop.AddDropItem(253,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw bluestone
+        if not done then done=drop.AddDropItem(257,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw topaz
+        if not done then done=drop.AddDropItem(254,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw diamond
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(45,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --emerald
-        if not done then done=monster.base.drop.AddDropItem(283,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --blackstone
-        if not done then done=monster.base.drop.AddDropItem(284,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --bluestone
-        if not done then done=monster.base.drop.AddDropItem(198,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --topaz
-        if not done then done=monster.base.drop.AddDropItem(285,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --diamond
+        local done=drop.AddDropItem(45,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --emerald
+        if not done then done=drop.AddDropItem(283,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --blackstone
+        if not done then done=drop.AddDropItem(284,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --bluestone
+        if not done then done=drop.AddDropItem(198,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --topaz
+        if not done then done=drop.AddDropItem(285,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --diamond
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
 
 
     elseif (MonID==214) then --Skull Mage, Level: 2, Armourtype: cloth, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(357,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --blue wizard hat
-        if not done then done=monster.base.drop.AddDropItem(358,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --red wizard hat
-        if not done then done=monster.base.drop.AddDropItem(7,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
-        if not done then done=monster.base.drop.AddDropItem(356,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --slouch hat
-        if not done then done=monster.base.drop.AddDropItem(324,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --chain helmet
+        local done=drop.AddDropItem(357,1,20,(100*math.random(1,2)+math.random(11,22)),0,1); --blue wizard hat
+        if not done then done=drop.AddDropItem(358,1,10,(100*math.random(1,2)+math.random(11,22)),0,1); end --red wizard hat
+        if not done then done=drop.AddDropItem(7,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --horned helmet
+        if not done then done=drop.AddDropItem(356,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --slouch hat
+        if not done then done=drop.AddDropItem(324,1,1,(100*math.random(1,2)+math.random(11,22)),0,1); end --chain helmet
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(257,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw topaz
-        if not done then done=monster.base.drop.AddDropItem(253,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw bluestone
-        if not done then done=monster.base.drop.AddDropItem(251,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw amethyst
-        if not done then done=monster.base.drop.AddDropItem(252,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw blackstone
-        if not done then done=monster.base.drop.AddDropItem(255,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw ruby
+        local done=drop.AddDropItem(257,1,20,(100*math.random(1,2)+math.random(11,22)),0,2); --raw topaz
+        if not done then done=drop.AddDropItem(253,1,10,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw bluestone
+        if not done then done=drop.AddDropItem(251,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw amethyst
+        if not done then done=drop.AddDropItem(252,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw blackstone
+        if not done then done=drop.AddDropItem(255,1,1,(100*math.random(1,2)+math.random(11,22)),0,2); end --raw ruby
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(198,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --topaz
-        if not done then done=monster.base.drop.AddDropItem(284,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --bluestone
-        if not done then done=monster.base.drop.AddDropItem(197,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --amethyst
-        if not done then done=monster.base.drop.AddDropItem(283,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --blackstone
-        if not done then done=monster.base.drop.AddDropItem(46,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --ruby
+        local done=drop.AddDropItem(198,1,20,(100*math.random(1,2)+math.random(11,22)),0,3); --topaz
+        if not done then done=drop.AddDropItem(284,1,10,(100*math.random(1,2)+math.random(11,22)),0,3); end --bluestone
+        if not done then done=drop.AddDropItem(197,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --amethyst
+        if not done then done=drop.AddDropItem(283,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --blackstone
+        if not done then done=drop.AddDropItem(46,1,1,(100*math.random(1,2)+math.random(11,22)),0,3); end --ruby
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(1,3),100,333,0,4); --copper coins
 
 
     elseif (MonID==215) then --Fire Spitting Skull, Level: 3, Armourtype: heavy, Weapontype: wrestling
 
         --Category 1: Armor
 
-        local done=monster.base.drop.AddDropItem(187,1,20,(100*math.random(2,3)+math.random(22,33)),0,1); --steel hat
-        if not done then done=monster.base.drop.AddDropItem(2290,1,10,(100*math.random(2,3)+math.random(22,33)),0,1); end --round steel hat
-        if not done then done=monster.base.drop.AddDropItem(202,1,1,(100*math.random(2,3)+math.random(22,33)),0,1); end --steel cap
-        if not done then done=monster.base.drop.AddDropItem(324,1,1,(100*math.random(2,3)+math.random(22,33)),0,1); end --chain helmet
-        if not done then done=monster.base.drop.AddDropItem(7,1,1,(100*math.random(2,3)+math.random(22,33)),0,1); end --horned helmet
+        local done=drop.AddDropItem(187,1,20,(100*math.random(2,3)+math.random(22,33)),0,1); --steel hat
+        if not done then done=drop.AddDropItem(2290,1,10,(100*math.random(2,3)+math.random(22,33)),0,1); end --round steel hat
+        if not done then done=drop.AddDropItem(202,1,1,(100*math.random(2,3)+math.random(22,33)),0,1); end --steel cap
+        if not done then done=drop.AddDropItem(324,1,1,(100*math.random(2,3)+math.random(22,33)),0,1); end --chain helmet
+        if not done then done=drop.AddDropItem(7,1,1,(100*math.random(2,3)+math.random(22,33)),0,1); end --horned helmet
 
         --Category 2: Special loot
 
-        local done=monster.base.drop.AddDropItem(254,1,20,(100*math.random(2,3)+math.random(22,33)),0,2); --raw diamond
-        if not done then done=monster.base.drop.AddDropItem(252,1,10,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw blackstone
-        if not done then done=monster.base.drop.AddDropItem(255,1,1,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw ruby
-        if not done then done=monster.base.drop.AddDropItem(251,1,1,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw amethyst
-        if not done then done=monster.base.drop.AddDropItem(253,1,1,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw bluestone
+        local done=drop.AddDropItem(254,1,20,(100*math.random(2,3)+math.random(22,33)),0,2); --raw diamond
+        if not done then done=drop.AddDropItem(252,1,10,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw blackstone
+        if not done then done=drop.AddDropItem(255,1,1,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw ruby
+        if not done then done=drop.AddDropItem(251,1,1,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw amethyst
+        if not done then done=drop.AddDropItem(253,1,1,(100*math.random(2,3)+math.random(22,33)),0,2); end --raw bluestone
 
         --Category 3: Weapon
 
-        local done=monster.base.drop.AddDropItem(285,1,20,(100*math.random(2,3)+math.random(22,33)),0,3); --diamond
-        if not done then done=monster.base.drop.AddDropItem(283,1,10,(100*math.random(2,3)+math.random(22,33)),0,3); end --blackstone
-        if not done then done=monster.base.drop.AddDropItem(46,1,1,(100*math.random(2,3)+math.random(22,33)),0,3); end --ruby
-        if not done then done=monster.base.drop.AddDropItem(197,1,1,(100*math.random(2,3)+math.random(22,33)),0,3); end --amethyst
-        if not done then done=monster.base.drop.AddDropItem(284,1,1,(100*math.random(2,3)+math.random(22,33)),0,3); end --bluestone
+        local done=drop.AddDropItem(285,1,20,(100*math.random(2,3)+math.random(22,33)),0,3); --diamond
+        if not done then done=drop.AddDropItem(283,1,10,(100*math.random(2,3)+math.random(22,33)),0,3); end --blackstone
+        if not done then done=drop.AddDropItem(46,1,1,(100*math.random(2,3)+math.random(22,33)),0,3); end --ruby
+        if not done then done=drop.AddDropItem(197,1,1,(100*math.random(2,3)+math.random(22,33)),0,3); end --amethyst
+        if not done then done=drop.AddDropItem(284,1,1,(100*math.random(2,3)+math.random(22,33)),0,3); end --bluestone
 
         --Category 4: Perma Loot
-        monster.base.drop.AddDropItem(3076,math.random(2,6),100,333,0,4); --copper coins
+        drop.AddDropItem(3076,math.random(2,6),100,333,0,4); --copper coins
 
     elseif (MonID==216) then
         -- Drops
@@ -262,5 +260,7 @@ function onDeath(Monster)
     else
         --Drops
     end
-    monster.base.drop.Dropping(Monster);
+    drop.Dropping(Monster);
 end
+
+return M
