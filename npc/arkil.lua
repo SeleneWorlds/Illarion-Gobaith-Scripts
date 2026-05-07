@@ -17,11 +17,11 @@ function initializeNpc()
     npc.base.functions.InitTalkLists();
     npcstatus={};
 	
-    npc.base.functions.AddTraderTrigger("[Gg]r[üue]+[sß]","Seid Gegrüßt"); -- Fügt Triggertext mit Antwort hinzu
-    npc.base.functions.AddAdditionalTrigger("[Hh]allo");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
-    npc.base.functions.AddAdditionalText("Guten Tag");    -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzliche Antwort hinzu
-    npc.base.functions.AddTraderTrigger("[Gg]reetings","Hail"); -- Fügt Triggertext mit Antwort hinzu
-    npc.base.functions.AddAdditionalTrigger("[Hh]ello");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
+    npc.base.functions.AddTraderTrigger("[Gg]r[Ã¼ue]+[sÃŸ]","Seid GegrÃ¼ÃŸt"); -- FÃ¼gt Triggertext mit Antwort hinzu
+    npc.base.functions.AddAdditionalTrigger("[Hh]allo");          -- FÃ¼gt zu letztem "npc.base.functions.AddTraderTrigger" zusÃ¤tzlichen Triggertext hinzu
+    npc.base.functions.AddAdditionalText("Guten Tag");    -- FÃ¼gt zu letztem "npc.base.functions.AddTraderTrigger" zusÃ¤tzliche Antwort hinzu
+    npc.base.functions.AddTraderTrigger("[Gg]reetings","Hail"); -- FÃ¼gt Triggertext mit Antwort hinzu
+    npc.base.functions.AddAdditionalTrigger("[Hh]ello");          -- FÃ¼gt zu letztem "npc.base.functions.AddTraderTrigger" zusÃ¤tzlichen Triggertext hinzu
     npc.base.functions.AddAdditionalText("Good day");
     npc.base.functions.AddTraderTrigger("[Ww]ho ",thisNPC.name.." is my name.");
     npc.base.functions.AddTraderTrigger("[Ww]er ",thisNPC.name..", ist mein Name.");
@@ -31,7 +31,7 @@ function initializeNpc()
     npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     
     
-    npc.base.functions.AddCycleText("#me kramt verzweifelt in seinen Taschen","#me searches his pockets."); -- Fügt Text der alle paar Min gesagt wird hinzu
+    npc.base.functions.AddCycleText("#me kramt verzweifelt in seinen Taschen","#me searches his pockets."); -- FÃ¼gt Text der alle paar Min gesagt wird hinzu
     
     
     
@@ -64,8 +64,8 @@ function receiveText(texttype, message, originator)
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
             normalerweise=true;
-			if (((string.find(message,"[Gg]reetings")~=nil) or (string.find(message,"[Hh]ello")~=nil)or (string.find(message,"[Gg]r[üue]+[sß]")~=nil)or (string.find(message,"[Hh]allo")~=nil)) and (originator:getQuestProgress(735)==1)) then
-				gText="Seid gegrüßt! Habt ihr mein Schwert schon gefunden?";
+			if (((string.find(message,"[Gg]reetings")~=nil) or (string.find(message,"[Hh]ello")~=nil)or (string.find(message,"[Gg]r[Ã¼ue]+[sÃŸ]")~=nil)or (string.find(message,"[Hh]allo")~=nil)) and (originator:getQuestProgress(735)==1)) then
+				gText="Seid gegrÃ¼ÃŸt! Habt ihr mein Schwert schon gefunden?";
 				eText="Greetings! Have you found my sword?";
 				outText=npc.base.functions.GetNLS(originator,gText,eText);
 				thisNPC:talk(CCharacter.say,outText);
@@ -99,11 +99,11 @@ function receiveText(texttype, message, originator)
 			--Schwert gefunden ja/nein
 			if (((string.find(message,"[Yy]es")~=nil)or(string.find(message,"[Jj]a")~=nil)) and (npcstatus[originator.id]==2)) then
 				if (true) then --schwert im inventar
-					gText="Ihr habt es gefunden! ich danke euch, hier nehmt etwas Gold für eure Mühe.";
+					gText="Ihr habt es gefunden! ich danke euch, hier nehmt etwas Gold fÃ¼r eure MÃ¼he.";
 					eText="You found it! Thanks a lot, here take some gold.";
 					outText=npc.base.functions.GetNLS(originator,gText,eText);
 					thisNPC:talk(CCharacter.say,outText);
-					--Schwert löschen + geld geben
+					--Schwert lÃ¶schen + geld geben
 					gText="#me nimmt 5 Gold entgegen.";
 					eText="#me takes 5 gold.";
 					outText=npc.base.functions.GetNLS(originator,gText,eText);

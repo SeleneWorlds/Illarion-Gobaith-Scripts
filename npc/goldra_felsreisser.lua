@@ -17,7 +17,7 @@ module("npc.goldra_felsreisser", package.seeall)
 function useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     
-	user:talkLanguage(CCharacter.say, CPlayer.german, "#me packt sie an den Armen und schüttelt sie kräftig.");
+	user:talkLanguage(CCharacter.say, CPlayer.german, "#me packt sie an den Armen und schÃ¼ttelt sie krÃ¤ftig.");
     user:talkLanguage(CCharacter.say, CPlayer.english, "#me grabs her arms and shakes her forceful.");
     game1.reset();
 	move.reset();
@@ -36,10 +36,10 @@ function initializeNpc()
 
     -- ********* START DYNAMIC PART ********
 
-	npc.base.autonpcfunctions.AddTraderTrigger("[Mm]ein.+[Nn]ame.+ist.*","Freut mich %CHARNAME, nenn mick Goldra, ick bin von der Bürgerwehr Silberbrands!");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Mm]ein.+[Nn]ame.+ist.*","Freut mich %CHARNAME, nenn mick Goldra, ick bin von der BÃ¼rgerwehr Silberbrands!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ii]c[hk].+bin.*");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Man.+nennt.+mich.*");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ii]c[hk].+hei[sß][se].*");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ii]c[hk].+hei[sÃŸ][se].*");
 	npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddConsequence("state","=",1);
 	
@@ -48,31 +48,31 @@ function initializeNpc()
 	npc.base.autonpcfunctions.AddCondition("lang","english");
 	npc.base.autonpcfunctions.AddConsequence("state","=",1);
 	
-	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[sß]","Tach %CHARNAME, schön dich mal wieder hier zu treffen.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rÃ¼[sÃŸ]","Tach %CHARNAME, schÃ¶n dich mal wieder hier zu treffen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Tt]a[gc].*");
-    npc.base.autonpcfunctions.AddAdditionalText("Grüß dich %CHARNAME, schön dich mal wiederzusehen.");
+    npc.base.autonpcfunctions.AddAdditionalText("GrÃ¼ÃŸ dich %CHARNAME, schÃ¶n dich mal wiederzusehen.");
 	npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddTraderTrigger("[Aa]uf [Bb]ald","Irmorom mit dir.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ötter.+euch");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]Ã¶tter.+euch");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Uu]ff.+[Bb]ald");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]ünf.+euch");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]Ã¼nf.+euch");
 	
-	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[sß]","Tach auch.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rÃ¼[sÃŸ]","Tach auch.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Tt]a[gc].*");
-    npc.base.autonpcfunctions.AddAdditionalText("Grüß dich!");
+    npc.base.autonpcfunctions.AddAdditionalText("GrÃ¼ÃŸ dich!");
     npc.base.autonpcfunctions.AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald. Irmorom mit dir.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ötter.+euch");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]Ã¶tter.+euch");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Uu]ff.+[Bb]ald");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]ünf.+euch");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Ick bin die "..thisNPC.name.." von der Bürgerwehr Silberbrands, jau! Ick bin Torwächterin. Und wer bist du?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]Ã¼nf.+euch");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Ick bin die "..thisNPC.name.." von der BÃ¼rgerwehr Silberbrands, jau! Ick bin TorwÃ¤chterin. Und wer bist du?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ww]ie.+[Nn]ame");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ilfe","Ick fürchte ick kann dir nich' helfen, muss hier Wache stehen. Frag am besten nen anderen Zwergen nach Hilfe.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ilfe","Ick fÃ¼rchte ick kann dir nich' helfen, muss hier Wache stehen. Frag am besten nen anderen Zwergen nach Hilfe.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helfen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
     npc.base.autonpcfunctions.AddTraderTrigger("Where am [Ii]","You are in Silverbrand, the town of the dwarfes on Gobaith.");
@@ -109,10 +109,10 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("sell","Thanks, but I already have everything I need.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]hat.+buy","Thanks, but I already have everything I need.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything, as you see I'm a guard.");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Kk]aufen","Ick verkauf' nichts, wie du siehst bin ick Torwächterin!");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Kk]aufen","Ick verkauf' nichts, wie du siehst bin ick TorwÃ¤chterin!");
     npc.base.autonpcfunctions.AddTraderTrigger("[Vv]erkaufen","Nay danke, ick hab' bereits alles was ick brauche.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+kauf","Nay danke, ick hab' bereits alles was ick brauche.");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+verkauf","Ick verkauf' nichts, wie du siehst bin ick Torwächterin!");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+verkauf","Ick verkauf' nichts, wie du siehst bin ick TorwÃ¤chterin!");
     
     npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is a settlement of the Halflings.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
@@ -130,19 +130,19 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","You find it past the small sand desert in the far northwest. I would use the Teleporter, the desert is full of scorpions.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     --  
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is nen Halblingsdorf. Viel zu grün da wennste mich fragst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is nen Halblingsdorf. Viel zu grÃ¼n da wennste mich fragst.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]afen","Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane is aber größer.");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ellbriar","Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bösartigen Kultisten dort haben die meisten der armen Halblinge geopfert.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]afen","Troll's Bane und Vanima haben HÃ¤fen. Der Hafen sÃ¼dwestlich von Troll's Bane is aber grÃ¶ÃŸer.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ellbriar","Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bÃ¶sartigen Kultisten dort haben die meisten der armen Halblinge geopfert.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agierakademie","Du willst nicht wirklich DA hin ! Es wird gesagt, den Ort kann nur ein Magier betreten. Die verwandeln dort Leute in Schweine, Kühe oder schlimmeres !");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Nn]ordmark","Es ist da nicht kälter als anderswo auf Gobiath, abgesehen vom Nordwind im Winter. Dort haben sich einige Norodaj-Barbaren angesiedelt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agierakademie","Du willst nicht wirklich DA hin ! Es wird gesagt, den Ort kann nur ein Magier betreten. Die verwandeln dort Leute in Schweine, KÃ¼he oder schlimmeres !");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Nn]ordmark","Es ist da nicht kÃ¤lter als anderswo auf Gobiath, abgesehen vom Nordwind im Winter. Dort haben sich einige Norodaj-Barbaren angesiedelt.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ss]ilberbrand","Silberbrand ist der Name dieser Stadt hier, es ist die Stadt der Zwerge.");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]anima","Tol Vanima ? Das ist eine ganze kleine Insel voller Bäume und Elfen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]anima","Tol Vanima ? Das ist eine ganze kleine Insel voller BÃ¤ume und Elfen.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Tja, das ist die grösste Stadt auf Gobiath. Dort leben alle Rassen, sogar ein zwei Zwerge. Aber früher oder später kommen sie alle hierher.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Tja, das ist die grÃ¶sste Stadt auf Gobiath. Dort leben alle Rassen, sogar ein zwei Zwerge. Aber frÃ¼her oder spÃ¤ter kommen sie alle hierher.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","Das findet man nicht ganz so weit von hier im Nordwesten hinter der kleinen Sandwüste. Ich würde den Teleporter benutzen, die Wüste ist voller Skorpione.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","Das findet man nicht ganz so weit von hier im Nordwesten hinter der kleinen SandwÃ¼ste. Ich wÃ¼rde den Teleporter benutzen, die WÃ¼ste ist voller Skorpione.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ii]rmorom","The Lord of trade and craftsmenship ! He is the main god of the dwarves. Some call him the smith of the world.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
@@ -150,75 +150,75 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","german");
 	--
 	--Citizens
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]oindil.*","#me grummelt 'Arrr, das is der Zwerg, der mir einst diesen Wisch von Abschiedsbrief in die Hand gedrückt hat und dann 'uff nimmer wiedersehn abgehaun' is! Früher...da war er noch schwer in Ordnung, nu weiß ick aber nich was in ihn gefahren is.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Bb]oindil.*","#me grummelt 'Arrr, das is der Zwerg, der mir einst diesen Wisch von Abschiedsbrief in die Hand gedrÃ¼ckt hat und dann 'uff nimmer wiedersehn abgehaun' is! FrÃ¼her...da war er noch schwer in Ordnung, nu weiÃŸ ick aber nich was in ihn gefahren is.");
     npc.base.autonpcfunctions.AddCondition("lang","german");   
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]rendil.*","Mhh... von Brendil hab mir nur Geschichten gehört. Soll 'n starker Kämpfer gewesen sein - aber mit schwachem Geist. Soll irgendwann verrückt gewordn sein, wenn mir nich alles täuscht.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Bb]rendil.*","Mhh... von Brendil hab mir nur Geschichten gehÃ¶rt. Soll 'n starker KÃ¤mpfer gewesen sein - aber mit schwachem Geist. Soll irgendwann verrÃ¼ckt gewordn sein, wenn mir nich alles tÃ¤uscht.");
     npc.base.autonpcfunctions.AddCondition("lang","german");   
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]loin.*","#me kratzt sich kurz nachdenklich an ihrer Schläfe \"Glôin... diesn Namen hab mir schon mal gehört... is dat nicht Brendil, dieser Taugenüscht?\"");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Gg]lôin.*");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Gg]loin.*","#me kratzt sich kurz nachdenklich an ihrer SchlÃ¤fe \"GlÃ´in... diesn Namen hab mir schon mal gehÃ¶rt... is dat nicht Brendil, dieser TaugenÃ¼scht?\"");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[Ã¤a][eh].+[Gg]lÃ´in.*");
 	npc.base.autonpcfunctions.AddCondition("lang","german");    
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]horn.*","Was redest du von König Ghorn? Er war n' weiser und gerechter König! Ick glaub gehört zu haben, dass der die Gewölbe entdeckte, die Silberbrand mit der Menschenstadt verband. Bin mir da aber nich sicher.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Gg]horn.*","Was redest du von KÃ¶nig Ghorn? Er war n' weiser und gerechter KÃ¶nig! Ick glaub gehÃ¶rt zu haben, dass der die GewÃ¶lbe entdeckte, die Silberbrand mit der Menschenstadt verband. Bin mir da aber nich sicher.");
     npc.base.autonpcfunctions.AddCondition("lang","german");   
-    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]unnel.*","Da war mal n' starkes Beben in den Erzminen. Wir dachten schon der ganze Berg würd' einbrechen, so stark war das! Aber durch det Beben wurde ein Tunnel frei gelegt - was damit heut' is, weiß mir nicht.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ew[öo][le][bl][eb].*");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]unnel.*","Da war mal n' starkes Beben in den Erzminen. Wir dachten schon der ganze Berg wÃ¼rd' einbrechen, so stark war das! Aber durch det Beben wurde ein Tunnel frei gelegt - was damit heut' is, weiÃŸ mir nicht.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ew[Ã¶o][le][bl][eb].*");
 	npc.base.autonpcfunctions.AddCondition("lang","german");   
-    npc.base.autonpcfunctions.AddTraderTrigger("[Rr]othman.*","#me haut verärgert mit der Faust gegen die Felswand \"Hör mir 'uff mit diesem Namen! Jeder dieser Rothmans hat es verdient geteert und gefedert und dann vom höchsten Gipfel diese Berges gestürzt zu werdn. Das Geräusch vom Aufprall wär' wie Musik in meen Ohr!\"");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Rr]othman.*","#me haut verÃ¤rgert mit der Faust gegen die Felswand \"HÃ¶r mir 'uff mit diesem Namen! Jeder dieser Rothmans hat es verdient geteert und gefedert und dann vom hÃ¶chsten Gipfel diese Berges gestÃ¼rzt zu werdn. Das GerÃ¤usch vom Aufprall wÃ¤r' wie Musik in meen Ohr!\"");
     npc.base.autonpcfunctions.AddCondition("lang","german");   
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Rr]imni.*","Och, der Rimni... auch so 'n Faulpelz! Macht viel, aber nüscht richtich! Abgesehn von senen leckren Broten! Arrr, wie von Irmorom selbst gebacken, so schmecken die!");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Rr]imni.*","Och, der Rimni... auch so 'n Faulpelz! Macht viel, aber nÃ¼scht richtich! Abgesehn von senen leckren Broten! Arrr, wie von Irmorom selbst gebacken, so schmecken die!");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ss]asse.*","#me blinzelt freudig \"Arr, wo is Sasse? Gibs was zu futtern? Kein andrer kann so leckren Rehberaten zubereiten, wie der!\"");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Ss]asse.*","#me blinzelt freudig \"Arr, wo is Sasse? Gibs was zu futtern? Kein andrer kann so leckren Rehberaten zubereiten, wie der!\"");
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Aa]ndril.*","#me senkt bedächtig den Kopf \"Mögest du in Frieden Ruhn, Andril! Dein leckes Zwergenbräu fehlt uns in der Kehle. Deine Bedachtheit und Weisheit würd uns in so mancher finstren Stunden helfen.\"");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Aa]ndril.*","#me senkt bedÃ¤chtig den Kopf \"MÃ¶gest du in Frieden Ruhn, Andril! Dein leckes ZwergenbrÃ¤u fehlt uns in der Kehle. Deine Bedachtheit und Weisheit wÃ¼rd uns in so mancher finstren Stunden helfen.\"");
     npc.base.autonpcfunctions.AddCondition("lang","german");    
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]oldhand.*","Arrr, so ein stattlicher Zwerg, der Garon! Hat ganz schön viel erreicht, richteste ihm mal schöne Grüße von der Goldra aus? *sie zwinkert dir zu*");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Gg]aron.*");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Gg]oldhand.*","Arrr, so ein stattlicher Zwerg, der Garon! Hat ganz schÃ¶n viel erreicht, richteste ihm mal schÃ¶ne GrÃ¼ÃŸe von der Goldra aus? *sie zwinkert dir zu*");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[Ã¤a][eh].+[Gg]aron.*");
 	npc.base.autonpcfunctions.AddCondition("lang","german");    
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ff]riedwulfa.*","Die Friedel weiß noch wie man zupackt! Sie und mir sind ausm selben Stein gehaun! Legt sich jemand mit ihr an, hat ers auch mit mir zu tun! Und das rat ick keinem!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Ff]ried[el].*");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Ff]riedwulfa.*","Die Friedel weiÃŸ noch wie man zupackt! Sie und mir sind ausm selben Stein gehaun! Legt sich jemand mit ihr an, hat ers auch mit mir zu tun! Und das rat ick keinem!");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[Ã¤a][eh].+[Ff]ried[el].*");
 	npc.base.autonpcfunctions.AddCondition("lang","german");    
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]uran.*","Sprichst grad vom Meisterschmied Guran? Wennst ne dicke, starke Rüstung brauchst ist er dein Zwerg *klopft gegen ihre Rüstung unter der Robe* das gute Stück hier ist auch von ihm.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Gg]uran.*","Sprichst grad vom Meisterschmied Guran? Wennst ne dicke, starke RÃ¼stung brauchst ist er dein Zwerg *klopft gegen ihre RÃ¼stung unter der Robe* das gute StÃ¼ck hier ist auch von ihm.");
     npc.base.autonpcfunctions.AddCondition("lang","german");    
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]horwald.*","Selten zuvor hab mir sonen fleissigen Zwegenkönich gesehn, wie ihn! Egal wat du brauchtest, egal in welchen Mengen: Er hatte et uff Lager!");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Tt]horwald.*","Selten zuvor hab mir sonen fleissigen ZwegenkÃ¶nich gesehn, wie ihn! Egal wat du brauchtest, egal in welchen Mengen: Er hatte et uff Lager!");
     npc.base.autonpcfunctions.AddCondition("lang","german");	
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]horgrimm.*","Thorgrimm? Arr... den seh ick hier so selten wie das Sonnenlicht! Ick glob der hockt tagein, tagaus in seiner Priesterkammer und redet zu Irmorom - hoffentlich schwafelt er dabei net zu viel, sonst wird Irmorom noch grantig.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Tt]horgrimm.*","Thorgrimm? Arr... den seh ick hier so selten wie das Sonnenlicht! Ick glob der hockt tagein, tagaus in seiner Priesterkammer und redet zu Irmorom - hoffentlich schwafelt er dabei net zu viel, sonst wird Irmorom noch grantig.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ss]urian.*","Mit Thorgrimm und Surian is das Schicksal der Götter uff jeden Fall auf unsrer Seite! ...wobei Bragon ja eher ein Kieselstein im Vergleich zu Irmorom ist, natürlich.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Ss]urian.*","Mit Thorgrimm und Surian is das Schicksal der GÃ¶tter uff jeden Fall auf unsrer Seite! ...wobei Bragon ja eher ein Kieselstein im Vergleich zu Irmorom ist, natÃ¼rlich.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ii]var.*","Ivar hat nich nur Kraft im Arm, sondern auch Hummeln im Hintern! So viel wie der schuftet, geht ja in keinen Zwergenbart. Da könnt sich so manch andrer Zwerg ne Scheibe oder zwei von abschneidn!");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Ii]var.*","Ivar hat nich nur Kraft im Arm, sondern auch Hummeln im Hintern! So viel wie der schuftet, geht ja in keinen Zwergenbart. Da kÃ¶nnt sich so manch andrer Zwerg ne Scheibe oder zwei von abschneidn!");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agdha.*","Was is mit Magdha? Du findest sie schöner als mir? Arrr... ick gebs zu... sie hat größere Steine vor der Hütte, aber im Kampf hatse noch nie gegen mir gewonnen! *zwinkert dir zu*");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agdha.*","Was is mit Magdha? Du findest sie schÃ¶ner als mir? Arrr... ick gebs zu... sie hat grÃ¶ÃŸere Steine vor der HÃ¼tte, aber im Kampf hatse noch nie gegen mir gewonnen! *zwinkert dir zu*");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]hurbert.*","Der Thurbert, ja dat war ein tüchtiger Zwerg. Als Kanzler war er 'n guter Organisator und konnte sogar mit'm Kroppzeug von oben gut reden, doch leider meinte es dat Schicksal nich gut mit ihm. Kurz nach seiner späteren Krönung  zum König erstickte er an nem Steak, Gerüchte besagen dass sein Leibkoch Salfalur damit was zu tun hatte.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Tt]hurbert.*","Der Thurbert, ja dat war ein tÃ¼chtiger Zwerg. Als Kanzler war er 'n guter Organisator und konnte sogar mit'm Kroppzeug von oben gut reden, doch leider meinte es dat Schicksal nich gut mit ihm. Kurz nach seiner spÃ¤teren KrÃ¶nung  zum KÃ¶nig erstickte er an nem Steak, GerÃ¼chte besagen dass sein Leibkoch Salfalur damit was zu tun hatte.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]irana.*","Na die Tirana hat das Herz am rechten Fleck, an der Kochstelle. Der ihr Futter ist das Allerbeste, nur noch übertroffen von ihr'm Gebräu, vor allem det Bier.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Tt]irana.*","Na die Tirana hat das Herz am rechten Fleck, an der Kochstelle. Der ihr Futter ist das Allerbeste, nur noch Ã¼bertroffen von ihr'm GebrÃ¤u, vor allem det Bier.");
     npc.base.autonpcfunctions.AddCondition("lang","german");    
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ff]erin.*","Tja, über Ferin, den Bruder Altkönig Thorwalds kann ich nich viel sagen. Zu selten bekam man ihn zu Gesicht aber wenn er da war, dann richtig und für alle!");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Ff]erin.*","Tja, Ã¼ber Ferin, den Bruder AltkÃ¶nig Thorwalds kann ich nich viel sagen. Zu selten bekam man ihn zu Gesicht aber wenn er da war, dann richtig und fÃ¼r alle!");
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]hanseus.*","Er is'n junger un' ungeduldiger Bruder, nen bissl grün hinter den Ohren is er auch. Aber ein Zwerg sollte wie er einer sein, immer gemeinschaftlich und hilfsbereit.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Tt]hanseus.*","Er is'n junger un' ungeduldiger Bruder, nen bissl grÃ¼n hinter den Ohren is er auch. Aber ein Zwerg sollte wie er einer sein, immer gemeinschaftlich und hilfsbereit.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]alduin.*","Der Balduin, jau, nen fleißiger angehender Goldschmied. Hat schon beim ein oder andern' Auftrag wat mitgearbeitet. Ganz am Anfang war er noch Bürger von Trollsbane als er sein' Eid abgelegt hat. Heut' aber nimmer.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Bb]alduin.*","Der Balduin, jau, nen fleiÃŸiger angehender Goldschmied. Hat schon beim ein oder andern' Auftrag wat mitgearbeitet. Ganz am Anfang war er noch BÃ¼rger von Trollsbane als er sein' Eid abgelegt hat. Heut' aber nimmer.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]rokamm.*","Der ist ziemlich launisch, der Trokamm. Manchmal strengt er sich richtich an bei der Arbeit dann liegt er nur mehr auffer faulen Haut. Er war wo er herkommt mal König, behauptet er immer.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Tt]rokamm.*","Der ist ziemlich launisch, der Trokamm. Manchmal strengt er sich richtich an bei der Arbeit dann liegt er nur mehr auffer faulen Haut. Er war wo er herkommt mal KÃ¶nig, behauptet er immer.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]althor.*","Der Balthor gehört zu den Meisterschmieden Silberbrands, ich hab mal gehört dass er 'Balthor Pinnhand' heißt weil er mal in ner' Taverne die anbot \"Zahl 30 Münzen und fülle deinen Krug so oft du willst\" selbige Taverne fast bankrottgesoffen hat. Als er unter Protest den Krug abgeben sollte hat er ihn sich einfach an die Hand ge-pinnt");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Bb]althor.*","Der Balthor gehÃ¶rt zu den Meisterschmieden Silberbrands, ich hab mal gehÃ¶rt dass er 'Balthor Pinnhand' heiÃŸt weil er mal in ner' Taverne die anbot \"Zahl 30 MÃ¼nzen und fÃ¼lle deinen Krug so oft du willst\" selbige Taverne fast bankrottgesoffen hat. Als er unter Protest den Krug abgeben sollte hat er ihn sich einfach an die Hand ge-pinnt");
     npc.base.autonpcfunctions.AddCondition("lang","german");
 	
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Aa]mrothar.*","Amrothar, ja klar, der is'n alter Schürfer. Ist unser Kanzler und hat mal Silberbrand geführt als Friedl ne Weile weg war.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Aa]mrothar.*","Amrothar, ja klar, der is'n alter SchÃ¼rfer. Ist unser Kanzler und hat mal Silberbrand gefÃ¼hrt als Friedl ne Weile weg war.");
     npc.base.autonpcfunctions.AddCondition("lang","german");  
 	
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Mm]anron.*","Der Manron ist einer der Altkönige, wenn er mal nich am Goldschmieden ist, dann ist er in den Minen schürfen - so wie es sich für nen Zwergen gehört!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Kk][öo][ne][in][gi].*");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Kk][öo][ne][in][ci][hc].*");  
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[Ã¤a][eh].+[Mm]anron.*","Der Manron ist einer der AltkÃ¶nige, wenn er mal nich am Goldschmieden ist, dann ist er in den Minen schÃ¼rfen - so wie es sich fÃ¼r nen Zwergen gehÃ¶rt!");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[Ã¤a][eh].+[Kk][Ã¶o][ne][in][gi].*");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[Ã¤a][eh].+[Kk][Ã¶o][ne][in][ci][hc].*");  
 	--
 	
-    npc.base.autonpcfunctions.AddTraderTrigger("[Bb]ier.*","#me hebt den Krug und prostet in die Runde 'Wer viel rumsteht, muss viel trinken - Alte Torwächterweisheit!'");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Bb]ier.*","#me hebt den Krug und prostet in die Runde 'Wer viel rumsteht, muss viel trinken - Alte TorwÃ¤chterweisheit!'");
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]orwächter.*","Jetzt fang bloß nich damit an, über meine Aufgabe zu meckern! Ohne uns und dat Tor wär Silberbrand schon ein dutzend Mal eingenommen worden!");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]orwÃ¤chter.*","Jetzt fang bloÃŸ nich damit an, Ã¼ber meine Aufgabe zu meckern! Ohne uns und dat Tor wÃ¤r Silberbrand schon ein dutzend Mal eingenommen worden!");
     npc.base.autonpcfunctions.AddCondition("lang","german");  
-    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]or.*","Aye, jeden Tag und jede Stund' steh ick da draussen am Tor - haste gewusst, dass da mindestens fuffzich Bäume drin verbaut sind? Von den Mengen an Nägeln ganz zu schweigen, aber schlussendlich ists n' Meisterstück geworden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]or.*","Aye, jeden Tag und jede Stund' steh ick da draussen am Tor - haste gewusst, dass da mindestens fuffzich BÃ¤ume drin verbaut sind? Von den Mengen an NÃ¤geln ganz zu schweigen, aber schlussendlich ists n' MeisterstÃ¼ck geworden.");
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
 	npc.base.autonpcfunctions.AddTraderTrigger("[Dd]unkel.*","Wie? Du findest es dunkel hier? Dann schneid' dir mal die Haare und mach die Augen richtig uff'! Du meckerst ja fast so viel wie Trokamm, wenn er mal wieder zum Training muss!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Dd]üster.*");   
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Dd]Ã¼ster.*");   
     
     if not InitDone then
         InitDone = true;
@@ -273,16 +273,16 @@ function nextCycle()  -- ~10 times per second
             		joke=true;
         			initJoke();
 				elseif (rand==100) then
-					thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me erhebt sich \"Ach, ick sollt wieder an mein' Posten, bis später!\"");
+					thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me erhebt sich \"Ach, ick sollt wieder an mein' Posten, bis spÃ¤ter!\"");
 	           	    thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me stands up \"Hrm, I really should go back to my place, see ya' later!\"");
 					move.moveWithoutCommand(4);
 				elseif (rand>3 and rand<=4) then
-					thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me klimpert mit einem Becher voller Münzen \"Kommt und spielt dat Trinkspiel mit mir wenn ihr euch traut.\"");
+					thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me klimpert mit einem Becher voller MÃ¼nzen \"Kommt und spielt dat Trinkspiel mit mir wenn ihr euch traut.\"");
 	           	    thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me jingles with a mug full of coins \"Come and play with me the drinking game if ya' dare.\"");	
 				elseif(rand>=10 and rand<=12) then
 					drinkBeer();
 				elseif(rand==13) then
-					thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"Na, will jemand etwas über einen der Bürger Silberbrands wissen? Ich kenn sie alle, jau, fragt mich nur über wen ick wat erzähln' soll, jau! ");
+					thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"Na, will jemand etwas Ã¼ber einen der BÃ¼rger Silberbrands wissen? Ich kenn sie alle, jau, fragt mich nur Ã¼ber wen ick wat erzÃ¤hln' soll, jau! ");
 				end
 			end
 		end
@@ -293,13 +293,13 @@ function nextCycle()  -- ~10 times per second
 				doora=world:getItemOnField(	doorapos);
 		        doorb=world:getItemOnField(doorbpos);
 				if (doora.id==652 and doorb.id==656) then
-				   	thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me geht vor die Tore und rüttelt an ihnen \"Aye,"..hicks().."is zu!\"");
+				   	thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me geht vor die Tore und rÃ¼ttelt an ihnen \"Aye,"..hicks().."is zu!\"");
            	       	thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me steps infront of the gate and juggles it \"Aye,"..hicks().."it's closed!\"");
 				end
 			elseif (rand==2) then
 				move.moveWithoutCommand(3); --get inside and close the gates
 			else
-				thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me lehnt sich auf ihre Axt und lässt einen prüfenden Blick durch die Halle schweifen.");
+				thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me lehnt sich auf ihre Axt und lÃ¤sst einen prÃ¼fenden Blick durch die Halle schweifen.");
            	    thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me leans on her axe and looks vetting through the hall.");
            	end
         end
@@ -321,7 +321,7 @@ function receiveText(texttype, message, originator)
 		move.reset();
 		originator:inform("Move reset");
 	end
-	if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nächster Nähe angesprochen
+	if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nÃ¤chster NÃ¤he angesprochen
 	
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
 			if (mainTask(message,originator)~=true) then
@@ -342,7 +342,7 @@ function receiveText(texttype, message, originator)
 					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 
-				elseif (string.find(message,"[Ee]rz[äa][eh][l].+[Ww]itz.*")~=nil or string.find(message,"[Tt]ell.+[Jj]oke.*")~=nil) then
+				elseif (string.find(message,"[Ee]rz[Ã¤a][eh][l].+[Ww]itz.*")~=nil or string.find(message,"[Tt]ell.+[Jj]oke.*")~=nil) then
 					tellJoke(); --tells a joke
 				else	
 					game1.receiveText(texttype, message, originator,move.status(),NpcOutside);
@@ -387,10 +387,10 @@ function mainTask(message, originator)
 				keinBock(originator);
 			elseif (originator.id==boindil) then
 				if (math.random(0,5)==1) then
-					gText="Nahh.. Boindil, bäähh.. Zurück zur Oberfläche mit dir, Mistkerl!";
+					gText="Nahh.. Boindil, bÃ¤Ã¤hh.. ZurÃ¼ck zur OberflÃ¤che mit dir, Mistkerl!";
         			eText="Nahh.. Boindil, baahh.. Go back to the surface, scumbag!";
 				else
-					gText="Verschwinde Boindil, du hast's mit uns endgültig verscherzt!";
+					gText="Verschwinde Boindil, du hast's mit uns endgÃ¼ltig verscherzt!";
         			eText="Back off Boindil, your beard is no longer welcome here!";
 				end
 				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
@@ -415,25 +415,25 @@ function mainTask(message, originator)
 
 						if (originator.pos.y>doorapos.y) then --The char. has to stand outside of the doors to get greeted
 							if (originator.id==956233928) then --Char. Friedwulfa
-								gText="Willkommmen zurück Eure Majestät"..hicks()..", heut schon wen verkloppt?";
+								gText="Willkommmen zurÃ¼ck Eure MajestÃ¤t"..hicks()..", heut schon wen verkloppt?";
 								eText="Welcome back your majesty,"..hicks().."anyone beated today?";
 							elseif (originator.id==867463423) then --Char. Manron
-								gText="Willkommen zurück"..hicks().." Manron.";
+								gText="Willkommen zurÃ¼ck"..hicks().." Manron.";
 								eText="Welcome back Manron.";
 							elseif (originator.id==1322717830) then --Char. Thorgrimm
-								gText="Willkommen zurück Hohepriester Thorgrimm.";
+								gText="Willkommen zurÃ¼ck Hohepriester Thorgrimm.";
 								eText="Welcome back Highpriest Thorgrimm.";
 							elseif (originator.id==1245724712) then --Char Thanseus
-								gText="Grüß dich "..hicks().." Thanseus. Komm nur rein"..hicks()..", ich freu mich immer wieder dich zu sehen.";
+								gText="GrÃ¼ÃŸ dich "..hicks().." Thanseus. Komm nur rein"..hicks()..", ich freu mich immer wieder dich zu sehen.";
 								eText="Be greeted Thanseus. Just get in, I'm always glad to see you.";
 							elseif (originator.id==825680180) then --Char. Tirana
 								gText="Tach Tirana,"..hicks().."freut mick dat du wieder da bist, bringste"..hicks().."mir gleich ne Fleischplatte vorbei?";
 								eText="Greets Tirana, good to have you back, can you bring"..hicks().."me a plate with some meat?";
 							elseif (originator.id==1608149008) then --Char Ivar
-								gText="Tach Ivar, endlich mal wer ordentliches. Bringste mir"..hicks().."später ein' oder zwei Krüge Bier vorbei?";
+								gText="Tach Ivar, endlich mal wer ordentliches. Bringste mir"..hicks().."spÃ¤ter ein' oder zwei KrÃ¼ge Bier vorbei?";
 								eText="Hello Ivar, finally a duly one. Can you bring me later some beer?";
 							elseif (originator.id==1089492350) then --Amrothar Eisenbein
-								gText="Grüß dich Amrothar, wie wär's mit nem Training später?";
+								gText="GrÃ¼ÃŸ dich Amrothar, wie wÃ¤r's mit nem Training spÃ¤ter?";
 								eText="Greetings Amrothar, do ya' want to train with me a bit later?";
 							else --Unknown Dwarf
 
@@ -449,7 +449,7 @@ function mainTask(message, originator)
 			        			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						end
 					elseif (not move.status()) and (game1.rundenzahl()~=0) then
-						gText="Nay, jetzt nich, bin grad dabei ne Münze zu gewinnen!";
+						gText="Nay, jetzt nich, bin grad dabei ne MÃ¼nze zu gewinnen!";
 						eText="Nay, not now, I have a coin to win!";
 	                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);	
@@ -468,10 +468,10 @@ function mainTask(message, originator)
 			elseif (originator.id==boindil) then
 				
 				if (math.random(0,5)==1) then
-					gText="Nahh.. Boindil, bäähh.. Zurück zur Oberfläche"..hicks().."mit dir, Mistkerl!";
+					gText="Nahh.. Boindil, bÃ¤Ã¤hh.. ZurÃ¼ck zur OberflÃ¤che"..hicks().."mit dir, Mistkerl!";
         			eText="Nahh.. Boindil, baahh.. Go back to"..hicks().."the surface, scumbag!";
 				else
-					gText="Verschwinde"..hicks().."Boindil, du hast's mit uns"..hicks().."endgültig verscherzt!";
+					gText="Verschwinde"..hicks().."Boindil, du hast's mit uns"..hicks().."endgÃ¼ltig verscherzt!";
         			eText="Back off Boindil,"..hicks().."your beard is no longer welcome here!";
 				end
 					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
@@ -488,7 +488,7 @@ function mainTask(message, originator)
 						if (not move.status()) and (game1.rundenzahl()==0) then
 							move.receiveText(originator,2);--Close gate
 						elseif (not move.status()) and (game1.rundenzahl()~=0) then
-							gText="Nay, jetzt nich, bin grad dabei ne Münze zu gewinnen!";
+							gText="Nay, jetzt nich, bin grad dabei ne MÃ¼nze zu gewinnen!";
 							eText="Nay, not now, I have a coin to win!";
 		                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);	
@@ -556,12 +556,12 @@ end
 function standardAnswer(message,answertype)
 
 	if (answertype==1) then --answertype 1 == standardphrases for "open door"
-		     if (string.find(message,"[Gg]oldra.+[Tt][üo]r.+[Aa]uf.*")~=nil or string.find(message,"[Gg]oldra.+[Oo]pen.+[Gg]ate.*")~=nil
+		     if (string.find(message,"[Gg]oldra.+[Tt][Ã¼o]r.+[Aa]uf.*")~=nil or string.find(message,"[Gg]oldra.+[Oo]pen.+[Gg]ate.*")~=nil
 			 or string.find(message,"[Oo]pen.+[Gg]ate.+[Gg]oldra.*")~=nil or string.find(message,"[Oo]pen.+[Gg]ate.+[Ss]ister.*")~= nil
-			 or string.find(message,"[Tt][üo]r.+[Aa]uf.+[Gg]oldra.*")~=nil or string.find(message,"[Tt][üo]r.+[Aa]uf.+[Ss]chwester.*")~=nil
-			 or string.find(message,"[Ss]chwester.+[Tt][üo]r.+[Aa]uf.*")~=nil or string.find(message,"[Ss]ister.+[Oo]pen.+[Gg]ate.*")~=nil
-			 or string.find(message,"[Öö]ffne.+[Tt][üo]r.+[Ss]chwester.*")~=nil or string.find(message,"[Oo]effne.+[Tt][üo]r.+[Ss]chwester.*")~=nil
-			 or string.find(message,"[Öö]ffne.+[Tt][üo]r.+[Gg]oldra.*")~=nil or string.find(message,"[Oo]effne.+[Tt][üo]r.+[Gg]oldra.*")~=nil) then
+			 or string.find(message,"[Tt][Ã¼o]r.+[Aa]uf.+[Gg]oldra.*")~=nil or string.find(message,"[Tt][Ã¼o]r.+[Aa]uf.+[Ss]chwester.*")~=nil
+			 or string.find(message,"[Ss]chwester.+[Tt][Ã¼o]r.+[Aa]uf.*")~=nil or string.find(message,"[Ss]ister.+[Oo]pen.+[Gg]ate.*")~=nil
+			 or string.find(message,"[Ã–Ã¶]ffne.+[Tt][Ã¼o]r.+[Ss]chwester.*")~=nil or string.find(message,"[Oo]effne.+[Tt][Ã¼o]r.+[Ss]chwester.*")~=nil
+			 or string.find(message,"[Ã–Ã¶]ffne.+[Tt][Ã¼o]r.+[Gg]oldra.*")~=nil or string.find(message,"[Oo]effne.+[Tt][Ã¼o]r.+[Gg]oldra.*")~=nil) then
 				
 			 	return true;
 		 	 else
@@ -569,8 +569,8 @@ function standardAnswer(message,answertype)
 		 	 end
 
     elseif (answertype==2) then --answertype 2 == standardphrases for "close door"
-			 if ( string.find(message,"[Tt][üo]r.+[Zz]u.*")~=nil or string.find(message,"[Cc]lose.+[Gg]ate.*")~=nil
-			 or string.find(message,"[Ss]chlie[sß]*.+[Tt][üo]r.*")~=nil or string.find(message,"[Cc]lose.+[Dd]oor.*")~=nil) then
+			 if ( string.find(message,"[Tt][Ã¼o]r.+[Zz]u.*")~=nil or string.find(message,"[Cc]lose.+[Gg]ate.*")~=nil
+			 or string.find(message,"[Ss]chlie[sÃŸ]*.+[Tt][Ã¼o]r.*")~=nil or string.find(message,"[Cc]lose.+[Dd]oor.*")~=nil) then
 		
 		   		return true;
 			 else
@@ -589,9 +589,9 @@ function standardAnswer(message,answertype)
 			 end
 	elseif (answertype==4) then --answertype 4 == standardphrases for "go out guarding"
 			 if (string.find(message,"[Gg]eh.+[Ww]ache.+[Gg]oldra.*")~=nil or string.find(message,"[Gg]o.+[Gg]uard.+[Gg]oldra.*")~=nil
-			 or string.find(message,"[Gg]eh.+rau[ßs].+[Gg]oldra.*")~=nil or string.find(message,"[Gg]o.+out.+[Gg]oldra.*")~=nil
+			 or string.find(message,"[Gg]eh.+rau[ÃŸs].+[Gg]oldra.*")~=nil or string.find(message,"[Gg]o.+out.+[Gg]oldra.*")~=nil
 			 or string.find(message,"[Gg]eh.+[Ww]ache.+[Ss]chwester.*")~=nil or string.find(message,"[Gg]o.+[Gg]uard.+[Ss]ister.*")~=nil
-			 or string.find(message,"[Gg]eh.+rau[ßs].+[Ss]chwester.*")~=nil or string.find(message,"[Gg]o.+out.+[Ss]ister.*")~=nil
+			 or string.find(message,"[Gg]eh.+rau[ÃŸs].+[Ss]chwester.*")~=nil or string.find(message,"[Gg]o.+out.+[Ss]ister.*")~=nil
 			 or string.find(message,"[Gg]eh.+[Hh]alle.+[Ss]chwester.*")~=nil or string.find(message,"[Gg]o.+[Hh]all.+[Ss]ister.*")~=nil
 			 or string.find(message,"[Gg]eh.+[Hh]alle.+[Gg]oldra.*")~=nil or string.find(message,"[Gg]o.+[Hh]all.+[Gg]oldra.*")~=nil) then
 		   		return true;
@@ -637,7 +637,7 @@ end
 function keinBock(originator)
 
 	if (math.random(0,10)==1) then
-        gText="#me hält ihren Kopf \"Nay,"..hicks().."bin heut nich im Stimmung"..hicks()..", hab Kopfweh! Beweg deinen Hintern selber!\".";
+        gText="#me hÃ¤lt ihren Kopf \"Nay,"..hicks().."bin heut nich im Stimmung"..hicks()..", hab Kopfweh! Beweg deinen Hintern selber!\".";
 		eText="#me holds her head \"Nay,"..hicks().."today I'm in a foul mood, I've headache!"..hicks().."Mov' yer behind yerself!\".";
         outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -720,15 +720,15 @@ end
     @return nothing
 ]]
 function drinkBeer()
-    		world:makeSound(12,thisNPC.pos); -- Trinkgeräusch machen
-			thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me holt eine Flasche Bier aus ihrer Tasche und nimmt einen großzügigen Schluck.");
+    		world:makeSound(12,thisNPC.pos); -- TrinkgerÃ¤usch machen
+			thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me holt eine Flasche Bier aus ihrer Tasche und nimmt einen groÃŸzÃ¼gigen Schluck.");
            	thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me pulls a bottle of beer out of her bag and takes a generous sip.");
 end
 
 function lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
-        output[0]="Sie trägt eine neu aussehende Wächterrobe mit einem aufgestickten Wappen Silberbrands darauf. In der Hand hält die grimmig blickende Zwergin eine große, doppelschneidige Axt, während sie ihren Blick aufmerksam schweifen lässt.";
+        output[0]="Sie trÃ¤gt eine neu aussehende WÃ¤chterrobe mit einem aufgestickten Wappen Silberbrands darauf. In der Hand hÃ¤lt die grimmig blickende Zwergin eine groÃŸe, doppelschneidige Axt, wÃ¤hrend sie ihren Blick aufmerksam schweifen lÃ¤sst.";
         output[1]="She wears a quite new-looking Guardian's robe with an embroidered emblem of Silverbrand on it. The frowning looking dwarf holds a big, sharp axe in her hand, whilst her eyes wander across the hall.";
         initLook=1;
     end
@@ -838,21 +838,21 @@ function drinkGame()
 		rand=math.random(8);
 	
 		if rand==1 then
-			gText="Der Kopf tut weh, die Füße stinken. Höchste Zeit ein Bier zu trinken...";
+			gText="Der Kopf tut weh, die FÃ¼ÃŸe stinken. HÃ¶chste Zeit ein Bier zu trinken...";
 		elseif rand==2 then
 			gText="Hopfen und Malz, ab in den Hals.";
 		elseif rand==3 then
-			gText="Red' was wahr ist, Iß' was gar ist Trink' was klar ist";
+			gText="Red' was wahr ist, IÃŸ' was gar ist Trink' was klar ist";
 		elseif rand==4 then
 			gText="Hopp, hopp, rein in Kopp!";
 		elseif rand==5 then
 			gText="Trinken, trinken das is Kult, wer nich trinkt is selber Schuld!";		
 		elseif rand==6 then
-			gText="Der Klügere kippt nach! Hehe...";
+			gText="Der KlÃ¼gere kippt nach! Hehe...";
 		elseif rand==7 then
-			gText="Nicht viel reden, Gläser heben!";
+			gText="Nicht viel reden, GlÃ¤ser heben!";
 		elseif rand==8 then
-			gText="Digge Aue, Digger Kopp, Scheiß egal Ex un hopp";
+			gText="Digge Aue, Digger Kopp, ScheiÃŸ egal Ex un hopp";
 		end
 		thisNPC:talkLanguage(CCharacter.say, CPlayer.german, gText);
 	end		
@@ -868,12 +868,12 @@ function drinkGame()
 	
 				if self.trinkCounter==10 then --Rundenzahl	
 					if self.rundenzahl==1 then
-						gTextR="Erste Runde: Rübenschnaps";
-						gTextR1="Das'n feiner kleiner Absacker für'n Anfang! Den hab ich aus Greenbriar von den Halblingen gekauft!";
+						gTextR="Erste Runde: RÃ¼benschnaps";
+						gTextR1="Das'n feiner kleiner Absacker fÃ¼r'n Anfang! Den hab ich aus Greenbriar von den Halblingen gekauft!";
 						eTextR="First Round: Beet Booze";
 					elseif self.rundenzahl==2 then
 						gTextR="Zweite Runde: Met";
-						gTextR1="So, zweite Runde... Hier hab'n wir nen Krug Honigwein aus der Nordmark. Die könn' zwar nich so brau'n wie wir aber sie werdn mit der Zeit besser, jau.";
+						gTextR1="So, zweite Runde... Hier hab'n wir nen Krug Honigwein aus der Nordmark. Die kÃ¶nn' zwar nich so brau'n wie wir aber sie werdn mit der Zeit besser, jau.";
 						eTextR="Second Round: Mead";
 					elseif self.rundenzahl==3 then
 						gTextR="Dritte Runde: Hundepisse";
@@ -881,26 +881,26 @@ function drinkGame()
 						eTextR="Third Round: Dogpiss";
 					elseif self.rundenzahl==4 then
 						gTextR="Vierte Runde: Schwefelbrand";
-						gTextR1="In der vierten Runde nu hab ich was ganz feines! Den Schwefelbrand, aus Silberhammer's Hause, der wird dir schmeckn, das heißt falls du nich umkippst.";
+						gTextR1="In der vierten Runde nu hab ich was ganz feines! Den Schwefelbrand, aus Silberhammer's Hause, der wird dir schmeckn, das heiÃŸt falls du nich umkippst.";
 						eTextR="Fourth Round: Brimstone Brand";
 					elseif self.rundenzahl==5 then
-						gTextR="Fünfte Runde: Goldleim";
-						gTextR1="Goldleim, mit dem Gesöff halt'n die Goldburger die Steine ihrer Burg zusamm'. Also auf zur 5ten Runde!";
+						gTextR="FÃ¼nfte Runde: Goldleim";
+						gTextR1="Goldleim, mit dem GesÃ¶ff halt'n die Goldburger die Steine ihrer Burg zusamm'. Also auf zur 5ten Runde!";
 						eTextR="Fifth Round: Goldglue";
 					elseif self.rundenzahl==6 then
-						gTextR="Sechste Runde: Rosenlikör Nummer 5";
-						gTextR1="Du haust ganz schön was weg... Mal sehen wie du nach Runde 6 aussiehst. Jetzt gibt's den Rosenlikör von unseren Freund'n aus der Grau'n Zuflucht.";
+						gTextR="Sechste Runde: RosenlikÃ¶r Nummer 5";
+						gTextR1="Du haust ganz schÃ¶n was weg... Mal sehen wie du nach Runde 6 aussiehst. Jetzt gibt's den RosenlikÃ¶r von unseren Freund'n aus der Grau'n Zuflucht.";
 						eTextR="Sixth Round: Rosesliqueur Number 5";
 					elseif self.rundenzahl==7 then
-						gTextR="Siebte Runde: Chergas Vermächtnis";
-						gTextR1="Runde 7, nu wird's ernst! Das Gesöff hab ich im Friedhof damals gefundn, das erweckt die Totn da zum Leb'n.";
+						gTextR="Siebte Runde: Chergas VermÃ¤chtnis";
+						gTextR1="Runde 7, nu wird's ernst! Das GesÃ¶ff hab ich im Friedhof damals gefundn, das erweckt die Totn da zum Leb'n.";
 						eTextR="Seventh Round: Chergas Heritage";
 					elseif self.rundenzahl==8 then
 						gTextR="Achte Runde: Skorpion";
 						gTextR1="Das Zeug is wie Gift, is aus Varshikar und wird dort von Einarmig'n Goblins aus den Stacheln der Skorpione gepresst. Der gelungene Abschluss!";
 						eTextR="Eighth Round: Scorpion";
 					elseif self.rundenzahl>8 then
-						gTextR="Ah nay, hab nichts mehr da, war wohl unentschieden, hier hast du deine Münze wieder!";
+						gTextR="Ah nay, hab nichts mehr da, war wohl unentschieden, hier hast du deine MÃ¼nze wieder!";
 						eTextR="Ah nay, I have nothin' drinkable anymore, here I give ya' your coin back!";
 						gTextR1=nil;
 						self.player:createItem(3077,1,666,0); --create Silvercoin
@@ -922,7 +922,7 @@ function drinkGame()
 						thisNPC:talkLanguage(CCharacter.say, CPlayer.german, gText);
 			    		thisNPC:talkLanguage(CCharacter.say, CPlayer.english, eText);
 				elseif self.trinkCounter==180 then
-				    world:makeSound(12,thisNPC.pos); -- Trinkgeräusch machen
+				    world:makeSound(12,thisNPC.pos); -- TrinkgerÃ¤usch machen
 					gText="#me reicht "..checkGender(self.player,3).." eine Flasche die "..checkGender(self.player,0).." austrinkt.";
 					eText="#me hands "..checkGender(self.player,3).." a bottle which "..checkGender(self.player,0).." drinks."; 
 					outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
@@ -933,10 +933,10 @@ function drinkGame()
 				elseif self.trinkCounter==210 then    --inform und ende
 				
 					if self.outcome1>=100 then
-						gText="#w Du fühlst dich noch ganz gut.";
+						gText="#w Du fÃ¼hlst dich noch ganz gut.";
 						eText="#w You still feel good";			
 					elseif self.outcome1>=50 and self.outcome1<100 then
-						gText="#w Du fühlst dich etwas benebelt.";
+						gText="#w Du fÃ¼hlst dich etwas benebelt.";
 						eText="#w You feel a bit befogged";			
 						rand=math.random(1300,1800);
 						self.player:increaseAttrib("hitpoints",-rand);
@@ -947,7 +947,7 @@ function drinkGame()
 						rand=math.random(1500,2100);
 						self.player:increaseAttrib("hitpoints",-rand);
 					elseif self.outcome1>=1 and self.outcome1<30 then
-						gText="#w Dir ist wirklich schlecht. Eigentlich willst du aufhören, doch willst du dir die Blöße geben?";
+						gText="#w Dir ist wirklich schlecht. Eigentlich willst du aufhÃ¶ren, doch willst du dir die BlÃ¶ÃŸe geben?";
 						eText="#w You feel really bad. Actually you want to give up, but do you really want to expose yourself?";			
 						rand=math.random(2000,2800);
 						self.player:increaseAttrib("hitpoints",-rand);	
@@ -957,10 +957,10 @@ function drinkGame()
 						end
 					
 					if self.outcome1<=0 then
-						gText="#w Dir wird schlecht und du musst dich übergeben.";
+						gText="#w Dir wird schlecht und du musst dich Ã¼bergeben.";
 						eText="#w You feel perish and have to puke.";
 						base.common.InformNLS( self.player, gText, eText );
-		        		self.player:talkLanguage(CCharacter.say, CPlayer.german, "#me übergibt sich.");
+		        		self.player:talkLanguage(CCharacter.say, CPlayer.german, "#me Ã¼bergibt sich.");
 		       			self.player:talkLanguage(CCharacter.say, CPlayer.english,"#me pukes.");
 					
 					elseif self.outcome1>0 and self.outcome2>0 then
@@ -975,7 +975,7 @@ function drinkGame()
 					if self.player~=nil then
 						if self.outcome2<=0 and self.outcome1>0 then
 			
-							gText="#me blickt "..self.player.name.." an - ihr Blick wirkt starr. Eine Fontäne schießt plötzlich aus ihrem Mund und das Essen der letzen Stunde verteilt sich auf Gesicht des Gewinners.";
+							gText="#me blickt "..self.player.name.." an - ihr Blick wirkt starr. Eine FontÃ¤ne schieÃŸt plÃ¶tzlich aus ihrem Mund und das Essen der letzen Stunde verteilt sich auf Gesicht des Gewinners.";
 							eText="#me looks to "..self.player.name..", her gaze seems fixed. Suddenly a fountain gushes out of her mouth and the last hour's meal spreads on the face of the winner.";
 							outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -1010,7 +1010,7 @@ function drinkGame()
 	end	
 
 	
-    local receiveText = function (texttype, message, originator,movestate,NpcOutside)  --movestate and npcOutside müssen übergeben werden
+    local receiveText = function (texttype, message, originator,movestate,NpcOutside)  --movestate and npcOutside mÃ¼ssen Ã¼bergeben werden
 
 		if (standardAnswer(message,5)) then
 			if not self.drunk[world:getTime("hour")] then
@@ -1019,12 +1019,12 @@ function drinkGame()
 					AmountSilver=originator:countItem(3077);
 					if AmountCopper>=100 or AmountSilver>=1 then
 					    self.startGame[originator.id]=true;
-						gText="Der Einsatz beträgt 1 Silberstück, wer zuerst aufgibt oder sich übergibt hat verloren. Wenn du gewinnst geb ich dir 3 Silberlinge, willste spielen?";
+						gText="Der Einsatz betrÃ¤gt 1 SilberstÃ¼ck, wer zuerst aufgibt oder sich Ã¼bergibt hat verloren. Wenn du gewinnst geb ich dir 3 Silberlinge, willste spielen?";
 						eText="The stake is 1 silver coin, who gives up or pukes first looses. If ya' win I will give ya' 3 silver coins, do you want to play?";
 		
 					else
 					    self.startGame[originator.id]=false;
-					    gText="Komm erst wieder wenn du das Geld hast, du brauchst mindestens ne Silbermünze für das Spiel!"
+					    gText="Komm erst wieder wenn du das Geld hast, du brauchst mindestens ne SilbermÃ¼nze fÃ¼r das Spiel!"
 					    eText="Come back when ya' have enough money, you need at least 1 silver coin for the game!";
 					end
 						outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
@@ -1062,7 +1062,7 @@ function drinkGame()
 					self.startGame[originator.id]=false;
 					self.coinTaken=false;	
 				else
-					gText="Willst du mich übers Ohr hauen? Du hast nicht genügend Geld dabei, du brauchst mindestens ne Silbermünze für das Spiel!";
+					gText="Willst du mich Ã¼bers Ohr hauen? Du hast nicht genÃ¼gend Geld dabei, du brauchst mindestens ne SilbermÃ¼nze fÃ¼r das Spiel!";
 					eText="Are ya' trying to take me in? You don't have enough money with you, you need at least 1 silver coin for the game!";
 					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -1081,11 +1081,11 @@ function drinkGame()
 					end
 				 end
 			 end				
-		 elseif (string.find(message,"[Aa]uf[hg][öe][rb]en.*")~=nil or string.find(message,"[Gg]eb.+auf")~=nil 
-		 	  or string.find(message,"[Gg]ive.+up")~=nil   or string.find(message,"[Hh]ör.+auf")~=nil) then
+		 elseif (string.find(message,"[Aa]uf[hg][Ã¶e][rb]en.*")~=nil or string.find(message,"[Gg]eb.+auf")~=nil 
+		 	  or string.find(message,"[Gg]ive.+up")~=nil   or string.find(message,"[Hh]Ã¶r.+auf")~=nil) then
          	if self.player~=nil then
          		if originator.id==self.player.id then
-					gText="Ha, wusst ick doch dat du ein Elbenmädchen bist und gleich uffgibst!";
+					gText="Ha, wusst ick doch dat du ein ElbenmÃ¤dchen bist und gleich uffgibst!";
 					eText="Ha, I knew that ya're an elvengirl and don't want to play!";
 		    		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -1334,15 +1334,15 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			base.keys.UnlockDoor( doorb );
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
-			base.doors.OpenDoor( doora );  --Tore öffnen
+			base.doors.OpenDoor( doora );  --Tore Ã¶ffnen
 			base.doors.OpenDoor( doorb );
 
 			if  self.NpcOutside then
-				gText="#me öffnet das Tor und wirft einen grimmigen Blick in die Werkstatt.";
+				gText="#me Ã¶ffnet das Tor und wirft einen grimmigen Blick in die Werkstatt.";
 				eText="#me opens the gate and looks grimly into the workshop.";
 				self.movestate=4.2;
 			else
-				gText="#me öffnet das Tor und blickt prüfend durch die Halle.";
+				gText="#me Ã¶ffnet das Tor und blickt prÃ¼fend durch die Halle.";
 				eText="#me opens the gate and looks vetting through the hall.";
 				self.movestate=3.2;
 			end
@@ -1375,7 +1375,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
 
-			base.doors.CloseDoor( doora ); --Tore schließen
+			base.doors.CloseDoor( doora ); --Tore schlieÃŸen
 			base.doors.CloseDoor( doorb );
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
@@ -1383,7 +1383,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			base.keys.LockDoor( doorb );
 
 
-			gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab.";
+			gText="#me lÃ¤sst die FlÃ¼gel des Tores krachend zufallen und sperrt ab.";
 			eText="#me shuts the gate crashing then locks it.";
 			thisNPC:talkLanguage(CCharacter.say,CPlayer.german,gText);
 	        thisNPC:talkLanguage(CCharacter.say,CPlayer.english,eText);
@@ -1402,7 +1402,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			base.keys.UnlockDoor( doorb );
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
-			base.doors.OpenDoor( doora );  --Tore öffnen
+			base.doors.OpenDoor( doora );  --Tore Ã¶ffnen
 			base.doors.OpenDoor( doorb );
 			self.movestate=self.movestate+0.1;
 			self.target=nil;
@@ -1429,14 +1429,14 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
 
-			base.doors.CloseDoor( doora ); --Tore schließen
+			base.doors.CloseDoor( doora ); --Tore schlieÃŸen
 			base.doors.CloseDoor( doorb );
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
 			base.keys.LockDoor( doora );  --Tore verriegeln
 			base.keys.LockDoor( doorb );
 
-			gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab.";
+			gText="#me lÃ¤sst die FlÃ¼gel des Tores krachend zufallen und sperrt ab.";
 			eText="#me shuts the gate crashing then locks it.";
 			thisNPC:talkLanguage(CCharacter.say,CPlayer.german,gText);
 	        thisNPC:talkLanguage(CCharacter.say,CPlayer.english,eText);
@@ -1457,7 +1457,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			base.keys.UnlockDoor( doorb );
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
-			base.doors.OpenDoor( doora );  --Tore öffnen
+			base.doors.OpenDoor( doora );  --Tore Ã¶ffnen
 			base.doors.OpenDoor( doorb );
 			self.movestate=self.movestate+0.1;
 			self.target=nil;
@@ -1485,14 +1485,14 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
 
-			base.doors.CloseDoor( doora ); --Tore schließen
+			base.doors.CloseDoor( doora ); --Tore schlieÃŸen
 			base.doors.CloseDoor( doorb );
 			doora=world:getItemOnField(self.doorapos);
 			doorb=world:getItemOnField(self.doorbpos);
 			base.keys.LockDoor( doora );  --Tore verriegeln
 			base.keys.LockDoor( doorb );
 
-			gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab.";
+			gText="#me lÃ¤sst die FlÃ¼gel des Tores krachend zufallen und sperrt ab.";
 			eText="#me shuts the gate crashing then locks it.";
 			thisNPC:talkLanguage(CCharacter.say,CPlayer.german,gText);
 	        thisNPC:talkLanguage(CCharacter.say,CPlayer.english,eText);
@@ -1605,7 +1605,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 				end			
 				if self.blocked then
 					if _waitVar==200 then  --20sec.
-						gText="Dat Ding da versperrt meinen Weg, räumt et mal einer weg, sonst komm ick nit an das Schloss!";
+						gText="Dat Ding da versperrt meinen Weg, rÃ¤umt et mal einer weg, sonst komm ick nit an das Schloss!";
 						eText="This thing there is blocking my way, I can't reach the lock until someone removes it!";
 						thisNPC:talkLanguage(CCharacter.say,CPlayer.german,gText);
 						thisNPC:talkLanguage(CCharacter.say,CPlayer.english,eText);
@@ -1630,7 +1630,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 			end
 		end	
 	end	
-    local receiveText = function (originator,movestate)  --originator, movestate und self.NpcOutside müssen übergeben werden
+    local receiveText = function (originator,movestate)  --originator, movestate und self.NpcOutside mÃ¼ssen Ã¼bergeben werden
     	checkIfNpcOutside();
 		self.player=originator;
 		self.movestate=movestate;
@@ -1670,20 +1670,20 @@ function tellJoke()
 end
 
 function initJoke()
-	jokelist_de[1]="Die letzten Worte eines"..hicks().."Langohrs mit Liebespech \"Hmm, spinn ick oder hat"..hicks().."dat Astloch Zähne?\""
-	jokelist_de[2]="Der holde Elbenjüngling zu seiner Freundin \"Willst du sehen wo mich der Heiler damals operiert hat?\". Sie senkt schüchtern den Blick, errötet und haucht \"Ja.\" Der Jüngling zeigt zu nem nahen Baum und meint trocken \"Da drüben im Moos.\"";
-	jokelist_de[3]="Wieviele"..hicks().."Orks braucht es um in ein"..hicks().."Haus einzudringen? 300 oder mehr. 5 halten den Rammbock"..hicks().."der Rest hebt dat Haus an und stößt es jegen den Rammbock bis die Tür nachjibt!";
+	jokelist_de[1]="Die letzten Worte eines"..hicks().."Langohrs mit Liebespech \"Hmm, spinn ick oder hat"..hicks().."dat Astloch ZÃ¤hne?\""
+	jokelist_de[2]="Der holde ElbenjÃ¼ngling zu seiner Freundin \"Willst du sehen wo mich der Heiler damals operiert hat?\". Sie senkt schÃ¼chtern den Blick, errÃ¶tet und haucht \"Ja.\" Der JÃ¼ngling zeigt zu nem nahen Baum und meint trocken \"Da drÃ¼ben im Moos.\"";
+	jokelist_de[3]="Wieviele"..hicks().."Orks braucht es um in ein"..hicks().."Haus einzudringen? 300 oder mehr. 5 halten den Rammbock"..hicks().."der Rest hebt dat Haus an und stÃ¶ÃŸt es jegen den Rammbock bis die TÃ¼r nachjibt!";
 	jokelist_de[4]="Die letzten Worte eines"..hicks().."Elfischen  Waffenmeisters \"Achtung! Wurfspeere zu mir!\"";
-	jokelist_de[5]="Sagt ein Elf zum"..hicks().."anderen als sie nem Rudel Orks aufstöbern \"Komm! Du bist Elf, ich bin Elf, zusammen sind wir zweiundzwanzig, lass sie uns umzingeln.\"";
-	jokelist_de[6]="In einem Zwergenstollen wird"..hicks().."n' toter Elf aufjefunden. Der"..hicks().."herbeijerufene Heiler des Zwergenstammes untersucht die Leiche, findet"..hicks().."22 tiefe Stichwunden im Rücken und sagt: \"Bei Irmorom, so nen furchtbaren Selbstmord hab ick noch nie jesehn!\"";
-	jokelist_de[7]="Ein kleiner Junge"..hicks().."geht durch die Straßen von Trolls Bane. Er"..hicks().."findet ein Schwert. Ein paar Schritte weiter sieht er nen Ritter Kallahorns gehen. Der kleine Junge: \"Ist dat ihr Schwert, Sir?\" Der Ritter: \"Nee,.. ick hab meines verloren.\"";
-	jokelist_de[8]="Was ist ein"..hicks().."Waldläufer mit ner Laterne in der Hand in der Nacht"..hicks().."im Wald?....EIN ARMLEUCHTER!!!";
-	jokelist_de[9]="Womit kann man nen Langohr über Jahre beschäftigen? - Mit nem Pergament bei dem auf beiden Seiten \"Bitte Wenden!\" steht.";
-	jokelist_de[10]="Kommt ein"..hicks().."Elb"..hicks().."in eine Taverne, trägt Mist in seinen"..hicks().."Händen und ruft: \"Hey Leute, seht doch mal wo ich beinahe hineingetreten wäre!\"";
+	jokelist_de[5]="Sagt ein Elf zum"..hicks().."anderen als sie nem Rudel Orks aufstÃ¶bern \"Komm! Du bist Elf, ich bin Elf, zusammen sind wir zweiundzwanzig, lass sie uns umzingeln.\"";
+	jokelist_de[6]="In einem Zwergenstollen wird"..hicks().."n' toter Elf aufjefunden. Der"..hicks().."herbeijerufene Heiler des Zwergenstammes untersucht die Leiche, findet"..hicks().."22 tiefe Stichwunden im RÃ¼cken und sagt: \"Bei Irmorom, so nen furchtbaren Selbstmord hab ick noch nie jesehn!\"";
+	jokelist_de[7]="Ein kleiner Junge"..hicks().."geht durch die StraÃŸen von Trolls Bane. Er"..hicks().."findet ein Schwert. Ein paar Schritte weiter sieht er nen Ritter Kallahorns gehen. Der kleine Junge: \"Ist dat ihr Schwert, Sir?\" Der Ritter: \"Nee,.. ick hab meines verloren.\"";
+	jokelist_de[8]="Was ist ein"..hicks().."WaldlÃ¤ufer mit ner Laterne in der Hand in der Nacht"..hicks().."im Wald?....EIN ARMLEUCHTER!!!";
+	jokelist_de[9]="Womit kann man nen Langohr Ã¼ber Jahre beschÃ¤ftigen? - Mit nem Pergament bei dem auf beiden Seiten \"Bitte Wenden!\" steht.";
+	jokelist_de[10]="Kommt ein"..hicks().."Elb"..hicks().."in eine Taverne, trÃ¤gt Mist in seinen"..hicks().."HÃ¤nden und ruft: \"Hey Leute, seht doch mal wo ich beinahe hineingetreten wÃ¤re!\"";
 	jokelist_de[11]="Was ist der Unterschied zwischen"..hicks().."einem Baum und einem"..hicks().."Elben? Wenn du einem Baum einen Tritt verpasst labert er"..hicks().."dich nicht eine Stunde lang voll."
-	jokelist_de[12]="Meint ein Elf zu Manron \"Ich bräuchte eine neue Harfe und weiß nicht woher ich das Geld nehmen soll.\" \"So ein Glück\", seufzt Manron, \"Ich dachte schon, Du wolltest"..hicks().."mich anpumpen.\"";
-	jokelist_de[13]="Wieviele Elfen braucht man um Mittagessen zu machen? Fünfundzwanzig. Vierundzwanzig halten die Kuh fest und einer fängt an zu grasen!";
-	jokelist_de[14]="Was ist dümmer als ein Elf? - zwei Elfen!";
+	jokelist_de[12]="Meint ein Elf zu Manron \"Ich brÃ¤uchte eine neue Harfe und weiÃŸ nicht woher ich das Geld nehmen soll.\" \"So ein GlÃ¼ck\", seufzt Manron, \"Ich dachte schon, Du wolltest"..hicks().."mich anpumpen.\"";
+	jokelist_de[13]="Wieviele Elfen braucht man um Mittagessen zu machen? FÃ¼nfundzwanzig. Vierundzwanzig halten die Kuh fest und einer fÃ¤ngt an zu grasen!";
+	jokelist_de[14]="Was ist dÃ¼mmer als ein Elf? - zwei Elfen!";
 
 	jokelist_en[1]="Famous last words of a love-sick longear"..hicks().."trying to \"relief\" himself: \"The Five help me, does that treehole have teeth?\"";
     jokelist_en[2]="The fair elven boy asks his girlfriend \"Do you want to see"..hicks().."where the healer cut me open?\". She bats down her eyelids, blushing and whispers \"Yes\" The boy states flatly, gesturing to a nearby tree \"Over there, in the moss.\"";

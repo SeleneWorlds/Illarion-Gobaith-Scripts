@@ -20,7 +20,7 @@ end
 function initializeNpc()
     npc.base.functions.InitTalkLists()
     
-    npc.base.functions.AddTraderTrigger("[Gg]rüß","Scht! Ihr verscheucht die Tiere.");
+    npc.base.functions.AddTraderTrigger("[Gg]rÃ¼ÃŸ","Scht! Ihr verscheucht die Tiere.");
     npc.base.functions.AddAdditionalTrigger("[Hh]allo");
     npc.base.functions.AddAdditionalText("Bleibt doch ruhig! Sonst verscheucht ihr die Tiere.");
     
@@ -67,13 +67,13 @@ function receiveText(texttype, message, originator)
             -----------------------------------------------------EDIT BELOW HERE------------------------------------------------------------            
             
             if (Status==1) then
-                gText="Ich habe von der Höhle von Irundar gehört. Bringt mir ein paar neue Pfeile und ich erzähle Euch was ich weiß Eine Hand voll wird gengen denke ich. Und nun seid still.";
+                gText="Ich habe von der HÃ¶hle von Irundar gehÃ¶rt. Bringt mir ein paar neue Pfeile und ich erzÃ¤hle Euch was ich weiÃŸ Eine Hand voll wird gengen denke ich. Und nun seid still.";
                 eText="I have heard about the Cave of Irundar. Bring me some new arrows and I will tell you what I know. A handful will suffice, I think. And now be quiet.";
             elseif (Status==2) then
-                gText="Also gut...Ich erzähle: Meine Großeltern haben mir von der Höhle von Irundar erzählt. Sie ist auf dieser Insel, ich meine im Süden. Es gibt da einen alten Reim: Die reinsten Tränen der Fee, das reinste Blut eines Trolls, immer nach vorne nur seh, betrete die Kammer voll Stolz. Dies ist alles was ich weiß aber einst traf ich einen kleinen Halbling in den Wäldern, Timo, denke ich. Er wusste wie die Höhle selbst betreten werden kann. Fragt mich nicht wo er nun steckt, fragt einfach herum. Und jetzt lasst mich bitte alleine.";
+                gText="Also gut...Ich erzÃ¤hle: Meine GroÃŸeltern haben mir von der HÃ¶hle von Irundar erzÃ¤hlt. Sie ist auf dieser Insel, ich meine im SÃ¼den. Es gibt da einen alten Reim: Die reinsten TrÃ¤nen der Fee, das reinste Blut eines Trolls, immer nach vorne nur seh, betrete die Kammer voll Stolz. Dies ist alles was ich weiÃŸ aber einst traf ich einen kleinen Halbling in den WÃ¤ldern, Timo, denke ich. Er wusste wie die HÃ¶hle selbst betreten werden kann. Fragt mich nicht wo er nun steckt, fragt einfach herum. Und jetzt lasst mich bitte alleine.";
                 eText="Alright...I guess I have to talk: My grandparents told me about the Cave of Irundar. It is somewhere on this island, it is in the south I guess. There was a little verse: The purest tears of a fairy, The purest blood of a troll, still you have to be wary, and into the chamber you stroll. This is all I know, but once I met a little halfling in the forrests, Timo, I think. He knew how to enter the cave itself. Don't ask me where he is now, just ask around. And now leave me alone please.";
             elseif (Status==3) then
-                gText="Versucht nicht mich zu betrügen! Ihr habt nicht gengend Pfeile dabei!";
+                gText="Versucht nicht mich zu betrÃ¼gen! Ihr habt nicht gengend Pfeile dabei!";
                 eText="Don't try to cheat me! You don't have enough arrows!";
             end
             if (Status~=0) then
@@ -116,7 +116,7 @@ end
 function lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
-        output[0]="Eine junge, hübsche Frau, die sich der Umgebung angemessen in Grün und Braun gekleidet hat. Um ihre Schulter hängt ein Bogen, sie scheint jedoch sehr versunken in den Anblick des sie umgebenen Waldes.";
+        output[0]="Eine junge, hÃ¼bsche Frau, die sich der Umgebung angemessen in GrÃ¼n und Braun gekleidet hat. Um ihre Schulter hÃ¤ngt ein Bogen, sie scheint jedoch sehr versunken in den Anblick des sie umgebenen Waldes.";
         output[1]="A young, pretty woman that is wearing green and brown clothes fitting into her surrounding. She got a bow shouldered but is obviously absent observating the wood and its ainmals.";
         initLook=1;
     end

@@ -26,21 +26,21 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Hh]ello","Greetings Traveler, I hope you had a pleasant voyage.");
     npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
     npc.base.functions.AddAdditionalText("Ah, Greetings Landrat. Was the journey rough?");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Gr¸ﬂe Reisender, ich hoff du hattest ne angenehme Reise.");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[u¸][sﬂ]+");
-    npc.base.functions.AddAdditionalText("Ah, Gr¸ﬂe Landratte. War die Reise rau?");
+    npc.base.functions.AddTraderTrigger("[Hh]allo","Gr√º√üe Reisender, ich hoff du hattest ne angenehme Reise.");
+    npc.base.functions.AddAdditionalTrigger("[Gg]r[u√º][s√ü]+");
+    npc.base.functions.AddAdditionalText("Ah, Gr√º√üe Landratte. War die Reise rau?");
     npc.base.functions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name..", shipboy.");
     npc.base.functions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..", Schiffsjunge.");
     npc.base.functions.AddTraderTrigger("[Ww]here.+a[mr]e*","This is the harbour, where else did you expect a ship to bring you?");
     npc.base.functions.AddTraderTrigger("[Ww]o.+[sb]ind*","Das ist der Hafen. Wo sonst dachtest du brinst dich 'n Schiff hin?");
     npc.base.functions.AddTraderTrigger("[Hh]arbour","Not as big as one would expect, right? But it does the job still.");
-    npc.base.functions.AddTraderTrigger("[Hh]afen","Nicht so groﬂ wie du dachtest, richtig? Aber er dient seinem Zweck.");
+    npc.base.functions.AddTraderTrigger("[Hh]afen","Nicht so gro√ü wie du dachtest, richtig? Aber er dient seinem Zweck.");
     npc.base.functions.AddTraderTrigger("[Tt]own","The next big Town is Trollsbane, to the northeast. Or the village Greenbriar to the west.");
-    npc.base.functions.AddTraderTrigger("[Ss]t[a‰]dt","Die n‰chste groﬂe Stadt ist Trollsbane im Nordosten. Oder das Dorf Greenbriar im Westen.");
+    npc.base.functions.AddTraderTrigger("[Ss]t[a√§]dt","Die n√§chste gro√üe Stadt ist Trollsbane im Nordosten. Oder das Dorf Greenbriar im Westen.");
     npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I aint selling anything, landrat.");
     npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","I verkauf nix, Landratte.");
     npc.base.functions.AddTraderTrigger("[Ww]hat.+buy","Do I look like some filthy rich trader, landrat?");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+%skauf","Seh ich aus wie'n reicher H‰ndler, Landratte?");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+%skauf","Seh ich aus wie'n reicher H√§ndler, Landratte?");
     npc.base.functions.AddTraderTrigger("[Hh]elp","Best advice I can give you, go somewhere else.");
     npc.base.functions.AddTraderTrigger("[Hh]ilfe","Der beste Tipp, den ich dir geben kann, ist woanders hin zu gehen");
     npc.base.functions.AddTraderTrigger("[Ss]somewhere.+else","Like Trollsbane, or Greenbriar.");
@@ -48,7 +48,7 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Nn]ew.+here","I thought so the first time I saw you. Well, welcome on this little godforsaken island, landrat.");
     npc.base.functions.AddTraderTrigger("[Nn]eu.+hier","Das wusst ich schon als ich dich das erste Mal gesehen hab. Naja...willkommen auf dieser kleinen Insel, Landratte.");
     npc.base.functions.AddTraderTrigger("[Ii]sland","Yes, welcome on the island of ... of ... arr, forget it. Have some ale with you?");
-    npc.base.functions.AddTraderTrigger("[Ii]nsel","Ja. Willkommen auf der Insel...‰hm...arr, ich habs vergessen. Hast du Bier dabei?");
+    npc.base.functions.AddTraderTrigger("[Ii]nsel","Ja. Willkommen auf der Insel...√§hm...arr, ich habs vergessen. Hast du Bier dabei?");
     npc.base.functions.AddTraderTrigger("[Bb]ye.","Aye, Landrat.");
     npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
     npc.base.functions.AddAdditionalText("Aye aye.");
@@ -94,7 +94,7 @@ function receiveText(texttype, message, originator)
                 gText="Aye, Trollsbane im Nordosten. Du kannst eigentlich alles doch finden.";
                 eText="Aye, Trollsbane in the Northeast. You can find practicly everything there.";
             elseif (Status==2) then
-                gText="Fr¸her war es mal ein Halblingsdorf, jetzt sollen dort aber nur noch Elfen leben.";
+                gText="Fr√ºher war es mal ein Halblingsdorf, jetzt sollen dort aber nur noch Elfen leben.";
                 eText="This used to be a Halfling village, now only some elves live here.";
             end
 

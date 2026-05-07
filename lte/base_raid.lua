@@ -10,7 +10,7 @@ function M.callEffect(eff, User)
     --erst wenn der Start Wert auf true gesetzt wurde die Todes consequenzen auf false setzen
    if (eff:findValue("start")) then
         User.death_consequences = false;
-        --lange Wartezeit bis zum nächsen Aufrufen
+        --lange Wartezeit bis zum nÃ¤chsen Aufrufen
         eff.nextCalled = 2000000000;
     else
         --in 1 Sekunde erneut nachschauen ob der Raid gestartet ist.
@@ -20,7 +20,7 @@ function M.callEffect(eff, User)
 end
 
 function M.addEffect(eff, User)
-    --beim hinzufügen die alte Position speichern
+    --beim hinzufÃ¼gen die alte Position speichern
     eff:addValue("old-pos-x",User.pos.x);
     eff:addValue("old-pos-y",User.pos.y);
     eff:addValue("old-pos-z",User.pos.z);
@@ -34,7 +34,7 @@ function M.addEffect(eff, User)
 end
 
 function M.removeEffect(eff,User)
-    --beim entfernen den User zurück warpen
+    --beim entfernen den User zurÃ¼ck warpen
     local found1,oposx = eff:findValue("old-pos-x");
     local found2,oposy = eff:findValue("old-pos-y");
     local found3,oposz = eff:findValue("old-pos-z");
@@ -46,7 +46,7 @@ function M.removeEffect(eff,User)
 end
 
 function M.loadEffect(eff, User)
-    --beim neuladen den Effekt löschen.
+    --beim neuladen den Effekt lÃ¶schen.
     User.effects:removeEffect(eff);
 end
 return M

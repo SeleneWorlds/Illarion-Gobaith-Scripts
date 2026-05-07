@@ -29,11 +29,11 @@ function initializeNpc()
     npc.base.functions.AddAdditionalText("Whub? Wut yoo wunt? Mes "..thisNPC.name..", strung warrior. Yubba!");
     npc.base.functions.AddTraderTrigger("[Mm]ummies","Yuh. Yoo comes back wid innards of mummies tuh prove yerself and meh will teach yoo some tricks yoo can use tuh knock down big critters!");
     npc.base.functions.AddAdditionalTrigger("[Mm]ummy");
-    npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Gruß, wies dir geht? Ich "..thisNPC.name..", großer Krieger.");
+    npc.base.functions.AddTraderTrigger("[Gg]rÃ¼[ÃŸs]+e","GruÃŸ, wies dir geht? Ich "..thisNPC.name..", groÃŸer Krieger.");
     npc.base.functions.AddAdditionalTrigger("[Hh]allo");
     npc.base.functions.AddAdditionalTrigger("[Oo]rk");
     npc.base.functions.AddAdditionalText("Wus? Wus willst? Ich "..thisNPC.name..", starker Krieger! Har");
-    npc.base.functions.AddTraderTrigger("[Mm]umie","Ja. Komm her mit Innereinen um dich zu beweisen, dann "..thisNPC.name.." zeigen dir ein paar Tricks um große Viecher tot zu haun!");
+    npc.base.functions.AddTraderTrigger("[Mm]umie","Ja. Komm her mit Innereinen um dich zu beweisen, dann "..thisNPC.name.." zeigen dir ein paar Tricks um groÃŸe Viecher tot zu haun!");
 
 
     TradSpeakLang={0,5};
@@ -77,13 +77,13 @@ function receiveText(texttype, message, originator)
                 gText="Ja. "..thisNPC.name.." stark Krieger. Du willst Krieger werden?";
                 eText="Yes. "..thisNPC.name.." strong warrior. You want become warrior?";
             elseif (Status==2) then
-                gText=thisNPC.name.." weis nicht ob du stark genug. Bringt nix, Krieger sein zu wollen und die verfluchten Tempel Mummien nicht morschen zu können.";
+                gText=thisNPC.name.." weis nicht ob du stark genug. Bringt nix, Krieger sein zu wollen und die verfluchten Tempel Mummien nicht morschen zu kÃ¶nnen.";
                 eText=thisNPC.name.." nub knows if yoo is strong enuf, yets. No use even tryins to beh warrior, if yoo can'ts beat cursed temple mummies even.";
             elseif (Status==3) then
-                gText="Har. Hast "..thisNPC.name.." überzeugt, aber ich hab Probleme. "..thisNPC.name.." war in Sümpfen, große Viecher tot kloppen, als ich meine Axt verlorn hab. "..thisNPC.name.." konnt sie nicht wieder finden - Ich musste die Mistvicher mit meinen Händen verhaun. Find meine Axt und "..thisNPC.name.." bring dir was bei!";
+                gText="Har. Hast "..thisNPC.name.." Ã¼berzeugt, aber ich hab Probleme. "..thisNPC.name.." war in SÃ¼mpfen, groÃŸe Viecher tot kloppen, als ich meine Axt verlorn hab. "..thisNPC.name.." konnt sie nicht wieder finden - Ich musste die Mistvicher mit meinen HÃ¤nden verhaun. Find meine Axt und "..thisNPC.name.." bring dir was bei!";
                 eText="Yubba. Yoo has proven yerself, but "..thisNPC.name.." has troubles. Meh was in de swamps fightin' big critters when "..thisNPC.name.." dropped meh axe. "..thisNPC.name.." nub could finds it - had tuh fight big critters wid fists! Hur hur! Find meh axe and "..thisNPC.name.." will teach yoos.";
             elseif (Status==4) then
-                gText="Ugh! Hast Innereinen? Oder bist du schwächlich?";
+                gText="Ugh! Hast Innereinen? Oder bist du schwÃ¤chlich?";
                 eText="Ugh! You have innards, yet? Or is you weakling?";
             elseif (Status==5) then
                 gText="Hast "..thisNPC.name.." schon Innerein gegeben.";
@@ -92,13 +92,13 @@ function receiveText(texttype, message, originator)
                 gText="Innerein? Haben die verfluchten Tempel Mumien.";
                 eText="Inners?! The cursed temple mummies have them.";
             elseif (Status==7) then
-                gText="#me zeigt ein Manöver mit der Axt";
+                gText="#me zeigt ein ManÃ¶ver mit der Axt";
                 eText="#me displays a maneuver with his axe";
                 thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
                 gText="Jetzt du!";
                 eText="Now you try!";
             elseif (Status==8) then
-                gText="#me zeigt ein einfaches Manöver";
+                gText="#me zeigt ein einfaches ManÃ¶ver";
                 eText="#me displays a simple maneuver";
                 thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
                 gText="Jetzt du!";
@@ -124,7 +124,7 @@ function receiveText(texttype, message, originator)
                     end
                 elseif (Status==8) then
                     if (lang==0) then
-                        originator:inform("Du kennst dieses Manöver schon lange.");
+                        originator:inform("Du kennst dieses ManÃ¶ver schon lange.");
                     else
                         originator:inform("You knew of these kinds of moves long ago.");
                     end
@@ -150,7 +150,7 @@ function StartLearning(originator,message)
     if not StudentStats[originator.id][4] then
         if (string.find(message,"[Ww]arrior") ~= nil) or (string.find(message,"[Ff]ighter") ~= nil) or
         (string.find(message,"[Ss]oldier") ~= nil) or (string.find(message,"[Kk]rieger") ~= nil) or
-        (string.find(message,"[Ss]oldat") ~= nil) or (string.find(message,"[Kk]ämpfer") ~= nil) then
+        (string.find(message,"[Ss]oldat") ~= nil) or (string.find(message,"[Kk]Ã¤mpfer") ~= nil) then
             retVal=1;
             StudentStats[originator.id][1]=true;
         end
@@ -252,7 +252,7 @@ end
 function lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
-        output[0]="Ein Hüne von einem Ork, der bedrohlich seine Hauer fletscht. Sein Blick wirkt dennoch etwas unsicher, wenn er an seinen Gürtel greift, wo allerdings nur eine leere Öse zu sehen ist. Etwas scheint zu fehlen.";
+        output[0]="Ein HÃ¼ne von einem Ork, der bedrohlich seine Hauer fletscht. Sein Blick wirkt dennoch etwas unsicher, wenn er an seinen GÃ¼rtel greift, wo allerdings nur eine leere Ã–se zu sehen ist. Etwas scheint zu fehlen.";
         output[1]="A giant of an orc who keeps baring his tusks. His gaze is a little unsecure though when he reaches for his belt where you see nothing but an empty scabbard. Something seems to be missing.";
         initLook=1;
     end

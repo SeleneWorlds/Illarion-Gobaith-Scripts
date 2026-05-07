@@ -28,16 +28,16 @@ function initializeNpc()
     npc.base.functions_RS.AddTraderTrigger("[Gg]reetings","Hello! Can you help me?");
     npc.base.functions_RS.AddAdditionalTrigger("[Hh]ello");
     npc.base.functions_RS.AddAdditionalText("Greetings.");
-    npc.base.functions_RS.AddTraderTrigger("[Gg]r[uü][sß]+","Hallo, ich brauche deine Hilfe!");
+    npc.base.functions_RS.AddTraderTrigger("[Gg]r[uÃ¼][sÃŸ]+","Hallo, ich brauche deine Hilfe!");
     npc.base.functions_RS.AddAdditionalTrigger("[Hh]allo");
     npc.base.functions_RS.AddAdditionalText("Hallo!");
     npc.base.functions_RS.AddTraderTrigger("[Ww]ho.+you","My name is Clarissa, and I have a problem. Can you help me?");
-    npc.base.functions_RS.AddTraderTrigger("[Ww]er.+du","Ich bin Clarissa, und ich hab' ein Problem, bei dem du mir helfen könntest.");
+    npc.base.functions_RS.AddTraderTrigger("[Ww]er.+du","Ich bin Clarissa, und ich hab' ein Problem, bei dem du mir helfen kÃ¶nntest.");
     npc.base.functions_RS.AddAdditionalTrigger("[Ww]er.+ihr");
     npc.base.functions_RS.AddTraderTrigger("[Ww]hat.+problem","For ages I haven't heard anything from my friend Progor in Greenbriar. Could you go there and ask him to write me a message?");
     npc.base.functions_RS.AddAdditionalTrigger("[Ww]hat.+help");
     npc.base.functions_RS.AddAdditionalTrigger("[Hh]ow.+help");
-    npc.base.functions_RS.AddTraderTrigger("[Ww]as.+[Pp]roblem","Ich hab' seit Ewigkeiten nichts mehr von meinem Freund Progor aus Greenbriar gehört. Kannst du dort hingehen und ihn daran erinnern, dass er mir eine Nachricht schreiben sollte?");
+    npc.base.functions_RS.AddTraderTrigger("[Ww]as.+[Pp]roblem","Ich hab' seit Ewigkeiten nichts mehr von meinem Freund Progor aus Greenbriar gehÃ¶rt. Kannst du dort hingehen und ihn daran erinnern, dass er mir eine Nachricht schreiben sollte?");
     npc.base.functions_RS.AddAdditionalTrigger("[Ww]as.+[Hh]ilfe");
     npc.base.functions_RS.AddAdditionalTrigger("[Ww]ie.+[Hh]elfen");
 
@@ -76,13 +76,13 @@ function receiveText(texttype, message, originator)
             -------------------------------------------------------------------------
 
             if (Status==1) then
-                gText="Ooh! Wundervoll! Hach, vielen Dank für deine Hilfe. Hier, nimm diese Münze als Geschenk!";
+                gText="Ooh! Wundervoll! Hach, vielen Dank fÃ¼r deine Hilfe. Hier, nimm diese MÃ¼nze als Geschenk!";
                 eText="Ooh! How wonderful! Thank you very much for your help! Here, take this coin as a reward for your help.";
             elseif (Status==2) then
-                gText="Hmm. Ach, was soll's. Danke nochmal für deine Hilfe, hier hast du einen Apfel als Belohnung.";
+                gText="Hmm. Ach, was soll's. Danke nochmal fÃ¼r deine Hilfe, hier hast du einen Apfel als Belohnung.";
                 eText="Hmm. Oh well. Anyway, thank you for your help. Take this apple for your help.";
             elseif (Status==3) then
-                gText="Manchmal hasse ich diesen Kerl! Danke für deine Hilfe, und jetzt lass mich bitte alleine.";
+                gText="Manchmal hasse ich diesen Kerl! Danke fÃ¼r deine Hilfe, und jetzt lass mich bitte alleine.";
                 eText="Sometimes I hate this guy! Arg. Thank you for your help, but now please leave me alone.";
             elseif (Status==4) then
                 gText="Du hast die Nachricht doch garnicht bei dir!";

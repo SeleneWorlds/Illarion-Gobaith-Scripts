@@ -6,7 +6,7 @@ local M = {}
 -----------------------------
 function M.addEffect(stinkEffect, Character)         -- Smell starts
     --base.common.InformNLS(Character,
-    --"Du fühlst dich etwas unwohl.",
+    --"Du fÃ¼hlst dich etwas unwohl.",
     --"You feel a little sickish.");
     stinkEffect:addValue("stinkIndex",1);
 end
@@ -15,7 +15,7 @@ end
 -----------------------------------------------
 ---- Character is affected by the smell he got. --
 -------------------------------------------------
-function M.callEffect(stinkEffect, Character)    -- Effect wird ausgeführt
+function M.callEffect(stinkEffect, Character)    -- Effect wird ausgefÃ¼hrt
    -- Character:inform("callEffect 1");
     found,stinkIndex_n = stinkEffect:findValue("stinkIndex");    -- get the strength of the effect
     if found then
@@ -32,7 +32,7 @@ function M.callEffect(stinkEffect, Character)    -- Effect wird ausgeführt
     stinkEffect:addValue("stinkIndex",stinkIndex_n);
     --Character:inform("callEffect 3");
     if ((stinkIndex_n>10) and (stinkIndex_n<20)) then
-        Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me müffelt leicht nach Kuh.");
+        Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me mÃ¼ffelt leicht nach Kuh.");
         Character:talkLanguage(CCharacter.say,CPlayer.english,"#me smells a bit of cow.");
     elseif ((stinkIndex_n>=20) and (stinkIndex_n<30)) then
         Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me riecht dezent nach Kuh.");
@@ -56,7 +56,7 @@ function M.removeEffect( Effect, Character )
     LogString=os.date()..": Patient "..Character.name.."completely healed because the cold ended.\n";
     logToFile(LogString);
     --base.common.InformNLS(Character,
-    --"Du fühlst dich endlich wieder besser.",
+    --"Du fÃ¼hlst dich endlich wieder besser.",
     --"You finally feel better now.");
 end
 

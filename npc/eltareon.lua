@@ -29,8 +29,8 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Hh]ello","Greetings. Nice to meet you.");
     npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
     npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Gr¸ﬂe. Freut mich euch zu treffen.");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[u¸][sﬂ]+");
+    npc.base.functions.AddTraderTrigger("[Hh]allo","Gr√º√üe. Freut mich euch zu treffen.");
+    npc.base.functions.AddAdditionalTrigger("[Gg]r[u√º][s√ü]+");
     npc.base.functions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name.."");
     npc.base.functions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..".");
     npc.base.functions.AddTraderTrigger("[Bb]ye.","Be well");
@@ -41,8 +41,8 @@ function initializeNpc()
     npc.base.functions.AddAdditionalText("Auf bald");
     npc.base.functions.AddAdditionalText("Auf balde");
 
-    npc.base.functions.AddCycleText("#me bl‰ttert in einem Buch herum","#me browses through a book");
-    npc.base.functions.AddCycleText("#me g‰hnt verhalten","#me yawns restrained");
+    npc.base.functions.AddCycleText("#me bl√§ttert in einem Buch herum","#me browses through a book");
+    npc.base.functions.AddCycleText("#me g√§hnt verhalten","#me yawns restrained");
 
     TradSpeakLang={0,1};
     TradStdLang=0;

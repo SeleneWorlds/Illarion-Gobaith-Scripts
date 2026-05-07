@@ -26,14 +26,14 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Gg]reetings","Hiho! Welcome Traveller! Could you help me?");
     npc.base.functions.AddAdditionalTrigger("[Hh]ello");
     npc.base.functions.AddAdditionalTrigger("[Hh][Ii]");
-    npc.base.functions.AddTraderTrigger("[Gg]r[uü][sß]+","Hiho! Willkommen Reisender! Könntest du mir helfen?");
+    npc.base.functions.AddTraderTrigger("[Gg]r[uÃ¼][sÃŸ]+","Hiho! Willkommen Reisender! KÃ¶nntest du mir helfen?");
     npc.base.functions.AddAdditionalTrigger("[Hh]allo");
     npc.base.functions.AddTraderTrigger("[Hh]elp","I need two apples to bake a very tasty pie, could you bring me two?");
     npc.base.functions.AddTraderTrigger("[Tt]ree","#me points \"There! The trees. Can you see them?\"");
     npc.base.functions.AddTraderTrigger("[Hh]ow.+[gG]et","#w (( hold the shift key. Click on the tree and release the shift key. This is the way you can use items ))");
-    npc.base.functions.AddTraderTrigger("[Hh][ei]lf","Ich brauche zwei Äpfel um einen sehr leckeren Kuchen zu backen. Könntest du mir welche bringen?");
-    npc.base.functions.AddTraderTrigger("[Bb][äa]um","#me zeigt auf die Bäume \"Dort! Die Bäume! Kannst du sie sehen?\"");
-    npc.base.functions.AddTraderTrigger("[Ww]ie.+[Bb]ekomm","#w (( drück die Shift Taste. Klicke den Baum an und lass die Shift-Taste wieder los. So kannst du Gegenstände benutzen ))");
+    npc.base.functions.AddTraderTrigger("[Hh][ei]lf","Ich brauche zwei Ã„pfel um einen sehr leckeren Kuchen zu backen. KÃ¶nntest du mir welche bringen?");
+    npc.base.functions.AddTraderTrigger("[Bb][Ã¤a]um","#me zeigt auf die BÃ¤ume \"Dort! Die BÃ¤ume! Kannst du sie sehen?\"");
+    npc.base.functions.AddTraderTrigger("[Ww]ie.+[Bb]ekomm","#w (( drÃ¼ck die Shift Taste. Klicke den Baum an und lass die Shift-Taste wieder los. So kannst du GegenstÃ¤nde benutzen ))");
 
     TradSpeakLang={0,6};
     TradStdLang=0;
@@ -69,13 +69,13 @@ function receiveText(texttype, message, originator)
 
             -----------------------------------------------------------------------------
             if (Status==1) then
-                gText="Danke für die Äpfel! Hier hast du als Dank den leckeren Kuchen!";
+                gText="Danke fÃ¼r die Ã„pfel! Hier hast du als Dank den leckeren Kuchen!";
                 eText="Thanks for the apples! Take this pie as my thanks!";
             elseif (Status==2) then
-                gText="Danke für den Apfel! Aber ich brauche zwei damit ich einen Kuchen machen kann";
+                gText="Danke fÃ¼r den Apfel! Aber ich brauche zwei damit ich einen Kuchen machen kann";
                 eText="Thanks for the apple! But I need two to make a pie!";
             elseif (Status==3) then
-                gText="Ja! Sie wachsen auf den Bäumen dort drüben";
+                gText="Ja! Sie wachsen auf den BÃ¤umen dort drÃ¼ben";
                 eText="Yes! They grow at the trees there";
             elseif (Status==4) then
                 gText="Ich hab doch schon den Kuchen gebacken!";
@@ -100,7 +100,7 @@ end--function
 
 function Apfelgeben(originator,message)
     local retVal=0;
-    if (string.find(message,"[AaÄä]pfel")~=nil or string.find(message,"[Aa]pple")~=nil) then
+    if (string.find(message,"[AaÃ„Ã¤]pfel")~=nil or string.find(message,"[Aa]pple")~=nil) then
         if (originator:countItem(15)>1) then
             if (applefrom[originator.id]==nil) then
                 retVal=1;

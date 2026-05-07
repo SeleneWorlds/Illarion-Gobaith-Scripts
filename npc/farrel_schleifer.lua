@@ -34,14 +34,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Be greeted stranger! I'm "..thisNPC.name..", the gem-cutter of this island. If you want, I show you how to become a gem-tailer.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Sei gegrüßt Fremder! Ich bin "..thisNPC.name..", der beste Edelsteinschleifer auf der Insel. Wenn du möchtest, zeige ich dir, wie du ein guter Edelsteinschleifer wirst.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Sei gegrÃ¼ÃŸt Fremder! Ich bin "..thisNPC.name..", der beste Edelsteinschleifer auf der Insel. Wenn du mÃ¶chtest, zeige ich dir, wie du ein guter Edelsteinschleifer wirst.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddTraderTrigger("who you","I am "..thisNPC.name..", the best gem-cutter of this island. If you want, I show you how to become a good gem-trailer.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Sei gegrüßt Fremder! Ich bin "..thisNPC.name..", der beste Edelstenerscheifer auf der Insel. Wenn du möchtest, zeige ich dir, wie du ein guter Edelsteinschleifer wirst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Sei gegrÃ¼ÃŸt Fremder! Ich bin "..thisNPC.name..", der beste Edelstenerscheifer auf der Insel. Wenn du mÃ¶chtest, zeige ich dir, wie du ein guter Edelsteinschleifer wirst.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was ihr");
@@ -50,15 +50,15 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddAdditionalText("Be well!");
     npc.base.autonpcfunctions.AddAdditionalText("Farewell, until we meet again.");
-    npc.base.autonpcfunctions.AddTraderTrigger("tsch[üu][ßs]","Auf Wiedersehen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("tsch[Ã¼u][ÃŸs]","Auf Wiedersehen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb wohl");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wiederseh");
     npc.base.autonpcfunctions.AddAdditionalTrigger("auf bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
-    npc.base.autonpcfunctions.AddAdditionalText("Tschüss auch.");
-    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nächsten Mal.");
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn du möchtest kann ich dir zeigen, wie man Edelsteine schleift. Möchtest du das?");
+    npc.base.autonpcfunctions.AddAdditionalText("TschÃ¼ss auch.");
+    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nÃ¤chsten Mal.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn du mÃ¶chtest kann ich dir zeigen, wie man Edelsteine schleift. MÃ¶chtest du das?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","<",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
@@ -79,7 +79,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("schleifer","Du möchtest also lernen, wie man Edelsteine schleift? Das freut mich sehr. Wollen wir gleich anfangen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("schleifer","Du mÃ¶chtest also lernen, wie man Edelsteine schleift? Das freut mich sehr. Wollen wir gleich anfangen?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("handwerk");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lehr");
@@ -90,7 +90,7 @@ function initializeNpc()
 
     -- Starthilfe
     --
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weißt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weiÃŸt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Say \"help\" if you don't know, what to do.");
@@ -104,7 +104,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("item",2140);
     npc.base.autonpcfunctions.AddConsequence("item",197);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hervorragend! Als erstes brauchen wir eine Zange, um die Edelsteine darin zu halten und nätürlich rohe Edelsteine. Stell dich einfach direkt vor den Edelsteinschleifer und 'benutze' die Zange. Komm wieder wenn du mindestens 10 geschiffene Edelsteine hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hervorragend! Als erstes brauchen wir eine Zange, um die Edelsteine darin zu halten und nÃ¤tÃ¼rlich rohe Edelsteine. Stell dich einfach direkt vor den Edelsteinschleifer und 'benutze' die Zange. Komm wieder wenn du mindestens 10 geschiffene Edelsteine hast.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("item",2140);
@@ -112,7 +112,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
 
@@ -130,7 +130,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Does it not work? You must stay directly in front of the gem-cutter and then 'use' the tongs. With a bit training it would work fine.");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du musst dich direkt vor den Edelsteinschleifer stellen und dann die Zange 'benutzen'. Mit etwas Übung wirst du es sicher schaffen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du musst dich direkt vor den Edelsteinschleifer stellen und dann die Zange 'benutzen'. Mit etwas Ãœbung wirst du es sicher schaffen.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
 
@@ -141,7 +141,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",22);
     npc.base.autonpcfunctions.AddConsequence("item",21);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hier, bitte sehr. Das sollte erstmal reichen. Wenn du lernen willst, das Erz und die Kohle zu Eisenbarren zu schmelzen, geh einfach zu meinem Freund dem Schmied. Sein Name ist Arax Ironheart. Du wirstt ihn in seiner Schmiede dort drüben finden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hier, bitte sehr. Das sollte erstmal reichen. Wenn du lernen willst, das Erz und die Kohle zu Eisenbarren zu schmelzen, geh einfach zu meinem Freund dem Schmied. Sein Name ist Arax Ironheart. Du wirstt ihn in seiner Schmiede dort drÃ¼ben finden.");
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",22);

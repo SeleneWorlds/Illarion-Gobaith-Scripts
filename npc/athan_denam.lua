@@ -18,16 +18,16 @@ function initializeNpc()
     -- ********* START DYNAMIC PART ********
     npc.base.autonpcfunctions.AddCycleText("Die armen Schweinchen","Those poor piggies");
     npc.base.autonpcfunctions.AddCycleText("#me seufzt","#me sighs");
-    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen töten willst?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen tÃ¶ten willst?");
     npc.base.autonpcfunctions.AddConsequence("state",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüsse","Grüsse, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen töten willst?");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼sse","GrÃ¼sse, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen tÃ¶ten willst?");
     npc.base.autonpcfunctions.AddConsequence("state",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüße","Grüße, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen töten willst?");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼ÃŸe","GrÃ¼ÃŸe, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen tÃ¶ten willst?");
     npc.base.autonpcfunctions.AddConsequence("state",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Guten Tag","Guten Tag, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen töten willst?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Guten Tag","Guten Tag, mein Freund. Bist du dir sicher, dass du die kleinen Schweinchen tÃ¶ten willst?");
     npc.base.autonpcfunctions.AddConsequence("state",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("Hello","Hello, my friend. Are you really sure that you will kill those lovely piggies?");
@@ -52,7 +52,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state",3);
     npc.base.autonpcfunctions.AddConsequence("item",49,1,333,0);
     npc.base.autonpcfunctions.AddConsequence("qpg",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("Ja","Kann ich dich nicht umstimmen? Ich gebe dir fünf Kupfer. Dann kannst du dir ein Brot kaufen. Bist du einverstanden?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Ja","Kann ich dich nicht umstimmen? Ich gebe dir fÃ¼nf Kupfer. Dann kannst du dir ein Brot kaufen. Bist du einverstanden?");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state",2);
     npc.base.autonpcfunctions.AddTraderTrigger("Yes","Can I change your mind somehow? I will give you five copper. You can buy yourself a bread with the money. Do you consider?");
@@ -68,7 +68,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state",3);
     npc.base.autonpcfunctions.AddConsequence("money","+",5);
     npc.base.autonpcfunctions.AddConsequence("qpg",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("Nein","Dann kann ich dir leider nicht helfen. Mögen dich die Schweine beissen!");
+    npc.base.autonpcfunctions.AddTraderTrigger("Nein","Dann kann ich dir leider nicht helfen. MÃ¶gen dich die Schweine beissen!");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state",3);
     npc.base.autonpcfunctions.AddConsequence("qpg",2);
@@ -78,9 +78,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("qpg",2);
     npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo, mein Freund.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüsse","Grüsse, mein Freund.");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼sse","GrÃ¼sse, mein Freund.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüße","Grüße, mein Freund.");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼ÃŸe","GrÃ¼ÃŸe, mein Freund.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
     npc.base.autonpcfunctions.AddTraderTrigger("Guten Tag","Guten Tag, mein Freund.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
@@ -92,13 +92,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
     npc.base.autonpcfunctions.AddTraderTrigger("Be greeted","Be greeted, my friend.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Verschwinde, elender Mörder! ");
+    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Verschwinde, elender MÃ¶rder! ");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüsse","Verschwinde, elender Mörder! ");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼sse","Verschwinde, elender MÃ¶rder! ");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüße","Verschwinde, elender Mörder! ");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼ÃŸe","Verschwinde, elender MÃ¶rder! ");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("Guten Tag","Verschwinde, elender Mörder! ");
+    npc.base.autonpcfunctions.AddTraderTrigger("Guten Tag","Verschwinde, elender MÃ¶rder! ");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
     npc.base.autonpcfunctions.AddTraderTrigger("Hello","Get along with you, wretched murderer! ");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);

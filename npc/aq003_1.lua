@@ -25,7 +25,7 @@ function initializeNpc()
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
     npc.base.functions.AddTraderTrigger("[Gg]reetings","Greetings.");
     npc.base.functions.AddAdditionalTrigger("[Hh]ello");
-    npc.base.functions.AddTraderTrigger("[Gg]r[uü][sß]+","Hallo!");
+    npc.base.functions.AddTraderTrigger("[Gg]r[uÃ¼][sÃŸ]+","Hallo!");
     npc.base.functions.AddAdditionalTrigger("[Hh]allo");
     npc.base.functions.AddTraderTrigger("[Ww]ho.+you","I am Progor! I am living here, and enjoy life.");
     npc.base.functions.AddTraderTrigger("[Ww]er.+du","Ich bin Progor, ich leb' hier und geniesse mein Leben.");
@@ -66,7 +66,7 @@ function receiveText(texttype, message, originator)
             -------------------------------------------------------------------------
 
             if (Status==1) then
-                gText="#me nimmt ein Stück Papier, schreibt die Nachricht für Clarissa drauf und gibt sie dir.";
+                gText="#me nimmt ein StÃ¼ck Papier, schreibt die Nachricht fÃ¼r Clarissa drauf und gibt sie dir.";
                 eText="#me takes a piece of parchment, writes a message for Clarissa and gives it to you.";
             elseif (Status==2) then
                 gText="Du hast doch schon meine Nachricht!";

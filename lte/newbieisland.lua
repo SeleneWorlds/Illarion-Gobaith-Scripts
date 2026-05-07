@@ -33,16 +33,16 @@ function M.removeEffect(newbieEffect, Character)
 
 	if Character:isAdmin() then
 		base.common.TempInformNLS(Character,
-			"*** überspringe remove-Routine ***",
+			"*** Ã¼berspringe remove-Routine ***",
 			"*** skip remove-routine ***");
 		return;
 	end
 	
 	base.common.InformNLS(Character,
-	  "#w Du hast jetzt die Tutorialinsel verlassen und bist auf der eigentlichen Insel 'Gobaith'. Lasse deinen Charakter so handeln, als ob er eine reale Person in der Welt von Illarion wäre. Die Illarion-Community wünscht dir viel Spaß!",
+	  "#w Du hast jetzt die Tutorialinsel verlassen und bist auf der eigentlichen Insel 'Gobaith'. Lasse deinen Charakter so handeln, als ob er eine reale Person in der Welt von Illarion wÃ¤re. Die Illarion-Community wÃ¼nscht dir viel SpaÃŸ!",
 	  "#w You now have left the tutorial island and you are on the actual island 'Gobaith'. Let your character act as if he is a real person in the world of Illarion. The Illarion community wishes you much fun!");
 	base.common.InformNLS(Character,
-	  "*Du schüttelst das letzte Kribbeln von dir ab und ein frisches, euphorisches Gefühl durchströmt deinen Körper.*",
+	  "*Du schÃ¼ttelst das letzte Kribbeln von dir ab und ein frisches, euphorisches GefÃ¼hl durchstrÃ¶mt deinen KÃ¶rper.*",
 	  "*You shake off the last tingling and a fresh, euphorical feeling flows through your body.*");
 	-- full health and foodpoints
 	--

@@ -51,23 +51,23 @@ function initializeNpc()
     --npc.base.functions.AddTraderTrigger("[Gg]reetings","Greetings. How can I help you?");
     --npc.base.functions.AddAdditionalTrigger("[Hh]ello");
     --npc.base.functions.AddAdditionalText("Hello. Do you need some of smithed goods? Best quality!");
-    --npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Tach, wie kann ich dir helfen?");
+    --npc.base.functions.AddTraderTrigger("[Gg]rÃ¼[ÃŸs]+e","Tach, wie kann ich dir helfen?");
     --npc.base.functions.AddAdditionalTrigger("[Hh]alle");
-    --npc.base.functions.AddAdditionalText("Grüß dich. Brauchst was geschmiedetes? Beste Qualität!");
+    --npc.base.functions.AddAdditionalText("GrÃ¼ÃŸ dich. Brauchst was geschmiedetes? Beste QualitÃ¤t!");
     --npc.base.functions.AddTraderTrigger("[Yy]ou.+[Tt]rader","Sure, I am trader of my own goods: gems, armors, helmets and more. You are interested on my wares?");
-    --npc.base.functions.AddTraderTrigger("[IiDd][uh]r*.+[Hh]ändler","Sicher, ich verkauf meine eigenen Sachen: Edelsteine, Rüstungen, Helme und mehr. Bist an meinen Waren interessiert?");
+    --npc.base.functions.AddTraderTrigger("[IiDd][uh]r*.+[Hh]Ã¤ndler","Sicher, ich verkauf meine eigenen Sachen: Edelsteine, RÃ¼stungen, Helme und mehr. Bist an meinen Waren interessiert?");
     --npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I trade with gems, armors, helmets, weapons and more.");
-    --npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich handel mit Edelsteinen, Rüstungen, Waffen und mehr.");
+    --npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich handel mit Edelsteinen, RÃ¼stungen, Waffen und mehr.");
     --npc.base.functions.AddTraderTrigger("[Ww]hat.+[Ww]ares","I have gems, armors, helmets, weapons and more.");
-    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]aren","Ich hab Edelsteinen, Rüstungen, Waffen und mehr.");
+    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]aren","Ich hab Edelsteinen, RÃ¼stungen, Waffen und mehr.");
     --npc.base.functions.AddTraderTrigger("[Ww]hat.+[Gg]em","Take a short look. But do not touch them! I trade with amethysts, emeralds, rubies and topaz.");
     --npc.base.functions.AddTraderTrigger("[Ww]as.+[Ee]delstein","Sieh sie dir kurz an. Aber FASS sie nicht an! Ich handel mit Amethysten, Smaragden, Rubinen und Topasen.");
     --npc.base.functions.AddTraderTrigger("[Ww]hat.+[Aa]rmor","Do not trust the Lizard in the shop and her waste. My armors are better! I have chain shirts, plate armors, dwarvenplates and short blue steel greaves.");
-    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Rr]üstung","Trau der Echsen und ihrem Müll im Laden nicht. Meine Rüstungen sind besser! Sind ja von nem Zwerg! Ich hab Kettenhemden, Plattenpanzer, Zwergenpanzer und kurze blaue Stahlbeinschienen.");
+    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Rr]Ã¼stung","Trau der Echsen und ihrem MÃ¼ll im Laden nicht. Meine RÃ¼stungen sind besser! Sind ja von nem Zwerg! Ich hab Kettenhemden, Plattenpanzer, Zwergenpanzer und kurze blaue Stahlbeinschienen.");
     --npc.base.functions.AddTraderTrigger("[Ww]hat.+[Hh]elm","Oh, i have nice helmets. They are made by the smiths of Silverbrand. Look what i have: salkamaerian paladin's helmet, chain helmets and round steel hat");
     --npc.base.functions.AddTraderTrigger("[Ww]as.+[Hh]elm","Oh, schau dir diese tollen Helme an. Sie wurden von den Schmieden Silberbrands gemacht. Schau welche ist habe: salkamaerischer Paladinhelme, Kettenhelme und runde Stahlhelme.");
     --npc.base.functions.AddTraderTrigger("[Ww]hat.+[Ww]eapon","Ah, You are interested on my weapons? A good choice! I have the best sortiment of axes: throwing axes, dwarven axes, waraxes, double axes, large waraxes, longaxes.");
-    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]affe","Ah, du bist an meinen Waffen interessiert? Eine gute Wahl! Har. Ich habe das beste sortiment an Äxten: Wauf, Zwergen und Kriegsäxte. Außerdem Doppeläxte und Langäxte.");
+    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]affe","Ah, du bist an meinen Waffen interessiert? Eine gute Wahl! Har. Ich habe das beste sortiment an Ã„xten: Wauf, Zwergen und KriegsÃ¤xte. AuÃŸerdem DoppelÃ¤xte und LangÃ¤xte.");
     --npc.base.functions.AddTraderTrigger("[Ww]hat.+[Mm]ore","You are smith yourself? Look, maybe do you want some iron ignots and iron plates?");
     --npc.base.functions.AddTraderTrigger("[Ww]as.+[Mm]ehr","Du bist auch ein Schmied? Schau, vielleicht willst du Eisen Barren oder Platten?");
     --npc.base.functions.AddTraderTrigger("[Gg]oodbye","Irmorom with you. Good day.");
@@ -75,35 +75,35 @@ function initializeNpc()
     --npc.base.functions.AddAdditionalTrigger("[Bb]ye");
     --npc.base.functions.AddAdditionalText("Good day. Irmorom may help you to have good trades.");
     --npc.base.functions.AddAdditionalText("Farewell!");
-    --npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Irmorom mit dir, Schönen Tag noch.");
+    --npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Irmorom mit dir, SchÃ¶nen Tag noch.");
     --npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    --npc.base.functions.AddAdditionalText("Schönen Tag. Irmorom möge dir helfen ein paar gute Geschäfte zu machen");
+    --npc.base.functions.AddAdditionalText("SchÃ¶nen Tag. Irmorom mÃ¶ge dir helfen ein paar gute GeschÃ¤fte zu machen");
     --npc.base.functions.AddTraderTrigger("[Ww]ho.+you?","I am Sorgan Stonemate, a miner and smith of Silverbrand");
     --npc.base.functions.AddTraderTrigger("[Ww]er.+[DdIi][uh]r*","Ich bin Sorgan Stonemate, Bergarbeiter und Schmied von Silberbrand");
     --npc.base.functions.AddTraderTrigger("I'm .+","Ahr! Nice to meet you.");
     --npc.base.functions.AddTraderTrigger("[Ii]ch.+[Bb]in.+","Arrr, Freut mich!");
     --npc.base.functions.AddTraderTrigger("[Tt]ell.+[Ss]omething","Hrmm, I know where you can find copper ore, iron ore, coal and some gems. But do not tell it around! This knowledge should not be public. Right?");
-    --npc.base.functions.AddTraderTrigger("[Ee]rzähl.+[Ww]as","Hrm. Ich weis wo du Kupfer und Eisenerz, Kohle und ein paar Edelsteine finden kannst. Aber erzähl es nicht rum. Dieses Wissen sollte nicht jeder haben. Richtig?");
+    --npc.base.functions.AddTraderTrigger("[Ee]rzÃ¤hl.+[Ww]as","Hrm. Ich weis wo du Kupfer und Eisenerz, Kohle und ein paar Edelsteine finden kannst. Aber erzÃ¤hl es nicht rum. Dieses Wissen sollte nicht jeder haben. Richtig?");
     --npc.base.functions.AddTraderTrigger("[Cc]opper.+[Oo]re","Hrmm. Where i begin? Do you know the Cooper Mountains in front the East Gate at the path to Silverbrand? What do you think why these Mountains are called so? There you can find this ore everywhere at the surface. You only have to collect it!");
-    --npc.base.functions.AddTraderTrigger("[Kk]upfer.+[Ee]rz","Hrm. Wo soll ich anfangen? Kennst du die Kupfer Berge außerhalb des Ost Tores auf dem Pfad nach Silverbrand. Warum denkst du heißen diese Berge so? Dort kannst du das Erz überall auf der Oberfläche finden. Musst es nur einsammeln.");
+    --npc.base.functions.AddTraderTrigger("[Kk]upfer.+[Ee]rz","Hrm. Wo soll ich anfangen? Kennst du die Kupfer Berge auÃŸerhalb des Ost Tores auf dem Pfad nach Silverbrand. Warum denkst du heiÃŸen diese Berge so? Dort kannst du das Erz Ã¼berall auf der OberflÃ¤che finden. Musst es nur einsammeln.");
     --npc.base.functions.AddTraderTrigger("[Ii]ron.+[Oo]re","Hehe, around this town iron ore is rare. Maybe you have some luck in the mine of the Copper Mountains. But the best mines for iron ore are in Silverbrand and in the north of the Fearys Tears River.");
-    --npc.base.functions.AddTraderTrigger("[Ee]isen.+[Ee]rz","Hehe. Das ist um diese Stadt herum ziemlich selten. Villeicht hast du Glück in der Mine in den Kupfer Bergen. Aber die Beste Mine für dieses Erz ist in Silberbrand und im Norden das Fearys Tears Fluss.");
+    --npc.base.functions.AddTraderTrigger("[Ee]isen.+[Ee]rz","Hehe. Das ist um diese Stadt herum ziemlich selten. Villeicht hast du GlÃ¼ck in der Mine in den Kupfer Bergen. Aber die Beste Mine fÃ¼r dieses Erz ist in Silberbrand und im Norden das Fearys Tears Fluss.");
     --npc.base.functions.AddTraderTrigger("[Cc]oal","Coal can be found nearly everywhere. You only have to look for the grey rocks in the next mountains.");
-    --npc.base.functions.AddTraderTrigger("[Kk]ohle","Kohle kann eigentlich überall gefunden werden. Musst dich nur nach diesen grauen Steinen im nächsten Gebirge umsehen.");
+    --npc.base.functions.AddTraderTrigger("[Kk]ohle","Kohle kann eigentlich Ã¼berall gefunden werden. Musst dich nur nach diesen grauen Steinen im nÃ¤chsten Gebirge umsehen.");
     --npc.base.functions.AddTraderTrigger("[Gg]em","Oh, hehe. The location of good gems are a big secret. But, i did not tell you, right? Maybe you can find some Smaragds in the center of the Copper Mountains.");
-    --npc.base.functions.AddTraderTrigger("[Ee]delstein","Oh. Hehe. Die Verstecke von guten Edelsteinen sind ein großes Geheimniss. Das hab ich dir nicht gesagt, ok? Du findest vielleicht ein paar Smaragde in der Mitte der Kupfer Berge.");
+    --npc.base.functions.AddTraderTrigger("[Ee]delstein","Oh. Hehe. Die Verstecke von guten Edelsteinen sind ein groÃŸes Geheimniss. Das hab ich dir nicht gesagt, ok? Du findest vielleicht ein paar Smaragde in der Mitte der Kupfer Berge.");
     --npc.base.functions.AddTraderTrigger("[Cc]opper.+[Mm]ountain","You are new here, right? Pass the eastern or northern gate of this town and went to east. You can not fail these big mountains.");
     --npc.base.functions.AddTraderTrigger("[Kk]upfer.+[Bb]erge","Du bist neu hier, oder? Geh aus dem Nord oder Ost Tor dieser Stadt und halte dich nach Osten. Du kannst dieses Gebirge nicht verfehlen.");
     npc.base.functions.AddTraderTrigger("[Ss]ilverbrand","Aaarr, you want to visit our dwarven town? Fine, take the northern or eastern gate and went to northeast. When you passed the Copper Mountains you can see the Faerys Tears River. Take a brigde to cross the river and you arrive the entrance of Silverbrand.");
-    npc.base.functions.AddTraderTrigger("[Ss]ilberbrand","Arr. Du willst die Zwergenstadt sehen. Nimm die Straße durch das Nord oder Osttor und halte dich nach Nordosten. Wenn du die Kupfer Berge passiert hast, siehst du den Raerys Tears Fluss. Überquere die Brücke und die erreichst den Eingang nach Silberbrand.");
+    npc.base.functions.AddTraderTrigger("[Ss]ilberbrand","Arr. Du willst die Zwergenstadt sehen. Nimm die StraÃŸe durch das Nord oder Osttor und halte dich nach Nordosten. Wenn du die Kupfer Berge passiert hast, siehst du den Raerys Tears Fluss. Ãœberquere die BrÃ¼cke und die erreichst den Eingang nach Silberbrand.");
     npc.base.functions.AddTraderTrigger("[hH]elp","'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'");
-    npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'");
+    npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich mÃ¶chte <Anzahl> <Ware> kaufen', 'Ich mÃ¶chte <Ware> kaufen', 'Ich mÃ¶chte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr fÃ¼r <Ware>', 'Was kauft ihr?'");
 
     npc.base.functions.AddCycleText("Arrr...","Arrr...");
     npc.base.functions.AddCycleText("Arrr!","Arrr!");
-    npc.base.functions.AddCycleText("#me brummt verärgert:'Ich streike!'","#me grumbles in anger:'I am on strike!'");
+    npc.base.functions.AddCycleText("#me brummt verÃ¤rgert:'Ich streike!'","#me grumbles in anger:'I am on strike!'");
 
-    TraderLang={"Gold","gold","Silber", "silver","Kupfer","copper","stücke","pieces"};
+    TraderLang={"Gold","gold","Silber", "silver","Kupfer","copper","stÃ¼cke","pieces"};
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
 
     RefreshTime={10000,40000};
@@ -151,7 +151,7 @@ function receiveText(texttype, message, originator)
 
             ----------------------------EDIT BELOW HERE-----------------------------------
             if (Status==1) then -- Verkauf von mehreren Items erfolgreich // npc.base.trader_functions.Selling of multible items succeed
-                gText="Ihr möchtet "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Bitte sehr, macht dann"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                gText="Ihr mÃ¶chtet "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Bitte sehr, macht dann"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
                 eText="You want "..Values[1].." "..world:getItemName(Values[2],1).."? Here you are, that makes"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==2) then -- Item kann wegen Platzmangel nicht erstellt werden // Item can't created, cause of lag of space
                 gText="Tut mir leid, aber Ihr habt nicht genug Platz in Eurem Inventar.";
@@ -160,7 +160,7 @@ function receiveText(texttype, message, originator)
                 gText="Kommt wieder wenn ihr genug Geld habt!";
                 eText="Come back when you have enough money!";
             elseif (Status==4) then -- Item ausverkauft // item out of stock
-                gText="Tut mir leid. Ich habe das im Moment nicht. Kommt doch bitte später wieder.";
+                gText="Tut mir leid. Ich habe das im Moment nicht. Kommt doch bitte spÃ¤ter wieder.";
                 eText="I am sorry, I don't have this currently. Come back later.";
             elseif (Status==5) then -- Item wird nicht verkauft // item
                 gText="Tut mir Leid. Ich verkaufe das nicht.";
@@ -168,11 +168,11 @@ function receiveText(texttype, message, originator)
             elseif (Status==6) then -- Verkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Selling of a single item succeed
                 gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr kaufen wollt? Bitte sehr, das macht"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
                 eText="You want a "..world:getItemName(Values[2],1).."? Here you are, that makes"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
-            elseif (Status==7) then -- Verkaufspreis Ansage für ein Item // selling price announcement for an item
+            elseif (Status==7) then -- Verkaufspreis Ansage fÃ¼r ein Item // selling price announcement for an item
                 gText=npc.base.functions.GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],Values[4],TraderLang)..".";
                 eText="The "..world:getItemName(Values[1],1).." costs"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],Values[4],TraderLang)..".";
-            elseif (Status==8) then -- Einkaufspreis Ansage für ein Item // buying price announcement for an item
-                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wäre mir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
+            elseif (Status==8) then -- Einkaufspreis Ansage fÃ¼r ein Item // buying price announcement for an item
+                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wÃ¤re mir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
                 eText="I would pay"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
             elseif (Status==9) then -- Einkauf von mehreren Items erfolgreich // npc.base.trader_functions.Buying of multible items succeed
                 gText="Ihr wollt "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich gebe euch"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
@@ -180,23 +180,23 @@ function receiveText(texttype, message, originator)
             elseif (Status==10) then -- Item das gekauft werden soll nicht vorhanden // item that should be buyed is not aviable
                 gText="Kommt wieder wenn ihr das habt!";
                 eText="Come back when you have that!";
-            elseif (Status==11) then -- Händler hat nicht genug Geld // trader don't have enough money
+            elseif (Status==11) then -- HÃ¤ndler hat nicht genug Geld // trader don't have enough money
                 gText="Tut mir leid. Ich kann das nicht kaufen. Ich habe nicht genug Geld.";
                 eText="Sorry, I cannot buy that. I do not have enough money.";
-            elseif (Status==12) then -- Händler kauft das Item nicht // trader didn't buy the item
+            elseif (Status==12) then -- HÃ¤ndler kauft das Item nicht // trader didn't buy the item
                 gText="So etwas kaufe ich nicht. Tut mir leid.";
                 eText="Sorry, I do not buy that item.";
             elseif (Status==13) then -- Einkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Buying of a single item succeed
-                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr verkaufen möchtet? Ich gebe euch"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr verkaufen mÃ¶chtet? Ich gebe euch"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
                 eText="You want to sell a "..world:getItemName(Values[2],1).."? I give you"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==14) then -- Liste der Waren die der NPC verkauft ist nicht leer // List of the wares the NPC sells, is not empty
-                gText="Ich verkaufe Edelsteine, Rüstungen, Waffen und mehr.";
+                gText="Ich verkaufe Edelsteine, RÃ¼stungen, Waffen und mehr.";
                 eText="I sell gems, armors, weapons and more.";
             elseif (Status==15) then -- Liste der Waren die der NPC verkauft ist leer // List of the wares the NPC sells, is empty
                 gText="Ich verkaufe nichts.";
                 eText="I do not sell anything.";
             elseif (Status==16) then -- Liste der Waren die der NPC kauft ist nicht leer // List of the wares the NPC buys, is not empty
-                gText="Ich kaufe Edelsteine, Rüstungen, Waffen und mehr.";
+                gText="Ich kaufe Edelsteine, RÃ¼stungen, Waffen und mehr.";
                 eText="I buy gems, armors, weapons and more.";
             elseif (Status==17) then -- Liste der Waren die der NPC kauft ist leer // List of the wares the NPC buys, is empty
                 gText="Ich kaufe nichts.";

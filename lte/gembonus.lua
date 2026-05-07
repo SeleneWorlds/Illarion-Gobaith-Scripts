@@ -25,7 +25,7 @@ function M.doRemaining(gemBonus,User)
     end
 end
 
-function M.callEffect(gemBonus, User)                     -- Effect wird ausgeführt
+function M.callEffect(gemBonus, User)                     -- Effect wird ausgefÃ¼hrt
     --User:inform("checking...");
     M.doRemaining(gemBonus,User);
     fndLeft,gemType=gemBonus:findValue("hand1gem");     -- check if there was something for left hand

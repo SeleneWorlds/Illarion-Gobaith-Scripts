@@ -67,7 +67,7 @@ end
 --------------------------------------------------
 -- Character is affected by the disease he got. --
 --------------------------------------------------
-function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
+function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgefÃ¼hrt
     Patient:inform("callEffect called");
     found,diseaseStr = diseaseEffect:findValue("diseaseStr");   -- get the strength of the effect
     diseaseEffect.nextCalled =math.random(150,250);            -- call it again in 15-25 seconds
@@ -80,9 +80,9 @@ function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
                     Patient:talkLanguage(CCharacter.say, CPlayer.german, "#me kratzt sich.");
                     Patient:talkLanguage(CCharacter.say, CPlayer.english, "#me has a scratch.");
                 elseif rnd==3 then
-                    base.common.InformNLS(Patient,"Du fühlst dich verwundbar.","You feel vulnerable.");
+                    base.common.InformNLS(Patient,"Du fÃ¼hlst dich verwundbar.","You feel vulnerable.");
                 elseif rnd==4 then
-                    base.common.InformNLS(Patient,"Du fühlst dich verwundbar.","You feel vulnerable.");
+                    base.common.InformNLS(Patient,"Du fÃ¼hlst dich verwundbar.","You feel vulnerable.");
                 end
             --end
             if diseaseStr==2 then                       -- not so strong yet (alter attribs by 2)
@@ -101,7 +101,7 @@ function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
         else                    -- he will be healed!
             LogString=os.date()..": Patient "..Patient.name.." healed by healing-mechanism. (Immune now)\n";
             base.common.InformNLS(Patient,
-            "Du fühlst dich endlich wieder besser.",
+            "Du fÃ¼hlst dich endlich wieder besser.",
             "You finally feel better now.");
             diseaseEffect:addValue("diseaseStr",150);
 			return true;

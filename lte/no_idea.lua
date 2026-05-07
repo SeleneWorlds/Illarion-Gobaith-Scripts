@@ -10,7 +10,7 @@ end
 
 -- Wird regelmaessig aufgerufen
 
-function M.callEffect(percBoost, User)                    -- Effect wird ausgeführt
+function M.callEffect(percBoost, User)                    -- Effect wird ausgefÃ¼hrt
               User:inform("Marke 4")
     percBoost.nextCalled = 60;                         -- Erneut in einer Minute aufrufen
     found,addPerc = percBoost:findValue("addPerc");    -- Wieviel wurde bisher "geboostet"?

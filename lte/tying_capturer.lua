@@ -65,7 +65,7 @@ function M.callEffect( Tying, Capturer )
 					local Quality = math.min(1200,120+math.random(55,65)*AttribOffset);
 					Rope.quality = (Quality*2)+100; -- *2 -> nextCalled = 5. Duration min=2minutes max=20minutes
 				elseif Rope.quality == 100 then -- break rope
-					Capturer:talkLanguage(CCharacter.say,CPlayer.german,"#me's Seil zerreiﬂt, es wurde wohl zu lange belastet.");
+					Capturer:talkLanguage(CCharacter.say,CPlayer.german,"#me's Seil zerrei√üt, es wurde wohl zu lange belastet.");
 					Capturer:talkLanguage(CCharacter.say,CPlayer.english,"#me's rope is torn, it has been used for too long apparently.");
 					world:erase(Rope,1);
 					return false;
@@ -103,7 +103,7 @@ function M.callEffect( Tying, Capturer )
 								end
 								if tellEscape then
 									M.InformW(Capturer,
-										"Du sp¸rst einen ungewˆhnlichen Zug auf dem Seil. Ob das ein Fluchtversuch sein kann?",
+										"Du sp√ºrst einen ungew√∂hnlichen Zug auf dem Seil. Ob das ein Fluchtversuch sein kann?",
 										"You feel an unusual pull on the rope. May that be an escape attempt?");
 								end
 							else -- count down escape cycle time
@@ -148,7 +148,7 @@ function M.removeEffect( Tying, Capturer )
 		if eraseIt then
 			world:erase(rope,1);
 			M.InformW(Capturer,
-				"Das Seil zerreiﬂt.",
+				"Das Seil zerrei√üt.",
 				"The rope breaks.");
 		else
 			rope.data = 0;

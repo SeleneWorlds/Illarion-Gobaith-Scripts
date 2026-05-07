@@ -1,4 +1,4 @@
--- Basisfunktion für Passagierschiffe aller Art
+-- Basisfunktion fÃ¼r Passagierschiffe aller Art
 
 module("npc.base.ships", package.seeall)
 
@@ -76,7 +76,7 @@ end
 -- Richtungen:
 -- -- 0 = Norden
 -- -- 2 = Osten
--- -- 4 = Süden
+-- -- 4 = SÃ¼den
 -- -- 6 = Westen
 
 -- Syntax: MoveShip(Richtung)

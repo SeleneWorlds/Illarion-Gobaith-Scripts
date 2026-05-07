@@ -29,7 +29,7 @@ Waypoint:new(position(-66,-127,0),1,nil,6);
 Waypoint:new(position(-59,-124,0),1,nil,4);
 Waypoint:new(position(-72,-127,0),1);
 
-GLOOKAT = "Ein schon etwas gealterter Mann. Er tr‰gt einen langen, schwarzen Mantel und h‰lt eine Laterne in der Hand.";
+GLOOKAT = "Ein schon etwas gealterter Mann. Er tr√§gt einen langen, schwarzen Mantel und h√§lt eine Laterne in der Hand.";
 ELOOKAT = "An aged man. He wears a long, black coat and has a lantern in his hand.";
 GENDER = 0;
 WAITING = 100;

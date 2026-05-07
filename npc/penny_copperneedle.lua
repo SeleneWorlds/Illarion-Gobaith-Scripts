@@ -1,7 +1,7 @@
 --Name:        Penny Copperneedle 
 --Race:        Halbling
 --Town:        Newbie Insel
---Function:    Färben beibringen
+--Function:    FÃ¤rben beibringen
 --Position:    x=-74 y=-104 z=0
 --Facing:      south
 --Last Update: 14/06/2008
@@ -37,14 +37,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Hello my friend! I am "..thisNPC.name..", I dye the most beautyful clothes here. If you want, I show you how to dye cloth.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Ich bin "..thisNPC.name..", ich färbe die schönsten Stoffe hier. Wenn du möchtest zeige ich dir, wie man Stoffe färbt.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Ich bin "..thisNPC.name..", ich fÃ¤rbe die schÃ¶nsten Stoffe hier. Wenn du mÃ¶chtest zeige ich dir, wie man Stoffe fÃ¤rbt.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddTraderTrigger("who you","I am "..thisNPC.name..", I dye the most beautyful clothes here. If you want, I show you how to dye cloth.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Hallo mein Freund! Ich bin "..thisNPC.name..", ich färbe die schönsten Stoffe hier. Wenn du möchtest zeige ich dir, wie man Stoffe färbt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Hallo mein Freund! Ich bin "..thisNPC.name..", ich fÃ¤rbe die schÃ¶nsten Stoffe hier. Wenn du mÃ¶chtest zeige ich dir, wie man Stoffe fÃ¤rbt.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was ihr");
@@ -55,15 +55,15 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddAdditionalText("Be well, my friend!");
     npc.base.autonpcfunctions.AddAdditionalText("Farewell, until we meet again.");
-    npc.base.autonpcfunctions.AddTraderTrigger("tsch[üu][ßs]","Auf Wiedersehen, mein Freund!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("tsch[Ã¼u][ÃŸs]","Auf Wiedersehen, mein Freund!");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb wohl");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wiederseh");
     npc.base.autonpcfunctions.AddAdditionalTrigger("auf bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
-    npc.base.autonpcfunctions.AddAdditionalText("Tschüss auch.");
-    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nächsten Mal.");
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn du möchtest kann ich dir zeigen, wie man Stoffe färbt. Möchtest du?");
+    npc.base.autonpcfunctions.AddAdditionalText("TschÃ¼ss auch.");
+    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nÃ¤chsten Mal.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn du mÃ¶chtest kann ich dir zeigen, wie man Stoffe fÃ¤rbt. MÃ¶chtest du?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","<",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
@@ -85,7 +85,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("färb","Du möchtest also lernen, wie man Stoffe färbt? Wunderbar! Ich würde sagen dann fangen wir am besten gleich an, oder?");
+    npc.base.autonpcfunctions.AddTraderTrigger("fÃ¤rb","Du mÃ¶chtest also lernen, wie man Stoffe fÃ¤rbt? Wunderbar! Ich wÃ¼rde sagen dann fangen wir am besten gleich an, oder?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("stoff");
     npc.base.autonpcfunctions.AddAdditionalTrigger("handwerk");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
@@ -97,27 +97,27 @@ function initializeNpc()
 
     -- Status: 0 (Starthilfe)
     --
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weißt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weiÃŸt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Say \"help\" if you don't know, what to do.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
 
-    -- Status: 1 -> 10 (Grauen Stoff in weißen verwandeln)
+    -- Status: 1 -> 10 (Grauen Stoff in weiÃŸen verwandeln)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Well, firstly we need some cloth. Here you have some, but it's grey and ugly cloth. You must bleach the cloth, before you can dye it, but this is easy. Just lay the cloth on the ground next to you and wait. The sun bleaches it automatically after a time. Come back to me, when you have some white cloth");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("item",176,5,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Fein fein! Als erstes brauchst du Stoff. Hier hast du welchen. Er ist noch grau und unsansehnlich. Leg ihn auf den Boden neben dich und warte bis er sich aufgehellt hat. Wenn der Stoff weiß geworden ist, dann komm zurück zu mir.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Fein fein! Als erstes brauchst du Stoff. Hier hast du welchen. Er ist noch grau und unsansehnlich. Leg ihn auf den Boden neben dich und warte bis er sich aufgehellt hat. Wenn der Stoff weiÃŸ geworden ist, dann komm zurÃ¼ck zu mir.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("item",176,5,999,0);
     npc.base.autonpcfunctions.AddTraderTrigger("no","Not? It's a pity, but you can come back to continue whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Nicht? Schade, aber du kansnt zurückkommen wann immer du willst, dann machen wir weiter.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Nicht? Schade, aber du kansnt zurÃ¼ckkommen wann immer du willst, dann machen wir weiter.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
 
@@ -126,7 +126,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","A simple \"yes\" or \"no\" is enough for me as an answer. So, do you want to learn how to dye clothes or not?");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ein einfaches \"ja\", oder \"nein\" reicht mir als Antwort. Also...willst du nun lernen wie man Stoffe färbt, oder nicht?.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ein einfaches \"ja\", oder \"nein\" reicht mir als Antwort. Also...willst du nun lernen wie man Stoffe fÃ¤rbt, oder nicht?.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
 
@@ -135,17 +135,17 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Still have some problems? There is not really much, you must do. Just lay the cloth on the ground and wait, until it becomes white. This takes possibly some time. But if you don't want to wait this time, I can give you some white cloth. Want you?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Gibt es noch Probleme? Eigentlich musst du gar nichts tun. Leg einfach den grauen Stoff neben dich auf den Boden und warte, bis er weiß geworden ist. Dann kann unter Umständen ein paar Minuten dauern. Aber wenn du nicht so lange warten willst, kann ich dir auch gerne weißen Stoff geben, dann können wir weitermachen. Möchtest du das?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Gibt es noch Probleme? Eigentlich musst du gar nichts tun. Leg einfach den grauen Stoff neben dich auf den Boden und warte, bis er weiÃŸ geworden ist. Dann kann unter UmstÃ¤nden ein paar Minuten dauern. Aber wenn du nicht so lange warten willst, kann ich dir auch gerne weiÃŸen Stoff geben, dann kÃ¶nnen wir weitermachen. MÃ¶chtest du das?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
 
-    -- Status: 11 (Auf Wunsch wird weißer Stoff gegeben)
+    -- Status: 11 (Auf Wunsch wird weiÃŸer Stoff gegeben)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Here you go. When you are ready, we can continue. Ready?");
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",178,5,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hier hast du welchen. Wenn du dann soweit bist können wir gleich weitermachen. Bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hier hast du welchen. Wenn du dann soweit bist kÃ¶nnen wir gleich weitermachen. Bereit?");
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",178,5,999,0);
@@ -167,7 +167,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",176,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",176,5,333,0);
 
-    -- Status: 10 (Stoff ist noch grau...weißen Stoff geben?)
+    -- Status: 10 (Stoff ist noch grau...weiÃŸen Stoff geben?)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Your cloth is still not white enough. Patience my friend! Just lay it a bit more longer into the sun. If you don't want to wait, I can give you optional some white cloth. Want you?");
     npc.base.autonpcfunctions.AddCondition("lang","english");
@@ -175,27 +175,27 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",176,"all",">=",0);
     npc.base.autonpcfunctions.AddCondition("item",178,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Dein Stoff ist noch nicht weiß genug. Nur Geduld mein Freund! Leg ihn einfach noch eine Weile in die Sonne. Wenn du nicht warten möchtest kann ich dir aber auch gleich weißen Stoff geben. Möchtest du das?.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Dein Stoff ist noch nicht weiÃŸ genug. Nur Geduld mein Freund! Leg ihn einfach noch eine Weile in die Sonne. Wenn du nicht warten mÃ¶chtest kann ich dir aber auch gleich weiÃŸen Stoff geben. MÃ¶chtest du das?.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("item",176,"all",">=",0);
     npc.base.autonpcfunctions.AddCondition("item",178,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
 
-    -- Status: 10 -> 2 (weißer Stoff ist da - weitermachen?)
+    -- Status: 10 -> 2 (weiÃŸer Stoff ist da - weitermachen?)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Very nice, you did it! Now I show you how to produce the dye you need to dye your white cloth later. Are you ready?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("item",178,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sehr gut, du hast es geschafft! Als nächstes zeige ich dir, wie du die Farbe herstellst, mit der du den weißen Stoff dann färben kannst. Bist du soweit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sehr gut, du hast es geschafft! Als nÃ¤chstes zeige ich dir, wie du die Farbe herstellst, mit der du den weiÃŸen Stoff dann fÃ¤rben kannst. Bist du soweit?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("item",178,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
 
-    -- Status: 2 -> 20 (grüne Farbe herstellen)
+    -- Status: 2 -> 20 (grÃ¼ne Farbe herstellen)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","I would propose, we try green dye first, because it's the easiest to produce. You need buckets with water, some cabbage a mortar to produce the dye. Take the mortar in your hands, the cabbage and the buckets with water in your belt and stay in front of the fire. 'Use' the mortar and a menue will open, where you can choose the green dye. Come back if you have make a bucket with green dye.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
@@ -203,7 +203,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("item",290,15,333,0);
     npc.base.autonpcfunctions.AddConsequence("item",52,5,333,0);
     npc.base.autonpcfunctions.AddConsequence("item",58,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Ich würde sagen, wir versuchen es zuerst mit grüner Farbe, denn die ist am einfachsten herzustellen. Dafür brauchen wir Eimer mit Wasser, Kohl und Mörser. Stell dich vor das Feuer hier, nimm den Mörser in die Hand und den Kohl sowie die Wassereimer 'in' deinen Gürtel. Wenn du nun den Mörser benutzt öffnet sich ein Menü, wo du die grüne Farbe auswählen kannst. Komm wieder, wenn du einen Eimer mit grüner Farbe hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Ich wÃ¼rde sagen, wir versuchen es zuerst mit grÃ¼ner Farbe, denn die ist am einfachsten herzustellen. DafÃ¼r brauchen wir Eimer mit Wasser, Kohl und MÃ¶rser. Stell dich vor das Feuer hier, nimm den MÃ¶rser in die Hand und den Kohl sowie die Wassereimer 'in' deinen GÃ¼rtel. Wenn du nun den MÃ¶rser benutzt Ã¶ffnet sich ein MenÃ¼, wo du die grÃ¼ne Farbe auswÃ¤hlen kannst. Komm wieder, wenn du einen Eimer mit grÃ¼ner Farbe hast.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",20);
     npc.base.autonpcfunctions.AddConsequence("item",290,15,333,0);
@@ -211,7 +211,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("item",58,1,999,0);
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
 
     -- Status: 20 (Hilfe)
@@ -219,17 +219,17 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Still have some problems? You must hold the mortar in your hand and the cabbage and the buckets with water in your belt. If the work fails you can refill the buckets with water when you take the bucket in your hand and 'use' it with the well over there. Or you ask me for new buckets with water. Anyway, if you want to continue, I can give you some green dye. Want you?");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddConsequence("state","=",21);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Gibt's noch Probleme? Du musst den Mörser in der Hand halten und die Wassereimer und den Kohl 'im' Gürtel. Wenn deine Arbeit fehlschlägt kannst du die Eimer neu mit Wasser füllen, wenn du sie in die Hand nimmst und  mit dem Brunnen dort 'benutzt'. Oder du fragst mich einfach nach neuen Wassereimern. Ich kann dir aber auch gleich die grüne Farbe geben, wenn du erstmal weitermachen willst. Möchtest du das?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Gibt's noch Probleme? Du musst den MÃ¶rser in der Hand halten und die Wassereimer und den Kohl 'im' GÃ¼rtel. Wenn deine Arbeit fehlschlÃ¤gt kannst du die Eimer neu mit Wasser fÃ¼llen, wenn du sie in die Hand nimmst und  mit dem Brunnen dort 'benutzt'. Oder du fragst mich einfach nach neuen Wassereimern. Ich kann dir aber auch gleich die grÃ¼ne Farbe geben, wenn du erstmal weitermachen willst. MÃ¶chtest du das?");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddConsequence("state","=",21);
 
-    -- Status: 21 (Auf Wunsch wird gleich die grüne Farbe gegeben)
+    -- Status: 21 (Auf Wunsch wird gleich die grÃ¼ne Farbe gegeben)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Alright, here is some green dye. Would you like to continue?");
     npc.base.autonpcfunctions.AddCondition("state","=",21);
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
     npc.base.autonpcfunctions.AddConsequence("item",2679,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","In Ordnung, hier sind ein paar Eimer mit grüner Farbe. Wollen wir dann weitermachen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","In Ordnung, hier sind ein paar Eimer mit grÃ¼ner Farbe. Wollen wir dann weitermachen?");
     npc.base.autonpcfunctions.AddCondition("state","=",21);
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
     npc.base.autonpcfunctions.AddConsequence("item",2679,5,333,0);
@@ -264,75 +264,75 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",290,"all","<",3);
     npc.base.autonpcfunctions.AddConsequence("item",290,10,333,0);
 
-    -- Status: 20 (Neuer Mörser)
+    -- Status: 20 (Neuer MÃ¶rser)
     --     
     npc.base.autonpcfunctions.AddTraderTrigger("scissor","Did you need a new mortar? Here you have one.");
     npc.base.autonpcfunctions.AddCondition("state",">",20);
     npc.base.autonpcfunctions.AddCondition("item",58,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",58,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("schere","Brauchst du einen neuen Mörser? Hier hast du einen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("schere","Brauchst du einen neuen MÃ¶rser? Hier hast du einen.");
     npc.base.autonpcfunctions.AddCondition("state",">",20);
     npc.base.autonpcfunctions.AddCondition("item",58,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",58,1,999,0);
 
-    -- Status: 20 (Grüne Farbe nicht da)
+    -- Status: 20 (GrÃ¼ne Farbe nicht da)
     --     
     npc.base.autonpcfunctions.AddTraderTrigger(".+","You still have no green dye. Come back, when you have filled one bucket with green dye.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",2679,"all","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Du hast noch keine grüne Farbe. Komm wieder, wenn du mindestens Eimer mit grüner Farbe hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Du hast noch keine grÃ¼ne Farbe. Komm wieder, wenn du mindestens Eimer mit grÃ¼ner Farbe hast.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",2679,"all","=",0);
 
-    -- Status: 20 (Grüne Farbe unvollständig)
+    -- Status: 20 (GrÃ¼ne Farbe unvollstÃ¤ndig)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh... this dye isn't finished. If you want to continue the work on an unfinished bucket of dye, just 'use' the mortar with that bucket, having it placed 'in' the belt of course.");
     npc.base.autonpcfunctions.AddCondition("state","=",22);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",20);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh... diese Farbe ist noch nicht fertig. Wenn du die Arbeit an einem unfertigen Eimer mit Farbe weiterführen willst, dann 'benutze' den Mörser mit diesem Eimer, den du natürlich am Gürtel trägst.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh... diese Farbe ist noch nicht fertig. Wenn du die Arbeit an einem unfertigen Eimer mit Farbe weiterfÃ¼hren willst, dann 'benutze' den MÃ¶rser mit diesem Eimer, den du natÃ¼rlich am GÃ¼rtel trÃ¤gst.");
     npc.base.autonpcfunctions.AddCondition("state","=",22);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",20);
 
-    -- Status: 20 -> 3 (Grüne Farbe ist da - weitermachen?)
+    -- Status: 20 -> 3 (GrÃ¼ne Farbe ist da - weitermachen?)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Ah...you finished with the green dye. Perfect. The next is to dye the white cloth with the dye. Ready to continue?");
     npc.base.autonpcfunctions.AddCondition("state","=",23);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ah...du bist fertig mit der grünen Farbe. Perfekt. Als nächstes zeige ich dir, wie du den weißen Stoff mit der grünen Farbe färbst. Wollen wir gleich weitermachen?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ah...du bist fertig mit der grÃ¼nen Farbe. Perfekt. Als nÃ¤chstes zeige ich dir, wie du den weiÃŸen Stoff mit der grÃ¼nen Farbe fÃ¤rbst. Wollen wir gleich weitermachen?");
     npc.base.autonpcfunctions.AddCondition("state","=",23);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
 
-    -- Status: 3 -> 30 (Stoff färben)
+    -- Status: 3 -> 30 (Stoff fÃ¤rben)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Take this dying rod and stay in front of that barrel next to the well there. You must have the green dye as well as the white cloth 'in' your belt, or it doesn't works. Just 'use' the barrel now and you will start automatically to dye the cloth. If you need anymore, just ask me for that. Come back to me, when you have make green cloth.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("item",2781,1,999,0);
     npc.base.autonpcfunctions.AddConsequence("state","=",30);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Nimm diesen Rühstab und stell dich vor das Fass dort neben dem Brunnen. Du musst sowohl die grüne Farbe, als auch den weißen Stoff 'im' Gürtel haben damit es funktioniert. 'Benutze' nun das Färbefass und du fängst automatisch an den Stoff zu färben. Falls du noch irgendwas brauchst, frag mich einfach danach. Komm wieder, wenn du es geschafft hast grünen Stoff herzustellen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Nimm diesen RÃ¼hstab und stell dich vor das Fass dort neben dem Brunnen. Du musst sowohl die grÃ¼ne Farbe, als auch den weiÃŸen Stoff 'im' GÃ¼rtel haben damit es funktioniert. 'Benutze' nun das FÃ¤rbefass und du fÃ¤ngst automatisch an den Stoff zu fÃ¤rben. Falls du noch irgendwas brauchst, frag mich einfach danach. Komm wieder, wenn du es geschafft hast grÃ¼nen Stoff herzustellen.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("item",2781,1,999,0);
     npc.base.autonpcfunctions.AddConsequence("state","=",30);
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
 
-    -- Status: 30 (Mehr grüne Farbe)
+    -- Status: 30 (Mehr grÃ¼ne Farbe)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("green","Ah...you need more green color, or? Here you have some buckets.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("dye");
     npc.base.autonpcfunctions.AddCondition("state",">",30);
     npc.base.autonpcfunctions.AddCondition("item",2679,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",2679,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("gr[uü][en]","Ah...du brauchst mehr grüne Farbe, richtig? Hier hast du noch ein paar Eimer.");
+    npc.base.autonpcfunctions.AddTraderTrigger("gr[uÃ¼][en]","Ah...du brauchst mehr grÃ¼ne Farbe, richtig? Hier hast du noch ein paar Eimer.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("farbe");
     npc.base.autonpcfunctions.AddCondition("state",">",30);
     npc.base.autonpcfunctions.AddCondition("item",2679,"all","=",0);
@@ -349,27 +349,27 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",176,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",176,5,333,0);
 
-    -- Status: 30 (Mehr weißer Stoff)
+    -- Status: 30 (Mehr weiÃŸer Stoff)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("cloth","Ah...you need more cloth, or? Here you have some.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("white");
     npc.base.autonpcfunctions.AddCondition("state",">",30);
     npc.base.autonpcfunctions.AddCondition("item",178,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",178,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("wei[sß]","Ah...du brauchst mehr Stoff, richtig? Hier hast du noch welchen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wei[sÃŸ]","Ah...du brauchst mehr Stoff, richtig? Hier hast du noch welchen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("stoff");
     npc.base.autonpcfunctions.AddCondition("state",">",30);
     npc.base.autonpcfunctions.AddCondition("item",178,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",178,5,333,0);
 
-    -- Status: 30 (Neuer Rührstab)
+    -- Status: 30 (Neuer RÃ¼hrstab)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("rod","Did you need a new dying rod? Here you have one.");
     npc.base.autonpcfunctions.AddCondition("state",">",30);
     npc.base.autonpcfunctions.AddCondition("item",2781,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",2781,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("stab","Brauchst du einen neuen Rührstab? Hier hast du einen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("r[uü][eh][hr]");
+    npc.base.autonpcfunctions.AddTraderTrigger("stab","Brauchst du einen neuen RÃ¼hrstab? Hier hast du einen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("r[uÃ¼][eh][hr]");
     npc.base.autonpcfunctions.AddCondition("state",">",30);
     npc.base.autonpcfunctions.AddCondition("item",2781,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",2781,1,999,0);
@@ -378,28 +378,28 @@ function initializeNpc()
     --
     npc.base.autonpcfunctions.AddTraderTrigger("help","Does it not work? You must hold the dying rod in both hands. Put all other things, you hold in your hands, away first. The dye and the white cloth must be 'in' your belt. Just 'use' the barrel and you will start to dye.");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must den Rühstab in beide Hände nehmen. Leg dafür zuerst alle anderen Sachen aus der Hand. Die Farbe und der weiße Stoff muss 'im' Gürtel sein. Dann das Fass 'benutzen' und schon fängst du an zu färben.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must den RÃ¼hstab in beide HÃ¤nde nehmen. Leg dafÃ¼r zuerst alle anderen Sachen aus der Hand. Die Farbe und der weiÃŸe Stoff muss 'im' GÃ¼rtel sein. Dann das Fass 'benutzen' und schon fÃ¤ngst du an zu fÃ¤rben.");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
 
-    -- Status: 30 (Noch kein grüner Stoff da)
+    -- Status: 30 (Noch kein grÃ¼ner Stoff da)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Use the barrel next to the well to make some green dye. Tell me, if you need help.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddCondition("item",54,"all","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Benutz das Fass neben dem Brunnen um grüne Farbe herzustellen. Wenn du hilfe brauchst, dann sag mir einfach bescheid.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Benutz das Fass neben dem Brunnen um grÃ¼ne Farbe herzustellen. Wenn du hilfe brauchst, dann sag mir einfach bescheid.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddCondition("item",54,"all","=",0);
   
-    -- Status: 30 -> 4 (Grüner Stoff ist da - Ende!)
+    -- Status: 30 -> 4 (GrÃ¼ner Stoff ist da - Ende!)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Excellent work! You did it! Now you know how to dye clothes. Except for green dye some other colors are possible of course. With more experience, you can make more colors. If you want to know, how to tailor anything just ask my sister Jenny. She stays over there next to the sheeps. Farewell and good luck!");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddCondition("item",54,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Du hast es geschafft. Du weißt nun, wie man Stoffe färbt. Außer grün gibt es natürlich noch viele andere Farben mit denen man Stoffe färben kann. Je mehr Erfahrung du im Färben hast, desto mehr Farben kannst du herstellen. Wenn du nun noch wissen willst, wie man aus Stoffen etwas schneidern kann, dann frag am besten meine Schwester Jenny. Sie steht dort drüben bei den Schafen. Leb wohl und viel Erfolg!");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Du hast es geschafft. Du weiÃŸt nun, wie man Stoffe fÃ¤rbt. AuÃŸer grÃ¼n gibt es natÃ¼rlich noch viele andere Farben mit denen man Stoffe fÃ¤rben kann. Je mehr Erfahrung du im FÃ¤rben hast, desto mehr Farben kannst du herstellen. Wenn du nun noch wissen willst, wie man aus Stoffen etwas schneidern kann, dann frag am besten meine Schwester Jenny. Sie steht dort drÃ¼ben bei den Schafen. Leb wohl und viel Erfolg!");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddCondition("item",54,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","german");

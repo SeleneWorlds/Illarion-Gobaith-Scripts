@@ -40,7 +40,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("[:;][dp]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[:;][-][dp]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("xd");
-    npc.base.autonpcfunctions.AddTraderTrigger("n[o]b","Ich werde nicht mit Euch reden, wenn Ihr weiter solch unverständliches Zeug faselt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("n[o]b","Ich werde nicht mit Euch reden, wenn Ihr weiter solch unverstÃ¤ndliches Zeug faselt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddAdditionalTrigger("n[0]b");
     npc.base.autonpcfunctions.AddAdditionalTrigger(1337);
@@ -58,13 +58,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("[:;][dp]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[:;][-][dp]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("xd");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("töte");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("schei[ßs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tÃ¶te");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("schei[ÃŸs]");
     -- small talk, queststaus=0
     npc.base.autonpcfunctions.AddTraderTrigger("help","I would be glad to help you. I could tell you something about farming.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf mir","Gerne helfe ich Euch. Ich könnte Euch etwas über den Ackerbau erzählen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf mir","Gerne helfe ich Euch. Ich kÃ¶nnte Euch etwas Ã¼ber den Ackerbau erzÃ¤hlen.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilfe");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helft mir");
@@ -73,25 +73,25 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("Gobaith","You are travelling to Gobaith, right? Indeed, you must be brave to travel to an island people are used to tell so many... mysterious.. stories about. Anyway, I wish you a good journey.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Gobaith","Ihr seid auf der Durchreise nach Gobaith, nicht wahr? Ihr müsst wahrhaftig mutig sein, Euch zu diese sagenumwobene Insel zu begeben, von denen man so viel... merkwürdiges... hört. Wie dem auch sei - ich wünsche Euch einen angehme Reise.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Gobaith","Ihr seid auf der Durchreise nach Gobaith, nicht wahr? Ihr mÃ¼sst wahrhaftig mutig sein, Euch zu diese sagenumwobene Insel zu begeben, von denen man so viel... merkwÃ¼rdiges... hÃ¶rt. Wie dem auch sei - ich wÃ¼nsche Euch einen angehme Reise.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("Illarion","Illarion? Well, you should go to a library and read some books to read something about this world! However, in Troll's Bane on Gobaith is a large library you can get more information, I suppose.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Illarion","Illarion? Ihr fragt mich nach dem Namen dieser Welt? Ihr solltet lieber eine Bibliothek aufsuchen, als mich von einer ganzen Welt zu berichten zu lassen! In Troll's Bane auf Gobaith befindet sich die größte Bibliothek, die ich kenne.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Illarion","Illarion? Ihr fragt mich nach dem Namen dieser Welt? Ihr solltet lieber eine Bibliothek aufsuchen, als mich von einer ganzen Welt zu berichten zu lassen! In Troll's Bane auf Gobaith befindet sich die grÃ¶ÃŸte Bibliothek, die ich kenne.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("Troll[s ]+Bane","Troll's Bane is the largest town on the isle Gobaith. Troll's Bane is located in the centre of the isle. Many merchants are there. I would say you can get anything you need in this town.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Troll[s ]+Bane","Troll's Bane ist die größte Stadt auf der Insel Gobaith. Sie befindet sich im Zentrum der Insel. Es ist eine Stadt der Händler und ich würde sagen, in dieser Stadt bekommt Ihr alles, was Ihr Euch nur wünschen könntet.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Troll[s ]+Bane","Troll's Bane ist die grÃ¶ÃŸte Stadt auf der Insel Gobaith. Sie befindet sich im Zentrum der Insel. Es ist eine Stadt der HÃ¤ndler und ich wÃ¼rde sagen, in dieser Stadt bekommt Ihr alles, was Ihr Euch nur wÃ¼nschen kÃ¶nntet.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("Where am","You are on a small island not far away from Gobaith. Many travelers come here first to learn the local conventions of the islanders.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Wo bin","Ihr seid auf einem kleinen Eiland nicht fern von der sagenumwobenen Insel Gobaith. Viele Reisende kommen zunächst hierher, um sich mit den Sitten und Bräuchen der Inselbewohner vertraut zu machen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Wo bin","Ihr seid auf einem kleinen Eiland nicht fern von der sagenumwobenen Insel Gobaith. Viele Reisende kommen zunÃ¤chst hierher, um sich mit den Sitten und BrÃ¤uchen der Inselbewohner vertraut zu machen.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("Monster","#me laughs: 'Ha, you truely are looking for an adventure! Be careful that it will not cost your life somewhen, my friend.'");
@@ -104,13 +104,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("Monster","#me lacht auf: 'Ha, Ihr seid wahrhaftig auf der Suche nach einem Abenteuer, wie es mir scheint! Gebt acht, dass es Euch nicht einst das Leben kosten wird, mein Freund.'");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddAdditionalTrigger("kampf");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("k[aeä]mpf");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("t[oeö]te");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("k[aeÃ¤]mpf");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("t[oeÃ¶]te");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("%NPCNAME","Indeed, that is my name, my friend. I am farmer and like to teach people something about my profession.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("%NPCNAME","In der Tat, dies ist mein Name. Ich bin Bauer und ich liebe es über meinen Beruf zu berichten und anderen beizubringen ein anständiger Bauer zu werden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("%NPCNAME","In der Tat, dies ist mein Name. Ich bin Bauer und ich liebe es Ã¼ber meinen Beruf zu berichten und anderen beizubringen ein anstÃ¤ndiger Bauer zu werden.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("Greebas","Hello, my name is "..thisNPC.name..". I am a farmer... and a happy one. *he grins as he sais so*");
@@ -121,10 +121,10 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("Greeting");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Guten Tag","Hallo, mein Name ist "..thisNPC.name..". Ich bin ein Bauer... und ein glücklicher noch dazu. *er hat ein breites Grinsen im Gesicht, als er dies sagt*");
+    npc.base.autonpcfunctions.AddTraderTrigger("Guten Tag","Hallo, mein Name ist "..thisNPC.name..". Ich bin ein Bauer... und ein glÃ¼cklicher noch dazu. *er hat ein breites Grinsen im Gesicht, als er dies sagt*");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Tach");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Hallo");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[üu][ßs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[Ã¼u][ÃŸs]");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("Profession","I am "..thisNPC.name..", a farmer. I do help all people who are willing to learn.");
@@ -139,7 +139,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("Was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Was Ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("name");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("hei[ssß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("hei[ssÃŸ]");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("how are you","Oh, I am fine. I hope you too.");
@@ -151,7 +151,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("hi","Do you have so little time that you just say 'hi'? Folks here prefer more formal phrases. Just like 'greetings' for example. Remember that, my friend.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("hi","Habt Ihr so wenig Zeit, dass ihr Fremde in einer so kurzen Form nur begrüßt? Die Bewohner dieser Inseln hier bevorzugen eigentlich längere Grußwörter - wie 'Ich grüße Euch'. Merkt Euch dies, mein Freund.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hi","Habt Ihr so wenig Zeit, dass ihr Fremde in einer so kurzen Form nur begrÃ¼ÃŸt? Die Bewohner dieser Inseln hier bevorzugen eigentlich lÃ¤ngere GruÃŸwÃ¶rter - wie 'Ich grÃ¼ÃŸe Euch'. Merkt Euch dies, mein Freund.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("sell","I am sorry. I do not sell anything nor do I buy anything. I am just a farmer.");
@@ -175,7 +175,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("auf bald","Auf bald.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb.+wohl");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[üu][ßs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[Ã¼u][ÃŸs]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("mach.+gut");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddAdditionalText("Bis bald.");
@@ -186,7 +186,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
     npc.base.autonpcfunctions.AddConsequence("deleteitem",52,2);
-    npc.base.autonpcfunctions.AddTraderTrigger("bye","Gehabt Euch wohl, mein Freund. Kehrt zurück, falls Ihr mehr über den Ackerbau erfahren wollt. Danke für die Eimer!");
+    npc.base.autonpcfunctions.AddTraderTrigger("bye","Gehabt Euch wohl, mein Freund. Kehrt zurÃ¼ck, falls Ihr mehr Ã¼ber den Ackerbau erfahren wollt. Danke fÃ¼r die Eimer!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("farewell");
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
@@ -201,7 +201,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("auf bald","Auf bald.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb.+wohl");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[üu][ßs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[Ã¼u][ÃŸs]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("mach.+gut");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
     npc.base.autonpcfunctions.AddAdditionalText("Bis bald.");
@@ -211,17 +211,17 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("farewell");
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger("bye","Gehabt Euch wohl, mein Freund. Kehrt zurück, falls Ihr mehr über den Ackerbau erfahren wollt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("bye","Gehabt Euch wohl, mein Freund. Kehrt zurÃ¼ck, falls Ihr mehr Ã¼ber den Ackerbau erfahren wollt.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("farewell");
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
-    -- Begrüßung, Ackerbau lernen?
+    -- BegrÃ¼ÃŸung, Ackerbau lernen?
     npc.base.autonpcfunctions.AddTraderTrigger("happy","Oh, is is 'that' obvious that I thank the gods every day that they allow me to be a farmer? Perhaps you want to try farming as well?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("grin");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("gl[ueü]ck","Oh, ist es tatsächlich 'so' auffällig, dass ich den Göttern jeden Tag aus Neue danke, dass sie mir das Glück dieses Berufes bescherten? Vielleicht wollt Ihr Euch ebenso am Ackerbau versuchen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("gl[ueÃ¼]ck","Oh, ist es tatsÃ¤chlich 'so' auffÃ¤llig, dass ich den GÃ¶ttern jeden Tag aus Neue danke, dass sie mir das GlÃ¼ck dieses Berufes bescherten? Vielleicht wollt Ihr Euch ebenso am Ackerbau versuchen?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("grins");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
@@ -231,7 +231,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("Feld","Ja, in der Tat. Dieser Acker dort gehört mir. Wollt Ihr etwas über den Ackerbau erfahren?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Feld","Ja, in der Tat. Dieser Acker dort gehÃ¶rt mir. Wollt Ihr etwas Ã¼ber den Ackerbau erfahren?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Acker");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
@@ -243,7 +243,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("Landwirt","Ihr wollt also etwas über den Ackerbau erfahren?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Landwirt","Ihr wollt also etwas Ã¼ber den Ackerbau erfahren?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lehr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("pflanz");
@@ -255,7 +255,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","#me sieht Dich etwas verwundert an und sagt: 'Nun, in der Tat eine etwas merkwürdige Art jemanden zu begrüßen... wie dem auch sei - Ich grüße Euch. Mein Name ist "..thisNPC.name..". Ich bin ein Bauer. Soll ich Euch etwas über den Ackerbau erzählen?'");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","#me sieht Dich etwas verwundert an und sagt: 'Nun, in der Tat eine etwas merkwÃ¼rdige Art jemanden zu begrÃ¼ÃŸen... wie dem auch sei - Ich grÃ¼ÃŸe Euch. Mein Name ist "..thisNPC.name..". Ich bin ein Bauer. Soll ich Euch etwas Ã¼ber den Ackerbau erzÃ¤hlen?'");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
@@ -269,13 +269,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("Tut leid","#me lacht kurz freundlich auf: '...Ihr braucht Euch nicht zu entschuldigen. Ihr hattet bestimmt eine weite Reise und vielerlei Leute bereits kennen gelernt. Bitte, sagt, soll ich Euch etwas über den Ackerbau erzählen?'");
+    npc.base.autonpcfunctions.AddTraderTrigger("Tut leid","#me lacht kurz freundlich auf: '...Ihr braucht Euch nicht zu entschuldigen. Ihr hattet bestimmt eine weite Reise und vielerlei Leute bereits kennen gelernt. Bitte, sagt, soll ich Euch etwas Ã¼ber den Ackerbau erzÃ¤hlen?'");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Entschuldig");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Verzeihung");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Hallo");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Tag");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Tach");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[üu][ßs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[Ã¼u][ÃŸs]");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
@@ -286,10 +286,10 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("Ja","Es freut mich sehr dies zu hören. Nundenn, zunächst solltet Ihr wissen, dass es kaum etwas entspannteres gibt, als die Zeit auf dem Felde zu verbringen. Doch nimmt dies auch einige Zeit in Anspruch. Sollen wir dennoch forfahren?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Ja","Es freut mich sehr dies zu hÃ¶ren. Nundenn, zunÃ¤chst solltet Ihr wissen, dass es kaum etwas entspannteres gibt, als die Zeit auf dem Felde zu verbringen. Doch nimmt dies auch einige Zeit in Anspruch. Sollen wir dennoch forfahren?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Aye");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Fahr[t] fort");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Natürlich");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("NatÃ¼rlich");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Unbedingt");
     npc.base.autonpcfunctions.AddAdditionalTrigger("klar");
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -301,7 +301,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Nein","In diesem Falle wünsche ich Euch einen angenehmen Tag und eine gute Reise nach Gobaith. Vielleicht seid Ihr ja daran interssiert von anderen etwas zu lernen, bevor Ihr nach Gobaith aufbrecht? Gehabt Euch wohl.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Nein","In diesem Falle wÃ¼nsche ich Euch einen angenehmen Tag und eine gute Reise nach Gobaith. Vielleicht seid Ihr ja daran interssiert von anderen etwas zu lernen, bevor Ihr nach Gobaith aufbrecht? Gehabt Euch wohl.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Nay");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Niemals");
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -311,11 +311,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Tut mir Leid, ich habe Eure Antwort auf meine Frage nicht recht verstanden: Soll ich Euch etwas über den Ackerbau beibringen?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Tut mir Leid, ich habe Eure Antwort auf meine Frage nicht recht verstanden: Soll ich Euch etwas Ã¼ber den Ackerbau beibringen?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    -- Was lernen? Bäume pflanzen // Getreide anbauen
+    -- Was lernen? BÃ¤ume pflanzen // Getreide anbauen
     npc.base.autonpcfunctions.AddTraderTrigger("Yes","#me smiles at you in a friendly way and says: 'Very well. What do you want to learn? Planting trees? Or cultivating grain?'");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Aye");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Yeah");
@@ -323,10 +323,10 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger("Ja","#me lächelt Dich freundlich an und sagt: 'Wunderbar. Was wollt Ihr lernen? Bäume pflanzen? Oder Getreide anbauen?'");
+    npc.base.autonpcfunctions.AddTraderTrigger("Ja","#me lÃ¤chelt Dich freundlich an und sagt: 'Wunderbar. Was wollt Ihr lernen? BÃ¤ume pflanzen? Oder Getreide anbauen?'");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Aye");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Fahr[t] fort");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Natürlich");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("NatÃ¼rlich");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Unbedingt");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
@@ -337,7 +337,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Nein","In diesem Falle wünsche ich Euch einen angenehmen Tag und eine gute Reise nach Gobaith. Vielleicht seid Ihr ja daran interssiert von anderen etwas zu lernen, bevor Ihr nach Gobaith aufbrecht? Gehabt Euch wohl.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Nein","In diesem Falle wÃ¼nsche ich Euch einen angenehmen Tag und eine gute Reise nach Gobaith. Vielleicht seid Ihr ja daran interssiert von anderen etwas zu lernen, bevor Ihr nach Gobaith aufbrecht? Gehabt Euch wohl.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Nay");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Niemals");
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -364,11 +364,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",3);
     npc.base.autonpcfunctions.AddConsequence("state","=",21);
-    -- Hilfe beim Wasserschöpfen, queststatus=1
+    -- Hilfe beim WasserschÃ¶pfen, queststatus=1
     npc.base.autonpcfunctions.AddTraderTrigger("help","Do you want to know where the bucket is? Or how to take the bucket into your hand? Or do you want to know how to fill the bucket with water?");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("rat","Wollt Ihr wissen, wo der Eimer ist? Oder wie Ihr den Eimer in die Hand nehmt? Oder vielleicht, wie Ihr den Eimer mit Wasser füllt?");
+    npc.base.autonpcfunctions.AddTraderTrigger("rat","Wollt Ihr wissen, wo der Eimer ist? Oder wie Ihr den Eimer in die Hand nehmt? Oder vielleicht, wie Ihr den Eimer mit Wasser fÃ¼llt?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
@@ -377,7 +377,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("first");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("wo","Die Eimer sind entweder in Euren Händen, Eurem Gürtel oder in Eurer Ledertasche. ['Gürtel' = die 6 Inventarfelder unter der Figur am rechten Bildschirmrand. 'Ledertasche' = in dem Inventarfeld links neben dem Kopf der Figur. Rechtsclick - Tasche öffnen]");
+    npc.base.autonpcfunctions.AddTraderTrigger("wo","Die Eimer sind entweder in Euren HÃ¤nden, Eurem GÃ¼rtel oder in Eurer Ledertasche. ['GÃ¼rtel' = die 6 Inventarfelder unter der Figur am rechten Bildschirmrand. 'Ledertasche' = in dem Inventarfeld links neben dem Kopf der Figur. Rechtsclick - Tasche Ã¶ffnen]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("erst");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
@@ -387,7 +387,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("hand","Nehmt einen Eimer einfach in Eure Hand. [setze den Counter auf 0, z.B. mit der 'Ende'-Taste auf der Tastatur. Ziehe dann per Drag/Drop den Eimer aus dem Inventarfeld auf das freie Inventarfeld, welches sich dort befindet, wo die Hände der Figur sein sollten]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hand","Nehmt einen Eimer einfach in Eure Hand. [setze den Counter auf 0, z.B. mit der 'Ende'-Taste auf der Tastatur. Ziehe dann per Drag/Drop den Eimer aus dem Inventarfeld auf das freie Inventarfeld, welches sich dort befindet, wo die HÃ¤nde der Figur sein sollten]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("nehm");
     npc.base.autonpcfunctions.AddAdditionalTrigger("zweit");
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -398,20 +398,20 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("fill");
     npc.base.autonpcfunctions.AddAdditionalTrigger("third");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger(", Wasser","Jawohl, nehmt einen Eimer in die Hand und schöpft Wasser [neben Wasser/Brunnen stehen mit einem Eimer in der Hand - Rechtsclick auf Eimer in der Hand - 'benutzen mit...' - Rechtsclick Wasser/Brunnen -'benutze' Wasser/Brunnen]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("f[üue]ll");
+    npc.base.autonpcfunctions.AddTraderTrigger(", Wasser","Jawohl, nehmt einen Eimer in die Hand und schÃ¶pft Wasser [neben Wasser/Brunnen stehen mit einem Eimer in der Hand - Rechtsclick auf Eimer in der Hand - 'benutzen mit...' - Rechtsclick Wasser/Brunnen -'benutze' Wasser/Brunnen]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("f[Ã¼ue]ll");
     npc.base.autonpcfunctions.AddAdditionalTrigger("dritt");
     npc.base.autonpcfunctions.AddAdditionalTrigger("letzt");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    -- Quest: Bäume pflanzen; Eimer leer; queststatus=1
+    -- Quest: BÃ¤ume pflanzen; Eimer leer; queststatus=1
     npc.base.autonpcfunctions.AddTraderTrigger("plant","Very well. The first lesson is to fill these buckets with water. Take one bucket each in your hands and go to a well or river. Fill the buckets with water and return to me then. Don't hesitate to ask me for help, if needed.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("tree");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddConsequence("item",51,2,333,0);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("pflanz","Wunderbar. Als erste Aufgabe habt Ihr diese zwei Eimer hier mit Wasser zu füllen. Nehmt jeweils einen in Eure Hände und geht zu einem Brunnen oder Fluss. Kehrt zurück, wenn die Eimer gefüllt sind oder Ihr meine Hilfe braucht.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("B[aeä]um");
+    npc.base.autonpcfunctions.AddTraderTrigger("pflanz","Wunderbar. Als erste Aufgabe habt Ihr diese zwei Eimer hier mit Wasser zu fÃ¼llen. Nehmt jeweils einen in Eure HÃ¤nde und geht zu einem Brunnen oder Fluss. Kehrt zurÃ¼ck, wenn die Eimer gefÃ¼llt sind oder Ihr meine Hilfe braucht.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("B[aeÃ¤]um");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddConsequence("item",51,2,333,0);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",1);
@@ -421,7 +421,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
     npc.base.autonpcfunctions.AddConsequence("item",51,2,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wo sind die beiden Eimer, die ich Euch gab? Wie dem auch sei, hier habt Ihr nochmals zwei Eimer. Gebt auf sie acht, wenn ihr mit ihnen Wasser schöpft.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wo sind die beiden Eimer, die ich Euch gab? Wie dem auch sei, hier habt Ihr nochmals zwei Eimer. Gebt auf sie acht, wenn ihr mit ihnen Wasser schÃ¶pft.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",51,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
@@ -433,7 +433,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
     npc.base.autonpcfunctions.AddConsequence("item",51,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wo ist der zweite Eimer, den ich Euch gab? Wie dem auch sei, hier habt ihr einen zweiten Eimer, um ihn mit Wasser zu füllen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wo ist der zweite Eimer, den ich Euch gab? Wie dem auch sei, hier habt ihr einen zweiten Eimer, um ihn mit Wasser zu fÃ¼llen.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",51,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",1);
@@ -445,7 +445,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
     npc.base.autonpcfunctions.AddConsequence("item",51,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wo ist der zweite Eimer, den ich Euch gab? Wie dem auch sei, hier habt ihr einen zweiten Eimer, um ihn mit Wasser zu füllen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wo ist der zweite Eimer, den ich Euch gab? Wie dem auch sei, hier habt ihr einen zweiten Eimer, um ihn mit Wasser zu fÃ¼llen.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",51,"all","=",1);
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
@@ -455,7 +455,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Nun, bitte füllt doch die beiden Eimer, welche ich Euch gegeben habe, mit Wasser und kommt dann zu mir zurück. Sagt nur frei heraus, falls ihr Hilfe benötigt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Nun, bitte fÃ¼llt doch die beiden Eimer, welche ich Euch gegeben habe, mit Wasser und kommt dann zu mir zurÃ¼ck. Sagt nur frei heraus, falls ihr Hilfe benÃ¶tigt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",51,"all",">=",2);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
@@ -468,10 +468,10 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddConsequence("state","=",12);
-    npc.base.autonpcfunctions.AddTraderTrigger("Ja","#me nickt mit einem Lächeln auf seinen Lippen: 'Gut gemacht! ihr lernt wirklich schnell, ich bin beeindruckt! Ich denke Ihr seid nun bereit mehr über den Ackerbau zu lernen. Wollt Ihr jetzt lernen Getreide anzubauen?'");
+    npc.base.autonpcfunctions.AddTraderTrigger("Ja","#me nickt mit einem LÃ¤cheln auf seinen Lippen: 'Gut gemacht! ihr lernt wirklich schnell, ich bin beeindruckt! Ich denke Ihr seid nun bereit mehr Ã¼ber den Ackerbau zu lernen. Wollt Ihr jetzt lernen Getreide anzubauen?'");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Aye");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Fahr[t] fort");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Natürlich");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("NatÃ¼rlich");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Unbedingt");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
@@ -505,9 +505,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",12);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",3);
     npc.base.autonpcfunctions.AddConsequence("state","=",21);
-    npc.base.autonpcfunctions.AddTraderTrigger("Ja","Euer Durchhaltevermögen lobe ich mir! Ich bin mir sicher, dass Ihr es schaffen werdet Getreide anzubauen! Nundenn, fangen wir an... sagt, habt Ihr bereits einige Getreidesamen bei Euch?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Ja","Euer DurchhaltevermÃ¶gen lobe ich mir! Ich bin mir sicher, dass Ihr es schaffen werdet Getreide anzubauen! Nundenn, fangen wir an... sagt, habt Ihr bereits einige Getreidesamen bei Euch?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Aye");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Natürlich");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("NatÃ¼rlich");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Unbedingt");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
@@ -521,7 +521,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",12);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("Nein","Ich verstehe. Falls Ihr später lernen wollt Getreide anzubauen, kommt zurück und sprecht mich an. Gehabt Euch wohl, mein Freund.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Nein","Ich verstehe. Falls Ihr spÃ¤ter lernen wollt Getreide anzubauen, kommt zurÃ¼ck und sprecht mich an. Gehabt Euch wohl, mein Freund.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Nay");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
@@ -532,7 +532,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
     npc.base.autonpcfunctions.AddCondition("state","=",12);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Verzeihung, ich habe Eure Antwort nicht verstanden: Möchtet Ihr nun lernen Getreide anzubauen?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Verzeihung, ich habe Eure Antwort nicht verstanden: MÃ¶chtet Ihr nun lernen Getreide anzubauen?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
     npc.base.autonpcfunctions.AddCondition("state","=",12);
@@ -543,7 +543,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",15,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut gemacht! Nun, da Ihr einen Eimer voll Wasser habt, könnt Ihr einen Baum pflanzen. Hier habt ihr ein paar Apfelkerne. Legt sie auf fruchtbaren, sonnenbeschienen Untergrund und bewässert ihn. Zögert nicht mich nach Hilfe zu fragen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut gemacht! Nun, da Ihr einen Eimer voll Wasser habt, kÃ¶nnt Ihr einen Baum pflanzen. Hier habt ihr ein paar Apfelkerne. Legt sie auf fruchtbaren, sonnenbeschienen Untergrund und bewÃ¤ssert ihn. ZÃ¶gert nicht mich nach Hilfe zu fragen.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",52,"all",">=",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
@@ -560,7 +560,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","What do you want to know: Where the seed is? Where to place the apple seed? How to water the seed? Or how often you have to water the seed?");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("rat","Was wollt Ihr wissen: Wo die Apfelkerne sind? Wohin Ihr die Apfelkerne legen müsst? Oder wie und wie oft Ihr die Apfelkerne bewässern müsst?");
+    npc.base.autonpcfunctions.AddTraderTrigger("rat","Was wollt Ihr wissen: Wo die Apfelkerne sind? Wohin Ihr die Apfelkerne legen mÃ¼sst? Oder wie und wie oft Ihr die Apfelkerne bewÃ¤ssern mÃ¼sst?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -579,7 +579,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("first");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("wo kern","Die Apfelkerne sind entweder in Euren Händen, Eurem Gürtel oder in Eurer Ledertasche. ['Gürtel'= die 6 Inventarfelder unter der Figur am rechten Bildschirmrand. 'Ledertasche'= in dem Inventarfeld links neben dem Kopf der Figur. Rechtsclick - Tasche öffnen]");
+    npc.base.autonpcfunctions.AddTraderTrigger("wo kern","Die Apfelkerne sind entweder in Euren HÃ¤nden, Eurem GÃ¼rtel oder in Eurer Ledertasche. ['GÃ¼rtel'= die 6 Inventarfelder unter der Figur am rechten Bildschirmrand. 'Ledertasche'= in dem Inventarfeld links neben dem Kopf der Figur. Rechtsclick - Tasche Ã¶ffnen]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("erst");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",1);
@@ -588,7 +588,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("third");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("bew[äae]sser"," - nachricht: 'platsch']");
+    npc.base.autonpcfunctions.AddTraderTrigger("bew[Ã¤ae]sser"," - nachricht: 'platsch']");
     npc.base.autonpcfunctions.AddAdditionalTrigger(", dritt");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
@@ -608,7 +608,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",21);
     npc.base.autonpcfunctions.AddConsequence("state","=",22);
     npc.base.autonpcfunctions.AddConsequence("item",259,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Nungut, hier habt Ihr ein paar Getreidekörner. Verstreut sie über den Acker und ihr werdet dem Getreide beim Sprießen zusehen können. Sobald das erste Pflänzlein sprießt, kommt und sagt mir bescheid! Fragt ruhig, falls Ihr etwas wissen wollt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Nungut, hier habt Ihr ein paar GetreidekÃ¶rner. Verstreut sie Ã¼ber den Acker und ihr werdet dem Getreide beim SprieÃŸen zusehen kÃ¶nnen. Sobald das erste PflÃ¤nzlein sprieÃŸt, kommt und sagt mir bescheid! Fragt ruhig, falls Ihr etwas wissen wollt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",259,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -622,7 +622,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",21);
     npc.base.autonpcfunctions.AddConsequence("state","=",22);
     npc.base.autonpcfunctions.AddConsequence("item",259,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Nungut, verstreut die Getreidekörner über den Acker und ihr werdet dem Getreide beim Sprießen zusehen können. Sobald das erste Pflänzlein gedeiht, kommt und sagt mir bescheid! Fragt ruhig, falls Ihr etwas wissen wollt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Nungut, verstreut die GetreidekÃ¶rner Ã¼ber den Acker und ihr werdet dem Getreide beim SprieÃŸen zusehen kÃ¶nnen. Sobald das erste PflÃ¤nzlein gedeiht, kommt und sagt mir bescheid! Fragt ruhig, falls Ihr etwas wissen wollt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",259,"all",">=",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -636,7 +636,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",22);
     npc.base.autonpcfunctions.AddCondition("item",259,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",259,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Das Getreide ist Euch ausgegangen? Keine Bange, hier habt Ihr etwas mehr der Körner. Vergesst nicht dass ich Euch stets helfe, falls Ihr nicht weiter wisst. Sprecht mich nur an.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Das Getreide ist Euch ausgegangen? Keine Bange, hier habt Ihr etwas mehr der KÃ¶rner. Vergesst nicht dass ich Euch stets helfe, falls Ihr nicht weiter wisst. Sprecht mich nur an.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",22);
@@ -660,7 +660,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",24);
     npc.base.autonpcfunctions.AddCondition("item",258,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",258,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Euren Dreschflegel habt Ihr verloren? Kein Grund zur Sorge, hier habt Ihr einen anderen. Zögert nicht mich nach Hilfe zu bitten, falls Ihr nich tweiter wisst.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Euren Dreschflegel habt Ihr verloren? Kein Grund zur Sorge, hier habt Ihr einen anderen. ZÃ¶gert nicht mich nach Hilfe zu bitten, falls Ihr nich tweiter wisst.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",24);
@@ -672,7 +672,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state",">=",22);
     npc.base.autonpcfunctions.AddCondition("state","<=",27);
-    npc.base.autonpcfunctions.AddTraderTrigger("hil","Was wollt Ihr wissen: Wie Ihr Getreide säht? Wann Ihr das Getreide ernten könnt? Wie Ihr das Getreide ernten könnt? Oder wie Ihr den Dreschflegel benutzt?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hil","Was wollt Ihr wissen: Wie Ihr Getreide sÃ¤ht? Wann Ihr das Getreide ernten kÃ¶nnt? Wie Ihr das Getreide ernten kÃ¶nnt? Oder wie Ihr den Dreschflegel benutzt?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -683,7 +683,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state",">=",22);
     npc.base.autonpcfunctions.AddCondition("state","<=",27);
-    npc.base.autonpcfunctions.AddTraderTrigger("s[aeä]h","Legt die Samen in Euren Gürtel. Schreitet dann auf den Acker und verstreut die Körner vor Euch auf den Boden. Wenn Ihr es richtig anstellt, werdet Ihr sofort, wie die Samen sprießen. [Rechtsclick auf das Getreide im Gürtel - 'use']");
+    npc.base.autonpcfunctions.AddTraderTrigger("s[aeÃ¤]h","Legt die Samen in Euren GÃ¼rtel. Schreitet dann auf den Acker und verstreut die KÃ¶rner vor Euch auf den Boden. Wenn Ihr es richtig anstellt, werdet Ihr sofort, wie die Samen sprieÃŸen. [Rechtsclick auf das Getreide im GÃ¼rtel - 'use']");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state",">=",22);
@@ -694,7 +694,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state",">=",22);
     npc.base.autonpcfunctions.AddCondition("state","<=",27);
-    npc.base.autonpcfunctions.AddTraderTrigger("ernt","Das Getreide braucht eine Weile zur Reife. Zunächst wird es nur in die Höhe wachsen. Danach wird es sich goldbraun färben. Eben dann ist das Getreide reif, um die Halme mit der Sense abzuschneiden. Jedoch kann ich Getreide auf dieser Insel für Euch schneller wachsen zu lassen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ernt","Das Getreide braucht eine Weile zur Reife. ZunÃ¤chst wird es nur in die HÃ¶he wachsen. Danach wird es sich goldbraun fÃ¤rben. Eben dann ist das Getreide reif, um die Halme mit der Sense abzuschneiden. Jedoch kann ich Getreide auf dieser Insel fÃ¼r Euch schneller wachsen zu lassen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wann");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -707,7 +707,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state",">=",22);
     npc.base.autonpcfunctions.AddCondition("state","<=",27);
-    npc.base.autonpcfunctions.AddTraderTrigger("Sense","Nehmt die Sense in beide Hände sobald das Getreide reif ist. Stellt Euch vor das Getreide und schwingt die Sense. So werdet Ihr Getreidebündel abschneiden. [Sense in der Hand - Rechtsclick - 'benutzen']");
+    npc.base.autonpcfunctions.AddTraderTrigger("Sense","Nehmt die Sense in beide HÃ¤nde sobald das Getreide reif ist. Stellt Euch vor das Getreide und schwingt die Sense. So werdet Ihr GetreidebÃ¼ndel abschneiden. [Sense in der Hand - Rechtsclick - 'benutzen']");
     npc.base.autonpcfunctions.AddAdditionalTrigger("schneid");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -718,20 +718,20 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state",">=",22);
     npc.base.autonpcfunctions.AddCondition("state","<=",27);
-    npc.base.autonpcfunctions.AddTraderTrigger("Dresch","Sobald Ihr das Getreide mit er Sense geerntet hab, müst ihr den Dreschflegel in Eure Hände nehmen und auf die Getreidebündel eindreschen. [Dreschflegel in die Hande nehmen - 'rechtscklick' - 'benutzen']");
+    npc.base.autonpcfunctions.AddTraderTrigger("Dresch","Sobald Ihr das Getreide mit er Sense geerntet hab, mÃ¼st ihr den Dreschflegel in Eure HÃ¤nde nehmen und auf die GetreidebÃ¼ndel eindreschen. [Dreschflegel in die Hande nehmen - 'rechtscklick' - 'benutzen']");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Flegel");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state",">=",22);
     npc.base.autonpcfunctions.AddCondition("state","<=",27);
-    -- Samen gesähnt: state=23 ; nicht gesäht: state=24 ; wachsen lassen: state=25
+    -- Samen gesÃ¤hnt: state=23 ; nicht gesÃ¤ht: state=24 ; wachsen lassen: state=25
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Well done my friend. You sow some grain! Look how fast it is growing on this magic soil! Now take this scythe and cut the grain into bundles of grain. Come back to me if you did so... or ask for help.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",23);
     npc.base.autonpcfunctions.AddConsequence("item",271,1,333,0);
     npc.base.autonpcfunctions.AddConsequence("state","=",25);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut gemacht, mein Freund! Seht nur, wie schnell es auf diesem magischen Boden wächst! Nehmt nun dieses Sense hier und erntet das Getreide und schnürt es zu Getreidebündeln zusammen. Sobald Ihr da getan habt, kommt zurück und zeigt es mir.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut gemacht, mein Freund! Seht nur, wie schnell es auf diesem magischen Boden wÃ¤chst! Nehmt nun dieses Sense hier und erntet das Getreide und schnÃ¼rt es zu GetreidebÃ¼ndeln zusammen. Sobald Ihr da getan habt, kommt zurÃ¼ck und zeigt es mir.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",23);
@@ -741,7 +741,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",24);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gebt nicht auf, mein Freund! Ich bin mir sicher, dass Ihr es schaffen werdet Getreide zu säen. Fragt mich jedoch ruhig nach Hilfe, falls etwas unklar sein sollte.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gebt nicht auf, mein Freund! Ich bin mir sicher, dass Ihr es schaffen werdet Getreide zu sÃ¤en. Fragt mich jedoch ruhig nach Hilfe, falls etwas unklar sein sollte.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",24);
@@ -754,7 +754,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state","=",27);
     npc.base.autonpcfunctions.AddConsequence("item",258,1,333,0);
     npc.base.autonpcfunctions.AddConsequence("deleteitem",259,250);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich bin stolz auf Euch, mein Freund! Ihr habt das Getreide geerntet und zu Bündeln verschnürt! Nun bleibt noch eines zu tun: Drescht die Körner mit diesem Dreschflegel aus dem Getreide heraus. Gebt Laut sobald Ihr damit fertig seid oder Ihr Hilfe benötigt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich bin stolz auf Euch, mein Freund! Ihr habt das Getreide geerntet und zu BÃ¼ndeln verschnÃ¼rt! Nun bleibt noch eines zu tun: Drescht die KÃ¶rner mit diesem Dreschflegel aus dem Getreide heraus. Gebt Laut sobald Ihr damit fertig seid oder Ihr Hilfe benÃ¶tigt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",249,"all",">=",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -767,7 +767,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",249,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",26);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Haltet durch, mein Freund! Nehmt einfach die Sense in Eure Hände, stellt Euch vor das Getreide und säbelt die Halme ab. Fragt ruhig nach Hilfe, falls noch etwas unklar ist.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Haltet durch, mein Freund! Nehmt einfach die Sense in Eure HÃ¤nde, stellt Euch vor das Getreide und sÃ¤belt die Halme ab. Fragt ruhig nach Hilfe, falls noch etwas unklar ist.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",249,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -777,7 +777,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",259,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
     npc.base.autonpcfunctions.AddCondition("state","=",27);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Jetzt nur nicht aufgeben, mein Freund! Drescht die Körner mit ordentlich Schmackes aus dem Getreide! Dann ist es geschafft!");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Jetzt nur nicht aufgeben, mein Freund! Drescht die KÃ¶rner mit ordentlich Schmackes aus dem Getreide! Dann ist es geschafft!");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",259,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -794,7 +794,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("deleteitem",249,250);
     npc.base.autonpcfunctions.AddConsequence("deleteitem",258,250);
     npc.base.autonpcfunctions.AddConsequence("deleteitem",271,250);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ganz famos, mein Freund! Nun wisst Ihr alles über den Getreideanbau. Auf Gobaith werdet Ihr noch mehr Pflanzenarten anbauen können, hört Euch einfach um... uhm.. da ist eine Sache, die Ihr noch wissen solltet.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ganz famos, mein Freund! Nun wisst Ihr alles Ã¼ber den Getreideanbau. Auf Gobaith werdet Ihr noch mehr Pflanzenarten anbauen kÃ¶nnen, hÃ¶rt Euch einfach um... uhm.. da ist eine Sache, die Ihr noch wissen solltet.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",259,"all",">=",1);
     npc.base.autonpcfunctions.AddCondition("qpg","=",3);
@@ -812,7 +812,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",28);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ihr habt sicher bemerkt, dass das Getreide hier rasch empor geschossen ist. Auf Gobaith werden die Pflanzen langsamer wachsen, als auf diesen magischen Böden hier. Nundenn, ich kan Euch nichts mehr beibringen, so wünsche ich Euch eine angenehme Reise!");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ihr habt sicher bemerkt, dass das Getreide hier rasch empor geschossen ist. Auf Gobaith werden die Pflanzen langsamer wachsen, als auf diesen magischen BÃ¶den hier. Nundenn, ich kan Euch nichts mehr beibringen, so wÃ¼nsche ich Euch eine angenehme Reise!");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
     npc.base.autonpcfunctions.AddCondition("state","=",28);

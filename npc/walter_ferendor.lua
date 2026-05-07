@@ -35,13 +35,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("good day");
     npc.base.autonpcfunctions.AddAdditionalText("Hm ... delicious cake ... Oh, greetings to you.");
     npc.base.autonpcfunctions.AddAdditionalText("Hello there.");
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Seid gegrüßt. Ganz nettes Wetter, nicht?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Seid gegrÃ¼ÃŸt. Ganz nettes Wetter, nicht?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("guten tag");
     npc.base.autonpcfunctions.AddAdditionalTrigger("tach");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
-    npc.base.autonpcfunctions.AddAdditionalText("Hm ... leckerer Kuchen ... Oh, grüß' Euch.");
-    npc.base.autonpcfunctions.AddAdditionalText("Hallöchen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
+    npc.base.autonpcfunctions.AddAdditionalText("Hm ... leckerer Kuchen ... Oh, grÃ¼ÃŸ' Euch.");
+    npc.base.autonpcfunctions.AddAdditionalText("HallÃ¶chen.");
     npc.base.autonpcfunctions.AddTraderTrigger("bye","Good bye.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddAdditionalTrigger("farewell");
@@ -52,29 +52,29 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("auf wiederseh");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb wohl");
-    npc.base.autonpcfunctions.AddAdditionalText("Schönen Tag noch!");
+    npc.base.autonpcfunctions.AddAdditionalText("SchÃ¶nen Tag noch!");
     npc.base.autonpcfunctions.AddAdditionalText("Auf bald.");
     npc.base.autonpcfunctions.AddAdditionalText("Bis bald.");
     npc.base.autonpcfunctions.AddAdditionalText("Lebt wohl.");
     npc.base.autonpcfunctions.AddTraderTrigger("weather","Well, any weather is nice as it is needed aswell.");
-    npc.base.autonpcfunctions.AddTraderTrigger("wetter","Naja, jedes Wetter ist schön, da es ja auch gebraucht wird.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wetter","Naja, jedes Wetter ist schÃ¶n, da es ja auch gebraucht wird.");
     npc.base.autonpcfunctions.AddTraderTrigger("cake","Oh, this delicious cake ...  a halfling near the fields outside the walls gave it to me.");
-    npc.base.autonpcfunctions.AddTraderTrigger("kuchen","Oh, dieser leckere Kuchen ... ein Halbling bei den Äckern außerhalb der Mauern gab ihn mir.");
+    npc.base.autonpcfunctions.AddTraderTrigger("kuchen","Oh, dieser leckere Kuchen ... ein Halbling bei den Ã„ckern auÃŸerhalb der Mauern gab ihn mir.");
     npc.base.autonpcfunctions.AddTraderTrigger("what sell","I am not a trader. I am a healer and a diet expert. I offer therefore some services.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what buy");
-    npc.base.autonpcfunctions.AddTraderTrigger("was kauf","Ich bin kein Händler. Ich bin ein Heiler und Experte in Sachen Ernährung. Ich biete daher auch einige Dienste an.");
+    npc.base.autonpcfunctions.AddTraderTrigger("was kauf","Ich bin kein HÃ¤ndler. Ich bin ein Heiler und Experte in Sachen ErnÃ¤hrung. Ich biete daher auch einige Dienste an.");
     npc.base.autonpcfunctions.AddTraderTrigger("service","I offer the following services: cure light or serious wounds, full heal, cure poisoning or information about your current dietary condition. What do you want?");
-    npc.base.autonpcfunctions.AddTraderTrigger("dienst","Ich biete die folgenden Dienste an: Heilung von leichten oder schweren Wunden, vollständige Heilung, Heilung einer Vergiftung oder Auskunft über Euren derzeitigen Ernährungszustand. Was wollt Ihr?");
+    npc.base.autonpcfunctions.AddTraderTrigger("dienst","Ich biete die folgenden Dienste an: Heilung von leichten oder schweren Wunden, vollstÃ¤ndige Heilung, Heilung einer Vergiftung oder Auskunft Ã¼ber Euren derzeitigen ErnÃ¤hrungszustand. Was wollt Ihr?");
     npc.base.autonpcfunctions.AddTraderTrigger("help","Say 'service' to get a list of my services. To make use of a service, just tell me which service. Say 'price' to get a list of my prices.");
     npc.base.autonpcfunctions.AddTraderTrigger("helf","Sagt 'Dienst' um eine Liste meiner Dienste zu bekommen. Um davon Gebrauch zu machen, nennt mir einfach den Dienst. Sagt 'Preis' um eine Liste meiner Preise zu bekommen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
     npc.base.autonpcfunctions.AddTraderTrigger("price","Healing of light and serious wounds costs "..service[1].." and "..service[2]..", a full healing "..service[3].." copper coins. The price of an antidote is "..service[4].." copper coins and for diet information I charge "..service[5].." copper coins.");
     npc.base.autonpcfunctions.AddConsequence("state","=",6);
-    npc.base.autonpcfunctions.AddTraderTrigger("preis","Eine Heilung leichter und schwerer Wunden kostet "..service[1].." und "..service[2]..", eine volle Heilung "..service[3].." Kupfermünzen. Der Preis für ein Gegengift ist "..service[4].." Kupfermünzen und für Ernährungsinformationen verlange ich "..service[5].." Kupfermünzen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("preis","Eine Heilung leichter und schwerer Wunden kostet "..service[1].." und "..service[2]..", eine volle Heilung "..service[3].." KupfermÃ¼nzen. Der Preis fÃ¼r ein Gegengift ist "..service[4].." KupfermÃ¼nzen und fÃ¼r ErnÃ¤hrungsinformationen verlange ich "..service[5].." KupfermÃ¼nzen.");
     npc.base.autonpcfunctions.AddConsequence("state","=",6);
 	npc.base.autonpcfunctions.AddTraderTrigger("who you","I am "..thisNPC.name..", a healer and a diet expert. I offer therefore some services.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Ich bin "..thisNPC.name..", ein Heiler und Experte in Sachen Ernährung. Ich biete daher auch einige Dienste an.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Ich bin "..thisNPC.name..", ein Heiler und Experte in Sachen ErnÃ¤hrung. Ich biete daher auch einige Dienste an.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer du");
@@ -85,11 +85,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("money","<",service[1]);
     npc.base.autonpcfunctions.AddAdditionalText("Come back when you have "..service[1].." copper coins! Then I'll cure your light wounds.");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde nicht Eure leichten Wunden heilen, es sei denn Ihr bringt mir "..service[1].." Kupfermünzen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde nicht Eure leichten Wunden heilen, es sei denn Ihr bringt mir "..service[1].." KupfermÃ¼nzen.");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("money","<",service[1]);
-    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[1].." Kupfermünzen habt! Dann heile ich Eure leichten Wunden.");
+    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[1].." KupfermÃ¼nzen habt! Dann heile ich Eure leichten Wunden.");
     npc.base.autonpcfunctions.AddTraderTrigger(".+","");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("money",">=",service[1]);
@@ -100,11 +100,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("money","<",service[2]);
     npc.base.autonpcfunctions.AddAdditionalText("Come back when you have "..service[2].." copper coins! Then I'll cure your serious wounds.");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde nicht Eure schweren Wunden heilen, es sei denn Ihr bringt mir "..service[2].." Kupfermünzen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde nicht Eure schweren Wunden heilen, es sei denn Ihr bringt mir "..service[2].." KupfermÃ¼nzen.");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("money","<",service[2]);
-    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[2].." Kupfermünzen habt! Dann heile ich Eure schweren Wunden.");
+    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[2].." KupfermÃ¼nzen habt! Dann heile ich Eure schweren Wunden.");
     npc.base.autonpcfunctions.AddTraderTrigger(".+","");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("money",">=",service[2]);
@@ -115,11 +115,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("money","<",service[3]);
     npc.base.autonpcfunctions.AddAdditionalText("Come back when you have "..service[3].." copper coins! Then I'll heal your wounds fully.");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde Eure nicht vollständig heilen, es sei denn Ihr bringt mir "..service[3].." Kupfermünzen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde Eure nicht vollstÃ¤ndig heilen, es sei denn Ihr bringt mir "..service[3].." KupfermÃ¼nzen.");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("money","<",service[3]);
-    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[3].." Kupfermünzen habt! Dann werde ich Euch vollständig heilen.");
+    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[3].." KupfermÃ¼nzen habt! Dann werde ich Euch vollstÃ¤ndig heilen.");
     npc.base.autonpcfunctions.AddTraderTrigger(".+","");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddCondition("money",">=",service[3]);
@@ -130,11 +130,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("money","<",service[4]);
     npc.base.autonpcfunctions.AddAdditionalText("Come back when you have "..service[4].." copper coins! Then I'll cure your poison.");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde Eure Vergiftung nicht heilen, es sei denn Ihr bringt mir "..service[4].." Kupfermünzen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde Eure Vergiftung nicht heilen, es sei denn Ihr bringt mir "..service[4].." KupfermÃ¼nzen.");
     npc.base.autonpcfunctions.AddCondition("state","=",40);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("money","<",service[4]);
-    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[4].." Kupfermünzen habt! Dann werde ich Eure Vergiftung heilen.");
+    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[4].." KupfermÃ¼nzen habt! Dann werde ich Eure Vergiftung heilen.");
     npc.base.autonpcfunctions.AddTraderTrigger(".+","");
     npc.base.autonpcfunctions.AddCondition("state","=",40);
     npc.base.autonpcfunctions.AddCondition("money",">=",service[4]);
@@ -145,11 +145,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("money","<",service[5]);
     npc.base.autonpcfunctions.AddAdditionalText("Come back when you have "..service[5].." copper coins! Then I'll tell you something about the condition of your diet.");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde Euch gar nichts über Euren Ernährungszustand sagen, es sei denn Ihr habt "..service[5].." Kupfermünzen für mich.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich werde Euch gar nichts Ã¼ber Euren ErnÃ¤hrungszustand sagen, es sei denn Ihr habt "..service[5].." KupfermÃ¼nzen fÃ¼r mich.");
     npc.base.autonpcfunctions.AddCondition("state","=",50);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("money","<",service[5]);
-    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[5].." Kupfermünzen habt! Dann werde ich Euch etwas über Euren Ernährungszustand sagen.");
+    npc.base.autonpcfunctions.AddAdditionalText("Kommt wieder, wenn Ihr "..service[5].." KupfermÃ¼nzen habt! Dann werde ich Euch etwas Ã¼ber Euren ErnÃ¤hrungszustand sagen.");
     npc.base.autonpcfunctions.AddTraderTrigger(".+","");
     npc.base.autonpcfunctions.AddCondition("state","=",50);
     npc.base.autonpcfunctions.AddCondition("money",">=",service[5]);
@@ -176,11 +176,11 @@ function receiveText(texttype, message, originator)
             local status = 0;
 		    race=originator:get_race()
 		    if race>8 then
-				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Igitt, was auch immer du bist, hau bloß ab!")
+				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Igitt, was auch immer du bist, hau bloÃŸ ab!")
 				thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Yuck, whatever you are, go away!")
 				return
 		    elseif originator.attackmode then
-				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Bei den Fünfen, hört doch auf zu kämpfen!");
+				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Bei den FÃ¼nfen, hÃ¶rt doch auf zu kÃ¤mpfen!");
 				thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "For the Five's sake, stop fighting!");
 				return
 		    end
@@ -196,7 +196,7 @@ function receiveText(texttype, message, originator)
 					elseif string.find(text,"full") or string.find(text,"voll") then
 						status = 30;
 					end
-				elseif string.find(text,"information") or string.find(text,"auskunft") or string.find(text,"diet") or string.find(text,"ern[äa]hrung") or string.find(text,"ernaehrung") then
+				elseif string.find(text,"information") or string.find(text,"auskunft") or string.find(text,"diet") or string.find(text,"ern[Ã¤a]hrung") or string.find(text,"ernaehrung") then
 					status = 50;
 				end
 				if string.find(text,"antidote") or string.find(text,"poison") or string.find(text,"gift") then
@@ -211,22 +211,22 @@ function receiveText(texttype, message, originator)
 		    status=NPCStatus[originator.id];
 		    local potion=false
 		    if status==1 then
-				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine Heilung von leichten Wunden? Das macht "..service[1].." Kupfermünzen.");
+				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine Heilung von leichten Wunden? Das macht "..service[1].." KupfermÃ¼nzen.");
 				thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "You want to cure light wounds? That makes "..service[1].." copper coins.");
 				potion=true;
 				originator:LTIncreaseHP(500,5,2);
 		    elseif status==2 then
-				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine Heilung von schweren Wunden? Das macht "..service[2].." Kupfermünzen.");
+				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine Heilung von schweren Wunden? Das macht "..service[2].." KupfermÃ¼nzen.");
 				thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "You want to cure serious wounds? That makes "..service[2].." copper coins.");
 				potion=true;
 				originator:LTIncreaseHP(500,10,2);
 		    elseif status==3 then
-				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine volständige Heilung? Das macht "..service[3].." Kupfermünzen.");
+				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine volstÃ¤ndige Heilung? Das macht "..service[3].." KupfermÃ¼nzen.");
 				thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "You want a full heal? That makes "..service[3].." copper coins.");
 				potion=true;
 				originator:LTIncreaseHP(500,20,2);
 		    elseif status==4 then
-				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine Heilung einer Vergiftung? Das macht "..service[4].." Kupfermünzen.");
+				thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Ihr wollt eine Heilung einer Vergiftung? Das macht "..service[4].." KupfermÃ¼nzen.");
 				thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "You want to cure poisoning? That makes "..service[4].." copper coins.");
 				potion=true;
 				local PV=math.random(7500) + 5000;
@@ -263,19 +263,19 @@ function tellDiet(User)
 		dietText = {};
 		dietText[1] = {};
 		dietText[2] = {};
-		dietText[1][1] = "Eure Ernährung scheint mir nur gewöhnlich zu sein, da gibt es viel zu verbessern."
+		dietText[1][1] = "Eure ErnÃ¤hrung scheint mir nur gewÃ¶hnlich zu sein, da gibt es viel zu verbessern."
 		dietText[2][1] = "Many things about your commoner's diet can be improved."
-		dietText[1][2] = "Ihr scheint auf Eure Ernährung zu achten, Euer Körper ist in guter Verfassung."
+		dietText[1][2] = "Ihr scheint auf Eure ErnÃ¤hrung zu achten, Euer KÃ¶rper ist in guter Verfassung."
 		dietText[2][2] = "You seem to eat quite well, your body is in a good condition."
-		dietText[1][3] = "Also eine solch perfekte Ernährung habe ich schon lange nicht mehr gesehen."
+		dietText[1][3] = "Also eine solch perfekte ErnÃ¤hrung habe ich schon lange nicht mehr gesehen."
 		dietText[2][3] = "I haven't seen such a perfect diet for a long time."
 		
 		tipText = {};
 		tipText[1] = {};
 		tipText[2] = {};
-		tipText[1][1] = "Ihr solltet wirklich Essen von Köchen und Bäckern zu Euch nehmen";
+		tipText[1][1] = "Ihr solltet wirklich Essen von KÃ¶chen und BÃ¤ckern zu Euch nehmen";
 		tipText[2][1] = "Try asking a cook or a baker, you really should eat better food";
-		tipText[1][2] = "Esst am besten mehr Schlemmereien von guten Köchen und Bäckern"
+		tipText[1][2] = "Esst am besten mehr Schlemmereien von guten KÃ¶chen und BÃ¤ckern"
 		tipText[2][2] = "Best you eat more gourmet dishes from good cooks and bakers"
 		tipText[1][3] = "Macht einfach so weiter wie bisher"
 		tipText[2][3] = "It's great, just keep it up"
@@ -287,13 +287,13 @@ function tellDiet(User)
 		raceText[1][3] = ", besonders Backwaren aber nichts mit Fisch";
 		raceText[2][3] = ", especially bakery products but nothing that contains fish";
 		-- orcs
-		raceText[1][5] = ", besonders mit Fleisch aber nichts mit Früchten oder Gemüse";
+		raceText[1][5] = ", besonders mit Fleisch aber nichts mit FrÃ¼chten oder GemÃ¼se";
 		raceText[2][5] = ", especially containing meat but no fruit or vegetables";
 		-- lizards
 		raceText[1][6] = ", besonders mit Fisch aber keine Backwaren";
 		raceText[2][6] = ", especially containing fish but no bakery products";
 		-- fairies
-		raceText[1][8] = ", besonders mit Früchten aber nichts mit Fleisch oder Fisch";
+		raceText[1][8] = ", besonders mit FrÃ¼chten aber nichts mit Fleisch oder Fisch";
 		raceText[2][8] = ", especially containing fruit but no meat or fish";
 	end
 	
@@ -304,7 +304,7 @@ function tellDiet(User)
 		tellRace = true;
 	end
 	
-	thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Diese Auskunft kostet "..service[5].." Kupfermünzen.");
+	thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Diese Auskunft kostet "..service[5].." KupfermÃ¼nzen.");
 	thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "My professional services cost "..service[5].." copper coins.");
 	thisNPC:talk(CCharacter.whisper, dietText[lang+1][constMod+1].." "..tipText[lang+1][constMod+1]..( tellRace and raceText[lang+1][race+1] or "" ).."!");
 end

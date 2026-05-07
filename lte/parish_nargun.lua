@@ -17,7 +17,7 @@ function M.addEffect(Effect, Char)
 		Char:setAttrib("racetyp", PN_FriendlyRaces[math.random(1,table.getn(PN_FriendlyRaces))]);
 		world:gfx(31,Char.pos);
 		base.common.TempInformNLS(Char,
-			"Du fühlst dich auf einmal so seltsam distanziert von deinem Körper.",
+			"Du fÃ¼hlst dich auf einmal so seltsam distanziert von deinem KÃ¶rper.",
 			"You suddenly feel strangely dissociated from your body.");
 		cycleCounter[Char.id] = 40;
 	end
@@ -43,16 +43,16 @@ function M.removeEffect(Effect, Char)
 		world:gfx(31,Char.pos);
 		local gText, eText = "", "";
 		if effectType == 1 then
-			gText = "Irgendwie bekommst du Lust auf ein paar saftige Früchte.";
+			gText = "Irgendwie bekommst du Lust auf ein paar saftige FrÃ¼chte.";
 			eText = "Somehow you have appetite for some juicy fruits.";
 		elseif effectType == 2 then
-			gText = "Plötzlich steigt fürchterliche Wut in dir hoch und du willst auf ein Tier einschlagen, ihm das Fleisch herausreißen.";
+			gText = "PlÃ¶tzlich steigt fÃ¼rchterliche Wut in dir hoch und du willst auf ein Tier einschlagen, ihm das Fleisch herausreiÃŸen.";
 			eText = "Suddenly you feel tremendous anger arising and you want to smash on an animal, rip out its meat."
 		elseif effectType == 3 then
-			gText = "Deine Kehle schnürt sich zu, eine einzelne Träne rinnt dir über die Wange, als du voller Mitleid an die armen Tiere denkst.";
+			gText = "Deine Kehle schnÃ¼rt sich zu, eine einzelne TrÃ¤ne rinnt dir Ã¼ber die Wange, als du voller Mitleid an die armen Tiere denkst.";
 			eText = "With a lump in your throat, a single tear runs down your cheek as you think of those pity animals.";
 		elseif effectType == 4 then
-			gText = "Ein wohliges Gefühl überkommt dich, als ob du hier hingehörst.";
+			gText = "Ein wohliges GefÃ¼hl Ã¼berkommt dich, als ob du hier hingehÃ¶rst.";
 			eText = "A cosy feeling comes over you, as if you belong here.";
 		end
 		base.common.TempInformNLS(Char,gText,eText);
@@ -92,9 +92,9 @@ function M.PN_LeadToPoint( Char, effectType )
        	    if (dir == 0) then dirText = base.common.GetNLS( Char, "NORDEN", "NORTH" )
        	    elseif (dir == 1) then dirText = base.common.GetNLS( Char, "NORDOSTEN", "NORTHEAST" )
        	    elseif (dir == 2) then dirText = base.common.GetNLS( Char, "OSTEN", "EAST" )
-       	    elseif (dir == 3) then dirText = base.common.GetNLS( Char, "SÜDOSTEN", "SOUTHEAST" )
-       	    elseif (dir == 4) then dirText = base.common.GetNLS( Char, "SÜDEN", "SOUTH" )
-       	    elseif (dir == 5) then dirText = base.common.GetNLS( Char, "SÜDWESTEN", "SOUTHWEST" )
+       	    elseif (dir == 3) then dirText = base.common.GetNLS( Char, "SÃœDOSTEN", "SOUTHEAST" )
+       	    elseif (dir == 4) then dirText = base.common.GetNLS( Char, "SÃœDEN", "SOUTH" )
+       	    elseif (dir == 5) then dirText = base.common.GetNLS( Char, "SÃœDWESTEN", "SOUTHWEST" )
        	    elseif (dir == 6) then dirText = base.common.GetNLS( Char, "WESTEN", "WEST" )
        	    elseif (dir == 7) then dirText = base.common.GetNLS( Char, "NORDWESTEN", "NORTHWEST" )
        	    else return true
@@ -102,12 +102,12 @@ function M.PN_LeadToPoint( Char, effectType )
 
 		    if ( distance <= 5 ) then
 				base.common.TempInformNLS(Char,
-					"Genau hier solltest du hin. Du fühlst wie eine Last von dir genommen wird.",
+					"Genau hier solltest du hin. Du fÃ¼hlst wie eine Last von dir genommen wird.",
 					"This is where you was to go. You feel a burden is taken off you.");
 					return false;
 			elseif ( distance <= 30 ) then
 			    base.common.TempInformNLS( Char,
-			    "Dein Ziel ist ganz in der Nähe. Gehe weiter nach "..dirText,
+			    "Dein Ziel ist ganz in der NÃ¤he. Gehe weiter nach "..dirText,
 				"You are close to your destination. Keep going "..dirText);
                 cycleCounter[Char.id]=30;
 		    else
@@ -118,7 +118,7 @@ function M.PN_LeadToPoint( Char, effectType )
 		    end;
 	    else
 	     	base.common.TempInformNLS( Char,
-				"Irgendetwas sagt dir, dass es eine gute Idee wäre wieder zur Erdoberfläche zu gelangen.",
+				"Irgendetwas sagt dir, dass es eine gute Idee wÃ¤re wieder zur ErdoberflÃ¤che zu gelangen.",
 				"Something tells you it would be a good idea to get back to the surface.");
 	  		cycleCounter[Char.id]=1;
 	    end

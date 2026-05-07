@@ -215,14 +215,14 @@ function TeleportationFunction(thisNPC)
 	    end
 	    if ((self.desiredDestination[thisNPC.id]==0) or (self.desiredDestination[thisNPC.id]==nil)) then
 	        InformNLS(originator,
-	        "Sagt den Namen der Stadt, in die ihr reisen möchtet.",
+	        "Sagt den Namen der Stadt, in die ihr reisen mÃ¶chtet.",
 	        "Say the name of the town you want to travel to.");
 	        --Char stands on teleporter but says no valid trigger. Names of towns not told intentionally to motivate n00bz to ask around
 	        return
 	    end
 	    if (originator:countItem(3076)<self.travelFee) and (originator:countItem(3077)==0) and (originator:countItem(61)==0) then --Char has not enough money
 	        InformNLS(originator,
-	        "Ihr habt nicht genug Geld für diese Reise. Die Reise kostet "..self.travelFee.." Kupferstücke.",
+	        "Ihr habt nicht genug Geld fÃ¼r diese Reise. Die Reise kostet "..self.travelFee.." KupferstÃ¼cke.",
 	        "You don't have enough money for this journey. The journey costs "..self.travelFee.." copper coins.");
 	        return
 	    end
@@ -247,7 +247,7 @@ function TeleportationFunction(thisNPC)
 	        filepoint:close();
 	    end
 	    InformNLS(originator,
-	    "Ihr lasst den Teleporter ein Tor nach "..self.townName[self.desiredDestination[thisNPC.id]].." öffnen, zu einem Preis von "..self.travelFee.." Kupferstücken.",
+	    "Ihr lasst den Teleporter ein Tor nach "..self.townName[self.desiredDestination[thisNPC.id]].." Ã¶ffnen, zu einem Preis von "..self.travelFee.." KupferstÃ¼cken.",
 	    "You make the teleporter open a portal to "..self.townName[self.desiredDestination[thisNPC.id]].." at a cost of "..self.travelFee.." copper coins.");
 	    self.TeleportInProgress[thisNPC.id] = true;
 	    self.TeleportCharacter[thisNPC.id] = originator;

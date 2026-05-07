@@ -26,21 +26,21 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Hh]ello","Greetings.");
     npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
     npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Grüß euch!");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
+    npc.base.functions.AddTraderTrigger("[Hh]allo","GrÃ¼ÃŸ euch!");
+    npc.base.functions.AddAdditionalTrigger("[Gg]r[uÃ¼][sÃŸ]+");
     npc.base.functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name..", ich bin Magier an dieser Akademie");
     npc.base.functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..", I'm a mage of this academy");
     npc.base.functions.AddTraderTrigger("[Bb]ye ","Be well");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe nichts! Ich beschwöre höhstens etwas.");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe nichts! Ich beschwÃ¶re hÃ¶hstens etwas.");
     npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything! I just summon things.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+beschwör","Ich kann euch einen Golem beschwören, der Eure Sachen für euch trägt...wäre das nicht toll?");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+beschwÃ¶r","Ich kann euch einen Golem beschwÃ¶ren, der Eure Sachen fÃ¼r euch trÃ¤gt...wÃ¤re das nicht toll?");
     npc.base.functions.AddTraderTrigger("[Ww]hat.+summon","I can summon a golem for you, which can carry your things...isn't that great?.");
     npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything!");
     npc.base.functions.AddTraderTrigger("[Ff]arewell","Farewell");
     npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
     npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     npc.base.functions.AddAdditionalText("Auf bald");
-    npc.base.functions.AddTraderTrigger("[Kk]uh","Ich habe keine Kühe.");
+    npc.base.functions.AddTraderTrigger("[Kk]uh","Ich habe keine KÃ¼he.");
     npc.base.functions.AddTraderTrigger("cow","I have no cows.")
 
     npc.base.functions.AddCycleText("#me schaut sich um","#me looks around");
@@ -100,7 +100,7 @@ end
 
 function SayPrice(message, originator)
     if (string.find(message,"koste")~=nil) or (string.find(message,"costs")~=nil) then
-        thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Wenn ich euch einen Golem beschwören soll kostet das "..PreisProKuh.." Kupferstücke. Außerdem müsst ihr "..(Kaution/100).." Silberstücke als Kaution hinterlegen die ihr aber wieder bekommt, wenn ihr mir den Golem in einem Stück zurück bringt.");
+        thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Wenn ich euch einen Golem beschwÃ¶ren soll kostet das "..PreisProKuh.." KupferstÃ¼cke. AuÃŸerdem mÃ¼sst ihr "..(Kaution/100).." SilberstÃ¼cke als Kaution hinterlegen die ihr aber wieder bekommt, wenn ihr mir den Golem in einem StÃ¼ck zurÃ¼ck bringt.");
         thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "When I should summon a golem for you it costs "..PreisProKuh.." coppercoins. Furthermore you have to pay "..(Kaution/100).." silvercoins as surety, but you get these coins back in case you bring the golem back to me in one piece.");
         return true
     end
@@ -130,8 +130,8 @@ function GetCow(message, originator)
     message = string.lower( message );
     if (string.find(message,"golem.+leihen")~=nil)
     or (string.find(message,"leihe.+golem")~=nil)
-    or (string.find(message,"golem.+beschwör")~=nil)
-    or (string.find(message,"beschwör.+golem")~=nil)
+    or (string.find(message,"golem.+beschwÃ¶r")~=nil)
+    or (string.find(message,"beschwÃ¶r.+golem")~=nil)
     or (string.find(message,"summon.+golem")~=nil)
     or (string.find(message,"rent.+golem"  )~=nil)
     or (string.find(message,"lend.+golem")~=nil)
@@ -143,13 +143,13 @@ function GetCow(message, originator)
             GCoins,SCoins,CCoins = CalcSilverCopper(PreisProKuh + Kaution);
             if CheckMoney(originator,GCoins,SCoins,CCoins) then
                 if false then
-                    thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich darf dir im Augenblick keinen Golem beschwören." );
+                    thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich darf dir im Augenblick keinen Golem beschwÃ¶ren." );
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english,"I'm not allowed to summon a golem for you currently, sorry." );
                     return true;
                 end
                 posOfCow = createCow(originator);
                 if not posOfCow then
-                    thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich kann momentan nicht noch einen Golem beschwören." );
+                    thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich kann momentan nicht noch einen Golem beschwÃ¶ren." );
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english,"I'm not able to summan another golem yet. Please come back later." );
                     return true
                 else
@@ -159,7 +159,7 @@ function GetCow(message, originator)
                     Transporter.effects:addEffect(transport_effect);
                     
                     Pay(originator,GCoins,SCoins,CCoins);
-                    thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Hier habt ihr einen Golem. Bringt ihn heile wieder dann bekommt ihr die "..(Kaution/100).." Silberstücke Kaution wieder.");
+                    thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Hier habt ihr einen Golem. Bringt ihn heile wieder dann bekommt ihr die "..(Kaution/100).." SilberstÃ¼cke Kaution wieder.");
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "There you have a golem. Bring it back safely then you get your "..(Kaution/100).." silvercoins surety back.");
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Wenn du \"bleib stehen\" sagst, bleibt der Golem stehen und du kannst ihn be- und entladen. Sagst du \"weiter\" folgt er dir wieder. Pass auf dass er dich nicht aus den Augen verliert." );
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "If you say \"stay\", the golem will stay where it is and you can give your things to the golem or take your things from him. If you say \"follow me\" the golem follows you again. Make sure you do not lose the golem." );
@@ -171,7 +171,7 @@ function GetCow(message, originator)
                     
                 end
             else
-                thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Du hast nicht genug Geld. Ein Golem kostet "..PreisProKuh.." Kupferstücke und "..(Kaution/100).." Silberstücke müsst ihr als Kaution hinterlegen." );
+                thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Du hast nicht genug Geld. Ein Golem kostet "..PreisProKuh.." KupferstÃ¼cke und "..(Kaution/100).." SilberstÃ¼cke mÃ¼sst ihr als Kaution hinterlegen." );
                 thisNPC:talkLanguage( CCharacter.say, CPlayer.english,"You don't have enough money. A golem costs "..PreisProKuh.." coppercoins and you have to pay "..(Kaution/100).." silvercoins as surety." );
             end
             return true
@@ -183,7 +183,7 @@ function GetCow(message, originator)
     elseif ((string.find(message,"golem.+kaufen")~=nil) and not (string.find(message,"golem.+verkaufen")~=nil))
     or ((string.find(message,"kaufe.+golem")~=nil) and not (string.find(message,"verkaufe.+golem")~=nil))
     or (string.find(message,"buy.+golem"   )~=nil) then
-            thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich verkaufe keine Golem. Ich beschwöre sie höchstens zum verleih." );
+            thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich verkaufe keine Golem. Ich beschwÃ¶re sie hÃ¶chstens zum verleih." );
             thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "I don't sell golem. I just summon them to borrow." );
     end
     return false
@@ -191,7 +191,7 @@ end
 
 function returnCow(message, originator)
     message = string.lower( message );
-    if (string.find(message,"golem.+zurück")~=nil)
+    if (string.find(message,"golem.+zurÃ¼ck")~=nil)
     or (string.find(message,"golem.+verkaufen")~=nil)
     or (string.find(message,"verkaufe.+golem")~=nil)
     or (string.find(message,"sell.+golem")~=nil)
@@ -208,8 +208,8 @@ function returnCow(message, originator)
                     if find_owner then
                         if (value_owner == originator.id) then
                             if world:deleteNPC( npc.id ) then
-								thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "#me wirft ein silbrig leuchtendes Pulver auf den Golem und er zerfällt zu Staub." );
-                                thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Danke für den Golem." );
+								thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "#me wirft ein silbrig leuchtendes Pulver auf den Golem und er zerfÃ¤llt zu Staub." );
+                                thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Danke fÃ¼r den Golem." );
 								thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "#me thosses a silver-grey shimmering powder over the golem and he resolved into stone-dust." );
                                 thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "Thanks for the golem." );
                                 originator:createItem(3077,math.floor(Kaution/100),333,0);

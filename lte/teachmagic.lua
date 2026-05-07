@@ -5,7 +5,7 @@ local M = {}
 -------- Character lernt eine Rune
 ---------------------------------
 function M.addEffect(teachEffect, Character)
-    Character:inform("AddEffect ausgeführt");
+    Character:inform("AddEffect ausgefÃ¼hrt");
 
     
     year=world:getTime("year");
@@ -36,10 +36,10 @@ end
 -----------------------------------------------
 ------ Character is affected 
 -----------------------------------------------
-function M.callEffect(teachEffect, Character)    -- Effect wird ausgeführt
+function M.callEffect(teachEffect, Character)    -- Effect wird ausgefÃ¼hrt
 
 
-   	teachEffect.nextCalled =99999999999999;       -- call it again in öhm...never!
+   	teachEffect.nextCalled =99999999999999;       -- call it again in Ã¶hm...never!
 
 
     return true;

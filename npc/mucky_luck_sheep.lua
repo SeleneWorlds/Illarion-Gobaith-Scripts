@@ -90,7 +90,7 @@ function eat()
 		end
 		local gText, eText;
 		if eatIt then
-			gText = "#me schnuppert vorsichtig an dem Pilz, beiﬂt dann aber doch gen¸sslich hinein.";
+			gText = "#me schnuppert vorsichtig an dem Pilz, bei√üt dann aber doch gen√ºsslich hinein.";
 			eText = "#me sniffs carefully at the mushroom, then takes a bite of the mushroom with relish.";
 			world:erase(curItem,1);
 			thisNPC:talkLanguage(CCharacter.say, CPlayer.german, gText);

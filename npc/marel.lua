@@ -10,7 +10,7 @@
 
 --	dofile("npc_nanginis_nargunpriest.lua");
 require("base.common")
-require("npc.base.autonpcfunctions") --für die Funktion npc.base.autonpcfunctions.increaseLangSkill
+require("npc.base.autonpcfunctions") --fÃ¼r die Funktion npc.base.autonpcfunctions.increaseLangSkill
 module("npc.marel", package.seeall)
 
 function nextCycle()
@@ -43,7 +43,7 @@ function receiveText(texttype, message, originator)
 	    FirstTime=true;
     end
     
-   if(string.find(string.lower(Text), "check me") ~= nil or string.find(string.lower(Text), "überprüfe mich") ~= nil) then
+   if(string.find(string.lower(Text), "check me") ~= nil or string.find(string.lower(Text), "Ã¼berprÃ¼fe mich") ~= nil) then
       local dir = Originator:get_face_to();
       if(dir == 0) then
          thisNPC:talkLanguage(CCharacter.yell, CPlayer.german, "Du schaust nach Norden!");
@@ -52,7 +52,7 @@ function receiveText(texttype, message, originator)
          thisNPC:talkLanguage(CCharacter.yell, CPlayer.german, "Du schaust nach Osten!");
          thisNPC:talkLanguage(CCharacter.yell, CPlayer.english, "You are looking to the east!");
       elseif(dir == 4) then
-         thisNPC:talkLanguage(CCharacter.yell, CPlayer.german, "Du schaust nach Süden!");
+         thisNPC:talkLanguage(CCharacter.yell, CPlayer.german, "Du schaust nach SÃ¼den!");
          thisNPC:talkLanguage(CCharacter.yell, CPlayer.english, "You are looking to the south!");
       elseif(dir == 6) then
          thisNPC:talkLanguage(CCharacter.yell, CPlayer.german, "Du schaust nach Westen!");
@@ -61,14 +61,14 @@ function receiveText(texttype, message, originator)
       local handitemr = Originator:getItemAt(CCharacter.right_tool);
       local handiteml = Originator:getItemAt(CCharacter.left_tool);
       if(handitemr ~= nil and handitemr.id ~= 0) then
-         base.common.InformNLS(Originator, "Du hältst gerade das Item "..world:getItemName(handitemr.id, CPlayer.german).." in der rechten Hand.", "You are holding the item "..world:getItemName(handitemr.id, CPlayer.english).." in your right hand currently.");
+         base.common.InformNLS(Originator, "Du hÃ¤ltst gerade das Item "..world:getItemName(handitemr.id, CPlayer.german).." in der rechten Hand.", "You are holding the item "..world:getItemName(handitemr.id, CPlayer.english).." in your right hand currently.");
       else
-         base.common.InformNLS(Originator, "Du hältst gerade nichts in der rechten Hand.", "You are holding nothing in your right hand currently.");
+         base.common.InformNLS(Originator, "Du hÃ¤ltst gerade nichts in der rechten Hand.", "You are holding nothing in your right hand currently.");
       end
       if(handiteml ~= nil and handiteml.id ~= 0) then
-         base.common.InformNLS(Originator, "Du hältst gerade das Item "..world:getItemName(handiteml.id, CPlayer.german).." in der linken Hand.", "You are holding the item "..world:getItemName(handiteml.id, CPlayer.english).." in your left hand currently.");
+         base.common.InformNLS(Originator, "Du hÃ¤ltst gerade das Item "..world:getItemName(handiteml.id, CPlayer.german).." in der linken Hand.", "You are holding the item "..world:getItemName(handiteml.id, CPlayer.english).." in your left hand currently.");
       else
-         base.common.InformNLS(Originator, "Du hältst gerade nichts in der linken Hand.", "You are holding nothing in your left hand currently.");
+         base.common.InformNLS(Originator, "Du hÃ¤ltst gerade nichts in der linken Hand.", "You are holding nothing in your left hand currently.");
       end
    end  --]]
    

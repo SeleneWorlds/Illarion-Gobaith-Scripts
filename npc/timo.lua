@@ -71,33 +71,33 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Ww]ho.+you?","My name is "..thisNPC.name..".");
     npc.base.functions.AddTraderTrigger("I'm .+","Nice to meet you!");
     npc.base.functions.AddTraderTrigger("[hH]elp","'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'");
-    npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Grüß' dich!");
+    npc.base.functions.AddTraderTrigger("[Gg]rÃ¼[ÃŸs]+e","GrÃ¼ÃŸ' dich!");
     npc.base.functions.AddTraderTrigger("[Hh]allo","Huhu!");
-    npc.base.functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]ändler","Ich bin "..thisNPC.name..", früher war ich einer von Greenbriars Händlern!");
-    --npc.base.functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]ändler","Ich bin "..thisNPC.name..", einer von Greenbriars Händlern!");
+    npc.base.functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]Ã¤ndler","Ich bin "..thisNPC.name..", frÃ¼her war ich einer von Greenbriars HÃ¤ndlern!");
+    --npc.base.functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]Ã¤ndler","Ich bin "..thisNPC.name..", einer von Greenbriars HÃ¤ndlern!");
     npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Oh, ich verkaufe Kleidung, Werkzeuge und Samen. Willst du meine Liste sehen?");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+[Kk]leidung","Ich hab sehr schöne Hüte, Umhänge und Handschuhe.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]erkzeuge","Ich hab Äxte, Sensen, Schaufeln und so weiter. Frag nach meiner Warenliste wenn du es genau wissen willst.");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+[Kk]leidung","Ich hab sehr schÃ¶ne HÃ¼te, UmhÃ¤nge und Handschuhe.");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]erkzeuge","Ich hab Ã„xte, Sensen, Schaufeln und so weiter. Frag nach meiner Warenliste wenn du es genau wissen willst.");
     npc.base.functions.AddTraderTrigger("[Ww]as.+[Ss]ame","Ich habe Samen von Getreide, Kohl, Karotten und Tomaten.");
-    npc.base.functions.AddTraderTrigger("[Ee]rzähl.+[Ee]twas","Weisst Du, wie wir Halblinge diese Insel entdeckt haben? Das geschah, als wir im Osten herumgewandert sind.");
-    npc.base.functions.AddTraderTrigger("[Ee]rzähl.+[Gg]reenbriar","Crosis, der Anführer der Evergreen Halblinge hat den Bau der Briary Brücke veranlasst.");
-    npc.base.functions.AddTraderTrigger("[Ee]rzähl.+[Cr]osis","Er hat die Briary Brücke bauen lassen, mit seinen Halblingen.");
-    npc.base.functions.AddTraderTrigger("[Ww]er.+[Cr]osis","Crosis hat eine Gruppe von Halblingen angeführt: die Evergreen Halblinge.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+[Gg]reenbriar","Einst war Greenbriar ein wunderschöne, friedlicher Ort. Aber Missgunst und Unmut hat sich unter den Bewohnern breit gemacht und den Freiden vertrieben.");
-    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Gg]reenbriar","Die gesamte Natur um dich herum gehört zur Insel Greenbriar. Du kannst Greenbriar im Norden betreten und wieder verlassen, an der Briary Brücke!");
-    npc.base.functions.AddTraderTrigger("[Ww]o.+[Gg]reenbriar","Geh nach Westen, über die Brücke und folge einfach dem Pfad.");
+    npc.base.functions.AddTraderTrigger("[Ee]rzÃ¤hl.+[Ee]twas","Weisst Du, wie wir Halblinge diese Insel entdeckt haben? Das geschah, als wir im Osten herumgewandert sind.");
+    npc.base.functions.AddTraderTrigger("[Ee]rzÃ¤hl.+[Gg]reenbriar","Crosis, der AnfÃ¼hrer der Evergreen Halblinge hat den Bau der Briary BrÃ¼cke veranlasst.");
+    npc.base.functions.AddTraderTrigger("[Ee]rzÃ¤hl.+[Cr]osis","Er hat die Briary BrÃ¼cke bauen lassen, mit seinen Halblingen.");
+    npc.base.functions.AddTraderTrigger("[Ww]er.+[Cr]osis","Crosis hat eine Gruppe von Halblingen angefÃ¼hrt: die Evergreen Halblinge.");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+[Gg]reenbriar","Einst war Greenbriar ein wunderschÃ¶ne, friedlicher Ort. Aber Missgunst und Unmut hat sich unter den Bewohnern breit gemacht und den Freiden vertrieben.");
+    --npc.base.functions.AddTraderTrigger("[Ww]as.+[Gg]reenbriar","Die gesamte Natur um dich herum gehÃ¶rt zur Insel Greenbriar. Du kannst Greenbriar im Norden betreten und wieder verlassen, an der Briary BrÃ¼cke!");
+    npc.base.functions.AddTraderTrigger("[Ww]o.+[Gg]reenbriar","Geh nach Westen, Ã¼ber die BrÃ¼cke und folge einfach dem Pfad.");
     --npc.base.functions.AddTraderTrigger("[Ww]o.+[Gg]reenbriar","Du bist mitten in Greenbriar! Willkommen!");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+[Bb]riary.+[Bb]rücke","Die Briary Brücke wurd' damals von den Evergreen Halblingen gebaut.");
-    npc.base.functions.AddTraderTrigger("[Ww]o.+[Bb]riary.+[Bb]rücke","Sie liegt genau westlich von hier!");
-    --npc.base.functions.AddTraderTrigger("[Ww]o.+[Bb]riary.+[Bb]rücke","Sie liegt genau nördlich von hier!");
-    npc.base.functions.AddTraderTrigger("[Ww]er.+[Ee]vergreen.+[Hh]alblinge","Die Evergreen Halblinge haben die Brücke bauen lassen und diese schöne Insel besiedelt.");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+[Bb]riary.+[Bb]rÃ¼cke","Die Briary BrÃ¼cke wurd' damals von den Evergreen Halblingen gebaut.");
+    npc.base.functions.AddTraderTrigger("[Ww]o.+[Bb]riary.+[Bb]rÃ¼cke","Sie liegt genau westlich von hier!");
+    --npc.base.functions.AddTraderTrigger("[Ww]o.+[Bb]riary.+[Bb]rÃ¼cke","Sie liegt genau nÃ¶rdlich von hier!");
+    npc.base.functions.AddTraderTrigger("[Ww]er.+[Ee]vergreen.+[Hh]alblinge","Die Evergreen Halblinge haben die BrÃ¼cke bauen lassen und diese schÃ¶ne Insel besiedelt.");
     npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Du gehst schon? Ach schade... Na, dann mach's mal gut!");
     npc.base.functions.AddTraderTrigger("[Bb]is.+[Bb]ald","Ich hoffe, du kommst mal wieder vorbei!");
     npc.base.functions.AddTraderTrigger("[Ww]er.+du?","Ich werde "..thisNPC.name.." genannt.");
-    npc.base.functions.AddTraderTrigger("Ich bin .+","Huhu! Schön, dich kennenzulernen!");
-    npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'");
+    npc.base.functions.AddTraderTrigger("Ich bin .+","Huhu! SchÃ¶n, dich kennenzulernen!");
+    npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich mÃ¶chte <Anzahl> <Ware> kaufen', 'Ich mÃ¶chte <Ware> kaufen', 'Ich mÃ¶chte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr fÃ¼r <Ware>', 'Was kauft ihr?'");
 
-    TraderLang={"Gold","gold","Silber", "silver","Kupfer","copper","stücke","pieces"};
+    TraderLang={"Gold","gold","Silber", "silver","Kupfer","copper","stÃ¼cke","pieces"};
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
 
     RefreshTime={10000,40000};
@@ -154,7 +154,7 @@ function receiveText(texttype, message, originator)
                 gText="Komm wieder wenn du genug Geld hast!";
                 eText="Come back when you have enough money!";
             elseif (Status==4) then -- Item ausverkauft // item out of stock
-                gText="Tut mir leid. Ich hab' das im Moment nicht. Komm doch bitte später wieder.";
+                gText="Tut mir leid. Ich hab' das im Moment nicht. Komm doch bitte spÃ¤ter wieder.";
                 eText="I am sorry, I don't have this currently. Come back later.";
             elseif (Status==5) then -- Item wird nicht verkauft // item
                 gText="Tut mir Leid. Ich verkauf' das nicht.";
@@ -162,11 +162,11 @@ function receiveText(texttype, message, originator)
             elseif (Status==6) then -- Verkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Selling of a single item succeed
                 gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was du kaufen willst? Bitte sehr, das macht"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
                 eText="You want a "..world:getItemName(Values[2],1).."? Here you are, that makes"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
-            elseif (Status==7) then -- Verkaufspreis Ansage für ein Item // selling price announcement for an item
+            elseif (Status==7) then -- Verkaufspreis Ansage fÃ¼r ein Item // selling price announcement for an item
                 gText=npc.base.functions.GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],Values[4],TraderLang)..".";
                 eText="The "..world:getItemName(Values[1],1).." costs"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],Values[4],TraderLang)..".";
-            elseif (Status==8) then -- Einkaufspreis Ansage für ein Item // buying price announcement for an item
-                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wäre mir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
+            elseif (Status==8) then -- Einkaufspreis Ansage fÃ¼r ein Item // buying price announcement for an item
+                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wÃ¤re mir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
                 eText="I would pay"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1)..".";
             elseif (Status==9) then -- Einkauf von mehreren Items erfolgreich // npc.base.trader_functions.Buying of multible items succeed
                 gText="Du willst "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich gebe dir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
@@ -174,17 +174,17 @@ function receiveText(texttype, message, originator)
             elseif (Status==10) then -- Item das gekauft werden soll nicht vorhanden // item that should be buyed is not aviable
                 gText="Komm wieder wenn du das hast!";
                 eText="Come back when you have that!";
-            elseif (Status==11) then -- Händler hat nicht genug Geld // trader don't have enougth money
+            elseif (Status==11) then -- HÃ¤ndler hat nicht genug Geld // trader don't have enougth money
                 gText="Tut mir leid. Ich kann das nicht kaufen. Ich hab' nicht genug Geld.";
                 eText="Sorry, I cannot buy that. I do not have enough money.";
-            elseif (Status==12) then -- Händler kauft das Item nicht // trader didn't buy the item
+            elseif (Status==12) then -- HÃ¤ndler kauft das Item nicht // trader didn't buy the item
                 gText="So etwas kaufe ich nicht. Tut mir leid.";
                 eText="Sorry, I do not buy that item.";
             elseif (Status==13) then -- Einkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Buying of a single item succeed
                 gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was du verkaufen willst? Ich geb' dir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
                 eText="You want to sell a "..world:getItemName(Values[2],1).."? I give you"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==14) then -- Liste der Waren die der NPC verkauft ist nicht leer // List of the wares the NPC sells, is not empty
-                gText="Ich verkauf' Werkzeug, Kleidung und noch so einiges, was man braucht, um glücklich zu werden!";
+                gText="Ich verkauf' Werkzeug, Kleidung und noch so einiges, was man braucht, um glÃ¼cklich zu werden!";
                 eText="I sell tools, clothes and other stuff to be happy with.";
             elseif (Status==15) then -- Liste der Waren die der NPC verkauft ist leer // List of the wares the NPC sells, is empty
                 gText="Ich verkaufe nichts.";
@@ -204,7 +204,7 @@ function receiveText(texttype, message, originator)
                     eText="It's the "..npc.base.functions.EnglDigit(Values[1]).." of "..Values[2].." of the year "..Values[3]..".";
                 end
             elseif (Status==19) then
-                gText="Irundar...Die Höhle von Irundar. Ich bin da gewesen...langweiliger Ort, hehe. Sie ist einfach leer. Wenn du rein willst, vom Nordende des kleinen Strandes an der Südküste von Gobaith, 40 Schritte nach Norden und 12 Schritte nach Westen.";
+                gText="Irundar...Die HÃ¶hle von Irundar. Ich bin da gewesen...langweiliger Ort, hehe. Sie ist einfach leer. Wenn du rein willst, vom Nordende des kleinen Strandes an der SÃ¼dkÃ¼ste von Gobaith, 40 Schritte nach Norden und 12 Schritte nach Westen.";
                 eText="Irundar...The Cave of Irundar. I have been there...a boring place, hehe. It is just empty. If you want to get in, walk from the north end of a little bay at the south coast of Gobaith 40 steps north and then 12 steps west. Hehe.";
             end
 
@@ -253,7 +253,7 @@ end
 function lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
-        output[0]="Ein Halbling, kaum größer als sein Thresen, der eifrig seine Waren, überwiegend Kleidung, ordnet.";
+        output[0]="Ein Halbling, kaum grÃ¶ÃŸer als sein Thresen, der eifrig seine Waren, Ã¼berwiegend Kleidung, ordnet.";
         output[1]="A halfling barely taller than his counter but who is eagerly sorting out his wares, mainly clothes.";
         initLook=1;
     end

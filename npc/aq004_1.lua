@@ -25,27 +25,27 @@ function initializeNpc()
     TraderFirst=1;
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
     npc.base.functions_RS.AddTraderTrigger("[Gg]reetings","Greetings! Finally, someone came here to help me!");
-    npc.base.functions_RS.AddTraderTrigger("[Gg]r[uü][sß]+","Hallo! Endlich jemand, der hierherkommt, um mir zu helfen!");
+    npc.base.functions_RS.AddTraderTrigger("[Gg]r[uÃ¼][sÃŸ]+","Hallo! Endlich jemand, der hierherkommt, um mir zu helfen!");
     npc.base.functions_RS.AddTraderTrigger("[Hh]ello","Greetings! Finally, someone came here to help me!");
     npc.base.functions_RS.AddTraderTrigger("[Hh]allo","Hallo! Endlich jemand, der hierherkommt, um mir zu helfen!");
     npc.base.functions_RS.AddTraderTrigger("[Ww]ho.+you","My Name? That doesn't matter. I'm a hermit, and I need your help!");
     npc.base.functions_RS.AddTraderTrigger("[Ww]er.+du","Mein Name? Der ist egal. Ich lebe hier als Eremit, und ich brauche deine Hilfe!");
     npc.base.functions_RS.AddTraderTrigger("[Ww]er.+ihr","Mein Name? Der ist egal. Ich lebe hier als Eremit, und ich brauche deine Hilfe!");
     npc.base.functions_RS.AddTraderTrigger("[Hh]ermit","Yes, I'm a hermit. I came here long ago, but I'm sick of apples and cherries all day. You need to help me!");
-    npc.base.functions_RS.AddTraderTrigger("[Ee]remit","Ja, ich bin ein Eremit. Ich kam vor langer Zeit hierher, aber jetzt bin ich es leid, immer nur Äpfel und Kirschen zu essen. Hilf mir!");
+    npc.base.functions_RS.AddTraderTrigger("[Ee]remit","Ja, ich bin ein Eremit. Ich kam vor langer Zeit hierher, aber jetzt bin ich es leid, immer nur Ã„pfel und Kirschen zu essen. Hilf mir!");
     npc.base.functions_RS.AddTraderTrigger("[Pp]roblem","Well, all I can eat here are apples and cherries! I'm sick of that! Please bring me some aid! I need conifer wood, raw meat and a nice trout! If you're nice, and help, I'll tell you a secret.");
     npc.base.functions_RS.AddTraderTrigger("[Hh]elp","Well, all I can eat here are apples and cherries! I'm sick of that! Please bring me some aid! I need conifer wood, raw meat and a nice trout! If you're nice, and help, I'll tell you a secret.");
-    npc.base.functions_RS.AddTraderTrigger("[Pp]roblem","Nun, alles, was es hier zu essen gibt, sind diese verdammten Äpfel und Kirschen. Das macht mich krank! Bitte bring mit ein paar Hilfsmittel! Ich brauche Nadelholz, rohes Fleisch und eine leckere Forelle. Wenn du mir hilfst, erzähl' ich dir ein Geheimnis.");
-    npc.base.functions_RS.AddTraderTrigger("[Hh]ilfe","Nun, alles, was es hier zu essen gibt, sind diese verdammten Äpfel und Kirschen. Das macht mich krank! Bitte bring mit ein paar Hilfsmittel! Ich brauche Nadelholz, rohes Fleisch und eine leckere Forelle. Wenn du mir hilfst, erzähl' ich dir ein Geheimnis.");
-    npc.base.functions_RS.AddTraderTrigger("[Hh]elfen","Nun, alles, was es hier zu essen gibt, sind diese verdammten Äpfel und Kirschen. Das macht mich krank! Bitte bring mit ein paar Hilfsmittel! Ich brauche Nadelholz, rohes Fleisch und eine leckere Forelle. Wenn du mir hilfst, erzähl' ich dir ein Geheimnis.");
+    npc.base.functions_RS.AddTraderTrigger("[Pp]roblem","Nun, alles, was es hier zu essen gibt, sind diese verdammten Ã„pfel und Kirschen. Das macht mich krank! Bitte bring mit ein paar Hilfsmittel! Ich brauche Nadelholz, rohes Fleisch und eine leckere Forelle. Wenn du mir hilfst, erzÃ¤hl' ich dir ein Geheimnis.");
+    npc.base.functions_RS.AddTraderTrigger("[Hh]ilfe","Nun, alles, was es hier zu essen gibt, sind diese verdammten Ã„pfel und Kirschen. Das macht mich krank! Bitte bring mit ein paar Hilfsmittel! Ich brauche Nadelholz, rohes Fleisch und eine leckere Forelle. Wenn du mir hilfst, erzÃ¤hl' ich dir ein Geheimnis.");
+    npc.base.functions_RS.AddTraderTrigger("[Hh]elfen","Nun, alles, was es hier zu essen gibt, sind diese verdammten Ã„pfel und Kirschen. Das macht mich krank! Bitte bring mit ein paar Hilfsmittel! Ich brauche Nadelholz, rohes Fleisch und eine leckere Forelle. Wenn du mir hilfst, erzÃ¤hl' ich dir ein Geheimnis.");
     npc.base.functions_RS.AddTraderTrigger("[Aa]pple+","Bah! I hate apples!");
     npc.base.functions_RS.AddTraderTrigger("[Cc]herrie+","Bah! I hate cherries!");
-    npc.base.functions_RS.AddTraderTrigger("[ÄäAa]pfel","Igitt! Ich hasse Äpfel!");
+    npc.base.functions_RS.AddTraderTrigger("[Ã„Ã¤Aa]pfel","Igitt! Ich hasse Ã„pfel!");
     npc.base.functions_RS.AddTraderTrigger("[Kk]irsche+","Igitt! Ich hasse Kirschen!");
     npc.base.functions_RS.AddTraderTrigger("[Tt]rout","A trout would help me for sure.");
     npc.base.functions_RS.AddTraderTrigger("[Mm]eat","Mmm. Some nice meat would be fine.");
     npc.base.functions_RS.AddTraderTrigger("[Ww]ood","I need some wood to make a nice fire. So bring me some!");
-    npc.base.functions_RS.AddTraderTrigger("[Ff]orelle","Eine gute Forelle würde mich sicher satt machen.");
+    npc.base.functions_RS.AddTraderTrigger("[Ff]orelle","Eine gute Forelle wÃ¼rde mich sicher satt machen.");
     npc.base.functions_RS.AddTraderTrigger("[Ss]chweinefleisch","Rohes Schweinefleisch ist genau das, was ich jetzt brauche!");
     npc.base.functions_RS.AddTraderTrigger("[Ff]leisch","Rohes Schweinefleisch ist genau das, was ich jetzt brauche!");
     npc.base.functions_RS.AddTraderTrigger("[Nn]adelholz","Ich brauche Holz, damit mir warm wird. Also bring mir welches!");
@@ -108,26 +108,26 @@ function receiveText(texttype, message, originator)
                 -------------------------------------------------------------------------
 
                 if (Status==1) then
-                    gText="#me nimmt dir die Hilfsmittel ab und räuspert sich.";
+                    gText="#me nimmt dir die Hilfsmittel ab und rÃ¤uspert sich.";
                     eText="#me takes the things and clears his throat.";
                     originator:introduce(thisNPC);
                     thisNPC:talk(CCharacter.say,GetNLS(originator,gText,eText));
-                    gText="Danke für deine Hilfe, ich bin Teophus. Mein Leben lang suche ich nach dieser verdammten Schatzkarte, die mir einst verloren ging. Damals war ich auf der Suche nach dem alten Schatz, man sagte, er wäre auf dieser kleinen Insel versteckt.";
+                    gText="Danke fÃ¼r deine Hilfe, ich bin Teophus. Mein Leben lang suche ich nach dieser verdammten Schatzkarte, die mir einst verloren ging. Damals war ich auf der Suche nach dem alten Schatz, man sagte, er wÃ¤re auf dieser kleinen Insel versteckt.";
                     eText="Thank you for your help, I am Teophus. All my life I was searching for this treasuremap that I once lost here. That days, I was searching for an old treasure that was said to be on this small island.";
                     thisNPC:talk(CCharacter.say,GetNLS(originator,gText,eText));
                     gText="Nun, ich war dort, und die Karte wurde mir aus der Hand gerissen von solchen verdammten Gnomen, die mir eigentlich helfen sollten, aber auch ihren Teil wollten.";
                     eText="Well, I was here but the map was stolen by those stupid gnomes. They wanted to help me in the first place, but then they wanted everything just for themself.";
                     thisNPC:talk(CCharacter.say,GetNLS(originator,gText,eText));
-                    gText="Bei diesem Missgeschick wurde sie zerrissen, und ich hielt nurnoch einen kleinen Teil in der Hand. Im nächsten Moment waren diese Bastarde auch schon verschwunden. Du musst mir helfen!";
+                    gText="Bei diesem Missgeschick wurde sie zerrissen, und ich hielt nurnoch einen kleinen Teil in der Hand. Im nÃ¤chsten Moment waren diese Bastarde auch schon verschwunden. Du musst mir helfen!";
                     eText="The map was ripped into pieces, and all I got left was one of them. Those bastards disappeared. You must help me!";
                     thisNPC:talk(CCharacter.say,GetNLS(originator,gText,eText));
-                    gText="Hier hast du den kleinen Teil, den ich habe. Finde die Gnomenhöhle, finde die Schatzkarte. Viel Glück!";
+                    gText="Hier hast du den kleinen Teil, den ich habe. Finde die GnomenhÃ¶hle, finde die Schatzkarte. Viel GlÃ¼ck!";
                     eText="Here you have the last piece, that I have. Find the gnomish cave, find the treasuremap. Good Luck!";
                 elseif (Status==2) then
                     gText="Du hast noch nicht alle Hilfsmittel beisammen! Ich will rohes Schweinefleisch, Nadelholz und eine Forelle.";
                     eText="You don't have all the aid with you! I want raw pork, conifer wood and a trout.";
                 elseif (Status==3) then
-                    gText="Du hast meine Karte doch schon bekommen! Ich kann nichts mehr für dich tun.";
+                    gText="Du hast meine Karte doch schon bekommen! Ich kann nichts mehr fÃ¼r dich tun.";
                     eText="You already have my map. There's nothing more I can do for you.";
                 end
 

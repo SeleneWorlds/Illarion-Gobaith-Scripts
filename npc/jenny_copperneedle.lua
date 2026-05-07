@@ -34,14 +34,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Hello my friend! I am "..thisNPC.name..", the best tailor of this island. If you want, I show you how to become a good tailor.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Ich bin "..thisNPC.name..", die beste Schneiderin auf der Insel. Wenn du möchtest zeige ich dir, wie du ein guter Schneider wirst.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Ich bin "..thisNPC.name..", die beste Schneiderin auf der Insel. Wenn du mÃ¶chtest zeige ich dir, wie du ein guter Schneider wirst.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddTraderTrigger("who you","I am "..thisNPC.name..", the best tailor of this island. If you want, I show you how to become a good tailor.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Hallo mein Freund! Ich bin "..thisNPC.name..", die beste Schneiderin auf der Insel. Wenn du möchtest zeige ich dir, wie du ein guter Schneider wirst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Hallo mein Freund! Ich bin "..thisNPC.name..", die beste Schneiderin auf der Insel. Wenn du mÃ¶chtest zeige ich dir, wie du ein guter Schneider wirst.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was ihr");
@@ -52,15 +52,15 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddAdditionalText("Be well, my friend!");
     npc.base.autonpcfunctions.AddAdditionalText("Farewell, until we meet again.");
-    npc.base.autonpcfunctions.AddTraderTrigger("tsch[üu][ßs]","Auf Wiedersehen, mein Freund!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("tsch[Ã¼u][ÃŸs]","Auf Wiedersehen, mein Freund!");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb wohl");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wiederseh");
     npc.base.autonpcfunctions.AddAdditionalTrigger("auf bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
-    npc.base.autonpcfunctions.AddAdditionalText("Tschüss auch.");
-    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nächsten Mal.");
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn du möchtest kann ich dir zeigen, wie man schneidert. Möchtest du?");
+    npc.base.autonpcfunctions.AddAdditionalText("TschÃ¼ss auch.");
+    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nÃ¤chsten Mal.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn du mÃ¶chtest kann ich dir zeigen, wie man schneidert. MÃ¶chtest du?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","<",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
@@ -81,7 +81,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("schneider","Du möchtest also lernen, wie man schneidert? Das freut mich sehr. Wollen wir gleich anfangen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("schneider","Du mÃ¶chtest also lernen, wie man schneidert? Das freut mich sehr. Wollen wir gleich anfangen?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("handwerk");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lehr");
@@ -92,7 +92,7 @@ function initializeNpc()
 
     -- Starthilfe
     --
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weißt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weiÃŸt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Say \"help\" if you don't know, what to do.");
@@ -112,7 +112,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
 
@@ -130,7 +130,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Does it not work? You must stay facing the sheep and then 'use' the scissors. This needs much dexterity from time to time, because the sheeps move, but with a bit training it works fine. Otherwise I can give you some wool. Want you?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du musst dich direkt neben das Schaf stellen und dann die Schere 'benutzen. Das erfordert manchmal viel geschickt, weil die Schafe sich bewegen, aber mit etwas Übung wirst du es sicher schaffen. Ich kann dir aber auch einfach etwas Wolle geben. Möchtest du das?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du musst dich direkt neben das Schaf stellen und dann die Schere 'benutzen. Das erfordert manchmal viel geschickt, weil die Schafe sich bewegen, aber mit etwas Ãœbung wirst du es sicher schaffen. Ich kann dir aber auch einfach etwas Wolle geben. MÃ¶chtest du das?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
 
@@ -187,7 +187,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",170,"all",">",14);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Du hast's geschafft! Ein Hinweis noch: Du bekommst auch Wolle, wenn du die Schafe angreifst und tötest. Aber es ist viel effektiver das lebende Schaf zu scheren. Gut, als nächstes erkläre ich dir, wie du die Wolle zu einem Wollknäuel verarbeiten kannst. Bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Du hast's geschafft! Ein Hinweis noch: Du bekommst auch Wolle, wenn du die Schafe angreifst und tÃ¶test. Aber es ist viel effektiver das lebende Schaf zu scheren. Gut, als nÃ¤chstes erklÃ¤re ich dir, wie du die Wolle zu einem WollknÃ¤uel verarbeiten kannst. Bereit?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("item",170,"all",">",14);
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -198,12 +198,12 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Fine. The next is to spin the wool. You see that spinning wheel over there? Take the scissors in your hand, the wool at your belt and go in front of it. When you 'use' the spinning weel you start automatically to spin. Come back, when you have spun all your wool to balls.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",20);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Fein! Als nächstes muss die Wolle gesponnen werden. Siehst du das Spinnrad da vorne? Nimm die Schere in die Hand und die Wolle an den Gürtel und stell dich davor. Wenn du nun das Spinnrad 'benutzt' beginnst du zu spinnen. Komm zurück, wenn du all deine Wolle zu Wollknäulen versponnen hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Fein! Als nÃ¤chstes muss die Wolle gesponnen werden. Siehst du das Spinnrad da vorne? Nimm die Schere in die Hand und die Wolle an den GÃ¼rtel und stell dich davor. Wenn du nun das Spinnrad 'benutzt' beginnst du zu spinnen. Komm zurÃ¼ck, wenn du all deine Wolle zu WollknÃ¤ulen versponnen hast.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",20);
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
 
     -- Status: 20 (Hilfe)
@@ -211,11 +211,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Does it not work? You must hold the scissors in your hand and the wool 'in' your belt. Stay directly in front of the spinning weel and 'use' it. Otherwise I can give you some balls of wool. Want you?");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddConsequence("state","=",21);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Schere in der Hand halten und die Wolle 'im' Gürtel haben. Stell dich direkt vor das Spinnrad und 'benute' das Spinnrad. Ich kann dir aber auch einfach etwas Wolle geben. Möchtest du das?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Schere in der Hand halten und die Wolle 'im' GÃ¼rtel haben. Stell dich direkt vor das Spinnrad und 'benute' das Spinnrad. Ich kann dir aber auch einfach etwas Wolle geben. MÃ¶chtest du das?");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddConsequence("state","=",21);
 
-    -- Status: 21 (Auf Wunsch werden Wollknäule gegeben)
+    -- Status: 21 (Auf Wunsch werden WollknÃ¤ule gegeben)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Here you go. This should be enough for now. Should we continue?");
     npc.base.autonpcfunctions.AddCondition("state","=",21);
@@ -238,37 +238,37 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",168,"all","<",15);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Du hast noch zu wenig Wollknäule. Komm wieder, wenn du mindestens 15 Stück hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Du hast noch zu wenig WollknÃ¤ule. Komm wieder, wenn du mindestens 15 StÃ¼ck hast.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",168,"all","<",15);
 
-    -- Status: 20 -> 3 (Die Wollknäule ist da - weitermachen?)
+    -- Status: 20 -> 3 (Die WollknÃ¤ule ist da - weitermachen?)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Great! Now I show you how to produce cloth with this balls of wool. Ready?");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",168,"all",">",14);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Dann zeig ich dir jetzt, wie du aus den Wollknäulen Stoffe herstellen kannst. Bist du soweit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Dann zeig ich dir jetzt, wie du aus den WollknÃ¤ulen Stoffe herstellen kannst. Bist du soweit?");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",168,"all",">",14);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
 
-    -- Status: 3 -> 30 (Wollknäule weben)
+    -- Status: 3 -> 30 (WollknÃ¤ule weben)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","With a loom you can weave the ball of wools to cloth. For this, stay in front of the loom and 'use' it. You should have the scissors in your hand and the balls of wool 'in' your belt for this. Come back, when you have finished.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",30);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Mit einem Webstuhl kannst du nun die Wollknäule zu Stoff weben. Stell dich einfach vor den Webstuhl und 'benutze' ihn. Du solltest dafür die Schere in der Hand und die Wollknäule 'im' Gürtel haben. Wenn du fertig bist, dann komm wieder.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Mit einem Webstuhl kannst du nun die WollknÃ¤ule zu Stoff weben. Stell dich einfach vor den Webstuhl und 'benutze' ihn. Du solltest dafÃ¼r die Schere in der Hand und die WollknÃ¤ule 'im' GÃ¼rtel haben. Wenn du fertig bist, dann komm wieder.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",30);
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
 
     -- Status: 30 (Hilfe)
@@ -276,7 +276,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Does it not work? You must hold the scissors in your hand and the balls of wool 'in' your belt. Stay directly in front of the loom weel and 'use' it. Otherwise I can give you some cloth. Want you?");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddConsequence("state","=",31);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Schere in der Hand halten und die Wollknäule 'im' Gürtel haben. Stell dich direkt vor den Webstuhl und 'benute' den Webstuhl. Ich kann dir aber auch einfach etwas Stoff geben. Möchtest du das?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Schere in der Hand halten und die WollknÃ¤ule 'im' GÃ¼rtel haben. Stell dich direkt vor den Webstuhl und 'benute' den Webstuhl. Ich kann dir aber auch einfach etwas Stoff geben. MÃ¶chtest du das?");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddConsequence("state","=",31);
 
@@ -315,7 +315,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",176,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",4);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Jetzt können wir mit dem nächsten Schritt weitermachen. Bist du soweit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Jetzt kÃ¶nnen wir mit dem nÃ¤chsten Schritt weitermachen. Bist du soweit?");
     npc.base.autonpcfunctions.AddCondition("state","=",30);
     npc.base.autonpcfunctions.AddCondition("item",176,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -326,12 +326,12 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("yes","For tailoring you need among cloth some thread. You can produce it by yourself, when you work up the entrails of animals with a scissors. The best is to try it: Kill one of the animals around, put the entrails 'into' your belt and 'use' the scissors.");
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddConsequence("state","=",40);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Zum schneidern brauchst du neben Stoff auch noch Garn. Das kannst du einfach selbst herstellen, indem du die Eingeweide von Tieren mit einer Schere bearbeitest. Versuche es doch am besten gleich einmal selbst. Töte eines der Tiere, die hier herumlaufen, lege die Eingeweide 'in' deinen Gürtel und benutze die Schere.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Zum schneidern brauchst du neben Stoff auch noch Garn. Das kannst du einfach selbst herstellen, indem du die Eingeweide von Tieren mit einer Schere bearbeitest. Versuche es doch am besten gleich einmal selbst. TÃ¶te eines der Tiere, die hier herumlaufen, lege die Eingeweide 'in' deinen GÃ¼rtel und benutze die Schere.");
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddConsequence("state","=",40);
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",4);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",4);
 
     -- Status: 40 (Hilfe)
@@ -339,7 +339,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Does it not work? You must hold the scissors in your hand and the entrails in' your belt. Then just 'use' the scissors. Otherwise I can give you some thread. Want you?");
     npc.base.autonpcfunctions.AddCondition("state","=",40);
     npc.base.autonpcfunctions.AddConsequence("state","=",41);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Schere in der Hand halten und die Eingeweide 'im' Gürtel haben. Dann einfach die Schere 'benutzen'. Ich kann dir aber auch einfach etwas Stoff geben. Möchtest du das?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Schere in der Hand halten und die Eingeweide 'im' GÃ¼rtel haben. Dann einfach die Schere 'benutzen'. Ich kann dir aber auch einfach etwas Stoff geben. MÃ¶chtest du das?");
     npc.base.autonpcfunctions.AddCondition("state","=",40);
     npc.base.autonpcfunctions.AddConsequence("state","=",41);
 
@@ -378,7 +378,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",50,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",5);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Jetzt können wir anfangen mit dem nähen von Kleidung. Bist du soweit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Jetzt kÃ¶nnen wir anfangen mit dem nÃ¤hen von Kleidung. Bist du soweit?");
     npc.base.autonpcfunctions.AddCondition("state","=",40);
     npc.base.autonpcfunctions.AddCondition("item",50,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -391,13 +391,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",5);
     npc.base.autonpcfunctions.AddConsequence("item",47,1,999,0);
     npc.base.autonpcfunctions.AddConsequence("state","=",50);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hier, nimm diese Nadel. Du solltest nun alles haben, was du brauchst um dein erstes Kleidungsstück zu nähen. Wenn du noch mehr Stoff oder Garn brauchst, dann sag mir einfach bescheid. Ich kann dir auch noch was davon geben. Nimm die Nadel in die Hand und den Stoff und das Garn 'in' den Gürtel. Stell dich dann vor den Schneidertisch und 'benutze' die Nadel. In dem Menü, welches sich dann öffnet kannst du auswählen, was du nähen willst. Wähle bitte den \"grauen Mantel.\"");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Hier, nimm diese Nadel. Du solltest nun alles haben, was du brauchst um dein erstes KleidungsstÃ¼ck zu nÃ¤hen. Wenn du noch mehr Stoff oder Garn brauchst, dann sag mir einfach bescheid. Ich kann dir auch noch was davon geben. Nimm die Nadel in die Hand und den Stoff und das Garn 'in' den GÃ¼rtel. Stell dich dann vor den Schneidertisch und 'benutze' die Nadel. In dem MenÃ¼, welches sich dann Ã¶ffnet kannst du auswÃ¤hlen, was du nÃ¤hen willst. WÃ¤hle bitte den \"grauen Mantel.\"");
     npc.base.autonpcfunctions.AddCondition("state","=",5);
     npc.base.autonpcfunctions.AddConsequence("item",47,1,999,0);
     npc.base.autonpcfunctions.AddConsequence("state","=",50);
     npc.base.autonpcfunctions.AddTraderTrigger("no","It's a pity, but maybe later. You can come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",5);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht später. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Schade, aber vielleicht spÃ¤ter. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",5);
 
     -- Status: 50 (Mehr Garn)
@@ -438,7 +438,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Does it not work? You must hold the needle in your hand and the grey cloth and the thread  in' your belt. Then 'use' the needle to open the main menu. The red shirt is the symbol for clothing. Klick on the shirt to open the clothing-menu. In this menu choose the \"grey coat\".");
     npc.base.autonpcfunctions.AddCondition("state",">=",50);
     npc.base.autonpcfunctions.AddCondition("state","<",52);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Nadel in der Hand halten und den Stoff und das Garn am Gürtel tragen. Dann 'benutze' die Nadel um das Haupmenü zu öffnen. Das rote Hemd ist das Symbol für Kleidung. Klick darauf um das Kleidungsmenü zu öffnen. In diesem Menü wähle dann \"Grauer Mantel\".");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Klappt etwas nicht? Du must die Nadel in der Hand halten und den Stoff und das Garn am GÃ¼rtel tragen. Dann 'benutze' die Nadel um das HaupmenÃ¼ zu Ã¶ffnen. Das rote Hemd ist das Symbol fÃ¼r Kleidung. Klick darauf um das KleidungsmenÃ¼ zu Ã¶ffnen. In diesem MenÃ¼ wÃ¤hle dann \"Grauer Mantel\".");
     npc.base.autonpcfunctions.AddCondition("state",">=",50);
     npc.base.autonpcfunctions.AddCondition("state","<",52);
 
@@ -448,7 +448,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",50);
     npc.base.autonpcfunctions.AddCondition("item",196,"all","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Geh zum Schneidertisch und nähe einen grauen Mantel. Komm wieder, wenn du fertig bist.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Geh zum Schneidertisch und nÃ¤he einen grauen Mantel. Komm wieder, wenn du fertig bist.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",50);
     npc.base.autonpcfunctions.AddCondition("item",196,"all","=",0);
@@ -459,7 +459,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",51);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",50);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh...dieser Mantel ist noch nicht fertig. Wenn du die Arbeit an einem unfertigen Kleidungsstück weiterführen willst, dann 'benutze' die Nadel mit diesem Kleidungsstück, das du natürlich am Gürtel trägst.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh...dieser Mantel ist noch nicht fertig. Wenn du die Arbeit an einem unfertigen KleidungsstÃ¼ck weiterfÃ¼hren willst, dann 'benutze' die Nadel mit diesem KleidungsstÃ¼ck, das du natÃ¼rlich am GÃ¼rtel trÃ¤gst.");
     npc.base.autonpcfunctions.AddCondition("state","=",51);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",50);
@@ -470,7 +470,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",52);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Der Mantel ist wirklich schön geworden. Du weißt nun alles, was man über das Schneidern wissen muss. Für viele Kleidungsstücke wirst du farbige Stoffe brauchen. Wenn du wissen willst, wie man Stoffe färbt, dann frag am besten meine Schwester Penny. Sie steht dort drüben neben dem Fass. Ich wünsche dir viel Erfolg. Leb wohl!");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Der Mantel ist wirklich schÃ¶n geworden. Du weiÃŸt nun alles, was man Ã¼ber das Schneidern wissen muss. FÃ¼r viele KleidungsstÃ¼cke wirst du farbige Stoffe brauchen. Wenn du wissen willst, wie man Stoffe fÃ¤rbt, dann frag am besten meine Schwester Penny. Sie steht dort drÃ¼ben neben dem Fass. Ich wÃ¼nsche dir viel Erfolg. Leb wohl!");
     npc.base.autonpcfunctions.AddCondition("state","=",52);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",0);

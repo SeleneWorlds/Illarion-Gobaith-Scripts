@@ -23,7 +23,7 @@ function initializeNpc()
 	npc.base.functions.AddTraderTrigger("[Gg]reetings", "Um... hello. And who the hell are you?");
 	npc.base.functions.AddAdditionalTrigger("[Hh]ello");
 	npc.base.functions.AddAdditionalTrigger("[Hh]iho");
-	npc.base.functions.AddTraderTrigger("[Gg]rüße", "Uhm... hallo. Und wer zum Teufel bist du?");
+	npc.base.functions.AddTraderTrigger("[Gg]rÃ¼ÃŸe", "Uhm... hallo. Und wer zum Teufel bist du?");
 	npc.base.functions.AddAdditionalTrigger("[Hh]allo");
 	npc.base.functions.AddAdditionalTrigger("[Hh]uhu");
 	
@@ -33,7 +33,7 @@ function initializeNpc()
 	npc.base.functions.AddTraderTrigger("[Ii]ch bin", "Oh. Hat Wiesel dich geschickt?");
 	npc.base.functions.AddAdditionalTrigger("[Mm]ein Name ist");
 	npc.base.functions.AddAdditionalTrigger("[Ii]ch heisse");
-	npc.base.functions.AddAdditionalTrigger("[Ii]ch heiße");
+	npc.base.functions.AddAdditionalTrigger("[Ii]ch heiÃŸe");
 	
 	npc.base.functions.AddTraderTrigger("[Ww]ho.+you?", "Shh! I'm Sylvester. Weasel sent you, didn't he?");
 	npc.base.functions.AddTraderTrigger("[Ww]er.+du?", "Psst! Ich bin Sylvester. Wiesel hat dich geschickt, richtig?");
@@ -42,7 +42,7 @@ function initializeNpc()
 	npc.base.functions.AddTraderTrigger("[Nn]ein", "Was?? Du bist nicht der den er geschickt hat? Bah, zisch ab!");
 	
 	npc.base.functions.AddTraderTrigger("[Yy]es", "Yeah, I thought so. Hey, it's in the same spot, same brick, a'right? Just 'put yer back to the setting sun,' like they always tell you.");
-	npc.base.functions.AddTraderTrigger("[Jj]a", "Jap, dachte ich's mir doch.. Hey, es ist am selben Platz, der selbe Ziegel, 'n Ordnung? 'Wende deinen Rücken dem Sonnenuntergang zu', wie es immer heisst.");
+	npc.base.functions.AddTraderTrigger("[Jj]a", "Jap, dachte ich's mir doch.. Hey, es ist am selben Platz, der selbe Ziegel, 'n Ordnung? 'Wende deinen RÃ¼cken dem Sonnenuntergang zu', wie es immer heisst.");
 	
 	npc.base.functions.AddTraderTrigger("[Ww]aren", "Ich kriege bessere Preise bei Schwarzhand, Wie kommst du auf die Idee dass ich dir meine Beute verkaufe?");
 	npc.base.functions.AddTraderTrigger("[Ww]ares", "I get better prices off Blackhand, who thinks I'll sell my loot to you?");
@@ -51,7 +51,7 @@ function initializeNpc()
 	npc.base.functions.AddTraderTrigger("[Ww]as.+kauf.+?", "Leute wie ich KAUFEN nicht, Dummkopf...");
 	
 	npc.base.functions.AddTraderTrigger("[Ww]hat.+sell.+?", "I ain't sellin' any of it to you.");
-	npc.base.functions.AddTraderTrigger("[Ww]elche.+verkauf.+?", "Ich werde dir überhaupt nichts verkaufen, klar?");
+	npc.base.functions.AddTraderTrigger("[Ww]elche.+verkauf.+?", "Ich werde dir Ã¼berhaupt nichts verkaufen, klar?");
 
     npc.base.functions.AddCycleText("#me schaut sich um und pfeift unschuldig","#me looks around and whistles innocently");
     
@@ -106,7 +106,7 @@ end--function
 function lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
-        output[0]="Ein kleiner Mann, der ein Kopftuch trägt, dass ihm tief ins Gesicht rutscht. Seine Bewegungen sind ein wenig nervös und es scheint nicht, dass ihm deine Blicke sehr angenehm sind.";
+        output[0]="Ein kleiner Mann, der ein Kopftuch trÃ¤gt, dass ihm tief ins Gesicht rutscht. Seine Bewegungen sind ein wenig nervÃ¶s und es scheint nicht, dass ihm deine Blicke sehr angenehm sind.";
         output[1]="A small person wearing a bandana that always slides down partly hiding his face. His movements seem a little nervous and he obviously does not like you watching him.";
         initLook=1;
     end

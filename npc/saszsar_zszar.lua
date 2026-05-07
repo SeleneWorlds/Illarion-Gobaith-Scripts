@@ -26,9 +26,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrüssst mein Freund. Vielleicht kann ich Euch dasss Fischen beibringen. Oder ssschaut Euch einfach diesse wundersschöne Säule an!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrÃ¼ssst mein Freund. Vielleicht kann ich Euch dasss Fischen beibringen. Oder ssschaut Euch einfach diesse wundersschÃ¶ne SÃ¤ule an!");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
     npc.base.autonpcfunctions.AddTraderTrigger("my name","Ah, my pleasssure! I am "..thisNPC.name..". Jussst assk if I shall teach you how to catch ssome fisssh. Or have a look at thisss beautiful column!");
@@ -36,7 +36,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("mein name","Ah, issst mir ein Vergnügen! Ich bin "..thisNPC.name..". Fragt einfach, wenn ich Euch beibringen ssoll, wie man Fissche fängt. Oder ssschaut Euch einfach diesse wundersschöne Säule an!");
+    npc.base.autonpcfunctions.AddTraderTrigger("mein name","Ah, issst mir ein VergnÃ¼gen! Ich bin "..thisNPC.name..". Fragt einfach, wenn ich Euch beibringen ssoll, wie man Fissche fÃ¤ngt. Oder ssschaut Euch einfach diesse wundersschÃ¶ne SÃ¤ule an!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("ich bin");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
@@ -44,16 +44,16 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Hello ssstranger, issn't that crosss beautiful? Sssure it iss.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrüssst, Fremder. Issst diessess Kreuz nicht sschön? Natürlich issst ess dass.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrÃ¼ssst, Fremder. Issst diessess Kreuz nicht sschÃ¶n? NatÃ¼rlich issst ess dass.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("my name","Ah, my pleasssure! I am "..thisNPC.name..". Jussst assk if I shall teach you how to catch ssome fisssh. Or have a look at thisss beautiful column!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("i am");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("mein name","Ah, issst mir ein Vergnügen! Ich bin "..thisNPC.name..". Fragt einfach, wenn ich Euch beibringen ssoll, wie man Fissche fängt. Oder ssschaut Euch einfach diesse wundersschöne Säule an!");
+    npc.base.autonpcfunctions.AddTraderTrigger("mein name","Ah, issst mir ein VergnÃ¼gen! Ich bin "..thisNPC.name..". Fragt einfach, wenn ich Euch beibringen ssoll, wie man Fissche fÃ¤ngt. Oder ssschaut Euch einfach diesse wundersschÃ¶ne SÃ¤ule an!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("ich bin");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
@@ -61,9 +61,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Hello %CHARNAME, nice to sssee you again. Do you want to know how to fish? I could tell you.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrüssst, %CHARNAME. Schön Euch wiederzusssehen. Wollt Ihr wisssen wie man fischt? Ich könnte esss Euch ssagen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrÃ¼ssst, %CHARNAME. SchÃ¶n Euch wiederzusssehen. Wollt Ihr wisssen wie man fischt? Ich kÃ¶nnte esss Euch ssagen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
     npc.base.autonpcfunctions.AddTraderTrigger("my name","Yesss, I know your name.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("i am");
@@ -75,9 +75,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Hello %CHARNAME, nice to sssee you again.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrüssst, %CHARNAME. Schön Euch wiederzusssehen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ssseid gegrÃ¼ssst, %CHARNAME. SchÃ¶n Euch wiederzusssehen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddTraderTrigger("my name","Yesss, I know your name.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("i am");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
@@ -92,7 +92,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Mein Name issst "..thisNPC.name..". Ich kümmere mich um dasss Heilige Kreuz hier. Fragt einfach, wenn ich Euch beibringen ssoll, wie man Fische fängt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Mein Name issst "..thisNPC.name..". Ich kÃ¼mmere mich um dasss Heilige Kreuz hier. Fragt einfach, wenn ich Euch beibringen ssoll, wie man Fische fÃ¤ngt.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
@@ -101,7 +101,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("who you","My name isss "..thisNPC.name..". I take care for the Holy Crossss here.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Mein Name issst "..thisNPC.name..". Ich kümmere mich um dasss Heilige Kreuz hier.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Mein Name issst "..thisNPC.name..". Ich kÃ¼mmere mich um dasss Heilige Kreuz hier.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
@@ -109,8 +109,8 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("what is","Thiss isss a Column of Revival. If you fall in battle, go to a Column of Revival to come back to life. Every major town hasss one. But now go on to Amelia, jussst follow the sstreet into the wood.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("column");
     npc.base.autonpcfunctions.AddAdditionalTrigger("revival");
-    npc.base.autonpcfunctions.AddTraderTrigger("was ist","Dass issst eine Säule der Wiederbelebung. Wenn Ihr im Kampf fallen ssolltet, geht zu einer Säule der Wiederbelebung, um wieder neue Lebensskraft zu bekommen. Jede grösssere Stadt hat einess. Aber jetzt geht weiter zu Amelia, folgt einfach der Ssstraße in den Wald.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("s[äa]ule");
+    npc.base.autonpcfunctions.AddTraderTrigger("was ist","Dass issst eine SÃ¤ule der Wiederbelebung. Wenn Ihr im Kampf fallen ssolltet, geht zu einer SÃ¤ule der Wiederbelebung, um wieder neue Lebensskraft zu bekommen. Jede grÃ¶sssere Stadt hat einess. Aber jetzt geht weiter zu Amelia, folgt einfach der SsstraÃŸe in den Wald.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("s[Ã¤a]ule");
     npc.base.autonpcfunctions.AddAdditionalTrigger("saeule");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wiederbelebung");
     -- fishing
@@ -118,7 +118,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("teach");
     npc.base.autonpcfunctions.AddAdditionalTrigger("learn");
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
-    npc.base.autonpcfunctions.AddTraderTrigger("fisch","Oh, Ihr wollt lernen, wie man Fische fängt? Esss isst ganz ssimpel: Geht einfach zum Wasssser und 'benutzt' esss.");
+    npc.base.autonpcfunctions.AddTraderTrigger("fisch","Oh, Ihr wollt lernen, wie man Fische fÃ¤ngt? Esss isst ganz ssimpel: Geht einfach zum Wasssser und 'benutzt' esss.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("beibringen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bring bei");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
@@ -127,11 +127,11 @@ function initializeNpc()
     -- help
     npc.base.autonpcfunctions.AddTraderTrigger("help","If you want to know how to fisssh with your clawss, assk me 'How to fish' and if you want to know more about the Column of Revival, asssk me 'What is the Column of Revival'.");
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn Ihr wissssen wollt, wie Ihr mit Euren Klauen fisscht, fragt mich 'Wie fische ich' und wenn Ihr mehr über die Säule der Wiederbelebung wisssen wollt, fragt mich 'Was ist die Säule der Wiederbelebung'.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn Ihr wissssen wollt, wie Ihr mit Euren Klauen fisscht, fragt mich 'Wie fische ich' und wenn Ihr mehr Ã¼ber die SÃ¤ule der Wiederbelebung wisssen wollt, fragt mich 'Was ist die SÃ¤ule der Wiederbelebung'.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.lizardman);
     npc.base.autonpcfunctions.AddTraderTrigger("help","If you want to know more about the Holy Crossss, asssk me 'What is the Column of Revival'.");
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn Ihr mehr über dasss Heilige Kreuz wisssen wollt, fragt mich 'Was ist die Säule der Wiederbelebung'.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Wenn Ihr mehr Ã¼ber dasss Heilige Kreuz wisssen wollt, fragt mich 'Was ist die SÃ¤ule der Wiederbelebung'.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     -- bye bye
     npc.base.autonpcfunctions.AddTraderTrigger("farewell","Good bye.");
@@ -141,13 +141,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("leb wohl","Auf bald.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("auf bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sß]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[uü][sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sÃŸ]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[uÃ¼][sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalText("Bisss bald");
     npc.base.autonpcfunctions.AddAdditionalText("Zelphia mit Euch.");
     -- cycle
-    npc.base.autonpcfunctions.AddCycleText("#me starrt fasziniert die glänzende Säule an.","#me stares fascinated at the shiny column.");
-    npc.base.autonpcfunctions.AddCycleText("#me lässt seinen Schwanz hin und her schnalzen","#me flicks his tail");
+    npc.base.autonpcfunctions.AddCycleText("#me starrt fasziniert die glÃ¤nzende SÃ¤ule an.","#me stares fascinated at the shiny column.");
+    npc.base.autonpcfunctions.AddCycleText("#me lÃ¤sst seinen Schwanz hin und her schnalzen","#me flicks his tail");
     -- ********* END DYNAMIC PART ********
 
     TradSpeakLang={0,4};
@@ -180,7 +180,7 @@ end
 function lookAtNpc(Char, mode)
     if initLook==nil then
         output={};
-        output[0]="Ein schuppiger junger Echsenmann. Er sitzt im Schneidersitz auf den Boden und betrachtet mit seinen grünleuchtenden Augen fasziniert die Säule.";
+        output[0]="Ein schuppiger junger Echsenmann. Er sitzt im Schneidersitz auf den Boden und betrachtet mit seinen grÃ¼nleuchtenden Augen fasziniert die SÃ¤ule.";
         output[1]="A flaked young lizardman. He sits cross-legged on the ground and watches fascinated with his green glowing eyes the column.";
         initLook=1;
     end

@@ -1,4 +1,4 @@
--- Basiscript für die Kreuze
+-- Basiscript fÃ¼r die Kreuze
 
 require("base.common")
 
@@ -67,7 +67,7 @@ function doubleEffect( rebirthEffect, Reborn )
     end
 
     base.common.InformNLS( Reborn,
-        "Du fühlst dich noch sehr schwach.",
+        "Du fÃ¼hlst dich noch sehr schwach.",
         "You feel very weak." );
     local maxChange = 0;
     local changeBy = 0;

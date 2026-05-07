@@ -25,7 +25,7 @@ Wares = {};
 function lookAtNpc( player, mode )
 	player:sendCharDescription( thisNPC.id , "Hier steht ein Fisch auf dem Flur." );
 	base.common.InformNLS(player,
-		"#b|0|61|Hier können Infos und Hilfe stehen.",
+		"#b|0|61|Hier kÃ¶nnen Infos und Hilfe stehen.",
 		"#b|0|62|Here you could read info and help.");
 end
 
@@ -105,14 +105,14 @@ function initializeNpc()
     npc.base.trader_functions.AddTraderItem(60  ,18  ,100,5  ,50,{3,5},{33,66},0   ,0); -- leichter Metallschild
     npc.base.trader_functions.AddTraderItem(120 ,20  ,100,7  ,50,{3,5},{33,66},0   ,0); -- Ritterschild
     npc.base.trader_functions.AddTraderItem(300 ,186 ,100,10 ,50,{3,5},{33,66},0   ,0); -- Metallrundschild
-    npc.base.trader_functions.AddTraderItem(90  ,19  ,100,7  ,50,{3,5},{33,66},0   ,0); -- großer Metallschild
+    npc.base.trader_functions.AddTraderItem(90  ,19  ,100,7  ,50,{3,5},{33,66},0   ,0); -- groÃŸer Metallschild
     npc.base.trader_functions.AddTraderItem(400 ,325 ,100,25 ,50,{3,5},{33,66},0   ,0); -- Stahlhandschuhe
     npc.base.trader_functions.AddTraderItem(400 ,326 ,100,25 ,50,{3,5},{33,66},0   ,0); -- Stahlschuhe
-    npc.base.trader_functions.AddTraderItem(1200,2359,100,80 ,5 ,{3,5},{33,66},0   ,0); -- Söldnerrüstung
-    npc.base.trader_functions.AddTraderItem(0   ,2360,100,150,5 ,{3,5},{33,66},0   ,0); -- Lor-Angur-Wächterrüstung
+    npc.base.trader_functions.AddTraderItem(1200,2359,100,80 ,5 ,{3,5},{33,66},0   ,0); -- SÃ¶ldnerrÃ¼stung
+    npc.base.trader_functions.AddTraderItem(0   ,2360,100,150,5 ,{3,5},{33,66},0   ,0); -- Lor-Angur-WÃ¤chterrÃ¼stung
     npc.base.trader_functions.AddTraderItem(0   ,2393,100,120,5 ,{3,5},{33,66},0   ,0); -- schwerer Stahlharnisch
     npc.base.trader_functions.AddTraderItem(1500,2364,100,100,5 ,{3,5},{33,66},0   ,0); -- Stahlharnisch
-    npc.base.trader_functions.AddTraderItem(0   ,2731,100,30 ,50,{3,5},{33,66},0   ,0); -- Zweihänder
+    npc.base.trader_functions.AddTraderItem(0   ,2731,100,30 ,50,{3,5},{33,66},0   ,0); -- ZweihÃ¤nder
     npc.base.trader_functions.AddTraderItem(100 ,2675,100,6  ,50,{3,5},{33,66},0   ,0); -- Degen
     npc.base.trader_functions.AddTraderItem(150 ,1   ,100,8  ,50,{3,5},{33,66},0   ,0); -- Serinjahschwert
     npc.base.trader_functions.AddTraderItem(100 ,2658,100,6  ,50,{3,5},{33,66},0   ,0); -- Breitschwert
@@ -135,27 +135,27 @@ function initializeNpc()
     npc.base.functions.AddAdditionalTrigger("[Bb]e [Ww]ell");
     npc.base.functions.AddAdditionalText("Sss. Farewell. You are welcome to come back.");
     npc.base.functions.AddTraderTrigger("[hH]elp","'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'");
-    npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Grüssse. Wasss wollt ihr? Zsss");
+    npc.base.functions.AddTraderTrigger("[Gg]rÃ¼[ÃŸs]+e","GrÃ¼ssse. Wasss wollt ihr? Zsss");
     npc.base.functions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.functions.AddAdditionalText("Grüssse. Habt ihr Interessse an meinen Waren? Zsss");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+kauf","Sss. Ich handle mit Ssschilden, Beinschienen, Rüssstungen und Waffen. Alles aus Metall. ssss");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+[Ss]child","Wasss auch immer du brauchssst: leichte, normale und große Metallschilde und Metallrundsschilde");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+[Rr]üstung","Bessste Rüssstungen: Ssstahl Handschuhe und Ssstiefel, Albarische Offiziersss Rüssstungen, leicht Sssöldner Rüssstungen, Lor-Angur Wächter Rüssstungen, Ssstahl Plattenpanzer, ssschwere Rote und ssschwere Ssstahlpanzer.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]affen","Ich handle mit Degen, Rasssierklingen, Ssserinjah-Ssschwertern und Zzweihänderr.");
+    npc.base.functions.AddAdditionalText("GrÃ¼ssse. Habt ihr Interessse an meinen Waren? Zsss");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+kauf","Sss. Ich handle mit Ssschilden, Beinschienen, RÃ¼ssstungen und Waffen. Alles aus Metall. ssss");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+[Ss]child","Wasss auch immer du brauchssst: leichte, normale und groÃŸe Metallschilde und Metallrundsschilde");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+[Rr]Ã¼stung","Bessste RÃ¼ssstungen: Ssstahl Handschuhe und Ssstiefel, Albarische Offiziersss RÃ¼ssstungen, leicht SssÃ¶ldner RÃ¼ssstungen, Lor-Angur WÃ¤chter RÃ¼ssstungen, Ssstahl Plattenpanzer, ssschwere Rote und ssschwere Ssstahlpanzer.");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+[Ww]affen","Ich handle mit Degen, Rasssierklingen, Ssserinjah-Ssschwertern und ZzweihÃ¤nderr.");
     npc.base.functions.AddTraderTrigger("[Ww]as.+[Ss]chienen","Sssieh! Ich habe: blaue Ssstahl Beinssschienen, Bronze Beinssschienen und rote Ssstahl Beinssschienen.");
     npc.base.functions.AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald. Zhelphia sssegne euch. Zsss.");
     npc.base.functions.AddAdditionalTrigger("[Bb]is [Bb]als");
     npc.base.functions.AddAdditionalTrigger("[Mm]achs [Gg]ut");
-    npc.base.functions.AddAdditionalText("Sss. Bis bald. Ihr könnt gern wieder kommen.");
-    npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'");
+    npc.base.functions.AddAdditionalText("Sss. Bis bald. Ihr kÃ¶nnt gern wieder kommen.");
+    npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich mÃ¶chte <Anzahl> <Ware> kaufen', 'Ich mÃ¶chte <Ware> kaufen', 'Ich mÃ¶chte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr fÃ¼r <Ware>', 'Was kauft ihr?'");
     
     npc.base.functions.AddCycleText("#me isst einen Fisch","#me eats a fish");
     npc.base.functions.AddCycleText("#me schaut sich nach Kunden um","#me looks around for customers");
-    npc.base.functions.AddCycleText("#me lässt ihren Schwanz hin und her schnalzen","#me flicks her tail");
-    npc.base.functions.AddCycleText("#me zählt einige Münzen","#me counts some coins");
+    npc.base.functions.AddCycleText("#me lÃ¤sst ihren Schwanz hin und her schnalzen","#me flicks her tail");
+    npc.base.functions.AddCycleText("#me zÃ¤hlt einige MÃ¼nzen","#me counts some coins");
     npc.base.functions.AddCycleText("Die besssten Ssschmiedewaren verkauf ich! Zzzum besssten Preisss.","I sssell the bessst smithsss productsss. For the bessst pricesss");
 
-    TraderLang={"Gold","gold","Sssilber", "sssilver","Kupfer","copper","ssstücke","piecesss"};
+    TraderLang={"Gold","gold","Sssilber", "sssilver","Kupfer","copper","ssstÃ¼cke","piecesss"};
     
 
 TraderMonths={"Elosss","Tanosss","Zhasss","Ushosss","Sssirosss","Ronasss","Brasss","Eldasss","Irmasss","Malasss","Findosss","Olosss","Adrasss","Narasss","Chosss","Masss"};

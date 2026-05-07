@@ -26,22 +26,22 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Gg]reetings","Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?");
     npc.base.functions.AddAdditionalTrigger("[Hh]ello");
     npc.base.functions.AddAdditionalText("Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?");
-    npc.base.functions.AddTraderTrigger("[Gg]r[uü][sß]+","Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?");
+    npc.base.functions.AddTraderTrigger("[Gg]r[uÃ¼][sÃŸ]+","Zum GruÃŸe. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur GÃ¤nze mÃ¤chtig bin. KÃ¶nnt ihr die Sprache der Elfen sprechen?");
     npc.base.functions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.functions.AddAdditionalText("Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?");
+    npc.base.functions.AddAdditionalText("Zum GruÃŸe. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur GÃ¤nze mÃ¤chtig bin. KÃ¶nnt ihr die Sprache der Elfen sprechen?");
     npc.base.functions.AddTraderTrigger("[Ss]ir [Ee]lf","Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?");
-    npc.base.functions.AddTraderTrigger("[Hh]err [Ee]lf","Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?");
+    npc.base.functions.AddTraderTrigger("[Hh]err [Ee]lf","Zum GruÃŸe. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur GÃ¤nze mÃ¤chtig bin. KÃ¶nnt ihr die Sprache der Elfen sprechen?");
     npc.base.functions.AddTraderTrigger("[Cc]ommon","'Tis a dreadful language, I fear. It's horribley blunt and unpoetic. It lacks the fluidity and poetic qualities of my people's language.");
-    npc.base.functions.AddTraderTrigger("[Aa]llgemein","Das ist eine grässliche Sprache, fürchte ich. Sie ist furchtbar plump und unpoetisch. Ihr fehlt der Fluss und die Poetischen Qualitäten der Sprache meines Volkes.");
+    npc.base.functions.AddTraderTrigger("[Aa]llgemein","Das ist eine grÃ¤ssliche Sprache, fÃ¼rchte ich. Sie ist furchtbar plump und unpoetisch. Ihr fehlt der Fluss und die Poetischen QualitÃ¤ten der Sprache meines Volkes.");
     npc.base.functions.AddTraderTrigger("[Tt]each.*[Ee]lven","Not so fast. It is not that I am greedy, but it is customary among Elves that a student provide a tribute to his/her teacher.");
     npc.base.functions.AddTraderTrigger("[Ee]lvish","Are you interested in learning the Elven Tongue? I assure you that you would find new pathways of thought with the tools that the Elven language provides for the expression of those that understand it.");
     npc.base.functions.AddAdditionalTrigger("[Ee]lven [Ll]anguage");
     npc.base.functions.AddAdditionalTrigger("[Ee]lven [Tt]ongue");
-    npc.base.functions.AddTraderTrigger("[Ee]lfisch","Seit ihr daran interessiert die Hohe Sprache der Elfen zu erlernen? Es besteht kein Zweifel, das ihr neue Pfade des Denkens dank der Sprache der Elfen begehen könntet.");
+    npc.base.functions.AddTraderTrigger("[Ee]lfisch","Seit ihr daran interessiert die Hohe Sprache der Elfen zu erlernen? Es besteht kein Zweifel, das ihr neue Pfade des Denkens dank der Sprache der Elfen begehen kÃ¶nntet.");
     npc.base.functions.AddAdditionalTrigger("[Ee]lfen [Ss]prache");
     npc.base.functions.AddAdditionalTrigger("[Ss]prache.+[Ee]lfen");
     npc.base.functions.AddTraderTrigger("[Tt]ribute","A Tribute...Now what shall be my tribute? There is no greater tribute than that which is found in nature. Perhaps you could provide me with a Night Angel's Blossom and a Firnis Blossom for starters. Come back with them an i will teach you the language.");
-    npc.base.functions.AddTraderTrigger("[Gg]abe","Eine Gabe..was soll es sein? Es gibt keine größere Gabe als die die in der Natur gefunden werden kann. Vielleicht könntest du mir eine Nacht Engels Blüte und eine Firnis Blüte bringen. Bring mir diese ich werde dir die Sprache beibringen.");
+    npc.base.functions.AddTraderTrigger("[Gg]abe","Eine Gabe..was soll es sein? Es gibt keine grÃ¶ÃŸere Gabe als die die in der Natur gefunden werden kann. Vielleicht kÃ¶nntest du mir eine Nacht Engels BlÃ¼te und eine Firnis BlÃ¼te bringen. Bring mir diese ich werde dir die Sprache beibringen.");
 
     TradSpeakLang={0,3};
     TradStdLang=0;
@@ -81,49 +81,49 @@ function receiveText(texttype, message, originator)
             -------------------------------------------------------------------------
 
             if (Status==1) then
-                gText="Nicht so schnell. Es ist nicht so das ich gierig bin, aber es ist normal für Elfen, das die Studenten eine kleine Gabe an ihren Lehrer übergeben";
+                gText="Nicht so schnell. Es ist nicht so das ich gierig bin, aber es ist normal fÃ¼r Elfen, das die Studenten eine kleine Gabe an ihren Lehrer Ã¼bergeben";
                 eText="Not so fast. It is not that I am greedy, but it is customary among Elves that a student provide a tribute to his/her teacher.";
             elseif (Status==2) then
-                gText="Ah. Ihr habt eine Firnis Blüte. Ich danke euch.";
+                gText="Ah. Ihr habt eine Firnis BlÃ¼te. Ich danke euch.";
                 eText="Oh. You have a firnis blossom. Thank you.";
             elseif (Status==3) then
-                gText="Firnis...ja. Dies schöne Gebirgsblume möchte ich, wenn ich euch die Sprache der Elfen beibringen soll.";
+                gText="Firnis...ja. Dies schÃ¶ne Gebirgsblume mÃ¶chte ich, wenn ich euch die Sprache der Elfen beibringen soll.";
                 eText="Firnis...yes. This nice Mountainflower i want to have, if i shall teach you the elven language.";
             elseif (Status==4) then
-                gText="Ihr habt mir doch bereits eine Firnisblüte gegeben.";
+                gText="Ihr habt mir doch bereits eine FirnisblÃ¼te gegeben.";
                 eText="You give already a firnis blossom to me.";
             elseif (Status==5) then
-                gText="Firnis ist eine Pflanze die im Gebirge wächst.";
+                gText="Firnis ist eine Pflanze die im Gebirge wÃ¤chst.";
                 eText="Firnis is a plant, growing in the mountains.";
             elseif (Status==6) then
-                gText="Ah. Ihr habt eine Nacht Engels Blüte. Vielen Dank";
+                gText="Ah. Ihr habt eine Nacht Engels BlÃ¼te. Vielen Dank";
                 eText="Oh. You have a night angels blossom. Thank you";
             elseif (Status==7) then
-                gText="Die wunderschöne Nacht Engels Blüte, hätte ich gern von euch. Ich komme so selten in den Wald.";
+                gText="Die wunderschÃ¶ne Nacht Engels BlÃ¼te, hÃ¤tte ich gern von euch. Ich komme so selten in den Wald.";
                 eText="The wonderful night angels blossom, i want to have from you. I'm to seldom the forest...";
             elseif (Status==8) then
-                gText="Ihr habt mir doch bereits eine Nacht Engels Blüte gegeben";
+                gText="Ihr habt mir doch bereits eine Nacht Engels BlÃ¼te gegeben";
                 eText="You give already a night angels blossom to me.";
             elseif (Status==9) then
-                gText="Die Nacht Engels Blüte kann in den Wäldern gefunden werden";
+                gText="Die Nacht Engels BlÃ¼te kann in den WÃ¤ldern gefunden werden";
                 eText="The night angels blossom can be founded in the forests";
             elseif (Status==10 or Status==11) then
-                gText="#me stopft seine Pfeife mit den Sibanacblättern und zündet sie an. Bald beginnt er dünne Rauchringe wegzublasen";
+                gText="#me stopft seine Pfeife mit den SibanacblÃ¤ttern und zÃ¼ndet sie an. Bald beginnt er dÃ¼nne Rauchringe wegzublasen";
                 eText="#me puts the Sibanac leaves in a pipe and lights it. He soon begins to puff away at the pipe"
                 thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
-                gText="Ahh...so. Wo waren wir? Ahja. Ich war dabei euch die Grundlagen der schönen Sprache der Elfen beizubringen.";
+                gText="Ahh...so. Wo waren wir? Ahja. Ich war dabei euch die Grundlagen der schÃ¶nen Sprache der Elfen beizubringen.";
                 eText="Ah. Now where were we? Ah, yes. I was to teach you the basics of the Elven Tongue.";
             elseif (Status==12) then
-                gText="Ein Blatt gutes Sibanac...das wäre was feines. Ein warer Genuss es zu rauchen. Nur will ich dafür nicht in die Wüste gehen.";
+                gText="Ein Blatt gutes Sibanac...das wÃ¤re was feines. Ein warer Genuss es zu rauchen. Nur will ich dafÃ¼r nicht in die WÃ¼ste gehen.";
                 eText="A leave of good sibanac...this would be fine. A real pleasure to smoke it. But i don't want to go into the desert to get one leave.";
             elseif (Status==13) then
-                gText="Sibanac. Ja. Es kommt nur in der Wüste vor. Schwer zu finden.";
+                gText="Sibanac. Ja. Es kommt nur in der WÃ¼ste vor. Schwer zu finden.";
                 eText="Sibanac. Yes. It only grows in the desert. Hard to get such a leave.";
             elseif (Status==14) then
-                gText="Ah. Sehr gut. Nun da ihr mir alles gebracht habt, verlange ich nur noch ein Sibanac Blatt und wir können mit dem Unterricht beginnen.";
+                gText="Ah. Sehr gut. Nun da ihr mir alles gebracht habt, verlange ich nur noch ein Sibanac Blatt und wir kÃ¶nnen mit dem Unterricht beginnen.";
                 eText="Ah. Very good. Now you give every thing to me, i just want to have one thing more. A Sibanac leaf. Then we can start the lesson.";
             elseif (Status==15) then
-                gText="Ihr als Elf müsst wohl kaum etwas über die Sprache unseres Volkes lernen";
+                gText="Ihr als Elf mÃ¼sst wohl kaum etwas Ã¼ber die Sprache unseres Volkes lernen";
                 eText="I sure, you as a elf, don't have to learn anything about our language.";
             end
 
@@ -131,16 +131,16 @@ function receiveText(texttype, message, originator)
                 thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
                 if (Status==10) then
                     if (lang==0) then
-                        originator:inform("Seine Ausführungen lassen die Sprache recht leicht erscheinen und du denkst das du schnell lernst.");
-                        originator:inform("Du erkennst das du nun viele Wörter schon kennst und die Sprache schon etwas anwenden kannst.");
+                        originator:inform("Seine AusfÃ¼hrungen lassen die Sprache recht leicht erscheinen und du denkst das du schnell lernst.");
+                        originator:inform("Du erkennst das du nun viele WÃ¶rter schon kennst und die Sprache schon etwas anwenden kannst.");
                     else
                         originator:inform("His discourses make the language seem quite simple as compared to the common tongue, and you find yourself learning fast.");
                         originator:inform("You begin to realize that many words you already know have a common heritage with many of the words you are learning.");
                     end
                 elseif (Status==11) then
                     if (lang==0) then
-                        originator:inform("Yastahl fängt mit den Grundlagen der Sprache der Elfen an, aber du kennst die Wörter schon seit einiger Zeit, wie auch immer, Yastahl nimmt es nicht wohlwollend hin, wenn sein Unterricht unterbrochen wird.");
-                        originator:inform("Nach einiger Zeit fängt er an von den Komplexeren Teilen der Sprache zu sprechen, doch dann beginnt das Sibanac sein denken zu beeinflussen und so kannst du nicht mehr lernen.");
+                        originator:inform("Yastahl fÃ¤ngt mit den Grundlagen der Sprache der Elfen an, aber du kennst die WÃ¶rter schon seit einiger Zeit, wie auch immer, Yastahl nimmt es nicht wohlwollend hin, wenn sein Unterricht unterbrochen wird.");
+                        originator:inform("Nach einiger Zeit fÃ¤ngt er an von den Komplexeren Teilen der Sprache zu sprechen, doch dann beginnt das Sibanac sein denken zu beeinflussen und so kannst du nicht mehr lernen.");
                     else
                         originator:inform("Yastahl begins with the basics of the Elven Tongue, but you already have known these words for some time; however, Yastahl does not take kindly to being interrupted during lessons.");
                         originator:inform("By the time he begins to get to the more advanced rules of the language, the sibanac has started to effect his thinking, and he is no longer of any use to you.");

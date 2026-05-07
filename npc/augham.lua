@@ -20,7 +20,7 @@ function initializeNpc()
 -- drunken Town guard
     npc.base.autonpcfunctions.AddTraderTrigger("Gobaith","Uhhh, Gobb...aithh... I got en'uff to doo with dis strange town over here! *hicks*");
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger("Gobaith","Uhhh, Gobb...aithh... Ich hab schonnn genugg zu tun mitt diesser Stadd dord dr¸bn! *hicks*");
+    npc.base.autonpcfunctions.AddTraderTrigger("Gobaith","Uhhh, Gobb...aithh... Ich hab schonnn genugg zu tun mitt diesser Stadd dord dr√ºbn! *hicks*");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("Greenbriar","Greeeenn...what? Is diss that town with those li'l people?");
     npc.base.autonpcfunctions.AddCondition("lang","english");
@@ -39,7 +39,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("Magierakademie","Diesee dumennn Mag'er. Die tringgen ja nie w's.");
     npc.base.autonpcfunctions.AddTraderTrigger("Nordmark","Gee... isn'd dad som'where 'n da south?");
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger("Nordmark","Ahhh... Isss das nicht irgennnwo im S¸dn?");
+    npc.base.autonpcfunctions.AddTraderTrigger("Nordmark","Ahhh... Isss das nicht irgennnwo im S√ºdn?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("Silberbrand","Habd ihr Zwergennnbier dabai? Es gibbd kein bessseres.");
     npc.base.autonpcfunctions.AddTraderTrigger("Silverbrand","Do youuu 'ave some dre..daw...dwarfffen beer withh youuu? Dere's no bedder one.");
@@ -50,25 +50,25 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("Varshikar","Vashhhigar. Wasn't theeere somethinggg with... whatever. Id's somewhere over therre.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger("Varshikar","Vashhhigar.Warr da nicccht was midd... wieauchimmer. Es iiisd irgendwo dordddr¸b'n.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Varshikar","Vashhhigar.Warr da nicccht was midd... wieauchimmer. Es iiisd irgendwo dordddr√ºb'n.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("auf bald","Prost!");
-    npc.base.autonpcfunctions.AddTraderTrigger("beruf","Ich binnn W‰chder in Toroll...Troll's Bar..Bane. Und ich be'ache d'see verdammmmde Stadt verdammmmd gut!");
+    npc.base.autonpcfunctions.AddTraderTrigger("beruf","Ich binnn W√§chder in Toroll...Troll's Bar..Bane. Und ich be'ache d'see verdammmmde Stadt verdammmmd gut!");
     npc.base.autonpcfunctions.AddTraderTrigger("buy","Wanna buy sommething?");
     npc.base.autonpcfunctions.AddTraderTrigger("bye","Cheeers!");
-    npc.base.autonpcfunctions.AddTraderTrigger("dein name","Mein nameee? Ich heiiiﬂe %npcname");
+    npc.base.autonpcfunctions.AddTraderTrigger("dein name","Mein nameee? Ich heiii√üe %npcname");
     npc.base.autonpcfunctions.AddTraderTrigger("deine aufgabe","Ich bewache die Staddd. Diese Stadddda, Terolles Bane. Hinder mirrr. *hicks*");
     npc.base.autonpcfunctions.AddTraderTrigger("eure aufgabe","Ich bewache die Staddd. Diese Stadddda, Terolles Bane. Hinder mirrr. *hicks*");
     npc.base.autonpcfunctions.AddTraderTrigger("farewell","You leave? I sh'ld have aaaanother drink.");
     npc.base.autonpcfunctions.AddTraderTrigger("god","Gods, goddds. Overrated, I telllll you.");
     npc.base.autonpcfunctions.AddTraderTrigger("good day","Day? What day? *hicks*");
-    npc.base.autonpcfunctions.AddTraderTrigger("gr[¸ue]+[sﬂ]+e","Ich gr¸¸ﬂe euch... Wi..Wie kann de Stadddwahe euch 'elfen? *hicks*");
+    npc.base.autonpcfunctions.AddTraderTrigger("gr[√ºue]+[s√ü]+e","Ich gr√º√º√üe euch... Wi..Wie kann de Stadddwahe euch 'elfen? *hicks*");
     npc.base.autonpcfunctions.AddTraderTrigger("greetings","Greeedings. How ca... can the townguardsss 'elp you? *hicks*");
     npc.base.autonpcfunctions.AddTraderTrigger("greets","Greeedings. How ca... can the townguardsss 'elp you?");
     npc.base.autonpcfunctions.AddTraderTrigger("guten tag","Tag? Welcher Tag? *hicks*");
--- gˆtternamen
+-- g√∂tternamen
     npc.base.autonpcfunctions.AddTraderTrigger("hail","Hail to you.");
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Seid gergerr¸ﬂt! Issst es nich' schˆn hirr?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Seid gergerr√º√üt! Issst es nich' sch√∂n hirr?");
     npc.base.autonpcfunctions.AddTraderTrigger("helfen","Ihr wolld mir helfennn? Gud, bringt miir eine Flascheee Wein! *hicks*");
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Be grgreeeeded! Isssn't id nice here?");
     npc.base.autonpcfunctions.AddTraderTrigger("help","You wannnnna helpp?");
@@ -76,15 +76,15 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("how are you","Fine. I am thurstyyy.");
     npc.base.autonpcfunctions.AddTraderTrigger("job","My job iss to *hicks* guard Torll..Tre..Trollos Bane. This townnn behind me.");
     npc.base.autonpcfunctions.AddTraderTrigger("kaufen","Ich haabe doch gein Gellld, wie solll ich wasss gaufn?");
-    npc.base.autonpcfunctions.AddTraderTrigger("mein name","Sehrr angenemm. Meinnn Name... Ich heiﬂﬂﬂe %NPCNAME.");
+    npc.base.autonpcfunctions.AddTraderTrigger("mein name","Sehrr angenemm. Meinnn Name... Ich hei√ü√ü√üe %NPCNAME.");
     npc.base.autonpcfunctions.AddTraderTrigger("mission","My missission is to... yes, tooo guard thad town. Trorrs Bane.");
     npc.base.autonpcfunctions.AddTraderTrigger("my name","Pleasssure to meet youu. Myyy name... I am %NPCNAME.");
-    npc.base.autonpcfunctions.AddTraderTrigger("neu","Du bist neu hier? Geh am besten in die Stadt hinter mir, Troll's Bane, und suche nach Leuten, die dir helfen kˆnnen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("neu","Du bist neu hier? Geh am besten in die Stadt hinter mir, Troll's Bane, und suche nach Leuten, die dir helfen k√∂nnen.");
     npc.base.autonpcfunctions.AddTraderTrigger("I[ a']+m new","You are new to Illarion? You should visit the town behind me, Troll's Bane. Search for people who can help you.");
     npc.base.autonpcfunctions.AddTraderTrigger("newbie","You are new to Illarion? You should visit the town behind me, Troll's Bane. Search for people who can help you.");
     npc.base.autonpcfunctions.AddTraderTrigger("quest","I'mm always searching *hicks* foor someth'ng do dringg.");
     npc.base.autonpcfunctions.AddTraderTrigger("sell","I don't selll anyding.");
-    npc.base.autonpcfunctions.AddTraderTrigger("t[‰ae]+tigkeit","Ich bewache die Staddd. Diese Stadddda, Terolles Bane. Hinder mirrr. *hicks*");
+    npc.base.autonpcfunctions.AddTraderTrigger("t[√§ae]+tigkeit","Ich bewache die Staddd. Diese Stadddda, Terolles Bane. Hinder mirrr. *hicks*");
     npc.base.autonpcfunctions.AddTraderTrigger("verkaufen","Ichhh vergaufffe gar nix. *hicks*");
     npc.base.autonpcfunctions.AddTraderTrigger("was kaufst","Ich haabe doch gein Gellld, wie solll ich wasss gaufn?");
     npc.base.autonpcfunctions.AddTraderTrigger("was tust du","Ich bewache die Staddd. Diese Stadddda, Terolles Bane. Hinder mirrr. *hicks*");
@@ -98,7 +98,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("where am I","You are inn Troob...Torb...Troll's Bane.");
     npc.base.autonpcfunctions.AddTraderTrigger("who","My job iss to *hicks* guard Torll..Tre..Trollos Bane. This townnn behind me.");
     npc.base.autonpcfunctions.AddTraderTrigger("wie geht es","Mirr gehtt es gudd. Fragtt doch mal diee Stadd, derr gehts sich'r nicht gut, die drehht sich... *hicks*");
-    npc.base.autonpcfunctions.AddTraderTrigger("wie hei[sﬂ]+t du","Ich heiﬂﬂe %NPCNAME.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wie hei[s√ü]+t du","Ich hei√ü√üe %NPCNAME.");
     npc.base.autonpcfunctions.AddTraderTrigger("wo bin ich","Du bisst in Troob...Torb...Troll's Bane.");
     npc.base.autonpcfunctions.AddTraderTrigger("you name","I amm %NPCNAME");
     npc.base.autonpcfunctions.AddTraderTrigger("wache","Dieee Wache? Wir llleisten guute Arbeid!");
@@ -106,9 +106,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCycleText("Hicks!","Hicks!");
     npc.base.autonpcfunctions.AddCycleText("#me schwankt nach links","#me tumbles to the left");
     npc.base.autonpcfunctions.AddCycleText("#me schwankt nach rechts","#me tumbles to the right");
-    npc.base.autonpcfunctions.AddCycleText("#me r¸lpst","#me burps");
+    npc.base.autonpcfunctions.AddCycleText("#me r√ºlpst","#me burps");
     npc.base.autonpcfunctions.AddCycleText("#me zieht eine kleine Flasche aus der Tasche und trinkt einen Schluck","#me pulls a bottle out of his pocket and takes a sip");
-    npc.base.autonpcfunctions.AddCycleText("#me lallt etwas unverst‰ndliches","#me brabbles something ununderstandable");    -- ********* END DYNAMIC PART ********
+    npc.base.autonpcfunctions.AddCycleText("#me lallt etwas unverst√§ndliches","#me brabbles something ununderstandable");    -- ********* END DYNAMIC PART ********
     TradSpeakLang={0,1};
     TradStdLang=0;
     

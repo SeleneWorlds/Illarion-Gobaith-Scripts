@@ -36,7 +36,7 @@ function M.callEffect( Tying, Captive )
 					-- check for other capturers
 					if M.escapeSuccess(Tying,Captive,Capturer) then
 						M.InformW(Captive,
-							"Das Seil scheint etwas locker zu sein. Wenn du jetzt wegrennst, kannst du dich bestimmt losreiﬂen!",
+							"Das Seil scheint etwas locker zu sein. Wenn du jetzt wegrennst, kannst du dich bestimmt losrei√üen!",
 							"The rope seems to be somewhat loose. If you run now, you can surely break away!");
 						Tying:addValue("success",1); -- do not call again.
 					else
@@ -80,7 +80,7 @@ function M.callEffect( Tying, Captive )
 			Tying:addValue("logposx",PosX);
 			Tying:addValue("logposy",PosY);
 			M.InformW(Captive,
-				"Deine H‰nde sind immernoch gefesselt, doch das Seil scheint sich langsam zu lˆsen.",
+				"Deine H√§nde sind immernoch gefesselt, doch das Seil scheint sich langsam zu l√∂sen.",
 				"Your hands are still tied together, but you feel that the rope gets more and more loose.");
 		end
 		if M.IsEffectInLogoutTime(Tying, Character) then
@@ -341,7 +341,7 @@ function M.escapeSuccess( Effect, Captive, Capturer )
 							perc = Char:increaseAttrib("perception",0);
 							if math.random(50) <= math.min(20,perc) then
 								M.InformW(Char,
-									"Du sp¸rst einen ungewˆhnlichen Zug auf dem Seil. Ob das ein Fluchtversuch sein kann?",
+									"Du sp√ºrst einen ungew√∂hnlichen Zug auf dem Seil. Ob das ein Fluchtversuch sein kann?",
 									"You feel an unusual pull on the rope. May that be an escape attempt?");
 							end
 						end

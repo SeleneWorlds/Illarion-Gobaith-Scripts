@@ -21,10 +21,10 @@ function initializeNpc()
 
     -- Botenquest - Sender
     npc.base.autonpcfunctions.SetRadius(10);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ich grüße doch herzlich.");
-    npc.base.autonpcfunctions.AddTraderTrigger("grüße","Ich grüße doch herzlich.");
-    npc.base.autonpcfunctions.AddTraderTrigger("tach","Ich grüße doch herzlich.");
-    npc.base.autonpcfunctions.AddTraderTrigger("hiho","Ich grüße doch herzlich.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Ich grÃ¼ÃŸe doch herzlich.");
+    npc.base.autonpcfunctions.AddTraderTrigger("grÃ¼ÃŸe","Ich grÃ¼ÃŸe doch herzlich.");
+    npc.base.autonpcfunctions.AddTraderTrigger("tach","Ich grÃ¼ÃŸe doch herzlich.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hiho","Ich grÃ¼ÃŸe doch herzlich.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Greetings, my friend.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
@@ -38,11 +38,11 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("ich bin","Freut mich, Euch kennen zu lernen. Sucht Ihr nach Arbeit?");
     npc.base.autonpcfunctions.AddTraderTrigger("man nennt mich","Freut mich, Euch kennen zu lernen. Suchst Ihr nach Arbeit?");
     npc.base.autonpcfunctions.AddTraderTrigger("i am","Nice to meet you. Are you looking for work?");
-    npc.base.autonpcfunctions.AddTraderTrigger("auf bald","Wir werden uns sehen. Mögest du von Eldan begleitet werden.");
-    npc.base.autonpcfunctions.AddTraderTrigger("bis dann","Wir werden uns sehen. Mögest du von Eldan begleitet werden.");
-    npc.base.autonpcfunctions.AddTraderTrigger("bis bald","Wir werden uns sehen. Mögest du von Eldan begleitet werden.");
-    npc.base.autonpcfunctions.AddTraderTrigger("gehabt euch wohl","Wir werden uns sehen. Mögest du von Eldan begleitet werden.");
-    npc.base.autonpcfunctions.AddTraderTrigger("gehabet euch wohl","Wir werden uns sehen. Mögest du von Eldan begleitet werden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("auf bald","Wir werden uns sehen. MÃ¶gest du von Eldan begleitet werden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("bis dann","Wir werden uns sehen. MÃ¶gest du von Eldan begleitet werden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("bis bald","Wir werden uns sehen. MÃ¶gest du von Eldan begleitet werden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("gehabt euch wohl","Wir werden uns sehen. MÃ¶gest du von Eldan begleitet werden.");
+    npc.base.autonpcfunctions.AddTraderTrigger("gehabet euch wohl","Wir werden uns sehen. MÃ¶gest du von Eldan begleitet werden.");
     npc.base.autonpcfunctions.AddTraderTrigger("bye","We will see. Eldan with you!");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddTraderTrigger("farewell","We will see. May Eldan be with you!");
@@ -55,13 +55,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("was kaufst","Ich kaufe nichts.");
     npc.base.autonpcfunctions.AddTraderTrigger("was kauft","Ich kaufe nichts.");
     npc.base.autonpcfunctions.AddTraderTrigger("buy","I'm not a merchant.");
-    npc.base.autonpcfunctions.AddTraderTrigger("helfen","Natürlich, ich brauche immer Hilfe! Könnt ihr dieses Pergament zu Silya Terelorn nach Varshikar bringen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("helfen","NatÃ¼rlich, ich brauche immer Hilfe! KÃ¶nnt ihr dieses Pergament zu Silya Terelorn nach Varshikar bringen?");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilfe","Natürlich, ich brauche immer Hilfe! Könnt ihr dieses Pergament zu Silya Terelorn nach Varshikar bringen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilfe","NatÃ¼rlich, ich brauche immer Hilfe! KÃ¶nnt ihr dieses Pergament zu Silya Terelorn nach Varshikar bringen?");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("arbeit","Natürlich, ich brauche immer Hilfe! Könnt ihr dieses Pergament zu Silya Terelorn nach Varshikar bringen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("arbeit","NatÃ¼rlich, ich brauche immer Hilfe! KÃ¶nnt ihr dieses Pergament zu Silya Terelorn nach Varshikar bringen?");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
     npc.base.autonpcfunctions.AddTraderTrigger("help","Sure, can you take this parchment to Silya Terelorn in Varshikar?");
@@ -70,7 +70,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("work","Sure, can you take this parchment to Silya Terelorn in Varshikar?");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Vielen Dank. Ich würde ja selbst nach Varshikar gehen, jedoch bin ich zurzeit viel zu sehr beschäftigt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Vielen Dank. Ich wÃ¼rde ja selbst nach Varshikar gehen, jedoch bin ich zurzeit viel zu sehr beschÃ¤ftigt.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("item",3109,1,333,2);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",1);
@@ -78,7 +78,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("item",3109,1,333,2);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("arbeit","Ah, du hast den Brief überliefert? Vielen Dank. Hier, deine Belohnung.");
+    npc.base.autonpcfunctions.AddTraderTrigger("arbeit","Ah, du hast den Brief Ã¼berliefert? Vielen Dank. Hier, deine Belohnung.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",399,2,333,0);
     npc.base.autonpcfunctions.AddConsequence("item",2851,20,333,0);
@@ -92,7 +92,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("item",2851,20,333,0);
     npc.base.autonpcfunctions.AddCycleText("#me blickt sich um, er scheint nach jemandem zu suchen.","#me looks around, he seems to be looking for someone.");
     npc.base.autonpcfunctions.AddCycleText("#me holt einige Pergamente heraus, notiert etwas und legt sie wieder in seine Tasche.","#me takes out a couple of parchments, scribbles down some notes and puts the parchments back into his bag.");
-    npc.base.autonpcfunctions.AddCycleText("#me streicht sich mit einer Feder am Kopf, als würde er ?berlegen.","#me strokes his forehead with a quill, lost in thought.");
+    npc.base.autonpcfunctions.AddCycleText("#me streicht sich mit einer Feder am Kopf, als wÃ¼rde er ?berlegen.","#me strokes his forehead with a quill, lost in thought.");
     npc.base.autonpcfunctions.AddCycleText("#me streicht wild etwas auf einem Pergament durch.","#me furiously crosses out something he has written.");
     -- ********* END DYNAMIC PART ********
     TradSpeakLang={0,1};

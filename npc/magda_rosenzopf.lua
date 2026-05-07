@@ -15,7 +15,7 @@ module("npc.magda_rosenzopf", package.seeall)
 
 function useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
-    thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger wech oder du bist ein Kopf kürzer!");
+    thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger wech oder du bist ein Kopf kÃ¼rzer!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont ya' touch me!");
 end
 
@@ -29,23 +29,23 @@ function initializeNpc()
     -- ********* START DYNAMIC PART ********
 
 
-    npc.base.autonpcfunctions.AddCycleText("#me lehnt sich auf ihre Axt und lässt einen prüfenden Blick durch die Gegend schweifen.","#me leans on her axe and looks vetting through the area.");
-    npc.base.autonpcfunctions.AddCycleText("#me geht vor die Tore und rüttelt an ihnen \"Aye, is zu!\"","#me steps infront of the gate and juggles it \"Aye, it's closed!\"");
-    npc.base.autonpcfunctions.AddCycleText("#me zieht eine Flasche Bier aus der Tasche und nimmt einen großzügigen Schluck.","#me pulls a bottle of beer out of her bag and takes a generous sip.");
+    npc.base.autonpcfunctions.AddCycleText("#me lehnt sich auf ihre Axt und lÃ¤sst einen prÃ¼fenden Blick durch die Gegend schweifen.","#me leans on her axe and looks vetting through the area.");
+    npc.base.autonpcfunctions.AddCycleText("#me geht vor die Tore und rÃ¼ttelt an ihnen \"Aye, is zu!\"","#me steps infront of the gate and juggles it \"Aye, it's closed!\"");
+    npc.base.autonpcfunctions.AddCycleText("#me zieht eine Flasche Bier aus der Tasche und nimmt einen groÃŸzÃ¼gigen Schluck.","#me pulls a bottle of beer out of her bag and takes a generous sip.");
 
-	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[sß]","Tach du.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rÃ¼[sÃŸ]","Tach du.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Tt]a[gc].*");
-    npc.base.autonpcfunctions.AddAdditionalText("Grüß dich!");
+    npc.base.autonpcfunctions.AddAdditionalText("GrÃ¼ÃŸ dich!");
     npc.base.autonpcfunctions.AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald. Irmorom mit dir.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ötter.+euch");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]Ã¶tter.+euch");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Uu]ff.+[Bb]ald");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]ünf.+euch");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Ick bin die "..thisNPC.name.." von der Bürgerwehr Silberbrands, jau! Ick bewache die Tore.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]Ã¼nf.+euch");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Ick bin die "..thisNPC.name.." von der BÃ¼rgerwehr Silberbrands, jau! Ick bewache die Tore.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ww]ie.+[Nn]ame");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ilfe","Ick schätze ick kann dir nich' viel helfen, hab hier Wache zu halten. Frach am besten nen anderen Zwerchen nach Hilfe.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ilfe","Ick schÃ¤tze ick kann dir nich' viel helfen, hab hier Wache zu halten. Frach am besten nen anderen Zwerchen nach Hilfe.");
 
 
 	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reeting","Be greeted!");
@@ -65,10 +65,10 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("sell","Thanks, but I already have everything I need.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]hat.+buy","Thanks, but I already have everything I need.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything. Do I look like a merchant?");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Kk]aufen","Ick verkauf nichts. Sehe ich etwa aus wie ein Händler ?");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Kk]aufen","Ick verkauf nichts. Sehe ich etwa aus wie ein HÃ¤ndler ?");
     npc.base.autonpcfunctions.AddTraderTrigger("[Vv]erkaufen","Danke nein, ich habe bereits alles, wat ick brauche.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+kaufst","Danke nein, ich habe bereits alles, wat ick brauche.");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+verkaufst","Ick verkauf nichts. Sehe ich etwa aus wie ein Händler?");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+verkaufst","Ick verkauf nichts. Sehe ich etwa aus wie ein HÃ¤ndler?");
     npc.base.autonpcfunctions.AddTraderTrigger("[Gg]obaith","This whole island group is called Gobiath. Nice place, the weather usually does not get too rough or too hot, I like it.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is a settlement of the Halflings.");
@@ -87,21 +87,21 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","You find it past the small sand desert in the far northwest. I would use the Teleporter, the desert is full of scorpions.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     --  
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]obiath","Diese ganze Inselgruppe wird Gobiath genannt. Nette Gegend, dat Wetter wird nich zu rauh oder zu heiß, ick mag es.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]obiath","Diese ganze Inselgruppe wird Gobiath genannt. Nette Gegend, dat Wetter wird nich zu rauh oder zu heiÃŸ, ick mag es.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is ne Halblingssiedlung.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]afen","Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane ist aber größer.");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ellbriar","Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bösartigen Kultisten dort haben die meisten der Halblinge geopfert.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]afen","Troll's Bane und Vanima haben HÃ¤fen. Der Hafen sÃ¼dwestlich von Troll's Bane ist aber grÃ¶ÃŸer.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ellbriar","Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bÃ¶sartigen Kultisten dort haben die meisten der Halblinge geopfert.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agierakademie","Ihr wollt nicht wirklich DA hin ! Es wird gesagt, den Ort kann nur ein Magier erreichen. Die verwandeln dort Leute in Schweine, Kühe oder schlimmeres !");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Nn]ordmark","Es ist da nicht kälter als anderswo auf Gobiath, abgesehen vom Nordwind im Winter. Dort haben sich einige Norodaj-Barbaren angesiedelt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agierakademie","Ihr wollt nicht wirklich DA hin ! Es wird gesagt, den Ort kann nur ein Magier erreichen. Die verwandeln dort Leute in Schweine, KÃ¼he oder schlimmeres !");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Nn]ordmark","Es ist da nicht kÃ¤lter als anderswo auf Gobiath, abgesehen vom Nordwind im Winter. Dort haben sich einige Norodaj-Barbaren angesiedelt.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ss]ilberbrand","Silberbrand ist der Name dieser Stadt hier, es ist die Stadt der Zwerge.");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]anima","Tol Vanima ? Das ist eine ganze kleine Insel voller Bäume und Elfen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]anima","Tol Vanima ? Das ist eine ganze kleine Insel voller BÃ¤ume und Elfen.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Tja, das ist die grösste Stadt auf Gobiath.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Tja, das ist die grÃ¶sste Stadt auf Gobiath.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","Das findet man weit im Nordwesten hinter der kleinen Sandwüste. Ich würde den Teleporter benutzen, die Wüste ist voller Skorpione.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","Das findet man weit im Nordwesten hinter der kleinen SandwÃ¼ste. Ich wÃ¼rde den Teleporter benutzen, die WÃ¼ste ist voller Skorpione.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ii]rmorom","The Lord of trade and craftsmenship ! He is the main god of the dwarves.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
@@ -125,7 +125,7 @@ function nextCycle()  -- ~10 times per second
 end
 
 function receiveText(texttype, message, originator)
-    if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nächster Nähe angesprochen
+    if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nÃ¤chster NÃ¤he angesprochen
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then		
 		  if (originator.activeLanguage==2) then --If the Character speaks dwarfish then...	
 		  		
@@ -135,7 +135,7 @@ function receiveText(texttype, message, originator)
 			 or string.find(message,"[Ss]chwester.+[Tt]or.+[Aa]uf.*")~=nil or string.find(message,"[Ss]ister.+[Oo]pen.+[Gg]ate.*")~=nil) then  
 				if (math.random(0,200)==1) then --Chance of 1 to 199 not to open the door
 					if (math.random(0,10)==1) then
-                        gText="#me hält ihren Kopf \"Nay, bin heut nich im Stimmung, hab Kopfweh! Beweg deinen Hintern selber!\".";
+                        gText="#me hÃ¤lt ihren Kopf \"Nay, bin heut nich im Stimmung, hab Kopfweh! Beweg deinen Hintern selber!\".";
 		        	    eText="#me holds her head \"Nay, today I'm in a foul mood, I've headache! Mov' yer behind yerself!\".";
                 		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -163,7 +163,7 @@ function receiveText(texttype, message, originator)
 		        	doorb=world:getItemOnField(position( 102,-180,-3 ));
 		        	OpenDoor( doora );
 					OpenDoor( doorb );
-					gText="#me öffnet das Tor und wirft einen grimmigen Blick in den Raum.";
+					gText="#me Ã¶ffnet das Tor und wirft einen grimmigen Blick in den Raum.";
 					eText="#me opens the gate and looks grimly into the room.";
 					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -173,13 +173,13 @@ function receiveText(texttype, message, originator)
 					 if (originator.pos.x<101) then --The char. has to stand outside of the doors to get greeted  
 						if (originator.id==956233928) then --Char. Friedwulfa
 
-							gText="Willkommmen zurück Friedl, heut schon wen verkloppt?";
+							gText="Willkommmen zurÃ¼ck Friedl, heut schon wen verkloppt?";
 							eText="Welcome back Friedl, anyone beated today?";
 							outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						elseif (originator.id==2082906332) then --Char. Boindil
 							
-							gText="Willkommen zurück Boindil, hübsch siehste heut aus.";
+							gText="Willkommen zurÃ¼ck Boindil, hÃ¼bsch siehste heut aus.";
 							eText="Welcome back Boindil, you look beautiful today.";
 							outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);						
@@ -213,7 +213,7 @@ function receiveText(texttype, message, originator)
 						doorb=world:getItemOnField(position( 102,-180,-3 ));
 						base.keys.LockDoor( doora );
 						base.keys.LockDoor( doorb );
-						gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab.";
+						gText="#me lÃ¤sst die FlÃ¼gel des Tores krachend zufallen und sperrt ab.";
 						eText="#me shuts the gate crashing then locks it.";
 						outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 						npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -285,7 +285,7 @@ function receiveText(texttype, message, originator)
 			 or string.find(message,"[Ss]chwester.+[Tt]or.+[Aa]uf.*")~=nil or string.find(message,"[Ss]ister.+[Oo]pen.+[Gg]ate.*")~=nil) then  
 				if (math.random(0,200)==1) then --Chance of 1 to 199 not to open the door
 					if (math.random(0,10)==1) then
-                        gText="#me hält ihren Kopf \"Nay, bin heut nich im Stimmung, hab Kopfweh! Beweg deinen Hintern selber!\".";
+                        gText="#me hÃ¤lt ihren Kopf \"Nay, bin heut nich im Stimmung, hab Kopfweh! Beweg deinen Hintern selber!\".";
 		        	    eText="#me holds her head \"Nay, today I'm in a foul mood, I've headache! Mov' yer behind yerself!\".";
                 		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -313,7 +313,7 @@ function receiveText(texttype, message, originator)
 		        	doorb=world:getItemOnField(position( 102,-180,-3 ));
 		        	OpenDoor( doora );
 					OpenDoor( doorb );
-					gText="#me öffnet das Tor und wirft einen grimmigen Blick in den Raum.";
+					gText="#me Ã¶ffnet das Tor und wirft einen grimmigen Blick in den Raum.";
 					eText="#me opens the gate and looks grimly into the room.";
 					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -323,13 +323,13 @@ function receiveText(texttype, message, originator)
 				     if (originator.pos.x<101) then --The char. has to stand outside of the doors to get greeted  
 						if (originator.id==956233928) then --Char. Friedwulfa
 
-							gText="Willkommmen zurück Friedl, heut schon wen verkloppt?";
+							gText="Willkommmen zurÃ¼ck Friedl, heut schon wen verkloppt?";
 							eText="Welcome back Friedl, anyone beated today?";
 							outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						elseif (originator.id==2082906332) then --Char. Boindil
 							
-							gText="Willkommen zurück Boindil, hübsch siehste heut aus.";
+							gText="Willkommen zurÃ¼ck Boindil, hÃ¼bsch siehste heut aus.";
 							eText="Welcome back Boindil, you look beautiful today.";
 							outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -363,7 +363,7 @@ function receiveText(texttype, message, originator)
 						doorb=world:getItemOnField(position( 102,-180,-3 ));
 						base.keys.LockDoor( doora );
 						base.keys.LockDoor( doorb );
-						gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab.";
+						gText="#me lÃ¤sst die FlÃ¼gel des Tores krachend zufallen und sperrt ab.";
 						eText="#me shuts the gate crashing then locks it.";
 						outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 						npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);

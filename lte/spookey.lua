@@ -6,7 +6,7 @@ local M = {}
 -----------------------------
 function M.addEffect(spookeyEffect, Character)         -- Smell starts
     --base.common.InformNLS(Character,
-    --"Du fühlst dich etwas unwohl.",
+    --"Du fÃ¼hlst dich etwas unwohl.",
     --"You feel a little sickish.");
 	CharRace=Character:get_race()
     spookeyEffect:addValue("OriginalRace",CharRace);
@@ -16,7 +16,7 @@ end
 -----------------------------------------------
 ---- Character is affected by the smell he got. --
 -------------------------------------------------
-function M.callEffect(spookeyEffect, Character)    -- Effect wird ausgeführt
+function M.callEffect(spookeyEffect, Character)    -- Effect wird ausgefÃ¼hrt
     spookeyEffect.nextCalled =math.random(3000,6000);       -- call it again in 300-600 seconds
 
     return true;
@@ -25,7 +25,7 @@ end
 
 function M.removeEffect( Effect, Character )
     --base.common.InformNLS(Character,
-    --"Du fühlst dich endlich wieder besser.",
+    --"Du fÃ¼hlst dich endlich wieder besser.",
     --"You finally feel better now.");
 end
 

@@ -5,7 +5,7 @@
 --sex=male
 --Location: Silverbrand
 --Task    : Herold for the King
---Normal: 0 Flüstern: 1, Schreien: 2
+--Normal: 0 FlÃ¼stern: 1, Schreien: 2
 
 
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,137,-191,-3,6,false,'Asgrimur','npc_asgrimur.lua',0);
@@ -27,7 +27,7 @@ function initializeNpc()
 
     thisNPC:increaseSkill(1,"common language",100);
 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[ßs]+e","Seid gegrüßt");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rÃ¼[ÃŸs]+e","Seid gegrÃ¼ÃŸt");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[hH]allo");
     npc.base.autonpcfunctions.AddAdditionalText("Guten Tag");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Auf wiedersehen.");
@@ -36,7 +36,7 @@ function initializeNpc()
 
 
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name..". I am the herold of the King of Silverbrand.");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..". Ich bin der Herold des Königs von Silberbrand.");
+	npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..". Ich bin der Herold des KÃ¶nigs von Silberbrand.");
     
     npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reetings","Be greeted");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]ello");

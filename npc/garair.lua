@@ -27,15 +27,15 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Gg]reetings","Greetings. Can I help you?");
     npc.base.functions.AddAdditionalTrigger("[Hh]ello");
     npc.base.functions.AddAdditionalText("Be greeted. I'm "..thisNPC.name..". Can I help you?");
-    npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Grüße. Kann ich euch helfen?");
+    npc.base.functions.AddTraderTrigger("[Gg]rÃ¼[ÃŸs]+e","GrÃ¼ÃŸe. Kann ich euch helfen?");
     npc.base.functions.AddAdditionalTrigger("[hH]allo");
     npc.base.functions.AddAdditionalText("Guten Tag. Ich bin "..thisNPC.name..". Kann ich euch helfen?");
     npc.base.functions.AddTraderTrigger("[Yy]ou.+[Tt]rader","No. I'm no trader. I'm the tax collector of Tol Vanima.");
-    npc.base.functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]ändler","Nein ich bin kein Händler. Ich bin der Steuerneintreiber von Tol Vanima.");
+    npc.base.functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]Ã¤ndler","Nein ich bin kein HÃ¤ndler. Ich bin der Steuerneintreiber von Tol Vanima.");
     npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","Nothing. I'm no trader so I sell nothing.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich bin kein Händler also verkaufe ich auch nichts.");
+    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich bin kein HÃ¤ndler also verkaufe ich auch nichts.");
     npc.base.functions.AddTraderTrigger("[Tt]ell.+[Ss]omething","Sorry, I'm pretty busy right now.");
-    npc.base.functions.AddTraderTrigger("[Ee]rzähl.+[Ww]as","Tut mir leid, ich bin grad ziemlich beschäftigt.");
+    npc.base.functions.AddTraderTrigger("[Ee]rzÃ¤hl.+[Ww]as","Tut mir leid, ich bin grad ziemlich beschÃ¤ftigt.");
     npc.base.functions.AddTraderTrigger("[Gg]oodbye","Be well.");
     npc.base.functions.AddAdditionalTrigger("[Bb]ye");
     npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
@@ -69,7 +69,7 @@ function initializeNpc()
     --goblin language=9
     --ancient language=10
     
-    TraderCoinLanguage={"Gold","gold","Silber","silver","Kupfer","copper","stücke","pieces"};
+    TraderCoinLanguage={"Gold","gold","Silber","silver","Kupfer","copper","stÃ¼cke","pieces"};
 
 end
 
@@ -94,7 +94,7 @@ function receiveText(texttype, message, originator)
 
             ----------------------------EDIT BELOW HERE-----------------------------------
             if (Status==1) then -- Gefragt nach Steuern, darf sie aber nicht nehmen
-                gText="Ja. Ich sammel die Steuern der Händler ein. Aber euch kann ich das Geld nicht geben.";
+                gText="Ja. Ich sammel die Steuern der HÃ¤ndler ein. Aber euch kann ich das Geld nicht geben.";
                 eText="Indeed. I collect the money of the traders. But can't give that money to you..";
             elseif (Status==2) then -- Gefragt nach Steuern, bekommt diese
                 gText="Hier habt ihr die "..MoneyText(0,Values[1],Values[2],Values[3],TraderCoinLanguage).." aus der Steuerkasse.";
@@ -192,8 +192,8 @@ function TakeTaxes(originator, message)
     end
 end
 
---TLang={"Gold,"gold","Silber","silver","Kupfer","copper","stücke","pieces"};
--- Erstellt Text für die Kosten
+--TLang={"Gold,"gold","Silber","silver","Kupfer","copper","stÃ¼cke","pieces"};
+-- Erstellt Text fÃ¼r die Kosten
 -- Return 1: Text(Str)
 function MoneyText(lang,Gold,Silver,Copper,TLang)
     local retText="";
@@ -244,8 +244,8 @@ function MoneyText(lang,Gold,Silver,Copper,TLang)
     return retText
 end
 
--- Erstellt Sigular von Wörtern
--- Funktionstüchtig in Deutsch und englisch
+-- Erstellt Sigular von WÃ¶rtern
+-- FunktionstÃ¼chtig in Deutsch und englisch
 function Zeitform(Zahl,Word)
     if (Zahl==1) then
         local retStr="";

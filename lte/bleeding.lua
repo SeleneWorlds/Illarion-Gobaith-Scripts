@@ -7,7 +7,7 @@ lowerAttribs = {"agility","stength","constitution","perception","dexterity"};
 function M.addEffect( BleedingEffect, Victim )
     BleedingEffect:addValue( "wounds", 1 );
     if ( Victim:getPlayerLanguage() == 0 ) then
-        Victim:inform( "Durch den Schlag f‰ngst du dir eine stark blutende Wunde ein." );
+        Victim:inform( "Durch den Schlag f√§ngst du dir eine stark blutende Wunde ein." );
     else
         Victim:inform( "Due the hit you receive a heavily bleeding wound." );
     end
@@ -23,7 +23,7 @@ function M.doubleEffect( BleedingEffect, Victim )
         BleedingEffect:addValue( "wounds", 1 );
     end
     if ( Victim:getPlayerLanguage() == 0 ) then
-        Victim:inform( "Durch den Schlag f‰ngst du dir noch eine stark blutende Wunde ein." );
+        Victim:inform( "Durch den Schlag f√§ngst du dir noch eine stark blutende Wunde ein." );
     else
         Victim:inform( "Due the hit you receive another heavily bleeding wound." );
     end
@@ -70,7 +70,7 @@ function M.callEffect( BleedingEffect, Victim )
             BleedingEffect:addValue( targetAttrib, Attribmod + 1 );
             if( Mode == 0 ) or ( Mode == 6 ) then
                 if( Victim:getPlayerLanguage() == 0 ) then
-                    Victim:inform( "Die blutende Wunde zieht an deinen Kr‰ften." );
+                    Victim:inform( "Die blutende Wunde zieht an deinen Kr√§ften." );
                 else
                     Victim:inform( "The bleeding wound drags down your physical abilities." );
                 end
@@ -79,7 +79,7 @@ function M.callEffect( BleedingEffect, Victim )
         else
             HP = Victim:increaseAttrib("hitpoints",0);
             changeHP = -math.floor((0.0000086372*HP*HP-0.177*HP+1158.1836));
-            Victim:inform("HP werden ge‰ndert um: "..changeHP );
+            Victim:inform("HP werden ge√§ndert um: "..changeHP );
             if( HP+changeHP < 0 ) then
                 Victim:increaseAttrib("hitpoints",-HP);
                 BleedingEffect:addValue( "wounds", 0 );

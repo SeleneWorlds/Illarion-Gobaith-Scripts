@@ -21,26 +21,26 @@ function initializeNpc()
 
     QuestID = 28;
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Milch","Aber bitte nimmt nur und bedient euch! Schmeckts? Meine 'Kühe' geben eine besonders wohlschmeckende Milch.");
+	npc.base.autonpcfunctions.AddTraderTrigger("Milch","Aber bitte nimmt nur und bedient euch! Schmeckts? Meine 'KÃ¼he' geben eine besonders wohlschmeckende Milch.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Du möchtest mehr über die Kühe erfahren.");
+    npc.base.autonpcfunctions.AddConsequence("inform","Du mÃ¶chtest mehr Ã¼ber die KÃ¼he erfahren.");
     npc.base.autonpcfunctions.AddTraderTrigger("Milk","Why of course, help yourself! Good, isn't it? My 'cows' give an extraordinary delicious milk.");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddConsequence("inform","You want to know more about the cows.");
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Kuh","Meine Kühe sind mein ganzer Stolz! Außerdem sichern sie mir meine Existenz. Wenn ich nur jemanden hätte der mir mit all der Arbeit hilft...");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Kühe");
-    npc.base.autonpcfunctions.AddAdditionalText("Ich werde alt und die Arbeit mit den Kühen wird für mich immer schwerer. Ich könnte Hilfe im Stall gebrauchen aber wer nimmt sich schon so einer Aufgabe an...");
+	npc.base.autonpcfunctions.AddTraderTrigger("Kuh","Meine KÃ¼he sind mein ganzer Stolz! AuÃŸerdem sichern sie mir meine Existenz. Wenn ich nur jemanden hÃ¤tte der mir mit all der Arbeit hilft...");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("KÃ¼he");
+    npc.base.autonpcfunctions.AddAdditionalText("Ich werde alt und die Arbeit mit den KÃ¼hen wird fÃ¼r mich immer schwerer. Ich kÃ¶nnte Hilfe im Stall gebrauchen aber wer nimmt sich schon so einer Aufgabe an...");
 
 	npc.base.autonpcfunctions.AddTraderTrigger("Cow","I'm proud of my cows! I earn my living with their milk. If only I had someone to help me with all the work...");
     npc.base.autonpcfunctions.AddAdditionalText("I'm getting older and the work with the cows gets harder all by myself. I could use some help in the stable, but who would care for a task like that...");
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Aufgabe","Könntet ihr mir helfen? Ich kann euch nicht viel dafür geben aber es würde mir viel bedeuten und mir einige Sorgen abnehmen.");
+	npc.base.autonpcfunctions.AddTraderTrigger("Aufgabe","KÃ¶nntet ihr mir helfen? Ich kann euch nicht viel dafÃ¼r geben aber es wÃ¼rde mir viel bedeuten und mir einige Sorgen abnehmen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Hilfe");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddConsequence("inform","Sag 'Ich helfe euch' wenn du ihm helfen möchtest.");
+    npc.base.autonpcfunctions.AddConsequence("inform","Sag 'Ich helfe euch' wenn du ihm helfen mÃ¶chtest.");
     npc.base.autonpcfunctions.AddTraderTrigger("task","Could you help me? I can't pay much but it'd mean a lot to me. It would also take away some of my worries.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("help");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
@@ -48,8 +48,8 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("inform","Say 'I help you' if you want to help him.");
     -------
 	
-    npc.base.autonpcfunctions.AddTraderTrigger("Tschüß","Gehabt euch wohl und kommt eines Tages wieder.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Tschüss");
+    npc.base.autonpcfunctions.AddTraderTrigger("TschÃ¼ÃŸ","Gehabt euch wohl und kommt eines Tages wieder.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("TschÃ¼ss");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Wiedersehen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Gehabt euch wohl");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Auf bald");
@@ -60,24 +60,24 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalText("Farewell, and come back one day.");
     npc.base.autonpcfunctions.AddAdditionalText("Good bye");
     ----START QUEST-
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüße","Oh Grüße, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gruß");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Seid gegrüßt");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼ÃŸe","Oh GrÃ¼ÃŸe, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("GruÃŸ");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Seid gegrÃ¼ÃŸt");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Tag");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Abend");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Mahlzeit");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Tach");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Moin");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Milch hört sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was für eine Milch es sich handelt.");
-    npc.base.autonpcfunctions.AddTraderTrigger("Hiho","Oh Grüße, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
+    npc.base.autonpcfunctions.AddConsequence("inform","Milch hÃ¶rt sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was fÃ¼r eine Milch es sich handelt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Hiho","Oh GrÃ¼ÃŸe, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Hallo");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Hey");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Greebas");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Greebs");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Milch hört sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was für eine Milch es sich handelt.");
+    npc.base.autonpcfunctions.AddConsequence("inform","Milch hÃ¶rt sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was fÃ¼r eine Milch es sich handelt.");
 
 	npc.base.autonpcfunctions.AddTraderTrigger("Hello","Oh greetings, traveler! How nice of you to drop by, can I offer you a bowl of 'milk'?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Greetings");
@@ -98,9 +98,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("inform","Milk sounds at the moment very alluring, but you better ask him first what kind of milk he has.");
 	
 	---------DURING QUEST-----------
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüße","Ach da seid ihr ja wieder, ihr kommt sicher wegen eurer nächsten 'Aufgabe'.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gruß");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Seid gegrüßt");
+    npc.base.autonpcfunctions.AddTraderTrigger("GrÃ¼ÃŸe","Ach da seid ihr ja wieder, ihr kommt sicher wegen eurer nÃ¤chsten 'Aufgabe'.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("GruÃŸ");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Seid gegrÃ¼ÃŸt");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Tag");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Abend");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Mahlzeit");
@@ -162,7 +162,7 @@ function receiveText(texttype, message, originator)
     			originator:setQuestProgress(28, 1);
     			--------------------------------
 				--TELL WHAT TO DO AND WHICH COW HE HAS
-				gText="Sehr gut, dann fangen wir an. Um euch nicht zu überfordern müsst ihr euch auch nur um eine Kuh kümmern und zwar um "..cowname[cowrnd]..". Ich werde euch täglich sagen welche Aufgaben ihr zu tun habt.";
+				gText="Sehr gut, dann fangen wir an. Um euch nicht zu Ã¼berfordern mÃ¼sst ihr euch auch nur um eine Kuh kÃ¼mmern und zwar um "..cowname[cowrnd]..". Ich werde euch tÃ¤glich sagen welche Aufgaben ihr zu tun habt.";
 			    eText="Very good, let's start. You only have to take care of one cow namely "..cowname[cowrnd].." so it's not that hard. I will tell you daily what to do.";
 		        outText=base.common.npc.base.npcautofunction.GetNLS(User,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -172,7 +172,7 @@ function receiveText(texttype, message, originator)
 		        outText=base.common.npc.base.npcautofunction.GetNLS(User,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
     		elseif ((string.find(message,"[Hh]ilfe")~=nil or string.find(message,"[Hh]elp")~=nil) and originator:getQuestProgress(28)>0) then
-				gText = "Schlüsselwörter: 'Wie lautet meine Aufgabe?','Gib mir einen Hinweis zur Aufgabe'";
+				gText = "SchlÃ¼sselwÃ¶rter: 'Wie lautet meine Aufgabe?','Gib mir einen Hinweis zur Aufgabe'";
 				eText = "Keyphrases : 'What is my task?','Give me a hint to the task'";
 				base.common.TempInformNLS(originator, gText,eText);
 			elseif ((string.find(message,"[Hh]inweis")~=nil or string.find(message,"[Hh]int")~=nil) and originator:getQuestProgress(28)>0) then
@@ -215,8 +215,8 @@ function TaskText(taskid)
 		eTask ={};
 		
         gTask[1] = {
-					desctxt="Meine Arme sind schwach. Heute beim Essen ist mir die Suppenschüssel aus der Hand gefallen. Bitte bürstet und striegelt die Kuh heute.",
-					helptxt="Nun mit der Hand wird das nichts. Sucht euch etwas mit dem bürsten könnt? Und immer mit der Fellrichtung streichen sonst wird die Milch sauer!"
+					desctxt="Meine Arme sind schwach. Heute beim Essen ist mir die SuppenschÃ¼ssel aus der Hand gefallen. Bitte bÃ¼rstet und striegelt die Kuh heute.",
+					helptxt="Nun mit der Hand wird das nichts. Sucht euch etwas mit dem bÃ¼rsten kÃ¶nnt? Und immer mit der Fellrichtung streichen sonst wird die Milch sauer!"
 					};
 
         eTask[1] = {
@@ -224,8 +224,8 @@ function TaskText(taskid)
 					helptxt="Well, you can't groom with your hand, look for a tool to help you brush? And always comb from front to back or the cow will give sour milk."
 					};
         gTask[2] = {
-					desctxt="Ich glaube ich bin erkältet. Heute mit kaltem Wasser zu arbeiten wäre mein Tod. Bitte wascht die Kuh heute.",
-					helptxt="Wasser ist zum Waschen da. Und mit den Händen werdet ihr es nicht tragen können. Neben dem Haus ist ein Brunnen aber nimm deinen eigenen Eimer dafür!"
+					desctxt="Ich glaube ich bin erkÃ¤ltet. Heute mit kaltem Wasser zu arbeiten wÃ¤re mein Tod. Bitte wascht die Kuh heute.",
+					helptxt="Wasser ist zum Waschen da. Und mit den HÃ¤nden werdet ihr es nicht tragen kÃ¶nnen. Neben dem Haus ist ein Brunnen aber nimm deinen eigenen Eimer dafÃ¼r!"
 					};
 
         eTask[2] = {
@@ -234,7 +234,7 @@ function TaskText(taskid)
 					};
 		gTask[3] = {
 					desctxt="Wenn ich singe wird die Milch besonders cremig, aber heute bin ich heiser. Singt der Kuh doch bitte ein Lied vor!",
-					helptxt="Ihr könnt nicht singen? Nun früher hab ich auch öfter mit der Laute vorgespielt aber meine Finger wollen nichtmehr richtig, probiert es damit?"
+					helptxt="Ihr kÃ¶nnt nicht singen? Nun frÃ¼her hab ich auch Ã¶fter mit der Laute vorgespielt aber meine Finger wollen nichtmehr richtig, probiert es damit?"
 					};
 
         eTask[3] = {
@@ -243,7 +243,7 @@ function TaskText(taskid)
 					};
 		gTask[4] = {
 					desctxt="Das Brunnenwasser ist seit heute morgen so faulig. Klettert bitte hinunter und seht einmal nach was da los ist.",
-					helptxt="Vielleicht hat sich Ungeziefer im Brunnen eingenistet? Ihr müsstet es vertreiben dann wird das Wasser bestimmt wieder klarer."
+					helptxt="Vielleicht hat sich Ungeziefer im Brunnen eingenistet? Ihr mÃ¼sstet es vertreiben dann wird das Wasser bestimmt wieder klarer."
 					};
 
         eTask[4] = {
@@ -251,7 +251,7 @@ function TaskText(taskid)
 					helptxt="Maybe there's vermin in the well? If so, you'd have to get rid of it, then the water will clear again."
 					};
 		gTask[5] = {
-					desctxt="Mein Kreuz macht mir zu schaffen, ich kann das Futter nicht in den Stall tragen. Bitte füttert heute die Kuh.",
+					desctxt="Mein Kreuz macht mir zu schaffen, ich kann das Futter nicht in den Stall tragen. Bitte fÃ¼ttert heute die Kuh.",
 					helptxt="Sie mag besonders gerne Getreide."
 					};
 
@@ -260,8 +260,8 @@ function TaskText(taskid)
 					helptxt="She likes grain the best."
 					};
 		gTask[6] = {
-					desctxt="Heute kannst du die Früchte deiner Arbeit ernten sozusagen! Du musst die Kuh nur noch melken.",
-					helptxt="Mir persönlich schmeckt die Milch aus der Flasche am besten. Man kann sie auch gleich an der Kuh befüllen."
+					desctxt="Heute kannst du die FrÃ¼chte deiner Arbeit ernten sozusagen! Du musst die Kuh nur noch melken.",
+					helptxt="Mir persÃ¶nlich schmeckt die Milch aus der Flasche am besten. Man kann sie auch gleich an der Kuh befÃ¼llen."
 					};
 
         eTask[6] = {

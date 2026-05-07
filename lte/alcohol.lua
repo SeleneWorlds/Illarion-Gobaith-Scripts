@@ -6,7 +6,7 @@ local M = {}
 
 function M.addEffect( Effect, Character) -- Initiallisierungs Funktion
     -- nichts
-    Character:inform("AddEffect ausgeführt");
+    Character:inform("AddEffect ausgefÃ¼hrt");
 end
 
 function M.callEffect( Effect, Character) -- Initiallisierungs Script
@@ -20,7 +20,7 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
     if not found and not found2 then -- Fehler aufgetreten. Script wird abgebrochen
         Character:inform("Fehler aufgetreten. Script abbruch");
         return false
-    elseif found2 and not found then -- Keine Direkten Alkohol Effekte mehr. Warten auf nächsten Login
+    elseif found2 and not found then -- Keine Direkten Alkohol Effekte mehr. Warten auf nÃ¤chsten Login
         Character:inform("Keine direkten Alkohol folgen mehr");
         if (value2 == 2) then
             User:inform(M.Informing(Character,"Deine Kopfschmerzen lassen langsam nach.","Your headache becomes less slowly."));
@@ -34,8 +34,8 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
         RaceBon = 60;
         Character:inform("Zwergenboni");
     end
-    if (value == 0) then -- keine Alkohol Wirkung mehr - Auf nächsten Login für Kater Effekt warten
-        Character:inform("Alkwirkungen zurück setzen");
+    if (value == 0) then -- keine Alkohol Wirkung mehr - Auf nÃ¤chsten Login fÃ¼r Kater Effekt warten
+        Character:inform("Alkwirkungen zurÃ¼ck setzen");
         Effect:addValue("hangover",1);
         Effect.nextCalled = 1000000;
         Character:increaseAttrib("dexterity",5);
@@ -48,8 +48,8 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
         if found then
             Effect:removeValue("alcohol");
         end
-        User:inform(M.Informing(Character,"Du merkst das der Alkohol aufhört zu wirken.","You feel stops affecting you."));
-        Character:inform("Zurück gesetzt");
+        User:inform(M.Informing(Character,"Du merkst das der Alkohol aufhÃ¶rt zu wirken.","You feel stops affecting you."));
+        Character:inform("ZurÃ¼ck gesetzt");
         return true
     end
     if (found3 and (value >= Character:increaseAttrib("constitution",0)*24 + RaceBon)) then -- Alkohol Effekt tritt ein
@@ -60,9 +60,9 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
         Character:increaseAttrib("perception",-5);
         Effect:addValue("AlcEffect",1);
         Effect:addValue("time",(world:getTime("day")*24)+world:getTime("hour"));
-        Character:inform("auswirkungen ausgeführt");
+        Character:inform("auswirkungen ausgefÃ¼hrt");
         User:inform(M.Informing(Character,"Du merkst wie der Alkohol seine Wirkung entfaltet.","You feel that the alcohol starts to affect you."));
-        Character:talkLanguage( CCharacter.say, CPlayer.german, "#me 's Nase bekommt eine leicht rötliche Färbung.");
+        Character:talkLanguage( CCharacter.say, CPlayer.german, "#me 's Nase bekommt eine leicht rÃ¶tliche FÃ¤rbung.");
         Character:talkLanguage( CCharacter.say, CPlayer.english, "#me 's nose get a slightly red color.");
     end
     if found3 then
@@ -70,7 +70,7 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
         if ( EffectValue > 400 ) then -- voll besoffen
             oldpos = Character.pos;
             Character:move(math.random(0,3)*2, true);
-            if equapos(oldpos,Character.pos) then -- Step wurde nicht ausgeführt
+            if equapos(oldpos,Character.pos) then -- Step wurde nicht ausgefÃ¼hrt
                 Effect:addValue("alcohol",math.max(0,value - Character:increaseAttrib("constitution",0))); -- Alkohol langsam abbauen
                 Effect.nextCalled = 40; -- Gleich nochmal versuchen
             else -- Schritt wurde gemacht
@@ -108,7 +108,7 @@ function M.loadEffect(Effect, Character)
     found,value = Effect:findValue("alcohol");    
     found3,value3 = Effect:findValue("AlcEffect");
     if found2 then
-        Character:inform(M.Informing(Character,"Dein Kopf dröhnt und fühlt sich doppelt so schwer an wie er wirklich ist.","You head hurts and feels like it weights the twice as normal."));
+        Character:inform(M.Informing(Character,"Dein Kopf drÃ¶hnt und fÃ¼hlt sich doppelt so schwer an wie er wirklich ist.","You head hurts and feels like it weights the twice as normal."));
         Effect.nextCalled = 1200;
         Effect:addValue("hangover",2);
         return true

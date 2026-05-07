@@ -43,20 +43,20 @@ function receiveText(texttype, message, originator)
         NPCTrig[2][7]="[Ii]rundar";
         NPCText[2][7]="The blessed water of Irundar can be found in in the cave of Irundar. I don't know where this cave is, nor how to enter it. But I have heard of a ranger in the Northern woods who might know more. Her name is Elina Doron.";
 
-        NPCTrig[1][1]="[Gg]rüß";
-        NPCText[1][1]="Hallo, mein Freund, bleibt eine Weile und hört zu! Ich benötige Eure Dienste.";
+        NPCTrig[1][1]="[Gg]rÃ¼ÃŸ";
+        NPCText[1][1]="Hallo, mein Freund, bleibt eine Weile und hÃ¶rt zu! Ich benÃ¶tige Eure Dienste.";
         NPCTrig[1][2]="[Hh]allo";
-        NPCText[1][2]="Hallo, mein Freund, bleibt eine Weile und hört zu! Ich benötige Eure Dienste.";
+        NPCText[1][2]="Hallo, mein Freund, bleibt eine Weile und hÃ¶rt zu! Ich benÃ¶tige Eure Dienste.";
         NPCTrig[1][3]="[Dd]ienste";
-        NPCText[1][3]="Lasst mich Euch meinen Namen nennen. Ich bin Lurandir, ein Wanderer und Alchemist. Weit bin ich gereist um die letzte Zutat zu finden für ein... spezielles Rezept. Ich benötige das gesegnete Wasser von Irundar... *seufz*";
+        NPCText[1][3]="Lasst mich Euch meinen Namen nennen. Ich bin Lurandir, ein Wanderer und Alchemist. Weit bin ich gereist um die letzte Zutat zu finden fÃ¼r ein... spezielles Rezept. Ich benÃ¶tige das gesegnete Wasser von Irundar... *seufz*";
         NPCTrig[1][4]="[Hh]ilfe";
-        NPCText[1][4]="Lasst mich Euch meinen Namen nennen. Ich bin Lurandir, ein Wanderer und Alchemist. Weit bin ich gereist um die letzte Zutat zu finden für ein... spezielles Rezept. Ich benötige das gesegnete Wasser von Irundar... *seufz*";
+        NPCText[1][4]="Lasst mich Euch meinen Namen nennen. Ich bin Lurandir, ein Wanderer und Alchemist. Weit bin ich gereist um die letzte Zutat zu finden fÃ¼r ein... spezielles Rezept. Ich benÃ¶tige das gesegnete Wasser von Irundar... *seufz*";
         NPCTrig[1][5]="[Rr]ezept";
-        NPCText[1][5]="Das Rezept selbst soll nicht Eure Sorge sein mein Freund. Bringt mir das Wasser und vielleicht erzähle ich euch mehr darber.";
+        NPCText[1][5]="Das Rezept selbst soll nicht Eure Sorge sein mein Freund. Bringt mir das Wasser und vielleicht erzÃ¤hle ich euch mehr darber.";
         NPCTrig[1][6]="[Ww]asser";
-        NPCText[1][6]="Das gesegnete Wasser von Irundar kann in der Höhle von Irundar gefunden werden. Ich weiß weder, wo diese Höhle ist, noch wie man sie betritt. Doch hörte ich von einer Waldläuferin in den Nördlichen Wäldern, welche mehr wissen mag. Ihr Name ist Elina Doron.";
+        NPCText[1][6]="Das gesegnete Wasser von Irundar kann in der HÃ¶hle von Irundar gefunden werden. Ich weiÃŸ weder, wo diese HÃ¶hle ist, noch wie man sie betritt. Doch hÃ¶rte ich von einer WaldlÃ¤uferin in den NÃ¶rdlichen WÃ¤ldern, welche mehr wissen mag. Ihr Name ist Elina Doron.";
         NPCTrig[1][7]="[Ii]rundar";
-        NPCText[1][7]="Das gesegnete Wasser von Irundar kann in der Höhle von Irundar gefunden werden. Ich weiß weder, wo diese Höhle ist, noch wie man sie betritt. Doch hörte ich von einer Waldläuferin in den Nördlichen Wäldern, welche mehr wissen mag. Ihr Name ist Elina Doron.";
+        NPCText[1][7]="Das gesegnete Wasser von Irundar kann in der HÃ¶hle von Irundar gefunden werden. Ich weiÃŸ weder, wo diese HÃ¶hle ist, noch wie man sie betritt. Doch hÃ¶rte ich von einer WaldlÃ¤uferin in den NÃ¶rdlichen WÃ¤ldern, welche mehr wissen mag. Ihr Name ist Elina Doron.";
 
         thisNPC:increaseSkill(1,"common language",100);
         NPCfirst=1;
@@ -73,7 +73,7 @@ function receiveText(texttype, message, originator)
                         local litem = originator:getItemAt(5);
                         local ritem = originator:getItemAt(6);
                         if ( ( (litem.id == 2496) and (litem.data == 3) ) or ( (ritem.id == 2496) and (ritem.data == 3) ) ) then
-                            thisNPC:talkLanguage(CCharacter.say,CPlayer.german ,"Habt Dank mein Freund. Ich benötige nur einige Tropfen, den Rest könnt Ihr behalten. Aber seid gewarnt: Eine übermäßige Anwendung könnte schädlich sein. Verwendet es weise! Kommt später wieder, vielleicht weiß ich dann mehr...");
+                            thisNPC:talkLanguage(CCharacter.say,CPlayer.german ,"Habt Dank mein Freund. Ich benÃ¶tige nur einige Tropfen, den Rest kÃ¶nnt Ihr behalten. Aber seid gewarnt: Eine Ã¼bermÃ¤ÃŸige Anwendung kÃ¶nnte schÃ¤dlich sein. Verwendet es weise! Kommt spÃ¤ter wieder, vielleicht weiÃŸ ich dann mehr...");
                             thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"Be thanked my friend. I need just a few drops, you can keep the rest for yourself. But be warned: Do not use it too often, it might be harmful. Use it wisely. Come back later and I might have found out more...");
                             originator:setQuestProgress(1, LuaOr( originator:getQuestProgress(1), 65536 ) );
                         else

@@ -10,7 +10,7 @@
 module("npc.lasttier_ma", package.seeall)
 
 function useNPC(User,Counter,Param)
-    if lost[thisNPC.id] then -- Kuh wurde zurück gelassen
+    if lost[thisNPC.id] then -- Kuh wurde zurÃ¼ck gelassen
         find_transporter, effect_transporter = thisNPC.effects:find(10);
         if not find_transporter then
             return
@@ -36,7 +36,7 @@ function InitNPC()
         
         FollowInRange = 5; -- Maximaler Abstand zum Besitzer in dem das Lasttier folgt
         CyclesBetweenSteps = 8; -- Wieviele 1/10s zwischen 2 Schritten
-        ActiveCyclesWithoutTarget = 880; -- Aktive Schritte ohne Ziel bis zum löschen
+        ActiveCyclesWithoutTarget = 880; -- Aktive Schritte ohne Ziel bis zum lÃ¶schen
         
         lost = {};
         moving = {};

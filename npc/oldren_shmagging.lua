@@ -28,8 +28,8 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("hiho");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Ich bin "..thisNPC.name..", ein Koch und Bäcker. Ich kann dir ein paar Dinge meines Handwerks beibringen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Ich bin "..thisNPC.name..", ein Koch und BÃ¤cker. Ich kann dir ein paar Dinge meines Handwerks beibringen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hiho");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -37,15 +37,15 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hiho");
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Na, wieder zurück? Hm... Wo waren wir stehen geblieben?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Na, wieder zurÃ¼ck? Hm... Wo waren wir stehen geblieben?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hiho");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Na, wieder zurück? Hm... Wo waren wir stehen geblieben?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo mein Freund! Na, wieder zurÃ¼ck? Hm... Wo waren wir stehen geblieben?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddTraderTrigger("who you","I am "..thisNPC.name..", a cook and a baker. I can teach you some things of my craft.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Ich bin "..thisNPC.name..", ein Koch und Bäcker. Ich kann dir ein paar Dinge meines Handwerks beibringen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Ich bin "..thisNPC.name..", ein Koch und BÃ¤cker. Ich kann dir ein paar Dinge meines Handwerks beibringen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was ihr");
@@ -54,14 +54,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddAdditionalText("Be well, my friend!");
     npc.base.autonpcfunctions.AddAdditionalText("Farewell, until we meet again.");
-    npc.base.autonpcfunctions.AddTraderTrigger("tsch[üu][ßs]","Auf Wiedersehen, mein Freund!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("tsch[Ã¼u][ÃŸs]","Auf Wiedersehen, mein Freund!");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb wohl");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wiederseh");
     npc.base.autonpcfunctions.AddAdditionalTrigger("auf bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
-    npc.base.autonpcfunctions.AddAdditionalText("Tschüss auch.");
-    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nächsten Mal.");
+    npc.base.autonpcfunctions.AddAdditionalText("TschÃ¼ss auch.");
+    npc.base.autonpcfunctions.AddAdditionalText("Leb wohl, bis zum nÃ¤chsten Mal.");
     -- start teaching
     npc.base.autonpcfunctions.AddTraderTrigger("cook","So you want to learn some things about cooking and baking, right?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bake");
@@ -72,7 +72,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("koch","So so, du willst also ein paar Dinge über Kochen und Backen lernen, richtig?");
+    npc.base.autonpcfunctions.AddTraderTrigger("koch","So so, du willst also ein paar Dinge Ã¼ber Kochen und Backen lernen, richtig?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("back");
     npc.base.autonpcfunctions.AddAdditionalTrigger("handwerk");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
@@ -87,7 +87,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",227,1,999,0);
     npc.base.autonpcfunctions.AddConsequence("item",51,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Sehr schön. Nimm erstmal diesen Kochlöffel und diesen Eimer. Geh zum Wasser mit dem Eimer in deinen Händen und 'benutze' ihn mit dem Wasser. Komm wieder, wenn du den Eimer gefüllt hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Sehr schÃ¶n. Nimm erstmal diesen KochlÃ¶ffel und diesen Eimer. Geh zum Wasser mit dem Eimer in deinen HÃ¤nden und 'benutze' ihn mit dem Wasser. Komm wieder, wenn du den Eimer gefÃ¼llt hast.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("item",227,1,999,0);
@@ -101,7 +101,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state",">=",2);
     npc.base.autonpcfunctions.AddCondition("item",227,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",227,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("l[öo]ffel","Du brauchst einen neuen Kochlöffel, richtig? Hier bitte sehr.");
+    npc.base.autonpcfunctions.AddTraderTrigger("l[Ã¶o]ffel","Du brauchst einen neuen KochlÃ¶ffel, richtig? Hier bitte sehr.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("loeffel");
     npc.base.autonpcfunctions.AddCondition("state",">=",2);
     npc.base.autonpcfunctions.AddCondition("item",227,"all","=",0);
@@ -143,21 +143,21 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
     npc.base.autonpcfunctions.AddConsequence("item",2,10,333,0);
     npc.base.autonpcfunctions.AddConsequence("item",118,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Nun gut, zu allererst brauchst du Mehl um Teig zu machen. Das wird aus Getreide gemacht, aber frage besser einen Bauern über das Mahlen von Getreide. Ich gebe dir ein paar Säcke mit Mehl, trage sie und einen Eimer mit Wasser am Gürtel, und ein Nudelholz. Halte jenes in der Hand und stelle dich einfach direkt vor den Backofen dort und 'benutze' ihn. Komm wieder, wenn du mindestens 5 Klumpen Teig hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Nun gut, zu allererst brauchst du Mehl um Teig zu machen. Das wird aus Getreide gemacht, aber frage besser einen Bauern Ã¼ber das Mahlen von Getreide. Ich gebe dir ein paar SÃ¤cke mit Mehl, trage sie und einen Eimer mit Wasser am GÃ¼rtel, und ein Nudelholz. Halte jenes in der Hand und stelle dich einfach direkt vor den Backofen dort und 'benutze' ihn. Komm wieder, wenn du mindestens 5 Klumpen Teig hast.");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
     npc.base.autonpcfunctions.AddConsequence("item",2,10,333,0);
     npc.base.autonpcfunctions.AddConsequence("item",118,1,999,0);
     npc.base.autonpcfunctions.AddTraderTrigger("no","As you want. You can come back whenever you want and continue the lesson about baking.");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Wie du willst. Du kannst jederzeit wiederkommen und die Lektion über Backen fortsetzen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Wie du willst. Du kannst jederzeit wiederkommen und die Lektion Ã¼ber Backen fortsetzen.");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     -- STATE 11
     npc.base.autonpcfunctions.AddTraderTrigger("flour","You need more flour, right? Here you are.");
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddCondition("item",2,"all","<",5);
     npc.base.autonpcfunctions.AddConsequence("item",2,10,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("mehl","Du brauchst mehr Mehl, richtig? Hier bitte schön.");
+    npc.base.autonpcfunctions.AddTraderTrigger("mehl","Du brauchst mehr Mehl, richtig? Hier bitte schÃ¶n.");
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddCondition("item",2,"all","<",5);
     npc.base.autonpcfunctions.AddConsequence("item",2,10,333,0);
@@ -165,7 +165,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state",">=",11);
     npc.base.autonpcfunctions.AddCondition("item",118,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",118,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("nudelholz","Du brauchst ein neues Nudelholz, richtig? Hier bitte schön.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nudelholz","Du brauchst ein neues Nudelholz, richtig? Hier bitte schÃ¶n.");
     npc.base.autonpcfunctions.AddCondition("state",">=",11);
     npc.base.autonpcfunctions.AddCondition("item",118,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",118,1,999,0);
@@ -186,7 +186,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state",">=",12);
     npc.base.autonpcfunctions.AddCondition("item",121,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",121,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ofenschieber","Du brauchst einen neuen Ofenschieber, richtig? Hier bitte schön.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ofenschieber","Du brauchst einen neuen Ofenschieber, richtig? Hier bitte schÃ¶n.");
     npc.base.autonpcfunctions.AddCondition("state",">=",12);
     npc.base.autonpcfunctions.AddCondition("item",121,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",121,1,999,0);
@@ -195,16 +195,16 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("flour");
     npc.base.autonpcfunctions.AddAdditionalTrigger("grain");
     npc.base.autonpcfunctions.AddAdditionalTrigger("mill");
-    npc.base.autonpcfunctions.AddTraderTrigger("teig","Teig wird aus Mehl gemacht, welches wiederrum aus Getreide gemacht wird. Aber ich weiß nicht, wie man Getreide zu Mehl zermahlen kann. Ich bin nur ein Bäcker, kein Bauer. Falls du für eine meiner Aufgaben Mehl brauchst, kann ich dir ein paar Säcke geben.");
+    npc.base.autonpcfunctions.AddTraderTrigger("teig","Teig wird aus Mehl gemacht, welches wiederrum aus Getreide gemacht wird. Aber ich weiÃŸ nicht, wie man Getreide zu Mehl zermahlen kann. Ich bin nur ein BÃ¤cker, kein Bauer. Falls du fÃ¼r eine meiner Aufgaben Mehl brauchst, kann ich dir ein paar SÃ¤cke geben.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("mehl");
     npc.base.autonpcfunctions.AddAdditionalTrigger("getreide");
     npc.base.autonpcfunctions.AddAdditionalTrigger("mahlen");
     npc.base.autonpcfunctions.AddTraderTrigger("pork","Pork can be cooked to sausages. You always get a pair out of it. Kill a pig. Then you can easily take the pork from the cadaver. But if you need it for one of my tasks, I can give you some pork.");
-    npc.base.autonpcfunctions.AddTraderTrigger("fleisch","Schweinefleisch kann zu Würsten gekocht werden. Du bekommst immer gleich ein Paar. Töte ein Schwein. Dann kannst du ganz einfach dessen Fleisch vom Kadaver entfernen. Falls du für eine meiner Aufgaben Schweinefleisch brauchst, kann ich dir auch etwas geben.");
+    npc.base.autonpcfunctions.AddTraderTrigger("fleisch","Schweinefleisch kann zu WÃ¼rsten gekocht werden. Du bekommst immer gleich ein Paar. TÃ¶te ein Schwein. Dann kannst du ganz einfach dessen Fleisch vom Kadaver entfernen. Falls du fÃ¼r eine meiner Aufgaben Schweinefleisch brauchst, kann ich dir auch etwas geben.");
 	npc.base.autonpcfunctions.AddTraderTrigger("entrail","Entrails are used to cook sausages. You always get a pair out of it. Kill a pig. Then you can easily take the entrails from the cadaver. But if you need it for one of my tasks, I can give you some entrails.");
-    npc.base.autonpcfunctions.AddTraderTrigger("eingeweide","Eingeweide kann zu Würsten gekocht werden. Du bekommst immer gleich ein Paar. Töte ein Schwein. Dann kannst du ganz einfach dessen Eingeweide vom Kadaver entfernen. Falls du für eine meiner Aufgaben Eingeweide brauchst, kann ich dir auch etwas geben.");
+    npc.base.autonpcfunctions.AddTraderTrigger("eingeweide","Eingeweide kann zu WÃ¼rsten gekocht werden. Du bekommst immer gleich ein Paar. TÃ¶te ein Schwein. Dann kannst du ganz einfach dessen Eingeweide vom Kadaver entfernen. Falls du fÃ¼r eine meiner Aufgaben Eingeweide brauchst, kann ich dir auch etwas geben.");
     npc.base.autonpcfunctions.AddTraderTrigger("baking house","The baking house is over there, next to the cherry tree. You need a baking house to bake bread, cakes or other delicacies.");
-    npc.base.autonpcfunctions.AddTraderTrigger("backofen","Der Backofen ist dort drüben bei dem Kirschbaum. Du brauchst einen Backofen, um Brot, Kuchen und andere Leckereien zu backen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("backofen","Der Backofen ist dort drÃ¼ben bei dem Kirschbaum. Du brauchst einen Backofen, um Brot, Kuchen und andere Leckereien zu backen.");
     npc.base.autonpcfunctions.AddTraderTrigger("fire","You can cook tasty dishes at any campfire, like the one next to me. Amelia has surely shown you how to spark off a fire. But you can use my one of course");
     npc.base.autonpcfunctions.AddTraderTrigger("feuer","Du kannst an jedem Lagerfeuer, wie das hier neben mir, leckere Gerichte kochen. Amelia hat dir bestimmt gezeigt, wie man eines entfacht. Aber du kannst gern meines benutzen.");
     npc.base.autonpcfunctions.AddTraderTrigger("soup","Concerning cooking, you can choose between two categories: soups or other dishes. For soups you need a soup bowl, for the most other dishes you need a plate - of course not for sausages. Both can be made by carpenters.");
@@ -212,15 +212,15 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("plate");
     npc.base.autonpcfunctions.AddAdditionalTrigger("dish");
     npc.base.autonpcfunctions.AddAdditionalTrigger("category");
-    npc.base.autonpcfunctions.AddTraderTrigger("suppe","Was das Kochen betrifft, kannst du aus zwei Kategorien wählen: Suppen oder andere Gerichte. Für Suppen brauchst du eine Suppenschüssel, für die meisten anderen Gerichte einen Teller - natürlich nicht für Würste. Beides können Schreiner herstellen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("sch[üu][sß]el");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("schue[sß]el");
+    npc.base.autonpcfunctions.AddTraderTrigger("suppe","Was das Kochen betrifft, kannst du aus zwei Kategorien wÃ¤hlen: Suppen oder andere Gerichte. FÃ¼r Suppen brauchst du eine SuppenschÃ¼ssel, fÃ¼r die meisten anderen Gerichte einen Teller - natÃ¼rlich nicht fÃ¼r WÃ¼rste. Beides kÃ¶nnen Schreiner herstellen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("sch[Ã¼u][sÃŸ]el");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("schue[sÃŸ]el");
     npc.base.autonpcfunctions.AddAdditionalTrigger("teller");
     npc.base.autonpcfunctions.AddAdditionalTrigger("gericht");
     npc.base.autonpcfunctions.AddAdditionalTrigger("kategorie");
     npc.base.autonpcfunctions.AddTraderTrigger("spoon","Oh of course you need a cooking spoon and a bucket in order to cook anything. They can be made by carpenters. But if you need them for one of my tasks, I can give you one of each.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bucket");
-    npc.base.autonpcfunctions.AddTraderTrigger("l[öo]ffel","Natürlich brauchst du einen Kochlöffel und einen Eimer, um etwas zu kochen. Beides kann von Schreinern hergestellt werden. Aber falls du sie für eine meiner Aufgaben brauchst, kann ich dir jeweils ein Exemplar geben.");
+    npc.base.autonpcfunctions.AddTraderTrigger("l[Ã¶o]ffel","NatÃ¼rlich brauchst du einen KochlÃ¶ffel und einen Eimer, um etwas zu kochen. Beides kann von Schreinern hergestellt werden. Aber falls du sie fÃ¼r eine meiner Aufgaben brauchst, kann ich dir jeweils ein Exemplar geben.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("loeffel");
     npc.base.autonpcfunctions.AddAdditionalTrigger("eimer");
     -- last catch
@@ -228,7 +228,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","I asked if you want to learn something about cooking and baking. Yes or no?");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich habe gefragt, ob du etwas übers Kochen und Backen lernen willst. Ja oder nein?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich habe gefragt, ob du etwas Ã¼bers Kochen und Backen lernen willst. Ja oder nein?");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     -- STATE 2
@@ -236,7 +236,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Du solltest erst den Eimer mit Wasser füllen. Geh zum Wasser mit dem Eimer in deinen Händen und 'benutze' ihn mit dem Wasser. Komm wieder, wenn du den Eimer gefüllt hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Du solltest erst den Eimer mit Wasser fÃ¼llen. Geh zum Wasser mit dem Eimer in deinen HÃ¤nden und 'benutze' ihn mit dem Wasser. Komm wieder, wenn du den Eimer gefÃ¼llt hast.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
@@ -247,7 +247,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
     npc.base.autonpcfunctions.AddConsequence("item",307,5,333,0);
 	npc.base.autonpcfunctions.AddConsequence("item",63,5,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ah, du hast einen vollen Eimer. Jetzt gebe ich dir Schweinefleisch und Eingeweide, du wirst Würste kochen. Steh direkt vor das Feuer mit dem Löffel in der Hand und dem Fleisch und dem Eimer mit Wasser am Gürtel und 'benutze' den Löffel. Du kannst eine Kategorie wählen, Suppen -dargestellt durch eine Schüssel- oder andere Gerichte -dargestellt durch einen Teller. Wähle den Teller und dann die Würste. Wenn du fertig bist oder falls es nicht klappt, komm einfach wieder zu mir.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ah, du hast einen vollen Eimer. Jetzt gebe ich dir Schweinefleisch und Eingeweide, du wirst WÃ¼rste kochen. Steh direkt vor das Feuer mit dem LÃ¶ffel in der Hand und dem Fleisch und dem Eimer mit Wasser am GÃ¼rtel und 'benutze' den LÃ¶ffel. Du kannst eine Kategorie wÃ¤hlen, Suppen -dargestellt durch eine SchÃ¼ssel- oder andere Gerichte -dargestellt durch einen Teller. WÃ¤hle den Teller und dann die WÃ¼rste. Wenn du fertig bist oder falls es nicht klappt, komm einfach wieder zu mir.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",52,"all",">",0);
@@ -259,7 +259,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",3051,"all","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Komm wieder, wenn du mindestens ein Paar Würste gekocht hast. Steh direkt vor das Feuer mit dem Löffel in der Hand und dem Fleisch und dem Eimer mit Wasser am Gürtel und 'benutze' den Löffel. Du kannst eine Kategorie wählen, Suppen -dargestellt durch eine Schüssel- oder andere Gerichte -dargestellt durch einen Teller. Wähle den Teller und dann die Würste.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Komm wieder, wenn du mindestens ein Paar WÃ¼rste gekocht hast. Steh direkt vor das Feuer mit dem LÃ¶ffel in der Hand und dem Fleisch und dem Eimer mit Wasser am GÃ¼rtel und 'benutze' den LÃ¶ffel. Du kannst eine Kategorie wÃ¤hlen, Suppen -dargestellt durch eine SchÃ¼ssel- oder andere Gerichte -dargestellt durch einen Teller. WÃ¤hle den Teller und dann die WÃ¼rste.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",3051,"all","=",0);
@@ -268,7 +268,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh warte, wie ich sehe hast du diese Würste nicht fertig gekocht. Wenn du die Arbeit an einem unfertigen Gericht weiterführen willst, dann 'benutze' den Löffel mit diesem Gericht, das du natürlich am Gürtel trägst.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh warte, wie ich sehe hast du diese WÃ¼rste nicht fertig gekocht. Wenn du die Arbeit an einem unfertigen Gericht weiterfÃ¼hren willst, dann 'benutze' den LÃ¶ffel mit diesem Gericht, das du natÃ¼rlich am GÃ¼rtel trÃ¤gst.");
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
@@ -277,7 +277,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",5);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",10);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Du hast's geschafft! Ein Hinweis noch: Es kann passieren, dass 'unfertige Gerichte' übrigbleiben, setze die Arbeit fort, indem du den Löffel mit diesem Gericht, das du natürlich am Gürtel trägst, 'benutzt'. Nun können wir mit Backen fortfahren. Bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Du hast's geschafft! Ein Hinweis noch: Es kann passieren, dass 'unfertige Gerichte' Ã¼brigbleiben, setze die Arbeit fort, indem du den LÃ¶ffel mit diesem Gericht, das du natÃ¼rlich am GÃ¼rtel trÃ¤gst, 'benutzt'. Nun kÃ¶nnen wir mit Backen fortfahren. Bereit?");
     npc.base.autonpcfunctions.AddCondition("state","=",5);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",10);
@@ -285,7 +285,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","I asked if we can proceed with baking. Yes or no?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich fragte, ob wir mit Backen fortfahren können. Ja oder nein?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich fragte, ob wir mit Backen fortfahren kÃ¶nnen. Ja oder nein?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     -- STATE 11
@@ -293,7 +293,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",5,"all","<",5);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wir können erst weiter machen, wenn du 5 Klumpen Teig hast. Trage das Mehl und einen Eimer mit Wasser am Gürtel und halte das Nudelholz in den Händen. Stelle dich direkt vor den Backofen und 'benutze' ihn.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wir kÃ¶nnen erst weiter machen, wenn du 5 Klumpen Teig hast. Trage das Mehl und einen Eimer mit Wasser am GÃ¼rtel und halte das Nudelholz in den HÃ¤nden. Stelle dich direkt vor den Backofen und 'benutze' ihn.");
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",5,"all","<",5);
@@ -302,7 +302,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",12);
     npc.base.autonpcfunctions.AddConsequence("item",121,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sehr gut! Nun nimm diesen Ofenschieber und halte ihn in deinen Händen. Geh' wieder zum Backofen und trage den Teig am Gürtel. Jetzt 'benutze' den Ofenschieber und wähle das Brötchen. Es ist die am einfachsten herzustellende Backware. Komm wieder, wenn du mindestens ein Brötchen hast.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sehr gut! Nun nimm diesen Ofenschieber und halte ihn in deinen HÃ¤nden. Geh' wieder zum Backofen und trage den Teig am GÃ¼rtel. Jetzt 'benutze' den Ofenschieber und wÃ¤hle das BrÃ¶tchen. Es ist die am einfachsten herzustellende Backware. Komm wieder, wenn du mindestens ein BrÃ¶tchen hast.");
     npc.base.autonpcfunctions.AddCondition("state","=",11);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",12);
@@ -311,7 +311,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Come again when you have baked at least one bread roll. Go to the baking house and place the dough at your belt. Now 'use' the peel, while holding it in your hands, and choose the bread roll. It is the easiest-to-make baked good.");
     npc.base.autonpcfunctions.AddCondition("state","=",12);
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Komm wieder, wenn du mindestens ein Brötchen gebacken hast. Geh' wieder zum Backofen und trage den Teig am Gürtel. Jetzt 'benutze' den Ofenschieber, während du ihn in der Hand hältst, und wähle das Brötchen. Es ist die am einfachsten herzustellende Backware.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Komm wieder, wenn du mindestens ein BrÃ¶tchen gebacken hast. Geh' wieder zum Backofen und trage den Teig am GÃ¼rtel. Jetzt 'benutze' den Ofenschieber, wÃ¤hrend du ihn in der Hand hÃ¤ltst, und wÃ¤hle das BrÃ¶tchen. Es ist die am einfachsten herzustellende Backware.");
     npc.base.autonpcfunctions.AddCondition("state","=",12);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     -- STATE 13, unfinished bread roll
@@ -319,7 +319,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",13);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",12);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh warte, wie ich sehe hast du dieses Brötchen nicht fertig gebacken. Wenn du die Arbeit an einer unfertigen Backware weiterführen willst, dann 'benutze' den Ofenschieber mit dieser Backware, die du natürlich am Gürtel trägst.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Oh warte, wie ich sehe hast du dieses BrÃ¶tchen nicht fertig gebacken. Wenn du die Arbeit an einer unfertigen Backware weiterfÃ¼hren willst, dann 'benutze' den Ofenschieber mit dieser Backware, die du natÃ¼rlich am GÃ¼rtel trÃ¤gst.");
     npc.base.autonpcfunctions.AddCondition("state","=",13);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",12);
@@ -328,7 +328,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",14);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Deine Würste und Brötchen riechen wirklich köstlich. Du kannst sie essen, indem du sie einfach 'benutzt'. Nun denn, das ist alles, was ich für dich tun kann. Aber du wirst sicherlich eines Tages ein Meisterkoch und -bäcker. Viel Glück und Oldra mit dir. Leb wohl!");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Deine WÃ¼rste und BrÃ¶tchen riechen wirklich kÃ¶stlich. Du kannst sie essen, indem du sie einfach 'benutzt'. Nun denn, das ist alles, was ich fÃ¼r dich tun kann. Aber du wirst sicherlich eines Tages ein Meisterkoch und -bÃ¤cker. Viel GlÃ¼ck und Oldra mit dir. Leb wohl!");
     npc.base.autonpcfunctions.AddCondition("state","=",14);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",0);

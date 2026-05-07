@@ -1421,11 +1421,11 @@ function initializeNpc()
     TraderTrig[13]="[hH]elp";
     TraderText[13]="'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'";
 
-    TraderTrig[14]="[Gg]rü[ßs]e";
+    TraderTrig[14]="[Gg]rÃ¼[ÃŸs]e";
     TraderText[14]="Greebas! Will kaufen von "..thisNPC.name.."?";
     TraderText[1014]="Greebas!";
 
-    TraderTrig[15]="[Gg]rüsse";
+    TraderTrig[15]="[Gg]rÃ¼sse";
     TraderText[15]="Hullo! Du kaufen Zeug!";
     TraderText[1015]="Du willst sicher kaufen von "..thisNPC.name.."! Hullo!";
 
@@ -1433,13 +1433,13 @@ function initializeNpc()
     TraderText[16]="#me grunzt";
     TraderText[1016]="Bist du hier, um zu kaufen? Kaufen, kaufen!";
 
-    TraderTrig[17]="[Dd]u.+[Hh]ändler";
+    TraderTrig[17]="[Dd]u.+[Hh]Ã¤ndler";
     TraderText[17]="Yubba! Du will kaufen?"
 
     TraderTrig[18]="[Ww]as.+verkauf";
-    TraderText[18]="Mir verkaufen alles was glänzt!";
+    TraderText[18]="Mir verkaufen alles was glÃ¤nzt!";
 
-    TraderTrig[19]="[Ee]rzähl.+[Ee]twas";
+    TraderTrig[19]="[Ee]rzÃ¤hl.+[Ee]twas";
     TraderText[19]="Kein' Lust! Kauf, oder geh weg!";
 
     TraderTrig[20]="[Aa]uf.+[Bb]ald";
@@ -1450,10 +1450,10 @@ function initializeNpc()
     TraderTrig[21]="[Bb]is.+[Bb]ald";
     TraderText[21]="Fareeba!";
     TraderText[1021]="Du gehen? Kaufen mehr Zeug!";
-    TraderText[2021]="Wenn du kommen zurück, kaufen mehr! Har Har!";
+    TraderText[2021]="Wenn du kommen zurÃ¼ck, kaufen mehr! Har Har!";
 
     TraderTrig[22]="[Ww]as.+%s[Kk]auf";
-    TraderText[22]="Har Har! Ich kauf' Krieg Zeugs, Kleidung, Essen und Kräuters!";
+    TraderText[22]="Har Har! Ich kauf' Krieg Zeugs, Kleidung, Essen und KrÃ¤uters!";
 
     TraderTrig[23]="[Ww]er.+du?";
     TraderText[23]="Ich bin starker "..thisNPC.name.."!";
@@ -1462,9 +1462,9 @@ function initializeNpc()
     TraderText[24]="Mir nix interessiert! Du kaufen, oder du gehen weg!";
 
     TraderTrig[25]="[Hh]ilfe";
-    TraderText[25]="'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'";
+    TraderText[25]="'Welche Waren verkauft ihr', 'Ich mÃ¶chte <Anzahl> <Ware> kaufen', 'Ich mÃ¶chte <Ware> kaufen', 'Ich mÃ¶chte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr fÃ¼r <Ware>', 'Was kauft ihr?'";
 
-    TraderLang={"Silber", "silver","Kupfer","copper","stücke","pieces"};
+    TraderLang={"Silber", "silver","Kupfer","copper","stÃ¼cke","pieces"};
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
 
 
@@ -1581,12 +1581,12 @@ function receiveText(texttype, message, originator)
                         gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." du willst? Da! Kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
                         eText="You want "..world:getItemName(Values[1],1).."? Makes"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],TraderLang).."!";
                     end
-                    if (Status==7) then -- Verkaufspreis Ansage für ein Item // selling price announcement for an item
+                    if (Status==7) then -- Verkaufspreis Ansage fÃ¼r ein Item // selling price announcement for an item
                         gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
                         eText="The "..world:getItemName(Values[1],1).." costs"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],TraderLang).."!";
                     end
-                    if (Status==8) then -- Einkaufspreis Ansage für ein Item // buying price announcement for an item
-                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wär'"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).." wert.";
+                    if (Status==8) then -- Einkaufspreis Ansage fÃ¼r ein Item // buying price announcement for an item
+                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wÃ¤r'"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).." wert.";
                         eText="I pay"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
                     end
                     if (Status==9) then -- Einkauf von mehreren Items erfolgreich // npc.base.trader_functions.Buying of multible items succeed
@@ -1597,11 +1597,11 @@ function receiveText(texttype, message, originator)
                         gText="Kommt wieder wenn du das hast!";
                         eText="Come back when has that!";
                     end
-                    if (Status==11) then -- Händler hat nicht genug Geld // trader don't have enougth money
+                    if (Status==11) then -- HÃ¤ndler hat nicht genug Geld // trader don't have enougth money
                         gText="Ich nix mehr genug Geld! Kann das nix kaufen!";
                         eText="Me nhub enough money! Me not can buy that!";
                     end
-                    if (Status==12) then -- Händler kauft das Item nicht // trader didn't buy the item
+                    if (Status==12) then -- HÃ¤ndler kauft das Item nicht // trader didn't buy the item
                         gText="Ich nix kaufen das!";
                         eText="Me not buy that!";
                     end
@@ -1610,7 +1610,7 @@ function receiveText(texttype, message, originator)
                         eText="You want sell "..world:getItemName(Values[1],1).."? I give you"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],TraderLang)..".";
                     end
                     if (Status==14) then -- Liste der Waren die der NPC verkauft ist nicht leer // List of the wares the NPC sells, is not empty
-                        gText="Ich verkauf glänzendes Zeug!";
+                        gText="Ich verkauf glÃ¤nzendes Zeug!";
                         eText="Me sells shiny stuff!";
                     end
                     if (Status==15) then -- Liste der Waren die der NPC verkauft ist leer // List of the wares the NPC sells, is empty
@@ -1618,7 +1618,7 @@ function receiveText(texttype, message, originator)
                         eText="Me sell nothing.";
                     end
                     if (Status==16) then -- Liste der Waren die der NPC kauft ist leer // List of the wares the NPC buys, is not empty
-                        gText="Ich kauf' Zeug für Krieg, Kräuter, Kleidung und Essen!";
+                        gText="Ich kauf' Zeug fÃ¼r Krieg, KrÃ¤uter, Kleidung und Essen!";
                         eText="Me buy stuff for war, herbs, food and clothes!";
                     end
                     if (Status==17) then -- Liste der Waren die der NPC kauft ist leer // List of the wares the NPC buys, is empty

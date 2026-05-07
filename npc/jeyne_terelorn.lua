@@ -25,8 +25,8 @@ function initializeNpc()
     -- 1: Quest has been taken
 	-- 2: Footprints have been found
 	-- 3: Son has been found
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Seid gegrüßt. Sagt, könntet Ihr mir helfen?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grüße");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Seid gegrÃ¼ÃŸt. Sagt, kÃ¶nntet Ihr mir helfen?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grÃ¼ÃŸe");
     npc.base.autonpcfunctions.AddAdditionalTrigger("tach");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hiho");
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -36,7 +36,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("hiho");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilfe","Mein Sohn...er ist verschwunden! Könnt Ihr mir helfen, ihn zu suchen?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilfe","Mein Sohn...er ist verschwunden! KÃ¶nnt Ihr mir helfen, ihn zu suchen?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helfen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("ja");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
@@ -44,7 +44,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","My son...he dissapeared! Can you help me finding him?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("yes");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Danke vielmals! Ich befürchte er ist wieder im [WALD], dabei habe ich es ihm doch verboten! Ich suche hier, geht Ihr bitte zum [WALD].");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Danke vielmals! Ich befÃ¼rchte er ist wieder im [WALD], dabei habe ich es ihm doch verboten! Ich suche hier, geht Ihr bitte zum [WALD].");
     npc.base.autonpcfunctions.AddAdditionalTrigger("sicher");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",1);

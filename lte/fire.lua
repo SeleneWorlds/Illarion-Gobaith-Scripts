@@ -176,6 +176,6 @@ function M.callEffect(fireEffect, NPC)
 end
 
 function M.removeEffect( Effect, Character )
-    Character:talk(CCharacter.say, "Feuer gelöscht!");
+    Character:talk(CCharacter.say, "Feuer gelÃ¶scht!");
 end
 return M

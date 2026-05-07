@@ -29,25 +29,25 @@ function initializeNpc()
 
     -- ********* START DYNAMIC PART ********
 
-	npc.base.autonpcfunctions.AddCycleText("#me stiert mit seinen gelblich schimmernden Augen in die vom Plätschern des Baches erfüllte Höhle.","#me stares with yellowish glimming eyes into the dark cave.");
+	npc.base.autonpcfunctions.AddCycleText("#me stiert mit seinen gelblich schimmernden Augen in die vom PlÃ¤tschern des Baches erfÃ¼llte HÃ¶hle.","#me stares with yellowish glimming eyes into the dark cave.");
 	npc.base.autonpcfunctions.AddCycleText("#me kratzt sich am kahlen Kopf","#me scratches his pale head.");
-	npc.base.autonpcfunctions.AddCycleText("#me wirft dir einen aufmerksamen Blick zu, jede deiner Bewegungen für einige Augenblicke wahrnehmend.","#me glances at you with attentive gaze, watching any single movement of you for a few moments.");
+	npc.base.autonpcfunctions.AddCycleText("#me wirft dir einen aufmerksamen Blick zu, jede deiner Bewegungen fÃ¼r einige Augenblicke wahrnehmend.","#me glances at you with attentive gaze, watching any single movement of you for a few moments.");
 
-   	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[sß]","Ullo."); 
+   	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rÃ¼[sÃŸ]","Ullo."); 
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]allo"); 
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sß]"); 
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sÃŸ]"); 
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Tt]a[gc].*"); 
     npc.base.autonpcfunctions.AddAdditionalText("Ullo!"); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald."); 
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ötter.+euch"); 
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]Ã¶tter.+euch"); 
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Bb]is.+[Bb]ald"); 
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Aa]uf.+[Bb]ald"); 
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]ünf.+euch"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Mir Wache sein für Orktor! Keine Ratte hier rein kommen ohne dass "..thisNPC.name.." merken!"); 
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]Ã¼nf.+euch"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Mir Wache sein fÃ¼r Orktor! Keine Ratte hier rein kommen ohne dass "..thisNPC.name.." merken!"); 
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ww]ie.+[Nn]ame"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ilfe",""..thisNPC.name.." dir nur kann öffnen Tor! Muss bewachen Tor! Frag anderen Bruder oder Schwester für andere Sachen!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+[Mm]ach.*t",""..thisNPC.name.." öffnen und schließen Orktor! Du wollen rein oder raus? Dann du mir sagen Losungswort!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ll]osung.*[Ww]ort","#me grunzt verärgert 'Du denken "..thisNPC.name.." Maden im Kopf haben? Ich dir nicht sagen Wort! Mir nur hören auf Brüder und Schwester, die wissen Wort!'"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ilfe",""..thisNPC.name.." dir nur kann Ã¶ffnen Tor! Muss bewachen Tor! Frag anderen Bruder oder Schwester fÃ¼r andere Sachen!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+[Mm]ach.*t",""..thisNPC.name.." Ã¶ffnen und schlieÃŸen Orktor! Du wollen rein oder raus? Dann du mir sagen Losungswort!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ll]osung.*[Ww]ort","#me grunzt verÃ¤rgert 'Du denken "..thisNPC.name.." Maden im Kopf haben? Ich dir nicht sagen Wort! Mir nur hÃ¶ren auf BrÃ¼der und Schwester, die wissen Wort!'"); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Hh]eilig.*[Bb]erg","Dies hier sein Heiliger Berg, yubba! Heiliger Berg von Vater!"); 
 
 
@@ -77,9 +77,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("sell","Meh nub sell anyting! Meh looks like merchant? Hurrr, nub!"); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]hat.+buy","Tanks, meh hab all meh need."); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]hat.+sell","Meh nub sell anyting! Meh do look like merchant? Hurrr, nub!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]erkaufen","Mir verkaufen nichts. "..thisNPC.name.." aussehen wie Händler?"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]erkaufen","Mir verkaufen nichts. "..thisNPC.name.." aussehen wie HÃ¤ndler?"); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Kk]aufen","Danks, mir haben alles was Ork brauchen!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+verkaufst","Mir verkaufen nichts. "..thisNPC.name.." aussehen wie Händler?"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+verkaufst","Mir verkaufen nichts. "..thisNPC.name.." aussehen wie HÃ¤ndler?"); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+kaufst","Danks, mir haben alles was Ork brauchen!"); 
 
 
@@ -128,38 +128,38 @@ function initializeNpc()
 --SONSTIGE TRIGGER 
     npc.base.autonpcfunctions.AddTraderTrigger("[Cc]lan", "Yubba, dis beh caves ob strong orc clan! Tell meh clan name and meh whub open gate fer yoo!"); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Dd]eser.*t", "#me snorts 'Da desert ob Kumdah beh in south ob orc lands! Oomies and scorpies beh all yoo whub find dere. Some rich mines beh dere after all.'"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww][üue]ste", "#me schaubt 'Wüste Kumdah in Süden sein von Orkland! Menschen und Skorpione sein alles du finden da! Die Berge immerhin haben reiche Schätze.'"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww][Ã¼ue]ste", "#me schaubt 'WÃ¼ste Kumdah in SÃ¼den sein von Orkland! Menschen und Skorpione sein alles du finden da! Die Berge immerhin haben reiche SchÃ¤tze.'"); 
     npc.base.autonpcfunctions.AddTraderTrigger("Or.*c.*", "#me hits his chest with his right fist and grunts 'Hurrr, Orc Nation beh strrongest! Praise father and holy mountain!'"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("Or.*k.*", "#me schlägt mit seiner rechten Faust auf seine Brust 'Hurrr, Ork Nation die stärksten sein! Ehre für unseren Vater und heiligen Berg!'");  
+    npc.base.autonpcfunctions.AddTraderTrigger("Or.*k.*", "#me schlÃ¤gt mit seiner rechten Faust auf seine Brust 'Hurrr, Ork Nation die stÃ¤rksten sein! Ehre fÃ¼r unseren Vater und heiligen Berg!'");  
     npc.base.autonpcfunctions.AddTraderTrigger("Tor", "Du wollen dass mir machen Tor auf? Dann sagen Namen von Orkclan!"); 
     npc.base.autonpcfunctions.AddTraderTrigger("Gate", "Yoo wunt meh open da gate? Den tell meh da name ob orc clan!"); 
     npc.base.autonpcfunctions.AddTraderTrigger("Moshran", "#me growls angrily and shouts at you 'Nub tell father's name! Dis whub brring shame on us! Call him father, hurrr... and now leave meh alone!'"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("Moshran", "#grunzt erzürnt auf und schreit dich an 'Nicht nennen Vater bei Namen! Bringt Schande über uns! Vater du ihn nennen, hurrr... und jetzt in Ruhe lassen du mich!'"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("Moshran", "#grunzt erzÃ¼rnt auf und schreit dich an 'Nicht nennen Vater bei Namen! Bringt Schande Ã¼ber uns! Vater du ihn nennen, hurrr... und jetzt in Ruhe lassen du mich!'"); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
     
     
     
---TRIGGER FÜR LOCATIONS DEUTSCH 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]obiath","Insel genannt wird Gobaith. Gute Gegend für Orks! Gute Jagdgründe hier sind in Nähe von heiligem Berg!"); 
+--TRIGGER FÃœR LOCATIONS DEUTSCH 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]obiath","Insel genannt wird Gobaith. Gute Gegend fÃ¼r Orks! Gute JagdgrÃ¼nde hier sind in NÃ¤he von heiligem Berg!"); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]obaith","Ja, diese Insel genannt wird Gobaith. Gute Gegend für Orks! Gute Jagdgründe hier sind in Nähe von heiligem Berg!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]obaith","Ja, diese Insel genannt wird Gobaith. Gute Gegend fÃ¼r Orks! Gute JagdgrÃ¼nde hier sind in NÃ¤he von heiligem Berg!"); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar kleine Siedlung ist, bewohnt von klein und lecker Halblings. Immer gut da hin gehen für Leckerbissen. *er lacht grunzend auf*"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar kleine Siedlung ist, bewohnt von klein und lecker Halblings. Immer gut da hin gehen fÃ¼r Leckerbissen. *er lacht grunzend auf*"); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]afen","Hafen sein im Süden von Menschenstadt Troll's Bane. Auch stinkende Elfeninsel haben Hafen. Aber Wasser nix für Orkse ist, hurr!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ellbriar","Hellbriarkult war von Anhängern von unser 'Vater'! Aber alle Orks haben verlassen Kult! Nicht gut er mehr ist. Nur Unheil bringen über orks, wenn du mich fragen."); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]afen","Hafen sein im SÃ¼den von Menschenstadt Troll's Bane. Auch stinkende Elfeninsel haben Hafen. Aber Wasser nix fÃ¼r Orkse ist, hurr!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ellbriar","Hellbriarkult war von AnhÃ¤ngern von unser 'Vater'! Aber alle Orks haben verlassen Kult! Nicht gut er mehr ist. Nur Unheil bringen Ã¼ber orks, wenn du mich fragen."); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agierakademie","Du besser nicht gehen besuchen Magier! Sie keine Ehre haben und keinen Spaß verstehen. Sie dich gleich verbrennen oder verwandeln in Kröte mit bloßem Blick!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Nn]ordmark","Die Nordmarkmänner gute Menschen sein! Wie Orks sie nicht mögen Magie! Auch Nordmarkfrauen mit Waffen umgeh'n könn'! Trotzdem sie stinkende Menschen bleiben!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ss]ilberbrand","Zwergenstadt groß und heiß sein. Schmelzofen laufen ganzen Tag und Hammerschläge erfüllen Hallen immer mit Lärm. Wenn nicht Zerge wären da, schöner Ort es wäre."); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Mm]agierakademie","Du besser nicht gehen besuchen Magier! Sie keine Ehre haben und keinen SpaÃŸ verstehen. Sie dich gleich verbrennen oder verwandeln in KrÃ¶te mit bloÃŸem Blick!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Nn]ordmark","Die NordmarkmÃ¤nner gute Menschen sein! Wie Orks sie nicht mÃ¶gen Magie! Auch Nordmarkfrauen mit Waffen umgeh'n kÃ¶nn'! Trotzdem sie stinkende Menschen bleiben!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ss]ilberbrand","Zwergenstadt groÃŸ und heiÃŸ sein. Schmelzofen laufen ganzen Tag und HammerschlÃ¤ge erfÃ¼llen Hallen immer mit LÃ¤rm. Wenn nicht Zerge wÃ¤ren da, schÃ¶ner Ort es wÃ¤re."); 
     npc.base.autonpcfunctions.AddTraderTrigger("[Vv]anima","Hurr! Fern bleiben du von dieser stinkenden Elfeninsel! Nur Unheil auf Orks dort warten!"); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]roll['s].*[Bb]ane","Menschenstadt in Mitte der Insel du fragen nach? Groß und hässlich sie sein! Orkse nicht gern gesehen dort! Nim Waffen mit, wenn du in Stadt müssen!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Tt]roll['s].*[Bb]ane","Menschenstadt in Mitte der Insel du fragen nach? GroÃŸ und hÃ¤sslich sie sein! Orkse nicht gern gesehen dort! Nim Waffen mit, wenn du in Stadt mÃ¼ssen!"); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","Wüstenstadt nicht fern von hier. Meisten Wesen dort dumm und stinkig - aber Clanführer, Grrrypus, Ehre haben! Sei gut zu Wüstenvolk, dann sie gut zu Orks sind!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","WÃ¼stenstadt nicht fern von hier. Meisten Wesen dort dumm und stinkig - aber ClanfÃ¼hrer, Grrrypus, Ehre haben! Sei gut zu WÃ¼stenvolk, dann sie gut zu Orks sind!"); 
     npc.base.autonpcfunctions.AddCondition("lang","german"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]üstenstadt","Wüstenstadt nicht fern von hier. Meisten Wesen dort dumm und stinkig - aber Clanführer, Grrrypus, Ehre haben! Sei gut zu Wüstenvolk, dann sie gut zu Orks sind!"); 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]uestenstadt","Wüstenstadt nicht fern von hier. Meisten Wesen dort dumm und stinkig - aber Clanführer, Grrrypus, Ehre haben! Sei gut zu Wüstenvolk, dann sie gut zu Orks sind!");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]Ã¼stenstadt","WÃ¼stenstadt nicht fern von hier. Meisten Wesen dort dumm und stinkig - aber ClanfÃ¼hrer, Grrrypus, Ehre haben! Sei gut zu WÃ¼stenvolk, dann sie gut zu Orks sind!"); 
+    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]uestenstadt","WÃ¼stenstadt nicht fern von hier. Meisten Wesen dort dumm und stinkig - aber ClanfÃ¼hrer, Grrrypus, Ehre haben! Sei gut zu WÃ¼stenvolk, dann sie gut zu Orks sind!");
 
 
 
@@ -182,7 +182,7 @@ end
 
 function receiveText(texttype, message, originator)
  
-    if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nächster Nähe angesprochen
+    if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nÃ¤chster NÃ¤he angesprochen
 		  if (originator.activeLanguage==5) then --If the Character speaks orcisch then...
 			if (mainTask(message,originator)~=true) then
 			    npc.base.autonpcfunctions.TellSmallTalk(message,originator);
@@ -230,7 +230,7 @@ function standardAnswer(message,answertype)
 		     if (string.find(message,"[Bb]r.*ud.*a.+[Oo]pen.+[Gg]ate.*")~=nil or string.find(message,"[Bb]r.*[ou]th.*[ae].+[Oo]pen.+[Gg]ate.*")~=nil
 			 or string.find(message,"[Oo]pen.+[Gg]ate.+[Bb]r.*ud.*a.*")~=nil or string.find(message,"[Oo]pen.+[Gg]ate.+[Bb]r.*[ou]th.*[ae].*")~= nil
 			 or string.find(message,"[Bb]r.*ud.*[ae].+[Tt]or.*[Aa]uf.*")~=nil or string.find(message,"[Tt]or.+[Aa]uf.+[Bb]r.*ud.*[ae].*")~=nil
-			 or string.find(message,"[Bb]r.*ud.*[ae].+[öoe]ffne.+[Tt]or.*")~=nil or string.find(message,"[Ööe]ffne.+[Tt]or.+[Bb]r.*ud.*[ae].*")~=nil) then
+			 or string.find(message,"[Bb]r.*ud.*[ae].+[Ã¶oe]ffne.+[Tt]or.*")~=nil or string.find(message,"[Ã–Ã¶e]ffne.+[Tt]or.+[Bb]r.*ud.*[ae].*")~=nil) then
 			 	return true;
 		 	 else
 		     	return false;
@@ -240,7 +240,7 @@ function standardAnswer(message,answertype)
 			 if (string.find(message,"[Bb]r.*ud.*a.+[Cc]lose.+[Gg]ate.*")~=nil or string.find(message,"[Bb]r.*[ou]th.*[ae].+[Cc]lose.+[Gg]ate.*")~=nil
 			 or string.find(message,"[Cc]lose.+[Gg]ate.+[Bb]r.*ud.*a.*")~=nil or string.find(message,"[Cc]lose.+[Gg]ate.+[Bb]r.*[ou]th.*[ae].*")~=nil
 			 or string.find(message,"[Bb]r.*ud.*[ae].+[Tt]or.*[Zz]u.*")~=nil or string.find(message,"[Tt]or.+[Zz]u.+[Bb]r.*ud.*[ae].*")~= nil
-			 or string.find(message,"[Bb]r.*ud.*[ae].+schlie[ßs].+[Tt]or.*")~=nil or string.find(message,"[Ss]chlie[ßs].+[Tt]or.+[Bb]r.*ud.*[ae].*")~=nil) then
+			 or string.find(message,"[Bb]r.*ud.*[ae].+schlie[ÃŸs].+[Tt]or.*")~=nil or string.find(message,"[Ss]chlie[ÃŸs].+[Tt]or.+[Bb]r.*ud.*[ae].*")~=nil) then
 		
 		   		return true;
 			 else
@@ -277,7 +277,7 @@ function mainTask(message, originator)
 			OpenDoor( doora );  --Tor aufmachen
 			OpenDoor( doorb );
 
-			gText="#me öffnet schwerfällig das Tor wodurch die Höhle mit einem markerschütternden Knarren erfüllt wird.";
+			gText="#me Ã¶ffnet schwerfÃ¤llig das Tor wodurch die HÃ¶hle mit einem markerschÃ¼tternden Knarren erfÃ¼llt wird.";
 			eText="#me opens the gate. The whole cave is fillied with a loud noise.";
 			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
@@ -293,19 +293,19 @@ function mainTask(message, originator)
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		else	
 			if ( world:isCharacterOnField(doorapos) or world:isCharacterOnField(doorbpos)) then -- Is a char. on the position of the doors?
-				gText="Ich nix können Tor zumachen wenn da jemand rumstehen!";
+				gText="Ich nix kÃ¶nnen Tor zumachen wenn da jemand rumstehen!";
                 eText="Me nub can close dat gate when someone standing there!";
                 outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);	
 			else
-				CloseDoor( doora ); --Tore schließen
+				CloseDoor( doora ); --Tore schlieÃŸen
 				CloseDoor( doorb );
 
 				doora=world:getItemOnField(doorapos);
 				doorb=world:getItemOnField(doorbpos);
 				base.keys.LockDoor( doora ); --Tore verriegeln
 				base.keys.LockDoor( doorb );
-				gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab."; --HIER DIE TEXTE REINSCHREIBEN DIE BEIM ZUMACHEN KOMMEN SOLLEN
+				gText="#me lÃ¤sst die FlÃ¼gel des Tores krachend zufallen und sperrt ab."; --HIER DIE TEXTE REINSCHREIBEN DIE BEIM ZUMACHEN KOMMEN SOLLEN
 				eText="#me shuts the gate crashing then locks it.";
 				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);

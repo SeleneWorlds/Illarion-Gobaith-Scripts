@@ -16,7 +16,7 @@ end
 -----------------------------------------------
 ---- Character is affected by the effect --
 -------------------------------------------------
-function M.callEffect(magicEffect, Character)    -- Effekt wird ausgeführt
+function M.callEffect(magicEffect, Character)    -- Effekt wird ausgefÃ¼hrt
 return true;
 end
 

@@ -35,14 +35,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("hello","Hey ho! I'm "..thisNPC.name..". The 'Goldhands' are the best goldsmiths, because runs in our family...hehe. You can count yourself lucky to meet the best one...me! But if you want, I can show you some things of my craft.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hey ho! Ich bin "..thisNPC.name..". Wußtest du, dass aus der Familie Goldhand seit Generationen die besten Goldschmiede stammen? Aber der Allerbeste von ihnen bin ich! Wenn du willst zeige ich dir ein wenig über mein Handwerk.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hey ho! Ich bin "..thisNPC.name..". WuÃŸtest du, dass aus der Familie Goldhand seit Generationen die besten Goldschmiede stammen? Aber der Allerbeste von ihnen bin ich! Wenn du willst zeige ich dir ein wenig Ã¼ber mein Handwerk.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddAdditionalTrigger("greet");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üu][sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼u][sÃŸ]");
     npc.base.autonpcfunctions.AddTraderTrigger("who you","I'm "..thisNPC.name..". The 'Goldhands' are the best goldsmiths arround, it runs in our family...hehe. And you can count yourself lucky to meet the best one...me! But if you want, I can show you some things of my craft.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("what you");
-    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Ich bin "..thisNPC.name..". Wußtest du, dass aus der Familie Goldhand seit Generationen die besten Goldschmiede stammen? Und ich bin der Allerbeste von ihnen! Wenn du willst zeige ich dir ein wenig über mein Handwerk.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wer du","Ich bin "..thisNPC.name..". WuÃŸtest du, dass aus der Familie Goldhand seit Generationen die besten Goldschmiede stammen? Und ich bin der Allerbeste von ihnen! Wenn du willst zeige ich dir ein wenig Ã¼ber mein Handwerk.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("was ihr");
@@ -53,13 +53,13 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("be well");
     npc.base.autonpcfunctions.AddAdditionalText("Farewell");
     npc.base.autonpcfunctions.AddAdditionalText("Farewell, until we meet again.");
-    npc.base.autonpcfunctions.AddTraderTrigger("tsch[üu][ßs]","Mach's gut, bis zum nächstn Mal.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("tsch[Ã¼u][ÃŸs]","Mach's gut, bis zum nÃ¤chstn Mal.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tschue[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb wohl");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wiederseh");
     npc.base.autonpcfunctions.AddAdditionalTrigger("auf bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
-    npc.base.autonpcfunctions.AddAdditionalText("Tschüss auch.");
+    npc.base.autonpcfunctions.AddAdditionalText("TschÃ¼ss auch.");
     npc.base.autonpcfunctions.AddAdditionalText("Wiedersehn!");
     npc.base.autonpcfunctions.AddTraderTrigger("hilf","Aye! Ick kann dir die Grundlagen des Goldschmiedens beibringen...wat sagste?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -82,7 +82,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("schmied","Arr...in Ordnung. Hör mich genau zu, ich kann dir alles über das goldschmieden beibringen, was du wissen must. Bist du bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger("schmied","Arr...in Ordnung. HÃ¶r mich genau zu, ich kann dir alles Ã¼ber das goldschmieden beibringen, was du wissen must. Bist du bereit?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("handwerk");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lehr");
@@ -93,14 +93,14 @@ function initializeNpc()
 
     -- Starthilfe
     --
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weißt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Sag \"Hilfe\" wenn du nicht weiter weiÃŸt.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Say \"help\" if you don't know, what to do.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
 
-    -- Status: 1 -> 10 (Schmelzzange, Eisen und Kohle geben. Schmelzen erklären.)
+    -- Status: 1 -> 10 (Schmelzzange, Eisen und Kohle geben. Schmelzen erklÃ¤ren.)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Firstly I show you, how to smelt ore. Here you have a crucible-pincer and a hand full of coal and iron ore. Put the crucible-pincer in your hands and the coal and the ore 'in' your belt. Stay in front of the furnace and 'use' the furnace. Come back, wenn you have at least 10 iron ingots. If you already know how to smelt ore just say \"continue\".");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
@@ -108,7 +108,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddConsequence("item",2751,1,999,0);
     npc.base.autonpcfunctions.AddConsequence("item",21,10,333,0);
     npc.base.autonpcfunctions.AddConsequence("item",22,10,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Als erstes zeig ich dir, wie man Erze einschmilzt. Hier hast du eine Tiegelzange und eine handvoll Kohle und Eisenerz. Nimm die Tiegelzange in die Hand und die Kohle und das Eisenerz 'in' den Gürtel. Dann stell dich vor die Esse dort und 'benutze' die Esse. Komm wieder, wenn du 10 Eisenbarren geschmolzen hast. Wenn du schon weißt, wie man Eisenbarren einschmilzt sag \"Weiter\".");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Als erstes zeig ich dir, wie man Erze einschmilzt. Hier hast du eine Tiegelzange und eine handvoll Kohle und Eisenerz. Nimm die Tiegelzange in die Hand und die Kohle und das Eisenerz 'in' den GÃ¼rtel. Dann stell dich vor die Esse dort und 'benutze' die Esse. Komm wieder, wenn du 10 Eisenbarren geschmolzen hast. Wenn du schon weiÃŸt, wie man Eisenbarren einschmilzt sag \"Weiter\".");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("item",2751,1,999,0);
@@ -117,7 +117,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("no","Arr...Allright. Come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Arr...In Ordnung. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Arr...In Ordnung. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
 
@@ -135,7 +135,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("continue","Arr...you know how to smelt ironore? Well, I can give you the iron ingots you need if you want. Agreed?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
-    npc.base.autonpcfunctions.AddTraderTrigger("weiter","Arr...du weiß also schon, wie man Eisenbarren herstellt? Auch gut, ich geb dir einfach die Eisenbarren, die du für das Goldschmieden brauchst. Einverstanden?");
+    npc.base.autonpcfunctions.AddTraderTrigger("weiter","Arr...du weiÃŸ also schon, wie man Eisenbarren herstellt? Auch gut, ich geb dir einfach die Eisenbarren, die du fÃ¼r das Goldschmieden brauchst. Einverstanden?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
 
@@ -144,7 +144,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("help","Arr...does the furnace don't want like you want? Check, if you have the crucible-pincer really in your hands and the coal and the ore 'in' your belt. Stay directly in front of the furnace and 'use' the furnace to start smelting. If it still don't work, I can give you some iron ingots, so that we can continue. Did you want?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Arr...will die Esse nicht so wie du, mein Freund? Überprüf nochmal, ob du wirklich die Tiegelzange in der Hand und Kohle sowie Eisenerz 'im' Gürtel hast. Dann einfach einmal die Esse 'benutzen' und schon sollte das Einschmelzen wie von selbst gehen. Wenns gar net klappen will, kann ich dir aber auch einfach ein paar Eisenbarren geben. Willste welche haben?");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Arr...will die Esse nicht so wie du, mein Freund? ÃœberprÃ¼f nochmal, ob du wirklich die Tiegelzange in der Hand und Kohle sowie Eisenerz 'im' GÃ¼rtel hast. Dann einfach einmal die Esse 'benutzen' und schon sollte das Einschmelzen wie von selbst gehen. Wenns gar net klappen will, kann ich dir aber auch einfach ein paar Eisenbarren geben. Willste welche haben?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddConsequence("state","=",11);
 
@@ -221,7 +221,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",2535,"all",">",9);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Du hast's geschafft! Ein Hinweis noch: Es ist auch möglich Kupfer-, Gold- oder Meriniumbarren zu schmelzen. Aber zu Beginn wirst du meistens Eisenbarren brauchen. Als nächstes wird der Eisenbarren geschmiedet, bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Du hast's geschafft! Ein Hinweis noch: Es ist auch mÃ¶glich Kupfer-, Gold- oder Meriniumbarren zu schmelzen. Aber zu Beginn wirst du meistens Eisenbarren brauchen. Als nÃ¤chstes wird der Eisenbarren geschmiedet, bereit?");
     npc.base.autonpcfunctions.AddCondition("state","=",10);
     npc.base.autonpcfunctions.AddCondition("item",2535,"all",">",9);
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -233,20 +233,20 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",20);
     npc.base.autonpcfunctions.AddConsequence("item",122,1,999,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Jetzt solltest du erstmal zum Amboß gehn. Stell dich davor und 'benutzte' diesen Feinschmiedehammer. Es öffnet sich dann ein Menü, wo du auswähln kannst, in welcher Kategorie du etwas schmieden willst. Die Kelche werden durch den Eisenkelch representiert. Wähle diese Kategorie und dann anschließend den Kelch aus. Komm wieder wenn du einen Kelch geschmiedet hast!");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Jetzt solltest du erstmal zum AmboÃŸ gehn. Stell dich davor und 'benutzte' diesen Feinschmiedehammer. Es Ã¶ffnet sich dann ein MenÃ¼, wo du auswÃ¤hln kannst, in welcher Kategorie du etwas schmieden willst. Die Kelche werden durch den Eisenkelch representiert. WÃ¤hle diese Kategorie und dann anschlieÃŸend den Kelch aus. Komm wieder wenn du einen Kelch geschmiedet hast!");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",20);
     npc.base.autonpcfunctions.AddConsequence("item",122,1,999,0);
     npc.base.autonpcfunctions.AddTraderTrigger("no","Arr...Allright. Come back whenever you want.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Arr...In Ordnung. Komm zurück wann immer du willst.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Arr...In Ordnung. Komm zurÃ¼ck wann immer du willst.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
 
     -- Status: 20 (Hilfe)
     --
     npc.base.autonpcfunctions.AddTraderTrigger("help","Arr...does the hammer don't want like you want? Check, if you have the finesmithing hammer really in your hands and the iron ingots 'in' your belt. Stay directly in front of the anvil and 'use' the hammer. Choose first the iron goblet and then the goblet to start smithing. If you need more iron ingots, just tell me.");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Arr...will der Hammer nicht so wie du, mein Freund? Überprüfe noch einmal, ob du den Hammer auch wirklich in der Hand und die Eisenbarren 'im' Gürtel hast. Stell dich direkt vor den Amboss und 'benutzen' den Hammer. Wähle in dem Menü zuerst den Eisenkelch und dann den Kelch aus. Wenn du noch mehr Eisenbarren brauchst, sag mir einfach Bescheid. Ich hab noch genug.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Arr...will der Hammer nicht so wie du, mein Freund? ÃœberprÃ¼fe noch einmal, ob du den Hammer auch wirklich in der Hand und die Eisenbarren 'im' GÃ¼rtel hast. Stell dich direkt vor den Amboss und 'benutzen' den Hammer. WÃ¤hle in dem MenÃ¼ zuerst den Eisenkelch und dann den Kelch aus. Wenn du noch mehr Eisenbarren brauchst, sag mir einfach Bescheid. Ich hab noch genug.");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
 
     -- Status: 20 (Mehr Eisenbarren)
@@ -271,25 +271,25 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",122,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",122,1,999,0);
 
-    -- Status: 20 (Zu wenig Nägel da)
+    -- Status: 20 (Zu wenig NÃ¤gel da)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Come again when ye have smithed at least 10 nails. If you need help or more ingots, ask me!");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",1858,"all","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Komm wieder, wenn du mindestens 10 Nägel geschmiedet hast. Wenn du Hilfe oder mehr Eisenbarren brauchst, dann frag mich!");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Komm wieder, wenn du mindestens 10 NÃ¤gel geschmiedet hast. Wenn du Hilfe oder mehr Eisenbarren brauchst, dann frag mich!");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("item",1858,"all","=",0);
 
-    -- Status: 52 (Nägel sind fertig)
+    -- Status: 52 (NÃ¤gel sind fertig)
     --
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Great! Ye' did it! One more hint: It may happen on other things that there are 'unfinished things' left, continue the work by 'using' the hammer with that 'things', having it placed at the belt of course. Now you know all about goldsmithing you must know. Farewell and good luck!");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",1858,"all",">",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig! Du hast es geschafft! Ein Hinweis noch: Es kann passiern, dass 'unfertige Sachen' übrigbleiben, du kannst die Arbeit an ihnen fortsetzen, indem du den Hammer mit diesem Gegenstand, den du natürlich am Gürtel trägst, 'benutzt'. Du weiß nun alles, was man über das Goldschmieden wissen muss. Leb wohl und viel Erfolg!");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig! Du hast es geschafft! Ein Hinweis noch: Es kann passiern, dass 'unfertige Sachen' Ã¼brigbleiben, du kannst die Arbeit an ihnen fortsetzen, indem du den Hammer mit diesem Gegenstand, den du natÃ¼rlich am GÃ¼rtel trÃ¤gst, 'benutzt'. Du weiÃŸ nun alles, was man Ã¼ber das Goldschmieden wissen muss. Leb wohl und viel Erfolg!");
     npc.base.autonpcfunctions.AddCondition("state","=",20);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",1858,"all",">",0);

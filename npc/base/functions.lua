@@ -186,7 +186,7 @@ function SpeakerCycle()
     end
 end
 
--- Fügt einer Zahl das Englische Anhängsel an
+-- FÃ¼gt einer Zahl das Englische AnhÃ¤ngsel an
 function EnglDigit(Zahl)
     local retVal="th";
     local calcZahl=Zahl;
@@ -201,13 +201,13 @@ end
 
 -- Ausgabe des Aktuellen Datums
 -- Return 1: Status Value (Int)
--- Return 2: Zusätzliche Variablen (List)
+-- Return 2: ZusÃ¤tzliche Variablen (List)
 
 -- Status:
 --  0 - keine Aktion
 --  18 - Datum ausgeben
 
--- Zusätzliche Variablen
+-- ZusÃ¤tzliche Variablen
 --  Bei Status 18:
 --   Liste {Tag (Int),Monatsnamen (Str), Jahr (Int)}
 --  Bei Status 0:
@@ -228,7 +228,7 @@ function TellDate(originator,message,monthnames)
     return retStatus,retValues
 end
 
--- Funktion zur Rückgabe eines eingegebenen Wertes anhand des Genus des Items
+-- Funktion zur RÃ¼ckgabe eines eingegebenen Wertes anhand des Genus des Items
 -- Return 1: Wort (Str)
 function GenusSel(ItemID,mWord,fWord,nWord)
     Gen=GenusData(ItemID)

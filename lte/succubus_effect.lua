@@ -6,14 +6,14 @@ function M.createAmulett( Target )
     if ( oldItem.id ~= 0 ) then
         world:createItemFromItem(oldItem, Target.pos, true);
         world:erase(oldItem,255);
-        base.common.InformNLS(Target,"dein altes Amulett f‰llt zu boden","You drop your old Amulett!");
+        base.common.InformNLS(Target,"dein altes Amulett f√§llt zu boden","You drop your old Amulett!");
     end
     Target:createAtPos(2,222,1)
     newItem = Target:getItemAt(2);
     newItem.quality = 999;
     newItem.data = 666;
     world:changeItem( newItem );
-    base.common.InformNLS(Target,"Die macht des D‰mons h‰lt deinen Hals fest im Griff","The power of the Demon holds your neck in a strong grasp");
+    base.common.InformNLS(Target,"Die macht des D√§mons h√§lt deinen Hals fest im Griff","The power of the Demon holds your neck in a strong grasp");
 end
 
 function M.addEffect( theEffect, Target )
@@ -60,7 +60,7 @@ function M.removeEffect( theEffect, Target)
     if (fnd) then
         Target:setAttrib("intelligence", val );
     end 
-    base.common.InformNLS( Target,"Du f¸hlst dich wieder genauso stark wie vor dem Kuss des D‰mons", "You feel as Strong as before the kiss of the Demon");
+    base.common.InformNLS( Target,"Du f√ºhlst dich wieder genauso stark wie vor dem Kuss des D√§mons", "You feel as Strong as before the kiss of the Demon");
 end
 
 function M.loadEffect( theEffect, Target)
@@ -76,7 +76,7 @@ function M.loadEffect( theEffect, Target)
     if (fnd) then
         Target:setAttrib("intelligence", val );
     end 
-    base.common.InformNLS( Target, "Du f¸hlst dich schw‰cher als normal", "You feel weaker than normal");
+    base.common.InformNLS( Target, "Du f√ºhlst dich schw√§cher als normal", "You feel weaker than normal");
 end
 
 

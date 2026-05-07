@@ -1,8 +1,8 @@
 local M = {}
 
--- Langzeit Effekt für Lasttier
+-- Langzeit Effekt fÃ¼r Lasttier
 
--- Aufgabe: Speichern und Übergeben des Lasttierbesitzers
+-- Aufgabe: Speichern und Ãœbergeben des Lasttierbesitzers
 
 function M.addEffect(Effect, Carrier)
     return true;

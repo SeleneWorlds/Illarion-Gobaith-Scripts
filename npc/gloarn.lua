@@ -16,19 +16,19 @@ end
 function initializeNpc()
     npc.base.functions.InitTalkLists()
     
-    npc.base.functions.AddTraderTrigger("[Gg]rüße","Hallo du.."); -- Fügt Triggertext mit Antwort hinzu
-    npc.base.functions.AddAdditionalTrigger("[Hh]allo");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
+    npc.base.functions.AddTraderTrigger("[Gg]rÃ¼ÃŸe","Hallo du.."); -- FÃ¼gt Triggertext mit Antwort hinzu
+    npc.base.functions.AddAdditionalTrigger("[Hh]allo");          -- FÃ¼gt zu letztem "npc.base.functions.AddTraderTrigger" zusÃ¤tzlichen Triggertext hinzu
     npc.base.functions.AddAdditionalTrigger("[Gg]ruesse");
-    npc.base.functions.AddAdditionalText("Huhu duhu");    -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzliche Antwort hinzu
-    npc.base.functions.AddTraderTrigger("[Gg]reetings","Hiya.."); -- Fügt Triggertext mit Antwort hinzu
-    npc.base.functions.AddAdditionalTrigger("[Hh]ello");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
+    npc.base.functions.AddAdditionalText("Huhu duhu");    -- FÃ¼gt zu letztem "npc.base.functions.AddTraderTrigger" zusÃ¤tzliche Antwort hinzu
+    npc.base.functions.AddTraderTrigger("[Gg]reetings","Hiya.."); -- FÃ¼gt Triggertext mit Antwort hinzu
+    npc.base.functions.AddAdditionalTrigger("[Hh]ello");          -- FÃ¼gt zu letztem "npc.base.functions.AddTraderTrigger" zusÃ¤tzlichen Triggertext hinzu
     npc.base.functions.AddAdditionalText("Hiho");
     npc.base.functions.AddTraderTrigger("[Ww]ho","Mom says "..thisNPC.name..", everyone else says dumbhead.");
     npc.base.functions.AddTraderTrigger("[Ww]er","Mama sagt "..thisNPC.name..", alle anderen nennen mich Dummkopf.");
     npc.base.functions.AddTraderTrigger("[Mm]om","Mom said, Daddy is a pig, the next day, he didn't return home. Now mom is gone too. I think they both turned into pigs, so I watch over them here.");
-    npc.base.functions.AddTraderTrigger("[Mm]ama","Mama hat gesagt, Papa ist ein Schwein. Am nächsten Tag kam er nicht mehr Heim. Jetzt ist auch Mama weg. Ich glaub sie sind jetzt beide Schweine, also passe ich hier auf sie auf.");
+    npc.base.functions.AddTraderTrigger("[Mm]ama","Mama hat gesagt, Papa ist ein Schwein. Am nÃ¤chsten Tag kam er nicht mehr Heim. Jetzt ist auch Mama weg. Ich glaub sie sind jetzt beide Schweine, also passe ich hier auf sie auf.");
     npc.base.functions.AddTraderTrigger("[Nn]o.+pig","Liar.");
-    npc.base.functions.AddTraderTrigger("[Kk]ein.+[Ss]chwein.*","Lügner.");
+    npc.base.functions.AddTraderTrigger("[Kk]ein.+[Ss]chwein.*","LÃ¼gner.");
     npc.base.functions.AddTraderTrigger("[Pp]ig","These Pigs are my friends.");
     npc.base.functions.AddAdditionalText("They all have names. This one is Blinky, there is Pinky, this is Inky, and see, here's Clyde."); -- Ich mag kleine dumme Anspielungen, bin neugierig ob wer draufkommt
     npc.base.functions.AddTraderTrigger("[Ss]chwein","Die Schweine sind meine Freunde.");
@@ -43,16 +43,16 @@ function initializeNpc()
     npc.base.functions.AddAdditionalText("Die Schweinchen sagen, ich soll Wiedersehn sagen.");
     
     
-    npc.base.functions.AddCycleText("#me pfeift vor sich hin","#me whistles"); -- Fügt Text der alle paar Min gesagt wird hinzu
+    npc.base.functions.AddCycleText("#me pfeift vor sich hin","#me whistles"); -- FÃ¼gt Text der alle paar Min gesagt wird hinzu
     npc.base.functions.AddCycleText("#me bohrt in der Nase","#me picks his nose");
-    npc.base.functions.AddCycleText("#me flüstert mit einem Schwein","#me whispers with a pig");
+    npc.base.functions.AddCycleText("#me flÃ¼stert mit einem Schwein","#me whispers with a pig");
     npc.base.functions.AddCycleText("#me riecht an seinem Finger","#me smells his finger");
-    npc.base.functions.AddCycleText("#me rülpst","#me burps");
+    npc.base.functions.AddCycleText("#me rÃ¼lpst","#me burps");
     npc.base.functions.AddCycleText("#me furzt","#me farts");
     npc.base.functions.AddCycleText("#me kichert","#me giggles");
     npc.base.functions.AddCycleText("#me starrt eine Wolke an","#me stares at a cloud");
     npc.base.functions.AddCycleText("Oink, Oink, meine Freunde","Oink, Oink, my friends");
-    npc.base.functions.AddCycleText("#me gähnt","#me yawns");
+    npc.base.functions.AddCycleText("#me gÃ¤hnt","#me yawns");
     npc.base.functions.AddCycleText("#me steckt fasziniert einen Finger durch ein Loch in seiner Hose","#me finds a hole in his trousers and puts a finger through it");
     npc.base.functions.AddCycleText("#me macht Spuckeblasen","#me makes spitbubbles");
     
@@ -88,7 +88,7 @@ function receiveText(texttype, message, originator)
             npc.base.functions.TellSmallTalk(message);
         else
             if (verwirrt==false) then
-                gText="#me grinst dich blöde an";
+                gText="#me grinst dich blÃ¶de an";
                 eText="#me grins stupidly at you";
                 outText=npc.base.functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);

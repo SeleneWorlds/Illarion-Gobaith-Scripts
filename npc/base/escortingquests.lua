@@ -8,7 +8,7 @@ function initEscorting()
 	percentSpawn = {}; --holds at which percent(table key) which spawnID shall be spawned
 	player 		 = {}; --the player who escorts the npc
 	lastdir      = {}; --the last direction the npc said
-	dirTextger	 = {"Nordosten", "Osten", "Südosten", "Süden", "Südwesten", "Westen", "Nordwesten"}; --holds text dependant from direction(german)
+	dirTextger	 = {"Nordosten", "Osten", "SÃ¼dosten", "SÃ¼den", "SÃ¼dwesten", "Westen", "Nordwesten"}; --holds text dependant from direction(german)
 	dirTexteng	 = {"northeast", "east" , "southeast","south", "southwest", "west"  , "northwest" }; --holds text dependant from direction(english)
 	table.insert (dirTextger , 0, "Norden");
 	table.insert (dirTexteng , 0, "North");
@@ -137,7 +137,7 @@ function BE_nextCycle(thisNPC)
 		local dirger,direng,dir = GetDirToNextWP(thisNPC);
 	  	--base.common.TalkNLS(thisNPC, CCharacter.say, "bla2"..lastdir[thisNPC.id].." dir:"..dir, "bla2"..lastdir[thisNPC.id].." dir:"..dir);
 	  	if lastdir[thisNPC.id]~=dir and dir~=false and dir~= nil then
-	  		base.common.TalkNLS(thisNPC, CCharacter.say, "Nun müssen wir Richtung "..dirger, "Now we need to go "..direng);
+	  		base.common.TalkNLS(thisNPC, CCharacter.say, "Nun mÃ¼ssen wir Richtung "..dirger, "Now we need to go "..direng);
 	  		lastdir[thisNPC.id]=dir;
 		end
 		if dirger == false then base.common.TalkNLS(thisNPC, CCharacter.say, "ERROR, Richtung nicht gefunden", "ERROR, no direction found."); end
@@ -169,6 +169,6 @@ function useNPC(user,counter,param)
     if ( myOrderNPC:checkOrder(user) == true ) then
 
     else
-        thisNPC:talk(CCharacter.say,"Lass mich in ruhe wenn du nichts für mich hast");
+        thisNPC:talk(CCharacter.say,"Lass mich in ruhe wenn du nichts fÃ¼r mich hast");
     end
 end

@@ -5,7 +5,7 @@ local M = {}
 ------ Character starts to smoke
 -------------------------------
 function M.addEffect(stonedEffect, Character)       
-    Character:inform("AddEffect ausgeführt");
+    Character:inform("AddEffect ausgefÃ¼hrt");
     stonedEffect:addValue("stonedIndex",1);
     stonedEffect:addValue("clearIndex",1);
 end
@@ -13,7 +13,7 @@ end
 -----------------------------------------------
 ------ Character is affected 
 -----------------------------------------------
-function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
+function M.callEffect(stonedEffect, Character)    -- Effect wird ausgefÃ¼hrt
 
     if (Character:increaseAttrib("sex",0) == 0) then
         gText = "seine";
@@ -51,7 +51,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
     stonedEffect:addValue("stonedIndex",stonedIndex_n);
     stonedEffect:addValue("clearIndex",clearIndex_n);
 
-    -- Effekte nach Stärke des Effekts
+    -- Effekte nach StÃ¤rke des Effekts
     stonedEffectType = math.random(1,2);
     if ((stonedIndex_n>=1) and (stonedIndex_n<5)) then
     	if ((stonedIndex_n==3) and (clearIndex_n==2))then
@@ -70,7 +70,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
     elseif ((stonedIndex_n>=5) and (stonedIndex_n<10)) then
         if ((stonedIndex_n==8) and (clearIndex_n==2))then
             base.common.InformNLS( Character,
-            "Du hast das Gefühl, dass dein Blick irgendwie getrübt ist.",
+            "Du hast das GefÃ¼hl, dass dein Blick irgendwie getrÃ¼bt ist.",
             "You have the feeling that your sight is hazy." );
         end
 	if (stonedEffectType == 1) then
@@ -83,14 +83,14 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
     elseif ((stonedIndex_n>=10) and (stonedIndex_n<15)) then
         if ((stonedIndex_n==13) and (clearIndex_n==2)) then
             base.common.InformNLS( Character,
-            "Dein Kopf fühlt sich an wie mit Watte gefüllt.",
+            "Dein Kopf fÃ¼hlt sich an wie mit Watte gefÃ¼llt.",
             "Your mind feels like a bunch of entangled wool." );
         end
         if (stonedEffectType == 1) then
             Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me summt gedankenverloren eine Melodie vor sich hin.");
             Character:talkLanguage(CCharacter.say,CPlayer.english,"#me hums a melody absentmindedly to "..eTextm.."self.");
         else
-            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me kneift die geröteten Augen zusammen.");
+            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me kneift die gerÃ¶teten Augen zusammen.");
             Character:talkLanguage(CCharacter.say,CPlayer.english,"#me squints "..eText.." reddened eyes.");
         end
     elseif ((stonedIndex_n>=15) and (stonedIndex_n<20)) then
@@ -100,24 +100,24 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
             "You notices the surroundings look fuzzy due to your unclear vision." );
         end
         if (stonedEffectType == 1) then
-            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me wiegt sich langsam vor und zurück.");
+            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me wiegt sich langsam vor und zurÃ¼ck.");
             Character:talkLanguage(CCharacter.say,CPlayer.english,"#me sways slowly back and forth");
         else
-            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me sieht mit weit aufgerissenen Augen plötzlich hinter sich.");
+            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me sieht mit weit aufgerissenen Augen plÃ¶tzlich hinter sich.");
             Character:talkLanguage(CCharacter.say,CPlayer.english,"#me suddenly looks behind "..eTextm.."self with eyes wide open.");
         end
 
     elseif stonedIndex_n>=20 then
         if ((stonedIndex_n==23) and (clearIndex_n==2)) then
             base.common.InformNLS( Character,
-            "Du möchtest am liebsten einfach umfallen und einschlafen.",
+            "Du mÃ¶chtest am liebsten einfach umfallen und einschlafen.",
             "You feel like you want to just topple down and fall asleep." );
         end
         if (stonedEffectType == 1) then
             Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me fallen immer wieder die Augen zu.");
             Character:talkLanguage(CCharacter.say,CPlayer.english,"#me closes "..eText.." eyes every now and then.");
         else
-            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me murmelt unverständliches Zeug zu sich selbst.");
+            Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me murmelt unverstÃ¤ndliches Zeug zu sich selbst.");
             Character:talkLanguage(CCharacter.say,CPlayer.english,"#me murmurs nothing but gibberish to "..eTextm.."self.");
         end
 
@@ -139,7 +139,7 @@ function M.removeEffect( Effect, Character )
     LogString=os.date()..": Patient "..Character.name.."completely healed because the cold ended.\n";
     logToFile(LogString);
     --base.common.InformNLS(Character,
-    --"Du fühlst dich endlich wieder klarer.",
+    --"Du fÃ¼hlst dich endlich wieder klarer.",
     --"You finally feel sober now.");
 end
 	 

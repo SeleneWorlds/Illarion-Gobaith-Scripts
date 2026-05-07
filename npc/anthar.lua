@@ -3,7 +3,7 @@ module("npc.anthar", package.seeall)
 function useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     if ( User:getPlayerLanguage()==0 ) then
-         thisNPC:talk(CCharacter.say, "Leg deine Hand nicht an einen Mann der Götter.");
+         thisNPC:talk(CCharacter.say, "Leg deine Hand nicht an einen Mann der GÃ¶tter.");
     elseif ( User:getPlayerLanguage()==1 ) then
     thisNPC:talk(CCharacter.say, "Don't you lay hand on a man of the gods.");
     end

@@ -11,7 +11,7 @@ function M.addEffect( rebirthEffect, Reborn )
 
     --Reborn:inform("addEffect");
     base.common.InformNLS( Reborn,
-        "Du fühlst dich noch sehr schwach.",
+        "Du fÃ¼hlst dich noch sehr schwach.",
         "You feel very weak." );
     local maxChange = 0;
     local changeBy = 0;
@@ -50,7 +50,7 @@ function M.loadEffect( rebirthEffect, Reborn )
 
 
     base.common.InformNLS( Reborn,
-        "Du fühlst dich noch immer schwach.",
+        "Du fÃ¼hlst dich noch immer schwach.",
         "You feel still weak." );
 
     local changeBy = 0;
@@ -169,7 +169,7 @@ function M.doubleEffect( rebirthEffect, Reborn )
     end
 
     base.common.InformNLS( Reborn,
-        "Du fühlst dich noch sehr schwach.",
+        "Du fÃ¼hlst dich noch sehr schwach.",
         "You feel very weak." );
     local maxChange = 0;
     local changeBy = 0;

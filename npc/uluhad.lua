@@ -58,18 +58,18 @@ end
    
    -- ********* START DYNAMIC PART ********
    npc.base.autonpcfunctions.AddTraderTrigger("Hello","Be greeted.");
-   npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Seid mir gegr¸ﬂt.");
+   npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Seid mir gegr√º√üt.");
    npc.base.autonpcfunctions.AddTraderTrigger("greetings","Be greeted.");
-   npc.base.autonpcfunctions.AddTraderTrigger("gr¸ﬂe","Seid mir gegr¸ﬂt.");
+   npc.base.autonpcfunctions.AddTraderTrigger("gr√º√üe","Seid mir gegr√º√üt.");
    npc.base.autonpcfunctions.AddTraderTrigger("help","I sell chips for gambling and give you your money afterwards. I am the cashier here.");
-   npc.base.autonpcfunctions.AddTraderTrigger("hilfe","Ich verkaufe Chips zum Spielen und gebe Euch sp‰ter Euer Geld. Ich bin der Kassierer hier.");
+   npc.base.autonpcfunctions.AddTraderTrigger("hilfe","Ich verkaufe Chips zum Spielen und gebe Euch sp√§ter Euer Geld. Ich bin der Kassierer hier.");
    npc.base.autonpcfunctions.AddTraderTrigger("what sell","I sell chips for gambling and give you your money afterwards. I am the cashier here.");
-   npc.base.autonpcfunctions.AddTraderTrigger("was verkauf","Ich verkaufe Chips zum Spielen und gebe Euch sp‰ter Euer Geld. Ich bin der Kassierer hier.");
+   npc.base.autonpcfunctions.AddTraderTrigger("was verkauf","Ich verkaufe Chips zum Spielen und gebe Euch sp√§ter Euer Geld. Ich bin der Kassierer hier.");
    
    npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","That is not enough money for %NUMBER chips.");
    npc.base.autonpcfunctions.AddCondition("money","<","%NUMBER");
    npc.base.autonpcfunctions.AddCondition("lang","english");
-   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","Das ist nicht genug Geld f¸r %NUMBER Chips.");
+   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","Das ist nicht genug Geld f√ºr %NUMBER Chips.");
    npc.base.autonpcfunctions.AddCondition("money","<","%NUMBER");
    npc.base.autonpcfunctions.AddCondition("lang","german");
 
@@ -78,7 +78,7 @@ end
    --npc.base.autonpcfunctions.AddCondition("money",">=","%NUMBER")
    npc.base.autonpcfunctions.AddConsequence("qpg","+",buyIn);
    npc.base.autonpcfunctions.AddCondition("lang","english");
-   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","Hier sind %NUMBER Chips zum Spielen. Viel Spaﬂ.");
+   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","Hier sind %NUMBER Chips zum Spielen. Viel Spa√ü.");
    npc.base.autonpcfunctions.AddConsequence("money","-","%NUMBER");
    --npc.base.autonpcfunctions.AddCondition("money",">=","%NUMBER")
    npc.base.autonpcfunctions.AddConsequence("qpg","+",buyIn);

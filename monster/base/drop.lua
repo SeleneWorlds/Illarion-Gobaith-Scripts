@@ -314,7 +314,7 @@ function Stealing(Monster,Enemy)
 	        end
 	        if StealSomething then
 	            base.common.InformNLS( Enemy,
-	                "Der Bandit greift mit einem schnellen Griff nach deinem Geld und schnappt sich ein paar Münzen",
+	                "Der Bandit greift mit einem schnellen Griff nach deinem Geld und schnappt sich ein paar MÃ¼nzen",
 	                "The bandit makes a quick grab at your money and takes some coins." );
 	            Monster.movepoints=Monster.movepoints-10;
 	            return true;

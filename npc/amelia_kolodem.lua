@@ -28,16 +28,16 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Come again when Nargon Hammerfaust sends you to me. He is one of the dwarves at the house across the river, the road back leads to them.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg","<",40);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Kommt wieder, wenn Nargon Hammerfaust Euch zu mich schickt. Er ist einer der Zwerge bei dem Haus weiter zurück an dieser Straße, über den Fluss.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Kommt wieder, wenn Nargon Hammerfaust Euch zu mich schickt. Er ist einer der Zwerge bei dem Haus weiter zurÃ¼ck an dieser StraÃŸe, Ã¼ber den Fluss.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg","<",40);
     npc.base.autonpcfunctions.AddTraderTrigger("Hello","Hello, my name is "..thisNPC.name..". I am a lumberjack and I will gladly help you if you wish.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Greetings");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",40);
-    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo, mein Name ist "..thisNPC.name..". Ich bin eine Holzfällerin und werde Euch gerne helfen, wenn Ihr es wünscht.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[üu][ßs]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo, mein Name ist "..thisNPC.name..". Ich bin eine HolzfÃ¤llerin und werde Euch gerne helfen, wenn Ihr es wÃ¼nscht.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[Ã¼u][ÃŸs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",40);
     npc.base.autonpcfunctions.AddTraderTrigger("Hello","Hello %Charname! If you want to continue, just ask for 'help'.");
@@ -45,27 +45,27 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",41);
     npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo %Charname! Wenn Ihr weitermachen wollt, fragt einfach nach 'Hilfe'.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[üu][ßs]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[Ã¼u][ÃŸs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",41);
     npc.base.autonpcfunctions.AddTraderTrigger("Hello","Hello %Charname!. I can explain lumberjacking again or I can repeat the lesson on how to have a closer look at items, if you want. Or you can just go along this road through the desert, into the cave, up the ladder and right into Findecano Melwasul's castle. He can tell you more.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Greetings");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
-    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo %CHARNAME! Ich kann Euch gerne nochmal beim Holzfällen helfen oder ich erkläre nochmal, wie man Dinge genauer anschaut, wenn Ihr es wünscht. Oder geht diese Straße weiter durch die Wüste, in die Höhle, die Leiter hinauf und direkt ins Schloss von Findecano Melwasul. Er kann Euch mehr sagen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[üu][ßs]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Hallo %CHARNAME! Ich kann Euch gerne nochmal beim HolzfÃ¤llen helfen oder ich erklÃ¤re nochmal, wie man Dinge genauer anschaut, wenn Ihr es wÃ¼nscht. Oder geht diese StraÃŸe weiter durch die WÃ¼ste, in die HÃ¶hle, die Leiter hinauf und direkt ins Schloss von Findecano Melwasul. Er kann Euch mehr sagen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[Ã¼u][ÃŸs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
     npc.base.autonpcfunctions.AddTraderTrigger("Hello","Hello again. We can continue if you want.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Greetings");
-    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Nochmals hallo. Wir können fortfahren, wenn Ihr es möchtet.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[üu][ßs]");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sß]");
+    npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Nochmals hallo. Wir kÃ¶nnen fortfahren, wenn Ihr es mÃ¶chtet.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("Gr[Ã¼u][ÃŸs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("grue[sÃŸ]");
     npc.base.autonpcfunctions.AddTraderTrigger("Who you","I am "..thisNPC.name..", a lumberjack. I help all the people who are willing to learn.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("What you");
-    npc.base.autonpcfunctions.AddTraderTrigger("Wer du","Ich bin "..thisNPC.name..", eine Holzfällerin. Ich helfe allen Leuten, die bereit sind zu lernen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("Wer du","Ich bin "..thisNPC.name..", eine HolzfÃ¤llerin. Ich helfe allen Leuten, die bereit sind zu lernen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Wer Ihr");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Was du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Was Ihr");
@@ -81,7 +81,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("auf bald","Auf bald.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("bis bald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("leb.+wohl");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[üu][ßs]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("tsch[Ã¼u][ÃŸs]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("mach.+gut");
     npc.base.autonpcfunctions.AddAdditionalText("Bis bald.");
     npc.base.autonpcfunctions.AddAdditionalText("Lebt wohl.");
@@ -97,8 +97,8 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",40);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("item",74,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("holzf[äa]ll","Ich kann Euch ein paar Dinge lehren. Als erstes müsst Ihr ein Beil in die Hand nehmen. Hier, ich gebe Euch eines. Seid Ihr bereit?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("f[äa]llen");
+    npc.base.autonpcfunctions.AddTraderTrigger("holzf[Ã¤a]ll","Ich kann Euch ein paar Dinge lehren. Als erstes mÃ¼sst Ihr ein Beil in die Hand nehmen. Hier, ich gebe Euch eines. Seid Ihr bereit?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("f[Ã¤a]llen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
@@ -118,9 +118,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",40);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("holzf[äa]ll","Ich kann Euch ein paar Dinge lehren. Als erstes müsst Ihr ein Beil in die Hand nehmen. Wie ich sehe habt Ihr eines dabei. Seid Ihr bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger("holzf[Ã¤a]ll","Ich kann Euch ein paar Dinge lehren. Als erstes mÃ¼sst Ihr ein Beil in die Hand nehmen. Wie ich sehe habt Ihr eines dabei. Seid Ihr bereit?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("holzfaell");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("f[äa]llen");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("f[Ã¤a]llen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("faell");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
@@ -139,7 +139,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg","=",41);
     npc.base.autonpcfunctions.AddConsequence("state","=",5);
-    npc.base.autonpcfunctions.AddTraderTrigger("ding","Nun denn, Ihr könnt Dinge anschauen, indem Ihr einfach mit der linken Maustaste auf das betreffende Feld klickt. Aber achtet darauf, dass Ihr auf das Feld klickt, wo das Ding liegt, nicht auf das Ding an sich. Jetzt schaut den Wegweiser dort drüben an und sagt mir, was darauf steht.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ding","Nun denn, Ihr kÃ¶nnt Dinge anschauen, indem Ihr einfach mit der linken Maustaste auf das betreffende Feld klickt. Aber achtet darauf, dass Ihr auf das Feld klickt, wo das Ding liegt, nicht auf das Ding an sich. Jetzt schaut den Wegweiser dort drÃ¼ben an und sagt mir, was darauf steht.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("schau");
     npc.base.autonpcfunctions.AddAdditionalTrigger("genau");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
@@ -158,8 +158,8 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("item",74,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("holzf[äa]ll","Ich kann Euch ein paar Dinge lehren. Als erstes müsst Ihr ein Beil in die Hand nehmen. Hier, ich gebe Euch eines. Seid Ihr bereit?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("f[äa]llen");
+    npc.base.autonpcfunctions.AddTraderTrigger("holzf[Ã¤a]ll","Ich kann Euch ein paar Dinge lehren. Als erstes mÃ¼sst Ihr ein Beil in die Hand nehmen. Hier, ich gebe Euch eines. Seid Ihr bereit?");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("f[Ã¤a]llen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("hilf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
@@ -176,9 +176,9 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
     npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddTraderTrigger("holzf[äa]ll","Ich kann Euch ein paar Dinge lehren. Als erstes müsst Ihr ein Beil in die Hand nehmen. Wie ich sehe habt Ihr eines dabei. Seid Ihr bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger("holzf[Ã¤a]ll","Ich kann Euch ein paar Dinge lehren. Als erstes mÃ¼sst Ihr ein Beil in die Hand nehmen. Wie ich sehe habt Ihr eines dabei. Seid Ihr bereit?");
     npc.base.autonpcfunctions.AddAdditionalTrigger("holzfaell");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("f[äa]llen");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("f[Ã¤a]llen");
     npc.base.autonpcfunctions.AddAdditionalTrigger("faell");
     npc.base.autonpcfunctions.AddCondition("item",74,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("state","=",0);
@@ -190,7 +190,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
     npc.base.autonpcfunctions.AddConsequence("state","=",5);
-    npc.base.autonpcfunctions.AddTraderTrigger("ding","Nun denn, Ihr könnt Dinge anschauen, indem Ihr einfach mit der linken Maustaste auf das betreffende Feld klickt. Aber achtet darauf, dass Ihr auf das Feld klickt, wo das Ding liegt, nicht auf das Ding an sich. Jetzt schaut den Wegweiser dort drüben an und sagt mir, was darauf steht.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ding","Nun denn, Ihr kÃ¶nnt Dinge anschauen, indem Ihr einfach mit der linken Maustaste auf das betreffende Feld klickt. Aber achtet darauf, dass Ihr auf das Feld klickt, wo das Ding liegt, nicht auf das Ding an sich. Jetzt schaut den Wegweiser dort drÃ¼ben an und sagt mir, was darauf steht.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("schau");
     npc.base.autonpcfunctions.AddAdditionalTrigger("genau");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
@@ -203,7 +203,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("repeat");
     npc.base.autonpcfunctions.AddCondition("state","=",0);
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
-    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Ihr könnt die Lektionen über 'holzfällen' und 'Dinge anschauen' wieder holen. Sagt mir einfach, welche Ihr wollt. Aber wenn Ihr nicht wisst, was als nächstes zu tun ist, fragt 'Wohin soll ich jetzt gehen?'.");
+    npc.base.autonpcfunctions.AddTraderTrigger("hilf","Ihr kÃ¶nnt die Lektionen Ã¼ber 'holzfÃ¤llen' und 'Dinge anschauen' wieder holen. Sagt mir einfach, welche Ihr wollt. Aber wenn Ihr nicht wisst, was als nÃ¤chstes zu tun ist, fragt 'Wohin soll ich jetzt gehen?'.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lern");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lehr");
@@ -231,14 +231,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddCondition("item",74,"body",">",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Gut. Jetzt stellt Euch vor einen Apfelbaum und 'benutzt' das Beil einmal. Fällt nur Bäume, wenn Ihr ihnen zugewandt seid, ansonsten könnten sie auf Euch fallen! Wenn Ihr ihn gefällt habt, wiederholt diesen Vorgang an der gesamten Länge des Baumstammes, bis ihr etwas Laubholz erhaltet. Sprecht mich wieder an, wenn Ihr das Holz habt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Gut. Jetzt stellt Euch vor einen Apfelbaum und 'benutzt' das Beil einmal. FÃ¤llt nur BÃ¤ume, wenn Ihr ihnen zugewandt seid, ansonsten kÃ¶nnten sie auf Euch fallen! Wenn Ihr ihn gefÃ¤llt habt, wiederholt diesen Vorgang an der gesamten LÃ¤nge des Baumstammes, bis ihr etwas Laubholz erhaltet. Sprecht mich wieder an, wenn Ihr das Holz habt.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddCondition("item",74,"body",">",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",2);
     npc.base.autonpcfunctions.AddTraderTrigger("no","Well, come back if you really want to learn the basics of lumberjacking. But you have to do it anyway if you want to go on.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger("nein","Naja, kommt wieder, wenn Ihr die Grundlagen des Holzfällens wirklich lernen wollt. Aber Ihr müsst es sowieso machen, falls Ihr weitermachen wollt.");
+    npc.base.autonpcfunctions.AddTraderTrigger("nein","Naja, kommt wieder, wenn Ihr die Grundlagen des HolzfÃ¤llens wirklich lernen wollt. Aber Ihr mÃ¼sst es sowieso machen, falls Ihr weitermachen wollt.");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
     -- STATE 5
@@ -246,7 +246,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",5);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",48);
-    npc.base.autonpcfunctions.AddTraderTrigger("doppelpalme","Genau! Es ist die Sandlandschaft 'Doppelpalme'. Ihr könnt auf die gleiche Weise alles und jeden anschauen. Das war alles, was ich Euch beibringen kann. Nun geht diese Straße weiter durch die Wüste, in die Höhle, die Leiter hinauf und direkt ins Schloss von Findecano Melwasul. Er kann Euch mehr sagen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("doppelpalme","Genau! Es ist die Sandlandschaft 'Doppelpalme'. Ihr kÃ¶nnt auf die gleiche Weise alles und jeden anschauen. Das war alles, was ich Euch beibringen kann. Nun geht diese StraÃŸe weiter durch die WÃ¼ste, in die HÃ¶hle, die Leiter hinauf und direkt ins Schloss von Findecano Melwasul. Er kann Euch mehr sagen.");
     npc.base.autonpcfunctions.AddCondition("state","=",5);
     npc.base.autonpcfunctions.AddConsequence("state","=",0);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",48);
@@ -254,7 +254,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("yes","Well then, you can look at an item simply by clicking on the particular field with your left mouse button. But make sure you click on the field upon which the item lies, not on the item itself. Now look at the signpost over there and tell me what it reads.");
     npc.base.autonpcfunctions.AddCondition("state","=",6);
     npc.base.autonpcfunctions.AddConsequence("state","=",5);
-    npc.base.autonpcfunctions.AddTraderTrigger("ja","Nun denn, Ihr könnt Dinge anschauen, indem Ihr einfach mit der linken Maustaste auf das betreffende Feld klickt. Aber achtet darauf, dass Ihr auf das Feld klickt, wo das Teil liegt, nicht auf das Ding an sich. Jetzt schaut den Wegweiser dort drüben an und sagt mir, was darauf steht.");
+    npc.base.autonpcfunctions.AddTraderTrigger("ja","Nun denn, Ihr kÃ¶nnt Dinge anschauen, indem Ihr einfach mit der linken Maustaste auf das betreffende Feld klickt. Aber achtet darauf, dass Ihr auf das Feld klickt, wo das Teil liegt, nicht auf das Ding an sich. Jetzt schaut den Wegweiser dort drÃ¼ben an und sagt mir, was darauf steht.");
     npc.base.autonpcfunctions.AddCondition("state","=",6);
     npc.base.autonpcfunctions.AddConsequence("state","=",5);
     npc.base.autonpcfunctions.AddTraderTrigger("no","No? Then come back when you are ready. Just ask me for 'help'.");
@@ -266,30 +266,30 @@ function initializeNpc()
     -- standard explanations
     npc.base.autonpcfunctions.AddTraderTrigger("wildfire","A campfire can become a wildfire. Then you need a bucket of water to extinguish it.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wild fire");
-    npc.base.autonpcfunctions.AddTraderTrigger("lauffeuer","Ein Lagerfeuer kann zu einem Lauffeuer werden. Dann braucht Ihr einen Eimer mit Wasser um es zu löschen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("lauffeuer","Ein Lagerfeuer kann zu einem Lauffeuer werden. Dann braucht Ihr einen Eimer mit Wasser um es zu lÃ¶schen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("lauf feuer");
     npc.base.autonpcfunctions.AddTraderTrigger("bucket","Here you have an empty bucket. Go to the water, hold the bucket in your hands and use it with the water to fill it, so hold [shift], first click on the bucket then on the water field and finally release [shift]. Do the same with a full bucket and a fire to extinguish it.");
     npc.base.autonpcfunctions.AddCondition("item",51,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",51,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger("eimer","Hier habt Ihr einen leeren Eimer. Geht zum Wasser, haltet den Eimer in der Hand und benutzt ihn mit dem Wasser, um ihn zu füllen, also haltet [shift], erst auf den Eimer und dann auf das Wasserfeld klicken und schließlich [shift] loslassen. Macht dasselbe mit einem vollen Eimer und Feuer um es zu löschen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("eimer","Hier habt Ihr einen leeren Eimer. Geht zum Wasser, haltet den Eimer in der Hand und benutzt ihn mit dem Wasser, um ihn zu fÃ¼llen, also haltet [shift], erst auf den Eimer und dann auf das Wasserfeld klicken und schlieÃŸlich [shift] loslassen. Macht dasselbe mit einem vollen Eimer und Feuer um es zu lÃ¶schen.");
     npc.base.autonpcfunctions.AddCondition("item",51,"all","=",0);
     npc.base.autonpcfunctions.AddCondition("item",52,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",51,1,333,0);
     npc.base.autonpcfunctions.AddTraderTrigger("bucket","Go to the water, hold the bucket in your hands and use it with the water to fill it, so hold [shift], first click on the bucket then on the water field and finally release [shift]. Do the same with a full bucket and a fire to extinguish it.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("extinguish fire");
-    npc.base.autonpcfunctions.AddTraderTrigger("eimer","Geht zum Wasser, haltet den Eimer in der Hand und benutzt ihn mit dem Wasser, um ihn zu füllen, also haltet [shift], erst auf den Eimer und dann auf das Wasserfeld klicken und schließlich [shift] loslassen. Macht dasselbe mit einem vollen Eimer und Feuer um es zu löschen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("feuer l[öo]schen");
+    npc.base.autonpcfunctions.AddTraderTrigger("eimer","Geht zum Wasser, haltet den Eimer in der Hand und benutzt ihn mit dem Wasser, um ihn zu fÃ¼llen, also haltet [shift], erst auf den Eimer und dann auf das Wasserfeld klicken und schlieÃŸlich [shift] loslassen. Macht dasselbe mit einem vollen Eimer und Feuer um es zu lÃ¶schen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("feuer l[Ã¶o]schen");
     npc.base.autonpcfunctions.AddTraderTrigger("cold","Well if you catch a cold, you will sneeze and cough all the time. Then just sit by a campfire until you feel better.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("disease");
     npc.base.autonpcfunctions.AddAdditionalTrigger("illness");
-    npc.base.autonpcfunctions.AddTraderTrigger("erk[äa]ltung","Nun, wenn Ihr Euch eine Erkältung eingefangen habt, werdet Ihr die ganze Zeit Niesen und husten müssen. Dann setzt Euch einfach an ein Lagerfeuer, bis es Euch besser geht.");
+    npc.base.autonpcfunctions.AddTraderTrigger("erk[Ã¤a]ltung","Nun, wenn Ihr Euch eine ErkÃ¤ltung eingefangen habt, werdet Ihr die ganze Zeit Niesen und husten mÃ¼ssen. Dann setzt Euch einfach an ein Lagerfeuer, bis es Euch besser geht.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("krank");
     npc.base.autonpcfunctions.AddTraderTrigger("hatchet","For cutting down trees, getting the wood out of the log and making a campfire you need a hatchet. You can buy one from a smith.");
-    npc.base.autonpcfunctions.AddTraderTrigger("beil","Zum Bäumefällen, das Holz aus dem Stamm schlagen und um ein Lagerfeuer zu entfachen, braucht Ihr ein Beil. Ihr könnt eines von einem Schmied kaufen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("beil","Zum BÃ¤umefÃ¤llen, das Holz aus dem Stamm schlagen und um ein Lagerfeuer zu entfachen, braucht Ihr ein Beil. Ihr kÃ¶nnt eines von einem Schmied kaufen.");
     npc.base.autonpcfunctions.AddTraderTrigger("where","Go along this road through the desert, into the cave, up the ladder and right into Findecano Melwasul's castle. He can tell you more.");
     npc.base.autonpcfunctions.AddCondition("qpg",">=",48);
-    npc.base.autonpcfunctions.AddTraderTrigger("wohin","Geht diese Straße weiter durch die Wüste, in die Höhle, die Leiter hinauf und direkt ins Schloss von Findecano Melwasul. Er kann Euch mehr sagen.");
+    npc.base.autonpcfunctions.AddTraderTrigger("wohin","Geht diese StraÃŸe weiter durch die WÃ¼ste, in die HÃ¶hle, die Leiter hinauf und direkt ins Schloss von Findecano Melwasul. Er kann Euch mehr sagen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wo geh");
     npc.base.autonpcfunctions.AddCondition("qpg",">=",48);
     -- last catch
@@ -299,7 +299,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",74,"all","=",0);
     npc.base.autonpcfunctions.AddConsequence("item",74,1,333,0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wenn ich Euch ein paar Dinge lehren soll, dann müsst Ihr ein Beil in die Hand nehmen. Hier, ich gebe Euch eine. Seid Ihr bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wenn ich Euch ein paar Dinge lehren soll, dann mÃ¼sst Ihr ein Beil in die Hand nehmen. Hier, ich gebe Euch eine. Seid Ihr bereit?");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",74,"all","=",0);
@@ -308,7 +308,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",74,"all",">",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wenn ich Euch ein paar Dinge lehren soll, dann müsst Ihr ein Beil in die Hand nehmen. Wie ich sehe habt Ihr eines dabei. Seid Ihr bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wenn ich Euch ein paar Dinge lehren soll, dann mÃ¼sst Ihr ein Beil in die Hand nehmen. Wie ich sehe habt Ihr eines dabei. Seid Ihr bereit?");
     npc.base.autonpcfunctions.AddCondition("state","=",1);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",74,"all",">",0);
@@ -318,7 +318,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",2560,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddConsequence("state","=",3);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut gemacht. Nun legt das Holz vor Euch auf den Boden und 'benutzt' es zweimal, während Ihr immernoch das Beil in Händen haltet. So macht Ihr erst Brennholz und dann ein Lagerfeuer. Habt immer ein Auge auf Euer Lagerfeuer, es könnte zu einem Lauffeuer werden und Städte und Wälder niederbrennen. Jetzt versucht es.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut gemacht. Nun legt das Holz vor Euch auf den Boden und 'benutzt' es zweimal, wÃ¤hrend Ihr immernoch das Beil in HÃ¤nden haltet. So macht Ihr erst Brennholz und dann ein Lagerfeuer. Habt immer ein Auge auf Euer Lagerfeuer, es kÃ¶nnte zu einem Lauffeuer werden und StÃ¤dte und WÃ¤lder niederbrennen. Jetzt versucht es.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",2560,"all",">",0);
     npc.base.autonpcfunctions.AddCondition("state","=",2);
@@ -327,7 +327,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("item",2560,"all","=",0);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wolltet Ihr nicht Holz bringen? Stellt Euch vor einen Apfelbaum und 'benutzt' das Beil einmal. Fällt nur Bäume, wenn Ihr ihnen zugewandt seid, ansonsten könnten sie auf Euch fallen! Wenn Ihr ihn gefällt habt, wiederholt diesen Vorgang an der gesamten Länge des Baumstammes, bis ihr etwas Laubholz erhaltet. Sprecht mich wieder an, wenn Ihr das Holz habt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Wolltet Ihr nicht Holz bringen? Stellt Euch vor einen Apfelbaum und 'benutzt' das Beil einmal. FÃ¤llt nur BÃ¤ume, wenn Ihr ihnen zugewandt seid, ansonsten kÃ¶nnten sie auf Euch fallen! Wenn Ihr ihn gefÃ¤llt habt, wiederholt diesen Vorgang an der gesamten LÃ¤nge des Baumstammes, bis ihr etwas Laubholz erhaltet. Sprecht mich wieder an, wenn Ihr das Holz habt.");
     npc.base.autonpcfunctions.AddCondition("state","=",2);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",2560,"all","=",0);
@@ -335,7 +335,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","Please start a campfire next to me. Place the wood on the ground in front of you and 'use' it twice, still holding the hatchet in your hands, to get kindling and to start a campfire. Always keep an eye on your campfire, it could become a wildfire and burn down towns and forests. Now try it. Talk to me again when you're done.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Bitte entzündet ein Lagerfeuer in meiner Nähe. Legt das Holz vor Euch auf den Boden und 'benutzt' es zweimal, während Ihr immernoch das Beil in Händen haltet. So macht Ihr erst Brennholz und dann ein Lagerfeuer. Habt immer ein Auge auf Euer Lagerfeuer, es könnte zu einem Lauffeuer werden und Städte und Wälder niederbrennen. Jetzt versucht es. Sprecht mich wieder an, wenn Ihr fertig seid.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Bitte entzÃ¼ndet ein Lagerfeuer in meiner NÃ¤he. Legt das Holz vor Euch auf den Boden und 'benutzt' es zweimal, wÃ¤hrend Ihr immernoch das Beil in HÃ¤nden haltet. So macht Ihr erst Brennholz und dann ein Lagerfeuer. Habt immer ein Auge auf Euer Lagerfeuer, es kÃ¶nnte zu einem Lauffeuer werden und StÃ¤dte und WÃ¤lder niederbrennen. Jetzt versucht es. Sprecht mich wieder an, wenn Ihr fertig seid.");
     npc.base.autonpcfunctions.AddCondition("state","=",3);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     -- STATE 4; campfire started (checkFire)
@@ -343,7 +343,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut. Wenn Ihr eine Erkältung habt, solltet Ihr an einem Lagerfeuer sitzen, um Euch zu wärmen und zu erholen. Das war die Lektion übers Holzfällen.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut. Wenn Ihr eine ErkÃ¤ltung habt, solltet Ihr an einem Lagerfeuer sitzen, um Euch zu wÃ¤rmen und zu erholen. Das war die Lektion Ã¼bers HolzfÃ¤llen.");
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("qpg",">",41);
@@ -351,7 +351,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddConsequence("state","=",7);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut. Wenn Ihr eine Erkältung habt, solltet Ihr an einem Lagerfeuer sitzen, um Euch zu wärmen und zu erholen. Tja, das ist alles, was Ihr wissen sollt, was man mit einem Beil machen kann. Aber bevor Ihr gehen könnt, solltet Ihr wissen, wo der 'Gürtel' ist. Das sind die sechs Felder in Eurem Inventar, rechts unten. Sprecht mich wieder an, wenn Ihr das Beil in den Gürtel geschoben habt.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Gut. Wenn Ihr eine ErkÃ¤ltung habt, solltet Ihr an einem Lagerfeuer sitzen, um Euch zu wÃ¤rmen und zu erholen. Tja, das ist alles, was Ihr wissen sollt, was man mit einem Beil machen kann. Aber bevor Ihr gehen kÃ¶nnt, solltet Ihr wissen, wo der 'GÃ¼rtel' ist. Das sind die sechs Felder in Eurem Inventar, rechts unten. Sprecht mich wieder an, wenn Ihr das Beil in den GÃ¼rtel geschoben habt.");
     npc.base.autonpcfunctions.AddCondition("state","=",4);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddConsequence("state","=",7);
@@ -366,7 +366,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","I asked if I should explain you how to have a closer look at items. Yes or no?");
     npc.base.autonpcfunctions.AddCondition("state","=",6);
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich fragte, ob ich Euch erklären soll, wie man Dinge genauer anschaut. Ja oder nein?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ich fragte, ob ich Euch erklÃ¤ren soll, wie man Dinge genauer anschaut. Ja oder nein?");
     npc.base.autonpcfunctions.AddCondition("state","=",6);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     -- STATE 7
@@ -376,7 +376,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("item",74,"belt",">",0);
     npc.base.autonpcfunctions.AddConsequence("state","=",6);
     npc.base.autonpcfunctions.AddConsequence("qpg","=",41);
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Großartig. Normalerweise müsst Ihr, wenn Ihr ein Handwerk ausübt, die benötigten Materialien oder Zutaten am Gürtel tragen. Jetzt aber muss ich Euch noch erklären, wie man Dinge genauer anschaut. Seid Ihr bereit?");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","GroÃŸartig. Normalerweise mÃ¼sst Ihr, wenn Ihr ein Handwerk ausÃ¼bt, die benÃ¶tigten Materialien oder Zutaten am GÃ¼rtel tragen. Jetzt aber muss ich Euch noch erklÃ¤ren, wie man Dinge genauer anschaut. Seid Ihr bereit?");
     npc.base.autonpcfunctions.AddCondition("state","=",7);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",74,"belt",">",0);
@@ -385,7 +385,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger(".+","You have to put the hatchet at the belt, that's the six slots at the bottom right in your inventory. If you need another hatchet, just ask for it. Then talk to me again, when you are ready.");
     npc.base.autonpcfunctions.AddCondition("state","=",7);
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ihr müsst das Beil an den Gürtel schieben, das sind die sechs Felder unten rechts in Eurem Inventar. Falls Ihr ein weiteres Beil braucht, fragt einfach danach. Dann sprecht mich wieder an, wenn Ihr bereit seid.");
+    npc.base.autonpcfunctions.AddTraderTrigger(".+","Ihr mÃ¼sst das Beil an den GÃ¼rtel schieben, das sind die sechs Felder unten rechts in Eurem Inventar. Falls Ihr ein weiteres Beil braucht, fragt einfach danach. Dann sprecht mich wieder an, wenn Ihr bereit seid.");
     npc.base.autonpcfunctions.AddCondition("state","=",7);
     npc.base.autonpcfunctions.AddCondition("lang","german");
     -- ********* END DYNAMIC PART ********

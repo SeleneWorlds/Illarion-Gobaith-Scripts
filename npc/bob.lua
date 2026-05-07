@@ -24,20 +24,20 @@ sex=female
     
 	
 	-- cyletext
-    npc.base.autonpcfunctions.AddCycleText("#me sortiert Bücher in den Regalen","#me sorts books in the shelfs.");
+    npc.base.autonpcfunctions.AddCycleText("#me sortiert BÃ¼cher in den Regalen","#me sorts books in the shelfs.");
     
-    -- Begrüßung
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Sei mir gegrüßt. Brauchst du Hilfe bei der Suche nach einem bestimmten Buch?");
+    -- BegrÃ¼ÃŸung
+    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Sei mir gegrÃ¼ÃŸt. Brauchst du Hilfe bei der Suche nach einem bestimmten Buch?");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[üue]+[sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("gr[Ã¼ue]+[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("guten tag");
     npc.base.autonpcfunctions.AddAdditionalTrigger("aho[ij]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("tach");
     -- Verabschiedung 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]ute nacht","Machs gut. Ich hoff, wir sehen uns bald wieder. Und halt die Großen immer schön fern.");
+    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]ute nacht","Machs gut. Ich hoff, wir sehen uns bald wieder. Und halt die GroÃŸen immer schÃ¶n fern.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddAdditionalTrigger("wieder sehen");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Tt]sch[üue]+[sß]");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Tt]sch[Ã¼ue]+[sÃŸ]");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Tt]tschau");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ehabt euch");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Aa]uf bald");
@@ -45,10 +45,10 @@ sex=female
     -- Name
     npc.base.autonpcfunctions.AddTraderTrigger("Name","Ich bin %name, die Schreiberin hier in der Grauen Zuflucht.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("wie hei[sß] du");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("wie hei[sÃŸ] du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("Wer bist du");
     npc.base.autonpcfunctions.AddAdditionalTrigger("wer seid ihr");
-    -- Argwohn gegenüber Orks
+    -- Argwohn gegenÃ¼ber Orks
     npc.base.autonpcfunctions.AddTraderTrigger(" ","So einer wie Du hat hier nichts zu suchen. Hau ab oder ich ruf die Wachen!");
     npc.base.autonpcfunctions.AddCondition("race", CCharacter.orc);
     npc.base.autonpcfunctions.AddCondition("lang","german");
@@ -59,9 +59,9 @@ sex=female
     
     
     
-    --Schlüsselabgabe wenn Char einen Siegelring der Rose hat und genügend Geld
-    npc.base.autonpcfunctions.AddTraderTrigger("[Bb]rauch [Ss]chl[üue]ssel","Hier hast du einen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Mm][öoe]chte Schl[üue]ssel");
+    --SchlÃ¼sselabgabe wenn Char einen Siegelring der Rose hat und genÃ¼gend Geld
+    npc.base.autonpcfunctions.AddTraderTrigger("[Bb]rauch [Ss]chl[Ã¼ue]ssel","Hier hast du einen.");
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Mm][Ã¶oe]chte Schl[Ã¼ue]ssel");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddCondition("item",68,"body",">=",1); -- Siegelring der Rose ist ein Rubinring (id 68, data 2)
     npc.base.autonpcfunctions.AddCondition("money",">=",100);
