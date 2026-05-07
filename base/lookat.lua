@@ -6,11 +6,11 @@
 	-- custom lookat
 	-- pharse
 
-	require("base.common")
-	require("content.genus")
-	require("content.bonusitems")
-	require("content.lookat.custom")
-	require("content.lookat.unique")
+local common = require("base.common")
+local genus = require("content.genus")
+local bonusitems = require("content.bonusitems")
+require("content.lookat.custom")
+require("content.lookat.unique")
 
 -- generic function to get description for looking at items
 -- Nop
@@ -21,9 +21,9 @@
 -- German and english name (for RS)
 -- returns a description string
 
-module("base.lookat", package.seeall, package.seeall(content.bonusitems))
+local M = {}
 
-function GetItemDescription(User,Item,material,Weapon,Priest)
+function M.GetItemDescription(User,Item,material,Weapon,Priest)
     --User:inform("generic lookAt called");
 
     -- safety checks
@@ -43,9 +43,9 @@ function GetItemDescription(User,Item,material,Weapon,Priest)
         Priest=false;
     end
 
-	checkForAdminChar(User,Item);
+	M.checkForAdminChar(User,Item);
 	--User:inform("moep->debug");
-    checkGemsOnItem(User,Item);
+    M.checkGemsOnItem(User,Item);
 
 	--User:inform("In base_lookat");
     -- initialize arrays if not already done
@@ -94,7 +94,7 @@ function GetItemDescription(User,Item,material,Weapon,Priest)
 		if CustomLookAt[ItemId] ~= nil then
 			ItemData = ItemData - 2^30;
 			if CustomLookAt[ItemId][ItemData] ~= nil then
-				customText = base.common.GetNLS(User,CustomLookAt[ItemId][ItemData][1],CustomLookAt[ItemId][ItemData][2]);
+				customText = common.GetNLS(User,CustomLookAt[ItemId][ItemData][1],CustomLookAt[ItemId][ItemData][2]);
 				noQuality = CustomLookAt[ItemId][ItemData][3];
 				noName = CustomLookAt[ItemId][ItemData][4];
 				newGender = CustomLookAt[ItemId][ItemData][5];
@@ -140,7 +140,7 @@ function GetItemDescription(User,Item,material,Weapon,Priest)
     -- build description
 
     --User:inform("call genus ");
-    local gender = content.genus.GenusData( Item.id );
+    local gender = genus.GenusData( Item.id );
 	if newGender then
 		gender = newGender;
 	end
@@ -205,13 +205,13 @@ function GetItemDescription(User,Item,material,Weapon,Priest)
 	--[[elseif Weapon then
         ItemName=MagicalName(User,Item);]]
     elseif Priest then
-        ItemName=getNameWithTitle(Item, lang, genderExtension);
+        ItemName=bonusitems.getNameWithTitle(Item, lang, genderExtension);
     else
         ItemName=world:getItemName(Item.id, lang);
     end
 
     if (User:getItemAt(5).id == 336) or (User:getItemAt(6).id == 336) then
-        DisplayText=base.common.GetNLS( User,"Mit des Spiegels Hilfe siehst du","With the mirrors aid you see").." "..DisplayText.." "..ItemName.." "..customText;
+        DisplayText=common.GetNLS( User,"Mit des Spiegels Hilfe siehst du","With the mirrors aid you see").." "..DisplayText.." "..ItemName.." "..customText;
 	-- Edelstein-Item??
 	--
     elseif ( (Item.data>=10 and Item.data<=79) or (Item.data>=1010 and Item.data<=7979) ) then
@@ -230,16 +230,16 @@ function GetItemDescription(User,Item,material,Weapon,Priest)
 			Suffix="";
 		end
 
-		DisplayText=base.common.GetNLS( User,"Du siehst","You see").." "..Praefix.." "..DisplayText.." "..ItemName.." "..Suffix;
+		DisplayText=common.GetNLS( User,"Du siehst","You see").." "..Praefix.." "..DisplayText.." "..ItemName.." "..Suffix;
 	else
-        DisplayText=base.common.GetNLS( User,"Du siehst","You see").." "..DisplayText.." "..ItemName.." "..customText;
+        DisplayText=common.GetNLS( User,"Du siehst","You see").." "..DisplayText.." "..ItemName.." "..customText;
     end;
     return DisplayText;
 end
 
 --
 --
-function checkGemsOnItem(User,Item)
+function M.checkGemsOnItem(User,Item)
 	gems=nil;
 	if ( (Item.data >= 10) and (Item.data <= 79) )then
 		gems=1;
@@ -248,9 +248,9 @@ function checkGemsOnItem(User,Item)
 	end
 	--User:inform("moep->O");
 	if gems~=nil then
-    itemList();
+    bonusitems.itemList();
 	--User:inform("moep->X");
-		Class=ItemClass[Item.id];
+		Class=bonusitems.ItemClass[Item.id];
 		ItemCl=content.lookat.unique.writeClass(User,Class);
 	--User:inform("moep");
 
@@ -287,7 +287,7 @@ function checkGemsOnItem(User,Item)
    end
 end
 
-function checkForAdminChar(User, Item)
+function M.checkForAdminChar(User, Item)
 
 	-- by pharse: Lydia Crowford, the tailor
 	if User.id == 425144028 or User:isAdmin() then
@@ -307,3 +307,5 @@ function checkForAdminChar(User, Item)
 		end
 	end
 end
+
+return M

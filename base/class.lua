@@ -12,7 +12,7 @@
 -- @release 1.1
 -- @author http://lua-users.org/
 
-module("base.class", package.seeall)
+local M = {}
 
 --- Create a new class.
 -- This function creates and returns a new class. It allows the usage of a
@@ -48,7 +48,7 @@ module("base.class", package.seeall)
 --      newObject2:is_a(newClass2) == true<br>
 -- <br>
 -- @return the newly created class
-function class(base, init)
+function M.class(base, init)
     local c = {}    -- a new class instance
     if not init and type(base) == 'function' then
         init = base;
@@ -71,7 +71,7 @@ function class(base, init)
         setmetatable(obj,c);
         if init then
             init(obj,...);
-        else 
+        else
             -- make sure that any stuff from the base class is initialized!
             if base and base.init then
                 base.init(obj, ...);
@@ -79,13 +79,13 @@ function class(base, init)
         end;
         return obj;
     end;
-    
+
     c.init = init;
-    c.is_a = __default_is_a;
-    
+    c.is_a = M.__default_is_a;
+
     setmetatable(c, mt);
     return c;
-end;
+end
 
 --- This is a support function that is used as is_a function in each created
 -- class. Its only needed to store this outside the class function to avoid that
@@ -95,13 +95,15 @@ end;
 -- @param klass the class the object is compared with
 -- <br><br>
 -- @return true in case the object is a instance of the class, false if not
-function __default_is_a(self, klass)
+function M.__default_is_a(self, klass)
     local m = getmetatable(self);
-    while m do 
+    while m do
         if m == klass then
             return true;
         end;
         m = m._base;
     end;
     return false;
-end;
+end
+
+return M

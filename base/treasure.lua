@@ -1,11 +1,10 @@
 -- Basic functions for treasure maps
 -- Useable for creating maps and finding treasures
 
-require("base.common")
+local common = require("base.common")
+local M = {}
 
-module("base.treasure", package.seeall)
-
-    function GetTreasureName( level, lang, details )
+    function M.GetTreasureName( level, lang, details )
         if details then
             if ( level == 1 ) then
                 return ( lang == 0 and "vergrabene Habseligkeiten von Bauern" or "buried belongings of farmers" );
@@ -43,7 +42,7 @@ module("base.treasure", package.seeall)
         end
     end
     
-    function GetMonsterList( level )
+    function M.GetMonsterList( level )
 
         --Please add any new monsters according to their level!
 
@@ -71,7 +70,7 @@ module("base.treasure", package.seeall)
 
     end
 
-    function GetTreasure( level )
+    function M.GetTreasure( level )
 
         stuff={};
         stuff[1]={{64,10,0},{237,10,0},{294,1,0},{322,10,0},{549,10,0},{1266,10,0},{2645,1,0},{3,1,0},{21,1,0},{22,1,0},{26,1,0},{50,1,0},{56,1,0},{69,1,0},{168,1,0},{170,1,0},{293,1,0},{314,1,0},{333,1,0},{543,1,0},{544,1,0},{726,1,0},{733,1,0},{735,1,0},{2529,1,0},{2536,1,0},{2560,1,0},{2586,1,0},{2786,1,0},{41,1,0},{54,1,0},{104,1,0},{174,1,0},{175,1,0},{176,1,0},{177,1,0},{178,1,0},{179,1,0},{234,1,0},{251,1,0},{255,1,0},{316,1,0},{431,1,0},{545,1,0},{546,1,0},{736,1,0},{2534,1,0},{2535,1,0},{2543,1,0},{2547,1,0},{2550,1,0},{2577,1,0},{2579,1,0},{2716,1,0},{2717,1,0},{2738,1,0}}; --arrow, bolt, throwing star, wind arrows, poisoned arrow, stone, throwing axe, conifer wood, coal, iron ore, clay, thread, bough, raw leather, ball of wool, wool, throwing spear, pott ash, horn, cherry wood, naldor wood, coarse sand, stone block, raw stone, honeycomb, copper ore, deciduous wood, fur, branch, glass ingot, green cloth, silver ingot, red cloth, black cloth, grey cloth, yellow cloth, white cloth, blue cloth, gold nuggets, raw amethysts, raw rubies, quartz sand, wax, cherry wood boards, naldor wood boards, unfired bricks, ore, iron ingot, conifer wooden boards, leather, copper ingot, yellow cloth, green cloth, apple wood boards, pins and cotters, pins
@@ -97,23 +96,23 @@ module("base.treasure", package.seeall)
 
     end
 
-    function GetQuality( level )
+    function M.GetQuality( level )
         return math.random(6,9)*100+math.random(50,99);
     end
     
-    treasureMonsters = {};
+    local treasureMonsters = {};
 
-    function SpawnMonsters( User, level )
-	    TargetPos=User.pos; --attempt to fix a bug by Estralis
+    function M.SpawnMonsters( User, level )
+	    local TargetPos=User.pos; --attempt to fix a bug by Estralis
         if not treasureMonsters[User.id] then
             treasureMonsters[User.id] = {};
         end
-        local monList = GetMonsterList( level );
+        local monList = M.GetMonsterList( level );
         local newPos;
         local showMsgs = {};
         local mon;
         for i, monID in pairs(monList) do
-            newPos=getFreePos( TargetPos, 4 );
+            newPos=M.getFreePos( TargetPos, 4 );
             world:gfx(31,newPos);
             world:createMonster(monID, newPos, 10);
 
@@ -129,7 +128,7 @@ module("base.treasure", package.seeall)
         end
     end
 
-    function CheckMonsters( User )
+    function M.CheckMonsters( User )
         if not treasureMonsters[User.id] then
             return true;
         end
@@ -144,7 +143,7 @@ module("base.treasure", package.seeall)
         return true;
     end
 
-    function KillMonsters( User )
+    function M.KillMonsters( User )
         if not treasureMonsters[User.id] then
             return true;
         end
@@ -158,7 +157,7 @@ module("base.treasure", package.seeall)
         return true;
     end
 
-    function getFreePos( CenterPos, Rad )
+    function M.getFreePos( CenterPos, Rad )
         local tarPos;
         while true do
             tarPos = position(CenterPos.x+math.random(-Rad,Rad),CenterPos.y+math.random(-Rad,Rad),CenterPos.z);
@@ -171,63 +170,63 @@ module("base.treasure", package.seeall)
         end
     end
 
-    function SpawnTreasure( level, posi )
-        local itemList = GetTreasure( level );
+    function M.SpawnTreasure( level, posi )
+        local itemList = M.GetTreasure( level );
         for i, itemData in pairs(itemList) do
-            world:createItemFromId( itemData[1], itemData[2], posi, true, GetQuality( level ), itemData[3] and itemData[3] or 0 );
+            world:createItemFromId( itemData[1], itemData[2], posi, true, M.GetQuality( level ), itemData[3] and itemData[3] or 0 );
         end
         world:createItemFromId(3077,math.random(math.ceil(0.5*level*level),math.ceil(1.5*level*level)),posi,true,333,0);
     end
 
-    function getDistance( User, Item )
-        local RealTarget = base.common.DataToPosition( Item.data );
-        local TargetLocation = modPosition( User, RealTarget );
+    function M.getDistance( User, Item )
+        local RealTarget = common.DataToPosition( Item.data );
+        local TargetLocation = M.modPosition( User, RealTarget );
         if not TargetLocation then
             return false;
         end
         local metricDistance = User:distanceMetricToPosition ( TargetLocation );
         if ( metricDistance < 20 ) then
-            return base.common.GetNLS( User, "sehr nah", "very close" );
+            return common.GetNLS( User, "sehr nah", "very close" );
         elseif ( metricDistance < 60 ) then
-            return base.common.GetNLS( User, "nah", "close" );
+            return common.GetNLS( User, "nah", "close" );
         elseif ( metricDistance < 200 ) then
-            return base.common.GetNLS( User, "fern", "far" );
+            return common.GetNLS( User, "fern", "far" );
         elseif ( metricDistance < 500 ) then
-            return base.common.GetNLS( User, "sehr fern", "very far" );
+            return common.GetNLS( User, "sehr fern", "very far" );
         else 
-            return base.common.GetNLS( User, "�u�erst fern", "extremely far" );
+            return common.GetNLS( User, "�u�erst fern", "extremely far" );
         end
     end
 
-    function getDirection( User, Item )
-        local RealTarget = base.common.DataToPosition( Item.data );
-        local TargetLocation = modPosition( User, RealTarget );
+    function M.getDirection( User, Item )
+        local RealTarget = common.DataToPosition( Item.data );
+        local TargetLocation = M.modPosition( User, RealTarget );
         if not TargetLocation then
             return false;
         end
         User:inform("Real Target --> x: "..RealTarget.x.." - y: "..RealTarget.y.." - z: "..RealTarget.z );
         User:inform("Modified Target --> x: "..TargetLocation.x.." - y: "..TargetLocation.y.." - z: "..TargetLocation.z );
-        local dir = base.common.GetDirection( User.pos, TargetLocation );
+        local dir = common.GetDirection( User.pos, TargetLocation );
         if ( dir == 0 ) then
-            return base.common.GetNLS( User, "Norden", "north" );
+            return common.GetNLS( User, "Norden", "north" );
         elseif ( dir == 1 ) then
-            return base.common.GetNLS( User, "Nordosten", "northeast" );
+            return common.GetNLS( User, "Nordosten", "northeast" );
         elseif ( dir == 2 ) then
-            return base.common.GetNLS( User, "Osten", "east" );
+            return common.GetNLS( User, "Osten", "east" );
         elseif ( dir == 3 ) then
-            return base.common.GetNLS( User, "S�dosten", "southeast" );
+            return common.GetNLS( User, "S�dosten", "southeast" );
         elseif ( dir == 4 ) then
-            return base.common.GetNLS( User, "S�den", "south" );
+            return common.GetNLS( User, "S�den", "south" );
         elseif ( dir == 5 ) then
-            return base.common.GetNLS( User, "S�dwesten", "southwest" );
+            return common.GetNLS( User, "S�dwesten", "southwest" );
         elseif ( dir == 6 ) then
-            return base.common.GetNLS( User, "Westen", "west" );
+            return common.GetNLS( User, "Westen", "west" );
         elseif ( dir == 7 ) then
-            return base.common.GetNLS( User, "Nordwesten", "northwest" );
+            return common.GetNLS( User, "Nordwesten", "northwest" );
         end
     end
 
-    function modPosition( User, posi )
+    function M.modPosition( User, posi )
     	local UserPer = User:increaseAttrib( "perception", 0 );
     	math.randomseed( User.id + UserPer+math.abs(posi.x) );
 
@@ -244,23 +243,23 @@ module("base.treasure", package.seeall)
     	end
     end
     
-    function createMap( Char )
-        local MapPosition = findPosition( );
+    function M.createMap( Char )
+        local MapPosition = M.findPosition( );
         if not MapPosition then
             return false;
         end
-        local MapData = base.common.PositionToData( MapPosition )
+        local MapData = common.PositionToData( MapPosition )
         local MapQuality = (10-math.floor(math.sqrt(math.random(1,99))))*100+99;
         if Char:createItem(505,1,MapQuality,MapData) ~= 0 then
             world:createItemFromId(505, 1, Char.pos, true, MapQuality, MapData);
-			base.common.TempInformNLS(User,
+			common.TempInformNLS(User,
 				"Du kannst nichts mehr tragen.",
 				"You can't carry any more.");
         end
 		return true;
     end
 
-    function findPosition( )
+    function M.findPosition( )
         local newPos;
         local tileID;
         local itemID;
@@ -281,14 +280,14 @@ module("base.treasure", package.seeall)
         return newPos;
     end
     
-    foundTreasureAt = {};
+    local foundTreasureAt = {};
 
-    function DigForTreasure( User, TargetPosition, maxToFind, diggingOutMsg, foundMessage )
+    function M.DigForTreasure( User, TargetPosition, maxToFind, diggingOutMsg, foundMessage )
         local worked;
         local mapItem;
         local mapItemNr;
 
-        worked,mapItem,mapItemNr = checkMap( User, TargetPosition );
+        worked,mapItem,mapItemNr = M.checkMap( User, TargetPosition );
         if not worked then
             User:inform( "map check failed" );
             return false;
@@ -296,7 +295,7 @@ module("base.treasure", package.seeall)
 
         local treasureLevel = math.floor( mapItem.quality / 100 );
         if ( treasureLevel > maxToFind ) then
-            base.common.TempInformNLS( User,
+            common.TempInformNLS( User,
             "Du bist nicht erfahren genug in der Bergarbeit um diesen Schatz auszugraben.",
             "You are not skilled enough in mining to dig out the treasure." );
             return false;
@@ -312,7 +311,7 @@ module("base.treasure", package.seeall)
         if foundMessage then
             User:inform( foundMessage );
         else
-            base.common.TempInformNLS( User,
+            common.TempInformNLS( User,
             "Du gr�bst den Schatz aus dem Boden aus und musst dabei leider feststellen, dass der Schatz einige W�chter hat.",
             "You dig the treasure out of the ground and realize that the treasure sadly has some guards." );
         end
@@ -327,7 +326,7 @@ module("base.treasure", package.seeall)
             treasureEff:addValue("category",treasureLevel);
             User.effects:addEffect(treasureEff);
         else
-            InformNLS(User,
+            common.InformNLS(User,
                 "Du hast schon einen Schatz ausgegraben und die W�chter noch nicht besiegt.",
                 "You already dug out a treasure and didn't overcome the guardians." );
             treasureEff.nextCalled =20;
@@ -341,7 +340,7 @@ module("base.treasure", package.seeall)
         return true;
     end
 
-    function analyzeMap( Item )
+    function M.analyzeMap( Item )
         local mapDiff=math.floor(Item.quality/100);
         local mapPartsMax=math.floor(math.mod(Item.quality, 100)/10);
         local mapPartsThis=math.mod(Item.quality, 10);
@@ -349,7 +348,7 @@ module("base.treasure", package.seeall)
         return mapDiff, mapPartsMax, mapPartsThis
     end
 
-    function checkMap( User, TargetPosition )
+    function M.checkMap( User, TargetPosition )
         if User:countItem(505)==0 then
             return false,0,0;
         end
@@ -359,7 +358,7 @@ module("base.treasure", package.seeall)
         local theMax;
         local theDiff;
         local thePart;
-        local neededData = base.common.PositionToData( TargetPosition );
+        local neededData = common.PositionToData( TargetPosition );
         for i=1,17 do
             myItem = User:getItemAt( i );
             if ( myItem.id == 505 and myItem.data == neededData ) then
@@ -386,3 +385,5 @@ module("base.treasure", package.seeall)
         until not worked;
         return false,0,0;
     end
+
+return M

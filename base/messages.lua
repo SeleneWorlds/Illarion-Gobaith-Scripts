@@ -28,15 +28,15 @@
 --      The result is similar to msgs:getMessage(index), just the index is
 --      selected randomly.
 
-require("base.class")
-module("base.messages", package.seeall)
+local class = require("base.class")
+local M = {}
 
 -- create messages class
-Messages = base.class.class(function(msg)
+M.Messages = class.class(function(msg)
     msg.__german = {};
     msg.__english = {};
     msg.__count = 0;
-end);
+end)
 
 --- Add a message.
 -- Using this function you are able to add a message to the storage. The message
@@ -47,7 +47,7 @@ end);
 -- @param engMsg the english version of the message
 -- <br>
 -- @return The index of the added message
-function Messages:addMessage(gerMsg, engMsg)
+function M.Messages:addMessage(gerMsg, engMsg)
     if gerMsg == nil or gerMsg == "" then
         if engMsg == nil or engMsg == "" then
             -- ignore empty messages.
@@ -62,7 +62,7 @@ function Messages:addMessage(gerMsg, engMsg)
     table.insert(self.__english, engMsg);
     self.__count = self.__count + 1;
     return self.__count;
-end;
+end
 
 --- Get a random message.
 -- This function selects randomly a message from the stored messages and returns
@@ -70,10 +70,10 @@ end;
 -- <br>
 -- @return the german version of the message and the english version of the
 --      message
-function Messages:getRandomMessage()
+function M.Messages:getRandomMessage()
     local messageID = math.random(1, self.__count);
     return self.__german[messageID], self.__english[messageID];
-end;
+end
 
 --- Get a specified message from the list.
 -- This function returns a message that is enlisted at a specified index.<br>
@@ -82,19 +82,20 @@ end;
 -- <br>
 -- @return the german version of the message and the english version of the
 --      message or a error message in case the index value is out of bounds
-function Messages:getMessage(index)
+function M.Messages:getMessage(index)
     if index < 1 or index > self.__count then
         error("Index out of bounds");
     end;
     return self.__german[index], self.__english[index];
-end;
+end
 
 --- Get the amount of stored messages.
 -- This meta method is called by the unary operator # and returns the amount of
 -- messages stored in this object.<br>
 -- <br>
 -- @return the amount of messages stored in this object
-function Messages:__len()
+function M.Messages:__len()
     return self.__count;
-end;
+end
 
+return M

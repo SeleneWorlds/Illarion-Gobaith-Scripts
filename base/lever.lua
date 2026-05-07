@@ -1,20 +1,21 @@
-require("base.class")
+local class = require("base.class")
+local M = {}
 
-module("base.lever", package.seeall)
+local bindList
 
-Lever = base.class.class(function(lev, posi, twoState)    -- defines a class
+M.Lever = class.class(function(lev, posi, twoState)    -- defines a class
     lev.pos = posi;                             -- this is the constructor!!!!
     lev.twoState = (twoState == true);          -- left-middle-right or just l-r
     lev.broken = false;                         -- broken lever? bring someone to repair!
     lev.minStrength = 0;                        -- need a strong man to handle stuff?
-    lev.state, lev.type, lev.movingTo = lev:findType(posi);   
+    lev.state, lev.type, lev.movingTo = lev:findType(posi);
                                                 -- state=0: zero position ("left"); 1=middle etc.
                                                 -- movingTo: 0 moves from N->S/E->W, 1 other direction
-end);
+end)
 
             -- here, we have all methods of the above class. enjoy!
 
-function Lever:findType(lpos)                   -- returns leverstate, levertype, movingTo
+function M.Lever:findType(lpos)                   -- returns leverstate, levertype, movingTo
     if (world:isItemOnField(lpos)==true) then
         leverItem=world:getItemOnField(lpos);
         itemid=leverItem.id;
@@ -34,16 +35,16 @@ function Lever:findType(lpos)                   -- returns leverstate, levertype
     end
 end
 
-function Lever:getPosition()                    -- do as the name says
+function M.Lever:getPosition()                    -- do as the name says
     return self.pos;
 end
 
-function Lever:setMinStrength(str)
+function M.Lever:setMinStrength(str)
     self.minStrength=str;
     return str;
 end
 
-function Lever:switchLever(Char)                    -- switch the lever; return new state
+function M.Lever:switchLever(Char)                    -- switch the lever; return new state
     thisState, thisType, thisMovingTo = self:findType(self.pos);
     newMovingTo=0;
     if Char==nil then
@@ -55,7 +56,7 @@ function Lever:switchLever(Char)                    -- switch the lever; return 
         if (chrStr>=self.minStrength) then
             if (self.twoState~=true) then
                 if ((thisState==0) or (thisState==2)) then  -- switch to m (3-state)
-                    if (thisState==0) then 
+                    if (thisState==0) then
                         newMovingTo=0;
                     else
                         newMovingTo=1;
@@ -100,15 +101,15 @@ function Lever:switchLever(Char)                    -- switch the lever; return 
             if Char~=nil then Char:inform("Not strong enough.") end;
             return thisState;
         end
-        
+
         return newState;
     else
         return -1;           -- broken!
-    end 
+    end
 end
 
-function Lever:bind(levState, action)                       -- bind an action to a specific state
-    if (bindList==nil) then 
+function M.Lever:bind(levState, action)                       -- bind an action to a specific state
+    if (bindList==nil) then
         bindList={};
     end
     key=self.pos.x*1024*1024+self.pos.y*1024+self.pos.z;
@@ -118,3 +119,5 @@ function Lever:bind(levState, action)                       -- bind an action to
     thisAction={levState,action};                           -- put everything into the list
     table.insert(bindList[key],thisAction);
 end
+
+return M

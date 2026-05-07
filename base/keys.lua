@@ -1,6 +1,5 @@
-require("base.doors")
-
-module("base.keys", package.seeall)
+local doors = require("base.doors")
+local M = {}
 
 --[[
     LockDoor
@@ -11,8 +10,8 @@ module("base.keys", package.seeall)
     @return boolean - true in case the door got locked, false if anything went
     wrong
 ]]
-function LockDoor(Door)
-    if base.doors.CheckClosedDoor(Door.id) then
+function M.LockDoor(Door)
+    if doors.CheckClosedDoor(Door.id) then
         if (Door.quality == 233 and Door.data ~= 0) then
             Door.quality = 333;
             world:changeItem(Door);
@@ -21,7 +20,7 @@ function LockDoor(Door)
         end;
     end;
     return false;
-end;
+end
 
 --[[
     UnlockDoor
@@ -32,8 +31,8 @@ end;
     @return boolean - true in case the door got locked, false if anything went
     wrong
 ]]
-function UnlockDoor(Door)
-    if base.doors.CheckClosedDoor(Door.id) then
+function M.UnlockDoor(Door)
+    if doors.CheckClosedDoor(Door.id) then
         if (Door.quality ~= 233 and Door.data ~= 0) then
             Door.quality = 233;
             world:changeItem(Door);
@@ -42,7 +41,7 @@ function UnlockDoor(Door)
         end;
     end;
     return false;
-end;
+end
 
 --[[
     CheckKey
@@ -55,8 +54,8 @@ end;
     @return boolean - true in case the key item would fit to the door, false if
     it does not fit
 ]]
-function CheckKey(Key, Door)
-    if base.doors.CheckClosedDoor(Door.id) or base.doors.CheckOpenDoor(Door.id) then
+function M.CheckKey(Key, Door)
+    if doors.CheckClosedDoor(Door.id) or doors.CheckOpenDoor(Door.id) then
         if (Key.data == Door.data and Door.data ~= 0) then
             return true;
         else
@@ -65,4 +64,6 @@ function CheckKey(Key, Door)
     else
         return false;
     end;
-end;
+end
+
+return M

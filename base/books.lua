@@ -1,8 +1,7 @@
-require("base.common")
+local common = require("base.common")
+local M = {}
 
-module("base.books", package.seeall)
-
-function InitBook()
+function M.InitBook()
     if (gBookText==nil) then
         gBookText={};
         eBookText={};
@@ -13,7 +12,7 @@ function InitBook()
     end
 end
 
-function InitTitle()
+function M.InitTitle()
     if (gBookTitle==nil) then
         gBookTitle={};
         eBookTitle={};
@@ -23,33 +22,33 @@ function InitTitle()
     end
 end
 
-function AddGermanBookTitle(Title,DataValue)
+function M.AddGermanBookTitle(Title,DataValue)
     gBookTitle[DataValue] = Title;
 end
 
-function AddEnglishBookTitle(Title,DataValue)
+function M.AddEnglishBookTitle(Title,DataValue)
     eBookTitle[DataValue] = Title;
 end
 
-function AddGermanBookText(Text,ItemID,Diff,DataValue)
+function M.AddGermanBookText(Text,ItemID,Diff,DataValue)
     if (gBookText[DataValue] == nil) then
         gBookText[DataValue] = {};
     end
-    AddToTable(gBookText[DataValue],Text,ItemID,Diff)
+    M.AddToTable(gBookText[DataValue],Text,ItemID,Diff)
 end
 
-function AddEnglishBookText(Text,ItemID,Diff,DataValue)
+function M.AddEnglishBookText(Text,ItemID,Diff,DataValue)
     if (eBookText[DataValue] == nil) then
         eBookText[DataValue] = {};
     end
-    AddToTable(eBookText[DataValue],Text,ItemID,Diff)
+    M.AddToTable(eBookText[DataValue],Text,ItemID,Diff)
 end
 
-function AddLanguage(Skillname,BookID)
+function M.AddLanguage(Skillname,BookID)
     BookLang[BookID] = Skillname;
 end
 
-function SendBookPage(User,DataVal,Counter)
+function M.SendBookPage(User,DataVal,Counter)
     local BookTexts=nil;
     if (User:getPlayerLanguage()==0) then
         BookTexts=gBookText[DataVal];
@@ -61,27 +60,23 @@ function SendBookPage(User,DataVal,Counter)
     else
         local pages=table.getn(BookTexts);
         if ( Counter > pages ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Dieses Buch hat nur " .. pages .. " Seiten.",
             "This book only has " .. pages .. " pages.");
             return;
         end
-        --local SendText=BookTexts[math.min(Counter,pages)][1];
-        --local PicID=BookTexts[math.min(Counter,pages)][2];
         local SendText=BookTexts[Counter][1];
         local PicID=BookTexts[Counter][2];
         if (SendText==nil) then SendText="" end
         if (PicID==nil) then PicID=0 end
         if (BookLang[DataVal] == nil) then BookLang[DataVal]="common language" end
-        --SendText=ModifyText(User,SendText,BookTexts[math.min(Counter,pages)][3],BookLang[DataVal]);
-        SendText=ModifyText(User,SendText,BookTexts[Counter][3],BookLang[DataVal]);
-        --User:inform("#b|"..math.min(Counter,pages).."|"..PicID.."|"..SendText);
+        SendText=M.ModifyText(User,SendText,BookTexts[Counter][3],BookLang[DataVal]);
         User:inform("#b|"..Counter.."|"..PicID.."|"..SendText);
         User:learn(4,"library research",2,100)
     end
 end
 
-function GetBookItemInform(User,Item)
+function M.GetBookItemInform(User,Item)
     if (User:getPlayerLanguage()==0) then
         if (gBookTitle[Item.data] == nil) then
             world:itemInform(User,Item,"Du siehst "..world:getItemName(Item.id,0));
@@ -93,11 +88,11 @@ function GetBookItemInform(User,Item)
             world:itemInform(User,Item,"You see "..world:getItemName(Item.id,1));
         else
             world:itemInform(User,Item,"You see "..eBookTitle[Item.data]);
-        end  
+        end
     end
-end      
+end
 
-function AddToTable(TargetList,Text,ItemID,Difficult)
+function M.AddToTable(TargetList,Text,ItemID,Difficult)
     local done=false;
     local outputted=false;
     repeat
@@ -127,7 +122,7 @@ function AddToTable(TargetList,Text,ItemID,Difficult)
     until done
 end
 
-function ModifyText(User,Text,Difficult,CharLangSkillName)
+function M.ModifyText(User,Text,Difficult,CharLangSkillName)
     if (vocals==nil) then
         vocals={65,69,73,79,85};
     end
@@ -188,3 +183,5 @@ function ModifyText(User,Text,Difficult,CharLangSkillName)
     end
     return retText
 end
+
+return M

@@ -1,6 +1,6 @@
-module("base.log", package.seeall)
+local M = {}
 
-function logToFile(theString)
+function M.logToFile(theString)
     retVal=false;
     coldLog,errMsg=io.open("/home/martin/scriptlog.txt","a");
     if (coldLog~=nil) then
@@ -12,3 +12,5 @@ function logToFile(theString)
     end
     return retVal;
 end
+
+return M
