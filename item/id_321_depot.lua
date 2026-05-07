@@ -65,25 +65,6 @@ function LookAtItem(User,Item)
         end
     elseif (Item.data==14) then
         LookAtStr = LookAtStr.."Caelum";
-
---NewIllarion
-
-    elseif (Item.data==101) then
-            LookAtStr = LookAtStr.."Cadomyr";
-
-    elseif (Item.data==102) then
-            LookAtStr = LookAtStr.."Runewick";
-
-    elseif (Item.data==103) then
-            LookAtStr = LookAtStr.."Galmair";
-
-    elseif (Item.data==104) then
-        if (lang==0) then
-            LookAtStr = LookAtStr.."Gasthof zur Hanfschlinge";
-        else
-            LookAtStr = LookAtStr.."The Hemp Necktie Inn";
-        end
-
     elseif (Item.data==1337) then
         if (lang==0) then
             LookAtStr = LookAtStr.."Estralis - Hand ab, sonst Hand ab!";
