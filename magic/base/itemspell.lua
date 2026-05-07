@@ -1,8 +1,4 @@
-if M_ITEMSPELL ~= true then
-M_ITEMSPELL = true;
-
 require("magic.base.basics");
-module("magic.base.itemspell")
 
 function DoItemSpell(Caster, TargetPos, ltstate)
     Hitted_already = {};
@@ -53,7 +49,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
 
     if not CasterVal then
         base.common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nï¿½tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
@@ -222,4 +218,34 @@ function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
     DoItemSpell(Caster,TargetItem.pos, ltstate);
 end
 
+local M = {}
+
+function M.DoItemSpell(...)
+    return DoItemSpell(...)
 end
+
+function M.createItemOnMap(...)
+    return createItemOnMap(...)
+end
+
+function M.removeItemFromMap(...)
+    return removeItemFromMap(...)
+end
+
+function M.CastMagic(...)
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    return CastMagicOnItem(...)
+end
+
+return M

@@ -1,9 +1,8 @@
--- TestScript für neues Magie System
+-- TestScript fï¿½r neues Magie System
 -- Rune 2 - RA
 -- INSERT INTO spells VALUES (1,0,'m_01_testspell.lua');
--- Flächen Zauber
+-- Flï¿½chen Zauber
 -- Effekt Zauber
-module("magic.spell_02_testspell", package.seeall)
 
 function CastMagic(Caster,counter,param,ltstate)
 	Caster:inform("moep");
@@ -17,7 +16,7 @@ function CastMagic(Caster,counter,param,ltstate)
 	if found then
 	       magicWaterNew=magicWaterNew+1;
 	       magicFireNew=magicFireNew-1;
-	Caster:inform("Wasserskill erhöht - Feuerskill gesenkt");
+	Caster:inform("Wasserskill erhï¿½ht - Feuerskill gesenkt");
 	end
     end
     magicEffect:addValue("magicWater",magicWaterNew);
@@ -35,3 +34,23 @@ end
 
 function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 end
+
+local M = {}
+
+function M.CastMagic(...)
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    return CastMagicOnItem(...)
+end
+
+return M

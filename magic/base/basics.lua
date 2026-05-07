@@ -1,9 +1,5 @@
-if M_BASICS ~= true then
-M_BASICS = true;
-
 require("base.common")
 require("content.lookat.unique");
-module("magic.base.basics", package.seeall)
 
 function initRaceBoni()
     -- Default Values for racial boni related magic
@@ -140,14 +136,14 @@ function CheckAndReduceRequirements( Char, CasterValue )
 
     if ( Char:increaseAttrib("hitpoints",0) < -HPChange ) then
         base.common.InformNLS( Char,
-        "Diesen Spruch zu sprechen würde dich auf jeden Fall töten. Dein Überlebenstrieb wehrt sich dagegen.",
+        "Diesen Spruch zu sprechen wï¿½rde dich auf jeden Fall tï¿½ten. Dein ï¿½berlebenstrieb wehrt sich dagegen.",
         "This spell would kill you in any way. You will to life holds against this." );
         return false;
     end
 
     if ( Char:increaseAttrib("foodlevel",0) < -FPChange ) then
         base.common.InformNLS( Char,
-        "Dein Hunger ist zu groß als das du dich genug konzentrieren könntest um diesen Zauber zu sprechen.",
+        "Dein Hunger ist zu groï¿½ als das du dich genug konzentrieren kï¿½nntest um diesen Zauber zu sprechen.",
         "Your hunger is to big to concentrate enougth to cast this spell." );
         return false;
     end
@@ -367,7 +363,7 @@ function actionDisturbed(Caster,disturber)
     end
 end
 
--- Erstellt einen Wert zwischen 0 und 1 abhängig der Hitpoints eines Charakters
+-- Erstellt einen Wert zwischen 0 und 1 abhï¿½ngig der Hitpoints eines Charakters
 function HPMod(Hitpoints)
     return math.min(100,math.max(0,math.floor(45.2855+math.sin(0.0003*Hitpoints-1.5161)+55.2571)))/100;
 end
@@ -503,4 +499,90 @@ function loadCorrectDefScript()
     end
 end
 
-end;
+local M = {}
+
+function M.initRaceBoni(...)
+    return initRaceBoni(...)
+end
+
+function M.SetRaceBoni(...)
+    return SetRaceBoni(...)
+end
+
+function M.GetOffensiveRaceBoni(...)
+    return GetOffensiveRaceBoni(...)
+end
+
+function M.GetDefensiveRaceBoni(...)
+    return GetDefensiveRaceBoni(...)
+end
+
+function M.MagicResistence(...)
+    return MagicResistence(...)
+end
+
+function M.CasterValue(...)
+    return CasterValue(...)
+end
+
+function M.SayRunes(...)
+    return SayRunes(...)
+end
+
+function M.CheckAndReduceRequirements(...)
+    return CheckAndReduceRequirements(...)
+end
+
+function M.InitializeHelpList(...)
+    return InitializeHelpList(...)
+end
+
+function M.AddBonus(...)
+    return AddBonus(...)
+end
+
+function M.actionDisturbed(...)
+    return actionDisturbed(...)
+end
+
+function M.HPMod(...)
+    return HPMod(...)
+end
+
+function M.gemBonis(...)
+    return gemBonis(...)
+end
+
+function M.GenderMessage(...)
+    return GenderMessage(...)
+end
+
+function M.MaximalMagicResistance(...)
+    return MaximalMagicResistance(...)
+end
+
+function M.performGFX(...)
+    return performGFX(...)
+end
+
+function M.performTile(...)
+    return performTile(...)
+end
+
+function M.performSFX(...)
+    return performSFX(...)
+end
+
+function M.SpawnArea(...)
+    return SpawnArea(...)
+end
+
+function M.loadCorrectDefScript(...)
+    return loadCorrectDefScript(...)
+end
+
+magic = magic or {}
+magic.base = magic.base or {}
+magic.base.basics = M
+
+return M

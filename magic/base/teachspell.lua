@@ -1,5 +1,4 @@
 require("base.common")
-module("magic.base.teachspell")
 
 Students = {};
 
@@ -14,7 +13,7 @@ function DoTeachSpell(TeachingChar,StudentChar)
 
     if (LuaAnd(StudentChar:getQuestProgress(24),1) ~= 0 ) then
         base.common.TempInformNLS(TeachingChar,
-        "Dein Schüler kann keine Runen lernen.",
+        "Dein Schï¿½ler kann keine Runen lernen.",
         "Your student is not able to learn runes.");
         return;
     end
@@ -28,18 +27,18 @@ function DoTeachSpell(TeachingChar,StudentChar)
 
     if (LuaAnd(StudentChar:getMagicFlags(0),2^Rune.value) ~= 0) then
         base.common.TempInformNLS(TeachingChar,
-        "Dein Schüler kennt diese Rune schon.",
+        "Dein Schï¿½ler kennt diese Rune schon.",
         "You student already knows that rune.");
         return;
     end
 
     if not LTERuneLock( StudentChar ) then
         base.common.TempInformNLS(TeachingChar,
-        "Du kannst diesem Schüler im Augenblick nichts beibringen. Er ist noch nicht bereit dazu.",
+        "Du kannst diesem Schï¿½ler im Augenblick nichts beibringen. Er ist noch nicht bereit dazu.",
         "You can't teach this student anything at the moment. He is not ready yet.");
 
         base.common.TempInformNLS(StudentChar,
-        "Im Augenblick kannst du keine weiteren Runen lernen. Du bist noch nicht bereit für weitere Runen.",
+        "Im Augenblick kannst du keine weiteren Runen lernen. Du bist noch nicht bereit fï¿½r weitere Runen.",
         "At the moment you can't learn more runes. You are not able yet to learn more.");
 
         return;
@@ -48,13 +47,13 @@ function DoTeachSpell(TeachingChar,StudentChar)
     if Teacher.attribsum then
         if Teacher.attribsum > GetAttributeSum( TeachingChar ) then
             base.common.TempInformNLS(TeachingChar,
-            "Du bist nicht fähig diese Rune zu lehren.",
+            "Du bist nicht fï¿½hig diese Rune zu lehren.",
             "You are not able to teach this rune.");
             return;
         end
     elseif GetAttributeSum( TeachingChar ) < 0 then
         base.common.TempInformNLS(TeachingChar,
-        "Du bist nicht fähig zu lehren.",
+        "Du bist nicht fï¿½hig zu lehren.",
         "You are not able to teach.");
         return;
     end
@@ -62,7 +61,7 @@ function DoTeachSpell(TeachingChar,StudentChar)
     if Teacher.skill then
         if Teacher.skill.value > GetSkillValue( TeachingChar, Teacher.skill.name ) then
             base.common.TempInformNLS(TeachingChar,
-            "Du bist noch nicht fähig diese Rune zu lehren.",
+            "Du bist noch nicht fï¿½hig diese Rune zu lehren.",
             "You are not able yet to teach this rune.");
             return;
         end
@@ -71,19 +70,19 @@ function DoTeachSpell(TeachingChar,StudentChar)
     if Student.attribsum then
         if Student.attribsum > GetAttributeSum( StudentChar ) then
             base.common.TempInformNLS(StudentChar,
-            "Du bist nicht fähig diese Rune zu lehren.",
+            "Du bist nicht fï¿½hig diese Rune zu lehren.",
             "You are not able to teach this rune.");
             base.common.TempInformNLS(TeachingChar,
-            "Dein Schüler ist nicht fähig diese Rune zu lernen.",
+            "Dein Schï¿½ler ist nicht fï¿½hig diese Rune zu lernen.",
             "Your student ist not able to learn this rune.");
             return;
         end
     elseif GetAttributeSum( StudentChar ) < 0 then
         base.common.TempInformNLS(StudentChar,
-        "Du bist nicht fähig Magie zu erlernen.",
+        "Du bist nicht fï¿½hig Magie zu erlernen.",
         "You are not able to learn magic.");
         base.common.TempInformNLS(TeachingChar,
-        "Dein Schüler ist nicht fähig Magie zu lernen.",
+        "Dein Schï¿½ler ist nicht fï¿½hig Magie zu lernen.",
         "Your student ist not able to learn magic.");
         return;
     end
@@ -91,10 +90,10 @@ function DoTeachSpell(TeachingChar,StudentChar)
     if Student.skill then
         if Student.skill.value > GetSkillValue( StudentChar, Student.skill.name ) then
             base.common.TempInformNLS(StudentChar,
-            "Du bist noch nicht fähig diese Rune zu lehren.",
+            "Du bist noch nicht fï¿½hig diese Rune zu lehren.",
             "You are not able yet to learn this rune.");
             base.common.TempInformNLS(TeachingChar,
-            "Dein Schüler ist noch nicht fähig diese Rune zu lernen.",
+            "Dein Schï¿½ler ist noch nicht fï¿½hig diese Rune zu lernen.",
             "Your student ist not able yet to learn this rune.");
             return;
         end
@@ -111,7 +110,7 @@ function DoTeachSpell(TeachingChar,StudentChar)
 
     if (Students[TeachingChar.id + StudentChar.id] ~= Rune.value) then
         base.common.TempInformNLS(TeachingChar,
-        "Du konzentrierst dich auf deinen Schüler. Wiederhole deine Worte um ihm die Macht der Rune "..Rune.name.." zu übergeben.",
+        "Du konzentrierst dich auf deinen Schï¿½ler. Wiederhole deine Worte um ihm die Macht der Rune "..Rune.name.." zu ï¿½bergeben.",
         "You focus on your student. Repeat your words to give him the power of the rune "..Rune.name..".");
         Students[TeachingChar.id + StudentChar.id] = Rune.value;
         return;
@@ -122,7 +121,7 @@ function DoTeachSpell(TeachingChar,StudentChar)
     "You give your student the power of the rune "..Rune.name..".");
 
     base.common.TempInformNLS(StudentChar,
-    "Du fühlst wie die Kraft der Rune "..Rune.name.." deinen Körper durchflutet.",
+    "Du fï¿½hlst wie die Kraft der Rune "..Rune.name.." deinen Kï¿½rper durchflutet.",
     "You feel how the power of the rune "..Rune.name.." flows thougth your body.");
 
     logToFile_magic(os.date()..": "..TeachingChar.name.." gave rune "..Rune.name.." to "..StudentChar.name.."\n");
@@ -266,4 +265,51 @@ function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
     base.common.TempInformNLS( Caster,
     "Dieser Zauber hat hier keinen Effekt.",
     "This spell has no effect at all here." );
+
+local M = {}
+
+function M.DoTeachSpell(...)
+    return DoTeachSpell(...)
 end
+
+function M.logToFile_magic(...)
+    return logToFile_magic(...)
+end
+
+function M.LTERuneLock(...)
+    return LTERuneLock(...)
+end
+
+function M.LTELockRune(...)
+    return LTELockRune(...)
+end
+
+function M.GetAttributeSum(...)
+    return GetAttributeSum(...)
+end
+
+function M.GetSkillValue(...)
+    return GetSkillValue(...)
+end
+
+function M.TeachingRoom(...)
+    return TeachingRoom(...)
+end
+
+function M.CastMagic(...)
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    return CastMagicOnItem(...)
+end
+
+return M

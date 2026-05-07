@@ -1,41 +1,33 @@
---[[
-    Create dead harmless creature
-    Rune 9 & 11
-        IRA TAUR
+local Base = require("magic.base.creaturspell")
+local basics = require("magic.base.basics")
 
-    Creature-Spell
+local M = {}
 
-    SQL:    INSERT INTO spells VALUES (2^8+2^10,0,'m_09_11_summ_harml-creature.lua');
-]]
-
--- including the main script for gfx spells
-require("magic.base.creaturspell");
-module("magic.spell_09_11_summ_harml-creature", package.seeall)
 -- setting the filename of the current script. This is needed to exchange them later if needed while runtime
-Script = "m_09_11_summ_harml-creature.lua";
+M.Script = "m_09_11_summ_harml-creature.lua";
 
 -- Skill related spell settings
-Skill = {
+M.Skill = {
     ["min"]  =         20,  -- minimal Skillvalue needed to cast the spell
     ["max"]  =         70,  -- maximal Skillvalue of the spell where it reaches its full effect
     ["name"] = "desicio"   -- name of the skill that is needed for this spell
 }
 
 -- General Spell settings
-Settings = {
+M.Settings = {
     ["Runes"] = "IRA TAUR",   -- Names of the runes the spell contains of. This is the text spoken when the spell is casted
     ["Range"] = 8,          -- Maximum distance in tiles between the target of the spell and the caster
     ["FirstInLine"] = true  -- Perform a line of flight calculation and hit the first character on this line or the destination the caster pointed at
 }
 
 -- Grafik and Sound effects that appear when the spell is casted successfully
-SpellEffects = {
+M.SpellEffects = {
     ["gfx"] = 5,        -- Grafic effect that is shown on the position the spell hitted
     ["sfx"] = 1        -- Sound effect that is placed in the position the spell hitted
 }
 
 -- Time related effects of the spell
-TimeEffects = {
+M.TimeEffects = {
     ["delay"] = 15,          -- Casting delay before the spell is actually casted in 1/10 seconds (while this time the Caster can be interrupted)
     ["gfx"] = {             -- The the graphic effect informations that are used while the casting delay
         ["id"] = 21,        -- The gfx id that is shown while the casting delay
@@ -52,7 +44,7 @@ TimeEffects = {
 }
 
 -- effects on the caster when he castes the spell, the effects are interpolated linear from minSkill to maxSkill
-CasterEffects = {
+M.CasterEffects = {
     ["minSkill"] = {                -- effects that are caused in case the caster has to minimum needed skill
         ["hitpoints"]    =     0,   -- increase of the hitpoints
         ["foodpoints"]   =     0,   -- increase of the foodlevel
@@ -71,12 +63,54 @@ CasterEffects = {
     }
 }
 
-Monsters = { 116,236 };  -- IDs of monsters that could be created
+M.Monsters = { 116,236 };  -- IDs of monsters that could be created
 
 -- Racial bonis
-magic.base.basics.initRaceBoni(); -- Init or reset all preset racial boni values
+basics.initRaceBoni(); -- Init or reset all preset racial boni values
 
 -- make sure that we remember that this is the original script loaded on this spell
-if (orgScript == nil) then
-    orgScript = Script;
+M.orgScript = M.Script
+
+local function activate()
+    basics.initRaceBoni()
+    Script = M.Script
+    Skill = M.Skill
+    Settings = M.Settings
+    SpellEffects = M.SpellEffects
+    TimeEffects = M.TimeEffects
+    CasterEffects = M.CasterEffects
+    TargetEffects = M.TargetEffects
+    Teleport = M.Teleport
+    Spot = M.Spot
+    Wall = M.Wall
+    Circle = M.Circle
+    Rune = M.Rune
+    Teacher = M.Teacher
+    Student = M.Student
+    Monsters = M.Monsters
+    Portal = M.Portal
+    Weight = M.Weight
+    orgScript = M.orgScript
 end
+
+function M.CastMagic(...)
+    activate()
+    return Base.CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    activate()
+    return Base.CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    activate()
+    return Base.CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    activate()
+    return Base.CastMagicOnItem(...)
+end
+
+return M

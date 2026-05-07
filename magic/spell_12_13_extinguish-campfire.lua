@@ -1,41 +1,27 @@
--- FEUER LÖSCHEN
--- Rune 12 & 13 CUN SAV
--- INSERT INTO spells VALUES (2^11+2^12,0,'m_12_13.lua');
--- Punkt Zauber
--- Intentarzauber Zauber
+local Base = require("magic.base.gfxspell")
+local basics = require("magic.base.basics")
 
---[[
-    Extinguish camp fires
-    Rune 12 & 13
-        CUN SAV
+local M = {}
 
-    GFX-Spell
-
-    SQL:    INSERT INTO spells VALUES (2^11+2^12,0,'m_12_13_extinguish-campfire.lua');
-]]
-
--- including the main script for gfx spells
-require("magic.base.gfxspell");
-module("magic.spell_12_13_extinguish-campfire", package.seeall)
 -- setting the filename of the current script. This is needed to exchange them later if needed while runtime
-Script = "m_12_13_extinguish-campfire.lua";
+M.Script = "m_12_13_extinguish-campfire.lua";
 
 -- Skill related spell settings
-Skill = {
+M.Skill = {
     ["min"]  =          0,  -- minimal Skillvalue needed to cast the spell
     ["max"]  =         50,  -- maximal Skillvalue of the spell where it reaches its full effect
     ["name"] = "commotio"   -- name of the skill that is needed for this spell
 }
 
 -- General Spell settings
-Settings = {
+M.Settings = {
     ["Runes"] = "CUN SAV",   -- Names of the runes the spell contains of. This is the text spoken when the spell is casted
     ["Range"] = 8,          -- Maximum distance in tiles between the target of the spell and the caster
     ["FirstInLine"] = false  -- Perform a line of flight calculation and hit the first character on this line or the destination the caster pointed at
 }
 
 -- Grafik and Sound effects that appear when the spell is casted successfully
-SpellEffects = {
+M.SpellEffects = {
     ["line"] = nil,
     ["justAtHit"] = true,   -- only show gfx and sfx if the spell hits anything
     [0] = {                 -- Radius 0 around the target location (so this IS exactly the target location)
@@ -62,7 +48,7 @@ SpellEffects = {
 }
 
 -- Time related effects of the spell
-TimeEffects = {
+M.TimeEffects = {
     ["delay"] = 15,          -- Casting delay before the spell is actually casted in 1/10 seconds (while this time the Caster can be interrupted)
     ["gfx"] = {             -- The the graphic effect informations that are used while the casting delay
         ["id"] = 21,        -- The gfx id that is shown while the casting delay
@@ -79,7 +65,7 @@ TimeEffects = {
 }
 
 -- effects on the caster when he castes the spell, the effects are interpolated linear from minSkill to maxSkill
-CasterEffects = {
+M.CasterEffects = {
     ["minSkill"] = {                -- effects that are caused in case the caster has to minimum needed skill
         ["hitpoints"]    =     0,   -- increase of the hitpoints
         ["foodpoints"]   =     0,   -- increase of the foodlevel
@@ -99,9 +85,51 @@ CasterEffects = {
 }
 
 -- Racial bonis
-magic.base.basics.initRaceBoni(); -- Init or reset all preset racial boni values
+basics.initRaceBoni(); -- Init or reset all preset racial boni values
 
 -- make sure that we remember that this is the original script loaded on this spell
-if (orgScript == nil) then
-    orgScript = Script;
+M.orgScript = M.Script
+
+local function activate()
+    basics.initRaceBoni()
+    Script = M.Script
+    Skill = M.Skill
+    Settings = M.Settings
+    SpellEffects = M.SpellEffects
+    TimeEffects = M.TimeEffects
+    CasterEffects = M.CasterEffects
+    TargetEffects = M.TargetEffects
+    Teleport = M.Teleport
+    Spot = M.Spot
+    Wall = M.Wall
+    Circle = M.Circle
+    Rune = M.Rune
+    Teacher = M.Teacher
+    Student = M.Student
+    Monsters = M.Monsters
+    Portal = M.Portal
+    Weight = M.Weight
+    orgScript = M.orgScript
 end
+
+function M.CastMagic(...)
+    activate()
+    return Base.CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    activate()
+    return Base.CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    activate()
+    return Base.CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    activate()
+    return Base.CastMagicOnItem(...)
+end
+
+return M

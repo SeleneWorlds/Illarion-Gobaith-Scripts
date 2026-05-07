@@ -1,8 +1,4 @@
-if M_TELEPORTSPELL ~= true then
-M_TELEPORTSPELL = true;
-
 require("magic.base.basics");
-module("magic.base.teleportspell")
 
 function DoTeleSpell(Caster, TargetPos, ltstate)
     if ( ltstate == Action.abort ) then
@@ -52,7 +48,7 @@ function DoTeleSpell(Caster, TargetPos, ltstate)
 
     if not CasterVal then
         base.common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nï¿½tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
@@ -104,4 +100,26 @@ function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
     DoTeleSpell(Caster,TargetItem.pos, ltstate);
 end
 
+local M = {}
+
+function M.DoTeleSpell(...)
+    return DoTeleSpell(...)
 end
+
+function M.CastMagic(...)
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    return CastMagicOnItem(...)
+end
+
+return M

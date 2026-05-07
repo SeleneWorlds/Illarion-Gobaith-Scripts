@@ -1,8 +1,4 @@
-if M_CREATURSPELL ~= true then
-M_CREATURSPELL = true;
-
 require("magic.base.basics");
-module("magic.base.creaturspell")
 
 function DoCreaturSpell(Caster, TargetPos, ltstate)
     if ( ltstate == Action.abort ) then
@@ -59,7 +55,7 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
 
     if not CasterVal then
         base.common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nï¿½tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
@@ -96,4 +92,26 @@ function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
     DoCreaturSpell(Caster,TargetItem.pos,ltstate);
 end
 
-end;
+local M = {}
+
+function M.DoCreaturSpell(...)
+    return DoCreaturSpell(...)
+end
+
+function M.CastMagic(...)
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    return CastMagicOnItem(...)
+end
+
+return M

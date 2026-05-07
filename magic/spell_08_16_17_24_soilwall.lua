@@ -1,35 +1,27 @@
---[[
-    Soil wall
-    Rune 8 & 16 & 17 & 24
-        SOLH ORL DUN QWAN
+local Base = require("magic.base.itemspell")
+local basics = require("magic.base.basics")
 
-    Item-Spell
+local M = {}
 
-    SQL:    INSERT INTO spells VALUES (2^7+2^15+2^16+2^23,0,'m_08_16_17_24_soilwall.lua');
-]]
-
--- including the main script for item spells
-require("magic.base.itemspell");
-module("magic.spell_08_16_17_24_soilwall", package.seeall)
 -- setting the filename of the current script. This is needed to exchange them later if needed while runtime
-Script = "m_08_16_17_24_soilwall.lua";
+M.Script = "m_08_16_17_24_soilwall.lua";
 
 -- Skill related spell settings
-Skill = {
+M.Skill = {
     ["min"]  =         40,  -- minimal Skillvalue needed to cast the spell
     ["max"]  =         90,  -- maximal Skillvalue of the spell where it reaches its full effect
     ["name"] = "pervestigatio"   -- name of the skill that is needed for this spell
 }
 
 -- General Spell settings
-Settings = {
+M.Settings = {
     ["Runes"] = "SOLH ORL DUN QWAN",   -- Names of the runes the spell contains of. This is the text spoken when the spell is casted
     ["Range"] = 6,          -- Maximum distance in tiles between the target of the spell and the caster
     ["FirstInLine"] = false  -- Perform a line of flight calculation and hit the first character on this line or the destination the caster pointed at
 }
 
 -- Time related effects of the spell
-TimeEffects = {
+M.TimeEffects = {
     ["delay"] = 30,         -- Casting delay before the spell is actually casted in 1/10 seconds (while this time the Caster can be interrupted)
     ["gfx"] = {             -- The the graphic effect informations that are used while the casting delay
         ["id"] = 21,        -- The gfx id that is shown while the casting delay
@@ -40,13 +32,13 @@ TimeEffects = {
         ["time"] = 0        -- The time in 1/10 seconds that has to pass before the sound effect is played a second time
     },
     ["msg"] = {             -- The messages that are shown before the time delay is started in german and english
-        [CPlayer.german ] = "#me beginnt mit einer mystischen Formel und von {PP}n Händen bilden scheinen kleine grüne Laubblätter nach unten zu sinken die sich noch vor dem Boden wieder auflösen.",
+        [CPlayer.german ] = "#me beginnt mit einer mystischen Formel und von {PP}n Hï¿½nden bilden scheinen kleine grï¿½ne Laubblï¿½tter nach unten zu sinken die sich noch vor dem Boden wieder auflï¿½sen.",
         [CPlayer.english] = "#me starts with a mystical formula and from {PP} hands some small green leaves start falling down, but they disappear before they reach the ground."
     }
 }
 
 -- effects on the caster when he castes the spell, the effects are interpolated linear from minSkill to maxSkill
-CasterEffects = {
+M.CasterEffects = {
     ["minSkill"] = {                -- effects that are caused in case the caster has to minimum needed skill
         ["hitpoints"]    =     0,   -- increase of the hitpoints
         ["foodpoints"]   =     0,   -- increase of the foodlevel
@@ -65,7 +57,7 @@ CasterEffects = {
     }
 }
 
-Wall = {
+M.Wall = {
     ["minSkill"] = {            -- wall informations at minimal skills
         ["armlength"] = 1       -- length of one arm of the wall (effective length: armlength*2+1)
     },
@@ -94,9 +86,51 @@ Wall = {
 }
 
 -- Racial bonis
-magic.base.basics.initRaceBoni(); -- Init or reset all preset racial boni values
+basics.initRaceBoni(); -- Init or reset all preset racial boni values
 
 -- make sure that we remember that this is the original script loaded on this spell
-if (orgScript == nil) then
-    orgScript = Script;
+M.orgScript = M.Script
+
+local function activate()
+    basics.initRaceBoni()
+    Script = M.Script
+    Skill = M.Skill
+    Settings = M.Settings
+    SpellEffects = M.SpellEffects
+    TimeEffects = M.TimeEffects
+    CasterEffects = M.CasterEffects
+    TargetEffects = M.TargetEffects
+    Teleport = M.Teleport
+    Spot = M.Spot
+    Wall = M.Wall
+    Circle = M.Circle
+    Rune = M.Rune
+    Teacher = M.Teacher
+    Student = M.Student
+    Monsters = M.Monsters
+    Portal = M.Portal
+    Weight = M.Weight
+    orgScript = M.orgScript
 end
+
+function M.CastMagic(...)
+    activate()
+    return Base.CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    activate()
+    return Base.CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    activate()
+    return Base.CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    activate()
+    return Base.CastMagicOnItem(...)
+end
+
+return M

@@ -1,24 +1,17 @@
---[[
-    Teach rune: ANTH
-    Rune 23 & 26
-        ANTH BHONA
+local Base = require("magic.base.teachspell")
+local basics = require("magic.base.basics")
 
-    Teaching-Spell
+local M = {}
 
-    SQL:    INSERT INTO spells VALUES (2^22+2^25,0,'m_23_26_teach-anth.lua');
-]]
-
-require("magic.base.teachspell");
-module("magic.spell_23_26_teach-anth", package.seeall)
 -- Informations about the rune
-Rune = {
+M.Rune = {
     ["name"] = "ANTH",   -- name of the rune
     ["class"] = 2,      -- class of the rune ( 1 = weak, 2 = normal, 3 = strong )
     ["value"] = 22      -- value of the rune
 }
 
 -- Teacher related informations
-Teacher = {
+M.Teacher = {
     ["skill"] = {               -- The required skill of the teacher
         ["name"] = "pervestigatio",  -- name of the skill that is required
         ["value"] = 50          -- value of the skill that is required
@@ -27,10 +20,54 @@ Teacher = {
 }
 
 -- Student related informations
-Student = {
+M.Student = {
     ["skill"] = {               -- Skill requirements to the student
         ["name"] = "transformo",   -- name of the skill that is required
         ["value"] = 20          -- value of the skill that is required
     },
     ["attribsum"] = 33         -- attribute requirements to the student
 }
+
+local function activate()
+    basics.initRaceBoni()
+    Script = M.Script
+    Skill = M.Skill
+    Settings = M.Settings
+    SpellEffects = M.SpellEffects
+    TimeEffects = M.TimeEffects
+    CasterEffects = M.CasterEffects
+    TargetEffects = M.TargetEffects
+    Teleport = M.Teleport
+    Spot = M.Spot
+    Wall = M.Wall
+    Circle = M.Circle
+    Rune = M.Rune
+    Teacher = M.Teacher
+    Student = M.Student
+    Monsters = M.Monsters
+    Portal = M.Portal
+    Weight = M.Weight
+    orgScript = M.orgScript
+end
+
+function M.CastMagic(...)
+    activate()
+    return Base.CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    activate()
+    return Base.CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    activate()
+    return Base.CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    activate()
+    return Base.CastMagicOnItem(...)
+end
+
+return M

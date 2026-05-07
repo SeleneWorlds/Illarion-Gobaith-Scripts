@@ -1,4 +1,4 @@
--- TÜREN AUF UND ZU KLAPPEN
+-- Tï¿½REN AUF UND ZU KLAPPEN
 -- RUNEN 1 & 23 KEL ANTH
 --INSERT INTO spells VALUES (2^0+2^22,0,'m_01_23.lua');
 --SPEZIALZAUBER
@@ -6,7 +6,6 @@
 
 require("base.doors")
 require("base.common")
-module("magic.spell_01_23_open-close-door", package.seeall)
 function OpenCloseTarget(Caster,Item)
     if not base.common.IsLookingAt(Caster,Item.pos) then
 		base.common.TurnTo(Caster, Item.pos);
@@ -19,15 +18,15 @@ function OpenCloseTarget(Caster,Item)
         Caster.activeLanguage=Language;
         if base.doors.CloseDoor(Item) then
             Succeed(Caster)
-            base.common.InformNLS(Caster,"Von dem Windstoß getroffen klappt die Tür zu.","A mysterious breeze pushes the door close.");
+            base.common.InformNLS(Caster,"Von dem Windstoï¿½ getroffen klappt die Tï¿½r zu.","A mysterious breeze pushes the door close.");
         else
             local OpenDoor,OpenOK=base.doors.OpenDoor(Item);
             if OpenOK then
                 Succeed(Caster)
-                base.common.InformNLS(Caster,"Vom Wind geführt schwingt die Tür auf.","A mysterious breeze pushes the door open.");
+                base.common.InformNLS(Caster,"Vom Wind gefï¿½hrt schwingt die Tï¿½r auf.","A mysterious breeze pushes the door open.");
             elseif OpenDoor then
                 Succeed(Caster)
-                base.common.InformNLS(Caster,"Der Wind rüttelt an der Tür, doch sie öffnet sich nicht.","The wind tries to open the door, but the door doesn't open.");
+                base.common.InformNLS(Caster,"Der Wind rï¿½ttelt an der Tï¿½r, doch sie ï¿½ffnet sich nicht.","The wind tries to open the door, but the door doesn't open.");
             else
                 base.common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
             end
@@ -69,3 +68,31 @@ function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
         Caster:talkLanguage(CCharacter.say, CPlayer.english,"me stopps appruptly with the casting.");
     end
 end
+
+local M = {}
+
+function M.OpenCloseTarget(...)
+    return OpenCloseTarget(...)
+end
+
+function M.Succeed(...)
+    return Succeed(...)
+end
+
+function M.CastMagic(...)
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    return CastMagicOnItem(...)
+end
+
+return M

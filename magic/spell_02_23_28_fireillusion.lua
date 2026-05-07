@@ -1,36 +1,27 @@
---[[
-    Fireflame illustion
-    Rune 2 & 23 & 28
-        RA ANTH LHOR
+local Base = require("magic.base.itemspell")
+local basics = require("magic.base.basics")
 
-    Item-Spell
-
-    SQL:    INSERT INTO spells VALUES (2 & 23 & 28,0,'m_02_23_28_fireillusion.lua');
-]]
-
--- including the main script for item spells
-require("magic.base.itemspell");
-module("magic.spell_02_23_28_fireillusion", package.seeall)
+local M = {}
 
 -- setting the filename of the current script. This is needed to exchange them later if needed while runtime
-Script = "m_02_23_28_fireillusion.lua";
+M.Script = "m_02_23_28_fireillusion.lua";
 
 -- Skill related spell settings
-Skill = {
+M.Skill = {
     ["min"]  =          5,  -- minimal Skillvalue needed to cast the spell
     ["max"]  =         20,  -- maximal Skillvalue of the spell where it reaches its full effect
     ["name"] = "pervestigatio"   -- name of the skill that is needed for this spell
 }
 
 -- General Spell settings
-Settings = {
+M.Settings = {
     ["Runes"] = "RA ANTH LHOR",   -- Names of the runes the spell contains of. This is the text spoken when the spell is casted
     ["Range"] = 6,          -- Maximum distance in tiles between the target of the spell and the caster
     ["FirstInLine"] = false  -- Perform a line of flight calculation and hit the first character on this line or the destination the caster pointed at
 }
 
 -- Time related effects of the spell
-TimeEffects = {
+M.TimeEffects = {
     ["delay"] = 15,         -- Casting delay before the spell is actually casted in 1/10 seconds (while this time the Caster can be interrupted)
     ["gfx"] = {             -- The the graphic effect informations that are used while the casting delay
         ["id"] = 21,        -- The gfx id that is shown while the casting delay
@@ -41,13 +32,13 @@ TimeEffects = {
         ["time"] = 0        -- The time in 1/10 seconds that has to pass before the sound effect is played a second time
     },
     ["msg"] = {             -- The messages that are shown before the time delay is started in german and english
-        [CPlayer.german ] = "#me beginnt mit einer mystischen Formel und in {PP}n Händen beginnen Flammen zu züngeln.",
+        [CPlayer.german ] = "#me beginnt mit einer mystischen Formel und in {PP}n Hï¿½nden beginnen Flammen zu zï¿½ngeln.",
         [CPlayer.english] = "#me starts with a mystical formula and in {PP} hands some small flames appear."
     }
 }
 
 -- effects on the caster when he castes the spell, the effects are interpolated linear from minSkill to maxSkill
-CasterEffects = {
+M.CasterEffects = {
     ["minSkill"] = {                -- effects that are caused in case the caster has to minimum needed skill
         ["hitpoints"]    =     0,   -- increase of the hitpoints
         ["foodpoints"]   =     0,   -- increase of the foodlevel
@@ -66,7 +57,7 @@ CasterEffects = {
     }
 }
 
-Spot = {
+M.Spot = {
     ["gfx"] = 9,                -- gfx shown in case a item is created on this spot
     ["sfx"] = 7,                -- sfx played in case a item is created on this spot
     ["item"] = {                -- informations about the created item
@@ -89,10 +80,52 @@ Spot = {
 }
 
 -- Racial bonis
-magic.base.basics.initRaceBoni(); -- Init or reset all preset racial boni values
-magic.base.basics.SetRaceBoni( 33, 2.00, 10.00 ); -- dragon ( RaceID 33 - Offensive Boni: *2 - Defensive Value (against this spell): *10
+basics.initRaceBoni(); -- Init or reset all preset racial boni values
+basics.SetRaceBoni( 33, 2.00, 10.00 ); -- dragon ( RaceID 33 - Offensive Boni: *2 - Defensive Value (against this spell): *10
 
 -- make sure that we remember that this is the original script loaded on this spell
-if (orgScript == nil) then
-    orgScript = Script;
+M.orgScript = M.Script
+
+local function activate()
+    basics.initRaceBoni()
+    Script = M.Script
+    Skill = M.Skill
+    Settings = M.Settings
+    SpellEffects = M.SpellEffects
+    TimeEffects = M.TimeEffects
+    CasterEffects = M.CasterEffects
+    TargetEffects = M.TargetEffects
+    Teleport = M.Teleport
+    Spot = M.Spot
+    Wall = M.Wall
+    Circle = M.Circle
+    Rune = M.Rune
+    Teacher = M.Teacher
+    Student = M.Student
+    Monsters = M.Monsters
+    Portal = M.Portal
+    Weight = M.Weight
+    orgScript = M.orgScript
 end
+
+function M.CastMagic(...)
+    activate()
+    return Base.CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    activate()
+    return Base.CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    activate()
+    return Base.CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    activate()
+    return Base.CastMagicOnItem(...)
+end
+
+return M

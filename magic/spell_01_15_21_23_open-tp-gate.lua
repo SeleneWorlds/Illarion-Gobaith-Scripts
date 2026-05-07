@@ -1,3 +1,7 @@
+local basics = require("magic.base.basics")
+
+local M = {}
+
 --[[
     Open a teleporter gate
     Rune 1 & 15 & 21 & 23
@@ -8,33 +12,31 @@
     SQL:    INSERT INTO spells VALUES (2^0+2^14+2^20+2^22,0,'m_01_15_21_23_open-tp-gate.lua');
 ]]
 
-require("magic.base.basics");
-module("magic.spell_01_15_21_23_open-tp-gate", package.seeall)
 -- setting the filename of the current script. This is needed to exchange them later if needed while runtime
-Script = "m_01_15_21_23_open-tp-gate.lua";
+M.Script = "m_01_15_21_23_open-tp-gate.lua";
 
 -- Skill related spell settings
-Skill = {
+M.Skill = {
     ["min"]  =         50,  -- minimal Skillvalue needed to cast the spell
     ["max"]  =        100,  -- maximal Skillvalue of the spell where it reaches its full effect
     ["name"] = "pervestigatio"   -- name of the skill that is needed for this spell
 }
 
 -- General Spell settings
-Settings = {
+M.Settings = {
     ["Runes"] = "JUS FHEN ANTH KEL",   -- Names of the runes the spell contains of. This is the text spoken when the spell is casted
     ["Range"] = 8,          -- Maximum distance in tiles between the target of the spell and the caster
     ["FirstInLine"] = false  -- Perform a line of flight calculation and hit the first character on this line or the destination the caster pointed at
 }
 
 -- Grafik and Sound effects that appear when the spell is casted successfully
-SpellEffects = {
+M.SpellEffects = {
     ["gfx"] = 41,        -- Grafic effect that is shown
     ["sfx"] = 4         -- Sound effect that is placed
 }
 
 -- Time related effects of the spell
-TimeEffects = {
+M.TimeEffects = {
     ["delay"] = 40,         -- Casting delay before the spell is actually casted in 1/10 seconds (while this time the Caster can be interrupted)
     ["gfx"] = {             -- The the graphic effect informations that are used while the casting delay
         ["id"] = 21,        -- The gfx id that is shown while the casting delay
@@ -51,7 +53,7 @@ TimeEffects = {
 }
 
 -- effects on the caster when he castes the spell, the effects are interpolated linear from minSkill to maxSkill
-CasterEffects = {
+M.CasterEffects = {
     ["minSkill"] = {                -- effects that are caused in case the caster has to minimum needed skill
         ["hitpoints"]    =     0,   -- increase of the hitpoints
         ["foodpoints"]   =     0,   -- increase of the foodlevel
@@ -70,7 +72,7 @@ CasterEffects = {
     }
 }
 
-Portal = {
+M.Portal = {
     ["minSkill"] = {
         ["stability"] = 0,
         ["offset"] = 5
@@ -83,12 +85,10 @@ Portal = {
 
 
 -- Racial bonis
-magic.base.basics.magic.base.basics.initRaceBoni(); -- Init or reset all preset racial boni values
+basics.initRaceBoni(); -- Init or reset all preset racial boni values
 
 -- make sure that we remember that this is the original script loaded on this spell
-if (orgScript == nil) then
-    orgScript = Script;
-end
+M.orgScript = M.Script
 
 function CastMagic(Caster,counter,param, ltstate)
     DoTeleportSpell(Caster,base.common.GetFrontPosition(Caster), ltstate);
@@ -119,13 +119,13 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
         return;
     end
 
-    magic.base.basics.loadCorrectDefScript();
+    basics.loadCorrectDefScript();
 
     -- Generate the needed
-    magic.base.basics.gemBonis( Caster );
+    basics.gemBonis( Caster );
 
     genderMsg = {};
-    genderMsg[CPlayer.german], genderMsg[CPlayer.english] = magic.base.basics.GenderMessage( Caster );
+    genderMsg[CPlayer.german], genderMsg[CPlayer.english] = basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
         base.common.InformNLS( Caster,
@@ -150,17 +150,17 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
         return;
     end
 
-    magic.base.basics.SayRunes( Caster );
+    basics.SayRunes( Caster );
 
-    local CasterVal=magic.base.basics.CasterValue( Caster );
+    local CasterVal=basics.CasterValue( Caster );
 
-    if not magic.base.basics.CheckAndReduceRequirements( Caster, CasterVal ) then
+    if not basics.CheckAndReduceRequirements( Caster, CasterVal ) then
         return;
     end
 
     if not CasterVal then
         base.common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nï¿½tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
@@ -171,8 +171,8 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
         "Der Spruch gelingt doch das Portal schliest sich sogleich wieder.",
         "The spell succeeds but the portal closes again instandly.");
     else
-        magic.base.basics.performGFX( SpellEffects.gfx, TargetPos );
-        magic.base.basics.performSFX( SpellEffects.sfx, TargetPos );
+        basics.performGFX( SpellEffects.gfx, TargetPos );
+        basics.performSFX( SpellEffects.sfx, TargetPos );
     end
 
     if (LuaAnd(Caster:getQuestProgress(24),1) ~= 0 ) then
@@ -256,7 +256,7 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         end;
     elseif (string.find(Text,"[Zz]elphia")~=nil) then
         GateQual=15;
-    elseif (string.find(Text,"[Ss]wamp")~=nil or string.find(Text,"[Ss][uü]mpf")~=nil) then
+    elseif (string.find(Text,"[Ss]wamp")~=nil or string.find(Text,"[Ss][uï¿½]mpf")~=nil) then
         GateQual=16;
     elseif (string.find(Text,"[Aa]dron")~=nil) then
         GateQual=17;
@@ -264,7 +264,7 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         if (string.find(Text,"[Cc]opper")~=nil or string.find(Text,"[Kk]upfer")~=nil) then
             GateQual=18;
         elseif (string.find(Text,"[Oo]r[ck]")~=nil) then
-	    if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+	    if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
                 GateQual=20;
 	    elseif (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
 	        GateQual=68;
@@ -276,23 +276,23 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
 	    	GateQual=70;
 	    elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
             	GateQual=71;
-	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
 	    	GateQual=72;
 	    elseif (string.find(Text,"[Ww]est")~=nil) then
 	    	GateQual=22;
 	    end
         end;
-    elseif (string.find(Text,"[Kk]umdah.*[Dd]esert")~=nil or string.find(Text,"[Kk]umdah.*[Ww]üste")~=nil) then
+    elseif (string.find(Text,"[Kk]umdah.*[Dd]esert")~=nil or string.find(Text,"[Kk]umdah.*[Ww]ï¿½ste")~=nil) then
         GateQual=19;
     elseif (string.find(Text,"[Bb]loodskull")~=nil) then
         GateQual=21;
-    elseif (string.find(Text,"[Ww]ood")~=nil or string.find(Text,"[Ff]orest")~=nil or string.find(Text,"[Ww][aä]ld")~=nil) then
+    elseif (string.find(Text,"[Ww]ood")~=nil or string.find(Text,"[Ff]orest")~=nil or string.find(Text,"[Ww][aï¿½]ld")~=nil) then
         if (string.find(Text,"[Tt]roll")~=nil) then
             if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
                 GateQual=32;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=33;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
                 GateQual=34;
             elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=35;
@@ -302,23 +302,23 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
                 GateQual=36;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=37;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
                 GateQual=38;
             elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=39;
             end
-        elseif (string.find(Text,"[Ss]outhern")~=nil or string.find(Text,"[Ss]üdlich")~=nil) then
+        elseif (string.find(Text,"[Ss]outhern")~=nil or string.find(Text,"[Ss]ï¿½dlich")~=nil) then
             if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
                 GateQual=40;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=41;
 	    elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=43;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
                 GateQual=42;
             end
-        elseif (string.find(Text,"[Nn]orthern")~=nil or string.find(Text,"[Nn]ördlich")~=nil) then
-            if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+        elseif (string.find(Text,"[Nn]orthern")~=nil or string.find(Text,"[Nn]ï¿½rdlich")~=nil) then
+            if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
                 GateQual=46;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=45;
@@ -332,15 +332,15 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
                 GateQual=48;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=49;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
                 GateQual=50;
             elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=51;
             end
-        elseif (string.find(Text,"[Ee]astern")~=nil or string.find(Text,"[Öö]stlich")~=nil) then
+        elseif (string.find(Text,"[Ee]astern")~=nil or string.find(Text,"[ï¿½ï¿½]stlich")~=nil) then
             if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
                 GateQual=52;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
                 GateQual=54;
 	    elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=55;
@@ -350,7 +350,7 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
 	elseif (string.find(Text,"[Ww]estern")~=nil or string.find(Text,"[Ww]estlich")~=nil) then
 	    if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
 	    	GateQual=63;
-	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
+	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]ï¿½d")~=nil) then
 		GateQual=65;
 	    elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
 		GateQual=64;
@@ -415,3 +415,57 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
     world:createItemFromId(10,1,TPos,true,stability*100+33,GateQual);
     return true;
 end
+
+local function activate()
+    basics.initRaceBoni()
+    Script = M.Script
+    Skill = M.Skill
+    Settings = M.Settings
+    SpellEffects = M.SpellEffects
+    TimeEffects = M.TimeEffects
+    CasterEffects = M.CasterEffects
+    TargetEffects = M.TargetEffects
+    Teleport = M.Teleport
+    Spot = M.Spot
+    Wall = M.Wall
+    Circle = M.Circle
+    Rune = M.Rune
+    Teacher = M.Teacher
+    Student = M.Student
+    Monsters = M.Monsters
+    Portal = M.Portal
+    Weight = M.Weight
+    orgScript = M.orgScript
+end
+
+function M.CastMagic(...)
+    activate()
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    activate()
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    activate()
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    activate()
+    return CastMagicOnItem(...)
+end
+
+function M.DoTeleportSpell(...)
+    activate()
+    return DoTeleportSpell(...)
+end
+
+function M.ChoseAndOpenGate(...)
+    activate()
+    return ChoseAndOpenGate(...)
+end
+
+return M

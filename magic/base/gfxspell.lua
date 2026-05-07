@@ -1,8 +1,4 @@
-if M_GFXSPELL ~= true then
-M_GFXSPELL = true;
-
 require("magic.base.basics");
-module("magic.base.gfxspell")
 
 function DoGFXSpell(Caster, TargetPos, ltstate)
     if not ltstate then
@@ -56,7 +52,7 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
 
     if not CasterVal then
         base.common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nï¿½tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
@@ -165,7 +161,7 @@ function HitOnPosition( Caster, CasterValue, posi, percent, radius )
             magic.base.basics.performSFX( SpellEffects[radius].sfx, Caster.pos );
         end
         base.common.InformNLS( Caster,
-        "Dein Ziel ist derart resistent gegen Magie das dein Zauber auf dich zurückgeworfen wird.",
+        "Dein Ziel ist derart resistent gegen Magie das dein Zauber auf dich zurï¿½ckgeworfen wird.",
         "Your target is that resistent against magic that your spell returns to you." );
     else
         world:gfx( 10, posi );
@@ -198,7 +194,7 @@ function TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
                 local CharOffsetY = base.common.Limit(Caster.pos.y - Target.pos.y,-1,1);
                 local newPos = position( Target.pos.x + CharOffsetX, Target.pos.y + CharOffsetY, Target.pos.z );
                 Target:warp( newPos );
-                Target:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zurück und geht zu Boden." );
+                Target:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zurï¿½ck und geht zu Boden." );
                 Target:talkLanguage( CCharacter.say, CPlayer.english, "#me stumbles back and falls to the ground." );
                 base.common.ParalyseCharacter(Target, 7, false, true);
 
@@ -401,4 +397,46 @@ function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
     DoGFXSpell(Caster,TargetItem.pos,ltstate );
 end
 
+local M = {}
+
+function M.DoGFXSpell(...)
+    return DoGFXSpell(...)
 end
+
+function M.HitOnPosition(...)
+    return HitOnPosition(...)
+end
+
+function M.TargetHitting(...)
+    return TargetHitting(...)
+end
+
+function M.removeItemFromMap(...)
+    return removeItemFromMap(...)
+end
+
+function M.CalcRadius(...)
+    return CalcRadius(...)
+end
+
+function M.CalcEffectRadius(...)
+    return CalcEffectRadius(...)
+end
+
+function M.CastMagic(...)
+    return CastMagic(...)
+end
+
+function M.CastMagicOnCharacter(...)
+    return CastMagicOnCharacter(...)
+end
+
+function M.CastMagicOnField(...)
+    return CastMagicOnField(...)
+end
+
+function M.CastMagicOnItem(...)
+    return CastMagicOnItem(...)
+end
+
+return M
