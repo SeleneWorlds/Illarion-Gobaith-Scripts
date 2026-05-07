@@ -1,13 +1,12 @@
 -- LTE f�r das Druidensystem
 -- by Falk
 require("base.common")
-require("druid.base.outfit")
+local outfit = require("druid.base.outfit")
 
-module("druid.lte.id_167_illness", package.seeall(druid.base.outfit))
-
+local M = {}
 -- INSERT INTO longtimeeffects VALUES (167, 'druids_illness', 'druid.lte.id_167_illness');
 
-function DoInfection(Character,Runde,Diag)
+function M.DoInfection(Character,Runde,Diag)
 -- Ansteckung:
 -- Feststellen ob jemand in Kontaktweite steht
    local const = 1;
@@ -27,7 +26,7 @@ function DoInfection(Character,Runde,Diag)
             Effect:addValue("zaehler",duration)
             Effect:addValue("illness",Diag)
 --          Effekt an Char binden
-            chars.effects:addEffect(Effect);
+            chars.effects:M.addEffect(Effect);
          else
 --          Char hat schon eine Infektion
          end
@@ -35,7 +34,7 @@ function DoInfection(Character,Runde,Diag)
    end
 end
 
-function getEffect_1(Character,Runde)
+function M.getEffect_1(Character,Runde)
 -- Character:inform("Ork-Fieber/orc-fever")
 -- Hitzewallung (man reisst sich alle Kleider, R�stungen vom Leib)
 	if Runde -(math.floor(Runde/10)*10) == 0 then
@@ -63,10 +62,10 @@ function getEffect_1(Character,Runde)
 		end
 	end
 -- Krankheit verbreiten:
---   DoInfection(Character,Runde,1)
+--   M.DoInfection(Character,Runde,1)
 end
 
-function getEffect_2(Character,Runde)
+function M.getEffect_2(Character,Runde)
 -- Character:inform("Sumpfkrampf/bog-attack")
 -- Erbrechen, Char dreht sich ,rp-kotzen, foodl halbieren, R�ckgang von hp
 -- Jede 25. Runde:
@@ -104,7 +103,7 @@ function getEffect_2(Character,Runde)
       world:makeSound(23,Character.pos)
 
 --    Foodlevel halbieren
-      setFood(Character,Character:increaseAttrib("foodlevel",0)/2);
+      M.setFood(Character,Character:increaseAttrib("foodlevel",0)/2);
 
 --    HP R�ckgang um 26-constitution %
       local const = math.min(25,Character:increaseAttrib("constitution",0));
@@ -112,16 +111,16 @@ function getEffect_2(Character,Runde)
 
    end
 -- Krankheit verbreiten:
---   DoInfection(Character,Runde,2)
+--   M.DoInfection(Character,Runde,2)
 end
 
-function getEffect_3(Character,Effect,Runde)
+function M.getEffect_3(Character,Effect,Runde)
 --Character:inform("Trollsucht/Troll's rash")
 -- Verlust der Sprachf�higkeiten (language skills, vielleicht Leseskill oa)
 -- da der Verlust der Sprachskills am Anfang des LTE steht, ist hier nur die Zeit abzuwarten
 
 -- Krankheit verbreiten:
---   DoInfection(Character,Runde,3)
+--   M.DoInfection(Character,Runde,3)
 
    if Runde == 1 then
 --    wieder die alten Werte herstellen
@@ -138,7 +137,7 @@ function getEffect_3(Character,Effect,Runde)
 
 end
 
-function getEffect_4(Character,Runde)
+function M.getEffect_4(Character,Runde)
 -- Character:inform("Gnom-Wahn/gnome-paranoia")
 -- Umdrehen und ein paar Schritte in die andere Richtung machen
 -- shorter intervals at high counter
@@ -215,21 +214,21 @@ function getEffect_4(Character,Runde)
 	  end
    end
 -- Krankheit verbreiten:
---   DoInfection(Character,Runde,4)
+--   M.DoInfection(Character,Runde,4)
 end
 
-function getEffect_5(Character,Effect,Runde)
+function M.getEffect_5(Character,Effect,Runde)
 --Character:inform("Vein'sches Syndrom/Veins'syndrome")
 --Kontaktallergien auf Kleidung
 	local doInform = false;
 	local posList = {1,3,4,9,10,11};
-	local LIST_outfit = {};
+	local outfit.LIST_outfit = {};
 	-- metal
-	LIST_outfit[3] = {4,7,16,94,101,184,185,187,202,324,325,326,2111,2112,2116,2117,2172,2286,2287,2290,2291,2302,2303,2357,2359,2360,2363,2364,2365,2367,2369,2389,2390,2393,2395,2399,2400,2402,2403,2407,2441,2444};
+	outfit.LIST_outfit[3] = {4,7,16,94,101,184,185,187,202,324,325,326,2111,2112,2116,2117,2172,2286,2287,2290,2291,2302,2303,2357,2359,2360,2363,2364,2365,2367,2369,2389,2390,2393,2395,2399,2400,2402,2403,2407,2441,2444};
 	-- cloth
-	LIST_outfit[2] = {34,48,55,180,181,182,183,193,194,195,196,357,358,368,370,371,384,385,547,548,558,2295,2377,2378,2380,2384,2416,2418,2419,2420,2421};
+	outfit.LIST_outfit[2] = {34,48,55,180,181,182,183,193,194,195,196,357,358,368,370,371,384,385,547,548,558,2295,2377,2378,2380,2384,2416,2418,2419,2420,2421};
 	-- leather
-	LIST_outfit[1] = {53,356,362,363,364,365,366,367,369};
+	outfit.LIST_outfit[1] = {53,356,362,363,364,365,366,367,369};
 	local foundAllergy, allergy = Effect:findValue("allergy");
 	if not foundAllergy then
 		allergy = math.random(1,3);
@@ -241,7 +240,7 @@ function getEffect_5(Character,Effect,Runde)
 	for i,pos in pairs(posList) do
 		thisItem = Character:getItemAt(pos)
 		if thisItem.id ~= 0 then
-			for j,id in pairs(LIST_outfit[allergy]) do
+			for j,id in pairs(outfit.LIST_outfit[allergy]) do
 				if thisItem.id == id then
 					world:createItemFromItem(thisItem,Character.pos,true);
 					Character:increaseAtPos(pos,-1);
@@ -256,10 +255,10 @@ function getEffect_5(Character,Effect,Runde)
 			"#w All over your body you find little red terribly itching blisters."..(doInform and " You can't keep that clothes at your body." or ""));
 	end
 -- Krankheit verbreiten:
---   DoInfection(Character,Runde,5)
+--   M.DoInfection(Character,Runde,5)
 end
 
-function getEffect_6(Character,Runde)
+function M.getEffect_6(Character,Runde)
 --Character:inform("Drachenpocken/dragon's pox")
 --Schmerzhafte Warzen an den H�nden, man kann praktisch nichts mehr in den H�nden halten
 
@@ -279,10 +278,10 @@ function getEffect_6(Character,Runde)
 			"#w Your hands are covered with greenish glimmering painful mucopurulent plantar warts."..(doInform and " You have to drop everything you hold in your hands." or ""));
 	end
 -- Krankheit verbreiten:
--- DoInfection(Character,Runde,6)
+-- M.DoInfection(Character,Runde,6)
 end
 
-function getEffect_7(Character,Runde)
+function M.getEffect_7(Character,Runde)
 -- Character:inform("Skorpion-Seuche/scorpion's pestilence")
 -- Schweres Fieber: Absenken hp auf unter 1000
 -- Standard: jede 10. Runde:
@@ -298,10 +297,10 @@ function getEffect_7(Character,Runde)
 	  end
    end
 -- Krankheit verbreiten:
---   DoInfection(Character,Runde,7)
+--   M.DoInfection(Character,Runde,7)
 end
 
-function getEffect_8(Character,Effect,Runde)
+function M.getEffect_8(Character,Effect,Runde)
 --Character:inform("Wolfspest/wolves pest")
 --Verlust von Prim�rattributen
 -- Standard: jede 10. Runde:
@@ -318,7 +317,7 @@ function getEffect_8(Character,Effect,Runde)
 	  Effect:addValue(L[i].."_cur",curAttribValue);
       local counterValue = math.max(10,math.ceil(Runde/30));
 	  if math.random(1,35) < counterValue then
-		setFood(Character,Character:increaseAttrib("foodlevel",0)*2/3);
+		M.setFood(Character,Character:increaseAttrib("foodlevel",0)*2/3);
 	  end
 	  if math.random(1,35) < counterValue then
 		Character:increaseAttrib("mana",-Character:increaseAttrib("mana",0)/3);
@@ -330,10 +329,10 @@ function getEffect_8(Character,Effect,Runde)
 	  end
    end
 -- Krankheit verbreiten:
---   DoInfection(Character,Runde,8)
+--   M.DoInfection(Character,Runde,8)
 end
 
-function setFood(Character,Food)
+function M.setFood(Character,Food)
 
 	Food = math.max(0,math.min(60000,Food));
 	local FoodToAdd = Food - Character:increaseAttrib("foodlevel",0);
@@ -346,27 +345,27 @@ function setFood(Character,Food)
 	end
 end
 
-function getAction(Character,Effect,Runde)
+function M.getAction(Character,Effect,Runde)
 --Hier die eigentlichen Aktionen eintragen
 --Erstmal sehen, waserhat
   find,waserhat = Effect:findValue("illness")
   if find then
     if waserhat == 1 then
-       getEffect_1(Character,Runde)
+       M.getEffect_1(Character,Runde)
     elseif waserhat == 2 then
-       getEffect_2(Character,Runde)
+       M.getEffect_2(Character,Runde)
     elseif waserhat == 3 then
-       getEffect_3(Character,Effect,Runde)
+       M.getEffect_3(Character,Effect,Runde)
     elseif waserhat == 4 then
-       getEffect_4(Character,Runde)
+       M.getEffect_4(Character,Runde)
     elseif waserhat == 5 then
-       getEffect_5(Character,Effect,Runde)
+       M.getEffect_5(Character,Effect,Runde)
     elseif waserhat == 6 then
-       getEffect_6(Character,Runde)
+       M.getEffect_6(Character,Runde)
     elseif waserhat == 7 then
-       getEffect_7(Character,Runde)
+       M.getEffect_7(Character,Runde)
     elseif waserhat == 8 then
-       getEffect_8(Character,Effect,Runde)
+       M.getEffect_8(Character,Effect,Runde)
     else
 		Character:inform("LTE-Error 167-1: value out of range. Please inform a developer.");
 	end
@@ -377,7 +376,7 @@ function getAction(Character,Effect,Runde)
   return true;
 end
 
-function addEffect(Effect, Character)               -- Nur beim ersten Aufruf
+function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 
 	local foundIllness, illness = Effect:findValue("illness");
 	if foundIllness then
@@ -388,7 +387,7 @@ function addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 				base.common.InformNLS(Character,
 					"#w Du sp�rst wie die Krankheit von dir Besitz ergreifen will, doch dein K�rper wehrt sich erfolgreich.",
 					"#w You feel the illness trying to take control over you, but your body can resist.");
-				Character.effects:removeEffect(167);
+				Character.effects:M.removeEffect(167);
 				return;
 			end
 		end
@@ -444,18 +443,18 @@ function addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 	end
 end
 
-function callEffect(Effect,Character)               -- Effect wird ausgef�hrt
+function M.callEffect(Effect,Character)               -- Effect wird ausgef�hrt
 
 --Erst einmal kommt der Rundenz�hler
   find,zaehler = Effect:findValue("zaehler")
   if find then
---  Character:inform("debug func callEffect 167-0 Runde "..zaehler)
+--  Character:inform("debug func M.callEffect 167-0 Runde "..zaehler)
      zaehler = zaehler -1  -- maximal 999 Runden
      Effect:addValue("zaehler", zaehler)
 
      Effect.nextCalled = 10  -- n�chster Aufruf in 1 Sekunde
 
-     if not getAction(Character,Effect,zaehler) then
+     if not M.getAction(Character,Effect,zaehler) then
 		return false;
 	 end
 
@@ -472,8 +471,8 @@ function callEffect(Effect,Character)               -- Effect wird ausgef�hrt
   return false;
 end
 
-function removeEffect(Effect,Character)
-	--Character:inform("debug func removeEffect")
+function M.removeEffect(Effect,Character)
+	--Character:inform("debug func M.removeEffect")
 	-- create immunity
 	local foundImmunity = false;
 	local foundIllness, illness = Effect:findValue("illness");
@@ -482,7 +481,7 @@ function removeEffect(Effect,Character)
 		local foundImmunityEffect, immunityEffect = Character.effects:find(328);
 		if not foundImmunityEffect then
 			immunityEffect = CLongTimeEffect(328,1);
-			Character.effects:addEffect(immunityEffect);
+			Character.effects:M.addEffect(immunityEffect);
 		end
 		foundImmunity = immunityEffect:findValue("immunity_"..illness);
 		-- only add immunity if not immune already.
@@ -500,13 +499,13 @@ function removeEffect(Effect,Character)
 	end
 end
 
-function loadEffect(Effect,Character)                  -- wenn der Charakter erneut einloggt
-	--Character:inform("debug func loadEffect")
+function M.loadEffect(Effect,Character)                  -- wenn der Charakter erneut einloggt
+	--Character:inform("debug func M.loadEffect")
 	find,zaehler = Effect:findValue("zaehler")
 
 	if not find then
 		Character:inform("LTE-Error 167-3: please call dev");
-		Character.effects:removeEffect(167);
+		Character.effects:M.removeEffect(167);
 		return;
 	end
 
@@ -518,5 +517,7 @@ function loadEffect(Effect,Character)                  -- wenn der Charakter ern
 		if foundAttrib then
 			Character:setAttrib(attrib,value);
 		end
-  	end
+	end
 end
+
+return M

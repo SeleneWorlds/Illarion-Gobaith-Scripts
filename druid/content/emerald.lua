@@ -1,10 +1,9 @@
 require("base.books")
 
-module("druid.content.emerald", package.seeall)
-
+local M = {}
 -- This file contains the book data for the book "Emeralds"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
 
     base.books.AddEnglishBookText("\n\n~~Emeralds~~",45,0,toData);
@@ -28,7 +27,9 @@ function loadBook(toData)
     base.books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Smaragdes in ein Schmuckst�ck flie�en lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
 end;
 
-function loadTitle(toData)
+function M.loadTitle(toData)
     base.books.AddEnglishBookTitle("Book with the title \"Emeralds\"",toData);
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Smaragde\"",toData);
 end;
+
+return M

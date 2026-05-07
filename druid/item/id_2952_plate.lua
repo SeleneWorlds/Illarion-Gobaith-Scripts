@@ -6,32 +6,31 @@
 --Neufassung: Nitram
 
 require("base.common")
-require("druid.base.alchemy")
-require("druid.base.plants")
+local alchemy = require("druid.base.alchemy")
+local plants = require("druid.base.plants")
 
-module("druid.item.id_2952_plate", package.seeall)
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_2952_plate' WHERE com_itemid = 2952;
 
-function Sonderpflanzen(User,ItemID, ItemData, Lang)
+function M.Sonderpflanzen(User,ItemID, ItemData, Lang)
 	text=world:getItemName( ItemID, Lang )
-	dummy = getDummyIDList()
-	
+	dummy = plants.getDummyIDList()
+
 	for i=1,16 do
 		if dummy[i] == ItemData then
 			if Lang == 0 then
-				text = getDummyNameDE(i)
+				text = plants.getDummyNameDE(i)
 			else
-				text = getDummyNameEN(i)
+				text = plants.getDummyNameEN(i)
 			end
 		end
-	end	
+	end
 	return text
 end
 
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-	
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+
     if (Sourceitem.id_quality > 101 and Sourceitem.id_data > 0) then  -- Es befinden sich Pflanzen auf dem Teller
         local basket_id = math.mod( Sourceitem.id_data, 10000 );
         local basket_data = math.floor( Sourceitem.id_data / 10000 );
@@ -69,7 +68,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         end
     else -- Beh�lter ist leer
         if (Targetitem.id_id ~= 0) then -- Es soll was eingelagert werden
-            if not (IsThatAPlant(TargetItem) or Targetitem.id_id == 157) then
+            if not (alchemy.IsThatAPlant(TargetItem) or Targetitem.id_id == 157) then
                 base.common.TempInformNLS( User,
                 "Das kannst du nicht einlagern.",
                 "You can't put this into a basket." );
@@ -89,8 +88,8 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
 end
 
-function LookAtItem( User, Item )
-	
+function M.LookAtItem( User, Item )
+
     if (item.id_data == 0) then
         world:itemInform( User, Item, base.common.GetNLS( User, "Du siehst einen leeren ", "You see a empty " )
         .. world:getItemName( item.id_id, User:getPlayerLanguage() ).."." );
@@ -114,8 +113,8 @@ function LookAtItem( User, Item )
         end
 
         --local itemName = world:getItemName( basket_id, Character:getPlayerLanguage() );
-        local itemName = Sonderpflanzen(User,basket_id,basket_data,User:getPlayerLanguage())
-        
+        local itemName = M.Sonderpflanzen(User,basket_id,basket_data,User:getPlayerLanguage())
+
         world:itemInform( User, Item,
            base.common.GetNLS( User, "Du siehst einen ", "You see a " )
         .. world:getItemName( item.id_id, User:getPlayerLanguage() )
@@ -124,3 +123,5 @@ function LookAtItem( User, Item )
         .. itemName );
     end
 end
+
+return M

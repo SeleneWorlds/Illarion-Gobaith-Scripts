@@ -4,28 +4,27 @@
 
 require("base.common")
 
-module("druid.spell.id_19_analyze_item_wear", package.seeall)
-
+local M = {}
 -- INSERT INTO spells VALUES (2^18,3,'druid.spell.id_19_analyze_item_wear');
 
-function CastMagic(Caster,counter,param,ltstate)
---Caster:inform("debug #19.1")  
+function M.CastMagic(Caster,counter,param,ltstate)
+--Caster:inform("debug #19.1")
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
---Caster:inform("debug #19.2")    
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
+--Caster:inform("debug #19.2")
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
---Caster:inform("debug #19.3")    
+function M.CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
+--Caster:inform("debug #19.3")
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
-  --Caster:inform("debug #19.4")  
+function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
+  --Caster:inform("debug #19.4")
   --Anzeige von Item-Verrottung
 
---base.common.InformNLS( Caster, 
---"Dieser Gegenstand verrottet in "..TargetItem.wear.." druidischen Zerfallseinheiten", 
+--base.common.InformNLS( Caster,
+--"Dieser Gegenstand verrottet in "..TargetItem.wear.." druidischen Zerfallseinheiten",
 --"This item rots within "..TargetItem.wear.." druid rotting-units"); -- das kann man sch�ner formulieren
   textDE="Dieser Gegenstand verrottet in "..TargetItem.wear.." druidischen Zerfallseinheiten"
   textEN="This item rots within "..TargetItem.wear.." druid rotting-units"
@@ -34,5 +33,7 @@ function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 	else
 		Caster:inform("#b|0|0|"..textEN)
 	end
-  	
+
 end
+
+return M

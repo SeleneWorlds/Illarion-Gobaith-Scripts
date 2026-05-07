@@ -3,10 +3,9 @@
 --Falk
 
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 
-module("druid.item.id_59_red_bottle", package.seeall(druid.base.alchemy))
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_59_red_bottle' WHERE com_itemid = 59;
 
 topBorder = 30;
@@ -16,15 +15,15 @@ attribList ={"strength","willpower","perception","intelligence","constitution","
 taste[0]   ={"fruchtig","herb"     ,"bitter"    ,"faulig"      ,"sauer"       ,"salzig" ,"scharf"   ,"s��"};
 taste[1]   ={"fruity"  ,"tartly"   ,"bitter"    ,"putrefactive","acidly"      ,"salt"   ,"hot"      ,"sweet"};
 
-function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
-    local dataZList = SplitBottleData(Character,Sourceitem.id_data);
+    local dataZList = alchemy.SplitBottleData(Character,Sourceitem.id_data);
 
 --    for i=1,8 do
 --      Character:inform("PIN "..i..": "..dataZList[i])
 --    end
 
-    Character:inform(generateTasteMessage(Character:getPlayerLanguage(),dataZList));
+    Character:inform(alchemy.generateTasteMessage(Character:getPlayerLanguage(),dataZList));
 
     if Sourceitem.id_data == 75357464 and Character.effects:find(28) then
         Character.effects:removeEffect(28);
@@ -68,11 +67,11 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
     end
 end
 
-function UseItem(Character,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
 	if Sourceitem.id_data == 0 then
 		-- VOR�BERGEHEND DAS ALTE SKRIPT AUSF�HREN
-    	if not Character.attackmode then
+		if not Character.attackmode then
 			world:erase(SourceItem,1);
 			world:makeSound(12,Character.pos);
 			if( math.random( 20 ) <= 1 ) then
@@ -81,7 +80,7 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param)
 				Character:createItem( 164, 1, 333,0);
 			end
 			A=math.random(7500)+5000;
-      	      Character:setPoisonValue( base.common.Limit( (Character:getPoisonValue() - A) , 0, 10000) );
+		      Character:setPoisonValue( base.common.Limit( (Character:getPoisonValue() - A) , 0, 10000) );
 			--Character:increasePoisonValue(-1 * A);
 			Character.movepoints=Character.movepoints-50;
 			Character:increaseAttrib("foodlevel",1000);
@@ -99,14 +98,14 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
 	else
 		-- DAS NEUE SKRIPT AUSF�HREN
-    	if not Character.attackmode then
-        	-- Hier verweisen wir auf die Wirkung
-        	DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+		if not Character.attackmode then
+			-- Hier verweisen wir auf die Wirkung
+			M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
-        	world:erase(SourceItem,1);
-        	world:makeSound(12,Character.pos);
+			world:erase(SourceItem,1);
+			world:makeSound(12,Character.pos);
 
-        	if( math.random( 20 ) <= 1 ) then
+			if( math.random( 20 ) <= 1 ) then
 				base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
 			else
 				Character:createItem( 164, 1, 333,0);
@@ -120,10 +119,12 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param)
 	end
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if (User:getPlayerLanguage()==0) then
         world:itemInform(User,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: \"Zaubertrank\"")
     else
         world:itemInform(User,Item,"You look at a sticker telling: \"Potion\"")
     end
 end
+
+return M

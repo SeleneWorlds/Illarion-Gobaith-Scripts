@@ -4,11 +4,10 @@
 require("base.books")
 require("base.common")
 
-module("druid.item.id_127_book_intro", package.seeall)
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_127_book_intro' WHERE com_itemid = 127;
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 --User:inform("debug 127-1")
    if base.books.InitBook() then
  base.books.AddLanguage("common language",0);
@@ -77,20 +76,20 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
     end
 	base.books.SendBookPage(User,Sourceitem.id_data,Counter);
-end   
+end
 
 
-function UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
+function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
 --User:inform("debug 127-2")
   world:erase(SourceItem,1)
 end
 
-function UseItemWithCharacter( User, SourceItem, TargetCharacter, Counter, Param, ltstate )
+function M.UseItemWithCharacter( User, SourceItem, TargetCharacter, Counter, Param, ltstate )
 --User:inform("debug 127-3")
   world:erase(SourceItem,1)
 end
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
 --User:inform("debug 127-4")
 	if base.books.InitTitle() then
       base.books.AddGermanBookTitle("Buch mit dem Titel \"Druiden-Almanach Band 2\"",0);
@@ -98,3 +97,5 @@ function LookAtItem( User, Item )
 	end
 	base.books.GetBookItemInform(User,Item);
 end
+
+return M

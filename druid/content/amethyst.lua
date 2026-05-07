@@ -1,10 +1,9 @@
 require("base.books")
 
-module("druid.content.amethyst", package.seeall)
-
+local M = {}
 -- This file contains the book data for the book "Amethyst"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
 
     base.books.AddEnglishBookText("\n\n~~Amethysts~~",197,0,toData);
@@ -28,7 +27,9 @@ function loadBook(toData)
     base.books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Amethysten in ein Schmuckst�ck flie�en lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
 end;
 
-function loadTitle(toData)
+function M.loadTitle(toData)
     base.books.AddEnglishBookTitle("Book with the title \"Amethyst\"",toData);
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Amethysten\"",toData);
 end;
+
+return M

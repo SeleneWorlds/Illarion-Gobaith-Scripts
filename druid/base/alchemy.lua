@@ -19,68 +19,67 @@
 -- 153 Fussblatt                  52 / 9016 / 36 "Wiesen-Rhabarber" / "meadow rhabarb"
 -- 156 Steppenfarn                61 / 9015 / 54 "Wolfsfarn" / "wolverine fern"
 
-module("druid.base.alchemy", package.seeall)
+local M = {}
+M.dataZList = { }
+M.plantList =     { 9001,133,134,135,136,137,138,140,141,142,9016,144,145,146,9014,148,9004,152,153,9005,9015,156,9013,9003,9006,9007,9002,9008,9009,9010,9011,9012}
+M.plantDataList = {   81, 15, 16, 17, 18, 25, 26, 27, 28, 35,  36, 37, 38, 45,  46, 47,  48, 51, 52,  53,  54, 61,  62,  63,  64,  71,  72,  73,  82,  74,  83,  84}
 
-dataZList = { }
-plantList =     { 9001,133,134,135,136,137,138,140,141,142,9016,144,145,146,9014,148,9004,152,153,9005,9015,156,9013,9003,9006,9007,9002,9008,9009,9010,9011,9012}
-plantDataList = {   81, 15, 16, 17, 18, 25, 26, 27, 28, 35,  36, 37, 38, 45,  46, 47,  48, 51, 52,  53,  54, 61,  62,  63,  64,  71,  72,  73,  82,  74,  83,  84}
-
-plantDataListById = {};
-for i,plant in pairs(plantList) do
-	plantDataListById[plant] = plantDataList[i];
+M.plantDataListById = {};
+for i,plant in pairs(M.plantList) do
+	M.plantDataListById[plant] = M.plantDataList[i];
 end
 
 --Qualit�tsbezeichnungen
-qListDe={"f�rchterliche","schlechte","schwache","leicht schwache","durchschnittliche","gute","sehr gute","gro�artige","hervorragende"};
-qListEn={"awful","bad","weak","slightly weak","average","good","very good","great","outstanding"};
+M.qListDe={"f�rchterliche","schlechte","schwache","leicht schwache","durchschnittliche","gute","sehr gute","gro�artige","hervorragende"};
+M.qListEn={"awful","bad","weak","slightly weak","average","good","very good","great","outstanding"};
 
-bottleList = { 164,331 }
-bottleExchList = {166,329,165,330,59,327,328,167}
+M.bottleList = { 164,331 }
+M.bottleExchList = {166,329,165,330,59,327,328,167}
 --alte Mineralien-Liste:
---gemList = { 251,252,253,254,255,256,257,234 }
+--M.gemList = { 251,252,253,254,255,256,257,234 }
 --neue Mineralien-Liste (Beutel mit Mineralienstaub)
-gemList = {450,449,446,452,447,448,451,234}
+M.gemList = {450,449,446,452,447,448,451,234}
 
-newBottle = {}
-for i, gem in pairs(gemList) do
-  newBottle[gem] = bottleExchList[i]
+M.newBottle = {}
+for i, gem in pairs(M.gemList) do
+  M.newBottle[gem] = M.bottleExchList[i]
 end
 
 
 
 -- Liste der Wirkstoffnamen
-wirkstoff = {};
-wirkung_de = {};
-wirkung_en = {};
+M.wirkstoff = {};
+M.wirkung_de = {};
+M.wirkung_en = {};
 
-wirkstoff[1] = "Adrazin";
-wirkstoff[2] = "Echolon";
-wirkstoff[3] = "Orcanol";
-wirkstoff[4] = "Illidrium";
-wirkstoff[5] = "Hyperborelium";
-wirkstoff[6] = "Fenolin";
-wirkstoff[7] = "Caprazin";
-wirkstoff[8] = "Dracolin";
+M.wirkstoff[1] = "Adrazin";
+M.wirkstoff[2] = "Echolon";
+M.wirkstoff[3] = "Orcanol";
+M.wirkstoff[4] = "Illidrium";
+M.wirkstoff[5] = "Hyperborelium";
+M.wirkstoff[6] = "Fenolin";
+M.wirkstoff[7] = "Caprazin";
+M.wirkstoff[8] = "Dracolin";
 
-wirkung_de[1] = "ges�ttigte Anreicherung von";
-wirkung_de[2] = "eine sehr ausgepr�gte Menge";
-wirkung_de[3] = "merklich";
-wirkung_de[4] = "schwache Konzentration an";
-wirkung_de[5] = "kein";
-wirkung_de[6] = "geringe Mengen";
-wirkung_de[7] = "etwas";
-wirkung_de[8] = "konzentriertes";
-wirkung_de[9] = "hoch toxisches";
+M.wirkung_de[1] = "ges�ttigte Anreicherung von";
+M.wirkung_de[2] = "eine sehr ausgepr�gte Menge";
+M.wirkung_de[3] = "merklich";
+M.wirkung_de[4] = "schwache Konzentration an";
+M.wirkung_de[5] = "kein";
+M.wirkung_de[6] = "geringe Mengen";
+M.wirkung_de[7] = "etwas";
+M.wirkung_de[8] = "konzentriertes";
+M.wirkung_de[9] = "hoch toxisches";
 
-wirkung_en[1] = "highly toxic";
-wirkung_en[2] = "dominant marked";
-wirkung_en[3] = "distinctive";
-wirkung_en[4] = "slightly marked";
-wirkung_en[5] = "no";
-wirkung_en[6] = "slightly pronounced";
-wirkung_en[7] = "enriched";
-wirkung_en[8] = "dominant pronounced";
-wirkung_en[9] = "highly noxious";
+M.wirkung_en[1] = "highly toxic";
+M.wirkung_en[2] = "dominant marked";
+M.wirkung_en[3] = "distinctive";
+M.wirkung_en[4] = "slightly marked";
+M.wirkung_en[5] = "no";
+M.wirkung_en[6] = "slightly pronounced";
+M.wirkung_en[7] = "enriched";
+M.wirkung_en[8] = "dominant pronounced";
+M.wirkung_en[9] = "highly noxious";
 
 -- Liste der Krankheiten
 
@@ -134,7 +133,7 @@ attr_r2[7] ="constitution";
 attr_r2[8] ="agility";
 
 -- --------------------------------------------------------------------
-function ds_CheckIfCoalInHand(User)    -- Kohle in der Hand ?
+function M.ds_CheckIfCoalInHand(User)    -- Kohle in der Hand ?
 	local checkId = 21;
 	local retVal = nil;
 	local theItem = nil;
@@ -150,7 +149,7 @@ function ds_CheckIfCoalInHand(User)    -- Kohle in der Hand ?
 	return retVal;
 end
 -- --------------------------------------------------------------------
-function CheckIfRtbInHand(User)     -- Faulbaumrinde in der Hand ? (rotten tree bark)
+function M.CheckIfRtbInHand(User)     -- Faulbaumrinde in der Hand ? (rotten tree bark)
 	local checkId = 157;
 	local retVal = nil;
 	local theItem = nil;
@@ -166,12 +165,12 @@ function CheckIfRtbInHand(User)     -- Faulbaumrinde in der Hand ? (rotten tree 
 	return retVal;
 end
 -- --------------------------------------------------------------------
-function CheckIfPlantInHand(User)
+function M.CheckIfPlantInHand(User)
   -- Hier muss noch abgefangen werden, wenn die Pflanze einen Datawert von 0 hat
 
 	local retVal = nil;
 	local theItem = nil;
-	for i,checkId in pairs(plantList) do
+	for i,checkId in pairs(M.plantList) do
 		theItem = User:getItemAt(5);
 		if theItem.id == checkId then
 			retVal = theItem;
@@ -188,21 +187,21 @@ function CheckIfPlantInHand(User)
 end
 -- --------------------------------------------------------------------
 
-function CheckIfGemInHand(User)
+function M.CheckIfGemInHand(User)
 	local retVal1 = nil;
 	local retVal2 = nil;
 	local theItem = nil;
-	for i,checkId in pairs(gemList) do
+	for i,checkId in pairs(M.gemList) do
 		theItem = User:getItemAt(5);
 		if theItem.id == checkId then
 			retVal1 = theItem;
-			retVal2 = bottleExchList[i];
+			retVal2 = M.bottleExchList[i];
 			break;
 		else
 			theItem = User:getItemAt(6);
 			if theItem.id == checkId then
 				retVal1 = theItem;
-				retVal2 = bottleExchList[i];
+				retVal2 = M.bottleExchList[i];
 				break;
 			end
 		end
@@ -210,18 +209,18 @@ function CheckIfGemInHand(User)
 	return retVal1,retVal2;
 end
 -- --------------------------------------------------------------------
-function SplitPlantData(Plant)
+function M.SplitPlantData(Plant)
 
-  local plantData = plantDataListById[Plant];
+  local plantData = M.plantDataListById[Plant];
   local plusWertPos = math.floor(plantData/10)
   local minusWertPos= plantData-plusWertPos*10
   return math.min(8,math.max(1,plusWertPos)),math.min(8,math.max(1,minusWertPos))
 end
 -- --------------------------------------------------------------------
-function CheckIfBottleInHand(User)
+function M.CheckIfBottleInHand(User)
 	local retVal = nil;
 	local theItem = nil;
-	for i,checkId in pairs(bottleList) do
+	for i,checkId in pairs(M.bottleList) do
 		theItem = User:getItemAt(5);
 		if theItem.id == checkId then
 			retVal = theItem;
@@ -237,7 +236,7 @@ function CheckIfBottleInHand(User)
 	return retVal;
 end
 -- --------------------------------------------------------------------
-function SplitBottleData(User,bottleData)
+function M.SplitBottleData(User,bottleData)
     local dataZList = {};
 	local thisDigit;
 	local workData=bottleData
@@ -249,7 +248,7 @@ function SplitBottleData(User,bottleData)
    return dataZList;
 end
 -- --------------------------------------------------------------------
-function PasteBottleData(User,dataZList)
+function M.PasteBottleData(User,dataZList)
 
    -- neuen Datawert basteln:
    local NDW = 0
@@ -261,31 +260,31 @@ function PasteBottleData(User,dataZList)
 end
 -- --------------------------------------------------------------------
 
-function DisplayData(User,debugtxt,wert)
+function M.DisplayData(User,debugtxt,wert)
     User:inform("debug:"..debugtxt..wert)
 end
 -- --------------------------------------------------------------------
-function IsThatAPlant(einItem)
+function M.IsThatAPlant(einItem)
    retVal = false
-   for i =1,table.getn(plantList) do
-      if plantList[i] == einItem.id then
+   for i =1,table.getn(M.plantList) do
+      if M.plantList[i] == einItem.id then
          retVal = true
       end
    end
    return retVal
 end
 -- ---------------------------------------------------------------------
-function IsThatABottle(einItem)
+function M.IsThatABottle(einItem)
    retVal = false
-   for i =1,table.getn(bottleList) do
-      if bottleList[i] == einItem.id then
+   for i =1,table.getn(M.bottleList) do
+      if M.bottleList[i] == einItem.id then
          retVal = true
       end
    end
    return retVal
 end
 -- ---------------------------------------------------------------------
-function BottleHasSpecfunction(dataZList)
+function M.BottleHasSpecfunction(dataZList)
    retVal = false
    specFuncNo = 0
 
@@ -297,7 +296,7 @@ function BottleHasSpecfunction(dataZList)
    return retVal, specFuncNo
 end
 -- -------------------------------------------------------------------------------
-function BottleHasIllnessFunction(dataZList)
+function M.BottleHasIllnessFunction(dataZList)
    retVal = false
    illnessNo = 0
 
@@ -310,7 +309,7 @@ function BottleHasIllnessFunction(dataZList)
    return retVal, illnessNo
 end
 -- -------------------------------------------------------------------------------
-function CheckAttrRow(User,dataZList)
+function M.CheckAttrRow(User,dataZList)
 
    retVal = true
    if dataZList[9] == 0 then
@@ -322,7 +321,7 @@ function CheckAttrRow(User,dataZList)
    return retVal
 end
 -- -------------------------------------------------------------------------------
-function ImpactRow1(User,dataZList)
+function M.ImpactRow1(User,dataZList)
    --User:inform("debug 12")
 
   for i=1,8 do
@@ -352,14 +351,14 @@ function ImpactRow1(User,dataZList)
   --User:inform("debug 13")
 end
 -- -------------------------------------------------------------------------------
-function ImpactRow2(User,dataZList)
+function M.ImpactRow2(User,dataZList)
   for i=1,8 do
      -- block
      -- Wirkungen der Reihe 2 k�nnen erst eingebaut werden, wenn wir Zeiteffekte haben.
   end
 end
 -- -------------------------------------------------------------------------------
-function IsItemBlackBottle(TargetItem)
+function M.IsItemBlackBottle(TargetItem)
 	retVal = false
 	if TargetItem.id == 2501 then
 		retVal = true
@@ -367,7 +366,7 @@ function IsItemBlackBottle(TargetItem)
 	return retVal
 end
 -- -------------------------------------------------------------------------------
-function IsBottleAlreadyInfected(dataZList)
+function M.IsBottleAlreadyInfected(dataZList)
 	infect = 0
 	for i = 1,8 do
 		if dataZList[i] == 0 then
@@ -377,7 +376,7 @@ function IsBottleAlreadyInfected(dataZList)
 	return infect
 end
 -- --------------------------------------------------------------------------------
-function generateTasteMessage(lang,dataZList)
+function M.generateTasteMessage(lang,dataZList)
     local text = "";
     if ( lang == 0 ) then
         text = "Der Trank schmeckt ";
@@ -420,7 +419,7 @@ function generateTasteMessage(lang,dataZList)
     return text;
 end
 
-function ds_skillgain(User)
+function M.ds_skillgain(User)
   --Alchemieskill erh�hen
   User:learn(6,"alchemy",3,100)
   --Auf Runengewinn pr�fen
@@ -451,3 +450,5 @@ function ds_skillgain(User)
     end
   end
 end
+
+return M

@@ -2,13 +2,12 @@
 -- Pergament f�r das Druidensystem
 -- Falk
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 
-module("druid.item.id_3104_bookrest", package.seeall(druid.base.alchemy))
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_3104_bookrest' WHERE com_itemid = 3104;
 
-function init()
+function M.init()
 	if firsttime == nil then
 		rNameDE = {}
 		rNameEN = {}
@@ -282,7 +281,7 @@ function init()
 	end
 end
 
-function skilllost(User)
+function M.skilllost(User)
 	if ft == nil then
 		ft = 1
 		skL = {}
@@ -349,19 +348,19 @@ function skilllost(User)
 	end
 end
 
-function MetamorphosisDE(User,Difficult,CharLangSkillName)
-	local txt = rNameDE[i].."\n\n"..wirkung_de[dataZList[1]].." "..wirkstoff[1].."\n"..wirkung_de[dataZList[2]].." "..wirkstoff[2].."\n"..wirkung_de[dataZList[3]].." "..wirkstoff[3].."\n"..wirkung_de[dataZList[4]].." "..wirkstoff[4].."\n"..wirkung_de[dataZList[5]].." "..wirkstoff[5].."\n"..wirkung_de[dataZList[6]].." "..wirkstoff[6].."\n"..wirkung_de[dataZList[7]].." "..wirkstoff[7].."\n"..wirkung_de[dataZList[8]].." "..wirkstoff[8]
+function M.MetamorphosisDE(User,Difficult,CharLangSkillName)
+	local txt = rNameDE[i].."\n\n"..alchemy.wirkung_de[dataZList[1]].." "..alchemy.wirkstoff[1].."\n"..alchemy.wirkung_de[dataZList[2]].." "..alchemy.wirkstoff[2].."\n"..alchemy.wirkung_de[dataZList[3]].." "..alchemy.wirkstoff[3].."\n"..alchemy.wirkung_de[dataZList[4]].." "..alchemy.wirkstoff[4].."\n"..alchemy.wirkung_de[dataZList[5]].." "..alchemy.wirkstoff[5].."\n"..alchemy.wirkung_de[dataZList[6]].." "..alchemy.wirkstoff[6].."\n"..alchemy.wirkung_de[dataZList[7]].." "..alchemy.wirkstoff[7].."\n"..alchemy.wirkung_de[dataZList[8]].." "..alchemy.wirkstoff[8]
 	local modText = ModifyText(User,txt,Difficult,CharLangSkillName)
 	return modText
 end
 
-function MetamorphosisEN(User,Difficult,CharLangSkillName)
-	local txt = rNameEN[i].."\n\n"..wirkung_en[dataZList[1]].." "..wirkstoff[1].."\n"..wirkung_en[dataZList[2]].." "..wirkstoff[2].."\n"..wirkung_en[dataZList[3]].." "..wirkstoff[3].."\n"..wirkung_en[dataZList[4]].." "..wirkstoff[4].."\n"..wirkung_en[dataZList[5]].." "..wirkstoff[5].."\n"..wirkung_en[dataZList[6]].." "..wirkstoff[6].."\n"..wirkung_en[dataZList[7]].." "..wirkstoff[7].."\n"..wirkung_en[dataZList[8]].." "..wirkstoff[8]
+function M.MetamorphosisEN(User,Difficult,CharLangSkillName)
+	local txt = rNameEN[i].."\n\n"..alchemy.wirkung_en[dataZList[1]].." "..alchemy.wirkstoff[1].."\n"..alchemy.wirkung_en[dataZList[2]].." "..alchemy.wirkstoff[2].."\n"..alchemy.wirkung_en[dataZList[3]].." "..alchemy.wirkstoff[3].."\n"..alchemy.wirkung_en[dataZList[4]].." "..alchemy.wirkstoff[4].."\n"..alchemy.wirkung_en[dataZList[5]].." "..alchemy.wirkstoff[5].."\n"..alchemy.wirkung_en[dataZList[6]].." "..alchemy.wirkstoff[6].."\n"..alchemy.wirkung_en[dataZList[7]].." "..alchemy.wirkstoff[7].."\n"..alchemy.wirkung_en[dataZList[8]].." "..alchemy.wirkstoff[8]
 	local modText = ModifyText(User,txt,Difficult,CharLangSkillName)
 	return modText
 end
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 --User:inform("debug 3104-1")
 --Man k�nnte jetzt hergehen und den Standort des Schreines noch als Bedingung festschreiben. Damit g�be es dann nur einen einzigen Schrein auf der Insel, oder eben mehrere, falls gew�nscht.
 	if Sourceitem.id_pos.x == -390 and Sourceitem.id_pos.y == -154 and Sourceitem.id_pos.z == 0 then
@@ -389,8 +388,8 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
 				if User:getMagicType() == 3 then --and User:getSkill("library research") > math.random(130) then
 
-					init()
-					skilllost(User)	--jede Benutzung kostet skills
+					M.init()
+					M.skilllost(User)	--jede Benutzung kostet skills
 
 					if Param == 3110 then
 						--Prim�r- und Sekund�rattribute
@@ -424,16 +423,16 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	    				langType ="fairy language"
 					end
 
-					dataZList = SplitBottleData(User,rKey[i])
+					dataZList = alchemy.SplitBottleData(User,rKey[i])
 
 					if User:getPlayerLanguage() == 0 then
-						local metaDE=MetamorphosisDE(User,langSkill,langType)
-						--User:inform("#b|0|1008|"..rNameDE[i].."\n\n"..wirkung_de[dataZList[1]].." "..wirkstoff[1].."\n"..wirkung_de[dataZList[2]].." "..wirkstoff[2].."\n"..wirkung_de[dataZList[3]].." "..wirkstoff[3].."\n"..wirkung_de[dataZList[4]].." "..wirkstoff[4].."\n"..wirkung_de[dataZList[5]].." "..wirkstoff[5].."\n"..wirkung_de[dataZList[6]].." "..wirkstoff[6].."\n"..wirkung_de[dataZList[7]].." "..wirkstoff[7].."\n"..wirkung_de[dataZList[8]].." "..wirkstoff[8]);
+						local metaDE=M.MetamorphosisDE(User,langSkill,langType)
+						--User:inform("#b|0|1008|"..rNameDE[i].."\n\n"..alchemy.wirkung_de[dataZList[1]].." "..alchemy.wirkstoff[1].."\n"..alchemy.wirkung_de[dataZList[2]].." "..alchemy.wirkstoff[2].."\n"..alchemy.wirkung_de[dataZList[3]].." "..alchemy.wirkstoff[3].."\n"..alchemy.wirkung_de[dataZList[4]].." "..alchemy.wirkstoff[4].."\n"..alchemy.wirkung_de[dataZList[5]].." "..alchemy.wirkstoff[5].."\n"..alchemy.wirkung_de[dataZList[6]].." "..alchemy.wirkstoff[6].."\n"..alchemy.wirkung_de[dataZList[7]].." "..alchemy.wirkstoff[7].."\n"..alchemy.wirkung_de[dataZList[8]].." "..alchemy.wirkstoff[8]);
 						User:inform("#b|0|1008|"..metaDE)
 
 					else
-						local metaEN=MetamorphosisEN(User)
-						--User:inform("#b|0|1008|"..rNameEN[i].."\n\n"..wirkung_en[dataZList[1]].." "..wirkstoff[1].."\n"..wirkung_en[dataZList[2]].." "..wirkstoff[2].."\n"..wirkung_en[dataZList[3]].." "..wirkstoff[3].."\n"..wirkung_en[dataZList[4]].." "..wirkstoff[4].."\n"..wirkung_en[dataZList[5]].." "..wirkstoff[5].."\n"..wirkung_en[dataZList[6]].." "..wirkstoff[6].."\n"..wirkung_en[dataZList[7]].." "..wirkstoff[7].."\n"..wirkung_en[dataZList[8]].." "..wirkstoff[8]);
+						local metaEN=M.MetamorphosisEN(User)
+						--User:inform("#b|0|1008|"..rNameEN[i].."\n\n"..alchemy.wirkung_en[dataZList[1]].." "..alchemy.wirkstoff[1].."\n"..alchemy.wirkung_en[dataZList[2]].." "..alchemy.wirkstoff[2].."\n"..alchemy.wirkung_en[dataZList[3]].." "..alchemy.wirkstoff[3].."\n"..alchemy.wirkung_en[dataZList[4]].." "..alchemy.wirkstoff[4].."\n"..alchemy.wirkung_en[dataZList[5]].." "..alchemy.wirkstoff[5].."\n"..alchemy.wirkung_en[dataZList[6]].." "..alchemy.wirkstoff[6].."\n"..alchemy.wirkung_en[dataZList[7]].." "..alchemy.wirkstoff[7].."\n"..alchemy.wirkung_en[dataZList[8]].." "..alchemy.wirkstoff[8]);
 						User:inform("#b|0|1008|"..metaEN)
 
 					end
@@ -447,10 +446,12 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 				end
 			end	--rezepte auf pergamentrollen
 		end	--Menu check
-  	end	--position check
+	end	--position check
 end	--function
 
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
 	--  User:inform("debug 3104-4")
 end
+
+return M

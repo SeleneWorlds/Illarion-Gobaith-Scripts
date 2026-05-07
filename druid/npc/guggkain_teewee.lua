@@ -10,16 +10,17 @@
 --Last Update: //200x
 
 require("npcs.functions")
+local npc_functions = npcs.functions
 require("npcs.trader_functions")
+local trader_functions = npcs.trader_functions
 
-module("druid.npc.guggkain_teewee", package.seeall, package.seeall(npcs.functions), package.seeall(npcs.trader_functions))
-
+local M = {}
 --[[
 INSERT INTO npc(npc_type, npc_posx, npc_posy, npc_posz, npc_faceto,          npc_name,                    npc_script, npc_sex, npc_hair, npc_beard, npc_hairred, npc_hairgreen, npc_hairblue, npc_skinred, npc_skingreen, npc_skinblue)
          VALUES(       8,     -208,       29,        0,          6, 'Guggkain Teewee', 'druid.npc.guggkain_teewee',       0,        0,         0,         255,           255,          255,        255,          255,          255);
 ]]
 
-function initSchleifer()
+function M.initSchleifer()
 	if firsttime==nil then
 		firsttime = 1
 		listGemProd = {}
@@ -34,69 +35,69 @@ function initSchleifer()
 	end
 end
 
-function initializeNpc()
-    InitTalkLists()
-    InitItemLists()
+function M.initializeNpc()
+    npc_functions.InitTalkLists()
+    trader_functions.InitItemLists()
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
-   
+
     --            EPr ,ID  ,Am,SPr, SA,Qual ,Dura   ,Data,Catagory
-    AddTraderItem(110 ,450 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Amethyststaub
-    AddTraderItem(110 ,449 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Schwarzsteinstaub
-    AddTraderItem(110 ,447 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Blausteinstaub
-    AddTraderItem(130 ,452 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Diamantstaub
-    AddTraderItem(120 ,446 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Rubinstaub
-    AddTraderItem(120 ,448 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Smaragdstaub  
-    AddTraderItem(120 ,451 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Topazstaub
-      
-    AddTraderItem( 60 ,197 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Amethyst
-    AddTraderItem( 60 ,283 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Schwarzstein
-    AddTraderItem( 60 ,284 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Blaustein
-    AddTraderItem( 80 ,285 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Diamant
-    AddTraderItem( 70 , 46 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Rubin
-    AddTraderItem( 70 , 45 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Smaragd
-    AddTraderItem( 70 ,198 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Topaz
-     
-    AddTraderItem( 10 ,251 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Amethyst roh   
-    AddTraderItem( 10 ,252 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Schwarzstein roh
-    AddTraderItem( 10 ,253 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Blaustein roh
-    AddTraderItem( 30 ,254 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Diamant roh
-    AddTraderItem( 20 ,255 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Rubin roh
-    AddTraderItem( 20 ,256 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Smaragd roh
-    AddTraderItem( 20 ,257 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Topaz roh 
-      
+    trader_functions.AddTraderItem(110 ,450 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Amethyststaub
+    trader_functions.AddTraderItem(110 ,449 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Schwarzsteinstaub
+    trader_functions.AddTraderItem(110 ,447 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Blausteinstaub
+    trader_functions.AddTraderItem(130 ,452 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Diamantstaub
+    trader_functions.AddTraderItem(120 ,446 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Rubinstaub
+    trader_functions.AddTraderItem(120 ,448 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Smaragdstaub
+    trader_functions.AddTraderItem(120 ,451 ,25,  5, 250,{2,4},{33,66},0   ,0); -- Topazstaub
+
+    trader_functions.AddTraderItem( 60 ,197 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Amethyst
+    trader_functions.AddTraderItem( 60 ,283 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Schwarzstein
+    trader_functions.AddTraderItem( 60 ,284 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Blaustein
+    trader_functions.AddTraderItem( 80 ,285 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Diamant
+    trader_functions.AddTraderItem( 70 , 46 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Rubin
+    trader_functions.AddTraderItem( 70 , 45 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Smaragd
+    trader_functions.AddTraderItem( 70 ,198 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Topaz
+
+    trader_functions.AddTraderItem( 10 ,251 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Amethyst roh
+    trader_functions.AddTraderItem( 10 ,252 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Schwarzstein roh
+    trader_functions.AddTraderItem( 10 ,253 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Blaustein roh
+    trader_functions.AddTraderItem( 30 ,254 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Diamant roh
+    trader_functions.AddTraderItem( 20 ,255 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Rubin roh
+    trader_functions.AddTraderItem( 20 ,256 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Smaragd roh
+    trader_functions.AddTraderItem( 20 ,257 ,250,  5, 25,{2,4},{33,66},0   ,0); -- Topaz roh
+
     TraderCopper=5000;
 
-    AddTraderTrigger("[Gg]reet","Greetings. What is it you want? Jodele.");
-    AddAdditionalTrigger("[Hh]ello");
-    AddAdditionalText("Greetings. You are interested in my wares?");
-    AddTraderTrigger("[Ww]hat.+sell","I trade with gems, raw and cutted ones. And with mineral dust. Jodele");
-    AddTraderTrigger("[Ww]hat.+[Gg]em","Whatever you like: raw, cutted gems and gemdust");
-    AddTraderTrigger("[Ww]hat.+[Kk]ind","All kind of gems: rubies, emerald, diamond, topaz, bluestone, blackstone and amethyst. Ask for my list of wares.");
-    AddTraderTrigger("[Ww]hat.+[Dd]ust","All kind of gemdust: rubiydust, emerald-, diamond-, topaz-, blue- and blackstone- and amethystdust. Ask for my list of wares.");
-    AddTraderTrigger("[Bb]ye","Good day. Someone may bless you. Jodele.");
-    AddAdditionalTrigger("[Ff]arewell");
-    AddAdditionalTrigger("[Bb]e [Ww]ell");
-    AddAdditionalText("Jodele. Farewell. You are welcome to come back.");
-    AddTraderTrigger("[hH]elp","'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'");
-    AddTraderTrigger("[Gg]r�[�s]+e","Gr�se. Was wollt Ihr? Jodele");
-    AddAdditionalTrigger("[Hh]allo");
-    AddAdditionalText("Gr�ssse. Habt ihr Interessse an meinen Waren? Jodele");
-    AddTraderTrigger("[Ww]as.+kauf","Jodele. Ich handle mit rohen und geschliffenen Edelsteinen. Und Staub. Lasst Euch meine Liste zeigen.");
-    AddTraderTrigger("[Ww]as.+[Ee]delstein","Was auch immer du brauchst: Rubine, Smaragde, Topaz, Diamant - alles da!  Lasst Euch meine Liste zeigen.");
-    AddTraderTrigger("[Ww]as.+[Ss]taub","Besseres Mineralpulver werdet Ihr nirgendwo im Land bekommen. Lasst Euch meine Liste zeigen. Jodele!");
-    AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald. Irgendwer segne euch. Jodele.");
-    AddAdditionalTrigger("[Bb]is [Bb]ald");
-    AddAdditionalTrigger("[Mm]ach es [Gg]ut");
-    AddAdditionalText("Jodele. Bis bald. Ihr k�nnt gern wieder kommen.");
-    AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft Ihr', 'Ich m�chte <Anzahl> <Ware> kaufen', 'Ich m�chte <Ware> kaufen', 'Ich m�chte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr f�r <Ware>', 'Was kauft ihr?'");
-    
-    AddCycleText("#me kaut auf einem dicken K�fer herum.","#me chews of a large beetle.");
-    AddCycleText("#me schaut sich nach Kunden um.","#me looks around for customers.");
-    AddCycleText("#me l�sst seine Zunge hin und her schnalzen","#me clicks his tongue.");
-    AddCycleText("#me z�hlt einige M�nzen.","#me counts some coins");
-    AddCycleText("Den besten Edelsteinstaub verkauf ich! Zum besten Preis.","Best gem dust for the best price, that's what I sell.");
+    npc_functions.AddTraderTrigger("[Gg]reet","Greetings. What is it you want? Jodele.");
+    npc_functions.AddAdditionalTrigger("[Hh]ello");
+    npc_functions.AddAdditionalText("Greetings. You are interested in my wares?");
+    npc_functions.AddTraderTrigger("[Ww]hat.+sell","I trade with gems, raw and cutted ones. And with mineral dust. Jodele");
+    npc_functions.AddTraderTrigger("[Ww]hat.+[Gg]em","Whatever you like: raw, cutted gems and gemdust");
+    npc_functions.AddTraderTrigger("[Ww]hat.+[Kk]ind","All kind of gems: rubies, emerald, diamond, topaz, bluestone, blackstone and amethyst. Ask for my list of wares.");
+    npc_functions.AddTraderTrigger("[Ww]hat.+[Dd]ust","All kind of gemdust: rubiydust, emerald-, diamond-, topaz-, blue- and blackstone- and amethystdust. Ask for my list of wares.");
+    npc_functions.AddTraderTrigger("[Bb]ye","Good day. Someone may bless you. Jodele.");
+    npc_functions.AddAdditionalTrigger("[Ff]arewell");
+    npc_functions.AddAdditionalTrigger("[Bb]e [Ww]ell");
+    npc_functions.AddAdditionalText("Jodele. Farewell. You are welcome to come back.");
+    npc_functions.AddTraderTrigger("[hH]elp","'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'");
+    npc_functions.AddTraderTrigger("[Gg]r�[�s]+e","Gr�se. Was wollt Ihr? Jodele");
+    npc_functions.AddAdditionalTrigger("[Hh]allo");
+    npc_functions.AddAdditionalText("Gr�ssse. Habt ihr Interessse an meinen Waren? Jodele");
+    npc_functions.AddTraderTrigger("[Ww]as.+kauf","Jodele. Ich handle mit rohen und geschliffenen Edelsteinen. Und Staub. Lasst Euch meine Liste zeigen.");
+    npc_functions.AddTraderTrigger("[Ww]as.+[Ee]delstein","Was auch immer du brauchst: Rubine, Smaragde, Topaz, Diamant - alles da!  Lasst Euch meine Liste zeigen.");
+    npc_functions.AddTraderTrigger("[Ww]as.+[Ss]taub","Besseres Mineralpulver werdet Ihr nirgendwo im Land bekommen. Lasst Euch meine Liste zeigen. Jodele!");
+    npc_functions.AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald. Irgendwer segne euch. Jodele.");
+    npc_functions.AddAdditionalTrigger("[Bb]is [Bb]ald");
+    npc_functions.AddAdditionalTrigger("[Mm]ach es [Gg]ut");
+    npc_functions.AddAdditionalText("Jodele. Bis bald. Ihr k�nnt gern wieder kommen.");
+    npc_functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft Ihr', 'Ich m�chte <Anzahl> <Ware> kaufen', 'Ich m�chte <Ware> kaufen', 'Ich m�chte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr f�r <Ware>', 'Was kauft ihr?'");
+
+    npc_functions.AddCycleText("#me kaut auf einem dicken K�fer herum.","#me chews of a large beetle.");
+    npc_functions.AddCycleText("#me schaut sich nach Kunden um.","#me looks around for customers.");
+    npc_functions.AddCycleText("#me l�sst seine Zunge hin und her schnalzen","#me clicks his tongue.");
+    npc_functions.AddCycleText("#me z�hlt einige M�nzen.","#me counts some coins");
+    npc_functions.AddCycleText("Den besten Edelsteinstaub verkauf ich! Zum besten Preis.","Best gem dust for the best price, that's what I sell.");
 
     TraderLang={"Gold","gold","Silber", "silver","Kupfer","copper","st�cke","pieces"};
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
@@ -119,33 +120,33 @@ function initializeNpc()
 
 end
 
-function nextCycle()  -- ~10 times per second
+function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        npc_functions.increaseLangSkill(TradSpeakLang)
         TraderStdCopper=TraderCopper;
         thisNPC.activeLanguage=TradStdLang;
     end
-    TraderCycle();
-    SpeakerCycle();
+    trader_functions.TraderCycle();
+    npc_functions.SpeakerCycle();
 end
 
-function receiveText(texttype, message, originator)
-    if BasicNPCChecks(originator,2) then
-        if (LangOK(originator,TradSpeakLang)==true) then
-            thisNPC.activeLanguage=originator.activeLanguage;            
-            Status,Values=SayPriceSell(originator, message)
-            if (Status==0) then Status,Values=SayPriceBuy(originator, message) end
-            if (Status==0) then Status,Values=ShowItemList(originator, message) end            
-            if (Status==0) then Status,Values=Selling(originator, message) end
-            if (Status==0) then Status,Values=Buying(originator, message) end
-            if (Status==0) then Status,Values=TellDate(originator, message, TraderMonths) end
-            if (Status==0) then TellSmallTalk(message) end
+function M.receiveText(texttype, message, originator)
+    if npc_functions.BasicNPCChecks(originator,2) then
+        if (npc_functions.LangOK(originator,TradSpeakLang)==true) then
+            thisNPC.activeLanguage=originator.activeLanguage;
+            Status,Values=trader_functions.SayPriceSell(originator, message)
+            if (Status==0) then Status,Values=trader_functions.SayPriceBuy(originator, message) end
+            if (Status==0) then Status,Values=trader_functions.ShowItemList(originator, message) end
+            if (Status==0) then Status,Values=trader_functions.Selling(originator, message) end
+            if (Status==0) then Status,Values=trader_functions.Buying(originator, message) end
+            if (Status==0) then Status,Values=npc_functions.TellDate(originator, message, TraderMonths) end
+            if (Status==0) then npc_functions.TellSmallTalk(message) end
 
             ----------------------------EDIT BELOW HERE-----------------------------------
-            if (Status==1) then -- Verkauf von mehreren Items erfolgreich // Selling of multible items succeed
-                gText="Ihr m�chtet "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Bitte sehr, das macht"..MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want "..Values[1].." "..world:getItemName(Values[2],1).."? Here you are, that makes"..MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+            if (Status==1) then -- Verkauf von mehreren Items erfolgreich // trader_functions.Selling of multible items succeed
+                gText="Ihr m�chtet "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Bitte sehr, das macht"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want "..Values[1].." "..world:getItemName(Values[2],1).."? Here you are, that makes"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==2) then -- Item kann wegen Platzmangel nicht erstellt werden // Item can't created, cause of lag of space
                 gText="Tut mir leid, aber Ihr habt nicht genug Platz in Eurem Beutel.";
                 eText="Sorry, you do not have enough ssspacess in your inventory.";
@@ -158,18 +159,18 @@ function receiveText(texttype, message, originator)
             elseif (Status==5) then -- Item wird nicht verkauft // item
                 gText="Tut mir Leid. Ich verkaufe das nicht.";
                 eText="Sorry, I do not sell that item.";
-            elseif (Status==6) then -- Verkauf eines einzelnen Items erfolgreich // Selling of a single item succeed
-                gText=GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr kaufen wollt? Bitte sehr, das macht"..MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want a "..world:getItemName(Values[2],1).."? Here you are, that makes"..MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+            elseif (Status==6) then -- Verkauf eines einzelnen Items erfolgreich // trader_functions.Selling of a single item succeed
+                gText=npc_functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr kaufen wollt? Bitte sehr, das macht"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want a "..world:getItemName(Values[2],1).."? Here you are, that makes"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==7) then -- Verkaufspreis Ansage f�r ein Item // selling price announcement for an item
-                gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..MoneyText(0,Values[2],Values[3],Values[4],TraderLang)..".";
-                eText="The "..world:getItemName(Values[1],1).." costs"..MoneyText(1,Values[2],Values[3],Values[4],TraderLang)..".";
+                gText=npc_functions.GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..trader_functions.MoneyText(0,Values[2],Values[3],Values[4],TraderLang)..".";
+                eText="The "..world:getItemName(Values[1],1).." costs"..trader_functions.MoneyText(1,Values[2],Values[3],Values[4],TraderLang)..".";
             elseif (Status==8) then -- Einkaufspreis Ansage f�r ein Item // buying price announcement for an item
-                gText=GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." w�re mir"..MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
-                eText="I would pay"..MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
-            elseif (Status==9) then -- Einkauf von mehreren Items erfolgreich // Buying of multible items succeed
-                gText="Ihr wollt "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich gebe euch"..MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want to sell "..Values[1].." "..world:getItemName(Values[2],1).."? I give you"..MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+                gText=npc_functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." w�re mir"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
+                eText="I would pay"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
+            elseif (Status==9) then -- Einkauf von mehreren Items erfolgreich // trader_functions.Buying of multible items succeed
+                gText="Ihr wollt "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich gebe euch"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want to sell "..Values[1].." "..world:getItemName(Values[2],1).."? I give you"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==10) then -- Item das gekauft werden soll nicht vorhanden // item that should be buyed is not aviable
                 gText="Kommt wieder wenn ihr das habt!";
                 eText="Come back when you have that!";
@@ -179,9 +180,9 @@ function receiveText(texttype, message, originator)
             elseif (Status==12) then -- H�ndler kauft das Item nicht // trader didn't buy the item
                 gText="Ssso etwasss kaufe ich nicht. Tut mir leid.";
                 eText="Sssorry, I do not buy that item.";
-            elseif (Status==13) then -- Einkauf eines einzelnen Items erfolgreich // Buying of a single item succeed
-                gText=GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist esss, was ihr verkaufen m�chtet? Ich gebe euch"..MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want to sell a "..world:getItemName(Values[2],1).."? I give you"..MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+            elseif (Status==13) then -- Einkauf eines einzelnen Items erfolgreich // trader_functions.Buying of a single item succeed
+                gText=npc_functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist esss, was ihr verkaufen m�chtet? Ich gebe euch"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want to sell a "..world:getItemName(Values[2],1).."? I give you"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==14) then -- Liste der Waren die der NPC verkauft ist nicht leer // List of the wares the NPC sells, is not empty
                 gText="Ich verkaufe Edelsteine und Edelsteinstaub";
                 eText="I sell gemssand gemdust. Jodele";
@@ -200,12 +201,12 @@ function receiveText(texttype, message, originator)
                 if (seleced==1) then
                     eText="It'sss day "..Values[1].." of "..Values[2].." of the year "..Values[3]..". sss";
                 elseif (seleced==2) then
-                    eText="It'sss the "..EnglDigit(Values[1]).." of "..Values[2].." of the year "..Values[3]..". sss";
+                    eText="It'sss the "..npc_functions.EnglDigit(Values[1]).." of "..Values[2].." of the year "..Values[3]..". sss";
                 end
             end
 
             if (Status~=0) then
-                outText=GetNLS(originator,gText,eText);
+                outText=npc_functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
             end
 
@@ -224,7 +225,7 @@ function receiveText(texttype, message, originator)
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
                 for itnCnt=1,table.getn(TraderItemId) do
-                    refill(itnCnt);
+                    trader_functions.refillItems(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end
             end -- string find buy/sell/list...
@@ -233,7 +234,7 @@ function receiveText(texttype, message, originator)
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=GetNLS(originator,gText,eText);
+                outText=npc_functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
             end
@@ -241,11 +242,8 @@ function receiveText(texttype, message, originator)
     end
 end--function
 
-function useNPC(User,Counter,Param)
+function M.useNPC(User,Counter,Param)
 --
 end
 
-
-
-
-
+return M

@@ -4,42 +4,41 @@
 
 require("base.common")
 
-module("druid.spell.id_17_analyze_location", package.seeall)
-
+local M = {}
 -- INSERT INTO spells VALUES (2^16,3,'druid.spell.id_17_analyze_location');
 
-function CastMagic(Caster,counter,param,ltstate)
---Caster:inform("debug #17.1")  
+function M.CastMagic(Caster,counter,param,ltstate)
+--Caster:inform("debug #17.1")
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
---Caster:inform("debug #17.2")    
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
+--Caster:inform("debug #17.2")
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
+function M.CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
 --Caster:inform("debug #17.3")
- 
---Weltkoordinaten: 
+
+--Weltkoordinaten:
 --Linke obere Ecke    =  -500 / -500
 --Rechte untere Ecke  =  456 / 274
 --1� Grad = 60' Minuten
 
-   
+
 --Positionsangaben
-if Targetpos.x < 0 then 
+if Targetpos.x < 0 then
   text1DE = " westlicher L�nge "
   text1EN = " western longitude"
 elseif Targetpos.x > 0 then
-  text1DE = " �stlicher L�nge " 
-  text1EN = " eastern longitude"   
-end  
-if Targetpos.y < 0 then 
+  text1DE = " �stlicher L�nge "
+  text1EN = " eastern longitude"
+end
+if Targetpos.y < 0 then
   text2DE = " n�rdlicher Breite "
-  text2EN = " northern latitude"   
+  text2EN = " northern latitude"
 elseif Targetpos.y > 0 then
-  text2DE = " s�dlicher Breite "  
-  text2EN = " southern latitude" 
-end 
+  text2DE = " s�dlicher Breite "
+  text2EN = " southern latitude"
+end
 
 longitude = math.abs(Targetpos.x)
 longGrad = math.floor(longitude/60)
@@ -56,13 +55,13 @@ latiMin = latitude - latiGrad*60
   end
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
---Caster:inform("debug #17.4") 
-  --Anzeige des Item-Gewichtes 
+function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
+--Caster:inform("debug #17.4")
+  --Anzeige des Item-Gewichtes
   myItem = world:getItemStats(TargetItem)
 
---base.common.InformNLS( Caster, 
---"Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten", 
+--base.common.InformNLS( Caster,
+--"Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten",
 --"This item weights "..myItem.Weight.." druid weight-units"); -- das kann man sch�ner formulieren
 	textDE="Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten"
 	textEN="This item weights "..myItem.Weight.." druid weight-units"
@@ -71,5 +70,7 @@ function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 	else
 		Caster:inform("#b|0|0|"..textEN)
 	end
-  	  
+
 end
+
+return M

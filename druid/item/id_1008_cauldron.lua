@@ -1,4 +1,4 @@
--- DRUIDENTUM / ALCHEMIE 
+-- DRUIDENTUM / ALCHEMIE
 -- Herstellung von Pflanzenextrakten
 -- Fixieren von Pflanzenextrakten zu Potions
 -- Neutralisieren von Pflanzenextrakten
@@ -10,23 +10,22 @@
 -- Auf Kessel ausl�sen
 
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 require("item.general.metal")
 
-module("druid.item.id_1008_cauldron", package.seeall)
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_1008_cauldron' WHERE com_itemid = 1008;
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-  --User:inform("debug ds_pflanzensud.lua") 
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+  --User:inform("debug ds_pflanzensud.lua")
   -- pr�fe ob der User eine Planze in der Hand hat
-    local plantInHand = CheckIfPlantInHand(User);  
+    local plantInHand = alchemy.CheckIfPlantInHand(User);
     -- pr�fe ob eine Flasche in der Hand ist
-    local bottleInHand = CheckIfBottleInHand(User);  
+    local bottleInHand = alchemy.CheckIfBottleInHand(User);
 		-- check auf mehrere Flaschen(Stapelbug)
 		if User:countItemAt("body",164)>1 or User:countItemAt("body",331)>1 then
 			return
-		end	
+		end
     -- Wenn der User eine Flasche hat dann...
     if plantInHand then
         -- braucht er noch eine Flasche
@@ -37,34 +36,34 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 "You need one bottle if you want to brew a potion."
             );
             return;
-        end     
+        end
         -- Flasche und Planze wurden gefunden. Also spalten wir den Wert auf der die Effektinformationen enth�lt
 
 		-- Manche Pflanzen haben Doppelfunktionen und bekommen eine neue ID
         if plantInHand.data >9000 and plantInHand.data < 9017 then
-        	dummy = plantInHand.data
+			dummy = plantInHand.data
         else
-        	dummy =plantInHand.id
+			dummy =plantInHand.id
         end
-        local plusWertPos,minusWertPos = SplitPlantData(dummy);
-                        
+        local plusWertPos,minusWertPos = alchemy.SplitPlantData(dummy);
+
         -- Wenn es eine leere Flasche ist werden default Werte verwendet.
         local bottleData = ( bottleInHand.id == 164 and 55555555 or bottleInHand.data );
         local bottleQual = ( bottleInHand.id == 164 and 999 or bottleInHand.quality );
-        
+
         -- Und wir generieren eine Liste die jeden Eintrag des Datawertes einzeln enth�lt
-        local dataZList = SplitBottleData(User,bottleData);
+        local dataZList = alchemy.SplitBottleData(User,bottleData);
 
         -- Abh�ngig der Effektdaten der Planze wird ein Wert angehoben und ein anderer abgesenkt
         dataZList[plusWertPos] = math.min( 9, dataZList[plusWertPos] + 1 );
         dataZList[minusWertPos] = math.max( 1,dataZList[minusWertPos] - 1 );
-        
+
         -- Aus den modifizierten Daten erstellen wir den neuen Datawert.
-        bottleData = PasteBottleData(User,dataZList);
-        
+        bottleData = alchemy.PasteBottleData(User,dataZList);
+
         -- die Pflanze l�schen
         User:increaseAtPos(plantInHand.itempos,-1);
-        
+
         -- Das Flascheitem wird entsprechend aller Daten modifiziert
         bottleInHand.id = 331;
         -- Die Qualit�t des Sudes richtet sich nach der niedrigsten Qualit�t der benutzten Pflanzen
@@ -72,16 +71,16 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         bottleInHand.data = bottleData;
         -- Hier noch einen Text einbauen, dass man gerade eine Pflanze verarbeitet...
         world:changeItem(bottleInHand);
-        
+
         -- Und der Spieler soll noch was lernen
-        ds_skillgain(User);
+        alchemy.ds_skillgain(User);
         return;
     end
-    
-    -- Der User hatte keine Planze. Vielleicht hat er ja Mineralstaub
-    local gemInHand = CheckIfGemInHand(User);
 
-    if gemInHand then     
+    -- Der User hatte keine Planze. Vielleicht hat er ja Mineralstaub
+    local gemInHand = alchemy.CheckIfGemInHand(User);
+
+    if gemInHand then
         -- Er hat einen, aber hat er auch eine Flasche?
         if not bottleInHand then
             -- Nein er hat keine. Sagen wir ihm das.
@@ -91,10 +90,10 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             );
             return;
         end
-        
+
         --Mineralstaub und Flasche sind da. Beides wird eingelesen.
         --local bottleInHand = User:getItemAt( bottleInHand );
-        
+
         --Mit Mineralstaub werden Tr�nke fixiert. Wenn die Flasche leer ist, ist das sinnlos
         if( bottleInHand.id == 164 )then
             -- Und sie ist leer! Der User soll um seinen Fehler wissen:
@@ -104,30 +103,30 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             );
             return;
         end
-        
+
         --alles ist in Ordnung. Der Mineralstaub wird gel�scht und die Flasche ge�ndert
-        
+
 --[[  aber nur, wenn der Char ein Druide ist !!!
       ansonsten ein text, der ihm das mitteilt
-  ]]--    
+  ]]--
 				if User:getMagicType() == 3 then
-        	bottleInHand.id = newBottle[gemInHand.id];
-        	world:changeItem(bottleInHand);
+			bottleInHand.id = alchemy.newBottle[gemInHand.id];
+			world:changeItem(bottleInHand);
 		    	User:increaseAtPos(gemInHand.itempos,-1);
-        
-        	-- Und lernen wollen wir auch noch was.
-        	ds_skillgain(User);
+
+			-- Und lernen wollen wir auch noch was.
+			alchemy.ds_skillgain(User);
         else
         base.common.InformNLS( User,
                 "Du musst schon Druide sein, um so etwas zu k�nnen.",
                 "You need to be a druid to do such things."
             );
-        end		
+        end
         return;
     end
-    
+
     -- Keine Planze und keinen Mineralstaub. Vielleicht ja Kohle
-    local coalInHand = ds_CheckIfCoalInHand(User);
+    local coalInHand = alchemy.ds_CheckIfCoalInHand(User);
     if coalInHand then
         -- Und das Opfer hat wirklich Kohle
         if not bottleInHand then
@@ -138,7 +137,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             );
             return;
         end
-        
+
         -- Kohle und Flasche sind da. Schauen wir uns die Flasche mal n�her an.
         if( bottleInHand.id == 164 )then
             -- Die Flasche ist leer und die Kohle damit sinnlos
@@ -148,18 +147,18 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             );
             return;
         end
-        
+
         -- Alles in Ordnung. Kohle wird gel�scht.
         User:increaseAtPos(coalInHand.itempos,-1);
-        
+
         -- Flaschen Datawert wird auf default zur�ck gesetzt. Die Kohle hat alle Effekte neutralisiert
         bottleInHand.data = 55555555;
         world:changeItem(bottleInHand);
         return;
     end
-    
+
     -- Letzter Versuch. Vielleicht ist es ja Faulbaumrinde
-    local rtbInHand = CheckIfRtbInHand(User);
+    local rtbInHand = alchemy.CheckIfRtbInHand(User);
     if rtbInHand then
         -- Faulbaumrinde ist da
         if not bottleInHand then
@@ -170,7 +169,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             );
             return;
         end
-        
+
         -- Flasche ist da
         if( bottleInHand.id == 164 )then
             -- doch die Flasche ist leer
@@ -180,30 +179,30 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             );
             return;
         end
-        
+
         -- alles in Ordnung! Weg mit der Rinde
         User:increaseAtPos(rtbInHand.itempos,-1);
-        
+
         -- Datawert der Flasche aufspalten
-        local dataZList = SplitBottleData(User,bottleInHand.data);
-        
+        local dataZList = alchemy.SplitBottleData(User,bottleInHand.data);
+
         -- Und alle Werte um 1 dem Mittelwert ann�hern
         for i=1,8 do
             if (dataZList[i] > 5) then
                 dataZList[i] = dataZList[i] - 1
             elseif (dataZList[i] < 5) then
-                dataZList[i] = dataZList[i] + 1         
-            end        
+                dataZList[i] = dataZList[i] + 1
+            end
         end
-        
+
         -- neuen Datawert generieren
-        bottleInHand.data = PasteBottleData(User,dataZList);
-        
+        bottleInHand.data = alchemy.PasteBottleData(User,dataZList);
+
         -- und das Item speichern
         world:changeItem(bottleInHand);
         return;
     end
- 
+
     base.common.InformNLS( User,
         "Du musst eine Sud-Pflanze in die Hand nehmen",
         "You need to carry a broth plant in your hands"
@@ -211,10 +210,12 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end
 
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if (User:getPlayerLanguage()==0) then
         world:itemInform(User,Item,"Du siehst einen Kupferkessel")
     else
-        world:itemInform(User,Item,"You look at a copper kettle")        
+        world:itemInform(User,Item,"You look at a copper kettle")
     end
 end
+
+return M

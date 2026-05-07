@@ -7,14 +7,13 @@
 -- include base.common for additional functions
 require("base.common")
 
-module("druid.item.id_331_green_bottle", package.seeall)
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_331_green_bottle' WHERE com_itemid = 331;
 
 -- table for security question before becoming a druid
 Security = {};
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if (Sourceitem.id_data == 0) then
         -- ALTE FASSUNG ALS HEILTRANK
         if (ltstate == Action.abort) then
@@ -114,17 +113,17 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
                 User:setMagicType( 3 );
 
-                killSkill( User, 3, "commotio" );
-                killSkill( User, 3, "desicio" );
-                killSkill( User, 3, "pervestigatio" );
-                killSkill( User, 3, "transformo" );
-                killSkill( User, 3, "transfreto" );
+                M.killSkill( User, 3, "commotio" );
+                M.killSkill( User, 3, "desicio" );
+                M.killSkill( User, 3, "pervestigatio" );
+                M.killSkill( User, 3, "transformo" );
+                M.killSkill( User, 3, "transfreto" );
 
                 msg = base.common.GetNLS( User,
-            	"Du hast das Gef�hl etwas ist passiert. Du bist nun ein Druide.",
-            	"You have the feeling something happend. You are now a druid." );
+				"Du hast das Gef�hl etwas ist passiert. Du bist nun ein Druide.",
+				"You have the feeling something happend. You are now a druid." );
 
-            	Security[ User.id ] = nil;
+				Security[ User.id ] = nil;
             end
         end
     end
@@ -136,10 +135,10 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	world:gfx(1,User.pos);
 
 	if (Sourceitem.id_number == 1) then
-    	Sourceitem.id_id = 164;
-    	Sourceitem.id_quality = 111;
-    	Sourceitem.id_data = 0;
-    	world:changeItem( SourceItem );
+		Sourceitem.id_id = 164;
+		Sourceitem.id_quality = 111;
+		Sourceitem.id_data = 0;
+		world:changeItem( SourceItem );
     else
         world:erase( SourceItem, 1 );
         local notcreated = User:createItem( 164, 1, 111, 0 );
@@ -151,7 +150,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     User:inform( msg );
 end
 
-function killSkill( User, Skillgroup, Skillname )
+function M.killSkill( User, Skillgroup, Skillname )
     local value = User:getSkill( Skillname );
     if (value == 0) then
         return;
@@ -159,7 +158,7 @@ function killSkill( User, Skillgroup, Skillname )
     User:increaseSkill( Skillgroup, Skillname, -value );
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if (item.id_data == 55555555) then
         world:itemInform( User, Item, base.common.GetNLS( User,
         "Du siehst ein Flaschenetikett mit der Aufschrift: \"Druidentrunk\"",
@@ -174,3 +173,5 @@ function LookAtItem(User,Item)
         "You look at a sticker telling: \"Herbage Broth\"" ) );
     end
 end
+
+return M

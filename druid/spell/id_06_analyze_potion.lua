@@ -3,13 +3,12 @@
 --Falk
 
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 
-module("druid.spell.id_06_analyze_potion", package.seeall(druid.base.alchemy))
-
+local M = {}
 -- INSERT INTO spells VALUES (2^5,3,'druid.spell.id_06_analyze_potion');
 
-function ds_codices()
+function M.ds_codices()
   if firsttime == nil then
     --F�r Flasche 059,166
     LVDe={"Ende","H�lle","H�hle","Kerker","Ruhe","Quelle","Orden","Tempel","Siegel"}
@@ -28,14 +27,14 @@ function ds_codices()
   end
 end
 
-function ds_analyseDATA(Caster,Item)
+function M.ds_analyseDATA(Caster,Item)
   workdata = Item.data
   dataZList = {}
-  dataZList = SplitBottleData(Caster,workdata)
+  dataZList = alchemy.SplitBottleData(Caster,workdata)
   return dataZList
 end
 
-function ds_analyse_059(Caster,Item)
+function M.ds_analyse_059(Caster,Item)
 --rote Flasche
 --Prim�rattribute
 --Caster:inform("rote Flasche")
@@ -43,8 +42,8 @@ function ds_analyse_059(Caster,Item)
     EtikettDe ="Heil- und St�rkungstrank"
     EtikettEn ="Healing- And Refreshment-Potion"
   else
-    ds_codices()
-    dataZList = ds_analyseDATA(Caster,Item)
+    M.ds_codices()
+    dataZList = M.ds_analyseDATA(Caster,Item)
 
     EtikettDe = "eine Mischung aus \n\n"..LVDe[dataZList[1]]..PADe[1].."\n"
     for i = 2,7 do
@@ -61,7 +60,7 @@ function ds_analyse_059(Caster,Item)
   return EtikettDe,EtikettEn
 end
 
-function ds_analyse_165(Caster,Item)
+function M.ds_analyse_165(Caster,Item)
 --hellblaue Flasche
 --Pasten
 --Caster:inform("hellblaue Flasche")
@@ -69,8 +68,8 @@ function ds_analyse_165(Caster,Item)
     EtikettDe ="ein Pflegemittel,ein �l oder eine Politur"
     EtikettEn ="A Care Product, Maybe An Oil Or A Polish"
   else
-    ds_codices()
-    dataZList = ds_analyseDATA(Caster,Item)
+    M.ds_codices()
+    dataZList = M.ds_analyseDATA(Caster,Item)
 
     EtikettDe = "eine Mischung aus \n\n"
     EtikettEn = "a mixture of \n"
@@ -88,7 +87,7 @@ function ds_analyse_165(Caster,Item)
   return EtikettDe,EtikettEn
 end
 
-function ds_analyse_166(Caster,Item)
+function M.ds_analyse_166(Caster,Item)
 --lila Flasche
 --Sekund�rattribute
 --Caster:inform("lila Flasche")
@@ -96,8 +95,8 @@ function ds_analyse_166(Caster,Item)
     EtikettDe ="ein Heil- oder St�rkungstrank"
     EtikettEn ="a healing- or refreshment-potion"
   else
-    ds_codices()
-    dataZList = ds_analyseDATA(Caster,Item)
+    M.ds_codices()
+    dataZList = M.ds_analyseDATA(Caster,Item)
 
     EtikettDe = "eine Mischung aus \n\n"..LVDe[dataZList[1]]..SADe[1].."\n"
     for i = 2,7 do
@@ -114,7 +113,7 @@ function ds_analyse_166(Caster,Item)
   return EtikettDe,EtikettEn
 end
 
-function ds_analyse_167(Caster,Item)
+function M.ds_analyse_167(Caster,Item)
 --gelbe Flasche
 --Viren
 --Caster:inform("gelbe Flasche")
@@ -158,7 +157,7 @@ function ds_analyse_167(Caster,Item)
   return EtikettDe,EtikettEn
 end
 
-function ds_analyse_327(Caster,Item)
+function M.ds_analyse_327(Caster,Item)
 --dunkelblaue Flasche
 --Wurfk�rper ua
 --Caster:inform("dunkelblaue Flasche")
@@ -214,7 +213,7 @@ function ds_analyse_327(Caster,Item)
   return EtikettDe,EtikettEn
 end
 
-function ds_analyse_328(Caster,Item)
+function M.ds_analyse_328(Caster,Item)
 --orange Flasche
 --Medizin
 --Caster:inform("orange Flasche")
@@ -258,7 +257,7 @@ function ds_analyse_328(Caster,Item)
   return EtikettDe,EtikettEn
 end
 
-function ds_analyse_329(Caster,Item)
+function M.ds_analyse_329(Caster,Item)
 --schwarze Flasche
 --Verwandlungen
 --Caster:inform("schwarze Flasche")
@@ -380,7 +379,7 @@ function ds_analyse_329(Caster,Item)
   return EtikettDe,EtikettEn
 end
 
-function ds_analyse_330(Caster,Item)
+function M.ds_analyse_330(Caster,Item)
 --wei�e Flasche
 --Sprache
 --Caster:inform("wei�e Flasche")
@@ -422,19 +421,19 @@ function ds_analyse_330(Caster,Item)
 end
 
 
-function CastMagic(Caster,counter,param,ltstate)
+function M.CastMagic(Caster,counter,param,ltstate)
 --Caster:inform("debug #06.1")
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 --Caster:inform("debug #06.2")
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
+function M.CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
 --Caster:inform("debug #06.3")
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 --Caster:inform("debug #06.4")
 --Analyse eines Trankes auf Inhalt(data)
 	pList={59,165,166,167,327,328,329,330};
@@ -446,38 +445,38 @@ function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 		--Hier kommt jetzt die eigentliche Analyse
 			if i == 1 then
 			--rote Flasche 059
-        textDE, textEN = ds_analyse_059(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_059(Caster,TargetItem)
 				break
 			elseif i == 2 then
 			--hellblaue Flasche 165
-        textDE, textEN = ds_analyse_165(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_165(Caster,TargetItem)
 				break
 			elseif i == 3 then
 			--lila Flasche
-        textDE, textEN = ds_analyse_166(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_166(Caster,TargetItem)
 				break
 			elseif i == 4 then
 			--gelbe Flasche
-        textDE, textEN = ds_analyse_167(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_167(Caster,TargetItem)
 				break
 			elseif i == 5 then
 			--dunkelblaue Flasche
-        textDE, textEN = ds_analyse_327(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_327(Caster,TargetItem)
 				break
 			elseif i == 6 then
 			--orange Flasche
-        textDE, textEN = ds_analyse_328(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_328(Caster,TargetItem)
 				break
 			elseif i == 7 then
 			--schwarze Flasche
-        textDE, textEN = ds_analyse_329(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_329(Caster,TargetItem)
 				break
 			elseif i == 8 then
 			--wei�e Flasche
-        textDE, textEN = ds_analyse_330(Caster,TargetItem)
+        textDE, textEN = M.ds_analyse_330(Caster,TargetItem)
 			end
 
-  	Caster:learn(6,"exquirere",3,100)
+	Caster:learn(6,"exquirere",3,100)
 
 		end
 	end
@@ -488,7 +487,9 @@ function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 	    Caster:inform("#b|0|0|".."The bottle contains "..textEN)
     end
   else
- 	  base.common.InformNLS(Caster,"Das ist kein Druiden-Trank","This is not a potion");
+	  base.common.InformNLS(Caster,"Das ist kein Druiden-Trank","This is not a potion");
 	end
 
 end
+
+return M

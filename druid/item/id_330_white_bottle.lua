@@ -3,13 +3,12 @@
 --Tempor�re Einzelwirkungen
 --Falk
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 
-module("druid.item.id_330_white_bottle", package.seeall(druid.base.alchemy))
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_330_white_bottle' WHERE com_itemid = 330;
 
-function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
 -- Grundwerte, Listen einlesen:
 -- Sprachverst�ndnis (man kann eine Zeitlang fremde Sprachen verstehen/lesen)
@@ -32,13 +31,13 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
       find, myEffect = Character.effects:find(330);
       if not find then
 
-      	oldSkill = Character:getSkill(ListLanguages[i])
+		oldSkill = Character:getSkill(ListLanguages[i])
 
-      	if oldSkill == nil then
-      	   oldSkill = 0
-      	end
+		if oldSkill == nil then
+		   oldSkill = 0
+		end
 
-      	newSkill = Character:getSkill("library research")
+		newSkill = Character:getSkill("library research")
 
         myEffect=CLongTimeEffect(330,1);
 
@@ -57,9 +56,9 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 --      Laufzeit nach Quality berechnen
         myEffect:addValue("zaehler",Sourceitem.id_quality)
 
- 			--Character:inform(ListCodecs[i].." / "..ListLanguages[i].." / "..oldSkill)
-      	Character:increaseSkill(ListSkillGroup[i],ListLanguages[i],newSkill)
- 			--Character:inform(ListCodecs[i].." / "..ListLanguages[i].." / "..Character:getSkill(ListLanguages[i]))
+			--Character:inform(ListCodecs[i].." / "..ListLanguages[i].." / "..oldSkill)
+		Character:increaseSkill(ListSkillGroup[i],ListLanguages[i],newSkill)
+			--Character:inform(ListCodecs[i].." / "..ListLanguages[i].." / "..Character:getSkill(ListLanguages[i]))
 
 --      Verwandlung ausf�hren
         world:gfx(5,Character.pos)
@@ -69,48 +68,48 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
       end
     end
   end
-    
+
   --Weitere Einzelwirkungen
   if Sourceitem.id_data == 55555551 then
     --Ende des LTE 1 / alcohol
-    if Character.effects:find(1) then 
+    if Character.effects:find(1) then
 		  Character.effects:removeEffect(1)
     end
   elseif Sourceitem.id_data == 55555552 then
     --Ende des LTE 2 /char_reg
-    if Character.effects:find(2) then 
+    if Character.effects:find(2) then
 		  Character.effects:removeEffect(2)
     end
   elseif  Sourceitem.id_data == 55555553 then
     --Ende des LTE 3 /cold
-    if Character.effects:find(3) then 
+    if Character.effects:find(3) then
 		  Character.effects:removeEffect(3)
-    end 
+    end
   elseif  Sourceitem.id_data == 55555515 then
     --Ende des LTE 15 /illnes1
-    if Character.effects:find(15) then 
+    if Character.effects:find(15) then
 		  Character.effects:removeEffect(15)
-    end 
+    end
   elseif  Sourceitem.id_data == 55555518 then
     --Ende des LTE 18 /smell
-    if Character.effects:find(18) then 
+    if Character.effects:find(18) then
 		  Character.effects:removeEffect(18)
-    end 
+    end
   elseif  Sourceitem.id_data == 55555528 then
     --Ende des LTE 28 / drachenpocken
-    if Character.effects:find(28) then 
+    if Character.effects:find(28) then
 		  Character.effects:removeEffect(28)
-    end 
+    end
   elseif  Sourceitem.id_data == 55555529 then
-    --Ende des LTE 29 / gnomwahn 
-    if Character.effects:find(29) then 
+    --Ende des LTE 29 / gnomwahn
+    if Character.effects:find(29) then
 		  Character.effects:removeEffect(29)
-    end                 
+    end
   end
-  
+
 end
 
-function UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
   if Sourceitem.id_data == 0 then
 	world:erase(SourceItem,1);
 	world:makeSound(12,Character.pos);
@@ -121,7 +120,7 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 	world:erase(SourceItem,1);
 	world:makeSound(12,Character.pos);
 
-    
+
         -- ALTE FASSUNG ALS HEILTRANK
         if (ltstate == Action.abort) then
 
@@ -170,13 +169,13 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
         User:LTIncreaseMana(333,3,1); --1000Mana+
         User:increaseAttrib("foodlevel",1000);
         User.movepoints = User.movepoints - 16;
-        
+
         local Poisonvalue = User:getPoisonValue();                -- Poisonvalue einlesen  ( 0 - 10000 )
         if Poisonvalue>1000 then
-        	Poisonvalue = Poisonvalue -1000; --remove 1000 Poison points
+			Poisonvalue = Poisonvalue -1000; --remove 1000 Poison points
         end
         User:setPoisonValue( Poisonvalue );
-			
+
         if (User:increaseAttrib("foodlevel",0) > 60000) then
             base.common.InformNLS( User,
             "Du bekommst kaum noch was runter und dir wird schlecht.",
@@ -195,11 +194,11 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 
         return
         -- Old style potion done
-    
+
   else
 	if not Character.attackmode then
 	     -- Hier verweisen wir auf die Wirkung
-	     DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+	     M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
 	     world:erase(SourceItem,1);
 	     world:makeSound(12,Character.pos);
@@ -219,7 +218,7 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
   end
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 
     if item.id_data ==  0 then
         EtikettDe = "Schafsmilch"
@@ -269,3 +268,5 @@ function LookAtItem(User,Item)
 	end
 
 end
+
+return M

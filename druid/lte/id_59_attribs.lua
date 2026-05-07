@@ -2,19 +2,18 @@
 -- by Falk
 require("base.common")
 
-module("druid.lte.id_59_attribs", package.seeall)
-
+local M = {}
 -- INSERT INTO longtimeeffects VALUES (59, 'druids_attribs', 'druid.lte.id_59_attribs');
 
 attribList ={"strength","willpower","perception","intelligence","constitution","agility","dexterity","essence"};
 topBorder = 30;
 bottomBorder = 2;
 
-function addEffect(Effect, Character)               -- Nur beim ersten Aufruf
+function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
     return true;
 end
 
-function callEffect(Effect,Character)               -- Effect wird ausgef�hrt
+function M.callEffect(Effect,Character)               -- Effect wird ausgef�hrt
     find, cntEffects = Effect:findValue("effects");
     if not find or cntEffects == 0 then
         return false;
@@ -55,7 +54,7 @@ function callEffect(Effect,Character)               -- Effect wird ausgef�hrt
     end
 end
 
-function removeEffect(Effect,Character)
+function M.removeEffect(Effect,Character)
     find, cntEffects = Effect:findValue("effects");
     if not find or cntEffects == 0 then
         return false;
@@ -82,7 +81,7 @@ function removeEffect(Effect,Character)
     return true;
 end
 
-function loadEffect(Effect,Character)
+function M.loadEffect(Effect,Character)
     find, cntEffects = Effect:findValue("effects");
     if not find or cntEffects == 0 then
         return false;
@@ -111,3 +110,5 @@ function loadEffect(Effect,Character)
     end
     return true;
 end
+
+return M

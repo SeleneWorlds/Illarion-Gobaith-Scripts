@@ -2,13 +2,12 @@
 --Druidensystem in Arbeit
 --Falk
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 
-module("druid.item.id_329_black_bottle", package.seeall(druid.base.alchemy))
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_329_black_bottle' WHERE com_itemid = 329;
 
-function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
 --   Verwandlungszauber
   if firsttime == nil then
@@ -55,7 +54,7 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
 end
 
-function UseItem(Character,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
   if Sourceitem.id_data == 0 then
 	return;
     -- vermutlich Tinte
@@ -71,7 +70,7 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
        -- Hier verweisen wir auf die Wirkung
        -- Korrektur von Nitram, erst Flasche l�schen, dann Verwandeln, weil beim Verwandeln die Flasche gedroped wird.
-       DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+       M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
        if( math.random( 20 ) <= 1 ) then
          base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
@@ -88,7 +87,7 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param)
 end
 
 --
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 
     if item.id_data == 77744151 then
         EtikettDe = "Gestaltenwandler Mensch"
@@ -218,3 +217,5 @@ function LookAtItem(User,Item)
   end
 
 end
+
+return M

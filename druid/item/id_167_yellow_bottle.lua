@@ -1,14 +1,13 @@
---I_167_gelbe_flasche / Krankheiten und Gifte 
+--I_167_gelbe_flasche / Krankheiten und Gifte
 --Druidensystem in Arbeit
 --Falk
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 
-module("druid.item.id_167_yellow_bottle", package.seeall(druid.base.alchemy))
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_167_yellow_bottle' WHERE com_itemid = 167;
 
-function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
   if firsttime == nil then
      firsttime = 1
   end
@@ -67,9 +66,9 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 		"#w Du trinkst die Fl�ssigkeit, doch sie scheint keine Wirkung auf dich zu haben.",
 		"#w You drink the liquid but it doesn't seem to have any effect on you.");
   end
-end -- function DoDruidism()
+end -- function M.DoDruidism()
 --
-function DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
+function M.DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
 -- Vergiften von Items
 -- Liste der vergiftbaren Items
    ListPo = {}
@@ -86,22 +85,22 @@ function DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
    end
 -- in einer 2. Ausbaustufe kann man die Schwerter, die als vergiftete Waffen eine Grafik haben umsetzen
 
-end -- function DoPoisoning()
+end -- function M.DoPoisoning()
 --
-function UseItem(Character,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
   if not Character.attackmode then
 
      if Targetitem.id_id == 0 then
 
 --      Sich selbst vergiften
-        DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+        M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
         world:makeSound(12,Character.pos);
         world:gfx(5,Character.pos)
 --        world:erase(SourceItem,1);
      else
 --      Einen Gegenstand vergiften
-        DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
+        M.DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
      end
 
      world:erase(SourceItem,1);
@@ -120,14 +119,14 @@ end
 
 --
 
-function UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
+function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
   if Sourceitem.id_data ==0 then
     UserLang=User:getPlayerLanguage();
     CharLang=Character:getPlayerLanguage();
     if (User.id~=Character.id) then
         if (SourceItem:getType()==4) then
-            if IsLookingAt(User,Character.pos) then
-                if not IsLookingAt(Character,User.pos) then
+            if M.IsLookingAt(User,Character.pos) then
+                if not M.IsLookingAt(Character,User.pos) then
                     SkillName="poisoning";
                     SkillVal=User:getSkill(SkillName);
                     AttribVal=math.floor((User:increaseAttrib("dexterity",0)*2+User:increaseAttrib("agility",0))/3)*(math.random(7,13)/10);
@@ -168,18 +167,18 @@ function UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
         world:makeSound(12,User.pos);
         User:increaseAttrib("hitpoints", -((-200*UserKons)+5000));
     end
-  end  
+  end
 end
 
 --
 
-function UseItemWithField(Character,SourceItem,TargetPos,Counter,Param)
+function M.UseItemWithField(Character,SourceItem,TargetPos,Counter,Param)
 
 end
 
 --
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 
   if item.id_data == 83795161 then
      Etikett ="Gwenwyn Anghenfil Twymyn"
@@ -204,12 +203,12 @@ function LookAtItem(User,Item)
   if (User:getPlayerLanguage()==0) then
     world:itemInform(User,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: "..Etikett)
   else
-    world:itemInform(User,Item,"You look at a sticker telling: "..Etikett)    
+    world:itemInform(User,Item,"You look at a sticker telling: "..Etikett)
   end
 
 end
 
-function IsLookingAt( User, Location )
+function M.IsLookingAt( User, Location )
     if( Location == nil ) then
         return false;
     end
@@ -222,3 +221,5 @@ function IsLookingAt( User, Location )
     end
     return false
 end
+
+return M

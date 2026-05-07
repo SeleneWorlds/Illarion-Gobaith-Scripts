@@ -1,12 +1,11 @@
 require("base.books")
 
-module("druid.content.druids", package.seeall)
-
+local M = {}
 -- This file contains the book data for the book "druidism"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
-     
+
     base.books.AddGermanBookText("Das ist das Buch des Druidentums.",0,0,toData);
     base.books.AddGermanBookText("Glassbl�cke werden f�r die Herstellung von Spiegeln ben�tigt.",0,0,toData);
     base.books.AddGermanBookText("Das Buch �ber Glassherstellung schreibt: 'Man braucht Quartzsand, Pottasche, ein Glassblasrohr, eine Holzkelle und einen Glassschmelzofen, um Glass herzustellen.",0,0,toData);
@@ -26,27 +25,27 @@ function loadBook(toData)
     base.books.AddGermanBookText("Tinte ist eine Mischung die in einem M�rser hergestellt wird.",0,0,toData);
     base.books.AddGermanBookText("Um Tinte zu bekommen, m�ssen alle Komponeten in einem gro�en Zuber vermischt werden.",0,0,toData);
     base.books.AddGermanBookText("Tinte wird in Flaschen abgef�llt.",0,0,toData);
-    
-    base.books.AddGermanBookText("Lernt etwas �ber die Pflanzen, die Ihr f�r Tr�nke braucht.",0,0,toData); 
-    base.books.AddGermanBookText("Kein Analphabet folgte jemals dem Pfad des Druidentums.",0,0,toData); 
-    base.books.AddGermanBookText("Lesen und Schreiben ist das Geheimnis des Lernens.",0,0,toData); 
-    base.books.AddGermanBookText("Tragt all das Wissen zusammen und Ihr werdet Erfolg haben.",0,0,toData); 
-    base.books.AddGermanBookText("Die Tage der einf�ltigen Druiden sind gez�hlt.",0,0,toData); 
-    base.books.AddGermanBookText("Nicht jede Pflanze ist magisch.",0,0,toData); 
-    base.books.AddGermanBookText("Tr�nke brauen ist nicht das einzige, das ein Druide lernen kann.",0,0,toData); 
-    base.books.AddGermanBookText("Man findet die W�stenhimmelkapsel im W�stensand. Sie wird genutzt, um das Element des Windes freizusetzen.",0,0,toData); 
-    base.books.AddGermanBookText("Das Donfblatt ist eine Pflanze, die im Wald zu finden ist. Es wird genutzt, um etwas an etwas anderes zu leimen.",0,0,toData); 
-    base.books.AddGermanBookText("Die Sandbeere verst�rkt den Effekt eines Trankes. Man soll sie in der W�ste finden.",0,0,toData); 
-    base.books.AddGermanBookText("Das Rotk�pfchen ist ein wohlschmeckender Pilz, der im Wald vorzufinden ist.",0,0,toData); 
-    base.books.AddGermanBookText("Den Fliegenpilz kann man in der N�he von Tannenb�umen finden.",0,0,toData); 
-    base.books.AddGermanBookText("Firnisbl�ten kommen sehr h�ufig auf Wiesen in der N�he eines B�chleins vor.",0,0,toData); 
-    base.books.AddGermanBookText("Manche nehmen sie nur f�r Kuchen: Die Erdbeere verbirgt einige ihrer Geheimnisse.",0,0,toData); 
-    base.books.AddGermanBookText("Knollenschwammpilze sind nicht so nutzlos, wie viele Leute glauben.",0,0,toData); 
-    base.books.AddGermanBookText("Es gibt mehr Geheimnise als dieses Buch preisgeben kann.",0,0,toData); 
-    base.books.AddGermanBookText("Nicht jede Blume verbirgt ein Geheimnis.",0,0,toData); 
-    base.books.AddGermanBookText("Esst keine Fliegenpilze, sie schaden Eurer Gesundheit.",0,0,toData); 
+
+    base.books.AddGermanBookText("Lernt etwas �ber die Pflanzen, die Ihr f�r Tr�nke braucht.",0,0,toData);
+    base.books.AddGermanBookText("Kein Analphabet folgte jemals dem Pfad des Druidentums.",0,0,toData);
+    base.books.AddGermanBookText("Lesen und Schreiben ist das Geheimnis des Lernens.",0,0,toData);
+    base.books.AddGermanBookText("Tragt all das Wissen zusammen und Ihr werdet Erfolg haben.",0,0,toData);
+    base.books.AddGermanBookText("Die Tage der einf�ltigen Druiden sind gez�hlt.",0,0,toData);
+    base.books.AddGermanBookText("Nicht jede Pflanze ist magisch.",0,0,toData);
+    base.books.AddGermanBookText("Tr�nke brauen ist nicht das einzige, das ein Druide lernen kann.",0,0,toData);
+    base.books.AddGermanBookText("Man findet die W�stenhimmelkapsel im W�stensand. Sie wird genutzt, um das Element des Windes freizusetzen.",0,0,toData);
+    base.books.AddGermanBookText("Das Donfblatt ist eine Pflanze, die im Wald zu finden ist. Es wird genutzt, um etwas an etwas anderes zu leimen.",0,0,toData);
+    base.books.AddGermanBookText("Die Sandbeere verst�rkt den Effekt eines Trankes. Man soll sie in der W�ste finden.",0,0,toData);
+    base.books.AddGermanBookText("Das Rotk�pfchen ist ein wohlschmeckender Pilz, der im Wald vorzufinden ist.",0,0,toData);
+    base.books.AddGermanBookText("Den Fliegenpilz kann man in der N�he von Tannenb�umen finden.",0,0,toData);
+    base.books.AddGermanBookText("Firnisbl�ten kommen sehr h�ufig auf Wiesen in der N�he eines B�chleins vor.",0,0,toData);
+    base.books.AddGermanBookText("Manche nehmen sie nur f�r Kuchen: Die Erdbeere verbirgt einige ihrer Geheimnisse.",0,0,toData);
+    base.books.AddGermanBookText("Knollenschwammpilze sind nicht so nutzlos, wie viele Leute glauben.",0,0,toData);
+    base.books.AddGermanBookText("Es gibt mehr Geheimnise als dieses Buch preisgeben kann.",0,0,toData);
+    base.books.AddGermanBookText("Nicht jede Blume verbirgt ein Geheimnis.",0,0,toData);
+    base.books.AddGermanBookText("Esst keine Fliegenpilze, sie schaden Eurer Gesundheit.",0,0,toData);
     base.books.AddGermanBookText("Wenn Ihr keine Tr�nke herstellen k�nnt, backt einen Erdbeerkuchen.",0,0,toData);
-    
+
     base.books.AddGermanBookText("\nEine Einf�hrung in die Alchemie",0,0,toData);
     base.books.AddGermanBookText("F�r den angehenden Druiden bildet das Alchemiesystem den notwendigen Einstieg, ohne Alchemie kein Leben als Druide, k�nnte man sagen.",0,0,toData);
     base.books.AddGermanBookText("Um sich in der Alchemie zu bew�hren, ben�tigt man zun�chst einmal ein fundiertes Wissen zu den einzelneen Kr�utern und Substanzen, die f�r die Verarbeitung zu Tr�nken, Pulvern und Essenzen ben�tigt werden.",0,0,toData);
@@ -64,9 +63,9 @@ function loadBook(toData)
     base.books.AddGermanBookText("Und so geht es nun weiter, nach einer Weile kann man die zweite Rune erlangen, mit ihr l�sst sich immerhin schon eine Essenz bestimmen. Oder jedenfalls fast.",0,0,toData);
     base.books.AddGermanBookText("Sp�testens mit der dritten Rune sollte man sich bei der Herstellung von Pflanzenextrakten einigerma�en sicher f�hlen und in der Lage sein, einen Trank herzustellen, der genau die gew�nschten Inhaltsstoffe aufweist.",0,0,toData);
     base.books.AddGermanBookText("Damit endet dann auch diese kleine Einf�hrung in die Alchemie.",0,0,toData);
-     
+
     -----------
-    
+
     base.books.AddEnglishBookText("This is a book about druidism",0,0,toData);
     base.books.AddEnglishBookText("Glass blocks are needed for the fabrication of mirrors",0,0,toData);
     base.books.AddEnglishBookText("The book about glassworks reads: 'You need quartz sand, pott ash, a glass blow pipe, a wooden shovel and a glass oven to create glass items.",0,0,toData);
@@ -86,27 +85,27 @@ function loadBook(toData)
     base.books.AddEnglishBookText("Ink is a mixture you produce in a mortar.",0,0,toData);
     base.books.AddEnglishBookText("To get ink all components need to me intermixed in a big tub.",0,0,toData);
     base.books.AddEnglishBookText("Ink has to be bottled.",0,0,toData);
-    
-    base.books.AddEnglishBookText("Learn about the plants you need for potions.",0,0,toData); 
-    base.books.AddEnglishBookText("No analphabeth ever followed the path of druidism.",0,0,toData); 
-    base.books.AddEnglishBookText("To read and to write is the secret of learning.",0,0,toData); 
-    base.books.AddEnglishBookText("Bring together all the knowledge and you will succeed.",0,0,toData); 
-    base.books.AddEnglishBookText("The days of brainless druids have come to an end.",0,0,toData); 
-    base.books.AddEnglishBookText("Not every plant is a magical one.",0,0,toData); 
-    base.books.AddEnglishBookText("Making potions is not the only thing a druid can learn.",0,0,toData); 
-    base.books.AddEnglishBookText("The desert sky capsule can be found in the desert sand. It is used to release the element of wind.",0,0,toData); 
-    base.books.AddEnglishBookText("The donf blade is a plant that can be found in the forest. It is used to glue something on something else.",0,0,toData); 
-    base.books.AddEnglishBookText("The sandberry strengthens the effect of a potion. It is said to be found in the desert.",0,0,toData); 
-    base.books.AddEnglishBookText("The red head is a delicious mushroom that can be found in the forest.",0,0,toData); 
-    base.books.AddEnglishBookText("The toadstool is to be found close to fir trees.",0,0,toData); 
-    base.books.AddEnglishBookText("Firnis blossoms are very recurrent at meadows close to a creek.",0,0,toData); 
-    base.books.AddEnglishBookText("Some take it for cakes only: the strawberry hides some of its secrets.",0,0,toData); 
-    base.books.AddEnglishBookText("Bulbsponge mushrooms are not as useless as many people believe.",0,0,toData); 
-    base.books.AddEnglishBookText("There are more secrets as this little book can tell.",0,0,toData); 
-    base.books.AddEnglishBookText("Not every flower hides a secret.",0,0,toData); 
-    base.books.AddEnglishBookText("Do not eat toadstools, they will harm your health.",0,0,toData); 
+
+    base.books.AddEnglishBookText("Learn about the plants you need for potions.",0,0,toData);
+    base.books.AddEnglishBookText("No analphabeth ever followed the path of druidism.",0,0,toData);
+    base.books.AddEnglishBookText("To read and to write is the secret of learning.",0,0,toData);
+    base.books.AddEnglishBookText("Bring together all the knowledge and you will succeed.",0,0,toData);
+    base.books.AddEnglishBookText("The days of brainless druids have come to an end.",0,0,toData);
+    base.books.AddEnglishBookText("Not every plant is a magical one.",0,0,toData);
+    base.books.AddEnglishBookText("Making potions is not the only thing a druid can learn.",0,0,toData);
+    base.books.AddEnglishBookText("The desert sky capsule can be found in the desert sand. It is used to release the element of wind.",0,0,toData);
+    base.books.AddEnglishBookText("The donf blade is a plant that can be found in the forest. It is used to glue something on something else.",0,0,toData);
+    base.books.AddEnglishBookText("The sandberry strengthens the effect of a potion. It is said to be found in the desert.",0,0,toData);
+    base.books.AddEnglishBookText("The red head is a delicious mushroom that can be found in the forest.",0,0,toData);
+    base.books.AddEnglishBookText("The toadstool is to be found close to fir trees.",0,0,toData);
+    base.books.AddEnglishBookText("Firnis blossoms are very recurrent at meadows close to a creek.",0,0,toData);
+    base.books.AddEnglishBookText("Some take it for cakes only: the strawberry hides some of its secrets.",0,0,toData);
+    base.books.AddEnglishBookText("Bulbsponge mushrooms are not as useless as many people believe.",0,0,toData);
+    base.books.AddEnglishBookText("There are more secrets as this little book can tell.",0,0,toData);
+    base.books.AddEnglishBookText("Not every flower hides a secret.",0,0,toData);
+    base.books.AddEnglishBookText("Do not eat toadstools, they will harm your health.",0,0,toData);
     base.books.AddEnglishBookText("If you can't make a potion, make a strawberry cake.",0,0,toData);
-    
+
     base.books.AddEnglishBookText("\nFirst Steps To Alchemy",0,0,toData);
     base.books.AddEnglishBookText("For future druids the alchemy-system is the indispensable entrance, no druidism without alchemy, one even could say.",0,0,toData);
     base.books.AddEnglishBookText("To prove on alchemy, one first need a deep knowledge about the several herbs and substances, needed for the processing of potions, powders and essences.",0,0,toData);
@@ -126,7 +125,9 @@ function loadBook(toData)
     base.books.AddEnglishBookText("Therewith our little introduction of alchemy comes to its end.",0,0,toData);
 end;
 
-function loadTitle(toData)
+function M.loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Buch des Druidentums\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Druidism\"",toData);
 end;
+
+return M

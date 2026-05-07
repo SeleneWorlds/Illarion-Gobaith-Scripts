@@ -2,20 +2,19 @@
 -- by Falk
 -- immunity. Has actually nothing to do with healing potion 328 orange bottle
 
-module("druid.lte.id_328_immunity", package.seeall)
-
+local M = {}
 -- INSERT INTO longtimeeffects VALUES (328, 'druids_immunity', 'druid.lte.id_328_immunity');
 
-function getAction(Character,Effect,Runde)
---Hier die eigentlichen Aktionen eintragen  
+function M.getAction(Character,Effect,Runde)
+--Hier die eigentlichen Aktionen eintragen
 end
 
-function addEffect(Effect, Character)               -- Nur beim ersten Aufruf
---Character:inform("debug func addEffect") 
+function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
+--Character:inform("debug func M.addEffect")
 end
 
-function callEffect(Effect,Character)                  -- Effect wird ausgef�hrt
-	
+function M.callEffect(Effect,Character)                  -- Effect wird ausgef�hrt
+
 	local foundImmunity, immunity, retVal = nil,nil,false;
 	for i=1,8 do
 		foundImmunity, immunity = Effect:findValue("immunity_"..i);
@@ -32,10 +31,12 @@ function callEffect(Effect,Character)                  -- Effect wird ausgef�h
 	return retVal;
 end
 
-function removeEffect(Effect,Character)         
---Character:inform("debug func removeEffect")  
+function M.removeEffect(Effect,Character)
+--Character:inform("debug func M.removeEffect")
 end
 
-function loadEffect(Effect,Character)                  -- wenn der Charakter erneut einloggt
---Character:inform("debug func loadEffect")   
+function M.loadEffect(Effect,Character)                  -- wenn der Charakter erneut einloggt
+--Character:inform("debug func M.loadEffect")
 end
+
+return M

@@ -2,22 +2,21 @@
 --Druidensystem in Arbeit
 --Falk
 require("base.common")
-require("druid.base.alchemy")
+local alchemy = require("druid.base.alchemy")
 
-module("druid.item.id_328_orange_bottle", package.seeall(druid.base.alchemy))
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_328_orange_bottle' WHERE com_itemid = 328;
 
-function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 --Heilmittel f�r 8 Virus-Erkrankungen
   find, myEffect = Character.effects:find(167);
-  if find then 
-     
-     find2,zaehler = myEffect:findValue("zaehler") 
+  if find then
+
+     find2,zaehler = myEffect:findValue("zaehler")
      if not find2 then
         Character:inform("Error in 328.1 - please call dev")
      else
-        find3,diagnose = myEffect:findValue("illness")        
+        find3,diagnose = myEffect:findValue("illness")
         if not find3 then
            Character:inform("Error in 328.2 - please call dev")
         else
@@ -27,20 +26,20 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 				potionData = math.mod(Sourceitem.id_data,10000000);
 			end
 			if potionData == codeList[diagnose] then
---            Feststellung, ob die Qualit�t des Heiltrankes �ber der Schwere der Krankheit liegt 
---            Je h�her die Krankheit in der Ordnungsnummer (1-8) liegt, umso h�her sind die Anforderungen an den Heiltrank                    
+--            Feststellung, ob die Qualit�t des Heiltrankes �ber der Schwere der Krankheit liegt
+--            Je h�her die Krankheit in der Ordnungsnummer (1-8) liegt, umso h�her sind die Anforderungen an den Heiltrank
               -- CONST may reduce the needed quality
 			  local const = math.min(25,Character:increaseAttrib("constitution",0));
 			  local seriousness = illness_seriousness[diagnose] - (math.random(30)<const and 1 or 0);
 			  if math.random(111,illness_seriousness[diagnose] * 111) < Sourceitem.id_quality then
-                
+
 --               Die Wirkung erfolgt indirekt durch das Herabsetzen des Rundenz�hlers.
                  -- CONST may raise the probability for a good effect
 				 local bottom = math.max(111,math.floor(Sourceitem.id_quality*const/30));
 				 zaehler = zaehler - math.random(bottom,Sourceitem.id_quality)
-                 world:gfx(52,Character.pos)                 
-                 if zaehler <1 then 
-                    zaehler = 1 
+                 world:gfx(52,Character.pos)
+                 if zaehler <1 then
+                    zaehler = 1
                  end
                  myEffect:addValue("zaehler",zaehler)
 				 base.common.InformNLS(Character,
@@ -61,11 +60,11 @@ function DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 	"#w You drink the liquid but it doesn't seem to have any effect on you.");
 end
 
-function UseItem(Character,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
   if not Character.attackmode then
 
-     DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
-     
+     M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
+
      world:makeSound(12,Character.pos);
      world:gfx(5,Character.pos)
 
@@ -75,29 +74,29 @@ function UseItem(Character,SourceItem,TargetItem,Counter,Param)
            base.common.InformNLS( Character, "#w Die Flasche zerbricht.", "#w The bottle breaks.");
         else
            Character:createItem( 164, 1, 333,0);
-        end    
-     end 
-  
-     Character.movepoints=Character.movepoints-50;  
-   
+        end
+     end
+
+     Character.movepoints=Character.movepoints-50;
+
   else
     base.common.InformNLS(Character,"#w Du kannst nichts trinken w�hrend du k�mpfst.", "#w You can't drink something while fighting.");
   end
 end
 
-function UseItemWithCharacter(Character,SourceItem,Character,Counter,Param)
+function M.UseItemWithCharacter(Character,SourceItem,Character,Counter,Param)
 
 end
 
 --
 
-function UseItemWithField(Character,SourceItem,TargetPos,Counter,Param)
+function M.UseItemWithField(Character,SourceItem,TargetPos,Counter,Param)
 
 end
 
 --
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 
   if item.id_data == 16159738 then
      Etikett ="Rhag Anghenfil Twymyn"
@@ -122,7 +121,9 @@ function LookAtItem(User,Item)
   if (User:getPlayerLanguage()==0) then
     world:itemInform(User,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: "..Etikett)
   else
-    world:itemInform(User,Item,"You look at a sticker telling: "..Etikett)      
+    world:itemInform(User,Item,"You look at a sticker telling: "..Etikett)
   end
 
 end
+
+return M

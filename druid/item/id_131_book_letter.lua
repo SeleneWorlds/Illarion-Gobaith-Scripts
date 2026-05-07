@@ -6,16 +6,15 @@
 require("base.books")
 require("base.common")
 
-module("druid.item.id_131_book_letter", package.seeall)
-
+local M = {}
 -- UPDATE common SET com_script='druid.item.id_131_book_letter' WHERE com_itemid = 131;
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 --User:inform("debug 129-1")
     if base.books.InitBook() then
         base.books.AddLanguage("common language",0);
 
-        base.books.AddGermanBookText("Werte Druiden des Waldes,\n",0,0,0);     
+        base.books.AddGermanBookText("Werte Druiden des Waldes,\n",0,0,0);
         base.books.AddGermanBookText("Ich wende mich voller Ehrfurcht und Respekt an die ehrenwerte Gesellschaft der Druiden des Waldes und hoffe, dass dieser Brief in die H�nde der Richtigen gelange.",0,0,0);
         base.books.AddGermanBookText("Es liegt nun einige Jahre zur�ck, als das Kloster Eldan auf Gobaith im Rahmen einer kriegerischen Auseinandersetzung angegriffen, gepl�ndert und gebrandschatzt wurde.",0,0,0);
         base.books.AddGermanBookText("Ich war damals noch ein junger Mann, erst wenige Monate zuvor der Bruderschaft beigetreten und ohne viel Wissen um die uns in dieser Welt umgebenden Kr�fte.",0,0,0);
@@ -30,7 +29,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         base.books.AddGermanBookText("Falk vom Wald h�tte sich selbst in Sicherheit bringen m�ssen, stattdessen widmete er seine letzten Stunden der Rettung einiger Schriften, von denen ich nicht einmal sagen kann, ob sie denn �berhaupt irgend ein interessanten Inhalt aufweisen. Wenn aber der Abt die Rettung der B�cher wichtiger als das eigene Leben achtete, so nehme ich an, er wusste um deren Bedeutung.",0,0,0);
         base.books.AddGermanBookText("Den Leichnam des Falk vom Wald haben mein Meister und ich in einem Sarg aus dem Holz der Eldaneiche niedergelegt. Wir bitten Euch, die Druiden des Waldes nun darum, dem Abt ein Andenken zu widmen und den Sarg beizusetzen. Sicherlich h�tte sich der Alte sehr gew�nscht, nicht allzuweit entfernt von seiner geliebten Heimat begraben zu sein, das Kloster hatte ihm stets viel bedeutet.",0,0,0);
         base.books.AddGermanBookText("Mich f�hrt mein Weg indes zur�ck aufs Festland, nach der Errichtung des neuen Gew�lbekellers gibt es f�r mich hier auf Gobaith nichts mehr zu tun.",0,0,0);
-        base.books.AddGermanBookText("Mit dem Gru� unseres Abtes \'Eldan auf all Euren Wegen\' verbleibe ich in gr��ter Hochachtung und w�nsche dem Druidentum dieses Landes eine von Neuem erbl�hende Hochzeit. M�gen Euch die G�tter den Weg weisen, so wie ihn der Alte in seinen Studien so lange Zeit zu ergr�nden und vorauszusehen suchte.",0,0,0);     
+        base.books.AddGermanBookText("Mit dem Gru� unseres Abtes \'Eldan auf all Euren Wegen\' verbleibe ich in gr��ter Hochachtung und w�nsche dem Druidentum dieses Landes eine von Neuem erbl�hende Hochzeit. M�gen Euch die G�tter den Weg weisen, so wie ihn der Alte in seinen Studien so lange Zeit zu ergr�nden und vorauszusehen suchte.",0,0,0);
         base.books.AddGermanBookText("\n\nIn den Tagen von Siros 26\n\n",0,0,0);
         base.books.AddGermanBookText("\nTuor, Zimmermann aus Koldar-Mar",0,0,0);
 ---
@@ -69,17 +68,17 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
    base.books.SendBookPage(User,Sourceitem.id_data,Counter);
 end
 
-function UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
+function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
 --User:inform("debug 129-2")
    world:erase(SourceItem,1)
 end
 
-function UseItemWithCharacter( User, SourceItem, TargetCharacter, Counter, Param, ltstate )
+function M.UseItemWithCharacter( User, SourceItem, TargetCharacter, Counter, Param, ltstate )
 --User:inform("debug 129-3")
    world:erase(SourceItem,1)
 end
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
 --User:inform("debug 129-4")
    if base.books.InitTitle() then
       base.books.AddGermanBookTitle("Buch mit dem Titel \"Brief an die Druiden\"",0);
@@ -87,3 +86,5 @@ function LookAtItem( User, Item )
    end
    base.books.GetBookItemInform(User,Item);
 end
+
+return M
