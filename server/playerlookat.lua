@@ -12,10 +12,14 @@ require("base.common")
 require("content.lookat.custom")
 require("content.uniquechardescription")
 
-module("server.playerlookat", package.seeall)
+local genus = require("content.genus")
+local lookat_custom = require("content.lookat.custom")
+local uniquechardescription = require("content.uniquechardescription")
+local M = {}
+local CustomLookAt
 
-function lookAtPlayer( SourceCharacter, TargetCharacter, mode)
-	content.uniquechardescription.InitPlayerDesc();
+function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
+	uniquechardescription.InitPlayerDesc();
     -- SourceCharacter:inform("first");
     -- here we go the lookat
     -- Generate the looking at value
@@ -33,7 +37,8 @@ function lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     end
     
 	if not CustomLookAt then
-		content.lookat.custom.InitCustomLookAt();
+		lookat_custom.InitCustomLookAt();
+		CustomLookAt = lookat_custom.CustomLookAt
 	end
 	
     local lang = SourceCharacter:getPlayerLanguage();
@@ -133,9 +138,9 @@ function lookAtPlayer( SourceCharacter, TargetCharacter, mode)
             end
         end
     end
-	if(content.uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id] ~= nil) then
-		for i,v in pairs(content.uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id]) do
-			base.common.InformNLS(SourceCharacter, content.uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id][i], content.uniquechardescription.PlayerDescriptionsEN[TargetCharacter.id][i]);
+	if(uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id] ~= nil) then
+		for i,v in pairs(uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id]) do
+			base.common.InformNLS(SourceCharacter, uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id][i], uniquechardescription.PlayerDescriptionsEN[TargetCharacter.id][i]);
 		end
 	end
 end
@@ -144,7 +149,7 @@ function checkCoat( TargetCharacter, lang, SourceCharacter )
     local coat = TargetCharacter:getItemAt( CCharacter.coat );
     if ( coat ~= nil ) and ( coat.id > 0 ) then
         -- The dude has a coat!
-        output = output .. getText( "genus_"..content.genus.GenusData( coat.id ), lang );
+        output = output .. getText( "genus_"..genus.GenusData( coat.id ), lang );
         output = output .. world:getItemName( coat.id, lang );
 		handleCustomLookat( TargetCharacter, SourceCharacter, coat );
         return true;
@@ -159,7 +164,7 @@ function checkArmor( TargetCharacter, lang, modify, belowcoat, SourceCharacter )
             if belowcoat then
                 output = output .. " " .. getText( "below_coat", lang );
             end
-            output = output .. getText( "genus_"..content.genus.GenusData( breast.id ), lang );
+            output = output .. getText( "genus_"..genus.GenusData( breast.id ), lang );
             output = output .. world:getItemName( breast.id, lang );
 			handleCustomLookat( TargetCharacter, SourceCharacter, breast );
             return true;
@@ -437,14 +442,14 @@ function getWeaponText( Char, lang, SourceChar )
         message = message .. ( lang == 0 and " In ihren Händen hat sie " or " In her hands she has " );
     end
     if ( leftItem ~= 0 ) then
-        message = message .. getText( "genus_"..content.genus.GenusData( leftItem ), lang );
+        message = message .. getText( "genus_"..genus.GenusData( leftItem ), lang );
         message = message .. world:getItemName( leftItem, lang );
     end
     if ( leftItem ~= 0 and rightItem ~= 0 ) then
         message = message .. ( lang == 0 and " und " or " and " );
     end
     if ( rightItem ~= 0 ) then
-        message = message .. getText( "genus_"..content.genus.GenusData( rightItem ), lang );
+        message = message .. getText( "genus_"..genus.GenusData( rightItem ), lang );
         message = message .. world:getItemName( rightItem, lang );
     end
     return message..".";
@@ -508,7 +513,7 @@ function handleCustomLookat(TargetChar,SourceChar,Item)
 			if Item.itempos ~= 4 then
 				local gender = CustomLookAt[Item.id][itemData][5];
 				if not gender then
-					gender = content.genus.GenusData( Item.id );
+					gender = genus.GenusData( Item.id );
 				end
 				customText = customText .. getText( "genus_"..gender, lang );
 			end
@@ -521,3 +526,5 @@ function handleCustomLookat(TargetChar,SourceChar,Item)
 		end
 	end
 end
+
+return M

@@ -9,7 +9,18 @@ require("base.common")
 -- Lists with static values of the fighting system
 require("content.fighting")
 
-module("server.standardfighting", package.seeall, package.seeall(content.fighting))
+local fighting = require("content.fighting")
+local M = {}
+
+local GetWrestlingGFX = fighting.GetWrestlingGFX
+local GetUnholyRace = fighting.GetUnholyRace
+local IsPlatedWeapon = fighting.IsPlatedWeapon
+local IsMeriniumPlatedWeapon = fighting.IsMeriniumPlatedWeapon
+local IsGoldPlatedWeapon = fighting.IsGoldPlatedWeapon
+local IsSilverPlatedWeapon = fighting.IsSilverPlatedWeapon
+local IsCopperPlatedWeapon = fighting.IsCopperPlatedWeapon
+local GetPlatedBaseWeapon = fighting.GetPlatedBaseWeapon
+local IsTrainingWeapon = fighting.IsTrainingWeapon
 
 --[[
     Main Attacking function
@@ -19,7 +30,7 @@ module("server.standardfighting", package.seeall, package.seeall(content.fightin
     @param  int hand the attack is done with
     @return boolean true if the Attacker tried hitting the defender
 ]]
-function onAttack( Attacker, Defender, AttackPos )
+function M.onAttack( Attacker, Defender, AttackPos )
 ---[[DEBUG
     local retVal = onAttack_debug( Attacker, Defender, AttackPos );
     SayDebug( Attacker );
@@ -2092,3 +2103,5 @@ Sounds[3]={32,43,41,42,40,41};
 Sounds[4]={32,42,42,42,42,44};
 Sounds[5]={32,42,40,42,42,44};
 Sounds[6]={32,44,41,44,44,41};
+
+return M

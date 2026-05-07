@@ -2,11 +2,10 @@
 -- note that !fr is a !rd with additional npc and spawn reloading
 -- note further that reload_defs will be called before this if and only if the included !rd was successful
 
-require("content.lightmasters")
+local lightmasters = require("content.lightmasters")
+local M = {}
 
-module("server.reload_tables", package.seeall)
-
-function onReload()
+function M.onReload()
     -- Abhandlung Schifffahrer
     Charakters = world:getPlayersOnline();
     for i, Char in pairs(Charakters) do
@@ -55,7 +54,9 @@ function createCow( Char )
 end
 
 function placeLightmasters()
-	for _,this in pairs(content.lightmasters.LightmasterList) do
+	for _,this in pairs(lightmasters.LightmasterList) do
 		world:createDynamicNPC(this.name,this.race,this.pos,this.sex,this.script);
 	end
 end
+
+return M

@@ -1,13 +1,14 @@
-require("base.common")
+local common = require("base.common")
+local M = {}
 
-module("server.depot", package.seeall)
-
-function onOpenDepot( User, Depot )
+function M.onOpenDepot( User, Depot )
     if ( ( Depot.quality == 1111 ) and not ( Depot.data == User.id ) ) then
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Ihr schafft es nicht diese Kiste zu �ffnen.",
         "You fail to open this depot.");
         return false;
     end
     return true;
 end 
+
+return M

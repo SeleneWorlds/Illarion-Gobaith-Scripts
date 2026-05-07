@@ -1,10 +1,10 @@
 -- called after every player login
-require("base.common")
-require("content.dailymessage")
+local common = require("base.common")
+local dailymessage = require("content.dailymessage")
+local M = {}
 
-module("server.login", package.seeall);
+function M.onLogin( player )
 
-function onLogin( player )
     player:increaseAttrib("foodlevel",-1);
 	-- Abhandlung von Transporttieren
 	local cowStatus = player:getQuestProgress(8);
@@ -12,7 +12,7 @@ function onLogin( player )
 	    if (cowStatus == 1) then
 		    newPos = createCow( player );
 		else
-		    newPos = base.common.DataToPosition( cowStatus );
+		    newPos = common.DataToPosition( cowStatus );
 
 			npcRace=50;
 			if (player.pos.z == 50) then
@@ -135,7 +135,7 @@ function onLogin( player )
 		end ]]
 		if atNewbieSpawn then
 			player:setQuestProgress(2,1); -- player seems to be a newbie, so start "Quest"
-			outText=base.common.GetNLS(player,"Endlich wieder festen Boden unter den F��en.","Finally standing again on firm ground.");
+			outText=common.GetNLS(player,"Endlich wieder festen Boden unter den F��en.","Finally standing again on firm ground.");
 			player:talk(CCharacter.say,outText);
 			foundEffect,newbieEffect = player.effects:find(13);
 			if not foundEffect then
@@ -224,8 +224,10 @@ end
 function AttribMessage( Char, attrib, value )
     Char:increaseAttrib( attrib, value );
     local Race = Char:get_race();
-    local msg = content.dailymessage.GetMessage( Char:getPlayerLanguage(), attrib, Race, value );
+    local msg = dailymessage.GetMessage( Char:getPlayerLanguage(), attrib, Race, value );
     if msg then
-		Char:inform( base.common.GetNLS( Char, "#w Deine heutige Verfassung: ", "#w Your condition today: " )..msg );
-    end
+		Char:inform( common.GetNLS( Char, "#w Deine heutige Verfassung: ", "#w Your condition today: " )..msg );
+	end
 end
+
+return M

@@ -1,9 +1,8 @@
-require("base.keys")
-require("base.common")
+local keys = require("base.keys")
+local common = require("base.common")
+local M = {}
 
-module("server.logout", package.seeall)
-
-function onLogout( theChar )
+function M.onLogout( theChar )
 	  if false then
 	  	  return true;
 	  end
@@ -13,7 +12,7 @@ function onLogout( theChar )
     if (posi.x == -73 or posi.x == -72) and (posi.y == -68 or posi.y == -67) and posi.z == 0 then
         local bucket = world:getItemOnField( position( -72, -69, 0 ) );
         local door = world:getItemOnField( position( -74, -68, 0 ) );
-        base.keys.UnlockDoor( door );
+        keys.UnlockDoor( door );
         door = world:getItemOnField( position( -74, -68, 0 ) );
         OpenDoor( door );
         bucket.id = 51;
@@ -33,7 +32,7 @@ function onLogout( theChar )
                 if find_owner then
                     if (value_owner == theChar.id) then -- Unserem Char!
                         npcpos = npc.pos;
-                        theChar:setQuestProgress(8,base.common.PositionToData( npcpos ));
+                        theChar:setQuestProgress(8,common.PositionToData( npcpos ));
                         world:deleteNPC( npc.id ); -- Dann weg mit der Kuh
                         for i=-1,1 do
                             for k=-1,1 do
@@ -87,3 +86,5 @@ function onLogout( theChar )
 	-- end tying
 
 end
+
+return M

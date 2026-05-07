@@ -2,14 +2,23 @@
 -- note that !rd is a !fr without npc and spawn reloading
 -- note further that reload_tables will be called after this if and only if the !rd was successful and the !rd was issued by a !fr
 
-require("base.common")
-require("base.doors")
-require("content.signpost")
-require("content.gods")
+local common = require("base.common")
+local doors = require("base.doors")
+local signpost = require("content.signpost")
+local gods = require("content.gods")
+local M = {}
 
-module("server.reload_defs", package.seeall, package.seeall(content.gods))
+local InitWegweiser = signpost.InitWegweiser
+local GOD_CHERGA = gods.GOD_CHERGA
+local GOD_ELARA = gods.GOD_ELARA
+local GOD_ELDAN = gods.GOD_ELDAN
+local GOD_MALACHIN = gods.GOD_MALACHIN
+local GOD_TANORA = gods.GOD_TANORA
+local GOD_THEDEVS = gods.GOD_THEDEVS
+local GOD_THEFIVE = gods.GOD_THEFIVE
+local GOD_USHARA = gods.GOD_USHARA
 
-function onReload()
+function M.onReload()
     -- logToFile("start onReload");
     initDoors();
     initDepots();
@@ -334,8 +343,8 @@ function AddDoor(DoorX,DoorY,DoorZ,DoorData,Open)
     DoorPos=position(DoorX,DoorY,DoorZ);
     if world:isItemOnField(DoorPos) then
         thisDoor = world:getItemOnField(DoorPos);
-        doorOOK = base.doors.CheckOpenDoor(thisDoor.id);
-        doorCOK = base.doors.CheckClosedDoor(thisDoor.id);
+        doorOOK = doors.CheckOpenDoor(thisDoor.id);
+        doorCOK = doors.CheckClosedDoor(thisDoor.id);
         if (doorOOK or doorCOK) then
             thisDoor.data=DoorData;
             if Open then
@@ -345,7 +354,7 @@ function AddDoor(DoorX,DoorY,DoorZ,DoorData,Open)
             else
                 if (doorOOK) then
                     world:changeItem(thisDoor);
-                    base.doors.CloseDoor(thisDoor);
+                    doors.CloseDoor(thisDoor);
                     thisDoor.quality = 333;
                 end
             end
@@ -432,7 +441,7 @@ end
 function AddNoobiaPortal( Portal, PortalX, PortalY, PortalZ )
 
 	local PortalPos = position(PortalX,PortalY,PortalZ);
-	local itemList = base.common.GetItemsOnField(PortalPos);
+	local itemList = common.GetItemsOnField(PortalPos);
 	for i,item in pairs(itemList) do
 		if item.id == 10 and item.data == Portal then
 			return;
@@ -446,7 +455,7 @@ end
 function AddMagicalDoor( Portal, PortalX, PortalY, PortalZ )
 
 	local PortalPos = position(PortalX,PortalY,PortalZ);
-	local itemList = base.common.GetItemsOnField(PortalPos);
+	local itemList = common.GetItemsOnField(PortalPos);
 	for i,item in pairs(itemList) do
 		if item.id == 10 and item.data == Portal then
 			return;
@@ -456,6 +465,8 @@ function AddMagicalDoor( Portal, PortalX, PortalY, PortalZ )
 	thePortal.wear = 255;
 	world:changeItem(thePortal);
 end
+
+return M
 
 
 
@@ -479,4 +490,3 @@ function AddTreasureChest(ChestId, ChestData, ChestX, ChestY, ChestZ)
 		world:createItemFromId(ChestId,1,pos,false,333,ChestData);
 	end
 end
-
