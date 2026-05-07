@@ -1,12 +1,14 @@
-require("base.class")
+local class = require("base.class")
 
-module("handler.settile", package.seeall)
+local M = {}
 
-setTile = base.class.class(function(settl, posi, tlId)
+M.setTile = class.class(function(settl, posi, tlId)
     settl.pos=posi;
     settl.tileId=tlId;
 end);
 
-function setTile:execute()
+function M.setTile:execute()
     world:changeTile(self.tlId, self.pos);
 end
+
+return M

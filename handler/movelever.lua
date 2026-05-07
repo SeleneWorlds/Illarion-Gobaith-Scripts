@@ -1,11 +1,13 @@
-require("base.class")
+local class = require("base.class")
 
-module("handler.movelever", package.seeall)
+local M = {}
 
-moveLever = base.class.class(function(mvLev, lev)
+M.moveLever = class.class(function(mvLev, lev)
     mvLev.lever=lev;
 end);
 
-function moveLever:execute()
+function M.moveLever:execute()
     self.lever:switchLever(nil);
 end
+
+return M

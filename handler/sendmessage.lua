@@ -1,16 +1,18 @@
-require("base.class")
+local class = require("base.class")
 
-module("handler.sendmessage", package.seeall)
+local M = {}
 
-sendMessage = base.class.class(function(sndMsg, posi, msg, rad)
+M.sendMessage = class.class(function(sndMsg, posi, msg, rad)
     sndMsg.pos=posi;
     sndMsg.message=msg;
     sndMsg.radius=rad;
 end);
 
-function sendMessage:execute()
+function M.sendMessage:execute()
     plyList=world:getPlayerInRangeOf(self.pos, self.radius);
     for i, player in pairs(plyList) do
         player:inform(self.msg)
     end
 end
+
+return M

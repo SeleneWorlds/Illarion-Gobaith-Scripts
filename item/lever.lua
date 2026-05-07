@@ -3,19 +3,19 @@ local init, generateKey, UseItem, AddToLevers
 
 require("base.common")
 require("base.lever")
-require("handler.deleteitem")
-require("handler.lockdoor")
-require("handler.unlockdoor")
-require("handler.opendoor")
-require("handler.closedoor")
-require("handler.createitem")
-require("handler.createbridge")
-require("handler.deletebridge")
-require("handler.settile")
-require("handler.createeffect")
-require("handler.createsound")
-require("handler.sendmessage")
-require("handler.movelever")
+local deleteitem = require("handler.deleteitem")
+local lockdoor = require("handler.lockdoor")
+local unlockdoor = require("handler.unlockdoor")
+local opendoor = require("handler.opendoor")
+local closedoor = require("handler.closedoor")
+local createitem = require("handler.createitem")
+local createbridge = require("handler.createbridge")
+local deletebridge = require("handler.deletebridge")
+local settile = require("handler.settile")
+local createeffect = require("handler.createeffect")
+local createsound = require("handler.createsound")
+local sendmessage = require("handler.sendmessage")
+local movelever = require("handler.movelever")
 
 -- UPDATE common SET com_script='item.lever' WHERE com_itemid IN (434, 435, 436, 437, 438, 439);
 
@@ -23,7 +23,7 @@ function M.init()
     leverList={};
     myLev1 = base.lever.Lever(position(124,637,0),true);
     myLev2 = base.lever.Lever(position(125,637,0),false);
-    myLev1:bind(0,handler.movelever.moveLever(myLev2));
+    myLev1:bind(0,movelever.moveLever(myLev2));
     testlever = base.lever.Lever(position(119,637,0),true);
     testlever2 = base.lever.Lever(position(120,637,0),true);
     --[[for x=117,119 do
@@ -38,21 +38,21 @@ function M.init()
     end--]]
     --testlever:setMinStrength(200);
     --testlever:bind(2,deleteItem(position(119,635,0),2));
-    testlever:bind(1,handler.closedoor.closeDoor(position(119,639,0)));
-    testlever:bind(1,handler.lockdoor.lockDoor(position(119,639,0)));
-    testlever:bind(1,handler.deleteitem.deleteItem(position(118,639,0),2));
+    testlever:bind(1,closedoor.closeDoor(position(119,639,0)));
+    testlever:bind(1,lockdoor.lockDoor(position(119,639,0)));
+    testlever:bind(1,deleteitem.deleteItem(position(118,639,0),2));
     --testlever:bind(1,deleteBridge(position(117,635,0)));
     --testlever:bind(1,deleteBridge(position(113,636,0))); -- geht
     --testlever:bind(1,deleteBridge(position(118,635,0))); --geht nicht
     --testlever:bind(1,deleteBridge(position(117,640,0))); -- geht
     
-    testlever:bind(0,handler.unlockdoor.unlockDoor(position(119,639,0)));
-    testlever:bind(0,handler.opendoor.openDoor(position(119,639,0)));
+    testlever:bind(0,unlockdoor.unlockDoor(position(119,639,0)));
+    testlever:bind(0,opendoor.openDoor(position(119,639,0)));
     --testlever:bind(0,handler.createbridge.createBridge(position(117,635,0),0,4));
     --testlever:bind(0,createBridge(position(113,636,0),1,4)); -- geht
     --testlever:bind(0,createBridge(position(118,635,0),2,4)); -- geht
     --testlever:bind(0,createBridge(position(117,640,0),3,4)); -- geht
-    testlever:bind(0,handler.createitem.createItem(position(118,639,0),2,333,0,1));
+    testlever:bind(0,createitem.createItem(position(118,639,0),2,333,0,1));
     AddToLevers(testlever);
     AddToLevers(testlever2);
     AddToLevers(myLev1);

@@ -1,12 +1,14 @@
-require("base.class")
+local class = require("base.class")
 
-module("handler.createsound", package.seeall)
+local M = {}
 
-createSound = base.class.class(function(crsnd, posi, sndid)
+M.createSound = class.class(function(crsnd, posi, sndid)
     crsnd.pos=posi;
     crsnd.soundId=sndid;
 end);
 
-function createSound:execute()
+function M.createSound:execute()
     world:makeSound(self.soundId, self.pos);
 end
+
+return M

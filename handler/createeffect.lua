@@ -1,12 +1,14 @@
-require("base.class")
+local class = require("base.class")
 
-module("handler.createeffect", package.seeall)
+local M = {}
 
-createEffect = base.class.class(function(creff, posi, gfxid)
+M.createEffect = class.class(function(creff, posi, gfxid)
     creff.pos=posi;
     creff.effectId=gfxid;
 end);
 
-function createEffect:execute()
+function M.createEffect:execute()
     world:gfx(self.effectId, self.pos);
 end
+
+return M
