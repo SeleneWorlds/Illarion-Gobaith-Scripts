@@ -33,7 +33,7 @@ function initializeNpc()
     npc.base.trader_functions.AddTraderItem(150 ,92  ,5 ,30  ,10 ,{6,7},{33,66},0   ,0       );    -- Oil lamp/Öllampe
     npc.base.trader_functions.AddTraderItem(400 ,236 ,0 ,50  ,50 ,{6,7},{33,66},0   ,0       );    -- Gold ingots/Goldbarren
     npc.base.trader_functions.AddTraderItem(400 ,1008 ,0 ,50 ,50 ,{6,7},{33,66},0   ,0       );    -- Copper kettle/Kupferkessel
-    
+
     TraderCopper=5000;
 
     npc.base.functions.AddTraderTrigger("[Hh]ello","Greetin's.");
@@ -174,7 +174,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -184,7 +184,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

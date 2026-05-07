@@ -16,7 +16,7 @@ function InitTalkLists()
 end
 
 function increaseLangSkill(NPC,LangList)
-    for i=1,table.getn(LangList) do
+    for i=1,#LangList do
         setLang=true;
         if (LangList[i]==0) then LangSkill="common language";
         elseif (LangList[i]==1) then LangSkill="human language";
@@ -38,7 +38,7 @@ end
 function LangOK(User,LangList)
     --User:inform("LangOK Start")
     local retVal=false;
-    for i=1,table.getn(LangList) do
+    for i=1,#LangList do
         --User:inform("for run "..i);
         if (User.activeLanguage==LangList[i]) then retVal=true end
     end
@@ -52,7 +52,7 @@ function AddTraderTrigger(Trigger,Answer)
 end
 
 function AddAdditionalText(Answer)
-    local ListCnt=table.getn(TraderText)
+    local ListCnt=#TraderText
     local i=0;
     local done=false;
     repeat
@@ -85,7 +85,7 @@ function TellSmallTalk(message)
             ready=true;
         end
         i=i+1;
-    until ((i==table.getn(TraderTrig)+1) or ready)
+    until ((i==#TraderTrig+1) or ready)
 end
 
 function NPCTalking(NPC,Text)
@@ -117,4 +117,3 @@ function NPCTalking(NPC,Text)
         end
     until done
 end
-

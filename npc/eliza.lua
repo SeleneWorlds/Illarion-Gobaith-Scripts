@@ -42,10 +42,10 @@ function useNPC(User,counter,param)
 			   newMenu:addItem( 1 );
                newMenu:addItem( 228 );
 			   newMenu:addItem( 4 );
-			   
+
                User:sendMenu( newMenu );
             end
-            
+
             --npc.base.trader_functions.NPCUsed(User,counter,param);
         end;
     end;
@@ -64,9 +64,9 @@ function GetItems( User, ItemID, DataValue )
 	end
 	local posList = {5,6,12,13,14,15,16,17};
 	local myItem;
-	
+
 	retList[0] = 0;
-	
+
     for _,i in posList do
         myItem = User:getItemAt( i );
         if ( myItem.id == ItemID and ( DataValue == nil or myItem.data == DataValue ) and myItem.quality >= 100) then
@@ -148,7 +148,7 @@ function initializeNpc()
     npc.base.functions.AddAdditionalTrigger("[Mm]achs [Gg]ut");
     npc.base.functions.AddAdditionalText("Sss. Bis bald. Ihr könnt gern wieder kommen.");
     npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'");
-    
+
     npc.base.functions.AddCycleText("#me isst einen Fisch","#me eats a fish");
     npc.base.functions.AddCycleText("#me schaut sich nach Kunden um","#me looks around for customers");
     npc.base.functions.AddCycleText("#me lässt ihren Schwanz hin und her schnalzen","#me flicks her tail");
@@ -156,7 +156,7 @@ function initializeNpc()
     npc.base.functions.AddCycleText("Die besssten Ssschmiedewaren verkauf ich! Zzzum besssten Preisss.","I sssell the bessst smithsss productsss. For the bessst pricesss");
 
     TraderLang={"Gold","gold","Sssilber", "sssilver","Kupfer","copper","ssstücke","piecesss"};
-    
+
 
 TraderMonths={"Elosss","Tanosss","Zhasss","Ushosss","Sssirosss","Ronasss","Brasss","Eldasss","Irmasss","Malasss","Findosss","Olosss","Adrasss","Narasss","Chosss","Masss"};
 
@@ -194,17 +194,17 @@ end
 function receiveText(texttype, message, originator)
     if npc.base.functions.BasicNPCChecks(originator,2) then
         if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
-            thisNPC.activeLanguage=originator.activeLanguage;            
-            
+            thisNPC.activeLanguage=originator.activeLanguage;
+
             --- by abcfantasy --
             if not NPCItem then
                NPCItem = { };
             end
-				
+
             if ( string.find( message, "greeting" ) ) ~= nil then
                useNPC( originator, nil, 0 );
             end
-			
+
             if ( NPCItem[originator.id] ~= 0 ) and ( ( string.find( message, "one" ) ~= nil ) or ( string.find( message, "1" ) ~= nil ) ) then
                thisNPC:talk( CCharacter.say, "You just bought one of the following item: " .. world:getItemName(NPCItem[originator.id],1) );
                NPCItem[originator.id] = 0;
@@ -214,7 +214,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -224,7 +224,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

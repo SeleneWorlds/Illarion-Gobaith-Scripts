@@ -299,8 +299,8 @@ function M.P_GetChanceForOrdination(Char,God,Info)
 			end
 		end
 	end
-	if table.getn(followers)+table.getn(priests) >= 2 then
-		return 10*table.getn(followers) + 20*table.getn(priests);
+	if #followers+#priests >= 2 then
+		return 10*#followers + 20*#priests;
 	end
 	if Info then
 		base.common.TempInformNLS(Char,

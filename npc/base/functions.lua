@@ -24,7 +24,7 @@ function AddCycleText(gText,eText)
 end
 
 function increaseLangSkill(LangList)
-    for i=1,table.getn(LangList) do
+    for i=1,#LangList do
         setLang=true;
         if (LangList[i]==0) then LangSkill="common language";
         elseif (LangList[i]==1) then LangSkill="human language";
@@ -46,7 +46,7 @@ end
 function LangOK(User,LangList)
     --User:inform("LangOK Start")
     local retVal=false;
-    for i=1,table.getn(LangList) do
+    for i=1,#LangList do
         -- User:inform("for run "..i);
         if (User.activeLanguage==LangList[i]) then retVal=true end
     end
@@ -59,31 +59,31 @@ function AddTraderTrigger(Trigger,Answer,newState, stateCondition)
     table.insert(TraderTrig,{string.gsub(string.lower(Trigger)," ",".+")});
     table.insert(TraderText,{Answer});
     --thisNPC:talk(CCharacter.say,"inside new trigger");
-    if (newState~=nil) then     
+    if (newState~=nil) then
         table.insert(talkState,newState);     -- for a little more complex NPCs with states
     else
         table.insert(talkState,nil);          -- nil means: dont change state!
     end
     --thisNPC:talk(CCharacter.say,"done nearly new trigger");
     if (stateCondition~=nil) then
-        talkCondition[table.getn(TraderTrig)]=stateCondition;
+        talkCondition[#TraderTrig]=stateCondition;
     end
     --thisNPC:talk(CCharacter.say,"through new trigger");
 end
 
 
 function AddAdditionalText(Answer)
-    table.insert(TraderText[table.getn(TraderText)],Answer)
+    table.insert(TraderText[#TraderText],Answer)
 end
 
 function AddAdditionalTrigger(Trigger)
-    --thisNPC:talk(CCharacter.say,"Adding add trigger"..table.getn(TraderTrig));
-    --for i, j in TraderTrig[table.getn(TraderTrig)] do
+    --thisNPC:talk(CCharacter.say,"Adding add trigger"..#TraderTrig);
+    --for i, j in TraderTrig[#TraderTrig] do
          --thisNPC:talk(CCharacter.say,"Adding add trigger  here "..j);
     --end
     --thisNPC:talk(CCharacter.say,"Adding "..string.gsub(string.lower(Trigger)," ",".+").." into table");
     myString=string.gsub(string.lower(Trigger)," ",".+")
-    table.insert(TraderTrig[table.getn(TraderTrig)],myString)
+    table.insert(TraderTrig[#TraderTrig],myString)
     --thisNPC:talk(CCharacter.say,"through add trigger");
 end
 
@@ -94,8 +94,8 @@ function TellSmallTalk(message,userID)     -- searches for fitting answer to "me
     local searchfin=false;
     repeat
         if CheckForTrigger(message,i) then      -- "message" found?
-            if (table.getn(TraderText[i])>1) then       -- more than one possible answers?
-                TextSel=math.random(1,table.getn(TraderText[i]));
+            if (#TraderText[i]>1) then       -- more than one possible answers?
+                TextSel=math.random(1,#TraderText[i]);
             else
                 TextSel=1;
             end
@@ -113,7 +113,7 @@ function TellSmallTalk(message,userID)     -- searches for fitting answer to "me
             ready=true;
         end
         i=i+1;
-    until ((i==table.getn(TraderTrig)+1) or ready)
+    until ((i==#TraderTrig+1) or ready)
 end
 
 function CheckForTrigger(message,ListIndex)
@@ -173,11 +173,11 @@ function SpeakerCycle()
         speakCount=speakCount+1;
         if (math.floor(speakCount/600)==(speakCount/600)) then verwirrt=false end
         --printerr("In Circle "..cycCount.. "With "..nextDelivery);
-        if (table.getn(CycleText)>0) then
+        if (#CycleText>0) then
             if (speakTime==nil) then speakTime=2 end
             if (speakCount>=speakTime) then
                 speakCount=1;
-                TextNr=math.random(1,table.getn(CycleText))
+                TextNr=math.random(1,#CycleText)
                 thisNPC:talkLanguage(CCharacter.say, CPlayer.german,CycleText[TextNr][1]);
                 thisNPC:talkLanguage(CCharacter.say, CPlayer.english,CycleText[TextNr][2]);
                 speakTime=math.random(900,3000);

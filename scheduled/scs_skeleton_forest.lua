@@ -23,16 +23,16 @@ end
 
 function M.SpawnSkeleton(Charakter)
     local Monsters = world:getMonstersInRangeOf(Charakter.pos,7);
-    
-    if (table.getn(Monsters) > 0) then
+
+    if (#Monsters > 0) then
         for i, Monster in pairs(Monsters) do
             MonType = Monster:get_mon_type();
             if ((MonType>110) and (MonType<121)) then -- Skeletons
                 return false;
             end
         end
-    end  
-    
+    end
+
     if (Charakter:getPlayerLanguage() == 0) then
         Charakter:inform("Um dich herum raschelt der Wald und du hört das Klappern von Knochen.");
     else
@@ -49,14 +49,14 @@ function M.SpawnSkeletonCycle(CenterPos,Radius,Anzahl)
     local y;
     local map = {} ;
     local divid = math.ceil((2 * math.pi * irad) / Anzahl);
-    
+
     for x = -irad-1, irad do
         map[x] = {};
         for y = -irad-1, irad do
             map[x][y] = (x+0.5)*(x+0.5)+(y+0.5)*(y+0.5)-irad*irad > 0
         end;
     end;
-    
+
     local count = 0;
     for x = -irad, irad do
         for y = -irad, irad do

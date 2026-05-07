@@ -5,9 +5,9 @@ require("base.common")
 
 -- UPDATE common SET com_script='item.paintings' WHERE com_itemid IN (264, 265, 748, 749, 750, 751, 1914, 1915);
 
-PaintingListGerman = 
+PaintingListGerman =
 {
-"Du siehst eine Waldlichtung mit einem Schrein, voller Tiere und Feen.", 
+"Du siehst eine Waldlichtung mit einem Schrein, voller Tiere und Feen.",
 "Du siehst einen jungen Mann beim Experimentieren mit der Alchemie.",
 "Du siehst den weiten Ozean, rasende Wellen und ein Sturm breiten sich dort aus.",
 "Du siehst das Abbild eines Halblings bei der Gartenarbeit.",
@@ -52,7 +52,7 @@ PaintingListGerman =
 "Du siehst wie eine Echse aus dem Wasser auftaucht."
 };
 
-PaintingListEnglish = 
+PaintingListEnglish =
 {
 "You see a clearing with a shrine that's full of animals and fairies.",
 "You see a young man, experimenting with alchemy.",
@@ -61,7 +61,7 @@ PaintingListEnglish =
 "You see halflings laughing and dancing together at a party.",
 "You see a woman who covers her body in silk cloth." ,
 "You see a group of musicians on a lively marketplace." ,
-"You see an old man with a walking cane going through the forest, looking out for herbs.", 
+"You see an old man with a walking cane going through the forest, looking out for herbs.",
 "You see a naked elfess in a shell." ,
 "You see a lonely elfess walking along the beach." ,
 "You see the panorama of a great fortress." ,
@@ -91,7 +91,7 @@ PaintingListEnglish =
 "You see a group of dwarves in a drinking contest." ,
 "You see a dwarf examining a ruby. Another dwarf seems to wait for an answer and waggles with a pouch." ,
 "You see the panorama of an ancient ruin." ,
-"You see a group of Goblins at night, staring at you.", 
+"You see a group of Goblins at night, staring at you.",
 "You see a Goblin negotiating with a human in Gynk." ,
 "You see two Gnomes working on a big construct, you are not able to make out what it could be." ,
 "You see a smeared painting. It appears as if a fairy is placed in the middle of the picture." ,
@@ -103,11 +103,11 @@ PaintingListEnglish =
 function M.LookAtPaintingItem( User, Item )
     local val = 0;
     if ( Item.data == 0 ) then
-        val = ((Item.pos.x + Item.pos.y + Item.pos.z) % table.getn(PaintingListGerman))+1;
+        val = ((Item.pos.x + Item.pos.y + Item.pos.z) % #PaintingListGerman)+1;
     else
-        val = (Item.data % table.getn(PaintingListGerman))+1;
+        val = (Item.data % #PaintingListGerman)+1;
     end
-    
+
     world:itemInform( User, Item, base.common.GetNLS(User, PaintingListGerman[val], PaintingListEnglish[val]) );
 end
 

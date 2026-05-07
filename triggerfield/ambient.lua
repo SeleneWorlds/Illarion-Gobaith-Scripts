@@ -116,7 +116,7 @@ AmbientList:add( position(-66,-116,0), 2, "Im Raum ist es etwas w�rmer als dra
 AmbientList:add( position(-66,-116,0), 2, "In dieser Herbstnacht ist es ruhig im Laden. Wenn du umhergehst knarrt der Boden unter deinen F��en.", "This night, it is very quite in the shop. As you walk around the floor under your feets creaks a little.", {22,23,0,1,2,3,4,5,6,7}, {9,10,11,12} );
 AmbientList:add( position(-86,-99,-3), 0, "Du verl�sst den Schankraum und steigst die knarrende Treppe in den k�hlen Keller hinab. Deine Augen gew�hnen sich langsam an die Dunkelheit.", "You leave the taproom and steps down the creaking stairs to the cool, dark cellar. Your eyes start adapting to the darkness slowly.", nil, nil );
 AmbientList:add( position(-86,-99,-3), 6, "Du verl�sst den Schankraum und steigst die knarrende Treppe in den k�hlen Keller hinab. Deine Augen gew�hnen sich langsam an die Dunkelheit.", "You leave the taproom and steps down the creaking stairs to the cool, dark cellar. Your eyes start adapting to the darkness slowly.", nil, nil );
-AmbientList:add( position(-87,-116,1), 2, "Du trittst auf den Balkon der Bibliothek und h�rst den Wind leise durch die Ecken pfeifen.", "You step on the balcony of the libary and hear the sough of the wind whistles quietly in the corners.", nil, nil ); 
+AmbientList:add( position(-87,-116,1), 2, "Du trittst auf den Balkon der Bibliothek und h�rst den Wind leise durch die Ecken pfeifen.", "You step on the balcony of the libary and hear the sough of the wind whistles quietly in the corners.", nil, nil );
 AmbientList:add( position(-88,-116,1), 6, "Beim Betreten des Raumes fallen Dir die gedeckten Tische auf. Sie laden zum Verweilen ein.", "As you walk in the room, the set table catch your eyes. They invite to take a rest.", nil, nil );
 AmbientList:add( position(-89,-90,0), 2, "Du betrittst die Taverne und sogleich umh�llt dich wohlige W�rme und der Geruch von starkem Bier str�mt in deine Nase.", "You are walking in the tavern and instantly the warmth encloses you and the smell of strong beer pours into your nose.", nil, nil );
 AmbientList:add( position(-91,-115,0), 2, "Du betrittst den Altarraum und heute sp�rst du die g�ttliche Stille noch st�rker als sonst. Die G�tter stehen dir im Mas bei.", "You walk into the sanctuary and instantly you feel the divine silence stronger then otherwise. The gods stand by you in the time of Mas.", nil, {16} );
@@ -187,7 +187,7 @@ AmbientList:add( position(97,-203,-3), 2, "Dein Blick f�llt auf die fein gearb
 AmbientList:add( position(97,-203,-3), 2, "Dein Blick f�llt auf die fein gearbeiteten S�ulen, die die unglaublich hohe Decke abst�tzen � ein einzigartiges St�ck Zwergischer Baukunst. Die Luft in dieser Halle ist es noch recht kalt. Du h�rst das Klirren von Waffen und Hammerschl�ge. Hinter einen Tisch steht ein alter Zwerg, der aufmerksam deinen G�rtel nach einem Geldbeutel absucht..", "You can see the well-worked pillars, which hold up the incredibile high ceilling � a unique piece of dwarven architecture. The air in this hall is still quite cold. You can hear the clang of arms and hammers. Behind one table there is an old dwarf, who examines your belt, searching for a money bag.", {nil}, {13,14,15,16} );
 AmbientList:add( position(97,-203,-3), 2, "Dein Blick f�llt auf die fein gearbeiteten S�ulen, die die unglaublich hohe Decke abst�tzen � ein einzigartiges St�ck Zwergischer Baukunst. Die Luft in dieser Halle ist es noch recht kalt. Du h�rst das Klirren von Waffen und Hammerschl�ge. Hinter einen Tisch steht ein m�rrischer alter Zwerg, der dich unfreundlich anbrummt.", "You can see the well-worked pillars, which hold up the incredibile high ceilling � a unique piece of dwarven architecture. The air in this hall is still quite cold. You can hear the clang of arms and hammers. Behind one table there is an crusty old dwarf, who grumbles unfriendly at you.", {nil}, {1,2,3,4,5,6,7,8,9,10,11,12} );
 AmbientList:add( position(97,-203,-3), 2, "Dein Blick f�llt auf die fein gearbeiteten S�ulen, die die unglaublich hohe Decke abst�tzen � ein einzigartiges St�ck Zwergischer Baukunst. Die Luft in dieser Halle ist es ziemlich warm. Du h�rst das Klirren von Waffen und Hammerschl�ge. Hinter einen Tisch steht ein m�rrischer alter Zwerg, der dich unfreundlich anbrummt.", "You can see the well-worked pillars, which hold up the incredibile high ceilling � a unique piece of dwarven architecture. The air in this hall is quite warm. You can hear the clang of arms and hammers. Behind one table there is an crusty old dwarf, who grumbles unfriendly at you.", {nil}, {1,2,3,4,5,6,7,8,9,10,11,12} );
-AmbientList:add( position(158,-448,0), 2, "Du endeckst eine grobe Gravierung im Bein der Werkbank. 'Gestohlen bei Murgo!'", "You find a rude engraving at the leg of the workbench. 'Stolen by Murgo!'", nil, nil ); 
+AmbientList:add( position(158,-448,0), 2, "Du endeckst eine grobe Gravierung im Bein der Werkbank. 'Gestohlen bei Murgo!'", "You find a rude engraving at the leg of the workbench. 'Stolen by Murgo!'", nil, nil );
 
 function MoveToField(Char)
 	local this = getAmbient(Char);
@@ -220,8 +220,8 @@ function getAmbient(Char)
 				table.insert(list,ambient);
 			end
 		end
-		if table.getn(list)>0 then
-			return list[math.random(1,table.getn(list))];
+		if #list>0 then
+			return list[math.random(1,#list)];
 		end
 	end
 	return nil;

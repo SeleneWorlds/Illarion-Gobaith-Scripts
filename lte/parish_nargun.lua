@@ -9,12 +9,12 @@ PN_FriendlyRaces = {18,24,37,38};
 PN_Waypoints = {position(-80,-207,0), position(-222,-196,0), position(-200,-270,0), position(-384,-206,0)};
 
 function M.addEffect(Effect, Char)
-	
+
 	local effectType = M.PN_GetEffectType(Effect);
-	
+
 	if effectType >= 1 and effectType <= 4 then
 		Effect:addValue("saveRace", Char:get_race() );
-		Char:setAttrib("racetyp", PN_FriendlyRaces[math.random(1,table.getn(PN_FriendlyRaces))]);
+		Char:setAttrib("racetyp", PN_FriendlyRaces[math.random(1,#PN_FriendlyRaces)]);
 		world:gfx(31,Char.pos);
 		base.common.TempInformNLS(Char,
 			"Du fühlst dich auf einmal so seltsam distanziert von deinem Körper.",
@@ -67,7 +67,7 @@ function M.loadEffect(Effect, Char)
 end
 
 function M.PN_GetEffectType(Effect)
-	
+
 	local foundEffectType, effectType = Effect:findValue("effectType");
 	if not foundEffectType then
 		effectType = 0
@@ -79,13 +79,13 @@ function M.PN_LeadToPoint( Char, effectType )
     if (cycleCounter[Char.id]==nil) then
         cycleCounter[Char.id]=40;
     end
-	
+
 	local thepos = PN_Waypoints[effectType];
 	local distance=Char:distanceMetricToPosition(thepos);
-	
+
     if (distance <= 5) or (cycleCounter[Char.id]>=40) then
 	    if (Char.pos.z>=0 and Char.pos.z<=3) then
-       	    
+
        	    local dir = base.common.GetDirection( Char.pos, thepos );
        	    local dirText;
 

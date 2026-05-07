@@ -28,7 +28,7 @@ function nextCycle()
             SmallTalk[8] = "I like the smell of the fresh air here.";
             SmallTalk[9] = "The weather is good today, almost as good as yesterday.";
             SmallTalk[10] = "I hope it does not rain today.";
-            value = math.random( table.getn(SmallTalk) );
+            value = math.random( #SmallTalk );
             thisNPC:talk( SmallTalk[value] );
         end
     end
@@ -149,9 +149,9 @@ thisNPC:introduce(originator);
            thisNPC:talk(CCharacter.say, NpcAnsw[i]);
            foundTrig=true;
        end
-   until (i==table.getn(NpcTrig) or foundTrig==true)
+   until (i==#NpcTrig or foundTrig==true)
    if (foundTrig==false) then
-        value = math.random( table.getn(RandomTalk) );
+        value = math.random( #RandomTalk );
         thisNPC:talk( RandomTalk[value] );
    end
    end

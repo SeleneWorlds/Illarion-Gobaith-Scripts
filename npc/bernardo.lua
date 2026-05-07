@@ -44,14 +44,14 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Auf wiedersehen.");
     npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     npc.base.functions.AddAdditionalText("Auf bald");
-    
+
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
 
     RefreshTime={10000,20000};
-    
+
     AllowedTaxCollectors = { };
     AllowedTaxCollectors[1781588520] = true; -- Siltaris
-    
+
     file = "trollsbane.dat";
 
     TradSpeakLang={0,1};
@@ -67,7 +67,7 @@ function initializeNpc()
     --gnome language=8
     --goblin language=9
     --ancient language=10
-    
+
     TraderCoinLanguage={"Gold","gold","Silber","silver","Kupfer","copper","stücke","pieces"};
 
 end
@@ -120,7 +120,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -130,7 +130,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

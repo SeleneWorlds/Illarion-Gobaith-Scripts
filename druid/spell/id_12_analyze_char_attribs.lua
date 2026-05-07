@@ -35,7 +35,7 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 	  M.initTerms()
 	  textDE = ""
 	  textEN = ""
-	  for i = 1, table.getn(Term_3) do
+	  for i = 1, #Term_3 do
 	    tt = math.floor(TargetCharacter:increaseAttrib(Term_3[i],0)/2)
 	    if tt > 10 then tt = 10 elseif tt <1 then tt = 1 end
 	    textDE = textDE..Term_1DE[tt]..Term_2DE[i].."\n"

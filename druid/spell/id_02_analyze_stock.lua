@@ -27,7 +27,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
 
   if TargetItem.id == 331 then
     dataZList = alchemy.SplitBottleData(Caster,TargetItem.data)
-    i = math.random(table.getn(dataZList))
+    i = math.random(#dataZList)
     textDE= "Dieser Sud enth�lt "..alchemy.wirkung_de[dataZList[i]].." "..alchemy.wirkstoff[i]
     textEN= "This stock contains "..alchemy.wirkung_en[dataZList[i]].." "..alchemy.wirkstoff[i]
 

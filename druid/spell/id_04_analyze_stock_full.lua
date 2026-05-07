@@ -28,7 +28,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
     local TextDE = "Diese Flasche enth�lt:\n";
 	  local TextEN = "This bottle contains:\n";
 	  local anySubstance = false;
-    for i = 1,table.getn(dataZList) do
+    for i = 1,#dataZList do
       if dataZList[i]~= 5 then
 		    anySubstance = true;
 		  TextDE = TextDE.."\n"..alchemy.wirkung_de[dataZList[i]].." "..alchemy.wirkstoff[i];

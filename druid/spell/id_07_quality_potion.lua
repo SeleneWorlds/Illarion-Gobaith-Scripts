@@ -24,7 +24,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 --Caster:inform("debug #07.4")
 --Analyse eines Trankes auf Quality
   pList={59,165,166,167,327,328,329,330}
-  for i=1,table.getn(pList) do
+  for i=1,#pList do
     if pList[i] == TargetItem.id then
       qualstat = math.floor(TargetItem.quality/100)
 

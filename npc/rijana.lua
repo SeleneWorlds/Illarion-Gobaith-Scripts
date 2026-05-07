@@ -78,7 +78,7 @@ function initializeNpc()
     npc.base.functions.AddTraderTrigger("[Ww]as.+%s[Kk]auf","Ich kaufe leere Flaschen, offene Pergamentrollen und Tinte.");
     npc.base.functions.AddTraderTrigger("[Ww]er.+[DdIi][uh]r*?","Ich werde "..thisNPC.name.." genannt.");
     npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'");
-    
+
 	npc.base.functions.AddCycleText("#me notiert ein paar Zahlen auf ein Stück Pergament.","#me notes a few numbers on a piece of pergament.");
     npc.base.functions.AddCycleText("#me sortiert ein paar Dinge in ihrer Truhe neu.","#me rearranges some things in her chest. ");
 
@@ -197,7 +197,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -207,7 +207,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

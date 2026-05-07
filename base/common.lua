@@ -61,7 +61,7 @@ function M.TalkNLS(User, method, textInDe, textInEN)
 
     local players = world:getPlayersInRangeOf(User.pos, Range);
 
-    if (table.getn(players) == 0) then
+    if (#players == 0) then
         return;
     end;
 

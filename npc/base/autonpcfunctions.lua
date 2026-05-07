@@ -65,7 +65,7 @@ end
   chosen languages
 ]]
 function increaseLangSkill(LangList)
-    for i=1,table.getn(LangList) do
+    for i=1,#LangList do
         setLang=true;
         if (LangList[i]==0) then LangSkill="common language";
         elseif (LangList[i]==1) then LangSkill="human language";
@@ -94,7 +94,7 @@ end
   npc is able to speak
 ]]
 function LangOK(User,LangList)
-    for i=1,table.getn(LangList) do
+    for i=1,#LangList do
         if (User.activeLanguage==LangList[i]) then
             thisNPC.activeLanguage=User.activeLanguage;
             return true;
@@ -136,7 +136,7 @@ end
 - @param Answer string add a Additional Answer to the last added trigger
 ]]
 function AddAdditionalText(Answer)
-    table.insert(TraderText[table.getn(TraderText)],Answer)
+    table.insert(TraderText[#TraderText],Answer)
 end
 
 --[[
@@ -146,7 +146,7 @@ end
 function AddAdditionalTrigger(Trigger)
     Trigger = string.gsub(Trigger,"%%NUMBER","(%%d+)");
     Trigger = string.gsub(string.lower( Trigger )," ",".+");
-    table.insert(TraderTrig[table.getn(TraderTrig)],Trigger)
+    table.insert(TraderTrig[#TraderTrig],Trigger)
 end
 
 --[[
@@ -157,7 +157,7 @@ end
 - @param int compare value
 ]]
 function AddCondition( ... )
-    offset = table.getn( TraderTrig );
+    offset = # TraderTrig ;
     if not Conditions[offset] then
         Conditions[offset] = { };
     end
@@ -171,7 +171,7 @@ end
 - @param int new value
 ]]
 function AddConsequence( ... )
-    offset = table.getn( TraderTrig );
+    offset = # TraderTrig ;
     if not Consequences[offset] then
         Consequences[offset] = { };
     end
@@ -192,7 +192,7 @@ function TellSmallTalk(message,Char)
     message = string.lower(message);
 	state = NPCStatus[User.id];
 
-    length = table.getn( TraderTrig );
+    length = # TraderTrig ;
     while not CheckForTrigger(message,User,i) do
         i = i + 1;
         if ( i > length ) then
@@ -209,8 +209,8 @@ function TellSmallTalk(message,Char)
             filepoint:close();
         end
     end--]]
-    if (table.getn(TraderText[i])>1) then 
-        TextSel=math.random(1,table.getn(TraderText[i]));
+    if (#TraderText[i]>1) then
+        TextSel=math.random(1,#TraderText[i]);
     else
         TextSel=1;
     end
@@ -237,7 +237,7 @@ end
 function CheckForTrigger(message,User,ListIndex)
     for i,pattern in pairs(TraderTrig[ListIndex]) do
 		a,b= string.find( message, pattern );
-		_DummyA,_DummyB,saidNumber = string.find(message, "(%d+)"); --a,b,saidNumber = string.find( message, pattern ); 
+		_DummyA,_DummyB,saidNumber = string.find(message, "(%d+)"); --a,b,saidNumber = string.find( message, pattern );
         if a and CheckConditions( User, ListIndex ) then
             saidNumber = ( saidNumber == nil and 0 or saidNumber*1 );
             return true;
@@ -256,7 +256,7 @@ function CheckConditions( User, ListIndex )
     trigger_conditions = Conditions[ ListIndex ];
     if ( trigger_conditions == nil ) then
         return true;
-    elseif ( table.getn( trigger_conditions ) == 0 ) then
+    elseif ( # trigger_conditions  == 0 ) then
         return true;
     end
     for i, condition in pairs(trigger_conditions) do
@@ -279,7 +279,7 @@ function CheckCondition( User, condition )
         if ( NPCStatus[User.id] == nil ) then
             NPCStatus[User.id] = 0;
         end
-        return CompareValues( NPCStatus[User.id], 
+        return CompareValues( NPCStatus[User.id],
                               getNumber( condition[3] ),
                               condition[2] )
     elseif ( condition[1] == "skill" ) then
@@ -299,7 +299,7 @@ function CheckCondition( User, condition )
     elseif ( condition[1] == "race" ) then
         return ( User:get_race() == condition[2] );
     elseif ( condition[1] == "item" ) then
-        return CompareItem( User, condition[2], condition[3], 
+        return CompareItem( User, condition[2], condition[3],
                             condition[4], getNumber( condition[5] ) );
     elseif ( condition[1] == "qpg" ) then
         if ( QuestID == nil ) then
@@ -320,8 +320,8 @@ function CheckCondition( User, condition )
     elseif ( condition[1] == "chance" ) then
         return ( math.random( 100 ) < condition[2] );
     elseif ( condition[1] == "rune" ) then
-        return ( LuaAnd( 
-                    User:getMagicFlags( 
+        return ( LuaAnd(
+                    User:getMagicFlags(
                        translateMagictype( condition[2] )
                     ),
                     2^( condition[3] - 1 ) ) ~= 0
@@ -428,7 +428,7 @@ function PerformConsequences( User, ListIndex )
     trigger_consequences = Consequences[ ListIndex ];
     if ( trigger_consequences == nil ) then
         return true;
-    elseif ( table.getn( trigger_consequences ) == 0 ) then
+    elseif ( # trigger_consequences  == 0 ) then
         return true;
     end
 	TraderInform = {};
@@ -459,7 +459,7 @@ function PerformConsequences( User, ListIndex )
             end
         elseif ( consequence[1] == "attrib" ) then
             if ( consequence[3] == "+" ) then
-                
+
                 User:increaseAttrib( consequence[2], consequence[4]);
             elseif ( consequence[3] == "-" ) then
                 User:increaseAttrib( consequence[2], -consequence[4]);
@@ -468,7 +468,7 @@ function PerformConsequences( User, ListIndex )
                 if ( formerValue == consequence[4] ) then
                     return
                 end
-                User:increaseAttrib( consequence[2], 
+                User:increaseAttrib( consequence[2],
                                      -( formerValue - consequence[4] )
                                    );
             end
@@ -488,7 +488,7 @@ function PerformConsequences( User, ListIndex )
                 world:createItemFromId( consequence[2], notcreated,
                                         User.pos, true, consequence[4],
                                         consequence[5] );
-            end 
+            end
         elseif ( consequence[1] == "deleteitem" ) then
 			if consequence[3] == "all" then
 				consequence[3] = User:countItem(consequence[2]);
@@ -524,7 +524,7 @@ function PerformConsequences( User, ListIndex )
 			table.insert( TraderInform, consequence[2] );
 		else
 			return;
-		end       
+		end
     end
 end
 
@@ -580,15 +580,15 @@ end
 - @return integer the real number. Eighter the last spoken one or the
                   param value.
 ]]
-function getNumber( value ) 
-if ( type( value ) == "function" ) then 
-    return value( saidNumber ); -- DO NOT CALL value() anywhere else 
-   elseif ( value == "%NUMBER" ) then 
-       return saidNumber; 
-   else 
-       return tonumber(value); 
-   end 
-   return 0; 
+function getNumber( value )
+if ( type( value ) == "function" ) then
+    return value( saidNumber ); -- DO NOT CALL value() anywhere else
+   elseif ( value == "%NUMBER" ) then
+       return saidNumber;
+   else
+       return tonumber(value);
+   end
+   return 0;
 end
 
 --[[
@@ -600,21 +600,21 @@ function SpeakerCycle()
     if not speakCount then
         InitTalkLists()
     end
-    
+
     speakCount = speakCount + 1;
     if ( ( speakCount / 600 ) == math.floor( speakCount / 600 ) ) then
         verwirrt=false;
     end
-    
-    if ( table.getn( CycleText ) > 0 ) then
+
+    if ( # CycleText  > 0 ) then
         if not speakTime then
             speakTime=math.random(900,3000);
         end
-       
+
         if ( speakCount>=speakTime ) then
             speakCount=1;
-            TextNr=math.random(1,table.getn(CycleText));
-          
+            TextNr=math.random(1,#CycleText);
+
             thisNPC:talkLanguage(CCharacter.say,
                                  CPlayer.german,
                                  CycleText[TextNr][1]);
@@ -624,7 +624,7 @@ function SpeakerCycle()
             speakTime=math.random(900,3000);
         end
     end
-    
+
     if ( speakCount > 3002 ) then
         speakCount = 1;
     end
@@ -643,12 +643,12 @@ function SpeakerCycle()
                         TurnToPlayer( char );
                     end
                 end
-                
+
                 if not found then
                     idle = true;
                 end
             end
-            
+
             if idle then
                 if ( math.random( 20 ) <= 9 ) then
                     TurnAround();
@@ -662,7 +662,7 @@ function SpeakerCycle()
                 end
             end
         end
-    end            
+    end
 end
 
 --[[
@@ -673,9 +673,9 @@ function TurnAround()
     faceTo = thisNPC:get_face_to();
     possDirs = {};
     if ( faceTo == 0 ) or ( faceTo == 4 ) then
-        newPos1 = position( thisNPC.pos.x - 1, thisNPC.pos.y, 
+        newPos1 = position( thisNPC.pos.x - 1, thisNPC.pos.y,
                             thisNPC.pos.z );
-        newPos2 = position( thisNPC.pos.x + 1, thisNPC.pos.y, 
+        newPos2 = position( thisNPC.pos.x + 1, thisNPC.pos.y,
                             thisNPC.pos.z );
         if ( Distance( newPos1, centerPos ) <= radius ) then
             table.insert( possDirs, 6 );
@@ -684,9 +684,9 @@ function TurnAround()
             table.insert( possDirs, 2 );
         end
     else
-        newPos1 = position( thisNPC.pos.x, thisNPC.pos.y - 1, 
+        newPos1 = position( thisNPC.pos.x, thisNPC.pos.y - 1,
                             thisNPC.pos.z );
-        newPos2 = position( thisNPC.pos.x, thisNPC.pos.y + 1, 
+        newPos2 = position( thisNPC.pos.x, thisNPC.pos.y + 1,
                             thisNPC.pos.z );
         if ( Distance( newPos1, centerPos ) <= radius ) then
             table.insert( possDirs, 0 );
@@ -695,10 +695,10 @@ function TurnAround()
             table.insert( possDirs, 4 );
         end
     end
-    if ( table.getn( possDirs ) == 0 ) then
+    if ( # possDirs  == 0 ) then
         thisNPC:warp( centerPos );
     else
-        selectedDir = math.random( table.getn( possDirs ) );
+        selectedDir = math.random( # possDirs  );
         thisNPC:setAttrib( "faceto", possDirs[ selectedDir ] );
     end
 end
@@ -710,16 +710,16 @@ end
 function walk()
     faceTo = thisNPC:get_face_to();
     if ( faceTo == 0 ) then
-        newPos = position( thisNPC.pos.x, thisNPC.pos.y - 1, 
+        newPos = position( thisNPC.pos.x, thisNPC.pos.y - 1,
                            thisNPC.pos.z );
     elseif ( faceTo == 2 ) then
-        newPos = position( thisNPC.pos.x + 1, thisNPC.pos.y, 
+        newPos = position( thisNPC.pos.x + 1, thisNPC.pos.y,
                            thisNPC.pos.z );
     elseif ( faceTo == 4 ) then
-        newPos = position( thisNPC.pos.x, thisNPC.pos.y + 1, 
+        newPos = position( thisNPC.pos.x, thisNPC.pos.y + 1,
                            thisNPC.pos.z );
     elseif ( faceTo == 6 ) then
-        newPos = position( thisNPC.pos.x - 1, thisNPC.pos.y, 
+        newPos = position( thisNPC.pos.x - 1, thisNPC.pos.y,
                            thisNPC.pos.z );
     end
     if ( Distance( newPos, centerPos ) <= radius ) then
@@ -780,15 +780,15 @@ function BasicNPCChecks(originator,NPCRange)
     if not thisNPC:isInRange(originator,NPCRange) then
         return false;
     end
-    
+
     if (originator.id == thisNPC.id) then
         return false;
     end
-    
+
     if ( originator:get_type() ~= 0 ) then
         return false;
     end
-    
+
     originator:introduce(thisNPC);
     return true;
 end
@@ -818,10 +818,10 @@ function CheckMoney(User,Copper)
     local Amount = ( User:countItem(61) * 10000 );
     Amount = Amount + ( User:countItem(3077) * 100 );
     Amount = Amount + ( User:countItem(3076) );
-	
+
 	Copper = tonumber(Copper);
 	Amount = tonumber(Amount);
-	 
+
     return (Copper<=Amount);
 end
 
@@ -857,23 +857,23 @@ function PayTheNPC(User,Copper)
     local MissSilber=0;
     local MissKupfer=0;
     MissGold, MissSilber, MissKupfer = SplitMoney( Copper );
-    
+
     local UserGold=User:countItem(61);
     local UserSilber=User:countItem(3077);
     local UserKupfer=User:countItem(3076);
-    
+
     local Amount=Copper;
-    
+
     local GoldAlsKupfer=0;
     local SilberAlsKupfer=0;
     local GoldAlsSilber=0;
-    
+
     GoldAlsKupfer = math.floor( UserKupfer/10000 );
     GoldAlsKupfer = math.min( MissGold, GoldAlsKupfer );
     PayKupfer = GoldAlsKupfer * 10000;
     MissGold = MissGold - GoldAlsKupfer;
     UserKupfer = UserKupfer - PayKupfer;
-    
+
     GoldAlsKupfer = math.floor( UserKupfer/100 );
     GoldAlsSilber = 100 - GoldAlsKupfer;
     if ((MissGold > 0) and (GoldAlsKupfer > 0) and
@@ -884,26 +884,26 @@ function PayTheNPC(User,Copper)
         UserKupfer = UserKupfer - 100 * GoldAlsKupfer;
         UserSilber = UserSilber - GoldAlsSilber;
     end;
-    
+
     SilberAlsKupfer = math.floor( UserKupfer/100 );
     SilberAlsKupfer = math.min( MissSilber, SilberAlsKupfer );
     PayKupfer = PayKupfer + SilberAlsKupfer * 100;
     MissSilber = MissSilber - SilberAlsKupfer;
     UserKupfer = UserKupfer - SilberAlsKupfer * 100;
-    
+
     if (UserKupfer >= MissKupfer) then
         PayKupfer = PayKupfer + MissKupfer;
     else
         MissSilber = MissSilber + 1;
         PayKupfer = PayKupfer + MissKupfer - 100;
     end;
-    
+
     GoldAlsSilber = math.floor( UserSilber/100 );
     GoldAlsSilber = math.min( MissGold, GoldAlsSilber );
     PaySilber = PaySilber + GoldAlsSilber * 100;
     MissGold = MissGold - GoldAlsSilber;
     UserSilber = UserSilber - GoldAlsSilber * 100;
-    
+
     if (UserSilber >= MissSilber) then
         PayGold = MissGold;
         PaySilber = PaySilber + MissSilber;
@@ -911,8 +911,8 @@ function PayTheNPC(User,Copper)
         PayGold = MissGold + 1;
         PaySilber = PaySilber + MissSilber - 100;
     end;
-    
-        
+
+
     if (PayGold>0) then
         User:eraseItem(61,PayGold);
     end
@@ -1000,8 +1000,8 @@ end
 - @param Char CharStruct The Char that will get the whisper inform
 ]]
 function CharInform(Char)
-	if table.getn(TraderInform)>0 then
-		local inform = TraderInform[ math.random(1,table.getn(TraderInform)) ];
+	if #TraderInform>0 then
+		local inform = TraderInform[ math.random(1,#TraderInform) ];
 		Char:inform("#w "..inform);
 	end
 end
@@ -1012,7 +1012,7 @@ end
 - @param ScEnd int The number that is returned if value is 100
 - @param value int
 - @return int a value between ScBegin and ScEnd related to value
-]] 
+]]
 function Scale(ScBegin, ScEnd, value)
     value = ( ( ScEnd - ScBegin ) / 100 ) * value + ScBegin;
     if (ScBegin < ScEnd) then

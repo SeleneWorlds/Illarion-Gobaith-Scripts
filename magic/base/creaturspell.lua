@@ -60,7 +60,7 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
         return;
     end
 
-    world:createMonster(Monsters[math.random(1,table.getn(Monsters))],TargetPos,10);
+    world:createMonster(Monsters[math.random(1,#Monsters)],TargetPos,10);
 
     magic.base.basics.performGFX( SpellEffects.gfx, TargetPos );
     magic.base.basics.performSFX( SpellEffects.sfx, TargetPos );

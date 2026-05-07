@@ -229,7 +229,7 @@ function CheckAxt(User)
         ListofAxe={74, 88, 188, 205, 383, 2625, 2626, 2627, 2628, 2629, 2630, 2631, 2634, 2635, 2636, 2637, 2639, 2640, 2641, 2642, 2643, 2644, 2645, 2946};
     end
     local found=0;
-    for i=1,table.getn(ListofAxe) do
+    for i=1,#ListofAxe do
         if (User:countItem(ListofAxe[i])>0) then
             found=ListofAxe[i]
         end

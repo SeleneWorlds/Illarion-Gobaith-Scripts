@@ -4,10 +4,10 @@ local M = {}
 function M.newCardDeck( cardList )
     local self = {
         cardList = cardList,
-        numCards = table.getn( cardList ),
+        numCards = # cardList ,
         usedIndex = 0,
     };
-    
+
     local shuffle = function()
         local i,j;
         local newCardList = {};
@@ -24,7 +24,7 @@ function M.newCardDeck( cardList )
         self.cardList = newCardList;
         self.usedIndex = 0;
     end;
-    
+
     local draw = function()
         if self.usedIndex < self.numCards then
             self.usedIndex = self.usedIndex + 1;
@@ -33,7 +33,7 @@ function M.newCardDeck( cardList )
             return nil;
         end;
     end;
-    
+
     return {
         shuffle = shuffle,
         draw = draw,

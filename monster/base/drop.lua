@@ -36,7 +36,7 @@ function Dropping(Char)
     end
 
     if first then
-        if (table.getn(SelItemValue)>0) then
+        if (#SelItemValue>0) then
             for i,values in pairs(SelItemValue) do
                 if ( values[1] ~= nil ) and ( values[2] ~= nil ) and ( values[3] ~= nil ) and ( values[4] ~= nil ) then
                     Item=world:createItemFromId(values[1],values[2],Char.pos,true,values[3],values[4]);
@@ -152,20 +152,20 @@ end
 
 function CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFlight,CastingTry)
     if (math.random(1,rndTry)==1) and (Monster.pos.z==Enemy.pos.z) then
-        local EffectTry=math.random(1,table.getn(Effect)+table.getn(Item));
-        if ( EffectTry > table.getn(Effect) ) then
+        local EffectTry=math.random(1,#Effect+#Item);
+        if ( EffectTry > #Effect ) then
             base.common.CreateLine(Monster.pos,Enemy.pos, function( targetPos )
                 if world:isCharacterOnField( targetPos ) then
                     if world:isItemOnField( targetPos ) then
                         local foundItem = world:getItemOnField( targetPos );
-                        if ( foundItem.id == Item[EffectTry-table.getn(Effect)][1] ) then
-                            foundItem.quality = math.min( Item[EffectTry-table.getn(Effect)][3], foundItem.quality + Item[EffectTry-table.getn(Effect)][2] );
+                        if ( foundItem.id == Item[EffectTry-#Effect][1] ) then
+                            foundItem.quality = math.min( Item[EffectTry-#Effect][3], foundItem.quality + Item[EffectTry-#Effect][2] );
                             return false;
                         end
                     end
-                    world:createItemFromId(Item[EffectTry-table.getn(Effect)][1],1,targetPos,true,math.random(Item[EffectTry-table.getn(Effect)][2],Item[EffectTry-table.getn(Effect)][3]),Item[EffectTry-table.getn(Effect)][4]);
-                    if ( Item[EffectTry-table.getn(Effect)][5] > 0 ) then
-                        world:makeSound(Item[EffectTry-table.getn(Effect)][5],targetPos);
+                    world:createItemFromId(Item[EffectTry-#Effect][1],1,targetPos,true,math.random(Item[EffectTry-#Effect][2],Item[EffectTry-#Effect][3]),Item[EffectTry-#Effect][4]);
+                    if ( Item[EffectTry-#Effect][5] > 0 ) then
+                        world:makeSound(Item[EffectTry-#Effect][5],targetPos);
                     end
                     return false;
                 end
@@ -220,7 +220,7 @@ function CastHealing( Caster, rndTry, HealAmmount, Range, Effect, AP )
 
     -- Look for my friends
     local other_monsters = world:getMonstersInRangeOf( Caster.pos, Range );
-    if table.getn( other_monsters ) == 0 then
+    if # other_monsters  == 0 then
         return false;
     end
 
@@ -232,12 +232,12 @@ function CastHealing( Caster, rndTry, HealAmmount, Range, Effect, AP )
         end
     end
 
-    if table.getn( monsters_in_need ) == 0 then
+    if # monsters_in_need  == 0 then
         return false;
     end
 
     -- Select monster to help
-    local selected_monster = math.random( 1, table.getn( monsters_in_need ) );
+    local selected_monster = math.random( 1, # monsters_in_need  );
 
     other_monsters[ selected_monster ]:increaseAttrib( "hitpoints", math.random( HealAmmount[1], HealAmmount[2] ) );
 
@@ -341,7 +341,7 @@ function CastMonster(Monster,Enemy,rndTry,monsters,AP)
         return false;
     end
 
-    local selectedMonsterIndex = math.random(1,table.getn(monsters));
+    local selectedMonsterIndex = math.random(1,#monsters);
     local selectedMonsterId = monsters[selectedMonsterIndex];
 
     world:createMonster(selectedMonsterId,SpawnPos,-15);
@@ -389,7 +389,7 @@ end
 function MonsterRandomTalk(Monster,msgs)
 
     if (math.random(1,12) == 1 ) then --once each 20 minutes in average a message is spoken
-        
+
         Monster:increaseSkill(1,"common language",100-Monster:getSkill("common language")); --if the monster could not talk, it can talk now
 
         germanMessage, englishMessage = msgs:getRandomMessage(); --choses a random message

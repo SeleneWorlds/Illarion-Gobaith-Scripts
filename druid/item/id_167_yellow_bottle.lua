@@ -73,7 +73,7 @@ function M.DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
 -- Liste der vergiftbaren Items
    ListPo = {}
    ListPo = {15,47,49,64,73,80,81,147,151,160,163,191,199,200,201,237,293,294,302,303,306,307,322,353,354,355,388,552,553,554,555,553,557,559,2276,2277,2278,2456,2459,2922,2923}
-   for i = 1, table.getn(ListPo) do
+   for i = 1, #ListPo do
       if Targetitem.id_id == ListPo[i] then
          Targetitem.id_data = Sourceitem.id_data
          Targetitem.id_quality = Sourceitem.id_quality

@@ -83,7 +83,7 @@ function M.causeDamage( Item, DamagedArea, DamagedAttrib, ShieldAttribs, gfxid, 
             end
             -- Teile durch die Menge der angegebenen Attribute um den Mittelwert zu erhalten
             -- 0 - 20
-            AttribEffect = AttribEffect / table.getn( ShieldAttribs );
+            AttribEffect = AttribEffect / # ShieldAttribs ;
 
             -- Sch�tzender Einfluss der Attribute besteht sich aus dem Quadrat des Mittelwertes * 2
             -- 0 - 800
@@ -143,7 +143,7 @@ function M.damageItemDura( Item, targetArea, gfxid, sfxid, modifier, ItemType )
                 elseif ItemType == "weapon" then
                     found, thisWeapon = world:getWeaponStruct( slotItem.id );
                 elseif ItemType == "wood" then
-                    found = M.checkWoody( slotItem.id, 0, table.getn( ListeObjHolz ) );
+                    found = M.checkWoody( slotItem.id, 0, # ListeObjHolz  );
                 else
                     found = true;
                 end
@@ -197,7 +197,7 @@ function M.damageItemQual( Item, targetArea, gfxid, sfxid, modifier, ItemType )
                 elseif ItemType == "weapon" then
                     found, thisWeapon = world:getWeaponStruct( slotItem.id );
                 elseif ItemType == "wood" then
-                    found = M.checkWoody( slotItem.id, 0, table.getn( ListeObjHolz ) );
+                    found = M.checkWoody( slotItem.id, 0, # ListeObjHolz  );
                 else
                     found = true;
                 end
@@ -284,11 +284,11 @@ function M.selectCharacter( targetPosis )
         end
     end
 
-    if table.getn( finePosis ) == 0 then
+    if # finePosis  == 0 then
         return false;
     end
 
-    return finePosis[ math.random( 1, table.getn( finePosis ) ) ];
+    return finePosis[ math.random( 1, # finePosis  ) ];
 end
 
 ---- HITPOINT WURFBOMBEN ----

@@ -264,7 +264,7 @@ function GenLangSkill(User)
         User:increaseSkill(1,"elf language",100-Skill);
         retVal=11;
     else
-        for i=1,table.getn(ListOfRaces) do
+        for i=1,#ListOfRaces do
             if (ListOfRaces[i]==Race) then
                 maxSkill=math.floor(ListOfSkill[i]*(Int/18));
                 if (Skill>=maxSkill) then

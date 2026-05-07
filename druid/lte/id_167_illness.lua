@@ -44,7 +44,7 @@ function M.getEffect_1(Character,Runde)
 		Character:inform("Runde "..Runde)
 		L = {1,3,4,9,10,11};
 		for i=0,3 do
-			curItem = Character:getItemAt(L[math.random(1,table.getn(L))]);
+			curItem = Character:getItemAt(L[math.random(1,#L)]);
 			if curItem.id >0 then break end;
 		end
 		if curItem == 0 then
@@ -125,7 +125,7 @@ function M.getEffect_3(Character,Effect,Runde)
    if Runde == 1 then
 --    wieder die alten Werte herstellen
       sprache = {"ancient language","orc language","dwarf language","elf language","lizard language","fairy language","goblin language","gnome language","halfling language","human language"}
-      for i = 1, table.getn(sprache) do
+      for i = 1, #sprache do
          find,wert = Effect:findValue(sprache[i])
          if find then
             Character:increaseSkill(sprache[i],wert)
@@ -205,7 +205,7 @@ function M.getEffect_4(Character,Runde)
 			paranoiaList[1][11] = "Der Boden bricht auf. Flammen schie�en aus dem Boden und mit ihnen steigt eine Kreatur mir roter Haut, blutigen Klauen und einer abscheulichen Fratze hervor. Ein D�mon, da hilft nur die Flucht!";
 			paranoiaList[2][11] = "The ground trembles and cracks open. Flames shoot up from the cracks and with them a creature with red skin, bloody claws and hideous grimace arises: a demon.";
 		end
-		local chance = math.random(1,table.getn(paranoiaList[1]));
+		local chance = math.random(1,#paranoiaList[1]);
 		local race = Character:get_race() + 1;
 		if race > 9 then race = 4 end;
 		base.common.TempInformNLS(Character,

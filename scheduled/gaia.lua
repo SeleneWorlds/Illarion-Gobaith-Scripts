@@ -37,9 +37,9 @@ function M.Init()
     M.AddPlant(155,{7},1,{4,10,5,1},0);          -- Sibanac Blatt
     M.AddPlant(156,{3},1,{10,1,2,4},0);          -- Steppenfarn
 	M.AddPlant(2696,{2,4,5},1,{6,4,8,1},80);	   -- Federn
-	
+
 	-- Pflanzen des DS-Systems mit SonderID in data
-    M.AddPlant(133,{4},1,{8,10,6,0},9001); -- "Einbl�ttrige Vierbeere" / "oneleaved fourberry" 
+    M.AddPlant(133,{4},1,{8,10,6,0},9001); -- "Einbl�ttrige Vierbeere" / "oneleaved fourberry"
 	M.AddPlant(134,{4},1,{6,0,6,10},9002); -- "Blaue Vogelbeere" / "blue birdsberry"
     M.AddPlant(135,{5},1,{10,6,0,8},9003); -- "Schwefelkraut" / "sulfur weed"
     M.AddPlant(136,{5},1,{0,6,10,7},9004); -- "Frommbeere" / "pious berry"
@@ -52,14 +52,14 @@ function M.Init()
     M.AddPlant(144,{2},1,{6,0,6,10},9010); -- "Altweiberkraut" / "gossamer weed"
     M.AddPlant(145,{4},1,{10,6,0,6},9011); -- "Regenkraut" / "rain weed"
     M.AddPlant(146,{3},1,{6,10,6,0},9012); -- "Gottesblume" / "godsflower"
-    M.AddPlant(148,{2},1,{6,10,6,0},9014); -- "Trugbl�te" / "con blossom" 
+    M.AddPlant(148,{2},1,{6,10,6,0},9014); -- "Trugbl�te" / "con blossom"
     M.AddPlant(156,{2},1,{0,6,10,6},9015); -- "Wolfsfarn" / "wolverine fern"
     M.AddPlant(153,{4},1,{6,10,6,0},9016); -- "Wiesen-Rhabarber" / "meadow rhabarb"
-       	
+
     -- 0 alle / 1 Acker / 2 Wald / 3 Sand / 4 Wiese / 5 Fels / 6 Wasser / 7 Dreck
 
-    anz_pflanzen = table.getn(plnt);
-    anz_voraussetzungen = table.getn(grnd);
+    anz_pflanzen = #plnt;
+    anz_voraussetzungen = #grnd;
 end
 
 function M.plantdrop()
@@ -91,7 +91,7 @@ function M.plantdrop()
         end
 
         if success then
-            check = grnd[auswahl][math.random(1,table.getn(grnd[auswahl]))]
+            check = grnd[auswahl][math.random(1,#grnd[auswahl])]
             pflwert = dataval[auswahl]
             ---- Standortbestimmung
             newpos = position( math.random(0,1000), math.random(0,1000), 0 );
@@ -103,9 +103,9 @@ function M.plantdrop()
               -- 1. Qualifizierung : werte nach zufall anpassen, wertstellung auf alchemie-bed�rfnisse anpassen
               qualitaet = math.random(111,999)
               -- 2. Qualifizierung : wertstellung an Jahreszeiten und Boden anpassen
-  
+
               -- 3. Qualifizierung: wertstellung unter Ber�cksichtigung von Umgebungskomponenten,. Wetter, Region etc.
-  
+
               -- --------------------------------------------------------------------------------------------------------
                 world:createItemFromId(plnt[auswahl],1,newpos,false,qualitaet,pflwert);
             end

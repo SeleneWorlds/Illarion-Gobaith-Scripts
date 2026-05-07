@@ -78,7 +78,7 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 			Keydata=669;
 		end
 		User:createItem( 2144, 1, 333, Keydata );
-	
+
 	elseif SourceItem.data == 111 and SourceItem.itempos == 2 then
 		if counter == 1 then
 			RingOfPower(User);
@@ -98,7 +98,7 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 end
 
 function M.RingOfPower(User)
-	
+
 	local pos = base.common.GetFrontPosition(User);
 	world:gfx(2,pos);
 	world:makeSound(4,pos);
@@ -109,7 +109,7 @@ function M.RingOfPower(User)
 end
 
 function M.RoadToNode(User, effectType)
-	
+
 	local charList = world:getPlayersInRangeOf(User.pos, 5);
 	local validChars = {};
 	local retVal = false;
@@ -122,7 +122,7 @@ function M.RoadToNode(User, effectType)
 		end
 	end
 	if retVal then
-		local target = validChars[math.random(1,table.getn(validChars))];
+		local target = validChars[math.random(1,#validChars)];
 		local effect = CLongTimeEffect(29,1);
 		effect:addValue("effectType", effectType);
 		target.effects:addEffect(effect);
@@ -131,7 +131,7 @@ function M.RoadToNode(User, effectType)
 end
 
 function M.RemoveMuckyLuck(User, TargetItem)
-	
+
 	local radius = 2;
 	local foodItems = {158,159,162};
 	if TargetItem.id ~= 0 then
@@ -159,7 +159,7 @@ function M.RemoveMuckyLuck(User, TargetItem)
 end
 
 function M.MuckyLuck(User)
-	
+
 	local radius = 2;
 	local foodItems = {158,159,162};
 	local pos = base.common.GetFrontPosition(User);
@@ -171,7 +171,7 @@ function M.MuckyLuck(User)
 		event = function(posi)
 			item = world:getItemOnField(posi);
 			if item.id == 0 then
-				count = (count > table.getn(foodItems)) and 1 or count;
+				count = (count > #foodItems) and 1 or count;
 				item = world:createItemFromId(foodItems[count],1,posi,false,333,0);
 				item.wear = 255;
 				world:changeItem(item);

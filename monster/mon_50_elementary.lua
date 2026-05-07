@@ -203,7 +203,7 @@ function enemyOnSight(Monster,Enemy)
                 if (Monster:increaseAttrib("racetyp",0) ~= 25) then
                     Monster:setAttrib("racetyp",25);
                 else
-                    Monster:setAttrib("racetyp",racelist[math.random(1,table.getn(racelist))]);
+                    Monster:setAttrib("racetyp",racelist[math.random(1,#racelist)]);
                 end
                 oldpos = Monster.pos;
                 Monster:warp(position(0,0,0));
@@ -242,7 +242,7 @@ function onDeath(Monster)
     if killer[Monster.id] ~= nil then
 
         murderer=getCharForId(killer[Monster.id]);
-    
+
         if murderer then
             killer[Monster.id]=nil;
             murderer=nil;

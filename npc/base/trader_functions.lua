@@ -47,7 +47,7 @@ end
 function CalcPrice(stdPrice,actAmount,stdAmount)  -- TraderItemPrice[..]->CalcPrice(TraderItemPrice[..],TraderItemNumber[..],TraderItemStandard);
     if (stdAmount == 4294967295) then
         return stdPrice;
-    else 
+    else
         if (actAmount*2<stdAmount) then    --less than 1/2 of standard
             return math.floor(stdPrice*1.5);
         elseif (actAmount<=2*stdAmount) then      -- 1/2 to 2*standard
@@ -167,7 +167,7 @@ end
 -- Folgende Liste wird nicht korrekt zur�ckgegeben (Gold fehlt). Die ts-Version hat sie nicht (Schlamperei).  An Vilarion wenden(dalli).
 -- Return 1: Liste {Bezahltes Silber (int), Bezahltes Kupfer (int)}
 function Pay(User,Gold,Silber,Kupfer)
-    
+
     local GoldID=61;
     local SilberID=3077;
     local KupferID=3076;
@@ -184,12 +184,12 @@ function Pay(User,Gold,Silber,Kupfer)
     local GoldAlsKupfer=0;
     local SilberAlsKupfer=0;
     local GoldAlsSilber=0;
-    
+
     GoldAlsKupfer = math.min( MissGold, math.floor( UserKupfer/10000 ) );
     PayKupfer = GoldAlsKupfer * 10000;
     MissGold = MissGold - GoldAlsKupfer;
     UserKupfer = UserKupfer - PayKupfer;
-    
+
     GoldAlsKupfer = math.floor( UserKupfer/100 );
     GoldAlsSilber = 100 - GoldAlsKupfer;
     if ((MissGold > 0) and (GoldAlsKupfer > 0) and (UserSilber >= GoldAlsSilber)) then
@@ -199,24 +199,24 @@ function Pay(User,Gold,Silber,Kupfer)
         UserKupfer = UserKupfer - 100 * GoldAlsKupfer;
         UserSilber = UserSilber - GoldAlsSilber;
     end;
-    
+
     SilberAlsKupfer = math.min( MissSilber, math.floor( UserKupfer/100 ) );
     PayKupfer = PayKupfer + SilberAlsKupfer * 100;
     MissSilber = MissSilber - SilberAlsKupfer;
     UserKupfer = UserKupfer - SilberAlsKupfer * 100;
-    
+
     if (UserKupfer >= MissKupfer) then
         PayKupfer = PayKupfer + MissKupfer;
     else
         MissSilber = MissSilber + 1;
         PayKupfer = PayKupfer + MissKupfer - 100;
     end;
-    
+
     GoldAlsSilber = math.min( MissGold, math.floor( UserSilber/100 ) );
     PaySilber = PaySilber + GoldAlsSilber * 100;
     MissGold = MissGold - GoldAlsSilber;
     UserSilber = UserSilber - GoldAlsSilber * 100;
-    
+
     if (UserSilber >= MissSilber) then
         PayGold = MissGold;
         PaySilber = PaySilber + MissSilber;
@@ -224,8 +224,8 @@ function Pay(User,Gold,Silber,Kupfer)
         PayGold = MissGold + 1;
         PaySilber = PaySilber + MissSilber - 100;
     end;
-    
-        
+
+
     if (PayGold>0) then
         User:eraseItem(GoldID,PayGold);
     end
@@ -276,8 +276,8 @@ end
 
 -- Erstellt Item Quality Wert aus den Gegebenen Gr��en
 function GenQual(QualList,DuraList)
-    local Qualcount=table.getn(QualList);
-    local Duracount=table.getn(DuraList);
+    local Qualcount=#QualList;
+    local Duracount=#DuraList;
     local retQual=0;
     local Qual=0;
     local Dura=0;
@@ -301,7 +301,7 @@ end
 
 --function QualPrice(StdPrice,Itemqual,QualList)
 --    local retPrice=0;
---    if (table.getn(QualList)==0) then
+--    if (#QualList==0) then
 --        retPrice=StdPrice;
 --    else
 --        local ItemQuality=math.floor(Itemqual/100);
@@ -354,7 +354,7 @@ function Buying(originator, message)
                 ActPrice=CalcPrice(TraderItemPrice[itnCnt],TraderItemNumber[itnCnt]+count,TraderItemStandard[itnCnt]);
                 if (ActPrice~=0) then                                -- if he sells it
                     if(TraderItemNumber[itnCnt]>=count) then                         -- if he has enough of it
-                        GPrice,SPrice,CPrice=CalcSilverCopper(ActPrice*count);                        
+                        GPrice,SPrice,CPrice=CalcSilverCopper(ActPrice*count);
                         if CheckMoney(originator,GPrice,SPrice,CPrice) then   -- if he has enough money
                             created=originator:createItem(TraderItemId[itnCnt],count,GenQual(TraderItemQuality[itnCnt],TraderItemDura[itnCnt]),TraderItemData[itnCnt])
                             if (created ~=0 ) then
@@ -367,7 +367,7 @@ function Buying(originator, message)
                                 else
                                     retStatus=1;
                                 end
-                                retValues={count,TraderItemId[itnCnt],GPrice,SPrice,CPrice};                                
+                                retValues={count,TraderItemId[itnCnt],GPrice,SPrice,CPrice};
                                 if (TraderItemNumber[itnCnt] ~= 4294967295) then
                                     TraderCopper=TraderCopper +ActPrice*count;
                                     TraderItemNumber[itnCnt]=TraderItemNumber[itnCnt]-count;
@@ -386,7 +386,7 @@ function Buying(originator, message)
                 foundItem=true;
             end
             itnCnt = itnCnt+1;
-        until ((itnCnt==table.getn(TraderItemId)+1) or foundItem)           -- until no more items or we found one
+        until ((itnCnt==#TraderItemId+1) or foundItem)           -- until no more items or we found one
         if (foundItem==false) then
             retStatus=5;
         end
@@ -429,7 +429,7 @@ function SayPriceSell(originator, message)
                     retValues={TraderItemId[i],GPrice,SPrice,CPrice};
                 end
             end
-        until (i==table.getn(TraderItemId) or foundItem)
+        until (i==#TraderItemId or foundItem)
     end
     return retStatus,retValues
 end
@@ -471,7 +471,7 @@ function SayPriceBuy(originator, message)
                     retValues={artic,TraderItemId[i],GPrice,SPrice,CPrice};
                 end
             end --if
-        until (i==table.getn(TraderItemId) or foundItem)
+        until (i==#TraderItemId or foundItem)
     end
     return retStatus,retValues
 end
@@ -552,7 +552,7 @@ function Selling(originator, message)
                 foundItem=true;
             end --string find (itemname)
             itnCnt = itnCnt + 1;
-        until ((itnCnt==table.getn(TraderItemId)+1) or foundItem)           -- until no more items or we found one
+        until ((itnCnt==#TraderItemId+1) or foundItem)           -- until no more items or we found one
         if (foundItem==false) then
             retStatus=12;
         end
@@ -572,7 +572,7 @@ function ShowItemList(originator,message)
     if not NPCStatus then
         NPCStatus = { };
     end
-    
+
     local retStatus=0;
     local retValues={};
     local Itemthere=false;
@@ -592,7 +592,7 @@ function ShowItemList(originator,message)
         local i=0;
         local CatFound=false;
         local View=0;
-        if (table.getn(TraderCat)>1) then
+        if (#TraderCat>1) then
         	  --originator:inform("Categories!");
             repeat
                 i=i+1;
@@ -600,7 +600,7 @@ function ShowItemList(originator,message)
                     CatFound=true;
                     View=i;
                 end
-            until (CatFound or i==table.getn(TraderCat))
+            until (CatFound or i==#TraderCat)
             --originator:inform("Searching finished");
             if (View==0) then
             	  --originator:inform("And there really is one");
@@ -612,7 +612,7 @@ function ShowItemList(originator,message)
                     CheckVal=4;
                 end
                 --originator:inform("And got if it is selling or buying");
-                for itnCnt=1,table.getn(TraderCat) do
+                for itnCnt=1,#TraderCat do
                 	  --originator:inform("Now Run throw the categories");
                     if TraderCat[itnCnt][CheckVal] then
                     	  --originator:inform("Got the correnct one");
@@ -625,8 +625,8 @@ function ShowItemList(originator,message)
         end
         if not Itemthere then
             Status=1;
-            ItemListMenu=MenuStruct();        
-            for itnCnt=1,table.getn(TraderItemId) do
+            ItemListMenu=MenuStruct();
+            for itnCnt=1,#TraderItemId do
                 if (priceList[itnCnt]~=0 and TraderItemCate[itnCnt]==View) then
                     Itemthere=true;
                     ItemListMenu:addItem(TraderItemId[itnCnt]);
@@ -680,7 +680,7 @@ function AddTraderItem(BuyPrice,ItemId,ItemNumber,SellPrice,ItemStandard,Qual,Du
         table.insert(TraderItemCate,0);
     else
         table.insert(TraderItemCate,Category);
-    end        
+    end
 end
 
 -- Next Cycle Funktion f�r H�ndler
@@ -696,7 +696,7 @@ function TraderCycle()
             nextDelivery=math.random(RefreshTime[1],RefreshTime[2]);
             cycCount=1;
             --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);
-            for itnCnt=1,table.getn(TraderItemNumber) do
+            for itnCnt=1,#TraderItemNumber do
                 refillItems(itnCnt);
             end
             refillMoney();
@@ -709,7 +709,7 @@ end
 -- Eingabe Werte:
 --  1. Trigger Text
 function AddItemTrigger(TrigText)
-    local CurrentItem=table.getn(TraderItemId)
+    local CurrentItem=#TraderItemId
     if (TraderItemName[CurrentItem]==nil) then
         TraderItemName[CurrentItem]={};
     end
@@ -733,7 +733,7 @@ function CheckCatTrigger(message,Category)
         else
             k=k+1;
         end
-    until (k==table.getn(TriggerList) or found)
+    until (k==#TriggerList or found)
     return found
 end
 
@@ -751,7 +751,7 @@ function CheckItemTrigger(message,ItemPoint)
                 if (string.find(message,TraderItemName[ItemPoint][t])~=nil) then
                     retVal=true;
                 end
-            until (retVal or (t==table.getn(TraderItemName[ItemPoint])))
+            until (retVal or (t==#TraderItemName[ItemPoint]))
             return retVal
         else
             return false
@@ -763,16 +763,16 @@ function NPCUsed(user,counter,param)
     if not NPCStatus then
         NPCStatus = { };
     end
-    if (param == 0) then    
+    if (param == 0) then
         local newMenu = MenuStruct();
         newMenu:addItem( 3076 );
         newMenu:addItem( 3077 );
-        user:sendMenu( newMenu );   
+        user:sendMenu( newMenu );
     elseif ( param == 3076 ) then
-        ShowItemList(user,"what sell"); 
+        ShowItemList(user,"what sell");
         NPCStatus[user.id] = 0;
     elseif ( param == 3077 ) then
-        ShowItemList(user,"what buy"); 
+        ShowItemList(user,"what buy");
         NPCStatus[user.id] = 1;
     elseif ( NPCStatus[user.id] == 0 ) then
         Buying( user, "buy" .. world:getItemName(param, user:getPlayerLanguage()));

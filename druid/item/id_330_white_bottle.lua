@@ -25,7 +25,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 	ListSkillGroup={1,1,1,1,1,1,1,1,1,1}
 
 
-  for i=1,table.getn(ListCodecs) do
+  for i=1,#ListCodecs do
     if Sourceitem.id_data == ListCodecs[i] then
 
       find, myEffect = Character.effects:find(330);

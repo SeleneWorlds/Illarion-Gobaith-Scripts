@@ -112,21 +112,21 @@ function Craft:AddActiveTool( InactiveItemID, ItemID )
 end
 
 function Craft:AddCategory( ItemID )
-    local CatID = table.getn(self.Category) + 1;
+    local CatID = #self.Category + 1;
     self.Category[ CatID ] = { ["ItemID"] = ItemID, ["minSkill"] = 0 };
     return CatID;
 end
 
 
 function Product:AddProductionSteps( ItemList, Amount, LeftOvers, FailLeftOvers, UseDataToWork )
-    local offset = table.getn(self["ProductionSteps"]);
+    local offset = #self["ProductionSteps"];
     for i=1,Amount do
         self["ProductionSteps"][offset+i] = ItemList;
         self["LeftOvers"][offset+i] = LeftOvers;
         self["FailLeftOvers"][offset+i] = FailLeftOvers;
         self["UseDataToWork"][offset+i] = UseDataToWork;
     end;
-    self["QualPerStep"] = 100 / table.getn(self["ProductionSteps"]);
+    self["QualPerStep"] = 100 / #self["ProductionSteps"];
 end
 
 function Product:AddDummySteps( Amount )
@@ -153,7 +153,7 @@ function Craft:AddProduct( CatID, ItemID, Difficulty, Quantity, TimePerStep, Rep
             self.CategoryContent[ self.Category[ CatID ].ItemID ] = { };
         end
         table.insert(self.CategoryContent[ self.Category[ CatID ].ItemID ],ItemID);
-        if (table.getn(self.CategoryContent[ self.Category[ CatID ].ItemID ]) == 1) then
+        if (#self.CategoryContent[ self.Category[ CatID ].ItemID ] == 1) then
             self.Category[ CatID ].minSkill = Difficulty[1];
         else
             self.Category[ CatID ].minSkill = math.min(self.Category[ CatID ].minSkill,Difficulty[1]);
@@ -357,7 +357,7 @@ end
 function Craft:LocationFine( User, ltstate, mode )
     if (self.Tool ~= 0) then
         local StaticTool = base.common.GetFrontItemID( User );
-        if ((ltstate ~= Action.success) and (self.ToolLink[StaticTool] ~= StaticTool) and (table.getn(self.ActiveTool) ~= 0)) then
+        if ((ltstate ~= Action.success) and (self.ToolLink[StaticTool] ~= StaticTool) and (#self.ActiveTool ~= 0)) then
             if self.ActiveTool[StaticTool] then
                 if not mode then
                     base.common.TempInformNLS(User,
@@ -424,9 +424,9 @@ function Craft:LocationFine( User, ltstate, mode )
 end
 
 function Craft:CheckInterrupt(User)
-    if (table.getn(self.Interrupt_Messages) > 0) then
+    if (#self.Interrupt_Messages > 0) then
         if base.common.IsInterrupted( User ) then
-            local message = math.random(1,table.getn(self.Interrupt_Messages));
+            local message = math.random(1,#self.Interrupt_Messages);
             base.common.TempInformNLS(User,
             self.Interrupt_Messages[message].german,
             self.Interrupt_Messages[message].english);
@@ -437,7 +437,7 @@ function Craft:CheckInterrupt(User)
 end
 
 function Craft:GenerateMenu( User, toolItem )
-    if (table.getn(self.Category) == 0) then
+    if (#self.Category == 0) then
         return false;
     end
     local StaticTool = base.common.GetFrontItemID( User );
@@ -456,7 +456,7 @@ function Craft:GenerateItemList( User, Param, toolItem )
     local StaticTool = base.common.GetFrontItemID( User );
     local Skill = self:ModifySkill(User,toolItem);
     local ItemMenu=MenuStruct(  );
-    if (table.getn(self.Category) == 0) then
+    if (#self.Category == 0) then
         for i, Item in pairs(self.Products) do
             if (Item.Difficulty[1] <= Skill) then
                 ItemMenu:addItem( i );
@@ -642,7 +642,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
     if self:checkSuccess(User, ItemID,toolItem) then
         local ItemQual = 0;
         local ItemCount = 1;
-        if (Step == table.getn(self.Products[ ItemID ].ProductionSteps)) then -- Item fertig -> Finale Qualit�t
+        if (Step == #self.Products[ ItemID ].ProductionSteps) then -- Item fertig -> Finale Qualit�t
             ItemQual = self:GenerateQuality( User, ItemID, toolItem );
             ItemCount = self.Products[ ItemID ].Quantity;
 			base.common.TempInformNLS(User,

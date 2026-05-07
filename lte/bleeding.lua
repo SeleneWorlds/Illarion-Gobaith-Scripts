@@ -39,7 +39,7 @@ function M.callEffect( BleedingEffect, Victim )
     if ( wounds > 0 ) and ( math.random( 1, math.min( 1, 6-wounds ) ) == 1 ) then
         M.dropTheBlood( Victim.pos );
     end
-    
+
     if ( wounds > 0 ) then
         BleedingEffect.nextCalled = 10;
         foundNextStep, nextStep = BleedingEffect:findValue( "nextActiveStep" );
@@ -60,8 +60,8 @@ function M.callEffect( BleedingEffect, Victim )
                 if( i == 15 ) then
                     return true;
                 end
-                targetAttrib = lowerAttribs[math.random(1,table.getn(lowerAttribs))];
-            until( Victim:increaseAttrib(targetAttrib,0) <= 4 );               
+                targetAttrib = lowerAttribs[math.random(1,#lowerAttribs)];
+            until( Victim:increaseAttrib(targetAttrib,0) <= 4 );
             Victim:increaseAttrib(targetAttrib,-1);
             foundAttrib, Attribmod = BleedingEffect:findValue( targetAttrib );
             if not foundAttrib then

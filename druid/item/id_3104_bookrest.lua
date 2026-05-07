@@ -342,7 +342,7 @@ function M.skilllost(User)
 
 
 	end
-	num = math.random(table.getn(skL))
+	num = math.random(#skL)
 	if User:getSkill( skL[num] ) > 0 then
 		User:increaseSkill(grL[num],skL[num],-3)
 	end

@@ -9,13 +9,13 @@ function M.InvisibleCross()
         if not listfine then break; end
         players = world:getPlayersInRangeOf(posi,4);
         makeCircle = false;
-        if (table.getn(players)>0) then
+        if (#players>0) then
             for i, player in pairs(players) do
                 if (player:increaseAttrib("hitpoints",0) == 0) then
-                    makeCircle = true;                  
-                    
+                    makeCircle = true;
+
                     world:gfx(rescureGFX,player.pos);
-                    
+
                     player:increaseAttrib("hitpoints",1); -- Da lebt er wieder
                     if (player:increaseAttrib("foodlevel",0) < 10000) then
                         player:increaseAttrib("foodlevel",-(player:increaseAttrib("foodlevel",0)-10000))
@@ -41,14 +41,14 @@ function M.InvisibleCross()
             end
             if makeCircle then
                 M.CreateCircle(lineGFX,posi,4);
-            elseif ((math.random(1,5) == 1) and (randGFX ~= 0)) then                
+            elseif ((math.random(1,5) == 1) and (randGFX ~= 0)) then
                 world:gfx(randGFX,position(posi.x+math.random(-2,2),posi.y+math.random(-2,2),posi.z));
-            end            
+            end
         end
     until (false)
 end
-        
-        
+
+
 function M.CrossPositions(ListID)
     if (ListID == 1) then     return true,position(-249,  41,-25), 9,44, 0; -- Blackstone Temple
     elseif (ListID == 2) then return true,position( 295,-341, -6),32,45, 0; -- Northerot
@@ -56,7 +56,7 @@ function M.CrossPositions(ListID)
     elseif (ListID == 4) then return true,position(-366,-474,  0),52,31,46; -- Northmark
     end
     return false;
-end  
+end
 
 function M.CreateCircle(GFXid,CenterPos,Radius)
     if (GFXid == 0) then
@@ -66,14 +66,14 @@ function M.CreateCircle(GFXid,CenterPos,Radius)
     local dim = 2*(irad+1);
     local x;
     local y;
-    local map = {} ;        
+    local map = {} ;
     for x = -irad-1, irad do
         map[x] = {};
         for y = -irad-1, irad do
             map[x][y] = (x+0.5)*(x+0.5)+(y+0.5)*(y+0.5)-irad*irad > 0
         end;
     end;
-    
+
     for x = -irad, irad do
         for y = -irad, irad do
             if not( map[x][y] and  map[x-1][y] and map[x][y-1] and map[x-1][y-1] )
@@ -82,7 +82,7 @@ function M.CreateCircle(GFXid,CenterPos,Radius)
             end
         end
     end
-end  
+end
 
 function M.LangSkillName(Race)
     if (Race == 0) then return "human language"

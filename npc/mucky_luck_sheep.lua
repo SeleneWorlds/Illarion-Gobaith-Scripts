@@ -6,7 +6,7 @@ require("base.common")
 module("npc.mucky_luck_sheep", package.seeall)
 
 function InitNPC()
-	
+
 	if not InitDone then
 		InitDone = true;
 		singleNPCInit = {};
@@ -16,7 +16,7 @@ function InitNPC()
 		moving = {};
 		centerPos = {};
 	end
-	
+
 	if not singleNPCInit[thisNPC.id] then
 		singleNPCInit[thisNPC.id] = true;
 		thisNPC:increaseSkill(1,"common language",100);
@@ -26,7 +26,7 @@ function InitNPC()
 		moving[thisNPC.id] = false;
 		local eatNum = 10;
 		centerPos[thisNPC.id] = position(thisNPC.pos.x, thisNPC.pos.y, thisNPC.pos.z);
-		
+
 		local cur = 0;
 		for i=1,(eatNum) do
 			repeat
@@ -38,9 +38,9 @@ function InitNPC()
 end
 
 function nextCycle()
-	
+
 	InitNPC();
-	
+
 	if endGame[thisNPC.id] == 0 then
 		world:deleteNPC(thisNPC.id);
 		--[[
@@ -57,12 +57,12 @@ function nextCycle()
 		world:makeSound(4, thisNPC.pos);
 		world:createItemFromId(173,1,thisNPC.pos,true,333,0);
 	end
-	
+
 	if moving[thisNPC.id] then
 		moving[thisNPC.id] = false;
 		eat();
 	end
-	
+
 	if nextCheck[thisNPC.id] == 0 then
 		moveSheep();
 		moving[thisNPC.id] = true;
@@ -73,12 +73,12 @@ function nextCycle()
 			world:makeSound(2,thisNPC.pos);
 		end
 	end
-	
+
 	nextCheck[thisNPC.id] = nextCheck[thisNPC.id] - 1;
 end
 
 function eat()
-	
+
 	if eatAt[thisNPC.id][endGame[thisNPC.id]] then
 		local foodItems = {158,159,162};
 		local curItem = world:getItemOnField(thisNPC.pos);
@@ -98,21 +98,21 @@ function eat()
 			--gText = "#me schaut stumpf zu Boden.";
 			--eText = "#me looks dully to the ground.";
 		end
-		
+
 	end
 end
 
 function moveSheep()
-	
+
 	local nextPos = getPosList(thisNPC.pos);
-	
-	nextPos = nextPos[math.random(1,table.getn(nextPos))];
-	
+
+	nextPos = nextPos[math.random(1,#nextPos)];
+
 	thisNPC:move(base.common.GetDirection(thisNPC.pos,nextPos),true);
 end
 
 function getPosList(curPos)
-	
+
 	local radius = 2;
 	local retList = {};
 	local checkPos;

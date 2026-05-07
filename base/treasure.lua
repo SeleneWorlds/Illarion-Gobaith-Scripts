@@ -41,7 +41,7 @@ local M = {}
             end
         end
     end
-    
+
     function M.GetMonsterList( level )
 
         --Please add any new monsters according to their level!
@@ -59,12 +59,12 @@ local M = {}
         monsters[8]={175, 192, 193, 194, 195, 201, 202, 203, 204, 261, 263, 264, 304, 342, 343, 344, 351, 353, 354}; --Lich, Unholy Alcolyte, Moshran's Warrior, Undead Raptor, Lower Demon Mage, Higher Demon, Higher Demon Warrior, Unholy Archmage, Red Ram, Fire Dragon, Big Red Dragon, Ancient Fire Dragon, Gold Golem, Drown, Swamp Body, Swamp Crawler, Ice Dragon, Big Blue Dragon, Ancient Ice Dragon
         monsters[9]={205, 265, 305, 345, 355}; --Son of Ashkatuul, Son of Bragon, Merinium Golem, Drown King, Son of Tanora
 
-        monster1=monsters[level][math.random(1,table.getn(monsters[level]))];
-        monster2=monsters[level-1][math.random(1,table.getn(monsters[level-1]))];
-        monster3=monsters[level-1][math.random(1,table.getn(monsters[level-1]))];
-        monster4=monsters[level-2][math.random(1,table.getn(monsters[level-2]))];
-        monster5=monsters[level-2][math.random(1,table.getn(monsters[level-2]))];
-        monster6=monsters[level-2][math.random(1,table.getn(monsters[level-2]))];
+        monster1=monsters[level][math.random(1,#monsters[level])];
+        monster2=monsters[level-1][math.random(1,#monsters[level-1])];
+        monster3=monsters[level-1][math.random(1,#monsters[level-1])];
+        monster4=monsters[level-2][math.random(1,#monsters[level-2])];
+        monster5=monsters[level-2][math.random(1,#monsters[level-2])];
+        monster6=monsters[level-2][math.random(1,#monsters[level-2])];
 
         return {monster1,monster2,monster3,monster4,monster5,monster6};
 
@@ -84,13 +84,13 @@ local M = {}
         stuff[9]={{184,1,0},{188,1,0},{698,1,0},{207,1,0},{527,1,0},{916,1,0},{2112,1,0},{2286,1,0},{225,1,0},{2403,1,0},{2660,1,0},{2718,1,0},{70,1,0},{226,1,0},{2447,1,0},{2788,1,0},{185,1,0},{2775,1,0},{205,1,0},{362,1,0},{2284,1,0},{2369,1,0},{2439,1,0},{2636,1,0},{770,1,0},{2113,1,0}}; --visored helmet, large waraxe, serinjah leather boots, battle staff, serinjah leather gloves, ornate tower shield, short chain pants, flame helmet, crown, elven silversteel armor, dwarven axe, elven composite longbow, crossbow, war hammer, mosaic shield, snake sword, black visored helmet, elven rainbowsword, double axe, full leatherarmor, Shield of the Sky, albarian steel plate, cloud shield, poisoned longaxe, knight boots, brass greaves
         stuff[10]={{531,1,0},{696,1,0},{2116,1,0},{2111,1,0},{2360,1,0},{2407,1,0},{2782,1,0},{2783,1,0},{2784,1,0},{2785,1,0},{2777,1,0},{3035,1,0},{2395,1,0},{91,1,0},{2685,1,0},{2739,1,0},{2742,1,0},{2656,1,0},{206,1,0},{334,1,0},{2389,1,0},{2627,1,0},{2640,1,0},{2671,1,0},{2359,1,0},{2400,1,0},{2693,1,0},{2654,1,0},{2704,1,0},{45,1,1},{46,1,1},{197,1,1},{198,1,1},{283,1,1},{284,1,1},{285,1,1}}; --knight gloves, lizard armor, iron greaves, chain pants, Lor-Angur guardian's armor, light breastplate, earthwand, wand of fire, wand of water, wand of wind, drow blade, drow sword, dwarvenplate, malachin dagger, elven shortbow, magical icebow, red fire dagger, fire broadsword, fire longsword, charm of the icebird, salkamaerian armor, fire waraxe, large fire-waraxe, magical dagger, mercenary armor, elven state armor, magical serinjah-sword, magical broadsword, magical longsword, Magical emerald Level 1, Magical ruby Level 1, Magical amethyst Level 1, Magical topaz Level 1, Magical blackstone Level 1, Magical bluestone Level 1, Magical diamond Level 1
         stuff[11]={{2363,1,0},{2626,1,0},{2662,1,0},{2365,1,0},{2399,1,0},{2402,1,0},{2357,1,0},{2367,1,0},{2393,1,0},{2559,1,0},{45,1,2},{46,1,2},{197,1,2},{198,1,2},{283,1,2},{284,1,2},{285,1,2}}; --nightplate, magical waraxe, magical dwarven axe, salkamaerian officer's armor, light elven armor, drow armor, shadowplate, albarian noble's armor, heavy plate armor, ring of the archmage, Magical emerald Level 2, Magical ruby Level 2, Magical amethyst Level 2, Magical topaz Level 2, Magical blackstone Level 2, Magical bluestone Level 2, Magical diamond Level 2
- 
-        stuff1=stuff[level+2][math.random(1,table.getn(stuff[level+2]))];
-        stuff2=stuff[level+1][math.random(1,table.getn(stuff[level+1]))];
-        stuff3=stuff[level+1][math.random(1,table.getn(stuff[level+1]))];
-        stuff4=stuff[level][math.random(1,table.getn(stuff[level]))];
-        stuff5=stuff[level][math.random(1,table.getn(stuff[level]))];
-        stuff6=stuff[level][math.random(1,table.getn(stuff[level]))];
+
+        stuff1=stuff[level+2][math.random(1,#stuff[level+2])];
+        stuff2=stuff[level+1][math.random(1,#stuff[level+1])];
+        stuff3=stuff[level+1][math.random(1,#stuff[level+1])];
+        stuff4=stuff[level][math.random(1,#stuff[level])];
+        stuff5=stuff[level][math.random(1,#stuff[level])];
+        stuff6=stuff[level][math.random(1,#stuff[level])];
 
         return {stuff1,stuff2,stuff3,stuff4,stuff5,stuff6};
 
@@ -99,7 +99,7 @@ local M = {}
     function M.GetQuality( level )
         return math.random(6,9)*100+math.random(50,99);
     end
-    
+
     local treasureMonsters = {};
 
     function M.SpawnMonsters( User, level )
@@ -193,7 +193,7 @@ local M = {}
             return common.GetNLS( User, "fern", "far" );
         elseif ( metricDistance < 500 ) then
             return common.GetNLS( User, "sehr fern", "very far" );
-        else 
+        else
             return common.GetNLS( User, "�u�erst fern", "extremely far" );
         end
     end
@@ -242,7 +242,7 @@ local M = {}
     	    return newPos;
     	end
     end
-    
+
     function M.createMap( Char )
         local MapPosition = M.findPosition( );
         if not MapPosition then
@@ -267,7 +267,7 @@ local M = {}
         while true do
             newPos=position(math.random(475,1000),math.random(0,650),0); --only in the wilderness, outside any homeland
             tileID = world:getField(newPos):tile();
-            if tileID == 2 or tileID == 3 or tileID == 4 or tileID == 8 or tileID == 9 or tileID == 10 or tileID == 11 or tileID == 15 then -- only "non-urban" basic tiles 
+            if tileID == 2 or tileID == 3 or tileID == 4 or tileID == 8 or tileID == 9 or tileID == 10 or tileID == 11 or tileID == 15 then -- only "non-urban" basic tiles
                 if not world:isItemOnField(newPos) then
                     return newPos;
                 end
@@ -279,7 +279,7 @@ local M = {}
         end
         return newPos;
     end
-    
+
     local foundTreasureAt = {};
 
     function M.DigForTreasure( User, TargetPosition, maxToFind, diggingOutMsg, foundMessage )

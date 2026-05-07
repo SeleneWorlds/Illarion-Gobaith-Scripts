@@ -266,7 +266,7 @@ end
 -- --------------------------------------------------------------------
 function M.IsThatAPlant(einItem)
    retVal = false
-   for i =1,table.getn(M.plantList) do
+   for i =1,#M.plantList do
       if M.plantList[i] == einItem.id then
          retVal = true
       end
@@ -276,7 +276,7 @@ end
 -- ---------------------------------------------------------------------
 function M.IsThatABottle(einItem)
    retVal = false
-   for i =1,table.getn(M.bottleList) do
+   for i =1,#M.bottleList do
       if M.bottleList[i] == einItem.id then
          retVal = true
       end

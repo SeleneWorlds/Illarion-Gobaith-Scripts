@@ -46,132 +46,132 @@ function initializeNpc()
     --         TraderItemStandard[1]=25;       -- Standard amount of that ware (used for price calc)
 
 
-    TraderItemPrice[1]=50;          
-    TraderItemId[1]=1;                    
-    TraderItemTrig[1]="[Ss]word";            
-    TraderItemName[1]="sword";              
-    TraderItemNumber[1]=3;                
-    TraderItemSellPrice[1]=0;              
-    TraderItemStandard[1]=3; 
-    
-    TraderItemPrice[2]=0;          
-    TraderItemId[2]=3                    
-    TraderItemTrig[2]="[Ll]ogs of conifer [Ww]ood";            
-    TraderItemName[2]="logs of conifer wood";              
-    TraderItemNumber[2]=0;                
-    TraderItemSellPrice[2]=2;              
+    TraderItemPrice[1]=50;
+    TraderItemId[1]=1;
+    TraderItemTrig[1]="[Ss]word";
+    TraderItemName[1]="sword";
+    TraderItemNumber[1]=3;
+    TraderItemSellPrice[1]=0;
+    TraderItemStandard[1]=3;
+
+    TraderItemPrice[2]=0;
+    TraderItemId[2]=3
+    TraderItemTrig[2]="[Ll]ogs of conifer [Ww]ood";
+    TraderItemName[2]="logs of conifer wood";
+    TraderItemNumber[2]=0;
+    TraderItemSellPrice[2]=2;
     TraderItemStandard[2]=25;
-    
-    TraderItemPrice[3]=30;          
-    TraderItemId[3]=16                    
-    TraderItemTrig[3]="[Vv]iking [Hh]elmet";            
-    TraderItemName[3]="viking helmet";              
-    TraderItemNumber[3]=4;                
-    TraderItemSellPrice[3]=0;              
+
+    TraderItemPrice[3]=30;
+    TraderItemId[3]=16
+    TraderItemTrig[3]="[Vv]iking [Hh]elmet";
+    TraderItemName[3]="viking helmet";
+    TraderItemNumber[3]=4;
+    TraderItemSellPrice[3]=0;
     TraderItemStandard[3]=4;
-    
-    TraderItemPrice[4]=40;          
-    TraderItemId[4]=18                    
-    TraderItemTrig[4]="[Mm]etal [Ss]hield";            
-    TraderItemName[4]="metal shield";              
-    TraderItemNumber[4]=2;                
-    TraderItemSellPrice[4]=0;              
+
+    TraderItemPrice[4]=40;
+    TraderItemId[4]=18
+    TraderItemTrig[4]="[Mm]etal [Ss]hield";
+    TraderItemName[4]="metal shield";
+    TraderItemNumber[4]=2;
+    TraderItemSellPrice[4]=0;
     TraderItemStandard[4]=2;
-    
-    TraderItemPrice[5]=0;          
-    TraderItemId[5]=21                    
-    TraderItemTrig[5]="[Cc]oal";            
-    TraderItemName[5]="coal";              
-    TraderItemNumber[5]=5;                
-    TraderItemSellPrice[5]=1;              
+
+    TraderItemPrice[5]=0;
+    TraderItemId[5]=21
+    TraderItemTrig[5]="[Cc]oal";
+    TraderItemName[5]="coal";
+    TraderItemNumber[5]=5;
+    TraderItemSellPrice[5]=1;
     TraderItemStandard[5]=5;
-    
-    TraderItemPrice[6]=0;          
-    TraderItemId[6]=22                    
-    TraderItemTrig[6]="[Ii]ron [Oo]re";            
-    TraderItemName[6]="iron ore";              
-    TraderItemNumber[6]=0;                
-    TraderItemSellPrice[6]=2;              
+
+    TraderItemPrice[6]=0;
+    TraderItemId[6]=22
+    TraderItemTrig[6]="[Ii]ron [Oo]re";
+    TraderItemName[6]="iron ore";
+    TraderItemNumber[6]=0;
+    TraderItemSellPrice[6]=2;
     TraderItemStandard[6]=5;
-    
-    TraderItemPrice[7]=8;          
-    TraderItemId[7]=23                    
-    TraderItemTrig[7]="[Hh]ammer";            
-    TraderItemName[7]="hammer";              
-    TraderItemNumber[7]=4;                
-    TraderItemSellPrice[7]=0;              
+
+    TraderItemPrice[7]=8;
+    TraderItemId[7]=23
+    TraderItemTrig[7]="[Hh]ammer";
+    TraderItemName[7]="hammer";
+    TraderItemNumber[7]=4;
+    TraderItemSellPrice[7]=0;
     TraderItemStandard[7]=4;
-    
-    TraderItemPrice[8]=8;          
-    TraderItemId[8]=24                    
-    TraderItemTrig[8]="[Ss]hovel";            
-    TraderItemName[8]="shovel";              
-    TraderItemNumber[8]=3;                
-    TraderItemSellPrice[8]=0;              
+
+    TraderItemPrice[8]=8;
+    TraderItemId[8]=24
+    TraderItemTrig[8]="[Ss]hovel";
+    TraderItemName[8]="shovel";
+    TraderItemNumber[8]=3;
+    TraderItemSellPrice[8]=0;
     TraderItemStandard[8]=3;
-    
-    TraderItemPrice[9]=20;          
-    TraderItemId[9]=27                    
-    TraderItemTrig[9]="[Dd]agger";            
-    TraderItemName[9]="dagger";              
-    TraderItemNumber[9]=4;                
-    TraderItemSellPrice[9]=0;              
+
+    TraderItemPrice[9]=20;
+    TraderItemId[9]=27
+    TraderItemTrig[9]="[Dd]agger";
+    TraderItemName[9]="dagger";
+    TraderItemNumber[9]=4;
+    TraderItemSellPrice[9]=0;
     TraderItemStandard[9]=4;
-    
-    TraderItemPrice[10]=0;          
-    TraderItemId[10]=28                    
-    TraderItemTrig[10]="[Oo]ld [Dd]agger";            
-    TraderItemName[10]="old dagger";              
-    TraderItemNumber[10]=0;                
-    TraderItemSellPrice[10]=2;              
+
+    TraderItemPrice[10]=0;
+    TraderItemId[10]=28
+    TraderItemTrig[10]="[Oo]ld [Dd]agger";
+    TraderItemName[10]="old dagger";
+    TraderItemNumber[10]=0;
+    TraderItemSellPrice[10]=2;
     TraderItemStandard[10]=4;
-    
-    TraderItemPrice[11]=0;          
-    TraderItemId[11]=13;                    
-    TraderItemTrig[11]="[Oo]ld [Ss]word";            
-    TraderItemName[11]="old sword";              
-    TraderItemNumber[11]=0;                
-    TraderItemSellPrice[11]=2;              
+
+    TraderItemPrice[11]=0;
+    TraderItemId[11]=13;
+    TraderItemTrig[11]="[Oo]ld [Ss]word";
+    TraderItemName[11]="old sword";
+    TraderItemNumber[11]=0;
+    TraderItemSellPrice[11]=2;
     TraderItemStandard[11]=4;
 
 
 
-    
-    TraderCopper=700; 
-    
-    TraderTrig[1]="[Gg]reetings"; 
-    TraderText[1]="Good day. How are you doing?"; 
-    
-    TraderTrig[2]="[Hh]ello"; 
-    TraderText[2]="I wish you a good day. What can I do for you?"; 
-    
-    TraderTrig[3]="[Yy]ou.+[Tt]rader"; 
-    TraderText[3]="Yes, I trade wares." 
-    
-    TraderTrig[4]="[Ww]hat.+sell"; 
-    TraderText[4]="I sell everything you need for smithing."; 
-    
-    TraderTrig[5]="[Tt]ell.+[Ss]omething"; 
-    TraderText[5]="I don't know what to. You might want to talk to the librarian in Troll's Bane. I am sure he can tell you stories."; 
-    
-    TraderTrig[6]="[Tt]ell.+[Ss]ibanac"; 
-    TraderText[6]="Sibanac can be smoked in pipes. I tend to like it. It makes me feel good."; 
 
-    TraderTrig[7]="[Gg]oodbye"; 
-    TraderText[7]="Have a good day. Feel welcome to come back any time."; 
-    
-    TraderTrig[8]="[Bb]ye"; 
-    TraderText[8]="Farewell."; 
-    
-    TraderTrig[9]="[Ff]arewell"; 
-    TraderText[9]="Goodbye!"; 
-        
-    TraderTrig[10]="[Ww]ho.+you?"; 
-    TraderText[10]="I'm "..thisNPC.name.."."; 
-    
-    TraderTrig[11]="I'm"; 
+    TraderCopper=700;
+
+    TraderTrig[1]="[Gg]reetings";
+    TraderText[1]="Good day. How are you doing?";
+
+    TraderTrig[2]="[Hh]ello";
+    TraderText[2]="I wish you a good day. What can I do for you?";
+
+    TraderTrig[3]="[Yy]ou.+[Tt]rader";
+    TraderText[3]="Yes, I trade wares."
+
+    TraderTrig[4]="[Ww]hat.+sell";
+    TraderText[4]="I sell everything you need for smithing.";
+
+    TraderTrig[5]="[Tt]ell.+[Ss]omething";
+    TraderText[5]="I don't know what to. You might want to talk to the librarian in Troll's Bane. I am sure he can tell you stories.";
+
+    TraderTrig[6]="[Tt]ell.+[Ss]ibanac";
+    TraderText[6]="Sibanac can be smoked in pipes. I tend to like it. It makes me feel good.";
+
+    TraderTrig[7]="[Gg]oodbye";
+    TraderText[7]="Have a good day. Feel welcome to come back any time.";
+
+    TraderTrig[8]="[Bb]ye";
+    TraderText[8]="Farewell.";
+
+    TraderTrig[9]="[Ff]arewell";
+    TraderText[9]="Goodbye!";
+
+    TraderTrig[10]="[Ww]ho.+you?";
+    TraderText[10]="I'm "..thisNPC.name..".";
+
+    TraderTrig[11]="I'm";
     TraderText[11]="Nice to meet you. Do you want to buy some of my wares. Look at what i have. Or do you want to sell something to me?";
-    
+
     TraderTrig[12]="[hH]elp";
     TraderText[12]="'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'";
 end
@@ -189,8 +189,8 @@ function nextCycle()  -- ~10 times per second
             --thisNPC:talk(CCharacter.say, "Next");
             nextDelivery=math.random(40000);
             cycCount=1;
-            --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);            
-            for itnCnt=1,table.getn(TraderItemNumber) do
+            --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);
+            for itnCnt=1,#TraderItemNumber do
                 refill(itnCnt);
             end
         end
@@ -226,7 +226,7 @@ function receiveText(texttype, message, originator)
         initializeNpc();
         TraderFirst=1;
         --TalkToId=originator.id;
-        
+
     end
     if (thisNPC:isInRange(originator,2)) then
         if (originator.id ~= thisNPC.id) then
@@ -237,19 +237,19 @@ function receiveText(texttype, message, originator)
                 if (string.find(message,TraderTrig[i]) ~= nil) then
                     thisNPC:talk(CCharacter.say,TraderText[i]);
                     ready=true;
---                    for gree=1,table.getn(GreetingTrig) do
+--                    for gree=1,#GreetingTrig do
 --                        if i==GreetingTrig[gree] then
 --                            TalkToId=originator.id;
 --                        end
 --                    end
---                    for fare=1,table.getn(FarewellTrig) do
+--                    for fare=1,#FarewellTrig do
 --                        if i==FarewellTrig[gree] then
 --                            TalkToId=0;
 --                        end
 --                    end
                 end
                 i=i+1;
-            until ((i==table.getn(TraderText)+1) or ready)
+            until ((i==#TraderText+1) or ready)
             if (not ready) then
                 if (string.find(message,"buy.+%d.+s")~=nil) then
                     a,b,countStr,itemname=string.find(message,"buy (%d+) (.+s)");               -- ...want to buy <number> <itemS>
@@ -283,7 +283,7 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt+1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
                 elseif (string.find(message,"buy%s.+%s.+")~=nil) then               -- ...want to buy a/one item
                     a,b,itemname=string.find(message,"buy%s[a-zA-Z]*%s([a-zA-Z%s]*)");
                     foundItem=false;
@@ -314,16 +314,16 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt + 1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
 
                 elseif (string.find(message,"price.+") ~= nil or string.find(message,"[Ww]hat.+cost")~=nil) then     -- if asked for price...
-                    for i=1,table.getn(TraderItemTrig) do                           -- run through all triggers
+                    for i=1,#TraderItemTrig do                           -- run through all triggers
                         if (string.find(message,TraderItemTrig[i])~=nil) then       -- if trigger found in question
                             thisNPC:talk(CCharacter.say, "The "..TraderItemName[i].." costs "..CalcPrice(TraderItemPrice[i],TraderItemNumber[i],TraderItemStandard[i]).." copper pieces."); -- tell the price
                         end
                     end --for
                 elseif (string.find(message,"[Yy]ou.+pay.+") ~= nil or string.find(message,"[Hh]ow much.+for.+")~=nil ) then
-                    for i=1,table.getn(TraderItemTrig) do                           -- run through all triggers
+                    for i=1,#TraderItemTrig do                           -- run through all triggers
                         if (string.find(message,TraderItemTrig[i])~=nil) then       -- if trigger found in question
                             if (string.find("aeiou",TraderItemName[i])~=nil) then
                                 artic="an ";
@@ -364,7 +364,7 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt + 1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
                 elseif (string.find(message,"sell%s.+%s.+")~=nil) then
                     a,b,itemname=string.find(message,"sell%s[a-zA-Z]*%s([a-zA-Z%s]*)");      -- ...want to sell a/an/one <itemS>
                     foundItem=false;
@@ -395,10 +395,10 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt + 1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
                 elseif (string.find(message,"[Ll]ist.+wares")~=nil or string.find(message,"[Ww]hat.+sell")~=nil) then                -- asked for a list of his wares
                     wareString="I sell ";
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         if (TraderItemPrice[itnCnt]~=0) then
                             if string.len(wareString)+string.len(TraderItemName[itnCnt])>240 then    -- line too long
                                 thisNPC:talk(CCharacter.say,wareString);                     -- say everything until here
@@ -410,7 +410,7 @@ function receiveText(texttype, message, originator)
                     thisNPC:talk(CCharacter.say,wareString);
                 elseif (string.find(message,"[Ww]hat.+buy")~=nil) then                -- asked for a list of wares he buys
                     wareString="I buy ";
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         if (TraderItemSellPrice[itnCnt]~=0) then
                             if string.len(wareString)+string.len(TraderItemName[itnCnt])>240 then    -- line too long
                                 thisNPC:talk(CCharacter.say,wareString);                     -- say everything until here
@@ -423,7 +423,7 @@ function receiveText(texttype, message, originator)
                 elseif (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                     originator:inform("Copper="..TraderCopper.. ", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                     statusString="Wares: ";
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         if string.len(statusString)+string.len(TraderItemName[itnCnt])>240 then    -- line too long
                             originator:inform(statusString);                     -- say everything until here
                             statusString="";
@@ -432,7 +432,7 @@ function receiveText(texttype, message, originator)
                     end
                     originator:inform(statusString);
                 elseif (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         refill(itnCnt);
                     end
                 end -- string find buy/sell/list...
@@ -440,4 +440,3 @@ function receiveText(texttype, message, originator)
         end --id
     end-- range
 end--function
-

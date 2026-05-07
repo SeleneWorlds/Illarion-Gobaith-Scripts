@@ -80,9 +80,9 @@ function ChoseWaitPos()
             found=true;
             retVal=WaitPosition[i];
         end
-    until (i==table.getn(WaitPosition) or found)
+    until (i==#WaitPosition or found)
     if (retVal==nil) then
-        retVal=WaitPosition[math.random(1,table.getn(WaitPosition))];
+        retVal=WaitPosition[math.random(1,#WaitPosition)];
     end
     return retVal
 end
@@ -95,7 +95,7 @@ function nextCycle()
         RunSettings()
     end
     if InitNewRoute[thisNPC.id] then
-        ChoosePath=math.random(1,table.getn(WalkList));
+        ChoosePath=math.random(1,#WalkList);
         WalkPath[thisNPC.id]=WalkList[ChoosePath];
         FirstPos[thisNPC.id]=StartPosition[ChoosePath];
         laufen[thisNPC.id] = true;
@@ -122,7 +122,7 @@ function nextCycle()
                     warten[thisNPC.id]=true;
                     waitTime[thisNPC.id]=math.random(20,100);
                 end
-            elseif (step[thisNPC.id] > table.getn(WalkPath[thisNPC.id])) then
+            elseif (step[thisNPC.id] > #WalkPath[thisNPC.id]) then
                 thisNPC:warp(ChoseWaitPos());
                 warten[thisNPC.id] = true;
                 waitTime[thisNPC.id] = math.random(200,800);

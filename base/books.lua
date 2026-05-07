@@ -58,7 +58,7 @@ function M.SendBookPage(User,DataVal,Counter)
     if (BookTexts == nil) then
         User:inform("#b|1|0| ");
     else
-        local pages=table.getn(BookTexts);
+        local pages=#BookTexts;
         if ( Counter > pages ) then
             common.InformNLS(User,
             "Dieses Buch hat nur " .. pages .. " Seiten.",

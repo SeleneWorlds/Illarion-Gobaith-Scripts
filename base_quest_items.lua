@@ -129,14 +129,14 @@ function M.changeTileOnPos( User, TileIDs, TilePos, TextDe, TextEn )
     local PosTiles={};
     local TextsDe={};
     local TextsEn={};
-    for i=1,table.getn(TileIDs) do
+    for i=1,#TileIDs do
         if (TileIDs[i]~=Field.tile) then
             table.insert(PosTiles,TileIDs[i]);
             table.insert(TextsDe,TextDe[i]);
             table.insert(TextsEn,TextEn[i]);
         end
     end
-    local Choose=(math.random(1,table.getn(PosTiles)))
+    local Choose=(math.random(1,#PosTiles))
     TileID=PosTiles[Choose];
     world:changeTile(TileID,TilePos);
     world:sendMapUpdate(TilePos,12);

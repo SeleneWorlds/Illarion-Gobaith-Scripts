@@ -203,7 +203,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -213,7 +213,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end
@@ -238,7 +238,7 @@ function lookAtNpc(Char, mode)
         output[1]="A broadly smiling dwarfen barkeeper whose proud beard and clothes are covered with beer stains.";
         initLook=1;
     end
-    
+
     lang=Char:getPlayerLanguage();
     Char:sendCharDescription( thisNPC.id , output[lang] );
 end

@@ -21,7 +21,7 @@ function M.initDoorsToClose()    -- add doors to be closed
 end
 
 function M.checkAllDoors(DoorsToClose)        -- loop through all doors in the list and check wheter we should do something
-    for DoorNr=1, table.getn(DoorsToClose) do       -- loop through all doors that should be closed
+    for DoorNr=1, #DoorsToClose do       -- loop through all doors that should be closed
         thisDoorPos=position(DoorsToClose[DoorNr][1],DoorsToClose[DoorNr][2],DoorsToClose[DoorNr][3]);  -- get position of that door
         if world:isItemOnField(thisDoorPos) then
             thisDoor=world:getItemOnField(thisDoorPos);     -- get this door

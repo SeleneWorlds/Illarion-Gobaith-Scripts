@@ -47,7 +47,7 @@ function BP_PatrolInit(guard)
 				if pos==-1 then
 					if not free then
 						free = j;
-					end	
+					end
 				elseif free then
 					patrol[free] = pos;
 					free = free + 1;
@@ -100,7 +100,7 @@ function BP_ChooseNewPatrol(guard)
 	guard.waypoints:clear();
 	WpPointer = 0;
 	WpDone = 0;
-	local l = table.getn(PatrolList);
+	local l = #PatrolList;
 	if RandomPatrolChooser then
 		PatrolPointer = math.random(1,l);
 	else
@@ -112,7 +112,7 @@ function BP_ChooseNewPatrol(guard)
 	if PatrolList[PatrolPointer].base[2] ~= 0 then
 		WpMax = PatrolList[PatrolPointer].base[2];
 	else
-		WpMax = table.getn(PatrolList[PatrolPointer]);
+		WpMax = #PatrolList[PatrolPointer];
 	end
 	BP_ChooseNewWp();
 end
@@ -120,7 +120,7 @@ end
 -- choose a new waypoint as destination, sequentially or randomly
 function BP_ChooseNewWp()
 	--npcdebug("ChooseNewWp");
-	local l = table.getn(PatrolList[PatrolPointer]);
+	local l = #PatrolList[PatrolPointer];
 	if PatrolList[PatrolPointer].base[1] then
 		WpPointer = math.random(1,l);
 	else

@@ -44,7 +44,7 @@ function initializeNpc()
     npc.base.trader_functions.AddTraderItem(50  ,2751,20,0  ,20  ,{5,7},{77,90},0   ,0); -- crucible pincers
     npc.base.trader_functions.AddTraderItem(40  ,2140,10,3  ,10  ,{4,5},{77,90},0   ,0); -- tongs
     npc.base.trader_functions.AddTraderItem(30  ,311 ,3 ,0  ,30  ,{5,7},{77,90},0   ,0); -- glass blow pipe
-    
+
 
 
     TraderCopper=2000;
@@ -193,7 +193,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -203,7 +203,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

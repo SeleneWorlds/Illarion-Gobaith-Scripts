@@ -23,7 +23,7 @@ function M.checkMissile(ItemData, lower, upper)
         lower = 0;
     end
     if not upper then
-        upper = table.getn( listWK );
+        upper = # listWK ;
     end
 
     if lower > upper then

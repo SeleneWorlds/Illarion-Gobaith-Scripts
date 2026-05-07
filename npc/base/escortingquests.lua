@@ -12,13 +12,13 @@ function initEscorting()
 	dirTexteng	 = {"northeast", "east" , "southeast","south", "southwest", "west"  , "northwest" }; --holds text dependant from direction(english)
 	table.insert (dirTextger , 0, "Norden");
 	table.insert (dirTexteng , 0, "North");
-	
+
 	MaxOffsetToPlayer = 10; --if player is 10 tiles away from the npc the Npc looks for a new escort
-	
+
 	---INIT SPAWNS HERE---
 	AddToSpawn(1, 1, 3); --3 mummies
 	AddToSpawn(1, 2, 5); --5 insects
-	----------------------	
+	----------------------
 end
 
 function AddToSpawn(SpawnID, MonsterID, MonsterAmount) --adds a monster to a spawn
@@ -76,7 +76,7 @@ end
 
 function GetDirToNextWP(thisNPC) --returns the direction to the next waypoint
 	local RangeToCheck = 100;
-	if table.getn(waypoints[thisNPC.id])>0 then
+	if #waypoints[thisNPC.id]>0 then
         --thisNPC:talk(CCharacter.say,"Calculating route to point: x="..waypoints[thisNPC.id][1].x ..", y="..waypoints[thisNPC.id][1].y);
 		fnd,dir = player[thisNPC.id]:getNextStepDir(waypoints[thisNPC.id][1],RangeToCheck);
 		while not fnd do
@@ -86,7 +86,7 @@ function GetDirToNextWP(thisNPC) --returns the direction to the next waypoint
 			if RangeToCheck == 300 then
 				break;
 			end
-		end 
+		end
 		--if fnd == false then thisNPC:talk(CCharacter.say,"fnd=false"); end
 		--if dir == nil then thisNPC:talk(CCharacter.say,"dir = nil"); end
 		--if dir ~=   4 then thisNPC:talk(CCharacter.say,"dir = "..dir); end
@@ -109,7 +109,7 @@ function GetDirToPosition(thisNPC,desPos) --returns the direction to the desired
 			if RangeToCheck == 300 then
 				break;
 			end
-		end 
+		end
 		--if fnd == false then thisNPC:talk(CCharacter.say,"fnd=false"); end
 		--if dir == nil then thisNPC:talk(CCharacter.say,"dir = nil"); end
 		--if dir ~=   4 then thisNPC:talk(CCharacter.say,"dir = "..dir); end
@@ -145,17 +145,17 @@ function BE_nextCycle(thisNPC)
 end
 
 
-function IsEscortingPlayerOnline(thisNPC) --looks whether the Escorting Player is still online 
-	local playerlist = world:getCharactersInRangeOf(thisNPC.pos, MaxOffsetToPlayer); 
+function IsEscortingPlayerOnline(thisNPC) --looks whether the Escorting Player is still online
+	local playerlist = world:getCharactersInRangeOf(thisNPC.pos, MaxOffsetToPlayer);
 	local PlayerOnline = false;
-	
+
 	for key, escort in pairs(playerlist) do
 		if escort.id == player[thisNPC.id].id then
 			PlayerOnline=true;
 		end
 	end
 	return PlayerOnline;
-end	
+end
 
 
 function receiveText(texttype, message, originator)

@@ -39,7 +39,7 @@ function initializeNpc()
     npc.base.trader_functions.AddTraderItem(30  ,271 ,500 ,2  ,300 ,{4,6},{77,90},0   ,0       ); -- scythe
     npc.base.trader_functions.AddTraderItem(30  ,311 ,500 ,2  ,300 ,{4,6},{77,90},0   ,0       ); -- glass blow pipe
     npc.base.trader_functions.AddTraderItem(30  ,737 ,500 ,2  ,300 ,{4,6},{77,90},0   ,0       ); -- chisel
-    
+
     npc.base.trader_functions.AddTraderItem( 10 ,2717,1000,2  ,500 ,{3}  ,{33}   ,0   ,0       ); -- pins & cutters
     npc.base.trader_functions.AddTraderItem(  5 ,2738,1000,1  ,500 ,{3}  ,{33}   ,0   ,0       ); -- pins
     npc.base.trader_functions.AddTraderItem(  0 , 391,500 ,5  ,0   ,{4,6},{77,90},0   ,0       ); -- torch
@@ -107,7 +107,7 @@ function nextCycle()  -- ~10 times per second
             nextDelivery=math.random(10000,40000);
             cycCount=1;
             --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);
-            for itnCnt=1,table.getn(TraderItemNumber) do
+            for itnCnt=1,#TraderItemNumber do
                 refill(itnCnt);
             end
         end
@@ -227,7 +227,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -237,7 +237,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

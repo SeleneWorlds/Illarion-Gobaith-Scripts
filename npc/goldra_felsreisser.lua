@@ -1,6 +1,6 @@
 --[[name="Goldra Felsreisser"
 position=112,-198,-3
-sex=female 
+sex=female
 race=dwarf
 direction=south
 radius=0
@@ -16,15 +16,15 @@ module("npc.goldra_felsreisser", package.seeall)
 
 function useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
-    
+
 	user:talkLanguage(CCharacter.say, CPlayer.german, "#me packt sie an den Armen und schüttelt sie kräftig.");
     user:talkLanguage(CCharacter.say, CPlayer.english, "#me grabs her arms and shakes her forceful.");
     game1.reset();
 	move.reset();
-	
+
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Nimm deine Finger da wech!");
     thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "Dont ya' touch me!");
-    
+
 end
 
 function initializeNpc()
@@ -42,12 +42,12 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ii]c[hk].+hei[sß][se].*");
 	npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddConsequence("state","=",1);
-	
+
 	npc.base.autonpcfunctions.AddTraderTrigger("[Mm]y.+[Nn]ame.+is.*","A pleasure %CHARNAME, call me Goldra, I'm from the Militia of Silverbrand!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ii].+am.*");
 	npc.base.autonpcfunctions.AddCondition("lang","english");
 	npc.base.autonpcfunctions.AddConsequence("state","=",1);
-	
+
 	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[sß]","Tach %CHARNAME, schön dich mal wieder hier zu treffen.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]allo");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sß]");
@@ -59,7 +59,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Uu]ff.+[Bb]ald");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]ünf.+euch");
-	
+
 	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[sß]","Tach auch.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]allo");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]rue[sß]");
@@ -80,14 +80,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("qpg","=",0);
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]o bin ich","Das hier ist Silberbrand, die Stadt der Zwerge auf Gobaith.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-    
-    
+
+
     npc.base.autonpcfunctions.AddTraderTrigger("[Hh]ow.+are.you","I am fine and how are ya'?.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]ie.+gehts","Eigentlich ganz gut, danke der Nachfrage.");
     npc.base.autonpcfunctions.AddAdditionalText("Mir geht es gut und dir?");
-	npc.base.autonpcfunctions.AddCondition("lang","german");  
-	
+	npc.base.autonpcfunctions.AddCondition("lang","german");
+
 	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reeting","Be greeted %CHARNAME, nice to see ya here again.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]ello");
     npc.base.autonpcfunctions.AddAdditionalText("Greetings %CHARNAME, nice to see ya again");
@@ -113,7 +113,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddTraderTrigger("[Vv]erkaufen","Nay danke, ick hab' bereits alles was ick brauche.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+kauf","Nay danke, ick hab' bereits alles was ick brauche.");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ww]as.+verkauf","Ick verkauf' nichts, wie du siehst bin ick Torwächterin!");
-    
+
     npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is a settlement of the Halflings.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddTraderTrigger("[Hh]arbo[u]+r","Troll's Bane and Vanima both have Harbors. The one southwest from Troll's Bane is bigger though.");
@@ -129,7 +129,7 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","english");
     npc.base.autonpcfunctions.AddTraderTrigger("[Vv]arshikar","You find it past the small sand desert in the far northwest. I would use the Teleporter, the desert is full of scorpions.");
     npc.base.autonpcfunctions.AddCondition("lang","english");
-    --  
+    --
     npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is nen Halblingsdorf. Viel zu grün da wennste mich fragst.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Hh]afen","Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane is aber größer.");
@@ -151,35 +151,35 @@ function initializeNpc()
 	--
 	--Citizens
     npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]oindil.*","#me grummelt 'Arrr, das is der Zwerg, der mir einst diesen Wisch von Abschiedsbrief in die Hand gedrückt hat und dann 'uff nimmer wiedersehn abgehaun' is! Früher...da war er noch schwer in Ordnung, nu weiß ick aber nich was in ihn gefahren is.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");   
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]rendil.*","Mhh... von Brendil hab mir nur Geschichten gehört. Soll 'n starker Kämpfer gewesen sein - aber mit schwachem Geist. Soll irgendwann verrückt gewordn sein, wenn mir nich alles täuscht.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");   
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]loin.*","#me kratzt sich kurz nachdenklich an ihrer Schläfe \"Glôin... diesn Namen hab mir schon mal gehört... is dat nicht Brendil, dieser Taugenüscht?\"");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Gg]lôin.*");
-	npc.base.autonpcfunctions.AddCondition("lang","german");    
+	npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]horn.*","Was redest du von König Ghorn? Er war n' weiser und gerechter König! Ick glaub gehört zu haben, dass der die Gewölbe entdeckte, die Silberbrand mit der Menschenstadt verband. Bin mir da aber nich sicher.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");   
+    npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Tt]unnel.*","Da war mal n' starkes Beben in den Erzminen. Wir dachten schon der ganze Berg würd' einbrechen, so stark war das! Aber durch det Beben wurde ein Tunnel frei gelegt - was damit heut' is, weiß mir nicht.");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Gg]ew[öo][le][bl][eb].*");
-	npc.base.autonpcfunctions.AddCondition("lang","german");   
+	npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Rr]othman.*","#me haut verärgert mit der Faust gegen die Felswand \"Hör mir 'uff mit diesem Namen! Jeder dieser Rothmans hat es verdient geteert und gefedert und dann vom höchsten Gipfel diese Berges gestürzt zu werdn. Das Geräusch vom Aufprall wär' wie Musik in meen Ohr!\"");
-    npc.base.autonpcfunctions.AddCondition("lang","german");   
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Rr]imni.*","Och, der Rimni... auch so 'n Faulpelz! Macht viel, aber nüscht richtich! Abgesehn von senen leckren Broten! Arrr, wie von Irmorom selbst gebacken, so schmecken die!");
     npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ss]asse.*","#me blinzelt freudig \"Arr, wo is Sasse? Gibs was zu futtern? Kein andrer kann so leckren Rehberaten zubereiten, wie der!\"");
-    npc.base.autonpcfunctions.AddCondition("lang","german"); 
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Aa]ndril.*","#me senkt bedächtig den Kopf \"Mögest du in Frieden Ruhn, Andril! Dein leckes Zwergenbräu fehlt uns in der Kehle. Deine Bedachtheit und Weisheit würd uns in so mancher finstren Stunden helfen.\"");
-    npc.base.autonpcfunctions.AddCondition("lang","german");    
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]oldhand.*","Arrr, so ein stattlicher Zwerg, der Garon! Hat ganz schön viel erreicht, richteste ihm mal schöne Grüße von der Goldra aus? *sie zwinkert dir zu*");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Gg]aron.*");
-	npc.base.autonpcfunctions.AddCondition("lang","german");    
+	npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ff]riedwulfa.*","Die Friedel weiß noch wie man zupackt! Sie und mir sind ausm selben Stein gehaun! Legt sich jemand mit ihr an, hat ers auch mit mir zu tun! Und das rat ick keinem!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Ff]ried[el].*");
-	npc.base.autonpcfunctions.AddCondition("lang","german");    
+	npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Gg]uran.*","Sprichst grad vom Meisterschmied Guran? Wennst ne dicke, starke Rüstung brauchst ist er dein Zwerg *klopft gegen ihre Rüstung unter der Robe* das gute Stück hier ist auch von ihm.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");    
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]horwald.*","Selten zuvor hab mir sonen fleissigen Zwegenkönich gesehn, wie ihn! Egal wat du brauchtest, egal in welchen Mengen: Er hatte et uff Lager!");
-    npc.base.autonpcfunctions.AddCondition("lang","german");	
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]horgrimm.*","Thorgrimm? Arr... den seh ick hier so selten wie das Sonnenlicht! Ick glob der hockt tagein, tagaus in seiner Priesterkammer und redet zu Irmorom - hoffentlich schwafelt er dabei net zu viel, sonst wird Irmorom noch grantig.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ss]urian.*","Mit Thorgrimm und Surian is das Schicksal der Götter uff jeden Fall auf unsrer Seite! ...wobei Bragon ja eher ein Kieselstein im Vergleich zu Irmorom ist, natürlich.");
@@ -191,9 +191,9 @@ function initializeNpc()
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]hurbert.*","Der Thurbert, ja dat war ein tüchtiger Zwerg. Als Kanzler war er 'n guter Organisator und konnte sogar mit'm Kroppzeug von oben gut reden, doch leider meinte es dat Schicksal nich gut mit ihm. Kurz nach seiner späteren Krönung  zum König erstickte er an nem Steak, Gerüchte besagen dass sein Leibkoch Salfalur damit was zu tun hatte.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]irana.*","Na die Tirana hat das Herz am rechten Fleck, an der Kochstelle. Der ihr Futter ist das Allerbeste, nur noch übertroffen von ihr'm Gebräu, vor allem det Bier.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");    
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Ff]erin.*","Tja, über Ferin, den Bruder Altkönig Thorwalds kann ich nich viel sagen. Zu selten bekam man ihn zu Gesicht aber wenn er da war, dann richtig und für alle!");
-    npc.base.autonpcfunctions.AddCondition("lang","german"); 
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Tt]hanseus.*","Er is'n junger un' ungeduldiger Bruder, nen bissl grün hinter den Ohren is er auch. Aber ein Zwerg sollte wie er einer sein, immer gemeinschaftlich und hilfsbereit.");
     npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]alduin.*","Der Balduin, jau, nen fleißiger angehender Goldschmied. Hat schon beim ein oder andern' Auftrag wat mitgearbeitet. Ganz am Anfang war er noch Bürger von Trollsbane als er sein' Eid abgelegt hat. Heut' aber nimmer.");
@@ -202,36 +202,36 @@ function initializeNpc()
     npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Bb]althor.*","Der Balthor gehört zu den Meisterschmieden Silberbrands, ich hab mal gehört dass er 'Balthor Pinnhand' heißt weil er mal in ner' Taverne die anbot \"Zahl 30 Münzen und fülle deinen Krug so oft du willst\" selbige Taverne fast bankrottgesoffen hat. Als er unter Protest den Krug abgeben sollte hat er ihn sich einfach an die Hand ge-pinnt");
     npc.base.autonpcfunctions.AddCondition("lang","german");
-	
+
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Aa]mrothar.*","Amrothar, ja klar, der is'n alter Schürfer. Ist unser Kanzler und hat mal Silberbrand geführt als Friedl ne Weile weg war.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");  
-	
+    npc.base.autonpcfunctions.AddCondition("lang","german");
+
 	npc.base.autonpcfunctions.AddTraderTrigger("[Ee]rz[äa][eh].+[Mm]anron.*","Der Manron ist einer der Altkönige, wenn er mal nich am Goldschmieden ist, dann ist er in den Minen schürfen - so wie es sich für nen Zwergen gehört!");
     npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Kk][öo][ne][in][gi].*");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Kk][öo][ne][in][ci][hc].*");  
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ee]rz[äa][eh].+[Kk][öo][ne][in][ci][hc].*");
 	--
-	
+
     npc.base.autonpcfunctions.AddTraderTrigger("[Bb]ier.*","#me hebt den Krug und prostet in die Runde 'Wer viel rumsteht, muss viel trinken - Alte Torwächterweisheit!'");
-    npc.base.autonpcfunctions.AddCondition("lang","german"); 
+    npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Tt]orwächter.*","Jetzt fang bloß nich damit an, über meine Aufgabe zu meckern! Ohne uns und dat Tor wär Silberbrand schon ein dutzend Mal eingenommen worden!");
-    npc.base.autonpcfunctions.AddCondition("lang","german");  
+    npc.base.autonpcfunctions.AddCondition("lang","german");
     npc.base.autonpcfunctions.AddTraderTrigger("[Tt]or.*","Aye, jeden Tag und jede Stund' steh ick da draussen am Tor - haste gewusst, dass da mindestens fuffzich Bäume drin verbaut sind? Von den Mengen an Nägeln ganz zu schweigen, aber schlussendlich ists n' Meisterstück geworden.");
-    npc.base.autonpcfunctions.AddCondition("lang","german"); 
+    npc.base.autonpcfunctions.AddCondition("lang","german");
 	npc.base.autonpcfunctions.AddTraderTrigger("[Dd]unkel.*","Wie? Du findest es dunkel hier? Dann schneid' dir mal die Haare und mach die Augen richtig uff'! Du meckerst ja fast so viel wie Trokamm, wenn er mal wieder zum Training muss!");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Dd]üster.*");   
-    
+    npc.base.autonpcfunctions.AddAdditionalTrigger("[Dd]üster.*");
+
     if not InitDone then
         InitDone = true;
-        
+
         itemlist = {320}--,10,232,233,321,914,915,1245,1246,1247,1250,1251,1554,1557,1273,1276,1278};                 --hier IDs der nichtpassierbaren Items eintragen!
 		game1=drinkGame(); 				  --spielfunktion initialisieren
-		
+
 		if (thisNPC.pos.y>=-199) then
 		NpcOutside=true;
 		else
 		    NpcOutside=false;
 		end
-		
+
 		joke=false;
 		doorapos=position( 110, -200, -3);
 		doorbpos=position( 111, -200, -3);
@@ -251,14 +251,14 @@ function initializeNpc()
     npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang);
     thisNPC.activeLanguage=TradStdLang;
 
-    
+
 end
 
 function nextCycle()  -- ~10 times per second
     initializeNpc();
     npc.base.autonpcfunctions.SpeakerCycle();
 
-	if (not NpcOutside and game1.rundenzahl()==0) then	
+	if (not NpcOutside and game1.rundenzahl()==0) then
 		if not move.status() then
 			if joke then
 				if wait(9) then
@@ -278,7 +278,7 @@ function nextCycle()  -- ~10 times per second
 					move.moveWithoutCommand(4);
 				elseif (rand>3 and rand<=4) then
 					thisNPC:talkLanguage(CCharacter.say,CPlayer.german,"#me klimpert mit einem Becher voller Münzen \"Kommt und spielt dat Trinkspiel mit mir wenn ihr euch traut.\"");
-	           	    thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me jingles with a mug full of coins \"Come and play with me the drinking game if ya' dare.\"");	
+	           	    thisNPC:talkLanguage(CCharacter.say,CPlayer.english,"#me jingles with a mug full of coins \"Come and play with me the drinking game if ya' dare.\"");
 				elseif(rand>=10 and rand<=12) then
 					drinkBeer();
 				elseif(rand==13) then
@@ -322,10 +322,10 @@ function receiveText(texttype, message, originator)
 		originator:inform("Move reset");
 	end
 	if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then  --Npc wird aus nächster Nähe angesprochen
-	
+
         if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
 			if (mainTask(message,originator)~=true) then
-				if (string.find(message,"[Ww]em.+hast.+du.+zuletzt.+aufgemacht.*")~=nil or 
+				if (string.find(message,"[Ww]em.+hast.+du.+zuletzt.+aufgemacht.*")~=nil or
 					string.find(message,"[Ww]ho.+did.+you.+open.+last.+time.+the.+gate.*")~=nil) then
 					if (originator.id==kingid) then
 						if (last_User~=nil) then
@@ -344,10 +344,10 @@ function receiveText(texttype, message, originator)
 
 				elseif (string.find(message,"[Ee]rz[äa][eh][l].+[Ww]itz.*")~=nil or string.find(message,"[Tt]ell.+[Jj]oke.*")~=nil) then
 					tellJoke(); --tells a joke
-				else	
+				else
 					game1.receiveText(texttype, message, originator,move.status(),NpcOutside);
 					npc.base.autonpcfunctions.TellSmallTalk(message,originator);
-				end 
+				end
 		 	end
 		else
         	npc.base.autonpcfunctions.Confused(
@@ -355,9 +355,9 @@ function receiveText(texttype, message, originator)
             "#me looks at you a little confused"
             );
 		end
-	
-	
-	elseif npc.base.autonpcfunctions.BasicNPCChecks(originator,10) then --Npc wird aus mehreren Schritten Entfernung angesprochen		
+
+
+	elseif npc.base.autonpcfunctions.BasicNPCChecks(originator,10) then --Npc wird aus mehreren Schritten Entfernung angesprochen
 		mainTask(message,originator);
 	end
 end
@@ -376,13 +376,13 @@ end
     This function checks if the Char said the mean triggers(open door, close door,...) and sets all needed variables to open/close door
     @param originator - CharStruct - the Char who talked to the NPC
     @param message - String - The text the Character spoke
-    
+
     @return true in case the NPC said one of the mean triggers else false
 ]]
 function mainTask(message, originator)
 	if (originator.activeLanguage==2 or originator:isAdmin()==true) then --If the Character speaks dwarfish then...
-		if (standardAnswer(message,1)==true) then  
-			
+		if (standardAnswer(message,1)==true) then
+
 			if (math.random(0,200)==1) then --Chance of 1 to 199 not to open the door
 				keinBock(originator);
 			elseif (originator.id==boindil) then
@@ -395,7 +395,7 @@ function mainTask(message, originator)
 				end
 				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
-			
+
 			else
 
 		        doora=world:getItemOnField(doorapos);
@@ -405,7 +405,7 @@ function mainTask(message, originator)
                 	eText="The gate is already"..hicks().."opened.";
                 	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
-				
+
 				else
 					if (not move.status()) and (game1.rundenzahl()==0) then
 						move.receiveText(originator,1); --Open gate
@@ -440,7 +440,7 @@ function mainTask(message, originator)
 								if (originator:increaseAttrib( "sex",0) == 0) then --Char. is male
 									gText="Willkommen in "..hicks().."Silberbrand, Bruder.";
 									eText="Welcome in"..hicks().."Silverbrand Brother.";
-								else                                                                                       
+								else
 							    	gText="Willkommen in Silberbrand,"..hicks().."Schwester.";
 	                				eText="Welcome in"..hicks().."Silverbrand Sister.";
 								end
@@ -452,21 +452,21 @@ function mainTask(message, originator)
 						gText="Nay, jetzt nich, bin grad dabei ne Münze zu gewinnen!";
 						eText="Nay, not now, I have a coin to win!";
 	                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
-			        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);	
+			        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					end
 				end
 			end
-				return true; 
-				   
+				return true;
+
 		elseif (standardAnswer(message,2)==true) then
-			
+
 			if ( world:isCharacterOnField(doorapos) or world:isCharacterOnField(doorbpos)) then -- Is a char. on the position of the doors?
 				gText="Ick kann det Tor nich zumachen weil "..hicks().."jemand im Weg steht.";
                 eText="I can't close the gate"..hicks().."during someone stands in the way.";
                 outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
-		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);			
+		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			elseif (originator.id==boindil) then
-				
+
 				if (math.random(0,5)==1) then
 					gText="Nahh.. Boindil, bäähh.. Zurück zur Oberfläche"..hicks().."mit dir, Mistkerl!";
         			eText="Nahh.. Boindil, baahh.. Go back to"..hicks().."the surface, scumbag!";
@@ -491,12 +491,12 @@ function mainTask(message, originator)
 							gText="Nay, jetzt nich, bin grad dabei ne Münze zu gewinnen!";
 							eText="Nay, not now, I have a coin to win!";
 		                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
-				        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);	
+				        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						end
 					end
 			end
 				return true;
-				
+
 		elseif (string.find(message,"[Tt]or.+[Aa]uf")~=nil or string.find(message,"[Oo]pen.+[Gg]ate")~=nil) then
 			gText="Ick bin deine Schwester, also"..hicks().."behandle mich 'uch so!";
 			eText="I'm yer sister, so ye"..hicks().."better treat me lik' this!";
@@ -506,7 +506,7 @@ function mainTask(message, originator)
 		elseif (standardAnswer(message,3)==true and originator.id~=boindil) then  --Come in Irima
 			if NpcOutside==true and not move.status() then
 				move.receiveText(originator,3);--go in
-				
+
 				local rand=math.random(3);
 				if rand==3 then
 					gText="Jau, bin sofort zur Stelle!";
@@ -518,7 +518,7 @@ function mainTask(message, originator)
 				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			end
-			return true;	
+			return true;
 		elseif (standardAnswer(message,4)==true and originator.id~=boindil) then  --Go out irima
 			if NpcOutside==false and not move.status() then
 				move.receiveText(originator,4);--go out
@@ -531,18 +531,18 @@ function mainTask(message, originator)
 			end
 			return true;
 		end --Wenn nicht "Tor auf Irima" oder "Tur zu" dann ende
-			 
-			 	
+
+
 	elseif (originator.activeLanguage==0) then
-		if (standardAnswer(message,1) or standardAnswer(message,2) 
-		 or standardAnswer(message,3) or standardAnswer(message,4)) then  
+		if (standardAnswer(message,1) or standardAnswer(message,2)
+		 or standardAnswer(message,3) or standardAnswer(message,4)) then
 			gText="Sprich wie 'n Zwerg mit mir"..hicks().."oder verschwinde wieder!";
 			eText="Talk lik' a dwarf wit' me or"..hicks().."leave!";
 			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			return true;
-		end					
-	end	
+		end
+	end
 end
 
 --[[
@@ -550,7 +550,7 @@ end
     Checks whether a string can be counted to an answertype
     @param message - string
     @param answertype - integer
-    
+
     @return boolean - true in case message can be counted to the answertype else false
 ]]
 function standardAnswer(message,answertype)
@@ -562,7 +562,7 @@ function standardAnswer(message,answertype)
 			 or string.find(message,"[Ss]chwester.+[Tt][üo]r.+[Aa]uf.*")~=nil or string.find(message,"[Ss]ister.+[Oo]pen.+[Gg]ate.*")~=nil
 			 or string.find(message,"[Öö]ffne.+[Tt][üo]r.+[Ss]chwester.*")~=nil or string.find(message,"[Oo]effne.+[Tt][üo]r.+[Ss]chwester.*")~=nil
 			 or string.find(message,"[Öö]ffne.+[Tt][üo]r.+[Gg]oldra.*")~=nil or string.find(message,"[Oo]effne.+[Tt][üo]r.+[Gg]oldra.*")~=nil) then
-				
+
 			 	return true;
 		 	 else
 		     	return false;
@@ -571,7 +571,7 @@ function standardAnswer(message,answertype)
     elseif (answertype==2) then --answertype 2 == standardphrases for "close door"
 			 if ( string.find(message,"[Tt][üo]r.+[Zz]u.*")~=nil or string.find(message,"[Cc]lose.+[Gg]ate.*")~=nil
 			 or string.find(message,"[Ss]chlie[sß]*.+[Tt][üo]r.*")~=nil or string.find(message,"[Cc]lose.+[Dd]oor.*")~=nil) then
-		
+
 		   		return true;
 			 else
 		   		return false;
@@ -631,7 +631,7 @@ end
     keinBock
     Lets the NPC say a trigger
     @param	originator - character struct
-    
+
     @return nothing
 ]]
 function keinBock(originator)
@@ -653,7 +653,7 @@ end
     wait
     Lets the NPC make a break for a time
     @param timeInSeconds - float - The time how long the NPC shall take a break(in Seconds)
-    
+
     @return true in case the NPC finished the break else false
 ]]
 function wait(timeInSeconds)  --Works ONLY in the nextCycle-function!!!
@@ -679,8 +679,8 @@ function checkGender(originator,returnType)
             eTextG = "she";
             gTextG = "sie";
         end
-    
-	elseif returnType==1 then    
+
+	elseif returnType==1 then
         if (originator:increaseAttrib("sex",0) == 0) then
             gTextG = "seine";
             eTextG = "his";
@@ -688,7 +688,7 @@ function checkGender(originator,returnType)
             gTextG = "ihre";
             eTextG = "her";
         end
-	elseif returnType==2 then    
+	elseif returnType==2 then
         if (originator:increaseAttrib("sex",0) == 0) then
             gTextG = "ihn";
             eTextG = "him";
@@ -696,7 +696,7 @@ function checkGender(originator,returnType)
             gTextG = "sie";
             eTextG = "her";
         end
-    
+
 	elseif returnType==3 then
 	    if (originator:increaseAttrib("sex",0) == 0) then
             gTextG = "ihm";
@@ -716,7 +716,7 @@ end
     drinkBeer
     Lets the NPC 'drink' a beer
     @param nothing
-    
+
     @return nothing
 ]]
 function drinkBeer()
@@ -757,7 +757,7 @@ function drinkGame()
     };
 
 	local trinkCounter = function ()
-	
+
 		if self.trinkCounter~=240 then
 			self.trinkCounter=self.trinkCounter+1;
 		elseif self.trinkCounter==240 then
@@ -803,7 +803,7 @@ function drinkGame()
 		end
 
 	end
-	
+
 	local reset = function ()
 		self.gameState=0;
 		self.player=nil;
@@ -824,7 +824,7 @@ function drinkGame()
 				if (players[i].id==self.player.id) then
 					playerStillOnline=true;
 				end
-			end						
+			end
 		else
 			reset();
 		end
@@ -832,11 +832,11 @@ function drinkGame()
 			reset();
 		end
 		playerStillOnline=false;
-	end			
+	end
 
-	local toast = function ()		
+	local toast = function ()
 		rand=math.random(8);
-	
+
 		if rand==1 then
 			gText="Der Kopf tut weh, die Füße stinken. Höchste Zeit ein Bier zu trinken...";
 		elseif rand==2 then
@@ -846,7 +846,7 @@ function drinkGame()
 		elseif rand==4 then
 			gText="Hopp, hopp, rein in Kopp!";
 		elseif rand==5 then
-			gText="Trinken, trinken das is Kult, wer nich trinkt is selber Schuld!";		
+			gText="Trinken, trinken das is Kult, wer nich trinkt is selber Schuld!";
 		elseif rand==6 then
 			gText="Der Klügere kippt nach! Hehe...";
 		elseif rand==7 then
@@ -855,18 +855,18 @@ function drinkGame()
 			gText="Digge Aue, Digger Kopp, Scheiß egal Ex un hopp";
 		end
 		thisNPC:talkLanguage(CCharacter.say, CPlayer.german, gText);
-	end		
-	
-			
+	end
+
+
 	local nextCycle = function ()
 		if self.gameState==1 then
 			checkIfOnline();
 		end
 		if self.gameState==1 then
-			if not move.status() then 
-				  trinkCounter();				
-	
-				if self.trinkCounter==10 then --Rundenzahl	
+			if not move.status() then
+				  trinkCounter();
+
+				if self.trinkCounter==10 then --Rundenzahl
 					if self.rundenzahl==1 then
 						gTextR="Erste Runde: Rübenschnaps";
 						gTextR1="Das'n feiner kleiner Absacker für'n Anfang! Den hab ich aus Greenbriar von den Halblingen gekauft!";
@@ -905,17 +905,17 @@ function drinkGame()
 						gTextR1=nil;
 						self.player:createItem(3077,1,666,0); --create Silvercoin
 						reset();
-					end	
+					end
 						thisNPC:talkLanguage(CCharacter.say, CPlayer.german, gTextR);
 			    		thisNPC:talkLanguage(CCharacter.say, CPlayer.english, eTextR);
 						if gTextR1~=nil then
 							thisNPC:talkLanguage(CCharacter.say, CPlayer.german, gTextR1);
 						end
-			
+
 				elseif self.trinkCounter==100 then  --Trinkspruch
 					if math.random(4)<=3 then
 						toast();
-					end				
+					end
 				elseif self.trinkCounter==150 then
 						gText="PROST!";
 						eText="Cheers!"
@@ -924,69 +924,69 @@ function drinkGame()
 				elseif self.trinkCounter==180 then
 				    world:makeSound(12,thisNPC.pos); -- Trinkgeräusch machen
 					gText="#me reicht "..checkGender(self.player,3).." eine Flasche die "..checkGender(self.player,0).." austrinkt.";
-					eText="#me hands "..checkGender(self.player,3).." a bottle which "..checkGender(self.player,0).." drinks."; 
+					eText="#me hands "..checkGender(self.player,3).." a bottle which "..checkGender(self.player,0).." drinks.";
 					outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
-				
+
 					calculateOutcomes();
-					
+
 				elseif self.trinkCounter==210 then    --inform und ende
-				
+
 					if self.outcome1>=100 then
 						gText="#w Du fühlst dich noch ganz gut.";
-						eText="#w You still feel good";			
+						eText="#w You still feel good";
 					elseif self.outcome1>=50 and self.outcome1<100 then
 						gText="#w Du fühlst dich etwas benebelt.";
-						eText="#w You feel a bit befogged";			
+						eText="#w You feel a bit befogged";
 						rand=math.random(1300,1800);
 						self.player:increaseAttrib("hitpoints",-rand);
-								
+
 					elseif self.outcome1>=30 and self.outcome1<50 then
 						gText="#w Du siehst deine Umgebung nur noch verzerrt.";
-						eText="#w You see your surroundings now only blurred";			
+						eText="#w You see your surroundings now only blurred";
 						rand=math.random(1500,2100);
 						self.player:increaseAttrib("hitpoints",-rand);
 					elseif self.outcome1>=1 and self.outcome1<30 then
 						gText="#w Dir ist wirklich schlecht. Eigentlich willst du aufhören, doch willst du dir die Blöße geben?";
-						eText="#w You feel really bad. Actually you want to give up, but do you really want to expose yourself?";			
+						eText="#w You feel really bad. Actually you want to give up, but do you really want to expose yourself?";
 						rand=math.random(2000,2800);
-						self.player:increaseAttrib("hitpoints",-rand);	
+						self.player:increaseAttrib("hitpoints",-rand);
 					end
 						if self.outcome1>0 then
 						base.common.InformNLS( self.player, gText, eText );
 						end
-					
+
 					if self.outcome1<=0 then
 						gText="#w Dir wird schlecht und du musst dich übergeben.";
 						eText="#w You feel perish and have to puke.";
 						base.common.InformNLS( self.player, gText, eText );
 		        		self.player:talkLanguage(CCharacter.say, CPlayer.german, "#me übergibt sich.");
 		       			self.player:talkLanguage(CCharacter.say, CPlayer.english,"#me pukes.");
-					
+
 					elseif self.outcome1>0 and self.outcome2>0 then
-						self.rundenzahl=self.rundenzahl+1;		
+						self.rundenzahl=self.rundenzahl+1;
 						self.gameState=0;
 						gText="Du bist ne Runde weiter, machst du weiter oder gibste auf?";
 						eText="You reached the next round, do you want to continue or to give up?";
 						thisNPC:talkLanguage(CCharacter.say, CPlayer.german, gText);
-		    			thisNPC:talkLanguage(CCharacter.say, CPlayer.english, eText);	
+		    			thisNPC:talkLanguage(CCharacter.say, CPlayer.english, eText);
 		 			end
-	
+
 					if self.player~=nil then
 						if self.outcome2<=0 and self.outcome1>0 then
-			
+
 							gText="#me blickt "..self.player.name.." an - ihr Blick wirkt starr. Eine Fontäne schießt plötzlich aus ihrem Mund und das Essen der letzen Stunde verteilt sich auf Gesicht des Gewinners.";
 							eText="#me looks to "..self.player.name..", her gaze seems fixed. Suddenly a fountain gushes out of her mouth and the last hour's meal spreads on the face of the winner.";
 							outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			            	gText="Argh, du bist der bessere von uns *hicks* , hier dein Geld!";
-							eText="Argh, you are the better one from us two *hicks* , here ya' money!";		
+							eText="Argh, you are the better one from us two *hicks* , here ya' money!";
 							self.drunk[world:getTime("hour")]=true;
 							outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 							self.player:createItem(3077,3,666,0); --create 3 silvercoins
 							initJoke();
-							reset();	
+							reset();
 						else
 							if self.outcome1<=0 then
 								gText="Pah, wusst ick doch das du gegen mick nich gewinnst! Aber sei nich traurig, niemand hat ne Chance gegen Irima!";
@@ -1001,15 +1001,15 @@ function drinkGame()
 									self.player:createItem(385,1,111,0); --create girl dress
 								end
 				                reset();
-							end	
+							end
 						end
 					end
 				end
-			end		  
+			end
 		end
-	end	
+	end
 
-	
+
     local receiveText = function (texttype, message, originator,movestate,NpcOutside)  --movestate and npcOutside müssen übergeben werden
 
 		if (standardAnswer(message,5)) then
@@ -1021,7 +1021,7 @@ function drinkGame()
 					    self.startGame[originator.id]=true;
 						gText="Der Einsatz beträgt 1 Silberstück, wer zuerst aufgibt oder sich übergibt hat verloren. Wenn du gewinnst geb ich dir 3 Silberlinge, willste spielen?";
 						eText="The stake is 1 silver coin, who gives up or pukes first looses. If ya' win I will give ya' 3 silver coins, do you want to play?";
-		
+
 					else
 					    self.startGame[originator.id]=false;
 					    gText="Komm erst wieder wenn du das Geld hast, du brauchst mindestens ne Silbermünze für das Spiel!"
@@ -1036,7 +1036,7 @@ function drinkGame()
 				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			end
-			
+
 		elseif (standardAnswer(message,6)) then
 		    if self.startGame[originator.id] then
                 AmountCopper=originator:countItem(3076);
@@ -1060,7 +1060,7 @@ function drinkGame()
 					self.rundenzahl=1;
 					self.gameState=1;
 					self.startGame[originator.id]=false;
-					self.coinTaken=false;	
+					self.coinTaken=false;
 				else
 					gText="Willst du mich übers Ohr hauen? Du hast nicht genügend Geld dabei, du brauchst mindestens ne Silbermünze für das Spiel!";
 					eText="Are ya' trying to take me in? You don't have enough money with you, you need at least 1 silver coin for the game!";
@@ -1080,8 +1080,8 @@ function drinkGame()
 							self.gameState=1;
 					end
 				 end
-			 end				
-		 elseif (string.find(message,"[Aa]uf[hg][öe][rb]en.*")~=nil or string.find(message,"[Gg]eb.+auf")~=nil 
+			 end
+		 elseif (string.find(message,"[Aa]uf[hg][öe][rb]en.*")~=nil or string.find(message,"[Gg]eb.+auf")~=nil
 		 	  or string.find(message,"[Gg]ive.+up")~=nil   or string.find(message,"[Hh]ör.+auf")~=nil) then
          	if self.player~=nil then
          		if originator.id==self.player.id then
@@ -1091,10 +1091,10 @@ function drinkGame()
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					reset();
 				end
-			end	
+			end
 		 end
     end
-    
+
 	local rundenzahl = function ()
 		if (self.gameState==0 and self.rundenzahl>0) then
 			state=0;
@@ -1103,7 +1103,7 @@ function drinkGame()
 		end
 		return state;
 	end
-    
+
     local drunk = function ()
 		local state=self.drunk[world:getTime("hour")];
 		if (state==true) then
@@ -1113,14 +1113,14 @@ function drinkGame()
 			return false;
 		end
 	end
-		
+
     return {
         nextCycle    = nextCycle,
         receiveText  = receiveText,
         reset 		 = reset,
 		rundenzahl	 = rundenzahl,
-		drunk		 = drunk	 ,   
-    }; 
+		drunk		 = drunk	 ,
+    };
 end
 
 function hicks()
@@ -1159,7 +1159,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 		movestate          = 0,         -- movestate
 		itemlist		   = itemlist,  -- a list with the non-passable items
 		blocked			   = false;     -- true if the npc is blocked by a char or item else false
-		
+
     };
 
 	local checkIfNpcOutside = function ()
@@ -1169,7 +1169,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 		    self.NpcOutside=false;
 		end
 	end
-	
+
 	local reset = function ()
 		self.target=nil;
 		self.moving=false;
@@ -1178,7 +1178,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 		thisNPC:setAttrib("faceto",self.faceto);
 		self.blocked=false;
 	end
-	
+
 	function isPassable( id , lower, upper )  --returns true if Item with Id "id" non-passable!
 	    if lower > upper then
 	        return false;
@@ -1192,19 +1192,19 @@ function moveFunction(doorapos,doorbpos,itemlist)
 	        return isPassable( id, lower, margin-1 );
 	    end;
 	end
-	
+
 	local CheckItem = function ( posi ) --returns false if one of the items non-passable!
     	local fld = world:getField(posi);
     	local cnt = fld:countItems();
     	local i;
     	for i=0,cnt-1 do
-        	if isPassable( (fld:getStackItem(i)).id, 1, table.getn( self.itemlist ) ) then
+        	if isPassable( (fld:getStackItem(i)).id, 1, # self.itemlist  ) then
             	return false;
         	end;
     	end;
     	return true;
 	end
-	
+
 	local searchTarget = function ()
 		if self.target==nil then
 			checkIfNpcOutside();
@@ -1513,7 +1513,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
 	local MoveX = function (XOff)
 	  	if (XOff == 0) then
 	        return false;
-	 	else 
+	 	else
 			if (XOff > 0) then
 		        checkPos = position( thisNPC.pos.x - 1, thisNPC.pos.y, thisNPC.pos.z );
 		    else
@@ -1564,9 +1564,9 @@ function moveFunction(doorapos,doorbpos,itemlist)
 		    end
  		end
 	end
-	
+
 	local moveTo = function ()
-	
+
         XOff = thisNPC.pos.x - self.target.x;  --hier wird die Differenz zum User ausgesucht
         YOff = thisNPC.pos.y - self.target.y;
         if (math.sqrt(XOff*XOff + YOff*YOff) >= 1) then --wenn der User nur 1 Feld entfernt ist dann...
@@ -1594,7 +1594,7 @@ function moveFunction(doorapos,doorbpos,itemlist)
         end
 	end
 
-	local nextCycle = function ()		
+	local nextCycle = function ()
 		if self.moving then
 			searchTarget();
 			if not equapos(self.target,thisNPC.pos) then
@@ -1602,14 +1602,14 @@ function moveFunction(doorapos,doorbpos,itemlist)
 				if _waitVar==nil then _waitVar=0 end
 				if wait(self.TimeBetweenSteps) then
 					moveTo();--moves to the target;
-				end			
+				end
 				if self.blocked then
 					if _waitVar==200 then  --20sec.
 						gText="Dat Ding da versperrt meinen Weg, räumt et mal einer weg, sonst komm ick nit an das Schloss!";
 						eText="This thing there is blocking my way, I can't reach the lock until someone removes it!";
 						thisNPC:talkLanguage(CCharacter.say,CPlayer.german,gText);
 						thisNPC:talkLanguage(CCharacter.say,CPlayer.english,eText);
-						
+
 						if self.NpcOutside then
 							self.movestate=4.2;
 						else
@@ -1619,17 +1619,17 @@ function moveFunction(doorapos,doorbpos,itemlist)
 						_waitVar=nil;
 					else
 						_waitVar=_waitVar+1;
-					end	
+					end
 				else
 					_waitVar=0;
-				end   		
+				end
 			else
 					if wait(self.TimeAfterTask) then
 				        doTask();
 					end
 			end
-		end	
-	end	
+		end
+	end
     local receiveText = function (originator,movestate)  --originator, movestate und self.NpcOutside müssen übergeben werden
     	checkIfNpcOutside();
 		self.player=originator;
@@ -1637,20 +1637,20 @@ function moveFunction(doorapos,doorbpos,itemlist)
 		self.moving=true;
 
     end
-    
+
     local moveWithoutCommand = function (movestate)
     	checkIfNpcOutside();
 		self.movestate=movestate;
 		self.moving=true;
     end
-	
+
 	local status = function ()
 		if (self.moving==nil) then
 			self.moving=false;
 		end
 		return self.moving;
 	end
-	
+
 	return {
         nextCycle    = nextCycle,
         receiveText  = receiveText,
@@ -1658,12 +1658,12 @@ function moveFunction(doorapos,doorbpos,itemlist)
 		status		 = status,
 		moveWithoutCommand = moveWithoutCommand,
     };
-    
+
 end
 
 function tellJoke()
 	rand=math.random(1,14);
-	thisNPC:talkLanguage(CCharacter.say,CPlayer.german,jokelist_de[rand]);	
+	thisNPC:talkLanguage(CCharacter.say,CPlayer.german,jokelist_de[rand]);
 	if jokelist_en[rand]~=nil then
 		thisNPC:talkLanguage(CCharacter.say,CPlayer.english,jokelist_en[rand]);
 	end
@@ -1696,4 +1696,3 @@ function initJoke()
 	jokelist_en[9]="How can you keep a"..hicks().."longear occupied for years? Hand him a"..hicks().."parchment reading \"Please turn over!\" on"..hicks().."both sides.";
     jokelist_en[10]="An elf npc.base.autonpcfunctions.walks into a tavern, carrying a big pile of"..hicks().."cowdung in his hand and cries out:\"Guys! Look what I nearly stepped into!\"";
 end
-					

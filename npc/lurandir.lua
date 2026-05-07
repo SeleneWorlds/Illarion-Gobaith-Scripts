@@ -90,7 +90,7 @@ function receiveText(texttype, message, originator)
                     end;
                 end
                 i=i+1;
-            until ((i==table.getn(NPCTrig[3-lang])+1) or ready)
+            until ((i==#NPCTrig[3-lang]+1) or ready)
         end
         if (not ready) then
             --special behaviour

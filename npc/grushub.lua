@@ -1498,7 +1498,7 @@ function nextCycle()  -- ~10 times per second
             nextDelivery=math.random(10000,40000);
             cycCount=1;
             --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);
-            for itnCnt=1,table.getn(TraderItemNumber) do
+            for itnCnt=1,#TraderItemNumber do
                 npc.base.trader_functions.refillItems(itnCnt);
             end
         end
@@ -1542,7 +1542,7 @@ function receiveText(texttype, message, originator)
                         ready=true;
                     end
                     i=i+1;
-                until ((i==table.getn(TraderTrig)+1) or ready)
+                until ((i==#TraderTrig+1) or ready)
                 if (not ready) then
                     --originator:inform("Ready set false");
                     Status,Values=digBuy(originator, message);
@@ -1644,7 +1644,7 @@ function receiveText(texttype, message, originator)
                     if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                         thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                         statusString="Wares: ";
-                        for itnCnt=1,table.getn(TraderItemId) do
+                        for itnCnt=1,#TraderItemId do
                             if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                                 originator:inform(statusString);                     -- say everything until here
                                 statusString="";
@@ -1654,7 +1654,7 @@ function receiveText(texttype, message, originator)
                         originator:inform(statusString);
                     end
                     if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                        for itnCnt=1,table.getn(TraderItemId) do
+                        for itnCnt=1,#TraderItemId do
                             refill(itnCnt);
                             if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                         end

@@ -6,7 +6,7 @@ local InitRanks, UseItem, AddRank, InitBook, AddGermanBookText, AddEnglishBookTe
 function M.InitRanks()
     AddRank("untaught","unwissend");
     AddRank("unskilled","unge�bt");
-    AddRank("a beginner","ein Anf�nger");    
+    AddRank("a beginner","ein Anf�nger");
     AddRank("skilled","ge�bt");
     AddRank("a assistant","ein Geselle");
     AddRank("a master","ein Meister");
@@ -33,7 +33,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Goblins",0,"goblin language");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Feen",0,"fairy language");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Alten",0,"ancient language");
-        
+
             AddGermanBookText("\n \n       Wissen \n           der \n       Handwerke",0,0);
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Schmiedens",23,"smithing");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Goldschmiedens",236,"goldsmithing");
@@ -48,7 +48,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Angelns",72,"fishing");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kr�utersammelns",126,"herb lore");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst der Alchemie",58,"alchemy");
-        
+
             AddGermanBookText("\n \n       Wissen \n           der \n       Magie",0,0);
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst der Rechersche",266,"library research");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Transformo",0,"transformo");
@@ -57,7 +57,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Desicio",0,"desicio");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Commotio",0,"commotio");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des magischen Widerstandes",0,"magic resistance");
-        
+
             AddGermanBookText("\n \n       Wissen \n           des \n       Kampfes",0,0);
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Hiebwaffen",2731,"slashing weapons");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Schlagwaffen",226,"concussion weapons");
@@ -68,7 +68,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Anwendung von Taktik",0,"tactics");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Ausweichens",0,"dodge");
             AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Parierens",0,"parry");
-            
+
             AddEnglishBookText("\n \n The book of \n Selfawareness",105,0);
             AddEnglishBookText("\n   written \n      by \n       Nitram",0,0);
             AddEnglishBookText("\n \n        Knowledge \n         of the \n      Languages",0,0);
@@ -83,7 +83,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             AddEnglishBookText("\n It seems you are ~level~ in the Language of the goblins",0,"goblin language");
             AddEnglishBookText("\n It seems you are ~level~ in the Language of the fairies",0,"fairy language");
             AddEnglishBookText("\n It seems you are ~level~ in the Language of the ancients",0,"ancient language");
-        
+
             AddEnglishBookText("\n \n       Knowledge \n         of \n       Crafting",0,0);
             AddEnglishBookText("\n It seems you are ~level~ in the Art of smithing",23,"smithing");
             AddEnglishBookText("\n It seems you are ~level~ in the Art of gold smithing",236,"goldsmithing");
@@ -98,7 +98,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             AddEnglishBookText("\n It seems you are ~level~ in the Art of fishing",72,"fishing");
             AddEnglishBookText("\n It seems you are ~level~ in the Art of herb loreing",126,"herb lore");
             AddEnglishBookText("\n It seems you are ~level~ in the Art of alchemy",58,"alchemy");
-        
+
             AddEnglishBookText("\n \n       Wissen \n           der \n       Magie",0,0);
             AddEnglishBookText("\n It seems you are ~level~ in the Art of library research",266,"library research");
             AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of transformo",0,"transformo");
@@ -107,7 +107,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of desicio",0,"desicio");
             AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of commotio",0,"commotio");
             AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of magic resistance",0,"magic resistance");
-        
+
             AddEnglishBookText("\n \n       Wissen \n           des \n       Kampfes",0,0);
             AddEnglishBookText("\n It seems you are ~level~ in the using of slashing weapons",2731,"slashing weapons");
             AddEnglishBookText("\n It seems you are ~level~ in the using of concussion weapons",226,"concussion weapons");
@@ -153,7 +153,7 @@ function M.SendBookPage(User,Counter)
     else
         BookTexts=eBookText;
     end
-    local pages=table.getn(BookTexts);
+    local pages=#BookTexts;
     local SendText=BookTexts[math.min(Counter,pages)][1];
     local PicID=BookTexts[math.min(Counter,pages)][2];
     if (SendText==nil) then SendText="" end
@@ -199,7 +199,7 @@ function M.ModifyText(User,Text,Skillname)
     local retText="";
     local Skill=0;
     if (Skillname~=0) then Skill=User:getSkill(Skillname) end;
-    local Level=math.floor((Skill/100)*table.getn(Rank)-1)+1;
+    local Level=math.floor((Skill/100)*#Rank-1)+1;
     return string.gsub(Text,"~level~",Rank[Level][2]);
 end
 

@@ -91,7 +91,7 @@ function GoodSpawnField(TargetLoc)
 end
 
 function SelectMonster()
-    MonNr=math.random(1,table.getn(MonsterID));
+    MonNr=math.random(1,#MonsterID);
     return MonsterID[MonNr]
 end
 

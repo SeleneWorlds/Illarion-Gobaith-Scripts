@@ -33,24 +33,24 @@ end
 function InitNPC()
     if not InitDone then
         InitDone = true;
-        
+
         FollowInRange = 5; -- Maximaler Abstand zum Besitzer in dem das Lasttier folgt
         CyclesBetweenSteps = 8; -- Wieviele 1/10s zwischen 2 Schritten
         ActiveCyclesWithoutTarget = 880; -- Aktive Schritte ohne Ziel bis zum löschen
-        
+
         lost = {};
         moving = {};
         depotpos = {};
         cnt = {};
         lostcnt = {};
         blocked = {};
-        
+
         singleNPCInit = {};
-        
+
         itemlist = { 10, 86, 87,317,484,485,596,597,598,599,712,713,714,715,923,924,927,928};
-    
+
     end
-    
+
     if not singleNPCInit[thisNPC.id] then
         thisNPC:increaseSkill(1,"common language",100);
         singleNPCInit[thisNPC.id] = true;
@@ -60,7 +60,7 @@ function InitNPC()
         lostcnt[thisNPC.id] = 0;
         blocked[thisNPC.id] = false;
     end
-end      
+end
 
 function receiveText(Texttype, Message, Originator)
     if (Originator:getQuestProgress(8) == 0) then
@@ -177,9 +177,9 @@ function nextCycle()
         return
     end
     char_owner = false;
-    if (value_owner ~= 0) then        
+    if (value_owner ~= 0) then
         players = world:getPlayersInRangeOf(thisNPC.pos,FollowInRange);
-        if (table.getn(players)>0) then
+        if (#players>0) then
             for i, player in pairs(players) do
                 if (player.id == value_owner) then
                     if (player:increaseAttrib("hitpoints",0) > 0) then
@@ -202,7 +202,7 @@ function nextCycle()
         if not char_owner then
             if ( ( thisNPC.pos.x > -289 ) and ( thisNPC.pos.x < -279 ) and ( thisNPC.pos.y > 46 ) and ( thisNPC.pos.y < 56 ) and ( thisNPC.pos.z == 0 ) ) then
                 players = world:getPlayersInRangeOf( position( 302, 229, 0 ), 12);
-                if (table.getn(players)>0) then
+                if (#players>0) then
                     for i, player in pairs(players) do
                         if (player.id == value_owner) then
                             if (player:increaseAttrib("hitpoints",0) > 0) then
@@ -224,7 +224,7 @@ function nextCycle()
                 end
             elseif ( ( thisNPC.pos.x > 296 ) and ( thisNPC.pos.x < 305 ) and ( thisNPC.pos.y > 223 ) and ( thisNPC.pos.y < 298 ) and ( thisNPC.pos.z == 0 ) ) then
                 players = world:getPlayersInRangeOf( position( -285, 49, 0 ), 12);
-                if (table.getn(players)>0) then
+                if (#players>0) then
                     for i, player in pairs(players) do
                         if (player.id == value_owner) then
                             if (player:increaseAttrib("hitpoints",0) > 0) then
@@ -272,7 +272,7 @@ function nextCycle()
         lost[thisNPC.id] = true;
         return
     end
-    if moving[thisNPC.id] and not lost[thisNPC.id] then  
+    if moving[thisNPC.id] and not lost[thisNPC.id] then
         XOff = thisNPC.pos.x - char_owner.pos.x;
         YOff = thisNPC.pos.y - char_owner.pos.y;
         if (math.sqrt(XOff*XOff + YOff*YOff) > 2) then
@@ -307,17 +307,17 @@ function MoveX(XOff,forced)
     if (XOff == 0) and not forced then
         return false;
     end
-    
+
     if (XOff >= 0) then
         checkPos = position( thisNPC.pos.x - 1, thisNPC.pos.y, thisNPC.pos.z );
     else
         checkPos = position( thisNPC.pos.x + 1, thisNPC.pos.y, thisNPC.pos.z );
     end
-    
+
     if not CheckItem( checkPos ) then
         return false;
     end
-    
+
     old_pos = thisNPC.pos;
     if (XOff > 0) then
         thisNPC:move(6,true);
@@ -341,17 +341,17 @@ function MoveY(YOff,forced)
     if (YOff == 0) and not forced then
         return false;
     end
-    
+
     if (YOff >= 0) then
         checkPos = position( thisNPC.pos.x, thisNPC.pos.y - 1, thisNPC.pos.z );
     else
         checkPos = position( thisNPC.pos.x, thisNPC.pos.y + 1, thisNPC.pos.z );
     end
-    
+
     if not CheckItem( checkPos ) then
         return false;
     end
-    
+
     old_pos = thisNPC.pos;
     if (YOff > 0) then
         thisNPC:move(0,true);
@@ -376,7 +376,7 @@ function CheckItem( posi )
     local cnt = fld:countItems();
     local i;
     for i=0,cnt-1 do
-        if isPassable( (fld:getStackItem(i)).id, 1, table.getn( itemlist ) ) then
+        if isPassable( (fld:getStackItem(i)).id, 1, # itemlist  ) then
             return false;
         end;
     end;
@@ -401,7 +401,7 @@ function GetTileMod( )
 
     local Field = world:getField( thisNPC.pos )
     local TileID = Field:tile();
-    
+
     if ( TileID == 4 ) then return 2 -- Acker
     elseif ( TileID == 6 ) then return 3 -- Wasser
     elseif ( TileID == 9 ) then return 4 -- Wald

@@ -20,7 +20,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
      firsttime = 1
   end
   old_race = Character:get_race()
-  for i=1,table.getn(ListCodecs) do
+  for i=1,#ListCodecs do
      if Sourceitem.id_data == ListCodecs[i] then
 
 --      Hier kommt die Sache mit dem Langzeiteffekt:

@@ -151,7 +151,7 @@ function nextCycle()  -- ~10 times per second
             nextDelivery=math.random(40000);
             cycCount=1;
             --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);
-            for itnCnt=1,table.getn(TraderItemNumber) do
+            for itnCnt=1,#TraderItemNumber do
                 refill(itnCnt);
             end
         end
@@ -206,7 +206,7 @@ function receiveText(texttype, message, originator)
 
                 end
                 i=i+1;
-            until ((i==table.getn(TraderText)+1) or ready)
+            until ((i==#TraderText+1) or ready)
             if (not ready) then
                 --originator:inform("Ready set false");
                 if (string.find(message,"buy.+%d.+s")~=nil) then
@@ -241,7 +241,7 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt+1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
                 elseif (string.find(message,"buy%s.+%s.+")~=nil) then               -- ...want to buy a/one item
                     a,b,itemname=string.find(message,"buy%s[a-zA-Z]*%s([a-zA-Z%s]*)");
                     foundItem=false;
@@ -272,16 +272,16 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt + 1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
 
                 elseif (string.find(message,"price.+") ~= nil or string.find(message,"[Ww]hat.+cost")~=nil) then     -- if asked for price...
-                    for i=1,table.getn(TraderItemTrig) do                           -- run through all triggers
+                    for i=1,#TraderItemTrig do                           -- run through all triggers
                         if (string.find(message,TraderItemTrig[i])~=nil) then       -- if trigger found in question
                             thisNPC:talk(CCharacter.say, "The "..TraderItemName[i].." costs "..CalcPrice(TraderItemPrice[i],TraderItemNumber[i],TraderItemStandard[i]).." copper pieces."); -- tell the price
                         end
                     end --for
                 elseif (string.find(message,"[Yy]ou.+pay.+") ~= nil or string.find(message,"[Hh]ow much.+for.+")~=nil ) then
-                    for i=1,table.getn(TraderItemTrig) do                           -- run through all triggers
+                    for i=1,#TraderItemTrig do                           -- run through all triggers
                         if (string.find(message,TraderItemTrig[i])~=nil) then       -- if trigger found in question
                             if (string.find("aeiou",TraderItemName[i])~=nil) then
                                 artic="an ";
@@ -322,7 +322,7 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt + 1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
                 elseif (string.find(message,"sell%s.+%s.+")~=nil) then
                     a,b,itemname=string.find(message,"sell%s[a-zA-Z]*%s([a-zA-Z%s]*)");      -- ...want to sell a/an/one <itemS>
                     foundItem=false;
@@ -353,11 +353,11 @@ function receiveText(texttype, message, originator)
                             foundItem=true;
                         end --string find (itemname)
                         itnCnt = itnCnt + 1;
-                    until ((itnCnt==table.getn(TraderItemTrig)+1) or foundItem)           -- until no more items or we found one
+                    until ((itnCnt==#TraderItemTrig+1) or foundItem)           -- until no more items or we found one
                 elseif (string.find(message,"[Ll]ist.+wares")~=nil or string.find(message,"[Ww]hat.+wares.+sell")~=nil) then
                     --originator:inform("HIER");
                     wareString="I sell ";
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         --originator:inform("hier: "..TraderItemPrice[itnCnt]);
                         if (TraderItemPrice[itnCnt]~=0) then
                             --originator:inform("hier: "..TraderItemName[itnCnt]);
@@ -372,7 +372,7 @@ function receiveText(texttype, message, originator)
                     thisNPC:talk(CCharacter.say,wareString);
                 elseif (string.find(message,"[Ww]hat.+buy")~=nil) then                -- asked for a list of wares he buys
                     wareString="I buy ";
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         if (TraderItemSellPrice[itnCnt]~=0) then
                             if string.len(wareString)+string.len(TraderItemName[itnCnt])>240 then    -- line too long
                                 thisNPC:talk(CCharacter.say,wareString);                     -- say everything until here
@@ -385,7 +385,7 @@ function receiveText(texttype, message, originator)
                 elseif (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                     originator:inform("Copper="..TraderCopper..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                     statusString="Wares: ";
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         if string.len(statusString)+string.len(TraderItemName[itnCnt])>240 then    -- line too long
                             originator:inform(statusString);                     -- say everything until here
                             statusString="";
@@ -394,7 +394,7 @@ function receiveText(texttype, message, originator)
                     end
                     originator:inform(statusString);
                 elseif (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                    for itnCnt=1,table.getn(TraderItemId) do
+                    for itnCnt=1,#TraderItemId do
                         refill(itnCnt);
                     end
                 end -- string find buy/sell/list...
@@ -402,4 +402,3 @@ function receiveText(texttype, message, originator)
         end --id
     end-- range
 end--function
-

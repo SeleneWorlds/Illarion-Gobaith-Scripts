@@ -65,7 +65,7 @@ function BW_StepAlongRoad( Character )
             end
         end
     end
-    
+
     if (direct == 0) then
         newpos = position( Character.pos.x, Character.pos.y - 1, Character.pos.z );
     elseif (direct == 4) then
@@ -75,12 +75,12 @@ function BW_StepAlongRoad( Character )
     elseif (direct == 6) then
         newpos = position( Character.pos.x - 1, Character.pos.y, Character.pos.z );
     end
-    
+
     if BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
     end
-    
+
     if not last_dir[Character.id] then
         last_dir[Character.id] = direct;
         if (direct == 0) or (direct == 4) then
@@ -130,7 +130,7 @@ function BW_StepAlongRoad( Character )
             end
         end
     end
-    
+
     if (direct == 0) then
         newpos = position( Character.pos.x, Character.pos.y - 1, Character.pos.z );
     elseif (direct == 4) then
@@ -140,14 +140,14 @@ function BW_StepAlongRoad( Character )
     elseif (direct == 6) then
         newpos = position( Character.pos.x - 1, Character.pos.y, Character.pos.z );
     end
-    
+
     if BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
     end
-    
+
     direct = Character:get_face_to(  );
-    
+
     if (last_dir[Character.id] == 1) then
         if (direct==0) then
             direct = 6;
@@ -187,7 +187,7 @@ function BW_StepAlongRoad( Character )
             direct = math.floor(math.random(0,1))*4;
         end
     end
-    
+
     if (direct == 0) then
         newpos = position( Character.pos.x, Character.pos.y + 1, Character.pos.z );
     elseif (direct == 4) then
@@ -197,12 +197,12 @@ function BW_StepAlongRoad( Character )
     elseif (direct == 6) then
         newpos = position( Character.pos.x + 1, Character.pos.y, Character.pos.z );
     end
-    
+
     if BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
     end
-    
+
     direct = Character:get_face_to(  );
     if (direct == 0) then
         direct = 4;
@@ -237,7 +237,7 @@ function BW_StepAlongRoad( Character )
         end
         newpos = position( Character.pos.x + 1, Character.pos.y, Character.pos.z );
     end
-    
+
     if BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
@@ -248,7 +248,7 @@ function BW_intern_MoveX(Character,XOff,forced)
     if (XOff == 0) and not forced then
         return false;
     end
-    
+
     local old_pos = Character.pos;
     if (XOff > 0) then
         Character:move(6,true);
@@ -272,7 +272,7 @@ function BW_intern_MoveY(Character,YOff,forced)
     if (YOff == 0) and not forced then
         return false;
     end
-    
+
     local old_pos = Character.pos;
     if (YOff > 0) then
         Character:move(0,true);
@@ -310,11 +310,11 @@ function BW_intern_pos_okay( posi )
     if world:isCharacterOnField( posi ) then
         return false;
     end
-    
+
     if world:getField(posi):tile() == 7 then
         if world:isItemOnField( posi ) then
             local Itemid = world:getItemOnField( posi ).id;
-            if BW_intern_IDinList( Itemid, 1, table.getn( blocking_items ), blocking_items ) then
+            if BW_intern_IDinList( Itemid, 1, # blocking_items , blocking_items ) then
                 return false;
             end
         end
@@ -322,12 +322,12 @@ function BW_intern_pos_okay( posi )
         if not world:isItemOnField( posi ) then
             return false;
         end
-        
+
         local Itemid = world:getItemOnField( posi ).id;
-        if not BW_intern_IDinList( Itemid, 1, table.getn( passable_items ), passable_items ) then
+        if not BW_intern_IDinList( Itemid, 1, # passable_items , passable_items ) then
             return false;
         end
     end
-    
+
     return true;
 end

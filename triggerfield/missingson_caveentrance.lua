@@ -13,7 +13,7 @@ function MoveToField(User)
 			"Als du durch den Eingangsspalt blickst, f�llt dir auf, dass in der H�hle Licht brennt.",
 			"As you look trough the entrance, you notice that there's light in the cave.");
 		local m = world:getMonstersInRange(MonsterPositions[0], 10);
-		for i = table.getn(m), table.getn(MonsterPositions), 1  do
+		for i = #m, #MonsterPositions, 1  do
 			world:createMonster(55, MonsterPositions[i], 20);
 		end
 		world:createDynamicNPC("Fred",0,ChildPosition,0,"npc_missingson_fred.lua");

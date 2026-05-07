@@ -47,7 +47,7 @@ function M.addEffect(fireEffect, Patient)         -- Infection starts
     --Patient:talk(CCharacter.say, "Ich habs.");
     if burnList == nil then
         burnList = M.initBurnList();
-        burnLength = table.getn(burnList);
+        burnLength = #burnList;
         burnRad = 3;
     end;
 end
@@ -56,7 +56,7 @@ function M.loadEffect(fireEffect, Patient)         -- Infection starts
     Patient:talk(CCharacter.say, "Ich habs geladen.");
     if burnList == nil then
         burnList = M.initBurnList();
-        burnLength = table.getn(burnList);
+        burnLength = #burnList;
         burnRad = 4;
     end;
 end
@@ -80,7 +80,7 @@ end
 
 function M.callEffect(fireEffect, NPC)
     fireEffect.nextCalled=300;
-    
+
     --NPC:talk(CCharacter.say,"callEffect:");
     fnd, lstNo = fireEffect:findValue("lastNumber");
     fnd, fstNo = fireEffect:findValue("firstNumber");
@@ -97,7 +97,7 @@ function M.callEffect(fireEffect, NPC)
         fnd,posZ=fireEffect:findValue("fireZ"..i);
         posZ = posZ - 100000;
         fnd,next=fireEffect:findValue("fireN"..i);
-        
+
         --NPC:talk(CCharacter.say,"Position: "..posX..", "..posY..", "..posZ);
         --NPC:talk(CCharacter.say,"Next: "..next);
         flamePos = position(posX, posY, posZ);
@@ -140,10 +140,10 @@ function M.callEffect(fireEffect, NPC)
                 end;
             end;
             --]]
-            
-            
+
+
         end;
-        
+
         fnd,next=fireEffect:findValue("fireN"..i);
         if fstNo == lstNo then
             --NPC:talk(CCharacter.say,"Entferne alles!");
@@ -168,7 +168,7 @@ function M.callEffect(fireEffect, NPC)
             fireEffect:removeValue("fireZ"..i);
             fireEffect:removeValue("fireN"..i);
         end;
-        
+
         i = next;
     end;
 

@@ -25,7 +25,7 @@ function initializeNpc()
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
     --            EPr   ,ID   ,Am         ,SPr ,SA         ,Qual  ,Dura    ,Data ,Catagory
-    npc.base.trader_functions.AddTraderItem(100   ,3077 ,4294967295 ,0   ,4294967295 ,{3,3} ,{33,33} ,0    ,0);      -- Silbermünzen    
+    npc.base.trader_functions.AddTraderItem(100   ,3077 ,4294967295 ,0   ,4294967295 ,{3,3} ,{33,33} ,0    ,0);      -- Silbermünzen
     npc.base.trader_functions.AddTraderItem(10000 ,61   ,4294967295 ,0   ,4294967295 ,{3,3} ,{33,33} ,0    ,0);      -- Goldmünzen
 
     TraderCopper=0;
@@ -47,12 +47,12 @@ function initializeNpc()
     npc.base.functions.AddAdditionalTrigger("[Mm]achs [Gg]ut");
     npc.base.functions.AddAdditionalText("Bis bald. Ihr seid immer willkommen.");
     npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Was ist der Preis von <Ware>'");
-    
+
     npc.base.functions.AddCycleText("#me schnippst ein Kupferstück in die Luft","#me flips a copper coin into the air");
     npc.base.functions.AddCycleText("#me schnippst ein Silberstück in die Luft","#me flips a silver coin into the air");
     npc.base.functions.AddCycleText("#me schnippst ein Goldstück in die Luft","#me flips a gold coin into the air");
     npc.base.functions.AddCycleText("#me zählt einige Münzen","#me counts some coins");
-    
+
     TraderLang={"Gold","gold","Silber", "silver","Kupfer","copper","stücke","pieces"};
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
 
@@ -93,7 +93,7 @@ function receiveText(texttype, message, originator)
             thisNPC.activeLanguage=originator.activeLanguage;
             Status,Values=npc.base.trader_functions.SayPriceSell(originator, message)
             if (Status==0) then Status,Values=npc.base.trader_functions.SayPriceBuy(originator, message) end
-            if (Status==0) then Status,Values=npc.base.trader_functions.ShowItemList(originator, message) end            
+            if (Status==0) then Status,Values=npc.base.trader_functions.ShowItemList(originator, message) end
             if (Status==0) then Status,Values=npc.base.trader_functions.Selling(originator, message) end
             if (Status==0) then Status,Values=npc.base.trader_functions.Buying(originator, message) end
             if (Status==0) then Status,Values=npc.base.functions.TellDate(originator, message, TraderMonths) end
@@ -170,7 +170,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -180,7 +180,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

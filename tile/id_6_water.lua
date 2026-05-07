@@ -10,7 +10,7 @@ local Interrupt_Messages = { 	add = function (self,gText,eText)
 							table.insert(self, {["german"] = gText, ["english"] = eText});
 						end,
 						getRandom = function (self)
-							local msg = math.random(1,table.getn(self));
+							local msg = math.random(1,#self);
 							return self[msg].german, self[msg].english;
 						end
 };

@@ -8,9 +8,9 @@ function M.CloseSecretWall()
             return
         end
     end
-    
+
     CharsInRange = world:getPlayersInRangeOf(DoorPos,5)
-    if (table.getn(CharsInRange) == 0) then
+    if (#CharsInRange == 0) then
         world:createItemFromId(342,1,DoorPos,true,1,0);
         CharsInRange = world:getPlayersInRangeOf(DoorPos,15);
         for i, Chara in pairs(CharsInRange) do

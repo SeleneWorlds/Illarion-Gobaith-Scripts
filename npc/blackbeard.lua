@@ -73,13 +73,13 @@ function nextCycle()
         AddPassangerPosition({0,1});
         InitShipPos(route[1]);
         ---------------------------------- Schiffteil fertig -------------------------------------
-        
+
         ---------------------------------- Sprachteil anfang -------------------------------------
-        
+
         thisNPC:increaseSkill(1,"common language",100);
         --npc.base.functions.InitTalkLists()
-        --npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Aye. Was willst' Landratte?");  
-        
+        --npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Aye. Was willst' Landratte?");
+
         TradSpeakLang={0,1};
         TradStdLang=0;
         --common language=0
@@ -92,13 +92,13 @@ function nextCycle()
         --fairy language=7
         --gnome language=8
         --goblin language=9
-        --ancient language=10      
+        --ancient language=10
     end
-    
+
     if ShipDrive then
         zaehler = zaehler + 1;
         if (zaehler == 7) then
-            if ((ListDir == 1) and (step == table.getn(route))) then
+            if ((ListDir == 1) and (step == #route)) then
                 ShipDrive = false;
                 thisNPC:warp(captain_harbor_pos[2]);
                 WarpPassangersToo(passenger_landing[2]);
@@ -115,9 +115,9 @@ function nextCycle()
             else
                 DoNextMove();
             end
-            zaehler = 0;          
+            zaehler = 0;
         end
-    end          
+    end
 end
 
 function receiveText(texttype, message, originator)
@@ -126,9 +126,9 @@ function receiveText(texttype, message, originator)
     Start(originator,message);
     Debug(message);
 end
-                
-            
-            
+
+
+
 function AddPassanger(originator,message)
     if (string.find(message,"[Ss]chiff") ~= nil) then
         if not CheckForPassanger(originator.id) then
@@ -137,7 +137,7 @@ function AddPassanger(originator,message)
             else
                 thisNPC:talk(CCharacter.say,"Aye. Du fährst mit. Noch wer?");
             end
-            TryAddPassanger(originator);            
+            TryAddPassanger(originator);
         else
             thisNPC:talk(CCharacter.say,"Du fährst doch schon mit! Arr. Verscheisser mich nich!");
         end
@@ -164,7 +164,7 @@ function Start(originator,message)
             RotateTo(route[1]);
             originator:setQuestProgress(7,1);
         else
-            RotateTo(route[table.getn(route)]);
+            RotateTo(route[#route]);
             originator:setQuestProgress(7,2);
         end
         thisNPC:warp(captain_wait_pos);

@@ -25,7 +25,7 @@ function initializeNpc()
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
     --            EPr ,ID  ,Am,SPr,SA,Qual ,Dura   ,Data,Catagory
-    
+
     npc.base.trader_functions.AddTraderItem(150 ,48  ,20,5  ,15,{5,7},{55,88},0   ,0       ); -- leather gloves
     npc.base.trader_functions.AddTraderItem(300 ,53  ,20,5  ,15,{5,7},{55,88},0   ,0       ); -- leather boot
     npc.base.trader_functions.AddTraderItem(500 ,367 ,20,8  ,10,{5,7},{55,88},0   ,0       ); -- short leather leg
@@ -46,7 +46,7 @@ function initializeNpc()
     npc.base.trader_functions.AddTraderItem(20  ,49  ,50,5  ,50,{3}  ,{33}   ,0   ,0       ); -- bread
     npc.base.trader_functions.AddTraderItem(5   ,2529,40,0  ,15,{3}  ,{33}   ,0   ,0       ); -- honeycomb
 
-    
+
     TraderCopper=5000;
 
     npc.base.functions.AddTraderTrigger("[Gg]reet.+","Greetings. How I can help you?");
@@ -161,10 +161,10 @@ function receiveText(texttype, message, originator)
                 gText=npc.base.functions.GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],Values[4],TraderLang)..".";
                 eText="The "..world:getItemName(Values[1],1).." costs"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],Values[4],TraderLang)..".";
             end
-           
+
 		    if (Status==8) then -- Einkaufspreis Ansage für ein Item // buying price announcement for an item
                 gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wäre mir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
-                eText="I would pay"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);					
+                eText="I would pay"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
 			end
             if (Status==9) then -- Einkauf von mehreren Items erfolgreich // npc.base.trader_functions.Buying of multible items succeed
                 gText="Ihr wollt "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich gebe euch"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
@@ -221,7 +221,7 @@ function receiveText(texttype, message, originator)
             if (string.find(message,"[sS]tatus")~=nil and originator:isAdmin()==true) then
                 thisNPC:talk(CCharacter.say,"Copper="..TraderCopper ..", next delivery: "..nextDelivery.."cycCount:"..cycCount);
                 statusString="Wares: ";
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     if string.len(statusString)+string.len(world:getItemName(TraderItemId[itnCnt],1))>240 then    -- line too long
                         originator:inform(statusString);                     -- say everything until here
                         statusString="";
@@ -231,7 +231,7 @@ function receiveText(texttype, message, originator)
                 originator:inform(statusString);
             end
             if (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
-                for itnCnt=1,table.getn(TraderItemId) do
+                for itnCnt=1,#TraderItemId do
                     refill(itnCnt);
                     if (TraderCopper<TraderStdCopper) then TraderCopper=TraderStdCopper end
                 end

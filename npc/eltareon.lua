@@ -99,10 +99,10 @@ end--function
 --    if (string.find(message,"[Cc]hronic") ~= nil) or (string.find(message,"[Hh]istory") ~= nil) or
 --    (string.find(message,"[Gg]eschicht") ~= nil) then
 --        if (originator:getPlayerLanguage()==0) then
---            TextNumb=math.random(table.getn(HistTextD));
+--            TextNumb=math.random(#HistTextD);
 --            return 1,HistTextD[TextNumb]
 --        else
---            TextNumb=math.random(table.getn(HistTextE));
+--            TextNumb=math.random(#HistTextE);
 --            return 1,HistTextE[TextNumb]
 --        end
 --    else

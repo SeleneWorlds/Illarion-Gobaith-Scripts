@@ -7,9 +7,9 @@ local InitLibraries, AddBookshelves, CreateBookList, BookshelvesEqual, UseItem, 
 -- UPDATE common SET com_script='item.id_266_bookshelf' WHERE com_itemid IN (266, 267);
 
 function M.InitLibraries()
-      
-    Libraries = {}    
-    
+
+    Libraries = {}
+
     -- Shelves with misc books (was previously about crafts)
     -- In Troll's Bane
     PositionsZero = {
@@ -17,9 +17,9 @@ function M.InitLibraries()
       position( -90, -126, 0 ),
       position( -90, -124, 0 ),
       position( -97, -122, 0 ),
-      position( -97, -124, 0 ),   
+      position( -97, -124, 0 ),
     }
-    
+
     -- Shelves with books about histories
     -- In Troll's Bane
     PositionsOneA = {
@@ -35,7 +35,7 @@ function M.InitLibraries()
 	  position( -55, -234, 0 ),
 	  position( -57, -234, 0 )
     }
-    
+
     -- Shelves with books about cultures
     -- In Troll's Bane
     PositionsOneB = {
@@ -80,7 +80,7 @@ function M.InitLibraries()
     PositionsFourB = { position( 363, 212, -3 ) };
     PositionsFourC = { position( 365, 212, -3 ) };
     PositionsFourD = { position( 367, 212, -3 ) };
-    
+
     -- Shelves with dwarven books
     -- In Silverbrand
     PositionsFive = {
@@ -92,18 +92,18 @@ function M.InitLibraries()
        position( 173, -204, -3 ),
        position( 171, -204, -3 )
     }
-    
+
     -- In Silverbrand - Hall of the Axe
     PositionsSix = {
        position( 112, -164, -3 ),
        position( 112, -162, -3 )
     }
-    
+
     -- In Magnus' building in Tol Vanima
     PositionsSeven = {
        position( 317, 233, -3 );
     }
-    
+
     -- In Grey Refuge Castle
     PositionsEight = {
        position( -43, -233, 0 )
@@ -112,7 +112,7 @@ function M.InitLibraries()
 	PositionsEightB = {
 	   position( -41, -228, 0 )
 	}
-	
+
 	-- Gem Books
 	PositionsNine = {
 		position(-92,-123,1);		-- TB Library first floor
@@ -164,7 +164,7 @@ function M.InitLibraries()
 	PositionsSixteen = {
       	position( 34, 25, 50 )
 	}
-	
+
     -- Misc books (previously about crafts)
     BooksZero = {
         {2622,4},              -- How to be a simple monk
@@ -176,8 +176,8 @@ function M.InitLibraries()
   --    {109,0},              -- Alchemists Basics
   --    {129,0},              -- Guide to Basic Cooking
   --    {2617,2}              -- Tihgorac's Book of Combat
-    }  
-  
+    }
+
     -- Books about histories
     BooksOneA = {
       {116,0},              -- History of Illarion
@@ -185,7 +185,7 @@ function M.InitLibraries()
       {2622,1},             -- Religions of Illarion
       {2617,0}              -- Celebrations
     }
-    
+
     -- Books about cultures
     BooksOneB = {
       {2622,2},             -- Human Culture
@@ -198,7 +198,7 @@ function M.InitLibraries()
       {2604,0},             -- Orcish Culture
       {2598,0}              -- Goblin Culture
     }
-    
+
     -- Books about the Eldan priests and others
     BooksTwo = {
       {2605,0},             -- Diary of Noira Liv
@@ -206,20 +206,20 @@ function M.InitLibraries()
       {2615,7},             -- Brewyn the Liar
       {2610,0}              -- Schira'thel, Daughter of Blood
     }
-    
+
     -- Books about other stuff
     BooksThree = {
       {110,0},              -- Three Guiding truths
       {2619,0},              -- Fragments of the lost Chronicles of Manrok
 	  {2605,3};            -- cooking book
     }
-    
+
     -- Books about the old man's tales
     BooksFourA = { {2615, 0} };
     BooksFourB = { {2615, 1} };
     BooksFourC = { {2615, 2} };
     BooksFourD = { {2615, 3} };
-    
+
     -- Dwarven books
     BooksFive = {
       {2604, 1},            -- The Founding of Silverbrand
@@ -230,15 +230,15 @@ function M.InitLibraries()
       {2607, 2},            -- The Festival of Relationship
       {2598, 1}             -- Dwarven poems
     }
-    
+
     BooksSix = {
       {2605, 1 }            -- Warguide of the Dwarves I
     }
-    
+
     BooksSeven = {
       {2610, 3}             -- Confusion, by Magnus Magnol
     }
-      
+
     BooksEight = {
       {2622, 3},            -- The Battle Epics of the Grey
       {2617, 6},			-- Glorification to Irmorom
@@ -264,13 +264,13 @@ function M.InitLibraries()
     BooksTen = {
       {2619, 4}             --  Drachentr�ume
     }
-    
+
     BooksEleven = {
       {2598, 2};			-- Cake Bible
 	  {2617, 4};            -- The Articles of Greenbriar
 	  {2607, 1};            -- Halfling Culture and History
 	  {2622, 6};			-- The book of the jokes
-	  {2609, 2};			-- The chronicles of the Blumfussens 
+	  {2609, 2};			-- The chronicles of the Blumfussens
 	  {2604, 2};            -- About the humans
 	  {2610, 5};  			-- Evergreen Halflings
 	  {2615, 7};             -- Brewyn the Liar
@@ -300,7 +300,7 @@ function M.InitLibraries()
 		{2615,7};             -- Brewyn the Liar
     }
 	--
-  AddBookshelves( PositionsZero, BooksZero, 
+  AddBookshelves( PositionsZero, BooksZero,
     "\"Seien Sie ein M�nch\", \"Bark�pfige K�nige\", \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \", \"Brewyn der L�gner\"",
     "\"How To Be A Simple Monk\", \"Bareheaded Kings \", \"Cooking in Illarion, volume 1\n Fish and Meat\", \"Brewyn the Liar\"" );
   AddBookshelves( PositionsOneA, BooksOneA,
@@ -369,8 +369,8 @@ function M.InitLibraries()
 end
 
 function M.AddBookshelves( Positions, Books, gBooks, eBooks )
-  offset = table.getn( Libraries ) + 1; 
-  Libraries[offset] = {}; 
+  offset = # Libraries  + 1;
+  Libraries[offset] = {};
   Libraries[offset][1] = Positions;
   Libraries[offset][2] = Books;
   Libraries[offset][3] = gBooks;
@@ -379,11 +379,11 @@ end
 
 function M.CreateBookList( TargetPos )
     local retList={};
-    for i = 1, table.getn( Libraries ) do
-        for j = 1, table.getn( Libraries[i][1] ) do
+    for i = 1, # Libraries  do
+        for j = 1, # Libraries[i][1]  do
             if ( BookshelvesEqual( Libraries[i][1][j], TargetPos ) ) then
-                for k = 1, table.getn( Libraries[i][2] ) do
-                    retList[k] = Libraries[i][2][k][1]    
+                for k = 1, # Libraries[i][2]  do
+                    retList[k] = Libraries[i][2][k][1]
                 end
 --                for bookid, bookdata in Libraries[i][2] do
 --                    retList[bookid] = true;
@@ -400,14 +400,14 @@ end
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ( Libraries == nil ) then
-        InitLibraries()        
+        InitLibraries()
     end
-    
-        
+
+
     if ( Param == 0 ) then
         local BookList = CreateBookList( SourceItem.pos );
         BookMenu = MenuStruct()                    -- make new menu;
-        for i = 1, table.getn( BookList ) do
+        for i = 1, # BookList  do
             BookMenu:addItem( BookList[i] );
         end
 --        for bookid, nothing in BookList do
@@ -418,14 +418,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         if DistanceFromPosToPos( SourceItem.pos, User.pos ) > 1 then
             return;
         end;
-  
+
         local bookPos = getFreePosition( User, SourceItem );
-        
+
         done = false;
-        for i = 1, table.getn( Libraries ) do      
-            for j = 1, table.getn( Libraries[i][1] ) do      
+        for i = 1, # Libraries  do
+            for j = 1, # Libraries[i][1]  do
                 if ( BookshelvesEqual( Libraries[i][1][j], SourceItem.pos ) ) then
-                    for k = 1, table.getn( Libraries[i][2] ) do
+                    for k = 1, # Libraries[i][2]  do
                         if ( Libraries[i][2][k][1] == Param ) and ( not done ) then
                             world:createItemFromId( Param, 1, bookPos, true, 333, Libraries[i][2][k][2] );
                             done = true;
@@ -439,7 +439,7 @@ end
 
 function M.getFreePosition( User, BS )
    local faceto = User:get_face_to();
-   
+
    if BS.id == 266 then
       return position( User.pos.x + 1, User.pos.y, User.pos.z );
    else
@@ -455,11 +455,11 @@ end
 
 function M.LookAtItem(User,Item)
     if ( Libraries == nil ) then
-        InitLibraries()        
+        InitLibraries()
     end
-    
-    for i = 1, table.getn( Libraries ) do      
-        for j = 1, table.getn( Libraries[i][1] ) do      
+
+    for i = 1, # Libraries  do
+        for j = 1, # Libraries[i][1]  do
             if ( BookshelvesEqual( Libraries[i][1][j], Item.pos ) ) then
                 if (User:getPlayerLanguage()==0) then
                     --world:itemInform(User,Item, "B�cherregal (" .. Libraries[i][3] .. ")" );
@@ -467,17 +467,17 @@ function M.LookAtItem(User,Item)
                 else
                     --world:itemInform(User,Item, "Bookshelf (" .. Libraries[i][5] .. ")" );
                     User:inform( "There are books about " .. Libraries[i][4] );
-                end  
-                return;  
+                end
+                return;
             end
         end
     end
-    
+
     if (User:getPlayerLanguage()==0) then
-        world:itemInform(User,Item,"Du siehst "..world:getItemName(Item.id,0)) 
+        world:itemInform(User,Item,"Du siehst "..world:getItemName(Item.id,0))
     else
-        world:itemInform(User,Item,"You see "..world:getItemName(Item.id,1)) 
-    end        
+        world:itemInform(User,Item,"You see "..world:getItemName(Item.id,1))
+    end
 end
 ---- B�cherregal
 --
@@ -514,7 +514,7 @@ end
 --function AddLibrary(Posi,Rad,Books)
 --    table.insert(LibPos,Posi);
 --    table.insert(LibRad,Rad);
---    offset = table.getn(LibRad);
+--    offset = #LibRad;
 --    LibBooks[offset] = { };
 --    for i, bookdef in Books do
 --        if not LibBooks[offset][bookdef[1]] then
@@ -532,7 +532,7 @@ end
 --
 --function CreateBookList(TargetPos)
 --    local retList={};
---    for i=1,table.getn(LibPos) do
+--    for i=1,#LibPos do
 --        if (DistanceFromPosToPos(TargetPos,LibPos[i])<=LibRad[i]) then
 --            for bookid, bookdata in LibBooks[i] do
 --                retList[bookid] = true;
@@ -555,15 +555,15 @@ end
 --        User:sendMenu(BuecherMenue);
 --    else
 --        -- Position f�r Buch
---        local buchPos = position(SourceItem.pos.x+1, SourceItem.pos.y+1, SourceItem.pos.z )    
---        
+--        local buchPos = position(SourceItem.pos.x+1, SourceItem.pos.y+1, SourceItem.pos.z )
+--
 --        done = false;
---        for i=1,table.getn(LibPos) do            
+--        for i=1,#LibPos do
 --            if (DistanceFromPosToPos(TargetPos,LibPos[i])<=LibRad[i]) then
 --                for bookid, bookdatalist in LibBooks[i] do
 --                    if (bookid == Param) and not done then
 --                        math.randomseed( SourceItem.pos.x + SourceItem.pos.y + SourceItem.pos.z );
---                        bookdata = bookdatalist[ math.random( 1, table.getn(  bookdatalist ) ) ];
+--                        bookdata = bookdatalist[ math.random( 1, #  bookdatalist  ) ];
 --                        world:createItemFromId(Param,1,buchPos,false,333,bookdata);
 --                        done = true;
 --                    end
