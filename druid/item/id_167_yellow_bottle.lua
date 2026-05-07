@@ -29,7 +29,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
     elseif Sourceitem.id_data == 65336351 then
 --     Character:inform("Gnom-Wahn/gnome-paranoia")
        diagnose=4
-    elseif math.mod(Sourceitem.id_data,10000000) == 8455363 then
+    elseif (Sourceitem.id_data % 10000000) == 8455363 then
 --     Character:inform("Vein'sches Syndrom/Veins'syndrome")
 		   diagnose=5
 		   local allergy = math.floor(Sourceitem.id_data/10000000);
@@ -188,7 +188,7 @@ function M.LookAtItem(User,Item)
      Etikett ="Gwenwyn Trolio Caethineb"
   elseif item.id_data == 65336351 then
      Etikett ="Gwenwyn Corrach Rhithdyb"
-  elseif math.mod(item.id_data,10000000) == 8455363 then
+  elseif (item.id_data % 10000000) == 8455363 then
      Etikett ="Gwenwyn Rhag Vein-Syndrome"
   elseif item.id_data == 95819741 then
      Etikett ="Gwenwyn Draig Brech Moddion"

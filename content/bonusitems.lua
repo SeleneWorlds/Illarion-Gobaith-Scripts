@@ -80,34 +80,34 @@ function M.initBonus()
     preTitle[1][62] = "";           postTitle[1][62] = "";          preTitle[2][62] = "";         postTitle[2][62] = "";
     preTitle[1][63] = "";           postTitle[1][63] = "";          preTitle[2][63] = "";         postTitle[2][63] = "";
     preTitle[1][64] = "";           postTitle[1][64] = "";          preTitle[2][64] = "";         postTitle[2][64] = "";
-                                                 
-end                                              
-                                                 
-                                                 
+
+end
+
+
 function M.setBonusAndTitle(item, bonus1, value1, bonus2, value2, title)
     if( (bonus1 > 63) or (bonus1 < 0) or (bonus2 > 63) or (bonus2 < 0) or
             (title > 63) or (title < 0) or (value1 > 64) or (value1 < -63)
             or (value2 > 64) or (value2 < -63) ) then
-        return false;                            
-    end;                                         
-                                                 
+        return false;
+    end;
+
     item.data = (((title*128 + value2 + 63)*64 + bonus2) * 128 + value1 + 63) * 64 + bonus1;
     world:changeItem(item);
     return true;
-end                                              
-                                                 
-function M.getBonusFromItem(item, bonustype)             
+end
+
+function M.getBonusFromItem(item, bonustype)
     local data = item.data;
     local i;
     for i=1,2 do
-        if( math.mod( data, 64 ) == bonustype ) then
-            return math.mod( math.floor( data / 64 ), 128 ) - 63;
+        if( ( data % 64 ) == bonustype ) then
+            return ( math.floor( data / 64 ) % 128 ) - 63;
         else
             if( i == 2 ) then return 0; end;
             data = math.floor( data / 8192 );
         end;
     end;
-end                      
+end
 
 function M.getBonusFromUser(user, bonustype)
     local bonus = 0;
@@ -120,18 +120,18 @@ function M.getBonusFromUser(user, bonustype)
         end;
     end;
     return bonus;
-end                      
-                                                 
-function M.getNameWithTitle(item, lang, gender)            
+end
+
+function M.getNameWithTitle(item, lang, gender)
     local i = math.floor( item.data / 16777216 ); -- 2^30 / 64
     if( i == 0 ) then return world:getItemName(item.id, lang); end;
-    if( M.isinit == nil) then                      
-        M.initBonus();                             
-        M.isinit = 1;                              
-    end;                                     
+    if( M.isinit == nil) then
+        M.initBonus();
+        M.isinit = 1;
+    end;
     local name = M.preTitle[lang+1][i];
     if( (i >= 11) and (i <= 15) ) then name = name..gender.." "; end;
     return name..world:getItemName(item.id, lang).." "..M.postTitle[lang+1][i];
-end                                              
+end
 
 return M

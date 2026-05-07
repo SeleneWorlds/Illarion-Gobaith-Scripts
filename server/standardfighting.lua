@@ -604,7 +604,7 @@ end
 ]]
 function GetQualityEffect( Qual )
     local Quali = math.floor( Qual / 100 );
-    local Durab = math.mod( Qual, 100 );
+    local Durab = ( Qual % 100 );
     return base.common.Limit( base.common.Scale( 0.55, 1.36, Quali * 100 / 9 ) * base.common.Scale( 0.9, 1.1, Durab * 100 / 99 ), 0.5, 1.5 );
 end
 

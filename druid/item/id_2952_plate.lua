@@ -32,7 +32,7 @@ end
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
     if (Sourceitem.id_quality > 101 and Sourceitem.id_data > 0) then  -- Es befinden sich Pflanzen auf dem Teller
-        local basket_id = math.mod( Sourceitem.id_data, 10000 );
+        local basket_id = ( Sourceitem.id_data % 10000 );
         local basket_data = math.floor( Sourceitem.id_data / 10000 );
 
         if (Targetitem.id_id ~= 0) then -- Es soll was eingelagert werden
@@ -95,7 +95,7 @@ function M.LookAtItem( User, Item )
         .. world:getItemName( item.id_id, User:getPlayerLanguage() ).."." );
 
     else
-        local basket_id = math.mod( item.id_data, 10000 );
+        local basket_id = ( item.id_data % 10000 );
         local basket_data = math.floor( item.id_data / 10000 );
 
 

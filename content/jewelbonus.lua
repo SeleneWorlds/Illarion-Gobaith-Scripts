@@ -3,7 +3,7 @@ local M = {}
 function M.getBonus(Item)                 -- returns gem#, strength of this gem (inserted)
     itData=Item.data;
     if itData>9 and itData<100 then     -- this is an item with 1 gem inserted!
-        modStr=math.mod(itData,10)+1;   -- how much modification?
+        modStr=(itData % 10)+1;   -- how much modification?
         insGem=math.floor(itData/10);   -- which stone is it?
         return insGem, modStr;
     end

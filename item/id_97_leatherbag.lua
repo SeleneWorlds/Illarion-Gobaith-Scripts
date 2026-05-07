@@ -7,18 +7,18 @@ function M.LookAtItem(User,Item)
     local txt;
     local low32 = Item.data;
     local high16  = Item.quality-333;
-        
+
     -- high24 contains the highest 24 bits, thus the highest 5 chars
-    local high24 = high16 + math.mod( low32, 256 )*65536;
+    local high24 = high16 + ( low32 % 256 )*65536;
     -- low24 contains the lowest 24 bits, thus the lowest 5 chars
     local low24  = math.floor( low32 / 256 );
-    
+
     if User:getPlayerLanguage() == 0 then
         txt = "Du siehst Ledertasche";
     else
         txt = "You see leather bag";
     end;
-    
+
     if high24 == 0 then
         world:itemInform( User, Item, txt );
     else
@@ -26,12 +26,12 @@ function M.LookAtItem(User,Item)
         local lbl = "";
         a = low24;
         while a > 0 do
-            lbl = string.char( math.mod( a, 27 ) + aval )..lbl;
+            lbl = string.char( ( a % 27 ) + aval )..lbl;
             a = math.floor( a / 27 );
         end;
         a = high24 - 1;
         while a > 0 do
-            lbl = string.char( math.mod( a, 27 ) + aval )..lbl;
+            lbl = string.char( ( a % 27 ) + aval )..lbl;
             a = math.floor( a / 27 );
         end;
         world:itemInform( User, Item, txt.." ("..lbl..")");
@@ -81,7 +81,7 @@ function M.UseItem( User, Item, TargetItem, Counter, Param )
     		                    a = a*27 + string.byte(lbl, 5) - aval;
     		                end;
     		                b = math.floor( a / 65536 );
-    		                a = math.mod( a, 65536 ) + 1;
+    		                a = ( a % 65536 ) + 1;
     		                if a >= 32768 then
     		                    a = a - 65536;
     		                end;
@@ -93,7 +93,7 @@ function M.UseItem( User, Item, TargetItem, Counter, Param )
     		                a = a*256 + b;
     		                if a >= 2147483648 then
     		                    a = a - 4294967296;
-    		                end; 
+    		                end;
     		                Item.data = a;
 		                end;
 		                world:changeItem(Item);
@@ -101,11 +101,11 @@ function M.UseItem( User, Item, TargetItem, Counter, Param )
 		                    User:inform("Du beschriftest die Ledertasche mit "..lbl..".");
 		                else
 		                    User:inform("You label the leather bag with "..lbl..".");
-		                end;                
+		                end;
 		            end;
 		        end;
 		    end;
-		end;        
+		end;
 end
 
 return M

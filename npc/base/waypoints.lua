@@ -39,7 +39,7 @@ with the current WP as parameter and the changed WP as return value.
   @param list(waypoint)  list of neighbour waypoints
   @param list(mixed)  additional data
   @return Waypoint  self
-  
+
   data can contain e.g.:
     bridge = { toArea = int, toWaypoint = Waypoint, warp = boolean }
 		* NOTE: toWaypoint contains at first the position of the wp. After initializing all wps the right wp will be set (see below)
@@ -205,20 +205,20 @@ function BWP_PosToIndex(pos)
 	return index;
 end
 
--- recalculate the distinct index and return the posStruct 
+-- recalculate the distinct index and return the posStruct
 function BWP_IndexToPos(index)
 	local x,y,z;
-	x = math.floor(math.mod(index,100000000000000)/10000000000);
+	x = math.floor((index % 100000000000000)/10000000000);
 	if index>=100000000000000 then
 		x = -1 * x;
 	end
-	index = math.mod(index,10000000000);
-	y = math.floor(math.mod(index,10000000000)/100000);
+	index = (index % 10000000000);
+	y = math.floor((index % 10000000000)/100000);
 	if index>=10000000000 then
 		y = -1 * y;
 	end
-	index = math.mod(index,100000);
-	z = math.mod(index,10000);
+	index = (index % 100000);
+	z = (index % 10000);
 	if index>=100000 then
 		z = -1 * z;
 	end

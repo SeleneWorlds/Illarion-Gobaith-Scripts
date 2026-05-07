@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 
@@ -68,7 +68,7 @@ function M.plantdrop()
     end
 
     local season=math.ceil( world:getTime("month") / 4 );
-    season = base.common.Limit( season, 1, 4 );
+    season = common.Limit( season, 1, 4 );
     local spawn_amm = 15;
     if (season == 1) then --Fr�hling
         spawn_amm = 40;
@@ -96,7 +96,7 @@ function M.plantdrop()
             ---- Standortbestimmung
             newpos = position( math.random(0,1000), math.random(0,1000), 0 );
             ---- bodentile feststellen
-            local bodenart = base.common.GetGroundType( world:getField(newpos):tile() );
+            local bodenart = common.GetGroundType( world:getField(newpos):tile() );
             if ((bodenart == check) or (check == 0)) then
 
               -- --------------------------------------------------------------------------------------------------------

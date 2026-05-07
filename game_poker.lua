@@ -347,7 +347,7 @@ function M.newPokerTable(
         if seat == self.buttonPlayer then
             setFixedItemOnField( self.buttonId, 1, posU );
         end;
-        setFixedItemOnField( self.unitId, math.mod( amount, 100 ), posU );
+        setFixedItemOnField( self.unitId, ( amount % 100 ), posU );
         setFixedItemOnField( self.hundredId, math.floor( amount / 100 ), posH );
     end;
 
@@ -360,7 +360,7 @@ function M.newPokerTable(
         clearField( posU );
         clearField( posf );
         setFixedItemOnField( self.hundredthId, amount*100 - ints*100, posf );
-        setFixedItemOnField( self.unitId, math.mod( ints, 100 ), posU );
+        setFixedItemOnField( self.unitId, ( ints % 100 ), posU );
         setFixedItemOnField( self.hundredId, math.floor( ints / 100 ), posH );
     end;
 
@@ -418,7 +418,7 @@ function M.newPokerTable(
         local i;
         local nextId;
         for i=1,self.tableSize-1 do
-            nextId = 1 + math.mod( self.activePlayer+i-1, self.tableSize );
+            nextId = 1 + ( self.activePlayer+i-1 % self.tableSize );
             if self.listPlayer[nextId] and not self.listHasFolded[nextId] and ( not self.listIsAllIn[nextId] or self.gameState == 7 ) then
                 self.activePlayer = nextId;
                 return false;
@@ -526,7 +526,7 @@ function M.newPokerTable(
     local payPlayer = function( pid, amount )
         local ints = math.floor( amount );
         self.listPlayer[pid]:createItem( self.hundredthId, ( amount - ints ) * 100, 333, 0 );
-        self.listPlayer[pid]:createItem( self.unitId, math.mod( ints, 100 ), 333, 0 );
+        self.listPlayer[pid]:createItem( self.unitId, ( ints % 100 ), 333, 0 );
         self.listPlayer[pid]:createItem( self.hundredId, math.floor( ints / 100 ), 333, 0 );
     end;
 

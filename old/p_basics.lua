@@ -166,13 +166,13 @@ function M.P_GetElapsedDaysIt(year,month,day,elapsed)
 	end
 	elapsed = elapsed + 1;
 	if month==16 then
-		day = math.mod(day+1,6);
+		day = (day+1 % 6);
 	else
-		day = math.mod(day+1,25);
+		day = (day+1 % 25);
 	end
 	if day==0 then
 		day = 1;
-		month = math.mod(month+1,17);
+		month = (month+1 % 17);
 		if month==0 then
 			month = 1;
 			year = year + 1;

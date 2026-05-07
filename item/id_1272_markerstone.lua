@@ -8,7 +8,7 @@ require("base.common")
 function M.CheckStone(Char,StoneNumber)
     retVal=false;
     StoneBase=math.floor((StoneNumber-1)/32);  -- Stone 0 to 31 -> 0, 32-.. ->2 etc.
-    StoneBaseOffset=math.mod(StoneNumber-1,32);  -- StoneNr inside range
+    StoneBaseOffset=(StoneNumber-1 % 32);  -- StoneNr inside range
     HasStones=Char:getQuestProgress(10+StoneBase);
     GotStone=LuaAnd(2^(StoneNumber-1),HasStones);
     if GotStone>0 then
@@ -19,7 +19,7 @@ end
 
 function M.WriteStone(Char,StoneNumber)
     StoneBase=math.floor(StoneNumber/32);  -- Stone 0 to 31 -> 0, 32-.. ->2 etc.
-    StoneBaseOffset=math.mod(StoneNumber,32);  -- StoneNr inside range
+    StoneBaseOffset=(StoneNumber % 32);  -- StoneNr inside range
     --Char:inform("Base offset: " .. StoneBase .. " Stone Nr "..StoneBaseOffset .. " for stone "..StoneNumber);
     currentStones=Char:getQuestProgress(1001+StoneBase);
     Char:setQuestProgress(1001+StoneBase,LuaOr(2^StoneBaseOffset,currentStones));

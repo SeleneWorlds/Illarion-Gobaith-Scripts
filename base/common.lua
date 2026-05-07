@@ -370,16 +370,16 @@ end;
 function M.GetBonusFromTool(toolItem)
     local dataValue=toolItem.data;
     if ((dataValue > 9) and (dataValue < 100)) then
-        str1 = math.mod(dataValue, 10) + 1;
+        str1 = (dataValue % 10) + 1;
         dataValue = dataValue - str1 + 1;
         stone1 = math.floor(dataValue / 10);
         return stone1, str1, 0, 0;
     elseif ((dataValue > 1009) and (dataValue < 10000)) then
-        str1 = math.mod(dataValue, 10) + 1;
+        str1 = (dataValue % 10) + 1;
         dataValue = dataValue - str1 + 1;
-        stone1 = math.mod(dataValue, 100) / 10;
+        stone1 = (dataValue % 100) / 10;
         dataValue = dataValue - stone1 * 10;
-        str2 = math.mod(dataValue, 1000) / 100 + 1;
+        str2 = (dataValue % 1000) / 100 + 1;
         stone2 = math.floor(dataValue / 1000);
         return stone1, str1, stone2, str2;
     end;
@@ -404,7 +404,7 @@ function M.ToolBreaks(User, theItem, fast)
         factor = 0.093;
     end;
 
-    local      dura = math.mod( theItem.quality, 100 ); -- Dura-Wert zwischen 1 und 99
+    local      dura = ( theItem.quality % 100 ); -- Dura-Wert zwischen 1 und 99
     local      qual = (theItem.quality - dura) / 100;   -- Qual-Wert zwischen 1 und 9
     local durabrake = 0.5 * (100 - dura);               -- Bremse des Duraverlusts bei niedriger Dura
     local qualbrake = 0.5 * (10  - qual);               -- Bremse beim Senken von Qual, wenn Qual schon niedrig
@@ -979,7 +979,7 @@ function M.Round(value, precision)
 
     value = value * 10 ^ precision;
 
-    if (math.mod(value, 1) >= 0.5) then
+    if ((value % 1) >= 0.5) then
         value = math.ceil( value );
     else
         value = math.floor( value );
@@ -1039,11 +1039,11 @@ end;
     @return PositionStruct - The PositionStruct that was encoded in the value
 ]]
 function M.DataToPosition(value)
-    local z = math.mod(value, 1024) - 500;
+    local z = (value % 1024) - 500;
     value = math.floor(value / 1024);
-    local y = math.mod(value, 1024) - 500;
+    local y = (value % 1024) - 500;
     value = math.floor(value / 1024);
-    local x = math.mod(value, 1024) - 500;
+    local x = (value % 1024) - 500;
     return position(x,y,z);
 end;
 

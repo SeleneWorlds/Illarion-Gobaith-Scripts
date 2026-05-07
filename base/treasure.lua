@@ -342,8 +342,8 @@ local M = {}
 
     function M.analyzeMap( Item )
         local mapDiff=math.floor(Item.quality/100);
-        local mapPartsMax=math.floor(math.mod(Item.quality, 100)/10);
-        local mapPartsThis=math.mod(Item.quality, 10);
+        local mapPartsMax=math.floor((Item.quality % 100)/10);
+        local mapPartsThis=(Item.quality % 10);
 
         return mapDiff, mapPartsMax, mapPartsThis
     end

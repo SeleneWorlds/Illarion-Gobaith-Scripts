@@ -251,13 +251,13 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 				base.common.TempInformNLS( User,
 				"Du entsicherst des Wurfk�rper. Vorsicht damit.",
 				"You activate the missle. Careful with it.");
-				Sourceitem.id_quality = math.mod( Sourceitem.id_quality, 1000 );
+				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 );
 				world:changeItem( SourceItem );
 			else -- Wurfk�rper entsichert --> sichern
 				base.common.TempInformNLS( User,
 				"Du sicherst den Wurfk�rper.",
 				"You deactivate the missile.");
-				Sourceitem.id_quality = math.mod( Sourceitem.id_quality, 1000 ) + 1000;
+				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 ) + 1000;
 				world:changeItem( SourceItem );
 			end
 		else

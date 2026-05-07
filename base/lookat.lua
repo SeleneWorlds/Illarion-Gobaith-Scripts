@@ -105,7 +105,7 @@ function M.GetItemDescription(User,Item,material,Weapon,Priest)
     -- calculate values
 
    -- decode item quality, extract duration
-    local itemDura=math.mod(Item.quality,100);
+    local itemDura=(Item.quality % 100);
     local itemQual=(Item.quality-itemDura)/100;
     --User:inform("qual");
 
@@ -215,18 +215,18 @@ function M.GetItemDescription(User,Item,material,Weapon,Priest)
 	-- Edelstein-Item??
 	--
     elseif ( (Item.data>=10 and Item.data<=79) or (Item.data>=1010 and Item.data<=7979) ) then
-		if (math.floor(math.mod(Item.data,10)/1) >0) and (math.floor(math.mod(Item.data,10)/1) <10) then
-			Suffix=content.lookat.unique.getSuffix(User,Class,math.floor(math.mod(Item.data,100)/10),math.floor(math.mod(Item.data,10)/1));
+		if (math.floor((Item.data % 10)/1) >0) and (math.floor((Item.data % 10)/1) <10) then
+			Suffix=content.lookat.unique.getSuffix(User,Class,math.floor((Item.data % 100)/10),math.floor((Item.data % 10)/1));
 		else
 			Suffix="";
 		end
-		if (math.floor(math.mod(Item.data,1000)/100) >0) and (math.floor(math.mod(Item.data,1000)/100) <10) then
-	      	Praefix=content.lookat.unique.getPraefix(User,Class,math.floor(math.mod(Item.data,10000)/1000),math.floor(math.mod(Item.data,1000)/100));
+		if (math.floor((Item.data % 1000)/100) >0) and (math.floor((Item.data % 1000)/100) <10) then
+	      	Praefix=content.lookat.unique.getPraefix(User,Class,math.floor((Item.data % 10000)/1000),math.floor((Item.data % 1000)/100));
 		else
 			Praefix="";
 		end
 		Praefix=Praefix..genderExtension;
-		if ((math.floor(math.mod(Item.data,100)/10))==(math.floor(math.mod(Item.data,10000)/1000))) and (math.floor(math.mod(Item.data,10)/1)<=4) and (math.floor(math.mod(Item.data,1000)/100)<=4) then
+		if ((math.floor((Item.data % 100)/10))==(math.floor((Item.data % 10000)/1000))) and (math.floor((Item.data % 10)/1)<=4) and (math.floor((Item.data % 1000)/100)<=4) then
 			Suffix="";
 		end
 
@@ -258,13 +258,13 @@ function M.checkGemsOnItem(User,Item)
 	        return;
 	    end
 
-        FirstGemStr   = content.lookat.unique.writeStr(User,math.floor(math.mod(Item.data,10)/1)); -- Erste Stelle - St�rke des ersten Steins
-		FirstGemName  = content.lookat.unique.writeGem(User,math.floor(math.mod(Item.data,100)/10));   -- Zweite Stelle - Art des ersten Steins
+        FirstGemStr   = content.lookat.unique.writeStr(User,math.floor((Item.data % 10)/1)); -- Erste Stelle - St�rke des ersten Steins
+		FirstGemName  = content.lookat.unique.writeGem(User,math.floor((Item.data % 100)/10));   -- Zweite Stelle - Art des ersten Steins
 		SecondGemStr="";
 		SecondGemName="";
 		if gems==2 then
-	        SecondGemStr   = content.lookat.unique.writeStr(User,math.floor(math.mod(Item.data,1000)/100));       -- Dritte Stelle - St�rke des zweiten Steins
-			SecondGemName  = content.lookat.unique.writeGem(User,math.floor(math.mod(Item.data,10000)/1000));       -- Vierte Stelle - Art des zweiten Steins
+	        SecondGemStr   = content.lookat.unique.writeStr(User,math.floor((Item.data % 1000)/100));       -- Dritte Stelle - St�rke des zweiten Steins
+			SecondGemName  = content.lookat.unique.writeGem(User,math.floor((Item.data % 10000)/1000));       -- Vierte Stelle - Art des zweiten Steins
 		end
 		if gems==2 then
 			firstPart_de=" und ein ";

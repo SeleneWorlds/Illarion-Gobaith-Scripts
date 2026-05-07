@@ -72,7 +72,7 @@ function M.causeDamage( Item, DamagedArea, DamagedAttrib, ShieldAttribs, gfxid, 
             -- 1000HP - 9990HP
             local qual = Item.quality;
             if (qual > 999) then
-                qual = math.mod( qual, 1000 );
+                qual = ( qual % 1000 );
             end
             Schaden = 10 * qual;
 
@@ -128,7 +128,7 @@ function M.damageItemDura( Item, targetArea, gfxid, sfxid, modifier, ItemType )
 
     local qual = Item.quality;
     if (qual > 999) then
-        qual = math.mod( qual, 1000 );
+        qual = ( qual % 1000 );
     end
 
     for i, posi in pairs(targetArea) do
@@ -182,7 +182,7 @@ function M.damageItemQual( Item, targetArea, gfxid, sfxid, modifier, ItemType )
 
     local qual = Item.quality;
     if (qual > 999) then
-        qual = math.mod( qual, 1000 );
+        qual = ( qual % 1000 );
     end
 
     for i, posi in pairs(targetArea) do

@@ -167,7 +167,7 @@ function M.LookAtItem(User,Item)
         end
 
         -- decode item quality, extract duration
-        local itemDura=math.mod(Item.quality,100);
+        local itemDura=(Item.quality % 100);
         local itemQual=(Item.quality-itemDura)/100;
         --User:inform("portions "..itemQual);
 

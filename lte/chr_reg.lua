@@ -38,22 +38,22 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
 
 
     -----------------------POSITION DES CHARS ANZEIGEN------------------------
-    if not ( math.mod( Effect.numberCalled, 10 ) == 0 ) and string.find( Char.lastSpokenText, "show position" ) then
+    if not ( ( Effect.numberCalled % 10 ) == 0 ) and string.find( Char.lastSpokenText, "show position" ) then
         base.common.InformNLS( Char,
             "Deine aktuelle Position ist: "..Char.pos.x..", "..Char.pos.y..", "..Char.pos.z.."",
             "Your current position is: "..Char.pos.x..", "..Char.pos.y..", "..Char.pos.z.."" );
     end
     ------------------------POSITION ANZEIGEN FERTIG--------------------------
 
-	
+
     if ( Hitpoints == 0 ) then -- Charakter ist tot
         M.leadToCross( Char , Effect ); -- Warp char to cross
 
 		return M.leaveSavely( Effect );
     else
-    
+
         local foundValue, cycleCounter = Effect:findValue( "cycleCounter" ); --Is the cycleCounter still there? Can happen when somebody is revived by another method than the cross or runs to the cross himself
-    
+
         if foundValue then
             Effect:removeValue("cycleCounter"); --getting rid of the old counter
         end
@@ -342,7 +342,7 @@ end
 function M.leadToCross( Char , Effect )
 
     local foundValue, cycleCounter = Effect:findValue( "cycleCounter" ); --Read the cycleCounter
-    
+
     if not foundValue then
         Effect:addValue("cycleCounter",1); --Start counting
         base.common.TempInformNLS( Char,"[Tod] Du bist gestorben. Die Welt um dich herum verblasst und du bereitest dich darauf vor, den G�ttern in Chergas Reich der Toten gegen�berzutreten.","[Death] You have died. The world around faints and you prepare yourself to face the Gods in the afterlife of Cherga's Realm.");

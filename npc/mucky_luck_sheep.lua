@@ -68,7 +68,7 @@ function nextCycle()
 		moving[thisNPC.id] = true;
 		nextCheck[thisNPC.id] = math.random(30,50);
 		endGame[thisNPC.id] = endGame[thisNPC.id] - 1;
-	elseif math.mod(nextCheck[thisNPC.id],10) == 0 then
+	elseif (nextCheck[thisNPC.id] % 10) == 0 then
 		if math.random(5) == 1 then
 			world:makeSound(2,thisNPC.pos);
 		end

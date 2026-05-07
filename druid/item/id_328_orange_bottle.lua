@@ -23,7 +23,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 			local codeList = {16159738,49134362,37568889,15363356,3635548,14791859,85568351,76359585};
 			local potionData = Sourceitem.id_data;
 			if diagnose == 5 then
-				potionData = math.mod(Sourceitem.id_data,10000000);
+				potionData = (Sourceitem.id_data % 10000000);
 			end
 			if potionData == codeList[diagnose] then
 --            Feststellung, ob die Qualit�t des Heiltrankes �ber der Schwere der Krankheit liegt
@@ -106,7 +106,7 @@ function M.LookAtItem(User,Item)
      Etikett ="Trolio Caethineb Meddyginiaeth"
   elseif item.id_data == 15363356 then
      Etikett ="Corrach Rhithdyb Gwrthwenwyn"
-  elseif math.mod(item.id_data,10000000) == 3635548 then
+  elseif (item.id_data % 10000000) == 3635548 then
      Etikett ="Rhag Vein-Syndrome Meddyginiaeth"
   elseif item.id_data == 14791859 then
      Etikett ="Draig Brech Moddion"
