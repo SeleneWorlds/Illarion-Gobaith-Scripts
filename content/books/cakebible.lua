@@ -56,9 +56,9 @@ function M.loadBook(toData)
     base.books.AddGermanBookText("Leckerein nicht gebe, au�erdem unseren Freunden, die uns mit Leckerein versorgt haben, w�hrend wir dieses Buch schrieben\n\n Die Autoren\n Lana von Maibach und Cassandria",0,0,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Die Kuchenbibel\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"The Cake Bible\"",toData);
 end;
+
+return M

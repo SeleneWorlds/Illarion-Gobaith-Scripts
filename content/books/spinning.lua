@@ -22,9 +22,9 @@ function M.loadBook(toData)
     base.books.AddEnglishBookText("A good tailor measures each client and custom makes every article of clothing.",0,100,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Spinner und Weber\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Spinning And Weaving\"",toData);
 end;
+
+return M

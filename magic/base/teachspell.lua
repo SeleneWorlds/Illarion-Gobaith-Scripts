@@ -1,8 +1,10 @@
 require("base.common")
 
-Students = {};
+local M = {}
 
-function DoTeachSpell(TeachingChar,StudentChar)
+M.Students = {};
+
+function M.DoTeachSpell(TeachingChar,StudentChar)
 
     if (TeachingChar.id == StudentChar.id) then
         base.common.TempInformNLS(TeachingChar,
@@ -148,7 +150,7 @@ function DoTeachSpell(TeachingChar,StudentChar)
 end
 
 
-function logToFile_magic(theString)
+function M.logToFile_magic(theString)
     coldLog,errMsg=io.open("/home/martin/teach_magic.txt","a");
     if (coldLog~=nil) then
         coldLog:write(theString);
@@ -159,7 +161,7 @@ function logToFile_magic(theString)
 end
 
 
-function LTERuneLock( StudentChar )
+function M.LTERuneLock( StudentChar )
     local find, teachEffect = StudentChar.effects:find(22);
     if not find then
         return true;
@@ -181,7 +183,7 @@ function LTERuneLock( StudentChar )
     return false;
 end
 
-function LTELockRune( Char )
+function M.LTELockRune( Char )
     local find, teachEffect = Char.effects:find(22);
     if not find then
         Char.effects:addEffect( CLongTimeEffect(22,10) );
@@ -204,7 +206,7 @@ function LTELockRune( Char )
     end
 end
 
-function GetAttributeSum( Char )
+function M.GetAttributeSum( Char )
     local Int = Char:increaseAttrib("intelligence",0);
     local Ess = Char:increaseAttrib("essence",0);
     local Wil = Char:increaseAttrib("willpower",0);
@@ -216,7 +218,7 @@ function GetAttributeSum( Char )
     return Int+Ess+Wil;
 end
 
-function GetSkillValue( Char, Skill )
+function M.GetSkillValue( Char, Skill )
     if ( Skill == "all" ) then
         return Char:getSkill("commotio")+Char:getSkill("transformo")+Char:getSkill("transfreto")+Char:getSkill("pervestigatio")+Char:getSkill("desicio");
     else
@@ -224,7 +226,7 @@ function GetSkillValue( Char, Skill )
     end
 end
 
-function TeachingRoom( posi )
+function M.TeachingRoom( posi )
     if ((posi.x>=14) and (posi.x<=16) and (posi.y>=3) and (posi.y<=5) and (posi.z==-60)) then
         world:gfx(53,position(12,1,-60));
         world:gfx(53,position(12,7,-60));
@@ -241,13 +243,13 @@ function TeachingRoom( posi )
     return false;
 end
 
-function CastMagic(Caster,counter,param, ltstate)
+function M.CastMagic(Caster,counter,param, ltstate)
     base.common.TempInformNLS( Caster,
     "Dieser Zauber hat hier keinen Effekt.",
     "This spell has no effect at all here." );
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
     if TargetCharacter then
         DoTeachSpell(Caster, TargetCharacter, ltstate);
     else
@@ -255,61 +257,16 @@ function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
     end
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
+function M.CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
     base.common.TempInformNLS( Caster,
     "Dieser Zauber hat hier keinen Effekt.",
     "This spell has no effect at all here." );
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
     base.common.TempInformNLS( Caster,
     "Dieser Zauber hat hier keinen Effekt.",
     "This spell has no effect at all here." );
-
-local M = {}
-
-function M.DoTeachSpell(...)
-    return DoTeachSpell(...)
-end
-
-function M.logToFile_magic(...)
-    return logToFile_magic(...)
-end
-
-function M.LTERuneLock(...)
-    return LTERuneLock(...)
-end
-
-function M.LTELockRune(...)
-    return LTELockRune(...)
-end
-
-function M.GetAttributeSum(...)
-    return GetAttributeSum(...)
-end
-
-function M.GetSkillValue(...)
-    return GetSkillValue(...)
-end
-
-function M.TeachingRoom(...)
-    return TeachingRoom(...)
-end
-
-function M.CastMagic(...)
-    return CastMagic(...)
-end
-
-function M.CastMagicOnCharacter(...)
-    return CastMagicOnCharacter(...)
-end
-
-function M.CastMagicOnField(...)
-    return CastMagicOnField(...)
-end
-
-function M.CastMagicOnItem(...)
-    return CastMagicOnItem(...)
 end
 
 return M

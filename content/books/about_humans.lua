@@ -44,11 +44,11 @@ function M.loadBook(toData)
     base.books.AddGermanBookText("Manche Menschen werden zappelig, wenn es ruhig und gem�tlich ist. Dann gehen sie Unruhe stiften und ich weis nicht was noch alles. In den gro�en St�dten ist es aber nie ruhig und immerzu gibt",0,15,toData); 
     base.books.AddGermanBookText("es Krawall. Doch die Langen m�gen das und erz�hlen dir von noch viel schlimmeren Orten. Ich kann das alles nicht glauben, aber warum sollten die alle die selbe Geschichte erfinden?",0,15,toData); 
     base.books.AddGermanBookText("Wenn du Lange triffst die irgendwas mit dieser Albar-stadt zu tun haben, schau das du ganz schnell weg kommst! Die sperren dich n�mlich ein und zwingen dich schreckliche Dinge zu essen.",0,15,toData);
-end;
-
-return M
+end
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"�ber die Menschen\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"About the Humans\"",toData);
-end;
+end
+
+return M

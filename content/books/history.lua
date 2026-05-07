@@ -400,9 +400,9 @@ function M.loadBook(toData)
     base.books.AddEnglishBookText("Their main religious practices consist of the consumption of herbs that induce hallucinogenic effects, and they export these herbs.",0,30,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Geschichte von Illarion\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"History of Illarion\"",toData);
 end;
+
+return M

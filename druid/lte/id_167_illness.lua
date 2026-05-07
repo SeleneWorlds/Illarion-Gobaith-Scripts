@@ -26,7 +26,7 @@ function M.DoInfection(Character,Runde,Diag)
             Effect:addValue("zaehler",duration)
             Effect:addValue("illness",Diag)
 --          Effekt an Char binden
-            chars.effects:M.addEffect(Effect);
+            chars.effects:addEffect(Effect);
          else
 --          Char hat schon eine Infektion
          end
@@ -222,7 +222,8 @@ function M.getEffect_5(Character,Effect,Runde)
 --Kontaktallergien auf Kleidung
 	local doInform = false;
 	local posList = {1,3,4,9,10,11};
-	local outfit.LIST_outfit = {};
+	local outfit = {}
+	outfit.LIST_outfit = {};
 	-- metal
 	outfit.LIST_outfit[3] = {4,7,16,94,101,184,185,187,202,324,325,326,2111,2112,2116,2117,2172,2286,2287,2290,2291,2302,2303,2357,2359,2360,2363,2364,2365,2367,2369,2389,2390,2393,2395,2399,2400,2402,2403,2407,2441,2444};
 	-- cloth
@@ -387,7 +388,7 @@ function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 				base.common.InformNLS(Character,
 					"#w Du sp�rst wie die Krankheit von dir Besitz ergreifen will, doch dein K�rper wehrt sich erfolgreich.",
 					"#w You feel the illness trying to take control over you, but your body can resist.");
-				Character.effects:M.removeEffect(167);
+				Character.effects:removeEffect(167);
 				return;
 			end
 		end
@@ -481,7 +482,7 @@ function M.removeEffect(Effect,Character)
 		local foundImmunityEffect, immunityEffect = Character.effects:find(328);
 		if not foundImmunityEffect then
 			immunityEffect = CLongTimeEffect(328,1);
-			Character.effects:M.addEffect(immunityEffect);
+			Character.effects:addEffect(immunityEffect);
 		end
 		foundImmunity = immunityEffect:findValue("immunity_"..illness);
 		-- only add immunity if not immune already.
@@ -505,7 +506,7 @@ function M.loadEffect(Effect,Character)                  -- wenn der Charakter e
 
 	if not find then
 		Character:inform("LTE-Error 167-3: please call dev");
-		Character.effects:M.removeEffect(167);
+		Character.effects:removeEffect(167);
 		return;
 	end
 

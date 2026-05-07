@@ -36,9 +36,9 @@ function M.loadBook(toData)
     base.books.AddGermanBookText("Zubereitung:\n Nehmt den rohen Schinken und gebt ihn in Naturd�rme. Ein Schinken f�llt zwei W�rste. Kocht sie bis sie gar sind. Diese k�nnen f�r komplexere Speisen verwendet oder einfach so gegessen werden.",307,30,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Das Grundlegende Kochen und die Rezepte\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Guide to Basic Cooking\"",toData);
 end;
+
+return M

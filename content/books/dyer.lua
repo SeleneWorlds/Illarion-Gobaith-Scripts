@@ -28,9 +28,9 @@ function M.loadBook(toData)
     base.books.AddEnglishBookText("A dyer heats a tub of water over a fire and adds the unfinished cloth, wood ash and various plant dyes.",0,0,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Gerber und F�rber\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Tanner and Dyer\"",toData);
 end;
+
+return M

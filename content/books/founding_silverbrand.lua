@@ -54,9 +54,9 @@ function M.loadBook(toData)
     base.books.AddGermanBookText( "Tialdin, K�nig von Silberbrand", 0, 0,toData);  
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Von der Gr�ndung Silverbrands\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"The founding of Silverbrand\"",toData);
 end;
+
+return M

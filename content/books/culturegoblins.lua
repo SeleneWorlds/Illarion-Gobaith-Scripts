@@ -34,9 +34,9 @@ function M.loadBook(toData)
     base.books.AddGermanBookText("Manche von uns, so habe ich geh�rt, leben in D�rfern in Gynkese oder sogar Salkamaeria. Dort arbeiten sie als Diener, Boten oder Kaufleute. Einige sogar als Alchemisten!",0,0,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Das Volk der Goblins\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Goblin Culture\"",toData);
 end;
+
+return M

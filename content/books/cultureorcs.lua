@@ -52,9 +52,9 @@ function M.loadBook(toData)
     base.books.AddGermanBookText("Sie k�nnen aber auch in den von Schamanen oder H�uptlingen bewohnten H�hlenabschnitten aufbewahrt werden, wo sie dann zu jenen im Schlafe sprechen.",0,0,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Ork'sche Gesellschaftsgeschichte\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Orcish Culture and History\"",toData);
 end;
+
+return M

@@ -130,9 +130,9 @@ function M.loadBook(toData)
     base.books.AddEnglishBookText("And so, this concludes the three guiding lights which are a guide to obtaining knowledge and understanding how to use it. May your path be filled with wisdom.",0,65,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Drei ma�gebliche Wahrheiten\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Three Guiding Truths\"",toData);
 end;
+
+return M

@@ -35,9 +35,9 @@ function M.loadBook(toData)
     base.books.AddGermanBookText("Zudem ist bei diesen auch zu beachten, dass sich die Energien der magischen Steine mit ggf. eingesetzten Steinen gleichen muss.",0,0,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Magische Steine\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Magic stones\"",toData);
 end;
+
+return M

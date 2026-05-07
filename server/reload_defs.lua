@@ -466,10 +466,6 @@ function AddMagicalDoor( Portal, PortalX, PortalY, PortalZ )
 	world:changeItem(thePortal);
 end
 
-return M
-
-
-
 function initTreasureChests()
 	AddTreasureChest(8,1,-73,-100,0);
 end
@@ -490,3 +486,5 @@ function AddTreasureChest(ChestId, ChestData, ChestX, ChestY, ChestZ)
 		world:createItemFromId(ChestId,1,pos,false,333,ChestData);
 	end
 end
+
+return M

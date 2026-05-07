@@ -94,9 +94,9 @@ function M.loadBook(toData)
     base.books.AddGermanBookText( " Moira, Aldrun und die Grut, \ndie haben B�rtchen, die steh'n uns gut.", 0, 0,toData);
 end;
 
-return M
-
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Dwarven Poems\"",toData);
     base.books.AddEnglishBookTitle("Book with the title \"Zwergisches Liedgut\"",toData);
 end;
+
+return M
