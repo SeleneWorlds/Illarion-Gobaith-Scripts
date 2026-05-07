@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_11_skeletons")
 
@@ -8,29 +7,28 @@ module("monster.mon_11_skeletons")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
 msgs:addMessage("#me fehlt bei genauerer Betrachtung wohl der Unterkiefer.", "#me is missing its lower jaw on closer inspection.");
-msgs:addMessage("#me greift nach oben zu seinem eigenen Schädel und verdreht ihn mit einem lauten, knackenden Geräusch.", "#me reaches up, grabs it's own skull and twists, making a loud cracking noise.");
+msgs:addMessage("#me greift nach oben zu seinem eigenen Schï¿½del und verdreht ihn mit einem lauten, knackenden Gerï¿½usch.", "#me reaches up, grabs it's own skull and twists, making a loud cracking noise.");
 msgs:addMessage("#me grinst wie ein Narr.", "#me grins like a fool.");
-msgs:addMessage("#me hebt seine Waffe in die Höhe und klappert mit den Zähnen.", "#me raises his weapon and rattles with its tooth.");
+msgs:addMessage("#me hebt seine Waffe in die Hï¿½he und klappert mit den Zï¿½hnen.", "#me raises his weapon and rattles with its tooth.");
 msgs:addMessage("#me kichert still, die Schultern schwanken und knacken.", "#me cackles silently, shoulders heaving and creaking.");
 msgs:addMessage("#me klappert, die Knochen rasseln.", "#me clatters, bones rattling.");
-msgs:addMessage("#me klappt seinen Kiefer zu um bösartig zu grinsen.", "#me snaps its jaw shut, grinning wickedly.");
-msgs:addMessage("#me kriecht qualvoll über den Boden..", "#me shuffles painfully across the floor.");
-msgs:addMessage("#me macht langsame und mühsame Schritte... Click...clack...click...clack...", "#me takes slow, tedious steps... Click...clack...click...clack...");
-msgs:addMessage("#me schlurft vorwärts, Gelenke knarren und knacken.", "#me shambles forward, joints clicking and creaking...");
+msgs:addMessage("#me klappt seinen Kiefer zu um bï¿½sartig zu grinsen.", "#me snaps its jaw shut, grinning wickedly.");
+msgs:addMessage("#me kriecht qualvoll ï¿½ber den Boden..", "#me shuffles painfully across the floor.");
+msgs:addMessage("#me macht langsame und mï¿½hsame Schritte... Click...clack...click...clack...", "#me takes slow, tedious steps... Click...clack...click...clack...");
+msgs:addMessage("#me schlurft vorwï¿½rts, Gelenke knarren und knacken.", "#me shambles forward, joints clicking and creaking...");
 msgs:addMessage("#me schwingt eine uralte Waffe, verrostet und verbeult.", "#me brandishes an ancient weapon, rusted and battered.");
 msgs:addMessage("#me schwingt gewaltsam seine verfallene Waffe.", "#me swings its decayed weapon violently.");
 msgs:addMessage("#me streckt eine knochige Hand aus.", "#me reaches out a bony hand.");
-msgs:addMessage("#me taumelt, beinahe zusammenstürzend.", "#me staggers, nearly toppling over.");
-msgs:addMessage("#mes Kiefer öffnet sich zu einem lautlosen Schrei.", "#me's jaw swivels in a silent scream...");
+msgs:addMessage("#me taumelt, beinahe zusammenstï¿½rzend.", "#me staggers, nearly toppling over.");
+msgs:addMessage("#mes Kiefer ï¿½ffnet sich zu einem lautlosen Schrei.", "#me's jaw swivels in a silent scream...");
 msgs:addMessage("#mes Knochen schlagen klappernd und rasselnd aneinander.", "#me's bones clinks clacking and rattling together.");
-msgs:addMessage("#mes Kopf hängt herab, leere Augenhöhlen starren geradeaus.", "#me's head lolls around, empty eye sockets staring.");
+msgs:addMessage("#mes Kopf hï¿½ngt herab, leere Augenhï¿½hlen starren geradeaus.", "#me's head lolls around, empty eye sockets staring.");
 
 end
 
@@ -94,9 +92,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

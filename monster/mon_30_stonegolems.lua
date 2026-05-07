@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_30_stonegolems")
 
@@ -8,22 +7,21 @@ module("monster.mon_30_stonegolems")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
 msgs:addMessage("#mes imposante Erscheinung wirft einen finsteren Schatten und der Boden erbebt mit jedem Schritt.", "#me's colossal presence casts an eclipsing shadow and shakes the ground with each step.");
-msgs:addMessage("#me mag einem diamantgleichen Bollwerk aus Fels und Stein gleichen, aber jene mit scharfen Blick können den eingelassenen Herzstein in der Brust des Wächters ausmachen.", "#me's adamantine bulwark of rocks and gems may seem impervious, but those with a keen eye might notice the crystalline heart-stone embedded in the guardian's chest.");
-msgs:addMessage("#me stampft mit einer solchen Geschwindigkeit auf den Boden, dass die Erschütterung tiefe Risse hinterläßt.", "#me pounds the ground with such velocity that tremors split and crack across the ground.");
+msgs:addMessage("#me mag einem diamantgleichen Bollwerk aus Fels und Stein gleichen, aber jene mit scharfen Blick kï¿½nnen den eingelassenen Herzstein in der Brust des Wï¿½chters ausmachen.", "#me's adamantine bulwark of rocks and gems may seem impervious, but those with a keen eye might notice the crystalline heart-stone embedded in the guardian's chest.");
+msgs:addMessage("#me stampft mit einer solchen Geschwindigkeit auf den Boden, dass die Erschï¿½tterung tiefe Risse hinterlï¿½ï¿½t.", "#me pounds the ground with such velocity that tremors split and crack across the ground.");
 msgs:addMessage("#mes kehliges Grollen durchdringt Ohr und Mark wie eine kreischender Schleifstein.", "#me's guttural roar pierces the ear like an amplified grindstone.");
-msgs:addMessage("#me steht rücksichtslos in seinem Hoheitsgebiet Wache, jene, die die Fäden der Natur ergründet haben, machen abstruse Managewebe als Anstiftung seiner Wut aus.", "#me ruthlessly guards its territory, those clairvoyant to the threads of nature may sense the abstruse webs of mana inciting its rage.");
+msgs:addMessage("#me steht rï¿½cksichtslos in seinem Hoheitsgebiet Wache, jene, die die Fï¿½den der Natur ergrï¿½ndet haben, machen abstruse Managewebe als Anstiftung seiner Wut aus.", "#me ruthlessly guards its territory, those clairvoyant to the threads of nature may sense the abstruse webs of mana inciting its rage.");
 msgs:addMessage("#me richtet seine diamantenen Augen ganz und gar auf sein Ziel,  vollkommens sich der Beseitigung der Eindringlingen hingebend.", "#me trains its diamond eyes on its target utterly enraptured with eliminating intruders.");
-msgs:addMessage("#me bewegt sich mit einer solchen Heftigkeit, dass der Steine Scherben aus dem Boden bröckeln.", "#me moves with such ferocity that shards of gems and rocks crumble to the ground.");
-msgs:addMessage("#me schlägt seine steinernen Fäuste zusammen, den Boden mit Fragmenten von Edelsteinen und rohem Fels bedeckend.", "#me smashes its stone fists together littering the ground with fragments of precious jewels and raw stone.");
-msgs:addMessage("#me hinterlässt beim herumtrampeln tiefe Erdpfurchen und widerhallendes Beben.", "#me leaves behind hollow pits and reverberating tremors as it tramples around.");
-msgs:addMessage("#me hebt seine imposanten Fäuste und stößt einen donnernden Kriegsschrei aus, der die Erde beben lässt.", "#me raises its enormous fist and yells a terrifying warcry that makes the ground quake.");
+msgs:addMessage("#me bewegt sich mit einer solchen Heftigkeit, dass der Steine Scherben aus dem Boden brï¿½ckeln.", "#me moves with such ferocity that shards of gems and rocks crumble to the ground.");
+msgs:addMessage("#me schlï¿½gt seine steinernen Fï¿½uste zusammen, den Boden mit Fragmenten von Edelsteinen und rohem Fels bedeckend.", "#me smashes its stone fists together littering the ground with fragments of precious jewels and raw stone.");
+msgs:addMessage("#me hinterlï¿½sst beim herumtrampeln tiefe Erdpfurchen und widerhallendes Beben.", "#me leaves behind hollow pits and reverberating tremors as it tramples around.");
+msgs:addMessage("#me hebt seine imposanten Fï¿½uste und stï¿½ï¿½t einen donnernden Kriegsschrei aus, der die Erde beben lï¿½sst.", "#me raises its enormous fist and yells a terrifying warcry that makes the ground quake.");
 
 end
 
@@ -77,9 +75,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

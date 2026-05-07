@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_4_orcs")
 
@@ -8,27 +7,26 @@ module("monster.mon_4_orcs")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
-msgs:addMessage("#me brüllt laut und kraftvoll.", "#me roars loudly and powerfully.");
-msgs:addMessage("#me fletscht grässliche gelbe Zähne.", "#me bares ugly yellow teeth.");
-msgs:addMessage("#me grunzt bösartig.", "#me grunts angrily.");
+msgs:addMessage("#me brï¿½llt laut und kraftvoll.", "#me roars loudly and powerfully.");
+msgs:addMessage("#me fletscht grï¿½ssliche gelbe Zï¿½hne.", "#me bares ugly yellow teeth.");
+msgs:addMessage("#me grunzt bï¿½sartig.", "#me grunts angrily.");
 msgs:addMessage("#me knurrt leise und bedrohlich.", "#me snarls quietly and threateningly.");
 msgs:addMessage("#me lacht heiser.", "#me laughs hoarsely.");
-msgs:addMessage("#me spuckt auf den Boden, ein boßhaftes Grinsen auf dem Gesicht.", "#me spits at the ground, an evil grin stands in the face.");
+msgs:addMessage("#me spuckt auf den Boden, ein boï¿½haftes Grinsen auf dem Gesicht.", "#me spits at the ground, an evil grin stands in the face.");
 msgs:addMessage("Bluuuuut!", "Bloooood!");
 msgs:addMessage("D' Vatherr mit mirr ist!", "Da Fadha beh whib me!");
-msgs:addMessage("Für d'n Vatherr von alle Orks!", "For da Fadha op all orcis!");
-msgs:addMessage("Mirr zermatsch! Hurr! Hässliche Fresse!", "Me smash! Hurr! Ugly fais!");
+msgs:addMessage("Fï¿½r d'n Vatherr von alle Orks!", "For da Fadha op all orcis!");
+msgs:addMessage("Mirr zermatsch! Hurr! Hï¿½ssliche Fresse!", "Me smash! Hurr! Ugly fais!");
 msgs:addMessage("Renn wie Feigling, renn!", "Run coward, run!");
 msgs:addMessage("Starr mirr nischt so an!", "Nub stare at me like dat!");
-msgs:addMessage("Mir wütend. Mir dir nun auseinandernehmen wie Spinne! Mir dir zertreten wie Made!", "Me angry! Me smash yoos like spider. Mes stomp yoos like maggot!");
-msgs:addMessage("#me schlägt sich an die Brust und röhrt heiser: 'In den Kampf, ein Ork drückt sich nicht!'", "#me slams his fist on his chest and roars: 'On dem! Orcis nub retreat!'");
-msgs:addMessage("#me ist grün.", "#me is green.");
+msgs:addMessage("Mir wï¿½tend. Mir dir nun auseinandernehmen wie Spinne! Mir dir zertreten wie Made!", "Me angry! Me smash yoos like spider. Mes stomp yoos like maggot!");
+msgs:addMessage("#me schlï¿½gt sich an die Brust und rï¿½hrt heiser: 'In den Kampf, ein Ork drï¿½ckt sich nicht!'", "#me slams his fist on his chest and roars: 'On dem! Orcis nub retreat!'");
+msgs:addMessage("#me ist grï¿½n.", "#me is green.");
 
 end
 
@@ -92,9 +90,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

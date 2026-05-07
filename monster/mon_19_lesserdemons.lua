@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_19_lesserdemons")
 
@@ -8,7 +7,6 @@ module("monster.mon_19_lesserdemons")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
@@ -18,8 +16,8 @@ msgs:addMessage("#me knurrt bedrohlich.", "#me snarls menacingly.");
 msgs:addMessage("#me prustet vor Lachen.", "#me snorts with laughter.");
 msgs:addMessage("Das ist dein letzter Tag!", "You shall not live to see another day!");
 msgs:addMessage("Dein Schicksal ist besiegelt!", "Your fate is sealed!");
-msgs:addMessage("Deine Versuche sind erbärmlich!", "Your attempts are pathetic!");
-msgs:addMessage("Die Kammerjäger sind da!", "This is pest control!");
+msgs:addMessage("Deine Versuche sind erbï¿½rmlich!", "Your attempts are pathetic!");
+msgs:addMessage("Die Kammerjï¿½ger sind da!", "This is pest control!");
 msgs:addMessage("Du widerst mich an!", "You disgust me!");
 msgs:addMessage("Erwarte keine Gnade!", "Do not expect mercy!");
 msgs:addMessage("Ich werde es kurz machen!", "I shall make this quick!");
@@ -77,9 +75,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

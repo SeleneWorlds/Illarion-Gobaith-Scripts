@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 require("quest_aquest28");    --the quest file for the Farmer ques
 module("monster.mon_13_flies")
@@ -9,17 +8,16 @@ module("monster.mon_13_flies")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
 msgs:addMessage("#me bewegen sich in der Luft auf und ab.", "#me hang in the air bobbing up and down.");
-msgs:addMessage("#me brummen einfach herum, wie es Insekten mit Flügeln so tun.", "#me's simple buzzing drone leads one to consider the life of a winged insect.");
-msgs:addMessage("#me fliegen ziellos vor und zurück.", "#me fly back and forth aimlessly.");
+msgs:addMessage("#me brummen einfach herum, wie es Insekten mit Flï¿½geln so tun.", "#me's simple buzzing drone leads one to consider the life of a winged insect.");
+msgs:addMessage("#me fliegen ziellos vor und zurï¿½ck.", "#me fly back and forth aimlessly.");
 msgs:addMessage("#me kreisen wild umher.", "#me spin furiously.");
-msgs:addMessage("#me landen auf der Erde und bleiben dort nur für einen Augenblick.", "#me land on the ground for a moment");
+msgs:addMessage("#me landen auf der Erde und bleiben dort nur fï¿½r einen Augenblick.", "#me land on the ground for a moment");
 msgs:addMessage("#me schwirren umher.", "#me buzz around.");
 msgs:addMessage("#me sind auf Streifzug.", "#me prowl around.");
 msgs:addMessage("Bzzzzz!", "Bzzzzz!");
@@ -80,9 +78,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

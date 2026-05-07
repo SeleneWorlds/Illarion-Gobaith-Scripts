@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_21_skulls")
 
@@ -8,26 +7,25 @@ module("monster.mon_21_skulls")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
-msgs:addMessage("#mes Augenhöhlen flammen mit einem Male vor blauen Flammen auf, die sich schnell über den ganzen Schädel ausbreiten. Sie strahlen eine unheimliche Kälte aus.", "#me's eye sockets suddenly glare up with blue flames which spread quickly across the entire skull. They exude an eerie coldness.");
-msgs:addMessage("#mes Unterkiefer klappt runter und eine kurze Stichflamme schiesst zwischen den gefährlich spitzen Zähnen hervor.", "#me's jaw drops and and a short tongue of flames shoots out from between the dangerously sharp teeth.");
-msgs:addMessage("#me öffnet sein gewaltiges Maul und ein fürchterliches Lachen schallt aus den Untiefen des Schädels empor.", "#me opens its huge mouth and a terrible laughter echoes from the depths of the skull.");
-msgs:addMessage("Ah, sie köpften mich, doch die wahrlich klugen Köpfe sind nicht unterzubringen…hahahaha!", "Ah, they beheaded me, but wisest heads are invincible... hahahaha!");
-msgs:addMessage("Achtung, Sterblicher… niemals kopflos handeln.", "Remember, mortal... never lose your head.");
-msgs:addMessage("Ihr wagt es, vor mein Antlitz zu treten… ihr bewahrt fürwahr einen kühlen Kopf.", "You dare to face my face... you really need to keep a cool head.");
+msgs:addMessage("#mes Augenhï¿½hlen flammen mit einem Male vor blauen Flammen auf, die sich schnell ï¿½ber den ganzen Schï¿½del ausbreiten. Sie strahlen eine unheimliche Kï¿½lte aus.", "#me's eye sockets suddenly glare up with blue flames which spread quickly across the entire skull. They exude an eerie coldness.");
+msgs:addMessage("#mes Unterkiefer klappt runter und eine kurze Stichflamme schiesst zwischen den gefï¿½hrlich spitzen Zï¿½hnen hervor.", "#me's jaw drops and and a short tongue of flames shoots out from between the dangerously sharp teeth.");
+msgs:addMessage("#me ï¿½ffnet sein gewaltiges Maul und ein fï¿½rchterliches Lachen schallt aus den Untiefen des Schï¿½dels empor.", "#me opens its huge mouth and a terrible laughter echoes from the depths of the skull.");
+msgs:addMessage("Ah, sie kï¿½pften mich, doch die wahrlich klugen Kï¿½pfe sind nicht unterzubringenï¿½hahahaha!", "Ah, they beheaded me, but wisest heads are invincible... hahahaha!");
+msgs:addMessage("Achtung, Sterblicherï¿½ niemals kopflos handeln.", "Remember, mortal... never lose your head.");
+msgs:addMessage("Ihr wagt es, vor mein Antlitz zu tretenï¿½ ihr bewahrt fï¿½rwahr einen kï¿½hlen Kopf.", "You dare to face my face... you really need to keep a cool head.");
 msgs:addMessage("#me knackt mit dem Kiefer.", "#me clacks its jaw.");
-msgs:addMessage("#me singt Unverständliches.", "#me chants unintelligibly.");
-msgs:addMessage("#me klappert mit den Zähnen.", "#me rattles its teeth.");
-msgs:addMessage("#me stöhnt vor sich hin.", "#me moans to itself.");
-msgs:addMessage("#mes Augen, der Fähigkeit zu blinzeln beraubt, sind von einer klebrigen Flüssigkeit erfüllt.", "#me's eyes drip with liquid, unable to blink.");
-msgs:addMessage("#me starrt düster drein.", "#me stares forward sadly.");
-msgs:addMessage("#mes Augen sind erfüllt von Leid und Boshaftigkeit.", "#me's eyes are filled with suffering and malice.");
-msgs:addMessage("#me zischt: 'Lasst mich alleine…'", "#me hisses: 'Leave me…'");
+msgs:addMessage("#me singt Unverstï¿½ndliches.", "#me chants unintelligibly.");
+msgs:addMessage("#me klappert mit den Zï¿½hnen.", "#me rattles its teeth.");
+msgs:addMessage("#me stï¿½hnt vor sich hin.", "#me moans to itself.");
+msgs:addMessage("#mes Augen, der Fï¿½higkeit zu blinzeln beraubt, sind von einer klebrigen Flï¿½ssigkeit erfï¿½llt.", "#me's eyes drip with liquid, unable to blink.");
+msgs:addMessage("#me starrt dï¿½ster drein.", "#me stares forward sadly.");
+msgs:addMessage("#mes Augen sind erfï¿½llt von Leid und Boshaftigkeit.", "#me's eyes are filled with suffering and malice.");
+msgs:addMessage("#me zischt: 'Lasst mich alleineï¿½'", "#me hisses: 'Leave meï¿½'");
 msgs:addMessage("Toood!", "Deaaath...");
 msgs:addMessage("Er verbleibt - nichts.", "Nothing... left...");
 
@@ -95,9 +93,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

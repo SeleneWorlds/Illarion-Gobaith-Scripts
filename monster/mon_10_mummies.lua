@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_10_mummies")
 
@@ -8,26 +7,25 @@ module("monster.mon_10_mummies")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
 msgs:addMessage("#me atmet laut ein und aus.", "#me takes deep breaths.");
-msgs:addMessage("#me ist mit Wunden übersäht", "#me is littered with wounds.");
-msgs:addMessage("#me macht ächzende Geräusche.", "#me makes groaning noises.");
+msgs:addMessage("#me ist mit Wunden ï¿½bersï¿½ht", "#me is littered with wounds.");
+msgs:addMessage("#me macht ï¿½chzende Gerï¿½usche.", "#me makes groaning noises.");
 msgs:addMessage("#me spuckt etwas Blut auf den Boden.", "#me spits out some blood.");
 msgs:addMessage("#me starrt ins Leere.", "#me stares into oblivion.");
-msgs:addMessage("#me stöhnt unter Schmerzen.", "#me moans with pain.");
+msgs:addMessage("#me stï¿½hnt unter Schmerzen.", "#me moans with pain.");
 msgs:addMessage("#me torkelt.", "#me staggers.");
 msgs:addMessage("#me wackelt etwas unsicher.", "#me is a bit unsteady on its feet.");
 msgs:addMessage("Hiiirne!", "Braaains!");
 msgs:addMessage("Komm... zu... uns...", "Join... us...");
-msgs:addMessage("#me fährt sich mit einer klauenhaften Hand murmelnd über den pilzbefallenen Kopf, ehe er ein schlürfendes Geräusch von sich gibt.", "#me runs with claw-like hands over its fungus-stricken head as it makes a shuffling noise.");
-msgs:addMessage("#me weist einige schwere Wunden auf, weshalb er nur schwerfällig vorwärts kommt. Als er allerdings die zerfallende Nase reckt, scheint mehr 'Leben' in ihn zurückzukehren.", "#me has severe wounds, it moves very slowly. But as it stretches its disintegrating nose, more 'life' seems to come back into it.");
-msgs:addMessage("#me tropft dicklicher Speichel aus dem Mundwinkel und seine milchigen Augen starren trübsinnig drein, während ihm unverständliche Worte entfläuchen.", "#me drops syrupy saliva from its mouth and its eyes stare gloomily as it speaks unintelligible words.");
-msgs:addMessage("#me stöhnt schwer und beugt sich vornüber, eine schwarze Flüssigkeit zu Boden spuckend. Danach richtet er sich wieder auf und haftet den Blick gebannt auf das Opfer.", "#me groans heavily and leans forward, spitting a black liquid on the floor. Then it straightens up and affixes its eyes on the victim.");
+msgs:addMessage("#me fï¿½hrt sich mit einer klauenhaften Hand murmelnd ï¿½ber den pilzbefallenen Kopf, ehe er ein schlï¿½rfendes Gerï¿½usch von sich gibt.", "#me runs with claw-like hands over its fungus-stricken head as it makes a shuffling noise.");
+msgs:addMessage("#me weist einige schwere Wunden auf, weshalb er nur schwerfï¿½llig vorwï¿½rts kommt. Als er allerdings die zerfallende Nase reckt, scheint mehr 'Leben' in ihn zurï¿½ckzukehren.", "#me has severe wounds, it moves very slowly. But as it stretches its disintegrating nose, more 'life' seems to come back into it.");
+msgs:addMessage("#me tropft dicklicher Speichel aus dem Mundwinkel und seine milchigen Augen starren trï¿½bsinnig drein, wï¿½hrend ihm unverstï¿½ndliche Worte entflï¿½uchen.", "#me drops syrupy saliva from its mouth and its eyes stare gloomily as it speaks unintelligible words.");
+msgs:addMessage("#me stï¿½hnt schwer und beugt sich vornï¿½ber, eine schwarze Flï¿½ssigkeit zu Boden spuckend. Danach richtet er sich wieder auf und haftet den Blick gebannt auf das Opfer.", "#me groans heavily and leans forward, spitting a black liquid on the floor. Then it straightens up and affixes its eyes on the victim.");
 
 end
 
@@ -81,9 +79,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

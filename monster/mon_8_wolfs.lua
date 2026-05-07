@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_8_wolfs")
 
@@ -8,7 +7,6 @@ module("monster.mon_8_wolfs")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
@@ -18,15 +16,15 @@ msgs:addMessage("#me bleibt steifbeinig und aufgerichtet stehen.", "#me stands s
 msgs:addMessage("#me duckt sich, bereit anzugreifen.", "#me crouches, ready to strike.");
 msgs:addMessage("#me hat Schaum vor dem Maul.", "#me foams at the mouth.");
 msgs:addMessage("#me hebt seinen Kopf und heult.", "#me raises its head and howls.");
-msgs:addMessage("#me kläfft laut.", "#me barks loudly.");
-msgs:addMessage("#me knirscht mit den Zähnen.", "#me gnashes its teeth.");
-msgs:addMessage("#me knurrt, das Geräusch ist kaum hörbar.", "#me growls, the noise barely audible.");
-msgs:addMessage("#me krümmt seinen Rücken.", "#me arches its back.");
-msgs:addMessage("#me lässt ein böses Knurren hören.", "#me lets out a vicious snarl.");
+msgs:addMessage("#me klï¿½fft laut.", "#me barks loudly.");
+msgs:addMessage("#me knirscht mit den Zï¿½hnen.", "#me gnashes its teeth.");
+msgs:addMessage("#me knurrt, das Gerï¿½usch ist kaum hï¿½rbar.", "#me growls, the noise barely audible.");
+msgs:addMessage("#me krï¿½mmt seinen Rï¿½cken.", "#me arches its back.");
+msgs:addMessage("#me lï¿½sst ein bï¿½ses Knurren hï¿½ren.", "#me lets out a vicious snarl.");
 msgs:addMessage("#me stellt seine Ohren auf.", "#me's ears perk up.");
-msgs:addMessage("#me bleckt die Zähne.", "#me bares its teeth.");
-msgs:addMessage("#mes Fell sträubt sich.", "#me's fur bristles");
-msgs:addMessage("#mes Schwanz streckt sich hinter seinem Körper gerade aus.", "#me's tail extends straight out from its body.");
+msgs:addMessage("#me bleckt die Zï¿½hne.", "#me bares its teeth.");
+msgs:addMessage("#mes Fell strï¿½ubt sich.", "#me's fur bristles");
+msgs:addMessage("#mes Schwanz streckt sich hinter seinem Kï¿½rper gerade aus.", "#me's tail extends straight out from its body.");
 
 end
 
@@ -81,9 +79,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

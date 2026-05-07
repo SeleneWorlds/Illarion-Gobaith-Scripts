@@ -1,7 +1,6 @@
 require("base.common")
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_31_gnomes")
 
@@ -9,13 +8,12 @@ module("monster.mon_31_gnomes")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
-msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte für Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu können!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
+msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte fï¿½r Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu kï¿½nnen!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
 
 end
 
@@ -64,7 +62,7 @@ function throwMolotov(Monster,Enemy)
         end );
 
         Monster.fightpoints=Monster.fightpoints-25;
-        Monster:talkLanguage( CCharacter.say, CPlayer.german, "#me schmeißt eine weiße Flasche nach "..Enemy.name..".");
+        Monster:talkLanguage( CCharacter.say, CPlayer.german, "#me schmeiï¿½t eine weiï¿½e Flasche nach "..Enemy.name..".");
         Monster:talkLanguage( CCharacter.say, CPlayer.english, "#me tosses a white bottle at "..Enemy.name..".");
         return false;
     end
@@ -117,9 +115,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

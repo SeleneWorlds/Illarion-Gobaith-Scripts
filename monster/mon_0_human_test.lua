@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_0_human_test")
 
@@ -8,7 +7,6 @@ module("monster.mon_0_human_test")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
@@ -17,25 +15,25 @@ msgs = base.messages.Messages();
 
 msgs:addMessage("#me flucht vor sich hin.", "#me swears to himself.");
 msgs:addMessage("#me grinst siegessicher.", "#me grins, certain of success.");
-msgs:addMessage("#me ist in Schweiß gebadet.", "#me is bathed in sweat.");
+msgs:addMessage("#me ist in Schweiï¿½ gebadet.", "#me is bathed in sweat.");
 msgs:addMessage("#me lacht laut.", "#me laughs.");
 msgs:addMessage("#me spuckt auf den Boden.", "#me spits at the ground.");
 msgs:addMessage("#me tippelt hin und her.", "#me hops on the spot.");
 msgs:addMessage("Achtung! Alarm!", "Careful! Alert!");
 msgs:addMessage("Das war's!", "That does it!");
-msgs:addMessage("Die Leute werden auch immer schwächer!", "People get weaker every day!");
-msgs:addMessage("Dieses Gebiet gehört mir!", "This area belongs to me!");
+msgs:addMessage("Die Leute werden auch immer schwï¿½cher!", "People get weaker every day!");
+msgs:addMessage("Dieses Gebiet gehï¿½rt mir!", "This area belongs to me!");
 msgs:addMessage("Ein Drache ist nichts gegen mich!", "A dragon is nothing compared to me!");
-msgs:addMessage("Fressen oder gefressen werden, so läuft das.", "Kill or be killed, that's the way it is");
-msgs:addMessage("Für die Götter!", "For the gods!");
+msgs:addMessage("Fressen oder gefressen werden, so lï¿½uft das.", "Kill or be killed, that's the way it is");
+msgs:addMessage("Fï¿½r die Gï¿½tter!", "For the gods!");
 msgs:addMessage("Geld oder Leben!", "Money or life!");
-msgs:addMessage("Heute ist ein guter Tag zum Töten.", "This day is a good day for killing.");
-msgs:addMessage("Ich bin der Stärkste!", "I am the strongest!");
+msgs:addMessage("Heute ist ein guter Tag zum Tï¿½ten.", "This day is a good day for killing.");
+msgs:addMessage("Ich bin der Stï¿½rkste!", "I am the strongest!");
 msgs:addMessage("Ich zerquetsche jeden Feind wie 'ne kleine Fee!", "I crush every enemy like a little fairy!");
 msgs:addMessage("Niemand wird mich je besiegen!", "No one will ever defeat me!");
-msgs:addMessage("Rollende Köpfe sind immer eine schöne Abwechslung.", "Rolling heads are always welcome.");
+msgs:addMessage("Rollende Kï¿½pfe sind immer eine schï¿½ne Abwechslung.", "Rolling heads are always welcome.");
 msgs:addMessage("Verboten!", "Verboten!");
-msgs:addMessage("Wer wagt es mich zu stören?", "Who dares to bother me?");
+msgs:addMessage("Wer wagt es mich zu stï¿½ren?", "Who dares to bother me?");
 
 end
 

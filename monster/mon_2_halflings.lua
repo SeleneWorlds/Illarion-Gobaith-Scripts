@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_2_halflings")
 
@@ -8,7 +7,6 @@ module("monster.mon_2_halflings")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
@@ -18,7 +16,7 @@ msgs:addMessage("#me grinst breit.", "#me grins widely.");
 msgs:addMessage("#me kichert.", "#me giggles.");
 msgs:addMessage("#me lacht.", "#me laughs.");
 msgs:addMessage("Bei Adron's Laute!", "By Adron's lute!");
-msgs:addMessage("Der lauteste Tyrann stirbt mit einer Faust im Gemächt!", "The worst tyrant dies by a fist in his sleep!");
+msgs:addMessage("Der lauteste Tyrann stirbt mit einer Faust im Gemï¿½cht!", "The worst tyrant dies by a fist in his sleep!");
 msgs:addMessage("Du bekommst keinen Kuchen von mir!", "You don't get a cake from me!");
 msgs:addMessage("Einen toten Halbling ehren Hunderte!", "A dead halfling is honoured by hundreds!");
 msgs:addMessage("Ich geb dir 'nen Nachschlag!", "Here, let me give you a second helping!");
@@ -86,9 +84,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

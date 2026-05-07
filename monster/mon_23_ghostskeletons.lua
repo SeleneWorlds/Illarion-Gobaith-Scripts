@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_23_ghostskeletons")
 
@@ -8,20 +7,19 @@ module("monster.mon_23_ghostskeletons")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
-msgs:addMessage("#me gackert bösartig.", "#me cackles softly.");
+msgs:addMessage("#me gackert bï¿½sartig.", "#me cackles softly.");
 msgs:addMessage("#me haucht die Worte: 'Ihr werdet sterrrrrrben.'", "#me wheezes the words: 'You will dieee.'");
-msgs:addMessage("#me hüpft auf und ab während er schwebt.", "#me bobs up and down as it floats.");
-msgs:addMessage("#me keucht erzürnt.", "#me wheezes angrily.");
-msgs:addMessage("#me öffnet weit seinen Mund als wolle er etwas essen, heraus kommt jedoch nur ein knarrender Ton.", "#me opens its mouth wide as if to eat, but only a creaking sound follows.");
-msgs:addMessage("#me stößt einen hohen und lautet Ton aus.", "#me releases a piercing and haunting shriek.");
-msgs:addMessage("#me verströmt eine tödliche kälte.", "#me emanates a deathly chill.");
-msgs:addMessage("#me zischt etwas unverständliches.", "#me hisses words incomprehensibly.");
+msgs:addMessage("#me hï¿½pft auf und ab wï¿½hrend er schwebt.", "#me bobs up and down as it floats.");
+msgs:addMessage("#me keucht erzï¿½rnt.", "#me wheezes angrily.");
+msgs:addMessage("#me ï¿½ffnet weit seinen Mund als wolle er etwas essen, heraus kommt jedoch nur ein knarrender Ton.", "#me opens its mouth wide as if to eat, but only a creaking sound follows.");
+msgs:addMessage("#me stï¿½ï¿½t einen hohen und lautet Ton aus.", "#me releases a piercing and haunting shriek.");
+msgs:addMessage("#me verstrï¿½mt eine tï¿½dliche kï¿½lte.", "#me emanates a deathly chill.");
+msgs:addMessage("#me zischt etwas unverstï¿½ndliches.", "#me hisses words incomprehensibly.");
 msgs:addMessage("#me zischt: 'Betretet Chergas Reich!'", "#me hisses: 'Enter Cherga's realm!'.");
 msgs:addMessage("Der Schatten erwartet dich!", "Shadow followsss.");
 msgs:addMessage("Die Dunkelheit wartet.", "Darrrkness awaitsss.");
@@ -76,11 +74,11 @@ function EvilLook( monster, enemy )
     end
 
     base.common.TalkNLS( monster, CCharacter.say,
-    "#me blickt "..enemy.name.." mit einem bösen Blick an.",
+    "#me blickt "..enemy.name.." mit einem bï¿½sen Blick an.",
     "#me gives "..enemy.name.." an evil look." );
 
     base.common.InformNLS( enemy,
-    "Der Blick es Skelettes fährt dir ins Mark und lähmt kurz deine Glieder.",
+    "Der Blick es Skelettes fï¿½hrt dir ins Mark und lï¿½hmt kurz deine Glieder.",
     "The gaze of the skeleton goes to the core and freezes your limps a moment." );
 
     enemy.movepoints = enemy.movepoints - math.random( 10, 20 );
@@ -112,9 +110,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

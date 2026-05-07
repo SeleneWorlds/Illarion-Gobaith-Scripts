@@ -1,28 +1,26 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_26_dragons")
 
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
 msgs:addMessage("#me bringt den Boden mit donnernder Wut zum Beben als er sich mit geschmeidiger Eleganz bewegt.", "#me shakes the ground with thunderous rage as it manoeuvres in its intuitive grace.");
-msgs:addMessage("#me gräbt die Krallen seiner Hinterläufe fest in den Boden während er die Luft mit einer seiner Vordertatzen bösartig zerteilt.", "#me firmly plants the jagged talons of its back legs into the ground as it maliciously swipes the air with one of its front claws.");
-msgs:addMessage("#me peitscht mit seinem verhornten Schwanz rigoros auf den Boden, diesen mit nachhallenden Erschütterungen böse zurichtend.", "#me savagely lashes its horned tail as it batters the ground with reverberating tremors.");
-msgs:addMessage("#me schwenkt seinen Kopf rasend vor und zurück, bevor er erfüllt von Bragons Zorn ein markerschütterndes Gebrüll ausstößt.", "#me swivels its head to and fro maniacally before erupting into a blood-curdling roar of Brägon's wrath.");
-msgs:addMessage("#me streckt seine echsenhaften Flügel aus um sich bei jedem Flügelschlag mit unerbittlichen Winböen in unzähmbarer Herrlichkeit aufzubäumen.", "#me expands its wings revealing its glorious majesty with vicious and unrelenting gales of wind sent forth by each flap.");
-msgs:addMessage("#mes kühne Augen glimmen mit unnachahmbarer Intensität während er den kleinsten Bewegungen und Geräuschen nachgeht.", "#me's keen eyes smoulder with an unparalleled intensity as it perceives the slightest movements or sounds.");
-msgs:addMessage("#mes messerscharfe Zähne blitzen in unzähmbarer Wut bevor er eine giftige, verkohlte Rauchwolke hervorschnaubt, die um seine königliche Erscheinung wabert.", "#me flashes its serrated teeth in feral agitation before snorting a venomous cloud of charred smoke that billows about its regal appearance.");
-msgs:addMessage("#mes ungestümes Brüllen füllt die Luft einem Wirbel von heißen Blasen gleich und in seinem Maul beginnt ein feuriger Wirbelwind zu tosen.", "#me's obstreperous roar fills the air in a blistering pother of heat as a fiery inferno comes to life in its mouth.");
-msgs:addMessage("#mes Erregung schwillt einer aufbrausenden Welle gleich an während er Kopf und Körper verdreht, um in eine defensive Haltung zu kommen.", "#me's agitation swells like a rising tide as it pivots its neck and torso assuming a defensive posture.");
-msgs:addMessage("#mes glühende Augen funkeln mit tödlicher Gewissheit während er vor unbezwingbarer Wut schäumt.", "#me's searing eyes glare with baneful intent as its insurmountable rage seethes.");
+msgs:addMessage("#me grï¿½bt die Krallen seiner Hinterlï¿½ufe fest in den Boden wï¿½hrend er die Luft mit einer seiner Vordertatzen bï¿½sartig zerteilt.", "#me firmly plants the jagged talons of its back legs into the ground as it maliciously swipes the air with one of its front claws.");
+msgs:addMessage("#me peitscht mit seinem verhornten Schwanz rigoros auf den Boden, diesen mit nachhallenden Erschï¿½tterungen bï¿½se zurichtend.", "#me savagely lashes its horned tail as it batters the ground with reverberating tremors.");
+msgs:addMessage("#me schwenkt seinen Kopf rasend vor und zurï¿½ck, bevor er erfï¿½llt von Bragons Zorn ein markerschï¿½tterndes Gebrï¿½ll ausstï¿½ï¿½t.", "#me swivels its head to and fro maniacally before erupting into a blood-curdling roar of Brï¿½gon's wrath.");
+msgs:addMessage("#me streckt seine echsenhaften Flï¿½gel aus um sich bei jedem Flï¿½gelschlag mit unerbittlichen Winbï¿½en in unzï¿½hmbarer Herrlichkeit aufzubï¿½umen.", "#me expands its wings revealing its glorious majesty with vicious and unrelenting gales of wind sent forth by each flap.");
+msgs:addMessage("#mes kï¿½hne Augen glimmen mit unnachahmbarer Intensitï¿½t wï¿½hrend er den kleinsten Bewegungen und Gerï¿½uschen nachgeht.", "#me's keen eyes smoulder with an unparalleled intensity as it perceives the slightest movements or sounds.");
+msgs:addMessage("#mes messerscharfe Zï¿½hne blitzen in unzï¿½hmbarer Wut bevor er eine giftige, verkohlte Rauchwolke hervorschnaubt, die um seine kï¿½nigliche Erscheinung wabert.", "#me flashes its serrated teeth in feral agitation before snorting a venomous cloud of charred smoke that billows about its regal appearance.");
+msgs:addMessage("#mes ungestï¿½mes Brï¿½llen fï¿½llt die Luft einem Wirbel von heiï¿½en Blasen gleich und in seinem Maul beginnt ein feuriger Wirbelwind zu tosen.", "#me's obstreperous roar fills the air in a blistering pother of heat as a fiery inferno comes to life in its mouth.");
+msgs:addMessage("#mes Erregung schwillt einer aufbrausenden Welle gleich an wï¿½hrend er Kopf und Kï¿½rper verdreht, um in eine defensive Haltung zu kommen.", "#me's agitation swells like a rising tide as it pivots its neck and torso assuming a defensive posture.");
+msgs:addMessage("#mes glï¿½hende Augen funkeln mit tï¿½dlicher Gewissheit wï¿½hrend er vor unbezwingbarer Wut schï¿½umt.", "#me's searing eyes glare with baneful intent as its insurmountable rage seethes.");
 
 end
 
@@ -146,9 +144,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

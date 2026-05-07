@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_12_wasps")
 
@@ -8,22 +7,21 @@ module("monster.mon_12_wasps")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
-msgs:addMessage("#me fliegt, ein hohes, weinerlich klingendes Geräusch machend umher.", "#me flies around, making a high pitched whining sound.");
-msgs:addMessage("#me landet nur um wieder abheben zu können begleitet von einem kurzen Summen.", "#me lands, only to take off again with a short buzz.");
+msgs:addMessage("#me fliegt, ein hohes, weinerlich klingendes Gerï¿½usch machend umher.", "#me flies around, making a high pitched whining sound.");
+msgs:addMessage("#me landet nur um wieder abheben zu kï¿½nnen begleitet von einem kurzen Summen.", "#me lands, only to take off again with a short buzz.");
 msgs:addMessage("#me peitscht, einen Landeplatz suchend durch die Luft.", "#me whips about in the air, searching for somewhere to land.");
 msgs:addMessage("#me schwirrt drohend in keine bestimmte Richtung.", "#me angrily buzzes around in no particular direction.");
 msgs:addMessage("Bzzz.", "Bzzz.");
-msgs:addMessage("#me fliegt in wilden Kreisen und man kann das Gift an ihrem Stachel aufglänzen sehen.", "#me darts around, one can see venom dripping from its sting.");
-msgs:addMessage("#me fährt ihren spitzen Stachel aus.", "#me extends its sting.");
+msgs:addMessage("#me fliegt in wilden Kreisen und man kann das Gift an ihrem Stachel aufglï¿½nzen sehen.", "#me darts around, one can see venom dripping from its sting.");
+msgs:addMessage("#me fï¿½hrt ihren spitzen Stachel aus.", "#me extends its sting.");
 msgs:addMessage("Summ, summ.", "Buzz, buzz.");
 msgs:addMessage("Bsss.", "Bsss.");
-msgs:addMessage("#mes Flügel verbreiten ein hochfrequentes Summen, welches in den Ohren schmerzt.", "#me's wings exude a buzzing with high frequency, it hurts one's ears.");
+msgs:addMessage("#mes Flï¿½gel verbreiten ein hochfrequentes Summen, welches in den Ohren schmerzt.", "#me's wings exude a buzzing with high frequency, it hurts one's ears.");
 
 end
 
@@ -87,9 +85,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

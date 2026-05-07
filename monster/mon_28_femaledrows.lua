@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_28_femaledrows")
 
@@ -8,28 +7,27 @@ module("monster.mon_28_femaledrows")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
-msgs:addMessage("#me fährt langsam mit ihrer Zunge über ihre Oberlippe.", "#me slowly runs her tongue along her upper lip.");
-msgs:addMessage("#me hebt ihre Waffe und küsst sie dann sanft.", "#me raises her weapon and places a gentle kiss upon it.");
+msgs:addMessage("#me fï¿½hrt langsam mit ihrer Zunge ï¿½ber ihre Oberlippe.", "#me slowly runs her tongue along her upper lip.");
+msgs:addMessage("#me hebt ihre Waffe und kï¿½sst sie dann sanft.", "#me raises her weapon and places a gentle kiss upon it.");
 msgs:addMessage("#me lacht hysterisch.", "#me laughs hysterically.");
-msgs:addMessage("#me schließt ihre Augen und beginnt wie wahnsinnig zu lachen.", "#me closes her eyes and begins to laugh maniacally.");
-msgs:addMessage("#me tanzt wild, wie im Rausch, umher, vom krampfhaften Zucken ihres Körpers untermalt.", "#me dances around in a wild frenzy, her body violently pulsating.");
-msgs:addMessage("#me wirft ihren Kopf zurück und schreit in Ekstase.", "#me throws her head back and screams in ecstasy.");
-msgs:addMessage("#mes Augen rollen nach hinten in ihren Schädel, bis nur noch das Weiße sichtbar bleibt.", "#me's eyes rolls her eyes back, only the whites now visible.");
-msgs:addMessage("Ah... ein weiteres Spielzeug für den Blutgott.", "Ah… another toy for the Blood-God.");
-msgs:addMessage("Also du suchst nach dem Tod? Ich werde dir deinen Wunsch erfüllen... letzten Endes.", "So it is death you seek? I shall grant your wish... eventually.");
+msgs:addMessage("#me schlieï¿½t ihre Augen und beginnt wie wahnsinnig zu lachen.", "#me closes her eyes and begins to laugh maniacally.");
+msgs:addMessage("#me tanzt wild, wie im Rausch, umher, vom krampfhaften Zucken ihres Kï¿½rpers untermalt.", "#me dances around in a wild frenzy, her body violently pulsating.");
+msgs:addMessage("#me wirft ihren Kopf zurï¿½ck und schreit in Ekstase.", "#me throws her head back and screams in ecstasy.");
+msgs:addMessage("#mes Augen rollen nach hinten in ihren Schï¿½del, bis nur noch das Weiï¿½e sichtbar bleibt.", "#me's eyes rolls her eyes back, only the whites now visible.");
+msgs:addMessage("Ah... ein weiteres Spielzeug fï¿½r den Blutgott.", "Ahï¿½ another toy for the Blood-God.");
+msgs:addMessage("Also du suchst nach dem Tod? Ich werde dir deinen Wunsch erfï¿½llen... letzten Endes.", "So it is death you seek? I shall grant your wish... eventually.");
 msgs:addMessage("Dein Blut wird meinen Durst stillen.", "Your blood shall quench my thirst.");
-msgs:addMessage("Du bist nichts als Fleisch und Knochen, eine Opfergabe für den Blutgott.", "You are but flesh and bone, an offering to the Blood-God.");
+msgs:addMessage("Du bist nichts als Fleisch und Knochen, eine Opfergabe fï¿½r den Blutgott.", "You are but flesh and bone, an offering to the Blood-God.");
 msgs:addMessage("Du kennst keine Schmerzen... noch nicht.", "You have not known pain...not yet.");
-msgs:addMessage("Ein langsamer Tod ist ein schöner Tod.", "A slow death is a beautiful one.");
+msgs:addMessage("Ein langsamer Tod ist ein schï¿½ner Tod.", "A slow death is a beautiful one.");
 msgs:addMessage("Mich hungert nach deinen Schreien.", "I hunger for your scream.");
 msgs:addMessage("Moshran! Erfreue dich an unseren Opfern!", "Moshran! Feast upon our victims!");
-msgs:addMessage("Schmerzen? Dies ist nichts... dich erwartet eine Ewigkeit in den Händen Moshrans!", "Pain? This is nothing...an eternity at the hands of Moshran awaits you.");
+msgs:addMessage("Schmerzen? Dies ist nichts... dich erwartet eine Ewigkeit in den Hï¿½nden Moshrans!", "Pain? This is nothing...an eternity at the hands of Moshran awaits you.");
 
 end
 
@@ -95,9 +93,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

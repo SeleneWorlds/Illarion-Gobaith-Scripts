@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_25_gnolls")
 
@@ -8,14 +7,13 @@ module("monster.mon_25_gnolls")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
 msgs:addMessage("#me bellt vor Wut.", "#me barks in fury.");
-msgs:addMessage("#me fletscht die Zähne.", "#me bares its teeth.");
+msgs:addMessage("#me fletscht die Zï¿½hne.", "#me bares its teeth.");
 msgs:addMessage("#me hechelt.", "#me utters a noise, half cackle, half howl.");
 msgs:addMessage("#me jault.", "#me howls.");
 msgs:addMessage("#me kichert schrill und laut.", "#me cackles with a loud and piercing sound.");
@@ -23,10 +21,10 @@ msgs:addMessage("#me kneift seine Augen zusammen.", "#me squints its eyes.");
 msgs:addMessage("#me knurrt leise.", "#me snarls quietly.");
 msgs:addMessage("#me schnappt.", "#me snaps its jaw.");
 msgs:addMessage("#me schnauft laut.", "#me gasps loudly.");
-msgs:addMessage("#me's Schwanz sträubt sich.", "#me's tail rises.");
-msgs:addMessage("#me zieht die Luft scharf schnüffelnd durch die Nase ein.", "#me breathes through its nose, sniffing.");
-msgs:addMessage("#me legt den Kopf in den Nacken und stößt eine Mischung aus Heulen und Gebell hervor.", "#me throws back its head and lets out a mixture of howling and barking.");
-msgs:addMessage("#me fährt sich mit seiner rauhen Zunge über die Schnauze, ehe er leise verärgert kläfft.", "#me licks its nose with its rough tongue before it yaps angrily.");
+msgs:addMessage("#me's Schwanz strï¿½ubt sich.", "#me's tail rises.");
+msgs:addMessage("#me zieht die Luft scharf schnï¿½ffelnd durch die Nase ein.", "#me breathes through its nose, sniffing.");
+msgs:addMessage("#me legt den Kopf in den Nacken und stï¿½ï¿½t eine Mischung aus Heulen und Gebell hervor.", "#me throws back its head and lets out a mixture of howling and barking.");
+msgs:addMessage("#me fï¿½hrt sich mit seiner rauhen Zunge ï¿½ber die Schnauze, ehe er leise verï¿½rgert klï¿½fft.", "#me licks its nose with its rough tongue before it yaps angrily.");
 
 end
 
@@ -90,9 +88,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 

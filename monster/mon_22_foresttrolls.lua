@@ -1,6 +1,5 @@
 require("monster.base.drop")
 require("monster.base.lookat")
-require("monster.base.quests")
 require("base.messages");
 module("monster.mon_22_foresttrolls")
 
@@ -8,22 +7,21 @@ module("monster.mon_22_foresttrolls")
 function ini(Monster)
 
 init=true;
-monster.base.quest.iniQuests();
 killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
 msgs = base.messages.Messages();
-msgs:addMessage("#me stampft wütend auf den Boden auf und grollt mit kehliger Stimme.", "#me stomps on the ground in fury, growling deeply");
-msgs:addMessage("#me schwingt seine Faust und stößt ein jammerndes Klagen aus.", "#me swings its fist, roaring loudly.");
-msgs:addMessage("#me brüllt mit markdurchdringender Stimme.", "#me bellows with a booming voice.");
-msgs:addMessage("#mes grüne Augen blitzen vor gnadenloser Bestimmtheit auf, ein Leben zu beenden.", "#me's green eyes flash in unfaltering dedication to end somebody's life.");
+msgs:addMessage("#me stampft wï¿½tend auf den Boden auf und grollt mit kehliger Stimme.", "#me stomps on the ground in fury, growling deeply");
+msgs:addMessage("#me schwingt seine Faust und stï¿½ï¿½t ein jammerndes Klagen aus.", "#me swings its fist, roaring loudly.");
+msgs:addMessage("#me brï¿½llt mit markdurchdringender Stimme.", "#me bellows with a booming voice.");
+msgs:addMessage("#mes grï¿½ne Augen blitzen vor gnadenloser Bestimmtheit auf, ein Leben zu beenden.", "#me's green eyes flash in unfaltering dedication to end somebody's life.");
 msgs:addMessage("Groar!", "Groar!");
-msgs:addMessage("#me trampelt mit unaufhaltsamen Schritten umher. Jeder Schritt lässt die Erde zittern.", "#me charges with unstoppable paces. Every step shakes the ground.");
-msgs:addMessage("#mes Blick zeigt unbändigen Zorn, verursacht durch unzählige Freveltaten gegen die Natur.", "#me's glance shows the inevitable revenge, caused by countless crimes against nature.");
-msgs:addMessage("#me hält einen Moment inne und wiegt seinen Kopf hin und her, traurig vor sich hin summend.", "#me hesitates for a moment, cocking its head, humming sadly.");
-msgs:addMessage("#mes Muskeln an seinen knorrigen Armen spannen sich, bereit, um Rache zu üben.", "#me flexes its muscles on its huge arms, ready to take revenge.");
-msgs:addMessage("#me ist ein gigantischer Troll, dessen weise Augen von dem Anblick unsäglicher Taten müde und traurig geworden sind.", "#me is a giant troll with wise eyes which became sad and tired from witnessing unutterable deeds.");
+msgs:addMessage("#me trampelt mit unaufhaltsamen Schritten umher. Jeder Schritt lï¿½sst die Erde zittern.", "#me charges with unstoppable paces. Every step shakes the ground.");
+msgs:addMessage("#mes Blick zeigt unbï¿½ndigen Zorn, verursacht durch unzï¿½hlige Freveltaten gegen die Natur.", "#me's glance shows the inevitable revenge, caused by countless crimes against nature.");
+msgs:addMessage("#me hï¿½lt einen Moment inne und wiegt seinen Kopf hin und her, traurig vor sich hin summend.", "#me hesitates for a moment, cocking its head, humming sadly.");
+msgs:addMessage("#mes Muskeln an seinen knorrigen Armen spannen sich, bereit, um Rache zu ï¿½ben.", "#me flexes its muscles on its huge arms, ready to take revenge.");
+msgs:addMessage("#me ist ein gigantischer Troll, dessen weise Augen von dem Anblick unsï¿½glicher Taten mï¿½de und traurig geworden sind.", "#me is a giant troll with wise eyes which became sad and tired from witnessing unutterable deeds.");
 
 end
 
@@ -85,9 +83,7 @@ function onDeath(Monster)
 
         murderer=getCharForId(killer[Monster.id]);
     
-        if murderer then --Checking for quests
-
-            monster.base.quest.checkQuest(murderer,Monster);
+        if murderer then
             killer[Monster.id]=nil;
             murderer=nil;
 
