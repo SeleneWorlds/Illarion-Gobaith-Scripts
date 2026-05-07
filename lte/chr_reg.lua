@@ -1,7 +1,7 @@
 -- Long Time Effect Script - Character Regeneration
 -- by Nitram
 
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 --dofile( "p_basics.lua" );
@@ -39,7 +39,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
 
     -----------------------POSITION DES CHARS ANZEIGEN------------------------
     if not ( ( Effect.numberCalled % 10 ) == 0 ) and string.find( Char.lastSpokenText, "show position" ) then
-        base.common.InformNLS( Char,
+        common.InformNLS( Char,
             "Deine aktuelle Position ist: "..Char.pos.x..", "..Char.pos.y..", "..Char.pos.z.."",
             "Your current position is: "..Char.pos.x..", "..Char.pos.y..", "..Char.pos.z.."" );
     end
@@ -81,7 +81,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                     -------------- Meldungen ausgeben ------------------
                     Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me scheint Hunger zu haben, ein lautes Magenknurren ist zu vernehmen.");
                     Char:talkLanguage( CCharacter.say, CPlayer.english, "#me 's stomach grumbles loudly.");
-                    base.common.InformNLS(Char,
+                    common.InformNLS(Char,
                         "Dein Magen schmerzt. Du bist am verhungern",
                         "Your stomach hurts. You are going to die of hunger");
                     -------------- Meldungen fertig --------------------
@@ -90,7 +90,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                 -------------- Meldungen ausgeben ------------------
                 Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me krampft zusammen und geht zu Boden.");
                 Char:talkLanguage( CCharacter.say, CPlayer.english, "#me clenches and falls to the ground.");
-                base.common.InformNLS(Char,
+                common.InformNLS(Char,
                     "Dein Magen verkrampft sich und du merkst nur noch wie dein K�rper auf dem Boden aufschl�gt, bevor alles um dich dunkel wird.",
                     "Your stomach clenches and the last thing you feel is that your body hits the ground, before everything around you becomes dark.");
                 -------------- Meldungen fertig --------------------
@@ -102,7 +102,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
         Poisonvalue = math.max( 0,Poisonvalue - 15 * 5 ); -- Giftwert f�llt in 2 Stunden, 46 Minuten von 10000 auf 0
         if ( Poisonvalue == 0 ) then -- Gift besiegt
             -------------- Meldungen ausgeben ------------------
-            base.common.InformNLS(Char,
+            common.InformNLS(Char,
                 "Du f�hlst wie das Gift in deinem K�rper seine Wirkung verliert",
                 "You feel how the poison in your body looses its effect.");
             -------------- Meldungen fertig --------------------
@@ -111,7 +111,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
             if ( Hitpoints > 0 ) then -- Geschw�cht durch Gift aber kein Tod
                 if ( math.random(1,40) == 2 or not Effect:findValue("poison") ) then -- Meldung nicht immer ausgeben (Spamschutz) ( Meldung theoretisch alle 40 Sekunden )
                     -------------- Meldungen ausgeben ------------------
-                    base.common.InformNLS(Char,
+                    common.InformNLS(Char,
                         "Du f�hlst wie dein K�rper von innen heraus geschw�cht wird.",
                         "You feel how your body becomes weaker.");
                     -------------- Meldungen fertig --------------------
@@ -121,7 +121,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                 Poisonvalue = 0; -- Char Tod, Gift verfliegt
                 Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me tropft etwas Speichel aus dem Mund und bricht zusammen.");
                 Char:talkLanguage( CCharacter.say, CPlayer.english,  "#me drips some saliva out of the mouth and falls to the ground.");
-                base.common.InformNLS(Char,
+                common.InformNLS(Char,
                     "Du f�hlst ein Brennen in deinem K�rper und wie sich der Speicheln in deinem Mund zusammen zieht, ehe die Welt um dich herum dunkel wird.",
                     "You feel a cauterization in your body and that the saliva concentrates in your mouth. Then the world around you becomes dark.");
             end
@@ -148,7 +148,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
         	    StoneItem = ItemR;
         	end
         	if StoneItem then
-        	    local stone1, str1, stone2, str2 = base.common.GetBonusFromTool( StoneItem );
+        	    local stone1, str1, stone2, str2 = common.GetBonusFromTool( StoneItem );
 				if stone1 == 7 then
 					stoneLvl = stoneLvl + str1;
 				end
@@ -198,7 +198,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
 						if ( math.random(1,100) <= pChance ) then
 							P_CharToPriest(Char,pGod);
 						else
-							base.common.TempInformNLS(Char,
+							common.TempInformNLS(Char,
 								"Nichts passiert.",
 								"Nothing happens.");
 						end
@@ -218,7 +218,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
             Effect:removeValue( "rapidManaTime" );
         end
     elseif( found1 and found2 ) then
-        if( startingTime + 60 < base.common.GetCurrentTimestamp( ) ) then
+        if( startingTime + 60 < common.GetCurrentTimestamp( ) ) then
             Effect:removeValue( "rapidMana" );
             Effect:removeValue( "rapidManaTime" );
         end
@@ -233,13 +233,13 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                 --------------- Warnmeldungen Anfang ---------------------------------
                 if ( ( Foodvalue < 15000 ) and ( Foodvalue > 6000 ) ) then -- Noch 4 Stunden und 10 Minuten bis zum verhungern
                     if ( math.random(1,360) == 2 ) then -- Meldung nicht immer ausgeben (Spamschutz) ( Meldung theoretisch alle 30 Minuten )
-                        base.common.InformNLS(Char,
+                        common.InformNLS(Char,
                         "Du f�hlst ein leichtes Grummeln in deinem Magen.",
                         "You feel a slight mumble in your stomach.");
                     end
                 elseif ( ( Foodvalue < 6000 ) and ( Foodvalue > 3000 ) ) then -- Noch 1 Stunde und 40 Minuten bis zum verhungern
                     if ( math.random(1,180) == 2 ) then -- Meldung nicht immer ausgeben (Spamschutz) ( Meldung theoretisch alle 15 Minuten )
-                        base.common.InformNLS(Char,
+                        common.InformNLS(Char,
                         "Dein Magen knurrt leicht.",
                         "You hear your stomach grumbling.");
                     end
@@ -269,10 +269,10 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
     -----------------------FOODPOINTS FERTIG----------------------------------
 
     -----------------------OVERLOAD SCHUTZ ANFANG-----------------------------
-    Hitpoints   = base.common.Limit( Hitpoints,   0, maxHitpoints  ); -- Lebenspunkte
-    Manapoints  = base.common.Limit( Manapoints,  0, maxManapoints ); -- Manapunkte
-    Poisonvalue = base.common.Limit( Poisonvalue, 0, 10000         ); -- Giftpunkte
-    Foodvalue   = base.common.Limit( Foodvalue,   0, maxFoodvalue  ); -- Nahrungspunkte
+    Hitpoints   = common.Limit( Hitpoints,   0, maxHitpoints  ); -- Lebenspunkte
+    Manapoints  = common.Limit( Manapoints,  0, maxManapoints ); -- Manapunkte
+    Poisonvalue = common.Limit( Poisonvalue, 0, 10000         ); -- Giftpunkte
+    Foodvalue   = common.Limit( Foodvalue,   0, maxFoodvalue  ); -- Nahrungspunkte
     -----------------------OVERLOAD SCHUTZ FERTIG-----------------------------
 
     --------------�NDERUNGEN PR�FEN UND DURCHF�HREN ANFANG--------------------
@@ -345,12 +345,12 @@ function M.leadToCross( Char , Effect )
 
     if not foundValue then
         Effect:addValue("cycleCounter",1); --Start counting
-        base.common.TempInformNLS( Char,"[Tod] Du bist gestorben. Die Welt um dich herum verblasst und du bereitest dich darauf vor, den G�ttern in Chergas Reich der Toten gegen�berzutreten.","[Death] You have died. The world around faints and you prepare yourself to face the Gods in the afterlife of Cherga's Realm.");
+        common.TempInformNLS( Char,"[Tod] Du bist gestorben. Die Welt um dich herum verblasst und du bereitest dich darauf vor, den G�ttern in Chergas Reich der Toten gegen�berzutreten.","[Death] You have died. The world around faints and you prepare yourself to face the Gods in the afterlife of Cherga's Realm.");
     end
 
     if cycleCounter>=12 then --Time is over!
 
-        base.common.TempInformNLS( Char,"[Wiederbelebung] Der Eintritt in Chergas Reich der Toten wird dir verwehrt. Deine Taten auf Illarion sind noch nicht vor�ber. Die G�tter gew�hren dir eine weitere Chance auf die Ebene der Lebenden zur�ckzukehren.","[Respawn] You are denied access to Cherga's Realm of the Death. Your deeds on Illarion are not over. The gods grant you another chance to return to the Mortal Plane.");
+        common.TempInformNLS( Char,"[Wiederbelebung] Der Eintritt in Chergas Reich der Toten wird dir verwehrt. Deine Taten auf Illarion sind noch nicht vor�ber. Die G�tter gew�hren dir eine weitere Chance auf die Ebene der Lebenden zur�ckzukehren.","[Respawn] You are denied access to Cherga's Realm of the Death. Your deeds on Illarion are not over. The gods grant you another chance to return to the Mortal Plane.");
         world:gfx(31,Char.pos); --GFX, alternatively 16
         world:makeSound(13,Char.pos); --Healing sound
         Effect:removeValue("cycleCounter"); --stop counting
