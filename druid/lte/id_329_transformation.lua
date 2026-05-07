@@ -1,7 +1,7 @@
 -- LTE f�r das Druidensystem
 -- by Falk
 -- Zeitverlauf und R�ckwandlung bei Verwandlungen
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO longtimeeffects VALUES (329, 'druids_transformation', 'druid.lte.id_329_transformation');

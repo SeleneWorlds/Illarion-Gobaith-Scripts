@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 require("base.treasure")
 local M = {}
 
@@ -13,7 +13,7 @@ end
 
 function M.callEffect(trsEff, trsHunter)
     if (trsHunter:increaseAttrib("hitpoints",0) == 0) then
-        base.common.TempInformNLS( trsHunter,
+        common.TempInformNLS( trsHunter,
         "Der Schatz ist für immer verloren. Die Wächter haben gesiegt.",
         "The treasure is lost forever. The guardians defeated you.)");
         return false;
@@ -30,9 +30,9 @@ function M.callEffect(trsEff, trsHunter)
         return false;       -- treasure lost!
     end
 
-    trsPosition = base.common.DataToPosition( trsPosition );
+    trsPosition = common.DataToPosition( trsPosition );
     if not trsHunter:isInRangeToPosition( trsPosition, 40 ) then
-        base.common.TempInformNLS( trsHunter,
+        common.TempInformNLS( trsHunter,
         "Der Schatz ist für immer verloren. Die Wächter haben euch in die Flucht geschlagen.",
         "The treasure is lost forever. The guardians made you retreat.");
         return false;
@@ -44,7 +44,7 @@ function M.callEffect(trsEff, trsHunter)
     end
 
     if base.treasure.CheckMonsters( trsHunter ) then
-        base.common.TempInformNLS( trsHunter,
+        common.TempInformNLS( trsHunter,
         "Die Wächter des Schatzes wurden besiegt. Gebt nicht alles auf einmal aus!",
         "The guardians of the treasure have been slain. Do not spend it all at once!");
         world:createItemFromId(2830,1,trsPosition,true,333,cat); --spawn a treasure chest
@@ -55,7 +55,7 @@ function M.callEffect(trsEff, trsHunter)
     end
 
     if trsEff.numberCalled==300 then
-        base.common.TempInformNLS( trsHunter,
+        common.TempInformNLS( trsHunter,
         "Der Schatz ist für immer verloren. Ihr habt die Wächter nicht beizeiten besiegen können.",
         "The treasure is lost forever. You could not defeat the guardians in time.");
         return false;

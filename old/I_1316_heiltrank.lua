@@ -2,7 +2,7 @@
 -- Name: healing potion
 
 -- include base.common for additional functions
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 
@@ -32,7 +32,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         if( math.random( 20 ) == 1 ) then
             -- Sadly our user does not get a new bottle
             -- So we tell him the bad news in german and english
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Die Flasche zerbricht.",
             "The bottle breaks.");
         else
@@ -50,7 +50,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- It appears that our user hits someone
         -- So he can't drink something
         -- Lets tell him about that...
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du kannst nichts trinken während du kämpfst.",
         "You can't drink something while fighting.");
 
@@ -88,7 +88,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if( math.random( 20 ) == 1 ) then
         -- Sadly our user does not get a new bottle
         -- So we tell him the bad news in german and english
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Die Flasche zerbricht.",
         "The bottle breaks.");
     else
@@ -116,7 +116,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- that was one barbecued halfling to much
 
         -- Lets inform the player that he ate too much
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du bekommst kaum noch was runter und dir wird schlecht.",
         "You hardly manage to eat something more and get sick!");
 
@@ -126,12 +126,12 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     elseif  (User:increaseAttrib("foodlevel",0) > 40000) then
         -- The User has already eaten alot.
         -- Lets tell him that he is stuffed!
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du bist satt.",
         "You are stuffed.");
     else
         -- Still much space in the stomach. Just say him what the potion does to his body
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du trinkst die Flasche aus und fühlst wie neue Stärke dich durchströmt.",
         "You drink up the bottle, and you feel the new strength that flows through your body.");
     end

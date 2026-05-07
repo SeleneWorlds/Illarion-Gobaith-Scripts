@@ -1,7 +1,7 @@
 local M = {}
 local init, LookAtItem, UseItem
 
-require("base.common")
+local common = require("base.common")
 local chardescription = require("content.chardescription")
 
 local getAgeText = chardescription.getAgeText
@@ -30,7 +30,7 @@ function M.LookAtItem( User, Item )
         else
             world:itemInform(User, Item, "Behind your back you can clearly see a ladder in the mirror");
         end
-        if ( not base.common.isItemIdInFieldStack( 35, lpos ) ) then
+        if ( not common.isItemIdInFieldStack( 35, lpos ) ) then
             world:createItemFromId( 35, 1, lpos, true, 999 ,0);
         end;
     else

@@ -1,7 +1,7 @@
 --I_329_schwarze_flasche
 --Druidensystem in Arbeit
 --Falk
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -73,7 +73,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
        if( math.random( 20 ) <= 1 ) then
-         base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
+         common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
        else
          Character:createItem( 164, 1, 333,0);
        end
@@ -81,7 +81,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        Character.movepoints=Character.movepoints-50;
 
     else
-      base.common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+      common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
     end
   end
 end

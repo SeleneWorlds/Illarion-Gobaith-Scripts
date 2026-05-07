@@ -8,7 +8,7 @@
 --      = 1 --> long description
 
 require("content.genus")
-require("base.common")
+local common = require("base.common")
 require("content.lookat.custom")
 require("content.uniquechardescription")
 
@@ -32,8 +32,8 @@ function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     
     --SourceCharacter:inform("mode= "..mode.." lookingat= "..LookingAt);
     
-    if not base.common.IsLookingAt( SourceCharacter, TargetCharacter.pos ) then
-        base.common.TurnTo( SourceCharacter, TargetCharacter.pos );
+    if not common.IsLookingAt( SourceCharacter, TargetCharacter.pos ) then
+        common.TurnTo( SourceCharacter, TargetCharacter.pos );
     end
     
 	if not CustomLookAt then
@@ -120,7 +120,7 @@ function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     if (mode == 1) then
         if (TargetCharacter:getPlayerLanguage() == 0) then
             TargetCharacter:inform( "#w Du fühlst dich beobachtet." );
-            if base.common.IsLookingAt( TargetCharacter, SourceCharacter.pos ) then
+            if common.IsLookingAt( TargetCharacter, SourceCharacter.pos ) then
                 if ( SourceCharacter:increaseAttrib( "sex", 0 ) == 0 ) then
                     TargetCharacter:sendCharDescription( SourceCharacter.id , "Er scheint dich anzustarren" );
                 else
@@ -129,7 +129,7 @@ function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
             end
         else
             TargetCharacter:inform( "#w You feel watched" );
-            if base.common.IsLookingAt( TargetCharacter, SourceCharacter.pos ) then
+            if common.IsLookingAt( TargetCharacter, SourceCharacter.pos ) then
                 if ( SourceCharacter:increaseAttrib( "sex", 0 ) == 0 ) then
                     TargetCharacter:sendCharDescription( SourceCharacter.id , "He appears to stare at you." );
                 else
@@ -140,7 +140,7 @@ function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     end
 	if(uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id] ~= nil) then
 		for i,v in pairs(uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id]) do
-			base.common.InformNLS(SourceCharacter, uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id][i], uniquechardescription.PlayerDescriptionsEN[TargetCharacter.id][i]);
+			common.InformNLS(SourceCharacter, uniquechardescription.PlayerDescriptionsDE[TargetCharacter.id][i], uniquechardescription.PlayerDescriptionsEN[TargetCharacter.id][i]);
 		end
 	end
 end

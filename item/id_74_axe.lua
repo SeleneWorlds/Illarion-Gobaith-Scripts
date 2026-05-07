@@ -8,7 +8,7 @@ local initLists, AddTree, createdeathtree, CheckAndHit, UseItem, UseItemWithFiel
 
 -- UPDATE common SET com_script='item.id_74_axe' WHERE com_itemid IN (74,2946);
 
-require("base.common")
+local common = require("base.common")
 require("item.general.metal")
 local gathering = require("content.gathering")
 
@@ -101,7 +101,7 @@ end
 function M.CheckAndHit(TargetPos)
     if world:isCharacterOnField(TargetPos) then
         local Char=world:getCharacterOnField(TargetPos);
-        base.common.InformNLS( Char,
+        common.InformNLS( Char,
         "Der Baum f�llt und trifft dich hart",
         "The tree falls and hits you hard");
         Char:increaseAttrib("hitpoints",-7000);
@@ -119,23 +119,23 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
     initLists(  );
     if (SourceItem:getType() ~= 4) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Zum B�ume f�llen musst du die Axt in die Hand nehmen.",
         "To chop a tree you need to take the axe in your hands." );
         return
     end
 
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
 
-    if base.common.Encumbrence(User) then
+    if common.Encumbrence(User) then
         if (User.pos.z == 100) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Deine R�stung behindert Dich beim Holz schlagen. Wenn du arbeiten willst kannst du keine schwere R�stungen tragen. Lege deine R�stung und deinen Helm in deine Tasche. Dann kannst du arbeiten.",
             "Your armor disturbes you when chopping trees. If you want to work you must not carry heavy armors. Put your armor and your helmet into your bag. Then you can work." );
         else
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Deine R�stung behindert Dich beim Holz schlagen.",
             "Your armor disturbes you when chopping trees" );
         end
@@ -143,13 +143,13 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        TargetItem = base.common.GetFrontItem( User );
+        TargetItem = common.GetFrontItem( User );
     else
         TargetItem = world:getItemOnField(TargetItem.pos);
     end
 
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        UseItemWithField( User, SourceItem, base.common.GetFrontPosition( User ), Counter, Param, ltstate );
+        UseItemWithField( User, SourceItem, common.GetFrontPosition( User ), Counter, Param, ltstate );
         return
     end
 
@@ -159,14 +159,14 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     if ((logs[ TargetItem.id ] ~= nil) and (TargetItem.wear == 255)) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Dieser Baum ist zu alt um noch verwertbar zu sein.",
         "This tree is too old." );
         return
     end
 
-    if not base.common.IsLookingAt( User, TargetItem.pos ) then
-        base.common.TurnTo( User, TargetItem.pos );
+    if not common.IsLookingAt( User, TargetItem.pos ) then
+        common.TurnTo( User, TargetItem.pos );
     end
 
     if ( ltstate == Action.none ) then
@@ -180,8 +180,8 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         end
     elseif ( ltstate == nil or ltstate == Action.success ) then
         if Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate ) then
-            if base.common.ToolBreaks( User, SourceItem ) then
-                base.common.InformNLS(User,
+            if common.ToolBreaks( User, SourceItem ) then
+                common.InformNLS(User,
                 "Die alte und abgenutzt Axt in deinen H�nden zerbricht.",
                 "The old and used axe in your hands breaks.");
             else
@@ -191,8 +191,8 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                 User:learn( 2, "lumberjacking", 2, 100 );
             end
         else
-            if base.common.ToolBreaks( User, SourceItem ) then
-                base.common.InformNLS(User,
+            if common.ToolBreaks( User, SourceItem ) then
+                common.InformNLS(User,
                 "Die alte und abgenutzte Axt in deinen H�nden zerbricht.",
                 "The old and used axe in your hands breaks.");
             end
@@ -233,7 +233,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
             end
         end
     end
-    base.common.InformNLS( User,
+    common.InformNLS( User,
     "Hier ist nichts was du mit der Axt bearbeiten k�nntest.",
     "Here is nothing you could work at with your axe." );
 end
@@ -262,7 +262,7 @@ function M.Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
             if (math.random(100)>5) or User.pos.z == 100 or User.pos.z == 101 then -- no dying trees on Noobia!
                 world:createItemFromId(trees[ TargetItem.id ][1],1,TargetItem.pos,true,333,0)
             else
-                base.common.InformNLS( User,
+                common.InformNLS( User,
                 "Der Baum ist zu schwach um erneut zu wachsen. Er stirbt.",
                 "The tree is too weak to grow again. It dies." );
             end

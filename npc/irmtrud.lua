@@ -13,7 +13,7 @@ Task: Townguard at the mine in Silverbrand
 last updated: 17/04/08
 ]]--
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,136,-161,-9,4,false,'Irmtrud','npc_irmtrud.lua',1);
-require("base.common")
+local common = require("base.common")
 require("npc.base.autonpcfunctions")
 require("base.keys")
 
@@ -141,12 +141,12 @@ function M.receiveText(texttype, message, originator)
 					if (math.random(0,10)==1) then
                         gText="#me hält ihren Kopf \"Nay, bin heut nich im Stimmung, hab Kopfweh! Beweg deinen Hintern selber!\".";
 		        	    eText="#me holds her head \"Nay, today I'm in a foul mood, I've headache! Mov' yer behind yerself!\".";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		        	else
 					    gText="#me grummelt \"Mach doch selber auf!\".";
                 		eText="#me grumbles \"I don't feel like it today. Do it yourself!\".";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		        	end
 		        	
@@ -157,7 +157,7 @@ function M.receiveText(texttype, message, originator)
 		        	if (doora.id==684 or doorb.id==668) then --If one of the doors is already opened then...
 						gText="Dat Tor steht doch schon offen.";
                 		eText="The gate is already opened.";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					else
         			base.keys.UnlockDoor( doora );
@@ -169,7 +169,7 @@ function M.receiveText(texttype, message, originator)
 					OpenDoor( doorb );
 					gText="#me öffnet das Tor.";
 					eText="#me opens the gate.";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					if (originator.id~=867463423 and originator.id~=2082906332) then
 						last_User= originator.name;
@@ -178,12 +178,12 @@ function M.receiveText(texttype, message, originator)
 						if (originator:increaseAttrib( "sex",0) == 0) then --Char. is male
 							gText="Willkommen zurück Bruder.";
 							eText="Welcome back brother.";
-                			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						else
 						    gText="Willkommen zurück Schwester.";
                 			eText="Welcome back sister";
-                			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						end
 					 end
@@ -194,7 +194,7 @@ function M.receiveText(texttype, message, originator)
 				if ( world:isCharacterOnField(position( 137, -163, -9)) == true or world:isCharacterOnField(position( 138, -163, -9)) == true ) then -- Is a char. on the position of the doors?
 					gText="Ich kann dat Tor nich zumachen wenn da jemand steht.";
                 	eText="I can't close the gate during someone stands there.";
-                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                	outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				else
 				
@@ -203,7 +203,7 @@ function M.receiveText(texttype, message, originator)
 					if (doora.id==652 and doorb.id==656) then --If both doors are already closed then...
 						gText="Dat Tor ist bereits zu.";
                 		eText="The gate is already closed.";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					else
 						CloseDoor( doora );
@@ -214,7 +214,7 @@ function M.receiveText(texttype, message, originator)
 						base.keys.LockDoor( doorb );
 						gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab.";
 						eText="#me shuts the gate crashing then locks it.";
-						outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+						outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 						npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					end
 				end
@@ -223,25 +223,25 @@ function M.receiveText(texttype, message, originator)
 						if (last_User~=nil) then
 							gText="Dem dem ick zuletzt aufjemacht hab war '"..last_User.."', jau!";
 							eText="The one who I opened last time the door was '"..last_User.."', aye!";
-							outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+							outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						else
 							gText="Tut mir leid, hab ick schon vergessen.";
 							eText="I am sorry, I have forgot who I opened last time the gate.";
-							outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+							outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						end
 					else
 						gText="Dat verrate ick dir doch nich!";
 						eText="I don't tell that to you!";
-						outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+						outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 						npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					end	
 			elseif (string.find(message,"[Tt]or.+[Aa]uf")~=nil or string.find(message,"[Oo]pen.+[Gg]ate")~=nil) then
 			      
 				   	gText="Ick bin deine Schwester, also behandle mich och so!";
 					eText="I'm yer sister, so ye better treat me lik' this!";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 
 			else
@@ -260,7 +260,7 @@ function M.receiveText(texttype, message, originator)
 		     	
 					gText="Sprich wie'n Zwerch mit mir oder such das weite!";
 					eText="Talk lik' a dwarf wit' me or leave!";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		  	else
 		  		
@@ -286,12 +286,12 @@ function M.receiveText(texttype, message, originator)
 					if (math.random(0,10)==1) then
                         gText="#me hält ihren Kopf \"Nay, bin heut nich im Stimmung, hab Kopfweh! Beweg deinen Hintern selber!\".";
 		        	    eText="#me holds her head \"Nay, today I'm in a foul mood, I've headache! Mov' yer behind yerself!\".";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		        	else
 					    gText="#me grummelt \"Mach doch selber auf!\".";
                 		eText="#me grumbles \"I don't feel like it today. Do it yourself!\".";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		        	end
 		        	
@@ -302,7 +302,7 @@ function M.receiveText(texttype, message, originator)
 		        	if (doora.id==684 or doorb.id==668) then --If one of the doors is already opened then...
 						gText="Dat Tor steht doch schon offen.";
                 		eText="The gate is already opened.";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					else
         			base.keys.UnlockDoor( doora );
@@ -314,7 +314,7 @@ function M.receiveText(texttype, message, originator)
 					OpenDoor( doorb );
 					gText="#me öffnet das Tor.";
 					eText="#me opens the gate.";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					if (originator.id~=867463423 and originator.id~=2082906332) then
 						last_User= originator.name;
@@ -324,12 +324,12 @@ function M.receiveText(texttype, message, originator)
 						if (originator:increaseAttrib( "sex",0) == 0) then --Char. is male
 							gText="Willkommen zurück Bruder.";
 							eText="Welcome back brother.";
-                			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						else
 						    gText="Willkommen zurück Schwester.";
                 			eText="Welcome back sister";
-                			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					 	end
 				    end
@@ -340,7 +340,7 @@ function M.receiveText(texttype, message, originator)
 				if ( world:isCharacterOnField(position( 137, -163, -9)) == true or world:isCharacterOnField(position( 138, -163, -9)) == true ) then -- Is a char. on the position of the doors?
 					gText="Ich kann dat Tor nich zumachen wenn da jemand steht.";
                 	eText="I can't close the gate during someone stands there.";
-                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                	outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				else
 				
@@ -349,7 +349,7 @@ function M.receiveText(texttype, message, originator)
 					if (doora.id==652 and doorb.id==656) then --If both doors are already closed then...
 						gText="Dat Tor ist bereits zu.";
                 		eText="The gate is already closed.";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					else
 						CloseDoor( doora );
@@ -360,14 +360,14 @@ function M.receiveText(texttype, message, originator)
 						base.keys.LockDoor( doorb );
 						gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab.";
 						eText="#me shuts the gate crashing then locks it.";
-						outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+						outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 						npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					end
 				end
 			 elseif (string.find(message,"[Tt]or.+[Aa]uf")~=nil or string.find(message,"[Oo]pen.+[Gg]ate")~=nil) then
 			       	gText="Ick bin deine Schwester, also behandle mich och so!";
 					eText="I'm yer sister, so ye better treat me lik' this!";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
              end --Wenn nicht "Tor auf Irmtrud" oder "Tur zu" dann ende
 		elseif (originator.activeLanguage==0) then
@@ -379,7 +379,7 @@ function M.receiveText(texttype, message, originator)
 		     	
 					gText="Sprich wie'n Zwerch mit mir oder such das weite!";
 					eText="Talk lik' a dwarf wit' me or leave!";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				end		
 				

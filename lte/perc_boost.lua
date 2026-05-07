@@ -1,10 +1,10 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 -- Character bekommt einen Perception-boost, der erst ansteigt und dann sinkt --
 
 function M.addEffect(addPerc, User)           -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
-    base.common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticably.");
+    common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticably.");
     User:increaseAttrib("perception",1);    -- Perception+1 (erste Steigerung)
 end
 

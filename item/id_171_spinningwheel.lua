@@ -11,14 +11,14 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_171_spinningwheel' WHERE com_itemid IN (171);
 
-require("base.common")
+local common = require("base.common")
 local gathering = require("content.gathering")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 	gathering.InitGathering();
 	local woolcutting = gathering.woolcutting;
 	
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -32,23 +32,23 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
     
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim spinnen.",
         "Your armor disturbes you while spinning." );
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-        base.common.TurnTo( User, SourceItem.pos );
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+        common.TurnTo( User, SourceItem.pos );
     end
     
     if (User:countItemAt("body",6)==0) then -- Schere
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst eine Schere um die Wolle oder Sibanac zu spinnen.",
         "You need scissors to spin the wool or sibanac." );
         return
@@ -59,8 +59,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if base.common.ToolBreaks( User, Tool, true) then -- Schere besch�digen
-        base.common.InformNLS( User, 
+    if common.ToolBreaks( User, Tool, true) then -- Schere besch�digen
+        common.InformNLS( User, 
         "Die Schere wird stumpf.", 
         "The scissors went blunt." );
         return
@@ -68,7 +68,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if ((User:countItemAt("belt",170) < 1) and (User:countItemAt("belt",155) < 3)) then
         if (ltstate ~= Action.success) then
-            base.common.InformNLS( User, 
+            common.InformNLS( User, 
             "Du ben�tigst Wolle oder Sibanac um am Spinnrad zu arbeiten.", 
             "You need some wool or sibanac to work at the spinning wheel." );
         end
@@ -91,7 +91,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local notcreated = User:createItem(50, 1, 333 ,0 );
         if (notcreated > 0) then
             world:createItemFromId( 50, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -102,7 +102,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local notcreated = User:createItem(50, 1, 333 ,0 );
         if (notcreated > 0) then
             world:createItemFromId( 50, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else

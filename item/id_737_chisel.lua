@@ -1,3 +1,4 @@
+local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
 local UseItem, LookAtItem
@@ -15,7 +16,7 @@ require("item.general.metal")
 require("item.base.crafts")
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
-    base.common.ResetInterruption( User, ltstate )
+    common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then -- Arbeit unterbrochen
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -29,38 +30,38 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
       
-    if not base.common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
+    if not common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
         return
     end
     
-    if base.common.Encumbrence(User) then -- Durch Steife R�stung behindert
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Durch Steife R�stung behindert
+        common.InformNLS( User,
         "Deine R�stung behindert Dich beim behauen der Steine",
         "Your armor disturbes you while working the stones" );
         return
     end
     
     if (SourceItem:getType() ~= 4) then -- Dreschflegel in der Hand
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du musst den Meisel in der Hand haben!",
         "You need to hold the chisel in your hand!" );
         return
     end
     
     if ( User:countItemAt( "body", 23 ) == 0 ) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du brauchst einen Hammer in der Hand um die Steine zu behauen.",
         "You need a hammer in your hand to work the stones." );
         return
     end
     
-    if not base.common.FitForWork( User ) then -- Nicht ersch�pft
+    if not common.FitForWork( User ) then -- Nicht ersch�pft
         return
     end
     
     if (User:countItemAt("belt",735)==0) and (User:countItemAt("belt",733)==0) then -- Getreideb�ndel im G�rtel
         if (ltstate ~= Action.success) then
-            base.common.InformNLS( User, 
+            common.InformNLS( User, 
             "Wenn du keine Steine hast, kannst du auch keine behauen.", 
             "In case you have not stones, you can't work stones." );
         end
@@ -78,15 +79,15 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
     
-    if base.common.IsInterrupted( User ) then
-        base.common.InformNLS(User,
+    if common.IsInterrupted( User ) then
+        common.InformNLS(User,
         "Du schl�gst daneben und triffst mit dem Hammer deine Finger.",
         "You miss the chisel and hit your fingers.");
         return
     end
     
-    if base.common.ToolBreaks( User, SourceItem ) then -- Dreschflegen besch�digen
-        base.common.InformNLS(User,
+    if common.ToolBreaks( User, SourceItem ) then -- Dreschflegen besch�digen
+        common.InformNLS(User,
         "Der Meisel zerbricht.",
         "The chisel breaks.");
         return
@@ -98,7 +99,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         local stop_working = false;
         if ( notCreated > 0 ) then
             world:createItemFromId( 733, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
             stop_working = true;
@@ -111,7 +112,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         local notCreated = User:createItem( 1266, 25, 333 ,0); -- kleine Steiner erstellen.
         if ( notCreated > 0 ) then
             world:createItemFromId( 1266, notCreated, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         elseif (User:countItemAt("belt",733)>0) then
@@ -120,7 +121,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end     
                   
     --User:learn( 2, "peasantry", 2, 100 ); -- Lernen
-    base.common.GetHungry( User, 200 ); -- Hungrig werden
+    common.GetHungry( User, 200 ); -- Hungrig werden
 end
 
 function M.LookAtItem( User, Item )

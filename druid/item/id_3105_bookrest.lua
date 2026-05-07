@@ -2,7 +2,7 @@
 -- Pergament f�r das Druidensystem
 -- Falk
 require("base.books")
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- UPDATE common SET com_script='druid.item.id_3105_bookrest' WHERE com_itemid = 3105;

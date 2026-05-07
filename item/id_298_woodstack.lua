@@ -3,7 +3,7 @@ local callFireMan, logToFile, UseItem
 
 -- I_298 Holzstapel entfachen (Lagerfeuer)
 
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.id_298_woodstack' WHERE com_itemid IN (298);
 
@@ -87,7 +87,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			end
         end
     else
-        base.common.InformNLS( User,
+        common.InformNLS( User,
             "Du willst Dich nicht selbst verbrennen!",
             "You don't want to burn yourself!");
     end

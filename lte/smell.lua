@@ -1,11 +1,11 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 ---------------------------
 ---- Character begins to smell --
 -----------------------------
 function M.addEffect(stinkEffect, Character)         -- Smell starts
-    --base.common.InformNLS(Character,
+    --common.InformNLS(Character,
     --"Du fühlst dich etwas unwohl.",
     --"You feel a little sickish.");
     stinkEffect:addValue("stinkIndex",1);
@@ -55,7 +55,7 @@ end
 function M.removeEffect( Effect, Character )
     LogString=os.date()..": Patient "..Character.name.."completely healed because the cold ended.\n";
     logToFile(LogString);
-    --base.common.InformNLS(Character,
+    --common.InformNLS(Character,
     --"Du fühlst dich endlich wieder besser.",
     --"You finally feel better now.");
 end

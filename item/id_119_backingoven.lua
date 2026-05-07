@@ -10,32 +10,32 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_119_backingoven' WHERE com_itemid IN (119,120);
 
-require("base.common")
+local common = require("base.common")
 
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate );
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    common.ResetInterruption( User, ltstate );
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim Arbeiten.",
         "Your armor disturbs while working." );
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
+    if not common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        base.common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+    if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
     end
     
-    if not base.common.FitForWork( User ) then -- Kein Hunger
+    if not common.FitForWork( User ) then -- Kein Hunger
         return
     end
     
     if (User:countItemAt("body",118)==0) then -- kleine Zange
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst ein Nudelholz um hier zu arbeiten.",
         "You need a rolling pin to work here." );
         return
@@ -46,8 +46,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if base.common.ToolBreaks( User, Tool, true) then -- Zange besch�digen
-        base.common.InformNLS( User, 
+    if common.ToolBreaks( User, Tool, true) then -- Zange besch�digen
+        common.InformNLS( User, 
         "Dein Nudelholz zerbricht.",
         "Your pin roll breaks." );
         return
@@ -67,14 +67,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if (User:countItemAt("belt",2) == 0) then -- Mehl gefunden
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du brauchst Mehl um hier Teig zu machen.", 
         "You need flour to make dough" );
         return
     end
     
     if (User:countItemAt("belt",52) == 0) then -- Mehl gefunden
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du brauchst einen Eimer Wasser um hier Teig zu machen.", 
         "You need a bucket of water to make dough" );
         return
@@ -87,8 +87,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return              
     end
     
-    if base.common.IsInterrupted( User ) then
-        base.common.InformNLS(User,
+    if common.IsInterrupted( User ) then
+        common.InformNLS(User,
         "Du sch�ttest dir aus Versehen eine Ladung Wasser an die Kleidung.",
         "You accidentally pour some water on your clothes.");
         return
@@ -102,7 +102,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     local startagain = true;
     if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
         world:createItemFromId( 51, notCreated, User.pos, true, 333 ,0);
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du kannst nichts mehr halten.",
         "You can't carry any more.");
         startagain = false;
@@ -111,7 +111,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     notCreated = User:createItem(5,handleAtOnce,333,0);
     if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
         world:createItemFromId( 5, notCreated, User.pos, true, 333 ,0);
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du kannst nichts mehr halten.",
         "You can't carry any more.");
         startagain = false;
@@ -122,7 +122,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     User:learn(2,"baking",2,20);
-    base.common.GetHungry( User, 200 );
+    common.GetHungry( User, 200 );
 end
     
     

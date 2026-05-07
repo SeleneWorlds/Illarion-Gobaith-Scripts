@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -39,7 +39,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
       Caster:learn(6,"exquirere",3,100)
 
   else
-    base.common.InformNLS(Caster,
+    common.InformNLS(Caster,
     "Das ist kein Kr�utersud","This is not a stock")
   end
 end

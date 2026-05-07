@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO spells VALUES (2^16,3,'druid.spell.id_17_analyze_location');
@@ -60,7 +60,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   --Anzeige des Item-Gewichtes
   myItem = world:getItemStats(TargetItem)
 
---base.common.InformNLS( Caster,
+--common.InformNLS( Caster,
 --"Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten",
 --"This item weights "..myItem.Weight.." druid weight-units"); -- das kann man sch�ner formulieren
 	textDE="Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten"

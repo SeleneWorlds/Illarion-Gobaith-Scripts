@@ -2,7 +2,7 @@ local M = {}
 local LookAtItem, UseItem, destroyGem
 
 -- UPDATE common SET com_script='item.altars' WHERE com_itemid IN (361,1879,1880,2801,2857,2872);
-require("base.common")
+local common = require("base.common")
 local gods = require("content.gods")
 
 local GOD_DE = gods.GOD_DE
@@ -103,28 +103,28 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
     else 
 		god_feel=(math.random(1,50));
 		if god_feel==1 then
-		    base.common.InformNLS(User,
+		    common.InformNLS(User,
                 "Du f�hlst dich ein wenig wohler.",
                 "You feel better now.");
 		elseif god_feel==2 then
-		    base.common.InformNLS(User,
+		    common.InformNLS(User,
                 "Der Stein wird warm unter denen H�nden.",
     	        "The stone become warmer under your hands.");
 		elseif god_feel==3 then
-		    base.common.InformNLS(User,
+		    common.InformNLS(User,
                 "Du f�hlst dich gl�cklicher.",
                 "You feel more happy.");
 		elseif god_feel==4 then
-		    base.common.InformNLS(User,
+		    common.InformNLS(User,
                 "Du f�hlst dich spirituell gest�rkt.",
                 "You feel spirituel stronger now.");
 		elseif god_feel==5 then
-		    base.common.InformNLS(User,
+		    common.InformNLS(User,
                 "Du h�rst ein verr�cktes Lachen in der Ferne.",
                 "You hear a maniac laughter far away.");
 			world:makeSound(25,SourceItem.pos)
 		else
-		    base.common.InformNLS(User,
+		    common.InformNLS(User,
             	"Nichts passiert.",
             	"Nothing happens.");
 		end

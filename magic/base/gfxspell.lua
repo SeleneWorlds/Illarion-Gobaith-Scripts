@@ -1,3 +1,4 @@
+local common = require("base.common")
 require("magic.base.basics");
 
 function DoGFXSpell(Caster, TargetPos, ltstate)
@@ -20,17 +21,17 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
     genderMsg[CPlayer.german], genderMsg[CPlayer.english] = magic.base.basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
-        base.common.InformNLS( Caster,
+        common.InformNLS( Caster,
         "Du bist zuweit weg um diesen Zauber zu sprechen.",
         "You are too far away to cast this spell." );
         return;
     end
 
-    if not base.common.IsLookingAt( Caster, TargetPos ) then
-        base.common.TempInformNLS( Caster,
+    if not common.IsLookingAt( Caster, TargetPos ) then
+        common.TempInformNLS( Caster,
         "Du drehst dich auf dein Ziel zu um es in dein Blickfeld zu bekommen.",
         "You turn to your target to get it into your field of vision.");
-        base.common.TurnTo( Caster, TargetPos );
+        common.TurnTo( Caster, TargetPos );
     end
 
     if ( ltstate == Action.none ) then
@@ -38,7 +39,7 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
         --Caster:talkLanguage( CCharacter.say,  CPlayer.german, message );
         message = string.gsub( TimeEffects.msg[CPlayer.english], "{PP}", genderMsg[CPlayer.english] );
         --Caster:talkLanguage( CCharacter.say, CPlayer.english, message );
-        Caster:startAction( base.common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
+        Caster:startAction( common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
         return;
     end
 
@@ -51,7 +52,7 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
     end
 
     if not CasterVal then
-        base.common.TempInformNLS( Caster,
+        common.TempInformNLS( Caster,
         "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
@@ -61,12 +62,12 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
 
     HittedPosition = {};
     if equapos(Caster.pos,TargetPos) and TargetEffects and (TargetEffects.minSkill.hitpoints < 0 or TargetEffects.minSkill.foodpoints < 0 or TargetEffects.minSkill.actionpoints < 0 or TargetEffects.minSkill.manapoints < 0 or TargetEffects.minSkill.poison > 0 ) then
-        table.insert(HittedPosition, base.common.GetFrontPosition( Caster ) );
+        table.insert(HittedPosition, common.GetFrontPosition( Caster ) );
     else
-        table.insert(HittedPosition, base.common.CopyPosition(TargetPos) );
+        table.insert(HittedPosition, common.CopyPosition(TargetPos) );
     end
     if ( SpellEffects.Line ~= nil and ( ( SpellEffects.Line.gfx ~= nil and SpellEffects.Line.gfx ~= 0 ) or ( SpellEffects.Line.sfx ~= nil and SpellEffects.Line.sfx ~= 0 ) ) ) or Settings.FirstInLine or Settings.AllInLine then
-        base.common.CreateLine(Caster.pos,TargetPos,function( currPos )
+        common.CreateLine(Caster.pos,TargetPos,function( currPos )
             if equapos( Caster.pos, currPos ) then
                 return true;
             end
@@ -81,10 +82,10 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
             end
 
             if not Settings.AllInLine then
-                HittedPosition[1] = base.common.CopyPosition(currPos);
+                HittedPosition[1] = common.CopyPosition(currPos);
                 return false;
             else
-                table.insert(HittedPosition, base.common.CopyPosition(currPos) );
+                table.insert(HittedPosition, common.CopyPosition(currPos) );
             end
             return true;
         end );
@@ -101,7 +102,7 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
         end
         if SpellRadius > 0 then
             for i=1,SpellRadius do
-                base.common.CreateCircle(HitPosi,i,function( posi )
+                common.CreateCircle(HitPosi,i,function( posi )
                     local retVal = HitOnPosition( Caster, CasterVal, posi, 1-0.15*i-reduce, i );
                     if not HittedSomeone then
                         HittedSomeone = retVal;
@@ -160,7 +161,7 @@ function HitOnPosition( Caster, CasterValue, posi, percent, radius )
             magic.base.basics.performGFX( SpellEffects[radius].gfx, Caster.pos );
             magic.base.basics.performSFX( SpellEffects[radius].sfx, Caster.pos );
         end
-        base.common.InformNLS( Caster,
+        common.InformNLS( Caster,
         "Dein Ziel ist derart resistent gegen Magie das dein Zauber auf dich zur�ckgeworfen wird.",
         "Your target is that resistent against magic that your spell returns to you." );
     else
@@ -185,18 +186,18 @@ function TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
     local Value = (magic.base.basics.CasterValue - Resistance)*Percent;
 
     if TargetEffects.minSkill.hitpoints and TargetEffects.maxSkill.hitpoints then
-        local AttribEffect = math.floor(base.common.Scale(TargetEffects.minSkill.hitpoints, TargetEffects.maxSkill.hitpoints, Value));
+        local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.hitpoints, TargetEffects.maxSkill.hitpoints, Value));
         if (AttribEffect~=0) then
             local oldHP = Target:increaseAttrib("hitpoints", 0 );
             if( oldHP > 1 and oldHP+AttribEffect < 2 and Target:get_type()~=1 ) then
                 Target:increaseAttrib("hitpoints", 1 - oldHP );
-                local CharOffsetX = base.common.Limit(Caster.pos.x - Target.pos.x,-1,1);
-                local CharOffsetY = base.common.Limit(Caster.pos.y - Target.pos.y,-1,1);
+                local CharOffsetX = common.Limit(Caster.pos.x - Target.pos.x,-1,1);
+                local CharOffsetY = common.Limit(Caster.pos.y - Target.pos.y,-1,1);
                 local newPos = position( Target.pos.x + CharOffsetX, Target.pos.y + CharOffsetY, Target.pos.z );
                 Target:warp( newPos );
                 Target:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zur�ck und geht zu Boden." );
                 Target:talkLanguage( CCharacter.say, CPlayer.english, "#me stumbles back and falls to the ground." );
-                base.common.ParalyseCharacter(Target, 7, false, true);
+                common.ParalyseCharacter(Target, 7, false, true);
 
                 local reg_found, reg_effect = Target.effects:find(2);
                 if reg_found then
@@ -209,24 +210,24 @@ function TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
     end
 
     if TargetEffects.minSkill.foodpoints and TargetEffects.maxSkill.foodpoints then
-        local AttribEffect = math.floor(base.common.Scale(TargetEffects.minSkill.foodpoints, TargetEffects.maxSkill.foodpoints, Value));
+        local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.foodpoints, TargetEffects.maxSkill.foodpoints, Value));
         if (AttribEffect~=0) then
             while( AttribEffect ~= 0 ) do
                 Target:increaseAttrib( "foodlevel", Limit(AttribEffect,-10000,10000) );
-                AttribEffect = AttribEffect - base.common.Limit(AttribEffect,-10000,10000);
+                AttribEffect = AttribEffect - common.Limit(AttribEffect,-10000,10000);
             end
         end
     end
 
     if TargetEffects.minSkill.manapoints and TargetEffects.maxSkill.manapoints then
-        local AttribEffect = math.floor(base.common.Scale(TargetEffects.minSkill.manapoints, TargetEffects.maxSkill.manapoints, Value));
+        local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.manapoints, TargetEffects.maxSkill.manapoints, Value));
         if (AttribEffect~=0) then
             Target:increaseAttrib("mana",AttribEffect);
         end
     end
 
     if TargetEffects.minSkill.poison and TargetEffects.maxSkill.poison then
-        local AttribEffect = math.floor(base.common.Scale(TargetEffects.minSkill.poison, TargetEffects.maxSkill.poison, Value));
+        local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.poison, TargetEffects.maxSkill.poison, Value));
         if (AttribEffect~=0) then
 		Caster:inform("poison: "..AttribEffect);
             Target:setPoisonValue( Target:getPoisonValue() + AttribEffect );
@@ -234,20 +235,20 @@ function TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
     end
 
     if TargetEffects.minSkill.actionpoints and TargetEffects.maxSkill.actionpoints then
-        local AttribEffect = math.floor(base.common.Scale(TargetEffects.minSkill.actionpoints, TargetEffects.maxSkill.actionpoints, Value));
+        local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.actionpoints, TargetEffects.maxSkill.actionpoints, Value));
         if (AttribEffect~=0) then
             Target.movepoints = Target.movepoints + AttribEffect;
         end
     end
 
     if TargetEffects.minSkill.posoffset and TargetEffects.maxSkill.posoffset then
-        local AttribEffect = math.floor(base.common.Scale(TargetEffects.minSkill.posoffset, TargetEffects.maxSkill.posoffset, Value));
+        local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.posoffset, TargetEffects.maxSkill.posoffset, Value));
         if (AttribEffect~=0) and Target:get_type() ~= 2 then
             local phi;
             if ( Caster.id == Target.id ) then
                 phi = math.random()*2;
             else
-                phi = base.common.GetPhi( Caster.pos, Target.pos );
+                phi = common.GetPhi( Caster.pos, Target.pos );
             end
             local NewPos = position( math.floor(Target.pos.x+AttribEffect*math.cos( phi )), math.floor(Target.pos.y+AttribEffect*math.sin( phi )), Target.pos.z );
             Target:warp( NewPos );
@@ -283,8 +284,8 @@ function removeItemFromMap( ItemData, Target, CasterVal )
     end
 
     if (ItemData.minSkill and ItemData.maxSkill) then
-        CasterVal = base.common.Limit( CasterVal, 0, 100 );
-        local chance = base.common.Scale( ItemData.minSkill.chance, ItemData.maxSkill.chance, CasterVal );
+        CasterVal = common.Limit( CasterVal, 0, 100 );
+        local chance = common.Scale( ItemData.minSkill.chance, ItemData.maxSkill.chance, CasterVal );
 
         if (math.random(100) > chance) then
             return false;
@@ -313,10 +314,10 @@ function removeItemFromMap( ItemData, Target, CasterVal )
         return true;
     end
 
-    local qual = base.common.Round( base.common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal ) );
-    local data = base.common.Round( base.common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal ) );
-    local wear = base.common.Round( base.common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal ) );
-    local numb = base.common.Round( base.common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal ) );
+    local qual = common.Round( common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal ) );
+    local data = common.Round( common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal ) );
+    local wear = common.Round( common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal ) );
+    local numb = common.Round( common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal ) );
 
     if ( qual == 0 ) and ( data == 0 ) and ( wear == 0 ) and ( numb == 0 ) then
         world:erase( theItem, theItem.number );
@@ -374,7 +375,7 @@ function CalcRadius()
 end
 
 function CalcEffectRadius(Radius,CasterTry)
-    return base.common.Limit( math.floor( Radius * CasterTry / Skill.max + GemBonis.Radius ), 0, Radius );
+    return common.Limit( math.floor( Radius * CasterTry / Skill.max + GemBonis.Radius ), 0, Radius );
 end
 
 function CastMagic(Caster,counter,param,ltstate)

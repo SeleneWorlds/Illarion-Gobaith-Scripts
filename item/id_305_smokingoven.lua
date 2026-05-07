@@ -13,10 +13,10 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_305_smokingoven' WHERE com_itemid IN (305,304);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate )
+    common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -33,15 +33,15 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem, {305,304} ) then
+    if not common.CheckItem( User, SourceItem, {305,304} ) then
         if (SourceItem.id ~= 304) then
             world:swap(SourceItem,304,0);
         end
         return
     end
     
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert dich am r�uchern",
         "Your armor disturbs you roasting ham or fish" );
         if (SourceItem.id ~= 304) then
@@ -50,11 +50,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-        base.common.TurnTo( User, SourceItem.pos );
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+        common.TurnTo( User, SourceItem.pos );
     end
     
-    if not base.common.FitForWork( User ) then
+    if not common.FitForWork( User ) then
         if (SourceItem.id ~= 304) then
             world:swap(SourceItem,304,0);
         end
@@ -63,7 +63,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if ( (User:countItemAt("belt",307) < 1)  and (User:countItemAt("belt",355) < 1) and (User:countItemAt("belt",73) < 1) ) then
         if (ltstate ~= Action.success) then
-            base.common.InformNLS( User, 
+            common.InformNLS( User, 
             "Du ben�tigst rohen Schinken oder rohen Fisch um diesen hier zu r�uchern.", 
             "You need raw ham or raw fish to roast it here." );
         end
@@ -83,8 +83,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if base.common.IsInterrupted( User ) then
-        base.common.InformNLS(User,
+    if common.IsInterrupted( User ) then
+        common.InformNLS(User,
         "Du verbrennst dir die Finger an dem heissen Ofen.",
         "You burn your fingers on the hot oven.");
         if (SourceItem.id ~= 304) then
@@ -98,7 +98,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local notcreated = User:createItem(306, 1, 333 ,0 );
         if (notcreated > 0) then
             world:createItemFromId( 306, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
             if (SourceItem.id ~= 304) then
@@ -112,7 +112,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local notcreated = User:createItem(455, 1, 333 ,0 );
         if (notcreated > 0) then
             world:createItemFromId( 455, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
             if (SourceItem.id ~= 304) then
@@ -126,7 +126,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local notcreated = User:createItem(455, 1, 333 ,0 );
         if (notcreated > 0) then
             world:createItemFromId( 455, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
             if (SourceItem.id ~= 304) then
@@ -137,7 +137,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 	end
     end
 
-    base.common.GetHungry( User, 100 );
+    common.GetHungry( User, 100 );
     User:learn( 2, "baking", 2, 10 );
     
 end -- function

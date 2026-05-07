@@ -4,7 +4,7 @@
 
 
 -- Hang in base.common - Some functions of the collection are needed
-require("base.common")
+local common = require("base.common")
 
 -- Lists with static values of the fighting system
 require("content.fighting")
@@ -219,8 +219,8 @@ function onAttack_debug( Attacker, Defender, AttackPos )
     -- generate modificators for the Attacker
     Attacker = GenAttackerMods( Attacker );
 ---[[DEBUG
-    AddDebugText( "AttackMod="..base.common.Round( Attacker.AttackMod, 2 ), 2, Attacker.Char );
-    AddDebugText( "APMod="..base.common.Round( Attacker.APMod, 2 ), 2, Attacker.Char );
+    AddDebugText( "AttackMod="..common.Round( Attacker.AttackMod, 2 ), 2, Attacker.Char );
+    AddDebugText( "APMod="..common.Round( Attacker.APMod, 2 ), 2, Attacker.Char );
 --]]
 
     -- Generate Stiffness Mod of the armor for the Attacker
@@ -233,7 +233,7 @@ function onAttack_debug( Attacker, Defender, AttackPos )
     -- Generate Hitpoint modificator
     Attacker = HPMod( Attacker );
 ---[[DEBUG
-    AddDebugText( "HPMod="..base.common.Round( Attacker.HPMod, 2 ), 3, Attacker.Char );
+    AddDebugText( "HPMod="..common.Round( Attacker.HPMod, 2 ), 3, Attacker.Char );
 --]]
 
     -- Calculate and remove movepoints from the attacker
@@ -245,26 +245,26 @@ function onAttack_debug( Attacker, Defender, AttackPos )
     -- Generate the mod related to the position and the lookat of the characters
     Globals = GenPositionMod( Attacker.Char, Defender.Char, Globals );
 ---[[DEBUG
-    AddDebugText( "PositionMod="..base.common.Round( Globals.PositionMod, 2 ), 3, Attacker.Char );
+    AddDebugText( "PositionMod="..common.Round( Globals.PositionMod, 2 ), 3, Attacker.Char );
 --]]
 
     -- Generate Stiffness Mod of the armor for the Defender
     Defender = GenStiffnessMod( Defender );
 ---[[DEBUG
-    AddDebugText( "StiffnessMod="..base.common.Round( Defender.StiffnessMod, 2 ), 3, Attacker.Char );
+    AddDebugText( "StiffnessMod="..common.Round( Defender.StiffnessMod, 2 ), 3, Attacker.Char );
     AddDebugText( Defender.noDodge and "dodge impossible" or "dodge possible", 3, Attacker.Char );
 --]]
 
     -- Generate Hitpoint modificator Defender
     Defender = HPMod( Defender );
 ---[[DEBUG
-    AddDebugText( "HPMod="..base.common.Round( Defender.HPMod, 2 ), 3, Attacker.Char );
+    AddDebugText( "HPMod="..common.Round( Defender.HPMod, 2 ), 3, Attacker.Char );
 --]]
 
     -- generate a distance modifier for the attacker
     Attacker = GenDistanzMod( Attacker, Defender.Char );
 ---[[DEBUG
-    AddDebugText( "DistanceMod="..base.common.Round( Attacker.DistanceMod, 2 ), 3, Attacker.Char );
+    AddDebugText( "DistanceMod="..common.Round( Attacker.DistanceMod, 2 ), 3, Attacker.Char );
 --]]
 
     -- check if the character dodges the Attack
@@ -289,8 +289,8 @@ function onAttack_debug( Attacker, Defender, AttackPos )
     -- calculate the attribute modificator
     Attacker, Defender = GenAttribMod( Attacker, Defender );
 ---[[DEBUG
-    AddDebugText( "Attacker AttribMod="..base.common.Round( Attacker.AttribMod, 2 ), 3, Attacker.Char );
-    AddDebugText( "Defender AttribMod="..base.common.Round( Defender.AttribMod, 2 ), 3, Attacker.Char );
+    AddDebugText( "Attacker AttribMod="..common.Round( Attacker.AttribMod, 2 ), 3, Attacker.Char );
+    AddDebugText( "Defender AttribMod="..common.Round( Defender.AttribMod, 2 ), 3, Attacker.Char );
 --]]
 
     -- break the Attack weapon of the attacker
@@ -518,7 +518,7 @@ function NewbieIsland( Attacker, Defender )
     elseif (_AntiSpamVar~=280) then
         _AntiSpamVar=_AntiSpamVar+1;
     else
-        base.common.InformNLS(Attacker,
+        common.InformNLS(Attacker,
         "Du darfst jetzt noch keine anderen Spieler angreifen, erst auf Gobaith. Halte STRG gedrÃ¼ckt und klicke nochmals auf deinen Gegner, um den Kampf abzubrechen.",
         "You are not allowed to attack other players yet, only as soon as you enter Gobaith. Hold CTRL and click again on your enemy in order to cancel the attack.");
         _AntiSpamVar=0;
@@ -535,10 +535,10 @@ end
     @return bool    true if the attack can go on, false if not
 ]]
 function PreAttack_Special( Attacker, Defender, AttackPos )
-    if (Defender.id == 1502327199) and base.common.GetInArea( Defender, position(-35,-135,0), position( -20, -110, 1 ) ) then
+    if (Defender.id == 1502327199) and common.GetInArea( Defender, position(-35,-135,0), position( -20, -110, 1 ) ) then
         if ( AttackPos == CCharacter.right_tool ) then
             Attacker:increaseAttrib("hitpoints", -2000);
-            base.common.InformNLS( Attacker,
+            common.InformNLS( Attacker,
             "Ein Armbrustbolzen trifft dich und du stolperst zurÃ¼ck",
             "A crossbow bolt hits you and you stumble back." );
             Attacker.movepoints = Attacker.movepoints - 30;
@@ -605,7 +605,7 @@ end
 function GetQualityEffect( Qual )
     local Quali = math.floor( Qual / 100 );
     local Durab = ( Qual % 100 );
-    return base.common.Limit( base.common.Scale( 0.55, 1.36, Quali * 100 / 9 ) * base.common.Scale( 0.9, 1.1, Durab * 100 / 99 ), 0.5, 1.5 );
+    return common.Limit( common.Scale( 0.55, 1.36, Quali * 100 / 9 ) * common.Scale( 0.9, 1.1, Durab * 100 / 99 ), 0.5, 1.5 );
 end
 
 
@@ -702,7 +702,7 @@ function LoadAttribsSkills( CharStruct, offsive )
     CharStruct["intelligence"] = ReadAndAlterAttribute( CharStruct.Char, "intelligence" );
     CharStruct["willpower"]    = ReadAndAlterAttribute( CharStruct.Char, "willpower" );
     CharStruct["tactics"]      = CharStruct.Char:getSkill("tactics");
-    CharStruct.tactics         = CharStruct.tactics * base.common.Scale( 0.5, 1.1, ( CharStruct.intelligence*2 + CharStruct.willpower ) * 10 / 3 );
+    CharStruct.tactics         = CharStruct.tactics * common.Scale( 0.5, 1.1, ( CharStruct.intelligence*2 + CharStruct.willpower ) * 10 / 3 );
     if offsive then
         CharStruct["skill"]        = CharStruct.Char:getSkill( CharStruct.Skillname );
         CharStruct["poison"]       = CharStruct.Char:getSkill("poisoning");
@@ -892,33 +892,33 @@ function GenAttackerMods( Attacker )
     if (Attacker.AttackKind == 0) then
         -- wrestling( 0.8 --> 1 )
         Attacker["APMod"] = 0.5;
-        --Attacker["AttackMod"] = base.common.Scale( 0.4, 0.5, Attacker.tactics );
-        Attacker["AttackMod"] = base.common.Scale( 0.8, 1, Attacker.tactics );
+        --Attacker["AttackMod"] = common.Scale( 0.4, 0.5, Attacker.tactics );
+        Attacker["AttackMod"] = common.Scale( 0.8, 1, Attacker.tactics );
     elseif (Attacker.AttackKind == 4) then
         -- distance weapons ( 0.82 --> 1.22 )
-        Attacker["APMod"] = base.common.Scale( 1.1, 0.9, Attacker.tactics );
-        --Attacker["AttackMod"] = base.common.Scale( 0.9, 1.1, Attacker.tactics );
-        Attacker["AttackMod"] = base.common.Scale( 0.82, 1.22, Attacker.tactics );
+        Attacker["APMod"] = common.Scale( 1.1, 0.9, Attacker.tactics );
+        --Attacker["AttackMod"] = common.Scale( 0.9, 1.1, Attacker.tactics );
+        Attacker["AttackMod"] = common.Scale( 0.82, 1.22, Attacker.tactics );
     elseif (Attacker.UsedHands == 2) then
         -- two handed weapons ( 0.4 --> 1.33 )
-        Attacker["APMod"] = base.common.Scale( 1.5, 0.9, Attacker.tactics );
-        --Attacker["AttackMod"] = base.common.Scale( 0.6, 1.2, Attacker.tactics );
-        Attacker["AttackMod"] = base.common.Scale( 0.4, 1.33, Attacker.tactics );
+        Attacker["APMod"] = common.Scale( 1.5, 0.9, Attacker.tactics );
+        --Attacker["AttackMod"] = common.Scale( 0.6, 1.2, Attacker.tactics );
+        Attacker["AttackMod"] = common.Scale( 0.4, 1.33, Attacker.tactics );
     elseif (Attacker.secIsWeapon) and (Attacker.SecWeapon.WeaponType==14) then
         -- weapon + shield ( 0.54 --> 1.33 )
-        Attacker["APMod"] = base.common.Scale( 1.3, 0.9, Attacker.tactics );
-        --Attacker["AttackMod"] = base.common.Scale( 0.9, 1.1, Attacker.tactics );
-        Attacker["AttackMod"] = base.common.Scale( 0.54, 1.33, Attacker.tactics );
+        Attacker["APMod"] = common.Scale( 1.3, 0.9, Attacker.tactics );
+        --Attacker["AttackMod"] = common.Scale( 0.9, 1.1, Attacker.tactics );
+        Attacker["AttackMod"] = common.Scale( 0.54, 1.33, Attacker.tactics );
     elseif (Attacker.secIsWeapon) then
         -- two weapons ( 0.31 --> 1.5 )
-        Attacker["APMod"] = base.common.Scale( 0.8, 0.4, Attacker.tactics );
-        --Attacker["AttackMod"] = base.common.Scale( 0.25, 0.6, Attacker.tactics );
-        Attacker["AttackMod"] = base.common.Scale( 0.31, 1.5, Attacker.tactics );
+        Attacker["APMod"] = common.Scale( 0.8, 0.4, Attacker.tactics );
+        --Attacker["AttackMod"] = common.Scale( 0.25, 0.6, Attacker.tactics );
+        Attacker["AttackMod"] = common.Scale( 0.31, 1.5, Attacker.tactics );
     else
         -- one weapon ( 0.82 --> 1.22 )
-        Attacker["APMod"] = base.common.Scale( 1.1, 0.9, Attacker.tactics );
-        --Attacker["AttackMod"] = base.common.Scale( 0.9, 1.1, Attacker.tactics );
-        Attacker["AttackMod"] = base.common.Scale( 0.82, 1.22, Attacker.tactics );
+        Attacker["APMod"] = common.Scale( 1.1, 0.9, Attacker.tactics );
+        --Attacker["AttackMod"] = common.Scale( 0.9, 1.1, Attacker.tactics );
+        Attacker["AttackMod"] = common.Scale( 0.82, 1.22, Attacker.tactics );
     end
     return Attacker;
 end
@@ -932,8 +932,8 @@ end
     @return CharacterTable  The table of the character with the modificator
 ]]
 function GenStiffnessMod( CharStruct )
-    local Stiff = base.common.GetStiffness( CharStruct.Char );
-    CharStruct["StiffnessMod"] = base.common.Scale( 1.2, 0.9, Stiff / 5);
+    local Stiff = common.GetStiffness( CharStruct.Char );
+    CharStruct["StiffnessMod"] = common.Scale( 1.2, 0.9, Stiff / 5);
     CharStruct["noDodge"] = ( Stiff > 100 );
     return CharStruct;
 end
@@ -953,9 +953,9 @@ function HPMod( Charstruct )
     if ( Hitpoints > 4000 ) then
         Charstruct["HPMod"] = 1;
     elseif ( Hitpoints > 1000 ) then
-        Charstruct["HPMod"] = base.common.Scale( 0.5, 1, ( Hitpoints - 1000 ) / 30 );
+        Charstruct["HPMod"] = common.Scale( 0.5, 1, ( Hitpoints - 1000 ) / 30 );
     else
-        Charstruct["HPMod"] = base.common.Scale( 0.7, 0.5, Hitpoints / 10 );
+        Charstruct["HPMod"] = common.Scale( 0.7, 0.5, Hitpoints / 10 );
     end
     return Charstruct;
 end
@@ -1094,18 +1094,18 @@ function Dodge( Attacker, Defender, Globals )
         return false;
     end
 
-    local AttackerTry = ( Attacker.skill*2 + Attacker.tactics ) / 3 * base.common.ScaleUnlimited( 0.3, 1.2, ( Attacker.perception + Attacker.dexterity*2 + Attacker.agility ) * 1.25 );
+    local AttackerTry = ( Attacker.skill*2 + Attacker.tactics ) / 3 * common.ScaleUnlimited( 0.3, 1.2, ( Attacker.perception + Attacker.dexterity*2 + Attacker.agility ) * 1.25 );
     AttackerTry = AttackerTry * Attacker.HPMod * Globals.PositionMod * Attacker.AttackMod * Attacker.StiffnessMod * Attacker.DistanceMod;
     if ( Attacker.isWeapon ) then
-        AttackerTry = AttackerTry * base.common.Scale( 0.5, 1.5, Attacker.Weapon.Accuracy * Attacker.WeaponQualMod );
+        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, Attacker.Weapon.Accuracy * Attacker.WeaponQualMod );
     else
-        AttackerTry = AttackerTry * base.common.Scale( 0.5, 1.5, GetWrestlingAccuracy( Attacker.Race ) );
+        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, GetWrestlingAccuracy( Attacker.Race ) );
     end
 
-    local DefenderTry = ( Defender.dodge*2 + Defender.tactics ) / 3 * base.common.ScaleUnlimited( 0.3, 1.2, ( Defender.perception + Defender.dexterity + Defender.agility*2 ) * 1.25 );
+    local DefenderTry = ( Defender.dodge*2 + Defender.tactics ) / 3 * common.ScaleUnlimited( 0.3, 1.2, ( Defender.perception + Defender.dexterity + Defender.agility*2 ) * 1.25 );
     DefenderTry = DefenderTry * Defender.HPMod * Defender.StiffnessMod;
 
-    local ChanceToDodge = base.common.Scale( 5, 45, ( DefenderTry - AttackerTry + 100 ) / 2 );
+    local ChanceToDodge = common.Scale( 5, 45, ( DefenderTry - AttackerTry + 100 ) / 2 );
     ChanceToDodge = ChanceToDodge + ( ( 100 - ChanceToDodge ) * ( 1 - math.sqrt( Attacker.APMod ) ) );
 
 ---[[DEBUG
@@ -1113,7 +1113,7 @@ function Dodge( Attacker, Defender, Globals )
 --]]
 
     if( math.random(0, 100) <= ChanceToDodge ) then
-        Defender.Char:learn(5,"dodge",2,base.common.Limit(AttackerTry+10, 0, 100 ));
+        Defender.Char:learn(5,"dodge",2,common.Limit(AttackerTry+10, 0, 100 ));
         return true;
     end
 
@@ -1151,14 +1151,14 @@ function GenAttribMod( Attacker, Defender )
     elseif (Attacker.AttackKind==4) then -- distance
         Attributs = ( Attacker.strength   + Attacker.dexterity*4 + Attacker.agility*3 + Attacker.perception*4 ) / 2.4;
     end
-    Attacker["AttribMod"]  = base.common.ScaleUnlimited( 0.5, 1.1, Attributs );
+    Attacker["AttribMod"]  = common.ScaleUnlimited( 0.5, 1.1, Attributs );
 
     if ( ( Defender.LeftisWeapon and Defender.LeftWeapon.WeaponType == 14 ) or ( Defender.RightisWeapon and Defender.RightWeapon.WeaponType == 14 ) ) then -- width shield
         Attributs = ( Defender.strength*2 + Defender.dexterity   + Defender.agility   + Defender.perception   );
     else -- without shield
         Attributs = ( Defender.strength   + Defender.dexterity*2 + Defender.agility*2 + Defender.perception   ) / 1.2;
     end
-    Defender["AttribMod"]  = base.common.ScaleUnlimited( 0.5, 1.1, Attributs );
+    Defender["AttribMod"]  = common.ScaleUnlimited( 0.5, 1.1, Attributs );
 
     return Attacker, Defender;
 end
@@ -1183,7 +1183,7 @@ function Parry( Attacker, Defender, Globals )
 
     -- Hit into the back
     if (Globals.PositionMod>=1.4) then
-        if (math.random(1,100)<= base.common.Scale( 95, 50, Defender.tactics) ) then
+        if (math.random(1,100)<= common.Scale( 95, 50, Defender.tactics) ) then
 ---[[DEBUG
             AddDebugText( "no parry due attack into the back", 3, Attacker.Char );
 --]]
@@ -1193,9 +1193,9 @@ function Parry( Attacker, Defender, Globals )
 
     local AttackerTry = ( Attacker.skill*2 + Attacker.tactics ) / 3 * Attacker.AttribMod * Attacker.HPMod * Globals.PositionMod * Attacker.AttackMod * Attacker.StiffnessMod * Attacker.DistanceMod;
     if ( Attacker.isWeapon ) then
-        AttackerTry = AttackerTry * base.common.Scale( 0.5, 1.5, Attacker.Weapon.Attack * Attacker.WeaponQualMod / 2 );
+        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, Attacker.Weapon.Attack * Attacker.WeaponQualMod / 2 );
     else
-        AttackerTry = AttackerTry * base.common.Scale( 0.5, 1.5, GetWrestlingAttack( Attacker.Race ) / 2 );
+        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, GetWrestlingAttack( Attacker.Race ) / 2 );
     end
 
     local DefenderTry = ( Defender.parry*2 + Defender.tactics ) / 3 * Defender.AttribMod * Defender.HPMod * Defender.StiffnessMod;
@@ -1225,9 +1225,9 @@ function Parry( Attacker, Defender, Globals )
     else
         WeaponParry = ( math.max( LeftWeaponParry, RightWeaponParry )*2 + math.min( LeftWeaponParry, RightWeaponParry ) ) / 3;
     end
-    DefenderTry = DefenderTry * base.common.Scale( 0.5, 1.5, WeaponParry / 2 );
+    DefenderTry = DefenderTry * common.Scale( 0.5, 1.5, WeaponParry / 2 );
 
-    local ChanceToParry = base.common.Scale( 5, 45, ( DefenderTry - AttackerTry + 100 ) / 2 );
+    local ChanceToParry = common.Scale( 5, 45, ( DefenderTry - AttackerTry + 100 ) / 2 );
     ChanceToParry = ChanceToParry + ( ( 100 - ChanceToParry ) * ( 1 - math.sqrt( Attacker.APMod ) ) );
 
 ---[[DEBUG
@@ -1235,7 +1235,7 @@ function Parry( Attacker, Defender, Globals )
 --]]
 
     if( math.random(0, 100) <= ChanceToParry ) then
-        Defender.Char:learn(5,"parry",2,base.common.Limit(AttackerTry+20, 0, 100 ));
+        Defender.Char:learn(5,"parry",2,common.Limit(AttackerTry+20, 0, 100 ));
         return true;
     end
 
@@ -1258,9 +1258,9 @@ function GenDistanzMod( Attacker, DefenderChar )
     local Distance = math.sqrt( ( Attacker.Char.pos.x - DefenderChar.pos.x )^2 + ( Attacker.Char.pos.y - DefenderChar.pos.y )^2 );
 
     if( Distance < 4 ) then
-        Attacker["DistanceMod"] = base.common.Scale( 0.2, 1, ( Distance - 1 ) * 100 / 3 );
+        Attacker["DistanceMod"] = common.Scale( 0.2, 1, ( Distance - 1 ) * 100 / 3 );
     else
-        Attacker["DistanceMod"] = base.common.Scale( 1, 0.7, ( Distance - 4 ) * 100 / 6 );
+        Attacker["DistanceMod"] = common.Scale( 1, 0.7, ( Distance - 4 ) * 100 / 6 );
     end
     return Attacker;
 end
@@ -1295,7 +1295,7 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
         local ItemQual=math.floor( CharStruct[FirstWeaponItem].quality / 100 );
         local ItemDura=CharStruct[FirstWeaponItem].quality - ( ItemQual * 100 );
 
-        if (math.random(base.common.Scale(30,300,ItemQual*11))==1) then
+        if (math.random(common.Scale(30,300,ItemQual*11))==1) then
             if IsPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
                 ItemDura = ItemDura - 10;
             else
@@ -1320,7 +1320,7 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
                     if ( CharStruct[SecWeaponItem].id == 228 ) then
                         CharStruct.Char:createAtPos( CharStruct[SecWeaponItem].itempos, 228, 1 );
                     end
-                    base.common.InformNLS(CharStruct.Char,
+                    common.InformNLS(CharStruct.Char,
                     "Das Metall mit dem deine Waffe verbessert wurde, bricht von der Waffe herunter und verletzt dich selbst.",
                     "The metal your weapon was plated with breaks from the weapon and hurts yourself.");
 
@@ -1328,9 +1328,9 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
                 else
                     CharStruct.Char:increaseAtPos(CharStruct[FirstWeaponItem].itempos,-1);
                     if ( CharStruct[FirstWeapon].WeaponType == 14 ) then
-                        base.common.InformNLS(CharStruct.Char,"Deine Schild ist zerbrochen","Your shield just broke.");
+                        common.InformNLS(CharStruct.Char,"Deine Schild ist zerbrochen","Your shield just broke.");
                     else
-                        base.common.InformNLS(CharStruct.Char,"Deine Waffe ist zerbrochen","Your weapon just broke.");
+                        common.InformNLS(CharStruct.Char,"Deine Waffe ist zerbrochen","Your weapon just broke.");
                     end
                     local SecWeaponItem = NameSec.."WeaponItem"
                     if ( CharStruct[SecWeaponItem].id == 228 ) then
@@ -1448,9 +1448,9 @@ function Damage( Attacker, Defender, Globals )
 
     local AttackerTry = ( Attacker.skill*2 + Attacker.tactics ) / 3 * Attacker.AttribMod * Attacker.HPMod * Globals.PositionMod * Attacker.AttackMod * Attacker.StiffnessMod * Attacker.DistanceMod;
     if ( Attacker.isWeapon ) then
-        AttackerTry = AttackerTry * base.common.Scale( 0.3, 1.8, Attacker.Weapon.Attack * Attacker.WeaponQualMod / 2 );
+        AttackerTry = AttackerTry * common.Scale( 0.3, 1.8, Attacker.Weapon.Attack * Attacker.WeaponQualMod / 2 );
     else
-        AttackerTry = AttackerTry * base.common.Scale( 0.3, 1.8, GetWrestlingAttack( Attacker.Race ) / 2 );
+        AttackerTry = AttackerTry * common.Scale( 0.3, 1.8, GetWrestlingAttack( Attacker.Race ) / 2 );
     end
 
     local ArmorValue = 0;
@@ -1523,7 +1523,7 @@ function Damage( Attacker, Defender, Globals )
     end
 
     local DefenderTry = ArmorValue / 2;
-    Globals["Damage"] = base.common.Limit( base.common.Scale( 300, 4000, AttackerTry ) * base.common.Scale( 1, 0.3, DefenderTry ), 100, 4000 );
+    Globals["Damage"] = common.Limit( common.Scale( 300, 4000, AttackerTry ) * common.Scale( 1, 0.3, DefenderTry ), 100, 4000 );
     --Globals.Damage = Globals.Damage * Attacker.APMod;
     if Globals.criticalHit then
         Globals.Damage = Globals.Damage * 3;
@@ -1534,7 +1534,7 @@ function Damage( Attacker, Defender, Globals )
 --]]
 
     Globals.Damage = Globals.Damage - ArmorAbsorb;
-    Globals.Damage = Globals.Damage / base.common.ScaleUnlimited( 0.5, 1.5, Defender.constitution * 5 );
+    Globals.Damage = Globals.Damage / common.ScaleUnlimited( 0.5, 1.5, Defender.constitution * 5 );
 
     return Globals;
 end
@@ -1558,11 +1558,11 @@ function BreakArmor( CharStruct, Globals )
         local ItemQual=math.floor(HittedItem.quality/100);
         local ItemDura=HittedItem.quality-(ItemQual*100);
 
-        if (math.random(base.common.Scale(30,300,ItemQual*11))==1) then
+        if (math.random(common.Scale(30,300,ItemQual*11))==1) then
             ItemDura = ItemDura - 1;
             if (ItemDura<1) then
                 CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
-                base.common.InformNLS(CharStruct.Char,"Ein R�stungsteil ist zerbrochen.","A part of your armor just broke.");
+                common.InformNLS(CharStruct.Char,"Ein R�stungsteil ist zerbrochen.","A part of your armor just broke.");
             else
                 HittedItem.quality = ( ItemQual*100 ) + ItemDura;
                 world:changeItem( HittedItem );
@@ -1578,11 +1578,11 @@ function BreakArmor( CharStruct, Globals )
             local ItemQual=math.floor(HittedItem.quality/100);
             local ItemDura=HittedItem.quality-(ItemQual*100);
 
-            if (math.random(base.common.Scale(30,300,ItemQual*11))==1) then
+            if (math.random(common.Scale(30,300,ItemQual*11))==1) then
                 ItemDura = ItemDura - 1;
                 if (ItemDura<1) then
                     CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
-                    base.common.InformNLS(CharStruct.Char,"Ein R�stungsteil ist zerbrochen.","A part of your armor just broke.");
+                    common.InformNLS(CharStruct.Char,"Ein R�stungsteil ist zerbrochen.","A part of your armor just broke.");
                 else
                     HittedItem.quality = ( ItemQual*100 ) + ItemDura;
                     world:changeItem( HittedItem );
@@ -1702,12 +1702,12 @@ function SpecialActiveItemEffects( Attacker, Defender, Globals )
 
     if not Attacker.noDodge then
         local PoisonTry = Attacker.poison * Attacker.HPMod * Globals.PositionMod * Attacker.AttackMod * Attacker.StiffnessMod;
-        PoisonTry = PoisonTry * base.common.Scale( 0.6, 1.0, Attacker.skill );
-        PoisonTry = PoisonTry * base.common.Scale( 0.3, 1.1, Attacker.tactics );
-        PoisonTry = PoisonTry * base.common.Scale( 0.3, 1.1, ( Attacker.perception + Attacker.dexterity + Attacker.agility ) * 1.6 );
+        PoisonTry = PoisonTry * common.Scale( 0.6, 1.0, Attacker.skill );
+        PoisonTry = PoisonTry * common.Scale( 0.3, 1.1, Attacker.tactics );
+        PoisonTry = PoisonTry * common.Scale( 0.3, 1.1, ( Attacker.perception + Attacker.dexterity + Attacker.agility ) * 1.6 );
         PoisonTry = PoisonTry * Defender.StiffnessMod;
 
-        local ChanceToPoison = base.common.Scale( 15, 65, PoisonTry );
+        local ChanceToPoison = common.Scale( 15, 65, PoisonTry );
 
         if( math.random( 100 ) < ChanceToPoison ) then
             if Attacker.isWeapon then
@@ -1718,7 +1718,7 @@ function SpecialActiveItemEffects( Attacker, Defender, Globals )
             end
             PoisonStr = PoisonStr / 2;
 
-            PoisonStr = base.common.Scale( 0, 1500, PoisonStr );
+            PoisonStr = common.Scale( 0, 1500, PoisonStr );
 
             if ( Attacker.natpoison > 0 ) then
                 PoisonStr = PoisonStr + Attacker.natpoison * 50;
@@ -1757,10 +1757,10 @@ function Learning( Attacker, Defender, Globals )
         Defender.Char:learn(5,"dodge",1,math.min(100,Attacker.skill+small));
     end
 
-    if (math.random(1,base.common.Scale(6,1,Globals.PositionMod/19)) == 1) then
+    if (math.random(1,common.Scale(6,1,Globals.PositionMod/19)) == 1) then
         Attacker.Char:learn(5,"tactics",2,math.min(100,Defender.parry+small));
     end
-    if (math.random(1,base.common.Scale(6,1,Globals.PositionMod/19)) == 1) then
+    if (math.random(1,common.Scale(6,1,Globals.PositionMod/19)) == 1) then
         Defender.Char:learn(5,"tactics",2,math.min(100,Attacker.skill+small));
     end
 end
@@ -1775,7 +1775,7 @@ end
 ]]
 function CauseDamage( Attacker, Defender, Globals )
     local Hitpoints = Defender.Char:increaseAttrib("hitpoints",0);
-    Globals.Damage = base.common.Limit( Globals.Damage, 80, 4999 );
+    Globals.Damage = common.Limit( Globals.Damage, 80, 4999 );
     if (( Defender.Char:get_type() == 0 ) and ( Hitpoints-1 <= Globals.Damage ) and ( Attacker.AttackKind ~= 4 ) and ( Hitpoints > 1 )) then
         -- Character would die. Nearly killing him and moving him back in case its possible
         Defender.Char:increaseAttrib("hitpoints",-Hitpoints+1);
@@ -1801,7 +1801,7 @@ function CauseDamage( Attacker, Defender, Globals )
         Defender.Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zur�ck und geht zu Boden." );
         Defender.Char:talkLanguage( CCharacter.say, CPlayer.english, "#me stumbles back and falls to the ground." );
 
-        base.common.ParalyseCharacter(Defender.Char, 7, false, true);
+        common.ParalyseCharacter(Defender.Char, 7, false, true);
 
         local reg_found, reg_effect = Defender.Char.effects:find(2);
         if not reg_found then
@@ -1932,20 +1932,20 @@ end
 ]]
 function InformAboutCritical(AttChar,DefChar,Area)
     if (Area == CCharacter.head) then
-        base.common.InformNLS(AttChar,"Du triffst deinen Gegner hart am Kopf.","You land a heavy strike against your enemies head.");
-        base.common.InformNLS(DefChar,"Du wirst von deinem Gegner hart am Kopf getroffen.","You are struck by a heavy blow against your head.");
+        common.InformNLS(AttChar,"Du triffst deinen Gegner hart am Kopf.","You land a heavy strike against your enemies head.");
+        common.InformNLS(DefChar,"Du wirst von deinem Gegner hart am Kopf getroffen.","You are struck by a heavy blow against your head.");
     elseif (Area == CCharacter.breast) then
-        base.common.InformNLS(AttChar,"Du triffst deinen Gegner hart gegen die Brust.","You land a heavy strike against your enemies chest.");
-        base.common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Brust getroffen.","You are struck heavily against your chest.");
+        common.InformNLS(AttChar,"Du triffst deinen Gegner hart gegen die Brust.","You land a heavy strike against your enemies chest.");
+        common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Brust getroffen.","You are struck heavily against your chest.");
     elseif (Area == CCharacter.hands) then
-        base.common.InformNLS(AttChar,"Du triffst deinen Gegner hart gegen die Brust.","You land a heavy strike against your enemies hands.");
-        base.common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Brust getroffen.","You are hit by a heavy blow upon your hands.");
+        common.InformNLS(AttChar,"Du triffst deinen Gegner hart gegen die Brust.","You land a heavy strike against your enemies hands.");
+        common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Brust getroffen.","You are hit by a heavy blow upon your hands.");
     elseif (Area == CCharacter.legs) then
-        base.common.InformNLS(AttChar,"Du triffst deinen Gegner hart gegen die Beine.","You land a heavy strike against your enemies legs.");
-        base.common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Beine getroffen.","You are hit by a heavy blow upon your legs.");
+        common.InformNLS(AttChar,"Du triffst deinen Gegner hart gegen die Beine.","You land a heavy strike against your enemies legs.");
+        common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Beine getroffen.","You are hit by a heavy blow upon your legs.");
     elseif (Area == CCharacter.feet) then
-        base.common.InformNLS(AttChar,"Du triffst deinen Gegner hart auf die F��e.","You strike the feet of your enemy with a heavy blow.");
-        base.common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die F��e getroffen.","You are struck upon your feet with a heavy blow.");
+        common.InformNLS(AttChar,"Du triffst deinen Gegner hart auf die F��e.","You strike the feet of your enemy with a heavy blow.");
+        common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die F��e getroffen.","You are struck upon your feet with a heavy blow.");
     end
     return
 end
@@ -1962,22 +1962,22 @@ function MissingTarget( Attacker, Defender )
         return Defender;
     end
 
-    local MissingTry = Attacker.skill * base.common.Scale( 1.5, 0.5, Attacker.Char:distanceMetric( Defender.Char ) * 12.5 );
-    MissingTry = MissingTry * base.common.ScaleUnlimited( 0.7, 1.3, ( Attacker.dexterity + Attacker.perception ) * 2.5 );
-    MissingTry = MissingTry * base.common.Scale( 0.5, 1.5, Attacker.Weapon.Accuracy * Attacker.WeaponQualMod );
+    local MissingTry = Attacker.skill * common.Scale( 1.5, 0.5, Attacker.Char:distanceMetric( Defender.Char ) * 12.5 );
+    MissingTry = MissingTry * common.ScaleUnlimited( 0.7, 1.3, ( Attacker.dexterity + Attacker.perception ) * 2.5 );
+    MissingTry = MissingTry * common.Scale( 0.5, 1.5, Attacker.Weapon.Accuracy * Attacker.WeaponQualMod );
 
-    if ( math.random(100) < base.common.Scale( 50, 90, MissingTry ) ) then
+    if ( math.random(100) < common.Scale( 50, 90, MissingTry ) ) then
         return Defender; -- no missing Attack, hit the target
     end
 
-    local maxOffset = math.min( math.ceil( base.common.Scale( 3, 1, MissingTry ) ), Attacker.Char:distanceMetric( Defender.Char ) );
+    local maxOffset = math.min( math.ceil( common.Scale( 3, 1, MissingTry ) ), Attacker.Char:distanceMetric( Defender.Char ) );
 
     local dropPos;
     local loop_protection = 20;
     repeat
         dropPos = position( Defender.Char.pos.x + math.random( -maxOffset, maxOffset ), Defender.Char.pos.y + math.random( -maxOffset, maxOffset ), Defender.Char.pos.z );
         loop_protection = loop_protection - 1;
-    until( not equapos( Defender.Char.pos, dropPos ) and not equapos( Attacker.Char.pos, dropPos ) and base.common.IsLookingAt( Defender.Char, dropPos ) or loop_protection == 0 );
+    until( not equapos( Defender.Char.pos, dropPos ) and not equapos( Attacker.Char.pos, dropPos ) and common.IsLookingAt( Defender.Char, dropPos ) or loop_protection == 0 );
 
     if ( loop_protection == 0 ) then
         return false;
@@ -2056,11 +2056,11 @@ function CheckTying( Attacker, Defender )
 	if Attacker:get_type() ~= 0 then
 		return;
 	end
-	if Defender.effects:find(24) and not base.common.IsCharacterParalysed(Defender) then
+	if Defender.effects:find(24) and not common.IsCharacterParalysed(Defender) then
 		if math.random(10) > 1 then
 			Defender:talkLanguage(CCharacter.say, CPlayer.german, "#me wird hart getroffen und verliert kurz das Bewusstsein.");
 			Defender:talkLanguage(CCharacter.say, CPlayer.english, "#me is hit hard and loses consciousness shortly.");
-			base.common.ParalyseCharacter(Defender, math.random(10,15), false, true);
+			common.ParalyseCharacter(Defender, math.random(10,15), false, true);
 		end
 	elseif Defender.effects:find(26) then
 		if Defender:increaseAttrib("hitpoints",0) < 2500 then

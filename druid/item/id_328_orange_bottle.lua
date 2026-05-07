@@ -1,7 +1,7 @@
 --I_328_orange_flasche
 --Druidensystem in Arbeit
 --Falk
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -42,7 +42,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
                     zaehler = 1
                  end
                  myEffect:addValue("zaehler",zaehler)
-				 base.common.InformNLS(Character,
+				 common.InformNLS(Character,
 					"#w Die Wirkung des Tranks lindert dein Leiden.",
 					"#w The effect of the potion allays your suffering.");
 				 return;
@@ -55,7 +55,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
         end
      end
    end
-   base.common.InformNLS(Character,
+   common.InformNLS(Character,
 	"#w Du trinkst die Fl�ssigkeit, doch sie scheint keine Wirkung auf dich zu haben.",
 	"#w You drink the liquid but it doesn't seem to have any effect on you.");
 end
@@ -71,7 +71,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
      if not Character:isAdmin() then
         world:erase(SourceItem,1);
         if( math.random( 20 ) <= 1 ) then
-           base.common.InformNLS( Character, "#w Die Flasche zerbricht.", "#w The bottle breaks.");
+           common.InformNLS( Character, "#w Die Flasche zerbricht.", "#w The bottle breaks.");
         else
            Character:createItem( 164, 1, 333,0);
         end
@@ -80,7 +80,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
      Character.movepoints=Character.movepoints-50;
 
   else
-    base.common.InformNLS(Character,"#w Du kannst nichts trinken w�hrend du k�mpfst.", "#w You can't drink something while fighting.");
+    common.InformNLS(Character,"#w Du kannst nichts trinken w�hrend du k�mpfst.", "#w You can't drink something while fighting.");
   end
 end
 

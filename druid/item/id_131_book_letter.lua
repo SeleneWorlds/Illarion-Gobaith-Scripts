@@ -4,7 +4,7 @@
 -- Buch f�r das Druidensystem
 -- Falk
 require("base.books")
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- UPDATE common SET com_script='druid.item.id_131_book_letter' WHERE com_itemid = 131;

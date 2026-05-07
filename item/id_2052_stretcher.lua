@@ -10,33 +10,33 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_2052_stretcher' WHERE com_itemid = 2052;
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if (Leatherlist==nil) then
         Leatherlist= { };
         Leatherlist[  69]=2547; --Rohleder in Leder
         Leatherlist[2586]=2547; --Fell in Leder
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert am Leder gerben.",
         "Your armor disturbes while tanning leather." );
         return
     end
 
-    if not base.common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
+    if not common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
         return
     end
 
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        base.common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+    if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
     end
 
     if (User:countItemAt("body",2746)==0) then -- Rasiermesser
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst ein Rasiermesser um das Leder zu gerben.",
         "You need a razor blade to tan the leather." );
         return
@@ -47,8 +47,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
 
-    if base.common.ToolBreaks( User, Tool, true ) then -- Rasiermesser besch�digen
-        base.common.InformNLS( User,
+    if common.ToolBreaks( User, Tool, true ) then -- Rasiermesser besch�digen
+        common.InformNLS( User,
         "Das Rasiermesser wird stumpf.",
         "The razor blade wents blunt" );
         return
@@ -67,7 +67,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 
-    if not base.common.FitForWork( User ) then -- Kein Hunger
+    if not common.FitForWork( User ) then -- Kein Hunger
         return
     end
 
@@ -81,26 +81,26 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 return
             end
 
-            if base.common.IsInterrupted( User ) then
+            if common.IsInterrupted( User ) then
                 local selectMessage = math.random(1,5);
                 if ( selectMessage == 1 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du wischst dir den Schwei� von der Stirn.",
                     "You wipe sweat off your forehead.");
                 elseif ( selectMessage == 2 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du bekommst ein paar feine Haare in den Mund und mu�t husten.",
                     "A cloud of fine hairs makes you cough.");
                 elseif ( selectMessage == 3 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du �berpr�fst kurz die bereits gegerbte Stelle auf Unebenheiten",
                     "You briefly check the quality of the leather.");
                 elseif ( selectMessage == 4 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du h�lst kurz inne um das Messer ein wenig nachzuschleifen.",
                     "You breaks to sharp your tool a bit.");
                 else
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du entfernst kurz Fell- und Knochenreste vom Leder bevor du weitermachst.",
                     "You briefly removes hair- and bonesplits from the leather, before you continue.");
                 end
@@ -111,7 +111,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             notCreated = User:createItem(Leather,1,333,0); -- Leder erstellen
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
                 world:createItemFromId( Leather, notCreated, User.pos, true, 333 ,0);
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
@@ -119,12 +119,12 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end
 			-- Lernen wird noch eingebaut
             --User:learn(2,"dying and tanning",2,20); -- Lernen
-            base.common.GetHungry( User, 200 ); -- Hunger
+            common.GetHungry( User, 200 ); -- Hunger
             return
         end
     end
     if (ltstate ~= Action.success) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du hast kein Rohleder und keine Felle die du gerben k�nntest.",
         "You don't have any rawleather or furs you could tan." );
     end

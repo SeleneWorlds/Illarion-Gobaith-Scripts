@@ -1,14 +1,14 @@
 local M = {}
 local UseItem
 
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.id_272_statue' WHERE com_itemid=272;
 
 function M.UseItem( User, Item, TargetItem, counter, param )
     lang=User:getPlayerLanguage();
     if equapos(Item.pos,position(-28, 192, -9)) then
-        if ( not base.common.isItemIdInFieldStack( 35, position(-29, 195, -9) ) ) then
+        if ( not common.isItemIdInFieldStack( 35, position(-29, 195, -9) ) ) then
             if lang==0 then
                 User:inform("W�hrend du vorsichtig die Statue abtastest �ffnet sich pl�tzlich eine Luke in der Decke und eine h�lzerne Leiter f�hrt herab.");
             else
@@ -21,7 +21,7 @@ function M.UseItem( User, Item, TargetItem, counter, param )
             else
                 User:inform("After touching the hidden switch again the ladder slides back into the ceiling and the batch closes again.");
             end
-            base.common.removeItemIdFromFieldStack( 35, position(-29, 195, -9) );
+            common.removeItemIdFromFieldStack( 35, position(-29, 195, -9) );
         end
     elseif equapos(Item.pos,position(-389,-218,2)) then
         if ((User:increaseAttrib("essence",0)+User:increaseAttrib("willpower",0)+User:increaseAttrib("intelligence",0))>29) then

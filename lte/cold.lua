@@ -1,5 +1,5 @@
 -- Include common methods
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 -- Include functions for handling odds arrays (such as illnessMessages)
@@ -197,7 +197,7 @@ function M.enterLevel(effect, user, level, updateDuration)
 	end
 	if(updateDuration == true) then
 		effect:addValue("duration", durations[level]);
-		base.common.InformNLS(user, informations[level]["enter"][1], informations[level]["enter"][2]);
+		common.InformNLS(user, informations[level]["enter"][1], informations[level]["enter"][2]);
 	end
 end
 
@@ -212,7 +212,7 @@ function M.leaveLevel(effect, user, level)
 	if(level > 1) then
 		effect:addValue("duration", durations[level-1]);
 	end
-	base.common.InformNLS(user, informations[level]["leave"][1], informations[level]["leave"][2]);
+	common.InformNLS(user, informations[level]["leave"][1], informations[level]["leave"][2]);
 end
 
 -- Informs the user about the ill effects the illness is having on him.
@@ -222,7 +222,7 @@ function M.informUser(effect, user)
 		oddsArray = illnessMessages[level];
 		message = getFromOddsArray(oddsArray);
 		if(message[1] ~= nil) then
-			base.common.InformNLS(user, message[1], message[2]);
+			common.InformNLS(user, message[1], message[2]);
 			-- TODO: Make this language specific. 
 			user:talk(CCharacter.say, message[1]);
 		end
@@ -302,7 +302,7 @@ end
 function M.getOrWarn(effect, user, attribute)
 	found, value = effect:findValue(attribute);
 	if(found == false) then
-		base.common.InformNLS(user, 
+		common.InformNLS(user, 
 			"Fehler in Krankheit: Attribut "..attribute.." nicht gefunden. Bitte einen Administrator informieren.",
 			"Error in illness: Attribute "..attribute.." not found. Please inform an administrator.");
 	end

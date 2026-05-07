@@ -1,7 +1,7 @@
 local M = {}
 local LookAtPaintingItem, LookAtItem
 
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.paintings' WHERE com_itemid IN (264, 265, 748, 749, 750, 751, 1914, 1915);
 
@@ -108,7 +108,7 @@ function M.LookAtPaintingItem( User, Item )
         val = (Item.data % #PaintingListGerman)+1;
     end
 
-    world:itemInform( User, Item, base.common.GetNLS(User, PaintingListGerman[val], PaintingListEnglish[val]) );
+    world:itemInform( User, Item, common.GetNLS(User, PaintingListGerman[val], PaintingListEnglish[val]) );
 end
 
 function M.LookAtItem(User,Item)

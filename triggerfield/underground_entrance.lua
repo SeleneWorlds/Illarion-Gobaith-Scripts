@@ -1,7 +1,7 @@
 -- Entrance to the underground of Trolls Bane
 --
 -- Include common functions
-require("base.common")
+local common = require("base.common")
 
 -- Include triggerfield functions
 require("triggerfield.base.triggerfield")
@@ -13,7 +13,7 @@ function MoveToField(User)
 	events = {
 		{
 			function() 
-				base.common.InformNLS(User, 
+				common.InformNLS(User, 
 					"Ein Luftzug kommt von unten an und bringt einen Gestank mit, der dir den Atem nimmt. Hast du etwa die Kanalisation gefunden?",
 					"A draught of air engulfs you in a cloud of unbearable stench. Should you have found the canalization of Troll's Bane?"); 
 			end,
@@ -21,7 +21,7 @@ function MoveToField(User)
 		},
 		{
 			function() 
-				base.common.InformNLS(User, 
+				common.InformNLS(User, 
 					"Ein unangenehmer, modriger Geruch zieht von der Oeffnung im Boden zu dir herueber.",
 					"An unpleasant smell reaches you from the hole in the floor.");
 			end,
@@ -29,7 +29,7 @@ function MoveToField(User)
 		},
 		{
 			function() 
-				base.common.InformNLS(User, 
+				common.InformNLS(User, 
 					"Der Gestank vom Loch im Boden ist nicht zu uebersehen. Ist das wirklich der richtige Ort, um Trinkwasser zu holen?",
 					"The stench coming from the hole in the floor makes you wonder if the well is the right place for getting drinking water...");
 			end,

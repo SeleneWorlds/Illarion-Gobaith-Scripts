@@ -5,7 +5,7 @@
 -- ------------------------------------------------
 
 -- include base.common for additional functions
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- UPDATE common SET com_script='druid.item.id_331_green_bottle' WHERE com_itemid = 331;
@@ -24,7 +24,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
             world:erase( SourceItem, 1 );
 
             if (math.random( 20 ) == 1) then
-                base.common.TempInformNLS( User,
+                common.TempInformNLS( User,
                 "Die Flasche zerbricht.",
                 "The bottle breaks.");
             else
@@ -35,7 +35,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         end
 
         if User.attackmode then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du kannst nichts trinken w�hrend du k�mpfst.",
             "You can't drink something while fighting." );
             return
@@ -54,7 +54,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         world:erase(SourceItem,1);
 
         if( math.random( 20 ) == 1 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Die Flasche zerbricht.",
             "The bottle breaks.");
         else
@@ -66,17 +66,17 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         User.movepoints = User.movepoints - 20;
 
         if (User:increaseAttrib("foodlevel",0) > 60000) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du bekommst kaum noch was runter und dir wird schlecht.",
             "You hardly manage to eat something more and get sick!");
 
             User:increaseAttrib("hitpoints",-1000);
         elseif  (User:increaseAttrib("foodlevel",0) > 40000) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du bist satt.",
             "You are stuffed.");
         else
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du trinkst die Flasche aus und f�hlst wie neue St�rke dich durchstr�mt.",
             "You drink up the bottle, and you feel the new strength that flows through your body.");
         end
@@ -85,7 +85,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         -- Old style potion done
     end
 
-    local msg = base.common.GetNLS( User,
+    local msg = common.GetNLS( User,
 	"Du hast nicht das Gef�hl, als ob irgend etwas passiert sei.",
 	"You don't feel anything happend at all." );
 
@@ -93,12 +93,12 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         if (User:getMagicType( ) ~= 3) then -- user is not a druid
             if not Security[ User.id ] then
                 if ( ( User:getSkill( "commotio" ) + User:getSkill( "desicio" ) + User:getSkill( "pervestigatio" )+User:getSkill( "transformo" )+User:getSkill( "transfreto" ) ) > 40 ) then
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "#b|0|1008|Mit Deiner Magie-Erfahrung bleibt Dir die Pforte der Druiden verschlossen.",
                     "#b|0|1008|Your magic skills keep the gate of druids closed for you." );
                     return;
                 else
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "#b|0|1008|Vorsicht! Von diesem Schritt ins Druidentum f�hrt kein Weg zur�ck.",
                     "#b|0|1008|Attention! There is no way back from this path to druidism." );
                 end
@@ -119,7 +119,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                 M.killSkill( User, 3, "transformo" );
                 M.killSkill( User, 3, "transfreto" );
 
-                msg = base.common.GetNLS( User,
+                msg = common.GetNLS( User,
 				"Du hast das Gef�hl etwas ist passiert. Du bist nun ein Druide.",
 				"You have the feeling something happend. You are now a druid." );
 
@@ -160,15 +160,15 @@ end
 
 function M.LookAtItem(User,Item)
     if (item.id_data == 55555555) then
-        world:itemInform( User, Item, base.common.GetNLS( User,
+        world:itemInform( User, Item, common.GetNLS( User,
         "Du siehst ein Flaschenetikett mit der Aufschrift: \"Druidentrunk\"",
         "You look at a sticker telling: \"Druids drink \"" ) );
     elseif (item.id_data == 0) then
-        world:itemInform( User, Item, base.common.GetNLS( User,
+        world:itemInform( User, Item, common.GetNLS( User,
         "Du siehst ein Flaschenetikett mit der Aufschrift: \"Heiltrank\"",
         "You look at a sticker telling: \"Healing Potion \"" ) );
     else
-        world:itemInform( User, Item, base.common.GetNLS( User,
+        world:itemInform( User, Item, common.GetNLS( User,
         "Du siehst ein Flaschenetikett mit der Aufschrift: \"Kr�utersud\"",
         "You look at a sticker telling: \"Herbage Broth\"" ) );
     end

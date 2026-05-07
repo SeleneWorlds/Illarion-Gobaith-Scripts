@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 
 module("triggerfield.traps", package.seeall)
 
@@ -88,7 +88,7 @@ function MoveToField(User)
 				User:increaseAttrib("hitpoints", -TrapTag[i]);
 				world:makeSound(TrapSound[i], User.pos);
 				world:gfx(TrapGFX[i], User.pos);
-				base.common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
+				common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
 				return;
 			end
 			if(TrapTypes[i] == 2) then
@@ -97,22 +97,22 @@ function MoveToField(User)
 				end
 				world:gfx(TrapGFX[i], User.pos);
 				world:makeSound(TrapSound[i], User.pos);
-				world:createMonster(TrapTag[i], base.common.GetFrontPosition(User), 20);
-				base.common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
+				world:createMonster(TrapTag[i], common.GetFrontPosition(User), 20);
+				common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
 				return;
 			end
 			if(TrapTypes[i] == 3) then
 				User:increasePoisonValue(TrapTag[i]);
 				world:gfx(TrapGFX[i], User.pos);
 				world:makeSound(TrapSound[i], User.pos);
-				base.common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
+				common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
 				return;
 			end
 			if(TrapTypes[i] == 4) then
 				ExplosionDamage(User.pos, TrapGFX[i], TrapTag[i]);
 				CreateCircleCustom(User.pos, 1, TrapGFX[i], TrapTag[i]);
 				world:makeSound(TrapSound[i], User.pos); -- Sound nur einmal spielen
-				base.common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
+				common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
 				return;
 			end
 		end

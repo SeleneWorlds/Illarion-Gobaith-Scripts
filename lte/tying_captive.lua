@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 --[[ LTE 24
@@ -259,7 +259,7 @@ function M.MoveCharacter( Character, Effect, XOff, YOff, range )
 end
 
 function M.InformW( User, textInDe, textInEn )
-    User:inform( "#w "..base.common.GetNLS( User, textInDe, textInEn ) );
+    User:inform( "#w "..common.GetNLS( User, textInDe, textInEn ) );
 end
 
 function M.IsEffectInLogoutTime( Effect, Character )

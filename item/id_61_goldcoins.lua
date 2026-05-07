@@ -5,7 +5,7 @@ local UseItem
 
 -- UPDATE common SET com_script='item.id_61_goldcoins' WHERE com_itemid IN (61);
 
-require("base.common")
+local common = require("base.common")
 
 local TimeList = {}
 

@@ -1,3 +1,4 @@
+local common = require("base.common")
 local M = {}
 npc = npc or {}
 npc.bippi_aquest28 = M
@@ -168,23 +169,23 @@ function M.receiveText(texttype, message, originator)
 				--TELL WHAT TO DO AND WHICH COW HE HAS
 				gText="Sehr gut, dann fangen wir an. Um euch nicht zu überfordern müsst ihr euch auch nur um eine Kuh kümmern und zwar um "..cowname[cowrnd]..". Ich werde euch täglich sagen welche Aufgaben ihr zu tun habt.";
 			    eText="Very good, let's start. You only have to take care of one cow namely "..cowname[cowrnd].." so it's not that hard. I will tell you daily what to do.";
-		        outText=base.common.npc.base.npcautofunction.GetNLS(User,gText,eText);
+		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 
 				-- TELL the TASK TO DO
 				gText,eText = TaskText(task);
-		        outText=base.common.npc.base.npcautofunction.GetNLS(User,gText,eText);
+		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
     		elseif ((string.find(message,"[Hh]ilfe")~=nil or string.find(message,"[Hh]elp")~=nil) and originator:getQuestProgress(28)>0) then
 				gText = "Schlüsselwörter: 'Wie lautet meine Aufgabe?','Gib mir einen Hinweis zur Aufgabe'";
 				eText = "Keyphrases : 'What is my task?','Give me a hint to the task'";
-				base.common.TempInformNLS(originator, gText,eText);
+				common.TempInformNLS(originator, gText,eText);
 			elseif ((string.find(message,"[Hh]inweis")~=nil or string.find(message,"[Hh]int")~=nil) and originator:getQuestProgress(28)>0) then
 				-- GIVE A HINT TO THE TASK
 				dummy1, task = quest_aquest28.split_questdata(originator);
 
 				dummy1,dummy2,gText,eText = TaskText(task);
-		        outText=base.common.npc.base.npcautofunction.GetNLS(User,gText,eText);
+		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			elseif ((string.find(message,"[Aa]ufgabe")~=nil or string.find(message,"[Tt]ask")~=nil) and originator:getQuestProgress(28)>0) then
 
@@ -198,7 +199,7 @@ function M.receiveText(texttype, message, originator)
 				dummy1, task = quest_aquest28.split_questdata(originator);
 				
 				gText,eText = TaskText(task);
-		        outText=base.common.npc.base.npcautofunction.GetNLS(User,gText,eText);
+		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			else
             	npc.base.autonpcfunctions.TellSmallTalk(message,originator);

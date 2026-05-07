@@ -1,5 +1,5 @@
 dofile('base_functional.lua');
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 function M.getClothes()
@@ -250,7 +250,7 @@ function M.informAboutCold(user, illnessOdds)
 	if avgOdds > 20 then avgOdds = 20; end
 	M.debug(user, messageGerman);
 	if(math.random(100) < avgOdds) then
-		base.common.InformNLS(user, messageGerman, messageEnglish);
+		common.InformNLS(user, messageGerman, messageEnglish);
 	end
 	return(sumOdds);
 end

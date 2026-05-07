@@ -5,7 +5,7 @@ local _ENV = setmetatable(M, { __index = _G })
 
 -- Basiscript für die Kreuze
 
-require("base.common")
+local common = require("base.common")
 
 function M.nextCycle()
 
@@ -69,7 +69,7 @@ function M.doubleEffect( rebirthEffect, Reborn )
 	  return false;
     end
 
-    base.common.InformNLS( Reborn,
+    common.InformNLS( Reborn,
         "Du fühlst dich noch sehr schwach.",
         "You feel very weak." );
     local maxChange = 0;
@@ -99,7 +99,7 @@ function M.doubleEffect( rebirthEffect, Reborn )
 	end
 	multi = multi * 2;
 	rebirthEffect:addValue("multiRes",multi);
-	Reborn:setQuestProgress(20,base.common.GetCurrentTimestamp());
+	Reborn:setQuestProgress(20,common.GetCurrentTimestamp());
     return true;
 end
 

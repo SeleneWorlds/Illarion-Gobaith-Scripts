@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO spells VALUES (2^15,3,'druid.spell.id_16_analyze_item_durability');
@@ -37,7 +37,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   ergebnis = math.floor(ergebnis/10)+1
   --Caster:inform("ergebnis: "..ergebnis)
 
-  base.common.InformNLS( Caster,
+  common.InformNLS( Caster,
                 "#b|0|0|die Pr�fung ergibt eine "..ListDE[ergebnis].." Haltbarkeit",
                 "#b|0|0|this inspection results a "..ListEN[ergebnis].." durability" )
 

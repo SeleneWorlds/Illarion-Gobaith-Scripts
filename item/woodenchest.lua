@@ -3,7 +3,7 @@ local UseItem
 
 -- UPDATE common SET com_script='item.woodenchest' WHERE com_itemid IN (8,1360,1361,1362);
 
-require("base.common")
+local common = require("base.common")
 
 local ALWAYS = -1;
 local DELETE_CHEST = -1;
@@ -81,7 +81,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, LTState )
 			gText = gText .. " Doch sofort danach brechen die morschen Holzlatten auseinander und die Kiste ist kaputt.";
 			eText = eText .. " But in this very moment the rotten wood lathes break off and the chest is destroyed.";
 		end
-		base.common.TempInformNLS(User,gText,eText);
+		common.TempInformNLS(User,gText,eText);
 	end
 end
 

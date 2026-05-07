@@ -1,3 +1,4 @@
+local common = require("base.common")
 require("magic.base.basics");
 
 function DoCreaturSpell(Caster, TargetPos, ltstate)
@@ -16,21 +17,21 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
     genderMsg[CPlayer.german], genderMsg[CPlayer.english] = magic.base.basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
-        base.common.InformNLS( Caster,
+        common.InformNLS( Caster,
         "Du bist zuweit weg um diesen Zauber zu sprechen.",
         "You are too far away to cast this spell." );
         return;
     end
 
-    if not base.common.IsLookingAt( Caster, TargetPos ) then
-        base.common.TempInformNLS( Caster,
+    if not common.IsLookingAt( Caster, TargetPos ) then
+        common.TempInformNLS( Caster,
         "Du drehst dich auf dein Ziel zu um es in dein Blickfeld zu bekommen.",
         "You turn to your target to get it into your field of vision.");
-        base.common.TurnTo( Caster, TargetPos );
+        common.TurnTo( Caster, TargetPos );
     end
 
     if world:isCharacterOnField( TargetPos ) then
-        base.common.TempInformNLS( Caster,
+        common.TempInformNLS( Caster,
         "Du musst auf eine freie Stelle zaubern wenn du Erfolg haben willst.",
         "You have to cast on a free area if you want to success.");
         return;
@@ -41,7 +42,7 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
         --Caster:talkLanguage( CCharacter.say,  CPlayer.german, message );
         message = string.gsub( TimeEffects.msg[CPlayer.english], "{PP}", genderMsg[CPlayer.english] );
         --Caster:talkLanguage( CCharacter.say, CPlayer.english, message );
-        Caster:startAction( base.common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
+        Caster:startAction( common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
         return;
     end
 
@@ -54,7 +55,7 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
     end
 
     if not CasterVal then
-        base.common.TempInformNLS( Caster,
+        common.TempInformNLS( Caster,
         "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
@@ -73,7 +74,7 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
 end
 
 function CastMagic(Caster,counter,param,ltstate)
-    DoCreaturSpell(Caster,base.common.GetFrontPosition(Caster),ltstate);
+    DoCreaturSpell(Caster,common.GetFrontPosition(Caster),ltstate);
 end
 
 function CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)

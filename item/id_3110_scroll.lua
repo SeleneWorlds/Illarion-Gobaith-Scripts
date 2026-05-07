@@ -1,7 +1,7 @@
 local M = {}
 local LookAtItem, UseItemWithCharacter, UseItem, teleportTarget, teleportLookAt, teleportUseItem, selfTeleportUseItem, summonCreature
 
-require("base.common")
+local common = require("base.common")
 require("base.orders")
 
 -- UPDATE common SET com_script = 'item.id_3110_scroll' WHERE com_itemid = 3110;
@@ -21,19 +21,19 @@ function M.LookAtItem(User,Item)
         
     elseif (spell == 102) then -- self-teleport
         
-        base.common.InformNLS( User, "Auf der Pergamentrolle ist lediglich das Symbol eines Vogels abgebildet.", "Just the symbol of a bird has been painted on this scroll of parchment." );
+        common.InformNLS( User, "Auf der Pergamentrolle ist lediglich das Symbol eines Vogels abgebildet.", "Just the symbol of a bird has been painted on this scroll of parchment." );
     elseif (Item.data == 600) then -- Summon Creature
-	base.common.InformNLS( User, "Die Pergamentrolle ist mit einem blutroten Siegel verschlossen.", "The scroll is sealed with a bloody red seal." );
+	common.InformNLS( User, "Die Pergamentrolle ist mit einem blutroten Siegel verschlossen.", "The scroll is sealed with a bloody red seal." );
     elseif ( Item.data== 666 ) then -- quest scroll
-    	base.common.InformNLS( User, "Auf der Pergamentrolle ist das Symbol eines Drachen abgebildet.", "The symbol of a dragon has been painted on this scroll of parchment." );
+    	common.InformNLS( User, "Auf der Pergamentrolle ist das Symbol eines Drachen abgebildet.", "The symbol of a dragon has been painted on this scroll of parchment." );
     elseif ( Item.quality== 750) then -- guild membership decree
  	
 		local rank 	  = math.floor(Item.data/100); -- the rank in the Guild(1 digit)
 		local GuildID = (Item.data - rank*100);-- the Guild ID(2 digits(10-99))	
-    	InformText = base.common.GetNLS( User, "Dekret der Gilde "..GuildNameGList[GuildID][1]..GuildRanklist[rank].gusage, "Decree of the guild "..GuildNameEList[GuildID][1]..GuildRanklist[rank].eusage )
+    	InformText = common.GetNLS( User, "Dekret der Gilde "..GuildNameGList[GuildID][1]..GuildRanklist[rank].gusage, "Decree of the guild "..GuildNameEList[GuildID][1]..GuildRanklist[rank].eusage )
    	    world:itemInform(User,Item, InformText);
    	elseif ( Item.quality == 751) then -- unban decree
-    	InformText = base.common.GetNLS( User, "Entbannungsdekret der Stadt "..TownNameGList[Item.data][1],
+    	InformText = common.GetNLS( User, "Entbannungsdekret der Stadt "..TownNameGList[Item.data][1],
 									  "Unban decree of the town "..TownNameEList[Item.data][1])
 		world:itemInform(User,Item, InformText);
 	end
@@ -94,7 +94,7 @@ function M.teleportLookAt( User, Item )
     dz = dat - math.floor(dat/1024)*1024 - 500 - User.pos.z;
     
     if ( math.abs(dz) > 15) then
-        return base.common.GetNLS( User, "Die Pergamentrolle gl�ht bl�ulich.", "The scroll of parchment glows blueish." );
+        return common.GetNLS( User, "Die Pergamentrolle gl�ht bl�ulich.", "The scroll of parchment glows blueish." );
     end;
     
     dat = math.floor(dat / 1024);
@@ -103,15 +103,15 @@ function M.teleportLookAt( User, Item )
     dx = dat - math.floor(dat/1024)*1024 - 500 - User.pos.x;
 
     if ( dz == 0 ) then
-        heightTxt = base.common.GetNLS( User, "schwarze", "black" );
+        heightTxt = common.GetNLS( User, "schwarze", "black" );
     elseif ( dz < 0 ) then
-        heightTxt = base.common.GetNLS( User, "rote", "red" );
+        heightTxt = common.GetNLS( User, "rote", "red" );
     else
-        heightTxt = base.common.GetNLS( User, "blaue", "blue" );
+        heightTxt = common.GetNLS( User, "blaue", "blue" );
     end;
 
     if ( dx == 0 ) and ( dy == 0 ) then
-        return base.common.GetNLS( User, "Auf der Pergamentrolle ist lediglich ein "..heightTxt.."s Kreuz zu sehen.", "The scroll of parchment just displays a "..heightTxt.." cross." );
+        return common.GetNLS( User, "Auf der Pergamentrolle ist lediglich ein "..heightTxt.."s Kreuz zu sehen.", "The scroll of parchment just displays a "..heightTxt.." cross." );
     end;
 
     if ( dx == 0 ) then
@@ -131,26 +131,26 @@ function M.teleportLookAt( User, Item )
     end;
     
     if ( phi < math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "Osten", "east" );
+        dirTxt = common.GetNLS( User, "Osten", "east" );
     elseif ( phi < 3*math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "Nordosten", "northeast" );
+        dirTxt = common.GetNLS( User, "Nordosten", "northeast" );
     elseif ( phi < 5*math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "Norden", "north" );
+        dirTxt = common.GetNLS( User, "Norden", "north" );
     elseif ( phi < 7*math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "Nordwesten", "northwest" );
+        dirTxt = common.GetNLS( User, "Nordwesten", "northwest" );
     elseif ( phi < 9*math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "Westen", "west" );
+        dirTxt = common.GetNLS( User, "Westen", "west" );
     elseif ( phi < 11*math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "S�dwesten", "southwest" );
+        dirTxt = common.GetNLS( User, "S�dwesten", "southwest" );
     elseif ( phi < 13*math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "S�den", "south" );
+        dirTxt = common.GetNLS( User, "S�den", "south" );
     elseif ( phi < 15*math.pi/8 ) then
-        dirTxt = base.common.GetNLS( User, "S�dosten", "southeast" );
+        dirTxt = common.GetNLS( User, "S�dosten", "southeast" );
     else
-        dirTxt = base.common.GetNLS( User, "Osten", "east" );
+        dirTxt = common.GetNLS( User, "Osten", "east" );
     end;
     
-    return base.common.GetNLS( User, "Auf der Pergamentrolle ist lediglich ein "..heightTxt.."r Pfeil zu sehen, welcher gen "..dirTxt.." weist.", "The scroll of parchment just displays a "..heightTxt.." arrow, which points to the "..dirTxt.."." );
+    return common.GetNLS( User, "Auf der Pergamentrolle ist lediglich ein "..heightTxt.."r Pfeil zu sehen, welcher gen "..dirTxt.." weist.", "The scroll of parchment just displays a "..heightTxt.." arrow, which points to the "..dirTxt.."." );
         
 end
 

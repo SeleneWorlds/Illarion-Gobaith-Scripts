@@ -5,7 +5,7 @@ local MoveItemAfterMove
 -- UPDATE common SET com_script='item.id_194_blackcloak' WHERE com_itemid IN (194);
 
 require("item.priest.cloth")
-require("base.common")
+local common = require("base.common")
 
 function M.MoveItemAfterMove( User, SourceItem, TargetItem )
     --anlegen des schattenmantels

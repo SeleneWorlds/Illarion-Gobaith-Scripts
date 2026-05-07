@@ -4,7 +4,7 @@ npc.base = npc.base or {}
 npc.base.escortingquests = M
 local _ENV = setmetatable(M, { __index = _G })
 
-require("base.common")
+local common = require("base.common")
 
 function M.initEscorting()
 	spawnlist    = {}; --holds a list with the MonsterAmount that shall be created with Monsterid as key for the list
@@ -140,12 +140,12 @@ function M.BE_nextCycle(thisNPC)
   	move[thisNPC.id].nextCycle();
     if wait(1,1) then
 		local dirger,direng,dir = GetDirToNextWP(thisNPC);
-	  	--base.common.TalkNLS(thisNPC, CCharacter.say, "bla2"..lastdir[thisNPC.id].." dir:"..dir, "bla2"..lastdir[thisNPC.id].." dir:"..dir);
+	  	--common.TalkNLS(thisNPC, CCharacter.say, "bla2"..lastdir[thisNPC.id].." dir:"..dir, "bla2"..lastdir[thisNPC.id].." dir:"..dir);
 	  	if lastdir[thisNPC.id]~=dir and dir~=false and dir~= nil then
-	  		base.common.TalkNLS(thisNPC, CCharacter.say, "Nun müssen wir Richtung "..dirger, "Now we need to go "..direng);
+	  		common.TalkNLS(thisNPC, CCharacter.say, "Nun müssen wir Richtung "..dirger, "Now we need to go "..direng);
 	  		lastdir[thisNPC.id]=dir;
 		end
-		if dirger == false then base.common.TalkNLS(thisNPC, CCharacter.say, "ERROR, Richtung nicht gefunden", "ERROR, no direction found."); end
+		if dirger == false then common.TalkNLS(thisNPC, CCharacter.say, "ERROR, Richtung nicht gefunden", "ERROR, no direction found."); end
 	end
 end
 

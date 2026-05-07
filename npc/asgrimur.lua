@@ -16,7 +16,7 @@ local _ENV = setmetatable(M, { __index = _G })
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,137,-191,-3,6,false,'Asgrimur','npc_asgrimur.lua',0);
 
 require("npc.base.autonpcfunctions")
-require("base.common")
+local common = require("base.common")
 
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();

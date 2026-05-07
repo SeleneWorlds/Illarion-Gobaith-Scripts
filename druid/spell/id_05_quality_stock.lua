@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -26,7 +26,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   if TargetItem.id == 331 and TargetItem.data ~=0 then
     qualstat = math.floor(TargetItem.quality/100)
 
---  base.common.InformNLS(Caster,
+--  common.InformNLS(Caster,
 --     "#b|0|0|Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualit�t",
 --     "#b|0|0|This stock has a "..alchemy.qListEn[qualstat].." quality")
     textDE="Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualit�t"
@@ -40,7 +40,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 	Caster:learn(6,"exquirere",3,100)
 
   else
-    base.common.InformNLS(Caster,
+    common.InformNLS(Caster,
        "Das ist kein Pflanzensud",
        "This is no stock")
   end

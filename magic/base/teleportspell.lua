@@ -1,3 +1,4 @@
+local common = require("base.common")
 require("magic.base.basics");
 
 function DoTeleSpell(Caster, TargetPos, ltstate)
@@ -16,17 +17,17 @@ function DoTeleSpell(Caster, TargetPos, ltstate)
     genderMsg[CPlayer.german], genderMsg[CPlayer.english] = magic.base.basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
-        base.common.InformNLS( Caster,
+        common.InformNLS( Caster,
         "Du bist zuweit weg um diesen Zauber zu sprechen.",
         "You are too far away to cast this spell." );
         return;
     end
 
-    if not base.common.IsLookingAt( Caster, TargetPos ) then
-        base.common.TempInformNLS( Caster,
+    if not common.IsLookingAt( Caster, TargetPos ) then
+        common.TempInformNLS( Caster,
         "Du drehst dich auf dein Ziel zu um es in dein Blickfeld zu bekommen.",
         "You turn to your target to get it into your field of vision.");
-        base.common.TurnTo( Caster, TargetPos );
+        common.TurnTo( Caster, TargetPos );
     end
 
     if ( ltstate == Action.none ) then
@@ -34,7 +35,7 @@ function DoTeleSpell(Caster, TargetPos, ltstate)
         --Caster:talkLanguage( CCharacter.say,  CPlayer.german, message );
         message = string.gsub( TimeEffects.msg[CPlayer.english], "{PP}", genderMsg[CPlayer.english] );
         --Caster:talkLanguage( CCharacter.say, CPlayer.english, message );
-        Caster:startAction( base.common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
+        Caster:startAction( common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
         return;
     end
 
@@ -47,13 +48,13 @@ function DoTeleSpell(Caster, TargetPos, ltstate)
     end
 
     if not CasterVal then
-        base.common.TempInformNLS( Caster,
+        common.TempInformNLS( Caster,
         "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
 
-    local drift = base.common.Limit( base.common.Scale( Teleport.Drift.minSkill, Teleport.Drift.maxSkill, CasterVal ), 0 );
+    local drift = common.Limit( common.Scale( Teleport.Drift.minSkill, Teleport.Drift.maxSkill, CasterVal ), 0 );
 
     if drift > 0 then
         drift = math.random( 0, drift );
@@ -64,7 +65,7 @@ function DoTeleSpell(Caster, TargetPos, ltstate)
     magic.base.basics.performGFX(  Teleport.StartLocation.gfx, Caster.pos );
     magic.base.basics.performSFX(  Teleport.StartLocation.sfx, Caster.pos );
 
-    local oldPos = base.common.CopyPosition( Caster.pos );
+    local oldPos = common.CopyPosition( Caster.pos );
     Caster:warp( TargetPos );
     if not equapos( TargetPos, Caster.pos ) then
         Caster:warp( oldPos );
@@ -83,11 +84,11 @@ function DoTeleSpell(Caster, TargetPos, ltstate)
 end
 
 function CastMagic(Caster,counter,param, ltstate)
-    DoTeleSpell(Caster,base.common.GetFrontPosition( Caster ), ltstate);
+    DoTeleSpell(Caster,common.GetFrontPosition( Caster ), ltstate);
 end
 
 function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
-    base.common.TempInformNLS( Caster,
+    common.TempInformNLS( Caster,
     "Es ist nicht sinnvoll sich auf ein anderes Lebewesen zu teleportieren.",
     "Its not useful to teleport on another entity" );
 end

@@ -2,7 +2,7 @@
 -- Effect ID: 13
 -- Values: newbiePosX, newbiePosY, newbiePosZ, itemid_1, itemnumber_1, itemdata_1, itemquality_1 (1-18)
 
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 function M.addEffect(newbieEffect, Character)
@@ -17,7 +17,7 @@ function M.callEffect(newbieEffect,Character)
 		foundPos,newbiePos=M.loadNewbiePos(newbieEffect);
 		if foundPos then
 			if equapos(Character.pos,newbiePos) then
-				base.common.InformNLS(Character,
+				common.InformNLS(Character,
 		        "Du kannst dich mit den Pfeiltasten bewegen.",
 				"You can move by using the arrow keys.");
 			end
@@ -32,16 +32,16 @@ end
 function M.removeEffect(newbieEffect, Character)
 
 	if Character:isAdmin() then
-		base.common.TempInformNLS(Character,
+		common.TempInformNLS(Character,
 			"*** überspringe remove-Routine ***",
 			"*** skip remove-routine ***");
 		return;
 	end
 	
-	base.common.InformNLS(Character,
+	common.InformNLS(Character,
 	  "#w Du hast jetzt die Tutorialinsel verlassen und bist auf der eigentlichen Insel 'Gobaith'. Lasse deinen Charakter so handeln, als ob er eine reale Person in der Welt von Illarion wäre. Die Illarion-Community wünscht dir viel Spaß!",
 	  "#w You now have left the tutorial island and you are on the actual island 'Gobaith'. Let your character act as if he is a real person in the world of Illarion. The Illarion community wishes you much fun!");
-	base.common.InformNLS(Character,
+	common.InformNLS(Character,
 	  "*Du schüttelst das letzte Kribbeln von dir ab und ein frisches, euphorisches Gefühl durchströmt deinen Körper.*",
 	  "*You shake off the last tingling and a fresh, euphorical feeling flows through your body.*");
 	-- full health and foodpoints

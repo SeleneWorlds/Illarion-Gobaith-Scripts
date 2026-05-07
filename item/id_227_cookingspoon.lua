@@ -1,3 +1,4 @@
+local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
 local InitCraftingTool, UseItem
@@ -231,7 +232,7 @@ end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     Cooking,Brewing = InitCraftingTool( );
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if not menstate then
         menstate = { };
     end
@@ -263,19 +264,19 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     cookstatus,cookmessage = Cooking:LocationFine( User, ltstate, true );
     if (cookstatus == 0) then
         if ( SourceItem:getType() ~= 4 ) then -- Kochl�ffel in der Hand
-            base.common.InformNLS( User, 
+            common.InformNLS( User, 
             "Du mu�t den Kochl�ffel in die Hand nehmen um damit zu arbeiten.", 
             "You have to take the cooking spoon in your hand to work with it." )
             return
         end
         
-        if not base.common.CheckItem( User, SourceItem ) then
+        if not common.CheckItem( User, SourceItem ) then
             Cooking:SwapToInactiveItem( User );
             return
         end
         
-        if base.common.Encumbrence(User) then -- Sehr steife R�stung?
-            base.common.InformNLS( User,
+        if common.Encumbrence(User) then -- Sehr steife R�stung?
+            common.InformNLS( User,
             "Deine R�stung behindert beim kochen.",
             "Your armor disturbs you while cooking." );
             Cooking:SwapToInactiveItem( User );
@@ -310,19 +311,19 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     brewstatus,brewmessage = Brewing:LocationFine( User, ltstate, true );      
     if (brewstatus == 0) then
         if ( SourceItem:getType() ~= 4 ) then -- Kochl�ffel in der Hand
-            base.common.InformNLS( User, 
+            common.InformNLS( User, 
             "Du mu�t den Kochl�ffel in die Hand nehmen um damit zu arbeiten.", 
             "You have to take the cooking spoon in your hand to work with it." )
             return
         end
         
-        if not base.common.CheckItem( User, SourceItem ) then
+        if not common.CheckItem( User, SourceItem ) then
             Brewing:SwapToInactiveItem( User );
             return
         end
         
-        if base.common.Encumbrence(User) then -- Sehr steife R�stung?
-            base.common.InformNLS( User,
+        if common.Encumbrence(User) then -- Sehr steife R�stung?
+            common.InformNLS( User,
             "Deine R�stung behindert beim brauen.",
             "Your armor disturbs you while brewing." );
             Brewing:SwapToInactiveItem( User );

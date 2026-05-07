@@ -1,7 +1,7 @@
 --- *** Drachenpocken *** ---
 
 
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 ------------------------------
@@ -80,9 +80,9 @@ function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
                     Patient:talkLanguage(CCharacter.say, CPlayer.german, "#me kratzt sich.");
                     Patient:talkLanguage(CCharacter.say, CPlayer.english, "#me has a scratch.");
                 elseif rnd==3 then
-                    base.common.InformNLS(Patient,"Du fühlst dich verwundbar.","You feel vulnerable.");
+                    common.InformNLS(Patient,"Du fühlst dich verwundbar.","You feel vulnerable.");
                 elseif rnd==4 then
-                    base.common.InformNLS(Patient,"Du fühlst dich verwundbar.","You feel vulnerable.");
+                    common.InformNLS(Patient,"Du fühlst dich verwundbar.","You feel vulnerable.");
                 end
             --end
             if diseaseStr==2 then                       -- not so strong yet (alter attribs by 2)
@@ -100,7 +100,7 @@ function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
             return true;        -- illnes goes on, so return "true".
         else                    -- he will be healed!
             LogString=os.date()..": Patient "..Patient.name.." healed by healing-mechanism. (Immune now)\n";
-            base.common.InformNLS(Patient,
+            common.InformNLS(Patient,
             "Du fühlst dich endlich wieder besser.",
             "You finally feel better now.");
             diseaseEffect:addValue("diseaseStr",150);

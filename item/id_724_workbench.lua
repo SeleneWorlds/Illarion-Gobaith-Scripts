@@ -10,10 +10,10 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_724_workbench' WHERE com_itemid IN (724,725);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if (Woodlist==nil) then
         Woodlist= { };
         Woodlist[   3]=2543; --Nadelholz
@@ -22,23 +22,23 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Woodlist[2560]=2716; --Apfelholz
     end
     
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim Holz s�gen.",
         "Your armor disturbes while sawing wood." );
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
+    if not common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        base.common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+    if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
     end
     
     if (User:countItemAt("body",9)==0) then -- S�ge
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst eine S�ge um das Holz zu zers�gen.",
         "You need a saw to saw the wood." );
         return
@@ -49,8 +49,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if base.common.ToolBreaks( User, Tool, true ) then -- Zange besch�digen
-        base.common.InformNLS( User, 
+    if common.ToolBreaks( User, Tool, true ) then -- Zange besch�digen
+        common.InformNLS( User, 
         "Die S�ge wird stumpf.", 
         "The saw wents blunt" );
         return
@@ -69,7 +69,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 
-    if not base.common.FitForWork( User ) then -- Kein Hunger
+    if not common.FitForWork( User ) then -- Kein Hunger
         return
     end
     
@@ -83,26 +83,26 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 return                
             end
             
-            if base.common.IsInterrupted( User ) then
+            if common.IsInterrupted( User ) then
                 local selectMessage = math.random(1,5);
                 if ( selectMessage == 1 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du wischst dir den Schwei� von der Stirn.",
                     "You wipe sweat off your forehead.");
                 elseif ( selectMessage == 2 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du bekommst einige Sp�ne in den Mund und mu�t husten.",
                     "A cloud of fine splints makes you cough.");
                 elseif ( selectMessage == 3 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du �berpr�fst kurz die Ma�e des Brettes.",
                     "You briefly check the measurements of the board.");
                 elseif ( selectMessage == 4 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du bekommst einen Holzsplitter in den Finger und mu�t Pause machen, um ihn zu entfernen.",
                     "A splinter pierces your finger. You have to take a break to remove it.");
                 else
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du bekommst einige S�gesp�ne ins Auge und reibst dir kurz die Augen.",
                     "Fine splints make you rub your eyes.");
                 end
@@ -113,19 +113,19 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             notCreated = User:createItem(Wood,1,333,0); -- Holzbretter erstellen
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
                 world:createItemFromId( Wood, notCreated, User.pos, true, 333 ,0);
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
                 User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
             end
             User:learn(2,"carpentry",2,20); -- Lernen
-            base.common.GetHungry( User, 200 ); -- Hunger
+            common.GetHungry( User, 200 ); -- Hunger
             return
         end
     end
     if (ltstate ~= Action.success) then
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du hast kein Holz das du zers�gen k�nntest.", 
         "You don't have any wood you could saw." );
     end

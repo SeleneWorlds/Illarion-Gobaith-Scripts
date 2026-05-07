@@ -11,7 +11,7 @@ local UseItem, GenWorkTime
 -- UPDATE common SET com_script='item.id_2836_forge' WHERE com_itemid IN (2835,2836);
 -- UPDATE common SET com_objectafterrot=2836 WHERE com_itemid = 2835;
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
@@ -37,23 +37,23 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem, {2835,2836} ) then
+    if not common.CheckItem( User, SourceItem, {2835,2836} ) then
         return
     end
     
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim schmelzen von Metall.",
         "Your armor disturbes you while melting ores." );
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-        base.common.TurnTo( User, SourceItem.pos );
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+        common.TurnTo( User, SourceItem.pos );
     end
     
     if (User:countItemAt("body",2751)==0) then -- Zange mit Tiegel
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst eine Zange mit Tiegel um Metal zu schmelzen.",
         "You need pincers with crucible to melt the ores." );
         return
@@ -64,8 +64,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if base.common.ToolBreaks( User, Tool ) then -- Zange besch�digen
-        base.common.InformNLS( User, 
+    if common.ToolBreaks( User, Tool ) then -- Zange besch�digen
+        common.InformNLS( User, 
         "Die Zange geht zu Bruch.", 
         "The pincers break." );
 		if (SourceItem.id == 2835) then
@@ -76,7 +76,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 
-    if not base.common.FitForWork( User ) then
+    if not common.FitForWork( User ) then
         if (SourceItem.id == 2835) then
            SourceItem.wear = 255;
            SourceItem.id = 2836;
@@ -88,7 +88,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ((User:countItemAt("belt",22) == 0) and (User:countItemAt("belt",2536) == 0) and
        (User:countItemAt("belt",234) == 0) and (User:countItemAt("belt",2534) == 0)) then
         if (ltstate ~= Action.success) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du ben�tigst Eisen, Kupfer oder Golderz um an der Esse zu arbeiten.",
             "You need iron, copper or gold ores to work with the furnace.");
         end            
@@ -101,7 +101,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if (User:countItemAt("belt",21) == 0) then
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du ben�tigst Kohle um an der Esse zu arbeiten",
         "You need some coal to work with the furnace");
         if (SourceItem.id == 2835) then
@@ -121,29 +121,29 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             SourceItem.id = 2835;
             world:changeItem(SourceItem);
         else
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "An dieser Esse arbeitet bereits jemand.",
             "Someone is allready working at this furnace.");
         end
         return
     end
     
-    if base.common.IsInterrupted( User ) then
+    if common.IsInterrupted( User ) then
         local selectMessage = math.random(1,4);
         if ( selectMessage == 1 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du wischst dir den Schwei� von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Der fertige Barren klemmt in der Form. Du klopfst sehr stark auf die R�ckseite der Form bis er endlich heraus f�llt.",
             "The iron ingot gets stuck in the mould, it takes you a few tries to force it out.");
         elseif ( selectMessage == 3 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Die W�rme der schmelze l�sst kurz nach. Du eilst zum Blasebalg um die Glut neu anzufachen.",
             "The furnace's fire appears to be too weak, you take the bellows in your hand and breathe new life into it.");
         else
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du sch�pfst kurz die Schlacke von der Schmelze ab um die Qualit�t des Metalls zu steigern.",
             "You draw the slag away to increase the quality of the metal.");
         end        
@@ -166,7 +166,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 world:changeItem(SourceItem);
             end
             world:createItemFromId( 2535, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -185,7 +185,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                world:changeItem(SourceItem);
             end
             world:createItemFromId( 2550, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -204,7 +204,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                world:changeItem(SourceItem);
             end
             world:createItemFromId( 236, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -226,7 +226,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 world:changeItem(SourceItem);
             end
             world:createItemFromId( 2571, 1, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -235,7 +235,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             User:startAction( GenWorkTime(User), 0, 0, 7, 15);
         end
     end
-    base.common.GetHungry( User, 200 );
+    common.GetHungry( User, 200 );
     User:learn( 2, "smithing", 2, 10 );
 end -- function
 

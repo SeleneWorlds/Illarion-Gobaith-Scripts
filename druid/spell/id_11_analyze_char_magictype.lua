@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO spells VALUES (2^10,3,'druid.spell.id_11_analyze_char_magictype');
@@ -29,7 +29,7 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 	Caster:learn(6,"ars magica",3,100)
 
 	else
-    base.common.InformNLS( Caster,
+    common.InformNLS( Caster,
         "Deine F�higkeiten reichen noch nicht aus.",
         "Your abilities do not last out yet."
     );

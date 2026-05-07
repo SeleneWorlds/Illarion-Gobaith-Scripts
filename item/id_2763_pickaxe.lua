@@ -28,7 +28,7 @@ local Init, AddArea, AddStone, SetRessource, GetRessource, GetModifiedSkill, che
 -- UPDATE common SET com_agingspeed =  10, com_objectafterrot = 1250 WHERE com_itemid = 1251;
 
 require("item.general.metal")
-require("base.common")
+local common = require("base.common")
 require("base.treasure")
 
 function M.Init()
@@ -321,7 +321,7 @@ end
 function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 	InitGathering();
     Init();
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -335,42 +335,42 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
         return
     end
 
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        TargetItem = base.common.GetFrontItem( User );
+        TargetItem = common.GetFrontItem( User );
     else
         TargetItem = world:getItemOnField(TargetItem.pos);
     end
     
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        UseItemWithField(User,SourceItem,base.common.GetFrontPosition(User),Counter,Param);
+        UseItemWithField(User,SourceItem,common.GetFrontPosition(User),Counter,Param);
         return;
     end
 
-    if base.common.Encumbrence(User) then
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then
+        common.InformNLS( User,
         "Deine R�stung behindert Dich Rohstoffe abzubauen.",
         "Your armor disturbes you when mining ores" );
         return
     end
 
     if (SourceItem:getType() ~= 4) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du musst eine Spitzhacke in der Hand haben!",
         "You need to hold the pick-axe in your hand!" );
         return
     end
 
-    if not base.common.IsLookingAt( User, TargetItem.pos ) then
-        base.common.TurnTo( User, TargetItem.pos );
+    if not common.IsLookingAt( User, TargetItem.pos ) then
+        common.TurnTo( User, TargetItem.pos );
     end
 
     AreaID = Areas(TargetItem.pos);
 
     if ( AreaID == false ) then
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Die Gegend sieht nicht so aus, als k�nnte man hier etwas finden.",
         "The area doesn't look like a area to mine.");
         return
@@ -378,7 +378,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     if not CheckRock(AreaID,TargetItem.id) then
         if (ltstate ~= Action.success) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Da ist nichts zum Draufschlagen.",
             "There is nothing to hit.");
         end
@@ -392,8 +392,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
         return
     end
 
-    if base.common.ToolBreaks( User, SourceItem, true ) then
-        base.common.InformNLS(User,
+    if common.ToolBreaks( User, SourceItem, true ) then
+        common.InformNLS(User,
         "Die alte und abgenutzte Spitzhacke in deinen H�nden zerbricht.",
         "The old and used pick-axe in your hands breaks.");
         return
@@ -423,7 +423,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     --    if (Ressource < 1 ) then
     --        User:startAction( GenWorkTime(User), 0, 0, 8, 15);
-    --        base.common.GetHungry( User, 300 );
+    --        common.GetHungry( User, 300 );
     --        if (Ressource == 0 ) then
     --            User:learn(2,"mining",1,100);
     --        end
@@ -434,7 +434,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
         Ressource = 735
     elseif Ressource < 0 then  -- find nothing
         User:startAction( GenWorkTime(User), 0, 0, 8, 15);
-        base.common.GetHungry( User, 300 );
+        common.GetHungry( User, 300 );
         return
     end
 
@@ -446,7 +446,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     if (notcreated~=0) then
         world:createItemFromId(Ressource,1,User.pos,true,333,0);
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du kannst nicht noch mehr halten.",
         "You can't carry any more.");
     else
@@ -456,10 +456,10 @@ end
 
 function M.UseItemWithField(User,SourceItem,TargetPos,counter,param)
     local groundTile = world:getField( TargetPos ):tile();
-    local GroundType = base.common.GetGroundType( groundTile );
+    local GroundType = common.GetGroundType( groundTile );
     
     if (GroundType ~= 5) and base.treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
-                                                base.common.GetNLS( User,
+                                                common.GetNLS( User,
                                                     "Du schwingst deine Spitzhacke gegen den steinigen Boden und st��t auf etwas das noch h�rter ist als der Boden. Das muss er sein! Der Schatz. Noch einmal graben und der grenzenlose Reichtum ist dein!",
                                                     "You swing your pick-axe against the stony ground and hit something that is even harder then the ground. That must it be! The teasure! Digging another time and it yours!" ), false ) then
         return;
@@ -468,27 +468,27 @@ function M.UseItemWithField(User,SourceItem,TargetPos,counter,param)
     
     if (( groundTile ~= 3 ) and ( groundTile ~= 8 )) then
         if ( GroundType == 1 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gr�bt sich tief in den Ackerboden.",
             "You swing your pick-axe towards the ground and it digs deeply into the farm land.");
         elseif ( GroundType == 2 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gr�bt sich tief in den Waldboden.",
             "You swing your pick-axe towards the ground and it digs deeply into the forest ground.");
         elseif ( GroundType == 4 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gr�bt sich tief in die Wiese.",
             "You swing your pick-axe towards the ground and it digs deeply into the gras.");
         elseif ( GroundType == 5 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und lockerst du den festen Boden etwas",
             "You swing your pick-axe towards the ground and ease the stony ground slightly.");
         elseif ( GroundType == 6 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie versinkt mit einem Platschen im Wasser.",
             "You swing your pick-axe towards the ground and it runs with a splash into the water.");
         else
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du versuchst an dieser Stelle zu graben",
             "This isn't a good place to dig.");
         end
@@ -497,7 +497,7 @@ function M.UseItemWithField(User,SourceItem,TargetPos,counter,param)
 end
 
 function M.UseItemWithCharacter(User,SourceItem,TargetChar,counter,param)
-    base.common.InformNLS(User,
+    common.InformNLS(User,
     "Eine Spitzhacke ist nicht so sehr als Waffe geeignet.",
     "You shouldn't use a pick-axe as a weapon.");
 end

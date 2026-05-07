@@ -3,7 +3,7 @@ local LookAtItemIdent, checkNoobiaSigns, getPopulation, getPlayersOnLevel
 
 -- Wegweiser Script
 -- Nitram
-require("base.common")
+local common = require("base.common")
 local signpost_content = require("content.signpost")
 
 -- UPDATE common SET com_script='item.signpost' WHERE com_itemid IN (1817,1809,1808,1807,308,1804,586,3084,3081,3082,3083,519,520,521,337,1914,1915,2046,2069,512,2924,2925,2926,2927);
@@ -31,7 +31,7 @@ function M.LookAtItemIdent(User,Item)
 				if equapos(Item.pos,signpos) then
 					if (UserPer >= signPerception[tablePosition][i]) then
 						found = true;
-						world:itemInform(User,Item,base.common.GetNLS(User,string.gsub(signTextDe[tablePosition][i],"currentChar",User.name),string.gsub(signTextEn[tablePosition][i],"currentChar",User.name)));
+						world:itemInform(User,Item,common.GetNLS(User,string.gsub(signTextDe[tablePosition][i],"currentChar",User.name),string.gsub(signTextEn[tablePosition][i],"currentChar",User.name)));
 						test = signTextDe[tablePosition][i];
 					end
 				end
@@ -46,7 +46,7 @@ function M.LookAtItemIdent(User,Item)
 	end
 
 	if not found then
-        world:itemInform(User,Item,base.common.GetNLS(User,"Du siehst ","You see ")..world:getItemName(Item.id,User:getPlayerLanguage()));
+        world:itemInform(User,Item,common.GetNLS(User,"Du siehst ","You see ")..world:getItemName(Item.id,User:getPlayerLanguage()));
     end
 
 		User:inform("in LookAtItem of base_wegweiser.lua");
@@ -80,7 +80,7 @@ function M.checkNoobiaSigns( User,TargetPos )
 		if equapos(TargetPos,NoobiaSigns[i][1]) then
 			local lang = User:getPlayerLanguage();
 			local pop = getPopulation(i);
-			local outText = base.common.GetNLS(User,string.gsub(NoobiaSigns[i][lang+2],"%%POPULATION",""..pop..""),string.gsub(NoobiaSigns[i][lang+2],"%%POPULATION",""..pop..""));
+			local outText = common.GetNLS(User,string.gsub(NoobiaSigns[i][lang+2],"%%POPULATION",""..pop..""),string.gsub(NoobiaSigns[i][lang+2],"%%POPULATION",""..pop..""));
 			return outText;
 		end
 	end

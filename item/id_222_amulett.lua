@@ -5,12 +5,12 @@ local MoveItemBeforeMove, LookAtItem, UseItem, RingOfPower, RoadToNode, RemoveMu
 -- UPDATE common SET com_script='item.id_222_amulett' WHERE com_itemid IN (222);
 
 require("item.priest.jewel")
-require("base.common")
+local common = require("base.common")
 
 function M.MoveItemBeforeMove( who, sourceItem, targetItem )
     fnd, eff = who.effects:find(9)
     if (fnd) then
-        base.common.InformNLS(who, "Der Einfluss des Daemons hindert dich daran das Amulett ab zu nehmen","the power of the demon hinders you to remove the amulet");
+        common.InformNLS(who, "Der Einfluss des Daemons hindert dich daran das Amulett ab zu nehmen","the power of the demon hinders you to remove the amulet");
         return false;
     else
         if ( targetItem.data == 777 ) then
@@ -22,7 +22,7 @@ function M.MoveItemBeforeMove( who, sourceItem, targetItem )
 		    end
 		elseif targetItem.data == 111 then
 			if sourceItem:getType() == 3 then
-				base.common.TempInformNLS(who,
+				common.TempInformNLS(who,
 					"Etwas hindert dich daran, das Amulett auch nur anzufassen.",
 					"Something won't let you even touch the amulet.");
 				--return false;
@@ -99,7 +99,7 @@ end
 
 function M.RingOfPower(User)
 
-	local pos = base.common.GetFrontPosition(User);
+	local pos = common.GetFrontPosition(User);
 	world:gfx(2,pos);
 	world:makeSound(4,pos);
 	local flame = world:createItemFromId(359,1,pos,true,333,0);
@@ -153,7 +153,7 @@ function M.RemoveMuckyLuck(User, TargetItem)
 			end
 		end
 		for i=1,radius do
-			base.common.CreateCircle(User.pos,i,event);
+			common.CreateCircle(User.pos,i,event);
 		end
 	end
 end
@@ -162,7 +162,7 @@ function M.MuckyLuck(User)
 
 	local radius = 2;
 	local foodItems = {158,159,162};
-	local pos = base.common.GetFrontPosition(User);
+	local pos = common.GetFrontPosition(User);
 	if world:createDynamicNPC("Mucky Luck Sheep",18,pos,0,"npc_mucky_luck_sheep.lua") then
 		world:makeSound(13,User.pos);
 		local event;
@@ -179,10 +179,10 @@ function M.MuckyLuck(User)
 			end
 		end
 		for i=1,radius do
-			base.common.CreateCircle(pos,i,event);
+			common.CreateCircle(pos,i,event);
 		end
 	else
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Irgendetwas verhindert die Ausf�hrung des Rituals.",
 			"Something inhibits performing the ritual.");
 	end

@@ -3,7 +3,7 @@ local IniFireField, CharacterOnField, DeleteFlame, SpellResistence
 
 -- UPDATE common SET com_script='item.id_372_poisonfield' where com_itemid=372;
 
-require("base.common")
+local common = require("base.common")
 
 function M.IniFireField()
     --hum,dwa,hal,elf,orc,liz,gno,fry,gob,tro,mum,skl,beh,cld,hlr,buy,sel,ins,shp,spd,dsk,rot,dem,scp,pig,inv,sku,wsp,ftr,shd,stn,mgo,gno,dra,drw,drw,lde
@@ -21,7 +21,7 @@ function M.CharacterOnField(User)
     end
 	-- Giftwolke auf dem Feld suchen
 	-- !!Eventuell gibt es Probleme, wenn sich mehrere Wolken auf einem Feld befinden!!
-	local Items = base.common.GetItemsOnField(User.pos);
+	local Items = common.GetItemsOnField(User.pos);
 	local FieldItem;
 	for i, item in pairs(Items) do
 		if(item.id == 372) then
@@ -47,7 +47,7 @@ function M.CharacterOnField(User)
             damageDealt=math.random((7/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght),(9/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght));--AffectedStren[i]
             poisonDealt=math.random((2/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20)),(5/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20)));
             User:increaseAttrib("hitpoints",-damageDealt);
-		User:setPoisonValue( base.common.Limit( (User:getPoisonValue() + poisonDealt) , 0, 10000) );
+		User:setPoisonValue( common.Limit( (User:getPoisonValue() + poisonDealt) , 0, 10000) );
             --User:increasePoisonValue(poisonDealt);
         else
             DeleteFlame(User, FieldItem);

@@ -6,7 +6,7 @@ QuestProgress: 18
 	Priests use QPG>100
 ]]
 
-require("base.common")
+local common = require("base.common")
 dofile("p_constants.lua");
 
 local M = {}
@@ -38,7 +38,7 @@ function M.P_CheckAltarConversion(Char,Info)
 		if Char:isInRangeToPosition(ALTARS[god],2) then
 			return true;
 		elseif Info then
-			base.common.TempInformNLS(Char,
+			common.TempInformNLS(Char,
 				"Für dieses Gebet solltest du den Altar deines Gottes aufsuchen.",
 				"For this prayer you should seek the altar of your god.");
 		end
@@ -98,7 +98,7 @@ function M.P_CheckItemsFollower(Char,God,Info)
 		end
 	end
 	if Info and not ret then
-		base.common.TempInformNLS(Char,
+		common.TempInformNLS(Char,
 			"Du hast nicht alle Opfergaben bei dir.",
 			"You don't have all sacrificial offerings with you.");
 	end
@@ -114,7 +114,7 @@ function M.P_CheckItemsPriest(Char,God,Info)
 		end
 	end
 	if Info and not ret then
-		base.common.TempInformNLS(Char,
+		common.TempInformNLS(Char,
 			"Du hast nicht alle Opfergaben bei dir.",
 			"You don't have all sacrificial offerings with you.");
 	end
@@ -127,7 +127,7 @@ function M.P_CheckDevotionTime(Char,God,Info)
 	if d and d~=God then
 		local days = M.P_GetFollowerElapsedDays(Char);
 		if days and days<25 then
-			base.common.TempInformNLS(Char,
+			common.TempInformNLS(Char,
 				"Der Segen eines anderen Gottes liegt bereits auf dir. Versuche es in ".. 25-days .. ((25-days==1) and "Tag" or "Tagen") .. "wieder.",
 				"The blessing of another god is already upon you. Try it again in ".. 25-days .. ((25-days==1) and "day" or "days") .. ".");
 			return false;
@@ -265,7 +265,7 @@ function M.P_CheckDevotionForOrdination(Char,God,Info)
 			if days and days>=25 then
 				return true;
 			elseif Info then
-				base.common.TempInformNLS(Char,
+				common.TempInformNLS(Char,
 					"Wie kann ein Gott dir Vertrauen schenken, wenn du noch nicht einmal einen Monat ihm nachfolgst?",
 					"How can a god place his trust in you, if you haven't even been following him for only one month?");
 				return false;
@@ -273,7 +273,7 @@ function M.P_CheckDevotionForOrdination(Char,God,Info)
 		end
 	end
 	if Info then
-		base.common.TempInformNLS(Char,
+		common.TempInformNLS(Char,
 			"Du bist nicht einmal ein Anhänger dieses Gottes.",
 			"You aren't even a follower of this god.");
 	end
@@ -303,7 +303,7 @@ function M.P_GetChanceForOrdination(Char,God,Info)
 		return 10*#followers + 20*#priests;
 	end
 	if Info then
-		base.common.TempInformNLS(Char,
+		common.TempInformNLS(Char,
 			"Für eine Messe brauchst du mindestens noch zwei weitere Anhänger.",
 			"For a mass you need at least two other followers.");
 	end

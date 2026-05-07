@@ -5,7 +5,7 @@ local UseItem, UseItemWithCharacter, MakeSprout, CheckSucceed, BlockCheck
 
 -- UPDATE common SET com_script='item.id_52_filledbucket' WHERE com_itemid IN (52);
 
-require("base.common")
+local common = require("base.common")
 require("base.keys")
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
@@ -24,7 +24,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
     -- Wasserflasche auff�llen
     if( TargetItem.id == 2498 ) then
 		if(TargetItem.number > 1) then
-			base.common.InformNLS(User, "Du kannst nur eine Flasche bef�llen!", "You can only fill one bottle.");
+			common.InformNLS(User, "Du kannst nur eine Flasche bef�llen!", "You can only fill one bottle.");
 			return;
 		end
         world:makeSound( 10, User.pos )
@@ -32,10 +32,10 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
     else
         if TargetItem.id ~= 0 then
 			if ((TargetItem.id==12 or TargetItem.id == 359) and (User.pos.z==100 or User.pos.z==101)) then --Prevents extinguishing campfires on n00bia(needed for the cook-npc)
-				base.common.InformNLS(User,"Du solltest das Feuer besser nicht ausmachen, du k�nntest es noch gebrauchen.","You shouldn't extinguish the fire, you maybe could need it.");
+				common.InformNLS(User,"Du solltest das Feuer besser nicht ausmachen, du k�nntest es noch gebrauchen.","You shouldn't extinguish the fire, you maybe could need it.");
 				return;
 			else	
-				base.common.InformNLS(User,"platsch!","splash!");
+				common.InformNLS(User,"platsch!","splash!");
 				world:makeSound( 9, User.pos );
 	            -- Lagerfeuer ausmachen
 	            if (TargetItem.id == 12 or TargetItem.id == 359) then
@@ -80,7 +80,7 @@ function M.UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter
                  OpenDoor( door );
              end;
 	     
-	         base.common.InformNLS(TargetCharacter, "Du f�hlt dich gleich viel sauberer.", "You feel much cleaner.");
+	         common.InformNLS(TargetCharacter, "Du f�hlt dich gleich viel sauberer.", "You feel much cleaner.");
 	    end
     end
 end
@@ -99,7 +99,7 @@ function M.MakeSprout( User, SourceItem, TargetItem )
     --User:inform( "found sprouts" );
     local Field = world:getField( TargetItem.pos )
     --User:inform( "cecking ground "..Field:tile() );
-    local boden = base.common.GetGroundType( Field:tile() );
+    local boden = common.GetGroundType( Field:tile() );
 
     --User:inform( "standing on "..boden );
     -- only on fields
@@ -110,7 +110,7 @@ function M.MakeSprout( User, SourceItem, TargetItem )
         if BlockCheck(TargetItem.pos) then
 	    -- Auf dem Trainingsfeld der Akademie w�chst nichts
 	    if ((( TargetItem.pos.x > 54 ) and ( TargetItem.pos.x < 64 ) and ( TargetItem.pos.y > 35 ) and ( TargetItem.pos.y < 49 )) and ( TargetItem.pos.z == 50)) then
-	        base.common.InformNLS( User,
+	        common.InformNLS( User,
                     "Die Erde hier ist v�llig ausgebrannt...hier kann nichts wachsen.",
                     "The ground here is totaly burned...here can't grow anything." );
         else
@@ -120,7 +120,7 @@ function M.MakeSprout( User, SourceItem, TargetItem )
             end
 	    end	
         else
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
             "An dieser Stelle war nicht genug Sonnenlicht. Der Setzling geht ein.", 
             "There was not enough sunlight in this place. The seedling whithers." ); 
         end    

@@ -7,14 +7,14 @@ local UseItem, CharacterOnField, LookAtItem
 
 -- UPDATE common SET com_script='item.traps' WHERE com_itemid IN (377,378,379,380,381);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ((User:increaseAttrib("dexterity",0) + 0.5*User:increaseAttrib("perception",0) + math.random(1,30)) >= 30) then
-        base.common.InformNLS( User,"Du entsch�rfst die Falle.","You disarm the trap." );
+        common.InformNLS( User,"Du entsch�rfst die Falle.","You disarm the trap." );
         world:swap(SourceItem,375,333);
     else
-        base.common.InformNLS( User,"Du l�st die Falle aus!","You set off the trap!" );
+        common.InformNLS( User,"Du l�st die Falle aus!","You set off the trap!" );
         world:gfx(14,SourceItem.pos);
         User:increaseAttrib("hitpoints", -5000);
         world:swap(SourceItem,376,333);
@@ -28,7 +28,7 @@ function M.CharacterOnField( User )
         local SourceItem = world:getItemOnField( User.pos );
         if (User:increaseAttrib("hitpoints",0)>0) then
             if( SourceItem.id >= 377 ) and (SourceItem.id <= 381) then
-                base.common.InformNLS( User,"Du l�st eine Falle aus!","You set off a trap!" );
+                common.InformNLS( User,"Du l�st eine Falle aus!","You set off a trap!" );
                 world:gfx(14,User.pos);
                 User:increaseAttrib("hitpoints", -4999);
                 world:swap(SourceItem,376,333);

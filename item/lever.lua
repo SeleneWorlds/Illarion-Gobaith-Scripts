@@ -1,7 +1,7 @@
 local M = {}
 local init, generateKey, UseItem, AddToLevers
 
-require("base.common")
+local common = require("base.common")
 require("base.lever")
 local deleteitem = require("handler.deleteitem")
 local lockdoor = require("handler.lockdoor")

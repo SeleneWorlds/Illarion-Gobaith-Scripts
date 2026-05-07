@@ -2,7 +2,7 @@
 -- Buch "Alchemie 3"
 -- Falk
 require("base.books")
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- UPDATE common SET com_script='druid.item.id_129_book_paths' WHERE com_itemid = 129;

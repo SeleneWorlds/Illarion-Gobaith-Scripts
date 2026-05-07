@@ -3,7 +3,7 @@ local UseItem, CharacterOnField
 
 -- UPDATE common SET com_script='item.id_12_campfire' where com_itemid=12;
 
-require("base.common")
+local common = require("base.common")
 local gathering = require("content.gathering")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
@@ -23,29 +23,29 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem, 12 ) then
+    if not common.CheckItem( User, SourceItem, 12 ) then
         return
     end
     
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim Asche herstellen.",
         "Your armor disturbes you while producing potash." );
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-        base.common.TurnTo( User, SourceItem.pos );
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+        common.TurnTo( User, SourceItem.pos );
     end
 
-    if not base.common.FitForWork( User ) then
+    if not common.FitForWork( User ) then
         return
     end
     
     if ((User:countItemAt("all",2560) == 0) and (User:countItemAt("all",543) == 0) and
        (User:countItemAt("all",544) == 0) and (User:countItemAt("all",3) == 0)) then
         if (ltstate ~= Action.success) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du ben�tigst Holz um daraus Asche herzustellen.",
             "You need wood to produce potash.");
         end
@@ -68,7 +68,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         notCreated = User:createItem(314,3,333,0);
         if (notCreated > 0) then
             world:createItemFromId(314, notcreated, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -79,7 +79,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         notCreated = User:createItem(314,3,333,0);
         if (notCreated > 0) then
             world:createItemFromId(314, notcreated, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -90,7 +90,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         notCreated = User:createItem(314,3,333,0);
         if (notCreated > 0) then
             world:createItemFromId(314, notcreated, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -101,18 +101,18 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         notCreated = User:createItem(314,3,333,0);
         if (notCreated > 0) then
             world:createItemFromId(314, notCreated, User.pos, true, 333 ,0);
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
             User:startAction(potashproducing:GenWorkTime(User), 0, 0, 7, 15);
         end
     end
-    base.common.GetHungry( User, 200 );
+    common.GetHungry( User, 200 );
 end -- function
 
 function M.CharacterOnField(User)
-    base.common.InformNLS( User,
+    common.InformNLS( User,
       "Du f�hlst Schmerzen vom brennenden Feuer.",
       "You can feel the pain from the burning fire." );
     if not (User:getQuestProgress(2) > 0) and not (User:increaseAttrib("hitpoints",0) < 2000) then

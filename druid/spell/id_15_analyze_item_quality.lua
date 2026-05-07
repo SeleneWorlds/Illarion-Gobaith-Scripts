@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO spells VALUES (2^14,3,'druid.spell.id_15_analyze_item_quality');
@@ -34,7 +34,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   --Quality eines Items feststellen
   M.unitDecleration()
   ergebnis = math.floor(TargetItem.quality/100)
-  base.common.InformNLS( Caster,
+  common.InformNLS( Caster,
                 "#b|0|0|die Pr�fung ergibt eine "..ListDE[ergebnis].." Qualit�t",
                 "#b|0|0|this inspection results a "..ListEN[ergebnis].." quality" )
 end

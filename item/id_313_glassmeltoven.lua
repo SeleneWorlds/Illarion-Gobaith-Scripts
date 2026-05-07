@@ -13,26 +13,26 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_313_glassmeltoven' WHERE com_itemid IN (313);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate );
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    common.ResetInterruption( User, ltstate );
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim arbeiten.",
         "Your armor disturbes while working." );
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
+    if not common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        base.common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+    if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
     end
     
-    if not base.common.FitForWork( User ) then -- Kein Hunger
+    if not common.FitForWork( User ) then -- Kein Hunger
         return
     end
     
@@ -61,30 +61,30 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt glass.");
                 return                
             end
-            if base.common.IsInterrupted( User ) then
+            if common.IsInterrupted( User ) then
                 local selectMessage = math.random(1,6);
                 if ( selectMessage == 1 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du wischst dir den Schwei� von der Stirn.",
                     "You wipe sweat off your forehead.");
                 elseif ( selectMessage == 2 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Dir rutscht eine Kelle mit Sand aus der Hand und der Sand verteilt sich �ber den Boden. Nun wirst du erst den Sand aufkehren m�ssen.",
                     "Some sand slips out of your hand, and you stop to try to scoop it up.");
                 elseif ( selectMessage == 3 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Dir rutscht eine Kelle mit Asche aus der Hand und die Asche verteilt sich �ber den Boden. Nun wirst du erst die Asche aufkehren m�ssen.",
                     "Some ash falls out of your hand, and you try your best to scoop it up.");
                 elseif ( selectMessage == 4 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Der fertige Barren klemmt in der Form. Du klopfst sehr stark auf die R�ckseite der Form bis er endlich heraus f�llt.",
                     "The finished ingot is jamed in the mold. You clap a few times on the back of the mold until it gets loose.");
                 elseif ( selectMessage == 5 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "F�r einen Moment hast du vergessen wo du die Kelle zum Sand schaufeln hingelegt hast und musst nach ihr suchen.",
                     "You forgot for a moment where you placed the throwle for the sand and so you have to look for it.");
                 else
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du beseitigst eine Verstopfung des Glasblasrohres.",
                     "You remove an obstruction from the glass-blowing rod.");
                 end
@@ -95,7 +95,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             notCreated = User:createItem(41,1,333,0);
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
                 world:createItemFromId( 41, notCreated, User.pos, true, 333 ,0);
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
@@ -105,17 +105,17 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             if ((Tool == nil) or (Tool.id ~= 311)) then -- Wenn das Item nicht die Zange ist
                 Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
             end
-            if base.common.ToolBreaks( User, Tool ) then -- Zange besch�digen
-                base.common.InformNLS( User, 
+            if common.ToolBreaks( User, Tool ) then -- Zange besch�digen
+                common.InformNLS( User, 
                 "Das Glasblasrohr zerbricht.", 
                 "The glasblow pipe breaks." );
                 return
             end
             User:learn(2,"glass blowing",2,20);
-            base.common.GetHungry( User, 300 );
+            common.GetHungry( User, 300 );
             didSomething = true;
         else
-            missingRess = base.common.GetNLS(User,
+            missingRess = common.GetNLS(User,
             "Du brauchst Sand und Asche und Glasbl�cke herzustellen",
             "You need sand and ash to make glas ingots.");
         end
@@ -129,22 +129,22 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.");
                 return                
             end
-            if base.common.IsInterrupted( User ) then
+            if common.IsInterrupted( User ) then
                 local selectMessage = math.random(1,4);
                 if ( selectMessage == 1 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du wischst dir den Schwei� von der Stirn.",
                     "You wipe sweat off your forehead.");
                 elseif ( selectMessage == 2 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du bekommst den Ziegel nicht aus der Form und musst deshalb stark auf die Form klopfen bis er heraus f�llt.",
                     "A brick refuses to come out of the mould, it takes some time for you to get it out.");
                 elseif ( selectMessage == 3 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Bevor du weiter machst reinigst du deine H�nde kurz vom feuchten Lehm der an den Fingern klebt.",
                     "You wash your hands of the wet clay.");
                 else
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du holst einen Stein aus dem Lehm. Zum Gl�ck hast du ihn noch vor dem brennen bemerkt, sonst w�re der Ziegel bestimmt gebrochen.",
                     "You fish out a stone from the wet clay.");
                 end
@@ -154,14 +154,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             notCreated = User:createItem(2588,5,333,0);
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
                 world:createItemFromId( 2588, notCreated, User.pos, true, 333 ,0);
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
                 User:startAction( GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
             end
             User:learn(2,"fireing bricks",2,100);
-            base.common.GetHungry( User, 300 );
+            common.GetHungry( User, 300 );
             didSomething = true;
         elseif (User:countItemAt("belt",26)>0) then
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
@@ -170,22 +170,22 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.");
                 return              
             end
-            if base.common.IsInterrupted( User ) then
+            if common.IsInterrupted( User ) then
                 local selectMessage = math.random(1,4);
                 if ( selectMessage == 1 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du wischst dir den Schwei� von der Stirn.",
                     "You wipe sweat off your forehead.");
                 elseif ( selectMessage == 2 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du bekommst den Ziegel nicht aus der Form und musst deshalb stark auf die Form klopfen bis er heraus f�llt.",
                     "A brick refuses to come out of the mould, it takes some time for you to get it out.");
                 elseif ( selectMessage == 3 ) then
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Bevor du weiter machst reinigst du deine H�nde kurz vom feuchten Lehm der an den Fingern klebt.",
                     "You wash your hands of the wet clay.");
                 else
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du holst einen Stein aus dem Lehm. Zum Gl�ck hast du ihn noch vor dem brennen bemerkt, sonst w�re der Ziegel bestimmt gebrochen.",
                     "You fish out a stone from the wet clay.");
                 end
@@ -195,21 +195,21 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             notCreated = User:createItem(736,1,333,0);
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
                 world:createItemFromId( 736, notCreated, User.pos, true, 333 ,0);
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
                 User:startAction( GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
             end
             User:learn(2,"fireing bricks",2,100);
-            base.common.GetHungry( User, 200 );
+            common.GetHungry( User, 200 );
             didSomething = true;
         elseif toolFound then
-            missingRess = base.common.GetNLS(User,
+            missingRess = common.GetNLS(User,
             "Du brauchst Sand und Asche und Glasbl�cke herzustellen oder Lehm und ungebrannte Ziegel um Ziegel zu fertigen.",
             "You need sand and ash to make glas ingots or clay and unfired bricks to make bricks.");
         else
-            missingRess = base.common.GetNLS(User,
+            missingRess = common.GetNLS(User,
             "Du brauchst Lehm und ungebrannte Ziegel um Ziegel zu fertigen.",
             "You need clay and unfired bricks to make bricks.");
         end
@@ -218,8 +218,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             if ((Tool == nil) or (Tool.id ~= 734)) then -- Wenn das Item nicht die Zange ist
                 Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
             end
-            if base.common.ToolBreaks( User, Tool ) then -- Zange besch�digen
-                base.common.InformNLS( User, 
+            if common.ToolBreaks( User, Tool ) then -- Zange besch�digen
+                common.InformNLS( User, 
                 "Deine Ziegelform geht zu bruch.", 
                 "Your brick mold breaks." );
                 return
@@ -229,7 +229,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if not toolFound then
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du brauchst ein Glasblasrohr oder eine Ziegelform um hier zu arbeiten.",
         "You need a glasblowpipe or a brick mold to work here.");
     else

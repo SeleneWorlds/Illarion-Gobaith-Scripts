@@ -6,7 +6,7 @@
 -- Liste der IDs mit Objekten aus Holz
 -- WICHTIG: Liste MUSS aufsteigend geordnet sein
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 
@@ -40,7 +40,7 @@ function M.createRabbits( targetArea )
     local rabbit;
     -- Bestimme lebenszeit der Hasen. Vernichtung Hasen erfolgt �ber die initiale Verwendung von Gift.
     -- Vergebene Giftpunkte werden Skaliert von 1000 (bei quality 100) bis 50 (bei quality 999)
-    local lifeTime = base.common.Scale( 1000, 50, (Item.quality-100)*100/899 );
+    local lifeTime = common.Scale( 1000, 50, (Item.quality-100)*100/899 );
 
     for i, posi in pairs(targetArea) do
         if not world:isCharacterOnField( posi ) then
@@ -94,7 +94,7 @@ function M.causeDamage( Item, DamagedArea, DamagedAttrib, ShieldAttribs, gfxid, 
 
             -- Steifheit der R�stung ermitteln. Je steifer die R�stung deszo mehr wird der Schaden durch die R�stung abgefangen
             -- 0 - 360
-            Stiffness = base.common.GetStiffness( Person );
+            Stiffness = common.GetStiffness( Person );
 
             -- Der dreifache Wert der R�stungssteifheit wird vom Schaden abgezogen ( max. -1080 )
             Schaden = Schaden - Stiffness * 3;
@@ -152,10 +152,10 @@ function M.damageItemDura( Item, targetArea, gfxid, sfxid, modifier, ItemType )
                     ItemQual = math.floor( slotItem.quality / 100 );
                     ItemDura = slotItem.quality - ItemQual * 100;
 
-                    minReduce = base.common.Scale(  30, -1, ItemQual * 11 );
-                    maxReduce = base.common.Scale( 100, 50, ItemQual * 11 );
+                    minReduce = common.Scale(  30, -1, ItemQual * 11 );
+                    maxReduce = common.Scale( 100, 50, ItemQual * 11 );
 
-                    ItemDura = base.common.Limit( ItemDura - math.floor( base.common.Scale( minReduce, maxReduce, (qual-100)/8.99 ) )*modifier, 1, ItemDura );
+                    ItemDura = common.Limit( ItemDura - math.floor( common.Scale( minReduce, maxReduce, (qual-100)/8.99 ) )*modifier, 1, ItemDura );
 
                     slotItem.quality = ItemQual*100 + ItemDura;
                     world:changeItem( slotItem );
@@ -206,7 +206,7 @@ function M.damageItemQual( Item, targetArea, gfxid, sfxid, modifier, ItemType )
                     ItemQual = math.floor( slotItem.quality / 100 );
                     ItemDura = slotItem.quality - ItemQual * 100;
 
-                    ItemQual = base.common.Limit( ItemDura - math.floor( base.common.Scale( 1, 9, (qual-100)/8.99 ) )*modifier, 1, 9 );
+                    ItemQual = common.Limit( ItemDura - math.floor( common.Scale( 1, 9, (qual-100)/8.99 ) )*modifier, 1, 9 );
 
                     slotItem.quality = ItemQual*100 + ItemDura;
                     world:changeItem( slotItem );
@@ -248,9 +248,9 @@ function M.checkHit( User, Item )
     factor = factor - distance * distance; -- -285 - 299
     factor = ( factor + 100 ) / 2; -- -92,5 - 199,5
 
-    factor = base.common.Limit( factor, 0, 100 );
+    factor = common.Limit( factor, 0, 100 );
 
-    maxPosiModify = base.common.Scale( 5, 0, factor );
+    maxPosiModify = common.Scale( 5, 0, factor );
 
     if maxPosiModify == 0 then
         return Item.pos;

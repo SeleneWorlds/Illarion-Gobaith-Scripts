@@ -3,7 +3,7 @@
 --Falk
 --HINWEIS: In dieser Ausbaustufe(12/2007) kann nur die Haltbarkeit verbessert werden, nicht die Qualit�t
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -145,7 +145,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
      world:changeItem(TargetItem)
 --
   else
-  base.common.InformNLS( Character,
+  common.InformNLS( Character,
             "Paste in der Hand mit einem Objekt in anderer Hand oder im G�rtel benutzen.",
             "Paste in your hand has to be used with an object in the other hand or in the belt.");
   end
@@ -170,7 +170,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         if( math.random( 20 ) == 1 ) then
             -- Sadly our Character does not get a new bottle
             -- So we tell him the bad news in german and english
-            base.common.InformNLS( Character,
+            common.InformNLS( Character,
             "Die Flasche zerbricht.",
             "The bottle breaks.");
         else
@@ -188,7 +188,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         -- It appears that our Character hits someone
         -- So he can't drink something
         -- Lets tell him about that...
-        base.common.InformNLS(Character,
+        common.InformNLS(Character,
         "Du kannst nichts trinken w�hrend du k�mpfst.",
         "You can't drink something while fighting.");
 
@@ -226,7 +226,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
     if( math.random( 20 ) == 1 ) then
         -- Sadly our Character does not get a new bottle
         -- So we tell him the bad news in german and english
-        base.common.InformNLS( Character,
+        common.InformNLS( Character,
         "Die Flasche zerbricht.",
         "The bottle breaks.");
     else
@@ -255,7 +255,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
         -- Lets inform the player that he ate too much
 
-        base.common.InformNLS(Character,"Du f�hlst wie der Trank deine Konzentration wieder steigert",
+        common.InformNLS(Character,"Du f�hlst wie der Trank deine Konzentration wieder steigert",
 		"You feel that the potion raises your concentration again");
 
 
@@ -265,12 +265,12 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
     elseif  (Character:increaseAttrib("foodlevel",0) > 40000) then
         -- The Character has already eaten alot.
         -- Lets tell him that he is stuffed!
-        base.common.InformNLS( Character,
+        common.InformNLS( Character,
         "Du bist satt.",
         "You are stuffed.");
     else
         -- Still much space in the stomach. Just say him what the potion does to his body
-       base.common.InformNLS(Character,"Du f�hlst wie der Trank deine Konzentration wieder steigert",
+       common.InformNLS(Character,"Du f�hlst wie der Trank deine Konzentration wieder steigert",
 		"You feel that the potion raises your concentration again");
     end
   else
@@ -284,7 +284,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        world:gfx(1,Targetitem.id_pos)
        world:makeSound(13,Targetitem.id_pos);
        if( math.random( 20 ) <= 1 ) then
-         base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
+         common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
        else
          Character:createItem( 164, 1, 333,0);
        end
@@ -292,7 +292,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        Character.movepoints=Character.movepoints-50;
 
     else
-      base.common.InformNLS(Character,"Du kannst die Paste nicht benutzen w�hrend du k�mpfst.", "You can't use the paste something while fighting.");
+      common.InformNLS(Character,"Du kannst die Paste nicht benutzen w�hrend du k�mpfst.", "You can't use the paste something while fighting.");
     end
   end
 end

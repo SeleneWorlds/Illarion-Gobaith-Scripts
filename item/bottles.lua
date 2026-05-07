@@ -6,7 +6,7 @@ local InitDrinks, UseItem, LookAtItem, UseItemWithCharacter
 -- UPDATE common SET com_script='item.bottles' WHERE com_itemid IN (2500, 2496, 2497, 2501, 2499);
 
 -- uses items of the new client - don't put this on the RS yet!
-require("base.common")
+local common = require("base.common")
 
 function M.InitDrinks()  -- initialisiert die coolen softdrinks in da hood.
     if ( drinkList == nil) then
@@ -70,7 +70,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 		progress = LuaOr( progress, (world:getTime("month")-1)*4096 ); -- set bit 13-16 (last month when used)
 		User:setQuestProgress( 1, progress );
         else
-		base.common.InformNLS( User,
+		common.InformNLS( User,
 		"Pl�tzlich kommen dir aus unerkl�rlichen Gr�nden Bedenken die Flasche zu auszutrinken.",
 		"Suddenly you begin to doubt whether it would be wise to quaff this potion");
         end;
@@ -104,7 +104,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
                                 world:changeQuality( SourceItem, -100 );
                             else
                                 if( math.random( 50 ) <= 1 ) then
-                                    base.common.InformNLS( User,
+                                    common.InformNLS( User,
                                     "Die leere Flasche ist angeschlagen und unbrauchbar.",
                                     "The empty bottle is broken and no longer usable.");
                                     world:erase(SourceItem,1);
@@ -116,7 +116,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
                             end
 
                         else
-                            base.common.InformNLS( User,
+                            common.InformNLS( User,
                             "Das Gef�� ist nicht in Griffweite.",
                             "The vessel is out of reach.");
                         end
@@ -127,7 +127,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 
                 end -- search loop
             else
-                base.common.InformNLS( User,
+                common.InformNLS( User,
                 "Nimm die Flasche in die Hand.",
                 "Take the bottle in your hands.");
             end
@@ -143,11 +143,11 @@ function M.LookAtItem(User,Item)
     if (Item.id==2496) and (Item.data >= 1) and (Item.data <= 3) then
 
         if (Item.data == 1) then
-            DisplayText = base.common.GetNLS( User, "Quellwasser der Troll's Vein", "Water from the Troll's Vein spring");
+            DisplayText = common.GetNLS( User, "Quellwasser der Troll's Vein", "Water from the Troll's Vein spring");
         elseif (Item.data == 2) then
-            DisplayText = base.common.GetNLS( User, "Quellwasser der Fairy's Tears", "Water from the Fairy's Tears spring");
+            DisplayText = common.GetNLS( User, "Quellwasser der Fairy's Tears", "Water from the Fairy's Tears spring");
         elseif (Item.data == 3) then
-            DisplayText = base.common.GetNLS( User, "Gesegnetes Wasser von Irundar", "Blessed Water of Irundar");
+            DisplayText = common.GetNLS( User, "Gesegnetes Wasser von Irundar", "Blessed Water of Irundar");
         end
         -- end
         -- end
@@ -178,11 +178,11 @@ function M.LookAtItem(User,Item)
         -- build quality text
         for i,qualLimit in pairs(BottleQualLm) do
             if (itemQual>=qualLimit ) then
-                DisplayText = base.common.GetNLS( User, BottleQualDe[i], BottleQualEn[i] );
+                DisplayText = common.GetNLS( User, BottleQualDe[i], BottleQualEn[i] );
                 break;
             end
         end
-        DisplayText = DisplayText..base.common.GetNLS( User, food[1], food[2] );
+        DisplayText = DisplayText..common.GetNLS( User, food[1], food[2] );
         --User:inform( DisplayText );
 
         world:itemInform(User,Item, DisplayText );
@@ -210,14 +210,14 @@ function M.UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
         		User:increaseAttrib("hitpoints",-500); --500HP damage for the Irmorom priest
 			end
 
-			base.common.InformNLS( TargetChar, "Du f�hlst wie eine heilende W�rme deinen K�rper durchstr�mt und dir neue Kraft schenkt.",
+			common.InformNLS( TargetChar, "Du f�hlst wie eine heilende W�rme deinen K�rper durchstr�mt und dir neue Kraft schenkt.",
 					         "You feel how a healing warmth runs through your body and spends you new strength.");
 
 
 
 
 		else
-			base.common.InformNLS( User, "Du kannst dich nicht selber heilen.",
+			common.InformNLS( User, "Du kannst dich nicht selber heilen.",
 					     "You can't heal yourself.");
 		end
 

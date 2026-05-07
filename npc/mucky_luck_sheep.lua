@@ -7,7 +7,7 @@ local _ENV = setmetatable(M, { __index = _G })
 -- for Nargun Parish
 -- game "mucky luck"
 
-require("base.common")
+local common = require("base.common")
 
 function M.InitNPC()
 
@@ -112,7 +112,7 @@ function M.moveSheep()
 
 	nextPos = nextPos[math.random(1,#nextPos)];
 
-	thisNPC:move(base.common.GetDirection(thisNPC.pos,nextPos),true);
+	thisNPC:move(common.GetDirection(thisNPC.pos,nextPos),true);
 end
 
 function M.getPosList(curPos)

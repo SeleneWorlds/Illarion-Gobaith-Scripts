@@ -3,7 +3,7 @@
 
 --UPDATE common SET com_script='base_wind.lua' WHERE com_itemid=(373);
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 

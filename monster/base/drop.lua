@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 function M.ClearDropping()
     SelItemValue={};
@@ -70,11 +70,11 @@ function M.SpellResistence( Char )
     local CInt   = Char:increaseAttrib("intelligence",0);
     local CEss   = Char:increaseAttrib("essence",0);
     local CSkill = Char:getSkill("magic resistance") ;
-    CSkill = base.common.Limit( CSkill, 0, M.MaximalMagicResistance( Char ) );
+    CSkill = common.Limit( CSkill, 0, M.MaximalMagicResistance( Char ) );
 
-    local ResTry=base.common.Limit(CSkill * ( ( CEss*3 + CInt*2 ) / 63 ), 0, 100 );
+    local ResTry=common.Limit(CSkill * ( ( CEss*3 + CInt*2 ) / 63 ), 0, 100 );
 
-    return base.common.Limit( math.floor( ResTry * math.random(8,12)/10 ), 0, 100 );
+    return common.Limit( math.floor( ResTry * math.random(8,12)/10 ), 0, 100 );
 end
 
 function M.LearnMagicResistance( Char )
@@ -85,7 +85,7 @@ end
 
 function M.MaximalMagicResistance( Char )
     local maxMagicResist = 1.4 * ( Char:increaseAttrib("intelligence",0) + ( Char:increaseAttrib("willpower",0) * 1.75 ) + ( Char:increaseAttrib("essence",0) * 2 ) ) + 5;
-    return base.common.Limit( maxMagicResist, 0, 100 );
+    return common.Limit( maxMagicResist, 0, 100 );
 end
 
 function M.CastLargeAreaMagic( monster, rndTry, LoadupRounds, LoadupEffect, DamageRange, Range, Effect, AP, CastingTry )
@@ -130,7 +130,7 @@ function M.CastLargeAreaMagic( monster, rndTry, LoadupRounds, LoadupEffect, Dama
     for i,target in pairs(targets) do
         local CastTry = math.random(CastingTry[1],CastingTry[2]) - M.SpellResistence( target );
         CastTry = ( CastTry - CastingTry[1] ) / ( CastingTry[2] - CastingTry[1] ) * 100;
-        local Damage = base.common.ScaleUnlimited( DamageRange[1], DamageRange[2], CastTry );
+        local Damage = common.ScaleUnlimited( DamageRange[1], DamageRange[2], CastTry );
         if Damage > 0 then
             target:increaseAttrib("hitpoints",-Damage);
             M.LearnMagicResistance( target );
@@ -153,7 +153,7 @@ function M.CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFl
     if (math.random(1,rndTry)==1) and (Monster.pos.z==Enemy.pos.z) then
         local EffectTry=math.random(1,#Effect+#Item);
         if ( EffectTry > #Effect ) then
-            base.common.CreateLine(Monster.pos,Enemy.pos, function( targetPos )
+            common.CreateLine(Monster.pos,Enemy.pos, function( targetPos )
                 if world:isCharacterOnField( targetPos ) then
                     if world:isItemOnField( targetPos ) then
                         local foundItem = world:getItemOnField( targetPos );
@@ -171,18 +171,18 @@ function M.CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFl
                 world:gfx( LineOfFlight, targetPos );
                 return true;
             end );
-            base.common.TalkNLS( Monster, CCharacter.say,
+            common.TalkNLS( Monster, CCharacter.say,
             "#me murmelt eine mystische Formel.",
             "#me mumbles a mystical formula.");
             Monster.movepoints=Monster.movepoints-AP;
             return true;
         else
-            base.common.CreateLine(Monster.pos,Enemy.pos, function( targetPos )
+            common.CreateLine(Monster.pos,Enemy.pos, function( targetPos )
                 if world:isCharacterOnField( targetPos ) then
                     local Enemy = world:getCharacterOnField( targetPos );
                     local CastTry = math.random(CastingTry[1],CastingTry[2]) - M.SpellResistence( Enemy );
                     CastTry = ( CastTry - CastingTry[1] ) / ( CastingTry[2] - CastingTry[1] ) * 100;
-                    local Damage = base.common.ScaleUnlimited( DamageRange[1], DamageRange[2], CastTry );
+                    local Damage = common.ScaleUnlimited( DamageRange[1], DamageRange[2], CastTry );
                     if Damage > 0 then
                         Enemy:increaseAttrib("hitpoints",-Damage);
                         M.LearnMagicResistance( Enemy );
@@ -202,7 +202,7 @@ function M.CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFl
                 world:gfx( LineOfFlight, targetPos );
                 return true;
             end );
-            base.common.TalkNLS( Monster, CCharacter.say,
+            common.TalkNLS( Monster, CCharacter.say,
             "#me murmelt eine mystische Formel.",
             "#me mumbles a mystical formula.");
             Monster.movepoints=Monster.movepoints-AP;
@@ -249,7 +249,7 @@ function M.CastHealing( Caster, rndTry, HealAmmount, Range, Effect, AP )
 
     other_monsters[ selected_monster ].movepoints = other_monsters[ selected_monster ].movepoints - AP;
 
-    base.common.TalkNLS( Monster, CCharacter.say,
+    common.TalkNLS( Monster, CCharacter.say,
     "#me murmelt eine mystische Formel und wird von einem warmen Leuchten umgeben.",
     "#me mumbles a mystical formula and gets surrounded by a warm glowing.");
     return true;
@@ -259,7 +259,7 @@ function M.CastParalyze( Caster, Enemy, rndTry, APPunishment, Range, Effect, AP 
     if (math.random(1,rndTry)==1) and (Monster.pos.z==Enemy.pos.z) then
         local CastTry = math.random(CastingTry[1],CastingTry[2]) - M.SpellResistence( Enemy );
         CastTry = ( CastTry - CastingTry[1] ) / ( CastingTry[2] - CastingTry[1] ) * 100;
-        local Damage = base.common.ScaleUnlimited( APPunishment[1], APPunishment[2], CastTry );
+        local Damage = common.ScaleUnlimited( APPunishment[1], APPunishment[2], CastTry );
         if Damage > 0 then
             Enemy.movepoints = Enemy.movepoints - Damage;
             M.LearnMagicResistance( Enemy );
@@ -312,7 +312,7 @@ function M.Stealing(Monster,Enemy)
 	            Enemy:eraseItem(3076,Steal);
 	        end
 	        if StealSomething then
-	            base.common.InformNLS( Enemy,
+	            common.InformNLS( Enemy,
 	                "Der Bandit greift mit einem schnellen Griff nach deinem Geld und schnappt sich ein paar Münzen",
 	                "The bandit makes a quick grab at your money and takes some coins." );
 	            Monster.movepoints=Monster.movepoints-10;
@@ -352,7 +352,7 @@ function M.CastMonster(Monster,Enemy,rndTry,monsters,AP)
 
     world:gfx(41,SpawnMonster.pos);
     Monster.movepoints=Monster.movepoints-AP;
-    base.common.TalkNLS( Monster, CCharacter.say,
+    common.TalkNLS( Monster, CCharacter.say,
     "#me murmelt eine mystische Formel.",
     "#me mumbles a mystical formula.");
     --]]
@@ -392,7 +392,7 @@ function M.MonsterRandomTalk(Monster,msgs)
         Monster:increaseSkill(1,"common language",100-Monster:getSkill("common language")); --if the monster could not talk, it can talk now
 
         germanMessage, englishMessage = msgs:getRandomMessage(); --choses a random message
-        base.common.TalkNLS( Monster, CCharacter.say, germanMessage, englishMessage ); --does the talking in both languages
+        common.TalkNLS( Monster, CCharacter.say, germanMessage, englishMessage ); --does the talking in both languages
 
     end
 

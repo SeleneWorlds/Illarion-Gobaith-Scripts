@@ -1,7 +1,7 @@
 --I_167_gelbe_flasche / Krankheiten und Gifte
 --Druidensystem in Arbeit
 --Falk
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -62,7 +62,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
     Character.effects:addEffect(myEffect);
   else
 --  Character hat schon eine Krankheit (und ist immun vor weiterer Infektion)
-    base.common.InformNLS(Character,
+    common.InformNLS(Character,
 		"#w Du trinkst die Fl�ssigkeit, doch sie scheint keine Wirkung auf dich zu haben.",
 		"#w You drink the liquid but it doesn't seem to have any effect on you.");
   end
@@ -105,7 +105,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
      world:erase(SourceItem,1);
 	 if( math.random( 20 ) <= 1 ) then
-       base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
+       common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
      else
        Character:createItem( 164, 1, 333,0);
      end
@@ -113,7 +113,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
      Character.movepoints=Character.movepoints-50;
 
   else
-    base.common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+    common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
   end
 end
 
@@ -134,32 +134,32 @@ function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
                     AttribValDef=math.floor((Character:increaseAttrib("dexterity",0)+(Character:increaseAttrib("agility",0)*2))/3)*(math.random(7,13)/10);
                     PoiDef=(5*AttribValDef)-11;
                     if (PoiTry>PoiDef) then
-                        base.common.InformNLS(User,"Du verabreichst deinem Opfer das Gift.","You administer your victim the toxin.");
-                        base.common.InformNLS(Character,"Jemand hat dir Gift in den in den Mund gesch�ttet.","Someone pour you a toxin into your mouth.");
+                        common.InformNLS(User,"Du verabreichst deinem Opfer das Gift.","You administer your victim the toxin.");
+                        common.InformNLS(Character,"Jemand hat dir Gift in den in den Mund gesch�ttet.","Someone pour you a toxin into your mouth.");
                         world:erase(SourceItem,1);
                         world:makeSound(12,Character.pos);
-				Character:setPoisonValue( base.common.Limit( (Character:getPoisonValue() + (math.floor((825/100)*(SkillVal-AttribValDef)+(175/10)))) , 0, 10000) );
+				Character:setPoisonValue( common.Limit( (Character:getPoisonValue() + (math.floor((825/100)*(SkillVal-AttribValDef)+(175/10)))) , 0, 10000) );
                         --Character:increasePoisonValue(math.floor((825/100)*(SkillVal-AttribValDef)+(175/10)));
                     else
-                        base.common.InformNLS(User,"Du versuchst deinem Opfer das Gift zu verabreichen, aber du scheiterst.","You try to administer the toxin to your victim, buy you fail.");
-                        base.common.InformNLS(Character,"Jemand versuchte dir den Inhalt einer Flasche in den Mund zu sch�tten.","Someone tried to make you drink a potion.");
+                        common.InformNLS(User,"Du versuchst deinem Opfer das Gift zu verabreichen, aber du scheiterst.","You try to administer the toxin to your victim, buy you fail.");
+                        common.InformNLS(Character,"Jemand versuchte dir den Inhalt einer Flasche in den Mund zu sch�tten.","Someone tried to make you drink a potion.");
                         world:erase(SourceItem,1);
                     end
                     if( math.random( 50 ) <= 1 ) then
-                        base.common.InformNLS( User, "Die Flasche zerbricht.", "The bottle breaks.");
+                        common.InformNLS( User, "Die Flasche zerbricht.", "The bottle breaks.");
                     else
                         User:createItem( 164, 1, 333,0);
                     end
                     User:learn(5,SkillName,1,(3*AttribValDef)+40);
                     User.movepoints=User.movepoints-10;
                 else
-                    base.common.InformNLS(User,"Dein Opfer darf nicht zu dir sehen, wenn du Erfolg haben willst.","Your victim shouldn't look at you, if you want to succeed.");
+                    common.InformNLS(User,"Dein Opfer darf nicht zu dir sehen, wenn du Erfolg haben willst.","Your victim shouldn't look at you, if you want to succeed.");
                 end
             else
-                base.common.InformNLS(User,"Du musst zu deinem Opfer sehen.","You have to look at your victim.");
+                common.InformNLS(User,"Du musst zu deinem Opfer sehen.","You have to look at your victim.");
             end
         else
-            base.common.InformNLS(User,"Du musst den Gift Trank in die Hand nehmen.","You have to take the poison potion in your hand.");
+            common.InformNLS(User,"Du musst den Gift Trank in die Hand nehmen.","You have to take the poison potion in your hand.");
         end
     else
         UserKons=User:increaseAttrib("constitution",0);

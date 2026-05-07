@@ -4,7 +4,7 @@ local GetWineQuality
 -- basic function for craft handling
 -- Nitram
 -- added object orientation by vilarion
-require("base.common")
+local common = require("base.common")
 
 -- ## NOTE: replaced os.time() with 123456789
 
@@ -172,7 +172,7 @@ end
 --------------------------------------------------------------------------------
 
 function Craft:SwapToActiveItem( User )
-    local frontItem = base.common.GetFrontItem( User );
+    local frontItem = common.GetFrontItem( User );
     if not self.ToolLink[frontItem.id] then
         return
     end
@@ -188,7 +188,7 @@ function Craft:SwapToActiveItem( User )
 end
 
 function Craft:SwapToInactiveItem( User )
-    local frontItem = base.common.GetFrontItem( User );
+    local frontItem = common.GetFrontItem( User );
     if not self.ToolLink[frontItem.id] then
         return
     end
@@ -207,7 +207,7 @@ end
 
 function Craft:checkRequiredFood( User, NeededFood, Difficulty )
     local requiredFood = NeededFood*( 0.02*Difficulty+1 );
-    if base.common.FitForHardWork( User, ( NeededFood*2 )+requiredFood ) then
+    if common.FitForHardWork( User, ( NeededFood*2 )+requiredFood ) then
         return true,requiredFood;
     else
         return false,0;
@@ -217,7 +217,7 @@ end
 function Craft:ModifySkill( User,toolItem )
     local Skill = User:getSkill(self.LeadSkill);
     local Attrib = User:increaseAttrib(self.LeadAttrib,0);
-    stone1, str1, stone2, str2=base.common.GetBonusFromTool(toolItem);
+    stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
     local step=0;
     if stone1==3 then       -- ruby raises skill
         step=str1;
@@ -226,8 +226,8 @@ function Craft:ModifySkill( User,toolItem )
         step=step+str2;
     end
     Skill=Skill+step;
-    --User:inform("ModifySkill: "..Skill * base.common.Scale(0.5,1.5,Attrib*5));
-    return math.min(100,math.max(0,Skill * base.common.Scale(0.5,1.5,Attrib*5)));
+    --User:inform("ModifySkill: "..Skill * common.Scale(0.5,1.5,Attrib*5));
+    return math.min(100,math.max(0,Skill * common.Scale(0.5,1.5,Attrib*5)));
 end
 
 function Craft:CheckMaterial( User, ItemID, Step )
@@ -241,15 +241,15 @@ function Craft:CheckMaterial( User, ItemID, Step )
     local available = User:countItemAt( StepInfos[3], StepInfos[1] );
     if (available < StepInfos[2]) then
         if (self.SecretArt) then
-            base.common.TempInformNLS( User,
+            common.TempInformNLS( User,
             "Dir fehlt ein notwendiges Material.",
             "You do not have a required material ready." );
         elseif (available == 0) then
-            base.common.TempInformNLS( User,
+            common.TempInformNLS( User,
             "Dir fehlt "..world:getItemName( StepInfos[1], CPlayer.german )..".",
             "You lack "..world:getItemName( StepInfos[1], CPlayer.english ).."." );
         else
-            base.common.TempInformNLS( User,
+            common.TempInformNLS( User,
             "Das Material reicht nicht. Du brauchst mehr "..world:getItemName( StepInfos[1], CPlayer.german ),
             "The materials are insufficient. You lack of "..world:getItemName( StepInfos[1], CPlayer.english ) );
         end
@@ -259,7 +259,7 @@ function Craft:CheckMaterial( User, ItemID, Step )
 end
 
 function Craft:checkSuccess( User, ItemID,toolItem )
-    local Chance = base.common.Scale(60,96,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(self.Products[ItemID].Difficulty[2]-self.Products[ItemID].Difficulty[1])*100);
+    local Chance = common.Scale(60,96,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(self.Products[ItemID].Difficulty[2]-self.Products[ItemID].Difficulty[1])*100);
     --User:inform("Erfolgschance: "..Chance);
     if (math.random()*100 > Chance) then
         return false;
@@ -269,8 +269,8 @@ function Craft:checkSuccess( User, ItemID,toolItem )
 end
 
 function Craft:GenerateQuality( User, ItemID, toolItem )
-    local Qual = base.common.Scale(5,8,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
-    stone1, str1, stone2, str2=base.common.GetBonusFromTool(toolItem);
+    local Qual = common.Scale(5,8,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
+    stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
     local step=0;
     local qual_tool=math.floor(toolItem.quality/100);
     if stone1==7 then       -- topas raises quality of product
@@ -287,10 +287,10 @@ function Craft:GenerateQuality( User, ItemID, toolItem )
     end
     Qual = Qual * (((math.random()+step)*0.2)+0.9);     -- add bonus from bluestone to random result!
     Qual = Qual * (((math.random()+step)*0.2)+0.9);
-    Qual = Qual * base.common.Scale(4,11,math.floor(qual_tool*11))/10; --Changing lower bounds will make tools matter less
+    Qual = Qual * common.Scale(4,11,math.floor(qual_tool*11))/10; --Changing lower bounds will make tools matter less
     Qual = math.floor(Qual);
     Qual = math.max(1,math.min(9,Qual));
-    local Dura = base.common.Scale(66,88,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
+    local Dura = common.Scale(66,88,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
    --[[ step=0;
     if stone1==2 then       -- smaragd raises durability of product
         step=0.05*str1;
@@ -300,7 +300,7 @@ function Craft:GenerateQuality( User, ItemID, toolItem )
     end
     Dura = Dura * (((math.random()+step)*0.2)+0.9);
     Dura = Dura * (((math.random()+step)*0.2)+0.9);
-    Dura = Dura * base.common.Scale(4,11,math.floor(qual_tool*11))/10;
+    Dura = Dura * common.Scale(4,11,math.floor(qual_tool*11))/10;
     Dura = math.floor(Dura);
     Dura = math.max(01,math.min(99,Dura)); ]]--
 	Dura = 99; -- all produced items will have maximum durability
@@ -308,8 +308,8 @@ function Craft:GenerateQuality( User, ItemID, toolItem )
 end
 
 function Craft:GenerateRepairEffekt( User, ItemID,toolItem )
-    local Qual = base.common.Scale(5,22,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
-    stone1, str1, stone2, str2=base.common.GetBonusFromTool(toolItem);
+    local Qual = common.Scale(5,22,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
+    stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
     local step=0;
     if stone1==4 then       -- blackstone raises reparation stuff
         step=0,05*str1;
@@ -328,7 +328,7 @@ function Craft:GenWorkTime(User, ItemID, toolItem)
     local Attrib = User:increaseAttrib(self.LeadAttrib,0);
     local Skill  = math.min(100,User:getSkill(self.LeadSkill)*10);
 
-    gem1, str1, gem2, str2=base.common.GetBonusFromTool(toolItem);
+    gem1, str1, gem2, str2=common.GetBonusFromTool(toolItem);
     step=0;
     if gem1==3 then     -- ruby modifies skill!
         step=str1;
@@ -347,7 +347,7 @@ function Craft:GenWorkTime(User, ItemID, toolItem)
     step=step*1.75;
     time1=math.floor((self.Products[ ItemID ].TimePerStep[1])*(100-step)/100);
     time2=math.floor((self.Products[ ItemID ].TimePerStep[2])*(100-step)/100);
-    return math.floor(base.common.Scale(time1,time2,(Attrib+Skill-self.Products[ ItemID ].Difficulty[1])/(100 - self.Products[ ItemID ].Difficulty[2])*100));
+    return math.floor(common.Scale(time1,time2,(Attrib+Skill-self.Products[ ItemID ].Difficulty[1])/(100 - self.Products[ ItemID ].Difficulty[2])*100));
 end
 
 function Craft:GetNextStep( User, Item )
@@ -356,61 +356,61 @@ end
 
 function Craft:LocationFine( User, ltstate, mode )
     if (self.Tool ~= 0) then
-        local StaticTool = base.common.GetFrontItemID( User );
+        local StaticTool = common.GetFrontItemID( User );
         if ((ltstate ~= Action.success) and (self.ToolLink[StaticTool] ~= StaticTool) and (#self.ActiveTool ~= 0)) then
             if self.ActiveTool[StaticTool] then
                 if not mode then
-                    base.common.TempInformNLS(User,
+                    common.TempInformNLS(User,
                     "Hier arbeitet schon jemand.",
                     "Someone is working here already.");
                     return false
                 else
-                    return 2,base.common.GetNLS(User,
+                    return 2,common.GetNLS(User,
                     "#w Hier arbeitet schon jemand.",
                     "#w Someone is working here already.");
                 end
             elseif not self.Tool[StaticTool] then
                 if not mode then
-                    base.common.TempInformNLS(User,
+                    common.TempInformNLS(User,
                     "Hier kannst du nicht arbeiten.",
                     "You cannot work here.");
                     return false
                 else
-                    return 1,base.common.GetNLS(User,
+                    return 1,common.GetNLS(User,
                     "#w Hier kannst du nicht arbeiten.",
                     "#w You cannot work here.");
                 end
             end
         elseif not self.ActiveTool[StaticTool] and not self.Tool[StaticTool] then
             if not mode then
-                base.common.TempInformNLS(User,
+                common.TempInformNLS(User,
                 "Hier kannst du nicht arbeiten.",
                 "You cannot work here.");
                 return false
             else
-                return 1,base.common.GetNLS(User,
+                return 1,common.GetNLS(User,
                 "#w Hier kannst du nicht arbeiten.",
                 "#w You cannot work here.");
             end
-        elseif base.common.GetFrontItem( User ).quality < 100 then
+        elseif common.GetFrontItem( User ).quality < 100 then
             if not mode then
-                base.common.TempInformNLS(User,
+                common.TempInformNLS(User,
                 "Das Werkzeug ist kaputt.",
                 "The tool is broken.");
                 return false
             else
-                return 1,base.common.GetNLS(User,
+                return 1,common.GetNLS(User,
                 "#w Das Werkzeug ist kaputt.",
                 "#w The tool is broken.");
             end
-		elseif base.common.GetFrontItem( User ).id==359 and base.common.GetFrontItem( User ).quality==100 then
+		elseif common.GetFrontItem( User ).id==359 and common.GetFrontItem( User ).quality==100 then
 			if not mode then
-                base.common.TempInformNLS(User,
+                common.TempInformNLS(User,
                 "Die Flamme ist nur eine Illusion.",
                 "The flame is just an illusion.");
                 return false
             else
-                return 1,base.common.GetNLS(User,
+                return 1,common.GetNLS(User,
                 "#w Die Flamme ist nur eine Illusion.",
                 "#w The flame is just an illusion.");
             end
@@ -425,9 +425,9 @@ end
 
 function Craft:CheckInterrupt(User)
     if (#self.Interrupt_Messages > 0) then
-        if base.common.IsInterrupted( User ) then
+        if common.IsInterrupted( User ) then
             local message = math.random(1,#self.Interrupt_Messages);
-            base.common.TempInformNLS(User,
+            common.TempInformNLS(User,
             self.Interrupt_Messages[message].german,
             self.Interrupt_Messages[message].english);
             return false;
@@ -440,7 +440,7 @@ function Craft:GenerateMenu( User, toolItem )
     if (#self.Category == 0) then
         return false;
     end
-    local StaticTool = base.common.GetFrontItemID( User );
+    local StaticTool = common.GetFrontItemID( User );
     local Skill = self:ModifySkill(User,toolItem);
     local subCat=MenuStruct(  );
     for i, Cat in pairs(self.Category) do
@@ -453,7 +453,7 @@ function Craft:GenerateMenu( User, toolItem )
 end
 
 function Craft:GenerateItemList( User, Param, toolItem )
-    local StaticTool = base.common.GetFrontItemID( User );
+    local StaticTool = common.GetFrontItemID( User );
     local Skill = self:ModifySkill(User,toolItem);
     local ItemMenu=MenuStruct(  );
     if (#self.Category == 0) then
@@ -495,7 +495,7 @@ function Craft:ToolCreateItem( User, Param, WorkOnItem, ltstate, toolItem )
         return;
     end
     if (ProduceItem.Difficulty[1] > self:ModifySkill(User,toolItem)) then
-        base.common.TempInformNLS(User,
+        common.TempInformNLS(User,
         "Du bist nicht f�hig genug um das zu tun.",
         "You are not skilled enough to do this.");
         return
@@ -531,8 +531,8 @@ function Craft:ToolCreateItem( User, Param, WorkOnItem, ltstate, toolItem )
         end
     end
     if didSomething and (ltstate == Action.success) then
-        base.common.ToolBreaks( User, toolItem, true );
-        base.common.GetHungry( User, neededFood );
+        common.ToolBreaks( User, toolItem, true );
+        common.GetHungry( User, neededFood );
         User:learn(self.LeadSkillGroup,self.LeadSkill,2,math.min(100,ProduceItem.Difficulty[2]));
     end
 end
@@ -547,7 +547,7 @@ function Craft:RepairItem( User, Item, ltstate ,toolItem)
     end
 
     if (Item.quality < 200) then
-        base.common.TempInformNLS(User,
+        common.TempInformNLS(User,
         "Der Gegenstand zerbricht, bei dem Versuch ihn zu reparieren.",
         "The Item breaks, while trying to repair it.");
         world:erase(Item,1);
@@ -577,7 +577,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
 			end
 		end
 		if not foundSlot then
-			base.common.TempInformNLS(User,
+			common.TempInformNLS(User,
 				"Du hast keinen Platz mehr in deinem G�rtel.",
 				"You have no room left in your belt.");
 			return;
@@ -587,7 +587,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
             User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu arbeiten.");
             User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to work.");
         else
-            base.common.TempInformNLS(User,
+            common.TempInformNLS(User,
 				"Du setzt die Arbeit fort.",
 				"You continue the work.");
         end
@@ -645,7 +645,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         if (Step == #self.Products[ ItemID ].ProductionSteps) then -- Item fertig -> Finale Qualit�t
             ItemQual = self:GenerateQuality( User, ItemID, toolItem );
             ItemCount = self.Products[ ItemID ].Quantity;
-			base.common.TempInformNLS(User,
+			common.TempInformNLS(User,
 				"Du beendest die Arbeit.",
 				"You finish the work.");
         else
@@ -655,7 +655,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
 			local notcreated = User:createItem(ItemID,ItemCount,ItemQual,0);
             if (notcreated ~= 0) then
                 world:createItemFromId(ItemID,notcreated,User.pos,true,ItemQual,0);
-                base.common.TempInformNLS(User,
+                common.TempInformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You cannot carry anything else.");
             else
@@ -671,7 +671,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                     end
                     if foundMadeItem then
                         User:startAction( self:GenWorkTime( User, ItemID, toolItem ), self.Products[ ItemID ].GfxEffect[1], self.Products[ ItemID ].GfxEffect[2], self.Products[ ItemID ].SfxEffect[1], self.Products[ ItemID ].SfxEffect[2]);
-                        base.common.TempInformNLS(User,
+                        common.TempInformNLS(User,
 							"Du setzt die Arbeit fort.",
 							"You continue the work.");
                     else
@@ -692,7 +692,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
             world:changeItem(WorkOnItem);
             if self:CheckMaterial( User, ItemID, (Step + 1) ) then
                 User:startAction( self:GenWorkTime( User, ItemID, toolItem ), self.Products[ ItemID ].GfxEffect[1], self.Products[ ItemID ].GfxEffect[2], self.Products[ ItemID ].SfxEffect[1], self.Products[ ItemID ].SfxEffect[2]);
-                base.common.TempInformNLS(User,
+                common.TempInformNLS(User,
 					"Du setzt die Arbeit fort.",
 					"You continue the work.");
                 User:changeTarget(User:getItemAt(WorkOnItem.itempos));
@@ -701,7 +701,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
             end
         end
     else
-        base.common.TempInformNLS(User,
+        common.TempInformNLS(User,
         "Deine Arbeit misslingt.",
         "Your work fails.");
         if (self.Products[ ItemID ].FailLeftOvers[Step] ~= nil) then
@@ -709,7 +709,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                 local notcreated = User:createItem(self.Products[ ItemID ].FailLeftOvers[Step][1],self.Products[ ItemID ].FailLeftOvers[Step][2],333,0);
                 if (notcreated ~= 0) then
                     world:createItemFromId(self.Products[ ItemID ].FailLeftOvers[Step][1],notcreated,User.pos,true,333,0);
-                    base.common.TempInformNLS(User,
+                    common.TempInformNLS(User,
                     "Du kannst nichts mehr halten.",
                     "You cannot carry anything else.");
                 end
@@ -721,7 +721,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         local notcreated = User:createItem(self.Products[ ItemID ].LeftOvers[Step][1],self.Products[ ItemID ].LeftOvers[Step][2],333,0);
         if (notcreated ~= 0) then
             world:createItemFromId(self.Products[ ItemID ].LeftOvers[Step][1],notcreated,User.pos,true,333,0);
-            base.common.TempInformNLS(User,
+            common.TempInformNLS(User,
             "Du kannst nichts mehr halten.",
             "You cannot carry anything else.");
         end

@@ -1,3 +1,4 @@
+local common = require("base.common")
 local M = {}
 local LookAtItem, MoveItemBeforeMove
 
@@ -81,21 +82,21 @@ function M.LookAtItem(User,Item)
     end
     local desc = base.lookat.GetItemDescription(User,Item,4,false,false );
     if ( Item.data == 1 ) then
-        world:itemInform(User,Item,base.lookat.GetItemDescription(User,Item,4,false,false )..base.common.GetNLS(User, " mit Gravur Troll's Bane", " with gravure Trolls Bane"));
+        world:itemInform(User,Item,base.lookat.GetItemDescription(User,Item,4,false,false )..common.GetNLS(User, " mit Gravur Troll's Bane", " with gravure Trolls Bane"));
     elseif ( Item.data == 2 ) then
-        world:itemInform(User,Item,base.common.GetNLS(User, "Siegelring der Grauen Rose", "signet ring of the Grey Rose"));
+        world:itemInform(User,Item,common.GetNLS(User, "Siegelring der Grauen Rose", "signet ring of the Grey Rose"));
     elseif ( Item.data == 3 ) then
-        world:itemInform(User,Item,base.common.GetNLS(User, "Siegelring von Greenbriar", "signet ring of Greenbriar"));
+        world:itemInform(User,Item,common.GetNLS(User, "Siegelring von Greenbriar", "signet ring of Greenbriar"));
     elseif ( Item.data == 4 ) then
-        world:itemInform(User,Item,base.common.GetNLS(User, desc.." mit dem Wappen der Littlethorns", desc.." with the coat of arms of the Littlethorns"));
+        world:itemInform(User,Item,common.GetNLS(User, desc.." mit dem Wappen der Littlethorns", desc.." with the coat of arms of the Littlethorns"));
     elseif ( Item.data == 5 ) then
-        world:itemInform(User,Item,base.common.GetNLS(User, "exzellenter Topasring mit der Gravur Faladron Furnir", " excellent topas ring with gravure Faladron Furnir"));
+        world:itemInform(User,Item,common.GetNLS(User, "exzellenter Topasring mit der Gravur Faladron Furnir", " excellent topas ring with gravure Faladron Furnir"));
     elseif ( Item.data == 6 ) then
-        world:itemInform(User,Item,base.common.GetNLS(User, "exzellenter Topasring mit der Gravur Fayne Furnir", " excellent topas ring with gravure Fayne Furnir"));
+        world:itemInform(User,Item,common.GetNLS(User, "exzellenter Topasring mit der Gravur Fayne Furnir", " excellent topas ring with gravure Fayne Furnir"));
     elseif ( Item.data == 7 ) then
-        world:itemInform(User,Item,base.common.GetNLS(User, desc.." mit der Gravur einer angebissenen Mandarine und eines sich in den Schwanz beissenden Panthers", desc.." with the gravure of a partly eaten tangerine and a panther biting his own tail"));
+        world:itemInform(User,Item,common.GetNLS(User, desc.." mit der Gravur einer angebissenen Mandarine und eines sich in den Schwanz beissenden Panthers", desc.." with the gravure of a partly eaten tangerine and a panther biting his own tail"));
     elseif ( Item.data == 8 ) then
-        world:itemInform(User,Item,base.common.GetNLS(User, desc.." mit dem Wappen der Heneghans", desc.." with the Heneghan crest"));
+        world:itemInform(User,Item,common.GetNLS(User, desc.." mit dem Wappen der Heneghans", desc.." with the Heneghan crest"));
     else
         world:itemInform(User,Item,desc);
     end

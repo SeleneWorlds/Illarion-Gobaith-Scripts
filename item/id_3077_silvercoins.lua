@@ -1,7 +1,7 @@
 local M = {}
 local UseItem, MoveItemBeforeMove, findText
 
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.id_3077_silvercoins' WHERE com_itemid IN (3077);
 

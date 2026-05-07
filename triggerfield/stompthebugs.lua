@@ -1,6 +1,6 @@
 -- Used by quest 'stomp the bugs'
 --  pos -19, -5, 0
-require("base.common")
+local common = require("base.common")
 require("base.keys")
 
 module("triggerfield.stompthebugs", package.seeall)

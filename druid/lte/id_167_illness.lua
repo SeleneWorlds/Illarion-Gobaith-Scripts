@@ -1,6 +1,6 @@
 -- LTE f�r das Druidensystem
 -- by Falk
-require("base.common")
+local common = require("base.common")
 local outfit = require("druid.base.outfit")
 
 local M = {}
@@ -54,7 +54,7 @@ function M.getEffect_1(Character,Runde)
 			end
 		end
 		if curItem.id > 0 then
-			base.common.InformNLS(Character,
+			common.InformNLS(Character,
 				"#w Du f�hlst eine unangenehme Hitze in dir aufsteigen und Du hast den Zwang, Dir die Kleider vom Leib zu rei�en",
 				"#w You feel a painful heat emerging and you have to put off some clothes");
 			world:createItemFromItem(curItem,Character.pos,true);
@@ -72,7 +72,7 @@ function M.getEffect_2(Character,Runde)
    if Runde -(math.floor(Runde/25)*25) == 0 then
 
 --    Enstprechender RP-Text
-      base.common.InformNLS(Character,"#w Dir wird urpl�tzlich schlecht, Dein Magen rebelliert und Du musst Dich �bergeben.",
+      common.InformNLS(Character,"#w Dir wird urpl�tzlich schlecht, Dein Magen rebelliert und Du musst Dich �bergeben.",
                            "#w You feel sick, your stomache strikes back and you need to puke")
 
 --    Spieler dreht sich ab
@@ -208,7 +208,7 @@ function M.getEffect_4(Character,Runde)
 		local chance = math.random(1,#paranoiaList[1]);
 		local race = Character:get_race() + 1;
 		if race > 9 then race = 4 end;
-		base.common.TempInformNLS(Character,
+		common.TempInformNLS(Character,
 			string.gsub(paranoiaList[1][chance],"%RACETEXT",raceList[1][race]),
 			string.gsub(paranoiaList[2][chance],"%RACETEXT",raceList[2][race]));
 	  end
@@ -251,7 +251,7 @@ function M.getEffect_5(Character,Effect,Runde)
 		end
 	end
 	if doInform or Runde-(math.floor(Runde/60)*60) == 0 then
-		base.common.InformNLS(Character,
+		common.InformNLS(Character,
 			"#w An deinem K�rper haben sich rote, stark juckende Pusteln gebildet."..(doInform and " Du kannst jene Kleidung nicht am K�rper halten." or ""),
 			"#w All over your body you find little red terribly itching blisters."..(doInform and " You can't keep that clothes at your body." or ""));
 	end
@@ -274,7 +274,7 @@ function M.getEffect_6(Character,Runde)
 		end
 	end
 	if doInform or Runde-(math.floor(Runde/60)*60) == 0 then
-		base.common.InformNLS(Character,
+		common.InformNLS(Character,
 			"#w An deinen H�nden haben sich gr�nlich schimmernde schmerzhafte eitrige Dornwarzen gebildet."..(doInform and " Du musst alles in deinen H�nden fallen lassen." or ""),
 			"#w Your hands are covered with greenish glimmering painful mucopurulent plantar warts."..(doInform and " You have to drop everything you hold in your hands." or ""));
 	end
@@ -292,7 +292,7 @@ function M.getEffect_7(Character,Runde)
       end
       Character.movepoints = Character.movepoints -50
 	  if Runde-(math.floor(Runde/30)*30) == 0 then
-		base.common.InformNLS(Character,
+		common.InformNLS(Character,
 			"#w Du f�hlst Dich fiebrig, dein Puls ist flach, auf Deiner Stirn gl�nzt kalter Schwei�.",
 			"#w You feel febrile, your pulse is low, at your frown cold sweat is shining.");
 	  end
@@ -307,7 +307,7 @@ function M.getEffect_8(Character,Effect,Runde)
 -- Standard: jede 10. Runde:
    if Runde -(math.floor(Runde/10)*10) == 0 then
       if math.random(6) == 6 then
-         base.common.InformNLS(Character,
+         common.InformNLS(Character,
 			"#w Du hast das Gef�hl, dein Organe w�rden brennen.",
 			"#w Your insides feel like burning.");
       end
@@ -385,14 +385,14 @@ function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 		if foundImmunityEffect then
 			if immunityEffect:findValue("immunity_"..illness) then
 
-				base.common.InformNLS(Character,
+				common.InformNLS(Character,
 					"#w Du sp�rst wie die Krankheit von dir Besitz ergreifen will, doch dein K�rper wehrt sich erfolgreich.",
 					"#w You feel the illness trying to take control over you, but your body can resist.");
 				Character.effects:removeEffect(167);
 				return;
 			end
 		end
-		base.common.InformNLS(Character,
+		common.InformNLS(Character,
 			"#w Du f�hlst dich auf einmal ganz seltsam. Irgendetwas stimmt nicht mit deinem K�rper.",
 			"#w You suddenly have a very strange feeling. Something's wrong with your body.");
 		if illness == 3 then
@@ -493,7 +493,7 @@ function M.removeEffect(Effect,Character)
 	end
 	-- if illness is removed as usual and not due to immunity, then inform player and create gfx
 	if not foundImmunity then
-		base.common.InformNLS(Character,
+		common.InformNLS(Character,
 			"#w Du sp�rst wie die Krankheit aus deinem K�rper weicht und du neue Kraft bekommst.",
 			"#w You feel the illness withdrawing from your body and you regain your strength.");
 		world:gfx(45,Character.pos);

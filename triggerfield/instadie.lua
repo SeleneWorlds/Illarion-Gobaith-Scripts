@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 
 module("triggerfield.instadie", package.seeall)
 
@@ -22,5 +22,5 @@ function MoveToField(User)
 		end
 	end
 	User:increaseAttrib("hitpoints",-32767);
-	base.common.InformNLS(User, "X GERMAN", "X ENGLISH");
+	common.InformNLS(User, "X GERMAN", "X ENGLISH");
 end

@@ -9,7 +9,7 @@
 -- Pflanze,Mineral,Filtrat in der Hand
 -- Auf Kessel ausl�sen
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 require("item.general.metal")
 
@@ -31,7 +31,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- braucht er noch eine Flasche
         if not bottleInHand then
             -- Die hat er aber nicht und das soll er wissen.
-            base.common.InformNLS( User,
+            common.InformNLS( User,
                 "Du brauchst eine Flasche wenn du einen Trank mischen willst.",
                 "You need one bottle if you want to brew a potion."
             );
@@ -84,7 +84,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- Er hat einen, aber hat er auch eine Flasche?
         if not bottleInHand then
             -- Nein er hat keine. Sagen wir ihm das.
-            base.common.InformNLS( User,
+            common.InformNLS( User,
                 "Du brauchst eine Flasche wenn du einen Trank mischen willst.",
                 "You need a bottle if you want to brew a potion."
             );
@@ -97,7 +97,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         --Mit Mineralstaub werden Tr�nke fixiert. Wenn die Flasche leer ist, ist das sinnlos
         if( bottleInHand.id == 164 )then
             -- Und sie ist leer! Der User soll um seinen Fehler wissen:
-            base.common.InformNLS( User,
+            common.InformNLS( User,
                 "Du musst schon erst einen Trank mischen ehe du ihn mit einem Mineral fixierst.",
                 "You need to mix a potion before you fix it with a mineral."
             );
@@ -117,7 +117,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 			-- Und lernen wollen wir auch noch was.
 			alchemy.ds_skillgain(User);
         else
-        base.common.InformNLS( User,
+        common.InformNLS( User,
                 "Du musst schon Druide sein, um so etwas zu k�nnen.",
                 "You need to be a druid to do such things."
             );
@@ -131,7 +131,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- Und das Opfer hat wirklich Kohle
         if not bottleInHand then
             -- aber keine Flasche.
-            base.common.InformNLS( User,
+            common.InformNLS( User,
                 "Du brauchst eine Flasche wenn du einen Trank mischen willst.",
                 "You need a bottle if you want to brew a potion."
             );
@@ -141,7 +141,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- Kohle und Flasche sind da. Schauen wir uns die Flasche mal n�her an.
         if( bottleInHand.id == 164 )then
             -- Die Flasche ist leer und die Kohle damit sinnlos
-            base.common.InformNLS( User,
+            common.InformNLS( User,
                 "Du musst schon erst einen Trank mischen wenn du ihn mit Kohle neutralisieren willst.",
                 "You need to mix a potion before you neutralize it with coal."
             );
@@ -163,7 +163,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- Faulbaumrinde ist da
         if not bottleInHand then
             -- aber keine Flasche
-            base.common.InformNLS( User,
+            common.InformNLS( User,
                 "Du brauchst eine Flasche wenn du einen Sud mischen willst.",
                 "You need a bottle if you want to brew a broth."
             );
@@ -173,7 +173,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- Flasche ist da
         if( bottleInHand.id == 164 )then
             -- doch die Flasche ist leer
-            base.common.InformNLS( User,
+            common.InformNLS( User,
                 "Du musst schon erst einen Sud mischen wenn du ihn mit Faulbaumrinde neutralisieren willst.",
                 "You need to mix a broth before you neutralize it with rotten tree bark."
             );
@@ -203,7 +203,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return;
     end
 
-    base.common.InformNLS( User,
+    common.InformNLS( User,
         "Du musst eine Sud-Pflanze in die Hand nehmen",
         "You need to carry a broth plant in your hands"
     );

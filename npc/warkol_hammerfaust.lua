@@ -16,7 +16,7 @@ local _ENV = setmetatable(M, { __index = _G })
   ]]--
 
 require("npc.base.autonpcfunctions")
-require("base.common")
+local common = require("base.common")
 
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
@@ -165,11 +165,11 @@ function M.receiveText(texttype, message, originator)
                             originator:createItem(2291,1,688,0);--salk. Paladinhelm
                             originator:createItem(4,1,688,0);--Plattenpanzer
                             originator:createItem(2701,1,688,0);--Langschwert
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Hier deine Ausrüstung und danke für das Geld.";
                             eText="Here your armor and thanks for the money.";
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Soll ick dir zeigen wie man die Ausrüstung anlegt?";
                             eText="Shall I show you how to put on the armor?";
@@ -177,7 +177,7 @@ function M.receiveText(texttype, message, originator)
                         else
                             gText="Du hast nich genug Geld dabei. Eine Ausrüstung kostet mindestens 50 Kupferstücke.";
                             eText="You don't have enough money with you. A fighting equipment costs at least 50 copper coins.";
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Komm erst wieder her wenn du mehr Geld von meinem Bruder bekommen hast.";
                             eText="Come only again if you have got more coins from my brother.";
@@ -203,15 +203,15 @@ function M.receiveText(texttype, message, originator)
                 if (string.find(message,"[Jj]a")~=nil or string.find(message,"[Yy]es")~=nil or Progress==29) then
                         gText="Also gut, zunächst mal musst du den Helm den ich dir gegeben habe am schwarzen Feld oben rechts, auf Höhe des Kopfes des Mannes, platzieren.";
                         eText="Fine, at first you have to place the helmet I gave you at the small black box near the head of the man.";
-                        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                         gText="Als nächstes musst du den Plattenpanzer am schwarzen Feld auf Höhe der Brust des Mannes platzieren.";
                         eText="At next you have to place the plate armor at the black box which is on a level with the breast of the man.";
-                        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				        gText="Als letztes platzierst du das Langschwert in eines der beiden Felder auf Höhe der Hände des Mannes.";
 				        eText="At last you have to place the longsword in one of the both black boxes which are on a level with the hands of the man.";
-                        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				        gText="Wenn die Felder bereits durch Gegenstände besetzt sind musst du diese vorher entfernen. Sag einfach 'Fertig' wenn ich überprüfen soll ob du alles richtig angelegt hast.";
                         eText="If the fields are already occupied by other items you have to remove them first. Just say 'Done' if you want me to check whether you have put the equipment at the right fields.";
@@ -241,46 +241,46 @@ function M.receiveText(texttype, message, originator)
                         gText="Lass mal sehen,hmmm...";
                         eText="Let me have a look at it, hmmm...";                        
                         if (retVarA==1) then
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Der Helm ist an der richtigen Stelle.";
                             eText="The helmet is at the right place.";
                         else
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Dein salkamaerscher Paladinhelm ist nicht an der richtigen Stelle (platziere den Helm am schwarzen Feld oben rechts).";
                             eText="Your salkamaerian paladin's helmet is not at the right place (place the helmet in the small black box on top on the right).";
                         end
                         if (retVarB==1) then
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Das Schwert ist an der richtigen Stelle.";
                             eText="The sword is at the right place.";
                         else
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Das Langschwert ist nicht an der richtigen Stelle (platziere das Schwert in eines der beiden schwarzen Felder auf Höhe der Hände).";
                             eText="The longsword is not at the right place (place the sword in one of the both small black boxes on high of the hands).";
                         end
                         if (retVarC==1) then
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Die Rüstung ist an der richtigen Stelle.";
                             eText="The armor is at the right place.";
                         else
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Der Plattenpanzer ist nicht an der richtigen Stelle (platziere die Rüstung am schwarzen Feld auf Höhe der Brust um sie anzuziehen).";
                             eText="The plate armor is not at the right place (place the armor in the small black box on high of the breast).";
                         end
                         if (retVarD==1) then
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Spitze, alles ist an der richtigen Stelle. Nun kannst du zu meinem Bruder Nargon gehen.";
                             eText="Great, everything is at the right place. Now you can go to my brother Nargon.";
                             originator:setQuestProgress(2,31);
                         else
-                            outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                            outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				            npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                             gText="Einige Ausrüstungsteile waren nicht an der richtigen Stelle, probiers nochmal und sag 'Fertig' wenn ich kontrollieren soll. Wenn ich dir erklären soll wie man die Ausrüstung anlegt sag einfach 'Erklären'.";
                             eText="Some parts of the equipment were not at the right place, try it again and say 'Done' when I shall check again. If you want to know where the several parts of the equipment have to put just say 'Explain'.";
@@ -328,15 +328,15 @@ function M.receiveText(texttype, message, originator)
 
 				gText="Also gut, zunächst mal musst du den Helm den ich dir gab am schwarzen Feld oben rechts, auf Höhe des Kopfes des Mannes, platzieren.";
                 eText="Fine, at first you have to place the helmet I gave you at the small black box near the head of the man.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                 gText="Als nächstes musst du den Plattenpanzer am schwarzen Feld auf Höhe der Brust des Mannes platzieren.";
                 eText="At next you have to place the plate armor at the black box which is on a level with the breast of the man.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				gText="Als letztes platzierst du das Langschwert in eines der beiden Felder auf Höhe der Hände des Mannes.";
 				eText="At last you have to place the longsword in one of the both black boxes which are on a level with the hands of the man.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				gText="Wenn die Felder bereits durch Gegenstände besetzt sind musst du diese vorher per Drag&Drop in den Gürtel oder in die Tasche ziehen.";
                 eText="If the fields are already occupied by other items you have to drag&drop them first in your bag or belt.";
@@ -357,7 +357,7 @@ function M.receiveText(texttype, message, originator)
         end
 
         if (Progress~=25 and Progress~=24) then
-        		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+        		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			    npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		end
   end

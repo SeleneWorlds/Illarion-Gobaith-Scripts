@@ -2,7 +2,7 @@ local M = {}
 local InitializeBook, UseItem, LookAtItem
 
 -- UPDATE common SET com_script='item.book.id_1061_teleport' WHERE com_itemid=1061;
-require("base.common")
+local common = require("base.common")
 
 function M.InitializeBook(  )
 
@@ -73,20 +73,20 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
             -- no free space found
             if not success then
-                base.common.InformNLS( User,
+                common.InformNLS( User,
                 "Rings um Dich erzittern Boden und Gegenstände!",
                 "All around you ground and items are trembling!" );
             end
 
             -- use up the book
             --if math.random( 1, 3 )==2 then
-            --base.common.InformNLS( User,
+            --common.InformNLS( User,
             --"Das Buch wurde zu oft verwendet. Es zerf�lt zu Staub.",
             --"The book was used too often. It decays into dust." );
             world:erase( SourceItem, 1 );
             --end
         else
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Nimm das Buch zum Lesen in die Hände.",
             "Take the book in your hands to read it." );
         end
@@ -102,9 +102,9 @@ function M.LookAtItem( User, Item )
     local gate = TargetName[ Item.quality ]
 
     if gate == nil then
-        world:itemInform( User, Item, base.common.GetNLS( User, "Zauberbuch", "Magical book" ) );
+        world:itemInform( User, Item, common.GetNLS( User, "Zauberbuch", "Magical book" ) );
     else
-        world:itemInform( User, Item, base.common.GetNLS( User, "Portal nach ", "Portal to " )..gate );
+        world:itemInform( User, Item, common.GetNLS( User, "Portal nach ", "Portal to " )..gate );
     end
 end
 

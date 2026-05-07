@@ -9,10 +9,10 @@ local UseItem
 
 -- UPDATE common SET com_script='item.id_428_candletable' WHERE com_itemid IN (428);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -26,27 +26,27 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
     
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim Arbeiten.",
         "Your armor disturbes you while working." );
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-        base.common.TurnTo( User, SourceItem.pos );
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+        common.TurnTo( User, SourceItem.pos );
     end
     
-    if not base.common.FitForWork( User ) then
+    if not common.FitForWork( User ) then
         return
     end
     
     if (User:countItemAt("body",2751)==0) then -- Tiegelzange
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst eine Tiegelzange um Wachs zu schmelzen.",
         "You need a crucible-pincers to smelt wax." );
         return
@@ -57,8 +57,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if base.common.ToolBreaks( User, Tool, true) then -- Tiegelzange besch�digen
-        base.common.InformNLS( User, 
+    if common.ToolBreaks( User, Tool, true) then -- Tiegelzange besch�digen
+        common.InformNLS( User, 
         "Die Zange geht zu Bruch.", 
         "The pincers break." );
         return
@@ -66,7 +66,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if ((User:countItemAt("belt",2529) < 1)) then     -- Hongwaben vorhanden?
         if (ltstate ~= Action.success) then
-            base.common.InformNLS( User, 
+            common.InformNLS( User, 
             "Du ben�tigst Honigwaben um Wachs daraus herzustellen.", 
             "You need honeycomb to make some wax." );
         end
@@ -80,14 +80,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if base.common.IsInterrupted( User ) then
+    if common.IsInterrupted( User ) then
         local selectMessage = math.random(1,2);
         if ( selectMessage == 1 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du wischst dir den Schwei� von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du versch�ttest hei�es Wachs, aber gl�cklicherweise nicht �ber deine Finger. Trotzdem musst du von Neuem beginnen.",
             "You overwhelm some hot wax and need to repeat your work. Lucky that the wax did not hit your fingers.");
         end
@@ -99,7 +99,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local notcreated = User:createItem(431, 1, 333 ,0 );
         if (notcreated > 0) then
             world:createItemFromId( 431, 1, User.pos, true, 333 ,0); -- Wachs wird erstellt
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
@@ -107,7 +107,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         end
     end
 
-    base.common.GetHungry( User, 100 );
+    common.GetHungry( User, 100 );
     
 end -- function
 

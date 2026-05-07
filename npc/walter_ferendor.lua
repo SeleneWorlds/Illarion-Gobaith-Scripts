@@ -7,7 +7,7 @@ local _ENV = setmetatable(M, { __index = _G })
 
 -- nutrition
 
-require("base.common")
+local common = require("base.common")
 require("npc.base.autonpcfunctions")
 
 function M.useNPC(user,counter,param)
@@ -234,7 +234,7 @@ function M.receiveText(texttype, message, originator)
 				thisNPC:talkLanguage(CCharacter.say, CPlayer.english, "You want to cure poisoning? That makes "..service[4].." copper coins.");
 				potion=true;
 				local PV=math.random(7500) + 5000;
-				originator:setPoisonValue( base.common.Limit( (originator:getPoisonValue() - PV) , 0, 10000) );
+				originator:setPoisonValue( common.Limit( (originator:getPoisonValue() - PV) , 0, 10000) );
 				--originator:increasePoisonValue(-1*PV);
 		    elseif status==5 then
 				tellDiet(originator);

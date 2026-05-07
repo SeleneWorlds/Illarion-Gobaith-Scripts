@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO spells VALUES (2^17,3,'druid.spell.id_18_analyze_item_volume');
@@ -24,7 +24,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   --Anzeige des Item-Volumens
   myItem = world:getItemStats(TargetItem)
   --
---base.common.InformNLS( Caster,
+--common.InformNLS( Caster,
 --"Dieser Gegenstand hat ein Volumen von "..myItem.Volume.." druidischen Volumeneinheiten",
 --"This item has a volume of "..myItem.Volume.." druid volume-units"); -- das kann man sch�ner formulieren
 

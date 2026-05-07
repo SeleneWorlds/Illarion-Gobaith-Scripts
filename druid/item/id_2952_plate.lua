@@ -5,7 +5,7 @@
 --Original: Falk vom Wald
 --Neufassung: Nitram
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 local plants = require("druid.base.plants")
 
@@ -43,13 +43,13 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 					world:erase( TargetItem, 1 );
                     return;
                 else
-                    base.common.TempInformNLS( User,
+                    common.TempInformNLS( User,
                     "Der Beh�lter ist voll.",
                     "The basket is filled up." );
                     return;
                 end
             else
-                base.common.TempInformNLS( User,
+                common.TempInformNLS( User,
                 "In dem Beh�lter liegt schon eine andere Pflanze, du kannst nur die selbe Sorte mit dort rein legen.",
                 "In the basket is another plant, you can only put in the same kind of plant." );
                 return;
@@ -69,7 +69,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     else -- Beh�lter ist leer
         if (Targetitem.id_id ~= 0) then -- Es soll was eingelagert werden
             if not (alchemy.IsThatAPlant(TargetItem) or Targetitem.id_id == 157) then
-                base.common.TempInformNLS( User,
+                common.TempInformNLS( User,
                 "Das kannst du nicht einlagern.",
                 "You can't put this into a basket." );
                 return;
@@ -80,7 +80,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             world:changeItem( SourceItem );
             return;
         else -- Es soll etwas rausgenommen werden
-            base.common.TempInformNLS( User,
+            common.TempInformNLS( User,
             "In dem Beh�lter ist nichts was du herausnehmen k�nntest.",
             "There is nothing in that basket you could take out." );
             return;
@@ -91,7 +91,7 @@ end
 function M.LookAtItem( User, Item )
 
     if (item.id_data == 0) then
-        world:itemInform( User, Item, base.common.GetNLS( User, "Du siehst einen leeren ", "You see a empty " )
+        world:itemInform( User, Item, common.GetNLS( User, "Du siehst einen leeren ", "You see a empty " )
         .. world:getItemName( item.id_id, User:getPlayerLanguage() ).."." );
 
     else
@@ -103,22 +103,22 @@ function M.LookAtItem( User, Item )
         if (count < 40) then
             count = count;
         elseif (count < 100) then
-            count = base.common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 10 ) * 10 );
+            count = common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 10 ) * 10 );
         elseif (count < 1000) then
-            count = base.common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 100 ) * 100 );
+            count = common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 100 ) * 100 );
         elseif (count < 10000) then
-            count = base.common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 500 ) * 500 );
+            count = common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 500 ) * 500 );
         else
-            count = base.common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 5000 ) * 5000 );
+            count = common.GetNLS( User, "etwa ", "approximal " )..( math.floor( count / 5000 ) * 5000 );
         end
 
         --local itemName = world:getItemName( basket_id, Character:getPlayerLanguage() );
         local itemName = M.Sonderpflanzen(User,basket_id,basket_data,User:getPlayerLanguage())
 
         world:itemInform( User, Item,
-           base.common.GetNLS( User, "Du siehst einen ", "You see a " )
+           common.GetNLS( User, "Du siehst einen ", "You see a " )
         .. world:getItemName( item.id_id, User:getPlayerLanguage() )
-        .. base.common.GetNLS( User, " mit ", " with " )
+        .. common.GetNLS( User, " mit ", " with " )
         .. count .. " "
         .. itemName );
     end

@@ -1,6 +1,6 @@
 -- Skript f�r das Druidensystem
 -- Pflanzennamen
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 		M.dummyIDList = {9001,9002,9003,9004,9005,9006,9007,9008,9009,9010,9011,9012,9013,9014,9015,9016}

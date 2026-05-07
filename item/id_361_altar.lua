@@ -3,7 +3,7 @@ local LookAtItem, UseItem
 
 -- UPDATE common SET com_script='item.id_361_altar' WHERE com_itemid IN (361);
 
-require("base.common")
+local common = require("base.common")
 local gods = require("content.gods")
 
 local GOD_DE = gods.GOD_DE

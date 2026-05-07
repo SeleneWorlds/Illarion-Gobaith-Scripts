@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 ---------------------------
@@ -55,7 +55,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
     stonedEffectType = math.random(1,2);
     if ((stonedIndex_n>=1) and (stonedIndex_n<5)) then
     	if ((stonedIndex_n==3) and (clearIndex_n==2))then
-            base.common.InformNLS( Character,
+            common.InformNLS( Character,
             "Dir ist ein wenig schummrig.",
             "You feel a little bit dizzy." );
 	end
@@ -69,7 +69,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
 
     elseif ((stonedIndex_n>=5) and (stonedIndex_n<10)) then
         if ((stonedIndex_n==8) and (clearIndex_n==2))then
-            base.common.InformNLS( Character,
+            common.InformNLS( Character,
             "Du hast das Gefühl, dass dein Blick irgendwie getrübt ist.",
             "You have the feeling that your sight is hazy." );
         end
@@ -82,7 +82,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
         end
     elseif ((stonedIndex_n>=10) and (stonedIndex_n<15)) then
         if ((stonedIndex_n==13) and (clearIndex_n==2)) then
-            base.common.InformNLS( Character,
+            common.InformNLS( Character,
             "Dein Kopf fühlt sich an wie mit Watte gefüllt.",
             "Your mind feels like a bunch of entangled wool." );
         end
@@ -95,7 +95,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
         end
     elseif ((stonedIndex_n>=15) and (stonedIndex_n<20)) then
         if ((stonedIndex_n==18) and (clearIndex_n==2)) then
-            base.common.InformNLS( Character,
+            common.InformNLS( Character,
             "Du nimmst deine Umgebung nur noch schleierhaft wahr.",
             "You notices the surroundings look fuzzy due to your unclear vision." );
         end
@@ -109,7 +109,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
 
     elseif stonedIndex_n>=20 then
         if ((stonedIndex_n==23) and (clearIndex_n==2)) then
-            base.common.InformNLS( Character,
+            common.InformNLS( Character,
             "Du möchtest am liebsten einfach umfallen und einschlafen.",
             "You feel like you want to just topple down and fall asleep." );
         end
@@ -138,7 +138,7 @@ end
 function M.removeEffect( Effect, Character )
     LogString=os.date()..": Patient "..Character.name.."completely healed because the cold ended.\n";
     logToFile(LogString);
-    --base.common.InformNLS(Character,
+    --common.InformNLS(Character,
     --"Du fühlst dich endlich wieder klarer.",
     --"You finally feel sober now.");
 end

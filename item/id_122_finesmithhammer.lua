@@ -1,3 +1,4 @@
+local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
 local InitCraftingTool, UseItem, UseItemWithField, UseItemWithCharacter
@@ -226,7 +227,7 @@ product:AddProductionSteps( { 2554, 1, "all" }, 1 ); -- Pure Water: 1x1
 end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
-    base.common.ResetInterruption( User, ltstate )
+    common.ResetInterruption( User, ltstate )
     Smithing = InitCraftingTool( );
     if not menstate then
         menstate = { };
@@ -243,7 +244,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         		User:increaseAttrib("hitpoints",-(1600+math.random(500))); --2000HP damage for the Irmorom priest
         	end
 		else
-			base.common.InformNLS( User, "Du musst schon die Stelle anvisieren wo die Flamme erscheinen soll",
+			common.InformNLS( User, "Du musst schon die Stelle anvisieren wo die Flamme erscheinen soll",
 							 "You have to target a field where the flame shall appear.");
 		end    
         
@@ -277,20 +278,20 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         Smithing:SwapToInactiveItem( User );
         return
     end
     
     if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du mu�t den Goldschmiedehammer in die Hand nehmen um damit zu arbeiten.", 
         "You have to take the finesmithing hammer in your hand, to work with it." )
         return
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim feinschmieden.",
         "Your armor disturbes you while fine smithing." );
         Smithing:SwapToInactiveItem( User );
@@ -350,20 +351,20 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         Smithing:SwapToInactiveItem( User );
         return
     end
     
     if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du mu�t den Goldschmiedehammer in die Hand nehmen um damit zu arbeiten.", 
         "You have to take the finesmithing hammer in your hand, to work with it." )
         return
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim feinschmieden.",
         "Your armor disturbes you while fine smithing." );
         Smithing:SwapToInactiveItem( User );
@@ -413,7 +414,7 @@ function M.UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
         			User:increaseAttrib("hitpoints",-(1600+math.random(500))); --2000HP damage for the Irmorom priest
         		end
 			else
-			base.common.InformNLS( User, "Du kannst dich nicht selber verbrennen",
+			common.InformNLS( User, "Du kannst dich nicht selber verbrennen",
 							 "You can't burn yourself.");
 			end
 		end

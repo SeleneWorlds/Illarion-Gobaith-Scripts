@@ -13,7 +13,7 @@ local _ENV = setmetatable(M, { __index = _G })
 
 
 require("npc.base.autonpcfunctions")
-require("base.common")
+local common = require("base.common")
 
 function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
@@ -473,13 +473,13 @@ function M.receiveText(texttype, message, originator)
 					if Progress==1 then
                         gText="Über welche der fünf Schulen wollt ihr mehr erfahren?";
                         eText="Which school do you want to know more about?";
-				        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						originator:setQuestProgress(2111,2);
 					elseif Progress==3 then
                         gText="Ich hab euch bereits etwas beigebracht, den Rest müsst ihr euch selber beibringen wenn ihr ein richtiger Magier werden wollt.";
                         eText="I taught you already something, you have to learn the rest by yourself if you want to become a real mage.";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						
 					end
@@ -505,9 +505,9 @@ function M.receiveText(texttype, message, originator)
 				end
 				
 				if (originator:increaseSkill(3,TheSkill,0)<=10) then --teach school of rune				
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				    npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
-					base.common.TempInformNLS(originator,
+					common.TempInformNLS(originator,
 					    "Es scheint als wären dir nun einige Grundlagen dieser Runenschule klarer.",
 					    "It seems that you understand some basics of this school of rune now better.");										
 					originator:increaseSkill(3,TheSkill,1);
@@ -515,7 +515,7 @@ function M.receiveText(texttype, message, originator)
 				else
 					gText="Ihr scheint die Grundlagen dieser Runenschule bereits zu kennen, mehr als das kann ich euch nicht beibringen.";
 	                eText="You already seem to know the basics of this runeschool, I can't teach you more than that.";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				    npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				end
 				return;

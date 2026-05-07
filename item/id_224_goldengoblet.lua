@@ -2,7 +2,7 @@ local M = {}
 local LookAtItem
 
 require("base.lookat")
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.id_224_goldengoblet' WHERE com_itemid=224;
 
@@ -26,7 +26,7 @@ function M.LookAtItem(User,Item)
 		gText = gText..world:getItemName(Item.id,0);
 		eText = eText..world:getItemName(Item.id,1);
 	end
-	world:itemInform(User,Item,base.common.GetNLS(User,gText,eText));
+	world:itemInform(User,Item,common.GetNLS(User,gText,eText));
 end
 
 return M

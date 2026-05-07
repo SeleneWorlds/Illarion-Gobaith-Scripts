@@ -2,7 +2,7 @@
 -- by Falk
 -- Zeitverlauf und tempor�res Sprachverst�ndnis
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO longtimeeffects VALUES (330, 'druids_language', 'druid.lte.id_330_language');

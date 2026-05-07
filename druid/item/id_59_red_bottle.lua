@@ -2,7 +2,7 @@
 --Druidensystem in Arbeit
 --Falk
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -75,25 +75,25 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 			world:erase(SourceItem,1);
 			world:makeSound(12,Character.pos);
 			if( math.random( 20 ) <= 1 ) then
-				base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
+				common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
 			else
 				Character:createItem( 164, 1, 333,0);
 			end
 			A=math.random(7500)+5000;
-		      Character:setPoisonValue( base.common.Limit( (Character:getPoisonValue() - A) , 0, 10000) );
+		      Character:setPoisonValue( common.Limit( (Character:getPoisonValue() - A) , 0, 10000) );
 			--Character:increasePoisonValue(-1 * A);
 			Character.movepoints=Character.movepoints-50;
 			Character:increaseAttrib("foodlevel",1000);
 			if (Character:increaseAttrib("foodlevel",0)> 60000) then
-				base.common.InformNLS( Character,"Du bekommst kaum noch was runter und dir wird schlecht.","You hardly manage to eat something more and get sick!");
+				common.InformNLS( Character,"Du bekommst kaum noch was runter und dir wird schlecht.","You hardly manage to eat something more and get sick!");
 				Character:increaseAttrib("hitpoints",-1000);
 			elseif  (Character:increaseAttrib("foodlevel",0) > 40000) then
-				base.common.InformNLS( Character, "Du bist satt.", "You are stuffed.");
+				common.InformNLS( Character, "Du bist satt.", "You are stuffed.");
 			else
-				base.common.InformNLS( Character, "Du trinkst die Flasche aus und f�hlst wie das Gift aus deinem K�rper weicht.", "You drink up the bottle, and you feel the poison leave your body.");
+				common.InformNLS( Character, "Du trinkst die Flasche aus und f�hlst wie das Gift aus deinem K�rper weicht.", "You drink up the bottle, and you feel the poison leave your body.");
 			end
 		else
-			base.common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+			common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
 		end
 
 	else
@@ -106,7 +106,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 			world:makeSound(12,Character.pos);
 
 			if( math.random( 20 ) <= 1 ) then
-				base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
+				common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
 			else
 				Character:createItem( 164, 1, 333,0);
 			end
@@ -114,7 +114,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 			Character.movepoints=Character.movepoints-50;
 
 		else
-			base.common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+			common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
 		end
 	end
 end

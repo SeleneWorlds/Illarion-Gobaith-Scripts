@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -487,7 +487,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 	    Caster:inform("#b|0|0|".."The bottle contains "..textEN)
     end
   else
-	  base.common.InformNLS(Caster,"Das ist kein Druiden-Trank","This is not a potion");
+	  common.InformNLS(Caster,"Das ist kein Druiden-Trank","This is not a potion");
 	end
 
 end

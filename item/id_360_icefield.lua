@@ -3,7 +3,7 @@ local IniFireField, CharacterOnField, DeleteFlame, SpellResistence, ItemRotsOnFi
 
 -- UPDATE common SET com_script='item.id_360_icefield' where com_itemid=360;
 
-require("base.common")
+local common = require("base.common")
 
 function M.IniFireField()
                  --hum,dwa,hal,elf,orc,liz,gno,fry,gob,tro,mum,skl,beh,cld,hlr,buy,sel,ins,shp,spd,dsk,rot,dem,scp,pig,inv,sku,wsp,ftr,shd,stn,mgo,gno,dra,drw,drw,lde
@@ -17,7 +17,7 @@ function M.CharacterOnField(User)
     end
 	-- Eisflamme auf dem Feld suchen
 	-- !!Eventuell gibt es Probleme, wenn sich mehrere Flammen auf einem Feld befinden!!
-	local Items = base.common.GetItemsOnField(User.pos);
+	local Items = common.GetItemsOnField(User.pos);
 	local FieldItem;
 	for i, item in pairs(Items) do
 		if(item.id == 360) then
@@ -31,7 +31,7 @@ function M.CharacterOnField(User)
             if UserRace==theRace then              -- User Rasse finden
                 resist=SpellResistence(User);      -- Magie Resistenz pr�fen
                 if resist<FieldItem.quality then   -- Qualit�t des Items --> St�rke mit Magie Resistenz vergleichen
-                    damageDealt=base.common.NormalRnd((7/100)*math.floor((FieldItem.quality-resist)*AffectedStren[i]),(9/100)*math.floor((FieldItem.quality-resist)*AffectedStren[i]));--AffectedStren[i]
+                    damageDealt=common.NormalRnd((7/100)*math.floor((FieldItem.quality-resist)*AffectedStren[i]),(9/100)*math.floor((FieldItem.quality-resist)*AffectedStren[i]));--AffectedStren[i]
                     User:increaseAttrib("hitpoints",-damageDealt); -- Schaden berechnen und bewirken
                 end
             end
@@ -70,10 +70,10 @@ function M.SpellResistence(TChar)                 -- should be 0 (no res) to 100
 
     BaseSuccess=math.ceil((MRes+RWillpower+RInt)*100/140);
     --TChar:talk(CCharacter.say,"Eval SpRes. for "..TChar.name..": Mag Res= "..MRes..", Int= "..RInt..", WP="..RWillpower.." and calcbase= "..BaseSuccess);
-    return math.max(math.ceil((BaseSuccess*base.common.NormalRnd(0,100))/50),0);
+    return math.max(math.ceil((BaseSuccess*common.NormalRnd(0,100))/50),0);
 end
 
-function base.common.NormalRnd(min,max)     -- returns ~normal distribution between min/max with m=(min+max)/2
+function common.NormalRnd(min,max)     -- returns ~normal distribution between min/max with m=(min+max)/2
     base=0;
     for t=1,10 do
         base=base+math.random(max-min+1)-1; -- creates ~normal distri from 0 to (max-min)*10 with mu=(max-min)*10/2

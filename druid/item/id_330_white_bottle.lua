@@ -2,7 +2,7 @@
 --Druidensystem in Arbeit
 --Tempor�re Einzelwirkungen
 --Falk
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -130,7 +130,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
             world:erase( SourceItem, 1 );
 
             if (math.random( 20 ) == 1) then
-                base.common.TempInformNLS( User,
+                common.TempInformNLS( User,
                 "Die Flasche zerbricht.",
                 "The bottle breaks.");
             else
@@ -141,7 +141,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
         end
 
         if User.attackmode then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du kannst nichts trinken w�hrend du k�mpfst.",
             "You can't drink something while fighting." );
             return
@@ -158,7 +158,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 
 
         if( math.random( 20 ) == 1 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Die Flasche zerbricht.",
             "The bottle breaks.");
         else
@@ -177,17 +177,17 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
         User:setPoisonValue( Poisonvalue );
 
         if (User:increaseAttrib("foodlevel",0) > 60000) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du bekommst kaum noch was runter und dir wird schlecht.",
             "You hardly manage to eat something more and get sick!");
 
             User:increaseAttrib("hitpoints",-1000);
         elseif  (User:increaseAttrib("foodlevel",0) > 40000) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du bist satt.",
             "You are stuffed.");
         else
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du trinkst die Flasche aus und f�hlst wie neue St�rke dich durchstr�mt.",
             "You drink up the bottle, and you feel the new strength that flows through your body.");
         end
@@ -205,7 +205,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 	     world:gfx(5,Character.pos)
 
 	     if( math.random( 20 ) <= 1 ) then
-	       base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
+	       common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
 	     else
 	       Character:createItem( 164, 1, 333,0);
 	     end
@@ -213,7 +213,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 	     Character.movepoints=Character.movepoints-50;
 
 	else
-	    base.common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+	    common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
 	end
   end
 end

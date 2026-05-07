@@ -1,5 +1,5 @@
 -- Seil
-require("base.common")
+local common = require("base.common")
 local tyingCapturer = require("lte.tying_capturer")
 dofile("quest_aquest28.lua");    --the quest file for the Farmer quest
 
@@ -32,7 +32,7 @@ function M.LookAtItem(User,Item)
 		gText = gText.."Seil";
 		eText = eText.."rope";
 	end
-	world:itemInform(User,Item,base.common.GetNLS(User,gText,eText));
+	world:itemInform(User,Item,common.GetNLS(User,gText,eText));
 end
 
 function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
@@ -75,7 +75,7 @@ function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
 	
 	if SourceItem.data == 1 then
 		
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Du solltest das Seil fest in der Hand behalten. Damit ist jemand gefesselt.",
 			"You should hold the rope tight in your hand. Someone is tied up with it.")
 		return false;
@@ -88,7 +88,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	
 	-- check if rope is in hands
 	if SourceItem:getType() ~= 4 then
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Du musst das Seil in die Hand nehmen, wenn du jemanden fesseln willst.",
 			"You have to take the rope in your hand if you want to tie up someone.")
 		return;
@@ -98,15 +98,15 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	if (ltstate == Action.abort) then
 		gText = M.GetRaceGenderText(0,Target);
 		eText = M.GetRaceGenderText(1,Target);
-		base.common.TempInformNLS ( User,
+		common.TempInformNLS ( User,
 			"Dir gelingt es nicht "..gText.." zu fesseln.",
 			"You don't succeed in tying up "..eText..".");
 		return;
 	end
 	
 	-- check viewing direction
-	if not base.common.IsLookingAt(User, Target.pos) then
-		base.common.TempInformNLS( User,
+	if not common.IsLookingAt(User, Target.pos) then
+		common.TempInformNLS( User,
 			"Du solltest dort hinschauen, wo dein Gefangener ist.",
 			"You should look in your captive's direction.");
 		return;
@@ -118,7 +118,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	end
 	
 	if User.effects:find(26) then
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Du hast schon einen Gefangenen.",
 			"You already have a captive.");
 		return;
@@ -126,14 +126,14 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	
 	-- tie up only PCs without admin rights
 	if Target:get_type()~=0 or ( Target:isAdmin() and not User:isAdmin() ) then
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Dieses Wesen kannst du nicht fesseln.",
 			"You can't tie this creature up.");
 		return;
 	end
 	
 	if User.id==Target.id then
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Du solltest dich nicht selbst fesseln.",
 			"You shouldn't tie up yourself.");
 		return;
@@ -141,21 +141,21 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	
 	-- Check if User is in attackmode
 	if User.attackmode then
-		base.common.TempInformNLS ( User,
+		common.TempInformNLS ( User,
 			"Du kannst niemanden fesseln, während du kämpfst.",
 			"You can't tie someone up while you are fighting." );
 		return;
 	end
 	
 	if tyingCapturer.HasEnoughCapturers(Target) then
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Der Gefangene ist nun schon ausreichend gefesselt.",
 			"The captive is now sufficiently tied up already.");
 		return;
 	end
 	
 	if User.effects:find(24) then
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Dir sind leider die Hände gebunden.",
 			"Unfortunately your hands are tied.");
 		return;
@@ -166,7 +166,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	if (ltstate == Action.none) then
 		local Time = 50;
 		-- set tying time
-		if foundEffectTarget or base.common.IsCharacterParalysed(Target) then
+		if foundEffectTarget or common.IsCharacterParalysed(Target) then
 			-- reduced time for another captor or freezed target
 			Time = 20;
 		else
@@ -185,7 +185,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 		User:talkLanguage(CCharacter.say, CPlayer.german, "#me versucht "..gText.." zu fesseln.");
 		User:talkLanguage(CCharacter.say, CPlayer.english, "#me tries to tie up "..eText..".");
 		
-		base.common.TempInformNLS(Target,
+		common.TempInformNLS(Target,
 			"Jemand versucht dich zu fesseln!",
 			"Someone tries to tie you up!");
 		
@@ -193,7 +193,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 		if not TargetPosList then
 			TargetPosList = {};
 		end
-		TargetPosList[Target.id] = base.common.CopyPosition( Target.pos );
+		TargetPosList[Target.id] = common.CopyPosition( Target.pos );
 		
 		-- RS TEST
 		local logText = os.date()..": "..User.name.." tries to capture "..Target.name
@@ -206,7 +206,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	end
 	-- check if target has moved
 	if TargetPosList and not equapos( TargetPosList[Target.id], Target.pos ) then
-		base.common.TempInformNLS( User,
+		common.TempInformNLS( User,
 			"Dein Gefangener sollte still halten, damit du ihn fesseln kannst.",
 			"Your captive should hold still so you can tie him up.");
 		return;
@@ -232,7 +232,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 			item = Target:getItemAt(i);
 			if item.id > 0 and item.id ~= 228 then
 				world:createItemFromItem(item,Target.pos,true);
-				base.common.TempInformNLS(Target,
+				common.TempInformNLS(Target,
 					"Du kannst nichts mehr in den Händen halten.",
 					"You can't carry anything any more in your hands.");
 			end
@@ -251,7 +251,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	if not foundEffectTarget then
 		gText = "#me hat ein festes Seil um die Hände.";
 		eText = "#me has a tight rope around the hands.";
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Der Gefangene folgt nun dir.",
 			"Now the captive follows you.");
 	else
@@ -261,7 +261,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	Target:talkLanguage(CCharacter.say, CPlayer.german, gText);
 	Target:talkLanguage(CCharacter.say, CPlayer.english, eText);
 	if Target.effects:find(26) then
-		base.common.TempInformNLS(Target,
+		common.TempInformNLS(Target,
 			"Du kannst deinen Gefangenen nicht mehr halten und lässt ihn frei.",
 			"You can't hold your captive any more. You release him.");
 		Target.effects:removeEffect(26);
@@ -287,7 +287,7 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 					local Quality = math.min(600,120+math.random(25,35)*AttribOffset);
 					TargetItem.quality = math.min(2500,TargetItem.quality+(Quality*2));
 					world:changeItem(TargetItem);
-					base.common.TempInformNLS(User,
+					common.TempInformNLS(User,
 						"Du verstärkst den Knoten mit dem neuen Seil.",
 						"You strengthen the knot with the new rope.");
 					world:erase(Rope,1);
@@ -308,7 +308,7 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 	foundCaptive, Captive = Tying:findValue("Captive");
 	if foundCaptive then
 		if Tying:findValue("logout") then
-			base.common.TempInformNLS(User,
+			common.TempInformNLS(User,
 				"Du lässt deinen Gefangenen frei.",
 				"You release your captive.");
 			User.effects:removeEffect(26);
@@ -363,10 +363,10 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 										eText = M.GetRaceGenderText(1,Target);
 										User:talkLanguage(CCharacter.say, CPlayer.german, "#me übergibt das Seil an "..gText..".");
 										User:talkLanguage(CCharacter.say, CPlayer.english, "#me hands the rope to "..eText..".");
-										base.common.TempInformNLS(User,
+										common.TempInformNLS(User,
 											"Der Gefangene folgt dir nun nicht mehr.",
 											"Now the captive doesn't follow you any more.");
-										base.common.TempInformNLS(Target,
+										common.TempInformNLS(Target,
 											"Der Gefangene folgt nun dir.",
 											"Now the captive follows you.");
 										return true;

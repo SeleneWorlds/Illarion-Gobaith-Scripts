@@ -2,7 +2,7 @@ local M = {}
 local UseItem
 
 -- Food script
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.food' WHERE com_itemid IN (15,49,73,80,81,142,143,147,151,158,159,160,161,162,163,191,199,200,201,302,303,306,307,353,354,355,388,453,454,455,552,553,554,555,556,557,559,2276,2277,2278,2456,2459,2493,2922,2923,2934,2940,3051);
 
@@ -131,7 +131,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 				domMalus = ((60000 + (0.5*foodVal) - foodLevel) / 60000);
 			else
 				-- set poison value
-				User:setPoisonValue( base.common.Limit( (User:getPoisonValue() + poison) , 0, 10000) );
+				User:setPoisonValue( common.Limit( (User:getPoisonValue() + poison) , 0, 10000) );
 				--User:increasePoisonValue(poison);
 			end
 			
@@ -140,18 +140,18 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			-- create leftovers
 			if( food.Leftover > 0 ) then
 				if( math.random( 50 ) <= 1 ) then
-					base.common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
+					common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
 				else
 					User:createItem( food.Leftover, 1, 333,0);
 				end
 			end
 			-- inform the player
 			if poison then
-				base.common.TempInformNLS(User,
+				common.TempInformNLS(User,
 				"Du f�hlst dich krank und etwas benommen.",
 				"You feel sick and a little dizzy.");
 			elseif (domMalus < 0) then
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Du bekommst kaum noch was runter und dir wird schlecht. Dies schadet sicherlich deinem K�rper.",
 				"You hardly manage to eat something more and get sick! This surely harms your body.");
 				-- check for newbie state
@@ -160,27 +160,27 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 				end
 				foodLevel = foodLevel - 10000;
 			elseif  (foodLevel > 55000) then
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Nur mit M�he kannst du dir noch etwas hinunter zwingen.",
 				"You hardly manage to eat something more.");
 			elseif  (foodLevel > 50000) then
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Du bist sehr satt.",
 				"You have had enough.");
 			elseif  (foodLevel > 40000) then
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Du bist satt",
 				"You are stuffed");
 			elseif  (foodLevel > 30000) then
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Du f�hlst dich noch etwas hungrig.",
 				"You still feel a little hungry.");
 			elseif  (foodLevel > 20000) then
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Du hast noch immer Hunger.",
 				"You are still hungry.");
 			elseif  (foodLevel > 5000) then
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Dein Magen schmerzt noch immer vor Hunger.",
 				"Your stomach still hurts because of your hunger.");
 			end
@@ -189,7 +189,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			if (SourceItem.id == 453) then
                 if (math.random(1,100)==1) then
                     local deText, enText = furtunecookies.cookie();
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "Du findest ein St�ck Papier in dem Keks: \""..deText.."\"",
                     "You find a piece of paper inside the cookie: \""..enText.."\"");
                 end
@@ -306,29 +306,29 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			if (dom>=0 and dom<2500) then
 				constMod=0;
 				if (constModOld < constMod) then
-					base.common.InformNLS(User,
+					common.InformNLS(User,
 					"Durch deine ausgewogene Ern�hrung erlangt dein K�rper seine gewohnte Verfassung wieder.",
 					"Due to your balanced diet your body regains its usual condition.");
 				elseif (constModOld > constMod) then
-					base.common.InformNLS(User,
+					common.InformNLS(User,
 					"Durch deine nur gew�hnliche Ern�hrung kann dein K�rper seine gute Verfassung nicht halten.",
 					"Due to your commoners' diet your body cannot retain its good condition.");
 				end
 			elseif (dom>=2500 and dom<7500) then
 				constMod=1;
 				if (constModOld < constMod) then
-					base.common.InformNLS(User,
+					common.InformNLS(User,
 					"Durch deine gro�artige Ern�hrung erlangt dein K�rper eine gute Verfassung.",
 					"Due to your great diet your body gains a good condition.");
 				elseif (constModOld > constMod) then
-					base.common.InformNLS(User,
+					common.InformNLS(User,
 					"Da du deine Ern�hrung etwas vernachl�ssigt hast, kann dein K�rper seine gro�artige Verfassung nicht halten.",
 					"As you have slightly neglected your dietary choices, your body can�t retain its great condition.");
 				end
 			elseif (dom>=7500 and dom<=10000) then
 				constMod=2;
 				if (constModOld < constMod) then
-					base.common.InformNLS(User,
+					common.InformNLS(User,
 					"Durch deine perfekte Ern�hrung erlangt dein K�rper eine gro�artige Verfassung.",
 					"Due to your perfect diet your body gains a great condition.");
 				end
@@ -349,7 +349,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			User:inform("unknown food item ");
 		end
 	else
-		base.common.TempInformNLS( User,
+		common.TempInformNLS( User,
 			"Du kannst nicht w�hrend eines Kampfes essen.",
 			"You cannot eat during a fight.");
 	end

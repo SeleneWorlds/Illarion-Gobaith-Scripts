@@ -41,7 +41,7 @@ INSERT INTO triggerfields VALUES (158,-448,0,'triggerfield.ambient');
 INSERT INTO triggerfields VALUES (,'triggerfield.ambient');
 ]]
 
-require("base.common")
+local common = require("base.common")
 
 module("triggerfield.ambient", package.seeall)
 
@@ -192,7 +192,7 @@ AmbientList:add( position(158,-448,0), 2, "Du endeckst eine grobe Gravierung im 
 function MoveToField(Char)
 	local this = getAmbient(Char);
 	if this then
-		base.common.TempInformNLS(Char,this.german,this.english);
+		common.TempInformNLS(Char,this.german,this.english);
 	end
 end
 

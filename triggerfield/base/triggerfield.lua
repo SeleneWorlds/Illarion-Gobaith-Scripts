@@ -1,11 +1,11 @@
-require("base.common");
+local common = require("base.common");
 
 module("triggerfield.base.triggerfield", package.seeall)
 
 -- Messages in an array of things that can happen. Each thing is an array: {function, odds}.
 function getEvent(messages)
 	-- Sum up all odds values in the messages array to figure out the maximum value of the random range
-	maxv = base.common.fold(events, function(val, el) return val + el[2]; end, 0);
+	maxv = common.fold(events, function(val, el) return val + el[2]; end, 0);
 	ran = math.random(maxv);
 
 	-- Choose which of the messages from the array to output.

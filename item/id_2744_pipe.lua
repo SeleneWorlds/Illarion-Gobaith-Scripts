@@ -4,7 +4,7 @@ local UseItem, LookAtItem
 
 -- I_2744_pfeife.lua
 --
-require("base.common")
+local common = require("base.common")
 require("item.general.wood")
 
 -- UPDATE common SET com_script='item.id_2744_pipe' WHERE com_itemid = 2744;
@@ -12,7 +12,7 @@ require("item.general.wood")
 function M.UseItem( Character, SourceItem, TargetItem, Counter, Param)
 
     if (Character:countItemAt("belt",155)==0) then -- kein Sibanac???
-        base.common.InformNLS( Character,
+        common.InformNLS( Character,
         "Du ben�tigst Sibanac-Bl�tter um Pfeife rauchen zu k�nnen.",
         "You need sibanac-leafs to smoke a pipe." );
         return

@@ -6,14 +6,14 @@ local UseItem
 
 -- UPDATE common SET com_script='item.id_1005_beehive' WHERE com_itemid=1005;
 
-require("base.common")
+local common = require("base.common")
 local gathering = require("content.gathering")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 	gathering.InitGathering();
 	local honeygathering = gathering.honeygathering;
 	
-    base.common.ResetInterruption(User, ltstate);
+    common.ResetInterruption(User, ltstate);
 	if (ltstate == Action.abort) then -- Arbeit unterbrochen
         if (User:increaseAttrib("sex", 0) == 0) then
             gText = "seine";
@@ -27,12 +27,12 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 	
-	if not base.common.CheckItem(User, SourceItem) then -- Sicherheitscheck
+	if not common.CheckItem(User, SourceItem) then -- Sicherheitscheck
         return
     end
 	
-	if base.common.Encumbrence(User) then -- Behinderung
-        base.common.InformNLS(User,
+	if common.Encumbrence(User) then -- Behinderung
+        common.InformNLS(User,
         "Deine R�stung behindert dich beim Honig Sammeln.",
         "Your armor disturbs you while collecting honeycombs.");
         return
@@ -54,7 +54,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 		local notcreated = User:createItem(2529, 1, 333, 0);
 		if(notcreated > 0) then
 			world:createItemFromId(2529, notcreated, User.pos, true, 333, 0);
-			base.common.InformNLS(User, "Du kannst nichts mehr halten!", "You can't carry anymore!");
+			common.InformNLS(User, "Du kannst nichts mehr halten!", "You can't carry anymore!");
 			return false
 		end
 		User:learn(2, "peasantry", 2, 100);

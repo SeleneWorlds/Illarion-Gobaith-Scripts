@@ -2,7 +2,7 @@ local M = {}
 local InitDrinks, UseItem, LookAtItem
 
 -- empty container with drink
-require("base.common")
+local common = require("base.common")
 
 -- uses items of the new client - don't put this on the RS yet!
 
@@ -43,7 +43,7 @@ end
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     InitDrinks();
     if User.attackmode then
-        base.common.InformNLS( User, "Du w�rdest alles versch�tten.", "You'd spill everything.");
+        common.InformNLS( User, "Du w�rdest alles versch�tten.", "You'd spill everything.");
         return -- Abbrechen wenn Spieler im Kampf ist
     end
     local food = drinkList[ SourceItem.id ];
@@ -55,15 +55,15 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     world:makeSound(12,User.pos); -- Trink ger�usch machen
     if ( math.random( 50 ) <= 1 ) then -- 1/50 das die Flasche zerbricht
         world:erase(SourceItem,1);
-        base.common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
+        common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
     else
         world:swap( SourceItem,food[2],333);
     end
     if ( food[3] == 0 ) then -- dein Alkohol
         if ( foodLevel > 40000 ) then 
-            base.common.InformNLS( User, "Du hast genug getrunken.", "You have drunk enough.");
+            common.InformNLS( User, "Du hast genug getrunken.", "You have drunk enough.");
         elseif ( foodLevel > 40000 ) then 
-            base.common.InformNLS( User, "Du schaffst es nicht noch mehr zu trinken.", "You don't manage it to drink more.");
+            common.InformNLS( User, "Du schaffst es nicht noch mehr zu trinken.", "You don't manage it to drink more.");
             foodLevel = foodLevel - food[1];
         end
     else -- Alkohol
@@ -89,32 +89,32 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
             
 
             if ( wineQual < 1 ) then
-                base.common.InformNLS( User, "", "The wine tastes plainly horrible. You won't even dare another sip." );
+                common.InformNLS( User, "", "The wine tastes plainly horrible. You won't even dare another sip." );
             elseif ( wineQual < 3 ) then
-                base.common.InformNLS( User, "", "It's not wine that you would spit out, but a bad taste nonetheles." );
+                common.InformNLS( User, "", "It's not wine that you would spit out, but a bad taste nonetheles." );
             elseif ( wineQual < 5 ) then
-                base.common.InformNLS( User, "", "The taste leaves you just a bit discontent." );
+                common.InformNLS( User, "", "The taste leaves you just a bit discontent." );
             elseif ( wineQual < 7 ) then
-                base.common.InformNLS( User, "", "The taste is so and so, leaving you a bit unsure." );
+                common.InformNLS( User, "", "The taste is so and so, leaving you a bit unsure." );
             elseif ( wineQual < 9 ) then
-                base.common.InformNLS( User, "", "That's a promising wine, not quite good, but not bad at all." );
+                common.InformNLS( User, "", "That's a promising wine, not quite good, but not bad at all." );
             elseif ( wineQual < 11 ) then
-                base.common.InformNLS( User, "", "You can state that that wine is good wine, but not the best." );
+                common.InformNLS( User, "", "You can state that that wine is good wine, but not the best." );
             elseif ( wineQual < 13 ) then
-                base.common.InformNLS( User, "", "The taste of this wine on your lips makes you content, definitely good and fine wine." );
+                common.InformNLS( User, "", "The taste of this wine on your lips makes you content, definitely good and fine wine." );
             elseif ( wineQual < 15 ) then
-                base.common.InformNLS( User, "", "Elven wine perhaps? This one tastes fantastic and makes you crave more." );
+                common.InformNLS( User, "", "Elven wine perhaps? This one tastes fantastic and makes you crave more." );
             elseif ( wineQual >= 15 ) then
-                base.common.InformNLS( User, "", "Perfect wine! You have never tasted wine as good as this before." );
+                common.InformNLS( User, "", "Perfect wine! You have never tasted wine as good as this before." );
             end;
         end
         -- end edit
         
         -- Abhandlung Foodlevel
         if ( foodLevel > 40000 ) then 
-            base.common.InformNLS( User, "Du hast genug getrunken.", "You have drunk enough.");
+            common.InformNLS( User, "Du hast genug getrunken.", "You have drunk enough.");
         elseif ( foodLevel > 40000 ) then 
-            base.common.InformNLS( User, "Du schaffst es nicht noch mehr zu trinken.", "You don't manage it to drink more.");
+            common.InformNLS( User, "Du schaffst es nicht noch mehr zu trinken.", "You don't manage it to drink more.");
             foodLevel = foodLevel - food[1];
         end
         -- Abhandlung Foodlevel fertig
@@ -147,7 +147,7 @@ function M.LookAtItem(User,Item)
         User:inform("unkown drink item ID"..Item.id);
         return
     end
-    world:itemInform(User,Item,base.common.GetNLS(User,"Du siehst ","You see ")..world:getItemName(Item.id,User:getPlayerLanguage()));
+    world:itemInform(User,Item,common.GetNLS(User,"Du siehst ","You see ")..world:getItemName(Item.id,User:getPlayerLanguage()));
 end
 
 return M

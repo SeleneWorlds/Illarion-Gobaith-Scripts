@@ -1,3 +1,4 @@
+local common = require("base.common")
 require("magic.base.basics");
 
 function DoItemSpell(Caster, TargetPos, ltstate)
@@ -17,17 +18,17 @@ function DoItemSpell(Caster, TargetPos, ltstate)
     genderMsg[CPlayer.german], genderMsg[CPlayer.english] = magic.base.basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
-        base.common.InformNLS( Caster,
+        common.InformNLS( Caster,
         "Du bist zuweit weg um diesen Zauber zu sprechen.",
         "You are too far away to cast this spell." );
         return;
     end
 
-    if not base.common.IsLookingAt( Caster, TargetPos ) then
-        base.common.TempInformNLS( Caster,
+    if not common.IsLookingAt( Caster, TargetPos ) then
+        common.TempInformNLS( Caster,
         "Du drehst dich auf dein Ziel zu um es in dein Blickfeld zu bekommen.",
         "You turn to your target to get it into your field of vision.");
-        base.common.TurnTo( Caster, TargetPos );
+        common.TurnTo( Caster, TargetPos );
     end
 
     if ( ltstate == Action.none ) then
@@ -35,7 +36,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
         --Caster:talkLanguage( CCharacter.say,  CPlayer.german, message );
         message = string.gsub( TimeEffects.msg[CPlayer.english], "{PP}", genderMsg[CPlayer.english] );
         --Caster:talkLanguage( CCharacter.say, CPlayer.english, message );
-        Caster:startAction( base.common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
+        Caster:startAction( common.Limit( TimeEffects.delay + GemBonis.Time, 0 ), TimeEffects.gfx.id, TimeEffects.gfx.time, TimeEffects.sfx.id, TimeEffects.sfx.time);
         return;
     end
 
@@ -48,7 +49,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
     end
 
     if not CasterVal then
-        base.common.TempInformNLS( Caster,
+        common.TempInformNLS( Caster,
         "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
@@ -62,7 +63,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
     end
 
     if Wall then
-        base.common.CreateTangentLine( Caster.pos, TargetPos, math.floor(base.common.Scale( Wall.minSkill.armlength, Wall.maxSkill.armlength, CasterVal )), function(posi)
+        common.CreateTangentLine( Caster.pos, TargetPos, math.floor(common.Scale( Wall.minSkill.armlength, Wall.maxSkill.armlength, CasterVal )), function(posi)
             if Wall.item and createItemOnMap( Wall.item, posi, CasterVal ) then
                 magic.base.basics.performGFX( Wall.gfx, posi );
                 magic.base.basics.performSFX( Wall.sfx, posi );
@@ -71,7 +72,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
     end
 
     if Circle then
-        base.common.CreateCircle( Caster.pos, Caster:distanceMetricToPosition( TargetPos ), function(posi)
+        common.CreateCircle( Caster.pos, Caster:distanceMetricToPosition( TargetPos ), function(posi)
             if Circle.item and createItemOnMap( Circle.item, posi, CasterVal ) then
                 magic.base.basics.performGFX( Circle.gfx, posi );
                 magic.base.basics.performSFX( Circle.sfx, posi );
@@ -97,17 +98,17 @@ function createItemOnMap( ItemData, Target, CasterVal )
             return false;
         end
     end
-    CasterVal = base.common.Limit( CasterVal, 0, 100 );
-    local chance = base.common.Scale( ItemData.minSkill.chance, ItemData.maxSkill.chance, CasterVal );
+    CasterVal = common.Limit( CasterVal, 0, 100 );
+    local chance = common.Scale( ItemData.minSkill.chance, ItemData.maxSkill.chance, CasterVal );
 
     if (math.random(100) > chance) then
         return false;
     end
 
-    local qual = base.common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal );
-    local data = base.common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal );
-    local wear = base.common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal );
-    local numb = base.common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal );
+    local qual = common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal );
+    local data = common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal );
+    local wear = common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal );
+    local numb = common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal );
     local itemid = ItemData.id;
     if ( type(ItemData.id) == "table" ) then
         itemid = ItemData.id[ math.random( 1, # ItemData.id  ) ];
@@ -129,8 +130,8 @@ function removeItemFromMap( ItemData, Target, CasterVal )
 
     local theItem = world:getItemOnField( Target );
 
-    CasterVal = base.common.Limit( CasterVal, 0, 100 );
-    local chance = base.common.Scale( ItemData.minSkill.chance, ItemData.maxSkill.chance, CasterVal );
+    CasterVal = common.Limit( CasterVal, 0, 100 );
+    local chance = common.Scale( ItemData.minSkill.chance, ItemData.maxSkill.chance, CasterVal );
 
     if (math.random(100) > chance) then
         return false;
@@ -153,10 +154,10 @@ function removeItemFromMap( ItemData, Target, CasterVal )
         return false;
     end
 
-    local qual = base.common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal );
-    local data = base.common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal );
-    local wear = base.common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal );
-    local numb = base.common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal );
+    local qual = common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal );
+    local data = common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal );
+    local wear = common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal );
+    local numb = common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal );
 
     if (qual ~= 0 ) then
         if ( theItem.quality + qual > 101 ) then
@@ -199,7 +200,7 @@ function removeItemFromMap( ItemData, Target, CasterVal )
 end
 
 function CastMagic(Caster,counter,param, ltstate)
-    DoItemSpell(Caster,base.common.GetFrontPosition(Caster), ltstate);
+    DoItemSpell(Caster,common.GetFrontPosition(Caster), ltstate);
 end
 
 function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)

@@ -6,7 +6,7 @@ local UseItemWithCharacter, UseItemWithField, UseItem
 
 -- UPDATE common SET com_script='item.id_164_emptybottle' WHERE com_itemid IN (164);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
     --User:inform("char selected");
@@ -71,7 +71,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 			-- druid can still get a potion?
 			if User:getQuestProgress(23) <10 then
 				User:setQuestProgress(23, 1 + User:getQuestProgress(23));
-				base.common.TempInformNLS(User,
+				common.TempInformNLS(User,
 				"Du f�llst die Flasche mit einer wei�en Fl�ssigkeit.",
 				"You fill the bottle with a white liquid.");
 				SourceItem.id = 330;
@@ -86,7 +86,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 				end
 				world:changeItem(SourceItem);
 			else
-				base.common.TempInformNLS(User,
+				common.TempInformNLS(User,
 				"Anscheinend ist keine Fl�ssigkeit mehr f�r dich �brig.",
 				"Obviously there is no liquid left for you.");
 			end

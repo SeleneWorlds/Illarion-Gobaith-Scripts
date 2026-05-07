@@ -1,3 +1,4 @@
+local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
 local InitCraftingTool, UseItem
@@ -659,7 +660,7 @@ product:AddProductionSteps( { 50, 2, "all" }, 2 ); -- Thread: 2x2
 end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     Tailoring = InitCraftingTool( );
     if not menstate then
         menstate = { };
@@ -692,20 +693,20 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         Tailoring:SwapToInactiveItem( User );
         return
     end
     
     if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du mu�t die Nagel in die Hand nehmen um damit zu arbeiten.", 
         "You have to take the needle in your hand, to work with it." )
         return
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim schneidern.",
         "Your armor disturbes you while tailoring." );
         Tailoring:SwapToInactiveItem( User );
@@ -734,7 +735,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     elseif (menstate[ User.id ] == 2) then
         if (Param == 97) then
             if (User:countItemAt("all",50) < 2) then
-                base.common.InformNLS( User,
+                common.InformNLS( User,
                 "Du braucht mehr Garn um eine Tasche zu fertigen.",
                 "You need more yarn to make a bag.");
                 return

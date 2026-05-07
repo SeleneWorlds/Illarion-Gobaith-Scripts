@@ -14,7 +14,7 @@ function: newbie island NPC; last NPC, telling about craftmasters
 ]]
 
 require("npc.base.autonpcfunctions")
-require("base.common")
+local common = require("base.common")
 
 function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);

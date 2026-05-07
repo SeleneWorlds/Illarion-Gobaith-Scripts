@@ -1,3 +1,4 @@
+local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
 local InitCraftingTool, UseItem
@@ -306,20 +307,20 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         carpenter:SwapToInactiveItem( User );
         return
     end
     
     if ( SourceItem:getType() ~= 4 ) then -- Schnitzmesser in der Hand
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du musst den Hobel in die Hand nehmen um damit zu arbeiten.", 
         "You have to take the slicer in your hand, to work with it." )
         return
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim Hobeln.",
         "Your armor disturbs you while slicing." );
         carpenter:SwapToInactiveItem( User );

@@ -6,7 +6,7 @@
 -- data of ring: [gemNr] [str]
 
 
-require("base.common")
+local common = require("base.common")
 require("content.jewelbonus")
 local M = {}
 

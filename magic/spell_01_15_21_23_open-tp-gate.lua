@@ -1,3 +1,4 @@
+local common = require("base.common")
 local basics = require("magic.base.basics")
 
 local M = {}
@@ -91,11 +92,11 @@ basics.initRaceBoni(); -- Init or reset all preset racial boni values
 M.orgScript = M.Script
 
 function CastMagic(Caster,counter,param, ltstate)
-    DoTeleportSpell(Caster,base.common.GetFrontPosition(Caster), ltstate);
+    DoTeleportSpell(Caster,common.GetFrontPosition(Caster), ltstate);
 end
 
 function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
-    DoTeleportSpell(Caster,base.common.GetFrontPosition(TargetCharacter), ltstate);
+    DoTeleportSpell(Caster,common.GetFrontPosition(TargetCharacter), ltstate);
 end
 
 function CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
@@ -128,17 +129,17 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
     genderMsg[CPlayer.german], genderMsg[CPlayer.english] = basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
-        base.common.InformNLS( Caster,
+        common.InformNLS( Caster,
         "Du bist zuweit weg um diesen Zauber zu sprechen.",
         "You are too far away to cast this spell." );
         return;
     end
 
-    if not base.common.IsLookingAt( Caster, TargetPos ) then
-        base.common.TempInformNLS( Caster,
+    if not common.IsLookingAt( Caster, TargetPos ) then
+        common.TempInformNLS( Caster,
         "Du drehst dich auf dein Ziel zu um es in dein Blickfeld zu bekommen.",
         "You turn to your target to get it into your field of vision.");
-        base.common.TurnTo( Caster, TargetPos );
+        common.TurnTo( Caster, TargetPos );
     end
 
     if ( ltstate == Action.none ) then
@@ -159,7 +160,7 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
     end
 
     if not CasterVal then
-        base.common.TempInformNLS( Caster,
+        common.TempInformNLS( Caster,
         "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
@@ -167,7 +168,7 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
 
 
     if not ChoseAndOpenGate(TalkedText,TargetPos, CasterVal, Caster) then
-        base.common.TempInformNLS( Caster,
+        common.TempInformNLS( Caster,
         "Der Spruch gelingt doch das Portal schliest sich sogleich wieder.",
         "The spell succeeds but the portal closes again instandly.");
     else
@@ -389,8 +390,8 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         return false;
     end
 	
-    local stability = base.common.Limit( base.common.Round( base.common.Scale( Portal.minSkill.stability, Portal.maxSkill.stability, CasterVal ) ), 0, 9 );
-    local offset    = base.common.Limit( base.common.Round( base.common.Scale( Portal.minSkill.offset,    Portal.maxSkill.offset,    CasterVal ) ), 0, 5 );
+    local stability = common.Limit( common.Round( common.Scale( Portal.minSkill.stability, Portal.maxSkill.stability, CasterVal ) ), 0, 9 );
+    local offset    = common.Limit( common.Round( common.Scale( Portal.minSkill.offset,    Portal.maxSkill.offset,    CasterVal ) ), 0, 5 );
 
     if (stability == 0) then
         return false;
@@ -403,7 +404,7 @@ function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         end
 	else
 		GateQual = GateQual + math.random( -offset, offset );
-	    GateQual = base.common.Limit( GateQual, 1, 75 );
+	    GateQual = common.Limit( GateQual, 1, 75 );
     end
 
 

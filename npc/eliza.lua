@@ -14,7 +14,7 @@ local _ENV = setmetatable(M, { __index = _G })
 
 require("npc.base.trader_functions")
 require("npc.base.functions")
-require("base.common")
+local common = require("base.common")
 
 TraderInterface = {};
 TraderInterface["page"] = {};
@@ -28,7 +28,7 @@ Wares = {};
 
 function M.lookAtNpc( player, mode )
 	player:sendCharDescription( thisNPC.id , "Hier steht ein Fisch auf dem Flur." );
-	base.common.InformNLS(player,
+	common.InformNLS(player,
 		"#b|0|61|Hier können Infos und Hilfe stehen.",
 		"#b|0|62|Here you could read info and help.");
 end

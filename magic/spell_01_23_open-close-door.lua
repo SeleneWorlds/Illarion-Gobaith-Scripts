@@ -5,10 +5,10 @@
 --ITEMZAUBER
 
 require("base.doors")
-require("base.common")
+local common = require("base.common")
 function OpenCloseTarget(Caster,Item)
-    if not base.common.IsLookingAt(Caster,Item.pos) then
-		base.common.TurnTo(Caster, Item.pos);
+    if not common.IsLookingAt(Caster,Item.pos) then
+		common.TurnTo(Caster, Item.pos);
 	end
     local Mana=Caster:increaseAttrib("mana",0);
     if (Mana>=100) then
@@ -18,17 +18,17 @@ function OpenCloseTarget(Caster,Item)
         Caster.activeLanguage=Language;
         if base.doors.CloseDoor(Item) then
             Succeed(Caster)
-            base.common.InformNLS(Caster,"Von dem Windsto� getroffen klappt die T�r zu.","A mysterious breeze pushes the door close.");
+            common.InformNLS(Caster,"Von dem Windsto� getroffen klappt die T�r zu.","A mysterious breeze pushes the door close.");
         else
             local OpenDoor,OpenOK=base.doors.OpenDoor(Item);
             if OpenOK then
                 Succeed(Caster)
-                base.common.InformNLS(Caster,"Vom Wind gef�hrt schwingt die T�r auf.","A mysterious breeze pushes the door open.");
+                common.InformNLS(Caster,"Vom Wind gef�hrt schwingt die T�r auf.","A mysterious breeze pushes the door open.");
             elseif OpenDoor then
                 Succeed(Caster)
-                base.common.InformNLS(Caster,"Der Wind r�ttelt an der T�r, doch sie �ffnet sich nicht.","The wind tries to open the door, but the door doesn't open.");
+                common.InformNLS(Caster,"Der Wind r�ttelt an der T�r, doch sie �ffnet sich nicht.","The wind tries to open the door, but the door doesn't open.");
             else
-                base.common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
+                common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
             end
         end
     else

@@ -2,7 +2,7 @@
 --Druidensystem in Arbeit
 --Falk
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -21,14 +21,14 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
     for i=1,8 do
 		  --Trankwirkung
-		  local Val = (dataZList[i]-5) * (topBorder[i]/5) * base.common.Scale( 0.5, 1, math.floor(Sourceitem.id_quality/100) * 11 );
+		  local Val = (dataZList[i]-5) * (topBorder[i]/5) * common.Scale( 0.5, 1, math.floor(Sourceitem.id_quality/100) * 11 );
 		  --Character:inform(""..Val)
 		  if ( attribList[i] == "poisonvalue" ) then
-            Val = base.common.Limit( (Character:getPoisonValue() + Val) , 0, 10000 );
+            Val = common.Limit( (Character:getPoisonValue() + Val) , 0, 10000 );
             Character:setPoisonValue( Val );
 		--Character:increasePoisonValue( Val );
 		  elseif ( attribList[i] == "mental capacity" ) then
-            Val = base.common.Limit( (Character:getMentalCapacity() + Val) , 0, 2400 );
+            Val = common.Limit( (Character:getMentalCapacity() + Val) , 0, 2400 );
             Character:setMentalCapacity( Val );
 		  else
             Character:increaseAttrib(attribList[i],Val);
@@ -63,7 +63,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         world:makeSound(12,Character.pos);
 
         if( math.random( 20 ) <= 1 ) then
-            base.common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
+            common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
         else
             Character:createItem( 164, 1, 333,0);
         end
@@ -71,7 +71,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         Character.movepoints=Character.movepoints-50;
 
     else
-        base.common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+        common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
     end
 
 end

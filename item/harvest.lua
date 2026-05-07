@@ -3,7 +3,7 @@ local UseItem
 
 -- Harvest various fruits and herbs
 -- Nop & Nitram
-require("base.common")
+local common = require("base.common")
 local gathering = require("content.gathering")
 
 -- UPDATE common SET com_script='item.harvest' WHERE com_itemid IN (14,300,387);
@@ -43,15 +43,15 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     -- check orientation
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-		base.common.TurnTo(User, SourceItem.pos);
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+		common.TurnTo(User, SourceItem.pos);
     end
 
     --User:inform( "getting tile" );
     local GroundTile = world:getField( SourceItem.pos );
 
     local TileID = GroundTile:tile();
-    local boden = base.common.GetGroundType( TileID );
+    local boden = common.GetGroundType( TileID );
     --User:inform( "tile is ".:tile()ID );
     --User:inform( "boden is "..boden );
 
@@ -159,23 +159,23 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
             if( not success )then
                 if( boden == 1 ) then
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "Deine H�nde graben durch die Erde, aber Du findest nichts.",
                     "Your hands muckrake through the dirt, but you do not find anything." );
                 elseif( boden == 2 ) then
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "Altes Laub und Nadeln sind alles was Du findest.",
                     "Dry leaves are all you find." );
                 elseif( boden == 3 ) then
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "Du findest nichts au�er trockenem Sand.",
                     "You find nothing but dry sand" );
                 elseif( boden == 4 ) then
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "Du findest nichts au�er Unkraut und Gras.",
                     "You find nothing but weed and grass." );
                 else
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "Du findest nichts.",
                     "You  do not find anything." );
                 end

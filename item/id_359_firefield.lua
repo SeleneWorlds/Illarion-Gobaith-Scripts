@@ -3,7 +3,7 @@ local IniFireField, CharacterOnField, SpellResistence, DeleteFlame
 
 -- UPDATE common SET com_script='item.id_359_firefield' where com_itemid=359;
 
-require("base.common")
+local common = require("base.common")
 
 function M.IniFireField()
     --hum,dwa,hal,elf,orc,liz,gno,fry,gob,tro,mum,skl,beh,cld,hlr,buy,sel,ins,shp,spd,dsk,rot,dem,scp,pig,inv,sku,wsp,ftr,shd,stn,mgo,gno,dra,drw,drw,lde
@@ -20,7 +20,7 @@ function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
     end
 	-- Flamme auf dem Feld suchen
 	-- !!Eventuell gibt es Probleme, wenn sich mehrere Flammen auf einem Feld befinden!!
-	local Items = base.common.GetItemsOnField(User.pos);
+	local Items = common.GetItemsOnField(User.pos);
 	local FieldItem;
 	for i, item in pairs(Items) do
 		if(item.id == 359) then

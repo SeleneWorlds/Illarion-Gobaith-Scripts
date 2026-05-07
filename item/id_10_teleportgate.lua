@@ -6,7 +6,7 @@ local InitializeGate, CharacterOnField, LookAtItem
 
 -- UPDATE common SET com_script='item.id_10_teleportgate' WHERE com_itemid = 10;
 
-require("base.common")
+local common = require("base.common")
 
 function M.InitializeGate(  )
 
@@ -332,7 +332,7 @@ function M.CharacterOnField( User )
                         if  ( (newbieState == 100) and (User.effects:find(13)) )then
                                 User.effects:removeEffect(13);
                         elseif not (76 <= SourceItem.data and SourceItem.data <= 85) then
-                            base.common.InformNLS(User,
+                            common.InformNLS(User,
                             "Nichts passiert, du scheinst noch nicht bereit zu sein. Frage Findecano Melwasul, den Elfen bei dem Thron, wie du nach Gobaith gelangen kannst.",
                             "Nothing happens, it seems that you are not ready yet. Ask Findecano Melwasul, the Elf next to the throne, how you can enter Gobaith.");
                             return;
@@ -346,11 +346,11 @@ function M.CharacterOnField( User )
                 User:warp( dest );
                 world:gfx( 41, User.pos )
 
-                base.common.InformNLS( User,
+                common.InformNLS( User,
                 "Du machst eine magische Reise.",
                 "You travel by the realm of magic." );
                 if (vanTrap) then
-                    base.common.InformNLS( User,
+                    common.InformNLS( User,
                     "Eine Stimme schallt: IHR WURDET GEWARNT NICHT UNGEBETEN IN UNSER LAND EINZUDRINGEN...WILLKOMMEN IN VANIMA",
                     "A voice booms: YOU HAVE BEEN WARNED NOT TO ENTER OUR LANDS UNINVITED...WELCOME TO VANIMA" );
                 end;
@@ -368,7 +368,7 @@ function M.CharacterOnField( User )
             end
         end
     else
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Ein Gegenstand stört die Magie des Portals.",
         "Some item disturbs the magic of the portal." );
     end
@@ -378,302 +378,302 @@ end
 function M.LookAtItem( User, Item )
 
 	if (Item.data==1) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Troll's Bane", "Magical gate to Troll's Bane" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Troll's Bane", "Magical gate to Troll's Bane" ) );
 end;
 
 if (Item.data==2) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Leuchtturm", "Magical gate to the Lighthouse" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Leuchtturm", "Magical gate to the Lighthouse" ) );
 end;
 
 if (Item.data==3) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Eldenkloster", "Magical gate to the Eldan Monastery" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Eldenkloster", "Magical gate to the Eldan Monastery" ) );
 end;
 
 
 if (Item.data==4) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Hafen", "Magical gate to the Harbor" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Hafen", "Magical gate to the Harbor" ) );
 end;
 
 
 if (Item.data==5) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Greenbriar", "Magical gate to Greenbriar" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Greenbriar", "Magical gate to Greenbriar" ) );
 end;
 
 if (Item.data==6) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Tol Vanima", "Magical gate to Tol Vanima" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Tol Vanima", "Magical gate to Tol Vanima" ) );
 end;
 
 if (Item.data==7) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Varshikar", "Magical gate to Varshikar" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Varshikar", "Magical gate to Varshikar" ) );
 end;
 
 if (Item.data==8) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Silberbrand", "Magical gate to Silverbrand" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Silberbrand", "Magical gate to Silverbrand" ) );
 end;
 
 if (Item.data==9) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur grauen Rose", "Magical gate to the Grey Rose Castle Rooftop" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur grauen Rose", "Magical gate to the Grey Rose Castle Rooftop" ) );
 end;
 
 if (Item.data==10) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Tempelruinen", "Magical gate to the Temple Ruins" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Tempelruinen", "Magical gate to the Temple Ruins" ) );
 end;
 
 if (Item.data==11) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Friedhof", "Magical gate to the Graveyard" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Friedhof", "Magical gate to the Graveyard" ) );
 end;
 
 if (Item.data==12) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Oase der Hoffnung", "Magical gate to the Oasis of Hope" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Oase der Hoffnung", "Magical gate to the Oasis of Hope" ) );
 end;
 
 if (Item.data==13) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Sirani Inseln", "Magical gate to the Sirani Islands" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Sirani Inseln", "Magical gate to the Sirani Islands" ) );
 end;
 
 if (Item.data==14) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Sirani Hug", "Magical gate to the Hug of Sirani" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Sirani Hug", "Magical gate to the Hug of Sirani" ) );
 end;
 
 if (Item.data==15) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum heiligen Platz von Zelphia", "Magical gate to the Holy Place of Zelphia" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum heiligen Platz von Zelphia", "Magical gate to the Holy Place of Zelphia" ) );
 end;
 
 if (Item.data==16) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Sümpfen", "Magical gate to the Swamps" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Sümpfen", "Magical gate to the Swamps" ) );
 end;
 
 if (Item.data==17) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Lake Adron", "Magical gate to Lake Adron" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Lake Adron", "Magical gate to Lake Adron" ) );
 end;
 
 if (Item.data==18) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Kupferbergen", "Magical gate to the Copper Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Kupferbergen", "Magical gate to the Copper Mountains" ) );
 end;
 
 if (Item.data==19) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Kumdah Wüste", "Magical gate to the Kumdah Desert" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Kumdah Wüste", "Magical gate to the Kumdah Desert" ) );
 end;
 
 if (Item.data==20) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Orkbergen", "Magical gate to the South Orc Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Orkbergen", "Magical gate to the South Orc Mountains" ) );
 end;
 
 if (Item.data==21) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Bloodskull Höhle", "Magical gate to the Bloodskull Cave" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Bloodskull Höhle", "Magical gate to the Bloodskull Cave" ) );
 end;
 
 if (Item.data==22) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to the West Ogre Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to the West Ogre Mountains" ) );
 end;
 
 if (Item.data==23) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Troll's Bane Bibliothek", "Magical gate to Troll's Bane Library" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Troll's Bane Bibliothek", "Magical gate to Troll's Bane Library" ) );
 end;
 
 if (Item.data==24) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Troll's Bane Bibliothek", "Magical gate to Troll's Bane Library top floor" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Troll's Bane Bibliothek", "Magical gate to Troll's Bane Library top floor" ) );
 end;
 
 if (Item.data==25) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Troll's Bane Laden", "Magical gate to Troll's Bane Shop" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Troll's Bane Laden", "Magical gate to Troll's Bane Shop" ) );
 end;
 
 if (Item.data==26) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Troll's Bane Marktplatz", "Magical gate to Troll's Bane Marketplace" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Troll's Bane Marktplatz", "Magical gate to Troll's Bane Marketplace" ) );
 end;
 
 if (Item.data==27) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Troll's Bane Taverne", "Magical gate to Troll's Bane Tavern" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Troll's Bane Taverne", "Magical gate to Troll's Bane Tavern" ) );
 end;
 
 if (Item.data==28) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Troll's Bane Taverne", "Magical gate to Troll's Bane Tavern Top" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Troll's Bane Taverne", "Magical gate to Troll's Bane Tavern Top" ) );
 end;
 
 if (Item.data==29) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Troll's Bane Werkstatt", "Magical gate to Troll's Bane Workshop" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Troll's Bane Werkstatt", "Magical gate to Troll's Bane Workshop" ) );
 end;
 
 if (Item.data==30) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Troll's Bane Seahorse", "Magical gate to Troll's Bane Inn" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Troll's Bane Seahorse", "Magical gate to Troll's Bane Inn" ) );
 end;
 
 if (Item.data==31) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Troll's Bane Seahorse", "Magical gate to Trollsbane Inn Top" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Troll's Bane Seahorse", "Magical gate to Trollsbane Inn Top" ) );
 end;
 
 if (Item.data==32) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to North Troll Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to North Troll Woods" ) );
 end;
 
 if (Item.data==33) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to East Troll Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to East Troll Woods" ) );
 end;
 
 if (Item.data==34) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to South Troll Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to South Troll Woods" ) );
 end;
 
 if (Item.data==35) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to West Troll Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Trollwald", "Magical gate to West Troll Woods" ) );
 end;
 
 if (Item.data==36) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to North Skeleton Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to North Skeleton Woods" ) );
 end;
 
 if (Item.data==37) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to East Skeleton Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to East Skeleton Woods" ) );
 end;
 
 if (Item.data==38) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to South Skeleton Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to South Skeleton Woods" ) );
 end;
 
 if (Item.data==39) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to West Skeleton Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Skelettwald", "Magical gate to West Skeleton Woods" ) );
 end;
 
 if (Item.data==40) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to North Southern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to North Southern Woods" ) );
 end;
 
 if (Item.data==41) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to East Southern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to East Southern Woods" ) );
 end;
 if (Item.data==42) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to South Southern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to South Southern Woods" ) );
 end;
 
 if (Item.data==43) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to West Southern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Südwald", "Magical gate to West Southern Woods" ) );
 end;
 
 if (Item.data==44) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to North Northern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to North Northern Woods" ) );
 end;
 
 if (Item.data==45) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to East Northern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to East Northern Woods" ) );
 end;
 if (Item.data==46) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to South Northern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to South Northern Woods" ) );
 end;
 
 if (Item.data==47) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to West Northern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Nordwald", "Magical gate to West Northern Woods" ) );
 end;
 
 if (Item.data==48) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to North Briar Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to North Briar Woods" ) );
 end;
 
 if (Item.data==49) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to East Briar Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to East Briar Woods" ) );
 end;
 if (Item.data==50) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to South Briar Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to South Briar Woods" ) );
 end;
 
 if (Item.data==51) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to West Briar Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Briarwald", "Magical gate to West Briar Woods" ) );
 end;
 
 if (Item.data==52) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to North Eastern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to North Eastern Woods" ) );
 end;
 
 if (Item.data==53) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to East Eastern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to East Eastern Woods" ) );
 end;
 if (Item.data==54) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to South Eastern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to South Eastern Woods" ) );
 end;
 
 if (Item.data==55) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to West Eastern Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Ostwald", "Magical gate to West Eastern Woods" ) );
 end;
 
 if (Item.data==56) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur grauen Rose", "Magical gate to Grey Rose Castle" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur grauen Rose", "Magical gate to Grey Rose Castle" ) );
 end;
 
 if (Item.data==57) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Treffpunkt", "Magical gate to Meeting Place" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Treffpunkt", "Magical gate to Meeting Place" ) );
 end;
 
 if (Item.data==58) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Farmers' Union", "Magical gate to the Farmers' Union" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Farmers' Union", "Magical gate to the Farmers' Union" ) );
 end;
 
 if (Item.data==59) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur magischen Akademie", "Magical gate to the Magic Academy" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur magischen Akademie", "Magical gate to the Magic Academy" ) );
 end;
 
 if (Item.data==60) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Tol Vanima", "Magical gate to the Tol Vanima Gardens" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Tol Vanima", "Magical gate to the Tol Vanima Gardens" ) );
 end;
 
 if (Item.data==61) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Hellbriar", "Magical gate to Hellbriar" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Hellbriar", "Magical gate to Hellbriar" ) );
 end;
 
 if (Item.data==62) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Zzyathis", "Magical gate to Zzyathis" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Zzyathis", "Magical gate to Zzyathis" ) );
 end;
 
 if (Item.data==63) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to North Western Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to North Western Woods" ) );
 end;
 
 if (Item.data==64) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to East Western Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to East Western Woods" ) );
 end;
 
 if (Item.data==65) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to South Western Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to South Western Woods" ) );
 end;
 
 if (Item.data==66) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to West Western Woods" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zum Westwald", "Magical gate to West Western Woods" ) );
 end;
 
 if (Item.data==67) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Caelum", "Magical gate to Caelum" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal nach Caelum", "Magical gate to Caelum" ) );
 end;
 
 if (Item.data==68) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Orkbergen", "Magical gate to North Orc Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Orkbergen", "Magical gate to North Orc Mountains" ) );
 end;
 
 if (Item.data==69) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Orkbergen", "Magical gate to West Orc Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Orkbergen", "Magical gate to West Orc Mountains" ) );
 end;
 
 if (Item.data==70) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to North Ogre Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to North Ogre Mountains" ) );
 end;
 
 if (Item.data==71) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to East Ogre Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to East Ogre Mountains" ) );
 end;
 
 if (Item.data==72) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to South Ogre Mountains" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zu den Ogerbergen", "Magical gate to South Ogre Mountains" ) );
 end;
 
 if (Item.data==73) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Arena", "Magical gate to the Arena" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Arena", "Magical gate to the Arena" ) );
 end;
 
 if (Item.data==74) then
-	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal zur Goblin Insel", "Magical gate to the Goblin Isle" ) );
+	 world:itemInform( User, Item, common.GetNLS( User, "Magisches Portal zur Goblin Insel", "Magical gate to the Goblin Isle" ) );
 end;
 
 if (Item.data>74) or (Item.data==0) then
 
-world:itemInform( User,Item,base.common.GetNLS( User, "Magisches Portal", "Magical gate") );
+world:itemInform( User,Item,common.GetNLS( User, "Magisches Portal", "Magical gate") );
 end;	
 	
 end

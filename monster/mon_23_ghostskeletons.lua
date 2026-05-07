@@ -1,3 +1,4 @@
+local common = require("base.common")
 local drop = require("monster.base.drop")
 require("monster.base.lookat")
 require("base.messages");
@@ -67,15 +68,15 @@ function M.EvilLook( monster, enemy )
         return false;
     end
 
-    if not base.common.IsLookingAt( enemy, monster.pos ) then
+    if not common.IsLookingAt( enemy, monster.pos ) then
         return false;
     end
 
-    base.common.TalkNLS( monster, CCharacter.say,
+    common.TalkNLS( monster, CCharacter.say,
     "#me blickt "..enemy.name.." mit einem b�sen Blick an.",
     "#me gives "..enemy.name.." an evil look." );
 
-    base.common.InformNLS( enemy,
+    common.InformNLS( enemy,
     "Der Blick es Skelettes f�hrt dir ins Mark und l�hmt kurz deine Glieder.",
     "The gaze of the skeleton goes to the core and freezes your limps a moment." );
 

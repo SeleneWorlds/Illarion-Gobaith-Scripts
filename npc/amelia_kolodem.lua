@@ -9,7 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 -- telling about tree fall directions, wildfires and recovering from cold
 
 require("npc.base.autonpcfunctions")
-require("base.common")
+local common = require("base.common")
 
 function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
@@ -412,7 +412,7 @@ function M.receiveText(texttype, message, originator)
             if NPCStatus[originator.id]==3 then
 				newbieID = originator.id;
 				for i=1,5 do
-					base.common.CreateCircle( thisNPC.pos, i, checkCampfire );
+					common.CreateCircle( thisNPC.pos, i, checkCampfire );
 				end
 			end
 			npc.base.autonpcfunctions.TellSmallTalk(message,originator);
@@ -427,7 +427,7 @@ end
 
 function M.checkCampfire(Position)
 	
-	local itemList = base.common.GetItemsOnField(Position);
+	local itemList = common.GetItemsOnField(Position);
 	if itemList[1]==nil then
 		return
 	end;

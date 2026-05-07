@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
@@ -40,7 +40,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
 	Caster:learn(6,"vegetabilistia",3,100)
 
   else
-    base.common.InformNLS(Caster,
+    common.InformNLS(Caster,
         "Das ist keine Heilpflanze",
         "This is not a medicinal plant")
   end

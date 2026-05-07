@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 local drop = require("monster.base.drop")
 require("monster.base.lookat")
 require("base.messages");
@@ -41,20 +41,20 @@ function M.throwMolotov(Monster,Enemy)
         local hitpoints;
 
         world:gfx(36,hitPos);
-        M.HitChar(hitPos,base.common.Scale(3000,6000,Strength));
+        M.HitChar(hitPos,common.Scale(3000,6000,Strength));
         world:makeSound(5,hitPos);
-        hitpoints = base.common.Scale( 1000, 3000, Strength );
-        base.common.CreateCircle( hitPos, 1, function( targetPos )
+        hitpoints = common.Scale( 1000, 3000, Strength );
+        common.CreateCircle( hitPos, 1, function( targetPos )
             world:gfx( 44, targetPos );
             M.HitChar( targetPos, hitpoints );
         end );
-        hitpoints = base.common.Scale( 100, 500, Strength );
-        base.common.CreateCircle( hitPos, 2, function( targetPos )
+        hitpoints = common.Scale( 100, 500, Strength );
+        common.CreateCircle( hitPos, 2, function( targetPos )
             world:gfx( 9, targetPos );
             M.HitChar( targetPos, hitpoints );
         end );
-        hitpoints = base.common.Scale( 20, 100, Strength );
-        base.common.CreateCircle( hitPos, 3, function( targetPos )
+        hitpoints = common.Scale( 20, 100, Strength );
+        common.CreateCircle( hitPos, 3, function( targetPos )
             world:gfx( 1, targetPos );
             M.HitChar( targetPos, hitpoints );
         end );

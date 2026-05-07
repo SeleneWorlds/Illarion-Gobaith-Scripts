@@ -4,7 +4,7 @@ local LookAtItem, MoveItemAfterMove
 -- data values in use: 100,101,102,666,700,800, 10000
 
 require("base.lookat")
-require("base.common")
+local common = require("base.common")
 local jewelbonus = require("content.jewelbonus")
 
 function M.LookAtItem(User,Item)
@@ -116,7 +116,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
                 if ((Character:increaseAttrib("essence",0)+Character:increaseAttrib("willpower",0)+Character:increaseAttrib("intelligence",0))>29) then
                     return true;
                 else
-                    base.common.InformNLS( Character,"Ein warnendes Kribbeln durchstr�hmt deinen Arm als du den Ring ber�hrst. Du willst ihn lieber nicht anlegen.","A warning prickle travels through your arm as you touch the ring. You seems, it is better to let them lay.");
+                    common.InformNLS( Character,"Ein warnendes Kribbeln durchstr�hmt deinen Arm als du den Ring ber�hrst. Du willst ihn lieber nicht anlegen.","A warning prickle travels through your arm as you touch the ring. You seems, it is better to let them lay.");
                     return false;
                 end
             end
@@ -125,7 +125,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
                 if ( Character.id == 489898022) then
                     return true;
                 else
-                    base.common.InformNLS( Character,"Ein warnendes Kribbeln durchstr�hmt deinen Arm als du den Ring ber�hrst. Du willst ihn lieber nicht anlegen.","A warning prickle travels through your arm as you touch the ring. You seems, it is better to let them lay.");
+                    common.InformNLS( Character,"Ein warnendes Kribbeln durchstr�hmt deinen Arm als du den Ring ber�hrst. Du willst ihn lieber nicht anlegen.","A warning prickle travels through your arm as you touch the ring. You seems, it is better to let them lay.");
                     return false;
                 end
             end
@@ -195,7 +195,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
                     world:gfx(52,position(-38,-194,1));
                     world:gfx(52,position(-36,-192,1));
                 else
-                    base.common.InformNLS( User,"Du versuchst den Ring zu benutzen, aber nichts passiert.","You try to use the ring, but nothing happens.");
+                    common.InformNLS( User,"Du versuchst den Ring zu benutzen, aber nichts passiert.","You try to use the ring, but nothing happens.");
                 end
             end
         end

@@ -3,12 +3,12 @@ local LookAtItem, UseItem
 
 -- UPDATE common SET com_script='item.id_2830_chest' WHERE com_itemid=2830;
 
-require("base.common")
+local common = require("base.common")
 require("base.treasure")
 
 function M.LookAtItem(User, Item)
     local TreasureName = base.treasure.GetTreasureName( Item.data, User:getPlayerLanguage(), false );
-    world:itemInform( User, Item, base.common.GetNLS( User,"Du siehst "..TreasureName..".","You see "..TreasureName.."." ) );
+    world:itemInform( User, Item, common.GetNLS( User,"Du siehst "..TreasureName..".","You see "..TreasureName.."." ) );
 end
 
 function M.UseItem(User,SourceItem)
@@ -16,14 +16,14 @@ function M.UseItem(User,SourceItem)
     level=SourceItem.data;
     posi=SourceItem.pos;
 
-    base.common.TempInformNLS(User, "Du �ffnest die Schatzkiste...", "You open the treasure chest...");
+    common.TempInformNLS(User, "Du �ffnest die Schatzkiste...", "You open the treasure chest...");
 	world:erase(SourceItem,1);
 	if SourceItem.data ~= 0 and SourceItem.data < 10 then
         world:gfx(16,posi);
         world:makeSound(13,posi);
         base.treasure.SpawnTreasure( level, posi );
 	else	
-        base.common.TempInformNLS(User, "...sie ist leer!", "...it is empty!");
+        common.TempInformNLS(User, "...sie ist leer!", "...it is empty!");
     end
 
 end

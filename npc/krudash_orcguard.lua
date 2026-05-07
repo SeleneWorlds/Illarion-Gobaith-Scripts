@@ -14,7 +14,7 @@ last updated: 15/10/09
 by: Juniper Onyx
 ]]--
 -- INSERT INTO npc VALUES (nextval('npc_seq'),4,-63,-142,0,6,false,'Krudash','npc_krudash_orcguard.lua',1);
-require("base.common")
+local common = require("base.common")
 require("npc.base.autonpcfunctions")
 require("base.keys")
 
@@ -171,7 +171,7 @@ function M.receiveText(texttype, message, originator)
 				if (standardAnswer(message,1) or standardAnswer(message,2)) then --true password but wrong language
 					gText="Du sprechen orkisch zu mir, wenn ich soll anfassen Orktor!";  --HIER DIE TEXTE SCHREIBEN DIE DER NPC SAGT FALLS DAS LOSUNGSWORT RICHTIG; ABER NICHT AUF ORKISCH IST
 					eText="Speak orcish ib yoo wunt meh touch da gate turr orc embassy!";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				else
 					npc.base.autonpcfunctions.TellSmallTalk(message,originator);
@@ -189,7 +189,7 @@ function M.receiveText(texttype, message, originator)
 				if (standardAnswer(message,1) or standardAnswer(message,2)) then --true password but wrong language
 					gText="Du sprechen orkisch zu mir, wenn ich soll anfassen Orktor zu heiligem Berg!";  --HIER DIE TEXTE SCHREIBEN DIE DER NPC SAGT FALLS DAS LOSUNGSWORT RICHTIG; ABER NICHT AUF ORKISCH IST
 					eText="Speak orcish ib yoo wunt meh touch da gate turr holy mountain!";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				end
 		  end
@@ -245,7 +245,7 @@ function M.mainTask(message, originator)
 		if (doora.id==666 and doorb.id==670) then--door already opened
 			gText="Dummer Ork, Tor sein auf!";
 			eText="Stoopid orc, da gate alrrready beh open!";
-			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		else
 			base.keys.UnlockDoor( doora ); --Tor entriegeln
@@ -258,7 +258,7 @@ function M.mainTask(message, originator)
 
 			gText="#me öffnet das Tor.";
 			eText="#me opens the gate.";
-			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		end
 		return true;
@@ -268,13 +268,13 @@ function M.mainTask(message, originator)
 		if (doora.id==654 and doorb.id==658) then --If both doors are already closed then...
 			gText="Du keine Augen in deinem stinkigen Kopf haben? Tor sein schon zu!";
 			eText="Yoo nub hab eyes in yoos smelly head? Da gate alrrready beh closed!";
-			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		else
 			if ( world:isCharacterOnField(doorapos) or world:isCharacterOnField(doorbpos)) then -- Is a char. on the position of the doors?
 				gText="Ich nix können Tor zumachen wenn da jemand rumstehen!";
                 eText="Me nub can close dat gate when someone standing there!";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);	
 			else
 				CloseDoor( doora ); --Tore schließen
@@ -286,7 +286,7 @@ function M.mainTask(message, originator)
 				base.keys.LockDoor( doorb );
 				gText="#me lässt die Flügel des Tores krachend zufallen und sperrt ab."; --HIER DIE TEXTE REINSCHREIBEN DIE BEIM ZUMACHEN KOMMEN SOLLEN
 				eText="#me shuts the gate crashing then locks it.";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			end
 		end

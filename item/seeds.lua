@@ -4,7 +4,7 @@ local UseItemWithField, UseItem, MoveItemBeforeMove, MoveItemAfterMove
 -- base_seeds - sew seeds on fields
 -- a number of seeds appears on the field dependent on user's skill
 -- Nop & Nitram
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.seeds' WHERE com_itemid IN (259,291,534,2494,2917,728);
 
@@ -93,16 +93,16 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     end
     
     local Field = world:getField( TargetPos )
-    local boden = base.common.GetGroundType( Field:tile() );
+    local boden = common.GetGroundType( Field:tile() );
     if ( boden ~= 1 ) then
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du kannst nur auf Ackerboden planzen.",
         "You can only plant on farm land");
         return
     end
 
     if ( SourceItem:getType() < 4 ) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du brauchst dazu Saatgut im G�rtel oder in der Hand.",
         "You'd better carry some seed in your belt or in your hands." );
         return
@@ -112,19 +112,19 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     local season=math.ceil(month/4);
     if not seed[5][season] then
             if (season == 1) then
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Es ist noch zu kalt und es scheint zu wenig Sonne um das anzubauen.",
                 "Its still too cold and there is not enough sun to plant this.");
             elseif (season == 2) then
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Es ist viel zu warm um das anzubauen.",
                 "Its much to warm to plant this.");
             elseif (season == 3) then
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Es ist zu kalt um das anzubauen.",
                 "Its much to cold to plant this.");
             elseif (season == 4) then
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Der Boden ist tief gefroren. Hier wirst du nichts anbauen k�nnen.",
                 "The ground is freezed deeply. You won't be able to plant anything here.");
             end
@@ -133,7 +133,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
 
     if (seed[6][1] ~= nil) then
         if ((TargetPos.x < seed[6][1]) or (TargetPos.x > seed[6][2])) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Das w�chst hier nicht.",
             "This doesn't grow here.");
             return
@@ -142,19 +142,19 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     
     if (seed[7][1] ~= nil) then
         if ((TargetPos.y < seed[7][1]) or (TargetPos.y > seed[7][2])) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Das w�chst hier nicht.",
             "This doesn't grow here.");
             return
         end
     end
 
-    if not base.common.FitForWork( User ) then
+    if not common.FitForWork( User ) then
         return
     end
     
-    if not base.common.IsLookingAt( User, TargetPos ) then
-        base.common.TurnTo( User, TargetPos );
+    if not common.IsLookingAt( User, TargetPos ) then
+        common.TurnTo( User, TargetPos );
     end
     
     local skillwert = User:getSkill( "peasantry" );
@@ -171,24 +171,24 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     User:learn( 2, "peasantry", 2, 100 );
     world:erase( SourceItem, 1 );
 
-    base.common.GetHungry( User, 100 );
+    common.GetHungry( User, 100 );
 end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param)
     if ((TargetItem ~= nil) and (TargetItem.id ~= 0)) then
         if (TargetItem:getType() == 3) then
             if ((TargetItem.id == 2862) or (TargetItem.id == 2863)) then
-                UseItemWithField( User, SourceItem, base.common.GetFrontPosition(User), Counter, Param );
+                UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
             end
         end
     else
-        local TestItem = base.common.GetFrontItem( User );
+        local TestItem = common.GetFrontItem( User );
         if ((TestItem ~= nil) and (TestItem.id ~= 0)) then
             if ((TestItem.id == 2862) or (TestItem.id == 2863)) then
-                UseItemWithField( User, SourceItem, base.common.GetFrontPosition(User), Counter, Param );
+                UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
             end
         else
-            UseItemWithField( User, SourceItem, base.common.GetFrontPosition(User), Counter, Param );
+            UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
         end
     end
 end

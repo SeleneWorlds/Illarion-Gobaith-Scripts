@@ -1,11 +1,11 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 ---------------------------
 ---- Spook starts --
 -----------------------------
 function M.addEffect(spookeyEffect, Character)         -- Smell starts
-    --base.common.InformNLS(Character,
+    --common.InformNLS(Character,
     --"Du fühlst dich etwas unwohl.",
     --"You feel a little sickish.");
 	CharRace=Character:get_race()
@@ -24,7 +24,7 @@ end
 
 
 function M.removeEffect( Effect, Character )
-    --base.common.InformNLS(Character,
+    --common.InformNLS(Character,
     --"Du fühlst dich endlich wieder besser.",
     --"You finally feel better now.");
 end

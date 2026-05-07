@@ -1,5 +1,5 @@
 -- Quest: The Missing Son
-require("base.common")
+local common = require("base.common")
 
 module("triggerfield.missingson_caveentrance", package.seeall)
 
@@ -9,7 +9,7 @@ function MoveToField(User)
 	MonsterPositions[0] = position(0,0,0);
 	local ChildPosition = position(0,0,0);
 	if (User:getQuestProgress(QuestID) == 2) then
-		base.common.InformNLS(User,
+		common.InformNLS(User,
 			"Als du durch den Eingangsspalt blickst, f�llt dir auf, dass in der H�hle Licht brennt.",
 			"As you look trough the entrance, you notice that there's light in the cave.");
 		local m = world:getMonstersInRange(MonsterPositions[0], 10);

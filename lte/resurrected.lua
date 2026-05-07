@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 attribs={"strength","dexterity","constitution","agility","intelligence","perception","willpower","essence"};
@@ -10,7 +10,7 @@ function M.addEffect( rebirthEffect, Reborn )
     end
 
     --Reborn:inform("addEffect");
-    base.common.InformNLS( Reborn,
+    common.InformNLS( Reborn,
         "Du fühlst dich noch sehr schwach.",
         "You feel very weak." );
     local maxChange = 0;
@@ -31,7 +31,7 @@ function M.addEffect( rebirthEffect, Reborn )
     end;
 	local multi = 1;
 	local lastDeath = Reborn:getQuestProgress(20);
-	local now = base.common.GetCurrentTimestamp();
+	local now = common.GetCurrentTimestamp();
 	Reborn:setQuestProgress(20,now);
 	if lastDeath>0 and (now-lastDeath)>3600 then
 		multi = 2;
@@ -49,7 +49,7 @@ function M.loadEffect( rebirthEffect, Reborn )
     end
 
 
-    base.common.InformNLS( Reborn,
+    common.InformNLS( Reborn,
         "Du fühlst dich noch immer schwach.",
         "You feel still weak." );
 
@@ -168,7 +168,7 @@ function M.doubleEffect( rebirthEffect, Reborn )
 	  return false;
     end
 
-    base.common.InformNLS( Reborn,
+    common.InformNLS( Reborn,
         "Du fühlst dich noch sehr schwach.",
         "You feel very weak." );
     local maxChange = 0;
@@ -198,7 +198,7 @@ function M.doubleEffect( rebirthEffect, Reborn )
 	end
 	multi = multi * 2;
 	rebirthEffect:addValue("multiRes",multi);
-	Reborn:setQuestProgress(20,base.common.GetCurrentTimestamp());
+	Reborn:setQuestProgress(20,common.GetCurrentTimestamp());
     return true;
 end
 return M

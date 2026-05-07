@@ -19,7 +19,7 @@ local _ENV = setmetatable(M, { __index = _G })
 
 
 require("npc.base.autonpcfunctions")
-require("base.common")
+local common = require("base.common")
 
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
@@ -171,7 +171,7 @@ function M.nextCycle()  -- ~10 times per second
 					_waitVar=0;
 					
 				   elseif (_waitVar==1) then
-				   		base.common.InformNLS( newbie_list[newbieIndex], "*Die Mumie zerfällt zu Staub*", "*The mummy dissolves into dust*"); 
+				   		common.InformNLS( newbie_list[newbieIndex], "*Die Mumie zerfällt zu Staub*", "*The mummy dissolves into dust*"); 
 				   end
 				end
 			else
@@ -227,19 +227,19 @@ function M.receiveText(texttype, message, originator)
 					    gText="Gut, zuerst solltest du dir mal ne zusätzliche Kampfausrüstung besorgen. Hier hast du 50 Kupferstücke für eine Ausrüstung.";
                         eText="Good, at first you should buy an additional fighting equipment. Here are 50 copper coins for the equipment";
                         createCoins(originator);
-                        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                         gText="#me schmeißt einen Geldbeutel auf dem Boden.";
                         eText="#me throws a moneybag on the ground.";
-				        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                         gText="Um das Geld aufzuheben musst du zunächst mal den Zähler der sich unten mittig auf dem Bildschirm befindet auf 50 setzen.";
                         eText="To pick up the money you first need to set the counter which you can find at the bottom in the middle of the screen on 50.";
-				        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                         gText="Dies erreichst du, indem du den Mauszeiger über das schwarze Kästchen oberhalb der Uhr bringst und dann mit dem Mausrad nach oben scrollst.";         
                         eText="You can do this by bringing the cursor above the black box and scrolling up with the mouse wheel.";
-				        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                         gText="Alles soweit verstanden? Ja oder Nein?";
                         eText="Have you understood everything so far? Yes or No?";
@@ -302,11 +302,11 @@ function M.receiveText(texttype, message, originator)
         elseif Progress==23 then --The second part of the lesson "Changing the counter value"
                         gText="Alternativ kannst du auch die beiden [Bild-Tasten] auf der Tastatur verwenden um den Zählerwert zu ändern.";
                         eText="Alternatively you can also use the [Page up] and [Page down] keys on your keyboard to change the counter value.";
-                        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
                         thisNPC:talk(CCharacter.say,outText);
                         gText="Wenn der Zähler auf 50 gesetzt wurde kannst du das Geld genauso wie das Brötchen bei Henry in die Tasche ziehen. Sag bescheid, fallst du die Münzen verlierst, dann geb' ich dir neue Münzen.";
                         eText="If the counter is set to 50 you can drag the money just like the bread roll Henry gave you into your bag. If you loose the coins just ask me for new ones and I will give you more.";
-                        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
                         thisNPC:talk(CCharacter.say,outText);
                         gText="Wenn du das Geld aufgehoben hast, musst du in das Haus hier rein, um zu meinem Bruder dem Schmied zu gelangen. Er wird dir eine Ausrüstung verkaufen. Alles verstanden?";
                         eText="When you picked up the money, you can enter the house behind me to meet my brother. He's a smith and could sell you fighting equipment. Did you understand everything so far?";
@@ -387,15 +387,15 @@ function M.receiveText(texttype, message, originator)
          if string.find(message,".+") then
            gText="Ah, du hast schon die Ausrüstung, ausgezeichnet. Um jemanden anzugreifen kannst du entweder die [Strg-Taste] gedrückt halten und den Gegner linksklicken,";
            eText="As I can see you got the fighting equipment. Now I can teach you how to fight.";
-           outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+           outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		   npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
            gText="oder auch den Gegner rechtsklicken und im erscheinenden Menü \"Angreifen\" auswählen.";
            eText="Basically it is quite easy, if you want to attack somebody you have to either hold [Ctrl] and left-click your opponent or right-click the opponent and choose \"Attack\" from the appearing menu.";
-           outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+           outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		   npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		   gText="Das rote Schauglas unter der Minikarte zeigt dir deine Lebensenergie, achte darauf das dieses nicht leer wird, sonst stirbt dein Charakter. Die beiden Schaugläser rechts daneben zeigen den Hunger (gelb) und die Manapunkte (blau) an.";
            eText="The red bar under the minimap shows you your life energy. Take good care of it so that it doesn't reach the bottom, or your character will die. The two bars next to it show you your food (yellow) and mana level (blue).";
-           outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+           outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		   npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		   gText="Wenn du alles verstanden hast, darfst du an einer Mumie üben. Also, hast du alles verstanden, \"Ja\" oder \"Nein\"?";
 		   eText="If you understood everything so far, you can now train on a mummy. So, did you understand everything \"Yes\" or \"No\"?";
@@ -424,11 +424,11 @@ function M.receiveText(texttype, message, originator)
             
                 gText="Na gut, ich erklärs dir nochmal.";
                 eText="Okay, I will explain it you again.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                 gText="Es ist ganz einfach, um jemanden anzugreifen kannst du entweder die [Strg-Taste] gedrückt halten und den Gegner linksklicken, oder auch den Gegner rechtsklicken und im erscheinenden Menü \"Angreifen\" auswählen.";
                 eText="It is quite easy, if you want to attack somebody you have to either hold [Ctrl] and leftclick your opponent or right-click the opponent and choose \"Attack\" from the appearing menu.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			    gText="Wenn du alles verstanden hast, darfst du nun an einer Mumie üben. Hast du alles verstanden, \"Ja\" oder \"Nein\"?";
 		        eText="If you understood everything so far, you can now train on a mummy. Did you understand everything \"Yes\" or \"No\"?";
@@ -450,7 +450,7 @@ function M.receiveText(texttype, message, originator)
                 if (string.find(message,"Arghh")~=nil) then
 				gText="Die Mumie war zu stark für dich, ich musste deine Lebensenergie regenerieren, willst du es nochmal mit der Mumie aufnehmen?";
 		        eText="The mummy was too strong for you, I had to regenerate your life energy, shall I let a mummy appear again?";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				end
             if (standardAnswer(message,1)==true or standardAnswer(message,7)==true) then
@@ -474,11 +474,11 @@ function M.receiveText(texttype, message, originator)
             
                 gText="Na gut, dann erkläre ich dir nochmal wie man kämpft.";
                 eText="Okay, then I will explain you again how to fight.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                 gText="Es ist ganz einfach, um jemanden anzugreifen kannst du entweder die [Strg-Taste] gedrückt halten und den Gegner linksklicken, oder auch den Gegner rechtsklicken und im erscheinenden Menü \"Angreifen\" auswählen.";
                 eText="It is quite easy, if you want to attack somebody you have to either hold [Ctrl] and leftclick your opponent or right-click the opponent and choose \"Attack\" from the appearing menu.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			    gText="Wenn du alles verstanden hast, darfst du nun an einer Mumie üben. Hast du alles verstanden, \"Ja\" oder \"Nein\"?";
 		        eText="If you understood everything so far, you can now train on a mummy. Did you understand everything \"Yes\" or \"No\"?";
@@ -504,7 +504,7 @@ function M.receiveText(texttype, message, originator)
         	    if (string.find(message,"Arghh")~=nil) then
 				gText="Arr, du warst auf einmal weg, also hab ick die Mumie erledigt! Willst du es nochmal gegen die Mumie aufnehmen, \"Ja\" oder \"Nein\"? Wenn du \"Nein\" sagst erkläre ich dir nochmal wie man kämpft!";
 		        eText="Arr, you disappeared, so I had to kill the mummy by myself. Do you want to fight against the mummy again, \"Yes\" or \"No\"? If you say \"No\" I'll explain again how to fight.";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				relog=true;
 				relogging_newb=originator;
@@ -531,11 +531,11 @@ function M.receiveText(texttype, message, originator)
             
                 gText="Na gut, dann erkläre ich dir nochmal wie man kämpft.";
                 eText="Okay, then I will explain you again how to fight.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                 gText="Es ist ganz einfach, um jemanden anzugreifen kannst du entweder die [Strg-Taste] gedrückt halten und den Gegner linksklicken, oder auch den Gegner rechtsklicken und im erscheinenden Menü \"Angreifen\" auswählen.";
                 eText="It is quite easy, if you want to attack somebody you have to either hold [Ctrl] and leftclick your opponent or right-click the opponent and choose \"Attack\" from the appearing menu.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			    gText="Wenn du alles verstanden hast, darfst du nun an einer Mumie üben. Hast du alles verstanden, \"Ja\" oder \"Nein\"?";
 		        eText="If you understood everything so far, you can now train on a mummy. Did you understand everything \"Yes\" or \"No\"?";
@@ -555,11 +555,11 @@ function M.receiveText(texttype, message, originator)
         elseif (Progress==33) then
                 gText="Hast du den blauen Lichtkreis über deinen Kopf gesehen? Er erscheint immer dann wenn sich dein Charakter in einer Fertigkeit verbessert hast.";
                 eText="Did you see the blue swirley above your head? It always appears when your character gets better in a skill.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                 gText="Du kannst deine Charakterfertigkeiten durch das Drücken von [F8] anzeigen lassen. Die Schriftfarbe zeigt dir an wie gut du in einer Fertigkeit bist. Der Pfeil unten rechts zeigt an, welche Farbe einen hohen und welche einen niedrigen Skill bedeutet.";
                 eText="You can display your skill levely by pressing [F8] button on your keyboard. The font color shows you the level of your skill. The arrow on the right shows you what color the skill will become the better you get.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		        gText="Das war die Lektion übers Kämpfen, folge der Straße um zur Holzfällerin Amelia zu gelangen.";
 		        eText="That was the lesson about fighting, follow the street to meet the lumberjack Amelia.";
@@ -582,7 +582,7 @@ function M.receiveText(texttype, message, originator)
 		elseif (string.find(message,"[Zz][äa][he][lh][el].+")~=nil or string.find(message,"[Cc]ounter")~=nil) then
 				gText="Also gut, um dem Zählerwert zu ändern musst du den Mauszeiger über die schwarze Box oberhalb der Uhr bringen und dann mit dem Mausrad nach oben oder unten scrollen.";
 		        eText="Okay, you can change the counter value by bringing your cursor above the black box and scrolling up or down with the mouse wheel.";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				gText="Eine andere Möglichkeit um den Zählerwert zu ändern sind die [Bild]-Tasten auf deiner Tastatur, mit ihnen kannst du auch den Zählerwert erhöhen oder senken. Ich hoffe ich konnte dir helfen.";
 		        eText="If you have no mouse wheel, you can also use the [Page up] and [Page down] keys on your keyboard to change the counter value. I hope I could help.";
@@ -622,15 +622,15 @@ function M.receiveText(texttype, message, originator)
 			elseif (standardAnswer(message,7)==true) then
 				gText="Also gut, um jemanden anzugreifen kannst du entweder die [Strg-Taste] gedrückt halten, und den Gegner mit der linken Maustaste anklicken.";
 				eText="Okay, if you want to attack somebody you have to hold the [Crtl]-Key and click with the left mouse button your opponent.";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				gText="Alternativ kannst du den Gegner auch mit der rechten Maustaste anklicken und anschließend im erscheinenden Menü \"Angreifen\" auswählen.";
 				eText="Alternatively you can also click your opponent with the right mouse button and choose \"Attack\" from the appearing menu.";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		   		gText="Das rote Schauglas unter der Minikarte zeigt dir deine Lebensenergie, achte darauf das dieses nicht leer wird, sonst stirbt dein Charakter. Die beiden Schaugläser rechts daneben zeigen den Hunger (gelb) und die Manapunkte (blau) an.";
            		eText="The red bar under the minimap shows you your life energy. Take good care of it so that it doesn't reach the bottom, or your character will die. The two bars next to it show you your food (yellow) and mana level (blue).";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		        gText="Wenn du willst kann ich nochmal eine Mumie erscheinen lassen, willst du nochmal kämpfen?";
 		        eText="If you want I can let a mummy appear again, do you want to fight again?";
@@ -639,7 +639,7 @@ function M.receiveText(texttype, message, originator)
 			elseif (string.find(message,"[Ff][äa][he][ih][gi][kg][ek][ie][ti].+")~=nil or string.find(message,"[Ss]kill.+")~=nil) then
                 gText="Sobald sich dein Charakter in einer Fertigkeit verbessert erscheint ein blauer Lichtkreis über seinen Kopf.";
                 eText="As soon as your character gets better in a skill a blue swirlie appears above his head.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
                 gText="Du kannst deine Charakterfertigkeiten durch das Drücken von [F8] anzeigen lassen. Die Schriftfarbe zeigt dir an wie gut du in einer Fertigkeit bist. Der Pfeil unten rechts zeigt an, welche Farbe einen hohen und welche einen niedrigen Skill bedeutet.";
                 eText="You can display your skill levels by pressing the [F8] button on your keyboard. The font colors show you the level of your skills. The arrow on the right side shows which color means a high skill, and which expresses a low one";
@@ -677,7 +677,7 @@ function M.receiveText(texttype, message, originator)
                 eText="Hello, my name is Nargon, i will teach you fighting, but first you have to go to the NPC Henry, he will teach you some basic functions of the game.";
         end
         if (Progress~=20) then
-        		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+        		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			    npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 		end
 		

@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 --[[ LTE 26
@@ -207,7 +207,7 @@ function M.GetBestAttribOffset( Char1, Char2, AttribList )
 end
 
 function M.InformW( User, textInDe, textInEn )
-    User:inform( "#w "..base.common.GetNLS( User, textInDe, textInEn ) );
+    User:inform( "#w "..common.GetNLS( User, textInDe, textInEn ) );
 end
 
 function M.GetRope( Character )

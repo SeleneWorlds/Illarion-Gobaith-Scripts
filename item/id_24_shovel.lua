@@ -8,12 +8,12 @@ local UseItemWithField, getNumb, checkSuccess, UseItem, GenWorkTime, LocationChe
 
 -- UPDATE common SET com_script='item.id_24_shovel' WHERE com_itemid=24;
 
-require("base.common")
+local common = require("base.common")
 require("item.general.metal")
 require("base.treasure")
 
 function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if (StoneList==nil) then
         StoneList={ 914, 915, 1245, 1246, 1273, 1276 };
         foundTreasureAt = {};
@@ -21,14 +21,14 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
 
     if equapos( position( 99, 40, 0 ), TargetPos ) then
         User:warp( position( 99, 40, -3 ) );
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du gr�bst ein Loch und der Boden bricht unter dir weg und so f�llst du in eine H�hle",
         "You dig a hole and the ground under you collapses and you fall into a cave..." );
         return
     end
 
     local groundTile = world:getField( TargetPos ):tile();
-    local GroundType = base.common.GetGroundType( groundTile );
+    local GroundType = common.GetGroundType( groundTile );
 
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
@@ -44,18 +44,18 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     end
 
     if ( SourceItem:getType() ~= 4 ) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Nimm die Schaufel fest in beide H�nde.",
         "Take the shovel firmly in your hands." );
         return
     end
 
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
 
     if (GroundType ~= 5) and base.treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
-                                                base.common.GetNLS( User,
+                                                common.GetNLS( User,
                                                     "Du gr�bst mit deiner Schaufel in den Boden und st��t auf etwas hartes, von dem ein h�lzerner Klang ausgeht. Noch einmal graben und du h�ltst den Schatz in deinen H�nden.",
                                                     "You dig with your shovel into the ground and hit suddenly something hard and wooden sounding. You only have to dig another time to get the treasure." ), false ) then
         return;
@@ -63,51 +63,51 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
 
     if (( groundTile ~= 3 ) and ( groundTile ~= 8 )) then
         if ( GroundType == 1 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du gr�bst ein kleines Loch in den Ackerboden doch findest du hier gar nichts.",
             "You dig a small hole into the farming ground. But you find nothing.");
         elseif ( GroundType == 2 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du gr�bst ein kleines Loch in den Waldboden doch findest du hier gar nichts.",
             "You dig a small hole into the forest ground. But you find nothing.");
         elseif ( GroundType == 4 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Du gr�bst ein kleines Loch in die Wiese doch findest du hier gar nichts.",
             "You dig a small hole into the grass. But you find nothing.");
         elseif ( GroundType == 5 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Der Boden besteht hier aus solidem Stein. Mit einer Schaufel hast du eindeutig das falsche Werkzeug.",
             "The ground here is heavy stone. With a shovel you have the wrong tool here for sure.");
         elseif ( GroundType == 6 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Im Wasser mit einer Schaufel zu graben geht zwar relativ leicht, doch der Effekt ist recht gering.",
             "To dig with a shovel in the water is pretty easy. But sadly there is no effect in doing this.");
         else
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du versuchst an dieser Stelle zu graben, findest aber nichts.",
             "You attempt to dig here, but you don't find anything.");
         end
         return
     end
 
-    if base.common.ToolBreaks( User, SourceItem, true) then
-        base.common.InformNLS(User,
+    if common.ToolBreaks( User, SourceItem, true) then
+        common.InformNLS(User,
         "Die alte und abgenutzte Schaufel in deinen H�nden zerbricht.",
         "The old and used shovel in your hands breaks.");
         return
     end
 
-    if not base.common.IsLookingAt( User, TargetPos ) then
-        base.common.TurnTo( User, TargetPos );
+    if not common.IsLookingAt( User, TargetPos ) then
+        common.TurnTo( User, TargetPos );
     end
     if not LocationCheck(TargetPos,groundTile) then
         if ( groundTile == 3 ) then
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Der Wind hat hier allen Sand fortgeweht.",
             "The wind has blown away the whole sand." );
             return
         else
-            base.common.InformNLS( User,
+            common.InformNLS( User,
             "Der Boden ist hier nicht feucht genug.",
             "The ground is not wet enough here." );
             return
@@ -160,11 +160,11 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     if (left<0) then
         world:createItemFromId( ItemID, numberSand, User.pos, true, 333 ,0);
         if ( world:getField( TargetPos ):tile() == 3 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nicht noch mehr Sand halten und er rieselt zu Boden.",
             "You can't carry more sand and it falls to the ground.");
         else
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du kannst nicht noch mehr Lehm halten und er f�llt zu Boden.",
             "You can't carry more clay and it falls to the ground.");
         end
@@ -194,11 +194,11 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        TargetItem = base.common.GetFrontItem( User );
+        TargetItem = common.GetFrontItem( User );
     end
 
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        UseItemWithField( User, SourceItem, base.common.GetFrontPosition( User ), Counter, Param, ltstate );
+        UseItemWithField( User, SourceItem, common.GetFrontPosition( User ), Counter, Param, ltstate );
         return
     end
 
@@ -214,18 +214,18 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
 
-    if not base.common.FitForWork( User ) then
-        base.common.InformNLS( User, "Du bist zu hungrig um jetzt gro�e Arbeit zu verrichten.", "You are too hungry to do heavy work. " );
+    if not common.FitForWork( User ) then
+        common.InformNLS( User, "Du bist zu hungrig um jetzt gro�e Arbeit zu verrichten.", "You are too hungry to do heavy work. " );
         return
     end
 
     if ( SourceItem:getType() ~= 4 ) then
-        base.common.InformNLS( User, "Nimm die Schaufel fest in beide H�nde.", "Take the shovel firmly in your hands." );
+        common.InformNLS( User, "Nimm die Schaufel fest in beide H�nde.", "Take the shovel firmly in your hands." );
         return
     end
 
-    if not base.common.IsLookingAt( User, TargetItem.pos ) then
-        base.common.TurnTo( User, TargetItem.pos );
+    if not common.IsLookingAt( User, TargetItem.pos ) then
+        common.TurnTo( User, TargetItem.pos );
     end
 
     local skill = User:getSkill( "lumberjacking" )+ User:increaseAttrib( "strength", 0 );
@@ -233,15 +233,15 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         world:erase( TargetItem, 1 )
         if ( math.random(1) == 1 ) then
             	world:createItemFromId( 152, 1, TargetItem.pos, true, 999 ,0);
-            	base.common.InformNLS(User,
+            	common.InformNLS(User,
             	"Unter dem Baumstumpf findest du seltsame Wurzeln.",
             	"Below the tree stump you find strange roots.");
         end
     else
-        base.common.InformNLS( User, "Die Wurzeln sind stark und tief und halten deiner Kraft stand.", "This roots are deep and strong. They resist you strength." );
+        common.InformNLS( User, "Die Wurzeln sind stark und tief und halten deiner Kraft stand.", "This roots are deep and strong. They resist you strength." );
     end
     User:learn( 2, "lumberjacking", 2, 50 )
-    base.common.GetHungry( User, 200 );
+    common.GetHungry( User, 200 );
 end
 
 -- Arbeitszeit generieren
@@ -249,7 +249,7 @@ function M.GenWorkTime(User,toolItem)
     local Attrib = User:increaseAttrib("constitution",0); -- Geschicklichkeit: 0 - 20
     local Skill  = math.min(100,User:getSkill("mining")*5);     -- Schneidern: 0 - 100
 
-    gem1, str1, gem2, str2=base.common.GetBonusFromTool(toolItem);
+    gem1, str1, gem2, str2=common.GetBonusFromTool(toolItem);
     step=0;
     if gem1==3 then     -- ruby modifies skill!
         step=str1;

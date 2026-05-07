@@ -13,7 +13,7 @@ Task: Townguard at the workshop in Silverbrand
 last updated: 24/02/2009 by Ardian
 ]]--
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,112,-198,-3,4,false,'Goldra Felsreisser','npc_goldra_felsreisser.lua',1);
-require("base.common")
+local common = require("base.common")
 require("npc.base.autonpcfunctions")
 require("base.keys")
 require("base.doors")
@@ -343,7 +343,7 @@ function M.receiveText(texttype, message, originator)
 						gText="Das verrat' ick dir doch nich!";
 						eText="I won't tell that to you!";
 					end
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 
 				elseif (string.find(message,"[Ee]rz[äa][eh][l].+[Ww]itz.*")~=nil or string.find(message,"[Tt]ell.+[Jj]oke.*")~=nil) then
@@ -397,7 +397,7 @@ function M.mainTask(message, originator)
 					gText="Verschwinde Boindil, du hast's mit uns endgültig verscherzt!";
         			eText="Back off Boindil, your beard is no longer welcome here!";
 				end
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 
 			else
@@ -407,7 +407,7 @@ function M.mainTask(message, originator)
 		        if (doora.id==684 or doorb.id==668) then --If one of the doors is already opened then...
 					gText="Dat Tor steht doch"..hicks().."eh offen!";
                 	eText="The gate is already"..hicks().."opened.";
-                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                	outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 
 				else
@@ -449,13 +449,13 @@ function M.mainTask(message, originator)
 	                				eText="Welcome in"..hicks().."Silverbrand Sister.";
 								end
 							end
-	                			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+	                			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			        			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						end
 					elseif (not move.status()) and (game1.rundenzahl()~=0) then
 						gText="Nay, jetzt nich, bin grad dabei ne Münze zu gewinnen!";
 						eText="Nay, not now, I have a coin to win!";
-	                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+	                	outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					end
 				end
@@ -467,7 +467,7 @@ function M.mainTask(message, originator)
 			if ( world:isCharacterOnField(doorapos) or world:isCharacterOnField(doorbpos)) then -- Is a char. on the position of the doors?
 				gText="Ick kann det Tor nich zumachen weil "..hicks().."jemand im Weg steht.";
                 eText="I can't close the gate"..hicks().."during someone stands in the way.";
-                outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			elseif (originator.id==boindil) then
 
@@ -478,7 +478,7 @@ function M.mainTask(message, originator)
 					gText="Verschwinde"..hicks().."Boindil, du hast's mit uns"..hicks().."endgültig verscherzt!";
         			eText="Back off Boindil,"..hicks().."your beard is no longer welcome here!";
 				end
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			else
 				doora=world:getItemOnField(	doorapos);
@@ -486,7 +486,7 @@ function M.mainTask(message, originator)
 					if (doora.id==652 and doorb.id==656) then --If both doors are already closed then...
 						gText="Dat Tor ist"..hicks().."eh schon zu.";
                 		eText="The gate"..hicks().."is already closed.";
-                		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+                		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		        		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					else
 						if (not move.status()) and (game1.rundenzahl()==0) then
@@ -494,7 +494,7 @@ function M.mainTask(message, originator)
 						elseif (not move.status()) and (game1.rundenzahl()~=0) then
 							gText="Nay, jetzt nich, bin grad dabei ne Münze zu gewinnen!";
 							eText="Nay, not now, I have a coin to win!";
-		                	outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+		                	outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				        	npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 						end
 					end
@@ -504,7 +504,7 @@ function M.mainTask(message, originator)
 		elseif (string.find(message,"[Tt]or.+[Aa]uf")~=nil or string.find(message,"[Oo]pen.+[Gg]ate")~=nil) then
 			gText="Ick bin deine Schwester, also"..hicks().."behandle mich 'uch so!";
 			eText="I'm yer sister, so ye"..hicks().."better treat me lik' this!";
-			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			return true;
 		elseif (standardAnswer(message,3)==true and originator.id~=boindil) then  --Come in Irima
@@ -519,7 +519,7 @@ function M.mainTask(message, originator)
 					gText="Jaja ... nen Moment noch.";
 					eText="Just a moment!";
 				end
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			end
 			return true;
@@ -529,7 +529,7 @@ function M.mainTask(message, originator)
 
 			    gText="#me erhebt sich \"Aye, ick sollt wirklich wieder raus, bis denne!\".";
 				eText="#me stands up \"Aye, I really should go outside again, see yer later!\"";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				game1.reset();
 			end
@@ -542,7 +542,7 @@ function M.mainTask(message, originator)
 		 or standardAnswer(message,3) or standardAnswer(message,4)) then
 			gText="Sprich wie 'n Zwerg mit mir"..hicks().."oder verschwinde wieder!";
 			eText="Talk lik' a dwarf wit' me or"..hicks().."leave!";
-			outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+			outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 			npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			return true;
 		end
@@ -643,12 +643,12 @@ function M.keinBock(originator)
 	if (math.random(0,10)==1) then
         gText="#me hält ihren Kopf \"Nay,"..hicks().."bin heut nich im Stimmung"..hicks()..", hab Kopfweh! Beweg deinen Hintern selber!\".";
 		eText="#me holds her head \"Nay,"..hicks().."today I'm in a foul mood, I've headache!"..hicks().."Mov' yer behind yerself!\".";
-        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 	else
 		gText="#me grummelt \"Mach doch"..hicks().."selber auf!\".";
         eText="#me grumbles \"I don't feel like it today. Do it"..hicks().."yourself!\".";
-        outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+        outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 		npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 	end
 end
@@ -713,7 +713,7 @@ function M.checkGender(originator,returnType)
             gTextG= "***Falscher returnType in checkGender, bitte melde dies einem Dev***";
         	eTextG= "***Wrong returnType in checkGender, please report this to a Dev***";
     end
-		text=base.common.npc.base.npcautofunction.GetNLS(originator,gTextG,eTextG);
+		text=common.npc.base.npcautofunction.GetNLS(originator,gTextG,eTextG);
     	return text;
 end
 --[[
@@ -929,7 +929,7 @@ function M.drinkGame()
 				    world:makeSound(12,thisNPC.pos); -- Trinkgeräusch machen
 					gText="#me reicht "..checkGender(self.player,3).." eine Flasche die "..checkGender(self.player,0).." austrinkt.";
 					eText="#me hands "..checkGender(self.player,3).." a bottle which "..checkGender(self.player,0).." drinks.";
-					outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 
 					calculateOutcomes();
@@ -957,13 +957,13 @@ function M.drinkGame()
 						self.player:increaseAttrib("hitpoints",-rand);
 					end
 						if self.outcome1>0 then
-						base.common.InformNLS( self.player, gText, eText );
+						common.InformNLS( self.player, gText, eText );
 						end
 
 					if self.outcome1<=0 then
 						gText="#w Dir wird schlecht und du musst dich übergeben.";
 						eText="#w You feel perish and have to puke.";
-						base.common.InformNLS( self.player, gText, eText );
+						common.InformNLS( self.player, gText, eText );
 		        		self.player:talkLanguage(CCharacter.say, CPlayer.german, "#me übergibt sich.");
 		       			self.player:talkLanguage(CCharacter.say, CPlayer.english,"#me pukes.");
 
@@ -981,12 +981,12 @@ function M.drinkGame()
 
 							gText="#me blickt "..self.player.name.." an - ihr Blick wirkt starr. Eine Fontäne schießt plötzlich aus ihrem Mund und das Essen der letzen Stunde verteilt sich auf Gesicht des Gewinners.";
 							eText="#me looks to "..self.player.name..", her gaze seems fixed. Suddenly a fountain gushes out of her mouth and the last hour's meal spreads on the face of the winner.";
-							outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
+							outText=common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			            	gText="Argh, du bist der bessere von uns *hicks* , hier dein Geld!";
 							eText="Argh, you are the better one from us two *hicks* , here ya' money!";
 							self.drunk[world:getTime("hour")]=true;
-							outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
+							outText=common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 							self.player:createItem(3077,3,666,0); --create 3 silvercoins
 							initJoke();
@@ -1000,7 +1000,7 @@ function M.drinkGame()
 								if math.random(5)==1 then
 			        				gText="#me reicht "..checkGender(self.player,3).." ein Kleid \"Da du ja anscheinend wie nen Langbeinerweib trinkst kannst du dich uch so anziehen\".";
 									eText="#me hands "..checkGender(self.player,3).." a dress \"It seems ya' drink like a longleg-woman so why not also dressing so\".";
-									outText=base.common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
+									outText=common.npc.base.npcautofunction.GetNLS(self.player,gText,eText);
 									npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 									self.player:createItem(385,1,111,0); --create girl dress
 								end
@@ -1031,13 +1031,13 @@ function M.drinkGame()
 					    gText="Komm erst wieder wenn du das Geld hast, du brauchst mindestens ne Silbermünze für das Spiel!"
 					    eText="Come back when ya' have enough money, you need at least 1 silver coin for the game!";
 					end
-						outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+						outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 						npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 				end
 			else
 				gText="Nay, jetz noch nich *hicks* , ich hab' *hicks* vorhin erst verloren!"
 				eText="Nay, not now *hicks* , I already *hicks* lost a few moments before!";
-				outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+				outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 			end
 
@@ -1059,7 +1059,7 @@ function M.drinkGame()
 					self.playerDrinkfactor=getFactor(originator);
 					gText="#me nimmt aus ihrer Tasche einige Flaschen \"Gut, spielen wir 'Quer durch Gobaith'\"";
 					eText="#me takes some bottles out of her bag \"Good, lets play 'Across Gobaith'\"";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					self.rundenzahl=1;
 					self.gameState=1;
@@ -1068,7 +1068,7 @@ function M.drinkGame()
 				else
 					gText="Willst du mich übers Ohr hauen? Du hast nicht genügend Geld dabei, du brauchst mindestens ne Silbermünze für das Spiel!";
 					eText="Are ya' trying to take me in? You don't have enough money with you, you need at least 1 silver coin for the game!";
-					outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+					outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					self.startGame[originator.id]=false;
 				end
@@ -1079,7 +1079,7 @@ function M.drinkGame()
 					 if (self.gameState==0 and self.rundenzahl>0) then
 							gText="Jut, weiter gehts!";
 							eText="Well, let's go on!";
-							outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+							outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 							npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 							self.gameState=1;
 					end
@@ -1091,7 +1091,7 @@ function M.drinkGame()
          		if originator.id==self.player.id then
 					gText="Ha, wusst ick doch dat du ein Elbenmädchen bist und gleich uffgibst!";
 					eText="Ha, I knew that ya're an elvengirl and don't want to play!";
-		    		outText=base.common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
+		    		outText=common.npc.base.npcautofunction.GetNLS(originator,gText,eText);
 					npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
 					reset();
 				end

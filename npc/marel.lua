@@ -14,7 +14,7 @@ local _ENV = setmetatable(M, { __index = _G })
 	--dofile("npc_winfried_birks.lua");
 
 --	dofile("npc_nanginis_nargunpriest.lua");
-require("base.common")
+local common = require("base.common")
 require("npc.base.autonpcfunctions") --für die Funktion npc.base.autonpcfunctions.increaseLangSkill
 
 function M.nextCycle()
@@ -65,14 +65,14 @@ function M.receiveText(texttype, message, originator)
       local handitemr = Originator:getItemAt(CCharacter.right_tool);
       local handiteml = Originator:getItemAt(CCharacter.left_tool);
       if(handitemr ~= nil and handitemr.id ~= 0) then
-         base.common.InformNLS(Originator, "Du hältst gerade das Item "..world:getItemName(handitemr.id, CPlayer.german).." in der rechten Hand.", "You are holding the item "..world:getItemName(handitemr.id, CPlayer.english).." in your right hand currently.");
+         common.InformNLS(Originator, "Du hältst gerade das Item "..world:getItemName(handitemr.id, CPlayer.german).." in der rechten Hand.", "You are holding the item "..world:getItemName(handitemr.id, CPlayer.english).." in your right hand currently.");
       else
-         base.common.InformNLS(Originator, "Du hältst gerade nichts in der rechten Hand.", "You are holding nothing in your right hand currently.");
+         common.InformNLS(Originator, "Du hältst gerade nichts in der rechten Hand.", "You are holding nothing in your right hand currently.");
       end
       if(handiteml ~= nil and handiteml.id ~= 0) then
-         base.common.InformNLS(Originator, "Du hältst gerade das Item "..world:getItemName(handiteml.id, CPlayer.german).." in der linken Hand.", "You are holding the item "..world:getItemName(handiteml.id, CPlayer.english).." in your left hand currently.");
+         common.InformNLS(Originator, "Du hältst gerade das Item "..world:getItemName(handiteml.id, CPlayer.german).." in der linken Hand.", "You are holding the item "..world:getItemName(handiteml.id, CPlayer.english).." in your left hand currently.");
       else
-         base.common.InformNLS(Originator, "Du hältst gerade nichts in der linken Hand.", "You are holding nothing in your left hand currently.");
+         common.InformNLS(Originator, "Du hältst gerade nichts in der linken Hand.", "You are holding nothing in your left hand currently.");
       end
    end  --]]
    

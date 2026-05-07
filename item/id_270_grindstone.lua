@@ -10,10 +10,10 @@ local UseItem, CheckSuccess, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_270_grindstone' WHERE com_itemid IN (270);
 
-require("base.common");
+local common = require("base.common");
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate )
+    common.ResetInterruption( User, ltstate )
     if (GemList==nil) then
         GemList= { };
         GemList[251]={ 7,197}; --Amethyst
@@ -25,23 +25,23 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         GemList[257]={45,198}; --Topas
     end
     
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert dabei Edelsteine zu schleifen.",
         "Your armor disturbes you grinding gems." );
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
+    if not common.CheckItem( User, SourceItem ) then -- Sicherheitscheck
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        base.common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+    if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
     end
     
     if (User:countItemAt("body",2140)==0) then -- kleine Zange
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst eine kleine Zange um den Edelstein zu halten.",
         "You need small tongs to cut the gems." );
         return
@@ -52,8 +52,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if base.common.ToolBreaks( User, Tool ) then -- Zange besch�digen
-        base.common.InformNLS( User, 
+    if common.ToolBreaks( User, Tool ) then -- Zange besch�digen
+        common.InformNLS( User, 
         "Die Zange bricht am Schleifstein ab.", 
         "The tongs break at the gem grinder." );
         return
@@ -72,7 +72,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 
-    if not base.common.FitForWork( User ) then -- Kein Hunger
+    if not common.FitForWork( User ) then -- Kein Hunger
         return
     end
     
@@ -84,8 +84,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to cut gemstones.");
                 return                
             end
-            if base.common.IsInterrupted( User ) then
-                base.common.InformNLS(User,
+            if common.IsInterrupted( User ) then
+                common.InformNLS(User,
                 "Der "..world:getItemName(Gem[2],0).." rutscht dir aus der Hand und f�llt zu Boden. Du musst kurz suchen ehe du den Stein wieder findest.",
                 "The "..world:getItemName(Gem[2],1).." slips out of your hand and falls down to the ground. You have to search for a moment to find it again.");
                 return
@@ -95,25 +95,25 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 local notCreated = User:createItem(Gem[2],1,333,0); -- geschliffenen Edelstein erstellen
                 if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
                     world:createItemFromId( Gem[2], notCreated, User.pos, true, 333 ,0);
-                    base.common.InformNLS(User,
+                    common.InformNLS(User,
                     "Du kannst nichts mehr halten.",
                     "You can't carry any more.");
                 else
                     User:startAction( GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
                 end
             else -- kein Erfolg
-                base.common.InformNLS(User,
+                common.InformNLS(User,
                 "Der "..world:getItemName(Gem[2],0).." zerbr�ckelt in deinen H�nden",
                 "The "..world:getItemName(Gem[2],1).." breaks in your hands.");
                 User:startAction( GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
             end
             User:learn(2,"gemcutting",2,100); -- Lernen
-            base.common.GetHungry( User, 200 ); -- Hunger
+            common.GetHungry( User, 200 ); -- Hunger
             return
         end
     end
     if (ltstate ~= Action.success) then
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du hast keinen Rohen Edelstein den du schleifen k�nntest.", 
         "You don't have a raw gemstone you could cut." );
     end

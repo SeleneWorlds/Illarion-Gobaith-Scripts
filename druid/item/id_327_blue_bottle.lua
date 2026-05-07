@@ -3,7 +3,7 @@
 --Nicht-Tempor�re Einzelwirkungen
 --Falk
 
-require("base.common")
+local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 local missile = require("druid.base.missile")
 
@@ -43,7 +43,7 @@ end
 function M.windtrank(User,SourceItem,TargetItem)
     --pr�fen, ob 5 Pfeile vorhanden (ID 64)
 	if (User:countItemAt("all",64) < 5) then
-	    base.common.InformNLS( User,
+	    common.InformNLS( User,
 	    "Du brauchst zumindest 5 Pfeile um daraus Windpfeile zu fertigen.",
 	    "You need at least 5 arrows to create wind arrows." );
 	    return false;
@@ -169,7 +169,7 @@ function M.Drop(User,Item)
         M.Explode(User,Item);
         User:talkLanguage(CCharacter.say,CPlayer.german,"#me l�sst eine Flasche fallen, welche explodiert.");
         User:talkLanguage(CCharacter.say,CPlayer.english,"#me drops a bottle and it explodes.");
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Der Wurfk�rper rutscht dir aus den H�nden und zerplatzt vor deinen F��en.",
         "The missile slips out of your hands and burst asunder in front of you feets.");
     end;
@@ -221,7 +221,7 @@ function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
     end
 
     if (SourceItem:getType()~=4 or (Sourceitem.id_itempos~=5 and Sourceitem.id_itempos~=6)) then
-        base.common.TempInformNLS( User,
+        common.TempInformNLS( User,
         "Du musst den Wurfk�rper aus der Hand werfen.",
         "You have to throw the missle out of your hand.");
         return false; -- Nicht in der Hand
@@ -239,7 +239,7 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 			User:eraseItem(327,1)
 	        User:createItem(322,10,333,0);
 		else
-			base.common.InformNLS(User,"Du brauchst 10 Pfeile pro Windtrank und den Windtrank in deiner Tasche","You need 10 arrows per wind potion and the wind potion in your pocket!");
+			common.InformNLS(User,"Du brauchst 10 Pfeile pro Windtrank und den Windtrank in deiner Tasche","You need 10 arrows per wind potion and the wind potion in your pocket!");
 		end
 	else
 		--Neue Wirkungen nach DS
@@ -248,13 +248,13 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 
 		elseif M.checkMissile(Sourceitem.id_data) then --das ist ein Wurfk�rper
 			if (math.floor(Sourceitem.id_quality/1000)==1) then -- Wurfk�rper gesichert (qual: 1xxx) --> entsichern (qual: xxx)
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Du entsicherst des Wurfk�rper. Vorsicht damit.",
 				"You activate the missle. Careful with it.");
 				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 );
 				world:changeItem( SourceItem );
 			else -- Wurfk�rper entsichert --> sichern
-				base.common.TempInformNLS( User,
+				common.TempInformNLS( User,
 				"Du sicherst den Wurfk�rper.",
 				"You deactivate the missile.");
 				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 ) + 1000;

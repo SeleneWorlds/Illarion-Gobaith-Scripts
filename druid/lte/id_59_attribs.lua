@@ -1,6 +1,6 @@
 -- LTE f�r das Druidensystem
 -- by Falk
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO longtimeeffects VALUES (59, 'druids_attribs', 'druid.lte.id_59_attribs');
@@ -38,7 +38,7 @@ function M.callEffect(Effect,Character)               -- Effect wird ausgef�hr
                 Effect:removeValue("zaehler_"..i);
                 if not MessageSend then
                     MessageSend = true;
-                    base.common.InformNLS( Character, "Du f�hlst, dass der Trank seine Wirkung verliert.", "You feel that the potion looses its effect.");
+                    common.InformNLS( Character, "Du f�hlst, dass der Trank seine Wirkung verliert.", "You feel that the potion looses its effect.");
                 end
             else
                 Effect:addValue("zaehler_"..i,zaehler);
@@ -74,7 +74,7 @@ function M.removeEffect(Effect,Character)
             Effect:removeValue("zaehler_"..i);
             if not MessageSend then
                 MessageSend = true;
-                base.common.InformNLS( Character, "Du f�hlst, dass der Trank seine Wirkung verliert.", "You feel that the potion looses its effect.");
+                common.InformNLS( Character, "Du f�hlst, dass der Trank seine Wirkung verliert.", "You feel that the potion looses its effect.");
             end
         end
     end

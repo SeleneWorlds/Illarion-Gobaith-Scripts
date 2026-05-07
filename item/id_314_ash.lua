@@ -1,7 +1,7 @@
 local M = {}
 local LookAtItem
 
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.id_314_ash' WHERE com_itemid = 314;
 

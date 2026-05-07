@@ -1,3 +1,4 @@
+local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
 local InitCraftingTool, UseItem
@@ -72,7 +73,7 @@ end --function
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     Glassblowing = InitCraftingTool( );
-    base.common.ResetInterruption( User, ltstate )
+    common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -96,20 +97,20 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         Glassblowing:SwapToInactiveItem( User );
         return
     end
     
     if ( SourceItem:getType() ~= 4 ) then -- Glasblasrohr in der Hand
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du mu�t das Glasblasrohr in die Hand nehmen um damit zu arbeiten.", 
         "You have to take the glasblowpipe in your hand, to work with it." )
         return
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim Glas blasen.",
         "Your armor disturbes you while blowing glass." );
         Glassblowing:SwapToInactiveItem( User );

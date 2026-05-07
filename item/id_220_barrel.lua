@@ -11,10 +11,10 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_220_barrel' WHERE com_itemid IN (220);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if (dyersList == nil) then
         dyersList = { };
         dyersList[2678] = {178,175}; -- Schwarze Farbe
@@ -38,27 +38,27 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim f�rben.",
         "Your armor disturbes you while dying." );
         return
     end
 
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-        base.common.TurnTo( User, SourceItem.pos );
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+        common.TurnTo( User, SourceItem.pos );
     end
 
-    if not base.common.FitForWork( User ) then
+    if not common.FitForWork( User ) then
         return
     end
 
     if (User:countItemAt("body",2781)==0) then -- Schere
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst einen F�rberstab um Stoffe zu f�rben oder zu bleichen.",
         "You need dyers wand to dye or white clothes." );
         return
@@ -69,8 +69,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
 
-    if base.common.ToolBreaks( User, Tool, true ) then -- R�hrstab besch�digen
-        base.common.InformNLS( User,
+    if common.ToolBreaks( User, Tool, true ) then -- R�hrstab besch�digen
+        common.InformNLS( User,
         "Der F�rberstab zerbricht.",
         "The dyers wand breaks." );
         return
@@ -87,8 +87,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 end
                 UsedDye = nil;
 
-                if base.common.IsInterrupted( User ) then
-                    base.common.InformNLS(User,
+                if common.IsInterrupted( User ) then
+                    common.InformNLS(User,
                     "Der F�rberstab f�llt dir in den Farbeimer. Nach einigem suchen findest du ihn darin wieder. Die Qualit�t deiner Farbe hast du gleich mal mit deinen H�nden getestet.",
                     "You drop the dyers wand into the bucket with color. After a while of searching you find it again. You can see the quality of your color at your hands now.");
                     return
@@ -120,7 +120,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                     notCreated = User:createItem(Dye[2],1,333,0); -- Gef�rbten Stoff erstellen
                     if ( notCreated > 0 ) then
                         world:createItemFromId( Dye[2], notCreated, User.pos, true, 333 ,0);
-                        base.common.InformNLS(User,
+                        common.InformNLS(User,
                         "Du kannst nichts mehr halten.",
                         "You can't carry any more.");
                     else
@@ -128,7 +128,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                     end
 
                     User:learn(2,"tailoring",2,100); -- Lernen
-                    base.common.GetHungry( User, 200 ); -- Hunger
+                    common.GetHungry( User, 200 ); -- Hunger
                     return
 
                 end
@@ -136,7 +136,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         end
     end
     if (ltstate ~= Action.success) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
 		"Zum F�rben brauchst du wei�e Stoffe und Farbe.",
         "To dye cloth you need white cloth and dye." );
     end

@@ -49,7 +49,7 @@ ReqTexts.english = { [392] = "torches", [43] = "candles", [390] = "lamp oil" };
 
 function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	if SourceItem:getType()==1 or SourceItem:getType()==2 then
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Nimm das Licht in die Hand oder lege es am Gr�tel ab.",
 			"Take the light into your hand or put it on your belt.");
 		return;
@@ -60,7 +60,7 @@ function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 		if ok then
 			putOn(SourceItem,wear,false);
 		elseif this.req then
-			base.common.TempInformNLS(User,
+			common.TempInformNLS(User,
 				"Daf�r brauchst du ".. ReqTexts.german[this.req.id] .. " in der Hand oder im G�rtel.",
 				"You need ".. ReqTexts.english[this.req.id] .. " in your belt or hands to do that.");
 		end
@@ -110,7 +110,7 @@ end
 -- give something back
 function M.giveBack(User, Item, this)
 	if Item.data==2 then -- a night watchman has put on that light, give nothing back
-		base.common.TempInformNLS(User,
+		common.TempInformNLS(User,
 			"Das Licht erlischt in dem Moment, als du danach greifst.",
 			"The light goes off in the very moment you reach out for it.")
 		return;
@@ -204,22 +204,22 @@ function M.LookAtItem(User, Item)
 	end
 	
 	if(TimeLeftI == 255) then
-		TimeLeft = base.common.GetNLS(User, "nie", "never");
+		TimeLeft = common.GetNLS(User, "nie", "never");
 	elseif (TimeLeftI == 0) then
-		TimeLeft = base.common.GetNLS(User, "sofort", "immediatly");
+		TimeLeft = common.GetNLS(User, "sofort", "immediatly");
 	elseif (TimeLeftI == 1) then
-		TimeLeft = base.common.GetNLS(User, "demnächst", "anytime soon");
+		TimeLeft = common.GetNLS(User, "demnächst", "anytime soon");
 	elseif (TimeLeftI == 2) then
-		TimeLeft = base.common.GetNLS(User, "bald", "soon");	
+		TimeLeft = common.GetNLS(User, "bald", "soon");	
 	elseif (TimeLeftI <= 4) then
-		TimeLeft = base.common.GetNLS(User, "nach einer Weile", "in a while");
+		TimeLeft = common.GetNLS(User, "nach einer Weile", "in a while");
 	elseif (TimeLeftI <= PORTABLE_WEAR) then
-		TimeLeft = base.common.GetNLS(User, "nicht allzu bald", "not anytime soon");
+		TimeLeft = common.GetNLS(User, "nicht allzu bald", "not anytime soon");
 	elseif (TimeLeftI >= PORTABLE_WEAR) then
-		TimeLeft = base.common.GetNLS(User, "nach langer Zeit", "in a long time");
+		TimeLeft = common.GetNLS(User, "nach langer Zeit", "in a long time");
 	end	
 	
-	world:itemInform(User, Item, base.common.GetNLS(User, "Du siehst:  "..ItemName..". Sie wird "..TimeLeft.." ausbrennen.", "You see: "..ItemName..". It will burn down "..TimeLeft.."."));
+	world:itemInform(User, Item, common.GetNLS(User, "Du siehst:  "..ItemName..". Sie wird "..TimeLeft.." ausbrennen.", "You see: "..ItemName..". It will burn down "..TimeLeft.."."));
 end
 
 return M

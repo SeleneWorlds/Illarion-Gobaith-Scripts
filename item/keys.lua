@@ -2,7 +2,7 @@ local M = {}
 local UseItem, LookAtItem, MoveItemBeforeMove, MoveItemAfterMove
 
 require("base.keys")
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.keys' WHERE com_itemid IN (2121,2122,2123,2124,2141,2144,2145,2161,2556,2558,3054,3055,3056);
 
@@ -10,7 +10,7 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
     local WALLPOS = position(-470,241,0);
     local DoorItem = TargetItem;
     if DoorItem.id == 0 then
-        DoorItem = base.common.GetFrontItem( User );
+        DoorItem = common.GetFrontItem( User );
     end;
 
     if DoorItem == nil then
@@ -30,12 +30,12 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 		end
 	elseif base.keys.CheckKey(SourceItem,DoorItem) then
         if base.keys.LockDoor(DoorItem) then
-            base.common.InformNLS(User,"Du sperrst die T�r ab.","You lock the door.");
+            common.InformNLS(User,"Du sperrst die T�r ab.","You lock the door.");
         elseif base.keys.UnlockDoor(DoorItem,User) then             -- User eingefuegt
-            base.common.InformNLS(User,"Du sperrst die T�r auf.","You unlock the door.");
+            common.InformNLS(User,"Du sperrst die T�r auf.","You unlock the door.");
         end
     else
-        base.common.InformNLS(User,"Der Schl�ssel passt hier nicht.","The key doesn't fit here.");
+        common.InformNLS(User,"Der Schl�ssel passt hier nicht.","The key doesn't fit here.");
     end
 end
 
@@ -103,7 +103,7 @@ function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
     end
 
     if (TargetItem:getType()~=3) then
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Der Schl�ssel rutscht dir seltsamer Weise aus der Hand.",
         "The key slips out of your hand for a strange reason.");
         return false;

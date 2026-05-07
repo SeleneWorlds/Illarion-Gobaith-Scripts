@@ -2,7 +2,7 @@ local M = {}
 local initStones, initJewel, generateData, LookAtItem, UseItem, checkjewel
 
 local unique_lookat = require("content.lookat.unique")
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.gems' WHERE com_itemid IN (45, 46, 197, 198, 283, 284, 285);
 
@@ -106,11 +106,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 	    	        world:changeItem(TargetItem);
 	    	        world:erase(SourceItem,1);
 	    	    else
-					base.common.InformNLS(User, "Dieser Edelstein kann dort nicht eingef�gt werden.", "The gem cannot be inserted here!");
+					common.InformNLS(User, "Dieser Edelstein kann dort nicht eingef�gt werden.", "The gem cannot be inserted here!");
 	    	    end
 			end
 		else
-			base.common.InformNLS(User, "Das funktioniert nicht.", "This cannot be done.");
+			common.InformNLS(User, "Das funktioniert nicht.", "This cannot be done.");
 		end
     end
 

@@ -1,4 +1,4 @@
-require("base.common")
+local common = require("base.common")
 local M = {}
 
 -- Character bekommt einen Attributs-Boost, der erst ansteigt und dann sinkt --
@@ -18,7 +18,7 @@ end
 function M.addEffect(addPerc, User)    -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
     User:inform("function addEffect erreicht")
     AttribToBoost, boostSteps, boostValue, reboostValue = M.initBoost(User)
-    base.common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticably.");
+    common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticably.");
     User:increaseAttrib(AttribToBoost,boostValue);    -- (erste Steigerung)
 end
 

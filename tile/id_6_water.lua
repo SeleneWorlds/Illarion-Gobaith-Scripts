@@ -2,7 +2,7 @@
 
 -- UPDATE tiles SET til_script='tile.id_6_water' WHERE til_id = 6;
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 
@@ -33,7 +33,7 @@ function M.useTile(User,Position,counter,param,ltstate)
 	    return
 	end
 
-	base.common.ResetInterruption( User, ltstate )
+	common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then -- Arbeit unterbrochen
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -49,19 +49,19 @@ function M.useTile(User,Position,counter,param,ltstate)
 
     -- Angeln unterirdisch nicht m�glich
     if (Position.z < 0) then
-    	base.common.InformNLS(User,"In unterirdischen Wasserlöchern wird das Angeln kaum erfolgreich sein.","Fishing in underground waterholes wouldn't be successful.");
+    	common.InformNLS(User,"In unterirdischen Wasserlöchern wird das Angeln kaum erfolgreich sein.","Fishing in underground waterholes wouldn't be successful.");
 	    return
     end
 
-    if base.common.Encumbrence(User) then -- Durch Steife R�stung behindert
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Durch Steife R�stung behindert
+        common.InformNLS( User,
         "Deine R�stung behindert dich beim Fischen.",
         "Your armor disturbes you while fishing." );
         return
     end
 
-    if not base.common.IsLookingAt( User, TargetPos ) then
-        base.common.TurnTo( User, TargetPos );
+    if not common.IsLookingAt( User, TargetPos ) then
+        common.TurnTo( User, TargetPos );
     end
 
     if ( ltstate == Action.none ) then -- Arbeit noch nicht begonnen -> Los gehts
@@ -73,14 +73,14 @@ function M.useTile(User,Position,counter,param,ltstate)
 
     local rand = math.random(350);
     if (rand==1) and BT_createMap( Char ) then
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Statt eines Fisches hast du eine Karte in der Klaue.",
         "Instead of a fish you find a map in your claw.");
         return
     end
 
      if ( (rand==2) or (rand==3) ) then
-         base.common.InformNLS(User,
+         common.InformNLS(User,
          "Auf einmal hast du das Gef�hl eine Hand w�rde nach deiner Klaue greifen. Noch w�hrend du dich wunderst teilt sich das Wasser vor dir und eine glitschige Wasserleiche steigt aus den Wellen empor.",
          "Suddenly you have the feeling a hand should grap your claw. While you are wondering what it could be, the water in front of you ripples and a slimy mummy climbs out of the water.");
 
@@ -91,8 +91,8 @@ function M.useTile(User,Position,counter,param,ltstate)
 	     return
      end
 
-    if base.common.IsInterrupted( User ) then
-		base.common.TempInformNLS( User, Interrupt_Messages:getRandom() );
+    if common.IsInterrupted( User ) then
+		common.TempInformNLS( User, Interrupt_Messages:getRandom() );
 		return
     end
 
@@ -112,21 +112,21 @@ function M.useTile(User,Position,counter,param,ltstate)
         -- Stiefel
         elseif (FTry>=920 and FTry<940) then
             User:createItem(53,1,100,0)
-            base.common.InformNLS(User,"Ein alter, durchlöcherter Lederstiefel findet sich in deiner Klaue.","An old, perforated leather boot is in your claw.");
+            common.InformNLS(User,"Ein alter, durchlöcherter Lederstiefel findet sich in deiner Klaue.","An old, perforated leather boot is in your claw.");
         -- Ölampe
         elseif (FTry>=940 and FTry<990) then
             User:createItem(92,1,333,0);
-            base.common.InformNLS(User,"Du ziehst eine glitzernde Ölampe aus dem Wasser. Wo die wohl herkommt...?","You pull a sparkling oil lamp out of the water. Where did that come from?");
+            common.InformNLS(User,"Du ziehst eine glitzernde Ölampe aus dem Wasser. Wo die wohl herkommt...?","You pull a sparkling oil lamp out of the water. Where did that come from?");
         -- Eimer
         elseif (FTry>=990 and FTry<=1000) then
             User:createItem(51,1,333,0)
-            base.common.InformNLS(User,"Du ergreifst einen Eimer im Wasser und ziehst ihn heraus. Den hat hier wohl jemand verloren.","You grap a bucket and drag it out of the water. Someone has lost it here.");
+            common.InformNLS(User,"Du ergreifst einen Eimer im Wasser und ziehst ihn heraus. Den hat hier wohl jemand verloren.","You grap a bucket and drag it out of the water. Someone has lost it here.");
         end
 	    User:learn(2,"fishing",2,100);
-	    base.common.GetHungry( User, 100 ); -- Hunger
+	    common.GetHungry( User, 100 ); -- Hunger
     else
         User:learn(2,"fishing",1,100);
-        base.common.GetHungry( User, 100 ); -- Hunger
+        common.GetHungry( User, 100 ); -- Hunger
     end
 end
 

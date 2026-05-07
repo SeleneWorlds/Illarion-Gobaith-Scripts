@@ -1,3 +1,4 @@
+local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
 local InitCraftingTool, UseItem
@@ -744,7 +745,7 @@ end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     Smithing = InitCraftingTool( );
-    base.common.ResetInterruption( User, ltstate )
+    common.ResetInterruption( User, ltstate )
     if not menstate then
         menstate = { };
     end
@@ -776,21 +777,21 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
 
-    if not base.common.CheckItem( User, SourceItem, {13} ) then
+    if not common.CheckItem( User, SourceItem, {13} ) then
         Smithing:SwapToInactiveItem( User );
         return
     end
 
     if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du mu�t den Hammer in die Hand nehmen um damit zu arbeiten.",
         "You have to take the hammer in your hand, to work with it." );
         Smithing:SwapToInactiveItem( User );
         return
     end
 
-    if base.common.Encumbrence(User) then -- Sehr streife R�stung?
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Sehr streife R�stung?
+        common.InformNLS( User,
         "Deine R�stung behindert beim schmieden.",
         "Your armor disturbes you while smithing." );
         Smithing:SwapToInactiveItem( User );

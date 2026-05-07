@@ -7,7 +7,7 @@ local UseItem, checkRegion
 -- UPDATE common SET com_script='item.id_126_sickle' WHERE com_itemid=126;
 
 require("item.general.metal")
-require("base.common")
+local common = require("base.common")
 require("scheduled.newgaia")
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
@@ -16,7 +16,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	initHerbs();
 	
 	-- wird die Arbeit durch andere aktion unterbrochen?
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -32,8 +32,8 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     
     -- Unterbrechungsmeldungen
 	if ( ltstate == Action.success ) then
-        if base.common.IsInterrupted( User ) then
-            base.common.InformNLS( User,
+        if common.IsInterrupted( User ) then
+            common.InformNLS( User,
             "W�hrend du nach Kr�utern suchst, verhakt sich deine Sichel und rutscht dir fast aus der Hand.",
             "While searching for herbs your sickle gets stuck and it nearly slides out of your hand.");
             return
@@ -41,37 +41,37 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
     
      -- Sehr streife R�stung?
-    if base.common.Encumbrence(User) then
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then
+        common.InformNLS( User,
         "Deine R�stung behindert dabei Kr�uter zu sammeln.",
         "Your armor disturbes you collecting herbs." );
         return
     end
     
     -- Sicherheitscheck
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
     
     -- Ist ueberhaupt ein Item da, in dem gesucht wird?
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        TargetItem = base.common.GetFrontItem( User );
+        TargetItem = common.GetFrontItem( User );
     end
     if not TargetItem then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Hier kannst du nicht finden.",
         "You can't find anything here.");
         return;
     end
     
     -- Zum Item drehen, falls dies nicht der Fall ist
-    if not base.common.IsLookingAt( User, TargetItem.pos ) then
-        base.common.TurnTo( User, TargetItem.pos );
+    if not common.IsLookingAt( User, TargetItem.pos ) then
+        common.TurnTo( User, TargetItem.pos );
     end
 
 	-- ist die Sichel in der Hand?
     if ( SourceItem:getType() ~= 4 ) then
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du musst die Sichel in der Hand haben um damit zu arbeiten",
         "You have to hold the sickle in your hand to work with it.");
         return
@@ -81,7 +81,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     local skill = User:getSkill( "herb lore" );
 
 	-- Boni durch magische Edelsteine in der Sichel? Rubine modifizieren den skill!
-    gem1, str1, gem2, str2=base.common.GetBonusFromTool(SourceItem);
+    gem1, str1, gem2, str2=common.GetBonusFromTool(SourceItem);
     step=0;
     if gem1==3 then   
         step=str1;

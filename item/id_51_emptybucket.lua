@@ -5,28 +5,28 @@ local UseItemWithField, UseItem, FillBucket
 
 -- UPDATE common SET com_script='item.id_51_emptybucket' WHERE com_itemid IN (51);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     local Field = world:getField(TargetPos);
-    local boden = base.common.GetGroundType(Field:tile());
+    local boden = common.GetGroundType(Field:tile());
     if (boden == 6) then  -- Am Wasser fuellen
-		base.common.TurnTo(User, TargetPos);
+		common.TurnTo(User, TargetPos);
         FillBucket( User, SourceItem );
     end
 end
 
 -- Wassereimer fuellen
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
-	local pos = base.common.GetFrontPosition(User);
+	local pos = common.GetFrontPosition(User);
 	local Field = world:getField(pos);
-	local boden = base.common.GetGroundType(Field:tile());
-	if(base.common.GetFrontItemID(User) == 2207) then -- Am Brunnen fuellen
+	local boden = common.GetGroundType(Field:tile());
+	if(common.GetFrontItemID(User) == 2207) then -- Am Brunnen fuellen
 		FillBucket(User, SourceItem);
 	elseif (boden == 6) then -- Am Wasser fuellen
 		FillBucket(User, SourceItem);
 	else
-		base.common.InformNLS(User, "Du musst am Brunnen stehen, um Wasser zu sch�pfen.", "You need to stand in front of the well to scoop water.");
+		common.InformNLS(User, "Du musst am Brunnen stehen, um Wasser zu sch�pfen.", "You need to stand in front of the well to scoop water.");
 	end
 end
 
@@ -35,11 +35,11 @@ function M.FillBucket( User, SourceItem )
     -- bucket in hand
     cntBuckets = User:countItemAt( "body", 51 );
     if ( cntBuckets > 1 ) then
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du kannst immer nur einen Eimer bef�llen.",
         "You can only fill one bucket at once.");
     elseif ( cntBuckets == 1 ) and (SourceItem.number == 1) then
-        if base.common.FitForWork( User ) then
+        if common.FitForWork( User ) then
             local getWater = 40*(21/User:increaseAttrib("dexterity",0))+60;
             if (math.random(0,100) < getWater) then
                 --User:inform( "fill bucket" );
@@ -47,15 +47,15 @@ function M.FillBucket( User, SourceItem )
                 SourceItem.data = 10;
                 world:changeItem(SourceItem);
             else
-                base.common.InformNLS( User, 
+                common.InformNLS( User, 
                 "Der Eimer rutscht dir aus der Hand.", 
                 "The bucket slips out of your hand." );
                 User:eraseItem(51,1);
             end
-            base.common.GetHungry( User, 200 );
+            common.GetHungry( User, 200 );
         end
     else
-        base.common.InformNLS( User, 
+        common.InformNLS( User, 
         "Du musst den Eimer in die Hand nehmen.", 
         "You need to hold the bucket in your hand." );
     end        

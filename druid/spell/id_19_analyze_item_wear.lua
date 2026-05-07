@@ -2,7 +2,7 @@
 --Druidensystem
 --Falk
 
-require("base.common")
+local common = require("base.common")
 
 local M = {}
 -- INSERT INTO spells VALUES (2^18,3,'druid.spell.id_19_analyze_item_wear');
@@ -23,7 +23,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   --Caster:inform("debug #19.4")
   --Anzeige von Item-Verrottung
 
---base.common.InformNLS( Caster,
+--common.InformNLS( Caster,
 --"Dieser Gegenstand verrottet in "..TargetItem.wear.." druidischen Zerfallseinheiten",
 --"This item rots within "..TargetItem.wear.." druid rotting-units"); -- das kann man sch�ner formulieren
   textDE="Dieser Gegenstand verrottet in "..TargetItem.wear.." druidischen Zerfallseinheiten"
