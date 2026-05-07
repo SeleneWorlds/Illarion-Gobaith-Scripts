@@ -103,7 +103,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         		return
         	end
 			
-			if not fruitgathering:FindRandomItem(User) then
+			if not gathering.fruitgathering:FindRandomItem(User) then
 				return
 			end
 			
