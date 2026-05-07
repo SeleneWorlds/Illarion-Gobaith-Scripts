@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, checkReq, giveBack, putOn, putOff, LookAtItem
 
 -- script to put lights on and off
 -- off items: save old wear value in data (+1000)
@@ -7,7 +6,7 @@ local UseItem, checkReq, giveBack, putOn, putOff, LookAtItem
 -- on items: save old wear value in data (+500)
 --				if data is <500, set wear to 255 or default portable wear
 -- special data for on items: 2 => do not give anything back (e.g. a night watchman has put it on)
-require("base.common")
+local common = require("base.common")
 
 -- UPDATE common SET com_script='item.lights' WHERE com_itemid IN (92, 397, 393, 394, 2856, 2855, 391, 392, 401, 402, 403, 404, 2851, 2852, 2853, 2854, 399, 400, 395, 396);
 
@@ -70,7 +69,7 @@ function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 		if this.back then
 			giveBack(User,SourceItem,this)
 		end
-		putOff(SourceItem,this);
+		M.putOff(SourceItem,this);
 	end
 end
 

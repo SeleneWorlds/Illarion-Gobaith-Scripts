@@ -1,4 +1,4 @@
-require("base.gcraft")
+local gcraft = require("base.gcraft")
 
 local M = {
 	Init = nil
@@ -6,17 +6,17 @@ local M = {
 
 function M.InitGathering()
 	if(M.Init == nil) then
-		local woodchopping = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "lumberjacking", LeadSkillGroup = 2};
-		local honeygathering = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		local farming = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		local fruitgathering = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		local mining = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
-		local sanddigging = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
-		local claydigging = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
-		local herbgathering = base.gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "herb lore", LeadSkillGroup = 2};
-		local fishing = base.gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "fishing", LeadSkillGroup = 2};
-		local woolcutting = base.gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		local potashproducing = base.gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "woodchopping", LeadSkillGroup = 2};
+		local woodchopping = gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "lumberjacking", LeadSkillGroup = 2};
+		local honeygathering = gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local farming = gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local fruitgathering = gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local mining = gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
+		local sanddigging = gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
+		local claydigging = gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
+		local herbgathering = gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "herb lore", LeadSkillGroup = 2};
+		local fishing = gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "fishing", LeadSkillGroup = 2};
+		local woolcutting = gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local potashproducing = gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "woodchopping", LeadSkillGroup = 2};
 		
 		--woodchopping
 

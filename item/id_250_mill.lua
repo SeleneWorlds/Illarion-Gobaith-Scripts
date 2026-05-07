@@ -10,10 +10,10 @@ local UseItem, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_250_mill' WHERE com_itemid IN (250);
 
-require("base.common")
+local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    base.common.ResetInterruption( User, ltstate );
+    common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
             gText = "seine";
@@ -27,28 +27,28 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if base.common.Encumbrence(User) then -- Durch Steife R�stung behindert
-        base.common.InformNLS( User,
+    if common.Encumbrence(User) then -- Durch Steife R�stung behindert
+        common.InformNLS( User,
         "Deine R�stung behindert Dich beim Mehl Mahlen.",
         "Your armor disturbs you when grinding grain" );
         return
     end
     
-    if not base.common.CheckItem( User, SourceItem ) then
+    if not common.CheckItem( User, SourceItem ) then
         return
     end
     
-    if not base.common.IsLookingAt( User, SourceItem.pos ) then
-        base.common.TurnTo( User, SourceItem.pos );
+    if not common.IsLookingAt( User, SourceItem.pos ) then
+        common.TurnTo( User, SourceItem.pos );
     end
     
-    if not base.common.FitForWork( User ) then
+    if not common.FitForWork( User ) then
         return
     end
     
     if (User:countItemAt("belt",259) == 0) then
         if (ltstate ~= Action.success) then
-            base.common.InformNLS( User, 
+            common.InformNLS( User, 
             "Du hast nichts was du hier zermahlen k�nntest.", 
             "You have nothing that you can grind here." );
         end
@@ -56,7 +56,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end 
     
     if (User:countItemAt("body",312)==0) then -- Holzkelle
-        base.common.InformNLS( User,
+        common.InformNLS( User,
         "Du ben�tigst eine Holzkelle um das Getreide in die M�hle zu bekommen.",
         "You need a wooden shovel to get the grain into the mill." );
         return
@@ -67,8 +67,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if base.common.ToolBreaks( User, Tool ) then -- Holzkelle besch�digen
-        base.common.InformNLS( User, 
+    if common.ToolBreaks( User, Tool ) then -- Holzkelle besch�digen
+        common.InformNLS( User, 
         "Die Holzkelle zerbricht.", 
         "The wooden shovel breaks." );
         return
@@ -81,26 +81,26 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if base.common.IsInterrupted( User ) then
+    if common.IsInterrupted( User ) then
         local selectMessage = math.random(1,5);
         if ( selectMessage == 1 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du wischst dir den Schwei� von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Dir rutscht die Holzkelle aus der Hand und f�llt in den M�hlstein. Nach einigen Versuchen kannst du sie wieder heraus holen.",
             "Your wooden shovel falls into the mill stone. After some tries you are able to get it out again.");
         elseif ( selectMessage == 3 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du klopfst dir das Mehl aus der Kleidung, da du das Gef�hl hast wie ein Geist auszusehen.",
             "You beat the flour out of your clothes so that you do not look like a ghost anymore.");
         elseif ( selectMessage == 4 ) then
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Du s�uberst kurz den M�hlstein um eine bessere Qualit�t des Mehls zu erreichen.",
             "You clean the millstone.");
         else
-            base.common.InformNLS(User,
+            common.InformNLS(User,
             "Gerade noch kannst du verhindern, dass ein Stein, der sich wohl ins Korn gemogelt hatte, in den M�hlstein f�llt.",
             "You made it to get a stone out the the grain short time before it falls into the millstone");
         end
@@ -112,13 +112,13 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     notCreated = User:createItem(2,1,333,0);
     if (notCreated > 0) then
         world:createItemFromId( 2, 1, User.pos, true, 333 ,0);
-        base.common.InformNLS(User,
+        common.InformNLS(User,
         "Du kannst nichts mehr halten.",
         "You can't carry any more.");
     else
         User:startAction( GenWorkTime(User), 0, 0, 0, 0);
     end
-    base.common.GetHungry( User, 200 );
+    common.GetHungry( User, 200 );
     User:learn( 2, "baking", 2, 10 );
 end -- function UseItem()
 
