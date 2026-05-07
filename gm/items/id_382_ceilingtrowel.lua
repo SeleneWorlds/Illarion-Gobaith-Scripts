@@ -1,10 +1,8 @@
 -- UPDATE common SET com_script='gm.items.id_382_ceilingtrowel' WHERE com_itemid IN (382);
 
-require("gm.base.log")
+local M = {}
 
-module("gm.items.id_382_ceilingtrowel", package.seeall, package.seeall(gm.base.log))
-
-function UseItemWithCharacter(User,SourceItem,TargetCharacter,Counter,Param)
+function M.UseItemWithCharacter(User,SourceItem,TargetCharacter,Counter,Param)
     User:setAttrib("strength",TargetCharacter:increaseAttrib("strength",0));
     User:setAttrib("constitution",TargetCharacter:increaseAttrib("constitution",0));
     User:setAttrib("perception",TargetCharacter:increaseAttrib("perception",0));
@@ -55,7 +53,7 @@ function UseItemWithCharacter(User,SourceItem,TargetCharacter,Counter,Param)
     -- LogGMAction(User,User.name.."("..User.id..") copied "..TargetCharacter.name.."("..TargetCharacter.id..")");
 end
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     --    User:inform("data is ");--..SourceItem.data);
     --SourceItem.data = 1;
 
@@ -250,7 +248,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 	end
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if (Item.data==0) then
         world:itemInform(User,Item,"Decke Kelle(Items)");
     elseif (Item.data==1) then
@@ -272,7 +270,9 @@ function LookAtItem(User,Item)
     end
 end
 
-function UseItemWithField(User,SourceItem,TargetPos,Counter,param)
+function M.UseItemWithField(User,SourceItem,TargetPos,Counter,param)
     local Field=world:getField(TargetPos)
     User:inform("This field has the ID: "..Field:tile());
 end
+
+return M

@@ -1,9 +1,8 @@
 -- GM Runenkombination 29 + 31 / 1342177280 / 
 -- User Magieskills setzen
 
-require("gm.base.log")
-
-module("gm.spells.29_31_magic_warp", package.seeall)
+local M = {}
+local log = require("gm.base.log")
 
 --[[
 INSERT INTO spells VALUES (2^28 + 2^30,0,'gm.spells.29_31_magic_warp');
@@ -12,7 +11,7 @@ INSERT INTO spells VALUES (2^28 + 2^30,2,'gm.spells.29_31_magic_warp');
 INSERT INTO spells VALUES (2^28 + 2^30,3,'gm.spells.29_31_magic_warp');
 ]]
 
-function CastMagic(User,Counter,Param)
+function M.CastMagic(User,Counter,Param)
 		
 	wert = 10
     magtyp = User:getMagicType()
@@ -24,7 +23,7 @@ function CastMagic(User,Counter,Param)
         User:increaseSkill(3,"transformo", wert)
         User:increaseSkill(3,"commotio", wert)
         User:increaseSkill(3,"transfreto", wert)
-        gm.base.log.Write(User, User.name .. "(" .. User.id .. ") gave himself magic skills.");
+        log.Write(User, User.name .. "(" .. User.id .. ") gave himself magic skills.");
     end
 
     -- PRIESTER
@@ -71,6 +70,8 @@ function CastMagic(User,Counter,Param)
 end
 
 -- Selbst auf ein Feld in Sichtweite warpen
-function CastMagicOnField(User,Pos,Counter,Param)
+function M.CastMagicOnField(User,Pos,Counter,Param)
     User:warp(Pos);
 end
+
+return M

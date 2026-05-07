@@ -1,7 +1,8 @@
 -- Log System von GM Actionen
-module("gm.base.log", package.seeall)
 
-function Write(User, Text)
+local M = {}
+
+function M.Write(User, Text)
     if (Text~=nil and Text~="") then
         --filepoint,errmsg=io.open("/home/nitram/gmlog/gmlog_rs.log","r+");  --RS
         filepoint,errmsg=io.open("/home/nitram/gmlog/gmlog_ts.log","r+");  --TS
@@ -17,3 +18,5 @@ function Write(User, Text)
     end
     return
 end
+
+return M

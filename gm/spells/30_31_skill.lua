@@ -15,9 +15,8 @@
 -- skill name
 -- Value:
 -- Value of increase,decrease or set
-require("gm.base.log")
-
-module("gm.spells.30_31_skill", package.seeall)
+local M = {}
+local log = require("gm.base.log")
 
 --[[
 INSERT INTO spells VALUES (2^29 + 2^30,0,'gm.spells.30_31_skill');
@@ -26,15 +25,15 @@ INSERT INTO spells VALUES (2^29 + 2^30,2,'gm.spells.30_31_skill');
 INSERT INTO spells VALUES (2^29 + 2^30,3,'gm.spells.30_31_skill');
 ]]
 
-function CastMagic(Caster,counter,param)
-    SkillChange(Caster,Caster);
+function M.CastMagic(Caster,counter,param)
+    M.SkillChange(Caster,Caster);
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
-    SkillChange(Caster,TargetCharacter);
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
+    M.SkillChange(Caster,TargetCharacter);
 end
 
-function SkillChange(Caster,TargetChar)
+function M.SkillChange(Caster,TargetChar)
     local modus=0;
     if (string.find(Caster.lastSpokenText,"[Ii]ncrease")~=nil) then
         modus=1;
@@ -63,7 +62,7 @@ function SkillChange(Caster,TargetChar)
             end
             Caster:inform("Value of "..skillname.." set to "..TargetChar:getSkill(skillname));
             TargetChar:inform("Value of "..skillname.." changed by "..Caster.name);
-            gm.base.log.Write(User, User.name .. "(" .. User.id .. ") changed skill " .. skillname .. " of " .. TargetChar.name .. "(" .. TargetChar.id .. ") from " .. oldValue .. " to " .. TargetChar:getSkill(skillname));
+            log.Write(User, User.name .. "(" .. User.id .. ") changed skill " .. skillname .. " of " .. TargetChar.name .. "(" .. TargetChar.id .. ") from " .. oldValue .. " to " .. TargetChar:getSkill(skillname));
         end
     else
         Caster:inform("[modus] [skillname] [group] [value]");
@@ -71,3 +70,5 @@ function SkillChange(Caster,TargetChar)
         Caster:inform("Mods: increase, decrease, set");
     end
 end
+
+return M

@@ -2,15 +2,18 @@
 
 -- UPDATE common SET com_script='gm.items.id_99_lockpicks' WHERE com_itemid=99;
 
-require("gm.base.log")
-require("base.common")
+local M = {}
+local common = require("base.common")
 
-module("gm.items.id_99_lockpicks", package.seeall)
+local Location
+local Coordina
+local wMenu
+local wpLight
+local wpWait
 
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-    if (firsttime==nil) then
-        firsttime=1;
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+    if (M.firsttime==nil) then
+        M.firsttime=1;
         
         Location={};
         Coordina={};
@@ -81,7 +84,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 					wpLight = nil;
 					User:inform("light: false");
 				else
-					wpLight = {["id"]=Param, ["pos"]=base.common.CopyPosition(User.pos)};
+					wpLight = {["id"]=Param, ["pos"]=common.CopyPosition(User.pos)};
 					User:inform("light: true");
 				end
 			end
@@ -145,16 +148,18 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
 end
 
-function UseItemWithCharacter(User,SourceItem,TargetCharakter,Counter,Param)
+function M.UseItemWithCharacter(User,SourceItem,TargetCharakter,Counter,Param)
     TargetHP=TargetCharakter:increaseAttrib("hitpoints",0);
     User:inform("Target Charakter HP: "..TargetHP.." - Race: "..TargetCharakter:get_race().." - Sex: "..TargetCharakter:increaseAttrib("sex",0));
 end
 
-function LookAtItem(User, Item) 
+function M.LookAtItem(User, Item) 
     InfoText="x="..User.pos.x..", y="..User.pos.y.. ", z="..User.pos.z;
     User:inform(InfoText);
 end
 
-function UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
+function M.UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
     User:startMusic(Counter);
 end
+
+return M

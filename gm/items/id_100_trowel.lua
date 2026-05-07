@@ -1,16 +1,20 @@
 -- I_100.lua GM-Kelle
 
-require("base.common")
-require("druid.base.alchemy")
+local common = require("base.common")
+local alchemy = require("druid.base.alchemy")
 
-module("gm.items.id_100_trowel", package.seeall)
+local M = {}
+local ListName
+local ItemList
+local texts
+local pagenumber
 
 -- UPDATE common SET com_script='gm.items.id_100_trowel' WHERE com_itemid = 100;
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if (TargetItem ~= nil and TargetItem.id > 0) then
         if (TargetItem:getType() == scriptItem.field) then
-            UseItemWithField(User, SourceItem, TargetItem.pos, Counter, Param);
+            M.UseItemWithField(User, SourceItem, TargetItem.pos, Counter, Param);
         else
             world:increase(TargetItem, Counter - TargetItem.number);
         end;
@@ -23,27 +27,27 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
         return;
     end;
     
-    local target = base.common.GetFrontPosition(User);
+    local target = common.GetFrontPosition(User);
     
     local itemId = tonumber(spoken);
     local itemQual = 333;
     local itemData = 0;
     
-    if (druid.base.alchemy.plantDataListById ~= nil and druid.base.alchemy.plantDataListById[itemId] ~= nil) then
-        itemQual = base.common.NormalRnd(111, 999);
-        itemData = druid.base.alchemy.plantDataListById[itemId];
+    if (alchemy.plantDataListById ~= nil and alchemy.plantDataListById[itemId] ~= nil) then
+        itemQual = common.NormalRnd(111, 999);
+        itemData = alchemy.plantDataListById[itemId];
     end;
     
     world:createItemFromId(itemId, 1, target, true, itemQual, itemData);
-end;
+end
 
-function UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
-	UseItemWithField(User,SourceItem,TargetChar.pos,Counter,Param);
-end;
+function M.UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
+	M.UseItemWithField(User,SourceItem,TargetChar.pos,Counter,Param);
+end
 
-function UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
+function M.UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
     if (ListName == nil) then
-        Ini();
+        M.Ini();
     end;
 
     if (Param == 0) then
@@ -57,13 +61,13 @@ function UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
         end;
         User:sendMenu(MyMen);
     else
-        quality = base.common.NormalRnd(111, 999);
+        quality = common.NormalRnd(111, 999);
         world:createItemFromId(Param, 1, TargetPos, true, quality, 0);
         User:inform("ItemID: "..Param.." mit Qual.: "..quality)
     end;
-end;
+end
 
-function Ini()
+function M.Ini()
     ListName={};
     ItemList={};
     ListName[1]="GM-Stuff";
@@ -190,9 +194,9 @@ function Ini()
     ItemList[61]={173,228,316,1005,2529,2588,2937,2551,2552,2553,2554};
     ListName[62]="Druidensystem";
     ItemList[62]={164,165,166,167,328,329,330,331,1008,127,128,129,3104,3105,3111,3112,3113,3114};
-end;
+end
 
-function LookAtItem(User, Item)
+function M.LookAtItem(User, Item)
     if (texts == nil) then
         texts={};
         texts[1]="Shift-click the trowel first and the ground then (use trowel with ground) to display a menue for creating items. Use the counter to create different items.";
@@ -212,4 +216,6 @@ function LookAtItem(User, Item)
     else
         User:inform(texts[pagenumber]);
     end;
-end;
+end
+
+return M

@@ -1,9 +1,10 @@
 
 -- UPDATE common SET com_script='gm.items.id_93_medal' WHERE com_itemid=93;
 
-module("gm.items.id_93_medal", package.seeall)
+local M = {}
+local lockpicks = require("gm.items.id_99_lockpicks")
 
-function UseItemWithField(User,SourceItem, TargetPos, Counter, Param)
+function M.UseItemWithField(User,SourceItem, TargetPos, Counter, Param)
     if (SourceItem.data==0) then
         world:createMonster(Counter,TargetPos,20);
     elseif (SourceItem.data==1) then
@@ -21,15 +22,17 @@ function UseItemWithField(User,SourceItem, TargetPos, Counter, Param)
     end
 end
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ((SourceItem.data==8) and ( (User.id==833275147) or User.id==666) ) then
         UndeadEvent(User.pos);
     else
-        if (gm.items.id_99_lockpicks.firsttime == nil) then
+        if (lockpicks.firsttime == nil) then
             User:inform("firsttime of lockpicks is set to NIL");
         else
-            User:inform("firsttime of lockpicks is set to " .. gm.items.id_99_lockpicks.firsttime);
+            User:inform("firsttime of lockpicks is set to " .. lockpicks.firsttime);
         end
-        UseItemWithField(User,SourceItem,position(User.pos.x,User.pos.y+1,User.pos.z),Counter,Param);
+        M.UseItemWithField(User,SourceItem,position(User.pos.x,User.pos.y+1,User.pos.z),Counter,Param);
     end
 end
+
+return M

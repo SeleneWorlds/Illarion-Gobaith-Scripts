@@ -1,8 +1,7 @@
 -- GM Rune 30 / 536870912 / Vollst&auml;ndige Heilung eines Characters
 
-require("gm.base.log")
-
-module("gm.spells.30_heal", package.seeall)
+local M = {}
+local log = require("gm.base.log")
 
 --[[
 INSERT INTO spells VALUES (2^29,0,'gm.spells.30_heal');
@@ -10,7 +9,7 @@ INSERT INTO spells VALUES (2^29,1,'gm.spells.30_heal');
 INSERT INTO spells VALUES (2^29,2,'gm.spells.30_heal');
 INSERT INTO spells VALUES (2^29,3,'gm.spells.30_heal');
 ]]
-function CastMagicOnCharacter(Caster,TargetCharacter,Counter,Param)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,Counter,Param)
     while (TargetCharacter:increaseAttrib("hitpoints", 0) < 10000) do
         TargetCharacter:increaseAttrib("hitpoints", 10000);
     end;
@@ -27,5 +26,7 @@ function CastMagicOnCharacter(Caster,TargetCharacter,Counter,Param)
         TargetCharacter:increasePoisonValue(-10000);
     end;
     
-    gm.base.log.Write(User, User.name .. "(" .. User.id .. ") healed " .. TargetCharacter.name .. "(" .. TargetCharacter.id .. ")");
+    log.Write(User, User.name .. "(" .. User.id .. ") healed " .. TargetCharacter.name .. "(" .. TargetCharacter.id .. ")");
 end
+
+return M
