@@ -1,11 +1,12 @@
+local M = {}
+local LookAtItem, UseItemWithCharacter, UseItem, teleportTarget, teleportLookAt, teleportUseItem, selfTeleportUseItem, summonCreature
+
 require("base.common")
 require("base.orders")
 
-module("item.id_3110_scroll", package.seeall)
-
 -- UPDATE common SET com_script = 'item.id_3110_scroll' WHERE com_itemid = 3110;
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     --abarbeitung der Auftr�ge
     local order = Order:fromItem(Item);
     if ( order ~= nil ) then
@@ -38,7 +39,7 @@ function LookAtItem(User,Item)
 	end
 end
 
-function UseItemWithCharacter(User, SourceItem, Character, counter, param)
+function M.UseItemWithCharacter(User, SourceItem, Character, counter, param)
     User:inform("useitemwitchchar start");
     if ( Character:get_type() == CCharacter.npc ) then
         User:inform("useitemwitchchar npc");
@@ -56,7 +57,7 @@ function UseItemWithCharacter(User, SourceItem, Character, counter, param)
     User:inform("useitemwitchchar end");
 end
 
-function UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
     local spell = SourceItem.quality;
     if (SourceItem.data == 600) then -- summon creature
         summonCreature( User, SourceItem );
@@ -76,7 +77,7 @@ function UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 
 end
 
-function teleportTarget( Item )
+function M.teleportTarget( Item )
     local x, y, z, dat;
     dat = Item.data;
     z = dat - math.floor(dat/1024)*1024 - 500;    
@@ -87,7 +88,7 @@ function teleportTarget( Item )
     return position(x, y, z);
 end
 
-function teleportLookAt( User, Item )
+function M.teleportLookAt( User, Item )
     
     dat = Item.data;
     dz = dat - math.floor(dat/1024)*1024 - 500 - User.pos.z;
@@ -153,7 +154,7 @@ function teleportLookAt( User, Item )
         
 end
 
-function teleportUseItem( User, SourceItem, TargetItem, Counter, Param , ltstate )
+function M.teleportUseItem( User, SourceItem, TargetItem, Counter, Param , ltstate )
             if ( ltstate == nil or ltstate == Action.success ) then
                 
                     destination = teleportTarget( SourceItem );
@@ -179,7 +180,7 @@ function teleportUseItem( User, SourceItem, TargetItem, Counter, Param , ltstate
             end
 end
 
-function selfTeleportUseItem( Caster, Item )
+function M.selfTeleportUseItem( Caster, Item )
 
     local faceto = Caster:get_face_to();
 
@@ -223,7 +224,7 @@ function selfTeleportUseItem( Caster, Item )
     end                        
 end
 
-function summonCreature( Caster, Item )
+function M.summonCreature( Caster, Item )
     Caster:inform("moep->start");
 
     faceto = Caster:get_face_to();
@@ -264,3 +265,5 @@ function summonCreature( Caster, Item )
     Caster:inform("moep->ende");
 
 end
+
+return M

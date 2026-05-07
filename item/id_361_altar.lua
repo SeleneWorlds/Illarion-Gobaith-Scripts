@@ -1,11 +1,15 @@
+local M = {}
+local LookAtItem, UseItem
+
 -- UPDATE common SET com_script='item.id_361_altar' WHERE com_itemid IN (361);
 
 require("base.common")
-require("content.gods")
+local gods = require("content.gods")
 
-module("item.id_361_altar", package.seeall, package.seeall(content.gods))
+local GOD_DE = gods.GOD_DE
+local GOD_EN = gods.GOD_EN
 
-function LookAtItem(User, Item)
+function M.LookAtItem(User, Item)
 
 	if Item.data ==100 then --used for THE LIBRARY quest
 		if (User:getPlayerLanguage() ==0) then
@@ -30,7 +34,7 @@ function LookAtItem(User, Item)
     world:itemInform( User, Item, ret );
 end
 
-function UseItem(User, SourceItem, TargetItem, Counter, param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 
 	if (SourceItem.data == 100) then --used for THE LIBRARY quest
 		
@@ -53,5 +57,5 @@ function UseItem(User, SourceItem, TargetItem, Counter, param)
 	
 
 end;
- 
 
+return M

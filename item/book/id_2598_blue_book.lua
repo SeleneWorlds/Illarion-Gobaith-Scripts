@@ -1,13 +1,14 @@
+local M = {}
+local UseItem, LookAtItem
+
 require("base.books")
 require("content.books.cakebible")
 require("content.books.dwarfpoems")
 require("content.books.culturegoblins")
 
-module("item.book.id_2598_blue_book", package.seeall)
-
 -- UPDATE common SET com_script='item.book.id_2598_blue_book' WHERE com_itemid = 2598;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
@@ -21,7 +22,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
 end  -- function
 
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
     if base.books.InitTitle() then
         content.books.cakebible.loadTitle(0);
         content.books.dwarfpoems.loadTitle(1);
@@ -29,3 +30,5 @@ function LookAtItem( User, Item )
     end
     base.books.GetBookItemInform(User,Item);
 end
+
+return M

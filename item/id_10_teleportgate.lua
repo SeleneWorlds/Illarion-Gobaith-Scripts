@@ -1,3 +1,6 @@
+local M = {}
+local InitializeGate, CharacterOnField, LookAtItem
+
 -- teleporter gate
 -- Nop
 
@@ -5,9 +8,7 @@
 
 require("base.common")
 
-module("item.id_10_teleportgate", package.seeall)
-
-function InitializeGate(  )
+function M.InitializeGate(  )
 
     if TargetCoor == nil then
         TargetCoor={  };
@@ -286,7 +287,7 @@ function InitializeGate(  )
 end
 
 --function UseItem( User, SourceItem, TargetItem, Counter, Param )
-function CharacterOnField( User )
+function M.CharacterOnField( User )
 
     --User:inform( "using teleport gate" )
 
@@ -374,7 +375,7 @@ function CharacterOnField( User )
 end
 
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
 
 	if (Item.data==1) then
 	 world:itemInform( User, Item, base.common.GetNLS( User, "Magisches Portal nach Troll's Bane", "Magical gate to Troll's Bane" ) );
@@ -676,3 +677,5 @@ world:itemInform( User,Item,base.common.GetNLS( User, "Magisches Portal", "Magic
 end;	
 	
 end
+
+return M

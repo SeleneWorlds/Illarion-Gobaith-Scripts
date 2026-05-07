@@ -1,3 +1,6 @@
+local M = {}
+local UseItem
+
 -- Presse
 
 -- Distel(141) zu �l (390)
@@ -7,9 +10,7 @@
 
 require("base.common")
 
-module("item.id_44_squeezer", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     if base.common.Encumbrence(User) then -- Sehr streife R�stung?
         base.common.InformNLS( User,
@@ -77,3 +78,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         "You need black thistle to sqeeze out oil.");
     end
 end
+
+return M

@@ -1,12 +1,13 @@
+local M = {}
+local UseItemWithField, UseItem, FillBucket
+
 -- I_51 Eimer mit Wasser fuellen
 
 -- UPDATE common SET com_script='item.id_51_emptybucket' WHERE com_itemid IN (51);
 
 require("base.common")
 
-module("item.id_51_emptybucket", package.seeall)
-
-function UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
+function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     local Field = world:getField(TargetPos);
     local boden = base.common.GetGroundType(Field:tile());
     if (boden == 6) then  -- Am Wasser fuellen
@@ -16,7 +17,7 @@ function UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
 end
 
 -- Wassereimer fuellen
-function UseItem( User, SourceItem, TargetItem, Counter, Param )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 	local pos = base.common.GetFrontPosition(User);
 	local Field = world:getField(pos);
 	local boden = base.common.GetGroundType(Field:tile());
@@ -30,7 +31,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param )
 end
 
 -- common bucket filling function
-function FillBucket( User, SourceItem )
+function M.FillBucket( User, SourceItem )
     -- bucket in hand
     cntBuckets = User:countItemAt( "body", 51 );
     if ( cntBuckets > 1 ) then
@@ -59,3 +60,5 @@ function FillBucket( User, SourceItem )
         "You need to hold the bucket in your hand." );
     end        
 end
+
+return M

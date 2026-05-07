@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- Sieb ( 727 )
 
 -- grober Sand (726) --> Quarz Sand (316)
@@ -9,9 +12,7 @@
 
 require("base.common")
 
-module("item.id_727_sieve", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
@@ -140,9 +141,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end -- function
 
 -- Arbeitszeit generieren
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = math.min(100,User:getSkill("mining")*10);     -- Schneidern: 0 - 100
     
     return math.floor(-0.25 * (Attrib + Skill) + 40);
 end
+
+return M

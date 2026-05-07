@@ -1,10 +1,11 @@
-require("base.common")
+local M = {}
+local UseItem
 
-module("item.id_272_statue", package.seeall)
+require("base.common")
 
 -- UPDATE common SET com_script='item.id_272_statue' WHERE com_itemid=272;
 
-function UseItem( User, Item, TargetItem, counter, param )
+function M.UseItem( User, Item, TargetItem, counter, param )
     lang=User:getPlayerLanguage();
     if equapos(Item.pos,position(-28, 192, -9)) then
         if ( not base.common.isItemIdInFieldStack( 35, position(-29, 195, -9) ) ) then
@@ -55,3 +56,5 @@ function UseItem( User, Item, TargetItem, counter, param )
         end
     end            
 end
+
+return M

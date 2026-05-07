@@ -1,3 +1,7 @@
+local parent = require("item.general.wood")
+local M = {}
+local UseItemWithField, UseItem, LookAtItem
+
 -- Angeln mit neuem Collecting-System
 -- Blay09
 
@@ -5,13 +9,10 @@
 
 require("item.general.wood")
 require("base.common")
-require("content.gathering")
+local gathering = require("content.gathering")
 
-module("item.id_72_fishingrod", package.seeall, package.seeall(item.general.wood))
-
-
-function UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate)
-	content.gathering.InitGathering();
+function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate)
+	gathering.InitGathering();
 	
     base.common.ResetInterruption(User, ltstate);
 	if (ltstate == Action.abort) then -- Arbeit unterbrochen
@@ -102,7 +103,7 @@ function UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate)
 
 end
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if ((TargetItem.id==0) or (TargetItem==nil)) then
         UseItemWithField(User,SourceItem,base.common.GetFrontPosition(User),counter,param, ltstate);
     else
@@ -110,6 +111,18 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 end
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
     world:itemInform( User, Item, base.lookat.GetItemDescription( User, Item, 2, false, false ));
 end
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

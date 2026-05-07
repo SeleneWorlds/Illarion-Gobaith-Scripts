@@ -1,10 +1,11 @@
-require("base.lookat")
+local M = {}
+local LookAtItem, MoveItemBeforeMove
 
-module("item.general.jewel", package.seeall)
+require("base.lookat")
 
 -- UPDATE common SET com_script='item.general.jewel' WHERE com_itemid IN (225, 1840, 1858);
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if (Item.id == 225) then
         if (Item.data == 122) then
             if (User:getPlayerLanguage() == 0) then
@@ -100,7 +101,7 @@ function LookAtItem(User,Item)
     end
 end
 
-function MoveItemBeforeMove( Character, SourceItem, TargetItem)
+function M.MoveItemBeforeMove( Character, SourceItem, TargetItem)
         if (Character:increaseAttrib("sex",0) == 0) then
             gText  = "seiner";
             eText  = "his";
@@ -121,3 +122,4 @@ function MoveItemBeforeMove( Character, SourceItem, TargetItem)
 	return true;
 end
 
+return M

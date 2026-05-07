@@ -1,12 +1,13 @@
+local M = {}
+local callFireMan, logToFile, UseItem
+
 -- I_298 Holzstapel entfachen (Lagerfeuer)
 
 require("base.common")
 
-module("item.id_298_woodstack", package.seeall)
-
 -- UPDATE common SET com_script='item.id_298_woodstack' WHERE com_itemid IN (298);
 
-function callFireMan(User, fireItem)
+function M.callFireMan(User, fireItem)
 
     --User:inform("checking NPC");
     Npcs=world:getNPCSInRangeOf(position(-105,-84,0),1);
@@ -37,7 +38,7 @@ function callFireMan(User, fireItem)
     end
 end
 
-function logToFile(theString)
+function M.logToFile(theString)
     retVal=false;
     coldLog,errMsg=io.open("/home/martin/brandstifter.txt","a");
     if (coldLog~=nil) then
@@ -51,7 +52,7 @@ function logToFile(theString)
 end
 
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     -- User:inform("start fire");
 
     if (SourceItem:getType()==3) then
@@ -91,3 +92,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
             "You don't want to burn yourself!");
     end
 end
+
+return M

@@ -1,8 +1,9 @@
-module("item.book.id_105_selfawareness", package.seeall)
+local M = {}
+local InitRanks, UseItem, AddRank, InitBook, AddGermanBookText, AddEnglishBookText, SendBookPage, AddToTable, ModifyText
 
 -- UPDATE common SET com_script='item.book.id_105_selfawareness' WHERE com_itemid = 105;
 
-function InitRanks()
+function M.InitRanks()
     AddRank("untaught","unwissend");
     AddRank("unskilled","unge�bt");
     AddRank("a beginner","ein Anf�nger");    
@@ -13,7 +14,7 @@ function InitRanks()
     AddRank("a grand master","ein Gro�meister");
 end
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
@@ -123,11 +124,11 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
     end
 end
 
-function AddRank(eName,gName)
+function M.AddRank(eName,gName)
     table.insert(Rank,{eName,gName});
 end
 
-function InitBook()
+function M.InitBook()
     if (gBookText==nil) then
         gBookText={};
         eBookText={};
@@ -137,15 +138,15 @@ function InitBook()
     end
 end
 
-function AddGermanBookText(Text,ItemID,Diff)
+function M.AddGermanBookText(Text,ItemID,Diff)
     AddToTable(gBookText,Text,ItemID,Diff)
 end
 
-function AddEnglishBookText(Text,ItemID,Diff)
+function M.AddEnglishBookText(Text,ItemID,Diff)
     AddToTable(eBookText,Text,ItemID,Diff)
 end
 
-function SendBookPage(User,Counter)
+function M.SendBookPage(User,Counter)
     local BookTexts=nil;
     if (User:getPlayerLanguage()==0) then
         BookTexts=gBookText;
@@ -161,7 +162,7 @@ function SendBookPage(User,Counter)
     User:inform("#b|"..math.min(Counter,pages).."|"..PicID.."|"..SendText);
 end
 
-function AddToTable(TargetList,Text,ItemID,Difficult)
+function M.AddToTable(TargetList,Text,ItemID,Difficult)
     local done=false;
     local outputted=false;
     repeat
@@ -191,7 +192,7 @@ function AddToTable(TargetList,Text,ItemID,Difficult)
     until done
 end
 
-function ModifyText(User,Text,Skillname)
+function M.ModifyText(User,Text,Skillname)
     if (vocals==nil) then
         vocals={65,69,73,79,85};
     end
@@ -201,3 +202,5 @@ function ModifyText(User,Text,Skillname)
     local Level=math.floor((Skill/100)*table.getn(Rank)-1)+1;
     return string.gsub(Text,"~level~",Rank[Level][2]);
 end
+
+return M

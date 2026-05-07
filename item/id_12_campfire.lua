@@ -1,13 +1,14 @@
+local M = {}
+local UseItem, CharacterOnField
+
 -- UPDATE common SET com_script='item.id_12_campfire' where com_itemid=12;
 
 require("base.common")
-require("content.gathering")
+local gathering = require("content.gathering")
 
-module("item.id_12_campfire", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
-	content.gathering.InitGathering();
+	gathering.InitGathering();
 	
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
@@ -110,7 +111,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.GetHungry( User, 200 );
 end -- function
 
-function CharacterOnField(User)
+function M.CharacterOnField(User)
     base.common.InformNLS( User,
       "Du f�hlst Schmerzen vom brennenden Feuer.",
       "You can feel the pain from the burning fire." );
@@ -118,3 +119,5 @@ function CharacterOnField(User)
 		User:increaseAttrib("hitpoints",-math.random(200,400));
 	end
 end
+
+return M

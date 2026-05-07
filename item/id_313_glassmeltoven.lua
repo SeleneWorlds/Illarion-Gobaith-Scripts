@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- Glasschmelzofen
 
 -- Sand(316) und Asche(314) zu Glasbarren(41)
@@ -12,9 +15,7 @@
 
 require("base.common")
 
-module("item.id_313_glassmeltoven", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     if base.common.Encumbrence(User) then -- Sehr streife R�stung?
         base.common.InformNLS( User,
@@ -236,9 +237,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
 end
 
-function GenWorkTime(User,Skill)
+function M.GenWorkTime(User,Skill)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = User:getSkill(Skill);     -- Edelstein schleifen: 0 - 100
     
     return math.floor(-0.3 * (Attrib + Skill) + 50);
 end
+
+return M

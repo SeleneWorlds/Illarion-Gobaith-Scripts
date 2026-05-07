@@ -1,8 +1,9 @@
+local M = {}
+local LookAtItem, UseItem
+
 -- UPDATE common SET com_script='item.id_3107_bookrest' WHERE com_itemid = 3107;
 
-module("item.id_3107_bookrest", package.seeall)
-
-function LookAtItem(User, Item) -- Used for THE LIBRARY QUEST
+function M.LookAtItem(User, Item) -- Used for THE LIBRARY QUEST
 
 	if Item.data ==100 then --used for THE LIBRARY quest -- ruby bonus
 		if (User:getPlayerLanguage() ==0) then
@@ -30,7 +31,7 @@ function LookAtItem(User, Item) -- Used for THE LIBRARY QUEST
 	
 end
 
-function UseItem(User,SourceItem)
+function M.UseItem(User,SourceItem)
 
 	if (SourceItem.data ==100) or (SourceItem.data==101) or (SourceItem.data==102) then
 	
@@ -61,3 +62,5 @@ function UseItem(User,SourceItem)
 	end;
 	
 end; -- end function
+
+return M

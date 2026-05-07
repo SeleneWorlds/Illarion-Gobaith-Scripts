@@ -1,14 +1,15 @@
+local M = {}
+local UseItem
+
 -- Harvest various fruits and herbs
 -- Nop & Nitram
 require("base.common")
-require("content.gathering")
-
-module("item.harvest", package.seeall)
+local gathering = require("content.gathering")
 
 -- UPDATE common SET com_script='item.harvest' WHERE com_itemid IN (14,300,387);
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
-	content.gathering.InitGathering();
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+	gathering.InitGathering();
 
     --User:inform( "harvesting" );
     SourceItem = world:getItemOnField( SourceItem.pos );
@@ -183,3 +184,5 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         end -- right tile
     end -- for harvestList
 end
+
+return M

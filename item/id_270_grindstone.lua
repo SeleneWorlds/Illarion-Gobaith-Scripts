@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, CheckSuccess, GenWorkTime
+
 -- Schleifstein ( 270 )
 
 -- Rohe Edelsteine  --> geschliffene Edelsteine
@@ -9,9 +12,7 @@
 
 require("base.common");
 
-module("item.id_270_grindstone", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate )
     if (GemList==nil) then
         GemList= { };
@@ -119,7 +120,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end
 
 -- Erfolgspr�fung
-function CheckSuccess(User,Difficulty) -- Erfolgspr�fung
+function M.CheckSuccess(User,Difficulty) -- Erfolgspr�fung
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = User:getSkill("gemcutting");     -- Edelstein schleifen: 0 - 100
     
@@ -133,9 +134,11 @@ function CheckSuccess(User,Difficulty) -- Erfolgspr�fung
 end
 
 -- Arbeitszeit generieren
-function GenWorkTime(User,Difficulty)
+function M.GenWorkTime(User,Difficulty)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = User:getSkill("gemcutting");     -- Edelstein schleifen: 0 - 100
     
     return math.floor(-0.3 * (Attrib + Skill - Difficulty) + 50);
 end
+
+return M

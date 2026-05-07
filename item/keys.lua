@@ -1,11 +1,12 @@
+local M = {}
+local UseItem, LookAtItem, MoveItemBeforeMove, MoveItemAfterMove
+
 require("base.keys")
 require("base.common")
 
-module("item.keys", package.seeall)
-
 -- UPDATE common SET com_script='item.keys' WHERE com_itemid IN (2121,2122,2123,2124,2141,2144,2145,2161,2556,2558,3054,3055,3056);
 
-function UseItem(User,SourceItem,TargetItem,counter,param)
+function M.UseItem(User,SourceItem,TargetItem,counter,param)
     local WALLPOS = position(-470,241,0);
     local DoorItem = TargetItem;
     if DoorItem.id == 0 then
@@ -38,7 +39,7 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
     end
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     local DataVal=Item.data;
     if (specialnames==nil) then
         specialnames={};
@@ -88,7 +89,7 @@ function LookAtItem(User,Item)
     end
 end
 
-function MoveItemBeforeMove(User, SourceItem, TargetItem)
+function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
     if ((TargetItem.data~=3001) and (TargetItem.data~=3002)) then
         return true;
     end
@@ -110,6 +111,8 @@ function MoveItemBeforeMove(User, SourceItem, TargetItem)
     return true;
 end
 
-function MoveItemAfterMove( User, SourceItem, TargetItem )
+function M.MoveItemAfterMove( User, SourceItem, TargetItem )
     return true;
 end
+
+return M

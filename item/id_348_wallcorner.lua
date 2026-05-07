@@ -1,8 +1,9 @@
+local M = {}
+local UseItem
+
 -- UPDATE common SET com_script='item.id_348_wallcorner' WHERE com_itemid = 348;
 
-module("item.id_348_wallcorner", package.seeall)
-
-function UseItem( User, Item, TargetItem, counter, param )
+function M.UseItem( User, Item, TargetItem, counter, param )
     if equapos(Item.pos,position(-106,-147,0)) then
         local lang=User:getPlayerLanguage();
         if ( (User:getQuestProgress(5) == 1) or (User:isAdmin()) ) then
@@ -46,3 +47,5 @@ function UseItem( User, Item, TargetItem, counter, param )
         end
     end
 end
+
+return M

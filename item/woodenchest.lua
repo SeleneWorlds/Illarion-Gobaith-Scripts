@@ -1,14 +1,15 @@
+local M = {}
+local UseItem
+
 -- UPDATE common SET com_script='item.woodenchest' WHERE com_itemid IN (8,1360,1361,1362);
 
 require("base.common")
 
-module("item.woodenchest", package.seeall)
+local ALWAYS = -1;
+local DELETE_CHEST = -1;
+local RESET_DATA = -2;
 
-ALWAYS = -1;
-DELETE_CHEST = -1;
-RESET_DATA = -2;
-
-TreasureList = { add = function(self,data,CurStatus,NextStatus,Items)
+local TreasureList = { add = function(self,data,CurStatus,NextStatus,Items)
 					self[data] = {};
 					self[data].CurStatus = CurStatus;
 					self[data].NextStatus = NextStatus;
@@ -37,7 +38,7 @@ TreasureList:add( 1, ALWAYS, RESET_DATA, {{id=2,minNum=2}} );
 TreasureList:add( 2, ALWAYS, DELETE_CHEST, {{id=1,minNum=1,maxNum=5,quality=999,data=1}} );
 TreasureList:add( 1001, 2, 3, {{id=2,minNum=2},{id=1,minNum=1,maxNum=5,quality=999,data=1}} );
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, LTState )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, LTState )
 	if string.find(User.lastSpokenText,"qpg") then
 		User:inform("current qpg:" .. User:getQuestProgress(1001) .. "; set to " .. Counter-1);
 		User:setQuestProgress(1001,Counter-1);
@@ -83,3 +84,5 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, LTState )
 		base.common.TempInformNLS(User,gText,eText);
 	end
 end
+
+return M

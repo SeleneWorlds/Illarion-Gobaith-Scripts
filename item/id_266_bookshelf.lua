@@ -1,11 +1,12 @@
+local M = {}
+local InitLibraries, AddBookshelves, CreateBookList, BookshelvesEqual, UseItem, getFreePosition, DistanceFromPosToPos, LookAtItem
+
 -- Side note: "BS" = Bookshelf
 -- Bookshelves contain a list of positions of bookshelves and a list of books
 
 -- UPDATE common SET com_script='item.id_266_bookshelf' WHERE com_itemid IN (266, 267);
 
-module("item.id_266_bookshelf", package.seeall)
-
-function InitLibraries()
+function M.InitLibraries()
       
     Libraries = {}    
     
@@ -367,7 +368,7 @@ function InitLibraries()
     "\"Brewyn the Liar\"" );
 end
 
-function AddBookshelves( Positions, Books, gBooks, eBooks )
+function M.AddBookshelves( Positions, Books, gBooks, eBooks )
   offset = table.getn( Libraries ) + 1; 
   Libraries[offset] = {}; 
   Libraries[offset][1] = Positions;
@@ -376,7 +377,7 @@ function AddBookshelves( Positions, Books, gBooks, eBooks )
   Libraries[offset][4] = eBooks;
 end
 
-function CreateBookList( TargetPos )
+function M.CreateBookList( TargetPos )
     local retList={};
     for i = 1, table.getn( Libraries ) do
         for j = 1, table.getn( Libraries[i][1] ) do
@@ -393,11 +394,11 @@ function CreateBookList( TargetPos )
     return retList
 end
 
-function BookshelvesEqual( BSPosi, Posi )
+function M.BookshelvesEqual( BSPosi, Posi )
     return ( ( BSPosi.x == Posi.x ) and ( BSPosi.y == Posi.y ) and ( BSPosi.z == Posi.z ) )
 end
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ( Libraries == nil ) then
         InitLibraries()        
     end
@@ -436,7 +437,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
     end
 end
 
-function getFreePosition( User, BS )
+function M.getFreePosition( User, BS )
    local faceto = User:get_face_to();
    
    if BS.id == 266 then
@@ -446,13 +447,13 @@ function getFreePosition( User, BS )
    end;
 end
 
-function DistanceFromPosToPos(TargetA,TargetB)
+function M.DistanceFromPosToPos(TargetA,TargetB)
     local LengthX=math.sqrt(math.pow(TargetA.x-TargetB.x,2));
     local LengthY=math.sqrt(math.pow(TargetA.y-TargetB.y,2));
     return math.ceil(math.sqrt(math.pow(LengthX,2)+math.pow(LengthY,2)))
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if ( Libraries == nil ) then
         InitLibraries()        
     end
@@ -571,3 +572,5 @@ end
 --        end
 --    end
 --end
+
+return M

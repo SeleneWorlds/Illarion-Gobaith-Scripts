@@ -1,10 +1,11 @@
+local M = {}
+local LookAtItem, UseItem
+
 require("base.common")
 
 -- UPDATE common SET com_script='item.id_3105_bookrest' WHERE com_itemid = 3105;
 
-module("item.id_3105_bookrest", package.seeall)
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 	if (Item.data == 666) then
 	    if (Item.pos.z == -6) then
 	        if (User:getPlayerLanguage()==0) then
@@ -36,7 +37,7 @@ function LookAtItem(User,Item)
 	end
 end
 
-function UseItem(User,SourceItem,TargetItem,counter,param)
+function M.UseItem(User,SourceItem,TargetItem,counter,param)
 	if (SourceItem.data == 666) then
 		if (User:getSkill("ancient language") > 59) then
 		    if (SourceItem.pos.z == -6) then
@@ -81,3 +82,5 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
 		end
 	end
 end
+
+return M

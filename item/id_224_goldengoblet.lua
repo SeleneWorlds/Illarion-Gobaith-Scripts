@@ -1,11 +1,12 @@
+local M = {}
+local LookAtItem
+
 require("base.lookat")
 require("base.common")
 
 -- UPDATE common SET com_script='item.id_224_goldengoblet' WHERE com_itemid=224;
 
-module("item.id_224_goldengoblet", package.seeall)
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     local text = base.lookat.GetItemDescription(User,Item,4,false,false);
 	local gText = "Du siehst ";
 	local eText = "You see ";
@@ -27,3 +28,5 @@ function LookAtItem(User,Item)
 	end
 	world:itemInform(User,Item,base.common.GetNLS(User,gText,eText));
 end
+
+return M

@@ -1,10 +1,11 @@
+local M = {}
+local LookAtItem
+
 -- UPDATE common SET com_script='item.id_293_throwing_spear' WHERE com_itemid IN (293);
 
 require("base.lookat")
 
-module("item.id_293_throwing_spear", package.seeall)
-
-function LookAtItem(User, Item)
+function M.LookAtItem(User, Item)
 	
 	local customText = base.lookat.GetItemDescription(User,Item,2,false,false);
 	if Item.data > 2^30 then
@@ -15,3 +16,5 @@ function LookAtItem(User, Item)
 			"You see "..world:getItemName(Item.id,1) );
 	end
 end
+
+return M

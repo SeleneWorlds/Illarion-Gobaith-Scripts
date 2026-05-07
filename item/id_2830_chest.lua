@@ -1,16 +1,17 @@
+local M = {}
+local LookAtItem, UseItem
+
 -- UPDATE common SET com_script='item.id_2830_chest' WHERE com_itemid=2830;
 
 require("base.common")
 require("base.treasure")
 
-module("item.id_2830_chest", package.seeall)
-
-function LookAtItem(User, Item)
+function M.LookAtItem(User, Item)
     local TreasureName = base.treasure.GetTreasureName( Item.data, User:getPlayerLanguage(), false );
     world:itemInform( User, Item, base.common.GetNLS( User,"Du siehst "..TreasureName..".","You see "..TreasureName.."." ) );
 end
 
-function UseItem(User,SourceItem)
+function M.UseItem(User,SourceItem)
 
     level=SourceItem.data;
     posi=SourceItem.pos;
@@ -27,3 +28,4 @@ function UseItem(User,SourceItem)
 
 end
 
+return M

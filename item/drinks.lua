@@ -1,12 +1,14 @@
+local M = {}
+local InitDrinks, UseItem, LookAtItem
+
 -- empty container with drink
 require("base.common")
 
-module("item.drinks", package.seeall)
 -- uses items of the new client - don't put this on the RS yet!
 
 -- UPDATE common SET com_script='item.drinks' WHERE com_itemid IN (2189, 2188, 2187, 2186, 2059, 2058, 2057, 2056, 1910, 1909, 1907, 1906, 1861, 2502, 1841, 1842, 1843, 1844, 1853, 1854, 1855, 1856, 1857, 1859, 1860);
 
-function InitDrinks()
+function M.InitDrinks()
     if ( drinkList == nil) then
         -- item ID,  food value,  leftover item, alcohol strength
         drinkList={};
@@ -38,7 +40,7 @@ function InitDrinks()
     end
 end
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     InitDrinks();
     if User.attackmode then
         base.common.InformNLS( User, "Du w�rdest alles versch�tten.", "You'd spill everything.");
@@ -138,7 +140,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 end
 
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     InitDrinks();
     local food = drinkList[ Item.id ];
     if food == nil then
@@ -147,3 +149,5 @@ function LookAtItem(User,Item)
     end
     world:itemInform(User,Item,base.common.GetNLS(User,"Du siehst ","You see ")..world:getItemName(Item.id,User:getPlayerLanguage()));
 end
+
+return M

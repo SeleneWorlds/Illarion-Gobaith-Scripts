@@ -1,25 +1,26 @@
+local M = {}
+local LookAtItemIdent, checkNoobiaSigns, getPopulation, getPlayersOnLevel
+
 -- Wegweiser Script
 -- Nitram
 require("base.common")
-require("content.signpost")
-
-module("item.signpost", package.seeall)
+local signpost_content = require("content.signpost")
 
 -- UPDATE common SET com_script='item.signpost' WHERE com_itemid IN (1817,1809,1808,1807,308,1804,586,3084,3081,3082,3083,519,520,521,337,1914,1915,2046,2069,512,2924,2925,2926,2927);
 
-function LookAtItemIdent(User,Item)
+function M.LookAtItemIdent(User,Item)
     local test = "no value";
 	if (first==nil) then
-        content.signpost.InitWegweiser()
+        signpost_content.InitWegweiser()
         first=1;
     end
     
     -- fetching local references
-    local signTextDe     = content.signpost.signTextDe;
-    local signTextEn     = content.signpost.signTextEn;
-    local signCoo        = content.signpost.signCoo;
-    local signItemId     = content.signpost.signItemId;
-    local signPerception = content.signpost.signPerception;
+    local signTextDe     = signpost_content.signTextDe;
+    local signTextEn     = signpost_content.signTextEn;
+    local signCoo        = signpost_content.signCoo;
+    local signItemId     = signpost_content.signItemId;
+    local signPerception = signpost_content.signPerception;
     
     found = false;
     UserPer = User:increaseAttrib("perception",0);
@@ -58,7 +59,7 @@ end
 ]]
 LookAtItem = LookAtItemIdent;
 
-function checkNoobiaSigns( User,TargetPos )
+function M.checkNoobiaSigns( User,TargetPos )
 
 	if NoobiaSigns == nil then
 		NoobiaSigns = {};
@@ -86,7 +87,7 @@ function checkNoobiaSigns( User,TargetPos )
 	return nil;
 end
 
-function getPopulation( Number )
+function M.getPopulation( Number )
 
 	local retVal = 0;
 	if Number == 1 then
@@ -112,7 +113,7 @@ function getPopulation( Number )
 	return retVal;
 end
 
-function getPlayersOnLevel( Position, Range )
+function M.getPlayersOnLevel( Position, Range )
 
 	local retVal = 0;
 	local PlayerList = world:getPlayersInRangeOf(Position,Range);
@@ -123,3 +124,5 @@ function getPlayersOnLevel( Position, Range )
 	end
 	return retVal;
 end
+
+return M

@@ -1,11 +1,12 @@
+local M = {}
+local LookAtItem
+
 require("base.common")
 require("base.treasure")
 
 -- UPDATE common SET com_script='item.id_505_treasuremap' WHERE com_itemid IN (505);
 
-module("item.id_505_treasuremap", package.seeall)
-
-function LookAtItem(User, Item)
+function M.LookAtItem(User, Item)
 
     local dir = base.treasure.getDirection( User, Item );
     local distance = base.treasure.getDistance (User, Item );
@@ -22,3 +23,5 @@ function LookAtItem(User, Item)
     end;
 
 end;
+
+return M

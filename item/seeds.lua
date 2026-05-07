@@ -1,9 +1,10 @@
+local M = {}
+local UseItemWithField, UseItem, MoveItemBeforeMove, MoveItemAfterMove
+
 -- base_seeds - sew seeds on fields
 -- a number of seeds appears on the field dependent on user's skill
 -- Nop & Nitram
 require("base.common")
-
-module("item.seeds", package.seeall)
 
 -- UPDATE common SET com_script='item.seeds' WHERE com_itemid IN (259,291,534,2494,2917,728);
 
@@ -37,7 +38,7 @@ module("item.seeds", package.seeall)
 -- UPDATE common SET com_agingspeed = 3, com_objectafterrot = 732 WHERE com_itemid = 731;
 -- UPDATE common SET com_agingspeed = 4, com_objectafterrot = 732 WHERE com_itemid = 732;
 
-function UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
+function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     if seedList == nil then
         seedList = {  };
 		
@@ -173,7 +174,7 @@ function UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     base.common.GetHungry( User, 100 );
 end
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param)
     if ((TargetItem ~= nil) and (TargetItem.id ~= 0)) then
         if (TargetItem:getType() == 3) then
             if ((TargetItem.id == 2862) or (TargetItem.id == 2863)) then
@@ -192,7 +193,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param)
     end
 end
 
-function MoveItemBeforeMove(User, SourceItem, TargetItem)
+function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
     if (SourceItem.data > 0) then
         User:createItem( SourceItem.id, SourceItem.number * SourceItem.data, 333, 0 );
 	world:erase( SourceItem, SourceItem.number );
@@ -202,9 +203,11 @@ function MoveItemBeforeMove(User, SourceItem, TargetItem)
 end
 
 ---[[
-function MoveItemAfterMove(User, SourceItem, TargetItem)
+function M.MoveItemAfterMove(User, SourceItem, TargetItem)
     if (SourceItem.data > 0) then
         world:erase( SourceItem, SourceItem.number );
     end
 end
 --]]
+
+return M

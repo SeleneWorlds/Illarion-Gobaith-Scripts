@@ -1,11 +1,13 @@
+local parent = require("item.priest.jewel")
+local M = {}
+local MoveItemBeforeMove, LookAtItem, UseItem, RingOfPower, RoadToNode, RemoveMuckyLuck, MuckyLuck
+
 -- UPDATE common SET com_script='item.id_222_amulett' WHERE com_itemid IN (222);
 
 require("item.priest.jewel")
 require("base.common")
 
-module("item.id_222_amulett", package.seeall, package.seeall(item.priest.jewel))
-
-function MoveItemBeforeMove( who, sourceItem, targetItem )
+function M.MoveItemBeforeMove( who, sourceItem, targetItem )
     fnd, eff = who.effects:find(9)
     if (fnd) then
         base.common.InformNLS(who, "Der Einfluss des Daemons hindert dich daran das Amulett ab zu nehmen","the power of the demon hinders you to remove the amulet");
@@ -30,7 +32,7 @@ function MoveItemBeforeMove( who, sourceItem, targetItem )
 	return true;
 end
 
-function LookAtItem(User, Item)
+function M.LookAtItem(User, Item)
     if ( Item.data == 666 ) then
         if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"Du siehst ein verfluchtes Amulett des Sukkubus");
@@ -55,7 +57,7 @@ function LookAtItem(User, Item)
 end
 
 
-function UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 	if (TargetItem.id == 914) and (TargetItem.data == 666) then
         User:talkLanguage(CCharacter.say,CPlayer.german ,"#me's Hand leuchtet, ebenso wie das Drachenamulett, hell auf und als das Licht verlischt liegt ein seltsam geformter Schl�ssel in der Hand und die Schrift auf dem Steinsockel gl�ht auf.");
         User:talkLanguage(CCharacter.say,CPlayer.english,"#me's Hand, as well as the dragon amulet, starts to glow brightly and as the light is gone there is a strange formed key inside the hand and the letters on the stone socket starts to shine.");
@@ -95,7 +97,7 @@ function UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 
 end
 
-function RingOfPower(User)
+function M.RingOfPower(User)
 	
 	local pos = base.common.GetFrontPosition(User);
 	world:gfx(2,pos);
@@ -106,7 +108,7 @@ function RingOfPower(User)
 	world:makeSound(7,pos);
 end
 
-function RoadToNode(User, effectType)
+function M.RoadToNode(User, effectType)
 	
 	local charList = world:getPlayersInRangeOf(User.pos, 5);
 	local validChars = {};
@@ -128,7 +130,7 @@ function RoadToNode(User, effectType)
 	return retVal;
 end
 
-function RemoveMuckyLuck(User, TargetItem)
+function M.RemoveMuckyLuck(User, TargetItem)
 	
 	local radius = 2;
 	local foodItems = {158,159,162};
@@ -156,7 +158,7 @@ function RemoveMuckyLuck(User, TargetItem)
 	end
 end
 
-function MuckyLuck(User)
+function M.MuckyLuck(User)
 	
 	local radius = 2;
 	local foodItems = {158,159,162};
@@ -185,3 +187,15 @@ function MuckyLuck(User)
 			"Something inhibits performing the ritual.");
 	end
 end
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

@@ -1,9 +1,10 @@
+local M = {}
+local GetWineQuality
+
 -- basic function for craft handling
 -- Nitram
 -- added object orientation by vilarion
 require("base.common")
-
-module("item.base.crafts", package.seeall)
 
 -- ## NOTE: replaced os.time() with 123456789
 
@@ -728,7 +729,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
 end
 
 -- Added by abcfantasy for wine contest
-function GetWineQuality( User )
+function M.GetWineQuality( User )
         local skill = User:getSkill( "baking" );
         local attr = User:increaseAttrib( "dexterity", 0 );
 
@@ -736,3 +737,5 @@ function GetWineQuality( User )
 
         return ( skill + attr + randValue );
 end
+
+return M

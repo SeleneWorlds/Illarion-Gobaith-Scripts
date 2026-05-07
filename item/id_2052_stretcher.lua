@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- Spannrahmen
 
 -- Rohleder und Felle zu Leder
@@ -9,9 +12,7 @@
 
 require("base.common")
 
-module("item.id_2052_stretcher", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     if (Leatherlist==nil) then
         Leatherlist= { };
@@ -130,10 +131,12 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end
 
 -- Arbeitszeit generieren
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
 	local Skill = 1;
     --local Skill  = User:getSkill("dying and tanning");     -- F�rben und Gerben: 0 - 100
 
     return math.floor(-0.3 * (Attrib + Skill) + 100);
 end
+
+return M

@@ -1,12 +1,13 @@
+local M = {}
+local LookAtItem, MoveItemAfterMove
+
 -- data values in use: 100,101,102,666,700,800, 10000
 
 require("base.lookat")
 require("base.common")
-require("content.jewelbonus")
+local jewelbonus = require("content.jewelbonus")
 
-module("item.id_235_goldring", package.seeall, package.seeall(content.jewelbonus))
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 
     --------------------------------- SPIELERRINGE [ Data 100 - 500 ] --------------------------------------------------------------------------------
     if ( Item.data == 101) then -- Trauring von Roveig
@@ -82,14 +83,14 @@ function LookAtItem(User,Item)
     end
 end
 
-function MoveItemAfterMove( User, SourceItem, TargetItem )
+function M.MoveItemAfterMove( User, SourceItem, TargetItem )
     --anlegen des einen rings
-    stoneNr,stoneStr=getBonus(TargetItem);
+    stoneNr,stoneStr=jewelbonus.getBonus(TargetItem);
     if stoneNr>0 then                                                   -- obviously a gem was inserted!
         if ((TargetItem.itempos==7) or (TargetItem.itempos==8)) then    -- put on a finger
-            giveBonus(User,TargetItem);                                 -- now raise corresponding attribute(s) and start LTE
+            jewelbonus.giveBonus(User,TargetItem);                      -- now raise corresponding attribute(s) and start LTE
         elseif ((SourceItem.itempos==7) or (SourceItem.itempos==8)) then  -- taken off of a finger
-            takeBonus(User,SourceItem,stoneNr,stoneStr);                -- now lower corresponding attribute(s) and remove/change LTE
+            jewelbonus.takeBonus(User,SourceItem,stoneNr,stoneStr);     -- now lower corresponding attribute(s) and remove/change LTE
         end
     else
         if ( TargetItem:getType() == 4 and (TargetItem.itempos == 7 or TargetItem.itempos == 8) and TargetItem.data == 100 ) then
@@ -423,5 +424,4 @@ function MoveItemAfterMove( User, SourceItem, TargetItem )
         return retShape
     end
 
-
-
+return M

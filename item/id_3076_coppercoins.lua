@@ -1,14 +1,12 @@
+local M = {}
+local UseItem
+
 --UPDATE common SET com_script='item.id_3076_coppercoins' WHERE com_itemid=3076;
 require("base.common")
 
-module("item.id_3076_coppercoins", package.seeall)
+local TimeList = {}
 
-if not InitTime then
-	InitTime=true;
-	TimeList = {};
-end
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 	if ( SourceItem.number == 1 ) then  --works only with 1 coin
 
     	if TimeList[User.id]~=nil then
@@ -26,3 +24,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
       	TimeList[User.id] = world:getTime("second");
 	end
 end
+
+return M

@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- Spinnrad ( 270 )
 
 -- Wolle  --> Wollkneul
@@ -9,13 +12,11 @@
 -- UPDATE common SET com_script='item.id_171_spinningwheel' WHERE com_itemid IN (171);
 
 require("base.common")
-require("content.gathering")
+local gathering = require("content.gathering")
 
-module("item.id_171_spinningwheel", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-	content.gathering.InitGathering();
-	local woolcutting = content.gathering.woolcutting;
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+	gathering.InitGathering();
+	local woolcutting = gathering.woolcutting;
 	
     base.common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
@@ -114,9 +115,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end -- function
 
 -- Arbeitszeit generieren
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = math.min(100,User:getSkill("tailoring")*10);     -- Schneidern: 0 - 100
     
     return math.floor(-0.25 * (Attrib + Skill) + 40);
 end
+
+return M

@@ -1,3 +1,6 @@
+local M = {}
+local CharacterOnField
+
 -- Spinnennetze
 -- Nitram
 
@@ -5,9 +8,7 @@
 
 -- UPDATE common SET com_script='item.spidernet' WHERE com_itemid IN (3093,3094,3095,3096);
 
-module("item.spidernet", package.seeall)
-
-function CharacterOnField(User)
+function M.CharacterOnField(User)
     --User:inform("Los");
     --Variables 'LastChar' and 'Last Warp' have to be remanent.
     --Variables 'AktTime' and 'Ensnarl' are defined as local.
@@ -39,3 +40,5 @@ function CharacterOnField(User)
         LastWarp[PosVal] = AktTime;
     end
 end
+
+return M

@@ -1,11 +1,12 @@
+local M = {}
+local UseItem, LookAtItem
+
 require("base.common")
 require("base.doors")
 
-module("item.doors", package.seeall)
-
 -- UPDATE common SET com_script='item.doors' WHERE com_itemid IN (86, 87,927,317,476,477,478,479,499,900,901,902,484,485,924,923,668,669,660,661,684,685,664,665,670,666,671,667,662,686,663,687,715,714,712,713,497,922,925,926,480,481,482,483,903,904,905,906,486,487,496,920,656,657,648,649,652,653,644,645,658,654,659,655,650,646,651,647,711,710,708,709);
 
-function UseItem(User,SourceItem,TargetItem,counter,param)
+function M.UseItem(User,SourceItem,TargetItem,counter,param)
     if base.doors.CloseDoor(SourceItem) then
         base.common.InformNLS(User,"Du schlie�t die T�r","You close the door.");
     else
@@ -18,7 +19,7 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
     end
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     local DataVal=Item.data;
     if (specialnames==nil) then
         specialnames={};
@@ -58,3 +59,5 @@ function LookAtItem(User,Item)
         end
     end
 end
+
+return M

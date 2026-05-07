@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local InitCraftingTool, UseItem, UseItemWithField, UseItemWithCharacter
+
 -- Goldschmieden mit Goldschmiedehammer und Amboss
 
 -- UPDATE common SET com_script='item.id_122_finesmithhammer' WHERE com_itemid IN (122);
@@ -5,10 +9,8 @@
 require("item.general.metal")
 require("item.base.crafts")
 
-module("item.id_122_finesmithhammer", package.seeall, package.seeall(item.general.metal))
-
 -- Schmiedeprodukte Initieren
-function InitCraftingTool( )
+function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
         smithing = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
@@ -223,7 +225,7 @@ product:AddProductionSteps( { 2554, 1, "all" }, 1 ); -- Pure Water: 1x1
     return smithing;
 end
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     base.common.ResetInterruption( User, ltstate )
     Smithing = InitCraftingTool( );
     if not menstate then
@@ -394,7 +396,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DO
 end --function
 
 ------------------------Part 2:-------
-function UseItemWithField( User, SourceItem,TargetPos ,Counter , Param)
+function M.UseItemWithField( User, SourceItem,TargetPos ,Counter , Param)
 		if (User.id==1551888478 or User.id==1322717830) then  --not so strong flame
 				world:createItemFromId(359, 1, TargetPos, true, 677, 0);   --create flame
 				world:gfx(36,TargetPos);
@@ -402,7 +404,7 @@ function UseItemWithField( User, SourceItem,TargetPos ,Counter , Param)
 		end
 end
 
-function UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
+function M.UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
 		if (User.id==1551888478 or User.id==1322717830) then
 			if (TargetChar.id~=User.id) then
 				if (User.id==1551888478 or User.id==1322717830) then  --not so strong flame
@@ -417,3 +419,15 @@ function UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
 		end
 end
 --------------------------------------
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

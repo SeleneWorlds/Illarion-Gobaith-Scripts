@@ -1,17 +1,15 @@
+local M = {}
+local UseItem
+
 -- I_61.lua Goldm&uuml;nzen einschmelzen
 
 -- UPDATE common SET com_script='item.id_61_goldcoins' WHERE com_itemid IN (61);
 
 require("base.common")
 
-module("item.id_61_goldcoins", package.seeall)
+local TimeList = {}
 
-if not InitTime then
-	InitTime=true;
-	TimeList = {};
-end
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 	if ( SourceItem.number == 1 ) then  --works only with 1 coin
 
     	if TimeList[User.id]~=nil then
@@ -29,3 +27,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 
 	end
 end
+
+return M

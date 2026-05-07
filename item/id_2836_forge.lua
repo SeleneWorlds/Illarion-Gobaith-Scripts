@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- Esse aus und an ( 2835,2836 )
 
 -- Erz  --> Barren
@@ -10,9 +13,7 @@
 
 require("base.common")
 
-module("item.id_2836_forge", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if world:isItemOnField( SourceItem.pos ) then
         SourceItem = world:getItemOnField( SourceItem.pos );
@@ -239,10 +240,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end -- function
 
 -- Arbeitszeit generieren
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = math.min(100,User:getSkill("smithing")*10);    -- Schmieden: 0 - 100
     
     return math.floor(-0.5 * (Attrib + Skill) + 70);
 end
 
+return M

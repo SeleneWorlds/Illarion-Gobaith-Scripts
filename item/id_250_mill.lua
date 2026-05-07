@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- M�hlstein ( 250 )
 
 -- Getreidek�rner  --> Mehl
@@ -9,9 +12,7 @@
 
 require("base.common")
 
-module("item.id_250_mill", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
@@ -122,9 +123,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end -- function UseItem()
 
 -- Arbeitszeit Generieren
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Skill  = math.min(100,User:getSkill("baking")*10);
     local Attrib = User:increaseAttrib( "dexterity", 0 );
     
     return math.floor( -0.2 * (Skill+Attrib) + 30);
 end
+
+return M

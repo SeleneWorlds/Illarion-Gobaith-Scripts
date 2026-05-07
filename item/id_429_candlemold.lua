@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, LookAtItem
+
 -- zus�tzliches Werkzeug 428 Kerzentisch (statisch)
 -- Wachs (431) zu Kerzen (43)
 -- Arbeitszeit 2s
@@ -6,9 +9,7 @@
 
 require("base.common")
 
-module("item.id_429_candlemold", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     math.randomseed( os.time() );
 
@@ -103,6 +104,8 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
 end
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
     world:itemInform( User, Item, GetItemDescription( User, Item, 1, false, false ));
 end
+
+return M

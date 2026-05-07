@@ -1,17 +1,18 @@
+local M = {}
+local IniFireField, CharacterOnField, DeleteFlame, SpellResistence
+
 -- UPDATE common SET com_script='item.id_372_poisonfield' where com_itemid=372;
 
 require("base.common")
 
-module("item.id_372_poisonfield", package.seeall)
-
-function IniFireField()
+function M.IniFireField()
     --hum,dwa,hal,elf,orc,liz,gno,fry,gob,tro,mum,skl,beh,cld,hlr,buy,sel,ins,shp,spd,dsk,rot,dem,scp,pig,inv,sku,wsp,ftr,shd,stn,mgo,gno,dra,drw,drw,lde
     AffectedRaces={  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36};
     AffectedStren={100,100,100,100,100,100,100,100,100,100,100, 40,100,100,100,100,100,120,130,110, 20,100, 10,100,100,100, 40,150,100, 30, 20,100,100, 10,100,100, 20};
     AffectedPoiso={100, 80,100,100, 90,100,100,110,100,120,  0,  0, 10,  0,  0,  0,  0, 80,100, 10,  0, 30,  5,  2,100,100,  0, 70,120,  0,  1,100,100, 50,100,100,  5};
 end
 
-function CharacterOnField(User)
+function M.CharacterOnField(User)
     if (AffectedRaces==nil) then
         IniFireField();
     end
@@ -61,7 +62,7 @@ function CharacterOnField(User)
     end
 end
 
-function DeleteFlame(User, FlameItem)
+function M.DeleteFlame(User, FlameItem)
 	local field = world:getField(User.pos);
 	local count = field:countItems();
 	local currentitem;
@@ -78,10 +79,12 @@ function DeleteFlame(User, FlameItem)
 	end
 end
 
-function SpellResistence(TargetChar)
+function M.SpellResistence(TargetChar)
     local TInt=TargetChar:increaseAttrib("intelligence",0);
     local TEss=TargetChar:increaseAttrib("essence",0);
     local TSkill=TargetChar:getSkill("magic resistance");
     local ResTry=(((TSkill*2)+(TEss*2)+TInt)/300)*999;
     return math.max(0,math.min(999,math.floor(ResTry*(math.random(8,12)/10))))
 end
+
+return M

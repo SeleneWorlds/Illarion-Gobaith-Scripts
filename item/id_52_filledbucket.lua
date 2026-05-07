@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, UseItemWithCharacter, MakeSprout, CheckSucceed, BlockCheck
+
 -- I_52.lua voller Wassereimer
 
 -- UPDATE common SET com_script='item.id_52_filledbucket' WHERE com_itemid IN (52);
@@ -5,9 +8,7 @@
 require("base.common")
 require("base.keys")
 
-module("item.id_52_filledbucket", package.seeall)
-
-function UseItem( User, SourceItem, TargetItem, Counter, Param )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 
     -- Loo Bucket for hands
     if equapos( SourceItem.pos, position( -72, -69, 0 ) ) then
@@ -57,7 +58,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param )
       world:changeItem(SourceItem);
 end  -- function
 
-function UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter, Param )
+function M.UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter, Param )
     find, stinkEffekt =  TargetCharacter.effects:find(18);
     if find then 
 	    found, stinkIndex = stinkEffekt:findValue("stinkIndex");
@@ -84,7 +85,7 @@ function UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter, 
     end
 end
 
-function MakeSprout( User, SourceItem, TargetItem )
+function M.MakeSprout( User, SourceItem, TargetItem )
     if seedList == nil then
         seedList = {  };
         seedList[ 15 ] = {139,4};              -- Apfelsetzling
@@ -127,7 +128,7 @@ function MakeSprout( User, SourceItem, TargetItem )
     end
 end
 
-function CheckSucceed(User)
+function M.CheckSucceed(User)
     Dex=User:increaseAttrib("dexterity",0);
     Pea=User:getSkill("peasantry");
     TryValue=100*(Pea/100)*(Dex/20);
@@ -138,7 +139,7 @@ function CheckSucceed(User)
     end
 end
 
-function BlockCheck(Posi)
+function M.BlockCheck(Posi)
     local testLoc;
     local TestItem;
     local block = 0;
@@ -167,3 +168,4 @@ function BlockCheck(Posi)
     end
 end
 
+return M

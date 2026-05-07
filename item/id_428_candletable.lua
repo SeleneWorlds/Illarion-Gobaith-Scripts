@@ -1,3 +1,6 @@
+local M = {}
+local UseItem
+
 -- Kerzenziehertisch
 
 -- Honigwaben (2529) zu Wachs (431)
@@ -8,9 +11,7 @@
 
 require("base.common")
 
-module("item.id_428_candletable", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
@@ -109,3 +110,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.GetHungry( User, 100 );
     
 end -- function
+
+return M

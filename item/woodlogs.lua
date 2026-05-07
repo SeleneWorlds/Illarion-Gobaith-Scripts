@@ -1,12 +1,13 @@
+local M = {}
+local UseItem
+
 -- Holz Aufstapeln
 
 -- UPDATE common SET com_script='item.woodlogs' WHERE com_itemid IN (3,543,544,2560);
 
 require("base.common")
 
-module("item.woodlogs", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if (SourceItem:getType()~=3) then
         base.common.InformNLS( User,
         "Wenn du dich nicht selbst abfackeln willst, solltest du das Holz auf den Boden legen.",
@@ -46,3 +47,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
         "You can only pile up one pile of wood.");
     end
 end -- function UseItem()
+
+return M

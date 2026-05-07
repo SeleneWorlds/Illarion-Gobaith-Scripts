@@ -1,12 +1,13 @@
+local M = {}
+local UseItem, LookAtItem
+
 --WIDE THIN BLUE BOOK
 
 require("base.books")
 
-module("item.book.id_2609_blue_book", package.seeall)
-
 -- UPDATE common SET com_script='item.book.id_2609_blue_book' WHERE com_itemid = 2609;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
@@ -140,7 +141,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
     SendBookPage(User,SourceItem.data,Counter);
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if base.books.InitTitle() then
         base.books.AddEnglishBookTitle("Book with the title \"Elven History and Culture\"",0);
         base.books.AddGermanBookTitle("Book with the title \"Elfische Geschichte und Kultur\"",0);
@@ -153,3 +154,5 @@ function LookAtItem(User,Item)
     end
     base.books.GetBookItemInform(User,Item);
 end
+
+return M

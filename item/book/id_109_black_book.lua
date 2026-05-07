@@ -1,11 +1,12 @@
+local M = {}
+local UseItem, LookAtItem
+
 require("base.books")
 require("druid.content.druids")
 
-module("item.book.id_109_black_book", package.seeall)
-
 -- UPDATE common SET com_script='item.book.id_109_black_book' WHERE com_itemid = 109;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
@@ -17,9 +18,11 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
 end  -- function
 
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
     if base.books.InitTitle() then
         druid.content.druid.loadTitle(0);
     end
     base.books.GetBookItemInform(User,Item);
 end
+
+return M

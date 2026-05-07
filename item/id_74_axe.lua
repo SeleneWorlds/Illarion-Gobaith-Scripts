@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local initLists, AddTree, createdeathtree, CheckAndHit, UseItem, UseItemWithField, Lumberjack
+
 -----------------------------------
 ----------- HOLZ F�LLEN -----------
 -----------------------------------
@@ -6,11 +10,9 @@
 
 require("base.common")
 require("item.general.metal")
-require("content.gathering")
+local gathering = require("content.gathering")
 
-module("item.id_74_axe", package.seeall, package.seeall(item.general.metal))
-
-function initLists(  )
+function M.initLists(  )
     -- Initialisierung der Listen
     if (trees ~= nil) then
         return
@@ -28,7 +30,7 @@ function initLists(  )
     AddTree(1817,585,580,581,582,583,   3,19,   0); -- Nadelbaum
 end -- function initLists
 
-function AddTree(TreeID,StumpID,NLog,OLog,SLog,WLog,Logs,maxLogs,bough)
+function M.AddTree(TreeID,StumpID,NLog,OLog,SLog,WLog,Logs,maxLogs,bough)
     trees[ TreeID ] = { StumpID, NLog, OLog, SLog, WLog, maxLogs };
     logs[ NLog ] = {Logs,bough};
     logs[ OLog ] = {Logs,bough};
@@ -36,7 +38,7 @@ function AddTree(TreeID,StumpID,NLog,OLog,SLog,WLog,Logs,maxLogs,bough)
     logs[ WLog ] = {Logs,bough};
 end
 
-function createdeathtree(Tree,User,Qual)
+function M.createdeathtree(Tree,User,Qual)
     local DiffX=false;
     local DiffY=false;
     local createpos=nil;
@@ -96,7 +98,7 @@ function createdeathtree(Tree,User,Qual)
     end
 end
 
-function CheckAndHit(TargetPos)
+function M.CheckAndHit(TargetPos)
     if world:isCharacterOnField(TargetPos) then
         local Char=world:getCharacterOnField(TargetPos);
         base.common.InformNLS( Char,
@@ -109,8 +111,8 @@ end
 -- ************************************************************************************
 
 --Hauptfunktion / Einsprung
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
-	content.gathering.InitGathering();
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+	gathering.InitGathering();
 
     if User:isAdmin() then
         User:inform("mental: "..User:getMentalCapacity());
@@ -211,7 +213,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 end
 
-function UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
+function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
     initLists(  );
     if world:isItemOnField( position( TargetPos.x, TargetPos.y+1, TargetPos.z ) ) then
         local testitem = world:getItemOnField( position( TargetPos.x, TargetPos.y+1, TargetPos.z ) );
@@ -236,7 +238,7 @@ function UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate 
     "Here is nothing you could work at with your axe." );
 end
 
-function Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
     local Skill = User:getSkill("lumberjacking");
 	-- Random Events
 	if (not woodchopping:FindRandomItem(User)) then
@@ -307,3 +309,15 @@ function Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
         end
     end
 end -- main function UseItem(  )
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

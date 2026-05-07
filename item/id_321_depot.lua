@@ -1,10 +1,11 @@
+local M = {}
+local LookAtItem
+
 -- Depots
 
 -- UPDATE common SET com_script='item.id_321_depot' WHERE com_itemid=321;
 
-module("item.id_321_depot", package.seeall)
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     local lang = User:getPlayerLanguage();
     local LookAtStr = world:getItemName(321,lang).." (";
     if (Item.data==0) then
@@ -85,3 +86,5 @@ function LookAtItem(User,Item)
     LookAtStr = LookAtStr..")";
     world:itemInform(User,Item,LookAtStr);
 end
+
+return M

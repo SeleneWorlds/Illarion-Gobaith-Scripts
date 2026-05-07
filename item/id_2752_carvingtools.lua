@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local InitCraftingTool, UseItem
+
 -- Working with carving tools
 
 -- UPDATE common SET com_script='item.id_2752_carvingtools' WHERE com_itemid IN (2752);
@@ -5,10 +9,8 @@
 require("item.general.metal")
 require("item.base.crafts")
 
-module("item.id_2752_carvingtools", package.seeall, package.seeall(item.general.metal))
-
 -- Holzarbeiten mit dem Schnitzmesser
-function InitCraftingTool( )
+function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
 
@@ -281,7 +283,7 @@ end
 
 
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     base.common.ResetInterruption( User, ltstate )
     carpenter = InitCraftingTool( );
     if not menstate then
@@ -358,3 +360,15 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DO
         carpenter:ToolCreateItem( User, Param, nil, ltstate, SourceItem );
     end
 end --function
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

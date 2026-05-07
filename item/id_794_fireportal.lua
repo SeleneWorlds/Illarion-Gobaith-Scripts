@@ -1,10 +1,11 @@
+local M = {}
+local CharacterOnField
+
 -- UPDATE common SET com_script = 'item.id_794_fireportal' WHERE com_itemid = 794;
 
 require("base.common")
 
-module("item.id_794_fireportal", package.seeall)
-
-function CharacterOnField(User)
+function M.CharacterOnField(User)
     local SourceItem = world:getItemOnField(User.pos);
 	
 	if (SourceItem.data == 100) then -- used for THE LIBRARY quest
@@ -18,3 +19,5 @@ function CharacterOnField(User)
 	end
 	
 end
+
+return M

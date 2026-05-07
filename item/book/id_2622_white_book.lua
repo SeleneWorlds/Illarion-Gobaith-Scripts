@@ -1,12 +1,13 @@
+local M = {}
+local UseItem, LookAtItem
+
 -- BIG HEAVY WHITE BOOK WITH BLACK SIGN
 
 require("base.books")
 
-module("item.book.id_2622_white_book", package.seeall)
-
 -- UPDATE common SET com_script='item.book.id_2622_white_book' WHERE com_itemid = 2622;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
@@ -778,7 +779,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
     end
 end  -- function
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if base.books.InitTitle() then
         base.books.AddGermanBookTitle("Buch mit dem Titel \"Buch der Priester Eldans\"",0);
         base.books.AddEnglishBookTitle("Book with the title \"Book of the priests of Eldan\"",0);
@@ -804,3 +805,5 @@ function LookAtItem(User,Item)
     end
     base.books.GetBookItemInform(User,Item);
 end
+
+return M

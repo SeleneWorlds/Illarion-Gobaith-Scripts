@@ -1,12 +1,20 @@
+local M = {}
+local UseItem
+
 -- Script muss noch in die Datenbank eingef�gt werden (Handspiegel, ID 336)
 
-require("content.chardescription")
+local chardescription = require("content.chardescription")
 
-module("item.id_336_mirror", package.seeall, package.seeall(content.chardescription))
+local getAgeText = chardescription.getAgeText
+local getClothesDuraText = chardescription.getClothesDuraText
+local getClothesFactor = chardescription.getClothesFactor
+local getClothesQualText = chardescription.getClothesQualText
+local getFigureText = chardescription.getFigureText
+local getHPText = chardescription.getHPText
 
 -- UPDATE common SET com_script='item.id_336_mirror' WHERE com_itemid = 336;
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 	local output = "";
 	local lang = User:getPlayerLanguage();
 	local qual,dura = getClothesFactor(User);
@@ -30,3 +38,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 	end
 	User:sendCharDescription(User.id, output);
 end
+
+return M

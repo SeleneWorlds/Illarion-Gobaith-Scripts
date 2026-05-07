@@ -1,12 +1,13 @@
+local M = {}
+local UseItemWithField, UseItem
+
 -- Fairy's Tears oder Trolls Blood erhalten (Quellwasser)
 -- Alternativ: Gesegnetes Wasser von Irundar erhalten
 -- vilarion
 
 -- UPDATE common SET com_script='item.id_2498_empty_bottle' WHERE com_itemid IN (2498);
 
-module("item.id_2498_empty_bottle", package.seeall)
-
-function UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
+function M.UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
     --User:inform("using bottle on field");
     if ((User:getItemAt(6).id == 2498)or(User:getItemAt(5).id == 2498)) then
         --User:inform("bottle in hand");
@@ -40,7 +41,7 @@ function UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
 end
 
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ((User:getItemAt(6).id == 2498)or(User:getItemAt(5).id == 2498)) then
         --User:inform("bottle in hand");
         if (User:getItemAt(6).id == 2498) then
@@ -75,3 +76,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
         end;
     end;
 end
+
+return M

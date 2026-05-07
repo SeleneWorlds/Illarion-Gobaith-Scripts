@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local InitCraftingTool, UseItem
+
 -- Glas Produkte Herstellen
 
 -- UPDATE common SET com_script='item.id_311_glassblowpipe' WHERE com_itemid=311;
@@ -5,9 +9,7 @@
 require("item.general.metal")
 require("item.base.crafts")
 
-module("item.id_311_glassblowpipe", package.seeall, package.seeall(item.general.metal))
-
-function InitCraftingTool( )
+function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
 
@@ -68,7 +70,7 @@ product:AddProductionSteps( { 46, 1, "all" }, 1 ); -- Ruby: 1x1
 end --function
 
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     Glassblowing = InitCraftingTool( );
     base.common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then
@@ -129,3 +131,15 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DO
         Glassblowing:ToolCreateItem( User, Param, nil, ltstate, SourceItem );
     end
 end --function
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

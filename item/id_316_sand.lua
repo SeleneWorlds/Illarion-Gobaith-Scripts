@@ -1,8 +1,9 @@
-module("item.id_316_sand", package.seeall)
+local M = {}
+local MoveItemBeforeMove, MoveItemAfterMove
 
 -- UPDATE common SET com_script='item.id_316_sand' WHERE com_itemid = 316;
 
-function MoveItemBeforeMove(User, SourceItem, TargetItem)
+function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
     deleteIt=false;
     GroundItem=world:getItemOnField(TargetItem.pos);
     if (GroundItem.id==10) then
@@ -13,6 +14,8 @@ function MoveItemBeforeMove(User, SourceItem, TargetItem)
     return true
 end
 
-function MoveItemAfterMove(User, SourceItem, TargetItem)
+function M.MoveItemAfterMove(User, SourceItem, TargetItem)
     if deleteIt then world:erase(TargetItem,1) end
 end
+
+return M

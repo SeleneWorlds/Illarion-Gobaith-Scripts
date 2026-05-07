@@ -1,12 +1,13 @@
+local M = {}
+local UseItem
+
 --SMALL THICK BLUE BOOK 
 
 require("base.books")
 
-module("item.book.id_2607_blue_book", package.seeall)
-
 -- UPDATE common SET com_script='item.book.id_2607_blue_book' WHERE com_itemid = 2607;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param) 
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param) 
       if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then 
           world:erase(SourceItem,1); 
       else 
@@ -204,3 +205,5 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
       end 
       base.books.GetBookItemInform(User,Item); 
   end
+
+return M

@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- Werkbank
 
 -- Holzst�cke zu Brettern
@@ -9,9 +12,7 @@
 
 require("base.common")
 
-module("item.id_724_workbench", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate );
     if (Woodlist==nil) then
         Woodlist= { };
@@ -131,9 +132,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end
 
 -- Arbeitszeit generieren
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = User:getSkill("carpentry");     -- Edelstein schleifen: 0 - 100
     
     return math.floor(-0.3 * (Attrib + Skill) + 50);
 end
+
+return M

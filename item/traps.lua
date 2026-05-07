@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, CharacterOnField, LookAtItem
+
 --Function:    Generic trap script
 --Last Update: 01/04/2006
 --Update by:   Nitram
@@ -6,9 +9,7 @@
 
 require("base.common")
 
-module("item.traps", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ((User:increaseAttrib("dexterity",0) + 0.5*User:increaseAttrib("perception",0) + math.random(1,30)) >= 30) then
         base.common.InformNLS( User,"Du entsch�rfst die Falle.","You disarm the trap." );
         world:swap(SourceItem,375,333);
@@ -21,7 +22,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
     User.movepoints=User.movepoints-10;
 end
 
-function CharacterOnField( User )
+function M.CharacterOnField( User )
     local SetOff=false;
     repeat
         local SourceItem = world:getItemOnField( User.pos );
@@ -40,7 +41,7 @@ function CharacterOnField( User )
     User.movepoints=User.movepoints-10;
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if (User:distanceMetricToPosition(Item.pos)<2 and User:increaseAttrib("perception",0)>15) then
         if (User:getPlayerLanguage()==0) then
             world:itemInform(User,Item,"Du siehst eine Falle auf dem Boden liegen.")
@@ -49,3 +50,5 @@ function LookAtItem(User,Item)
         end
     end
 end
+
+return M

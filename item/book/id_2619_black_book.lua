@@ -1,12 +1,13 @@
+local M = {}
+local UseItem, LookAtItem
+
 -- BIG HEAVY BLACK BOOK WITH RED SIGN
 
 require("base.books")
 
-module("item.book.id_2619_black_book", package.seeall)
-
 -- UPDATE common SET com_script='item.book.id_2619_black_book' WHERE com_itemid = 2619;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
@@ -570,7 +571,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
     base.books.SendBookPage(User,SourceItem.data,Counter);
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if base.books.InitTitle() then
         base.books.AddEnglishBookTitle("Book with the title \"Fragments of the lost Chronicles of Manrok\"",0);
         base.books.AddGermanBookTitle("Buch mit dem Titel \"Fragmente der verlorenen Chroniken von Manrok\"",0);
@@ -588,3 +589,5 @@ function LookAtItem(User,Item)
     end
     base.books.GetBookItemInform(User,Item);
 end
+
+return M

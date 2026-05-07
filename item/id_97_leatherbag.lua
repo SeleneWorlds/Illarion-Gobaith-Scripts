@@ -1,8 +1,9 @@
+local M = {}
+local LookAtItem, UseItem
+
 -- UPDATE common SET com_script='item.id_97_leatherbag' WHERE com_itemid=97;
 
-module("item.id_97_leatherbag", package.seeall)
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     local txt;
     local low32 = Item.data;
     local high16  = Item.quality-333;
@@ -39,7 +40,7 @@ function LookAtItem(User,Item)
     --User:inform("Data: _"..Item.data.."_");
 end
 
-function UseItem( User, Item, TargetItem, Counter, Param )
+function M.UseItem( User, Item, TargetItem, Counter, Param )
     if ( Item:getType() == 3 ) or ( Item:getType() == 4 ) then
 		    local txt = User.lastSpokenText;
 		    if txt == "!bag" then
@@ -106,3 +107,5 @@ function UseItem( User, Item, TargetItem, Counter, Param )
 		    end;
 		end;        
 end
+
+return M

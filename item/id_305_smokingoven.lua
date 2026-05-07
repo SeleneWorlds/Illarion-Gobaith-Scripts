@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, GenWorkTime
+
 -- R�UCHEROFEN
 
 -- Roher Schinken(307) zu Schinken(306)
@@ -12,9 +15,7 @@
 
 require("base.common")
 
-module("item.id_305_smokingoven", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     base.common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
@@ -141,9 +142,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
 end -- function
 
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = User:getSkill("baking");     -- Backen & Kochen: 0 - 100
     
     return math.floor(-0.3 * (Attrib + Skill) + 50);
 end
+
+return M

@@ -1,12 +1,13 @@
+local M = {}
+local UseItem, LookAtItem
+
 --WIDE THICK GREY BOOK
 
 require("base.books")
 
-module("item.book.id_2617_grey_book", package.seeall)
-
 -- UPDATE common SET com_script='item.book.id_2617_grey_book' WHERE com_itemid = 2617;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
@@ -402,7 +403,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
     base.books.SendBookPage(User,SourceItem.data,Counter);
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if base.books.InitTitle() then
         base.books.AddEnglishBookTitle("Book with the title \"Celebrations\"",0);
         base.books.AddGermanBookTitle("Buch mit dem Titel \"Die Feiertage des Jahres\"",0);
@@ -427,3 +428,5 @@ function LookAtItem(User,Item)
     end
     base.books.GetBookItemInform(User,Item);
 end
+
+return M

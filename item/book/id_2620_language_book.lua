@@ -1,10 +1,11 @@
-require("base.common")
+local M = {}
+local UseItem, LookAtItem, Learning, GetLanguage, GetDifficulty
 
-module("item.book.id_2620_language_book", package.seeall)
+require("base.common")
 
 -- UPDATE common SET com_script='item.book.id_2620_language_book' WHERE com_itemid = 2620;
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     local langcode = math.floor(SourceItem.data/10);
     local modecode = SourceItem.data - (langcode * 10);
     
@@ -108,7 +109,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     User:learn(4,"library research",2,100)
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     local langcode = math.floor(Item.data/10);
     local modecode = Item.data - (langcode * 10);
     if (modecode == 2) then
@@ -118,7 +119,7 @@ function LookAtItem(User,Item)
     end
 end
 
-function Learning(User,Value,Skillname)
+function M.Learning(User,Value,Skillname)
     MC=User:getMentalCapacity();
     if (MC>100) then
         return false
@@ -130,7 +131,7 @@ function Learning(User,Value,Skillname)
     end
 end
 
-function GetLanguage(code,engl)
+function M.GetLanguage(code,engl)
     if (code==0) then return ( engl and "ancient language" or "Altert�mlichen Sprache" );
     elseif (code==1) then return ( engl and "common language" or "Gemeinsammen Sprache" );
     elseif (code==2) then return ( engl and "human language" or "Sprache der Menschen" );
@@ -145,7 +146,7 @@ function GetLanguage(code,engl)
     end
 end
 
-function GetDifficulty(code)
+function M.GetDifficulty(code)
     if (code==0) then return 13;
     elseif (code==1) then return 2;
     elseif (code==2) then return 5;
@@ -159,3 +160,5 @@ function GetDifficulty(code)
     elseif (code==10) then return 5;
     end
 end
+
+return M

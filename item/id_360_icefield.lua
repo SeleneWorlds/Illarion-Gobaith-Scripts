@@ -1,16 +1,17 @@
+local M = {}
+local IniFireField, CharacterOnField, DeleteFlame, SpellResistence, ItemRotsOnField
+
 -- UPDATE common SET com_script='item.id_360_icefield' where com_itemid=360;
 
 require("base.common")
 
-module("item.id_360_icefield", package.seeall)
-
-function IniFireField()
+function M.IniFireField()
                  --hum,dwa,hal,elf,orc,liz,gno,fry,gob,tro,mum,skl,beh,cld,hlr,buy,sel,ins,shp,spd,dsk,rot,dem,scp,pig,inv,sku,wsp,ftr,shd,stn,mgo,gno,dra,drw,drw,lde
     AffectedRaces={  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36};
     AffectedStren={100,120,100,100,100, 90,100,100,100,100, 90,110,100,100,100,100,100,150, 20,120, 30,100,130,100,100,100,100,110,100, 50, 20,100,100, 90,100,100, 80};
 end
 
-function CharacterOnField(User)
+function M.CharacterOnField(User)
     if (AffectedRaces==nil) then
         IniFireField();
     end
@@ -45,7 +46,7 @@ function CharacterOnField(User)
     end
 end
 
-function DeleteFlame(User, FlameItem)
+function M.DeleteFlame(User, FlameItem)
 	local field = world:getField(User.pos);
 	local count = field:countItems();
 	local currentitem;
@@ -62,7 +63,7 @@ function DeleteFlame(User, FlameItem)
 	end
 end
 
-function SpellResistence(TChar)                 -- should be 0 (no res) to 100 (super res)
+function M.SpellResistence(TChar)                 -- should be 0 (no res) to 100 (super res)
     MRes=TChar:getSkill("magic resistance");    -- should depend on Int, Wp and magic resistency
     RInt=TChar:increaseAttrib("intelligence",0);
     RWillpower=TChar:increaseAttrib("willpower",0);
@@ -82,7 +83,7 @@ function base.common.NormalRnd(min,max)     -- returns ~normal distribution betw
     return base;
 end
 
-function ItemRotsOnField(oldItem,newItem)
+function M.ItemRotsOnField(oldItem,newItem)
     if (firstrot==nil) then
         rotted={};
     end
@@ -95,4 +96,5 @@ function ItemRotsOnField(oldItem,newItem)
     end
     rotted[Posi]=rotted[Posi]+1;
 end
-    
+
+return M

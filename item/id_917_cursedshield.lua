@@ -1,11 +1,13 @@
+local parent = require("item.general.metal")
+local M = {}
+local MoveItemBeforeMove, MoveItemAfterMove
+
 -- UPDATE common SET com_script = 'item.id_917_cursedshield' WHERE com_itemid = 917;
 
 require("base.common")
 require("item.general.metal")
 
-module("item.id_917_cursedshield", package.seeall, package.seeall(item.general.metal))
-
-function MoveItemBeforeMove( User, SourceItem, TargetItem )
+function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
     -- if shield was purified, then no possibility of curse
     if ( SourceItem.data == 1 ) then return true; end;
     
@@ -24,7 +26,7 @@ function MoveItemBeforeMove( User, SourceItem, TargetItem )
     return true;
 end;
 
-function MoveItemAfterMove( User, SourceItem, TargetItem )
+function M.MoveItemAfterMove( User, SourceItem, TargetItem )
     -- if shield equipped in hands
     if ( TargetItem.itempos == 5 ) or ( TargetItem.pos == 6 )then
         -- if curse gets in effect
@@ -50,3 +52,15 @@ end;
 --        world:itemInform( User, Item, "Cursed Shield" );
 --    end;
 --end
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

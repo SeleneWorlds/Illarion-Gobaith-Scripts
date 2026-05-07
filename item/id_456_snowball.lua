@@ -1,8 +1,9 @@
+local M = {}
+local MoveItemAfterMove
+
 -- UPDATE common SET com_script='item.id_456_snowball' WHERE com_itemid IN (456);
 
-module("item.id_456_snowball", package.seeall)
-
-function MoveItemAfterMove(User, SourceItem, TargetItem)
+function M.MoveItemAfterMove(User, SourceItem, TargetItem)
 	if Round==nil then
 		Round=1;
 	end
@@ -14,3 +15,5 @@ function MoveItemAfterMove(User, SourceItem, TargetItem)
 		Round=nil;
 	end
 end
+
+return M

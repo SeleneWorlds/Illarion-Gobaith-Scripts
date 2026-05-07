@@ -1,9 +1,10 @@
+local M = {}
+local InitializeBook, UseItem, LookAtItem
+
 -- UPDATE common SET com_script='item.book.id_1061_teleport' WHERE com_itemid=1061;
 require("base.common")
 
-module("item.book.id_1061_teleport", package.seeall)
-
-function InitializeBook(  )
+function M.InitializeBook(  )
 
     if TargetName == nil then
 
@@ -28,7 +29,7 @@ function InitializeBook(  )
 
 end
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     --User:inform( "reading teleport book" )
 
     InitializeBook(  );
@@ -93,7 +94,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 end
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
     --User:inform( "lookat book" )
 
     InitializeBook(  );
@@ -106,3 +107,5 @@ function LookAtItem( User, Item )
         world:itemInform( User, Item, base.common.GetNLS( User, "Portal nach ", "Portal to " )..gate );
     end
 end
+
+return M

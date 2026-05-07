@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local UseItem, checkRegion
+
 -- Herblore mit Sichel und Ausbreitung der Pflanzen
 
 -- UPDATE common SET com_script='item.id_126_sickle' WHERE com_itemid=126;
@@ -6,9 +10,7 @@ require("item.general.metal")
 require("base.common")
 require("scheduled.newgaia")
 
-module("item.id_126_sickle", package.seeall, package.seeall(item.general.metal))
-
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	
 	-- Krauterliste initialisieren
 	initHerbs();
@@ -101,7 +103,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 end
 
 
-function checkRegion(TargetItem)
+function M.checkRegion(TargetItem)
 	for HerbID, herb in pairs(scheduled.newgaia.herbs) do  
 		-- untergrund checken um Regionen zu bestimmen
 		TileID = world:getField(TargetItem.pos):tile();
@@ -130,3 +132,15 @@ function checkRegion(TargetItem)
 	end
 	return false;
 end
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

@@ -1,10 +1,11 @@
+local M = {}
+local LookAtItem, UseItem
+
 --For the 'The Library' quest - Llama
 
 -- UPDATE common SET com_script='item.id_79_amethystamulet' WHERE com_itemid = 79;
 
-module("item.id_79_amethystamulet", package.seeall)
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 if (Item.data == 701) then
   if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"Du siehst ein zerbrochenes Amulettst�ck mit dem Buchstaben C als Inschrift, 2 weitere Teilst�cke scheinen zu fehlen");
@@ -78,7 +79,7 @@ if (Item.data == 707) then
 end
 	----------
 		
-function UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
+function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 				
 		--using 701
 		
@@ -271,3 +272,5 @@ function UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 		
 		
 end;
+
+return M

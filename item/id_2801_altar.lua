@@ -1,8 +1,9 @@
+local M = {}
+local LookAtItem, UseItem
+
 -- UPDATE common SET com_script='item.id_2801_altar' WHERE com_itemid = 2801;
 
-module("item.id_2801_altar", package.seeall)
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 if (Item.data==701) then
 	if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"German");
@@ -24,7 +25,7 @@ end;
 end; --end function
 
 
-function UseItem(User,SourceItem,TargetItem,counter,param,lstate)
+function M.UseItem(User,SourceItem,TargetItem,counter,param,lstate)
 
 -- part of the Library Quest
 
@@ -45,4 +46,5 @@ if (SourceItem.data==701) then
 end;
 
 end; --function
-	
+
+return M

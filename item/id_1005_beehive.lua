@@ -1,16 +1,17 @@
+local M = {}
+local UseItem
+
 -- Honig Sammeln mit neuem Collecting-System
 -- Blay09
 
 -- UPDATE common SET com_script='item.id_1005_beehive' WHERE com_itemid=1005;
 
 require("base.common")
-require("content.gathering")
+local gathering = require("content.gathering")
 
-module("item.id_1005_beehive", package.seeall)
-
-function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-	content.gathering.InitGathering();
-	local honeygathering = content.gathering.honeygathering;
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
+	gathering.InitGathering();
+	local honeygathering = gathering.honeygathering;
 	
     base.common.ResetInterruption(User, ltstate);
 	if (ltstate == Action.abort) then -- Arbeit unterbrochen
@@ -63,3 +64,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 	
 	User:startAction(honeygathering:GenWorkTime(User, SourceItem), 0, 0, 0, 0);
 end
+
+return M

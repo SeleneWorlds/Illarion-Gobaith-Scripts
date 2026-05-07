@@ -1,3 +1,6 @@
+local M = {}
+local UseItem, checkReq, giveBack, putOn, putOff, LookAtItem
+
 -- script to put lights on and off
 -- off items: save old wear value in data (+1000)
 --				if data is <1000, set to default wear or keep current (if there's no requirement, e.g. for a torch)
@@ -5,8 +8,6 @@
 --				if data is <500, set wear to 255 or default portable wear
 -- special data for on items: 2 => do not give anything back (e.g. a night watchman has put it on)
 require("base.common")
-
-module("item.lights", package.seeall)
 
 -- UPDATE common SET com_script='item.lights' WHERE com_itemid IN (92, 397, 393, 394, 2856, 2855, 391, 392, 401, 402, 403, 404, 2851, 2852, 2853, 2854, 399, 400, 395, 396);
 
@@ -47,7 +48,7 @@ ReqTexts = {};
 ReqTexts.german = { [392] = "Fackeln", [43] = "Kerzen", [390] = "Lampen�l" };
 ReqTexts.english = { [392] = "torches", [43] = "candles", [390] = "lamp oil" };
 
-function UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	if SourceItem:getType()==1 or SourceItem:getType()==2 then
 		base.common.TempInformNLS(User,
 			"Nimm das Licht in die Hand oder lege es am Gr�tel ab.",
@@ -73,7 +74,7 @@ function UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	end
 end
 
-function checkReq(User, Item, this)
+function M.checkReq(User, Item, this)
 	local wear = -1;
 	if Item.data>=1000 then
 		-- item has already been used and old wear is saved in data
@@ -108,7 +109,7 @@ function checkReq(User, Item, this)
 end
 
 -- give something back
-function giveBack(User, Item, this)
+function M.giveBack(User, Item, this)
 	if Item.data==2 then -- a night watchman has put on that light, give nothing back
 		base.common.TempInformNLS(User,
 			"Das Licht erlischt in dem Moment, als du danach greifst.",
@@ -157,7 +158,7 @@ function giveBack(User, Item, this)
 
 end
 
-function putOn(Item, newWear, noBack)
+function M.putOn(Item, newWear, noBack)
 
 	if noBack then
 		Item.data = 2; -- give nothing back
@@ -169,7 +170,7 @@ function putOn(Item, newWear, noBack)
 	world:changeItem(Item);
 end
 
-function putOff(Item, this)
+function M.putOff(Item, this)
 	local oldWear = Item.wear;
 	if Item.data >= 500 then
 		-- item has already been used and old wear value is saved in data
@@ -190,7 +191,7 @@ function putOff(Item, this)
 	world:changeItem(Item);
 end
 
-function LookAtItem(User, Item)
+function M.LookAtItem(User, Item)
 	local ItemName = world:getItemName(Item, User:GetPlayerLanguage());
 	local TimeLeftI;
 	if(LightsOn[Item.id]) then
@@ -221,3 +222,5 @@ function LookAtItem(User, Item)
 	
 	world:itemInform(User, Item, base.common.GetNLS(User, "Du siehst:  "..ItemName..". Sie wird "..TimeLeft.." ausbrennen.", "You see: "..ItemName..". It will burn down "..TimeLeft.."."));
 end
+
+return M

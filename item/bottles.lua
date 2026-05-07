@@ -1,3 +1,6 @@
+local M = {}
+local InitDrinks, UseItem, LookAtItem, UseItemWithCharacter
+
 -- empty container with drink
 
 -- UPDATE common SET com_script='item.bottles' WHERE com_itemid IN (2500, 2496, 2497, 2501, 2499);
@@ -5,9 +8,7 @@
 -- uses items of the new client - don't put this on the RS yet!
 require("base.common")
 
-module("item.bottles", package.seeall)
-
-function InitDrinks()  -- initialisiert die coolen softdrinks in da hood.
+function M.InitDrinks()  -- initialisiert die coolen softdrinks in da hood.
     if ( drinkList == nil) then
         -- item ID,  food value,  leftover item
         drinkList={};
@@ -36,7 +37,7 @@ end
 
 
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     --User:inform("drinking");
     if firstcall==nil then
         InitDrinks();
@@ -137,7 +138,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 end
 
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 
     if (Item.id==2496) and (Item.data >= 1) and (Item.data <= 3) then
 
@@ -192,7 +193,7 @@ end
 
 --Please don't remove!!!
 ------------------------AB HIER,SKRIPT F�R DIE PRIESTER SILBERBRANDS(Heilung)-------------------
-function UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
+function M.UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
   InitDrinks();
   if (SourceItem.id==2501) then
 	if (User.id==1048559757 or User.id==1322717830) then --for the Priests in Silverbrand(1048559757=Surian Silverbeard, 1322717830=Thogrimm)
@@ -223,3 +224,5 @@ function UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
     end
   end
 end
+
+return M

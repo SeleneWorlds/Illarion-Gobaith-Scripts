@@ -1,3 +1,6 @@
+local M = {}
+local UseItemWithCharacter, UseItemWithField, UseItem
+
 -- Schaf melken
 -- Nop
 
@@ -5,9 +8,7 @@
 
 require("base.common")
 
-module("item.id_164_emptybottle", package.seeall)
-
-function UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
+function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
     --User:inform("char selected");
     -- target is a sheep
     if( Character:get_race() == 18 ) then
@@ -24,7 +25,7 @@ end
 
 -- Fairy's Tears oder Trolls Blood erhalten (Quellwasser)
 -- vilarion
-function UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
+function M.UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
     --User:inform("using bottle on field");
     if ((User:getItemAt(6).id == 164)or(User:getItemAt(5).id == 164)) then
         --User:inform("bottle in hand");
@@ -57,7 +58,7 @@ function UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
     end
 end
 
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
 	-- bottle in hand?
 	if SourceItem:getType() == 4 and (SourceItem.itempos == 5 or SourceItem.itempos == 6) then
@@ -92,3 +93,5 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 		end
 	end
 end
+
+return M

@@ -1,11 +1,12 @@
-require("content.lookat.unique")
+local M = {}
+local initStones, initJewel, generateData, LookAtItem, UseItem, checkjewel
+
+local unique_lookat = require("content.lookat.unique")
 require("base.common")
 
 -- UPDATE common SET com_script='item.gems' WHERE com_itemid IN (45, 46, 197, 198, 283, 284, 285);
 
-module("item.gems", package.seeall, package.seeall(content.lookat.unique))
-
-function initStones()
+function M.initStones()
     stoneNumber={};
     stoneNumber[285]=1;     -- diamant      285 -> 1
     stoneNumber[45]=2;      -- smaragd      45  -> 2
@@ -16,7 +17,7 @@ function initStones()
     stoneNumber[198]=7;     -- topas        198 -> 7
 end
 
-function initJewel()
+function M.initJewel()
 	jewelNumber={};
 	jewelNumber[280]=1;			-- Diamantring		280 -> 1
 	jewelNumber[281]=2;         -- smaragdring      281 -> 2
@@ -32,7 +33,7 @@ end
 -- stone2 | str2 - 1 | stone1 | str1 - 1 --
 -------------------------------------------
 
-function generateData(gemItem,TargetItem,itemCl,dummy)
+function M.generateData(gemItem,TargetItem,itemCl,dummy)
    if initSt==nil then
         initStones();
         initSt=1;
@@ -53,7 +54,7 @@ function generateData(gemItem,TargetItem,itemCl,dummy)
     return newData;    
 end
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     -- Data 1       -> latent
     -- Data 2           -> bedingt
     -- Data 3           -> leicht
@@ -85,7 +86,7 @@ function LookAtItem(User,Item)
     end 
 end
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     -- 1 -> Waffen
     -- 2 -> B�gen (Fernkampfwaffen)
     -- 3 -> R�stung
@@ -94,11 +95,11 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
     -- 6 -> Werkzeuge
     -- 7 -> Schmuck
 
-    itemList();
-    if ItemClass[TargetItem.id] ~= nil then
-		if checkjewel(SourceItem, TargetItem,ItemClass[TargetItem.id]) then
+    unique_lookat.itemList();
+    if unique_lookat.ItemClass[TargetItem.id] ~= nil then
+		if checkjewel(SourceItem, TargetItem,unique_lookat.ItemClass[TargetItem.id]) then
 			if SourceItem.data >0 and SourceItem.data<11 then
-	    	    dataVal=generateData(SourceItem,TargetItem,ItemClass[TargetItem.id],User);
+	    	    dataVal=generateData(SourceItem,TargetItem,unique_lookat.ItemClass[TargetItem.id],User);
 	    	    if dataVal>0 then
 	    	        --User:inform("data. "..dataVal);
 	    	        TargetItem.data=dataVal;
@@ -115,7 +116,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 
 end
 
-function checkjewel(GemItem, TargetItem,ItemClass)
+function M.checkjewel(GemItem, TargetItem,ItemClass)
 	if ItemClass==7 then
 		if initSt==nil then
 	        initStones();
@@ -134,3 +135,5 @@ function checkjewel(GemItem, TargetItem,ItemClass)
 		return true;
 	end
 end
+
+return M

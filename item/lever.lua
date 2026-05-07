@@ -1,3 +1,6 @@
+local M = {}
+local init, generateKey, UseItem, AddToLevers
+
 require("base.common")
 require("base.lever")
 require("handler.deleteitem")
@@ -14,11 +17,9 @@ require("handler.createsound")
 require("handler.sendmessage")
 require("handler.movelever")
 
-module("item.lever", package.seeall)
-
 -- UPDATE common SET com_script='item.lever' WHERE com_itemid IN (434, 435, 436, 437, 438, 439);
 
-function init()
+function M.init()
     leverList={};
     myLev1 = base.lever.Lever(position(124,637,0),true);
     myLev2 = base.lever.Lever(position(125,637,0),false);
@@ -58,11 +59,11 @@ function init()
     AddToLevers(myLev2);
 end
 
-function generateKey(posX,posY,posZ)
+function M.generateKey(posX,posY,posZ)
     return posX*1024*1024+posY*1024+posZ;
 end
 
-function UseItem (User,SourceItem,TargetItem,counter,param,ltstate)
+function M.UseItem (User,SourceItem,TargetItem,counter,param,ltstate)
     if (initi==nil) then
         myLevers=init();
         User:inform("initialize");
@@ -76,7 +77,7 @@ function UseItem (User,SourceItem,TargetItem,counter,param,ltstate)
     end
 end
 
-function AddToLevers(myLever)
+function M.AddToLevers(myLever)
     if (world:isItemOnField(myLever.pos)==true) then    -- item on field?
         itemID=world:getItemOnField(myLever.pos).id;
         if (itemID>=434 and itemID<=439) then           -- is item a lever?
@@ -90,3 +91,5 @@ function AddToLevers(myLever)
         return -1;                                      -- no item there
     end
 end
+
+return M

@@ -1,10 +1,11 @@
-require("base.common")
+local M = {}
+local LookAtItem
 
-module("item.id_314_ash", package.seeall)
+require("base.common")
 
 -- UPDATE common SET com_script='item.id_314_ash' WHERE com_itemid = 314;
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
 
     -- Mummy            -> 101
     -- Skeleton		-> 111
@@ -48,3 +49,4 @@ function LookAtItem(User,Item)
 
 end
 
+return M

@@ -1,8 +1,10 @@
+local parent = require("item.general.wood")
+local M = {}
+local LookAtItem, Drop, MoveItemBeforeMove, MoveItemAfterMove, UseItem, Explode, InformChar, CreateCircle, HitChar, Scale
+
 -- UPDATE common SET com_script='item.id_2502_gynkfire' WHERE com_itemid IN (2502);
 
-module("item.id_2502_gynkfire", package.seeall, package.seeall(item.general.wood))
-
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     if (User:getPlayerLanguage() == 0) then
         world:itemInform(User,Item,"Du siehst ein"..( math.floor(Item.quality/100) == 2 and " brennendes " or " " ).."Gynkesisches Feuer.");
     else
@@ -10,7 +12,7 @@ function LookAtItem(User,Item)
     end;
 end;
 
-function Drop(User,Item)
+function M.Drop(User,Item)
     if (math.random(1,User:increaseAttrib("dexterity",0)+7)==1) then
         Explode(Item);
         User:talkLanguage(CCharacter.say,CPlayer.german,"#me l�sst eine Flasche fallen, welche explodiert.");
@@ -19,7 +21,7 @@ function Drop(User,Item)
     end;
 end;
 
-function MoveItemBeforeMove(User, SourceItem, TargetItem)
+function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
     if (math.floor(SourceItem.quality/100)==2) then
         if (SourceItem:getType()==4 and (SourceItem.itempos==5 or SourceItem.itempos==6)) then
             return true;
@@ -36,7 +38,7 @@ function MoveItemBeforeMove(User, SourceItem, TargetItem)
     end;
 end;
 
-function MoveItemAfterMove(User, SourceItem, TargetItem)
+function M.MoveItemAfterMove(User, SourceItem, TargetItem)
     if (math.floor(SourceItem.quality/100)==2) then
         if (SourceItem:getType()==4 and (SourceItem.itempos==5 or SourceItem.itempos==6)) then
             if (TargetItem:getType()==3) then
@@ -55,7 +57,7 @@ function MoveItemAfterMove(User, SourceItem, TargetItem)
     end;
 end;
 
-function UseItem(User,SourceItem,TargetItem,counter,param)
+function M.UseItem(User,SourceItem,TargetItem,counter,param)
     local lang=User:getPlayerLanguage();
     if (math.floor(SourceItem.quality/100)==2) then
         InformChar(User,
@@ -71,7 +73,7 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
     world:changeItem( SourceItem );
 end;
 
-function Explode(Item)    
+function M.Explode(Item)    
     local Strength=Item.quality - (math.floor(Item.quality/100)*100);
     CreateCircle( 1,Scale(  20, 100,Strength),Item.pos,3);
     CreateCircle( 9,Scale( 100, 500,Strength),Item.pos,2);
@@ -82,11 +84,11 @@ function Explode(Item)
     world:erase(Item,1);
 end;
 
-function InformChar(User,gText,eText)
+function M.InformChar(User,gText,eText)
     User:inform(User:getPlayerLanguage()==0 and gText or eText);
 end;
 
-function CreateCircle(gfxid,Damage,CenterPos,Radius)
+function M.CreateCircle(gfxid,Damage,CenterPos,Radius)
     local irad = math.ceil(Radius);
     local dim = 2*(irad+1);
     local x;
@@ -110,10 +112,22 @@ function CreateCircle(gfxid,Damage,CenterPos,Radius)
     end;
 end;
 
-function HitChar(Posi,Hitpoints)
+function M.HitChar(Posi,Hitpoints)
     if world:isCharacterOnField(Posi) then world:getCharacterOnField(Posi):increaseAttrib("hitpoints",-Hitpoints) end;
 end;
 
-function Scale(ScBegin, ScEnd, value)
+function M.Scale(ScBegin, ScEnd, value)
     return ((ScEnd-ScBegin)/100)*value+ScBegin;
 end;
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

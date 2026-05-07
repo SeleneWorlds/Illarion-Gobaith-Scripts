@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local Init, AddArea, AddStone, SetRessource, GetRessource, GetModifiedSkill, checkSucc, CheckRock, Areas, breakRock, Scale, UseItem, UseItemWithField, UseItemWithCharacter, GenWorkTime
+
 -- mining mit Spitzhacke
 
 -- UPDATE common SET com_script='item.id_2763_pickaxe' WHERE com_itemid=2763;
@@ -27,9 +31,7 @@ require("item.general.metal")
 require("base.common")
 require("base.treasure")
 
-module("item.id_2763_pickaxe", package.seeall, package.seeall(item.general.metal))
-
-function Init()
+function M.Init()
     if InitDone then
         return
     end
@@ -205,7 +207,7 @@ function Init()
     InitDone = true;
 end
 
-function AddArea(AreaID,Center,Rad)
+function M.AddArea(AreaID,Center,Rad)
     if (Area == nil) then
         Area = { };
     end
@@ -214,20 +216,20 @@ function AddArea(AreaID,Center,Rad)
     Area[AreaID]["Radius"] = Rad;
 end
 
-function AddStone(AreaID,StoneID)
+function M.AddStone(AreaID,StoneID)
     if ( Area[AreaID]["Stones"] == nil ) then
         Area[AreaID]["Stones"] = { };
     end
     Area[AreaID]["Stones"][StoneID] = { };
 end
 
-function SetRessource(AreaID,StoneID,RessID,Chance,minSkill)
+function M.SetRessource(AreaID,StoneID,RessID,Chance,minSkill)
     Area[AreaID]["Stones"][StoneID][RessID] = { };
     Area[AreaID]["Stones"][StoneID][RessID][1] = Chance;
     Area[AreaID]["Stones"][StoneID][RessID][2] = minSkill;
 end
 
-function GetRessource(AreaID, StoneID, Skill)
+function M.GetRessource(AreaID, StoneID, Skill)
     RessourceList = Area[AreaID]["Stones"][StoneID];
     AvaiableRess = { };
     MaxTry = 100;
@@ -255,14 +257,14 @@ function GetRessource(AreaID, StoneID, Skill)
     return 0;
 end
 
-function GetModifiedSkill(Char)
+function M.GetModifiedSkill(Char)
     local USkill=Char:getSkill("mining");
     local UStr=Char:increaseAttrib("strength",0);
     local UPerc=Char:increaseAttrib("perception",0);
     return math.max(0,math.min(100,(USkill * Scale(0.5,1.2,UStr*4 + UPerc))));
 end
 
-function checkSucc(Skill)
+function M.checkSucc(Skill)
     local prob=Scale(40,90,Skill);
     if (math.random(100)<prob) then
         return true;
@@ -271,7 +273,7 @@ function checkSucc(Skill)
     end
 end
 
-function CheckRock(AreaID,StoneID)
+function M.CheckRock(AreaID,StoneID)
     if (Area[AreaID]["Stones"][StoneID] ~= nil) then
         return true;
     else
@@ -279,7 +281,7 @@ function CheckRock(AreaID,StoneID)
     end
 end
 
-function Areas(TargetPos)
+function M.Areas(TargetPos)
     local XDiff = 0;
     local YDiff = 0;
     for i, AreaData in pairs(Area) do
@@ -294,7 +296,7 @@ function Areas(TargetPos)
     return false;
 end
 
-function breakRock(Rock)
+function M.breakRock(Rock)
     local RockPos=Rock.pos;
     local RockQual=Rock.quality;
     local HitDMG=math.random(6,8);
@@ -308,7 +310,7 @@ function breakRock(Rock)
     return false;
 end
 
-function Scale(ScBegin, ScEnd, value)
+function M.Scale(ScBegin, ScEnd, value)
     if (ScBegin < ScEnd) then
         return math.min(ScEnd,math.max(ScBegin,((ScEnd-ScBegin)/100)*value+ScBegin));
     else
@@ -316,7 +318,7 @@ function Scale(ScBegin, ScEnd, value)
     end
 end
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 	InitGathering();
     Init();
     base.common.ResetInterruption( User, ltstate );
@@ -452,7 +454,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     end
 end
 
-function UseItemWithField(User,SourceItem,TargetPos,counter,param)
+function M.UseItemWithField(User,SourceItem,TargetPos,counter,param)
     local groundTile = world:getField( TargetPos ):tile();
     local GroundType = base.common.GetGroundType( groundTile );
     
@@ -494,7 +496,7 @@ function UseItemWithField(User,SourceItem,TargetPos,counter,param)
     end
 end
 
-function UseItemWithCharacter(User,SourceItem,TargetChar,counter,param)
+function M.UseItemWithCharacter(User,SourceItem,TargetChar,counter,param)
     base.common.InformNLS(User,
     "Eine Spitzhacke ist nicht so sehr als Waffe geeignet.",
     "You shouldn't use a pick-axe as a weapon.");
@@ -502,9 +504,21 @@ end
 
 -- Arbeitszeit generieren
 -- 2s - 5.5s
-function GenWorkTime(User)
+function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = math.min(100,User:getSkill("mining")*10);    -- Schmieden: 0 - 100
 
     return math.floor(-0.3 * (Attrib + Skill) + 60);
 end
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

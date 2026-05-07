@@ -1,11 +1,12 @@
+local M = {}
+local UseItem
+
 -- Food script
 require("base.common")
 
-module("item.food", package.seeall)
-
 -- UPDATE common SET com_script='item.food' WHERE com_itemid IN (15,49,73,80,81,142,143,147,151,158,159,160,161,162,163,191,199,200,201,302,303,306,307,353,354,355,388,453,454,455,552,553,554,555,556,557,559,2276,2277,2278,2456,2459,2493,2922,2923,2934,2940,3051);
 
-require("content.furtunecookies")
+local furtunecookies = require("content.furtunecookies")
 
 --[[ create FoodList
 FoodList:add() adds an element
@@ -91,7 +92,7 @@ FoodList:add( 162,	 -300,	   0,	-30,	nil,	nil,	 600); -- birth mushroom
 FoodList:add( 158,	 -200,	   0,	-20,	nil,	nil,	 400); -- bulbsponge mushroom
 FoodList:add( 159,	 -500,	   0,	-50,	nil,	nil,	1000); -- toadstool
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 	-- Item not on map!
 	if SourceItem.wear == 255 then
 		return;
@@ -187,7 +188,7 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 			--
 			if (SourceItem.id == 453) then
                 if (math.random(1,100)==1) then
-                    local deText, enText = content.furtunecookies.cookie();
+                    local deText, enText = furtunecookies.cookie();
                     base.common.InformNLS( User,
                     "Du findest ein St�ck Papier in dem Keks: \""..deText.."\"",
                     "You find a piece of paper inside the cookie: \""..enText.."\"");
@@ -353,3 +354,5 @@ function UseItem(User,SourceItem,TargetItem,Counter,Param)
 			"You cannot eat during a fight.");
 	end
 end
+
+return M

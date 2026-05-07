@@ -1,10 +1,16 @@
+local M = {}
+local LookAtItem, UseItem, destroyGem
+
 -- UPDATE common SET com_script='item.altars' WHERE com_itemid IN (361,1879,1880,2801,2857,2872);
 require("base.common")
-require("content.gods")
+local gods = require("content.gods")
 
-module("item.altars", package.seeall, package.seeall(content.gods))
+local GOD_DE = gods.GOD_DE
+local GOD_EN = gods.GOD_EN
+local GOD_THEDEVS = gods.GOD_THEDEVS
+local GOD_THEFIVE = gods.GOD_THEFIVE
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
      filepoint,errmsg=io.open("testserver","r");
             if (filepoint~=nil) then
               filepoint:seek("set");
@@ -41,7 +47,7 @@ function LookAtItem( User, Item )
     world:itemInform( User, Item, ret );
 end
 
-function UseItem(User, SourceItem, TargetItem, Counter, param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, param)
     -- An welchem Altar stehe ich und was brauche ich da f�r Edelsteine?
     --
     if SourceItem.data==1 then PosGem={45,283} 		-- Ushara   -> Smaragd, Schwarzstein        -> Data 1 (45,283)
@@ -132,7 +138,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, param)
 	end 
 end
 
-function destroyGem (gemData)
+function M.destroyGem (gemData)
 	-- 1 -> 2 =  0% fail
 	-- 2 -> 3 =  0% fail
 	-- 3 -> 4 =  0% fail
@@ -158,3 +164,5 @@ function destroyGem (gemData)
 		return true;
 	end
 end
+
+return M

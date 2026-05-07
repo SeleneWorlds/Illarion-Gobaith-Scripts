@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local UseItemWithField, getNumb, checkSuccess, UseItem, GenWorkTime, LocationCheck
+
 -- mining mit Schaufel
 
 -- Arbeitscyclus: 1s - 4s
@@ -8,9 +12,7 @@ require("base.common")
 require("item.general.metal")
 require("base.treasure")
 
-module("item.id_24_shovel", package.seeall, package.seeall(item.general.metal))
-
-function UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
+function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
     base.common.ResetInterruption( User, ltstate );
     if (StoneList==nil) then
         StoneList={ 914, 915, 1245, 1246, 1273, 1276 };
@@ -170,12 +172,12 @@ function UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate 
     User:startAction( GenWorkTime(User,SourceItem), 0, 0, 0, 0);
 end
 
-function getNumb( Char, skillValue )
+function M.getNumb( Char, skillValue )
     UPerc=Char:increaseAttrib( "perception", 0 );
     return math.max(1, math.ceil( math.random( math.ceil(( skillValue+UPerc*2 )/30 )) ) );
 end
 
-function checkSuccess( Char, skillValue )
+function M.checkSuccess( Char, skillValue )
     local usertest= 0.46*(2*Char:increaseAttrib( "dexterity", 0 )+skillValue)+30;
     if ( usertest > math.random( 0, 100 )) then
         return true
@@ -186,7 +188,7 @@ end
 
 
 -- dig out a tree stump
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if (listofstumps == nil) then
         listofstumps = {125,309,541,542,584,585,587};
     end
@@ -243,7 +245,7 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 end
 
 -- Arbeitszeit generieren
-function GenWorkTime(User,toolItem)
+function M.GenWorkTime(User,toolItem)
     local Attrib = User:increaseAttrib("constitution",0); -- Geschicklichkeit: 0 - 20
     local Skill  = math.min(100,User:getSkill("mining")*5);     -- Schneidern: 0 - 100
 
@@ -267,7 +269,7 @@ function GenWorkTime(User,toolItem)
     return math.floor((-0.25 * (Attrib + Skill) + 40)*(100-step)/100);
 end
 
-function LocationCheck(TargetPos,DigginType)
+function M.LocationCheck(TargetPos,DigginType)
     if (DigginType == 3) then -- sand
         local testPos;
         local foundStone = false;
@@ -294,3 +296,15 @@ function LocationCheck(TargetPos,DigginType)
     end
     return false
 end
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

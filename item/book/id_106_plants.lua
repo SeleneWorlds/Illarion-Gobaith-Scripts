@@ -1,10 +1,11 @@
-require("base.books")
+local M = {}
+local UseItem, LookAtItem
 
-module("item.book.id_106_plants", package.seeall)
+require("base.books")
 
 -- UPDATE common SET com_script='item.book.id_106_plants' WHERE com_itemid = 106;
 
-function UseItem(User, SourceItem, TargetItem, Counter, Param)
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
   if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
     world:erase(SourceItem,1);
   else
@@ -79,7 +80,7 @@ function UseItem(User, SourceItem, TargetItem, Counter, Param)
    end
 end  -- function
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
   --User:inform("debug 106-4")
   if base.books.InitTitle() then
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Buch der Pflanzen\"",0);
@@ -87,3 +88,5 @@ function LookAtItem( User, Item )
   end
     base.books.GetBookItemInform(User,Item);
 end
+
+return M

@@ -1,3 +1,7 @@
+local parent = require("item.general.metal")
+local M = {}
+local UseItem, LookAtItem
+
 -- Chisel ( 737 )
 
 -- raw stones  --> stone blocks + small stones
@@ -10,9 +14,7 @@
 require("item.general.metal")
 require("item.base.crafts")
 
-module("item.id_737_chisel", package.seeall, package.seeall(item.general.metal))
-
-function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
+function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     base.common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then -- Arbeit unterbrochen
         if (User:increaseAttrib("sex",0) == 0) then
@@ -121,6 +123,18 @@ function UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     base.common.GetHungry( User, 200 ); -- Hungrig werden
 end
 
-function LookAtItem( User, Item )
+function M.LookAtItem( User, Item )
     world:itemInform( User, Item, base.lookat.GetItemDescription( User, Item, 1, false, false) );
 end
+
+if M.UseItem == nil then M.UseItem = parent.UseItem end
+if M.UseItemWithField == nil then M.UseItemWithField = parent.UseItemWithField end
+if M.UseItemWithCharacter == nil then M.UseItemWithCharacter = parent.UseItemWithCharacter end
+if M.LookAtItem == nil then M.LookAtItem = parent.LookAtItem end
+if M.LookAtPaintingItem == nil then M.LookAtPaintingItem = parent.LookAtPaintingItem end
+if M.MoveItemBeforeMove == nil then M.MoveItemBeforeMove = parent.MoveItemBeforeMove end
+if M.MoveItemAfterMove == nil then M.MoveItemAfterMove = parent.MoveItemAfterMove end
+if M.CharacterOnField == nil then M.CharacterOnField = parent.CharacterOnField end
+if M.ItemRotsOnField == nil then M.ItemRotsOnField = parent.ItemRotsOnField end
+
+return M

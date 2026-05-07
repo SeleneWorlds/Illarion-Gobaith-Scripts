@@ -1,6 +1,7 @@
-require("base.common")
+local M = {}
+local UseItem, MoveItemBeforeMove, findText
 
-module("item.id_3077_silvercoins", package.seeall)
+require("base.common")
 
 -- UPDATE common SET com_script='item.id_3077_silvercoins' WHERE com_itemid IN (3077);
 
@@ -9,7 +10,7 @@ if not InitTime then
 	TimeList = {};
 end
 
-function UseItem(User,SourceItem,TargetItem,Counter,Param)
+function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 	if ( SourceItem.number == 1 ) then  --works only with 1 coin
 
     	if TimeList[User.id]~=nil then
@@ -32,7 +33,7 @@ end
 
 
 
-function MoveItemBeforeMove(User, SourceItem, TargetItem)
+function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
 	ZielItem=world:getItemOnField( TargetItem.pos );
 	if ( (ZielItem.id==2207) and (ZielItem.data==666) ) then
 		User:talkLanguage(CCharacter.say,CPlayer.german ,"#me wirft eine handvoll Silberst�cke in den Brunnen.");
@@ -173,7 +174,7 @@ function MoveItemBeforeMove(User, SourceItem, TargetItem)
 end
 
 
-function findText ()
+function M.findText ()
 	i={};
 	number=math.random(i);
     if (number==1) then
@@ -213,3 +214,5 @@ function findText ()
     
 
 end
+
+return M

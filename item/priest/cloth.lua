@@ -1,9 +1,12 @@
-require("base.lookat")
+local M = {}
+local LookAtItem
 
-module("item.priest.cloth", package.seeall)
+require("base.lookat")
 
 -- UPDATE common SET com_script='item.priest.cloth' WHERE com_itemid IN ();
 
-function LookAtItem(User,Item)
+function M.LookAtItem(User,Item)
     world:itemInform(User,Item,base.lookat.GetItemDescription(User,Item,3,false,true ));
 end
+
+return M
