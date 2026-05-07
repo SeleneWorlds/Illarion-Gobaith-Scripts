@@ -1,10 +1,10 @@
-module("scheduled.weather", package.seeall)
+local M = {}
 
 -- INSERT INTO scheduledscripts VALUES('scheduled.weather', 350, 900, 'plantdrop');
 
 -- function should be invoked every 5-10 RL minutes (=15-30 illa minutes)
 
-function sign(value)        -- return sign of value (sign-function), random for sign(0)
+function M.sign(value)        -- return sign of value (sign-function), random for sign(0)
     if value<0 then
         retVal=-1;
     elseif value==0 then
@@ -15,40 +15,40 @@ function sign(value)        -- return sign of value (sign-function), random for 
     return retVal;
 end
 
-function pseudogauss(minV, maxV)    -- returns a pseudogauss distributed random value between limits
+function M.pseudogauss(minV, maxV)    -- returns a pseudogauss distributed random value between limits
     intervall=maxV-minV;
     maxRnd=math.floor(intervall/3);
     retVal=minV+math.random(0,maxRnd)+math.random(0,maxRnd)+math.random(0,maxRnd)
     return retVal;
 end
 
-function largeScaleTempModifier()       -- larger scale temp modifier 
+function M.largeScaleTempModifier()       -- larger scale temp modifier 
     if cycCnt==nil then
         cycCnt=math.random(80,720);    -- time from 1-10 days
-        retLsTemp=math.floor(pseudogauss(-15,15));
+        retLsTemp=math.floor(M.pseudogauss(-15,15));
     end
     if cycCnt==1 then
         cycCnt=math.random(80,720);    -- time from 2-10 days
-        retLsTemp=math.floor(pseudogauss(-15,15));
+        retLsTemp=math.floor(M.pseudogauss(-15,15));
     end
     cycCnt=cycCnt-1;
     return retLsTemp;
 end
 
-function largeScaleCloudModifier()      -- larger scale cloud modifier (periods of cloudy skies)
+function M.largeScaleCloudModifier()      -- larger scale cloud modifier (periods of cloudy skies)
         if cycCldCnt==nil then
         cycCldCnt=math.random(40,210);    -- time from 0,5-3 days
-        retLsCld=math.floor(pseudogauss(-20,20));
+        retLsCld=math.floor(M.pseudogauss(-20,20));
     end
     if cycCldCnt==1 then
         cycCldCnt=math.random(40,210);    -- time from 2-10 days
-        retLsCld=math.floor(pseudogauss(-20,20));
+        retLsCld=math.floor(M.pseudogauss(-20,20));
     end
     cycCldCnt=cycCldCnt-1;
     return retLsCld;
 end
 
-function getDayNightTemp(actClouds)                 -- cold at night, warm at day, not definied inbetween
+function M.getDayNightTemp(actClouds)                 -- cold at night, warm at day, not definied inbetween
     thisHour=world:getTime("hour");                 -- variation: 6� when cloudy, 20� when sunny
     if actClouds<20 then
         retTemp=math.floor(10*math.cos(thisHour*math.pi/12));   -- difference between day and night: 20�
@@ -58,12 +58,12 @@ function getDayNightTemp(actClouds)                 -- cold at night, warm at da
     return retTemp+math.random(-1,1);               -- add little variation (realistic)
 end
 
-function getSeasonTemp(actMonth)                    -- cold in winter (-10) warm in summer (+30)
+function M.getSeasonTemp(actMonth)                    -- cold in winter (-10) warm in summer (+30)
     retTemp=math.floor(10-20*math.cos(actMonth*math.pi/8));     -- welllllll, yesssss.
     return retTemp;
 end
 
-function setFog(actFog, actCloud, thisMonth) -- in autumn and early winter
+function M.setFog(actFog, actCloud, thisMonth) -- in autumn and early winter
     fogProbability=math.floor(5-5*math.cos(month*math.pi/8-3));        -- ~0 in summer (6), 10% in month 11
     fogTest=math.random(1,100);
     if actFog>0 then                        -- if there already is fog: change it a little
@@ -83,27 +83,27 @@ function setFog(actFog, actCloud, thisMonth) -- in autumn and early winter
     return retFog;
 end
 
-function setClouds(actClouds,thisMonth)     -- much in winter, less in summer 
+function M.setClouds(actClouds,thisMonth)     -- much in winter, less in summer 
                                             -- clear sky, cold night (winter)
     newCloud=0;
     typicalClearDayProb=math.floor(40-9*math.cos(thisMonth*math.pi/8)); -- 78% in summer, 60 in winter (69)
     clearTest=math.random(1,100);
     if clearTest>=typicalClearDayProb then  -- no clear day
         typicalClouds=50;                   -- if cloudy, then typically 50%
-        cloudChange=pseudogauss(0,20);      -- change cloud coverage
+        cloudChange=M.pseudogauss(0,20);      -- change cloud coverage
         direction=math.random(1,3);
         if direction==1 then                -- move away from average
-            newCloud=math.max(0,actClouds+sign(actClouds-typicalClouds)*cloudChange);
+            newCloud=math.max(0,actClouds+M.sign(actClouds-typicalClouds)*cloudChange);
         else                                -- move towards average
-            newCloud=math.max(0,actClouds-sign(actClouds-typicalClouds)*cloudChange);
+            newCloud=math.max(0,actClouds-M.sign(actClouds-typicalClouds)*cloudChange);
         end
     else                                    -- not cloudy!
-        newCloud=math.max(0,actClouds-pseudogauss(4,12));
+        newCloud=math.max(0,actClouds-M.pseudogauss(4,12));
     end
     return newCloud;
 end
 
-function getRain(thisMonth,actClouds)
+function M.getRain(thisMonth,actClouds)
     if actClouds>30 then        -- only care about rain with more than 30% cld coverage
         probabilityToRain=math.floor(60-20*math.cos(thisMonth*math.pi/8));  -- 35% in summer, 15 in winter (realistic values), 70% clear sky!
         doesItRain=math.random(0,100);
@@ -118,20 +118,20 @@ function getRain(thisMonth,actClouds)
     return retRain;
 end
 
-function getThunder(actClouds,actRain,actTemp)
+function M.getThunder(actClouds,actRain,actTemp)
     retThunder=0;
     if actRain>20 and actClouds>50 then
         if actTemp>25 then  -- summer thunder
             probToThunder=20;
             if math.random(1,100)<probToThunder then
-                retThunder=pseudogauss(20,100);
+                retThunder=M.pseudogauss(20,100);
             else
                 retThunder=0;
             end
         elseif actTemp<0 then -- winter thunder (RARE!)
             probToThunder=5;
             if math.random(1,100)<probToThunder then
-                retThunder=pseudogauss(20,50);  -- not as strong as in summer
+                retThunder=M.pseudogauss(20,50);  -- not as strong as in summer
             else
                 retThunder=0;
             end
@@ -140,30 +140,30 @@ function getThunder(actClouds,actRain,actTemp)
     return retThunder;
 end
 
-function getGust(actThunder)
+function M.getGust(actThunder)
     if actThunder>0 then
-        retGust=pseudogauss(0,100);
+        retGust=M.pseudogauss(0,100);
     else
-        retGust=math.max(0,pseudogauss(-10,20));
+        retGust=math.max(0,M.pseudogauss(-10,20));
     end
     return retGust;
 end
 
-function getWindDir(actWind)
+function M.getWindDir(actWind)
     typicalWind=0;
-    windChange=pseudogauss(0,20);
+    windChange=M.pseudogauss(0,20);
     direction=math.random(1,3);
     if direction==1 then                -- move away from average
-        retWind=math.max(0,actWind+sign(actWind-typicalWind)*windChange);
+        retWind=math.max(0,actWind+M.sign(actWind-typicalWind)*windChange);
     else                                -- move towards average
-        retWind=math.max(0,actWind-sign(actWind-typicalWind)*windChange);
+        retWind=math.max(0,actWind-M.sign(actWind-typicalWind)*windChange);
     end
     retWind=math.max(-100,retWind);
     retWind=math.min(100,retWind);
     return retWind;
 end
 
-function logWeather(newWeather)
+function M.logWeather(newWeather)
     LogString="TMP "..newWeather.temperature.." CLD "..newWeather.cloud_density.." WND "..newWeather.wind_dir.." GST "..newWeather.gust_strength.." PER "..newWeather.percipitation_strength.." THD "..newWeather.thunderstorm.." FOG "..newWeather.fog_density.."\n";
     aYear=world:getTime("year");
     aMonth=world:getTime("month");
@@ -184,25 +184,25 @@ end
 -- herbst: 9-12: Viel Nebel
 -- winter: 13-16: kalt, 
 
-function changeWeather()
+function M.changeWeather()
     
     actWeather=world.weather;
     
     month=world:getTime("month");
     
-    newClouds=math.max(0,setClouds(actWeather.cloud_density,month)+largeScaleTempModifier());
+    newClouds=math.max(0,M.setClouds(actWeather.cloud_density,month)+M.largeScaleTempModifier());
     newClouds=math.min(100,newClouds);        -- much in winter, less in summer 
-    newFog=setFog(actWeather.fog_density,newClouds,month);      -- much fog in fall
-    newWindDir=pseudogauss(-40,40); -- -100: left, +100: right
-    seasTp=getSeasonTemp(month);
-    dayTp=getDayNightTemp(newClouds);
-    lsModTp=largeScaleTempModifier();
+    newFog=M.setFog(actWeather.fog_density,newClouds,month);      -- much fog in fall
+    newWindDir=M.pseudogauss(-40,40); -- -100: left, +100: right
+    seasTp=M.getSeasonTemp(month);
+    dayTp=M.getDayNightTemp(newClouds);
+    lsModTp=M.largeScaleTempModifier();
     newTemp=math.floor(seasTp+dayTp+lsModTp);
     world:sendMonitoringMessage("Temp: "..seasTp.." + "..dayTp.." + "..lsModTp,0);
-    newRain=getRain(month,newClouds);
-    newThunder=getThunder(newClouds,newRain,newTemp);  -- only when it's cloudy
-    newGust=getGust(newThunder);            -- boeen
-    newWindDir=getWindDir(actWeather.wind_dir);
+    newRain=M.getRain(month,newClouds);
+    newThunder=M.getThunder(newClouds,newRain,newTemp);  -- only when it's cloudy
+    newGust=M.getGust(newThunder);            -- boeen
+    newWindDir=M.getWindDir(actWeather.wind_dir);
     
         -- does it rain or snow? (temp check)
     if newTemp<1 then 
@@ -222,6 +222,8 @@ function changeWeather()
     m_Weather.percipitation_type=newPerTyp;
     m_Weather.thunderstorm=newThunder;
     m_Weather.temperature=newTemp;
-    logWeather(m_Weather);
+    M.logWeather(m_Weather);
     world:setWeather(m_Weather);
 end
+
+return M

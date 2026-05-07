@@ -1,11 +1,11 @@
-module("scheduled.invisible_crosses", package.seeall)
+local M = {}
 
-function InvisibleCross()
+function M.InvisibleCross()
     local ListPos = 0;
     local makeCircle = false
     repeat
         ListPos = ListPos + 1;
-        listfine,posi,lineGFX,rescureGFX,randGFX = CrossPositions(ListPos);
+        listfine,posi,lineGFX,rescureGFX,randGFX = M.CrossPositions(ListPos);
         if not listfine then break; end
         players = world:getPlayersInRangeOf(posi,4);
         makeCircle = false;
@@ -25,7 +25,7 @@ function InvisibleCross()
                     if ((langSkill > 0) and (langSkill < 100 )) then
                         player:increaseSkill(1,"common language",100-langSkill);
                     end
-                    SkillName = LangSkillName(player:get_race());
+                    SkillName = M.LangSkillName(player:get_race());
                     langSkill = player:getSkill(SkillName);
                     if ((langSkill > 0) and (langSkill < 100 )) then
                         player:increaseSkill(1,SkillName,100-langSkill);
@@ -40,7 +40,7 @@ function InvisibleCross()
                 end
             end
             if makeCircle then
-                CreateCircle(lineGFX,posi,4);
+                M.CreateCircle(lineGFX,posi,4);
             elseif ((math.random(1,5) == 1) and (randGFX ~= 0)) then                
                 world:gfx(randGFX,position(posi.x+math.random(-2,2),posi.y+math.random(-2,2),posi.z));
             end            
@@ -49,7 +49,7 @@ function InvisibleCross()
 end
         
         
-function CrossPositions(ListID)
+function M.CrossPositions(ListID)
     if (ListID == 1) then     return true,position(-249,  41,-25), 9,44, 0; -- Blackstone Temple
     elseif (ListID == 2) then return true,position( 295,-341, -6),32,45, 0; -- Northerot
     elseif (ListID == 3) then return true,position( -26,-213, -3),46,31, 0; -- Grey Rose
@@ -58,7 +58,7 @@ function CrossPositions(ListID)
     return false;
 end  
 
-function CreateCircle(GFXid,CenterPos,Radius)
+function M.CreateCircle(GFXid,CenterPos,Radius)
     if (GFXid == 0) then
         return
     end
@@ -84,7 +84,7 @@ function CreateCircle(GFXid,CenterPos,Radius)
     end
 end  
 
-function LangSkillName(Race)
+function M.LangSkillName(Race)
     if (Race == 0) then return "human language"
     elseif (Race == 1) then return "dwarf language"
     elseif (Race == 2) then return "halfling language"
@@ -96,3 +96,5 @@ function LangSkillName(Race)
     elseif (Race == 8) then return "goblin language"
     end
 end
+
+return M

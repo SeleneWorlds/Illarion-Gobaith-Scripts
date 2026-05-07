@@ -1,8 +1,8 @@
 require("base.doors")
 require("base.keys")
-module("scheduled.closedoors", package.seeall)
+local M = {}
 
-function AddClosingDoor(DX, DY, DZ, DTime, DLock)  -- DX, DY, DZ: Coordinates, DTime: cycles to survive opened, DLock: 0 if it should be closed but not locked, 1 if it should be closed AND locked
+function M.AddClosingDoor(DX, DY, DZ, DTime, DLock)  -- DX, DY, DZ: Coordinates, DTime: cycles to survive opened, DLock: 0 if it should be closed but not locked, 1 if it should be closed AND locked
     if (DLock==0) then
         newQual=233;
     else
@@ -12,15 +12,15 @@ function AddClosingDoor(DX, DY, DZ, DTime, DLock)  -- DX, DY, DZ: Coordinates, D
     table.insert(DoorCloseCountdown,DTime)
 end
 
-function initDoorsToClose()    -- add doors to be closed
-    AddClosingDoor(-35, 195,-9,3,1);
-    AddClosingDoor(-35, 196,-9,3,1);
-    AddClosingDoor(-42, 193,-9,3,1);
-    AddClosingDoor(-49, 174,-9,3,1);
-    AddClosingDoor(-49, 175,-9,3,1);
+function M.initDoorsToClose()    -- add doors to be closed
+    M.AddClosingDoor(-35, 195,-9,3,1);
+    M.AddClosingDoor(-35, 196,-9,3,1);
+    M.AddClosingDoor(-42, 193,-9,3,1);
+    M.AddClosingDoor(-49, 174,-9,3,1);
+    M.AddClosingDoor(-49, 175,-9,3,1);
 end
 
-function checkAllDoors(DoorsToClose)        -- loop through all doors in the list and check wheter we should do something
+function M.checkAllDoors(DoorsToClose)        -- loop through all doors in the list and check wheter we should do something
     for DoorNr=1, table.getn(DoorsToClose) do       -- loop through all doors that should be closed
         thisDoorPos=position(DoorsToClose[DoorNr][1],DoorsToClose[DoorNr][2],DoorsToClose[DoorNr][3]);  -- get position of that door
         if world:isItemOnField(thisDoorPos) then
@@ -45,12 +45,14 @@ function checkAllDoors(DoorsToClose)        -- loop through all doors in the lis
     end
 end
 
-function closeDoors()
+function M.closeDoors()
     if firstCall==nil then
         firstCall=1;
         DoorCloseCountdown={};
         DoorsToClose={};
-        initDoorsToClose(); -- init list of all doors that should be closed
+        M.initDoorsToClose(); -- init list of all doors that should be closed
     end
-    checkAllDoors(DoorsToClose);
+    M.checkAllDoors(DoorsToClose);
 end
+
+return M

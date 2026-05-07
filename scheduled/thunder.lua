@@ -1,7 +1,7 @@
 require("base.common")
-module("scheduled.thunder", package.seeall)
+local M = {}
 
-function makeBolt()
+function M.makeBolt()
 	thunder=world.weather.thunderstorm;
 	
 	-- check whether it's thuderstorm or not
@@ -32,7 +32,7 @@ function makeBolt()
 		-- get list of online players
 		victimList = world:getPlayersOnline();
 		for i, victim in pairs(victimList) do
-			if noRoof(victim.pos) then
+			if M.noRoof(victim.pos) then
 				-- no roof above... 
 				if (math.random(randomSeed) <= chanceForBolt) then 
 					-- randomly pick a spot around the victim
@@ -40,7 +40,7 @@ function makeBolt()
 					b = math.random(-boltRangeFromChar, boltRangeFromChar);
 					targetPos = position (victim.pos.x + a, victim.pos.y + b , victim.pos.z);
 					
-					if noRoof(targetPos) then
+					if M.noRoof(targetPos) then
 						-- lightning gfx and sound
 						world:gfx( 2, targetPos );
 						world:makeSound( 4, targetPos );
@@ -58,7 +58,7 @@ function makeBolt()
 							-- reduce target's HP
 		   				  	targetChar:increaseAttrib("hitpoints",-(damage));
 							base.common.InformNLS( targetChar,
-			    	        			"Der Blitz schl‰gt vom Himmel herunter direkt in deinen Kopf und ein ungeheurer Schmerz erf¸llt deinen Kˆrper.",
+			    	        			"Der Blitz schl√§gt vom Himmel herunter direkt in deinen Kopf und ein ungeheurer Schmerz erf√ºllt deinen K√∂rper.",
 										"The lightningbolt crashes down right onto your head and an immense pain fills your body.");
 		   				  	
 		   				  	-- counter abuse if a char doesn't get damaged enough to earn a bonus
@@ -86,7 +86,7 @@ function makeBolt()
 		       					world:createItemFromId( 359, 1, targetPos, true, 333, 0 ); -- create flame that's burning down the tree
 								world:makeSound( 7, targetPos );
 								base.common.InformNLS(victim,
-								    	    "Der Blitz spaltete und brannte den Baum nieder und hinterl‰sst eine Flamme und Asche.",
+								    	    "Der Blitz spaltete und brannte den Baum nieder und hinterl√§sst eine Flamme und Asche.",
 								   	    	"The lightning bolt split and burnt down the tree and leaves flame and ashes.");
 								
 								if ( math.random(randomSeed) <= chanceForFireElement )then -- chance to create pure fire element
@@ -98,7 +98,7 @@ function makeBolt()
 							-- there is an item on the field but it's not a tree so it's not burnt down
 							else
 								base.common.InformNLS(victim,
-								    	    "Der Blitz schl‰gt in deiner N‰he ein.",
+								    	    "Der Blitz schl√§gt in deiner N√§he ein.",
 								   	    	"The lightning bolt strikes down nearby.");
 							end
 							
@@ -113,27 +113,27 @@ function makeBolt()
 								if (fishChance < 10 ) then
 									world:createItemFromId(73,math.random(5),targetPos,true,333,0); -- trout
 									base.common.InformNLS(victim,
-								    		    "Der Blitz schl‰gt in das Wasser ein und tˆtet einige Fische.",
+								    		    "Der Blitz schl√§gt in das Wasser ein und t√∂tet einige Fische.",
 								   	 		   	"The lightning bolt hit the water and shocked the fish to death.");
 								elseif (fishChance > 90 ) then
 									world:createItemFromId(355,math.random(5),targetPos,true,333,0); -- salmon
 									base.common.InformNLS(victim,
-												"Der Blitz schl‰gt in das Wasser ein und tˆtet einige Fische.",
+												"Der Blitz schl√§gt in das Wasser ein und t√∂tet einige Fische.",
 								   	    		"The lightning bolt hit the water and shocked the fish to death.");
 								else
 									base.common.InformNLS(victim,
-								    		    "Der Blitz schl‰gt in deiner N‰he ein.",
+								    		    "Der Blitz schl√§gt in deiner N√§he ein.",
 								   	    		"The lightning bolt strikes down nearby.");
 								end
 							elseif (math.random(randomSeed) <= chanceForEarthElement ) then -- chance to create pure earth element
 						        world:createItemFromId(2552,1,targetPos,true,333,0);
 								base.common.InformNLS(victim,
-								    	    "Der Blitz ber¸hrte kaum den Boden und erzeugte ein Element der reinen Erde.",
+								    	    "Der Blitz ber√ºhrte kaum den Boden und erzeugte ein Element der reinen Erde.",
 								   	    	"The lightning bolt barely touch the soil and created the pure earth element.");
 							-- lightning strikes down without creating any pure element
 							else
 								base.common.InformNLS(victim,
-								    	    "Der Blitz schl‰gt in deiner N‰he ein.",
+								    	    "Der Blitz schl√§gt in deiner N√§he ein.",
 								   	    	"The lightning bolt strikes down nearby.");
 		
 							end
@@ -147,7 +147,7 @@ end -- end of function
 
 
 
-function noRoof(targetPos)
+function M.noRoof(targetPos)
 	if targetPos.z < 0 then
 		return false -- in a dungeon
 	else
@@ -166,3 +166,5 @@ function noRoof(targetPos)
 		end
 	end
 end
+
+return M

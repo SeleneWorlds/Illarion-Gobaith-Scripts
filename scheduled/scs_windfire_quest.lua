@@ -1,4 +1,6 @@
-function SoundEffects()
+local M = {}
+
+function M.SoundEffects()
     local players = world:getPlayersInRangeOf(position(-240,-86,0),15); -- Suche nach Spielern
     if (table.getn(players)>0) then -- Spieler gefunden
         world:makeSound(27,position(-242,-88,0)); -- Wind Effect
@@ -23,3 +25,5 @@ function SoundEffects()
         world:makeSound( 7,position(-101,144,0)); -- Fire Effect
     end
 end
+
+return M

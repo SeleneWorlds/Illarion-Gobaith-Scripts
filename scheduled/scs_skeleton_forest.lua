@@ -1,17 +1,19 @@
 -- Skeleton Forest
 -- Skeleton Spawn Script
 
-function ForestSkells()
+local M = {}
+
+function M.ForestSkells()
     local Charakters = world:getPlayersInRangeOf(position(-54,72,0),35);
     for i, Char in pairs(Charakters) do
         RndTry = math.random(0,15)
         if (RndTry == 1) then
-            if SpawnSkeleton(Char) then
+            if M.SpawnSkeleton(Char) then
                 return
             end
         elseif (RndTry == 2) then
             if (Charakter:getPlayerLanguage() == 0) then
-                Charakter:inform("Du hörst ein leises Knacken im Unterholz und vielleicht ein leises Murmeln.");
+                Charakter:inform("Du hÃ¶rst ein leises Knacken im Unterholz und vielleicht ein leises Murmeln.");
             else
                 Charakter:inform("You hear a quiet cracking in the forest and maybe a muttering.");
             end
@@ -19,7 +21,7 @@ function ForestSkells()
     end
 end
 
-function SpawnSkeleton(Charakter)
+function M.SpawnSkeleton(Charakter)
     local Monsters = world:getMonstersInRangeOf(Charakter.pos,7);
     
     if (table.getn(Monsters) > 0) then
@@ -32,15 +34,15 @@ function SpawnSkeleton(Charakter)
     end  
     
     if (Charakter:getPlayerLanguage() == 0) then
-        Charakter:inform("Um dich herum raschelt der Wald und du hört das Klappern von Knochen.");
+        Charakter:inform("Um dich herum raschelt der Wald und du hÃ¶rt das Klappern von Knochen.");
     else
         Charakter:inform("Around you the forest rustles and you hear the clacking of bones.");
     end
-    SpawnSkeletonCycle(Charakter.pos,6,math.random(3,8));
+    M.SpawnSkeletonCycle(Charakter.pos,6,math.random(3,8));
     return true;
 end
 
-function SpawnSkeletonCycle(CenterPos,Radius,Anzahl)
+function M.SpawnSkeletonCycle(CenterPos,Radius,Anzahl)
     local irad = math.ceil(Radius);
     local dim = 2*(irad+1);
     local x;
@@ -70,3 +72,5 @@ function SpawnSkeletonCycle(CenterPos,Radius,Anzahl)
         end;
     end;
 end
+
+return M

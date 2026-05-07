@@ -1,8 +1,8 @@
 dofile('base_functional.lua');
 require("base.common")
-module("scheduled.spread_illness", package.seeall)
+local M = {}
 
-function getClothes()
+function M.getClothes()
     -- Factors for protection:
     --   breast:  0.5
     --   coat:    0.8
@@ -159,9 +159,9 @@ function getClothes()
 	return(clothes);
 end
 
-function init() 
+function M.init() 
 	isSetup = true;
-	clothes = getClothes();
+	clothes = M.getClothes();
 	-- Build an array where the clothes' protection values are accessible by the item id of the thing worn.
 	clothFactors = {};
 	for i,v in ipairs(clothes) do
@@ -175,7 +175,7 @@ end
 
 -- Entrance point for the scheduled script. Checks if the user is adequately protected against wind, water and rain,
 -- informs him if that is not the case, and, if the user has bad luck, infects him with a cold.
-function spreadIllness()
+function M.spreadIllness()
     
     return -- because it annoys me -- vilarion
 end
@@ -183,7 +183,7 @@ end
 	-- If this is the first time the script gets called, do some initialization
 	doSetup = false;
 	if isSetup == nil then
-		init();
+		M.init();
 		doSetup = true;
 	end
 
@@ -197,11 +197,11 @@ end
         potRoof=world:getField(potentialRoofPos);
         if potRoof == nil then 
     		weather = world.weather;
-			protection = getProtection(victim);
-			illnessOdds = getIllnessOdds(protection);
+			protection = M.getProtection(victim);
+			illnessOdds = M.getIllnessOdds(protection);
 			-- Doesn't inform on every iteration, just sometimes.
-			sumOdds = informAboutCold(victim, illnessOdds);
-			infectUser(victim, sumOdds);
+			sumOdds = M.informAboutCold(victim, illnessOdds);
+			M.infectUser(victim, sumOdds);
 --        	debug(victim, "Temp: "..weather.temperature..", rain: "..weather.percipitation_strength..", wind:"..weather.gust_strength..", odds:"..illnessOdds["wind"]..","..illnessOdds["water"]..","..illnessOdds["cold"]);
         else
 --            debug(victim, "got a roof over your head, no illness chance");
@@ -210,11 +210,11 @@ end
 end
 --]]
 
-function infectUser(victim, sumOdds)
+function M.infectUser(victim, sumOdds)
 	avgOdds = sumOdds / 3;
 	const = victim:increaseAttrib("constitution", 0);
 	avgOdds = avgOdds/const;
-	debug(victim, "const: "..const..", sumOdds: "..sumOdds..", final odds:"..avgOdds);
+	M.debug(victim, "const: "..const..", sumOdds: "..sumOdds..", final odds:"..avgOdds);
 	if(math.random(100) < avgOdds) then
 		if user.name == "Emhyr van Emreis" then
 			victim.effects:addEffect(CLongTimeEffect(3), true);
@@ -226,7 +226,7 @@ end
 -- function will inform the user that he feels cold/is wet/it's too windy.
 -- Doesn't inform on every call. The higher the odds of becoming ill, the more likely the user will
 -- be informed.
-function informAboutCold(user, illnessOdds)
+function M.informAboutCold(user, illnessOdds)
 	sumOdds = 0;
 	for i,v in pairs(illnessOdds) do
 		sumOdds = sumOdds + v;
@@ -237,7 +237,7 @@ function informAboutCold(user, illnessOdds)
 	messageGerman = "";
 	messageEnglish = "";
 	for typ,value in pairs(illnessOdds) do
-		message = getMessage(value, typ);
+		message = M.getMessage(value, typ);
 		if message[2] ~= nil then 
 			messageGerman = messageGerman .. message[2];
 			messageEnglish = messageEnglish .. message[3];
@@ -248,7 +248,7 @@ function informAboutCold(user, illnessOdds)
 	-- The script is called every 10 seconds. Even if the user's very cold, that's a bit too often, so
 	-- make the maximum odds of being informed 20% (-> about once every 50 seconds).
 	if avgOdds > 20 then avgOdds = 20; end
-	debug(user, messageGerman);
+	M.debug(user, messageGerman);
 	if(math.random(100) < avgOdds) then
 		base.common.InformNLS(user, messageGerman, messageEnglish);
 	end
@@ -257,7 +257,7 @@ end
 
 -- Gets the correct message from the messages array, based on the type of weather (cold, wind, water) and
 -- the odds of becoming ill from too little protection against the given type of weather
-function getMessage(odds, typ)
+function M.getMessage(odds, typ)
 	diff = 100;
 	message = {0, nil, nil};
 	for i,v in pairs(messages[typ]) do
@@ -272,7 +272,7 @@ function getMessage(odds, typ)
 end
 
 -- Returns the odds of getting ill caused by inferior wind, water and cold protection
-function getIllnessOdds(protection)
+function M.getIllnessOdds(protection)
     weather = world.weather;
 	weatherVals = {};
 	weatherVals["wind"]  = weather.gust_strength;
@@ -287,7 +287,7 @@ end
 
 -- Get the protection values offered by the clothing worn by the user.
 -- Right now, the best protection values are around 180.
-function getProtection(user)
+function M.getProtection(user)
 	worn = {};
 	worn["breast"] = user:getItemAt(3);
 	worn["coat"] = user:getItemAt(11);
@@ -314,8 +314,10 @@ function getProtection(user)
 	return(protection);
 end
 
-function debug(user, message) 
+function M.debug(user, message) 
 	if user.name == "Emhyr van Emreis" then
 		user:inform(message);
 	end
 end
+
+return M

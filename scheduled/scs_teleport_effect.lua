@@ -1,4 +1,6 @@
-function DoEffect()
+local M = {}
+
+function M.DoEffect()
     if world:isItemOnField(position(-257,33,-25)) then
         local testItem = world:getItemOnField(position(-257,33,-25));
         if (testItem.id == 42) then
@@ -9,3 +11,5 @@ function DoEffect()
         end
     end
 end
+
+return M

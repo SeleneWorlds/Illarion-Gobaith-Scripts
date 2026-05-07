@@ -1,4 +1,6 @@
-function CloseSecretWall()
+local M = {}
+
+function M.CloseSecretWall()
     local DoorPos = position(73,41,50);
     if (world:isItemOnField(DoorPos)) then
         local Item = world:getItemOnField(DoorPos);
@@ -13,10 +15,12 @@ function CloseSecretWall()
         CharsInRange = world:getPlayersInRangeOf(DoorPos,15);
         for i, Chara in pairs(CharsInRange) do
             if (Chara:getPlayerLanguage() == 0) then
-                Chara:inform("Du hörst das Geräusch von sich verschiebendem Stein");
+                Chara:inform("Du hÃ¶rst das GerÃ¤usch von sich verschiebendem Stein");
             else
                 Chara:inform("You hear the sound of moving stone");
             end
         end
     end
 end
+
+return M
