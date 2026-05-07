@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.about_humans", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "About the Humans"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("halfling language",toData); 
     
     base.books.AddEnglishBookText("About the Humans from Thomas Berryard",2862,15,toData); -- ### Human ### scarecrow instead of human
@@ -45,6 +45,8 @@ function loadBook(toData)
     base.books.AddGermanBookText("es Krawall. Doch die Langen m�gen das und erz�hlen dir von noch viel schlimmeren Orten. Ich kann das alles nicht glauben, aber warum sollten die alle die selbe Geschichte erfinden?",0,15,toData); 
     base.books.AddGermanBookText("Wenn du Lange triffst die irgendwas mit dieser Albar-stadt zu tun haben, schau das du ganz schnell weg kommst! Die sperren dich n�mlich ein und zwingen dich schreckliche Dinge zu essen.",0,15,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"�ber die Menschen\"",toData);

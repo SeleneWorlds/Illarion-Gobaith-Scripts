@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.spinning", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Three Guiding Truths"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
     
     base.books.AddGermanBookText("\n \n \n ~~~Spinner und Weber~~~ \n \n \n von Trudel Fadenschein",47,0,toData);
@@ -21,6 +21,8 @@ function loadBook(toData)
     base.books.AddEnglishBookText("The most affordable dyed wools are blue and green and worn by those of the middle class.",2679,80,toData);
     base.books.AddEnglishBookText("A good tailor measures each client and custom makes every article of clothing.",0,100,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Spinner und Weber\"",toData);

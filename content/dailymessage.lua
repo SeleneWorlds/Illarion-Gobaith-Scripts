@@ -1,24 +1,24 @@
-module("content.dailymessage", package.seeall);
+local M = {
+    GoodBadDayMessages = {}
+}
 
-GoodBadDayMessages = {};
-
-function GetMessage( Lang, Attrib, Race, Effect )
-    if not GoodBadDayMessages then
+function M.GetMessage( Lang, Attrib, Race, Effect )
+    if not M.GoodBadDayMessages then
         return false;
     end
-    if not GoodBadDayMessages[Lang] then
+    if not M.GoodBadDayMessages[Lang] then
         return false;
     end
-    if not GoodBadDayMessages[Lang][Attrib] then
+    if not M.GoodBadDayMessages[Lang][Attrib] then
         return false;
     end
-    if not GoodBadDayMessages[Lang][Attrib][Race] then
+    if not M.GoodBadDayMessages[Lang][Attrib][Race] then
         return false;
     end
-    return GoodBadDayMessages[Lang][Attrib][Race][Effect];
+    return M.GoodBadDayMessages[Lang][Attrib][Race][Effect];
 end
 
-function initMessages()
+function M.initMessages()
     local currentLang;
     local currentAttrib;
     local currentRace;
@@ -36,16 +36,16 @@ function initMessages()
     end;
 
     local SetMessage = function( Effect, Message )
-        if not GoodBadDayMessages[currentLang] then
-            GoodBadDayMessages[currentLang] = {};
+        if not M.GoodBadDayMessages[currentLang] then
+            M.GoodBadDayMessages[currentLang] = {};
         end
-        if not GoodBadDayMessages[currentLang][currentAttrib] then
-            GoodBadDayMessages[currentLang][currentAttrib] = {};
+        if not M.GoodBadDayMessages[currentLang][currentAttrib] then
+            M.GoodBadDayMessages[currentLang][currentAttrib] = {};
         end
-        if not GoodBadDayMessages[currentLang][currentAttrib][currentRace] then
-            GoodBadDayMessages[currentLang][currentAttrib][currentRace] = {};
+        if not M.GoodBadDayMessages[currentLang][currentAttrib][currentRace] then
+            M.GoodBadDayMessages[currentLang][currentAttrib][currentRace] = {};
         end
-        GoodBadDayMessages[currentLang][currentAttrib][currentRace][Effect] = Message;
+        M.GoodBadDayMessages[currentLang][currentAttrib][currentRace][Effect] = Message;
     end;
 
     SetLanguage( CPlayer.german );
@@ -659,6 +659,8 @@ function initMessages()
     SetMessage(-1,"You shouldn't challenge your brothers and sisters in arm wrestling today.");
 end;
 
-initMessages();
+M.initMessages();
 
-initMessages = nil;
+M.initMessages = nil;
+
+return M

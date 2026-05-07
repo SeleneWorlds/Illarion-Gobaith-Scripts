@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.history", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Histroy of Illarion"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
 
     base.books.AddGermanBookText("\n \n Geschichte von Illarion",0,0,toData);
@@ -399,6 +399,8 @@ function loadBook(toData)
     base.books.AddEnglishBookText("theory though. Three years later however, he has gathered an astonishing amount of followers who see the \"prophet of glorious enlightenment\" in him. These followers have built domiciles in the ruins.",0,30,toData);
     base.books.AddEnglishBookText("Their main religious practices consist of the consumption of herbs that induce hallucinogenic effects, and they export these herbs.",0,30,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Geschichte von Illarion\"",toData);

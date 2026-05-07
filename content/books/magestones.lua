@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.magestones", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Magic stones"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
 
     base.books.AddEnglishBookText("Magic stones and their usage",0,0,toData);
@@ -34,6 +34,8 @@ function loadBook(toData)
     base.books.AddGermanBookText("In Ringe hingegen kann lediglich die Energien eines Steines �bertragen werden.",0,0,toData);
     base.books.AddGermanBookText("Zudem ist bei diesen auch zu beachten, dass sich die Energien der magischen Steine mit ggf. eingesetzten Steinen gleichen muss.",0,0,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Magische Steine\"",toData);

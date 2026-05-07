@@ -1,6 +1,6 @@
-module("content.lightmasters", package.seeall)
-
-LightmasterList = {};
+local M = {
+	LightmasterList = {}
+}
 --[[
 INDEX int  					the next free index
 name String  				the NPC's name
@@ -9,3 +9,5 @@ race int  					the race, important for creating the NPC
 sex int						0=male, 1=female
 script String				the script name
 ]]
+
+return M

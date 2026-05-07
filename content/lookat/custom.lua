@@ -1,4 +1,6 @@
-module("content.lookat.custom", package.seeall)
+local M = {
+	CustomLookAt = {}
+}
 
 --[[
   content for Custom LookAt
@@ -11,14 +13,14 @@ module("content.lookat.custom", package.seeall)
   @param boolean - true if the quality and durability text shall be removed. false if not
   @param boolean - true if the normal item name shall be removed, remember to add your custom name in CustomText. false if the normal name shall be used
   @param boolean / integer - false if original gender shall be used. For new gender set integer: 0=male, 1=female, 2=neuter
-  
+
   you may use this layout:
 	generic:
 	addDescription(	id,	data,	"DE", "EN", NoQual, NoName, NewGender );
 	only extension:
 	addDescription(	,	,	"", "", false, false, false );
 ]]
-function InitCustomLookAt()
+function M.InitCustomLookAt()
 
 	addDescription(	 16,	1,	"bemalt mit einem blutroten Schädel", "with a crimson skull painted on it", false, false, false );
 	addDescription(	 16,	2,	"bemalt mit einem silbernen Schädel", "with a silver skull painted on it", false, false, false );
@@ -116,16 +118,14 @@ function InitCustomLookAt()
 	addDescription(2744,	1,	"knorrige, alte Pfeife, deren Kopf stets mit Sibanac gefüllt ist", "knotty old pipe, the head of which is always filled with Sibanac", true, true, false );
 	addDescription(2785,	1,	"mit der Gravur 'Eigentum von Eli Travinus'", "with the gravure 'Property of Eli Travinus'", false, false, false );
 	addDescription(2785,	2,	"mit der Gravur 'Johann Braun, Magier'", "with the gravure 'Johann Braun, Mage'", false, false, false );
-	
+
 end
 
-function addDescription( ItemId, ItemData, CustomText_DE, CustomText_EN, NoQuality, NoName, NewGender )
-	
-	if CustomLookAt == nil then
-		CustomLookAt = {};
+function M.addDescription(ItemId, ItemData, CustomText_DE, CustomText_EN, NoQuality, NoName, NewGender)
+	if M.CustomLookAt[ItemId] == nil then
+		M.CustomLookAt[ItemId] = {}
 	end
-	if CustomLookAt[ItemId] == nil then
-		CustomLookAt[ItemId] = {};
-	end
-	CustomLookAt[ItemId][ItemData] = { CustomText_DE, CustomText_EN, NoQuality, NoName, NewGender };
+	M.CustomLookAt[ItemId][ItemData] = { CustomText_DE, CustomText_EN, NoQuality, NoName, NewGender }
 end
+
+return M

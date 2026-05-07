@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.dyer", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Tanner and Dyer"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
     
     base.books.AddGermanBookText("Das Trocknen von H�uten schafft eine beinahe unriechbare und scharfe Luft. Die Stra�en, die den Gerberbezirk umgeben, werden von den �rmsten der Stadtbewohnern bewohnt.",0,0,toData);
@@ -27,6 +27,8 @@ function loadBook(toData)
     base.books.AddEnglishBookText("A dyer is identified by the color under his nails.",0,0,toData);
     base.books.AddEnglishBookText("A dyer heats a tub of water over a fire and adds the unfinished cloth, wood ash and various plant dyes.",0,0,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Gerber und F�rber\"",toData);

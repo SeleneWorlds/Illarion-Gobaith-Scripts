@@ -1,6 +1,6 @@
-module("content.furtunecookies", package.seeall)
+local M = {}
 
-function cookie(User)
+function M.cookie(User)
     local luck=math.random(1,42);
     local germText;
     local englText;
@@ -131,3 +131,5 @@ function cookie(User)
 
     return germText,englText;
 end
+
+return M

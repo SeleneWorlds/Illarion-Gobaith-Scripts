@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.cakebible", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Cakebible"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
     
     base.books.AddEnglishBookText("The Cakebible",0,0,toData);
@@ -55,6 +55,8 @@ function loadBook(toData)
     base.books.AddGermanBookText("Danksagung:\n\n Wir danken allen Kuchen, Keksen und Muffins, die von uns verspeist wurden und uns zu dieser Bibel inspiriert haben. Desweiteren m�chten wir den B�ckern danken, ohne die es diese",0,0,toData);
     base.books.AddGermanBookText("Leckerein nicht gebe, au�erdem unseren Freunden, die uns mit Leckerein versorgt haben, w�hrend wir dieses Buch schrieben\n\n Die Autoren\n Lana von Maibach und Cassandria",0,0,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Die Kuchenbibel\"",toData);

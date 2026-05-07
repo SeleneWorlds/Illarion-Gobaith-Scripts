@@ -1,29 +1,49 @@
-module("content.gods", package.seeall)
+local M = {}
 
-GOD_NONE     =  0
-GOD_USHARA   =  1
-GOD_BRAGON   =  2
-GOD_ELDAN    =  3
-GOD_TANORA   =  4
-GOD_FINDARI  =  5
-GOD_NARGUN   =  6
-GOD_ELARA    =  7
-GOD_ADRON    =  8
-GOD_OLDRA    =  9
-GOD_CHERGA   = 10
-GOD_MALACHIN = 11
-GOD_IRMOROM  = 12
-GOD_SIRANI   = 13
-GOD_ZHAMBRA  = 14
-GOD_RONAGAN  = 15
-GOD_MOSHRAN  = 16
-GOD_THEFIVE  = 17
-GOD_THEDEVS  = 99
+local GOD_NONE     =  0
+local GOD_USHARA   =  1
+local GOD_BRAGON   =  2
+local GOD_ELDAN    =  3
+local GOD_TANORA   =  4
+local GOD_FINDARI  =  5
+local GOD_NARGUN   =  6
+local GOD_ELARA    =  7
+local GOD_ADRON    =  8
+local GOD_OLDRA    =  9
+local GOD_CHERGA   = 10
+local GOD_MALACHIN = 11
+local GOD_IRMOROM  = 12
+local GOD_SIRANI   = 13
+local GOD_ZHAMBRA  = 14
+local GOD_RONAGAN  = 15
+local GOD_MOSHRAN  = 16
+local GOD_THEFIVE  = 17
+local GOD_THEDEVS  = 99
 
-GOD_LIST = {GOD_NARGUN,GOD_ELARA,GOD_ADRON,GOD_OLDRA,GOD_CHERGA,GOD_MALACHIN,
+M.GOD_NONE = GOD_NONE
+M.GOD_USHARA = GOD_USHARA
+M.GOD_BRAGON = GOD_BRAGON
+M.GOD_ELDAN = GOD_ELDAN
+M.GOD_TANORA = GOD_TANORA
+M.GOD_FINDARI = GOD_FINDARI
+M.GOD_NARGUN = GOD_NARGUN
+M.GOD_ELARA = GOD_ELARA
+M.GOD_ADRON = GOD_ADRON
+M.GOD_OLDRA = GOD_OLDRA
+M.GOD_CHERGA = GOD_CHERGA
+M.GOD_MALACHIN = GOD_MALACHIN
+M.GOD_IRMOROM = GOD_IRMOROM
+M.GOD_SIRANI = GOD_SIRANI
+M.GOD_ZHAMBRA = GOD_ZHAMBRA
+M.GOD_RONAGAN = GOD_RONAGAN
+M.GOD_MOSHRAN = GOD_MOSHRAN
+M.GOD_THEFIVE = GOD_THEFIVE
+M.GOD_THEDEVS = GOD_THEDEVS
+
+M.GOD_LIST = {GOD_NARGUN,GOD_ELARA,GOD_ADRON,GOD_OLDRA,GOD_CHERGA,GOD_MALACHIN,
 			GOD_IRMOROM,GOD_SIRANI,GOD_ZHAMBRA,GOD_RONAGAN,GOD_MOSHRAN,GOD_THEFIVE};
 
-GOD_EN = {
+M.GOD_EN = {
     [GOD_USHARA]   = "Ushara",
     [GOD_BRAGON]   = "Br�gon",
     [GOD_ELDAN]    = "Eldan",
@@ -44,7 +64,7 @@ GOD_EN = {
     [GOD_THEDEVS]  = "Developers",
 }
 
-GOD_DE = {
+M.GOD_DE = {
     [GOD_USHARA]   = "Ushara",
     [GOD_BRAGON]   = "Br�gon",
     [GOD_ELDAN]    = "Eldan",
@@ -65,14 +85,14 @@ GOD_DE = {
     [GOD_THEDEVS]  = "Entwickler",
 }
 
-PRAYER_CONVERSION = {
+M.PRAYER_CONVERSION = {
 	{skill = "Healing",
 		gText = "bitte (.+) heilung",
 		eText = "please (.+) healing"
 	}
 }
 
-PRAYER_MASS = {
+M.PRAYER_MASS = {
 	[GOD_NARGUN]   = {gText = "preiset narg[u�]n, gott des chaos",
 						eText = "praise narg[u�]n, god of chaos"},
     [GOD_ELARA]    = {gText = "preiset",
@@ -99,7 +119,7 @@ PRAYER_MASS = {
 						eText = "praise"},
 }
 
-PRAYER_FOLLOWER = {
+M.PRAYER_FOLLOWER = {
 	[GOD_NARGUN]   = {gText = "segne mich nargun",
 						eText = "bless me nargun"},
     [GOD_ELARA]    = {gText = "segne mich",
@@ -126,7 +146,7 @@ PRAYER_FOLLOWER = {
 						eText = "bless me"},
 }
 
-PRAYER_PRIEST = {
+M.PRAYER_PRIEST = {
 	[GOD_NARGUN]   = {gText = "segne mich erneut nargun",
 						eText = "bless me again nargun"},
     [GOD_ELARA]    = {gText = "segne mich",
@@ -153,7 +173,7 @@ PRAYER_PRIEST = {
 						eText = "bless me"},
 }
 
-ALTARS = {
+M.ALTARS = {
 	[GOD_NARGUN]	= position(-69,-100,0),
     [GOD_ELARA]    	= position(0,0,0),
     [GOD_ADRON]    	= position(0,0,0),
@@ -168,7 +188,7 @@ ALTARS = {
     [GOD_THEFIVE]  	= position(0,0,0)
 }
 
-ITEMS_FOLLOWER = {
+M.ITEMS_FOLLOWER = {
 	[GOD_NARGUN]	= {{id = 2, number = 1}},
     [GOD_ELARA]    	= {{id = 2, number = 1}},
     [GOD_ADRON]    	= {{id = 2, number = 1}},
@@ -183,7 +203,7 @@ ITEMS_FOLLOWER = {
     [GOD_THEFIVE]  	= {{id = 2, number = 1}}
 }
 
-ITEMS_PRIEST = {
+M.ITEMS_PRIEST = {
 	[GOD_NARGUN]	= {{id = 2, number = 1}},
     [GOD_ELARA]    	= {{id = 2, number = 1}},
     [GOD_ADRON]    	= {{id = 2, number = 1}},
@@ -200,9 +220,9 @@ ITEMS_PRIEST = {
 
 -- magic flags
 -- category runes
-RUNE_HEALING = 1;
+M.RUNE_HEALING = 1;
 -- other runes
-RUNE_SMALL = 32;
+M.RUNE_SMALL = 32;
 
 --[[
 DEFAULT = {
@@ -220,3 +240,5 @@ DEFAULT = {
     [GOD_THEFIVE]  	= 
 }
 ]]
+
+return M

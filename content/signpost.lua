@@ -1,11 +1,25 @@
-module("content.signpost", package.seeall)
+local M = {
+    signTextDe = nil,
+    signTextEn = nil,
+    signCoo = nil,
+    signItemId = nil,
+    signPerception = nil
+}
 
-function InitWegweiser()
-    signTextDe={};
-    signTextEn={};
-    signCoo={};
-    signItemId={};
-    signPerception={};
+function M.InitWegweiser()
+    M.signTextDe={};
+    M.signTextEn={};
+    M.signCoo={};
+    M.signItemId={};
+    M.signPerception={};
+    local AddWeg = M.AddWeg
+    local AddGrave = M.AddGrave
+    local AddPicture = M.AddPicture
+    local AddPennant = M.AddPennant
+    local AddTree = M.AddTree
+    local AddPillar = M.AddPillar
+    local AddChimney = M.AddChimney
+    local AddMirror = M.AddMirror
 
     ---------------- WEGWEISER ----------------
 
@@ -349,88 +363,88 @@ function InitWegweiser()
 
 end
 
-function AddWeg(Posi,dText,eText,Dir,Percept)
+function M.AddWeg(Posi,dText,eText,Dir,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Dir));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Dir));
 end
 
-function AddGrave(Posi,dText,eText,Type,Percept)
+function M.AddGrave(Posi,dText,eText,Type,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Type+10));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Type+10));
 end
 
-function AddPicture(Posi,dText,eText,Type,Percept)
+function M.AddPicture(Posi,dText,eText,Type,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Type+20));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Type+20));
 end
 
-function AddPennant(Posi,dText,eText,Type,Percept)
+function M.AddPennant(Posi,dText,eText,Type,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Type+30));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Type+30));
 end
 
-function AddTree(Posi,dText,eText,Type,Percept)
+function M.AddTree(Posi,dText,eText,Type,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Type+40));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Type+40));
 end
 
-function AddPillar(Posi,dText,eText,Type,Percept)
+function M.AddPillar(Posi,dText,eText,Type,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Type+50));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Type+50));
 end
 
-function AddChimney(Posi,dText,eText,Type,Percept)
+function M.AddChimney(Posi,dText,eText,Type,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Type+60));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Type+60));
 end
 
-function AddMirror(Posi,dText,eText,Type,Percept)
+function M.AddMirror(Posi,dText,eText,Type,Percept)
     local tablePos = Posi[1]..Posi[2]..Posi[3];
-    PrepareTables(tablePos);
-    table.insert(signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
-    table.insert(signTextDe[tablePos],dText);
-    table.insert(signTextEn[tablePos],eText);
-    table.insert(signPerception[tablePos],Percept);
-    CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),DirToItemID(Type+70));
+    M.PrepareTables(tablePos);
+    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signTextDe[tablePos],dText);
+    table.insert(M.signTextEn[tablePos],eText);
+    table.insert(M.signPerception[tablePos],Percept);
+    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Type+70));
 end
 
 
-function CheckAndPlaceItem(Posi,ItemID)
+function M.CheckAndPlaceItem(Posi,ItemID)
     if world:isItemOnField(Posi) then
         if ( world:getItemOnField(Posi).id ~= ItemID ) then
             world:createItemFromId(ItemID,1,Posi,true,333,0);
@@ -440,16 +454,16 @@ function CheckAndPlaceItem(Posi,ItemID)
     end
 end
 
-function PrepareTables(TablePos)
-    if (signCoo[TablePos] == nil) then
-        signCoo[TablePos] = {};
-        signTextDe[TablePos] = {};
-        signTextEn[TablePos] = {};
-        signPerception[TablePos] = {};
+function M.PrepareTables(TablePos)
+    if (M.signCoo[TablePos] == nil) then
+        M.signCoo[TablePos] = {};
+        M.signTextDe[TablePos] = {};
+        M.signTextEn[TablePos] = {};
+        M.signPerception[TablePos] = {};
     end
 end
 
-function DirToItemID(Value)
+function M.DirToItemID(Value)
     if (Value==0) then
         return 3081
     elseif (Value==2) then
@@ -512,3 +526,5 @@ function DirToItemID(Value)
 		return 2874
 	end
 end
+
+return M

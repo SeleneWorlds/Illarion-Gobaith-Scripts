@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.guidingtruths", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Three Guiding Truths"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("ancient language",toData);
     
     base.books.AddGermanBookText("\n \n    ~Drei ma�gebliche Wahrheiten~ \n \n        von Brer Beothach",0,0,toData); 
@@ -129,6 +129,8 @@ function loadBook(toData)
     base.books.AddEnglishBookText("It never fades and shall always be worth more than anything that is manifested in the physical realms.",0,65,toData);
     base.books.AddEnglishBookText("And so, this concludes the three guiding lights which are a guide to obtaining knowledge and understanding how to use it. May your path be filled with wisdom.",0,65,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Drei ma�gebliche Wahrheiten\"",toData);

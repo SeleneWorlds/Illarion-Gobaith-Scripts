@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.dwarfpoems", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Dwarven Poems"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("dwarf language",toData);
     
     base.books.AddEnglishBookText( " Brendill's Song ", 0, 0,toData);
@@ -93,6 +93,8 @@ function loadBook(toData)
     base.books.AddGermanBookText( " Will eine Frau sich zu uns gesellen, \nmuss sie 'ne Zwergin mit B�rtchen sein. \nMoira, Aldrun und die Grut, \ndie haben B�rtchen, die haben B�rtchen, ", 0, 0,toData);   
     base.books.AddGermanBookText( " Moira, Aldrun und die Grut, \ndie haben B�rtchen, die steh'n uns gut.", 0, 0,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Dwarven Poems\"",toData);

@@ -1,6 +1,6 @@
-module("content.genus")
+local M = {}
 
-function GenusData(ItemID) -- returns (0=male, 1=female, 2=neuter)
+function M.GenusData(ItemID) -- returns (0=male, 1=female, 2=neuter)
     local genus={};
     genus[1]=2;
     genus[2]=2;
@@ -535,3 +535,5 @@ function GenusData(ItemID) -- returns (0=male, 1=female, 2=neuter)
     genus[3108]=2;
     return ( genus[ItemID] and genus[ItemID] or 1 )
 end
+
+return M

@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.culturegoblins", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Goblin Culture"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
 
     base.books.AddEnglishBookText("\n \n Goblin Culture",0,0,toData);
@@ -33,6 +33,8 @@ function loadBook(toData)
     base.books.AddGermanBookText("In Albar, werden wir Goblins zum Kampf mit Tieren gezwungen. manchmal werden wir auch einfach als Sklaven gehalten, arme Goblins.",0,0,toData);
     base.books.AddGermanBookText("Manche von uns, so habe ich geh�rt, leben in D�rfern in Gynkese oder sogar Salkamaeria. Dort arbeiten sie als Diener, Boten oder Kaufleute. Einige sogar als Alchemisten!",0,0,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Das Volk der Goblins\"",toData);

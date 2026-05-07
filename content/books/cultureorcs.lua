@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.cultureorcs", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Orcish Culture and History"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
 
     base.books.AddEnglishBookText("\n \n Orcish History and Culture",0,0,toData);
@@ -51,6 +51,8 @@ function loadBook(toData)
     base.books.AddGermanBookText("W�hrend der kalten Jahreszeit leben die Orks in ihren Winterquartieren und Cherga wird zur ehrenden Gottheit. Der Winter ist die Zeit des Todes, der Geister und der Ahnen. Die Sch�del einiger Ahnen werden in Schreinen aufbewahrt.",0,0,toData);
     base.books.AddGermanBookText("Sie k�nnen aber auch in den von Schamanen oder H�uptlingen bewohnten H�hlenabschnitten aufbewahrt werden, wo sie dann zu jenen im Schlafe sprechen.",0,0,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Ork'sche Gesellschaftsgeschichte\"",toData);

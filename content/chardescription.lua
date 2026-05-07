@@ -1,9 +1,9 @@
 -- Alle Funktionen geben >nur< die Stichwoerter zurueck.
 -- Zum groe�ten Teil ueberarbeitet von playerlookat.lua
 
-module("content.chardescription", package.seeall)
+local M = {}
 
-function getFigureText(height, mass, str, lang)
+function M.getFigureText(height, mass, str, lang)
     if iniFig==nil then
         lowStr={};
         normalStr={};
@@ -38,7 +38,7 @@ function getFigureText(height, mass, str, lang)
     end
 end
 
-function getAgeText(race,age, language)
+function M.getAgeText(race,age, language)
     if ageList==nil then
         ageList = { };
         ageName = { };
@@ -72,7 +72,7 @@ function getAgeText(race,age, language)
     return ageName[language][i];
 end
 
-function getClothesQualText(qual, lang)
+function M.getClothesQualText(qual, lang)
     if initClQText==nil then
         ClQQualText={};
         ClQQualText[0]={"adelig",     "nobel", "sehr fein", "fein", "sehr gut", "gut", "normal", "billig","sch�big","lumpig"};
@@ -82,7 +82,7 @@ function getClothesQualText(qual, lang)
     return ClQQualText[lang][10-qual];
 end
 
-function getClothesDuraText(dura, lang)
+function M.getClothesDuraText(dura, lang)
     if initClText==nil then
         ClDuraText={};
         ClDuraText[0]={"nagelneu" ,"neu", "leicht abgenutzt","gebraucht","abgenutzt","sehr abgenutzt","alt","dreckig", "kaputt", "zerschlissen"  };
@@ -92,7 +92,7 @@ function getClothesDuraText(dura, lang)
 	return ClDuraText[lang][10-math.floor(dura/10)];
 end
 
-function getHPText(HP,language)
+function M.getHPText(HP,language)
     if iniHPT==nil then
         HPText={};
         HPText[0]={};
@@ -115,7 +115,7 @@ function getHPText(HP,language)
     return HPText[language][interval];
 end
 
-function getClothesFactor(Char)
+function M.getClothesFactor(Char)
     itCount=0;
     sumQual=0;
     sumDura=0;
@@ -138,3 +138,5 @@ function getClothesFactor(Char)
     end
     return math.floor(sumQual/itCount), math.floor(sumDura/itCount);
 end
+
+return M

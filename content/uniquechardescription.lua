@@ -1,21 +1,27 @@
 -- This could be maybe used for scars or stigmas - would be a good punishment for thieves imo
 
-module("content.uniquechardescription", package.seeall)
+local M = {
+	PlayerDescriptionsDE = nil,
+	PlayerDescriptionsEN = nil,
+	Init = nil
+}
 
-function AddPlayerDescription(id, textde, texten)
-	table.insert(PlayerDescriptionsDE[id], textde);
-	table.insert(PlayerDescriptionsEN[id], texten);
+function M.AddPlayerDescription(id, textde, texten)
+	table.insert(M.PlayerDescriptionsDE[id], textde);
+	table.insert(M.PlayerDescriptionsEN[id], texten);
 end
 
-function InitPlayerDesc()
+function M.InitPlayerDesc()
 
-	if(Init == nil) then
+	if(M.Init == nil) then
 		
-		PlayerDescriptionsDE = {{}};
-		PlayerDescriptionsEN = {{}};
+		M.PlayerDescriptionsDE = {{}};
+		M.PlayerDescriptionsEN = {{}};
 		
 		--AddPlayerDescription(PlayerID, TextDE, TextEN);
 	
-		Init = 1;
+		M.Init = 1;
 	end
 end
+
+return M

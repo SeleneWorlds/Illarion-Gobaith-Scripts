@@ -1,20 +1,22 @@
 require("base.gcraft")
 
-module("content.gathering", package.seeall)
+local M = {
+	Init = nil
+}
 
-function InitGathering()
-	if(Init == nil) then
-		woodchopping = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "lumberjacking", LeadSkillGroup = 2};
-		honeygathering = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		farming = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		fruitgathering = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		mining = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
-		sanddigging = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
-		claydigging = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
-		herbgathering = base.gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "herb lore", LeadSkillGroup = 2};
-		fishing = base.gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "fishing", LeadSkillGroup = 2};
-		woolcutting = base.gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		potashproducing = base.gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "woodchopping", LeadSkillGroup = 2};
+function M.InitGathering()
+	if(M.Init == nil) then
+		local woodchopping = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "lumberjacking", LeadSkillGroup = 2};
+		local honeygathering = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local farming = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local fruitgathering = base.gcraft.GCraft:new{LeadAttrib = "constitution", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local mining = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
+		local sanddigging = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
+		local claydigging = base.gcraft.GCraft:new{LeadAttrib = "strength", LeadSkill = "mining", LeadSkillGroup = 2};
+		local herbgathering = base.gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "herb lore", LeadSkillGroup = 2};
+		local fishing = base.gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "fishing", LeadSkillGroup = 2};
+		local woolcutting = base.gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "peasantry", LeadSkillGroup = 2};
+		local potashproducing = base.gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "woodchopping", LeadSkillGroup = 2};
 		
 		--woodchopping
 
@@ -158,6 +160,19 @@ function InitGathering()
 		potashproducing:SetTreasureMap(0.015,"Fein s�uberlich aufgerollt findest du eine Schatzkarte in einem ausgeh�hlten Ast. Gut, dass du das Holz noch nicht verbrannt hattest!","You find a treasure map in a hollowed-out branch, neatly rolled up. Luckily you did not burn it!");
 		--potashproducing:AddMonster(MONSTERID,PROBABILITY,"DETEXT","ENTEXT",SOUND,GFXLIST);
 
-		Init = 1;
+		M.woodchopping = woodchopping;
+		M.honeygathering = honeygathering;
+		M.farming = farming;
+		M.fruitgathering = fruitgathering;
+		M.mining = mining;
+		M.sanddigging = sanddigging;
+		M.claydigging = claydigging;
+		M.herbgathering = herbgathering;
+		M.fishing = fishing;
+		M.woolcutting = woolcutting;
+		M.potashproducing = potashproducing;
+		M.Init = 1;
 	end
 end
+
+return M

@@ -1,5 +1,4 @@
-
-module("content.fighting")
+local M = {}
 
 --[[
     Returns the attack value of a race wrestling
@@ -7,7 +6,7 @@ module("content.fighting")
     @param  int requested race
     @return int attack value
 ]]
-function GetWrestlingAttack(Race)
+function M.GetWrestlingAttack(Race)
      if ( Race ==  0 ) then return 10; -- Human
      elseif ( Race ==  1 ) then return 15; -- Dwarf
      elseif ( Race ==  2 ) then return 5; -- Halfling
@@ -67,7 +66,7 @@ end
     @param  int requested race
     @return int movepoints
 ]]
-function GetWrestlingMovepoints( Race )
+function M.GetWrestlingMovepoints( Race )
      if ( Race ==  0 ) then return 25; -- Human
      elseif ( Race ==  1 ) then return 25; -- Dwarf
      elseif ( Race ==  2 ) then return 25; -- Halfling
@@ -127,7 +126,7 @@ end
     @param  int requested race
     @return int parry value
 ]]
-function GetWrestlingParry(Race)
+function M.GetWrestlingParry(Race)
      if ( Race ==  0 ) then return 10; -- Human
      elseif ( Race ==  1 ) then return 15; -- Dwarf
      elseif ( Race ==  2 ) then return 5; -- Halfling
@@ -187,7 +186,7 @@ end
     @param  int requested race
     @return int accuracy
 ]]
-function GetWrestlingAccuracy( Race )
+function M.GetWrestlingAccuracy( Race )
      if ( Race ==  0 ) then return 50; -- Human
      elseif ( Race ==  1 ) then return 50; -- Dwarf
      elseif ( Race ==  2 ) then return 50; -- Halfling
@@ -247,7 +246,7 @@ end
     @param  CharacterTable  Character table of the attacking character
     @return int ID if the gfx for the wrestling attack
 ]]
-function GetWrestlingGFX( Attacker )
+function M.GetWrestlingGFX( Attacker )
     if ( Attacker.Race == 25 ) and ( Attacker.Char:getType() == 1 ) then
         local monID = Attacker.Char:get_mon_type();
         if (monID == 501 or monID == 502) then
@@ -284,7 +283,7 @@ end
     @param  int race ID
     @return boolean true if it is a unholy race, false if not
 ]]
-function GetUnholyRace(Race)
+function M.GetUnholyRace(Race)
     if (Race == 10) then return true;     -- mummy
     elseif (Race == 11) then return true; -- skeleton
     elseif (Race == 12) then return true; -- beholder
@@ -304,7 +303,7 @@ end
     @param  int race ID
     @return int weakness modifier
 ]]
-function GetWeaknessCopper( Race )
+function M.GetWeaknessCopper( Race )
     if ( Race == 0 )      then return 13; --human
     elseif ( Race == 1 )  then return 13; --dwarf
     elseif ( Race == 2 )  then return 13; --halfling
@@ -349,7 +348,7 @@ end
     @param  int race ID
     @return int weakness modifier
 ]]
-function GetWeaknessSilver( Race )
+function M.GetWeaknessSilver( Race )
     if ( Race == 0 )      then return -3; --human
     elseif ( Race == 1 )  then return -3; --dwarf
     elseif ( Race == 2 )  then return -3; --halfling
@@ -389,7 +388,7 @@ end
     @param  int race ID
     @return int weakness modifier
 ]]
-function GetWeaknessGold( Race )
+function M.GetWeaknessGold( Race )
     if ( Race == 4 )      then return 7 ; --orc
     elseif ( Race == 5 )  then return 13; --lizard
     elseif ( Race == 6 )  then return 7 ; --gnome
@@ -437,7 +436,7 @@ end
     @param  int race ID
     @return int weakness modifier
 ]]
-function GetWeaknessMerinium( Race )
+function M.GetWeaknessMerinium( Race )
     if ( Race == 0 )      then return 7 ; --human
     elseif ( Race == 1 )  then return 7 ; --dwarf
     elseif ( Race == 2 )  then return 7 ; --halfling
@@ -474,7 +473,7 @@ end
     @param  int ID of the Item
     @return boolean plated weapon or not
 ]]
-function IsPlatedWeapon( ItemID )
+function M.IsPlatedWeapon( ItemID )
     return ( IsMeriniumPlatedWeapon( ItemID ) or IsGoldPlatedWeapon( ItemID ) or IsSilverPlatedWeapon( ItemID ) or IsCopperPlatedWeapon( ItemID ) );
 end
 
@@ -484,7 +483,7 @@ end
     @param  int ID of the Item
     @return boolean merinium plated weapon or not
 ]]
-function IsMeriniumPlatedWeapon( ItemID )
+function M.IsMeriniumPlatedWeapon( ItemID )
     return (
         ItemID == 444 or
         ItemID == 296 or
@@ -498,7 +497,7 @@ end
     @param  int ID of the Item
     @return boolean gold plated weapon or not
 ]]
-function IsGoldPlatedWeapon( ItemID )
+function M.IsGoldPlatedWeapon( ItemID )
     return (
         ItemID == 297 or
         ItemID == 124 or
@@ -512,7 +511,7 @@ end
     @param  int ID of the Item
     @return boolean silver plated weapon or not
 ]]
-function IsSilverPlatedWeapon( ItemID )
+function M.IsSilverPlatedWeapon( ItemID )
     return (
         ItemID == 389 or
         ItemID == 229 or
@@ -526,7 +525,7 @@ end
     @param  int ID of the Item
     @return boolean copper plated weapon or not
 ]]
-function IsCopperPlatedWeapon( ItemID )
+function M.IsCopperPlatedWeapon( ItemID )
     return (
         ItemID == 398 or
         ItemID == 192 or
@@ -540,7 +539,7 @@ end
     @param  int ID of the Item
     @return int ID of the base item in case its a plated weapon or 0
 ]]
-function GetPlatedBaseWeapon( ItemID )
+function M.GetPlatedBaseWeapon( ItemID )
     if ( ItemID == 444 or ItemID == 398 or ItemID == 389 or ItemID == 297 ) then
         return 190;
     elseif ( ItemID == 192 or ItemID == 229 or ItemID == 296 or ItemID == 124 ) then
@@ -557,6 +556,8 @@ end
     @param  int ID of the Item
     @return boolean training weapon or not
 ]]
-function IsTrainingWeapon( ItemID )
+function M.IsTrainingWeapon( ItemID )
     return ( ItemID == 445 );
 end
+
+return M

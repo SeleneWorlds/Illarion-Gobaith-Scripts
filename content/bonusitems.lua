@@ -1,13 +1,20 @@
-module("content.bonusitems", package.seeall)
+local M = {
+    preTitle = nil,
+    postTitle = nil,
+    isinit = nil
+}
 
-function initBonus()
+function M.initBonus()
 
-    preTitle = {}; -- 1==German, 2==English
-    preTitle[1] = {};
-    preTitle[2] = {};
-    postTitle = {};
-    postTitle[1] = {};
-    postTitle[2] = {};
+    M.preTitle = {}; -- 1==German, 2==English
+    M.preTitle[1] = {};
+    M.preTitle[2] = {};
+    M.postTitle = {};
+    M.postTitle[1] = {};
+    M.postTitle[2] = {};
+
+    local preTitle = M.preTitle;
+    local postTitle = M.postTitle;
 
     preTitle[1][ 1] = "Novizen-";   postTitle[1][ 1] = "Usharas";   preTitle[2][ 1] = "Novice-";  postTitle[2][ 1] = "of Ushara";
     preTitle[1][ 2] = "Novizen-";   postTitle[1][ 2] = "Br�gons";   preTitle[2][ 2] = "Novice-";  postTitle[2][ 2] = "of Br�gon";
@@ -77,7 +84,7 @@ function initBonus()
 end                                              
                                                  
                                                  
-function setBonusAndTitle(item, bonus1, value1, bonus2, value2, title)
+function M.setBonusAndTitle(item, bonus1, value1, bonus2, value2, title)
     if( (bonus1 > 63) or (bonus1 < 0) or (bonus2 > 63) or (bonus2 < 0) or
             (title > 63) or (title < 0) or (value1 > 64) or (value1 < -63)
             or (value2 > 64) or (value2 < -63) ) then
@@ -89,7 +96,7 @@ function setBonusAndTitle(item, bonus1, value1, bonus2, value2, title)
     return true;
 end                                              
                                                  
-function getBonusFromItem(item, bonustype)             
+function M.getBonusFromItem(item, bonustype)             
     local data = item.data;
     local i;
     for i=1,2 do
@@ -102,27 +109,29 @@ function getBonusFromItem(item, bonustype)
     end;
 end                      
 
-function getBonusFromUser(user, bonustype)
+function M.getBonusFromUser(user, bonustype)
     local bonus = 0;
     local i;
     local item;
     for i=0,11 do    -- iterate through equipped items
         item = user:getItemAt(i);
         if( item.id ~= 0 ) then
-            bonus = bonus + getBonusFromItem( item, bonustype );
+            bonus = bonus + M.getBonusFromItem( item, bonustype );
         end;
     end;
     return bonus;
 end                      
                                                  
-function getNameWithTitle(item, lang, gender)            
+function M.getNameWithTitle(item, lang, gender)            
     local i = math.floor( item.data / 16777216 ); -- 2^30 / 64
     if( i == 0 ) then return world:getItemName(item.id, lang); end;
-    if( isinit == nil) then                      
-        initBonus();                             
-        isinit = 1;                              
+    if( M.isinit == nil) then                      
+        M.initBonus();                             
+        M.isinit = 1;                              
     end;                                     
-    local name = preTitle[lang+1][i];
+    local name = M.preTitle[lang+1][i];
     if( (i >= 11) and (i <= 15) ) then name = name..gender.." "; end;
-    return name..world:getItemName(item.id, lang).." "..postTitle[lang+1][i];
+    return name..world:getItemName(item.id, lang).." "..M.postTitle[lang+1][i];
 end                                              
+
+return M

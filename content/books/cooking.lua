@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.cooking", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "Tanner and Dyer"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("common language",toData);
 
     base.books.AddEnglishBookText("\n \n Basic Cooking and Recipes",0,0,toData);
@@ -35,6 +35,8 @@ function loadBook(toData)
     base.books.AddGermanBookText("~W�rstchen~\n Zutaten\n 1 roher Schinken",3051,30,toData);
     base.books.AddGermanBookText("Zubereitung:\n Nehmt den rohen Schinken und gebt ihn in Naturd�rme. Ein Schinken f�llt zwei W�rste. Kocht sie bis sie gar sind. Diese k�nnen f�r komplexere Speisen verwendet oder einfach so gegessen werden.",307,30,toData);
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Das Grundlegende Kochen und die Rezepte\"",toData);

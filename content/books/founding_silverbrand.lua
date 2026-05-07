@@ -1,10 +1,10 @@
 require("base.books")
 
-module("content.books.founding_silverbrand", package.seeall)
+local M = {}
 
 -- This file contains the book data for the book "The founding of Silverbrand"
 
-function loadBook(toData)
+function M.loadBook(toData)
     base.books.AddLanguage("dwarf language",toData);
     
     base.books.AddEnglishBookText( "Within this book you will find the written speech of our great King, founding father of Silverbrand, on behalf of our town.", 0, 0,toData);
@@ -53,6 +53,8 @@ function loadBook(toData)
     base.books.AddGermanBookText( "Wer den Gr�nderv�tern diesen Respekt nicht entgegenbringen will, sollte sich noch bevor er seinen Eid ablegt entscheiden und sich eine andere Heimat suchen.", 0, 0,toData);
     base.books.AddGermanBookText( "Tialdin, K�nig von Silberbrand", 0, 0,toData);  
 end;
+
+return M
 
 function loadTitle(toData)
     base.books.AddGermanBookTitle("Buch mit dem Titel \"Von der Gr�ndung Silverbrands\"",toData);

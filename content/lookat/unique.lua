@@ -1,4 +1,7 @@
-module("content.lookat.unique", package.seeall)
+local M = {
+    Items = nil,
+    ItemClass = nil
+}
 
 -- Gibt den Suffix f�r das Item zur�ck
 --
@@ -7,7 +10,7 @@ module("content.lookat.unique", package.seeall)
 -- @param: integer - Art-ID des ersten Steins
 -- @param: integer - St�rkestufe des ersten Steins
 -- @return: text - Suffix-String
-function getSuffix (User,Class,gem,Str)
+function M.getSuffix (User,Class,gem,Str)
 local SUFFIX_DE = {"","","","","","",""};
 local SUFFIX_EN = {"","","","","","",""};
 	-- ** Suffix f�r Waffen **
@@ -149,7 +152,7 @@ end
 -- @param: integer - Art-ID des zweiten Steins
 -- @param: integer - St�rkestufe des zweiten Steins
 -- @return: text - Praefix-String
-function getPraefix (User,Class,gem,Str)
+function M.getPraefix (User,Class,gem,Str)
 local PRAEFIX_DE = {"","","","","","",""};
 local PRAEFIX_EN = {"","","","","","",""};
     -- ** Pr�fix f�r Waffen **
@@ -257,7 +260,7 @@ end
 -- @param: CharacterStruct - Der Char, der sich das Item ansieht
 -- @param: integer - Class-ID des betrachteten Items
 -- @return: text - String der Item-Klasse
-function writeClass(User,Class)
+function M.writeClass(User,Class)
     GEM_CLASS_DE={ "die Waffe", "die Waffe", "die R�stung", "den Schild", "den Stab", "das Werkzeug", "das Schmuckst�ck" }
     GEM_CLASS_EN={ "weapon", "weapon", "armor", "shield", "wand", "tool", "jewel" }
     if User:getPlayerLanguage() == 0 then
@@ -273,7 +276,7 @@ end
 -- @param: CharacterStruct - Der Char, der sich das Item ansieht
 -- @param: integer - 2te (bzw 4te beim 2ten Stein) Stelle des Datawertes des betrachteten Items
 -- @return: text - Name des eingesetzten Steins
-function writeGem(User, gem)
+function M.writeGem(User, gem)
     GEM_NAME_DE={ "Diamant", "Smaragd", "Rubin","Schwarzstein", "Blaustein", "Amethyst", "Topas" }
     GEM_NAME_EN={ "diamond", "emerald", "ruby","blackstone", "bluestone", "amethyst", "topas" }
     if User:getPlayerLanguage() == 0 then
@@ -289,7 +292,7 @@ end
 -- @param: CharacterStruct - Der Char, der sich das Item ansieht
 -- @param: integer - 1te (bzw 3te beim 2ten Stein) Stelle des Datawertes des betrachteten Items
 -- @return: text - Name der betreffenden St�rkestufe des Steins
-function writeStr(User, Str)
+function M.writeStr(User, Str)
     GEM_STR_DE= { "latent", "bedingt", "leicht", "m��ig", "moderat", "bemerkenswert", "stark", "sehr stark", "unglaublich", "einzigartig" }
     GEM_STR_EN= { "latent", "limited", "slight", "mediocre", "moderate", "notable", "strong", "very strong", "unbelievable", "unique" }
     if User:getPlayerLanguage() == 0 then
@@ -302,30 +305,31 @@ end
 
 -- Vorl�ufige Einteilung der Itemid's f�r das Edelsteinsystem
 --
-function itemList()
-    if ItemClass ~= nil then
+function M.itemList()
+    if M.ItemClass ~= nil then
         return false;
     end
-    Items={};
-    ItemClass={};
+    M.Items={};
+    M.ItemClass={};
     -- weapons
-    Items[1]={1,25,27,77,78,84,85,88,91,98,123,124,188,189,190,192,204,205,206,207,226,229,230,231,296,297,383,389,398,444,445,2626,2627,2629,2635,2636,2640,2642,2650,2652,2654,2655,2656,2658,2660,2662,2663,2664,2668,2671,2672,2673,2674,2675,2693,2694,2701,2704,2705,2707,2711,2723,2725,2728,2731,2737,2740,2742,2743,2757,2775,2776,2777,2778,2788,3035,3036};
+    M.Items[1]={1,25,27,77,78,84,85,88,91,98,123,124,188,189,190,192,204,205,206,207,226,229,230,231,296,297,383,389,398,444,445,2626,2627,2629,2635,2636,2640,2642,2650,2652,2654,2655,2656,2658,2660,2662,2663,2664,2668,2671,2672,2673,2674,2675,2693,2694,2701,2704,2705,2707,2711,2723,2725,2728,2731,2737,2740,2742,2743,2757,2775,2776,2777,2778,2788,3035,3036};
     -- bows
-    Items[2]={65,89,293,294,2645,2646,2685,2689,2708,2714,2718,2727,2739,2780};
+    M.Items[2]={65,89,293,294,2645,2646,2685,2689,2708,2714,2718,2727,2739,2780};
     -- armor
-    Items[3]={4,101,362,363,364,365,2357,2359,2360,2363,2364,2365,2367,2369,2389,2390,2393,2395,2399,2400,2402,2403,2407,2445,2447,2448};
+    M.Items[3]={4,101,362,363,364,365,2357,2359,2360,2363,2364,2365,2367,2369,2389,2390,2393,2395,2399,2400,2402,2403,2407,2445,2447,2448};
     -- shields
-    Items[4]={17,18,19,20,95,96,186,916,917,2284,2388,2439};
+    M.Items[4]={17,18,19,20,95,96,186,916,917,2284,2388,2439};
     -- wands
-    Items[5]={39,40,57,76,208,209,323,2782,2783,2784,2785};
+    M.Items[5]={39,40,57,76,208,209,323,2782,2783,2784,2785};
     -- tools
-    Items[6]={6,9,23,24,47,58,72,74,118,121,122,126,227,258,271,311,312,734,737,2495,2659,2697,2709,2710,2715,2751,2752,2763,2781,2946};
+    M.Items[6]={6,9,23,24,47,58,72,74,118,121,122,126,227,258,271,311,312,734,737,2495,2659,2697,2709,2710,2715,2751,2752,2763,2781,2946};
     -- jewels
-    Items[7]={68,235,277,278,279,280,281,282};
-    for class, ItemList in pairs(Items) do
+    M.Items[7]={68,235,277,278,279,280,281,282};
+    for class, ItemList in pairs(M.Items) do
         for i, itemID in pairs(ItemList) do
-            ItemClass[itemID]=class
+            M.ItemClass[itemID]=class
         end
     end
 end
 
+return M

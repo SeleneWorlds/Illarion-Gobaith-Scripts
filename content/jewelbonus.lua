@@ -1,6 +1,6 @@
-module("content.jewelbonus", package.seeall)
+local M = {}
 
-function getBonus(Item)                 -- returns gem#, strength of this gem (inserted)
+function M.getBonus(Item)                 -- returns gem#, strength of this gem (inserted)
     itData=Item.data;
     if itData>9 and itData<100 then     -- this is an item with 1 gem inserted!
         modStr=math.mod(itData,10)+1;   -- how much modification?
@@ -10,11 +10,11 @@ function getBonus(Item)                 -- returns gem#, strength of this gem (i
     return 0,0
 end
 
-function getModifier(Str)
+function M.getModifier(Str)
     return math.ceil(Str/3);
 end
 
-function addBonus(User,gem,str)
+function M.addBonus(User,gem,str)
     --User:inform("in addbonus mit gem="..gem.." str= "..str);
     if gem==1 then
         User:increaseAttrib("intelligence",str);
@@ -43,7 +43,7 @@ function addBonus(User,gem,str)
     --User:inform("durch mit addbonus");
 end
 
-function intelligentRemove(User,attribute,modifier)
+function M.intelligentRemove(User,attribute,modifier)
     --User:inform("intelligent remove now");
     att=User:increaseAttrib(attribute,0);
     found,gemBonus = User.effects:find(50);
@@ -62,31 +62,31 @@ function intelligentRemove(User,attribute,modifier)
     end
 end
 
-function removeBonus(User,gem, str)
+function M.removeBonus(User,gem, str)
     --User:inform("remove bonus now");
     if gem==1 then
-        intelligentRemove(User,"intelligence",str);
+        M.intelligentRemove(User,"intelligence",str);
     elseif gem==2 then
-        intelligentRemove(User,"perception",str);
+        M.intelligentRemove(User,"perception",str);
     elseif gem==3 then
-        intelligentRemove(User,"dexterity",str);
+        M.intelligentRemove(User,"dexterity",str);
     elseif gem==4 then
-        intelligentRemove(User,"strength",str);
+        M.intelligentRemove(User,"strength",str);
     elseif gem==5 then
-        intelligentRemove(User,"constitution",str);
+        M.intelligentRemove(User,"constitution",str);
     elseif gem==6 then
-        intelligentRemove(User,"agility",str);
+        M.intelligentRemove(User,"agility",str);
     elseif gem==7 then
-        intelligentRemove(User,"willpower",str);
-        intelligentRemove(User,"essence",str);
+        M.intelligentRemove(User,"willpower",str);
+        M.intelligentRemove(User,"essence",str);
     end
 end
 
-function giveBonus(User, Item)          -- give the LTE and write values into it
-    insGem,modStr=getBonus(Item);       -- read out gem-type and strength
+function M.giveBonus(User, Item)          -- give the LTE and write values into it
+    insGem,modStr=M.getBonus(Item);       -- read out gem-type and strength
     movedTo=Item.itempos                -- left or right hand?
     if insGem~=0 then                   -- is there ANY effect?
-        modifier=getModifier(modStr);   -- modify by...
+        modifier=M.getModifier(modStr);   -- modify by...
         found,gemBonus = User.effects:find(50);
         if not found then               -- already has a bonus from another item? no
             gemBonus=User.effects:addEffect(CLongTimeEffect(50,0));    -- give effect
@@ -97,32 +97,34 @@ function giveBonus(User, Item)          -- give the LTE and write values into it
             --User:inform("left");
             gemBonus:addValue("hand1gem",insGem);   -- write into LTE
             gemBonus:addValue("hand1mod",modifier);
-            addBonus(User,insGem,modifier);         -- give actual attribs to user
+            M.addBonus(User,insGem,modifier);         -- give actual attribs to user
             --User:inform("done left");
         else                             -- other hand
             --User:inform("right");
             gemBonus:addValue("hand2gem",insGem);
             gemBonus:addValue("hand2mod",modifier);
-            addBonus(User,insGem,modifier);
+            M.addBonus(User,insGem,modifier);
             --User:inform("done right");
         end
     end
 end
 
-function takeBonus(User, Item, insGem, modStr)  -- take bonus away
+function M.takeBonus(User, Item, insGem, modStr)  -- take bonus away
     finger=Item.itempos;
-    modStr=getModifier(modStr);
+    modStr=M.getModifier(modStr);
     found,gemBonus = User.effects:find(50);     -- get effect
     --User:inform("take bonus now");
     if found then
         if finger==7 then                       -- remove values from lte
-            removeBonus(User,insGem,modStr);        -- remove bonus
+            M.removeBonus(User,insGem,modStr);        -- remove bonus
             gemBonus:removeValue("hand1gem");
             gemBonus:removeValue("hand1str");
         else
             gemBonus:removeValue("hand2gem");
             gemBonus:removeValue("hand2str");
         end
-        removeBonus(User,insGem,modStr);        -- remove bonus
+        M.removeBonus(User,insGem,modStr);        -- remove bonus
     end
 end
+
+return M
