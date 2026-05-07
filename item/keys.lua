@@ -38,35 +38,6 @@ function UseItem(User,SourceItem,TargetItem,counter,param)
     end
 end
 
-function UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
-	if prisonPosition == nil then
-		prisonPosition = {};
-		prisonPosition[1] = position(109,552,200); -- cadomyr prison
-		prisonPosition[2] = position(0,0,200); --runewick prison
-		prisonPosition[3] = position(370,217,200); --galmair prison
-	end  
-	
-	if SourceItem.data>0 and SourceItem.data<=3 and User:isInRangeToPosition(prisonPosition[SourceItem.data],3) then 
-          User:talkLanguage(CCharacter.say,CPlayer.german,"#me verurteilt "..TargetChar.name.." zu "..(Counter*10).." Ressourcen."); 
-          User:talkLanguage(CCharacter.say,CPlayer.english,"#me sentences "..TargetChar.name.." to "..(Counter*10).." resources."); 
-          TargetChar:setQuestProgress(25,(Counter*10)); 
-          TargetChar:setQuestProgress(26, SourceItem.data); --sets the town the char got arrested from as imprisoner id
-          
-          --[[filepoint,errmsg,errno=io.open("/home/SOMEWHERE/SOMETHING","w+"); 
-          filepoint:write(os.date()..":"..user.name.." sentenced "..character.." to "..counter*10.."resources."); 
-          filepoint:close();  ]]--
-          world:gfx(41,TargetChar.pos); 
-          world:makeSound(1,TargetChar.pos); 
-          TargetChar:warp( position(-492,-484,-40) ); 
-          world:gfx(41,TargetChar.pos); 
-     else 
-          base.common.InformNLS( User, "Du scheiterst dabei, den Gauner zu verurteilen. Dies ist nur mit gefesselten Strolchen im �rtlichen Gericht m�glich.", "You failed to sentence the thug. This works only with tied up rogues at the local court."); 
-     end
-     
-end
-
-
-
 function LookAtItem(User,Item)
     local DataVal=Item.data;
     if (specialnames==nil) then
@@ -100,10 +71,6 @@ function LookAtItem(User,Item)
 		specialnames[667]={"Schl�ssel des Feuers","Key of fire"};
 		specialnames[668]={"Schl�ssel des Windes","Key of air"};
 		specialnames[669]={"Schl�ssel des Wassers","Key of water"};
-		
-		specialnames[1]={"Gef�ngnisschl�ssel von Cadomyr","Prison key of Cadomyr"};
-		specialnames[2]={"Gef�ngnisschl�ssel von Runewick","Prison key of Runewick"};
-		specialnames[3]={"Gef�ngnisschl�ssel von Galmair","Prison key of Galmair"};
     end
     local lang=User:getPlayerLanguage();
     if (specialnames[DataVal]~=nil) then

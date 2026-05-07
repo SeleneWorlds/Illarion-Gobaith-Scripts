@@ -319,28 +319,6 @@ function CharacterOnField( User )
                 dest = position(405,207,0);
             end;
 
-			--teleporter in the forced labour camp
-			if User.pos == (position(-495, -484, -40)) then
-			    if User:getQuestProgress(25)<1 then --user has finished quest
-					local ItemListe = {49,234,2536,22,21,2763};    --delete ores,coal, pickaxe,gold and bread
-					for i, Item in pairs(ItemListe) do
-						amount = User:countItem(ItemListe[i]);
-	            		User:eraseItem( ItemListe[i], amount);
-					end --items deleted;
-					local Imprisoner = User:getQuestProgress(26); --looks up which town brought him in prison
-					if Imprisoner == 1 then dest = position(-500,-484,-40); --cadomyr
-					elseif Imprisoner == 2 then dest = position(-496,-488,-40); --runewick
-					elseif Imprisoner == 3 then dest = position(-490,-484,-40); --galmair
-					else dest = position(-495, -484, -40); end --no town member teleport him somewhere outside
-					SourceItem.wear = 255;
-					world:changeItem(SourceItem);
-				else
-	                base.common.InformNLS( User,
-	                "Du hast deine Strafe noch nicht abgearbeitet. Bring Percy was er verlangt, um freizukommen..",
-	                "You still haven't completed your punishment. Bring Percy what he requests, to get released." );
-	                return;
-				end
-			end
 			-- Quest Special
             allOK = true;
             if (allOK) then
