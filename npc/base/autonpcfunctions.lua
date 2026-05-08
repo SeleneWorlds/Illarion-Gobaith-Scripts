@@ -1,4 +1,35 @@
 local M = {}
+local npcStates = {}
+
+local function currentState()
+    local npcKey = thisNPC.id or thisNPC
+    local state = npcStates[npcKey]
+    if not state then
+        state = {}
+        npcStates[npcKey] = state
+    end
+    return state
+end
+
+local function resetState(state)
+    state.TraderTrig = {}
+    state.TraderText = {}
+    state.TraderInform = {}
+    state.CycleText = {}
+    state.Conditions = {}
+    state.Consequences = {}
+    state.NPCStatus = {}
+    state.speakCount = 1
+    state.speakTime = nil
+    state.walkCount = 0
+    state.verwirrt = false
+    state.radius = 0
+    state.saidNumber = 0
+    state.centerPos = position(thisNPC.pos.x, thisNPC.pos.y, thisNPC.pos.z)
+    state.idle = true
+    state.currentTalk = 0
+    state.questId = rawget(_G, "QuestID")
+end
 
 ---------------------------------------------------------------------------
 -- Core Script for Simple npc script language
@@ -27,22 +58,8 @@ end
 - Preparing the arrays for talk npcs
 ]]
 function M.InitTalkLists()
-    TraderTrig   = { };
-    TraderText   = { };
-	TraderInform = { };
-    CycleText    = { };
-    Conditions   = { };
-    Consequences = { };
-    NPCStatus    = { };
-    speakCount   = 1;
-    walkCount    = 0;
-    verwirrt     = false;
-    radius       = 0;
-    saidNumber   = 0;
-	state        = 0;
-	centerPos    = position(thisNPC.pos.x,thisNPC.pos.y,thisNPC.pos.z);
-    idle         = true;
-    currentTalk  = 0;
+    local state = currentState()
+    resetState(state)
     thisNPC:increaseSkill(1,"common language",100);
 
     TraderFirst  = true;
@@ -56,7 +73,8 @@ end
   randomly from time to time
 ]]
 function M.AddCycleText(gText,eText)
-    table.insert(CycleText,{gText,eText});
+    local state = currentState()
+    table.insert(state.CycleText,{gText,eText});
 end
 
 --[[
@@ -67,7 +85,8 @@ end
 ]]
 function M.increaseLangSkill(LangList)
     for i=1,#LangList do
-        setLang=true;
+        local setLang = true;
+        local LangSkill
         if (LangList[i]==0) then LangSkill="common language";
         elseif (LangList[i]==1) then LangSkill="human language";
         elseif (LangList[i]==2) then LangSkill="dwarf language";
@@ -110,11 +129,12 @@ end
 - Makes the npc walking around automatically
 ]]
 function M.SetRadius( value )
+    local state = currentState()
     value = value * 1;
     if ( value > 0 ) then
-        radius = value;
+        state.radius = value;
     else
-        radius = 0;
+        state.radius = 0;
     end
 end
 
@@ -126,10 +146,11 @@ end
   NPC Triggers
 ]]
 function M.AddTraderTrigger(Trigger,Answer)
+    local state = currentState()
     Trigger = string.gsub(Trigger,"%%NUMBER","(%%d+)");
     Trigger = string.gsub(string.lower( Trigger )," ",".+");
-    table.insert(TraderTrig,{Trigger});
-    table.insert(TraderText,{Answer});
+    table.insert(state.TraderTrig,{Trigger});
+    table.insert(state.TraderText,{Answer});
 end
 
 --[[
@@ -137,7 +158,8 @@ end
 - @param Answer string add a Additional Answer to the last added trigger
 ]]
 function M.AddAdditionalText(Answer)
-    table.insert(TraderText[#TraderText],Answer)
+    local state = currentState()
+    table.insert(state.TraderText[#state.TraderText],Answer)
 end
 
 --[[
@@ -145,9 +167,10 @@ end
 - @param Trigger string add a Additional Patters to the last added trigger
 ]]
 function M.AddAdditionalTrigger(Trigger)
+    local state = currentState()
     Trigger = string.gsub(Trigger,"%%NUMBER","(%%d+)");
     Trigger = string.gsub(string.lower( Trigger )," ",".+");
-    table.insert(TraderTrig[#TraderTrig],Trigger)
+    table.insert(state.TraderTrig[#state.TraderTrig],Trigger)
 end
 
 --[[
@@ -158,11 +181,12 @@ end
 - @param int compare value
 ]]
 function M.AddCondition( ... )
-    offset = # TraderTrig ;
-    if not Conditions[offset] then
-        Conditions[offset] = { };
+    local state = currentState()
+    local offset = #state.TraderTrig;
+    if not state.Conditions[offset] then
+        state.Conditions[offset] = { };
     end
-    table.insert( Conditions[offset], arg );
+    table.insert(state.Conditions[offset], { ... });
 end
 
 --[[
@@ -172,11 +196,12 @@ end
 - @param int new value
 ]]
 function M.AddConsequence( ... )
-    offset = # TraderTrig ;
-    if not Consequences[offset] then
-        Consequences[offset] = { };
+    local state = currentState()
+    local offset = #state.TraderTrig;
+    if not state.Consequences[offset] then
+        state.Consequences[offset] = { };
     end
-    table.insert( Consequences[offset], arg );
+    table.insert(state.Consequences[offset], { ... });
 end
 
 --[[
@@ -186,14 +211,12 @@ end
 - makes the npc reacting on a message
 ]]
 function M.TellSmallTalk(message,Char)
-    --User = Char; -- global User for external function calls
-    User = getCharForId(Char.id);
+    local state = currentState()
+    local User = getCharForId(Char.id);
 	local i=1;
 
     message = string.lower(message);
-	state = NPCStatus[User.id];
-
-    length = # TraderTrig ;
+    local length = #state.TraderTrig;
     while not M.CheckForTrigger(message,User,i) do
         i = i + 1;
         if ( i > length ) then
@@ -210,22 +233,22 @@ function M.TellSmallTalk(message,Char)
             filepoint:close();
         end
     end--]]
-    if (#TraderText[i]>1) then
-        TextSel=math.random(1,#TraderText[i]);
+    local TextSel
+    if (#state.TraderText[i]>1) then
+        TextSel=math.random(1,#state.TraderText[i]);
     else
         TextSel=1;
     end
     M.PerformConsequences( User, i );
-    answer = string.gsub(TraderText[i][TextSel],"%%CHARNAME",User.name);
+    local answer = string.gsub(state.TraderText[i][TextSel],"%%CHARNAME",User.name);
     answer = string.gsub(answer,"%%NPCNAME",thisNPC.name);
-    if QuestID~=nil then answer = string.gsub(answer,"%%QUESTSTATUS",User:getQuestProgress(QuestID)); end
-    if not (saidNumber==nil) then
-        answer = string.gsub(answer,"%%NUMBER",saidNumber);
+    if state.questId~=nil then answer = string.gsub(answer,"%%QUESTSTATUS",User:getQuestProgress(state.questId)); end
+    if not (state.saidNumber==nil) then
+        answer = string.gsub(answer,"%%NUMBER",state.saidNumber);
     end;
-	state = NPCStatus[User.id];
     M.NPCTalking( thisNPC, answer );
 	M.CharInform( User );
-	TraderInform = nil;
+	state.TraderInform = {};
 end
 
 --[[
@@ -236,11 +259,12 @@ end
 - @return boolean returns true of a fitting Trigger was found, else false
 ]]
 function M.CheckForTrigger(message,User,ListIndex)
-    for i,pattern in pairs(TraderTrig[ListIndex]) do
-		a,b= string.find( message, pattern );
-		_DummyA,_DummyB,saidNumber = string.find(message, "(%d+)"); --a,b,saidNumber = string.find( message, pattern );
+    local state = currentState()
+    for _,pattern in pairs(state.TraderTrig[ListIndex]) do
+		local a = string.find( message, pattern );
+		_,_,state.saidNumber = string.find(message, "(%d+)");
         if a and M.CheckConditions( User, ListIndex ) then
-            saidNumber = ( saidNumber == nil and 0 or saidNumber*1 );
+            state.saidNumber = ( state.saidNumber == nil and 0 or state.saidNumber*1 );
             return true;
         end
     end
@@ -254,7 +278,8 @@ end
 - @return boolean true for conditions fullfilled, else false
 ]]
 function M.CheckConditions( User, ListIndex )
-    trigger_conditions = Conditions[ ListIndex ];
+    local state = currentState()
+    local trigger_conditions = state.Conditions[ListIndex];
     if ( trigger_conditions == nil ) then
         return true;
     elseif ( # trigger_conditions  == 0 ) then
@@ -276,11 +301,12 @@ end
 - Checks a single condietion
 ]]
 function M.CheckCondition( User, condition )
+    local state = currentState()
     if ( condition[1] == "state" ) then
-        if ( NPCStatus[User.id] == nil ) then
-            NPCStatus[User.id] = 0;
+        if ( state.NPCStatus[User.id] == nil ) then
+            state.NPCStatus[User.id] = 0;
         end
-        return M.CompareValues( NPCStatus[User.id],
+        return M.CompareValues( state.NPCStatus[User.id],
                               M.getNumber( condition[3] ),
                               condition[2] )
     elseif ( condition[1] == "skill" ) then
@@ -303,10 +329,10 @@ function M.CheckCondition( User, condition )
         return M.CompareItem( User, condition[2], condition[3],
                             condition[4], M.getNumber( condition[5] ) );
     elseif ( condition[1] == "qpg" ) then
-        if ( QuestID == nil ) then
+        if ( state.questId == nil ) then
             return false;
         end
-        if not M.CompareValues( User:getQuestProgress( QuestID ),
+        if not M.CompareValues( User:getQuestProgress( state.questId ),
                               M.getNumber(condition[3]), condition[2] ) then
             return false;
         end
@@ -334,20 +360,20 @@ function M.CheckCondition( User, condition )
             return ( User:increaseAttrib( "sex", 0 ) == 1 );
         end
     elseif ( condition[1] == "number" ) then
-        if not M.CompareValues( tonumber(saidNumber), tonumber(condition[3]), condition[2] ) then
+        if not M.CompareValues( tonumber(state.saidNumber), tonumber(condition[3]), condition[2] ) then
             return false;
         end
     elseif ( condition[1] == "idlestate" ) then
         if ( condition[2] == "idle" ) then
-            if ( radius == 0 ) or ( currentTalk == User.id ) then
+            if ( state.radius == 0 ) or ( state.currentTalk == User.id ) then
                 return true;
             end
-            return idle;
+            return state.idle;
         elseif ( condition[2] == "busy" ) then
-            if ( radius == 0 ) or ( currentTalk == User.id ) then
+            if ( state.radius == 0 ) or ( state.currentTalk == User.id ) then
                 return false;
             end
-            return not idle;
+            return not state.idle;
         end
 	end
     return true;
@@ -426,26 +452,27 @@ end
 - @param ListIndex integer the position in the list of conequences
 ]]
 function M.PerformConsequences( User, ListIndex )
-    trigger_consequences = Consequences[ ListIndex ];
+    local state = currentState()
+    local trigger_consequences = state.Consequences[ListIndex];
     if ( trigger_consequences == nil ) then
         return true;
     elseif ( # trigger_consequences  == 0 ) then
         return true;
     end
-	TraderInform = {};
+	state.TraderInform = {};
     for i, consequence in pairs(trigger_consequences) do
         if ( consequence[1] == "state" ) then
             if ( consequence[2] == "=" ) then
-                NPCStatus[User.id] = M.getNumber( consequence[3] );
+                state.NPCStatus[User.id] = M.getNumber( consequence[3] );
             elseif ( consequence[2] == "+" ) then
-                NPCStatus[User.id] = NPCStatus[User.id] +
+                state.NPCStatus[User.id] = state.NPCStatus[User.id] +
                                      M.getNumber( consequence[3] );
             elseif ( consequence[2] == "-" ) then
-                NPCStatus[User.id] = NPCStatus[User.id] -
+                state.NPCStatus[User.id] = state.NPCStatus[User.id] -
                                      M.getNumber( consequence[3] );
             end
         elseif ( consequence[1] == "skill" ) then
-            GroupID = M.translateSkillgroup( consequence[2] );
+            local GroupID = M.translateSkillgroup( consequence[2] );
             if ( consequence[4] == "+" ) then
                 User:increaseSkill( GroupID, consequence[3],
                                     math.abs( consequence[5] ) );
@@ -465,7 +492,7 @@ function M.PerformConsequences( User, ListIndex )
             elseif ( consequence[3] == "-" ) then
                 User:increaseAttrib( consequence[2], -consequence[4]);
             elseif ( consequence[3] == "=" ) then
-                formerValue = User:increaseAttrib(consequence[2],0);
+                local formerValue = User:increaseAttrib(consequence[2],0);
                 if ( formerValue == consequence[4] ) then
                     return
                 end
@@ -482,7 +509,7 @@ function M.PerformConsequences( User, ListIndex )
                 M.PayTheNPC( User, tonumber(M.getNumber( consequence[3] )) );
             end
         elseif ( consequence[1] == "item" ) then
-            notcreated = User:createItem( consequence[2],
+            local notcreated = User:createItem( consequence[2],
                                           M.getNumber( consequence[3] ),
                                           consequence[4], consequence[5] );
             if ( notcreated > 0 ) then
@@ -491,38 +518,39 @@ function M.PerformConsequences( User, ListIndex )
                                         consequence[5] );
             end
         elseif ( consequence[1] == "deleteitem" ) then
-			if consequence[3] == "all" then
-				consequence[3] = User:countItem(consequence[2]);
+            local amount = consequence[3]
+			if amount == "all" then
+				amount = User:countItem(consequence[2]);
 			end
-            User:eraseItem( consequence[2], M.getNumber( consequence[3] ) );
+            User:eraseItem( consequence[2], M.getNumber( amount ) );
         elseif ( consequence[1] == "qpg" ) then
-            if ( QuestID == nil ) then
+            if ( state.questId == nil ) then
                 return false;
             end
-            QuestState = User:getQuestProgress( QuestID );
+            local QuestState = User:getQuestProgress( state.questId );
             if ( consequence[2] == "=" ) then
-                User:setQuestProgress( QuestID,
+                User:setQuestProgress( state.questId,
                                        M.getNumber( consequence[3] ) );
             elseif ( consequence[2] == "+" ) then
-                newQuest = QuestState + M.getNumber( consequence[3] );
-                User:setQuestProgress( QuestID, newQuest );
+                local newQuest = QuestState + M.getNumber( consequence[3] );
+                User:setQuestProgress( state.questId, newQuest );
             elseif ( consequence[2] == "-" ) then
-                newQuest = QuestState - M.getNumber( consequence[3] );
-                User:setQuestProgress( QuestID, newQuest );
+                local newQuest = QuestState - M.getNumber( consequence[3] );
+                User:setQuestProgress( state.questId, newQuest );
             end
         elseif ( consequence[1] == "rune" ) then
             User:teachMagic( M.translateMagictype( consequence[2] ),
                              consequence[3] );
         elseif ( consequence[1] == "talk" ) then
             if ( consequence[2] == "begin" ) then
-                currentTalk = User.id;
-                idle=false;
+                state.currentTalk = User.id;
+                state.idle=false;
             elseif ( consequence[2] == "end" ) then
-                currentTalk = 0;
-                idle=true;
+                state.currentTalk = 0;
+                state.idle=true;
             end
         elseif ( consequence[1] == "inform" ) then
-			table.insert( TraderInform, consequence[2] );
+			table.insert( state.TraderInform, consequence[2] );
 		else
 			return;
 		end
@@ -582,14 +610,15 @@ end
                   param value.
 ]]
 function M.getNumber( value )
-if ( type( value ) == "function" ) then
-    return value( saidNumber ); -- DO NOT CALL value() anywhere else
-   elseif ( value == "%NUMBER" ) then
-       return saidNumber;
-   else
-       return tonumber(value);
-   end
-   return 0;
+    local state = currentState()
+    if ( type( value ) == "function" ) then
+        return value( state.saidNumber ); -- DO NOT CALL value() anywhere else
+    elseif ( value == "%NUMBER" ) then
+        return state.saidNumber;
+    else
+        return tonumber(value);
+    end
+    return 0;
 end
 
 --[[
@@ -598,67 +627,69 @@ end
 - Users the cycled text
 ]]--
 function M.SpeakerCycle()
-    if not speakCount then
+    local state = currentState()
+    if not state.speakCount then
         M.InitTalkLists()
+        state = currentState()
     end
 
-    speakCount = speakCount + 1;
-    if ( ( speakCount / 600 ) == math.floor( speakCount / 600 ) ) then
-        verwirrt=false;
+    state.speakCount = state.speakCount + 1;
+    if ( ( state.speakCount / 600 ) == math.floor( state.speakCount / 600 ) ) then
+        state.verwirrt=false;
     end
 
-    if ( # CycleText  > 0 ) then
-        if not speakTime then
-            speakTime=math.random(900,3000);
+    if ( #state.CycleText  > 0 ) then
+        if not state.speakTime then
+            state.speakTime=math.random(900,3000);
         end
 
-        if ( speakCount>=speakTime ) then
-            speakCount=1;
-            TextNr=math.random(1,#CycleText);
+        if ( state.speakCount >= state.speakTime ) then
+            state.speakCount=1;
+            local TextNr=math.random(1,#state.CycleText);
 
             thisNPC:talkLanguage(CCharacter.say,
                                  CPlayer.german,
-                                 CycleText[TextNr][1]);
+                                 state.CycleText[TextNr][1]);
             thisNPC:talkLanguage(CCharacter.say,
                                  CPlayer.english,
-                                 CycleText[TextNr][2]);
-            speakTime=math.random(900,3000);
+                                 state.CycleText[TextNr][2]);
+            state.speakTime=math.random(900,3000);
         end
     end
 
-    if ( speakCount > 3002 ) then
-        speakCount = 1;
+    if ( state.speakCount > 3002 ) then
+        state.speakCount = 1;
     end
 
-    if ( radius > 0 ) then
-        walkCount = walkCount + 1;
-        if ( walkCount >= 40 ) then
-            walkCount = 0;
-            if not idle then
-                playersInRange = world:getPlayersInRangeOf( thisNPC.pos,
+    if ( state.radius > 0 ) then
+        state.walkCount = state.walkCount + 1;
+        if ( state.walkCount >= 40 ) then
+            state.walkCount = 0;
+            if not state.idle then
+                local playersInRange = world:getPlayersInRangeOf( thisNPC.pos,
                                                             3 );
-                found = false;
+                local found = false;
                 for i, char in pairs(playersInRange) do
-                    if ( char.id == currentTalk ) then
+                    if ( char.id == state.currentTalk ) then
                         found = true;
                         M.TurnToPlayer( char );
                     end
                 end
 
                 if not found then
-                    idle = true;
+                    state.idle = true;
                 end
             end
 
-            if idle then
+            if state.idle then
                 if ( math.random( 20 ) <= 9 ) then
                     M.TurnAround();
-                    walkCount = 15;
+                    state.walkCount = 15;
                 else
                     if M.walk() then
-                        walkCount = 0;
+                        state.walkCount = 0;
                     else
-                        walkCount = 15;
+                        state.walkCount = 15;
                     end
                 end
             end
@@ -671,35 +702,36 @@ end
 - Makes the NPC Turning
 ]]
 function M.TurnAround()
-    faceTo = thisNPC:get_face_to();
-    possDirs = {};
+    local state = currentState()
+    local faceTo = thisNPC:get_face_to();
+    local possDirs = {};
     if ( faceTo == 0 ) or ( faceTo == 4 ) then
-        newPos1 = position( thisNPC.pos.x - 1, thisNPC.pos.y,
+        local newPos1 = position( thisNPC.pos.x - 1, thisNPC.pos.y,
                             thisNPC.pos.z );
-        newPos2 = position( thisNPC.pos.x + 1, thisNPC.pos.y,
+        local newPos2 = position( thisNPC.pos.x + 1, thisNPC.pos.y,
                             thisNPC.pos.z );
-        if ( M.Distance( newPos1, centerPos ) <= radius ) then
+        if ( M.Distance( newPos1, state.centerPos ) <= state.radius ) then
             table.insert( possDirs, 6 );
         end
-        if ( M.Distance( newPos2, centerPos ) <= radius ) then
+        if ( M.Distance( newPos2, state.centerPos ) <= state.radius ) then
             table.insert( possDirs, 2 );
         end
     else
-        newPos1 = position( thisNPC.pos.x, thisNPC.pos.y - 1,
+        local newPos1 = position( thisNPC.pos.x, thisNPC.pos.y - 1,
                             thisNPC.pos.z );
-        newPos2 = position( thisNPC.pos.x, thisNPC.pos.y + 1,
+        local newPos2 = position( thisNPC.pos.x, thisNPC.pos.y + 1,
                             thisNPC.pos.z );
-        if ( M.Distance( newPos1, centerPos ) <= radius ) then
+        if ( M.Distance( newPos1, state.centerPos ) <= state.radius ) then
             table.insert( possDirs, 0 );
         end
-        if ( M.Distance( newPos2, centerPos ) <= radius ) then
+        if ( M.Distance( newPos2, state.centerPos ) <= state.radius ) then
             table.insert( possDirs, 4 );
         end
     end
     if ( # possDirs  == 0 ) then
-        thisNPC:warp( centerPos );
+        thisNPC:warp( state.centerPos );
     else
-        selectedDir = math.random( # possDirs  );
+        local selectedDir = math.random( # possDirs  );
         thisNPC:setAttrib( "faceto", possDirs[ selectedDir ] );
     end
 end
@@ -709,7 +741,9 @@ end
 - makes the Character walking around. But not out of range
 ]]
 function M.walk()
-    faceTo = thisNPC:get_face_to();
+    local state = currentState()
+    local faceTo = thisNPC:get_face_to();
+    local newPos
     if ( faceTo == 0 ) then
         newPos = position( thisNPC.pos.x, thisNPC.pos.y - 1,
                            thisNPC.pos.z );
@@ -723,7 +757,7 @@ function M.walk()
         newPos = position( thisNPC.pos.x - 1, thisNPC.pos.y,
                            thisNPC.pos.z );
     end
-    if ( M.Distance( newPos, centerPos ) <= radius ) then
+    if ( M.Distance( newPos, state.centerPos ) <= state.radius ) then
         thisNPC:move( faceTo, true );
     else
         M.TurnAround();
@@ -739,8 +773,8 @@ end
 - @return distance between both positions
 ]]
 function M.Distance( pos1, pos2 )
-    xOff = math.abs( pos1.x - pos2.x );
-    yOff = math.abs( pos1.y - pos2.y );
+    local xOff = math.abs( pos1.x - pos2.x );
+    local yOff = math.abs( pos1.y - pos2.y );
     return math.sqrt( xOff^2 + yOff^2 );
 end
 
@@ -750,8 +784,9 @@ end
 - Makes the npc turning towards a character
 ]]
 function M.TurnToPlayer( player )
-    xOff = math.abs( player.pos.x - thisNPC.pos.x );
-    yOff = math.abs( player.pos.y - thisNPC.pos.y );
+    local xOff = math.abs( player.pos.x - thisNPC.pos.x );
+    local yOff = math.abs( player.pos.y - thisNPC.pos.y );
+    local newFaceTo
     if ( xOff > yOff ) then
         if ( player.pos.x > thisNPC.pos.x ) then
             newFaceTo = 2;
@@ -765,7 +800,7 @@ function M.TurnToPlayer( player )
             newFaceTo = 0;
         end
     end
-    faceTo = thisNPC:get_face_to();
+    local faceTo = thisNPC:get_face_to();
     if ( faceTo ~= newFaceTo ) then
         thisNPC:setAttrib( "faceto", newFaceTo );
     end
@@ -802,10 +837,11 @@ end
   with spamming protection
 ]]
 function M.Confused( gText, eText )
-    if not verwirrt then
+    local state = currentState()
+    if not state.verwirrt then
         thisNPC:talkLanguage( CCharacter.say, CPlayer.german, gText );
         thisNPC:talkLanguage( CCharacter.say, CPlayer.english, eText );
-        verwirrt=true;
+        state.verwirrt=true;
     end
 end
 
@@ -945,7 +981,7 @@ function M.PayThePlayer(User,Copper)
     local Gold = 0;
     local Silver = 0;
     Gold, Silver, Copper = M.SplitMoney( Copper );
-    notcreated = User:createItem(61,Gold,333,0);
+    local notcreated = User:createItem(61,Gold,333,0);
     if ( notcreated > 0 ) then
         world:createItemFromId( 61, notcreated, User.pos, true, 333, 0 );
     end
@@ -1000,8 +1036,9 @@ end
 - @param Char CharStruct The Char that will get the whisper inform
 ]]
 function M.CharInform(Char)
-	if #TraderInform>0 then
-		local inform = TraderInform[ math.random(1,#TraderInform) ];
+	local state = currentState()
+	if #state.TraderInform > 0 then
+		local inform = state.TraderInform[math.random(1, #state.TraderInform)];
 		Char:inform("#w "..inform);
 	end
 end
