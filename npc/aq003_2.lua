@@ -10,6 +10,7 @@ local M = {}
 --Update by:   Markous
 
 local functions_RS = require("npc.base.functions_RS")
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -63,7 +64,7 @@ function M.nextCycle()  -- ~10 times per second
         functions_RS.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
     end
-    SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)

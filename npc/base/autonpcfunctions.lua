@@ -1,6 +1,8 @@
 local M = {}
 local npcStates = {}
 
+NPCStatus = NPCStatus or {}
+
 local function currentState()
     local npcKey = thisNPC.id or thisNPC
     local state = npcStates[npcKey]

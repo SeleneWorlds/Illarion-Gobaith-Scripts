@@ -9,10 +9,8 @@
 --Facing:      South
 --Last Update: //200x
 
-require("npcs.functions")
-local npc_functions = npcs.functions
-require("npcs.trader_functions")
-local trader_functions = npcs.trader_functions
+local npc_functions = require("npcs.functions")
+local trader_functions = require("npcs.trader_functions")
 
 local M = {}
 --[[

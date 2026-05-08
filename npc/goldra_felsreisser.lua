@@ -251,7 +251,7 @@ function M.initializeNpc()
 
 end
 
-function M.nextCycle()  -- ~10 times per second
+function M.nextCycleDisabled()  -- ~10 times per second
     M.initializeNpc();
     autonpcfunctions.SpeakerCycle();
 
