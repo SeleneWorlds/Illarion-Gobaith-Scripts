@@ -216,14 +216,19 @@ function M.TellSmallTalk(message,Char)
     local state = currentState()
     local User = getCharForId(Char.id);
 	local i=1;
+    local matchedIndex = nil;
 
     message = string.lower(message);
     local length = #state.TraderTrig;
-    while not M.CheckForTrigger(message,User,i) do
-        i = i + 1;
-        if ( i > length ) then
+    while i <= length do
+        if M.CheckForTrigger(message,User,i) then
+            matchedIndex = i;
             break;
         end
+        i = i + 1;
+    end
+    if matchedIndex == nil or state.TraderText[matchedIndex] == nil then
+        return;
     end
     --[[if ( length < i ) then
         folder = "/home/nitram/npclog/";
@@ -236,13 +241,13 @@ function M.TellSmallTalk(message,Char)
         end
     end--]]
     local TextSel
-    if (#state.TraderText[i]>1) then
-        TextSel=math.random(1,#state.TraderText[i]);
+    if (#state.TraderText[matchedIndex]>1) then
+        TextSel=math.random(1,#state.TraderText[matchedIndex]);
     else
         TextSel=1;
     end
-    M.PerformConsequences( User, i );
-    local answer = string.gsub(state.TraderText[i][TextSel],"%%CHARNAME",User.name);
+    M.PerformConsequences( User, matchedIndex );
+    local answer = string.gsub(state.TraderText[matchedIndex][TextSel],"%%CHARNAME",User.name);
     answer = string.gsub(answer,"%%NPCNAME",thisNPC.name);
     if state.questId~=nil then answer = string.gsub(answer,"%%QUESTSTATUS",User:getQuestProgress(state.questId)); end
     if not (state.saidNumber==nil) then
@@ -262,7 +267,11 @@ end
 ]]
 function M.CheckForTrigger(message,User,ListIndex)
     local state = currentState()
-    for _,pattern in pairs(state.TraderTrig[ListIndex]) do
+    local triggerList = state.TraderTrig[ListIndex];
+    if triggerList == nil then
+        return false;
+    end
+    for _,pattern in pairs(triggerList) do
 		local a = string.find( message, pattern );
 		_,_,state.saidNumber = string.find(message, "(%d+)");
         if a and M.CheckConditions( User, ListIndex ) then
