@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.yellowcross = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- Basiscript für die Kreuze
 
@@ -14,13 +11,13 @@ function M.nextCycle()
     -- Suche nach Monstern
     local monsters = world:getMonstersInRangeOf(thisNPC.pos,EffectArea+2) -- Suche Nach Monstern zum Wegschleudern
     if (#monsters>0) then -- Monster gefunden
-        CreateCircle(46,thisNPC.pos,EffectArea+2); -- Lustiger Leuchtkreis
+        M.CreateCircle(46,thisNPC.pos,EffectArea+2); -- Lustiger Leuchtkreis
         for i, monster in pairs(monsters) do
-            newPos = CalcNewPos(thisNPC.pos,monster.pos,EffectArea+2); -- Ziel des Abflugs
+            newPos = M.CalcNewPos(thisNPC.pos,monster.pos,EffectArea+2); -- Ziel des Abflugs
             world:gfx(37,monster.pos); -- Effekt am Anfang
             monster:warp(newPos); -- guten Flug!
             monster.movepoints=monster.movepoints - 20; -- Monster festhalten
-            CreateLineofFligth(thisNPC.pos,monster.pos,1); -- Fluglinie Zeichnen
+            M.CreateLineofFligth(thisNPC.pos,monster.pos,1); -- Fluglinie Zeichnen
         end
     end
     -- Monster Fertig
@@ -40,18 +37,18 @@ function M.nextCycle()
                 if ((langSkill > 0) and (langSkill < 100 )) then
                     player:increaseSkill(1,"common language",100-langSkill);
                 end
-                SkillName = LangSkillName(player:get_race());
+                SkillName = M.LangSkillName(player:get_race());
                 langSkill = player:getSkill(SkillName);
                 if ((langSkill > 0) and (langSkill < 100 )) then
                     player:increaseSkill(1,SkillName,100-langSkill);
                 end
                 world:gfx(53,player.pos)
                 world:gfx(53,thisNPC.pos);
-                CreateCircle(52,thisNPC.pos,thisNPC:distanceMetric(player)+1); -- Lustiger Leuchtkreis
+                M.CreateCircle(52,thisNPC.pos,thisNPC:distanceMetric(player)+1); -- Lustiger Leuchtkreis
 				-- WORKAROUND for Mantis issue #451: doubleEffect from lte_resurrected.lua, as all values are deleted upon double-adding effect
 				local foundRes, resEffect = player.effects:find(400);
 				if foundRes then
-					doubleEffect(resEffect,player);
+					M.doubleEffect(resEffect,player);
 				else
 					player.effects:addEffect( CLongTimeEffect(400,math.random(600,1800)) );
 				end

@@ -1,10 +1,6 @@
 local M = {}
-npc = npc or {}
-npc.lm_test = M
-local _ENV = setmetatable(M, { __index = _G })
 
-require("npc.lightmaster");
-
+local lightmaster = require("npc.lightmaster");
 WaypointList[1] = {}; -- Troll's Bane
 WaitingList[1] = {}; -- Troll's Bane
 LightList[1] = {}; -- Troll's Bane
@@ -47,19 +43,19 @@ function M.InitializeNpc()
 end
 
 function M.useNPC(user,counter,param)
-	npc.lightmaster.LM_useNPC(user,counter,param);
+	lightmaster.LM_useNPC(user,counter,param);
 end
 
 function M.nextCycle()
-	npc.lightmaster.LM_nextCycle();
+	lightmaster.LM_nextCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-	npc.lightmaster.LM_receiveText(texttype, message, originator);
+	lightmaster.LM_receiveText(texttype, message, originator);
 end
 
 function M.lookAtNpc(Char, mode)
-	npc.lightmaster.LM_lookAtNpc(Char, mode);
+	lightmaster.LM_lookAtNpc(Char, mode);
 end
 
 function M.Invoke(event,args)

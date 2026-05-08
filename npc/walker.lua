@@ -1,9 +1,6 @@
 local M = {}
-npc = npc or {}
-npc.walker = M
-local _ENV = setmetatable(M, { __index = _G })
 
-require( "npc.base.walking" );
+local walking = require( "npc.base.walking" );
 
 function M.nextCycle()
     if not slowdown then
@@ -14,7 +11,7 @@ function M.nextCycle()
     slowdown = slowdown + 1;
     if slowdown == 9 then
         slowdown = 0;
-        npc.base.walking.BW_StepAlongRoad( thisNPC );
+        walking.BW_StepAlongRoad( thisNPC );
     end        
 end
 

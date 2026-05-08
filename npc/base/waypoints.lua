@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.waypoints = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- base script for waypoints
 
@@ -19,7 +15,6 @@ MAX_DISTANCE = 9999999999;
 WaypointList = {};
 
 AreaList = {};
-
 
 ----------------------------
 -- *** WAYPOINT CLASS *** --
@@ -60,12 +55,12 @@ function Waypoint:new(pos,area,neighbours,data)
 	if not WaypointList[area] then
 		WaypointList[area] = {};
 	end
-	WaypointList[area][BWP_PosToIndex(pos)] = this;
+	WaypointList[area][M.BWP_PosToIndex(pos)] = this;
 	if data.waiting then
 		if not WaitingList[area] then
 			WaitingList[area] = {};
 		end
-		WaitingList[area][BWP_PosToIndex(pos)] = this;
+		WaitingList[area][M.BWP_PosToIndex(pos)] = this;
 	end
 	if not AreaList[area] then
 		AreaList[area] = {};
@@ -163,7 +158,7 @@ function M.BWP_Init()
 		for _,this in pairs(area) do
 			if this.data.bridge then
 				local b = this.data.bridge;
-				b.toWaypoint = WaypointList[b.toArea][BWP_PosToIndex(b.toWaypoint)];
+				b.toWaypoint = WaypointList[b.toArea][M.BWP_PosToIndex(b.toWaypoint)];
 			end
 			for _,that in pairs(area) do
 				if this:getDistance(that)<12 then

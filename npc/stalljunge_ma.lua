@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.stalljunge_ma = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Stalljunge
 --Race:        Mensch
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 05/26/2007
 --Update by:   Kadiya
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,33 +18,33 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
 
-    npc.base.functions.AddTraderTrigger("[Hh]ello","Greetings.");
-    npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
-    npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Grüß euch!");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
-    npc.base.functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name..", ich bin Magier an dieser Akademie");
-    npc.base.functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..", I'm a mage of this academy");
-    npc.base.functions.AddTraderTrigger("[Bb]ye ","Be well");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe nichts! Ich beschwöre höhstens etwas.");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything! I just summon things.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+beschwör","Ich kann euch einen Golem beschwören, der Eure Sachen für euch trägt...wäre das nicht toll?");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+summon","I can summon a golem for you, which can carry your things...isn't that great?.");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything!");
-    npc.base.functions.AddTraderTrigger("[Ff]arewell","Farewell");
-    npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
-    npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.functions.AddAdditionalText("Auf bald");
-    npc.base.functions.AddTraderTrigger("[Kk]uh","Ich habe keine Kühe.");
-    npc.base.functions.AddTraderTrigger("cow","I have no cows.")
+    functions.AddTraderTrigger("[Hh]ello","Greetings.");
+    functions.AddAdditionalTrigger("[Gg]reetings");
+    functions.AddAdditionalTrigger("[Hh]i");
+    functions.AddTraderTrigger("[Hh]allo","Grüß euch!");
+    functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
+    functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name..", ich bin Magier an dieser Akademie");
+    functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..", I'm a mage of this academy");
+    functions.AddTraderTrigger("[Bb]ye ","Be well");
+    functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe nichts! Ich beschwöre höhstens etwas.");
+    functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything! I just summon things.");
+    functions.AddTraderTrigger("[Ww]as.+beschwör","Ich kann euch einen Golem beschwören, der Eure Sachen für euch trägt...wäre das nicht toll?");
+    functions.AddTraderTrigger("[Ww]hat.+summon","I can summon a golem for you, which can carry your things...isn't that great?.");
+    functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything!");
+    functions.AddTraderTrigger("[Ff]arewell","Farewell");
+    functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
+    functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    functions.AddAdditionalText("Auf bald");
+    functions.AddTraderTrigger("[Kk]uh","Ich habe keine Kühe.");
+    functions.AddTraderTrigger("cow","I have no cows.")
 
-    npc.base.functions.AddCycleText("#me schaut sich um","#me looks around");
-    npc.base.functions.AddCycleText("#me niest","#me sneezes");
+    functions.AddCycleText("#me schaut sich um","#me looks around");
+    functions.AddCycleText("#me niest","#me sneezes");
 
     TradSpeakLang={0,1,10};
     TradStdLang=0;
@@ -74,28 +70,28 @@ function M.nextCycle()  -- ~10 times per second
     end
     
     if (TraderInit[thisNPC.id] == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang);
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
         TraderInit[thisNPC.id] = true;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            result = SayPrice(message, originator);
-            if not result then result = GetCow(message, originator) end;
-            if not result then result = returnCow(message, originator) end;
-            if not result then npc.base.functions.TellSmallTalk(message) end;
+            result = M.SayPrice(message, originator);
+            if not result then result = M.GetCow(message, originator) end;
+            if not result then result = M.returnCow(message, originator) end;
+            if not result then functions.TellSmallTalk(message) end;
         else
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
-                npc.base.functions.NPCTalking(thisNPC,outText);
+                outText=functions.GetNLS(originator,gText,eText);
+                functions.NPCTalking(thisNPC,outText);
                 verwirrt=true;
             end
         end
@@ -144,14 +140,14 @@ function M.GetCow(message, originator)
     
     
         if (originator:getQuestProgress(8) == 0) then
-            GCoins,SCoins,CCoins = CalcSilverCopper(PreisProKuh + Kaution);
-            if CheckMoney(originator,GCoins,SCoins,CCoins) then
+            GCoins,SCoins,CCoins = M.CalcSilverCopper(PreisProKuh + Kaution);
+            if M.CheckMoney(originator,GCoins,SCoins,CCoins) then
                 if false then
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich darf dir im Augenblick keinen Golem beschwören." );
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english,"I'm not allowed to summon a golem for you currently, sorry." );
                     return true;
                 end
-                posOfCow = createCow(originator);
+                posOfCow = M.createCow(originator);
                 if not posOfCow then
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich kann momentan nicht noch einen Golem beschwören." );
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english,"I'm not able to summan another golem yet. Please come back later." );
@@ -162,7 +158,7 @@ function M.GetCow(message, originator)
                     transport_effect:addValue("owner",originator.id);
                     Transporter.effects:addEffect(transport_effect);
                     
-                    Pay(originator,GCoins,SCoins,CCoins);
+                    M.Pay(originator,GCoins,SCoins,CCoins);
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Hier habt ihr einen Golem. Bringt ihn heile wieder dann bekommt ihr die "..(Kaution/100).." Silberstücke Kaution wieder.");
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "There you have a golem. Bring it back safely then you get your "..(Kaution/100).." silvercoins surety back.");
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Wenn du \"bleib stehen\" sagst, bleibt der Golem stehen und du kannst ihn be- und entladen. Sagst du \"weiter\" folgt er dir wieder. Pass auf dass er dich nicht aus den Augen verliert." );

@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.shiptest = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.useNPC(user,Counter,Param)
        -- user:talk(CCharacter.say, "test");

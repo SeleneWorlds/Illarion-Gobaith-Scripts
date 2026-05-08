@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.aq003_2 = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Clarissa Bigglefoot
 --Race:        Halfling
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 12/14/2005
 --Update by:   Markous
 
-require("npc.base.functions_RS")
-
+local functions_RS = require("npc.base.functions_RS")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -29,21 +25,21 @@ function M.initializeNpc()
     thisNPC:increaseSkill(1,"common language",100);
     TraderFirst=1;
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
-    npc.base.functions_RS.AddTraderTrigger("[Gg]reetings","Hello! Can you help me?");
-    npc.base.functions_RS.AddAdditionalTrigger("[Hh]ello");
-    npc.base.functions_RS.AddAdditionalText("Greetings.");
-    npc.base.functions_RS.AddTraderTrigger("[Gg]r[uü][sß]+","Hallo, ich brauche deine Hilfe!");
-    npc.base.functions_RS.AddAdditionalTrigger("[Hh]allo");
-    npc.base.functions_RS.AddAdditionalText("Hallo!");
-    npc.base.functions_RS.AddTraderTrigger("[Ww]ho.+you","My name is Clarissa, and I have a problem. Can you help me?");
-    npc.base.functions_RS.AddTraderTrigger("[Ww]er.+du","Ich bin Clarissa, und ich hab' ein Problem, bei dem du mir helfen könntest.");
-    npc.base.functions_RS.AddAdditionalTrigger("[Ww]er.+ihr");
-    npc.base.functions_RS.AddTraderTrigger("[Ww]hat.+problem","For ages I haven't heard anything from my friend Progor in Greenbriar. Could you go there and ask him to write me a message?");
-    npc.base.functions_RS.AddAdditionalTrigger("[Ww]hat.+help");
-    npc.base.functions_RS.AddAdditionalTrigger("[Hh]ow.+help");
-    npc.base.functions_RS.AddTraderTrigger("[Ww]as.+[Pp]roblem","Ich hab' seit Ewigkeiten nichts mehr von meinem Freund Progor aus Greenbriar gehört. Kannst du dort hingehen und ihn daran erinnern, dass er mir eine Nachricht schreiben sollte?");
-    npc.base.functions_RS.AddAdditionalTrigger("[Ww]as.+[Hh]ilfe");
-    npc.base.functions_RS.AddAdditionalTrigger("[Ww]ie.+[Hh]elfen");
+    functions_RS.AddTraderTrigger("[Gg]reetings","Hello! Can you help me?");
+    functions_RS.AddAdditionalTrigger("[Hh]ello");
+    functions_RS.AddAdditionalText("Greetings.");
+    functions_RS.AddTraderTrigger("[Gg]r[uü][sß]+","Hallo, ich brauche deine Hilfe!");
+    functions_RS.AddAdditionalTrigger("[Hh]allo");
+    functions_RS.AddAdditionalText("Hallo!");
+    functions_RS.AddTraderTrigger("[Ww]ho.+you","My name is Clarissa, and I have a problem. Can you help me?");
+    functions_RS.AddTraderTrigger("[Ww]er.+du","Ich bin Clarissa, und ich hab' ein Problem, bei dem du mir helfen könntest.");
+    functions_RS.AddAdditionalTrigger("[Ww]er.+ihr");
+    functions_RS.AddTraderTrigger("[Ww]hat.+problem","For ages I haven't heard anything from my friend Progor in Greenbriar. Could you go there and ask him to write me a message?");
+    functions_RS.AddAdditionalTrigger("[Ww]hat.+help");
+    functions_RS.AddAdditionalTrigger("[Hh]ow.+help");
+    functions_RS.AddTraderTrigger("[Ww]as.+[Pp]roblem","Ich hab' seit Ewigkeiten nichts mehr von meinem Freund Progor aus Greenbriar gehört. Kannst du dort hingehen und ihn daran erinnern, dass er mir eine Nachricht schreiben sollte?");
+    functions_RS.AddAdditionalTrigger("[Ww]as.+[Hh]ilfe");
+    functions_RS.AddAdditionalTrigger("[Ww]ie.+[Hh]elfen");
 
     TradSpeakLang={0,6};
     TradStdLang=0;
@@ -63,8 +59,8 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions_RS.increaseLangSkill(TradSpeakLang);
+        M.initializeNpc();
+        functions_RS.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
     end
     SpeakerCycle();
@@ -74,8 +70,8 @@ function M.receiveText(texttype, message, originator)
     if BasicNPCChecks(originator,2) then
         if (LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            Status=NachrichtGeben(originator,message);
-            if (Status==0) then npc.base.functions_RS.TellSmallTalk(message) end
+            Status=M.NachrichtGeben(originator,message);
+            if (Status==0) then functions_RS.TellSmallTalk(message) end
 
             -------------------------------------------------------------------------
 

@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.autonpcfunctions = M
-local _ENV = setmetatable(M, { __index = _G })
 
 ---------------------------------------------------------------------------
 -- Core Script for Simple npc script language
@@ -198,7 +194,7 @@ function M.TellSmallTalk(message,Char)
 	state = NPCStatus[User.id];
 
     length = # TraderTrig ;
-    while not CheckForTrigger(message,User,i) do
+    while not M.CheckForTrigger(message,User,i) do
         i = i + 1;
         if ( i > length ) then
             break;
@@ -219,7 +215,7 @@ function M.TellSmallTalk(message,Char)
     else
         TextSel=1;
     end
-    PerformConsequences( User, i );
+    M.PerformConsequences( User, i );
     answer = string.gsub(TraderText[i][TextSel],"%%CHARNAME",User.name);
     answer = string.gsub(answer,"%%NPCNAME",thisNPC.name);
     if QuestID~=nil then answer = string.gsub(answer,"%%QUESTSTATUS",User:getQuestProgress(QuestID)); end
@@ -227,8 +223,8 @@ function M.TellSmallTalk(message,Char)
         answer = string.gsub(answer,"%%NUMBER",saidNumber);
     end;
 	state = NPCStatus[User.id];
-    NPCTalking( thisNPC, answer );
-	CharInform( User );
+    M.NPCTalking( thisNPC, answer );
+	M.CharInform( User );
 	TraderInform = nil;
 end
 
@@ -243,7 +239,7 @@ function M.CheckForTrigger(message,User,ListIndex)
     for i,pattern in pairs(TraderTrig[ListIndex]) do
 		a,b= string.find( message, pattern );
 		_DummyA,_DummyB,saidNumber = string.find(message, "(%d+)"); --a,b,saidNumber = string.find( message, pattern );
-        if a and CheckConditions( User, ListIndex ) then
+        if a and M.CheckConditions( User, ListIndex ) then
             saidNumber = ( saidNumber == nil and 0 or saidNumber*1 );
             return true;
         end
@@ -265,7 +261,7 @@ function M.CheckConditions( User, ListIndex )
         return true;
     end
     for i, condition in pairs(trigger_conditions) do
-        if not CheckCondition( User, condition ) then
+        if not M.CheckCondition( User, condition ) then
             return false
         end
     end
@@ -284,34 +280,34 @@ function M.CheckCondition( User, condition )
         if ( NPCStatus[User.id] == nil ) then
             NPCStatus[User.id] = 0;
         end
-        return CompareValues( NPCStatus[User.id],
-                              getNumber( condition[3] ),
+        return M.CompareValues( NPCStatus[User.id],
+                              M.getNumber( condition[3] ),
                               condition[2] )
     elseif ( condition[1] == "skill" ) then
-        return CompareSkill( User, condition[2], condition[3],
+        return M.CompareSkill( User, condition[2], condition[3],
                              condition[4] );
     elseif ( condition[1] == "attrib" ) then
-        return CompareAttrib( User, condition[2], condition[3],
+        return M.CompareAttrib( User, condition[2], condition[3],
                             condition[4] );
     elseif ( condition[1] == "money" ) then
         if ( condition[2] == ">" ) then
-            return CheckMoney( User, ( getNumber( condition[3] ) + 1 ) );
+            return M.CheckMoney( User, ( M.getNumber( condition[3] ) + 1 ) );
         elseif ( condition[2] == ">=" ) then
-            return CheckMoney( User, getNumber( condition[3] ) );
+            return M.CheckMoney( User, M.getNumber( condition[3] ) );
 		else
-			return not CheckMoney( User, getNumber( condition[3] ) );
+			return not M.CheckMoney( User, M.getNumber( condition[3] ) );
         end
     elseif ( condition[1] == "race" ) then
         return ( User:get_race() == condition[2] );
     elseif ( condition[1] == "item" ) then
-        return CompareItem( User, condition[2], condition[3],
-                            condition[4], getNumber( condition[5] ) );
+        return M.CompareItem( User, condition[2], condition[3],
+                            condition[4], M.getNumber( condition[5] ) );
     elseif ( condition[1] == "qpg" ) then
         if ( QuestID == nil ) then
             return false;
         end
-        if not CompareValues( User:getQuestProgress( QuestID ),
-                              getNumber(condition[3]), condition[2] ) then
+        if not M.CompareValues( User:getQuestProgress( QuestID ),
+                              M.getNumber(condition[3]), condition[2] ) then
             return false;
         end
     elseif ( condition[1] == "lang" ) then
@@ -327,7 +323,7 @@ function M.CheckCondition( User, condition )
     elseif ( condition[1] == "rune" ) then
         return ( LuaAnd(
                     User:getMagicFlags(
-                       translateMagictype( condition[2] )
+                       M.translateMagictype( condition[2] )
                     ),
                     2^( condition[3] - 1 ) ) ~= 0
                 );
@@ -338,7 +334,7 @@ function M.CheckCondition( User, condition )
             return ( User:increaseAttrib( "sex", 0 ) == 1 );
         end
     elseif ( condition[1] == "number" ) then
-        if not CompareValues( tonumber(saidNumber), tonumber(condition[3]), condition[2] ) then
+        if not M.CompareValues( tonumber(saidNumber), tonumber(condition[3]), condition[2] ) then
             return false;
         end
     elseif ( condition[1] == "idlestate" ) then
@@ -366,7 +362,7 @@ end
 ]]--
 function M.CompareSkill( User, Skillname, CompareType, Value )
     local Skillvalue = User:getSkill( Skillname );
-    return CompareValues( Skillvalue, Value, CompareType );
+    return M.CompareValues( Skillvalue, Value, CompareType );
 end
 
 --[[
@@ -379,7 +375,7 @@ end
 ]]
 function M.CompareAttrib( User, Attribname, CompareType, Value )
     local Attribvalue = User:increaseAttrib( Attribname, 0 );
-    return CompareValues( Attribvalue, Value, CompareType );
+    return M.CompareValues( Attribvalue, Value, CompareType );
 end
 
 --[[
@@ -393,7 +389,7 @@ end
 ]]
 function M.CompareItem( User, ItemID, ItemLocation, CompareType, Amount)
     local ItemAmm = User:countItemAt( ItemLocation, ItemID );
-    return CompareValues( ItemAmm, getNumber(Amount), CompareType );
+    return M.CompareValues( ItemAmm, M.getNumber(Amount), CompareType );
 end
 
 --[[
@@ -440,16 +436,16 @@ function M.PerformConsequences( User, ListIndex )
     for i, consequence in pairs(trigger_consequences) do
         if ( consequence[1] == "state" ) then
             if ( consequence[2] == "=" ) then
-                NPCStatus[User.id] = getNumber( consequence[3] );
+                NPCStatus[User.id] = M.getNumber( consequence[3] );
             elseif ( consequence[2] == "+" ) then
                 NPCStatus[User.id] = NPCStatus[User.id] +
-                                     getNumber( consequence[3] );
+                                     M.getNumber( consequence[3] );
             elseif ( consequence[2] == "-" ) then
                 NPCStatus[User.id] = NPCStatus[User.id] -
-                                     getNumber( consequence[3] );
+                                     M.getNumber( consequence[3] );
             end
         elseif ( consequence[1] == "skill" ) then
-            GroupID = translateSkillgroup( consequence[2] );
+            GroupID = M.translateSkillgroup( consequence[2] );
             if ( consequence[4] == "+" ) then
                 User:increaseSkill( GroupID, consequence[3],
                                     math.abs( consequence[5] ) );
@@ -481,13 +477,13 @@ function M.PerformConsequences( User, ListIndex )
             User:increaseAttrib( consequence[2], -1 );
         elseif ( consequence[1] == "money" ) then
             if ( consequence[2] == "+" ) then
-                PayThePlayer( User, tonumber(getNumber( consequence[3] )) );
+                M.PayThePlayer( User, tonumber(M.getNumber( consequence[3] )) );
             elseif ( consequence[2] == "-" ) then
-                PayTheNPC( User, tonumber(getNumber( consequence[3] )) );
+                M.PayTheNPC( User, tonumber(M.getNumber( consequence[3] )) );
             end
         elseif ( consequence[1] == "item" ) then
             notcreated = User:createItem( consequence[2],
-                                          getNumber( consequence[3] ),
+                                          M.getNumber( consequence[3] ),
                                           consequence[4], consequence[5] );
             if ( notcreated > 0 ) then
                 world:createItemFromId( consequence[2], notcreated,
@@ -498,7 +494,7 @@ function M.PerformConsequences( User, ListIndex )
 			if consequence[3] == "all" then
 				consequence[3] = User:countItem(consequence[2]);
 			end
-            User:eraseItem( consequence[2], getNumber( consequence[3] ) );
+            User:eraseItem( consequence[2], M.getNumber( consequence[3] ) );
         elseif ( consequence[1] == "qpg" ) then
             if ( QuestID == nil ) then
                 return false;
@@ -506,16 +502,16 @@ function M.PerformConsequences( User, ListIndex )
             QuestState = User:getQuestProgress( QuestID );
             if ( consequence[2] == "=" ) then
                 User:setQuestProgress( QuestID,
-                                       getNumber( consequence[3] ) );
+                                       M.getNumber( consequence[3] ) );
             elseif ( consequence[2] == "+" ) then
-                newQuest = QuestState + getNumber( consequence[3] );
+                newQuest = QuestState + M.getNumber( consequence[3] );
                 User:setQuestProgress( QuestID, newQuest );
             elseif ( consequence[2] == "-" ) then
-                newQuest = QuestState - getNumber( consequence[3] );
+                newQuest = QuestState - M.getNumber( consequence[3] );
                 User:setQuestProgress( QuestID, newQuest );
             end
         elseif ( consequence[1] == "rune" ) then
-            User:teachMagic( translateMagictype( consequence[2] ),
+            User:teachMagic( M.translateMagictype( consequence[2] ),
                              consequence[3] );
         elseif ( consequence[1] == "talk" ) then
             if ( consequence[2] == "begin" ) then
@@ -603,7 +599,7 @@ end
 ]]--
 function M.SpeakerCycle()
     if not speakCount then
-        InitTalkLists()
+        M.InitTalkLists()
     end
 
     speakCount = speakCount + 1;
@@ -645,7 +641,7 @@ function M.SpeakerCycle()
                 for i, char in pairs(playersInRange) do
                     if ( char.id == currentTalk ) then
                         found = true;
-                        TurnToPlayer( char );
+                        M.TurnToPlayer( char );
                     end
                 end
 
@@ -656,10 +652,10 @@ function M.SpeakerCycle()
 
             if idle then
                 if ( math.random( 20 ) <= 9 ) then
-                    TurnAround();
+                    M.TurnAround();
                     walkCount = 15;
                 else
-                    if walk() then
+                    if M.walk() then
                         walkCount = 0;
                     else
                         walkCount = 15;
@@ -682,10 +678,10 @@ function M.TurnAround()
                             thisNPC.pos.z );
         newPos2 = position( thisNPC.pos.x + 1, thisNPC.pos.y,
                             thisNPC.pos.z );
-        if ( Distance( newPos1, centerPos ) <= radius ) then
+        if ( M.Distance( newPos1, centerPos ) <= radius ) then
             table.insert( possDirs, 6 );
         end
-        if ( Distance( newPos2, centerPos ) <= radius ) then
+        if ( M.Distance( newPos2, centerPos ) <= radius ) then
             table.insert( possDirs, 2 );
         end
     else
@@ -693,10 +689,10 @@ function M.TurnAround()
                             thisNPC.pos.z );
         newPos2 = position( thisNPC.pos.x, thisNPC.pos.y + 1,
                             thisNPC.pos.z );
-        if ( Distance( newPos1, centerPos ) <= radius ) then
+        if ( M.Distance( newPos1, centerPos ) <= radius ) then
             table.insert( possDirs, 0 );
         end
-        if ( Distance( newPos2, centerPos ) <= radius ) then
+        if ( M.Distance( newPos2, centerPos ) <= radius ) then
             table.insert( possDirs, 4 );
         end
     end
@@ -727,10 +723,10 @@ function M.walk()
         newPos = position( thisNPC.pos.x - 1, thisNPC.pos.y,
                            thisNPC.pos.z );
     end
-    if ( Distance( newPos, centerPos ) <= radius ) then
+    if ( M.Distance( newPos, centerPos ) <= radius ) then
         thisNPC:move( faceTo, true );
     else
-        TurnAround();
+        M.TurnAround();
         return false;
     end
     return true;
@@ -852,7 +848,7 @@ end
 - Takes away the amount of copper from the player inventory
 ]]
 function M.PayTheNPC(User,Copper)
-    if not CheckMoney( User, Copper ) then
+    if not M.CheckMoney( User, Copper ) then
         return false;
     end
     local PayGold=0;
@@ -861,7 +857,7 @@ function M.PayTheNPC(User,Copper)
     local MissGold=0;
     local MissSilber=0;
     local MissKupfer=0;
-    MissGold, MissSilber, MissKupfer = SplitMoney( Copper );
+    MissGold, MissSilber, MissKupfer = M.SplitMoney( Copper );
 
     local UserGold=User:countItem(61);
     local UserSilber=User:countItem(3077);
@@ -917,7 +913,6 @@ function M.PayTheNPC(User,Copper)
         PaySilber = PaySilber + MissSilber - 100;
     end;
 
-
     if (PayGold>0) then
         User:eraseItem(61,PayGold);
     end
@@ -949,7 +944,7 @@ end
 function M.PayThePlayer(User,Copper)
     local Gold = 0;
     local Silver = 0;
-    Gold, Silver, Copper = SplitMoney( Copper );
+    Gold, Silver, Copper = M.SplitMoney( Copper );
     notcreated = User:createItem(61,Gold,333,0);
     if ( notcreated > 0 ) then
         world:createItemFromId( 61, notcreated, User.pos, true, 333, 0 );

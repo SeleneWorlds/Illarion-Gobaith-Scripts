@@ -1,13 +1,8 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.patrol = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- base script for patrolling npcs or monsters
-require("npc.base.waypoints");
-require("base.doors")
-
+local waypoints = require("npc.base.waypoints");
+local doors = require("base.doors")
 -- ** defaults **
 PatrolPointer = 0;				--
 WpPointer = 0;					-- pointers for the PatrolList
@@ -26,7 +21,6 @@ PatrolList must contain lists with positions at first, then they are replaced wi
 ]]
 PatrolList = {};
 
-
 -- replace position data in PatrolList with waypoints and delete those which have no respective waypoint
 function M.BP_PatrolInit(guard)
 	if patrolInit~=nil then
@@ -37,7 +31,7 @@ function M.BP_PatrolInit(guard)
 	for _,patrol in pairs(PatrolList) do
 		nospace = true;
 		for j,pos in ipairs(patrol) do
-			local wp = BP_GetWpFromPos(pos);
+			local wp = M.BP_GetWpFromPos(pos);
 			if wp==nil then
 				nospace = false;
 				patrol[j] = -1;
@@ -71,12 +65,12 @@ function M.BP_StartPatrol(guard)
 	if firstStartPatrol==nil then
 		firstStartPatrol = 1;
 		BWP_Init();
-		BP_PatrolInit();
+		M.BP_PatrolInit();
 	end
 	PatrolPointer = 0;
 	WpTry = 0;
-	BP_ChooseNewPatrol(guard);
-	NextWp = BP_GetWpFromPos(guard.pos);
+	M.BP_ChooseNewPatrol(guard);
+	NextWp = M.BP_GetWpFromPos(guard.pos);
 	if not NextWp then
 		NextWp = PatrolList[PatrolPointer][WpPointer];
 		guard:forceWarp(NextWp.pos);
@@ -85,7 +79,7 @@ function M.BP_StartPatrol(guard)
 		return false;
 	end
 	guard.waypoints:clear();
-	BP_SetNewWp(guard);
+	M.BP_SetNewWp(guard);
 	guard:setOnRoute(true);
 	return true;
 end
@@ -119,7 +113,7 @@ function M.BP_ChooseNewPatrol(guard)
 	else
 		WpMax = #PatrolList[PatrolPointer];
 	end
-	BP_ChooseNewWp();
+	M.BP_ChooseNewWp();
 end
 
 -- choose a new waypoint as destination, sequentially or randomly
@@ -155,16 +149,16 @@ function M.BP_SetNewWp(guard)
 	if equapos(guard.pos,PatrolList[PatrolPointer][WpPointer].pos) then
 		WpDone = WpDone + 1;
 		if WpDone>=WpMax then
-			BP_ChooseNewPatrol(guard);
+			M.BP_ChooseNewPatrol(guard);
 		else
-			BP_ChooseNewWp();
+			M.BP_ChooseNewWp();
 		end
 	end
 	local last = CurWp;
 	CurWp = NextWp;
 	local w = false;
 	NextWp,w = CurWp:getNextWaypoint(PatrolList[PatrolPointer][WpPointer],last);
-	BP_OpenDoor();
+	M.BP_OpenDoor();
 	guard.waypoints:addWaypoint(NextWp.pos);
 	if w then
 		guard:warp(NextWp.pos);
@@ -177,29 +171,29 @@ should be called in the respective function of the monster/npc OR in base_guard.
 ]]
 function M.BP_AbortRoute(guard)
 	if equapos(guard.pos,NextWp.pos) then
-		npcdebug("try OK");
+		M.npcdebug("try OK");
 		WpTry = 0;
 		guard.waypoints:clear();
-		BP_CloseDoor();
-		BP_SetNewWp(guard);
+		M.BP_CloseDoor();
+		M.BP_SetNewWp(guard);
 		guard:setOnRoute(true);
 	elseif WpTry==0 then
-		npcdebug("try 0");
+		M.npcdebug("try 0");
 		WpTry = 1;
 		guard:setOnRoute(true);
 	elseif WpTry==1 then
-		npcdebug("try 1");
+		M.npcdebug("try 1");
 		guard:warp(NextWp.pos);
 		WpTry = 2;
-		BP_AbortRoute(guard);
+		M.BP_AbortRoute(guard);
 	elseif WpTry==2 then
-		npcdebug("try 2");
+		M.npcdebug("try 2");
 		guard:forceWarp(NextWp.pos);
 		WpTry = 3;
-		BP_AbortRoute(guard);
+		M.BP_AbortRoute(guard);
 	else
-		npcdebug("try 3");
-		BP_StartPatrol(guard);
+		M.npcdebug("try 3");
+		M.BP_StartPatrol(guard);
 	end
 end
 
@@ -207,8 +201,8 @@ end
 function M.BP_OpenDoor()
 	local door = CurWp.data.door;
 	if door and equapos(door.toPos,NextWp.pos) then
-		local item = BP_GetDoorItem(door.pos);
-		base.doors.OpenDoor(item);
+		local item = M.BP_GetDoorItem(door.pos);
+		doors.OpenDoor(item);
 	end
 end
 
@@ -217,14 +211,14 @@ function M.BP_CloseDoor()
 	local door = NextWp.data.door;
 	if door and equapos(door.toPos,CurWp.pos) then
 		local item = world:getItemOnField(door.pos);
-		base.doors.CloseDoor(item);
+		doors.CloseDoor(item);
 	end
 end
 
 -- get the door item, works only if it is on top
 function M.BP_GetDoorItem(Posi)
     local item = world:getItemOnField(Posi);
-	if (base.doors.CheckOpenDoor(item.id) or base.doors.CheckClosedDoor(item.id)) then
+	if (doors.CheckOpenDoor(item.id) or doors.CheckClosedDoor(item.id)) then
 		return item;
 	end;
     return nil;
@@ -233,8 +227,8 @@ end;
 function M.BP_CharacterNear(guard,char)
 	--npcdebug("char near");
 	if equapos(NextWp.pos,char.pos) then
-		npcdebug("char on waypoint, abort route!");
-		BP_AbortRoute(guard);
+		M.npcdebug("char on waypoint, abort route!");
+		M.BP_AbortRoute(guard);
 	end
 end
 

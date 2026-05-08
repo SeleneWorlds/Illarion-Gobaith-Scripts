@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.lurandir = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Lurandir
 --Race:        Elf

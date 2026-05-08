@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.marel = M
-local _ENV = setmetatable(M, { __index = _G })
 
 	--position: 236	-220	0
 	
@@ -15,12 +12,10 @@ local _ENV = setmetatable(M, { __index = _G })
 
 --	dofile("npc_nanginis_nargunpriest.lua");
 local common = require("base.common")
-require("npc.base.autonpcfunctions") --für die Funktion npc.base.autonpcfunctions.increaseLangSkill
+local autonpcfunctions = require("npc.base.autonpcfunctions") --für die Funktion autonpcfunctions.increaseLangSkill
 
 function M.nextCycle()
 end
-
-
 
 function M.receiveText(texttype, message, originator) 
 
@@ -38,7 +33,6 @@ function M.receiveText(texttype, message, originator)
 	NpcAnsw[1]="You are looking"..Face_Direction..". You have a "..R_Item_Name.."in your right hand, and a "..L_item_Name.."in your left hand."; 
 
 	thisNPC:talk(CCharacter.yell, NpcAnsw[1]); 
-
 
 --[[	if not FirstTime then
 		TradStdLang=0;

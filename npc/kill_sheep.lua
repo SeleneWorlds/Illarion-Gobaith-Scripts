@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.kill_sheep = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- Skript f&uuml;r das Schlachten eines Schafes
 function M.onDeath(monster)

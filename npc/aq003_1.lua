@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.aq003_1 = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Progor Flowerpride
 --Race:        Halfling
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 12/14/2005
 --Update by:   Markous
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,18 +18,18 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
     StudentStats={};
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
-    npc.base.functions.AddTraderTrigger("[Gg]reetings","Greetings.");
-    npc.base.functions.AddAdditionalTrigger("[Hh]ello");
-    npc.base.functions.AddTraderTrigger("[Gg]r[uü][sß]+","Hallo!");
-    npc.base.functions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.functions.AddTraderTrigger("[Ww]ho.+you","I am Progor! I am living here, and enjoy life.");
-    npc.base.functions.AddTraderTrigger("[Ww]er.+du","Ich bin Progor, ich leb' hier und geniesse mein Leben.");
-    npc.base.functions.AddAdditionalTrigger("[Ww]er.+ihr");
+    functions.AddTraderTrigger("[Gg]reetings","Greetings.");
+    functions.AddAdditionalTrigger("[Hh]ello");
+    functions.AddTraderTrigger("[Gg]r[uü][sß]+","Hallo!");
+    functions.AddAdditionalTrigger("[Hh]allo");
+    functions.AddTraderTrigger("[Ww]ho.+you","I am Progor! I am living here, and enjoy life.");
+    functions.AddTraderTrigger("[Ww]er.+du","Ich bin Progor, ich leb' hier und geniesse mein Leben.");
+    functions.AddAdditionalTrigger("[Ww]er.+ihr");
 
     TradSpeakLang={0,6};
     TradStdLang=0;
@@ -53,19 +49,19 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang);
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            Status=NachrichtGeben(originator,message);
-            if (Status==0) then npc.base.functions.TellSmallTalk(message) end
+            Status=M.NachrichtGeben(originator,message);
+            if (Status==0) then functions.TellSmallTalk(message) end
 
             -------------------------------------------------------------------------
 
@@ -77,13 +73,13 @@ function M.receiveText(texttype, message, originator)
                 eText="You already got my message!";
             end
             if (Status~=0) then
-                thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
+                thisNPC:talk(CCharacter.say,functions.GetNLS(originator,gText,eText));
             end
         else
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
             end

@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.tihgorac = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Tihgorac
 --Race:        Orc
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 04/26/2006
 --Update by:   Nitram
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,23 +18,22 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
     StudentStats={};
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
-    npc.base.functions.AddTraderTrigger("[Gg]reetings","Greebs, how be yoo? I is " ..thisNPC.name.. ", the warrior.");
-    npc.base.functions.AddAdditionalTrigger("[Hh]ello");
-    npc.base.functions.AddAdditionalTrigger("[Oo]rc");
-    npc.base.functions.AddAdditionalText("Whub? Wut yoo wunt? Mes "..thisNPC.name..", strung warrior. Yubba!");
-    npc.base.functions.AddTraderTrigger("[Mm]ummies","Yuh. Yoo comes back wid innards of mummies tuh prove yerself and meh will teach yoo some tricks yoo can use tuh knock down big critters!");
-    npc.base.functions.AddAdditionalTrigger("[Mm]ummy");
-    npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Gruß, wies dir geht? Ich "..thisNPC.name..", großer Krieger.");
-    npc.base.functions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.functions.AddAdditionalTrigger("[Oo]rk");
-    npc.base.functions.AddAdditionalText("Wus? Wus willst? Ich "..thisNPC.name..", starker Krieger! Har");
-    npc.base.functions.AddTraderTrigger("[Mm]umie","Ja. Komm her mit Innereinen um dich zu beweisen, dann "..thisNPC.name.." zeigen dir ein paar Tricks um große Viecher tot zu haun!");
-
+    functions.AddTraderTrigger("[Gg]reetings","Greebs, how be yoo? I is " ..thisNPC.name.. ", the warrior.");
+    functions.AddAdditionalTrigger("[Hh]ello");
+    functions.AddAdditionalTrigger("[Oo]rc");
+    functions.AddAdditionalText("Whub? Wut yoo wunt? Mes "..thisNPC.name..", strung warrior. Yubba!");
+    functions.AddTraderTrigger("[Mm]ummies","Yuh. Yoo comes back wid innards of mummies tuh prove yerself and meh will teach yoo some tricks yoo can use tuh knock down big critters!");
+    functions.AddAdditionalTrigger("[Mm]ummy");
+    functions.AddTraderTrigger("[Gg]rü[ßs]+e","Gruß, wies dir geht? Ich "..thisNPC.name..", großer Krieger.");
+    functions.AddAdditionalTrigger("[Hh]allo");
+    functions.AddAdditionalTrigger("[Oo]rk");
+    functions.AddAdditionalText("Wus? Wus willst? Ich "..thisNPC.name..", starker Krieger! Har");
+    functions.AddTraderTrigger("[Mm]umie","Ja. Komm her mit Innereinen um dich zu beweisen, dann "..thisNPC.name.." zeigen dir ein paar Tricks um große Viecher tot zu haun!");
 
     TradSpeakLang={0,5};
     TradStdLang = 0;
@@ -58,22 +53,22 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang)
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            Status=StartLearning(originator,message);
-            if (Status==0) then Status=AcceptLearning(originator,message) end
-            if (Status==0) then Status=EingeweideGeben(originator,message) end
-            if (Status==0) then Status=AxtGeben(originator,message) end
-            if (Status==0) then npc.base.functions.TellSmallTalk(message) end
+            Status=M.StartLearning(originator,message);
+            if (Status==0) then Status=M.AcceptLearning(originator,message) end
+            if (Status==0) then Status=M.EingeweideGeben(originator,message) end
+            if (Status==0) then Status=M.AxtGeben(originator,message) end
+            if (Status==0) then functions.TellSmallTalk(message) end
 
             -------------------------------------------------------------------------
 
@@ -98,13 +93,13 @@ function M.receiveText(texttype, message, originator)
             elseif (Status==7) then
                 gText="#me zeigt ein Manöver mit der Axt";
                 eText="#me displays a maneuver with his axe";
-                thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
+                thisNPC:talk(CCharacter.say,functions.GetNLS(originator,gText,eText));
                 gText="Jetzt du!";
                 eText="Now you try!";
             elseif (Status==8) then
                 gText="#me zeigt ein einfaches Manöver";
                 eText="#me displays a simple maneuver";
-                thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
+                thisNPC:talk(CCharacter.say,functions.GetNLS(originator,gText,eText));
                 gText="Jetzt du!";
                 eText="Now you try!";
             elseif (Status==9) then
@@ -119,7 +114,7 @@ function M.receiveText(texttype, message, originator)
             end
 
             if (Status~=0) then
-                thisNPC:talk(CCharacter.say,npc.base.functions.GetNLS(originator,gText,eText));
+                thisNPC:talk(CCharacter.say,functions.GetNLS(originator,gText,eText));
                 if (Status==7) then
                     if (lang==0) then
                         originator:inform("Du denkst du das vielleicht etwas gelernt hast, dadurch das du ihm zugesehen hast.");
@@ -138,7 +133,7 @@ function M.receiveText(texttype, message, originator)
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
             end
@@ -213,9 +208,9 @@ function M.AxtGeben(originator,message)
     end
     if (string.find(message,"[Aa]x[et]") ~= nil) then
         if StudentStats[originator.id][1] and StudentStats[originator.id][2] and StudentStats[originator.id][3] then
-            AxeID=CheckAxt(originator)
+            AxeID=M.CheckAxt(originator)
             if (AxeID~=0) then
-                retVal=Teach(originator)
+                retVal=M.Teach(originator)
                 originator:eraseItem(AxeID,1);
                 StudentStats[originator.id][4]=true;
             else

@@ -1,11 +1,7 @@
 local M = {}
-npc = npc or {}
-npc.uluhad = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- INSERT INTO npc VALUES (nextval('npc_seq'),0,1,1,0,4,false,'Uluhad','npc_uluhad.lua',0);
-require("npc.base.autonpcfunctions")
-
+local autonpcfunctions = require("npc.base.autonpcfunctions")
 function M.buyIn( amount )
     User:setQuestProgress(playerBuyInID, User:getQuestProgress(playerBuyInID)+amount);
     return amount;
@@ -57,66 +53,66 @@ end
    playerBuyInID = QuestID+1;
    houseRakePercent = houseRake * 100;
    
-   npc.base.autonpcfunctions.InitTalkLists();
+   autonpcfunctions.InitTalkLists();
    
    
    -- ********* START DYNAMIC PART ********
-   npc.base.autonpcfunctions.AddTraderTrigger("Hello","Be greeted.");
-   npc.base.autonpcfunctions.AddTraderTrigger("Hallo","Seid mir gegrüßt.");
-   npc.base.autonpcfunctions.AddTraderTrigger("greetings","Be greeted.");
-   npc.base.autonpcfunctions.AddTraderTrigger("grüße","Seid mir gegrüßt.");
-   npc.base.autonpcfunctions.AddTraderTrigger("help","I sell chips for gambling and give you your money afterwards. I am the cashier here.");
-   npc.base.autonpcfunctions.AddTraderTrigger("hilfe","Ich verkaufe Chips zum Spielen und gebe Euch später Euer Geld. Ich bin der Kassierer hier.");
-   npc.base.autonpcfunctions.AddTraderTrigger("what sell","I sell chips for gambling and give you your money afterwards. I am the cashier here.");
-   npc.base.autonpcfunctions.AddTraderTrigger("was verkauf","Ich verkaufe Chips zum Spielen und gebe Euch später Euer Geld. Ich bin der Kassierer hier.");
+   autonpcfunctions.AddTraderTrigger("Hello","Be greeted.");
+   autonpcfunctions.AddTraderTrigger("Hallo","Seid mir gegrüßt.");
+   autonpcfunctions.AddTraderTrigger("greetings","Be greeted.");
+   autonpcfunctions.AddTraderTrigger("grüße","Seid mir gegrüßt.");
+   autonpcfunctions.AddTraderTrigger("help","I sell chips for gambling and give you your money afterwards. I am the cashier here.");
+   autonpcfunctions.AddTraderTrigger("hilfe","Ich verkaufe Chips zum Spielen und gebe Euch später Euer Geld. Ich bin der Kassierer hier.");
+   autonpcfunctions.AddTraderTrigger("what sell","I sell chips for gambling and give you your money afterwards. I am the cashier here.");
+   autonpcfunctions.AddTraderTrigger("was verkauf","Ich verkaufe Chips zum Spielen und gebe Euch später Euer Geld. Ich bin der Kassierer hier.");
    
-   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","That is not enough money for %NUMBER chips.");
-   npc.base.autonpcfunctions.AddCondition("money","<","%NUMBER");
-   npc.base.autonpcfunctions.AddCondition("lang","english");
-   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","Das ist nicht genug Geld für %NUMBER Chips.");
-   npc.base.autonpcfunctions.AddCondition("money","<","%NUMBER");
-   npc.base.autonpcfunctions.AddCondition("lang","german");
+   autonpcfunctions.AddTraderTrigger("%NUMBER chips","That is not enough money for %NUMBER chips.");
+   autonpcfunctions.AddCondition("money","<","%NUMBER");
+   autonpcfunctions.AddCondition("lang","english");
+   autonpcfunctions.AddTraderTrigger("%NUMBER chips","Das ist nicht genug Geld für %NUMBER Chips.");
+   autonpcfunctions.AddCondition("money","<","%NUMBER");
+   autonpcfunctions.AddCondition("lang","german");
 
-   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","Here are %NUMBER chips to play with. Enjoy your stay.");
-   npc.base.autonpcfunctions.AddConsequence("money","-","%NUMBER");
+   autonpcfunctions.AddTraderTrigger("%NUMBER chips","Here are %NUMBER chips to play with. Enjoy your stay.");
+   autonpcfunctions.AddConsequence("money","-","%NUMBER");
    --npc.base.autonpcfunctions.AddCondition("money",">=","%NUMBER")
-   npc.base.autonpcfunctions.AddConsequence("qpg","+",buyIn);
-   npc.base.autonpcfunctions.AddCondition("lang","english");
-   npc.base.autonpcfunctions.AddTraderTrigger("%NUMBER chips","Hier sind %NUMBER Chips zum Spielen. Viel Spaß.");
-   npc.base.autonpcfunctions.AddConsequence("money","-","%NUMBER");
+   autonpcfunctions.AddConsequence("qpg","+",buyIn);
+   autonpcfunctions.AddCondition("lang","english");
+   autonpcfunctions.AddTraderTrigger("%NUMBER chips","Hier sind %NUMBER Chips zum Spielen. Viel Spaß.");
+   autonpcfunctions.AddConsequence("money","-","%NUMBER");
    --npc.base.autonpcfunctions.AddCondition("money",">=","%NUMBER")
-   npc.base.autonpcfunctions.AddConsequence("qpg","+",buyIn);
-   npc.base.autonpcfunctions.AddCondition("lang","german");
+   autonpcfunctions.AddConsequence("qpg","+",buyIn);
+   autonpcfunctions.AddCondition("lang","german");
 
-   npc.base.autonpcfunctions.AddTraderTrigger("money","No chips, no money.");
-   npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-   npc.base.autonpcfunctions.AddTraderTrigger("geld","Keine Chips, kein Geld.");
-   npc.base.autonpcfunctions.AddCondition("qpg","=",0);
+   autonpcfunctions.AddTraderTrigger("money","No chips, no money.");
+   autonpcfunctions.AddCondition("qpg","=",0);
+   autonpcfunctions.AddTraderTrigger("geld","Keine Chips, kein Geld.");
+   autonpcfunctions.AddCondition("qpg","=",0);
    
-   npc.base.autonpcfunctions.AddTraderTrigger("money","Here is your money.");
+   autonpcfunctions.AddTraderTrigger("money","Here is your money.");
    --npc.base.autonpcfunctions.AddCondition("qpg",">",0);
-   npc.base.autonpcfunctions.AddConsequence("money","+",cashOut);
+   autonpcfunctions.AddConsequence("money","+",cashOut);
    
-   npc.base.autonpcfunctions.AddTraderTrigger("geld","Da hast du dein Geld.");
+   autonpcfunctions.AddTraderTrigger("geld","Da hast du dein Geld.");
    --npc.base.autonpcfunctions.AddCondition("qpg",">",0);
-   npc.base.autonpcfunctions.AddConsequence("money","+",cashOut);
+   autonpcfunctions.AddConsequence("money","+",cashOut);
 
    -- ********* END DYNAMIC PART ********
    TradSpeakLang={0,1};
    TradStdLang=0;
    
-   npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang)
+   autonpcfunctions.increaseLangSkill(TradSpeakLang)
    thisNPC.activeLanguage=TradStdLang;
  end
 
  function M.nextCycle() -- ~10 times per second
-   initializeNpc();
-   npc.base.autonpcfunctions.SpeakerCycle();
+   M.initializeNpc();
+   autonpcfunctions.SpeakerCycle();
  end
 
  function M.receiveText(texttype, message, originator)
-   if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
-  if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
+   if autonpcfunctions.BasicNPCChecks(originator,2) then
+  if autonpcfunctions.LangOK(originator,TradSpeakLang) then
  debugText="";
  if debugMode then
    if QuestID~=nil then
@@ -136,10 +132,10 @@ end
    thisNPC:talk(CCharacter.say,"Debug Info: "..debugText);
  end
  --thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "before npc.base.autonpcfunctions.TellSmallTalk");
- npc.base.autonpcfunctions.TellSmallTalk(message,originator);
+ autonpcfunctions.TellSmallTalk(message,originator);
  --thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "after npc.base.autonpcfunctions.TellSmallTalk");
   else
- npc.base.autonpcfunctions.Confused(
+ autonpcfunctions.Confused(
   "#me sieht dich leicht verwirrt an",
   "#me looks at you a little confused"
  );

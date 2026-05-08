@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.foo_barlini = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Foo Barlini
 --Race:        Mensch
@@ -12,10 +9,9 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 12/06/2008
 --Update by:   Kadiya
 
-require("npc.base.functions")
-require("npc.base.autonpcfunctions")
-require("magic.base.basics");
-
+local functions = require("npc.base.functions")
+local autonpcfunctions = require("npc.base.autonpcfunctions")
+local basics = require("magic.base.basics");
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -28,115 +24,114 @@ function M.initializeNpc()
         return true;
     end
 
-    npc.base.autonpcfunctions.npc.base.functions.InitTalkLists()
+    autonpcfunctions.functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
     
     -- ********* START DYNAMIC PART ********
 
-    npc.base.autonpcfunctions.npc.base.functions.AddCycleText("#me pflückt ein paar Früchte vom Baum.","#me pick some fruits from the trees.");
-    npc.base.autonpcfunctions.npc.base.functions.AddCycleText("#me formt einen schimmernden Eisball in ihrer Hand.","#me forms a gleaming iceball in her hand.");
-    npc.base.autonpcfunctions.npc.base.functions.AddCycleText("#me formt einen leuchtenden Feuerball in ihrer Hand.","#me forms a shiny fireball in her hand.");
+    autonpcfunctions.functions.AddCycleText("#me pflückt ein paar Früchte vom Baum.","#me pick some fruits from the trees.");
+    autonpcfunctions.functions.AddCycleText("#me formt einen schimmernden Eisball in ihrer Hand.","#me forms a gleaming iceball in her hand.");
+    autonpcfunctions.functions.AddCycleText("#me formt einen leuchtenden Feuerball in ihrer Hand.","#me forms a shiny fireball in her hand.");
 
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]rü[sß]","Ich grüße euch.");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Gg]rue[sß]");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Tt]a[gc].*");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalText("Seid gegrüßt!");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald.");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Gg]ötter.+euch");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Uu]ff.+[Bb]ald");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Ff]ünf.+euch");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Ich bin "..thisNPC.name..". Ich erhole mich hier grad ein wenig von dem Training.");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Ww]ie.+[Nn]ame");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Ww]ie.+[Hh]ei[sß].+[di][uh]");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]rü[sß]","Ich grüße euch.");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Hh]allo");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Gg]rue[sß]");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Tt]a[gc].*");
+    autonpcfunctions.functions.AddAdditionalText("Seid gegrüßt!");
+    autonpcfunctions.functions.AddTraderTrigger("[Aa]uf [Bb]ald","Auf bald.");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Gg]ötter.+euch");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Uu]ff.+[Bb]ald");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Ff]ünf.+euch");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]er [bs][ie][si][td] [di][uh].*","Ich bin "..thisNPC.name..". Ich erhole mich hier grad ein wenig von dem Training.");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Ww]ie.+[Nn]ame");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Ww]ie.+[Hh]ei[sß].+[di][uh]");
 
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Mm]agier","Ich bin Magier an dieser Akademie.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]as.+[Tt]raini","Ich habe das Erschaffen und Auflösen von Elementen geübt.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ee]rschaff","Eigentlich wollte ich mich ein wenig ausruhen, aber mit ein paar Münzen lasse ich mich vielleicht umstimmen.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Zz]eig","Eigentlich wollte ich mich ein wenig ausruhen, aber mit ein paar Münzen lasse ich mich vielleicht umstimmen.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Hh]ilfe","Willst du trainieren? Wenn du möchtest beschwöre ich dir ein paar Flammen, Giftwolken oder Steinmauern zum üben.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Tt]raining","Willst du trainieren? Wenn du möchtest beschwöre ich dir ein paar Flammen, Giftwolken oder Steinmauern zum üben.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ff]lamme","Was für Flammen möchtest du? Feuerflammen sind im übrigen etwas günstiger als Eisflammen, aber sie sind auch schwächer.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]tein","Soll ich dir ein paar Steinmauern zum üben erschaffen? Das kostet dich aber ein paar Kupferstücke");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Mm]auer");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]ift","Wenn du mir ein paar Kupfermünzen gibt, dann beschwöre ich dir ein Feld mit Giftwolken, damit du üben kannst.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]tudent","Ich bin selbst grade erst mit dem Studium durch...ich möchte mich noch nicht mit Studenten belasten.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]chüler","Ich unterrichte nicht, tut mir leid.");
+    autonpcfunctions.functions.AddTraderTrigger("[Mm]agier","Ich bin Magier an dieser Akademie.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]as.+[Tt]raini","Ich habe das Erschaffen und Auflösen von Elementen geübt.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ee]rschaff","Eigentlich wollte ich mich ein wenig ausruhen, aber mit ein paar Münzen lasse ich mich vielleicht umstimmen.");
+    autonpcfunctions.functions.AddTraderTrigger("[Zz]eig","Eigentlich wollte ich mich ein wenig ausruhen, aber mit ein paar Münzen lasse ich mich vielleicht umstimmen.");
+    autonpcfunctions.functions.AddTraderTrigger("[Hh]ilfe","Willst du trainieren? Wenn du möchtest beschwöre ich dir ein paar Flammen, Giftwolken oder Steinmauern zum üben.");
+    autonpcfunctions.functions.AddTraderTrigger("[Tt]raining","Willst du trainieren? Wenn du möchtest beschwöre ich dir ein paar Flammen, Giftwolken oder Steinmauern zum üben.");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.functions.AddTraderTrigger("[Ff]lamme","Was für Flammen möchtest du? Feuerflammen sind im übrigen etwas günstiger als Eisflammen, aber sie sind auch schwächer.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]tein","Soll ich dir ein paar Steinmauern zum üben erschaffen? Das kostet dich aber ein paar Kupferstücke");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Mm]auer");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]ift","Wenn du mir ein paar Kupfermünzen gibt, dann beschwöre ich dir ein Feld mit Giftwolken, damit du üben kannst.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]tudent","Ich bin selbst grade erst mit dem Studium durch...ich möchte mich noch nicht mit Studenten belasten.");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]chüler","Ich unterrichte nicht, tut mir leid.");
 
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]reeting","Greetings to you!");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Hh]ello");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalText("Greetings");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]oodbye","Farewell.");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Bb]ye");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Ff]ive.+you");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalText("Goodbye");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]ho.+you","I am "..thisNPC.name..". I just have a rest here from training.");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Ww]hat.+[Nn]ame");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Mm]age","I'm a mage on this academy.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]hat.+train","I trained summoning and extinguishing of elements.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]ummon","I've actually wanted to make a rest. But maybe with a few coins you can return me.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]how","I've actually wanted to make a rest. But maybe with a few coins you can return me.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Hh]elp","Have a training? If you want I summon a few flames, poison clouds or stone walls for you.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Tt]raining","Have a training? If you want I summon a few flames, poison clouds or stone walls for you.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ff]lame","What kind of flames did you want? Fire flames area bit cheaper than ice flames, but they are also weaker.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]all","Should I summon a few stone walls for you? But this costs you a few coppercoins.");
-    npc.base.autonpcfunctions.npc.base.functions.AddAdditionalTrigger("[Ss]tone");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Pp]oison","If you give me a few coppercoins, I'll summon a small field of poison clouds for you.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]tudent","I'm just finished my one apprenticeship...I take no students yet.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Pp]upil","I'm not a teacher, sorry.");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]reeting","Greetings to you!");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Hh]ello");
+    autonpcfunctions.functions.AddAdditionalText("Greetings");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]oodbye","Farewell.");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Bb]ye");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Ff]arewell");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Ff]ive.+you");
+    autonpcfunctions.functions.AddAdditionalText("Goodbye");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]ho.+you","I am "..thisNPC.name..". I just have a rest here from training.");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Ww]hat.+[Nn]ame");
+    autonpcfunctions.functions.AddTraderTrigger("[Mm]age","I'm a mage on this academy.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]hat.+train","I trained summoning and extinguishing of elements.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]ummon","I've actually wanted to make a rest. But maybe with a few coins you can return me.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]how","I've actually wanted to make a rest. But maybe with a few coins you can return me.");
+    autonpcfunctions.functions.AddTraderTrigger("[Hh]elp","Have a training? If you want I summon a few flames, poison clouds or stone walls for you.");
+    autonpcfunctions.functions.AddTraderTrigger("[Tt]raining","Have a training? If you want I summon a few flames, poison clouds or stone walls for you.");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Ff]lame","What kind of flames did you want? Fire flames area bit cheaper than ice flames, but they are also weaker.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]all","Should I summon a few stone walls for you? But this costs you a few coppercoins.");
+    autonpcfunctions.functions.AddAdditionalTrigger("[Ss]tone");
+    autonpcfunctions.functions.AddTraderTrigger("[Pp]oison","If you give me a few coppercoins, I'll summon a small field of poison clouds for you.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]tudent","I'm just finished my one apprenticeship...I take no students yet.");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Pp]upil","I'm not a teacher, sorry.");
    
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]hat.+buy","Thanks, but I already have everything I need.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything. Do I look like a merchant?");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("buy","I don't sell anything. Do I look like a merchant?");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("sell","Thanks, but I already have everything I need.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]as.+kaufst","Ich habe bereits alles, was ich brauche.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ww]as.+verkaufst","Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Kk]aufen","Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Vv]erkaufen","Danke nein, ich habe bereits alles, was ich brauche.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]obaith","This whole island group is called Gobiath. Nice place, the weather usually does not get too rough or too hot, I like it.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is a settlement of the Halflings.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Hh]arbo[u]+r","Troll's Bane and Vanima both have Harbors. The one southwest from Troll's Bane is bigger though but he is quite far away from the town.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Hh]ellbriar","That was an evil dungeon near Greenbriar ! The evil cultists there sacrificed most of the halflings of Greenbriar.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Mm]agic [Aa]cademy","This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Mm]age [Aa]cademy","This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Nn]orthmark","Some Norodaj-Barbarians have settled in the north of Gobaith...they are a bit simple and have some fear of magic, because they can't understand it...better don't go there.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]ilverbrand","Silverbrand is the town of the dwarfes. They don't like elven, mages, fairys, and any other race except there own...in this order.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Vv]anima","Tol Vanima is the \"Isle of the elven\"...a small island in the east of gobaith. You can reach it over the harbour or with one of the teleporters.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Well, that's the biggest town on Gobiath.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Vv]arshikar","You find it past the small sand desert in the far northwest. I would use the Teleporter, the desert is full of dangerous scorpions.");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]hat.+buy","Thanks, but I already have everything I need.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell anything. Do I look like a merchant?");
+    autonpcfunctions.functions.AddTraderTrigger("buy","I don't sell anything. Do I look like a merchant?");
+    autonpcfunctions.functions.AddTraderTrigger("sell","Thanks, but I already have everything I need.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]as.+kaufst","Ich habe bereits alles, was ich brauche.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ww]as.+verkaufst","Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?");
+    autonpcfunctions.functions.AddTraderTrigger("[Kk]aufen","Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?");
+    autonpcfunctions.functions.AddTraderTrigger("[Vv]erkaufen","Danke nein, ich habe bereits alles, was ich brauche.");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]obaith","This whole island group is called Gobiath. Nice place, the weather usually does not get too rough or too hot, I like it.");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is a settlement of the Halflings.");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Hh]arbo[u]+r","Troll's Bane and Vanima both have Harbors. The one southwest from Troll's Bane is bigger though but he is quite far away from the town.");
+    autonpcfunctions.functions.AddTraderTrigger("[Hh]ellbriar","That was an evil dungeon near Greenbriar ! The evil cultists there sacrificed most of the halflings of Greenbriar.");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Mm]agic [Aa]cademy","This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here.");
+    autonpcfunctions.functions.AddTraderTrigger("[Mm]age [Aa]cademy","This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here.");
+    autonpcfunctions.functions.AddTraderTrigger("[Nn]orthmark","Some Norodaj-Barbarians have settled in the north of Gobaith...they are a bit simple and have some fear of magic, because they can't understand it...better don't go there.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]ilverbrand","Silverbrand is the town of the dwarfes. They don't like elven, mages, fairys, and any other race except there own...in this order.");
+    autonpcfunctions.functions.AddTraderTrigger("[Vv]anima","Tol Vanima is the \"Isle of the elven\"...a small island in the east of gobaith. You can reach it over the harbour or with one of the teleporters.");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Well, that's the biggest town on Gobiath.");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.functions.AddTraderTrigger("[Vv]arshikar","You find it past the small sand desert in the far northwest. I would use the Teleporter, the desert is full of dangerous scorpions.");
+    autonpcfunctions.AddCondition("lang","english");
 --  
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]obiath","Diese ganze Inselgruppe wird Gobiath genannt. Nette Gegend, das Wetter wird nicht zu kalt oder zu heiß, ich bin gerne hier.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is eine Halblingssiedlung im Süden Gobaiths.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Hh]afen","Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane ist zwar größer aber auch sehr weit von der Stadt entfernt.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Hh]ellbriar","Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bösartigen Kultisten dort haben die meisten der Halblinge geopfert.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Mm]agierakademie","Dies hier ist die magische Akademie. Es ist nur Magiern, Studenten und ihren Gästen gestattet hier zu sein.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Mm]agische [Aa]kademie","Dies hier ist die magische Akademie. Es ist nur Magierin, Studenten und ihren Gästen gestattet hier zu sein.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Nn]ordmark","Einige Norodaj-Barbaren haben sich im Norden Gobaiths angesiedelt. Sie sind etwas einfältig und haben große Angst vor Magie...geh besser nicht dorthin.");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Ss]ilberbrand","Silberbrand ist die unterirdische Stadt der Zwerge. Sie mögen keine Elfen, keine Magier, keine Feen und auch sonst keine Rasse außer ihrer eigenen...");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Vv]anima","Tol Vanima ist die \"Insel der Elfen\"...eine kleine Insel im Osten von Gobaith. Du kannst sie über den Hafen oder mit einem Teleporter erreichen");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Tja, das ist die grösste Stadt auf Gobiath.");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.npc.base.functions.AddTraderTrigger("[Vv]arshikar","Das findet man weit im Nordwesten hinter der kleinen Sandwüste. Ich würde den Teleporter benutzen, die Wüste ist voller gefährlicher Skorpione.");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]obiath","Diese ganze Inselgruppe wird Gobiath genannt. Nette Gegend, das Wetter wird nicht zu kalt oder zu heiß, ich bin gerne hier.");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.functions.AddTraderTrigger("[Gg]reenbriar","Greenbriar is eine Halblingssiedlung im Süden Gobaiths.");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.functions.AddTraderTrigger("[Hh]afen","Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane ist zwar größer aber auch sehr weit von der Stadt entfernt.");
+    autonpcfunctions.functions.AddTraderTrigger("[Hh]ellbriar","Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bösartigen Kultisten dort haben die meisten der Halblinge geopfert.");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.functions.AddTraderTrigger("[Mm]agierakademie","Dies hier ist die magische Akademie. Es ist nur Magiern, Studenten und ihren Gästen gestattet hier zu sein.");
+    autonpcfunctions.functions.AddTraderTrigger("[Mm]agische [Aa]kademie","Dies hier ist die magische Akademie. Es ist nur Magierin, Studenten und ihren Gästen gestattet hier zu sein.");
+    autonpcfunctions.functions.AddTraderTrigger("[Nn]ordmark","Einige Norodaj-Barbaren haben sich im Norden Gobaiths angesiedelt. Sie sind etwas einfältig und haben große Angst vor Magie...geh besser nicht dorthin.");
+    autonpcfunctions.functions.AddTraderTrigger("[Ss]ilberbrand","Silberbrand ist die unterirdische Stadt der Zwerge. Sie mögen keine Elfen, keine Magier, keine Feen und auch sonst keine Rasse außer ihrer eigenen...");
+    autonpcfunctions.functions.AddTraderTrigger("[Vv]anima","Tol Vanima ist die \"Insel der Elfen\"...eine kleine Insel im Osten von Gobaith. Du kannst sie über den Hafen oder mit einem Teleporter erreichen");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.functions.AddTraderTrigger("[Tt]roll['s].+[Bb]ane","Tja, das ist die grösste Stadt auf Gobiath.");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.functions.AddTraderTrigger("[Vv]arshikar","Das findet man weit im Nordwesten hinter der kleinen Sandwüste. Ich würde den Teleporter benutzen, die Wüste ist voller gefährlicher Skorpione.");
 
 -- ********* END DYNAMIC PART ********
-
 
     TradSpeakLang={0,1,10};
     TradStdLang=0;
@@ -159,15 +154,14 @@ function M.initializeNpc()
 
 end
 
-
 function M.nextCycle()  -- ~10 times per second
     if ( TraderInit == nil) then
         TraderInit = {};
     end
 
     if (TraderInit[thisNPC.id] == nil) then
-        initializeNpc();
-        npc.base.autonpcfunctions.npc.base.functions.increaseLangSkill(TradSpeakLang);
+        M.initializeNpc();
+        autonpcfunctions.functions.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
         TraderInit[thisNPC.id] = true;
     end
@@ -305,28 +299,27 @@ function M.nextCycle()  -- ~10 times per second
        end
    end
 
-    npc.base.autonpcfunctions.npc.base.functions.SpeakerCycle();
+    autonpcfunctions.functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.autonpcfunctions.npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.autonpcfunctions.npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if autonpcfunctions.functions.BasicNPCChecks(originator,2) then
+        if (autonpcfunctions.functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            result = SayPrice(message, originator);
-            if not result then result = getCreature(message, originator) end;
-            if not result then npc.base.autonpcfunctions.npc.base.functions.TellSmallTalk(message,originator) end;
+            result = M.SayPrice(message, originator);
+            if not result then result = M.getCreature(message, originator) end;
+            if not result then autonpcfunctions.functions.TellSmallTalk(message,originator) end;
         else
     	    if (verwirrt==false) then
         	gText="#me sieht dich leicht verwirrt an";
         	eText="#me looks at you a little confused";
-        	outText=npc.base.npcautofunction.npc.base.functions.GetNLS(originator,gText,eText);
-        	npc.base.autonpcfunctions.npc.base.functions.NPCTalking(thisNPC,outText);
+        	outText=functions.GetNLS(originator,gText,eText);
+        	autonpcfunctions.functions.NPCTalking(thisNPC,outText);
         	verwirrt=true;
     	    end
 	end
     end
 end
-
 
 function M.SayPrice(message, originator)
 	if (string.find(message,"koste")~=nil) or (string.find(message,"[Pp]reis")~=nil) or (string.find(message,"[Ww]ieviel")~=nil) or (string.find(message,"costs")~=nil) or (string.find(message,"[Hh]ow much")~=nil) then
@@ -336,7 +329,6 @@ function M.SayPrice(message, originator)
     end
     return false;
 end
-
 
 function M.getCreature(message, originator)
      message = string.lower( message );
@@ -354,15 +346,15 @@ function M.getCreature(message, originator)
         or (string.find(message,"I want.+stone wall")~=nil)
         or (string.find(message,"buy.+stone wall")~=nil) then
 
-        GCoins,SCoins,CCoins = CalcSilverCopper(PreisMauer);
-        if npc.base.autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
-            Pay(originator,GCoins,SCoins,CCoins);
+        GCoins,SCoins,CCoins = M.CalcSilverCopper(PreisMauer);
+        if autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
+            M.Pay(originator,GCoins,SCoins,CCoins);
                 thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "#me nimmt das Geld mit einem Nicken und deutet dann mit dem Stab in Richtung Übungsplatz.");
                 thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "#me takes the money with a nod and flicks her wand to the training field.");
 
             CastStone=6;
 	    logStr=os.date()..": "..originator.name.." ask NPC Foo for stone walls\n";
-            logToFile_npc(logStr);
+            M.logToFile_npc(logStr);
 
             -- thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Bitte sehr.");
 	    -- thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "Here we go.");
@@ -386,16 +378,16 @@ function M.getCreature(message, originator)
 	or (string.find(message,"I want.+fire flame")~=nil)
 	or (string.find(message,"buy.+fire flame")~=nil) then
 
-	GCoins,SCoins,CCoins = CalcSilverCopper(PreisFeuerFlamme);
-	if npc.base.autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
-	    Pay(originator,GCoins,SCoins,CCoins);
+	GCoins,SCoins,CCoins = M.CalcSilverCopper(PreisFeuerFlamme);
+	if autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
+	    M.Pay(originator,GCoins,SCoins,CCoins);
 
             thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "#me nimmt das Geld mit einem Nicken und deutet dann mit dem Stab in Richtung Übungsplatz.");
             thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "#me takes the money with a nod and flicks her wand to the training field.");
 
 	    CastFire=6;
             logStr=os.date()..": "..originator.name.." ask NPC Foo for fire flames\n";
-	    logToFile_npc(logStr);
+	    M.logToFile_npc(logStr);
 
 	    -- thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Bitte sehr.");
 	    -- thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "Here we go.");
@@ -418,17 +410,16 @@ function M.getCreature(message, originator)
         or (string.find(message,"I want.+ice flame")~=nil)
         or (string.find(message,"buy.+ice flame")~=nil) then
 
-	GCoins,SCoins,CCoins = CalcSilverCopper(PreisEisFlamme);
-        if npc.base.autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
-            Pay(originator,GCoins,SCoins,CCoins);
+	GCoins,SCoins,CCoins = M.CalcSilverCopper(PreisEisFlamme);
+        if autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
+            M.Pay(originator,GCoins,SCoins,CCoins);
 
             thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "#me nimmt das Geld mit einem Nicken und deutet dann mit dem Stab in Richtung Übungsplatz.");
 	    thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "#me takes the money with a nod and flicks her wand to the training field.");
 	    
 	    CastIce=6;
             logStr=os.date()..": "..originator.name.." ask NPC Foo for ice flames\n";
-            logToFile_npc(logStr);
-
+            M.logToFile_npc(logStr);
 
             --thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "Here we go.");
         else
@@ -450,17 +441,16 @@ function M.getCreature(message, originator)
 	or (string.find(message,"I want.+poison cloud")~=nil)
 	or (string.find(message,"buy.+poison cloud")~=nil) then
 
-	GCoins,SCoins,CCoins = CalcSilverCopper(PreisGift);
-	if npc.base.autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
-	    Pay(originator,GCoins,SCoins,CCoins);
+	GCoins,SCoins,CCoins = M.CalcSilverCopper(PreisGift);
+	if autonpcfunctions.CheckMoney(originator,GCoins,SCoins,CCoins) then
+	    M.Pay(originator,GCoins,SCoins,CCoins);
 
 	    thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "#me nimmt das Geld mit einem Nicken und deutet dann mit dem Stab in Richtung Übungsplatz.");
 	    thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "#me takes the money with a nod and flicks her wand to the training field.");
 
 	    CastPoison=6;
             logStr=os.date()..": "..originator.name.." ask NPC Foo for poison clouds\n";
-            logToFile_npc(logStr);
-
+            M.logToFile_npc(logStr);
 
 	    --thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "Here we go.");
         else
@@ -472,7 +462,7 @@ function M.getCreature(message, originator)
     return false;
 end
 
-function npc.base.autonpcfunctions.CheckMoney(User,Gold,Silber,Kupfer)
+function autonpcfunctions.CheckMoney(User,Gold,Silber,Kupfer)
     local UserGold=User:countItem(61);
     local UserSilber=User:countItem(3077);
     local UserKupfer=User:countItem(3076);
@@ -558,7 +548,6 @@ function M.Pay(User,Gold,Silber,Kupfer)
         User:createItem(KupferID,PayKupfer*(-1),333,0);
     end
 end
-
 
 function M.CalcSilverCopper(CAmount)
     local GAmount=math.floor(CAmount/10000);

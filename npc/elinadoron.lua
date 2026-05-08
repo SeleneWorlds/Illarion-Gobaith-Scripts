@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.elinadoron = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Elina Doron
 --Race:        Female Human
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 04/16/2006
 --Update by:   Nitram
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,19 +18,19 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
     
-    npc.base.functions.AddTraderTrigger("[Gg]rüß","Scht! Ihr verscheucht die Tiere.");
-    npc.base.functions.AddAdditionalTrigger("[Hh]allo");
-    npc.base.functions.AddAdditionalText("Bleibt doch ruhig! Sonst verscheucht ihr die Tiere.");
+    functions.AddTraderTrigger("[Gg]rüß","Scht! Ihr verscheucht die Tiere.");
+    functions.AddAdditionalTrigger("[Hh]allo");
+    functions.AddAdditionalText("Bleibt doch ruhig! Sonst verscheucht ihr die Tiere.");
     
-    npc.base.functions.AddTraderTrigger("[Gg]reetings","Hush! You scare the animals.");
-    npc.base.functions.AddAdditionalTrigger("[Hh]ello");
-    npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddAdditionalText("Be quiet! You scare the animals.");
+    functions.AddTraderTrigger("[Gg]reetings","Hush! You scare the animals.");
+    functions.AddAdditionalTrigger("[Hh]ello");
+    functions.AddAdditionalTrigger("[Hh]i");
+    functions.AddAdditionalText("Be quiet! You scare the animals.");
     
-    npc.base.functions.AddCycleText("#me blick still in den Wald hinaus","#me quietly peers into the forest");
-    npc.base.functions.AddCycleText("#me scheint zu horchen","#me seems to hark");
+    functions.AddCycleText("#me blick still in den Wald hinaus","#me quietly peers into the forest");
+    functions.AddCycleText("#me scheint zu horchen","#me seems to hark");
     
     TradSpeakLang={0,1,4};
     TradStdLang=0;
@@ -53,20 +49,20 @@ end
     
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang)
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end		
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            Status=IrundarInfo(originator, message);
-            if (Status==0) then Status=Arrows(originator, message) end
-            if (Status==0) then npc.base.functions.TellSmallTalk(message) end
+            Status=M.IrundarInfo(originator, message);
+            if (Status==0) then Status=M.Arrows(originator, message) end
+            if (Status==0) then functions.TellSmallTalk(message) end
             
             -----------------------------------------------------EDIT BELOW HERE------------------------------------------------------------            
             
@@ -81,14 +77,14 @@ function M.receiveText(texttype, message, originator)
                 eText="Don't try to cheat me! You don't have enough arrows!";
             end
             if (Status~=0) then
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
-                npc.base.functions.NPCTalking(thisNPC,outText);
+                outText=functions.GetNLS(originator,gText,eText);
+                functions.NPCTalking(thisNPC,outText);
             end
         else
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
             end

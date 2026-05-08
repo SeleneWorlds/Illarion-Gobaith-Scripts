@@ -1,12 +1,9 @@
 local common = require("base.common")
 local M = {}
-npc = npc or {}
-npc.bippi_aquest28 = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- INSERT INTO npc VALUES (nextval('npc_seq'),2,787,795,0,4,false,'Bippi','npc_bippi_aquest28.lua',0);
 
-require("npc.base.autonpcfunctions")
+local autonpcfunctions = require("npc.base.autonpcfunctions")
 require("quest_aquest28");    --the quest file
 
 function M.useNPC(user,counter,param)
@@ -20,110 +17,110 @@ function M.initializeNpc()
         return true;
     end
 
-    npc.base.autonpcfunctions.InitTalkLists();
+    autonpcfunctions.InitTalkLists();
 
     -- ********* START DYNAMIC PART ********
 
     QuestID = 28;
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Milch","Aber bitte nimmt nur und bedient euch! Schmeckts? Meine 'Kühe' geben eine besonders wohlschmeckende Milch.");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Du möchtest mehr über die Kühe erfahren.");
-    npc.base.autonpcfunctions.AddTraderTrigger("Milk","Why of course, help yourself! Good, isn't it? My 'cows' give an extraordinary delicious milk.");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","You want to know more about the cows.");
+	autonpcfunctions.AddTraderTrigger("Milch","Aber bitte nimmt nur und bedient euch! Schmeckts? Meine 'Kühe' geben eine besonders wohlschmeckende Milch.");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("inform","Du möchtest mehr über die Kühe erfahren.");
+    autonpcfunctions.AddTraderTrigger("Milk","Why of course, help yourself! Good, isn't it? My 'cows' give an extraordinary delicious milk.");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("inform","You want to know more about the cows.");
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Kuh","Meine Kühe sind mein ganzer Stolz! Außerdem sichern sie mir meine Existenz. Wenn ich nur jemanden hätte der mir mit all der Arbeit hilft...");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Kühe");
-    npc.base.autonpcfunctions.AddAdditionalText("Ich werde alt und die Arbeit mit den Kühen wird für mich immer schwerer. Ich könnte Hilfe im Stall gebrauchen aber wer nimmt sich schon so einer Aufgabe an...");
+	autonpcfunctions.AddTraderTrigger("Kuh","Meine Kühe sind mein ganzer Stolz! Außerdem sichern sie mir meine Existenz. Wenn ich nur jemanden hätte der mir mit all der Arbeit hilft...");
+    autonpcfunctions.AddAdditionalTrigger("Kühe");
+    autonpcfunctions.AddAdditionalText("Ich werde alt und die Arbeit mit den Kühen wird für mich immer schwerer. Ich könnte Hilfe im Stall gebrauchen aber wer nimmt sich schon so einer Aufgabe an...");
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Cow","I'm proud of my cows! I earn my living with their milk. If only I had someone to help me with all the work...");
-    npc.base.autonpcfunctions.AddAdditionalText("I'm getting older and the work with the cows gets harder all by myself. I could use some help in the stable, but who would care for a task like that...");
+	autonpcfunctions.AddTraderTrigger("Cow","I'm proud of my cows! I earn my living with their milk. If only I had someone to help me with all the work...");
+    autonpcfunctions.AddAdditionalText("I'm getting older and the work with the cows gets harder all by myself. I could use some help in the stable, but who would care for a task like that...");
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Aufgabe","Könntet ihr mir helfen? Ich kann euch nicht viel dafür geben aber es würde mir viel bedeuten und mir einige Sorgen abnehmen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Hilfe");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("helf");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddConsequence("inform","Sag 'Ich helfe euch' wenn du ihm helfen möchtest.");
-    npc.base.autonpcfunctions.AddTraderTrigger("task","Could you help me? I can't pay much but it'd mean a lot to me. It would also take away some of my worries.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("help");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("state","=",1);
-    npc.base.autonpcfunctions.AddConsequence("inform","Say 'I help you' if you want to help him.");
+	autonpcfunctions.AddTraderTrigger("Aufgabe","Könntet ihr mir helfen? Ich kann euch nicht viel dafür geben aber es würde mir viel bedeuten und mir einige Sorgen abnehmen.");
+    autonpcfunctions.AddAdditionalTrigger("Hilfe");
+    autonpcfunctions.AddAdditionalTrigger("helf");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("state","=",1);
+    autonpcfunctions.AddConsequence("inform","Sag 'Ich helfe euch' wenn du ihm helfen möchtest.");
+    autonpcfunctions.AddTraderTrigger("task","Could you help me? I can't pay much but it'd mean a lot to me. It would also take away some of my worries.");
+    autonpcfunctions.AddAdditionalTrigger("help");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("state","=",1);
+    autonpcfunctions.AddConsequence("inform","Say 'I help you' if you want to help him.");
     -------
 	
-    npc.base.autonpcfunctions.AddTraderTrigger("Tschüß","Gehabt euch wohl und kommt eines Tages wieder.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Tschüss");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Wiedersehen");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gehabt euch wohl");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Auf bald");
-    npc.base.autonpcfunctions.AddAdditionalText("Auf bald");
-    npc.base.autonpcfunctions.AddTraderTrigger("Farewell","Good bye.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Good bye");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Bye");
-    npc.base.autonpcfunctions.AddAdditionalText("Farewell, and come back one day.");
-    npc.base.autonpcfunctions.AddAdditionalText("Good bye");
+    autonpcfunctions.AddTraderTrigger("Tschüß","Gehabt euch wohl und kommt eines Tages wieder.");
+    autonpcfunctions.AddAdditionalTrigger("Tschüss");
+    autonpcfunctions.AddAdditionalTrigger("Wiedersehen");
+    autonpcfunctions.AddAdditionalTrigger("Gehabt euch wohl");
+    autonpcfunctions.AddAdditionalTrigger("Auf bald");
+    autonpcfunctions.AddAdditionalText("Auf bald");
+    autonpcfunctions.AddTraderTrigger("Farewell","Good bye.");
+    autonpcfunctions.AddAdditionalTrigger("Good bye");
+    autonpcfunctions.AddAdditionalTrigger("Bye");
+    autonpcfunctions.AddAdditionalText("Farewell, and come back one day.");
+    autonpcfunctions.AddAdditionalText("Good bye");
     ----START QUEST-
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüße","Oh Grüße, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gruß");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Seid gegrüßt");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Tag");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Abend");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Mahlzeit");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Tach");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Moin");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Milch hört sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was für eine Milch es sich handelt.");
-    npc.base.autonpcfunctions.AddTraderTrigger("Hiho","Oh Grüße, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Hallo");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Hey");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Greebas");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Greebs");
-    npc.base.autonpcfunctions.AddCondition("lang","german");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Milch hört sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was für eine Milch es sich handelt.");
+    autonpcfunctions.AddTraderTrigger("Grüße","Oh Grüße, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
+    autonpcfunctions.AddAdditionalTrigger("Gruß");
+    autonpcfunctions.AddAdditionalTrigger("Seid gegrüßt");
+    autonpcfunctions.AddAdditionalTrigger("Guten Tag");
+    autonpcfunctions.AddAdditionalTrigger("Guten Abend");
+    autonpcfunctions.AddAdditionalTrigger("Mahlzeit");
+    autonpcfunctions.AddAdditionalTrigger("Tach");
+    autonpcfunctions.AddAdditionalTrigger("Moin");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("inform","Milch hört sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was für eine Milch es sich handelt.");
+    autonpcfunctions.AddTraderTrigger("Hiho","Oh Grüße, Reisender! Besuch freut mich immer, darf ich euch eine Schale 'Milch' anbieten?");
+    autonpcfunctions.AddAdditionalTrigger("Hallo");
+    autonpcfunctions.AddAdditionalTrigger("Hey");
+    autonpcfunctions.AddAdditionalTrigger("Greebas");
+    autonpcfunctions.AddAdditionalTrigger("Greebs");
+    autonpcfunctions.AddCondition("lang","german");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("inform","Milch hört sich jetzt sehr verlockend an, aber du fragst ihn besser vorher um was für eine Milch es sich handelt.");
 
-	npc.base.autonpcfunctions.AddTraderTrigger("Hello","Oh greetings, traveler! How nice of you to drop by, can I offer you a bowl of 'milk'?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Greetings");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Be greeted");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Hail");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Good day");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Good morning");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Good evening");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Milk sounds at the moment very alluring, but you better ask him first what kind of milk he has.");
-    npc.base.autonpcfunctions.AddTraderTrigger("Hiho","Oh greetings, traveler! How nice of you to drop by, can I offer you a bowl of 'milk'?");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Hallo");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Hey");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Greebas");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Greebs");
-    npc.base.autonpcfunctions.AddCondition("lang","english");
-    npc.base.autonpcfunctions.AddCondition("qpg","=",0);
-    npc.base.autonpcfunctions.AddConsequence("inform","Milk sounds at the moment very alluring, but you better ask him first what kind of milk he has.");
+	autonpcfunctions.AddTraderTrigger("Hello","Oh greetings, traveler! How nice of you to drop by, can I offer you a bowl of 'milk'?");
+    autonpcfunctions.AddAdditionalTrigger("Greetings");
+    autonpcfunctions.AddAdditionalTrigger("Be greeted");
+    autonpcfunctions.AddAdditionalTrigger("Hail");
+    autonpcfunctions.AddAdditionalTrigger("Good day");
+    autonpcfunctions.AddAdditionalTrigger("Good morning");
+    autonpcfunctions.AddAdditionalTrigger("Good evening");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("inform","Milk sounds at the moment very alluring, but you better ask him first what kind of milk he has.");
+    autonpcfunctions.AddTraderTrigger("Hiho","Oh greetings, traveler! How nice of you to drop by, can I offer you a bowl of 'milk'?");
+    autonpcfunctions.AddAdditionalTrigger("Hallo");
+    autonpcfunctions.AddAdditionalTrigger("Hey");
+    autonpcfunctions.AddAdditionalTrigger("Greebas");
+    autonpcfunctions.AddAdditionalTrigger("Greebs");
+    autonpcfunctions.AddCondition("lang","english");
+    autonpcfunctions.AddCondition("qpg","=",0);
+    autonpcfunctions.AddConsequence("inform","Milk sounds at the moment very alluring, but you better ask him first what kind of milk he has.");
 	
 	---------DURING QUEST-----------
-    npc.base.autonpcfunctions.AddTraderTrigger("Grüße","Ach da seid ihr ja wieder, ihr kommt sicher wegen eurer nächsten 'Aufgabe'.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Gruß");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Seid gegrüßt");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Tag");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Guten Abend");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Mahlzeit");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Tach");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Moin");
-    npc.base.autonpcfunctions.AddTraderTrigger("Hello","Ah, you're back again, I'm sure you are because of your next 'task' here.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Greetings");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Be greeted");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Hail");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Good day");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Good morning");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("Good evening");
+    autonpcfunctions.AddTraderTrigger("Grüße","Ach da seid ihr ja wieder, ihr kommt sicher wegen eurer nächsten 'Aufgabe'.");
+    autonpcfunctions.AddAdditionalTrigger("Gruß");
+    autonpcfunctions.AddAdditionalTrigger("Seid gegrüßt");
+    autonpcfunctions.AddAdditionalTrigger("Guten Tag");
+    autonpcfunctions.AddAdditionalTrigger("Guten Abend");
+    autonpcfunctions.AddAdditionalTrigger("Mahlzeit");
+    autonpcfunctions.AddAdditionalTrigger("Tach");
+    autonpcfunctions.AddAdditionalTrigger("Moin");
+    autonpcfunctions.AddTraderTrigger("Hello","Ah, you're back again, I'm sure you are because of your next 'task' here.");
+    autonpcfunctions.AddAdditionalTrigger("Greetings");
+    autonpcfunctions.AddAdditionalTrigger("Be greeted");
+    autonpcfunctions.AddAdditionalTrigger("Hail");
+    autonpcfunctions.AddAdditionalTrigger("Good day");
+    autonpcfunctions.AddAdditionalTrigger("Good morning");
+    autonpcfunctions.AddAdditionalTrigger("Good evening");
     -----------------------------------
     -- ********* END DYNAMIC PART ********
     TradSpeakLang={0,6};
     TradStdLang=0;
 
-    npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang);
+    autonpcfunctions.increaseLangSkill(TradSpeakLang);
     thisNPC.activeLanguage=TradStdLang;
     
     if not InitDone then
@@ -137,13 +134,13 @@ function M.initializeNpc()
 end
 
 function M.nextCycle()  -- ~10 times per second
-    initializeNpc();
-    npc.base.autonpcfunctions.SpeakerCycle();
+    M.initializeNpc();
+    autonpcfunctions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
-        if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
+    if autonpcfunctions.BasicNPCChecks(originator,2) then
+        if autonpcfunctions.LangOK(originator,TradSpeakLang) then
 			if string.find(message,"reset") then
 				originator:setQuestProgress(29, 0);	
 				originator:setQuestProgress(28, 0);	
@@ -169,13 +166,13 @@ function M.receiveText(texttype, message, originator)
 				--TELL WHAT TO DO AND WHICH COW HE HAS
 				gText="Sehr gut, dann fangen wir an. Um euch nicht zu überfordern müsst ihr euch auch nur um eine Kuh kümmern und zwar um "..cowname[cowrnd]..". Ich werde euch täglich sagen welche Aufgaben ihr zu tun habt.";
 			    eText="Very good, let's start. You only have to take care of one cow namely "..cowname[cowrnd].." so it's not that hard. I will tell you daily what to do.";
-		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
-				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
+		        outText=autonpcfunctions.GetNLS(User,gText,eText);
+				autonpcfunctions.NPCTalking(thisNPC,outText);
 
 				-- TELL the TASK TO DO
-				gText,eText = TaskText(task);
-		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
-				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
+				gText,eText = M.TaskText(task);
+		        outText=autonpcfunctions.GetNLS(User,gText,eText);
+				autonpcfunctions.NPCTalking(thisNPC,outText);
     		elseif ((string.find(message,"[Hh]ilfe")~=nil or string.find(message,"[Hh]elp")~=nil) and originator:getQuestProgress(28)>0) then
 				gText = "Schlüsselwörter: 'Wie lautet meine Aufgabe?','Gib mir einen Hinweis zur Aufgabe'";
 				eText = "Keyphrases : 'What is my task?','Give me a hint to the task'";
@@ -184,9 +181,9 @@ function M.receiveText(texttype, message, originator)
 				-- GIVE A HINT TO THE TASK
 				dummy1, task = quest_aquest28.split_questdata(originator);
 
-				dummy1,dummy2,gText,eText = TaskText(task);
-		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
-				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
+				dummy1,dummy2,gText,eText = M.TaskText(task);
+		        outText=autonpcfunctions.GetNLS(User,gText,eText);
+				autonpcfunctions.NPCTalking(thisNPC,outText);
 			elseif ((string.find(message,"[Aa]ufgabe")~=nil or string.find(message,"[Tt]ask")~=nil) and originator:getQuestProgress(28)>0) then
 
 				aquest28Effect = User.effects:find(32); -- does effect #32 already exist?
@@ -198,14 +195,14 @@ function M.receiveText(texttype, message, originator)
 				-- TELL the TASK TO DO
 				dummy1, task = quest_aquest28.split_questdata(originator);
 				
-				gText,eText = TaskText(task);
-		        outText=common.npc.base.npcautofunction.GetNLS(User,gText,eText);
-				npc.base.autonpcfunctions.NPCTalking(thisNPC,outText);
+				gText,eText = M.TaskText(task);
+		        outText=autonpcfunctions.GetNLS(User,gText,eText);
+				autonpcfunctions.NPCTalking(thisNPC,outText);
 			else
-            	npc.base.autonpcfunctions.TellSmallTalk(message,originator);
+            	autonpcfunctions.TellSmallTalk(message,originator);
 			end
         else
-            npc.base.autonpcfunctions.Confused(
+            autonpcfunctions.Confused(
                "#me sieht dich leicht verwirrt an",
                "#me looks at you a little confused"
             );

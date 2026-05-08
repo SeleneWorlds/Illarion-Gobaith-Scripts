@@ -1,10 +1,6 @@
 local M = {}
-npc = npc or {}
-npc.lightmaster = M
-local _ENV = setmetatable(M, { __index = _G })
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 Waypoint:new(position(122,604,0),1);
 Waypoint:new(position(130,604,0),1);
 Waypoint:new(position(129,596,0),1);
@@ -80,29 +76,29 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
 
-    npc.base.functions.AddTraderTrigger("[Hh]ello","Hello, Hello");
-    npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
-    npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Gr��e euch!");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[u�][s�]+");
-    npc.base.functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name.."");
-    npc.base.functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..".");
-    npc.base.functions.AddTraderTrigger("[Bb]ye ","Be well");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe Lasttiere!");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I sell pack animals!");
-    npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
-    npc.base.functions.AddAdditionalText("Farewell");
-    npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
-    npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.functions.AddAdditionalText("Auf bald");
-    npc.base.functions.AddAdditionalText("Auf balde");
-    npc.base.functions.AddTraderTrigger("[Kk]uh","Ich habe keine K�he, ich habe nur Esel hier.");
-    npc.base.functions.AddTraderTrigger("cow","I have no cows, I have just mules.")
+    functions.AddTraderTrigger("[Hh]ello","Hello, Hello");
+    functions.AddAdditionalTrigger("[Gg]reetings");
+    functions.AddAdditionalTrigger("[Hh]i");
+    functions.AddTraderTrigger("[Hh]allo","Gr��e euch!");
+    functions.AddAdditionalTrigger("[Gg]r[u�][s�]+");
+    functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name.."");
+    functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..".");
+    functions.AddTraderTrigger("[Bb]ye ","Be well");
+    functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe Lasttiere!");
+    functions.AddTraderTrigger("[Ww]hat.+sell","I sell pack animals!");
+    functions.AddAdditionalTrigger("[Ff]arewell");
+    functions.AddAdditionalText("Farewell");
+    functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
+    functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    functions.AddAdditionalText("Auf bald");
+    functions.AddAdditionalText("Auf balde");
+    functions.AddTraderTrigger("[Kk]uh","Ich habe keine K�he, ich habe nur Esel hier.");
+    functions.AddTraderTrigger("cow","I have no cows, I have just mules.")
 
     TradSpeakLang={0,1};
     TradStdLang=0;
@@ -123,9 +119,9 @@ function M.nextCycle()  -- ~10 times per second
     
     if (TraderInit == nil) then
         TraderInit = 1;
-		initializeNpc();
+		M.initializeNpc();
 		action = false;
-        npc.base.functions.increaseLangSkill(TradSpeakLang);
+        functions.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
 		thisNPC:setAttrib("agility",15);
 		thisNPC:createAtPos(5,392,1);
@@ -136,8 +132,8 @@ function M.nextCycle()  -- ~10 times per second
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) and originator:get_type()==0 then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) and originator:get_type()==0 then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
 			if string.find(message,"delete") then
 				world:deleteNPC(thisNPC.id);
@@ -145,13 +141,13 @@ function M.receiveText(texttype, message, originator)
 				npcdebug("CurWp: " .. getPos(CurWp.pos) .. "; NextWp: " .. getPos(NextWp.pos));
 			elseif string.find(message,"setroute") then
 				thisNPC:setOnRoute(true);
-			else npc.base.functions.TellSmallTalk(message) end;
+			else functions.TellSmallTalk(message) end;
         else
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
-                npc.base.functions.NPCTalking(thisNPC,outText);
+                outText=functions.GetNLS(originator,gText,eText);
+                functions.NPCTalking(thisNPC,outText);
                 verwirrt=true;
             end
         end

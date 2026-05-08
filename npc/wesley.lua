@@ -1,13 +1,9 @@
 local M = {}
-npc = npc or {}
-npc.wesley = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.useNPC(user,counter,param)
     --thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talk(CCharacter.say, "Don't you touch me!");
 end
-
 
 function M.initializeNpc()
     TraderItemPrice={};
@@ -132,13 +128,11 @@ function M.initializeNpc()
     TraderTrig[9]="[Ff]arewell";
     TraderText[9]="Goodbye";
 
-
-
 end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
+        M.initializeNpc();
         TraderFirst=1;
     end
     if (cycCount==nil) then
@@ -155,7 +149,7 @@ function M.nextCycle()  -- ~10 times per second
             cycCount=1;
             --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);
             for itnCnt=1,#TraderItemNumber do
-                refill(itnCnt);
+                M.refill(itnCnt);
             end
         end
     end
@@ -191,7 +185,7 @@ function M.receiveText(texttype, message, originator)
     --originator:introduce(thisNPC);
     if (TraderFirst == nil) then
         --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
-        initializeNpc();
+        M.initializeNpc();
         TraderFirst=1;
         --TalkToId=originator.id;
 
@@ -220,7 +214,7 @@ function M.receiveText(texttype, message, originator)
                     repeat
                         if (string.find(itemname,TraderItemTrig[itnCnt])~=nil) then             -- some item I sell?
                             if (TraderItemPrice[itnCnt]~=0) then                                -- if he sells it
-                                ActPrice=CalcPrice(TraderItemPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
+                                ActPrice=M.CalcPrice(TraderItemPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
                                 if(TraderItemNumber[itnCnt]>count) then                         -- if he has enough of it
                                     if (originator:countItem(3076)>=ActPrice*count) then   -- if he has enough money
                                         thisNPC:talk(CCharacter.say, "You want "..count.." "..itemname.."? Here you are, that makes "..ActPrice*count.." copper pieces.");
@@ -251,7 +245,7 @@ function M.receiveText(texttype, message, originator)
                     itnCnt=1;
                     repeat
                         if (string.find(itemname,TraderItemTrig[itnCnt])~=nil) then   -- some item I sell?
-                            ActPrice=CalcPrice(TraderItemPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
+                            ActPrice=M.CalcPrice(TraderItemPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
                             if (TraderItemPrice[itnCnt]~=0) then
                                 if(TraderItemNumber[itnCnt]>0) then
                                     if (originator:countItem(3076)>=ActPrice) then -- if he has enough money
@@ -301,7 +295,7 @@ function M.receiveText(texttype, message, originator)
                     itnCnt=1;
                     repeat
                         if (string.find(itemname,TraderItemTrig[itnCnt])~=nil) then   -- some item I buy?
-                            ActPrice=CalcPrice(TraderItemSellPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
+                            ActPrice=M.CalcPrice(TraderItemSellPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
                             if (TraderItemSellPrice[intItn]~=0) then
                                 if (TraderCopper>=ActPrice*count) then
                                     if (originator:countItem(TraderItemId[itnCnt])>=count) then -- if he has enough of that
@@ -332,7 +326,7 @@ function M.receiveText(texttype, message, originator)
                     itnCnt=1;
                     repeat
                         if (string.find(itemname,TraderItemTrig[itnCnt])~=nil) then   -- some item I buy?
-                            ActPrice=CalcPrice(TraderItemSellPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
+                            ActPrice=M.CalcPrice(TraderItemSellPrice[itnCnt],TraderItemNumber[itnCnt],TraderItemStandard[itnCnt]);
                             if (TraderItemSellPrice[itnCnt]~=0) then
                                 if (TraderCopper>=ActPrice) then
                                     if (originator:countItem(TraderItemId[itnCnt])>=1) then -- if he has enough of that
@@ -398,7 +392,7 @@ function M.receiveText(texttype, message, originator)
                     originator:inform(statusString);
                 elseif (string.find(message,"[Rr]efill")~=nil and originator:isAdmin()==true) then
                     for itnCnt=1,#TraderItemId do
-                        refill(itnCnt);
+                        M.refill(itnCnt);
                     end
                 end -- string find buy/sell/list...
             end --not ready

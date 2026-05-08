@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.trader_functions = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- Basisscript f�r NPC H�ndlerfunktionen
 -- Nitram
@@ -86,15 +82,15 @@ function M.MoneyText(lang,Gold,Silver,Copper,TLang)
     local EndText="";
     if (Gold>0) then
         GText=Gold.." "..TLang[lang+1];
-        EndText=Zeitform(Gold,TLang[lang+7]);
+        EndText=M.Zeitform(Gold,TLang[lang+7]);
     end
     if (Silver>0) then
         SText=Silver.." "..TLang[lang+3];
-        EndText=Zeitform(Silver,TLang[lang+7]);
+        EndText=M.Zeitform(Silver,TLang[lang+7]);
     end
     if (Copper>0) then
         CText=Copper.." "..TLang[lang+5];
-        EndText=Zeitform(Copper,TLang[lang+7]);
+        EndText=M.Zeitform(Copper,TLang[lang+7]);
     end
     retText=GText;
     if (SText~="") then
@@ -229,7 +225,6 @@ function M.Pay(User,Gold,Silber,Kupfer)
         PaySilber = PaySilber + MissSilber - 100;
     end;
 
-
     if (PayGold>0) then
         User:eraseItem(GoldID,PayGold);
     end
@@ -353,19 +348,19 @@ function M.Buying(originator, message)
         foundItem=false;
         itnCnt=1;
         repeat
-            if CheckItemTrigger(message,itnCnt) then
+            if M.CheckItemTrigger(message,itnCnt) then
                 --originator:inform("TraderItemPrice: "..TraderItemPrice[itnCnt]);
-                ActPrice=CalcPrice(TraderItemPrice[itnCnt],TraderItemNumber[itnCnt]+count,TraderItemStandard[itnCnt]);
+                ActPrice=M.CalcPrice(TraderItemPrice[itnCnt],TraderItemNumber[itnCnt]+count,TraderItemStandard[itnCnt]);
                 if (ActPrice~=0) then                                -- if he sells it
                     if(TraderItemNumber[itnCnt]>=count) then                         -- if he has enough of it
-                        GPrice,SPrice,CPrice=CalcSilverCopper(ActPrice*count);
-                        if CheckMoney(originator,GPrice,SPrice,CPrice) then   -- if he has enough money
-                            created=originator:createItem(TraderItemId[itnCnt],count,GenQual(TraderItemQuality[itnCnt],TraderItemDura[itnCnt]),TraderItemData[itnCnt])
+                        GPrice,SPrice,CPrice=M.CalcSilverCopper(ActPrice*count);
+                        if M.CheckMoney(originator,GPrice,SPrice,CPrice) then   -- if he has enough money
+                            created=originator:createItem(TraderItemId[itnCnt],count,M.GenQual(TraderItemQuality[itnCnt],TraderItemDura[itnCnt]),TraderItemData[itnCnt])
                             if (created ~=0 ) then
                                 retStatus=2;
                                 if (count-created>0) then originator:eraseItem(TraderItemId[itnCnt],count-created) end
                             else
-                                Coins=Pay(originator,GPrice,SPrice,CPrice);
+                                Coins=M.Pay(originator,GPrice,SPrice,CPrice);
                                 if (count==1) then
                                     retStatus=6;
                                 else
@@ -422,8 +417,8 @@ function M.SayPriceSell(originator, message)
     string.find(message,"preis.+") ~= nil or string.find(message,"was.+kost")~=nil or string.find(message,"wieviel.+kost")~=nil) then     -- if asked for price...
         repeat
             i=i+1;
-            if CheckItemTrigger(message,i) then
-                GPrice,SPrice,CPrice=CalcSilverCopper(CalcPrice(TraderItemPrice[i],TraderItemNumber[i],TraderItemStandard[i]));
+            if M.CheckItemTrigger(message,i) then
+                GPrice,SPrice,CPrice=M.CalcSilverCopper(M.CalcPrice(TraderItemPrice[i],TraderItemNumber[i],TraderItemStandard[i]));
                 foundItem=true;
                 if (SPrice+CPrice+GPrice==0) then
                     retStatus=5;
@@ -463,15 +458,15 @@ function M.SayPriceBuy(originator, message)
     string.find(message,"wieviel zahlt .+f�r.+")~=nil or string.find(message,"was zahlt .+f�r.+")~=nil ) then
         repeat                           -- run through all triggers
             i=i+1;
-            if CheckItemTrigger(message,i) then
+            if M.CheckItemTrigger(message,i) then
                 foundItem=true;
-                GPrice,SPrice,CPrice=CalcSilverCopper(CalcPrice(TraderItemSellPrice[i],TraderItemNumber[i],TraderItemStandard[i]));
+                GPrice,SPrice,CPrice=M.CalcSilverCopper(M.CalcPrice(TraderItemSellPrice[i],TraderItemNumber[i],TraderItemStandard[i]));
                 if (GPrice+SPrice+CPrice==0) then
                     retStatus=12;
                     retValues={};
                 else
                     retStatus=8;
-                    artic=EngGenusSel(TraderItemId[i]);
+                    artic=M.EngGenusSel(TraderItemId[i]);
                     retValues={artic,TraderItemId[i],GPrice,SPrice,CPrice};
                 end
             end --if
@@ -517,11 +512,11 @@ function M.Selling(originator, message)
         foundItem=false;
         itnCnt=1;
         repeat
-            if CheckItemTrigger(message,itnCnt) then
-                ActPrice=CalcPrice(TraderItemSellPrice[itnCnt],TraderItemNumber[itnCnt]-count,TraderItemStandard[itnCnt]);
+            if M.CheckItemTrigger(message,itnCnt) then
+                ActPrice=M.CalcPrice(TraderItemSellPrice[itnCnt],TraderItemNumber[itnCnt]-count,TraderItemStandard[itnCnt]);
                 if (ActPrice~=0) then
                     if (TraderCopper >=ActPrice*count) then
-                        GPrice,SPrice,CPrice=CalcSilverCopper(ActPrice*count);
+                        GPrice,SPrice,CPrice=M.CalcSilverCopper(ActPrice*count);
                         if (originator:countItem(TraderItemId[itnCnt])>=count) then -- if he has enough of that
                             MissGold  =originator:createItem(  61,GPrice,333,0);
                             MissSilver=originator:createItem(3077,SPrice,333,0);
@@ -600,7 +595,7 @@ function M.ShowItemList(originator,message)
         	  --originator:inform("Categories!");
             repeat
                 i=i+1;
-                if CheckCatTrigger(message,i) then
+                if M.CheckCatTrigger(message,i) then
                     CatFound=true;
                     View=i;
                 end
@@ -743,8 +738,8 @@ end
 
 -- �berpr�ft ob der Text einen ItemTrigger enth�lt
 function M.CheckItemTrigger(message,ItemPoint)
-    if (string.find(message,MakeTrigger(TraderItemId[ItemPoint],0))~=nil or
-    string.find(message,MakeTrigger(TraderItemId[ItemPoint],1))~=nil) then
+    if (string.find(message,M.MakeTrigger(TraderItemId[ItemPoint],0))~=nil or
+    string.find(message,M.MakeTrigger(TraderItemId[ItemPoint],1))~=nil) then
         return true
     else
         if (TraderItemName[ItemPoint]~=nil) then
@@ -773,15 +768,15 @@ function M.NPCUsed(user,counter,param)
         newMenu:addItem( 3077 );
         user:sendMenu( newMenu );
     elseif ( param == 3076 ) then
-        ShowItemList(user,"what sell");
+        M.ShowItemList(user,"what sell");
         NPCStatus[user.id] = 0;
     elseif ( param == 3077 ) then
-        ShowItemList(user,"what buy");
+        M.ShowItemList(user,"what buy");
         NPCStatus[user.id] = 1;
     elseif ( NPCStatus[user.id] == 0 ) then
-        Buying( user, "buy" .. world:getItemName(param, user:getPlayerLanguage()));
+        M.Buying( user, "buy" .. world:getItemName(param, user:getPlayerLanguage()));
     elseif ( NPCStatus[user.id] == 1 ) then
-        Selling( user, "sell" .. world:getItemName(param, user:getPlayerLanguage()));
+        M.Selling( user, "sell" .. world:getItemName(param, user:getPlayerLanguage()));
     end;
 end
 

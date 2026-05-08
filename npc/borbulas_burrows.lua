@@ -1,10 +1,6 @@
 local M = {}
-npc = npc or {}
-npc.borbulas_burrows = M
-local _ENV = setmetatable(M, { __index = _G })
 
-require("npc.base.autonpcfunctions")
-
+local autonpcfunctions = require("npc.base.autonpcfunctions")
 function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Finger weg!");
@@ -16,36 +12,36 @@ function M.initializeNpc()
         return true;
     end
 
-    npc.base.autonpcfunctions.InitTalkLists();
+    autonpcfunctions.InitTalkLists();
 
     -- ********* START DYNAMIC PART ********
 
-    npc.base.autonpcfunctions.AddTraderTrigger("hallo","Hallo du!");
-    npc.base.autonpcfunctions.AddConsequence("inform","toll");
-    npc.base.autonpcfunctions.AddTraderTrigger("inform","jap");
-    npc.base.autonpcfunctions.AddConsequence("inform","eins");
-    npc.base.autonpcfunctions.AddConsequence("inform","zwei");
-    npc.base.autonpcfunctions.AddConsequence("inform","drei");
+    autonpcfunctions.AddTraderTrigger("hallo","Hallo du!");
+    autonpcfunctions.AddConsequence("inform","toll");
+    autonpcfunctions.AddTraderTrigger("inform","jap");
+    autonpcfunctions.AddConsequence("inform","eins");
+    autonpcfunctions.AddConsequence("inform","zwei");
+    autonpcfunctions.AddConsequence("inform","drei");
     -- ********* END DYNAMIC PART ********
     TradSpeakLang={0,1};
     TradStdLang=0;
 
-    npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang);
+    autonpcfunctions.increaseLangSkill(TradSpeakLang);
     thisNPC.activeLanguage=TradStdLang;
 
 end
 
 function M.nextCycle()  -- ~10 times per second
-    initializeNpc();
-    npc.base.autonpcfunctions.SpeakerCycle();
+    M.initializeNpc();
+    autonpcfunctions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.autonpcfunctions.BasicNPCChecks(originator,2) then
-        if npc.base.autonpcfunctions.LangOK(originator,TradSpeakLang) then
-            npc.base.autonpcfunctions.TellSmallTalk(message,originator);
+    if autonpcfunctions.BasicNPCChecks(originator,2) then
+        if autonpcfunctions.LangOK(originator,TradSpeakLang) then
+            autonpcfunctions.TellSmallTalk(message,originator);
         else
-            npc.base.autonpcfunctions.Confused(
+            autonpcfunctions.Confused(
                "#me sieht dich leicht verwirrt an",
                "#me looks at you a little confused"
             );

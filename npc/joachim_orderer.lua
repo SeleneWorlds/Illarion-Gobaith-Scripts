@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.joachim_orderer = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Script zum testen der Bestellungen für npc
 --[[
@@ -54,27 +51,26 @@ function M.useNPC(user,counter,param)
 end
 	]]--
 	
-require("npc.base.orders");
-
+local orders = require("npc.base.orders");
 function M.init()
     joachim_init = true;
     thisNPC:increaseSkill(1,"common language",100);
     thisNPC.activeLanguage = 0;
     allok = false;
-    myOrderNPC = npc.base.orders.OrderNPC:new();
+    myOrderNPC = orders.OrderNPC:new();
     myOrderNPC.npc = thisNPC;
     myOrderNPC.generationTime={min=1,max=2}; --every 3 minutes a new order list
     --npc.base.orders.OrderPoolItem(nid,nnumber,nprice,ntime,nchance,nmincount,nmaxcount,nmincoins)
     --npc.base.orders.OrderPoolItem(nid,nnumber,nprice,ntime,nchance,nmincount,nmaxcount)
-    myOrderNPC.orderPool:addItemToPool(1,npc.base.orders.OrderPoolItem(1,1,150,2,10,1,5,40,30));
-    myOrderNPC.orderPool:addItemToPool(1,npc.base.orders.OrderPoolItem(2,20,10,1,15,1,10,3,1));
-    myOrderNPC.orderPool:addItemToPool(1,npc.base.orders.OrderPoolItem(3,10,100,2,10,1,3,30,12));
+    myOrderNPC.orderPool:addItemToPool(1,orders.OrderPoolItem(1,1,150,2,10,1,5,40,30));
+    myOrderNPC.orderPool:addItemToPool(1,orders.OrderPoolItem(2,20,10,1,15,1,10,3,1));
+    myOrderNPC.orderPool:addItemToPool(1,orders.OrderPoolItem(3,10,100,2,10,1,3,30,12));
     --Qualität für Pool 1 ist immer 0
     myOrderNPC.orderPool:setQualityChancesForPool(1,{100,0,0,0,0,0,0,0,0,0});
     --gegenstände im pool 2
-    myOrderNPC.orderPool:addItemToPool(2,npc.base.orders.OrderPoolItem(1,1,150,2,10,1,5,40,30));
-    myOrderNPC.orderPool:addItemToPool(2,npc.base.orders.OrderPoolItem(2,20,10,1,15,1,10,3,1));
-    myOrderNPC.orderPool:addItemToPool(2,npc.base.orders.OrderPoolItem(3,10,100,2,10,1,3,30,12));
+    myOrderNPC.orderPool:addItemToPool(2,orders.OrderPoolItem(1,1,150,2,10,1,5,40,30));
+    myOrderNPC.orderPool:addItemToPool(2,orders.OrderPoolItem(2,20,10,1,15,1,10,3,1));
+    myOrderNPC.orderPool:addItemToPool(2,orders.OrderPoolItem(3,10,100,2,10,1,3,30,12));
     myOrderNPC.orderPool.poolchances = {90,10};
     --chances für qualitäten des pools 2
     myOrderNPC.orderPool:setQualityChancesForPool(2,{5,20,15,15,10,10,10,5,5,5});
@@ -85,7 +81,7 @@ end
 
 function M.nextCycle()
     if ( joachim_init == nil) then
-        init();
+        M.init();
     end
     if ( myOrderNPC ~=nil) then
         myOrderNPC:nextCycle();

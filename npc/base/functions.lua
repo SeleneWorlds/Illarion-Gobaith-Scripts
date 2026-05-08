@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.functions = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.GetNLS( User, textInDe, textInEn )
     local textNLS = "";
@@ -75,7 +71,6 @@ function M.AddTraderTrigger(Trigger,Answer,newState, stateCondition)
     --thisNPC:talk(CCharacter.say,"through new trigger");
 end
 
-
 function M.AddAdditionalText(Answer)
     table.insert(TraderText[#TraderText],Answer)
 end
@@ -97,19 +92,19 @@ function M.TellSmallTalk(message,userID)     -- searches for fitting answer to "
     local Texts=0;
     local searchfin=false;
     repeat
-        if CheckForTrigger(message,i) then      -- "message" found?
+        if M.CheckForTrigger(message,i) then      -- "message" found?
             if (#TraderText[i]>1) then       -- more than one possible answers?
                 TextSel=math.random(1,#TraderText[i]);
             else
                 TextSel=1;
             end
             if ((userID~=nil) and ((talkCondition[i]==NPCStatus[userID] or talkCondition[i]==nil))) then  -- if userID was passed and the condition==actual state of npc, speak
-                NPCTalking(thisNPC,TraderText[i][TextSel]); -- speak it out, you fool!
+                M.NPCTalking(thisNPC,TraderText[i][TextSel]); -- speak it out, you fool!
                 if talkState[i]~=nil then               -- dont change state if condition==nil
                     NPCStatus[userID]=talkState[i];
                 end
             elseif userID==nil then
-                NPCTalking(thisNPC,TraderText[i][TextSel]); -- speak it out, you fool!
+                M.NPCTalking(thisNPC,TraderText[i][TextSel]); -- speak it out, you fool!
                 if talkState[i]~=nil then               -- dont change state if condition==nil
                     NPCStatus[userID]=talkState[i];
                 end

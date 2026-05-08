@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.static_teleport = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        TeleporterNPC
 --Race:        invisble
@@ -19,7 +16,7 @@ local _ENV = setmetatable(M, { __index = _G })
 -- INSERT INTO npc VALUES (67,25, 262,-264,0,0,'f','V Teleporter' ,'npc_static_teleport.lua',0);
 
 function M.initializeNpc()
-		Teleportation=TeleportationFunction(thisNPC); --initialize the teleportation
+		Teleportation=M.TeleportationFunction(thisNPC); --initialize the teleportation
 		Teleportation.initializeNpc(thisNPC);
 		thisNPC:talk(CCharacter.say, "debugmsg");
 end
@@ -29,7 +26,7 @@ function M.nextCycle()  -- ~10 times per second
         initDone = { };
     end
     if not initDone[thisNPC.id] then
-        initializeNpc();
+        M.initializeNpc();
         initDone[thisNPC.id] = true;
     end
 	
@@ -71,16 +68,16 @@ function M.ShowAnimationFrame( frame, posi )
         world:gfx(53,position(posi.x-2,posi.y-1,posi.z));
         world:gfx(53,position(posi.x-1,posi.y+2,posi.z));
     elseif (frame == 11) then
-        CreateCircle(1,posi,3);
+        M.CreateCircle(1,posi,3);
     elseif (frame == 12) then
-        CreateCircle(1,posi,2);
-        CheckAndRemoveItem( position(posi.x+1,posi.y+1,posi.z), 360 );
-        CheckAndRemoveItem( position(posi.x-1,posi.y-1,posi.z), 360 );
-        CheckAndRemoveItem( position(posi.x-1,posi.y+1,posi.z), 360 );
-        CheckAndRemoveItem( position(posi.x+1,posi.y-1,posi.z), 360 );
+        M.CreateCircle(1,posi,2);
+        M.CheckAndRemoveItem( position(posi.x+1,posi.y+1,posi.z), 360 );
+        M.CheckAndRemoveItem( position(posi.x-1,posi.y-1,posi.z), 360 );
+        M.CheckAndRemoveItem( position(posi.x-1,posi.y+1,posi.z), 360 );
+        M.CheckAndRemoveItem( position(posi.x+1,posi.y-1,posi.z), 360 );
     elseif (frame == 13) then
         world:gfx(31,posi);
-        CreateCircle(1,posi,1);
+        M.CreateCircle(1,posi,1);
     end
 end
 
@@ -126,7 +123,6 @@ function M.InformNLS( User, textInDe, textInEn )
 	end
 end
 
-
 function M.TeleportationFunction(thisNPC)
 
     local self = {
@@ -146,7 +142,6 @@ function M.TeleportationFunction(thisNPC)
         travelFee		   =  30;        --price for all journeys   
 		
     };
-
 
 	local initializeNpc = function(thisNPC)
 
@@ -211,20 +206,20 @@ function M.TeleportationFunction(thisNPC)
 	        end
 	    end
 	    if (self.desiredDestination[thisNPC.id]==self.HomePosition[thisNPC.id]) then --already there
-	        InformNLS(originator,
+	        M.InformNLS(originator,
 	        "Ihr seid bereits in "..self.townName[self.desiredDestination[thisNPC.id]]..".",
 	        "You are already in "..self.townName[self.desiredDestination[thisNPC.id]]..".");
 	        return
 	    end
 	    if ((self.desiredDestination[thisNPC.id]==0) or (self.desiredDestination[thisNPC.id]==nil)) then
-	        InformNLS(originator,
+	        M.InformNLS(originator,
 	        "Sagt den Namen der Stadt, in die ihr reisen möchtet.",
 	        "Say the name of the town you want to travel to.");
 	        --Char stands on teleporter but says no valid trigger. Names of towns not told intentionally to motivate n00bz to ask around
 	        return
 	    end
 	    if (originator:countItem(3076)<self.travelFee) and (originator:countItem(3077)==0) and (originator:countItem(61)==0) then --Char has not enough money
-	        InformNLS(originator,
+	        M.InformNLS(originator,
 	        "Ihr habt nicht genug Geld für diese Reise. Die Reise kostet "..self.travelFee.." Kupferstücke.",
 	        "You don't have enough money for this journey. The journey costs "..self.travelFee.." copper coins.");
 	        return
@@ -249,13 +244,12 @@ function M.TeleportationFunction(thisNPC)
 	        filepoint:write(""..coins);
 	        filepoint:close();
 	    end
-	    InformNLS(originator,
+	    M.InformNLS(originator,
 	    "Ihr lasst den Teleporter ein Tor nach "..self.townName[self.desiredDestination[thisNPC.id]].." öffnen, zu einem Preis von "..self.travelFee.." Kupferstücken.",
 	    "You make the teleporter open a portal to "..self.townName[self.desiredDestination[thisNPC.id]].." at a cost of "..self.travelFee.." copper coins.");
 	    self.TeleportInProgress[thisNPC.id] = true;
 	    self.TeleportCharacter[thisNPC.id] = originator;
 	end
-
 
 	local nextCycle = function()
 	
@@ -304,7 +298,7 @@ function M.TeleportationFunction(thisNPC)
 	    
 	    if ((self.block[thisNPC.id] == nil) or (self.block[thisNPC.id] == 9)) then
 	        self.block[thisNPC.id] = 0;
-	        ShowAnimationFrame( self.count[thisNPC.id], self.targetPosition[self.HomePosition[thisNPC.id]] );
+	        M.ShowAnimationFrame( self.count[thisNPC.id], self.targetPosition[self.HomePosition[thisNPC.id]] );
 	    else
 	        self.block[thisNPC.id] = self.block[thisNPC.id] + 1;
 	        return

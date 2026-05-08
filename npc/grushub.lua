@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.grushub = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Gru'shub
 --Race:        Orc
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 08/08/2005
 --Update by:   Markous
 
-require("npc.base.trader_functions")
-
+local trader_functions = require("npc.base.trader_functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -1471,7 +1467,6 @@ function M.initializeNpc()
     TraderLang={"Silber", "silver","Kupfer","copper","stücke","pieces"};
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
 
-
     TradSpeakLang={0,5};
     --common language=0
     --human language=1
@@ -1489,7 +1484,7 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (cycCount==nil) then
-    	initializeNpc();
+    	M.initializeNpc();
         cycCount=1;
         nextDelivery=math.random(10000,40000);
         thisNPC:increaseSkill(1,"common language",100);
@@ -1503,7 +1498,7 @@ function M.nextCycle()  -- ~10 times per second
             cycCount=1;
             --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery.." CycCount: "..cycCount);
             for itnCnt=1,#TraderItemNumber do
-                npc.base.trader_functions.refillItems(itnCnt);
+                trader_functions.refillItems(itnCnt);
             end
         end
     end
@@ -1514,7 +1509,7 @@ function M.receiveText(texttype, message, originator)
     --originator:introduce(thisNPC);
     if (TraderFirst == nil) then
         --------------------------------------------- *** DON'T EDIT BELOW HERE ***--------------------------------------
-        initializeNpc();
+        M.initializeNpc();
         TraderFirst=1;
         --TalkToId=originator.id;
         increaseLangSkill(thisNPC,TradSpeakLang)
@@ -1552,8 +1547,8 @@ function M.receiveText(texttype, message, originator)
                     Status,Values=digBuy(originator, message);
                     --originator:inform("Status: "..Status);
                     if (Status==0) then Status,Values=strBuy(originator, message) end
-                    if (Status==0) then Status,Values=npc.base.trader_functions.SayPriceSell(originator, message) end
-                    if (Status==0) then Status,Values=npc.base.trader_functions.SayPriceBuy(originator, message) end
+                    if (Status==0) then Status,Values=trader_functions.SayPriceSell(originator, message) end
+                    if (Status==0) then Status,Values=trader_functions.SayPriceBuy(originator, message) end
                     if (Status==0) then Status,Values=digSell(originator, message) end
                     if (Status==0) then Status,Values=strSell(originator, message) end
                     if (Status==0) then Status,Values=VerkaufList(originator, message) end
@@ -1562,8 +1557,8 @@ function M.receiveText(texttype, message, originator)
 
                     ----------------------------EDIT BELOW HERE-----------------------------------
                     if (Status==1) then -- Verkauf von mehreren Items erfolgreich // npc.base.trader_functions.Selling of multible items succeed
-                        gText="Du willst "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Kostet"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).."!";
-                        eText="You want buy "..Values[1].." "..world:getItemName(Values[2],1).."? Makes"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],TraderLang).."!";
+                        gText="Du willst "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Kostet"..trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).."!";
+                        eText="You want buy "..Values[1].." "..world:getItemName(Values[2],1).."? Makes"..trader_functions.MoneyText(1,Values[3],Values[4],TraderLang).."!";
                     end
                     if (Status==2) then -- Item kann wegen Platzmangel nicht erstellt werden // Item can't created, cause of lag of space
                         gText="Du nix Platz in Inventar!";
@@ -1582,20 +1577,20 @@ function M.receiveText(texttype, message, originator)
                         eText="Hurr? Me not sell that!";
                     end
                     if (Status==6) then -- Verkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Selling of a single item succeed
-                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." du willst? Da! Kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
-                        eText="You want "..world:getItemName(Values[1],1).."? Makes"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],TraderLang).."!";
+                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." du willst? Da! Kostet"..trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
+                        eText="You want "..world:getItemName(Values[1],1).."? Makes"..trader_functions.MoneyText(1,Values[2],Values[3],TraderLang).."!";
                     end
                     if (Status==7) then -- Verkaufspreis Ansage für ein Item // selling price announcement for an item
-                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
-                        eText="The "..world:getItemName(Values[1],1).." costs"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],TraderLang).."!";
+                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
+                        eText="The "..world:getItemName(Values[1],1).." costs"..trader_functions.MoneyText(1,Values[2],Values[3],TraderLang).."!";
                     end
                     if (Status==8) then -- Einkaufspreis Ansage für ein Item // buying price announcement for an item
-                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wär'"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).." wert.";
-                        eText="I pay"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
+                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wär'"..trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).." wert.";
+                        eText="I pay"..trader_functions.MoneyText(1,Values[3],Values[4],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
                     end
                     if (Status==9) then -- Einkauf von mehreren Items erfolgreich // npc.base.trader_functions.Buying of multible items succeed
-                        gText="Du willst "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich geb'"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).."!";
-                        eText="You want sell "..Values[1].." "..world:getItemName(Values[2],1).."? I give"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],TraderLang).."!";
+                        gText="Du willst "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich geb'"..trader_functions.MoneyText(0,Values[3],Values[4],TraderLang).."!";
+                        eText="You want sell "..Values[1].." "..world:getItemName(Values[2],1).."? I give"..trader_functions.MoneyText(1,Values[3],Values[4],TraderLang).."!";
                     end
                     if (Status==10) then -- Item das gekauft werden soll nicht vorhanden // item that should be buyed is not aviable
                         gText="Kommt wieder wenn du das hast!";
@@ -1610,8 +1605,8 @@ function M.receiveText(texttype, message, originator)
                         eText="Me not buy that!";
                     end
                     if (Status==13) then -- Einkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Buying of a single item succeed
-                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." ist, was du verkaufen willst? Ich gebe"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
-                        eText="You want sell "..world:getItemName(Values[1],1).."? I give you"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],TraderLang)..".";
+                        gText=GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." ist, was du verkaufen willst? Ich gebe"..trader_functions.MoneyText(0,Values[2],Values[3],TraderLang).."!";
+                        eText="You want sell "..world:getItemName(Values[1],1).."? I give you"..trader_functions.MoneyText(1,Values[2],Values[3],TraderLang)..".";
                     end
                     if (Status==14) then -- Liste der Waren die der NPC verkauft ist nicht leer // List of the wares the NPC sells, is not empty
                         gText="Ich verkauf glänzendes Zeug!";

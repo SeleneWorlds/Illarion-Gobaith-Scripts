@@ -1,15 +1,11 @@
 local M = {}
-npc = npc or {}
-npc.arkil = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Arkil
 --Race:        Human
 --Town:        ???
 --Function:    Miniquestgiver 1
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -18,24 +14,24 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists();
+    functions.InitTalkLists();
     npcstatus={};
 	
-    npc.base.functions.AddTraderTrigger("[Gg]r[üue]+[sß]","Seid Gegrüßt"); -- Fügt Triggertext mit Antwort hinzu
-    npc.base.functions.AddAdditionalTrigger("[Hh]allo");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
-    npc.base.functions.AddAdditionalText("Guten Tag");    -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzliche Antwort hinzu
-    npc.base.functions.AddTraderTrigger("[Gg]reetings","Hail"); -- Fügt Triggertext mit Antwort hinzu
-    npc.base.functions.AddAdditionalTrigger("[Hh]ello");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
-    npc.base.functions.AddAdditionalText("Good day");
-    npc.base.functions.AddTraderTrigger("[Ww]ho ",thisNPC.name.." is my name.");
-    npc.base.functions.AddTraderTrigger("[Ww]er ",thisNPC.name..", ist mein Name.");
-    npc.base.functions.AddTraderTrigger("[Bb]ye.","Farewell.");
-    npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
-    npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Lebt wohl.");
-    npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    functions.AddTraderTrigger("[Gg]r[üue]+[sß]","Seid Gegrüßt"); -- Fügt Triggertext mit Antwort hinzu
+    functions.AddAdditionalTrigger("[Hh]allo");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
+    functions.AddAdditionalText("Guten Tag");    -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzliche Antwort hinzu
+    functions.AddTraderTrigger("[Gg]reetings","Hail"); -- Fügt Triggertext mit Antwort hinzu
+    functions.AddAdditionalTrigger("[Hh]ello");          -- Fügt zu letztem "npc.base.functions.AddTraderTrigger" zusätzlichen Triggertext hinzu
+    functions.AddAdditionalText("Good day");
+    functions.AddTraderTrigger("[Ww]ho ",thisNPC.name.." is my name.");
+    functions.AddTraderTrigger("[Ww]er ",thisNPC.name..", ist mein Name.");
+    functions.AddTraderTrigger("[Bb]ye.","Farewell.");
+    functions.AddAdditionalTrigger("[Ff]arewell");
+    functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Lebt wohl.");
+    functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
     
     
-    npc.base.functions.AddCycleText("#me kramt verzweifelt in seinen Taschen","#me searches his pockets."); -- Fügt Text der alle paar Min gesagt wird hinzu
+    functions.AddCycleText("#me kramt verzweifelt in seinen Taschen","#me searches his pockets."); -- Fügt Text der alle paar Min gesagt wird hinzu
     
     
     
@@ -56,22 +52,22 @@ end
     
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang)
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end	
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
             normalerweise=true;
 			if (((string.find(message,"[Gg]reetings")~=nil) or (string.find(message,"[Hh]ello")~=nil)or (string.find(message,"[Gg]r[üue]+[sß]")~=nil)or (string.find(message,"[Hh]allo")~=nil)) and (originator:getQuestProgress(735)==1)) then
 				gText="Seid gegrüßt! Habt ihr mein Schwert schon gefunden?";
 				eText="Greetings! Have you found my sword?";
-				outText=npc.base.functions.GetNLS(originator,gText,eText);
+				outText=functions.GetNLS(originator,gText,eText);
 				thisNPC:talk(CCharacter.say,outText);
 				npcstatus[originator.id]=2;
 				normalerweise=false;
@@ -80,7 +76,7 @@ function M.receiveText(texttype, message, originator)
 				originator:inform("QuestID:"..originator:getQuestProgress(735));
 				gText="Ich suche mein Schwert, hilfst du mir es zu finden?";
 				eText="I lost my sword, can u help me find it?";
-				outText=npc.base.functions.GetNLS(originator,gText,eText);
+				outText=functions.GetNLS(originator,gText,eText);
 				thisNPC:talk(CCharacter.say,outText);
 				npcstatus[originator.id]=1;
 			end
@@ -88,7 +84,7 @@ function M.receiveText(texttype, message, originator)
 			if (((string.find(message,"[Yy]es")~=nil)or(string.find(message,"[Jj]a")~=nil)) and (npcstatus[originator.id]==1)) then
 				gText="Sehr gut, Ich habs blabla verloren.";
 				eText="Blaenglischertext";
-				outText=npc.base.functions.GetNLS(originator,gText,eText);
+				outText=functions.GetNLS(originator,gText,eText);
 				thisNPC:talk(CCharacter.say,outText);
 				npcstatus[originator.id]=0;
 				originator:setQuestProgress( 735,1);
@@ -96,7 +92,7 @@ function M.receiveText(texttype, message, originator)
 			if (((string.find(message,"[Nn]o ")~=nil)or(string.find(message,"[Nn]ein")~=nil)) and (npcstatus[originator.id]==1)) then
 				gText="Dann verschwendet meine Zeit nicht weiter.";
 				eText="Don't steal my time.";
-				outText=npc.base.functions.GetNLS(originator,gText,eText);
+				outText=functions.GetNLS(originator,gText,eText);
 				thisNPC:talk(CCharacter.say,outText);
 				npcstatus[originator.id]=0;
 			end
@@ -105,18 +101,18 @@ function M.receiveText(texttype, message, originator)
 				if (true) then --schwert im inventar
 					gText="Ihr habt es gefunden! ich danke euch, hier nehmt etwas Gold für eure Mühe.";
 					eText="You found it! Thanks a lot, here take some gold.";
-					outText=npc.base.functions.GetNLS(originator,gText,eText);
+					outText=functions.GetNLS(originator,gText,eText);
 					thisNPC:talk(CCharacter.say,outText);
 					--Schwert löschen + geld geben
 					gText="#me nimmt 5 Gold entgegen.";
 					eText="#me takes 5 gold.";
-					outText=npc.base.functions.GetNLS(originator,gText,eText);
+					outText=functions.GetNLS(originator,gText,eText);
 					originator:talk(CCharacter.say,outText);
 					originator:setQuestProgress(735,2);
 				else
 					gText="Sehr gut, Ich habs blabla verloren.";
 					eText="Blaenglischertext";
-					outText=npc.base.functions.GetNLS(originator,gText,eText);
+					outText=functions.GetNLS(originator,gText,eText);
 					thisNPC:talk(CCharacter.say,outText);
 				end
 				npcstatus[originator.id]=0;
@@ -124,7 +120,7 @@ function M.receiveText(texttype, message, originator)
 			if (((string.find(message,"[Nn]o ")~=nil)or(string.find(message,"[Nn]ein")~=nil)) and (npcstatus[originator.id]==2)) then
 				gText="Dann verschwendet meine Zeit nicht weiter.";
 				eText="Don't waste my time.";
-				outText=npc.base.functions.GetNLS(originator,gText,eText);
+				outText=functions.GetNLS(originator,gText,eText);
 				thisNPC:talk(CCharacter.say,outText);
 				npcstatus[originator.id]=0;
 			end
@@ -132,14 +128,14 @@ function M.receiveText(texttype, message, originator)
             if (verwirrt==false) then
                 gText="#me schein verwirrt zu sein.";
                 eText="#me seems to be confused.";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
 				normalerweise=false;
             end
         end
 		
-		if (normalerweise==true) then  npc.base.functions.TellSmallTalk(message); end
+		if (normalerweise==true) then  functions.TellSmallTalk(message); end
     end
 end--function
 

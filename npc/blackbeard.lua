@@ -1,15 +1,11 @@
 local M = {}
-npc = npc or {}
-npc.blackbeard = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- Schiffkaptain Blackbeard
 
 -- Route: Hafen - Greenbriar
 
 local ships = require("npc.base.ships");
-require("npc.base.functions");
-
+local functions = require("npc.base.functions");
 -- Insert Statements für Nötige NPCs
 -- INSERT INTO npc VALUES (1000,2,-401,-489,0,0,'f','Ship NPC',NULL,0);
 -- INSERT INTO npc VALUES (1001,2,-401,-488,0,0,'f','Ship NPC',NULL,0);
@@ -126,12 +122,10 @@ end
 
 function M.receiveText(texttype, message, originator)
     originator:introduce(thisNPC);
-    AddPassanger(originator,message);
-    Start(originator,message);
-    Debug(message);
+    M.AddPassanger(originator,message);
+    M.Start(originator,message);
+    M.Debug(message);
 end
-
-
 
 function M.AddPassanger(originator,message)
     if (string.find(message,"[Ss]chiff") ~= nil) then

@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.bernardo = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Bernardo von Hochfels
 --Race:        Human
@@ -14,8 +11,7 @@ local _ENV = setmetatable(M, { __index = _G })
 
 -- INSERT INTO npc VALUES (72, 0, -87, -123,1,4,'f','Bernardo von Hochfels','npc_bernardo.lua',0);
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -24,30 +20,30 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
 
-    npc.base.functions.AddTraderTrigger("[Gg]reetings","Greetings. Can i help you?");
-    npc.base.functions.AddAdditionalTrigger("[Hh]ello");
-    npc.base.functions.AddAdditionalText("Be greeted. I'm "..thisNPC.name..". Can I help you?");
-    npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Grüße. Kann ich euch helfen?");
-    npc.base.functions.AddAdditionalTrigger("[hH]allo");
-    npc.base.functions.AddAdditionalText("Guten Tag. Ich bin "..thisNPC.name..". Kann ich euch helfen?");
-    npc.base.functions.AddTraderTrigger("[Yy]ou.+[Tt]rader","No. I'm no trader. I'm the tax collector of Trollsbane.");
-    npc.base.functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]ändler","Nein ich bin kein Händler. Ich bin der Steuerneintreiber von Trollsbane.");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","Nothing. I'm no trader so i sell nothing.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich bin kein Händler also verkaufe ich auch nichts.");
-    npc.base.functions.AddTraderTrigger("[Tt]ell.+[Ss]omething","What shall I tell you? Tell me what you want or leave. But do not waste my time.");
-    npc.base.functions.AddTraderTrigger("[Ee]rzähl.+[Ww]as","Was soll ich euch erzählen? Sagt mir was ihr wollt, aber verschwendet meine Zeit nicht.");
-    npc.base.functions.AddTraderTrigger("[Gg]oodbye","Be well.");
-    npc.base.functions.AddAdditionalTrigger("[Bb]ye");
-    npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
-    npc.base.functions.AddAdditionalText("Farewell!");
-    npc.base.functions.AddAdditionalText("Good bye.");
-    npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Auf wiedersehen.");
-    npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.functions.AddAdditionalText("Auf bald");
+    functions.AddTraderTrigger("[Gg]reetings","Greetings. Can i help you?");
+    functions.AddAdditionalTrigger("[Hh]ello");
+    functions.AddAdditionalText("Be greeted. I'm "..thisNPC.name..". Can I help you?");
+    functions.AddTraderTrigger("[Gg]rü[ßs]+e","Grüße. Kann ich euch helfen?");
+    functions.AddAdditionalTrigger("[hH]allo");
+    functions.AddAdditionalText("Guten Tag. Ich bin "..thisNPC.name..". Kann ich euch helfen?");
+    functions.AddTraderTrigger("[Yy]ou.+[Tt]rader","No. I'm no trader. I'm the tax collector of Trollsbane.");
+    functions.AddTraderTrigger("[DdIi][uh]r*.+[Hh]ändler","Nein ich bin kein Händler. Ich bin der Steuerneintreiber von Trollsbane.");
+    functions.AddTraderTrigger("[Ww]hat.+sell","Nothing. I'm no trader so i sell nothing.");
+    functions.AddTraderTrigger("[Ww]as.+verkauf","Ich bin kein Händler also verkaufe ich auch nichts.");
+    functions.AddTraderTrigger("[Tt]ell.+[Ss]omething","What shall I tell you? Tell me what you want or leave. But do not waste my time.");
+    functions.AddTraderTrigger("[Ee]rzähl.+[Ww]as","Was soll ich euch erzählen? Sagt mir was ihr wollt, aber verschwendet meine Zeit nicht.");
+    functions.AddTraderTrigger("[Gg]oodbye","Be well.");
+    functions.AddAdditionalTrigger("[Bb]ye");
+    functions.AddAdditionalTrigger("[Ff]arewell");
+    functions.AddAdditionalText("Farewell!");
+    functions.AddAdditionalText("Good bye.");
+    functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Auf wiedersehen.");
+    functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    functions.AddAdditionalText("Auf bald");
 
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
 
@@ -80,20 +76,20 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang)
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            Status,Values=TakeTaxes(originator, message)
-            if (Status==0) then Status,Values=npc.base.functions.TellDate(originator, message, TraderMonths) end
-            if (Status==0) then npc.base.functions.TellSmallTalk(message) end
+            Status,Values=M.TakeTaxes(originator, message)
+            if (Status==0) then Status,Values=functions.TellDate(originator, message, TraderMonths) end
+            if (Status==0) then functions.TellSmallTalk(message) end
 
             ----------------------------EDIT BELOW HERE-----------------------------------
             if (Status==1) then -- Gefragt nach Steuern, darf sie aber nicht nehmen
@@ -111,12 +107,12 @@ function M.receiveText(texttype, message, originator)
                 if (seleced==1) then
                     eText="It's day "..Values[1].." of "..Values[2].." of the year "..Values[3]..".";
                 elseif (seleced==2) then
-                    eText="It's the "..npc.base.functions.EnglDigit(Values[1]).." of "..Values[2].." of the year "..Values[3]..".";
+                    eText="It's the "..functions.EnglDigit(Values[1]).." of "..Values[2].." of the year "..Values[3]..".";
                 end
             end
 
             if (Status~=0) then
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
             end
 
@@ -143,7 +139,7 @@ function M.receiveText(texttype, message, originator)
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
             end
@@ -178,7 +174,7 @@ function M.TakeTaxes(originator, message)
                 filepoint:write("0");
                 filepoint:close();
             end
-            GoldCoins,SilverCoins,CopperCoins = CalcSilverCopper(coins);
+            GoldCoins,SilverCoins,CopperCoins = M.CalcSilverCopper(coins);
             if (GoldCoins > 0) then
                 originator:createItem(61,GoldCoins,333,0);
             end
@@ -206,15 +202,15 @@ function M.MoneyText(lang,Gold,Silver,Copper,TLang)
     local EndText="";
     if (Gold>0) then
         GText=Gold.." "..TLang[lang+1];
-        EndText=Zeitform(Gold,TLang[lang+7]);
+        EndText=M.Zeitform(Gold,TLang[lang+7]);
     end
     if (Silver>0) then
         SText=Silver.." "..TLang[lang+3];
-        EndText=Zeitform(Silver,TLang[lang+7]);
+        EndText=M.Zeitform(Silver,TLang[lang+7]);
     end
     if (Copper>0) then
         CText=Copper.." "..TLang[lang+5];
-        EndText=Zeitform(Copper,TLang[lang+7]);
+        EndText=M.Zeitform(Copper,TLang[lang+7]);
     end
     retText=GText;
     if (SText~="") then

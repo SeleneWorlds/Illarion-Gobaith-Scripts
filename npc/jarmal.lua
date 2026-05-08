@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.jarmal = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Jarmal
 --Race:        Human
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 04/26/2005
 --Update by:   Nitram
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,43 +18,43 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
 
-    npc.base.functions.AddTraderTrigger("[Hh]ello","Greetings Traveler, I hope you had a pleasant voyage.");
-    npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
-    npc.base.functions.AddAdditionalText("Ah, Greetings Landrat. Was the journey rough?");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Grüße Reisender, ich hoff du hattest ne angenehme Reise.");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
-    npc.base.functions.AddAdditionalText("Ah, Grüße Landratte. War die Reise rau?");
-    npc.base.functions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name..", shipboy.");
-    npc.base.functions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..", Schiffsjunge.");
-    npc.base.functions.AddTraderTrigger("[Ww]here.+a[mr]e*","This is the harbour, where else did you expect a ship to bring you?");
-    npc.base.functions.AddTraderTrigger("[Ww]o.+[sb]ind*","Das ist der Hafen. Wo sonst dachtest du brinst dich 'n Schiff hin?");
-    npc.base.functions.AddTraderTrigger("[Hh]arbour","Not as big as one would expect, right? But it does the job still.");
-    npc.base.functions.AddTraderTrigger("[Hh]afen","Nicht so groß wie du dachtest, richtig? Aber er dient seinem Zweck.");
-    npc.base.functions.AddTraderTrigger("[Tt]own","The next big Town is Trollsbane, to the northeast. Or the village Greenbriar to the west.");
-    npc.base.functions.AddTraderTrigger("[Ss]t[aä]dt","Die nächste große Stadt ist Trollsbane im Nordosten. Oder das Dorf Greenbriar im Westen.");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I aint selling anything, landrat.");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","I verkauf nix, Landratte.");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+buy","Do I look like some filthy rich trader, landrat?");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+%skauf","Seh ich aus wie'n reicher Händler, Landratte?");
-    npc.base.functions.AddTraderTrigger("[Hh]elp","Best advice I can give you, go somewhere else.");
-    npc.base.functions.AddTraderTrigger("[Hh]ilfe","Der beste Tipp, den ich dir geben kann, ist woanders hin zu gehen");
-    npc.base.functions.AddTraderTrigger("[Ss]somewhere.+else","Like Trollsbane, or Greenbriar.");
-    npc.base.functions.AddTraderTrigger("[Aa]nders","Wie Trolls Bane oder Greenbriar.");
-    npc.base.functions.AddTraderTrigger("[Nn]ew.+here","I thought so the first time I saw you. Well, welcome on this little godforsaken island, landrat.");
-    npc.base.functions.AddTraderTrigger("[Nn]eu.+hier","Das wusst ich schon als ich dich das erste Mal gesehen hab. Naja...willkommen auf dieser kleinen Insel, Landratte.");
-    npc.base.functions.AddTraderTrigger("[Ii]sland","Yes, welcome on the island of ... of ... arr, forget it. Have some ale with you?");
-    npc.base.functions.AddTraderTrigger("[Ii]nsel","Ja. Willkommen auf der Insel...ähm...arr, ich habs vergessen. Hast du Bier dabei?");
-    npc.base.functions.AddTraderTrigger("[Bb]ye.","Aye, Landrat.");
-    npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
-    npc.base.functions.AddAdditionalText("Aye aye.");
-    npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Aye, Landratte");
-    npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.functions.AddAdditionalText("Aye aye");
+    functions.AddTraderTrigger("[Hh]ello","Greetings Traveler, I hope you had a pleasant voyage.");
+    functions.AddAdditionalTrigger("[Gg]reetings");
+    functions.AddAdditionalText("Ah, Greetings Landrat. Was the journey rough?");
+    functions.AddTraderTrigger("[Hh]allo","Grüße Reisender, ich hoff du hattest ne angenehme Reise.");
+    functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
+    functions.AddAdditionalText("Ah, Grüße Landratte. War die Reise rau?");
+    functions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name..", shipboy.");
+    functions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..", Schiffsjunge.");
+    functions.AddTraderTrigger("[Ww]here.+a[mr]e*","This is the harbour, where else did you expect a ship to bring you?");
+    functions.AddTraderTrigger("[Ww]o.+[sb]ind*","Das ist der Hafen. Wo sonst dachtest du brinst dich 'n Schiff hin?");
+    functions.AddTraderTrigger("[Hh]arbour","Not as big as one would expect, right? But it does the job still.");
+    functions.AddTraderTrigger("[Hh]afen","Nicht so groß wie du dachtest, richtig? Aber er dient seinem Zweck.");
+    functions.AddTraderTrigger("[Tt]own","The next big Town is Trollsbane, to the northeast. Or the village Greenbriar to the west.");
+    functions.AddTraderTrigger("[Ss]t[aä]dt","Die nächste große Stadt ist Trollsbane im Nordosten. Oder das Dorf Greenbriar im Westen.");
+    functions.AddTraderTrigger("[Ww]hat.+sell","I aint selling anything, landrat.");
+    functions.AddTraderTrigger("[Ww]as.+verkauf","I verkauf nix, Landratte.");
+    functions.AddTraderTrigger("[Ww]hat.+buy","Do I look like some filthy rich trader, landrat?");
+    functions.AddTraderTrigger("[Ww]as.+%skauf","Seh ich aus wie'n reicher Händler, Landratte?");
+    functions.AddTraderTrigger("[Hh]elp","Best advice I can give you, go somewhere else.");
+    functions.AddTraderTrigger("[Hh]ilfe","Der beste Tipp, den ich dir geben kann, ist woanders hin zu gehen");
+    functions.AddTraderTrigger("[Ss]somewhere.+else","Like Trollsbane, or Greenbriar.");
+    functions.AddTraderTrigger("[Aa]nders","Wie Trolls Bane oder Greenbriar.");
+    functions.AddTraderTrigger("[Nn]ew.+here","I thought so the first time I saw you. Well, welcome on this little godforsaken island, landrat.");
+    functions.AddTraderTrigger("[Nn]eu.+hier","Das wusst ich schon als ich dich das erste Mal gesehen hab. Naja...willkommen auf dieser kleinen Insel, Landratte.");
+    functions.AddTraderTrigger("[Ii]sland","Yes, welcome on the island of ... of ... arr, forget it. Have some ale with you?");
+    functions.AddTraderTrigger("[Ii]nsel","Ja. Willkommen auf der Insel...ähm...arr, ich habs vergessen. Hast du Bier dabei?");
+    functions.AddTraderTrigger("[Bb]ye.","Aye, Landrat.");
+    functions.AddAdditionalTrigger("[Ff]arewell");
+    functions.AddAdditionalText("Aye aye.");
+    functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Aye, Landratte");
+    functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    functions.AddAdditionalText("Aye aye");
 
     TradSpeakLang={0,1};
     TradStdLang=0;
@@ -80,19 +76,19 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang)
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            Status=TownTexts(message);
-            if (Status==0) then npc.base.functions.TellSmallTalk(message) end
+            Status=M.TownTexts(message);
+            if (Status==0) then functions.TellSmallTalk(message) end
 
             if (Status==1) then
                 gText="Aye, Trollsbane im Nordosten. Du kannst eigentlich alles doch finden.";
@@ -103,14 +99,14 @@ function M.receiveText(texttype, message, originator)
             end
 
             if (Status~=0) then
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC.talk(CCharacter.say,outText);
             end
         else
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
             end

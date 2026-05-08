@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.testwp = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.initializeNpc()
     TraderFirst = false;
@@ -14,7 +11,7 @@ end
     
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
+        M.initializeNpc();
     end
 end	
 

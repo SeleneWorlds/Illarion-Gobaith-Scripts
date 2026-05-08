@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.anthar = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.useNPC(user,counter,param)
     thisNPC:increaseSkill(1,"common language",100);

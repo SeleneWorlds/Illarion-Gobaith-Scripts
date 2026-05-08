@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.poker = M
-local _ENV = setmetatable(M, { __index = _G })
 
 local game_poker = require("game_poker")
 
@@ -46,7 +43,7 @@ function M.npcInit(npcDealer)
 end
 
 function M.nextCycle()
-    npcInit(thisNPC);
+    M.npcInit(thisNPC);
     pokerTable.nextCycle();
 end
 

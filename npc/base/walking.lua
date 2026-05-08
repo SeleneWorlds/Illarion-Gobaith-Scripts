@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.walking = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- Basic functions for walking of characters
 
@@ -15,9 +11,9 @@ function M.BW_OneStepToPosition( Character, TargetPos )
     local XOff = Character.pos.x - TargetPos.x;
     local YOff = Character.pos.y - TargetPos.y;
     if ((math.abs(XOff) < math.abs(YOff)) and not blocked) or ((math.abs(XOff) > math.abs(YOff)) and blocked[Character.id]) then
-        if not BW_intern_MoveX(Character,XOff,false) then
-            if not BW_intern_MoveY(Character,YOff,false) then
-                BW_intern_MoveX(Character,XOff,true);
+        if not M.BW_intern_MoveX(Character,XOff,false) then
+            if not M.BW_intern_MoveY(Character,YOff,false) then
+                M.BW_intern_MoveX(Character,XOff,true);
                 blocked[Character.id] = true;
             else
                 blocked[Character.id] = false;
@@ -26,9 +22,9 @@ function M.BW_OneStepToPosition( Character, TargetPos )
             blocked[Character.id] = false;
         end
     else
-        if not BW_intern_MoveY(Character,YOff,false) then
-            if not BW_intern_MoveX(Character,XOff,false) then
-                BW_intern_MoveY(Character,YOff,true);
+        if not M.BW_intern_MoveY(Character,YOff,false) then
+            if not M.BW_intern_MoveX(Character,XOff,false) then
+                M.BW_intern_MoveY(Character,YOff,true);
                 blocked[Character.id] = true;
             else
                 blocked[Character.id] = false;
@@ -80,7 +76,7 @@ function M.BW_StepAlongRoad( Character )
         newpos = position( Character.pos.x - 1, Character.pos.y, Character.pos.z );
     end
 
-    if BW_intern_pos_okay( newpos ) then
+    if M.BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
     end
@@ -145,7 +141,7 @@ function M.BW_StepAlongRoad( Character )
         newpos = position( Character.pos.x - 1, Character.pos.y, Character.pos.z );
     end
 
-    if BW_intern_pos_okay( newpos ) then
+    if M.BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
     end
@@ -202,7 +198,7 @@ function M.BW_StepAlongRoad( Character )
         newpos = position( Character.pos.x + 1, Character.pos.y, Character.pos.z );
     end
 
-    if BW_intern_pos_okay( newpos ) then
+    if M.BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
     end
@@ -242,7 +238,7 @@ function M.BW_StepAlongRoad( Character )
         newpos = position( Character.pos.x + 1, Character.pos.y, Character.pos.z );
     end
 
-    if BW_intern_pos_okay( newpos ) then
+    if M.BW_intern_pos_okay( newpos ) then
         Character:move( direct, true );
         return;
     end
@@ -304,9 +300,9 @@ function M.BW_intern_IDinList( id , lower, upper, list )
     if list[margin] == id then
         return true;
     elseif list[margin] < id then
-        return BW_intern_IDinList( id, margin+1, upper, list );
+        return M.BW_intern_IDinList( id, margin+1, upper, list );
     else
-        return BW_intern_IDinList( id, lower, margin-1, list );
+        return M.BW_intern_IDinList( id, lower, margin-1, list );
     end;
 end
 
@@ -318,7 +314,7 @@ function M.BW_intern_pos_okay( posi )
     if world:getField(posi):tile() == 7 then
         if world:isItemOnField( posi ) then
             local Itemid = world:getItemOnField( posi ).id;
-            if BW_intern_IDinList( Itemid, 1, # blocking_items , blocking_items ) then
+            if M.BW_intern_IDinList( Itemid, 1, # blocking_items , blocking_items ) then
                 return false;
             end
         end
@@ -328,7 +324,7 @@ function M.BW_intern_pos_okay( posi )
         end
 
         local Itemid = world:getItemOnField( posi ).id;
-        if not BW_intern_IDinList( Itemid, 1, # passable_items , passable_items ) then
+        if not M.BW_intern_IDinList( Itemid, 1, # passable_items , passable_items ) then
             return false;
         end
     end

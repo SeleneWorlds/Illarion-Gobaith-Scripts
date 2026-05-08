@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.lasttier = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Transportkuh
 --Race:        Esel
@@ -68,7 +65,7 @@ function M.receiveText(Texttype, Message, Originator)
     if (Originator:getQuestProgress(8) == 0) then
         return
     end
-    InitNPC();
+    M.InitNPC();
     find_transporter, effect_transporter = thisNPC.effects:find(10);
     if not find_transporter then
         return
@@ -98,7 +95,7 @@ function M.receiveText(Texttype, Message, Originator)
             or (string.find(Message,"[Ss]tay")~=nil)
             or (string.find(Message,"[Ss]top")~=nil) then
                 if moving[thisNPC.id] then
-                    depotpos[thisNPC.id] = genDepotPos( );
+                    depotpos[thisNPC.id] = M.genDepotPos( );
                     if not world:isCharacterOnField( depotpos[thisNPC.id] ) and not world:isItemOnField( depotpos[thisNPC.id] ) then
                         world:createItemFromId(321,1,depotpos[thisNPC.id],true,1111,Originator.id);
                         depot = world:getItemOnField(depotpos[thisNPC.id]);
@@ -151,11 +148,10 @@ function M.genDepotPos( )
     return position(1,0,0);
 end
 
-
 function M.nextCycle()
-    InitNPC();
+    M.InitNPC();
     cnt[thisNPC.id] = cnt[thisNPC.id] + 1;
-    if (cnt[thisNPC.id] == ( CyclesBetweenSteps + GetTileMod( ) ) ) then
+    if (cnt[thisNPC.id] == ( CyclesBetweenSteps + M.GetTileMod( ) ) ) then
         cnt[thisNPC.id] = 0;
     else
         return
@@ -277,9 +273,9 @@ function M.nextCycle()
         YOff = thisNPC.pos.y - char_owner.pos.y;
         if (math.sqrt(XOff*XOff + YOff*YOff) > 2) then
             if ((math.abs(XOff) < math.abs(YOff)) and not blocked[thisNPC.id]) or ((math.abs(XOff) > math.abs(YOff)) and blocked[thisNPC.id]) then
-                if not MoveX(XOff,false) then
-                    if not MoveY(YOff,false) then
-                        MoveX(XOff,true);
+                if not M.MoveX(XOff,false) then
+                    if not M.MoveY(YOff,false) then
+                        M.MoveX(XOff,true);
                         blocked[thisNPC.id] = true;
                     else
                         blocked[thisNPC.id] = false;
@@ -288,9 +284,9 @@ function M.nextCycle()
                     blocked[thisNPC.id] = false;
                 end
             else
-                if not MoveY(YOff,false) then
-                    if not MoveX(XOff,false) then
-                        MoveY(YOff,true);
+                if not M.MoveY(YOff,false) then
+                    if not M.MoveX(XOff,false) then
+                        M.MoveY(YOff,true);
                         blocked[thisNPC.id] = true;
                     else
                         blocked[thisNPC.id] = false;
@@ -314,7 +310,7 @@ function M.MoveX(XOff,forced)
         checkPos = position( thisNPC.pos.x + 1, thisNPC.pos.y, thisNPC.pos.z );
     end
 
-    if not CheckItem( checkPos ) then
+    if not M.CheckItem( checkPos ) then
         return false;
     end
 
@@ -348,7 +344,7 @@ function M.MoveY(YOff,forced)
         checkPos = position( thisNPC.pos.x, thisNPC.pos.y + 1, thisNPC.pos.z );
     end
 
-    if not CheckItem( checkPos ) then
+    if not M.CheckItem( checkPos ) then
         return false;
     end
 
@@ -376,7 +372,7 @@ function M.CheckItem( posi )
     local cnt = fld:countItems();
     local i;
     for i=0,cnt-1 do
-        if isPassable( (fld:getStackItem(i)).id, 1, # itemlist  ) then
+        if M.isPassable( (fld:getStackItem(i)).id, 1, # itemlist  ) then
             return false;
         end;
     end;
@@ -391,9 +387,9 @@ function M.isPassable( id , lower, upper )
     if itemlist[margin] == id then
         return true;
     elseif itemlist[margin] < id then
-        return isPassable( id, margin+1, upper );
+        return M.isPassable( id, margin+1, upper );
     else
-        return isPassable( id, lower, margin-1 );
+        return M.isPassable( id, lower, margin-1 );
     end;
 end
 

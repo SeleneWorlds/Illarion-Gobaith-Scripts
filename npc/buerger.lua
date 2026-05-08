@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.buerger = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.InitWalkNPC()
     thisNPC:increaseSkill(1,"common language",100);
@@ -41,8 +38,8 @@ function M.InitWalkNPC()
     WaitPosition[ 9]=position(-86,-117,0);
     WaitPosition[10]=position(-86,-116,0);
 
-    InitLists();
-    RunSettings();
+    M.InitLists();
+    M.RunSettings();
 
 end
 
@@ -92,10 +89,10 @@ end
 
 function M.nextCycle()
     if (firstrun==nil) then
-        InitWalkNPC();
+        M.InitWalkNPC();
     end
     if (warten[thisNPC.id]==nil) then
-        RunSettings()
+        M.RunSettings()
     end
     if InitNewRoute[thisNPC.id] then
         ChoosePath=math.random(1,#WalkList);
@@ -126,13 +123,13 @@ function M.nextCycle()
                     waitTime[thisNPC.id]=math.random(20,100);
                 end
             elseif (step[thisNPC.id] > #WalkPath[thisNPC.id]) then
-                thisNPC:warp(ChoseWaitPos());
+                thisNPC:warp(M.ChoseWaitPos());
                 warten[thisNPC.id] = true;
                 waitTime[thisNPC.id] = math.random(200,800);
                 laufen[thisNPC.id] = false;
             else
                 thisNPC:move(WalkPath[thisNPC.id][step[thisNPC.id]],true);
-                CheckWalk();
+                M.CheckWalk();
             end
             step[thisNPC.id] = step[thisNPC.id] + 1;
         end
@@ -147,9 +144,9 @@ function M.CheckWalk()
         if equapos(OldPos[thisNPC.id],thisNPC.pos) then
             step[thisNPC.id] = step[thisNPC.id] - 1;
             outloop = false;
-            nextpos=GetNextPos(thisNPC.pos,step[thisNPC.id])
+            nextpos=M.GetNextPos(thisNPC.pos,step[thisNPC.id])
             if (nextpos == nil) then
-                thisNPC:warp(ChoseWaitPos());
+                thisNPC:warp(M.ChoseWaitPos());
                 warten[thisNPC.id] = true;
                 waitTime[thisNPC.id] = math.random(200,800);
                 laufen[thisNPC.id] = false;
@@ -163,9 +160,9 @@ function M.CheckWalk()
                     if (StayTogether[thisNPC.id]>math.random(5,50)) then
                         i=1
                         repeat
-                            nextpos=GetNextPos(nextpos,step[thisNPC.id]+i)
+                            nextpos=M.GetNextPos(nextpos,step[thisNPC.id]+i)
                             if (nextpos==nil) then
-                                thisNPC:warp(ChoseWaitPos());
+                                thisNPC:warp(M.ChoseWaitPos());
                                 warten[thisNPC.id] = true;
                                 waitTime[thisNPC.id] = math.random(200,800);
                                 laufen[thisNPC.id] = false;

@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.mucky_luck_sheep = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- dynamic sheep
 -- for Nargun Parish
@@ -43,7 +40,7 @@ end
 
 function M.nextCycle()
 
-	InitNPC();
+	M.InitNPC();
 
 	if endGame[thisNPC.id] == 0 then
 		world:deleteNPC(thisNPC.id);
@@ -64,11 +61,11 @@ function M.nextCycle()
 
 	if moving[thisNPC.id] then
 		moving[thisNPC.id] = false;
-		eat();
+		M.eat();
 	end
 
 	if nextCheck[thisNPC.id] == 0 then
-		moveSheep();
+		M.moveSheep();
 		moving[thisNPC.id] = true;
 		nextCheck[thisNPC.id] = math.random(30,50);
 		endGame[thisNPC.id] = endGame[thisNPC.id] - 1;
@@ -108,7 +105,7 @@ end
 
 function M.moveSheep()
 
-	local nextPos = getPosList(thisNPC.pos);
+	local nextPos = M.getPosList(thisNPC.pos);
 
 	nextPos = nextPos[math.random(1,#nextPos)];
 

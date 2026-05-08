@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.dungeon = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- NPC for Dungeon Monster Control
 
@@ -84,9 +81,9 @@ end
 function M.GoodSpawnField(TargetLoc)
     local retval=false;
     Field=world:getField(TargetLoc)
-    if GoodGround(Field.id) then
+    if M.GoodGround(Field.id) then
         if world:isItemOnField(TargetLoc) then
-            if GoodItem(world:getItemOnField(TargetLoc)) then
+            if M.GoodItem(world:getItemOnField(TargetLoc)) then
                 retval=true;
             end
         end
@@ -103,10 +100,10 @@ function M.nextCycle()
     if (firstRun==nil) then
         firstRun=true;
         thisNPC:increaseSkill(1,"common language",100);
-        Settings();
-        LiveSettings("set","spawn_on",nil);
-        LiveSettings("set","debug_off",nil);
-        LiveSettings("set","spawn_nr",MaxMonsters);
+        M.Settings();
+        M.LiveSettings("set","spawn_on",nil);
+        M.LiveSettings("set","debug_off",nil);
+        M.LiveSettings("set","spawn_nr",MaxMonsters);
         if world:isItemOnField(PosOfSaveItem) then
             SaveItem=world:getItemOnField(PosOfSaveItem);
         else
@@ -118,19 +115,19 @@ function M.nextCycle()
     end
     SaveItem=world:getItemOnField(PosOfSaveItem);
     local CurrentMon=SaveItem.data;
-    local MaxMon=LiveSettings("get","spawn_nr",nil);
-    local Debugging=LiveSettings("get","debug",nil);
-    local Spawning=LiveSettings("get","spawn",nil);
+    local MaxMon=M.LiveSettings("get","spawn_nr",nil);
+    local Debugging=M.LiveSettings("get","debug",nil);
+    local Spawning=M.LiveSettings("get","spawn",nil);
     if (Spawning~=0) then
         if (CurrentMon<MaxMon) then
-            SpawnLocation=SetSpawnLoc();
+            SpawnLocation=M.SetSpawnLoc();
             SpawnField=world:getField(SpawnLocation);
-            if GoodGround(SpawnField.id) then
-                if GoodItem(SpawnLocation) then
+            if M.GoodGround(SpawnField.id) then
+                if M.GoodItem(SpawnLocation) then
                     if (Spawning>0) then
                         MonID=Spawning;
                     else
-                        MonID=SelectMonster();
+                        MonID=M.SelectMonster();
                     end
                     world:createMonster(MonID,SpawnLocation,10)
                     SaveItem.data=CurrentMon+1;
@@ -153,7 +150,7 @@ function M.receiveText(TextTyp, Message, Originator)
         end
         if (string.find(Message,"[Cc]urrent.+[Ss]ettings")~=nil) then
             local spawntext="";
-            local spawnstat=LiveSettings("get","spawn",nil);
+            local spawnstat=M.LiveSettings("get","spawn",nil);
             if (spawnstat==0) then
                 spawntext="spawn off";
             elseif (spawnstat>0) then
@@ -161,51 +158,51 @@ function M.receiveText(TextTyp, Message, Originator)
             else
                 spawntext="spawn on"
             end
-            local debugs=LiveSettings("get","debug",nil);
+            local debugs=M.LiveSettings("get","debug",nil);
             local debugtext="";
             if debugs then
                 debugtext="debugging on";
             else
                 debugtext="debugging off";
             end
-            local spwnum=LiveSettings("get","spawn_nr",nil);
+            local spwnum=M.LiveSettings("get","spawn_nr",nil);
             local spawnnumtext="Maximal Monsters: "..spwnum;
             thisNPC:talk(CCharacter.say,spawntext.." - "..debugtext.." - "..spawnnumtext);
         end
         if (string.find(Message,"[Ss]pawn.+[Oo][Nn]")~=nil) then
             if (string.find(Message,"[Ss]pawn.+[Oo]nly")==nil) then
-                LiveSettings("set","spawn_on",nil);
+                M.LiveSettings("set","spawn_on",nil);
                 thisNPC:talk(CCharacter.say,"Spawning: ON");
             end
         end
         if (string.find(Message,"[Ss]pawn.+[Oo][Ff][Ff]")~=nil) then
-            LiveSettings("set","spawn_off",nil);
+            M.LiveSettings("set","spawn_off",nil);
             thisNPC:talk(CCharacter.say,"Spawning: OFF");
         end
         if (string.find(Message,"[Ss]pawn.+[Oo]nly.+%d+")~=nil) then
             a,b,countStr=string.find(Message,"[Ss]pawn [Oo]nly (%d+)");
             count=countStr+1-1;
-            LiveSettings("set","spawn_only",count);
+            M.LiveSettings("set","spawn_only",count);
             thisNPC:talk(CCharacter.say,"Spawning: ID "..count);
         end
         if (string.find(Message,"[Dd]ebug.+[Oo][Nn]")~=nil) then
-            LiveSettings("set","debug_on",nil);
+            M.LiveSettings("set","debug_on",nil);
             thisNPC:talk(CCharacter.say,"Debugging: ON");
         end
         if (string.find(Message,"[Dd]ebug.+[Oo][Ff][Ff]")~=nil) then
-            LiveSettings("set","debug_off",nil);
+            M.LiveSettings("set","debug_off",nil);
             thisNPC:talk(CCharacter.say,"Debugging: OFF");
         end
         if (string.find(Message,"[Mm]ax.+[Mm]onsters.+%d+")~=nil) then
             a,b,countStr=string.find(Message,"[Mm]ax.+[Mm]onster.+(%d+)");
             count=countStr+1-1;
-            LiveSettings("set","spawn_nr",count);
+            M.LiveSettings("set","spawn_nr",count);
             thisNPC:talk(CCharacter.say,"Maximal Monsters: "..count);
         end
         if (string.find(Message,"[Rr]eset")~=nil) then
-            LiveSettings("set","spawn_on",nil);
-            LiveSettings("set","debug_off",nil);
-            LiveSettings("set","spawn_nr",MaxMonsters);
+            M.LiveSettings("set","spawn_on",nil);
+            M.LiveSettings("set","debug_off",nil);
+            M.LiveSettings("set","spawn_nr",MaxMonsters);
             thisNPC:talk(CCharacter.say,"Settings reseted");
         end
     end

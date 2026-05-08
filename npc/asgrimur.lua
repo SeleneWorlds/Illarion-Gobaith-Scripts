@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.asgrimur = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --name="Asgrimur"
 --race=dwarf
@@ -12,10 +9,9 @@ local _ENV = setmetatable(M, { __index = _G })
 --Task    : Herold for the King
 --Normal: 0 Flüstern: 1, Schreien: 2
 
-
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,137,-191,-3,6,false,'Asgrimur','npc_asgrimur.lua',0);
 
-require("npc.base.autonpcfunctions")
+local autonpcfunctions = require("npc.base.autonpcfunctions")
 local common = require("base.common")
 
 function M.useNPC(user,counter,param)
@@ -25,30 +21,28 @@ function M.useNPC(user,counter,param)
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't touch me!") end
 end
 
-
 function M.initializeNpc()
-    npc.base.autonpcfunctions.InitTalkLists()
+    autonpcfunctions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
 
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]rü[ßs]+e","Seid gegrüßt");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[hH]allo");
-    npc.base.autonpcfunctions.AddAdditionalText("Guten Tag");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Auf wiedersehen.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.autonpcfunctions.AddAdditionalText("Auf bald");
+    autonpcfunctions.AddTraderTrigger("[Gg]rü[ßs]+e","Seid gegrüßt");
+    autonpcfunctions.AddAdditionalTrigger("[hH]allo");
+    autonpcfunctions.AddAdditionalText("Guten Tag");
+	autonpcfunctions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Auf wiedersehen.");
+    autonpcfunctions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    autonpcfunctions.AddAdditionalText("Auf bald");
 
-
-    npc.base.autonpcfunctions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name..". I am the herold of the King of Silverbrand.");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..". Ich bin der Herold des Königs von Silberbrand.");
+    autonpcfunctions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name..". I am the herold of the King of Silverbrand.");
+	autonpcfunctions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..". Ich bin der Herold des Königs von Silberbrand.");
     
-    npc.base.autonpcfunctions.AddTraderTrigger("[Gg]reetings","Be greeted");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Hh]ello");
-    npc.base.autonpcfunctions.AddAdditionalText("Greetings");
-	npc.base.autonpcfunctions.AddTraderTrigger("[Gg]oodbye","Farewell.");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Bb]ye");
-    npc.base.autonpcfunctions.AddAdditionalTrigger("[Ff]arewell");
-    npc.base.autonpcfunctions.AddAdditionalText("Farewell.");
+    autonpcfunctions.AddTraderTrigger("[Gg]reetings","Be greeted");
+    autonpcfunctions.AddAdditionalTrigger("[Hh]ello");
+    autonpcfunctions.AddAdditionalText("Greetings");
+	autonpcfunctions.AddTraderTrigger("[Gg]oodbye","Farewell.");
+    autonpcfunctions.AddAdditionalTrigger("[Bb]ye");
+    autonpcfunctions.AddAdditionalTrigger("[Ff]arewell");
+    autonpcfunctions.AddAdditionalText("Farewell.");
 
     TradSpeakLang={0,2};
     TradStdLang=0;
@@ -68,15 +62,15 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        autonpcfunctions.increaseLangSkill(TradSpeakLang)
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.autonpcfunctions.SpeakerCycle();
+    autonpcfunctions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.autonpcfunctions.BasicNPCChecks(originator,1) then
+    if autonpcfunctions.BasicNPCChecks(originator,1) then
 
              	local players = world:getPlayersInRangeOf(thisNPC.pos, 10);
                 	for i, player in pairs(players) do
@@ -107,7 +101,7 @@ function M.receiveText(texttype, message, originator)
 				end
 			 
 			 else
-                npc.base.autonpcfunctions.TellSmallTalk(message, originator); --npc.base.autonpcfunctions.TellSmallTalk for everyone beside Manron
+                autonpcfunctions.TellSmallTalk(message, originator); --npc.base.autonpcfunctions.TellSmallTalk for everyone beside Manron
 			 end
 
     end

@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.ships = M
-local _ENV = setmetatable(M, { __index = _G })
 
 -- Basisfunktion für Passagierschiffe aller Art
 
@@ -104,7 +100,7 @@ function M.MoveShip(Direction)
         if not equapos(ShipPart[2].pos,NeedPos) then
             ShipPart[2]:forceWarp(NeedPos);
         end
-        JesusItem = PlaceJesusItem(NewPos);
+        JesusItem = M.PlaceJesusItem(NewPos);
         ShipPart[2]:move(Direction,true);
         world:erase(JesusItem,1);
     end
@@ -132,7 +128,7 @@ function M.MoveShip(Direction)
                     Passangers[i] = nil;
                 end
             end
-            JesusItem = PlaceJesusItem(NewPos);
+            JesusItem = M.PlaceJesusItem(NewPos);
             Passangers[i]:move(Direction,true);
             world:erase(JesusItem,1);
         end
@@ -215,15 +211,15 @@ end
 
 function M.DoNextMove()
     step = step + ListDir;
-    currStep = StepDir(route[step],ListDir);
-    prevStep = StepDir(route[step-ListDir],ListDir);
+    currStep = M.StepDir(route[step],ListDir);
+    prevStep = M.StepDir(route[step-ListDir],ListDir);
     if (currStep==prevStep)  then
         currentDir = currStep;
     end
     if ((currStep ~= currentDir) or (prevStep==nil)) then
-        RotateTo(currStep);
+        M.RotateTo(currStep);
     end
-    MoveShip(currStep);
+    M.MoveShip(currStep);
 end
 
 function M.StepDir(Dir,ListDir)

@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.escortingquests = M
-local _ENV = setmetatable(M, { __index = _G })
 
 local common = require("base.common")
 
@@ -21,8 +17,8 @@ function M.initEscorting()
 	MaxOffsetToPlayer = 10; --if player is 10 tiles away from the npc the Npc looks for a new escort
 
 	---INIT SPAWNS HERE---
-	AddToSpawn(1, 1, 3); --3 mummies
-	AddToSpawn(1, 2, 5); --5 insects
+	M.AddToSpawn(1, 1, 3); --3 mummies
+	M.AddToSpawn(1, 2, 5); --5 insects
 	----------------------
 end
 
@@ -36,7 +32,7 @@ end
 function M.Spawn(SpawnID,thisNPC) --Spawns all monsters from a Spawn
 	if spawnlist[SpawnID] == nil then return; end --nil prevention
 	for monID, monAmount in pairs(spawnlist[SpawnID]) do
-	    ReleaseMonster(monID,monAmount,thisNPC);
+	    M.ReleaseMonster(monID,monAmount,thisNPC);
 	end
 end
 
@@ -126,7 +122,6 @@ function M.GetDirToPosition(thisNPC,desPos) --returns the direction to the desir
 
 end
 
-
 function M.RemoveWaypoint(thisNPC, amountElements) --removes amountElements Waypoint from the waypoints list, because the NPC reached this position
 	if amountElements == nil then amountElements = 1; end
 	for i=1, amountElements do
@@ -135,11 +130,10 @@ function M.RemoveWaypoint(thisNPC, amountElements) --removes amountElements Wayp
 	end
 end
 
-
 function M.BE_nextCycle(thisNPC)
   	move[thisNPC.id].nextCycle();
     if wait(1,1) then
-		local dirger,direng,dir = GetDirToNextWP(thisNPC);
+		local dirger,direng,dir = M.GetDirToNextWP(thisNPC);
 	  	--common.TalkNLS(thisNPC, CCharacter.say, "bla2"..lastdir[thisNPC.id].." dir:"..dir, "bla2"..lastdir[thisNPC.id].." dir:"..dir);
 	  	if lastdir[thisNPC.id]~=dir and dir~=false and dir~= nil then
 	  		common.TalkNLS(thisNPC, CCharacter.say, "Nun müssen wir Richtung "..dirger, "Now we need to go "..direng);
@@ -148,7 +142,6 @@ function M.BE_nextCycle(thisNPC)
 		if dirger == false then common.TalkNLS(thisNPC, CCharacter.say, "ERROR, Richtung nicht gefunden", "ERROR, no direction found."); end
 	end
 end
-
 
 function M.IsEscortingPlayerOnline(thisNPC) --looks whether the Escorting Player is still online
 	local playerlist = world:getCharactersInRangeOf(thisNPC.pos, MaxOffsetToPlayer);
@@ -161,7 +154,6 @@ function M.IsEscortingPlayerOnline(thisNPC) --looks whether the Escorting Player
 	end
 	return PlayerOnline;
 end
-
 
 function M.receiveText(texttype, message, originator)
     if BasicNPCChecks(originator,2) then

@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.eltareon = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Eltareon
 --Race:        Human
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 04/16/2006
 --Update by:   Nitram
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,31 +18,30 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
     --    HistTextD={};
     --    HistTextE={};
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
 
+    functions.AddTraderTrigger("[Hh]ello","Greetings. Nice to meet you.");
+    functions.AddAdditionalTrigger("[Gg]reetings");
+    functions.AddAdditionalTrigger("[Hh]i");
+    functions.AddTraderTrigger("[Hh]allo","Grüße. Freut mich euch zu treffen.");
+    functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
+    functions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name.."");
+    functions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..".");
+    functions.AddTraderTrigger("[Bb]ye.","Be well");
+    functions.AddAdditionalTrigger("[Ff]arewell");
+    functions.AddAdditionalText("Farewell");
+    functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
+    functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    functions.AddAdditionalText("Auf bald");
+    functions.AddAdditionalText("Auf balde");
 
-    npc.base.functions.AddTraderTrigger("[Hh]ello","Greetings. Nice to meet you.");
-    npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
-    npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Grüße. Freut mich euch zu treffen.");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
-    npc.base.functions.AddTraderTrigger("[Ww]ho","I am "..thisNPC.name.."");
-    npc.base.functions.AddTraderTrigger("[Ww]er","Ich bin "..thisNPC.name..".");
-    npc.base.functions.AddTraderTrigger("[Bb]ye.","Be well");
-    npc.base.functions.AddAdditionalTrigger("[Ff]arewell");
-    npc.base.functions.AddAdditionalText("Farewell");
-    npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
-    npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.functions.AddAdditionalText("Auf bald");
-    npc.base.functions.AddAdditionalText("Auf balde");
-
-    npc.base.functions.AddCycleText("#me blättert in einem Buch herum","#me browses through a book");
-    npc.base.functions.AddCycleText("#me gähnt verhalten","#me yawns restrained");
+    functions.AddCycleText("#me blättert in einem Buch herum","#me browses through a book");
+    functions.AddCycleText("#me gähnt verhalten","#me yawns restrained");
 
     TradSpeakLang={0,1};
     TradStdLang=0;
@@ -66,25 +61,25 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang)
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
 
-            npc.base.functions.TellSmallTalk(message);
+            functions.TellSmallTalk(message);
         else
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
-                npc.base.functions.NPCTalking(thisNPC,outText);
+                outText=functions.GetNLS(originator,gText,eText);
+                functions.NPCTalking(thisNPC,outText);
                 verwirrt=true;
             end
         end

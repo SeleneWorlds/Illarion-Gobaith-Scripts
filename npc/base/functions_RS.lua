@@ -1,8 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.base = npc.base or {}
-npc.base.functions_RS = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.GetNLS( User, textInDe, textInEn )
     local textNLS = "";
@@ -85,7 +81,7 @@ function M.TellSmallTalk(message)
             until (searchfin==true);
             TextSel=math.random(0,Texts);
             if (TextSel>0) then TextSel=TextSel-1 end
-            NPCTalking(thisNPC,TraderText[i+(TextSel*1000)]);
+            M.NPCTalking(thisNPC,TraderText[i+(TextSel*1000)]);
             ready=true;
         end
         i=i+1;

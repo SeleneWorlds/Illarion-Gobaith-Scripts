@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.borgate = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Borgate Northoff
 --Race:        Dwarf
@@ -12,9 +9,8 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 04/16/2006
 --Update by:   Nitram
 
-require("npc.base.trader_functions")
-require("npc.base.functions")
-
+local trader_functions = require("npc.base.trader_functions")
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,10 +18,9 @@ function M.useNPC(user,counter,param)
     if (lang==1) then thisNPC:talk(CCharacter.say, "Don't you touch me!") end
 end
 
-
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
-    npc.base.trader_functions.InitItemLists()
+    functions.InitTalkLists()
+    trader_functions.InitItemLists()
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
@@ -62,7 +57,7 @@ function M.initializeNpc()
     --npc.base.functions.AddTraderTrigger("[Ww]ho.+you?"..thisNPC.name..". I work here for Tialdin, the owner of this tavern.");
     --npc.base.functions.AddTraderTrigger("I'm .+","Great. I am "..thisNPC.name..", the barkeeper. Do you want something to drink?");
     --npc.base.functions.AddTraderTrigger("[Tt]ell.+[Ss]omething","Arr, Where shall I begin? I could tell you lots of what is spoken in this tavern, but if I would do that, no one would come back. No, I am not a traitor to my guests. Sorry!");
-    npc.base.functions.AddTraderTrigger("[hH]elp","'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'");
+    functions.AddTraderTrigger("[hH]elp","'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'");
 
     --npc.base.functions.AddTraderTrigger("[Gg]rü[ßs]+e","Willkommen in der Fluffy Sheep Taverne, was willst Du trinken?");
     --npc.base.functions.AddAdditionalTrigger("[Hh]allo");
@@ -78,17 +73,17 @@ function M.initializeNpc()
     --npc.base.functions.AddAdditionalText("Auf bald!");
     --npc.base.functions.AddTraderTrigger("[Ww]er.+[IiDd][hu][r ]?","Ich bin "..thisNPC.name..". Ich arbeite hier für Tialdin als Wirt der Kneipe.");
     --npc.base.functions.AddTraderTrigger("Ich bin .+","Ich bin "..thisNPC.name..". Willst Du was trinken?");
-    npc.base.functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'");
+    functions.AddTraderTrigger("[Hh]ilfe","'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'");
 
     --npc.base.functions.AddCycleText("#me trocknet einen Bierkrug ab","#me wipes a beer mug clean");
     --npc.base.functions.AddCycleText("#me sieht sich gelangweilt um","#me looks around bored");
     --npc.base.functions.AddCycleText("#me spielt mit einer Kupfermünze","#me plays with a copper coin");
     --npc.base.functions.AddCycleText("#me wischt über die Theke","#me wipes over the bar");
-    npc.base.functions.AddCycleText("Arrr...","Arrr...");
-    npc.base.functions.AddCycleText("Arrr!","Arrr!");
-    npc.base.functions.AddCycleText("Arrr...?","Arrr...?");
+    functions.AddCycleText("Arrr...","Arrr...");
+    functions.AddCycleText("Arrr!","Arrr!");
+    functions.AddCycleText("Arrr...?","Arrr...?");
     --npc.base.functions.AddCycleText("#me trinkt ein Bier","#me gulps down a beer");
-    npc.base.functions.AddCycleText("#me brummt verärgert:'Ich streike!'","#me grumbles in anger:'I am on strike!'");
+    functions.AddCycleText("#me brummt verärgert:'Ich streike!'","#me grumbles in anger:'I am on strike!'");
 
     TraderLang={"Gold","gold","Silber", "silver","Kupfer","copper","stücke","pieces"};
     TraderMonths={"Elos","Tanos","Zhas","Ushos","Siros","Ronas","Bras","Eldas","Irmas","Malas","Findos","Olos","Adras","Naras","Chos","Mas"};
@@ -115,31 +110,31 @@ end
 
 function M.nextCycle()  -- ~10 times per second
     if (TraderFirst == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang)
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang)
         TraderStdCopper=TraderCopper;
         thisNPC.activeLanguage=TradStdLang;
     end
-    npc.base.trader_functions.TraderCycle();
-    npc.base.functions.SpeakerCycle();
+    trader_functions.TraderCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            Status,Values=npc.base.trader_functions.SayPriceSell(originator, message)
-            if (Status==0) then Status,Values=npc.base.trader_functions.SayPriceBuy(originator, message) end
-            if (Status==0) then Status,Values=npc.base.trader_functions.ShowItemList(originator, message) end
-            if (Status==0) then Status,Values=npc.base.trader_functions.Selling(originator, message) end
-            if (Status==0) then Status,Values=npc.base.trader_functions.Buying(originator, message) end
-            if (Status==0) then Status,Values=npc.base.functions.TellDate(originator, message, TraderMonths) end
-            if (Status==0) then npc.base.functions.TellSmallTalk(message) end
+            Status,Values=trader_functions.SayPriceSell(originator, message)
+            if (Status==0) then Status,Values=trader_functions.SayPriceBuy(originator, message) end
+            if (Status==0) then Status,Values=trader_functions.ShowItemList(originator, message) end
+            if (Status==0) then Status,Values=trader_functions.Selling(originator, message) end
+            if (Status==0) then Status,Values=trader_functions.Buying(originator, message) end
+            if (Status==0) then Status,Values=functions.TellDate(originator, message, TraderMonths) end
+            if (Status==0) then functions.TellSmallTalk(message) end
 
             ----------------------------EDIT BELOW HERE-----------------------------------
             if (Status==1) then -- Verkauf von mehreren Items erfolgreich // npc.base.trader_functions.Selling of multible items succeed
-                gText="Ihr möchtet "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Bitte sehr, macht dann"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want "..Values[1].." "..world:getItemName(Values[2],1).."? Here you are, that makes"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+                gText="Ihr möchtet "..Values[1].." "..world:getItemName(Values[2],0).." kaufen? Bitte sehr, macht dann"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want "..Values[1].." "..world:getItemName(Values[2],1).."? Here you are, that makes"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==2) then -- Item kann wegen Platzmangel nicht erstellt werden // Item can't created, cause of lag of space
                 gText="Tut mir leid, aber Ihr habt nicht genug Platz in Eurem Inventar.";
                 eText="Sorry, you do not have enough space in your inventory.";
@@ -153,17 +148,17 @@ function M.receiveText(texttype, message, originator)
                 gText="Tut mir Leid. Ich verkaufe das nicht.";
                 eText="Sorry, I do not sell that item.";
             elseif (Status==6) then -- Verkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Selling of a single item succeed
-                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr kaufen wollt? Bitte sehr, das macht"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want a "..world:getItemName(Values[2],1).."? Here you are, that makes"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+                gText=functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr kaufen wollt? Bitte sehr, das macht"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want a "..world:getItemName(Values[2],1).."? Here you are, that makes"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==7) then -- Verkaufspreis Ansage für ein Item // selling price announcement for an item
-                gText=npc.base.functions.GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..npc.base.trader_functions.MoneyText(0,Values[2],Values[3],Values[4],TraderLang)..".";
-                eText="The "..world:getItemName(Values[1],1).." costs"..npc.base.trader_functions.MoneyText(1,Values[2],Values[3],Values[4],TraderLang)..".";
+                gText=functions.GenusSel(Values[1],"Ein","Eine","Ein").." "..world:getItemName(Values[1],0).." kostet"..trader_functions.MoneyText(0,Values[2],Values[3],Values[4],TraderLang)..".";
+                eText="The "..world:getItemName(Values[1],1).." costs"..trader_functions.MoneyText(1,Values[2],Values[3],Values[4],TraderLang)..".";
             elseif (Status==8) then -- Einkaufspreis Ansage für ein Item // buying price announcement for an item
-                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wäre mir"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
-                eText="I would pay"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
+                gText=functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." wäre mir"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang).." wert.";
+                eText="I would pay"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang).." for "..Values[1]..world:getItemName(Values[2],1);
             elseif (Status==9) then -- Einkauf von mehreren Items erfolgreich // npc.base.trader_functions.Buying of multible items succeed
-                gText="Ihr wollt "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich gebe euch"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want to sell "..Values[1].." "..world:getItemName(Values[2],1).."? I give you"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+                gText="Ihr wollt "..Values[1].." "..world:getItemName(Values[2],0).." verkaufen? Ich gebe euch"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want to sell "..Values[1].." "..world:getItemName(Values[2],1).."? I give you"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==10) then -- Item das gekauft werden soll nicht vorhanden // item that should be buyed is not aviable
                 gText="Kommt wieder wenn ihr das habt!";
                 eText="Come back when you have that!";
@@ -174,8 +169,8 @@ function M.receiveText(texttype, message, originator)
                 gText="So etwas kaufe ich nicht. Tut mir leid.";
                 eText="Sorry, I do not buy that item.";
             elseif (Status==13) then -- Einkauf eines einzelnen Items erfolgreich // npc.base.trader_functions.Buying of a single item succeed
-                gText=npc.base.functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr verkaufen möchtet? Ich gebe euch"..npc.base.trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
-                eText="You want to sell a "..world:getItemName(Values[2],1).."? I give you"..npc.base.trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
+                gText=functions.GenusSel(Values[2],"Ein","Eine","Ein").." "..world:getItemName(Values[2],0).." ist es, was ihr verkaufen möchtet? Ich gebe euch"..trader_functions.MoneyText(0,Values[3],Values[4],Values[5],TraderLang)..".";
+                eText="You want to sell a "..world:getItemName(Values[2],1).."? I give you"..trader_functions.MoneyText(1,Values[3],Values[4],Values[5],TraderLang)..".";
             elseif (Status==14) then -- Liste der Waren die der NPC verkauft ist nicht leer // List of the wares the NPC sells, is not empty
                 gText="Ich verkaufe Getränke, Getränke und man stell sich vor: Getränke!";
                 eText="I sell drinks, drinks and hard to believe: drinks!";
@@ -194,12 +189,12 @@ function M.receiveText(texttype, message, originator)
                 if (seleced==1) then
                     eText="It's day "..Values[1].." of "..Values[2].." of the year "..Values[3]..".";
                 elseif (seleced==2) then
-                    eText="It's the "..npc.base.functions.EnglDigit(Values[1]).." of "..Values[2].." of the year "..Values[3]..".";
+                    eText="It's the "..functions.EnglDigit(Values[1]).." of "..Values[2].." of the year "..Values[3]..".";
                 end
             end
 
             if (Status~=0) then
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
             end
 
@@ -227,7 +222,7 @@ function M.receiveText(texttype, message, originator)
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
+                outText=functions.GetNLS(originator,gText,eText);
                 thisNPC:talk(CCharacter.say,outText);
                 verwirrt=true;
             end

@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.stalljunge_vs = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --Name:        Stalljunge
 --Race:        Mensch
@@ -12,8 +9,7 @@ local _ENV = setmetatable(M, { __index = _G })
 --Last Update: 12/09/2008
 --Update by:   Lennier
 
-require("npc.base.functions")
-
+local functions = require("npc.base.functions")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -22,29 +18,29 @@ function M.useNPC(user,counter,param)
 end
 
 function M.initializeNpc()
-    npc.base.functions.InitTalkLists()
+    functions.InitTalkLists()
 
     thisNPC:increaseSkill(1,"common language",100);
     --------------------------------------------- *** EDIT BELOW HERE ***--------------------------------------
 
-    npc.base.functions.AddTraderTrigger("[Hh]ello","Hello, Hello");
-    npc.base.functions.AddAdditionalTrigger("[Gg]reetings");
-    npc.base.functions.AddAdditionalTrigger("[Hh]i");
-    npc.base.functions.AddTraderTrigger("[Hh]allo","Grüße euch!");
-    npc.base.functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
-    npc.base.functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name.."");
-    npc.base.functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..".");
-    npc.base.functions.AddTraderTrigger("[Ff]arewell","Farewell!");
-    npc.base.functions.AddTraderTrigger("[Bb]ye ","Be well");
-    npc.base.functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe nicht! Ich verleihe Esel als Transport- und Lastentiere.");
-    npc.base.functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell! But you can lend a mule as pack animal.");
-    npc.base.functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
-    npc.base.functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
-    npc.base.functions.AddTraderTrigger("[Kk]uh","Ich habe keine Kühe, ich habe nur Esel hier.");
-    npc.base.functions.AddTraderTrigger("cow","I have no cows, I have just mules.")
+    functions.AddTraderTrigger("[Hh]ello","Hello, Hello");
+    functions.AddAdditionalTrigger("[Gg]reetings");
+    functions.AddAdditionalTrigger("[Hh]i");
+    functions.AddTraderTrigger("[Hh]allo","Grüße euch!");
+    functions.AddAdditionalTrigger("[Gg]r[uü][sß]+");
+    functions.AddTraderTrigger("[Ww]ho ","I am "..thisNPC.name.."");
+    functions.AddTraderTrigger("[Ww]er ","Ich bin "..thisNPC.name..".");
+    functions.AddTraderTrigger("[Ff]arewell","Farewell!");
+    functions.AddTraderTrigger("[Bb]ye ","Be well");
+    functions.AddTraderTrigger("[Ww]as.+verkauf","Ich verkaufe nicht! Ich verleihe Esel als Transport- und Lastentiere.");
+    functions.AddTraderTrigger("[Ww]hat.+sell","I don't sell! But you can lend a mule as pack animal.");
+    functions.AddTraderTrigger("[Aa]uf.+[Bb]ald","Bis Bald");
+    functions.AddAdditionalTrigger("[Bb]is.+[Bb]ald");
+    functions.AddTraderTrigger("[Kk]uh","Ich habe keine Kühe, ich habe nur Esel hier.");
+    functions.AddTraderTrigger("cow","I have no cows, I have just mules.")
 
-    npc.base.functions.AddCycleText("#me schaut sich um","#me looks around");
-    npc.base.functions.AddCycleText("#me niest","#me sneezes");
+    functions.AddCycleText("#me schaut sich um","#me looks around");
+    functions.AddCycleText("#me niest","#me sneezes");
 
     TradSpeakLang={0,1};
     TradStdLang=0;
@@ -70,28 +66,28 @@ function M.nextCycle()  -- ~10 times per second
     end
     
     if (TraderInit[thisNPC.id] == nil) then
-        initializeNpc();
-        npc.base.functions.increaseLangSkill(TradSpeakLang);
+        M.initializeNpc();
+        functions.increaseLangSkill(TradSpeakLang);
         thisNPC.activeLanguage=TradStdLang;
         TraderInit[thisNPC.id] = true;
     end
-    npc.base.functions.SpeakerCycle();
+    functions.SpeakerCycle();
 end
 
 function M.receiveText(texttype, message, originator)
-    if npc.base.functions.BasicNPCChecks(originator,2) then
-        if (npc.base.functions.LangOK(originator,TradSpeakLang)==true) then
+    if functions.BasicNPCChecks(originator,2) then
+        if (functions.LangOK(originator,TradSpeakLang)==true) then
             thisNPC.activeLanguage=originator.activeLanguage;
-            result = SayPrice(message, originator);
-            if not result then result = GetCow(message, originator) end;
-            if not result then result = returnCow(message, originator) end;
-            if not result then npc.base.functions.TellSmallTalk(message) end;
+            result = M.SayPrice(message, originator);
+            if not result then result = M.GetCow(message, originator) end;
+            if not result then result = M.returnCow(message, originator) end;
+            if not result then functions.TellSmallTalk(message) end;
         else
             if (verwirrt==false) then
                 gText="#me sieht dich leicht verwirrt an";
                 eText="#me looks at you a little confused";
-                outText=npc.base.functions.GetNLS(originator,gText,eText);
-                npc.base.functions.NPCTalking(thisNPC,outText);
+                outText=functions.GetNLS(originator,gText,eText);
+                functions.NPCTalking(thisNPC,outText);
                 verwirrt=true;
             end
         end
@@ -148,14 +144,14 @@ function M.GetCow(message, originator)
     
     
         if (originator:getQuestProgress(8) == 0) then
-            GCoins,SCoins,CCoins = CalcSilverCopper(PreisProKuh + Kaution);
-            if CheckMoney(originator,GCoins,SCoins,CCoins) then
+            GCoins,SCoins,CCoins = M.CalcSilverCopper(PreisProKuh + Kaution);
+            if M.CheckMoney(originator,GCoins,SCoins,CCoins) then
                 if false then
                       thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Ich darf dir im Augenblick keinen Esel verkaufen." );
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english,"I'm not allowed to sell you a mule currently, sorry." );
                     return true;
                 end
-                posOfCow = createCow(originator);
+                posOfCow = M.createCow(originator);
                 if not posOfCow then
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Leider kein Esel mehr da. Kommt später wieder." );
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english,"There are no more mules in the stable. Please come back later." );
@@ -166,7 +162,7 @@ function M.GetCow(message, originator)
                     transport_effect:addValue("owner",originator.id);
                     Transporter.effects:addEffect(transport_effect);
                     
-                    Pay(originator,GCoins,SCoins,CCoins);
+                    M.Pay(originator,GCoins,SCoins,CCoins);
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Hier habt ihr den Esel. Bringt ihn sicher wieder dann bekommt ihr die "..(Kaution/100).." Silberstücke Kaution wieder.");
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.english, "There you have your mule. Bring him back safely then you get your "..(Kaution/100).." silvercoins surety back.");
                     thisNPC:talkLanguage( CCharacter.say, CPlayer.german, "Wenn du \"bleib stehen\" sagst, bleibt der Esel stehen und du kannst ihn be- und entladen. Sagst du \"weiter\" folgt er dir wieder. Pass auf dass er dich nicht aus den Augen verliert." );

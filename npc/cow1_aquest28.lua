@@ -1,11 +1,8 @@
 local M = {}
-npc = npc or {}
-npc.cow1_aquest28 = M
-local _ENV = setmetatable(M, { __index = _G })
 
 --37 cow id, faceto= 6 (west)
 --775,791,0
-require("npc.base.autonpcfunctions")
+local autonpcfunctions = require("npc.base.autonpcfunctions")
 require("quest_aquest28");    --the quest file
 
 function M.InitNPC()
@@ -16,7 +13,7 @@ function M.InitNPC()
 		ActiveTask = 0;
 		thisNPC:increaseSkill(1,"common language",100);
 		TradSpeakLang={0,1};
-		npc.base.autonpcfunctions.increaseLangSkill(TradSpeakLang);
+		autonpcfunctions.increaseLangSkill(TradSpeakLang);
     	thisNPC.activeLanguage=0;
     	
                   --comb, water bucket, lute ,   nothing,bundle of grain, big empty bottle         

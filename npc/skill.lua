@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.skill = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.useNPC(user,counter,param)
     --thisNPC:increaseSkill(1,"common language",100);
@@ -17,8 +14,6 @@ function M.nextCycle()  -- ~10 times per second
         --thisNPC:talk(CCharacter.say, "Next delivery in "..nextDelivery);
     end
 end
-
-
 
 function M.receiveText(texttype, message, originator)
  -- printerr("from"..originator.name.."to"..thisNPC.name);

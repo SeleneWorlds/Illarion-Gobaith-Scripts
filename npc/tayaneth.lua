@@ -1,7 +1,4 @@
 local M = {}
-npc = npc or {}
-npc.tayaneth = M
-local _ENV = setmetatable(M, { __index = _G })
 
 function M.useNPC(user,counter,param)
     --user:talk(CCharacter.say, "test");
