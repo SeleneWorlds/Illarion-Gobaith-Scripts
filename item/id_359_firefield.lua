@@ -1,5 +1,4 @@
 local M = {}
-local IniFireField, CharacterOnField, SpellResistence, DeleteFlame
 
 -- UPDATE common SET com_script='item.id_359_firefield' where com_itemid=359;
 
@@ -7,13 +6,13 @@ local common = require("base.common")
 
 function M.IniFireField()
     --hum,dwa,hal,elf,orc,liz,gno,fry,gob,tro,mum,skl,beh,cld,hlr,buy,sel,ins,shp,spd,dsk,rot,dem,scp,pig,inv,sku,wsp,ftr,shd,stn,mgo,gno,dra,drw,drw,lde
-    AffectedRaces={  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36};
-    AffectedStren={100, 80,100,100, 70,110,100,100,100,100,120, 40,100,100,100,100,100,200,130,110, 20,100, 10,100,100,100, 40,150,100, 30, 20,100,100,  0,100,100, 20};
+    M.AffectedRaces={  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36};
+    M.AffectedStren={100, 80,100,100, 70,110,100,100,100,100,120, 40,100,100,100,100,100,200,130,110, 20,100, 10,100,100,100, 40,150,100, 30, 20,100,100,  0,100,100, 20};
 end
 
 function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
-    if (AffectedRaces==nil) then
-        IniFireField();          -- Einmalige Initialisierung
+    if (M.AffectedRaces==nil) then
+        M.IniFireField();          -- Einmalige Initialisierung
     end
     if (User:increaseAttrib("hitpoints",0) == 0) then
         return
@@ -30,16 +29,16 @@ function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
 	end
     if (FieldItem.quality>100) then
         UserRace=User:get_race();                  -- Char Rasse
-        for i,theRace in pairs(AffectedRaces) do   -- Rassenliste durchlaufen
+        for i,theRace in pairs(M.AffectedRaces) do   -- Rassenliste durchlaufen
             if UserRace==theRace then              -- User Rasse finden
                 found=true
-                RaceStrenght=AffectedStren[i];
+                RaceStrenght=M.AffectedStren[i];
             end
         end
         if not found then
             RaceStrenght=100;
         end
-        resist=SpellResistence(User);      -- Magie Resistenz pr�fen
+        resist=M.SpellResistence(User);      -- Magie Resistenz pr�fen
         if (resist<FieldItem.quality*2) then   -- Qualit�t des Items --> St�rke mit Magie Resistenz vergleichen
             damageDealt=math.random((3/100)*math.floor((FieldItem.quality-resist)*RaceStrenght),(5/100)*math.floor((FieldItem.quality-resist)*RaceStrenght));--AffectedStren[i]
             User:increaseAttrib("hitpoints",-damageDealt); -- Schaden berechnen und bewirken
@@ -50,10 +49,10 @@ function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
                 User:inform("You feel the scorching fire gradually burn your skin.");
             end
         else
-            DeleteFlame(User,FieldItem);
+            M.DeleteFlame(User,FieldItem);
         end
     else
-        DeleteFlame(User,FieldItem);
+        M.DeleteFlame(User,FieldItem);
         if (User:getPlayerLanguage()==0) then
             User:inform("Die Feuerflamme war nur eine Illusion und verpufft");
         else
