@@ -6,8 +6,7 @@ local UseItem, UseItemWithCharacter, MakeSprout, CheckSucceed, BlockCheck
 -- UPDATE common SET com_script='item.id_52_filledbucket' WHERE com_itemid IN (52);
 
 local common = require("base.common")
-require("base.keys")
-
+local base_keys = require("base.keys")
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 
     -- Loo Bucket for hands
@@ -16,7 +15,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         bucket.wear = 255;
         world:changeItem( bucket );
         door = world:getItemOnField( position( -74, -68, 0 ) );
-        base.keys.UnlockDoor( door );
+        base_keys.UnlockDoor( door );
         door = world:getItemOnField( position( -74, -68, 0 ) );
         OpenDoor( door );
     end;
@@ -75,7 +74,7 @@ function M.UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter
                  bucket.wear = 255;
                  world:changeItem( bucket );
                  door = world:getItemOnField( position( -74, -68, 0 ) );
-                 base.keys.UnlockDoor( door );
+                 base_keys.UnlockDoor( door );
                  door = world:getItemOnField( position( -74, -68, 0 ) );
                  OpenDoor( door );
              end;

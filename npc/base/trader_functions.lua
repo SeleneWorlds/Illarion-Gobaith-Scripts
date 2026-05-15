@@ -3,8 +3,7 @@ local M = {}
 -- Basisscript f�r NPC H�ndlerfunktionen
 -- Nitram
 
-require("content.genus")
-
+local content_genus = require("content.genus")
 -- Auff�llen der Itembest�nde
 function M.refillItems(itNumb)
     if (TraderItemNumber[itNumb] == 4294967295) then

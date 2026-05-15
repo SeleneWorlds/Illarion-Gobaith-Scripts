@@ -5,8 +5,7 @@ local MoveItemBeforeMove, MoveItemAfterMove
 -- UPDATE common SET com_script = 'item.id_917_cursedshield' WHERE com_itemid = 917;
 
 local common = require("base.common")
-require("item.general.metal")
-
+local general_metal = require("item.general.metal")
 function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
     -- if shield was purified, then no possibility of curse
     if ( SourceItem.data == 1 ) then return true; end;

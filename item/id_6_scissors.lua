@@ -7,9 +7,8 @@ local UseItem, UseItemWithCharacter
 
 -- UPDATE common SET com_script='item.id_6_scissors' WHERE com_itemid IN (6);
 
-require("item.general.metal")
-require("item.base.crafts")
-
+local general_metal = require("item.general.metal")
+local base_crafts = require("item.base.crafts")
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     common.ResetInterruption( User, ltstate );
     math.randomseed( os.time() );

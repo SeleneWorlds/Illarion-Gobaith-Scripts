@@ -1,6 +1,5 @@
 local common = require("base.common")
-require("magic.base.basics");
-
+local base_basics = require("magic.base.basics")
 function DoItemSpell(Caster, TargetPos, ltstate)
     Hitted_already = {};
     if ( ltstate == Action.abort ) then
@@ -9,13 +8,13 @@ function DoItemSpell(Caster, TargetPos, ltstate)
         return;
     end
 
-    magic.base.basics.loadCorrectDefScript();
+    base_basics.loadCorrectDefScript();
 
     -- Generate the needed
-    magic.base.basics.gemBonis( Caster );
+    base_basics.gemBonis( Caster );
 
     genderMsg = {};
-    genderMsg[CPlayer.german], genderMsg[CPlayer.english] = magic.base.basics.GenderMessage( Caster );
+    genderMsg[CPlayer.german], genderMsg[CPlayer.english] = base_basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
         common.InformNLS( Caster,
@@ -40,11 +39,11 @@ function DoItemSpell(Caster, TargetPos, ltstate)
         return;
     end
 
-    magic.base.basics.SayRunes( Caster );
+    base_basics.SayRunes( Caster );
 
-    local CasterVal=magic.base.basics.CasterValue( Caster );
+    local CasterVal=base_basics.CasterValue( Caster );
 
-    if not magic.base.basics.CheckAndReduceRequirements( Caster, CasterVal ) then
+    if not base_basics.CheckAndReduceRequirements( Caster, CasterVal ) then
         return;
     end
 
@@ -57,16 +56,16 @@ function DoItemSpell(Caster, TargetPos, ltstate)
 
     if Spot then
         if Spot.item and createItemOnMap( Spot.item, TargetPos, CasterVal ) then
-            magic.base.basics.performGFX( Spot.gfx, TargetPos );
-            magic.base.basics.performSFX( Spot.sfx, TargetPos );
+            base_basics.performGFX( Spot.gfx, TargetPos );
+            base_basics.performSFX( Spot.sfx, TargetPos );
         end
     end
 
     if Wall then
         common.CreateTangentLine( Caster.pos, TargetPos, math.floor(common.Scale( Wall.minSkill.armlength, Wall.maxSkill.armlength, CasterVal )), function(posi)
             if Wall.item and createItemOnMap( Wall.item, posi, CasterVal ) then
-                magic.base.basics.performGFX( Wall.gfx, posi );
-                magic.base.basics.performSFX( Wall.sfx, posi );
+                base_basics.performGFX( Wall.gfx, posi );
+                base_basics.performSFX( Wall.sfx, posi );
             end
         end );
     end
@@ -74,8 +73,8 @@ function DoItemSpell(Caster, TargetPos, ltstate)
     if Circle then
         common.CreateCircle( Caster.pos, Caster:distanceMetricToPosition( TargetPos ), function(posi)
             if Circle.item and createItemOnMap( Circle.item, posi, CasterVal ) then
-                magic.base.basics.performGFX( Circle.gfx, posi );
-                magic.base.basics.performSFX( Circle.sfx, posi );
+                base_basics.performGFX( Circle.gfx, posi );
+                base_basics.performSFX( Circle.sfx, posi );
             end
         end );
     end
@@ -91,7 +90,7 @@ end
 function createItemOnMap( ItemData, Target, CasterVal )
     if world:isCharacterOnField( Target ) then
         local TargetChar = world:getCharacterOnField( Target );
-        CasterVal = CasterVal - magic.base.basics.MagicResistence( TargetChar );
+        CasterVal = CasterVal - base_basics.MagicResistence( TargetChar );
 
         if (CasterVal < 0) then
             world:gfx( 10, Target );

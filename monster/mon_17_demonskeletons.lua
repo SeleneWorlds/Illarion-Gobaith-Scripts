@@ -1,6 +1,6 @@
 local drop = require("monster.base.drop")
-require("monster.base.lookat")
-require("base.messages");
+local base_lookat = require("monster.base.lookat")
+local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
@@ -9,7 +9,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
-msgs = base.messages.Messages();
+msgs = base_messages.Messages();
 msgs:addMessage("Die Toten dulden keine Lebenden in ihrer Mitte. Die Strafe f�r euer Eindringen ist der Tod.", "The undead shall not allow the living to dwell here. The punishment for such insolence shall be death!");
 msgs:addMessage("Die Toten verlangen nach frischem Blut. Deinem Blut!", "The undead demand fresh blood, your blood!");
 msgs:addMessage("Es ist gut das ihr hier seid, Sterblicher. Die Stimmung hier war irgendwie tot.", "It's good that you are here, mortal. Now you can entertain me.");

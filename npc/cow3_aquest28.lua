@@ -4,7 +4,7 @@ local M = {}
 --775,796,0
 --Cheeseball
 local autonpcfunctions = require("npc.base.autonpcfunctions")
-require("quest_aquest28");    --the quest file
+local quest_aquest28 = require("quest_aquest28") -- the quest file
 
 function M.InitNPC()
     if not InitDone then

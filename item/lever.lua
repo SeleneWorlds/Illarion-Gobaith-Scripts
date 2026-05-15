@@ -2,7 +2,7 @@ local M = {}
 local init, generateKey, UseItem, AddToLevers
 
 local common = require("base.common")
-require("base.lever")
+local base_lever = require("base.lever")
 local deleteitem = require("handler.deleteitem")
 local lockdoor = require("handler.lockdoor")
 local unlockdoor = require("handler.unlockdoor")
@@ -21,11 +21,11 @@ local movelever = require("handler.movelever")
 
 function M.init()
     leverList={};
-    myLev1 = base.lever.Lever(position(124,637,0),true);
-    myLev2 = base.lever.Lever(position(125,637,0),false);
+    myLev1 = base_lever.Lever(position(124,637,0),true);
+    myLev2 = base_lever.Lever(position(125,637,0),false);
     myLev1:bind(0,movelever.moveLever(myLev2));
-    testlever = base.lever.Lever(position(119,637,0),true);
-    testlever2 = base.lever.Lever(position(120,637,0),true);
+    testlever = base_lever.Lever(position(119,637,0),true);
+    testlever2 = base_lever.Lever(position(120,637,0),true);
     --[[for x=117,119 do
         for y=632,636 do
             testlever2:bind(0,deleteItem(position(x,y,0),0));

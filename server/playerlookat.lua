@@ -7,11 +7,10 @@
 --      = 0 --> short description
 --      = 1 --> long description
 
-require("content.genus")
+local content_genus = require("content.genus")
 local common = require("base.common")
-require("content.lookat.custom")
-require("content.uniquechardescription")
-
+local content_lookat_custom = require("content.lookat.custom")
+local content_uniquechardescription = require("content.uniquechardescription")
 local genus = require("content.genus")
 local lookat_custom = require("content.lookat.custom")
 local uniquechardescription = require("content.uniquechardescription")
@@ -203,7 +202,7 @@ function checkBelt( TargetCharacter, lang, modify, withend, SourceCharacter )
                     if not first_item then
                         output = output .. ", ";
                     end
-                    --output = output .. getText( "genus_"..content.genus.GenusData( item.id ), lang );
+                    --output = output .. getText( "genus_"..content_genus.GenusData( item.id ), lang );
                     output = output .. world:getItemName( item, lang ).."";
                 end
                 if first_item then

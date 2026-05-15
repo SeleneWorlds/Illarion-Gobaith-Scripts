@@ -2,8 +2,7 @@ local common = require("base.common")
 local M = {}
 local LookAtItem, MoveItemBeforeMove
 
-require("base.lookat")
-
+local base_lookat = require("base.lookat")
 -- UPDATE common SET com_script='item.general.jewel' WHERE com_itemid IN (225, 1840, 1858);
 
 function M.LookAtItem(User,Item)
@@ -80,9 +79,9 @@ function M.LookAtItem(User,Item)
             return true;
         end
     end
-    local desc = base.lookat.GetItemDescription(User,Item,4,false,false );
+    local desc = base_lookat.GetItemDescription(User,Item,4,false,false );
     if ( Item.data == 1 ) then
-        world:itemInform(User,Item,base.lookat.GetItemDescription(User,Item,4,false,false )..common.GetNLS(User, " mit Gravur Troll's Bane", " with gravure Trolls Bane"));
+        world:itemInform(User,Item,base_lookat.GetItemDescription(User,Item,4,false,false )..common.GetNLS(User, " mit Gravur Troll's Bane", " with gravure Trolls Bane"));
     elseif ( Item.data == 2 ) then
         world:itemInform(User,Item,common.GetNLS(User, "Siegelring der Grauen Rose", "signet ring of the Grey Rose"));
     elseif ( Item.data == 3 ) then

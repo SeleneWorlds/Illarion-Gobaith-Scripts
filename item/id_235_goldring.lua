@@ -3,7 +3,7 @@ local LookAtItem, MoveItemAfterMove
 
 -- data values in use: 100,101,102,666,700,800, 10000
 
-require("base.lookat")
+local base_lookat = require("base.lookat")
 local common = require("base.common")
 local jewelbonus = require("content.jewelbonus")
 
@@ -79,7 +79,7 @@ function M.LookAtItem(User,Item)
                 world:itemInform(User,Item,"Give the crown! (Krone erscheint auf 370, 134, -10)");
         end
     else
-        world:itemInform(User,Item,base.lookat.GetItemDescription(User,Item,4,false,false ));
+        world:itemInform(User,Item,base_lookat.GetItemDescription(User,Item,4,false,false ));
     end
 end
 

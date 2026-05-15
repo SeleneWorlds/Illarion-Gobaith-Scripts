@@ -1,6 +1,6 @@
 local drop = require("monster.base.drop")
-require("monster.base.lookat")
-require("base.messages");
+local base_lookat = require("monster.base.lookat")
+local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
@@ -9,7 +9,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
-msgs = base.messages.Messages();
+msgs = base_messages.Messages();
 msgs:addMessage("#me blinzelt mit beiden Augen, l�sst seinen Blick jedoch keinen Moment von seinem Ziel abschweifen.", "#me blinks with both eyes still not moving its gaze from its target for even one second.");
 msgs:addMessage("#me duckt sich, bereit zum Sprung.", "#me crouches, ready to jump.");
 msgs:addMessage("#me faucht angriffslustig und schnellt vorw�rts.", "#me hisses aggressively and rushes forward.");

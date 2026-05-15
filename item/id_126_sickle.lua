@@ -6,10 +6,9 @@ local UseItem, checkRegion
 
 -- UPDATE common SET com_script='item.id_126_sickle' WHERE com_itemid=126;
 
-require("item.general.metal")
+local general_metal = require("item.general.metal")
 local common = require("base.common")
-require("scheduled.newgaia")
-
+local scheduled_newgaia = require("scheduled.newgaia")
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	
 	-- Krauterliste initialisieren
@@ -104,7 +103,7 @@ end
 
 
 function M.checkRegion(TargetItem)
-	for HerbID, herb in pairs(scheduled.newgaia.herbs) do  
+	for HerbID, herb in pairs(scheduled_newgaia.herbs) do  
 		-- untergrund checken um Regionen zu bestimmen
 		TileID = world:getField(TargetItem.pos):tile();
 		if (TileID==herb.ground) then

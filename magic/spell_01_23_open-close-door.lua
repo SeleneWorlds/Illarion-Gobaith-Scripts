@@ -4,7 +4,7 @@
 --SPEZIALZAUBER
 --ITEMZAUBER
 
-require("base.doors")
+local base_doors = require("base.doors")
 local common = require("base.common")
 function OpenCloseTarget(Caster,Item)
     if not common.IsLookingAt(Caster,Item.pos) then
@@ -16,11 +16,11 @@ function OpenCloseTarget(Caster,Item)
         Caster.activeLanguage=10;
         Caster:talk(CCharacter.say,"KEL ANTH");
         Caster.activeLanguage=Language;
-        if base.doors.CloseDoor(Item) then
+        if base_doors.CloseDoor(Item) then
             Succeed(Caster)
             common.InformNLS(Caster,"Von dem Windsto� getroffen klappt die T�r zu.","A mysterious breeze pushes the door close.");
         else
-            local OpenDoor,OpenOK=base.doors.OpenDoor(Item);
+            local OpenDoor,OpenOK=base_doors.OpenDoor(Item);
             if OpenOK then
                 Succeed(Caster)
                 common.InformNLS(Caster,"Vom Wind gef�hrt schwingt die T�r auf.","A mysterious breeze pushes the door open.");

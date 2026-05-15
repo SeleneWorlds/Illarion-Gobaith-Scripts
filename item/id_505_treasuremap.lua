@@ -2,15 +2,14 @@ local M = {}
 local LookAtItem
 
 local common = require("base.common")
-require("base.treasure")
-
+local base_treasure = require("base.treasure")
 -- UPDATE common SET com_script='item.id_505_treasuremap' WHERE com_itemid IN (505);
 
 function M.LookAtItem(User, Item)
 
-    local dir = base.treasure.getDirection( User, Item );
-    local distance = base.treasure.getDistance (User, Item );
-    local TreasureName = base.treasure.GetTreasureName( math.floor(Item.quality/100), User:getPlayerLanguage(), not dir );
+    local dir = base_treasure.getDirection( User, Item );
+    local distance = base_treasure.getDistance (User, Item );
+    local TreasureName = base_treasure.GetTreasureName( math.floor(Item.quality/100), User:getPlayerLanguage(), not dir );
 
     if not dir then
         world:itemInform( User, Item, common.GetNLS( User,

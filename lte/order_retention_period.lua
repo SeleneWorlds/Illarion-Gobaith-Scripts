@@ -1,5 +1,4 @@
-require("base.orders")
-
+local base_orders = require("base.orders")
 local M = {}
 
 --[[
@@ -21,9 +20,9 @@ end
 
 function M.removeEffect(eff,User)
     --beim entfernen die Vertrauensw�rdigkeit erh�hen aber wert f�r gute Auftr�ge senken
-    base.orders.setThrustWorthyness(User,
-        base.orders.ThrustworthynessChangeAfterRetentionPeriod,
-        base.orders.GoodOrderChangeAfterRetentionPeriod);
+    base_orders.setThrustWorthyness(User,
+        base_orders.ThrustworthynessChangeAfterRetentionPeriod,
+        base_orders.GoodOrderChangeAfterRetentionPeriod);
 end
 
 function M.loadEffect(eff, User)

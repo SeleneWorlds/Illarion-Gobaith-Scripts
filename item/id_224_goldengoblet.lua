@@ -1,13 +1,13 @@
 local M = {}
 local LookAtItem
 
-require("base.lookat")
+local base_lookat = require("base.lookat")
 local common = require("base.common")
 
 -- UPDATE common SET com_script='item.id_224_goldengoblet' WHERE com_itemid=224;
 
 function M.LookAtItem(User,Item)
-    local text = base.lookat.GetItemDescription(User,Item,4,false,false);
+    local text = base_lookat.GetItemDescription(User,Item,4,false,false);
 	local gText = "Du siehst ";
 	local eText = "You see ";
 	if (Item.data == 1) then

@@ -1,6 +1,6 @@
 local drop = require("monster.base.drop")
-require("monster.base.lookat")
-require("base.messages");
+local base_lookat = require("monster.base.lookat")
+local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
@@ -9,7 +9,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
-msgs = base.messages.Messages();
+msgs = base_messages.Messages();
 msgs:addMessage("#me klappert drohend mit den Scheren.", "#me clatters angrily with its claws.");
 msgs:addMessage("#me sieht sich mit tief schwarzen Augen um.", "#me looks around with deep black eyes.");
 msgs:addMessage("#me t�nzelt erregt vor und zur�ck, der Stachel zittert in der Luft und etwas Gift tropft schon zu Boden, so angriffslustig scheint das Tier zu sein", "#me prances excitedly back and forth, shaking its sting in the air and some venom drips to the ground. The animal seems to be aggressive.");

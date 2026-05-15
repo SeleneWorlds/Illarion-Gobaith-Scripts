@@ -7,14 +7,13 @@ local InitCraftingTool, UseItem
 
 -- UPDATE common SET com_script='item.id_58_mortar' WHERE com_itemid=58;
 
-require("item.general.jewel")
-require("item.base.crafts")
-
+local general_jewel = require("item.general.jewel")
+local base_crafts = require("item.base.crafts")
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
 
-        mortar = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        mortar = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                             LeadSkill = "tailoring",
                             LeadSkillGroup = 2,
                             DefaultFoodConsumption = 300,

@@ -7,15 +7,14 @@ local InitCraftingTool, UseItem
 
 -- UPDATE common SET com_script='item.id_2715_plane' WHERE com_itemid IN (2715);
 
-require("item.general.wood")
-require("item.base.crafts")
-
+local general_wood = require("item.general.wood")
+local base_crafts = require("item.base.crafts")
 -- Holzarbeiten mit dem Hobel
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
         
-        carpentry = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        carpentry = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                               LeadSkill = "carpentry",
                               LeadSkillGroup = 2,
                               DefaultFoodConsumption = 200,

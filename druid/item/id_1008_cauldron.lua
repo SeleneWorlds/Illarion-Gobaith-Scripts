@@ -11,8 +11,7 @@
 
 local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
-require("item.general.metal")
-
+local general_metal = require("item.general.metal")
 local M = {}
 -- UPDATE common SET com_script='druid.item.id_1008_cauldron' WHERE com_itemid = 1008;
 

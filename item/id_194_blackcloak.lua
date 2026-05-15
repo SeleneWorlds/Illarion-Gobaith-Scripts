@@ -4,7 +4,7 @@ local MoveItemAfterMove
 
 -- UPDATE common SET com_script='item.id_194_blackcloak' WHERE com_itemid IN (194);
 
-require("item.priest.cloth")
+local priest_cloth = require("item.priest.cloth")
 local common = require("base.common")
 
 function M.MoveItemAfterMove( User, SourceItem, TargetItem )

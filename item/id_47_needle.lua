@@ -7,15 +7,14 @@ local InitCraftingTool, UseItem
 
 -- UPDATE common SET com_script='item.id_47_needle' WHERE com_itemid IN (47);
 
-require("item.general.wood")
-require("item.base.crafts")
-
+local general_wood = require("item.general.wood")
+local base_crafts = require("item.base.crafts")
 -- Schneiderprodukte Initieren
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
         
-        tailoring = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        tailoring = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                               LeadSkill = "tailoring",
                               LeadSkillGroup = 2,
                               DefaultFoodConsumption = 300,

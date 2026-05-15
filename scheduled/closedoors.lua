@@ -1,5 +1,5 @@
-require("base.doors")
-require("base.keys")
+local base_doors = require("base.doors")
+local base_keys = require("base.keys")
 local M = {}
 
 function M.AddClosingDoor(DX, DY, DZ, DTime, DLock)  -- DX, DY, DZ: Coordinates, DTime: cycles to survive opened, DLock: 0 if it should be closed but not locked, 1 if it should be closed AND locked
@@ -25,21 +25,21 @@ function M.checkAllDoors(DoorsToClose)        -- loop through all doors in the l
         thisDoorPos=position(DoorsToClose[DoorNr][1],DoorsToClose[DoorNr][2],DoorsToClose[DoorNr][3]);  -- get position of that door
         if world:isItemOnField(thisDoorPos) then
             thisDoor=world:getItemOnField(thisDoorPos);     -- get this door
-            doorOOK, doorDummy=base.doors.CheckOpenDoor(thisDoor.id);      -- check whether it IS a door and if it's opened and its position in the list of doors
-            doorCOK, doorDummy2=base.doors.CheckClosedDoor(thisDoor.id);
+            doorOOK, doorDummy=base_doors.CheckOpenDoor(thisDoor.id);      -- check whether it IS a door and if it's opened and its position in the list of doors
+            doorCOK, doorDummy2=base_doors.CheckClosedDoor(thisDoor.id);
             if (doorOOK) then                 -- if it is an open door
                 if (DoorCloseCountdown[DoorNr]==1) then    -- door should be closed now
-                    base.doors.CloseDoor(thisDoor);    -- so, close it
+                    base_doors.CloseDoor(thisDoor);    -- so, close it
                     if DoorsToClose[DoorNr][5]==333 then        -- should door be locked?
                         thisDoor=world:getItemOnField(thisDoorPos);  -- get door object again
-                        base.keys.LockDoor(thisDoor);     -- lock it
+                        base_keys.LockDoor(thisDoor);     -- lock it
                     end
                     DoorCloseCountdown[DoorNr]=DoorsToClose[DoorNr][4];     -- for the next closing procedure
                 else    -- door not yet to close but opened, count down timer
                     DoorCloseCountdown[DoorNr]=DoorCloseCountdown[DoorNr]-1;
                 end
             elseif (doorCOK and thisDoor.quality~=333) then
-                base.keys.LockDoor(thisDoor);
+                base_keys.LockDoor(thisDoor);
             end
         end
     end

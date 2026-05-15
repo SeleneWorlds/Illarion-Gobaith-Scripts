@@ -2,8 +2,7 @@ local M = {}
 local LookAtItem, UseItemWithCharacter, UseItem, teleportTarget, teleportLookAt, teleportUseItem, selfTeleportUseItem, summonCreature
 
 local common = require("base.common")
-require("base.orders")
-
+local base_orders = require("base.orders")
 -- UPDATE common SET com_script = 'item.id_3110_scroll' WHERE com_itemid = 3110;
 
 function M.LookAtItem(User,Item)

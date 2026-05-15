@@ -7,14 +7,13 @@ local InitCraftingTool, UseItem, UseItemWithField, UseItemWithCharacter
 
 -- UPDATE common SET com_script='item.id_122_finesmithhammer' WHERE com_itemid IN (122);
 
-require("item.general.metal")
-require("item.base.crafts")
-
+local general_metal = require("item.general.metal")
+local base_crafts = require("item.base.crafts")
 -- Schmiedeprodukte Initieren
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
-        smithing = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        smithing = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                               LeadSkill = "goldsmithing",
                               LeadSkillGroup = 2,
                               DefaultFoodConsumption = 300,

@@ -1,6 +1,6 @@
 local drop = require("monster.base.drop")
-require("monster.base.lookat")
-require("base.messages");
+local base_lookat = require("monster.base.lookat")
+local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
@@ -9,7 +9,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
-msgs = base.messages.Messages();
+msgs = base_messages.Messages();
 msgs:addMessage("#me fliegt, ein hohes, weinerlich klingendes Ger�usch machend umher.", "#me flies around, making a high pitched whining sound.");
 msgs:addMessage("#me landet nur um wieder abheben zu k�nnen begleitet von einem kurzen Summen.", "#me lands, only to take off again with a short buzz.");
 msgs:addMessage("#me peitscht, einen Landeplatz suchend durch die Luft.", "#me whips about in the air, searching for somewhere to land.");

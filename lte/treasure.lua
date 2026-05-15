@@ -1,5 +1,5 @@
 local common = require("base.common")
-require("base.treasure")
+local base_treasure = require("base.treasure")
 local M = {}
 
 function M.addEffect(trsEff, trsHunter)
@@ -7,7 +7,7 @@ function M.addEffect(trsEff, trsHunter)
     if not fnd then
         return false;       -- treasure lost!
     end
-    base.treasure.SpawnMonsters( trsHunter, cat );
+    base_treasure.SpawnMonsters( trsHunter, cat );
     return true;
 end
 
@@ -43,14 +43,14 @@ function M.callEffect(trsEff, trsHunter)
         return false;       -- treasure lost!
     end
 
-    if base.treasure.CheckMonsters( trsHunter ) then
+    if base_treasure.CheckMonsters( trsHunter ) then
         common.TempInformNLS( trsHunter,
         "Die Wächter des Schatzes wurden besiegt. Gebt nicht alles auf einmal aus!",
         "The guardians of the treasure have been slain. Do not spend it all at once!");
         world:createItemFromId(2830,1,trsPosition,true,333,cat); --spawn a treasure chest
         world:gfx(16,trsPosition);
         world:makeSound(13,trsPosition);
-        --base.treasure.SpawnTreasure(cat, trsPosition);
+        --base_treasure.SpawnTreasure(cat, trsPosition);
         return false;
     end
 
@@ -65,7 +65,7 @@ function M.callEffect(trsEff, trsHunter)
 end
 
 function M.removeEffect(trsEff, trsHunter)
-    base.treasure.KillMonsters( trsHunter );
+    base_treasure.KillMonsters( trsHunter );
     return false;
 end
 

@@ -7,15 +7,14 @@ local InitCraftingTool, UseItem
 
 -- UPDATE common SET com_script='item.id_227_cookingspoon' WHERE com_itemid IN (227);
 
-require("item.general.wood")
-require("item.base.crafts")
-
+local general_wood = require("item.general.wood")
+local base_crafts = require("item.base.crafts")
 -- Kochen und Brauen Initieren Initieren
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
         
-        cooking = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        cooking = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                              LeadSkill = "baking",
                              LeadSkillGroup = 2,
                              DefaultFoodConsumption = 100,
@@ -23,7 +22,7 @@ function M.InitCraftingTool( )
                              DefaultSfx = { 7, 15 }
                            };
         
-        brewing = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        brewing = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                              LeadSkill = "baking",
                              LeadSkillGroup = 2,
                              DefaultFoodConsumption = 100,

@@ -1,7 +1,7 @@
 local M = {}
 local UseItem, LookAtItem, MoveItemBeforeMove, MoveItemAfterMove
 
-require("base.keys")
+local base_keys = require("base.keys")
 local common = require("base.common")
 
 -- UPDATE common SET com_script='item.keys' WHERE com_itemid IN (2121,2122,2123,2124,2141,2144,2145,2161,2556,2558,3054,3055,3056);
@@ -28,10 +28,10 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 					"#w You hear the sound of moving stone.");
 			end
 		end
-	elseif base.keys.CheckKey(SourceItem,DoorItem) then
-        if base.keys.LockDoor(DoorItem) then
+	elseif base_keys.CheckKey(SourceItem,DoorItem) then
+        if base_keys.LockDoor(DoorItem) then
             common.InformNLS(User,"Du sperrst die T�r ab.","You lock the door.");
-        elseif base.keys.UnlockDoor(DoorItem,User) then             -- User eingefuegt
+        elseif base_keys.UnlockDoor(DoorItem,User) then             -- User eingefuegt
             common.InformNLS(User,"Du sperrst die T�r auf.","You unlock the door.");
         end
     else

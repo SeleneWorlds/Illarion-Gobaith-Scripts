@@ -7,15 +7,14 @@ local InitCraftingTool, UseItem
 
 -- UPDATE common SET com_script='item.id_2752_carvingtools' WHERE com_itemid IN (2752);
 
-require("item.general.metal")
-require("item.base.crafts")
-
+local general_metal = require("item.general.metal")
+local base_crafts = require("item.base.crafts")
 -- Holzarbeiten mit dem Schnitzmesser
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
 
-        carpentery = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        carpentery = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                               LeadSkill = "carpentry",
                               LeadSkillGroup = 2,
                               DefaultFoodConsumption = 200,

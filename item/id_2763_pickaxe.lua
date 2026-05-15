@@ -27,10 +27,9 @@ local Init, AddArea, AddStone, SetRessource, GetRessource, GetModifiedSkill, che
 -- UPDATE common SET com_agingspeed = 255, com_objectafterrot = 1250 WHERE com_itemid = 1250;
 -- UPDATE common SET com_agingspeed =  10, com_objectafterrot = 1250 WHERE com_itemid = 1251;
 
-require("item.general.metal")
+local general_metal = require("item.general.metal")
 local common = require("base.common")
-require("base.treasure")
-
+local base_treasure = require("base.treasure")
 function M.Init()
     if InitDone then
         return
@@ -458,7 +457,7 @@ function M.UseItemWithField(User,SourceItem,TargetPos,counter,param)
     local groundTile = world:getField( TargetPos ):tile();
     local GroundType = common.GetGroundType( groundTile );
     
-    if (GroundType ~= 5) and base.treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
+    if (GroundType ~= 5) and base_treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
                                                 common.GetNLS( User,
                                                     "Du schwingst deine Spitzhacke gegen den steinigen Boden und st��t auf etwas das noch h�rter ist als der Boden. Das muss er sein! Der Schatz. Noch einmal graben und der grenzenlose Reichtum ist dein!",
                                                     "You swing your pick-axe against the stony ground and hit something that is even harder then the ground. That must it be! The teasure! Digging another time and it yours!" ), false ) then

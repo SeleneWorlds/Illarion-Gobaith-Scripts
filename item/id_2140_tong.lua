@@ -7,14 +7,13 @@ local InitCraftingTool, UseItem
 
 -- UPDATE common SET com_script='item.id_2140_tong' WHERE com_itemid=2140;
 
-require("item.general.metal")
-require("item.base.crafts")
-
+local general_metal = require("item.general.metal")
+local base_crafts = require("item.base.crafts")
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
 
-        gemcutting = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        gemcutting = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                                   LeadSkill = "gemcutting",
                                   LeadSkillGroup = 2,
                                   DefaultFoodConsumption = 200,

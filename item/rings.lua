@@ -4,7 +4,7 @@ local MoveItemAfterMove
 
 -- UPDATE common SET com_script = 'item.rings' WHERE com_itemid IN (68, 277, 278, 279, 280, 281, 282);
 
-require("item.general.jewel")
+local general_jewel = require("item.general.jewel")
 local jewelbonus = require("content.jewelbonus")
 
 function M.MoveItemAfterMove( User, SourceItem, TargetItem )

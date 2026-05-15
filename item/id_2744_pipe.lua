@@ -5,8 +5,8 @@ local UseItem, LookAtItem
 -- I_2744_pfeife.lua
 --
 local common = require("base.common")
-require("item.general.wood")
-
+local general_wood = require("item.general.wood")
+local base_lookat = require("base.lookat")
 -- UPDATE common SET com_script='item.id_2744_pipe' WHERE com_itemid = 2744;
 
 function M.UseItem( Character, SourceItem, TargetItem, Counter, Param)
@@ -39,7 +39,7 @@ end
 
 function M.LookAtItem(User, Item)
 	
-	local customText = base.lookat.GetItemDescription(User,Item,2,false,false);
+	local customText = base_lookat.GetItemDescription(User,Item,2,false,false);
 	if Item.data > 2^30 then
 		world:itemInform( User, Item, customText );
 	else

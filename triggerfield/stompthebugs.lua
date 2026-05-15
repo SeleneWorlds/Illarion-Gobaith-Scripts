@@ -1,8 +1,7 @@
 -- Used by quest 'stomp the bugs'
 --  pos -19, -5, 0
 local common = require("base.common")
-require("base.keys")
-
+local base_keys = require("base.keys")
 module("triggerfield.stompthebugs", package.seeall)
 
 function MoveToField(User)
@@ -21,7 +20,7 @@ function MoveToField(User)
 		end
 	--elseif (User:getQuestProgress(QuestID) == 3) then
 	--	local door = world:getItemOnField(DoorPosition);
-	--	base.keys.LockDoor(door);
+	--	base_keys.LockDoor(door);
 	--	door = world:getItemOnField(DoorPosition);
 	--	if(base.doors.CheckOpenDoor(door)) then
 	--		base.doors.CloseDoor(door);

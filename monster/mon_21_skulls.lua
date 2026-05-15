@@ -1,6 +1,6 @@
 local drop = require("monster.base.drop")
-require("monster.base.lookat")
-require("base.messages");
+local base_lookat = require("monster.base.lookat")
+local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
@@ -9,7 +9,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
-msgs = base.messages.Messages();
+msgs = base_messages.Messages();
 msgs:addMessage("#mes Augenh�hlen flammen mit einem Male vor blauen Flammen auf, die sich schnell �ber den ganzen Sch�del ausbreiten. Sie strahlen eine unheimliche K�lte aus.", "#me's eye sockets suddenly glare up with blue flames which spread quickly across the entire skull. They exude an eerie coldness.");
 msgs:addMessage("#mes Unterkiefer klappt runter und eine kurze Stichflamme schiesst zwischen den gef�hrlich spitzen Z�hnen hervor.", "#me's jaw drops and and a short tongue of flames shoots out from between the dangerously sharp teeth.");
 msgs:addMessage("#me �ffnet sein gewaltiges Maul und ein f�rchterliches Lachen schallt aus den Untiefen des Sch�dels empor.", "#me opens its huge mouth and a terrible laughter echoes from the depths of the skull.");

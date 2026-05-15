@@ -12,9 +12,9 @@ local UseItem, LookAtItem
 
 -- UPDATE common SET com_script='item.id_737_chisel' WHERE com_itemid IN (737);
 
-require("item.general.metal")
-require("item.base.crafts")
-
+local general_metal = require("item.general.metal")
+local base_crafts = require("item.base.crafts")
+local base_lookat = require("base.lookat")
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then -- Arbeit unterbrochen
@@ -125,7 +125,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 end
 
 function M.LookAtItem( User, Item )
-    world:itemInform( User, Item, base.lookat.GetItemDescription( User, Item, 1, false, false) );
+    world:itemInform( User, Item, base_lookat.GetItemDescription( User, Item, 1, false, false) );
 end
 
 if M.UseItem == nil then M.UseItem = parent.UseItem end

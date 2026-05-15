@@ -7,15 +7,14 @@ local InitCraftingTool, UseItem
 
 -- UPDATE common SET com_script='item.id_121_peel' WHERE com_itemid IN (121);
 
-require("item.general.wood")
-require("item.base.crafts")
-
+local general_wood = require("item.general.wood")
+local base_crafts = require("item.base.crafts")
 -- Backprodukte Initieren
 function M.InitCraftingTool( )
     if not InitStartedOnce then
         InitStartedOnce = true;
         
-        baking = item.base.crafts.Craft:new{ LeadAttrib = "dexterity",
+        baking = base_crafts.Craft:new{ LeadAttrib = "dexterity",
                              LeadSkill = "baking",
                              LeadSkillGroup = 2,
                              DefaultFoodConsumption = 100,

@@ -4,8 +4,7 @@
 local common = require("base.common")
 
 -- Include triggerfield functions
-require("triggerfield.base.triggerfield")
-
+local base_triggerfield = require("triggerfield.base.triggerfield")
 module("triggerfield.underground_entrance", package.seeall)
 
 function MoveToField(User)
@@ -37,7 +36,7 @@ function MoveToField(User)
 		},
 	}
 
-	event = triggerfield.base.triggerfield.getEvent(events, ran); 
+	event = base_triggerfield.getEvent(events, ran); 
 	event();
 end
 

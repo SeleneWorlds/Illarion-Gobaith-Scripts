@@ -3,11 +3,10 @@ local LookAtItem
 
 -- UPDATE common SET com_script='item.id_293_throwing_spear' WHERE com_itemid IN (293);
 
-require("base.lookat")
-
+local base_lookat = require("base.lookat")
 function M.LookAtItem(User, Item)
 	
-	local customText = base.lookat.GetItemDescription(User,Item,2,false,false);
+	local customText = base_lookat.GetItemDescription(User,Item,2,false,false);
 	if Item.data > 2^30 then
 		world:itemInform( User, Item, customText );
 	else

@@ -7,8 +7,7 @@
 local common = require("base.common")
 
 -- Lists with static values of the fighting system
-require("content.fighting")
-
+local content_fighting = require("content.fighting")
 local fighting = require("content.fighting")
 local M = {}
 

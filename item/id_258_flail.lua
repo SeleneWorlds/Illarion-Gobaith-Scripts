@@ -11,8 +11,7 @@ local UseItem, GenAmount, GenWorkTime
 
 -- UPDATE common SET com_script='item.id_258_flail' WHERE com_itemid IN (258);
 
-require("item.general.wood")
-
+local general_wood = require("item.general.wood")
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then -- Arbeit unterbrochen

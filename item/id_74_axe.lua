@@ -9,7 +9,7 @@ local initLists, AddTree, createdeathtree, CheckAndHit, UseItem, UseItemWithFiel
 -- UPDATE common SET com_script='item.id_74_axe' WHERE com_itemid IN (74,2946);
 
 local common = require("base.common")
-require("item.general.metal")
+local general_metal = require("item.general.metal")
 local gathering = require("content.gathering")
 
 function M.initLists(  )

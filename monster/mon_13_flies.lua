@@ -1,7 +1,7 @@
 local drop = require("monster.base.drop")
-require("monster.base.lookat")
-require("base.messages");
-require("quest_aquest28");    --the quest file for the Farmer ques
+local base_lookat = require("monster.base.lookat")
+local base_messages = require("base.messages")
+local quest_aquest28 = require("quest_aquest28") -- the quest file for the Farmer quest
 local M = {}
 function M.ini(Monster)
 
@@ -10,7 +10,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 --Random Messages
 
-msgs = base.messages.Messages();
+msgs = base_messages.Messages();
 msgs:addMessage("#me bewegen sich in der Luft auf und ab.", "#me hang in the air bobbing up and down.");
 msgs:addMessage("#me brummen einfach herum, wie es Insekten mit Fl�geln so tun.", "#me's simple buzzing drone leads one to consider the life of a winged insect.");
 msgs:addMessage("#me fliegen ziellos vor und zur�ck.", "#me fly back and forth aimlessly.");

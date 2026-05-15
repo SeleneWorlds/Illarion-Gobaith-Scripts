@@ -1,6 +1,5 @@
 local common = require("base.common")
-require("content.lookat.unique");
-
+local lookat_unique = require("content.lookat.unique")
 function initRaceBoni()
     -- Default Values for racial boni related magic
     -- First value is the boni on offensive magic
@@ -57,7 +56,7 @@ function initRaceBoni()
     RaceBonis[53] = { 1.80, 5.00 }; --Icedragon
 end
 initRaceBoni();
-content.lookat.unique.itemList();
+lookat_unique.itemList();
 
 function SetRaceBoni( Race, offValue, defValue)
     RaceBonis[Race]={offValue, defValue};

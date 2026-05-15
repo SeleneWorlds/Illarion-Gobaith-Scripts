@@ -7,8 +7,7 @@ local UseItem
 -- UPDATE common SET com_script='item.id_333_horn' WHERE com_itemid=333;
 
 local music = require("item.base.music")
-require("item.general.wood")
-
+local general_wood = require("item.general.wood")
 music.addTalkText("#me 's cheeks turn red while blowing in a horn but no sound is audible","#me's Wangen werden beim Blasen in das Horn rot, aber kein Ton ist zu h�ren.");
 music.addTalkText("#me blows in a horn producing a buzzing sound","#me bl�st in das Horn und erzeugt ein summendes Ger�usch");
 music.addTalkText("#me blows in a horn, sounding like a dying animal","#me bl�st in das Horn und macht ein Ger�usch das wie ein sterbendes Tier klingt.");

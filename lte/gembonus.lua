@@ -7,7 +7,7 @@
 
 
 local common = require("base.common")
-require("content.jewelbonus")
+local content_jewelbonus = require("content.jewelbonus")
 local M = {}
 
 function M.addEffect(gemBonus, User)         -- Infection starts
@@ -20,7 +20,7 @@ function M.doRemaining(gemBonus,User)
     for index,attrName in attList do
         foundAttr,remainAttr=gemBonus:findValue("remain"..attrName)
         if foundAttr then
-            content.jewelbonus.intelligentRemove(User,attrName,remainAttr)
+            content_jewelbonus.intelligentRemove(User,attrName,remainAttr)
         end
     end
 end
@@ -33,10 +33,10 @@ function M.callEffect(gemBonus, User)                     -- Effect wird ausgefÃ
         leftItem=User:getItemAt(7);                     -- ... get right finger item
         if ((leftItem~=nil) and (leftItem.id~=0)) then
             fndLeft,gemStr=gemBonus:findValue("hand1mod");
-            insGem,insStr=content.jewelbonus.getBonus(leftItem);
-            insStr=content.jewelbonus.getModifier(insStr);
+            insGem,insStr=content_jewelbonus.getBonus(leftItem);
+            insStr=content_jewelbonus.getModifier(insStr);
             if gemType*10+gemStr~=10*insGem+gemStr then     -- compare values from item's data with lte-value 
-                content.jewelbonus.removeBonus(User,gemType,gemStr);           -- if it doesn't fit, remove bonus...
+                content_jewelbonus.removeBonus(User,gemType,gemStr);           -- if it doesn't fit, remove bonus...
                 gemBonus:removeValue("hand1mod");           -- ... and corresponding values from LTE
                 gemBonus:removeValue("hand1gem");
                 --User:inform("not found anymore!");
@@ -45,7 +45,7 @@ function M.callEffect(gemBonus, User)                     -- Effect wird ausgefÃ
             --User:inform("nil");
             fn,gemStr=gemBonus:findValue("hand1mod");
             fn,gemType=gemBonus:findValue("hand1gem");
-            content.jewelbonus.removeBonus(User,gemType,gemStr);
+            content_jewelbonus.removeBonus(User,gemType,gemStr);
             --User:inform("nil 2");
             gemBonus:removeValue("hand1mod");
             gemBonus:removeValue("hand1gem");
@@ -61,12 +61,12 @@ function M.callEffect(gemBonus, User)                     -- Effect wird ausgefÃ
         if ((rightItem~=nil) and (rightItem.id~=0)) then
             --User:inform("not nil "..rightItem.id);
             fndRight,gemStr=gemBonus:findValue("hand2mod");     -- find the modifier of LTE
-            insGem,insStr=content.jewelbonus.getBonus(rightItem);                  -- find what's put on the hand
-            insStr=content.jewelbonus.getModifier(insStr);                         -- calculate modifier from ring
+            insGem,insStr=content_jewelbonus.getBonus(rightItem);                  -- find what's put on the hand
+            insStr=content_jewelbonus.getModifier(insStr);                         -- calculate modifier from ring
             --User:inform("here: "..gemType*10+gemStr.. " and from data "..10*insGem+insStr);
             if gemType*10+gemStr~=10*insGem+insStr then
                 --User:inform("2");
-                content.jewelbonus.removeBonus(User,gemType,gemStr);
+                content_jewelbonus.removeBonus(User,gemType,gemStr);
                 gemBonus:removeValue("hand2mod");
                 gemBonus:removeValue("hand2gem");
                 --User:inform("not found anymore!");
@@ -75,7 +75,7 @@ function M.callEffect(gemBonus, User)                     -- Effect wird ausgefÃ
             --User:inform("nil");
             fn,gemStr=gemBonus:findValue("hand2mod");
             fn,gemType=gemBonus:findValue("hand2gem");
-            content.jewelbonus.removeBonus(User,gemType,gemStr);
+            content_jewelbonus.removeBonus(User,gemType,gemStr);
             --User:inform("nil 2");
             gemBonus:removeValue("hand2mod");
             gemBonus:removeValue("hand2gem");
@@ -95,14 +95,14 @@ function M.loadEffect(gemBonus, User)     -- load altered stats by ONLY looking 
     leftRing=User:getItemAt(7);
     rightRing=User:getItemAt(8);
 
-    lGem,lStr=content.jewelbonus.getBonus(leftRing);
-    rGem,rStr=content.jewelbonus.getBonus(rightRing);
+    lGem,lStr=content_jewelbonus.getBonus(leftRing);
+    rGem,rStr=content_jewelbonus.getBonus(rightRing);
     
     if lGem>0 then
-        content.jewelbonus.giveBonus(User,leftRing);
+        content_jewelbonus.giveBonus(User,leftRing);
     end
     if rGem>0 then
-        content.jewelbonus.giveBonus(User,rightRing);
+        content_jewelbonus.giveBonus(User,rightRing);
     end
 
 end

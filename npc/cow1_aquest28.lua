@@ -3,7 +3,7 @@ local M = {}
 --37 cow id, faceto= 6 (west)
 --775,791,0
 local autonpcfunctions = require("npc.base.autonpcfunctions")
-require("quest_aquest28");    --the quest file
+local quest_aquest28 = require("quest_aquest28") -- the quest file
 
 function M.InitNPC()
     if not InitDone then

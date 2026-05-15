@@ -4,7 +4,7 @@ local MoveItemBeforeMove, LookAtItem, UseItem, RingOfPower, RoadToNode, RemoveMu
 
 -- UPDATE common SET com_script='item.id_222_amulett' WHERE com_itemid IN (222);
 
-require("item.priest.jewel")
+local priest_jewel = require("item.priest.jewel")
 local common = require("base.common")
 
 function M.MoveItemBeforeMove( who, sourceItem, targetItem )

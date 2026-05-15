@@ -7,9 +7,10 @@ local UseItemWithField, UseItem, LookAtItem
 
 -- UPDATE common SET com_script='item.id_72_fishingrod' WHERE com_itemid=72;
 
-require("item.general.wood")
+local general_wood = require("item.general.wood")
 local common = require("base.common")
 local gathering = require("content.gathering")
+local base_lookat = require("base.lookat")
 
 function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate)
 	gathering.InitGathering();
@@ -112,7 +113,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 end
 
 function M.LookAtItem( User, Item )
-    world:itemInform( User, Item, base.lookat.GetItemDescription( User, Item, 2, false, false ));
+    world:itemInform( User, Item, base_lookat.GetItemDescription( User, Item, 2, false, false ));
 end
 
 if M.UseItem == nil then M.UseItem = parent.UseItem end

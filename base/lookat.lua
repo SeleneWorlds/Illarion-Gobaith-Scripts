@@ -9,9 +9,8 @@
 local common = require("base.common")
 local genus = require("content.genus")
 local bonusitems = require("content.bonusitems")
-require("content.lookat.custom")
-require("content.lookat.unique")
-
+local lookat_custom = require("content.lookat.custom")
+local lookat_unique = require("content.lookat.unique")
 -- generic function to get description for looking at items
 -- Nop
 -- material:    1=metal
@@ -80,7 +79,7 @@ function M.GetItemDescription(User,Item,material,Weapon,Priest)
 
 	-- init custom lookat
 	if CustomLookAt == nil then
-		content.lookat.custom.InitCustomLookAt();
+		lookat_custom.InitCustomLookAt();
 	end
 
 	-- set default values for custom lookat
@@ -216,12 +215,12 @@ function M.GetItemDescription(User,Item,material,Weapon,Priest)
 	--
     elseif ( (Item.data>=10 and Item.data<=79) or (Item.data>=1010 and Item.data<=7979) ) then
 		if (math.floor((Item.data % 10)/1) >0) and (math.floor((Item.data % 10)/1) <10) then
-			Suffix=content.lookat.unique.getSuffix(User,Class,math.floor((Item.data % 100)/10),math.floor((Item.data % 10)/1));
+			Suffix=lookat_unique.getSuffix(User,Class,math.floor((Item.data % 100)/10),math.floor((Item.data % 10)/1));
 		else
 			Suffix="";
 		end
 		if (math.floor((Item.data % 1000)/100) >0) and (math.floor((Item.data % 1000)/100) <10) then
-	      	Praefix=content.lookat.unique.getPraefix(User,Class,math.floor((Item.data % 10000)/1000),math.floor((Item.data % 1000)/100));
+	      	Praefix=lookat_unique.getPraefix(User,Class,math.floor((Item.data % 10000)/1000),math.floor((Item.data % 1000)/100));
 		else
 			Praefix="";
 		end
@@ -251,20 +250,20 @@ function M.checkGemsOnItem(User,Item)
     bonusitems.itemList();
 	--User:inform("moep->X");
 		Class=bonusitems.ItemClass[Item.id];
-		ItemCl=content.lookat.unique.writeClass(User,Class);
+		ItemCl=lookat_unique.writeClass(User,Class);
 	--User:inform("moep");
 
 	    if ItemCl == nil then
 	        return;
 	    end
 
-        FirstGemStr   = content.lookat.unique.writeStr(User,math.floor((Item.data % 10)/1)); -- Erste Stelle - St�rke des ersten Steins
-		FirstGemName  = content.lookat.unique.writeGem(User,math.floor((Item.data % 100)/10));   -- Zweite Stelle - Art des ersten Steins
+        FirstGemStr   = lookat_unique.writeStr(User,math.floor((Item.data % 10)/1)); -- Erste Stelle - St�rke des ersten Steins
+		FirstGemName  = lookat_unique.writeGem(User,math.floor((Item.data % 100)/10));   -- Zweite Stelle - Art des ersten Steins
 		SecondGemStr="";
 		SecondGemName="";
 		if gems==2 then
-	        SecondGemStr   = content.lookat.unique.writeStr(User,math.floor((Item.data % 1000)/100));       -- Dritte Stelle - St�rke des zweiten Steins
-			SecondGemName  = content.lookat.unique.writeGem(User,math.floor((Item.data % 10000)/1000));       -- Vierte Stelle - Art des zweiten Steins
+	        SecondGemStr   = lookat_unique.writeStr(User,math.floor((Item.data % 1000)/100));       -- Dritte Stelle - St�rke des zweiten Steins
+			SecondGemName  = lookat_unique.writeGem(User,math.floor((Item.data % 10000)/1000));       -- Vierte Stelle - Art des zweiten Steins
 		end
 		if gems==2 then
 			firstPart_de=" und ein ";

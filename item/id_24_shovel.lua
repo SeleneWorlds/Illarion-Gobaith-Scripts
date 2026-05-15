@@ -9,9 +9,8 @@ local UseItemWithField, getNumb, checkSuccess, UseItem, GenWorkTime, LocationChe
 -- UPDATE common SET com_script='item.id_24_shovel' WHERE com_itemid=24;
 
 local common = require("base.common")
-require("item.general.metal")
-require("base.treasure")
-
+local general_metal = require("item.general.metal")
+local base_treasure = require("base.treasure")
 function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
     common.ResetInterruption( User, ltstate );
     if (StoneList==nil) then
@@ -54,7 +53,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         return
     end
 
-    if (GroundType ~= 5) and base.treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
+    if (GroundType ~= 5) and base_treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
                                                 common.GetNLS( User,
                                                     "Du gr�bst mit deiner Schaufel in den Boden und st��t auf etwas hartes, von dem ein h�lzerner Klang ausgeht. Noch einmal graben und du h�ltst den Schatz in deinen H�nden.",
                                                     "You dig with your shovel into the ground and hit suddenly something hard and wooden sounding. You only have to dig another time to get the treasure." ), false ) then

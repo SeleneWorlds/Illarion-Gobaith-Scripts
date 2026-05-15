@@ -1,6 +1,5 @@
 local common = require("base.common")
-require("magic.base.basics");
-
+local base_basics = require("magic.base.basics")
 function DoCreaturSpell(Caster, TargetPos, ltstate)
     if ( ltstate == Action.abort ) then
         Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
@@ -8,13 +7,13 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
         return;
     end
 
-    magic.base.basics.loadCorrectDefScript();
+    base_basics.loadCorrectDefScript();
 
     -- Generate the needed
-    magic.base.basics.gemBonis( Caster );
+    base_basics.gemBonis( Caster );
 
     genderMsg = {};
-    genderMsg[CPlayer.german], genderMsg[CPlayer.english] = magic.base.basics.GenderMessage( Caster );
+    genderMsg[CPlayer.german], genderMsg[CPlayer.english] = base_basics.GenderMessage( Caster );
 
     if ( Caster:distanceMetricToPosition(TargetPos) > Settings.Range + GemBonis.Range) then
         common.InformNLS( Caster,
@@ -46,11 +45,11 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
         return;
     end
 
-    magic.base.basics.SayRunes( Caster );
+    base_basics.SayRunes( Caster );
 
-    local CasterVal=magic.base.basics.CasterValue( Caster );
+    local CasterVal=base_basics.CasterValue( Caster );
 
-    if not magic.base.basics.CheckAndReduceRequirements( Caster, CasterVal ) then
+    if not base_basics.CheckAndReduceRequirements( Caster, CasterVal ) then
         return;
     end
 
@@ -63,8 +62,8 @@ function DoCreaturSpell(Caster, TargetPos, ltstate)
 
     world:createMonster(Monsters[math.random(1,#Monsters)],TargetPos,10);
 
-    magic.base.basics.performGFX( SpellEffects.gfx, TargetPos );
-    magic.base.basics.performSFX( SpellEffects.sfx, TargetPos );
+    base_basics.performGFX( SpellEffects.gfx, TargetPos );
+    base_basics.performSFX( SpellEffects.sfx, TargetPos );
 
     if (LuaAnd(Caster:getQuestProgress(24),1) ~= 0 ) then
         return;
