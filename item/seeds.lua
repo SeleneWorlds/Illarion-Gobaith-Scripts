@@ -1,5 +1,4 @@
 local M = {}
-local UseItemWithField, UseItem, MoveItemBeforeMove, MoveItemAfterMove
 
 -- base_seeds - sew seeds on fields
 -- a number of seeds appears on the field dependent on user's skill
@@ -39,54 +38,54 @@ local common = require("base.common")
 -- UPDATE common SET com_agingspeed = 4, com_objectafterrot = 732 WHERE com_itemid = 732;
 
 function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
-    if seedList == nil then
-        seedList = {  };
+    if M.seedList == nil then
+        M.seedList = {  };
 		
 		-- ID der Pflanze, Skill f�r 3 Pflanzen, Skill f�r 2 Pflanze, Skill f�r 1 Pflanze, anbaubar in {spring,summer,fall,winter}, Regionale Einschr�nkung x-Koord., Regionale Einschr�nkung Y-Koord.		
         
-        seedList[  259 ] = { 
+        M.seedList[  259 ] = {
           246,50,30,10,              -- Getreide: -V247 -V248 (sense) -V249 ( Skript dreschen )- 246
           {true ,true,true ,false},
           {nil,nil},{nil,nil} }; 
            
-        seedList[  291 ] = {
+        M.seedList[  291 ] = {
           288,30,15, 5,              -- Kohl: Fruchtfolge: 291  -V288 -V -V -291
           {false,true,true ,false},
           {nil,nil},{-100,500} }; 
               
-        seedList[  534 ] = {
+        M.seedList[  534 ] = {
           535,40,30,10,
           {true ,true,true ,false},
           {nil,nil},{-500,-150} };     -- Zwiebeln: 535 - 536 - 537 (ernten)
           
-        seedList[ 2494 ] = {
+        M.seedList[ 2494 ] = {
           2490,45,20,10,
           {false,true,true ,false},
           {nil,nil},{nil,nil} };     -- Karotten: 2490 - 2491 - 2492 - 2493( fertige M�hren )
           
-        seedList[ 2917 ] = { 
+        M.seedList[ 2917 ] = {
           538,10, 3, 0,
           {false,true,false,false},
           {nil,nil},{0,500} };     -- Tomaten: 538 - 539 - 540 (ernten)
           
-        seedList[  728 ] = {
+        M.seedList[  728 ] = {
           729,30,10, 5,
           {false,true,true ,false},
           {nil,nil},{nil,nil} };     -- Hopfen: 729 - 730 - 731 (Hopfen ernten) - 732 ( Wurzel ernten ) 
 
-		seedList[  773 ] = {
+		M.seedList[  773 ] = {
           774,30,10, 5,
           {true,true,true,true},
           {-250,0},{-100,100} };     -- Tabak: 774 - 775 - 776 - 777 (Tabak ernten)
 
-		seedList[  779 ] = {
+		M.seedList[  779 ] = {
           780,30,10, 5,
           {true,true,true,true},
           {-250,100},{-100,100} };     -- Zuckerrohr: 780 - 781 - 782 (Zuckerrohr ernten)
           
     end
 
-    local seed = seedList[ SourceItem.id ];
+    local seed = M.seedList[ SourceItem.id ];
     if( seed == nil ) then
         User:inform( "Unknown item" );
         return
@@ -167,7 +166,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     elseif ( chance  < ( skillwert+seed[2] ) ) then
         world:createItemFromId( seed[1], 1, TargetPos, false, 233 ,1);
     end
-    
+
     User:learn( 2, "peasantry", 2, 100 );
     world:erase( SourceItem, 1 );
 
@@ -178,17 +177,17 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param)
     if ((TargetItem ~= nil) and (TargetItem.id ~= 0)) then
         if (TargetItem:getType() == 3) then
             if ((TargetItem.id == 2862) or (TargetItem.id == 2863)) then
-                UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
+                M.UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
             end
         end
     else
         local TestItem = common.GetFrontItem( User );
         if ((TestItem ~= nil) and (TestItem.id ~= 0)) then
             if ((TestItem.id == 2862) or (TestItem.id == 2863)) then
-                UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
+                M.UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
             end
         else
-            UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
+            M.UseItemWithField( User, SourceItem, common.GetFrontPosition(User), Counter, Param );
         end
     end
 end
