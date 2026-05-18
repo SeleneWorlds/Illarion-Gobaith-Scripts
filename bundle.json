@@ -1,0 +1,2040 @@
+{
+  "name": "illarion-gobaith",
+  "description": "Lua scripts for Illarion as a Selene bundle.",
+  "dependencies": [
+    "illarion-api"
+  ],
+  "preloads": {
+    "I_2760_seil": {
+      "file": "server/lua/I_2760_seil.lua"
+    },
+    "base.books": {
+      "file": "server/lua/base/books.lua"
+    },
+    "base.class": {
+      "file": "server/lua/base/class.lua"
+    },
+    "base.common": {
+      "file": "server/lua/base/common.lua"
+    },
+    "base.doors": {
+      "file": "server/lua/base/doors.lua"
+    },
+    "base.gcraft": {
+      "file": "server/lua/base/gcraft.lua"
+    },
+    "base.keys": {
+      "file": "server/lua/base/keys.lua"
+    },
+    "base.lever": {
+      "file": "server/lua/base/lever.lua"
+    },
+    "base.log": {
+      "file": "server/lua/base/log.lua"
+    },
+    "base.lookat": {
+      "file": "server/lua/base/lookat.lua"
+    },
+    "base.messages": {
+      "file": "server/lua/base/messages.lua"
+    },
+    "base.treasure": {
+      "file": "server/lua/base/treasure.lua"
+    },
+    "base_quest_items": {
+      "file": "server/lua/base_quest_items.lua"
+    },
+    "base_spawnmonster": {
+      "file": "server/lua/base_spawnmonster.lua"
+    },
+    "base_wind": {
+      "file": "server/lua/base_wind.lua"
+    },
+    "content.bonusitems": {
+      "file": "server/lua/content/bonusitems.lua"
+    },
+    "content.books.about_humans": {
+      "file": "server/lua/content/books/about_humans.lua"
+    },
+    "content.books.cakebible": {
+      "file": "server/lua/content/books/cakebible.lua"
+    },
+    "content.books.cooking": {
+      "file": "server/lua/content/books/cooking.lua"
+    },
+    "content.books.culturegoblins": {
+      "file": "server/lua/content/books/culturegoblins.lua"
+    },
+    "content.books.cultureorcs": {
+      "file": "server/lua/content/books/cultureorcs.lua"
+    },
+    "content.books.dwarfpoems": {
+      "file": "server/lua/content/books/dwarfpoems.lua"
+    },
+    "content.books.dyer": {
+      "file": "server/lua/content/books/dyer.lua"
+    },
+    "content.books.founding_silverbrand": {
+      "file": "server/lua/content/books/founding_silverbrand.lua"
+    },
+    "content.books.guidingtruths": {
+      "file": "server/lua/content/books/guidingtruths.lua"
+    },
+    "content.books.history": {
+      "file": "server/lua/content/books/history.lua"
+    },
+    "content.books.magestones": {
+      "file": "server/lua/content/books/magestones.lua"
+    },
+    "content.books.spinning": {
+      "file": "server/lua/content/books/spinning.lua"
+    },
+    "content.chardescription": {
+      "file": "server/lua/content/chardescription.lua"
+    },
+    "content.dailymessage": {
+      "file": "server/lua/content/dailymessage.lua"
+    },
+    "content.fighting": {
+      "file": "server/lua/content/fighting.lua"
+    },
+    "content.furtunecookies": {
+      "file": "server/lua/content/furtunecookies.lua"
+    },
+    "content.gathering": {
+      "file": "server/lua/content/gathering.lua"
+    },
+    "content.genus": {
+      "file": "server/lua/content/genus.lua"
+    },
+    "content.gods": {
+      "file": "server/lua/content/gods.lua"
+    },
+    "content.jewelbonus": {
+      "file": "server/lua/content/jewelbonus.lua"
+    },
+    "content.lightmasters": {
+      "file": "server/lua/content/lightmasters.lua"
+    },
+    "content.lookat.custom": {
+      "file": "server/lua/content/lookat/custom.lua"
+    },
+    "content.lookat.unique": {
+      "file": "server/lua/content/lookat/unique.lua"
+    },
+    "content.signpost": {
+      "file": "server/lua/content/signpost.lua"
+    },
+    "content.uniquechardescription": {
+      "file": "server/lua/content/uniquechardescription.lua"
+    },
+    "druid.base.alchemy": {
+      "file": "server/lua/druid/base/alchemy.lua"
+    },
+    "druid.base.lists": {
+      "file": "server/lua/druid/base/lists.lua"
+    },
+    "druid.base.missile": {
+      "file": "server/lua/druid/base/missile.lua"
+    },
+    "druid.base.outfit": {
+      "file": "server/lua/druid/base/outfit.lua"
+    },
+    "druid.base.plants": {
+      "file": "server/lua/druid/base/plants.lua"
+    },
+    "druid.content.amethyst": {
+      "file": "server/lua/druid/content/amethyst.lua"
+    },
+    "druid.content.druids": {
+      "file": "server/lua/druid/content/druids.lua"
+    },
+    "druid.content.emerald": {
+      "file": "server/lua/druid/content/emerald.lua"
+    },
+    "druid.content.ruby": {
+      "file": "server/lua/druid/content/ruby.lua"
+    },
+    "druid.item.id_1008_cauldron": {
+      "file": "server/lua/druid/item/id_1008_cauldron.lua"
+    },
+    "druid.item.id_127_book_intro": {
+      "file": "server/lua/druid/item/id_127_book_intro.lua"
+    },
+    "druid.item.id_128_book_plants": {
+      "file": "server/lua/druid/item/id_128_book_plants.lua"
+    },
+    "druid.item.id_129_book_paths": {
+      "file": "server/lua/druid/item/id_129_book_paths.lua"
+    },
+    "druid.item.id_131_book_letter": {
+      "file": "server/lua/druid/item/id_131_book_letter.lua"
+    },
+    "druid.item.id_165_blue_bottle": {
+      "file": "server/lua/druid/item/id_165_blue_bottle.lua"
+    },
+    "druid.item.id_166_pink_bottle": {
+      "file": "server/lua/druid/item/id_166_pink_bottle.lua"
+    },
+    "druid.item.id_167_yellow_bottle": {
+      "file": "server/lua/druid/item/id_167_yellow_bottle.lua"
+    },
+    "druid.item.id_2952_plate": {
+      "file": "server/lua/druid/item/id_2952_plate.lua"
+    },
+    "druid.item.id_3104_bookrest": {
+      "file": "server/lua/druid/item/id_3104_bookrest.lua"
+    },
+    "druid.item.id_3105_bookrest": {
+      "file": "server/lua/druid/item/id_3105_bookrest.lua"
+    },
+    "druid.item.id_327_blue_bottle": {
+      "file": "server/lua/druid/item/id_327_blue_bottle.lua"
+    },
+    "druid.item.id_328_orange_bottle": {
+      "file": "server/lua/druid/item/id_328_orange_bottle.lua"
+    },
+    "druid.item.id_329_black_bottle": {
+      "file": "server/lua/druid/item/id_329_black_bottle.lua"
+    },
+    "druid.item.id_330_white_bottle": {
+      "file": "server/lua/druid/item/id_330_white_bottle.lua"
+    },
+    "druid.item.id_331_green_bottle": {
+      "file": "server/lua/druid/item/id_331_green_bottle.lua"
+    },
+    "druid.item.id_59_red_bottle": {
+      "file": "server/lua/druid/item/id_59_red_bottle.lua"
+    },
+    "druid.lte.id_166_secattribs": {
+      "file": "server/lua/druid/lte/id_166_secattribs.lua"
+    },
+    "druid.lte.id_167_illness": {
+      "file": "server/lua/druid/lte/id_167_illness.lua"
+    },
+    "druid.lte.id_328_immunity": {
+      "file": "server/lua/druid/lte/id_328_immunity.lua"
+    },
+    "druid.lte.id_329_transformation": {
+      "file": "server/lua/druid/lte/id_329_transformation.lua"
+    },
+    "druid.lte.id_330_language": {
+      "file": "server/lua/druid/lte/id_330_language.lua"
+    },
+    "druid.lte.id_59_attribs": {
+      "file": "server/lua/druid/lte/id_59_attribs.lua"
+    },
+    "druid.npc.guggkain_teewee": {
+      "file": "server/lua/druid/npc/guggkain_teewee.lua"
+    },
+    "druid.spell.id_01_analyze_plant": {
+      "file": "server/lua/druid/spell/id_01_analyze_plant.lua"
+    },
+    "druid.spell.id_02_analyze_stock": {
+      "file": "server/lua/druid/spell/id_02_analyze_stock.lua"
+    },
+    "druid.spell.id_03_quality_plant": {
+      "file": "server/lua/druid/spell/id_03_quality_plant.lua"
+    },
+    "druid.spell.id_04_analyze_stock_full": {
+      "file": "server/lua/druid/spell/id_04_analyze_stock_full.lua"
+    },
+    "druid.spell.id_05_quality_stock": {
+      "file": "server/lua/druid/spell/id_05_quality_stock.lua"
+    },
+    "druid.spell.id_06_analyze_potion": {
+      "file": "server/lua/druid/spell/id_06_analyze_potion.lua"
+    },
+    "druid.spell.id_07_quality_potion": {
+      "file": "server/lua/druid/spell/id_07_quality_potion.lua"
+    },
+    "druid.spell.id_08_analyze_char_illness": {
+      "file": "server/lua/druid/spell/id_08_analyze_char_illness.lua"
+    },
+    "druid.spell.id_09_analyze_char_poison": {
+      "file": "server/lua/druid/spell/id_09_analyze_char_poison.lua"
+    },
+    "druid.spell.id_10_analyze_char_exact_illness": {
+      "file": "server/lua/druid/spell/id_10_analyze_char_exact_illness.lua"
+    },
+    "druid.spell.id_11_analyze_char_magictype": {
+      "file": "server/lua/druid/spell/id_11_analyze_char_magictype.lua"
+    },
+    "druid.spell.id_12_analyze_char_attribs": {
+      "file": "server/lua/druid/spell/id_12_analyze_char_attribs.lua"
+    },
+    "druid.spell.id_13_analyze_char_sec_attribs": {
+      "file": "server/lua/druid/spell/id_13_analyze_char_sec_attribs.lua"
+    },
+    "druid.spell.id_14_analyze_char_hands": {
+      "file": "server/lua/druid/spell/id_14_analyze_char_hands.lua"
+    },
+    "druid.spell.id_15_analyze_item_quality": {
+      "file": "server/lua/druid/spell/id_15_analyze_item_quality.lua"
+    },
+    "druid.spell.id_16_analyze_item_durability": {
+      "file": "server/lua/druid/spell/id_16_analyze_item_durability.lua"
+    },
+    "druid.spell.id_17_analyze_location": {
+      "file": "server/lua/druid/spell/id_17_analyze_location.lua"
+    },
+    "druid.spell.id_18_analyze_item_volume": {
+      "file": "server/lua/druid/spell/id_18_analyze_item_volume.lua"
+    },
+    "druid.spell.id_19_analyze_item_wear": {
+      "file": "server/lua/druid/spell/id_19_analyze_item_wear.lua"
+    },
+    "game_card": {
+      "file": "server/lua/game_card.lua"
+    },
+    "game_carddeck": {
+      "file": "server/lua/game_carddeck.lua"
+    },
+    "game_poker": {
+      "file": "server/lua/game_poker.lua"
+    },
+    "gm.base.log": {
+      "file": "server/lua/gm/base/log.lua"
+    },
+    "gm.items.id_100_trowel": {
+      "file": "server/lua/gm/items/id_100_trowel.lua"
+    },
+    "gm.items.id_382_ceilingtrowel": {
+      "file": "server/lua/gm/items/id_382_ceilingtrowel.lua"
+    },
+    "gm.items.id_93_medal": {
+      "file": "server/lua/gm/items/id_93_medal.lua"
+    },
+    "gm.items.id_99_lockpicks": {
+      "file": "server/lua/gm/items/id_99_lockpicks.lua"
+    },
+    "gm.spells.29_30_race": {
+      "file": "server/lua/gm/spells/29_30_race.lua"
+    },
+    "gm.spells.29_31_magic_warp": {
+      "file": "server/lua/gm/spells/29_31_magic_warp.lua"
+    },
+    "gm.spells.29_kill": {
+      "file": "server/lua/gm/spells/29_kill.lua"
+    },
+    "gm.spells.30_31_skill": {
+      "file": "server/lua/gm/spells/30_31_skill.lua"
+    },
+    "gm.spells.30_heal": {
+      "file": "server/lua/gm/spells/30_heal.lua"
+    },
+    "gm.spells.31_runes": {
+      "file": "server/lua/gm/spells/31_runes.lua"
+    },
+    "handler.closedoor": {
+      "file": "server/lua/handler/closedoor.lua"
+    },
+    "handler.createbridge": {
+      "file": "server/lua/handler/createbridge.lua"
+    },
+    "handler.createeffect": {
+      "file": "server/lua/handler/createeffect.lua"
+    },
+    "handler.createitem": {
+      "file": "server/lua/handler/createitem.lua"
+    },
+    "handler.createsound": {
+      "file": "server/lua/handler/createsound.lua"
+    },
+    "handler.deletebridge": {
+      "file": "server/lua/handler/deletebridge.lua"
+    },
+    "handler.deleteitem": {
+      "file": "server/lua/handler/deleteitem.lua"
+    },
+    "handler.lockdoor": {
+      "file": "server/lua/handler/lockdoor.lua"
+    },
+    "handler.movelever": {
+      "file": "server/lua/handler/movelever.lua"
+    },
+    "handler.opendoor": {
+      "file": "server/lua/handler/opendoor.lua"
+    },
+    "handler.sendmessage": {
+      "file": "server/lua/handler/sendmessage.lua"
+    },
+    "handler.settile": {
+      "file": "server/lua/handler/settile.lua"
+    },
+    "handler.unlockdoor": {
+      "file": "server/lua/handler/unlockdoor.lua"
+    },
+    "item.altars": {
+      "file": "server/lua/item/altars.lua"
+    },
+    "item.base.crafts": {
+      "file": "server/lua/item/base/crafts.lua"
+    },
+    "item.base.music": {
+      "file": "server/lua/item/base/music.lua"
+    },
+    "item.book.id_105_selfawareness": {
+      "file": "server/lua/item/book/id_105_selfawareness.lua"
+    },
+    "item.book.id_1061_teleport": {
+      "file": "server/lua/item/book/id_1061_teleport.lua"
+    },
+    "item.book.id_106_plants": {
+      "file": "server/lua/item/book/id_106_plants.lua"
+    },
+    "item.book.id_107_brown_book": {
+      "file": "server/lua/item/book/id_107_brown_book.lua"
+    },
+    "item.book.id_108_red_book": {
+      "file": "server/lua/item/book/id_108_red_book.lua"
+    },
+    "item.book.id_109_black_book": {
+      "file": "server/lua/item/book/id_109_black_book.lua"
+    },
+    "item.book.id_110_black_book": {
+      "file": "server/lua/item/book/id_110_black_book.lua"
+    },
+    "item.book.id_112_red_book": {
+      "file": "server/lua/item/book/id_112_red_book.lua"
+    },
+    "item.book.id_113_red_book": {
+      "file": "server/lua/item/book/id_113_red_book.lua"
+    },
+    "item.book.id_115_green_book": {
+      "file": "server/lua/item/book/id_115_green_book.lua"
+    },
+    "item.book.id_116_grey_book": {
+      "file": "server/lua/item/book/id_116_grey_book.lua"
+    },
+    "item.book.id_129_blue_book": {
+      "file": "server/lua/item/book/id_129_blue_book.lua"
+    },
+    "item.book.id_2598_blue_book": {
+      "file": "server/lua/item/book/id_2598_blue_book.lua"
+    },
+    "item.book.id_2602_red_book": {
+      "file": "server/lua/item/book/id_2602_red_book.lua"
+    },
+    "item.book.id_2604_black_book": {
+      "file": "server/lua/item/book/id_2604_black_book.lua"
+    },
+    "item.book.id_2605_black_book": {
+      "file": "server/lua/item/book/id_2605_black_book.lua"
+    },
+    "item.book.id_2606_blue_book": {
+      "file": "server/lua/item/book/id_2606_blue_book.lua"
+    },
+    "item.book.id_2607_blue_book": {
+      "file": "server/lua/item/book/id_2607_blue_book.lua"
+    },
+    "item.book.id_2609_blue_book": {
+      "file": "server/lua/item/book/id_2609_blue_book.lua"
+    },
+    "item.book.id_2610_blue_book": {
+      "file": "server/lua/item/book/id_2610_blue_book.lua"
+    },
+    "item.book.id_2615_white_book": {
+      "file": "server/lua/item/book/id_2615_white_book.lua"
+    },
+    "item.book.id_2616_white_book": {
+      "file": "server/lua/item/book/id_2616_white_book.lua"
+    },
+    "item.book.id_2617_grey_book": {
+      "file": "server/lua/item/book/id_2617_grey_book.lua"
+    },
+    "item.book.id_2619_black_book": {
+      "file": "server/lua/item/book/id_2619_black_book.lua"
+    },
+    "item.book.id_2620_language_book": {
+      "file": "server/lua/item/book/id_2620_language_book.lua"
+    },
+    "item.book.id_2622_white_book": {
+      "file": "server/lua/item/book/id_2622_white_book.lua"
+    },
+    "item.bottles": {
+      "file": "server/lua/item/bottles.lua"
+    },
+    "item.doors": {
+      "file": "server/lua/item/doors.lua"
+    },
+    "item.drinks": {
+      "file": "server/lua/item/drinks.lua"
+    },
+    "item.food": {
+      "file": "server/lua/item/food.lua"
+    },
+    "item.gems": {
+      "file": "server/lua/item/gems.lua"
+    },
+    "item.general.cloth": {
+      "file": "server/lua/item/general/cloth.lua"
+    },
+    "item.general.jewel": {
+      "file": "server/lua/item/general/jewel.lua"
+    },
+    "item.general.metal": {
+      "file": "server/lua/item/general/metal.lua"
+    },
+    "item.general.wood": {
+      "file": "server/lua/item/general/wood.lua"
+    },
+    "item.harvest": {
+      "file": "server/lua/item/harvest.lua"
+    },
+    "item.id_1005_beehive": {
+      "file": "server/lua/item/id_1005_beehive.lua"
+    },
+    "item.id_10_teleportgate": {
+      "file": "server/lua/item/id_10_teleportgate.lua"
+    },
+    "item.id_119_backingoven": {
+      "file": "server/lua/item/id_119_backingoven.lua"
+    },
+    "item.id_121_peel": {
+      "file": "server/lua/item/id_121_peel.lua"
+    },
+    "item.id_122_finesmithhammer": {
+      "file": "server/lua/item/id_122_finesmithhammer.lua"
+    },
+    "item.id_126_sickle": {
+      "file": "server/lua/item/id_126_sickle.lua"
+    },
+    "item.id_1272_markerstone": {
+      "file": "server/lua/item/id_1272_markerstone.lua"
+    },
+    "item.id_12_campfire": {
+      "file": "server/lua/item/id_12_campfire.lua"
+    },
+    "item.id_164_emptybottle": {
+      "file": "server/lua/item/id_164_emptybottle.lua"
+    },
+    "item.id_169_loom": {
+      "file": "server/lua/item/id_169_loom.lua"
+    },
+    "item.id_171_spinningwheel": {
+      "file": "server/lua/item/id_171_spinningwheel.lua"
+    },
+    "item.id_194_blackcloak": {
+      "file": "server/lua/item/id_194_blackcloak.lua"
+    },
+    "item.id_2052_stretcher": {
+      "file": "server/lua/item/id_2052_stretcher.lua"
+    },
+    "item.id_2140_tong": {
+      "file": "server/lua/item/id_2140_tong.lua"
+    },
+    "item.id_2207_wishingwell": {
+      "file": "server/lua/item/id_2207_wishingwell.lua"
+    },
+    "item.id_220_barrel": {
+      "file": "server/lua/item/id_220_barrel.lua"
+    },
+    "item.id_222_amulett": {
+      "file": "server/lua/item/id_222_amulett.lua"
+    },
+    "item.id_224_goldengoblet": {
+      "file": "server/lua/item/id_224_goldengoblet.lua"
+    },
+    "item.id_227_cookingspoon": {
+      "file": "server/lua/item/id_227_cookingspoon.lua"
+    },
+    "item.id_235_goldring": {
+      "file": "server/lua/item/id_235_goldring.lua"
+    },
+    "item.id_23_smithinghammer": {
+      "file": "server/lua/item/id_23_smithinghammer.lua"
+    },
+    "item.id_2498_empty_bottle": {
+      "file": "server/lua/item/id_2498_empty_bottle.lua"
+    },
+    "item.id_24_shovel": {
+      "file": "server/lua/item/id_24_shovel.lua"
+    },
+    "item.id_2502_gynkfire": {
+      "file": "server/lua/item/id_2502_gynkfire.lua"
+    },
+    "item.id_250_mill": {
+      "file": "server/lua/item/id_250_mill.lua"
+    },
+    "item.id_258_flail": {
+      "file": "server/lua/item/id_258_flail.lua"
+    },
+    "item.id_266_bookshelf": {
+      "file": "server/lua/item/id_266_bookshelf.lua"
+    },
+    "item.id_270_grindstone": {
+      "file": "server/lua/item/id_270_grindstone.lua"
+    },
+    "item.id_2715_plane": {
+      "file": "server/lua/item/id_2715_plane.lua"
+    },
+    "item.id_271_scythe": {
+      "file": "server/lua/item/id_271_scythe.lua"
+    },
+    "item.id_272_statue": {
+      "file": "server/lua/item/id_272_statue.lua"
+    },
+    "item.id_2744_pipe": {
+      "file": "server/lua/item/id_2744_pipe.lua"
+    },
+    "item.id_2752_carvingtools": {
+      "file": "server/lua/item/id_2752_carvingtools.lua"
+    },
+    "item.id_2763_pickaxe": {
+      "file": "server/lua/item/id_2763_pickaxe.lua"
+    },
+    "item.id_2801_altar": {
+      "file": "server/lua/item/id_2801_altar.lua"
+    },
+    "item.id_2830_chest": {
+      "file": "server/lua/item/id_2830_chest.lua"
+    },
+    "item.id_2836_forge": {
+      "file": "server/lua/item/id_2836_forge.lua"
+    },
+    "item.id_2874_mirror": {
+      "file": "server/lua/item/id_2874_mirror.lua"
+    },
+    "item.id_290_cabbage": {
+      "file": "server/lua/item/id_290_cabbage.lua"
+    },
+    "item.id_293_throwing_spear": {
+      "file": "server/lua/item/id_293_throwing_spear.lua"
+    },
+    "item.id_298_woodstack": {
+      "file": "server/lua/item/id_298_woodstack.lua"
+    },
+    "item.id_2_flour": {
+      "file": "server/lua/item/id_2_flour.lua"
+    },
+    "item.id_305_smokingoven": {
+      "file": "server/lua/item/id_305_smokingoven.lua"
+    },
+    "item.id_3076_coppercoins": {
+      "file": "server/lua/item/id_3076_coppercoins.lua"
+    },
+    "item.id_3077_silvercoins": {
+      "file": "server/lua/item/id_3077_silvercoins.lua"
+    },
+    "item.id_3105_bookrest": {
+      "file": "server/lua/item/id_3105_bookrest.lua"
+    },
+    "item.id_3107_bookrest": {
+      "file": "server/lua/item/id_3107_bookrest.lua"
+    },
+    "item.id_3110_scroll": {
+      "file": "server/lua/item/id_3110_scroll.lua"
+    },
+    "item.id_311_glassblowpipe": {
+      "file": "server/lua/item/id_311_glassblowpipe.lua"
+    },
+    "item.id_313_glassmeltoven": {
+      "file": "server/lua/item/id_313_glassmeltoven.lua"
+    },
+    "item.id_314_ash": {
+      "file": "server/lua/item/id_314_ash.lua"
+    },
+    "item.id_316_sand": {
+      "file": "server/lua/item/id_316_sand.lua"
+    },
+    "item.id_321_depot": {
+      "file": "server/lua/item/id_321_depot.lua"
+    },
+    "item.id_332_harp": {
+      "file": "server/lua/item/id_332_harp.lua"
+    },
+    "item.id_333_horn": {
+      "file": "server/lua/item/id_333_horn.lua"
+    },
+    "item.id_335_lute": {
+      "file": "server/lua/item/id_335_lute.lua"
+    },
+    "item.id_336_mirror": {
+      "file": "server/lua/item/id_336_mirror.lua"
+    },
+    "item.id_348_wallcorner": {
+      "file": "server/lua/item/id_348_wallcorner.lua"
+    },
+    "item.id_359_firefield": {
+      "file": "server/lua/item/id_359_firefield.lua"
+    },
+    "item.id_360_icefield": {
+      "file": "server/lua/item/id_360_icefield.lua"
+    },
+    "item.id_361_altar": {
+      "file": "server/lua/item/id_361_altar.lua"
+    },
+    "item.id_372_poisonfield": {
+      "file": "server/lua/item/id_372_poisonfield.lua"
+    },
+    "item.id_428_candletable": {
+      "file": "server/lua/item/id_428_candletable.lua"
+    },
+    "item.id_429_candlemold": {
+      "file": "server/lua/item/id_429_candlemold.lua"
+    },
+    "item.id_44_squeezer": {
+      "file": "server/lua/item/id_44_squeezer.lua"
+    },
+    "item.id_456_snowball": {
+      "file": "server/lua/item/id_456_snowball.lua"
+    },
+    "item.id_47_needle": {
+      "file": "server/lua/item/id_47_needle.lua"
+    },
+    "item.id_505_treasuremap": {
+      "file": "server/lua/item/id_505_treasuremap.lua"
+    },
+    "item.id_51_emptybucket": {
+      "file": "server/lua/item/id_51_emptybucket.lua"
+    },
+    "item.id_52_filledbucket": {
+      "file": "server/lua/item/id_52_filledbucket.lua"
+    },
+    "item.id_532_panpipe": {
+      "file": "server/lua/item/id_532_panpipe.lua"
+    },
+    "item.id_553_drum": {
+      "file": "server/lua/item/id_553_drum.lua"
+    },
+    "item.id_58_mortar": {
+      "file": "server/lua/item/id_58_mortar.lua"
+    },
+    "item.id_61_goldcoins": {
+      "file": "server/lua/item/id_61_goldcoins.lua"
+    },
+    "item.id_6_scissors": {
+      "file": "server/lua/item/id_6_scissors.lua"
+    },
+    "item.id_724_workbench": {
+      "file": "server/lua/item/id_724_workbench.lua"
+    },
+    "item.id_727_sieve": {
+      "file": "server/lua/item/id_727_sieve.lua"
+    },
+    "item.id_72_fishingrod": {
+      "file": "server/lua/item/id_72_fishingrod.lua"
+    },
+    "item.id_737_chisel": {
+      "file": "server/lua/item/id_737_chisel.lua"
+    },
+    "item.id_74_axe": {
+      "file": "server/lua/item/id_74_axe.lua"
+    },
+    "item.id_794_fireportal": {
+      "file": "server/lua/item/id_794_fireportal.lua"
+    },
+    "item.id_79_amethystamulet": {
+      "file": "server/lua/item/id_79_amethystamulet.lua"
+    },
+    "item.id_90_flute": {
+      "file": "server/lua/item/id_90_flute.lua"
+    },
+    "item.id_917_cursedshield": {
+      "file": "server/lua/item/id_917_cursedshield.lua"
+    },
+    "item.id_92_oillamp": {
+      "file": "server/lua/item/id_92_oillamp.lua"
+    },
+    "item.id_97_leatherbag": {
+      "file": "server/lua/item/id_97_leatherbag.lua"
+    },
+    "item.keys": {
+      "file": "server/lua/item/keys.lua"
+    },
+    "item.lever": {
+      "file": "server/lua/item/lever.lua"
+    },
+    "item.lights": {
+      "file": "server/lua/item/lights.lua"
+    },
+    "item.paintings": {
+      "file": "server/lua/item/paintings.lua"
+    },
+    "item.priest.cloth": {
+      "file": "server/lua/item/priest/cloth.lua"
+    },
+    "item.priest.jewel": {
+      "file": "server/lua/item/priest/jewel.lua"
+    },
+    "item.priest.metal": {
+      "file": "server/lua/item/priest/metal.lua"
+    },
+    "item.priest.wood": {
+      "file": "server/lua/item/priest/wood.lua"
+    },
+    "item.rings": {
+      "file": "server/lua/item/rings.lua"
+    },
+    "item.seeds": {
+      "file": "server/lua/item/seeds.lua"
+    },
+    "item.signpost": {
+      "file": "server/lua/item/signpost.lua"
+    },
+    "item.spidernet": {
+      "file": "server/lua/item/spidernet.lua"
+    },
+    "item.traps": {
+      "file": "server/lua/item/traps.lua"
+    },
+    "item.weapon.cloth": {
+      "file": "server/lua/item/weapon/cloth.lua"
+    },
+    "item.weapon.jewel": {
+      "file": "server/lua/item/weapon/jewel.lua"
+    },
+    "item.weapon.metal": {
+      "file": "server/lua/item/weapon/metal.lua"
+    },
+    "item.weapon.wood": {
+      "file": "server/lua/item/weapon/wood.lua"
+    },
+    "item.woodenchest": {
+      "file": "server/lua/item/woodenchest.lua"
+    },
+    "item.woodlogs": {
+      "file": "server/lua/item/woodlogs.lua"
+    },
+    "lte.alcohol": {
+      "file": "server/lua/lte/alcohol.lua"
+    },
+    "lte.aquest28": {
+      "file": "server/lua/lte/aquest28.lua"
+    },
+    "lte.attrib_boost": {
+      "file": "server/lua/lte/attrib_boost.lua"
+    },
+    "lte.base_raid": {
+      "file": "server/lua/lte/base_raid.lua"
+    },
+    "lte.bleeding": {
+      "file": "server/lua/lte/bleeding.lua"
+    },
+    "lte.blessedheal": {
+      "file": "server/lua/lte/blessedheal.lua"
+    },
+    "lte.blessing": {
+      "file": "server/lua/lte/blessing.lua"
+    },
+    "lte.chr_reg": {
+      "file": "server/lua/lte/chr_reg.lua"
+    },
+    "lte.cold": {
+      "file": "server/lua/lte/cold.lua"
+    },
+    "lte.cursed_ring": {
+      "file": "server/lua/lte/cursed_ring.lua"
+    },
+    "lte.diet": {
+      "file": "server/lua/lte/diet.lua"
+    },
+    "lte.drachenpocken": {
+      "file": "server/lua/lte/drachenpocken.lua"
+    },
+    "lte.effect2": {
+      "file": "server/lua/lte/effect2.lua"
+    },
+    "lte.fighting": {
+      "file": "server/lua/lte/fighting.lua"
+    },
+    "lte.fire": {
+      "file": "server/lua/lte/fire.lua"
+    },
+    "lte.gembonus": {
+      "file": "server/lua/lte/gembonus.lua"
+    },
+    "lte.godot": {
+      "file": "server/lua/lte/godot.lua"
+    },
+    "lte.irmorom_bless": {
+      "file": "server/lua/lte/irmorom_bless.lua"
+    },
+    "lte.lasttier": {
+      "file": "server/lua/lte/lasttier.lua"
+    },
+    "lte.magic": {
+      "file": "server/lua/lte/magic.lua"
+    },
+    "lte.newbieisland": {
+      "file": "server/lua/lte/newbieisland.lua"
+    },
+    "lte.no_idea": {
+      "file": "server/lua/lte/no_idea.lua"
+    },
+    "lte.order_retention_period": {
+      "file": "server/lua/lte/order_retention_period.lua"
+    },
+    "lte.p_followers": {
+      "file": "server/lua/lte/p_followers.lua"
+    },
+    "lte.p_priests": {
+      "file": "server/lua/lte/p_priests.lua"
+    },
+    "lte.paralysis": {
+      "file": "server/lua/lte/paralysis.lua"
+    },
+    "lte.parish_nargun": {
+      "file": "server/lua/lte/parish_nargun.lua"
+    },
+    "lte.perc_boost": {
+      "file": "server/lua/lte/perc_boost.lua"
+    },
+    "lte.resurrected": {
+      "file": "server/lua/lte/resurrected.lua"
+    },
+    "lte.savetest": {
+      "file": "server/lua/lte/savetest.lua"
+    },
+    "lte.segen": {
+      "file": "server/lua/lte/segen.lua"
+    },
+    "lte.shadow_cloack_effect": {
+      "file": "server/lua/lte/shadow_cloack_effect.lua"
+    },
+    "lte.smell": {
+      "file": "server/lua/lte/smell.lua"
+    },
+    "lte.spookey": {
+      "file": "server/lua/lte/spookey.lua"
+    },
+    "lte.stoned": {
+      "file": "server/lua/lte/stoned.lua"
+    },
+    "lte.succubus_effect": {
+      "file": "server/lua/lte/succubus_effect.lua"
+    },
+    "lte.teachmagic": {
+      "file": "server/lua/lte/teachmagic.lua"
+    },
+    "lte.the_one_ring": {
+      "file": "server/lua/lte/the_one_ring.lua"
+    },
+    "lte.treasure": {
+      "file": "server/lua/lte/treasure.lua"
+    },
+    "lte.tying_captive": {
+      "file": "server/lua/lte/tying_captive.lua"
+    },
+    "lte.tying_capturer": {
+      "file": "server/lua/lte/tying_capturer.lua"
+    },
+    "lttest": {
+      "file": "server/lua/lttest.lua"
+    },
+    "magic.base.basics": {
+      "file": "server/lua/magic/base/basics.lua"
+    },
+    "magic.base.creaturspell": {
+      "file": "server/lua/magic/base/creaturspell.lua"
+    },
+    "magic.base.gfxspell": {
+      "file": "server/lua/magic/base/gfxspell.lua"
+    },
+    "magic.base.itemmovespell": {
+      "file": "server/lua/magic/base/itemmovespell.lua"
+    },
+    "magic.base.itemspell": {
+      "file": "server/lua/magic/base/itemspell.lua"
+    },
+    "magic.base.teachspell": {
+      "file": "server/lua/magic/base/teachspell.lua"
+    },
+    "magic.base.teleportspell": {
+      "file": "server/lua/magic/base/teleportspell.lua"
+    },
+    "magic.spell_01_02_16_24_explosion-area": {
+      "file": "server/lua/magic/spell_01_02_16_24_explosion-area.lua"
+    },
+    "magic.spell_01_02_16_explosion": {
+      "file": "server/lua/magic/spell_01_02_16_explosion.lua"
+    },
+    "magic.spell_01_02_24_fireball-area": {
+      "file": "server/lua/magic/spell_01_02_24_fireball-area.lua"
+    },
+    "magic.spell_01_02_fireball": {
+      "file": "server/lua/magic/spell_01_02_fireball.lua"
+    },
+    "magic.spell_01_03_16_24_icebolt-area": {
+      "file": "server/lua/magic/spell_01_03_16_24_icebolt-area.lua"
+    },
+    "magic.spell_01_03_16_icebolt": {
+      "file": "server/lua/magic/spell_01_03_16_icebolt.lua"
+    },
+    "magic.spell_01_03_24_iceball-area": {
+      "file": "server/lua/magic/spell_01_03_24_iceball-area.lua"
+    },
+    "magic.spell_01_03_iceball": {
+      "file": "server/lua/magic/spell_01_03_iceball.lua"
+    },
+    "magic.spell_01_04_15_21_23_close-tp-gate": {
+      "file": "server/lua/magic/spell_01_04_15_21_23_close-tp-gate.lua"
+    },
+    "magic.spell_01_09_15_20_23_w-tp-self-scroll": {
+      "file": "server/lua/magic/spell_01_09_15_20_23_w-tp-self-scroll.lua"
+    },
+    "magic.spell_01_09_15_tp-self": {
+      "file": "server/lua/magic/spell_01_09_15_tp-self.lua"
+    },
+    "magic.spell_01_14_24_poisonball-area": {
+      "file": "server/lua/magic/spell_01_14_24_poisonball-area.lua"
+    },
+    "magic.spell_01_14_poisonball": {
+      "file": "server/lua/magic/spell_01_14_poisonball.lua"
+    },
+    "magic.spell_01_15_16_anti-paralyze": {
+      "file": "server/lua/magic/spell_01_15_16_anti-paralyze.lua"
+    },
+    "magic.spell_01_15_21_23_open-tp-gate": {
+      "file": "server/lua/magic/spell_01_15_21_23_open-tp-gate.lua"
+    },
+    "magic.spell_01_23_open-close-door": {
+      "file": "server/lua/magic/spell_01_23_open-close-door.lua"
+    },
+    "magic.spell_01_26_teach-kel": {
+      "file": "server/lua/magic/spell_01_26_teach-kel.lua"
+    },
+    "magic.spell_01_testspell": {
+      "file": "server/lua/magic/spell_01_testspell.lua"
+    },
+    "magic.spell_02_04_24_extinguish-fire-area": {
+      "file": "server/lua/magic/spell_02_04_24_extinguish-fire-area.lua"
+    },
+    "magic.spell_02_04_extinguish-flame": {
+      "file": "server/lua/magic/spell_02_04_extinguish-flame.lua"
+    },
+    "magic.spell_02_11_16_23_24_firewall": {
+      "file": "server/lua/magic/spell_02_11_16_23_24_firewall.lua"
+    },
+    "magic.spell_02_11_16_23_fire": {
+      "file": "server/lua/magic/spell_02_11_16_23_fire.lua"
+    },
+    "magic.spell_02_13_16_23_24_firecircle": {
+      "file": "server/lua/magic/spell_02_13_16_23_24_firecircle.lua"
+    },
+    "magic.spell_02_13_23_24_28_firecircle-illusion": {
+      "file": "server/lua/magic/spell_02_13_23_24_28_firecircle-illusion.lua"
+    },
+    "magic.spell_02_23_24_28_firewall-illusion": {
+      "file": "server/lua/magic/spell_02_23_24_28_firewall-illusion.lua"
+    },
+    "magic.spell_02_23_28_fireillusion": {
+      "file": "server/lua/magic/spell_02_23_28_fireillusion.lua"
+    },
+    "magic.spell_02_24_28_fireillusion-area": {
+      "file": "server/lua/magic/spell_02_24_28_fireillusion-area.lua"
+    },
+    "magic.spell_02_26_teach-ra": {
+      "file": "server/lua/magic/spell_02_26_teach-ra.lua"
+    },
+    "magic.spell_02_28_fireillusion": {
+      "file": "server/lua/magic/spell_02_28_fireillusion.lua"
+    },
+    "magic.spell_02_testspell": {
+      "file": "server/lua/magic/spell_02_testspell.lua"
+    },
+    "magic.spell_03_04_24_extinguish-iceflame-area": {
+      "file": "server/lua/magic/spell_03_04_24_extinguish-iceflame-area.lua"
+    },
+    "magic.spell_03_04_extinguish-iceflame": {
+      "file": "server/lua/magic/spell_03_04_extinguish-iceflame.lua"
+    },
+    "magic.spell_03_11_16_23_24_icewall": {
+      "file": "server/lua/magic/spell_03_11_16_23_24_icewall.lua"
+    },
+    "magic.spell_03_11_16_23_iceflame": {
+      "file": "server/lua/magic/spell_03_11_16_23_iceflame.lua"
+    },
+    "magic.spell_03_13_16_23_24_icecircle": {
+      "file": "server/lua/magic/spell_03_13_16_23_24_icecircle.lua"
+    },
+    "magic.spell_03_13_23_24_28_icecircle-illusion": {
+      "file": "server/lua/magic/spell_03_13_23_24_28_icecircle-illusion.lua"
+    },
+    "magic.spell_03_23_24_28_icewall-illusion": {
+      "file": "server/lua/magic/spell_03_23_24_28_icewall-illusion.lua"
+    },
+    "magic.spell_03_23_28_iceflame-illusion": {
+      "file": "server/lua/magic/spell_03_23_28_iceflame-illusion.lua"
+    },
+    "magic.spell_03_24_28_iceillusion-area": {
+      "file": "server/lua/magic/spell_03_24_28_iceillusion-area.lua"
+    },
+    "magic.spell_03_26_teach-hept": {
+      "file": "server/lua/magic/spell_03_26_teach-hept.lua"
+    },
+    "magic.spell_03_28_iceillusion": {
+      "file": "server/lua/magic/spell_03_28_iceillusion.lua"
+    },
+    "magic.spell_04_14_24_extinguish-poison-area": {
+      "file": "server/lua/magic/spell_04_14_24_extinguish-poison-area.lua"
+    },
+    "magic.spell_04_14_extinguish-poison": {
+      "file": "server/lua/magic/spell_04_14_extinguish-poison.lua"
+    },
+    "magic.spell_04_17_24_extinguish-stonewall-area": {
+      "file": "server/lua/magic/spell_04_17_24_extinguish-stonewall-area.lua"
+    },
+    "magic.spell_04_17_extinguish-stonewall": {
+      "file": "server/lua/magic/spell_04_17_extinguish-stonewall.lua"
+    },
+    "magic.spell_04_26_teach-tah": {
+      "file": "server/lua/magic/spell_04_26_teach-tah.lua"
+    },
+    "magic.spell_04_28_dispell-illusion": {
+      "file": "server/lua/magic/spell_04_28_dispell-illusion.lua"
+    },
+    "magic.spell_05_07_18_24_great-heal-area": {
+      "file": "server/lua/magic/spell_05_07_18_24_great-heal-area.lua"
+    },
+    "magic.spell_05_07_18_great-heal": {
+      "file": "server/lua/magic/spell_05_07_18_great-heal.lua"
+    },
+    "magic.spell_05_07_24_small-heal-area": {
+      "file": "server/lua/magic/spell_05_07_24_small-heal-area.lua"
+    },
+    "magic.spell_05_07_small-heal": {
+      "file": "server/lua/magic/spell_05_07_small-heal.lua"
+    },
+    "magic.spell_05_26_teach-pen": {
+      "file": "server/lua/magic/spell_05_26_teach-pen.lua"
+    },
+    "magic.spell_06_09_10_summ-aggr-beast": {
+      "file": "server/lua/magic/spell_06_09_10_summ-aggr-beast.lua"
+    },
+    "magic.spell_06_09_11_19_20_w-smn-creature-scl": {
+      "file": "server/lua/magic/spell_06_09_11_19_20_w-smn-creature-scl.lua"
+    },
+    "magic.spell_06_09_11_summ-aggr-creature": {
+      "file": "server/lua/magic/spell_06_09_11_summ-aggr-creature.lua"
+    },
+    "magic.spell_06_26_teach-luk": {
+      "file": "server/lua/magic/spell_06_26_teach-luk.lua"
+    },
+    "magic.spell_07_26_teach-mes": {
+      "file": "server/lua/magic/spell_07_26_teach-mes.lua"
+    },
+    "magic.spell_08_15_16_17_24_thunder": {
+      "file": "server/lua/magic/spell_08_15_16_17_24_thunder.lua"
+    },
+    "magic.spell_08_15_17_24_storm": {
+      "file": "server/lua/magic/spell_08_15_17_24_storm.lua"
+    },
+    "magic.spell_08_16_17_24_soilwall": {
+      "file": "server/lua/magic/spell_08_16_17_24_soilwall.lua"
+    },
+    "magic.spell_08_16_17_soil-heap": {
+      "file": "server/lua/magic/spell_08_16_17_soil-heap.lua"
+    },
+    "magic.spell_08_16_22_create-meat": {
+      "file": "server/lua/magic/spell_08_16_22_create-meat.lua"
+    },
+    "magic.spell_08_22_create-fruit": {
+      "file": "server/lua/magic/spell_08_22_create-fruit.lua"
+    },
+    "magic.spell_08_26_teach-orl": {
+      "file": "server/lua/magic/spell_08_26_teach-orl.lua"
+    },
+    "magic.spell_09_10_summ-harml-beast": {
+      "file": "server/lua/magic/spell_09_10_summ-harml-beast.lua"
+    },
+    "magic.spell_09_11_summ_harml-creature": {
+      "file": "server/lua/magic/spell_09_11_summ_harml-creature.lua"
+    },
+    "magic.spell_09_26_teach-taur": {
+      "file": "server/lua/magic/spell_09_26_teach-taur.lua"
+    },
+    "magic.spell_10_26_teach-ura": {
+      "file": "server/lua/magic/spell_10_26_teach-ura.lua"
+    },
+    "magic.spell_11_14_16_23_24_poisonwall": {
+      "file": "server/lua/magic/spell_11_14_16_23_24_poisonwall.lua"
+    },
+    "magic.spell_11_14_16_23_poisoncloud": {
+      "file": "server/lua/magic/spell_11_14_16_23_poisoncloud.lua"
+    },
+    "magic.spell_11_26_teach-ira": {
+      "file": "server/lua/magic/spell_11_26_teach-ira.lua"
+    },
+    "magic.spell_12_13_24_extinguish-campfire-area": {
+      "file": "server/lua/magic/spell_12_13_24_extinguish-campfire-area.lua"
+    },
+    "magic.spell_12_13_extinguish-campfire": {
+      "file": "server/lua/magic/spell_12_13_extinguish-campfire.lua"
+    },
+    "magic.spell_12_26_teach-cun": {
+      "file": "server/lua/magic/spell_12_26_teach-cun.lua"
+    },
+    "magic.spell_13_14_16_23_24_poisoncircle": {
+      "file": "server/lua/magic/spell_13_14_16_23_24_poisoncircle.lua"
+    },
+    "magic.spell_13_14_23_24_28_poisoncircle-ill": {
+      "file": "server/lua/magic/spell_13_14_23_24_28_poisoncircle-ill.lua"
+    },
+    "magic.spell_13_16_17_23_24_stone-circle": {
+      "file": "server/lua/magic/spell_13_16_17_23_24_stone-circle.lua"
+    },
+    "magic.spell_13_26_teach-sav": {
+      "file": "server/lua/magic/spell_13_26_teach-sav.lua"
+    },
+    "magic.spell_14_18_24_antidote-area": {
+      "file": "server/lua/magic/spell_14_18_24_antidote-area.lua"
+    },
+    "magic.spell_14_18_antidote": {
+      "file": "server/lua/magic/spell_14_18_antidote.lua"
+    },
+    "magic.spell_14_23_24_28_poisonwall-illusion": {
+      "file": "server/lua/magic/spell_14_23_24_28_poisonwall-illusion.lua"
+    },
+    "magic.spell_14_23_28_poisoncloud-illusion": {
+      "file": "server/lua/magic/spell_14_23_28_poisoncloud-illusion.lua"
+    },
+    "magic.spell_14_24_28_poison-illusion-area": {
+      "file": "server/lua/magic/spell_14_24_28_poison-illusion-area.lua"
+    },
+    "magic.spell_14_26_teach-yeg": {
+      "file": "server/lua/magic/spell_14_26_teach-yeg.lua"
+    },
+    "magic.spell_14_28_poison-illusion": {
+      "file": "server/lua/magic/spell_14_28_poison-illusion.lua"
+    },
+    "magic.spell_15_16_21_23_get-light-items": {
+      "file": "server/lua/magic/spell_15_16_21_23_get-light-items.lua"
+    },
+    "magic.spell_15_16_24_25_thunderstorm": {
+      "file": "server/lua/magic/spell_15_16_24_25_thunderstorm.lua"
+    },
+    "magic.spell_15_16_24_great-wind-gust": {
+      "file": "server/lua/magic/spell_15_16_24_great-wind-gust.lua"
+    },
+    "magic.spell_15_16_25_lightning": {
+      "file": "server/lua/magic/spell_15_16_25_lightning.lua"
+    },
+    "magic.spell_15_16_wind-gust": {
+      "file": "server/lua/magic/spell_15_16_wind-gust.lua"
+    },
+    "magic.spell_15_21_23_get-heavy-items": {
+      "file": "server/lua/magic/spell_15_21_23_get-heavy-items.lua"
+    },
+    "magic.spell_15_26_teach-jus": {
+      "file": "server/lua/magic/spell_15_26_teach-jus.lua"
+    },
+    "magic.spell_16_17_27_paralyze": {
+      "file": "server/lua/magic/spell_16_17_27_paralyze.lua"
+    },
+    "magic.spell_16_26_teach-qwan": {
+      "file": "server/lua/magic/spell_16_26_teach-qwan.lua"
+    },
+    "magic.spell_17_26_teach-solh": {
+      "file": "server/lua/magic/spell_17_26_teach-solh.lua"
+    },
+    "magic.spell_18_26_teach-sih": {
+      "file": "server/lua/magic/spell_18_26_teach-sih.lua"
+    },
+    "magic.spell_19_26_teach-fhan": {
+      "file": "server/lua/magic/spell_19_26_teach-fhan.lua"
+    },
+    "magic.spell_20_26_teach-lev": {
+      "file": "server/lua/magic/spell_20_26_teach-lev.lua"
+    },
+    "magic.spell_21_26_teach-fhen": {
+      "file": "server/lua/magic/spell_21_26_teach-fhen.lua"
+    },
+    "magic.spell_22_26_teach-kah": {
+      "file": "server/lua/magic/spell_22_26_teach-kah.lua"
+    },
+    "magic.spell_23_26_teach-anth": {
+      "file": "server/lua/magic/spell_23_26_teach-anth.lua"
+    },
+    "magic.spell_24_26_teach-dun": {
+      "file": "server/lua/magic/spell_24_26_teach-dun.lua"
+    },
+    "magic.spell_25_26_teach-pherc": {
+      "file": "server/lua/magic/spell_25_26_teach-pherc.lua"
+    },
+    "magic.spell_26_27_teach-sul": {
+      "file": "server/lua/magic/spell_26_27_teach-sul.lua"
+    },
+    "magic.spell_26_28_teach-lhor": {
+      "file": "server/lua/magic/spell_26_28_teach-lhor.lua"
+    },
+    "magic.spell_26_teach-bhona": {
+      "file": "server/lua/magic/spell_26_teach-bhona.lua"
+    },
+    "monster.base.drop": {
+      "file": "server/lua/monster/base/drop.lua"
+    },
+    "monster.base.lookat": {
+      "file": "server/lua/monster/base/lookat.lua"
+    },
+    "monster.mon_0_human_test": {
+      "file": "server/lua/monster/mon_0_human_test.lua"
+    },
+    "monster.mon_0_humans": {
+      "file": "server/lua/monster/mon_0_humans.lua"
+    },
+    "monster.mon_0_humans_test": {
+      "file": "server/lua/monster/mon_0_humans_test.lua"
+    },
+    "monster.mon_10_mummies": {
+      "file": "server/lua/monster/mon_10_mummies.lua"
+    },
+    "monster.mon_11_skeletons": {
+      "file": "server/lua/monster/mon_11_skeletons.lua"
+    },
+    "monster.mon_12_wasps": {
+      "file": "server/lua/monster/mon_12_wasps.lua"
+    },
+    "monster.mon_13_flies": {
+      "file": "server/lua/monster/mon_13_flies.lua"
+    },
+    "monster.mon_14_beholders": {
+      "file": "server/lua/monster/mon_14_beholders.lua"
+    },
+    "monster.mon_15_spiders": {
+      "file": "server/lua/monster/mon_15_spiders.lua"
+    },
+    "monster.mon_16_scorpions": {
+      "file": "server/lua/monster/mon_16_scorpions.lua"
+    },
+    "monster.mon_17_demonskeletons": {
+      "file": "server/lua/monster/mon_17_demonskeletons.lua"
+    },
+    "monster.mon_18_rotworms": {
+      "file": "server/lua/monster/mon_18_rotworms.lua"
+    },
+    "monster.mon_19_lesserdemons": {
+      "file": "server/lua/monster/mon_19_lesserdemons.lua"
+    },
+    "monster.mon_1_dwarfs": {
+      "file": "server/lua/monster/mon_1_dwarfs.lua"
+    },
+    "monster.mon_20_demons": {
+      "file": "server/lua/monster/mon_20_demons.lua"
+    },
+    "monster.mon_21_skulls": {
+      "file": "server/lua/monster/mon_21_skulls.lua"
+    },
+    "monster.mon_22_foresttrolls": {
+      "file": "server/lua/monster/mon_22_foresttrolls.lua"
+    },
+    "monster.mon_23_ghostskeletons": {
+      "file": "server/lua/monster/mon_23_ghostskeletons.lua"
+    },
+    "monster.mon_24_ogres": {
+      "file": "server/lua/monster/mon_24_ogres.lua"
+    },
+    "monster.mon_25_gnolls": {
+      "file": "server/lua/monster/mon_25_gnolls.lua"
+    },
+    "monster.mon_26_dragons": {
+      "file": "server/lua/monster/mon_26_dragons.lua"
+    },
+    "monster.mon_27_maledrows": {
+      "file": "server/lua/monster/mon_27_maledrows.lua"
+    },
+    "monster.mon_28_femaledrows": {
+      "file": "server/lua/monster/mon_28_femaledrows.lua"
+    },
+    "monster.mon_29_animals": {
+      "file": "server/lua/monster/mon_29_animals.lua"
+    },
+    "monster.mon_2_halflings": {
+      "file": "server/lua/monster/mon_2_halflings.lua"
+    },
+    "monster.mon_30_stonegolems": {
+      "file": "server/lua/monster/mon_30_stonegolems.lua"
+    },
+    "monster.mon_31_gnomes": {
+      "file": "server/lua/monster/mon_31_gnomes.lua"
+    },
+    "monster.mon_3_elves": {
+      "file": "server/lua/monster/mon_3_elves.lua"
+    },
+    "monster.mon_4_orcs": {
+      "file": "server/lua/monster/mon_4_orcs.lua"
+    },
+    "monster.mon_50_elementary": {
+      "file": "server/lua/monster/mon_50_elementary.lua"
+    },
+    "monster.mon_5_lizards": {
+      "file": "server/lua/monster/mon_5_lizards.lua"
+    },
+    "monster.mon_7_panthers": {
+      "file": "server/lua/monster/mon_7_panthers.lua"
+    },
+    "monster.mon_8_wolfs": {
+      "file": "server/lua/monster/mon_8_wolfs.lua"
+    },
+    "monster.mon_9_goblins": {
+      "file": "server/lua/monster/mon_9_goblins.lua"
+    },
+    "npc.abc": {
+      "file": "server/lua/npc/abc.lua"
+    },
+    "npc.aeron_ranthir": {
+      "file": "server/lua/npc/aeron_ranthir.lua"
+    },
+    "npc.amelia_kolodem": {
+      "file": "server/lua/npc/amelia_kolodem.lua"
+    },
+    "npc.anthar": {
+      "file": "server/lua/npc/anthar.lua"
+    },
+    "npc.aq002": {
+      "file": "server/lua/npc/aq002.lua"
+    },
+    "npc.aq003_1": {
+      "file": "server/lua/npc/aq003_1.lua"
+    },
+    "npc.aq003_2": {
+      "file": "server/lua/npc/aq003_2.lua"
+    },
+    "npc.aq004_1": {
+      "file": "server/lua/npc/aq004_1.lua"
+    },
+    "npc.aq005": {
+      "file": "server/lua/npc/aq005.lua"
+    },
+    "npc.arax_ironheart": {
+      "file": "server/lua/npc/arax_ironheart.lua"
+    },
+    "npc.arimedus": {
+      "file": "server/lua/npc/arimedus.lua"
+    },
+    "npc.arkil": {
+      "file": "server/lua/npc/arkil.lua"
+    },
+    "npc.artoss_ishem": {
+      "file": "server/lua/npc/artoss_ishem.lua"
+    },
+    "npc.asgrimur": {
+      "file": "server/lua/npc/asgrimur.lua"
+    },
+    "npc.ashural": {
+      "file": "server/lua/npc/ashural.lua"
+    },
+    "npc.athan_denam": {
+      "file": "server/lua/npc/athan_denam.lua"
+    },
+    "npc.augham": {
+      "file": "server/lua/npc/augham.lua"
+    },
+    "npc.barney_haycrop": {
+      "file": "server/lua/npc/barney_haycrop.lua"
+    },
+    "npc.base.autonpcfunctions": {
+      "file": "server/lua/npc/base/autonpcfunctions.lua"
+    },
+    "npc.base.escortingquests": {
+      "file": "server/lua/npc/base/escortingquests.lua"
+    },
+    "npc.base.functions": {
+      "file": "server/lua/npc/base/functions.lua"
+    },
+    "npc.base.functions_RS": {
+      "file": "server/lua/npc/base/functions_RS.lua"
+    },
+    "npc.base.orders": {
+      "file": "server/lua/npc/base/orders.lua"
+    },
+    "npc.base.patrol": {
+      "file": "server/lua/npc/base/patrol.lua"
+    },
+    "npc.base.ships": {
+      "file": "server/lua/npc/base/ships.lua"
+    },
+    "npc.base.trader_functions": {
+      "file": "server/lua/npc/base/trader_functions.lua"
+    },
+    "npc.base.walking": {
+      "file": "server/lua/npc/base/walking.lua"
+    },
+    "npc.base.waypoints": {
+      "file": "server/lua/npc/base/waypoints.lua"
+    },
+    "npc.bernardo": {
+      "file": "server/lua/npc/bernardo.lua"
+    },
+    "npc.bippi_aquest28": {
+      "file": "server/lua/npc/bippi_aquest28.lua"
+    },
+    "npc.blackbeard": {
+      "file": "server/lua/npc/blackbeard.lua"
+    },
+    "npc.bob": {
+      "file": "server/lua/npc/bob.lua"
+    },
+    "npc.borbulas_burrows": {
+      "file": "server/lua/npc/borbulas_burrows.lua"
+    },
+    "npc.borgate": {
+      "file": "server/lua/npc/borgate.lua"
+    },
+    "npc.buerger": {
+      "file": "server/lua/npc/buerger.lua"
+    },
+    "npc.cow1_aquest28": {
+      "file": "server/lua/npc/cow1_aquest28.lua"
+    },
+    "npc.cow2_aquest28": {
+      "file": "server/lua/npc/cow2_aquest28.lua"
+    },
+    "npc.cow3_aquest28": {
+      "file": "server/lua/npc/cow3_aquest28.lua"
+    },
+    "npc.dehster": {
+      "file": "server/lua/npc/dehster.lua"
+    },
+    "npc.dorothy_applesong": {
+      "file": "server/lua/npc/dorothy_applesong.lua"
+    },
+    "npc.dungeon": {
+      "file": "server/lua/npc/dungeon.lua"
+    },
+    "npc.elina": {
+      "file": "server/lua/npc/elina.lua"
+    },
+    "npc.elinadoron": {
+      "file": "server/lua/npc/elinadoron.lua"
+    },
+    "npc.eliza": {
+      "file": "server/lua/npc/eliza.lua"
+    },
+    "npc.eltareon": {
+      "file": "server/lua/npc/eltareon.lua"
+    },
+    "npc.fala": {
+      "file": "server/lua/npc/fala.lua"
+    },
+    "npc.farrel_schleifer": {
+      "file": "server/lua/npc/farrel_schleifer.lua"
+    },
+    "npc.feliam_wardstrok": {
+      "file": "server/lua/npc/feliam_wardstrok.lua"
+    },
+    "npc.ferano": {
+      "file": "server/lua/npc/ferano.lua"
+    },
+    "npc.findecano_melwasul": {
+      "file": "server/lua/npc/findecano_melwasul.lua"
+    },
+    "npc.flora": {
+      "file": "server/lua/npc/flora.lua"
+    },
+    "npc.floro_baggins": {
+      "file": "server/lua/npc/floro_baggins.lua"
+    },
+    "npc.foo_barlini": {
+      "file": "server/lua/npc/foo_barlini.lua"
+    },
+    "npc.gambi": {
+      "file": "server/lua/npc/gambi.lua"
+    },
+    "npc.gambret": {
+      "file": "server/lua/npc/gambret.lua"
+    },
+    "npc.garair": {
+      "file": "server/lua/npc/garair.lua"
+    },
+    "npc.gloarn": {
+      "file": "server/lua/npc/gloarn.lua"
+    },
+    "npc.gloria": {
+      "file": "server/lua/npc/gloria.lua"
+    },
+    "npc.goldra_felsreisser": {
+      "file": "server/lua/npc/goldra_felsreisser.lua"
+    },
+    "npc.graubart": {
+      "file": "server/lua/npc/graubart.lua"
+    },
+    "npc.grugash": {
+      "file": "server/lua/npc/grugash.lua"
+    },
+    "npc.gruknug_orcguard": {
+      "file": "server/lua/npc/gruknug_orcguard.lua"
+    },
+    "npc.grushub": {
+      "file": "server/lua/npc/grushub.lua"
+    },
+    "npc.hagar_wernson": {
+      "file": "server/lua/npc/hagar_wernson.lua"
+    },
+    "npc.hauptmann_arkos_seldaran": {
+      "file": "server/lua/npc/hauptmann_arkos_seldaran.lua"
+    },
+    "npc.henry_cunnigan": {
+      "file": "server/lua/npc/henry_cunnigan.lua"
+    },
+    "npc.hirk": {
+      "file": "server/lua/npc/hirk.lua"
+    },
+    "npc.hyronimus": {
+      "file": "server/lua/npc/hyronimus.lua"
+    },
+    "npc.irmtrud": {
+      "file": "server/lua/npc/irmtrud.lua"
+    },
+    "npc.jarmal": {
+      "file": "server/lua/npc/jarmal.lua"
+    },
+    "npc.jenny_copperneedle": {
+      "file": "server/lua/npc/jenny_copperneedle.lua"
+    },
+    "npc.jeyne_terelorn": {
+      "file": "server/lua/npc/jeyne_terelorn.lua"
+    },
+    "npc.joachim_orderer": {
+      "file": "server/lua/npc/joachim_orderer.lua"
+    },
+    "npc.karkish_orcguard": {
+      "file": "server/lua/npc/karkish_orcguard.lua"
+    },
+    "npc.kill_sheep": {
+      "file": "server/lua/npc/kill_sheep.lua"
+    },
+    "npc.kronk_orcguard": {
+      "file": "server/lua/npc/kronk_orcguard.lua"
+    },
+    "npc.krudash_orcguard": {
+      "file": "server/lua/npc/krudash_orcguard.lua"
+    },
+    "npc.kurg": {
+      "file": "server/lua/npc/kurg.lua"
+    },
+    "npc.lagan": {
+      "file": "server/lua/npc/lagan.lua"
+    },
+    "npc.lasttier": {
+      "file": "server/lua/npc/lasttier.lua"
+    },
+    "npc.lasttier_ma": {
+      "file": "server/lua/npc/lasttier_ma.lua"
+    },
+    "npc.leonard": {
+      "file": "server/lua/npc/leonard.lua"
+    },
+    "npc.lightmaster": {
+      "file": "server/lua/npc/lightmaster.lua"
+    },
+    "npc.linasa": {
+      "file": "server/lua/npc/linasa.lua"
+    },
+    "npc.linda": {
+      "file": "server/lua/npc/linda.lua"
+    },
+    "npc.lm_merald_thigwart": {
+      "file": "server/lua/npc/lm_merald_thigwart.lua"
+    },
+    "npc.lm_test": {
+      "file": "server/lua/npc/lm_test.lua"
+    },
+    "npc.lucius": {
+      "file": "server/lua/npc/lucius.lua"
+    },
+    "npc.lurandir": {
+      "file": "server/lua/npc/lurandir.lua"
+    },
+    "npc.magda_rosenzopf": {
+      "file": "server/lua/npc/magda_rosenzopf.lua"
+    },
+    "npc.malachin_knight": {
+      "file": "server/lua/npc/malachin_knight.lua"
+    },
+    "npc.marcus": {
+      "file": "server/lua/npc/marcus.lua"
+    },
+    "npc.marel": {
+      "file": "server/lua/npc/marel.lua"
+    },
+    "npc.maris": {
+      "file": "server/lua/npc/maris.lua"
+    },
+    "npc.mathilda": {
+      "file": "server/lua/npc/mathilda.lua"
+    },
+    "npc.meegog": {
+      "file": "server/lua/npc/meegog.lua"
+    },
+    "npc.miggs": {
+      "file": "server/lua/npc/miggs.lua"
+    },
+    "npc.miss_piggy": {
+      "file": "server/lua/npc/miss_piggy.lua"
+    },
+    "npc.mondosch": {
+      "file": "server/lua/npc/mondosch.lua"
+    },
+    "npc.morgan": {
+      "file": "server/lua/npc/morgan.lua"
+    },
+    "npc.mucky_luck_sheep": {
+      "file": "server/lua/npc/mucky_luck_sheep.lua"
+    },
+    "npc.mugush": {
+      "file": "server/lua/npc/mugush.lua"
+    },
+    "npc.nadir": {
+      "file": "server/lua/npc/nadir.lua"
+    },
+    "npc.nargon_hammerfaust": {
+      "file": "server/lua/npc/nargon_hammerfaust.lua"
+    },
+    "npc.nebaar": {
+      "file": "server/lua/npc/nebaar.lua"
+    },
+    "npc.nicolas": {
+      "file": "server/lua/npc/nicolas.lua"
+    },
+    "npc.nimbur_goldhand": {
+      "file": "server/lua/npc/nimbur_goldhand.lua"
+    },
+    "npc.norbert": {
+      "file": "server/lua/npc/norbert.lua"
+    },
+    "npc.oldren_shmagging": {
+      "file": "server/lua/npc/oldren_shmagging.lua"
+    },
+    "npc.onor": {
+      "file": "server/lua/npc/onor.lua"
+    },
+    "npc.penny_copperneedle": {
+      "file": "server/lua/npc/penny_copperneedle.lua"
+    },
+    "npc.poker": {
+      "file": "server/lua/npc/poker.lua"
+    },
+    "npc.poker_garon": {
+      "file": "server/lua/npc/poker_garon.lua"
+    },
+    "npc.ramond": {
+      "file": "server/lua/npc/ramond.lua"
+    },
+    "npc.rian_delarn": {
+      "file": "server/lua/npc/rian_delarn.lua"
+    },
+    "npc.rijana": {
+      "file": "server/lua/npc/rijana.lua"
+    },
+    "npc.rosi": {
+      "file": "server/lua/npc/rosi.lua"
+    },
+    "npc.sam": {
+      "file": "server/lua/npc/sam.lua"
+    },
+    "npc.saszsar_zszar": {
+      "file": "server/lua/npc/saszsar_zszar.lua"
+    },
+    "npc.shiptest": {
+      "file": "server/lua/npc/shiptest.lua"
+    },
+    "npc.siloli": {
+      "file": "server/lua/npc/siloli.lua"
+    },
+    "npc.skill": {
+      "file": "server/lua/npc/skill.lua"
+    },
+    "npc.sorgan": {
+      "file": "server/lua/npc/sorgan.lua"
+    },
+    "npc.stalljunge": {
+      "file": "server/lua/npc/stalljunge.lua"
+    },
+    "npc.stalljunge_gb": {
+      "file": "server/lua/npc/stalljunge_gb.lua"
+    },
+    "npc.stalljunge_ma": {
+      "file": "server/lua/npc/stalljunge_ma.lua"
+    },
+    "npc.stalljunge_sb": {
+      "file": "server/lua/npc/stalljunge_sb.lua"
+    },
+    "npc.stalljunge_tb": {
+      "file": "server/lua/npc/stalljunge_tb.lua"
+    },
+    "npc.stalljunge_tv": {
+      "file": "server/lua/npc/stalljunge_tv.lua"
+    },
+    "npc.stalljunge_vs": {
+      "file": "server/lua/npc/stalljunge_vs.lua"
+    },
+    "npc.static_teleport": {
+      "file": "server/lua/npc/static_teleport.lua"
+    },
+    "npc.tayaneth": {
+      "file": "server/lua/npc/tayaneth.lua"
+    },
+    "npc.tbguard": {
+      "file": "server/lua/npc/tbguard.lua"
+    },
+    "npc.teplip": {
+      "file": "server/lua/npc/teplip.lua"
+    },
+    "npc.testgnome": {
+      "file": "server/lua/npc/testgnome.lua"
+    },
+    "npc.testwp": {
+      "file": "server/lua/npc/testwp.lua"
+    },
+    "npc.tihgorac": {
+      "file": "server/lua/npc/tihgorac.lua"
+    },
+    "npc.timo": {
+      "file": "server/lua/npc/timo.lua"
+    },
+    "npc.tobias_baggins": {
+      "file": "server/lua/npc/tobias_baggins.lua"
+    },
+    "npc.todd_baggins": {
+      "file": "server/lua/npc/todd_baggins.lua"
+    },
+    "npc.tony_baggins": {
+      "file": "server/lua/npc/tony_baggins.lua"
+    },
+    "npc.tungosch": {
+      "file": "server/lua/npc/tungosch.lua"
+    },
+    "npc.uluhad": {
+      "file": "server/lua/npc/uluhad.lua"
+    },
+    "npc.vandor_serias": {
+      "file": "server/lua/npc/vandor_serias.lua"
+    },
+    "npc.varkiosh": {
+      "file": "server/lua/npc/varkiosh.lua"
+    },
+    "npc.walker": {
+      "file": "server/lua/npc/walker.lua"
+    },
+    "npc.walter_ferendor": {
+      "file": "server/lua/npc/walter_ferendor.lua"
+    },
+    "npc.ward_blankman": {
+      "file": "server/lua/npc/ward_blankman.lua"
+    },
+    "npc.warkol_hammerfaust": {
+      "file": "server/lua/npc/warkol_hammerfaust.lua"
+    },
+    "npc.wesley": {
+      "file": "server/lua/npc/wesley.lua"
+    },
+    "npc.winfried_birks": {
+      "file": "server/lua/npc/winfried_birks.lua"
+    },
+    "npc.yastahl": {
+      "file": "server/lua/npc/yastahl.lua"
+    },
+    "npc.yellowcross": {
+      "file": "server/lua/npc/yellowcross.lua"
+    },
+    "npc.zaruk": {
+      "file": "server/lua/npc/zaruk.lua"
+    },
+    "npc.zathrot": {
+      "file": "server/lua/npc/zathrot.lua"
+    },
+    "old.I_1316_heiltrank": {
+      "file": "server/lua/old/I_1316_heiltrank.lua"
+    },
+    "old.I_1316_molococ": {
+      "file": "server/lua/old/I_1316_molococ.lua"
+    },
+    "old.I_3106_lesepult": {
+      "file": "server/lua/old/I_3106_lesepult.lua"
+    },
+    "old.p_1_segnen": {
+      "file": "server/lua/old/p_1_segnen.lua"
+    },
+    "old.p_basics": {
+      "file": "server/lua/old/p_basics.lua"
+    },
+    "quest_createMaze": {
+      "file": "server/lua/quest_createMaze.lua"
+    },
+    "quest_giveUniqueItem": {
+      "file": "server/lua/quest_giveUniqueItem.lua"
+    },
+    "scheduled.closedoors": {
+      "file": "server/lua/scheduled/closedoors.lua"
+    },
+    "scheduled.gaia": {
+      "file": "server/lua/scheduled/gaia.lua"
+    },
+    "scheduled.invisible_crosses": {
+      "file": "server/lua/scheduled/invisible_crosses.lua"
+    },
+    "scheduled.newgaia": {
+      "file": "server/lua/scheduled/newgaia.lua"
+    },
+    "scheduled.sc_ma_close_wall": {
+      "file": "server/lua/scheduled/sc_ma_close_wall.lua"
+    },
+    "scheduled.scs_shining_mine": {
+      "file": "server/lua/scheduled/scs_shining_mine.lua"
+    },
+    "scheduled.scs_skeleton_forest": {
+      "file": "server/lua/scheduled/scs_skeleton_forest.lua"
+    },
+    "scheduled.scs_teleport_effect": {
+      "file": "server/lua/scheduled/scs_teleport_effect.lua"
+    },
+    "scheduled.scs_windfire_quest": {
+      "file": "server/lua/scheduled/scs_windfire_quest.lua"
+    },
+    "scheduled.spread_illness": {
+      "file": "server/lua/scheduled/spread_illness.lua"
+    },
+    "scheduled.thunder": {
+      "file": "server/lua/scheduled/thunder.lua"
+    },
+    "scheduled.weather": {
+      "file": "server/lua/scheduled/weather.lua"
+    },
+    "server.depot": {
+      "file": "server/lua/server/depot.lua"
+    },
+    "server.login": {
+      "file": "server/lua/server/login.lua"
+    },
+    "server.logout": {
+      "file": "server/lua/server/logout.lua"
+    },
+    "server.playerlookat": {
+      "file": "server/lua/server/playerlookat.lua"
+    },
+    "server.reload_defs": {
+      "file": "server/lua/server/reload_defs.lua"
+    },
+    "server.reload_tables": {
+      "file": "server/lua/server/reload_tables.lua"
+    },
+    "server.standardfighting": {
+      "file": "server/lua/server/standardfighting.lua"
+    },
+    "tile.id_10_snow": {
+      "file": "server/lua/tile/id_10_snow.lua"
+    },
+    "tile.id_11_gras": {
+      "file": "server/lua/tile/id_11_gras.lua"
+    },
+    "tile.id_6_water": {
+      "file": "server/lua/tile/id_6_water.lua"
+    },
+    "triggerfield.ambient": {
+      "file": "server/lua/triggerfield/ambient.lua"
+    },
+    "triggerfield.aq001_magedoor": {
+      "file": "server/lua/triggerfield/aq001_magedoor.lua"
+    },
+    "triggerfield.aq001_mirror": {
+      "file": "server/lua/triggerfield/aq001_mirror.lua"
+    },
+    "triggerfield.aq001_mirrorladder": {
+      "file": "server/lua/triggerfield/aq001_mirrorladder.lua"
+    },
+    "triggerfield.aq001_statueladder": {
+      "file": "server/lua/triggerfield/aq001_statueladder.lua"
+    },
+    "triggerfield.aq001_wall": {
+      "file": "server/lua/triggerfield/aq001_wall.lua"
+    },
+    "triggerfield.aq001_wcgate": {
+      "file": "server/lua/triggerfield/aq001_wcgate.lua"
+    },
+    "triggerfield.aq001_wcno": {
+      "file": "server/lua/triggerfield/aq001_wcno.lua"
+    },
+    "triggerfield.aq001_wcso": {
+      "file": "server/lua/triggerfield/aq001_wcso.lua"
+    },
+    "triggerfield.base.triggerfield": {
+      "file": "server/lua/triggerfield/base/triggerfield.lua"
+    },
+    "triggerfield.dragoncave": {
+      "file": "server/lua/triggerfield/dragoncave.lua"
+    },
+    "triggerfield.eldan_altar": {
+      "file": "server/lua/triggerfield/eldan_altar.lua"
+    },
+    "triggerfield.eldan_close": {
+      "file": "server/lua/triggerfield/eldan_close.lua"
+    },
+    "triggerfield.gangeffekt": {
+      "file": "server/lua/triggerfield/gangeffekt.lua"
+    },
+    "triggerfield.hellbriar_hidden_entrance": {
+      "file": "server/lua/triggerfield/hellbriar_hidden_entrance.lua"
+    },
+    "triggerfield.instadie": {
+      "file": "server/lua/triggerfield/instadie.lua"
+    },
+    "triggerfield.loginfield": {
+      "file": "server/lua/triggerfield/loginfield.lua"
+    },
+    "triggerfield.loo_door": {
+      "file": "server/lua/triggerfield/loo_door.lua"
+    },
+    "triggerfield.loo_ladder": {
+      "file": "server/lua/triggerfield/loo_ladder.lua"
+    },
+    "triggerfield.loo_seat": {
+      "file": "server/lua/triggerfield/loo_seat.lua"
+    },
+    "triggerfield.ma_secret_room": {
+      "file": "server/lua/triggerfield/ma_secret_room.lua"
+    },
+    "triggerfield.missingson_caveentrance": {
+      "file": "server/lua/triggerfield/missingson_caveentrance.lua"
+    },
+    "triggerfield.missingson_woods": {
+      "file": "server/lua/triggerfield/missingson_woods.lua"
+    },
+    "triggerfield.newbie_craft": {
+      "file": "server/lua/triggerfield/newbie_craft.lua"
+    },
+    "triggerfield.newbie_fighter": {
+      "file": "server/lua/triggerfield/newbie_fighter.lua"
+    },
+    "triggerfield.newbie_mage": {
+      "file": "server/lua/triggerfield/newbie_mage.lua"
+    },
+    "triggerfield.noobia_cross": {
+      "file": "server/lua/triggerfield/noobia_cross.lua"
+    },
+    "triggerfield.noobia_door": {
+      "file": "server/lua/triggerfield/noobia_door.lua"
+    },
+    "triggerfield.noobia_ladder": {
+      "file": "server/lua/triggerfield/noobia_ladder.lua"
+    },
+    "triggerfield.noobia_spawn": {
+      "file": "server/lua/triggerfield/noobia_spawn.lua"
+    },
+    "triggerfield.noobia_wall_desert": {
+      "file": "server/lua/triggerfield/noobia_wall_desert.lua"
+    },
+    "triggerfield.noobia_wall_start": {
+      "file": "server/lua/triggerfield/noobia_wall_start.lua"
+    },
+    "triggerfield.notherot_entrace": {
+      "file": "server/lua/triggerfield/notherot_entrace.lua"
+    },
+    "triggerfield.shrine_eldan_enter": {
+      "file": "server/lua/triggerfield/shrine_eldan_enter.lua"
+    },
+    "triggerfield.stompthebugs": {
+      "file": "server/lua/triggerfield/stompthebugs.lua"
+    },
+    "triggerfield.traps": {
+      "file": "server/lua/triggerfield/traps.lua"
+    },
+    "triggerfield.underground_entrance": {
+      "file": "server/lua/triggerfield/underground_entrance.lua"
+    },
+    "triggerfield.underground_water": {
+      "file": "server/lua/triggerfield/underground_water.lua"
+    }
+  }
+}
