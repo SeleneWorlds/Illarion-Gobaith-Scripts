@@ -2,7 +2,11 @@
   "name": "illarion-gobaith",
   "description": "Lua scripts for Illarion as a Selene bundle.",
   "dependencies": [
-    "illarion-api"
+    "illarion-api",
+    "consequence"
+  ],
+  "entrypoints": [
+    "server/lua/init.lua"
   ],
   "preloads": {
     "I_2760_seil": {
