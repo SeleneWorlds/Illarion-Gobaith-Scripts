@@ -1,0 +1,79 @@
+lookat(german) -> "Ein breit lächelnder Zwergenwirt, dessen prächtiger Bart und Kleidung von Bierflecken übersät ist."
+lookat(english) -> "A broadly smiling dwarfen barkeeper whose proud beard and clothes are covered with beer stains."
+
+use(german) -> "Finger weg!"
+use(english) -> "Don't you touch me!"
+
+cycle -> pick(
+    i18n("Arrr...", "Arrr..."),
+    i18n("Arrr!", "Arrr!"),
+    i18n("Arrr...?", "Arrr...?"),
+    i18n("#me trinkt ein Bier", "#me gulps down a beer"),
+    i18n("#me trocknet einen Bierkrug ab", "#me wipes a beer mug clean"),
+    i18n("#me sieht sich gelangweilt um", "#me looks around bored"),
+    i18n("#me spielt mit einer Kupfermünze", "#me plays with a copper coin"),
+    i18n("#me wischt über die Theke", "#me wipes over the bar"),
+)
+
+chat(match(
+    "greet",
+    "hello"
+)) -> pick(
+    "Aahr! Be greeted in 'The Fluffy Sheep Tavern'. What do you want to drink?",
+    "Hello. What do I have to make you?"
+)
+
+chat(match(
+    "bye",
+    "farewell"
+)) -> pick(
+    "Good day!",
+    "Aye. Come back whenever you are thirsty.",
+    "Farewell friend!"
+)
+
+chat(match("what.+sell")) -> "Drinks and more. What do you thought? It's a Bar. And now, tell me: What do you want?", showTrades("borgate")
+chat(match("you.+barkeeper")) -> "What do you think I have to do here? What a stupid question. Aaarh! Drink or eat something or leave!", showTrades("borgate")
+chat(match("what.+ware")) -> "It's a damned bar, what do you think I sell? But here, look at the list: drinks and more.", showTrades("borgate")
+chat(match("what.+drink")) -> "All kind: bottle of elven wine, of water, of mead, of cider, of red wine, of beer, beer mug, goblet red wine, goblet water, goblet cider, goblet mead. But the mugs, goblets and bottles - give them back when you are ready. There is a refund on them.", showTrades("borgate")
+chat(match("what.+more")) -> "Oh, I need glass mugs, copper goblets and grey bottles for they everyday business. Do you have some of them?", showTrades("borgate")
+
+chat(match("who.+you?")) -> "Borgate. I work here for Tialdin, the owner of this tavern."
+chat(match("I'm .+")) -> "Great. I am Borgate, the barkeeper. Do you want something to drink?"
+chat(match("tell.+something")) -> "Arr, where shall I begin? I could tell you lots of what is spoken in this tavern, but if I would do that, no one would come back. No, I am not a traitor to my guests. Sorry!"
+
+chat(match(
+    "grü[ßs]+e",
+    "hallo"
+)) -> pick(
+    "Willkommen in der Fluffy Sheep Taverne, was willst du trinken?",
+    "Guten Tag. Was soll ich Dir machen?"
+)
+
+chat(match(
+    "du.+wirt",
+    "ihr.+wirt"
+)) -> "Genau, ich bin hier der Wirt. Was willst du trinken?"
+
+chat(match("was.+verkauf")) -> "Ich verkaufe alles, was das Herz begehrt: Met, Wein, Bier, und so weiter. Willst du was?", showTrades("borgate")
+chat(match("was.+getränke")) -> "Das hier ist 'ne Kneipe, was glaubst du, was wir hier verkaufen?", showTrades("borgate")
+chat(match("erzähl.+was")) -> "Ich höre viel und weiss eigentlich fast alles. Ich erzähl' dir aber nichts davon, das geht dich nunmal nichts an."
+chat(match(
+    "tschüss",
+    "bis.+bald",
+    "auf.+bald"
+)) -> pick(
+    "Schönen Tag noch.",
+    "Bis bald.",
+    "Auf bald!"
+)
+chat(match(
+    "wer.+du",
+    "wer.+ihr"
+)) -> "Ich bin Borgate. Ich arbeite hier für Tialdin als Wirt der Kneipe."
+
+chat(match(
+    "ich bin .+"
+)) -> "Ich bin Borgate. Willst du was trinken?"
+
+chat -> chatTrading("borgate")
