@@ -5,14 +5,14 @@ use(german) -> "Finger weg!"
 use(english) -> "Don't you touch me!"
 
 cycle -> pick(
-    i18n("Arrr...", "Arrr..."),
-    i18n("Arrr!", "Arrr!"),
-    i18n("Arrr...?", "Arrr...?"),
-    i18n("#me trinkt ein Bier", "#me gulps down a beer"),
-    i18n("#me trocknet einen Bierkrug ab", "#me wipes a beer mug clean"),
-    i18n("#me sieht sich gelangweilt um", "#me looks around bored"),
-    i18n("#me spielt mit einer Kupfermünze", "#me plays with a copper coin"),
-    i18n("#me wischt über die Theke", "#me wipes over the bar"),
+    if(german, "Arrr...", "Arrr..."),
+    if(german, "Arrr!", "Arrr!"),
+    if(german, "Arrr...?", "Arrr...?"),
+    if(german, "#me trinkt ein Bier", "#me gulps down a beer"),
+    if(german, "#me trocknet einen Bierkrug ab", "#me wipes a beer mug clean"),
+    if(german, "#me sieht sich gelangweilt um", "#me looks around bored"),
+    if(german, "#me spielt mit einer Kupfermünze", "#me plays with a copper coin"),
+    if(german, "#me wischt über die Theke", "#me wipes over the bar"),
 )
 
 chat(match(
