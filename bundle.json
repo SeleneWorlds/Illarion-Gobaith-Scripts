@@ -3,7 +3,8 @@
   "description": "Lua scripts for Illarion as a Selene bundle.",
   "dependencies": [
     "illarion-api",
-    "consequence"
+    "consequence",
+    "illarion-script-loader"
   ],
   "entrypoints": [
     "server/lua/init.lua"
