@@ -111,7 +111,7 @@ Event.of("illarion-script-loader:use_npc"):connect(function(entity, player)
     }, {}, {
         defaultNamespaces = DEFAULT_NAMESPACES,
         textHandler = function(text)
-            npc:talk(Character.say, text)
+            npcCharacter:talk(Character.say, text)
         end
     })
 end)
