@@ -48,13 +48,6 @@ local function loadInteractionFile(path)
     print("Loaded " .. path .. " into " .. INTERACTIONS_REGISTRY .. " as " .. identifier)
 end
 
-local function getNpcDefinition(npc)
-    local charData = npc
-        and npc.SeleneEntity
-        and npc.SeleneEntity:getRuntimeData(DataKeys.Character)
-    return charData and charData[DataFields.NPC] or nil
-end
-
 local function resolveInteractionDefinition(identifier)
     if type(identifier) ~= "string" or identifier == "" then
         return nil
@@ -99,19 +92,22 @@ Event.of("illarion-script-loader:look_at_npc"):connect(function(event, entity, p
     event.cancel = true
 end)
 
-Event.of("illarion-script-loader:use_npc"):connect(function(npc, player)
-    local npcDefinition = getNpcDefinition(npc)
+Event.of("illarion-script-loader:use_npc"):connect(function(entity, player)
+    local npcCharacterData = entity:getRuntimeData(DataKeys.Character)
+    local npcDefinition = npcCharacterData and npcCharacterData[DataFields.NPC]
     local consequenceId = npcDefinition and npcDefinition:getField("consequence") or nil
-    local definition = resolveInteractionDefinition(consequenceId)
-    if definition == nil then
+    local consequences = resolveInteractionDefinition(consequenceId)
+    if consequences == nil then
         return
     end
 
+    local npcCharacter = Character.fromSeleneEntity(entity)
+    local playerCharacter = Character.fromSelenePlayer(player)
     Consequence.fireDefinitions({
-        definition
+        consequences
     }, "use", {
-        npc = npc,
-        player = player
+        npc = npcCharacter,
+        player = playerCharacter
     }, {}, {
         defaultNamespaces = DEFAULT_NAMESPACES,
         textHandler = function(text)
