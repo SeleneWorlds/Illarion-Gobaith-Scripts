@@ -92,7 +92,7 @@ Event.of("illarion-script-loader:look_at_npc"):connect(function(event, entity, p
     event.cancel = true
 end)
 
-Event.of("illarion-script-loader:use_npc"):connect(function(entity, player)
+Event.of("illarion-script-loader:use_npc"):connect(function(event, entity, player)
     local npcCharacterData = entity:getRuntimeData(DataKeys.Character)
     local npcDefinition = npcCharacterData and npcCharacterData[DataFields.NPC]
     local consequenceId = npcDefinition and npcDefinition:getField("consequence") or nil
@@ -103,7 +103,7 @@ Event.of("illarion-script-loader:use_npc"):connect(function(entity, player)
 
     local npcCharacter = Character.fromSeleneEntity(entity)
     local playerCharacter = Character.fromSelenePlayer(player)
-    Consequence.fireDefinitions({
+    local result = Consequence.fireDefinitions({
         consequences
     }, "use", {
         npc = npcCharacter,
@@ -114,6 +114,9 @@ Event.of("illarion-script-loader:use_npc"):connect(function(entity, player)
             npcCharacter:talk(Character.say, text)
         end
     })
+    if result then
+        event.cancel = true
+    end
 end)
 
 for _, path in ipairs(Resources.listFiles(BUNDLE_NAME, CSQN_GLOB)) do
