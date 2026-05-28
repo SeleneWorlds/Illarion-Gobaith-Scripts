@@ -4,6 +4,7 @@ local DataFields = require("illarion-script-loader.server.lua.lib.dataFields")
 local Event = require("selene.event")
 local Registries = require("selene.registries")
 local Resources = require("selene.resources")
+local Network = require("selene.network")
 
 local BUNDLE_NAME = "illarion-gobaith"
 local INTERACTIONS_REGISTRY = "consequence:interactions"
@@ -67,25 +68,35 @@ Consequence.registerPositionalArguments("chatTrading", { "trade" })
 registerLanguageEffect("german", Player.german)
 registerLanguageEffect("english", Player.english)
 
-Event.of("illarion-script-loader:look_at_npc"):connect(function(npc, player)
-    local npcDefinition = getNpcDefinition(npc)
-    local consequenceId = npcDefinition and npcDefinition:getField("consequence") or nil
-    local definition = resolveInteractionDefinition(consequenceId)
-    if definition == nil then
+Event.of("illarion-script-loader:look_at_npc"):connect(function(event, entity, player)
+    local npcCharacterData = entity:getRuntimeData(DataKeys.Character)
+    local npcDefinition = npcCharacterData and npcCharacterData[DataFields.NPC]
+    local consequenceId = npcDefinition and npcDefinition:getField("consequence")
+    local consequences = resolveInteractionDefinition(consequenceId)
+    if consequences == nil then
         return
     end
 
-    Consequence.fireDefinitions({
-        definition
+    local npcCharacter = Character.fromSeleneEntity(entity)
+    local playerCharacter = Character.fromSelenePlayer(player)
+    local result = Consequence.fireDefinitions({
+        consequences
     }, "lookat", {
-        npc = npc,
-        player = player
+        npc = npcCharacter,
+        player = playerCharacter
     }, {}, {
-        defaultNamespaces = DEFAULT_NAMESPACES,
-        textHandler = function(text)
-            player:sendCharDescription(npc, text)
-        end
+        defaultNamespaces = DEFAULT_NAMESPACES
     })
+    if result then
+        Network.sendToPlayer(player, "illarion:look_at_entity", {
+            networkId = entity:getNetworkId(),
+            tooltip = {
+                name = result
+            }
+        })
+    end
+
+    event.cancel = true
 end)
 
 Event.of("illarion-script-loader:use_npc"):connect(function(npc, player)
