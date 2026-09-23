@@ -56,6 +56,15 @@ local function resolveInteractionDefinition(identifier)
     return Registries.findByName(INTERACTIONS_REGISTRY, identifier)
 end
 
+local function speakActionResults(npcCharacter, summary)
+    local matchedInteraction = summary.results[#summary.results]
+    for _, actionResult in ipairs(matchedInteraction and matchedInteraction.actionResults or {}) do
+        if type(actionResult) == "string" then
+            npcCharacter:talk(Character.say, actionResult)
+        end
+    end
+end
+
 Consequence.registerPositionalArguments("showTrades", { "trade" })
 Consequence.registerPositionalArguments("chatTrading", { "trade" })
 Consequence.registerEffectType("illarion_gobaith:showTrades", Trading.showTrades)
@@ -114,9 +123,10 @@ Event.of("illarion-script-loader:use_npc"):connect(function(event, entity, playe
     }, {}, {
         defaultNamespaces = DEFAULT_NAMESPACES,
         textHandler = function(text)
-            npcCharacter:talk(Character.say, text)
+            return text
         end
     })
+    speakActionResults(npcCharacter, summary)
     if summary.matchedDefinitions > 0 then
         event.cancel = true
     end
@@ -133,7 +143,7 @@ Event.of("illarion-script-loader:talk_to_npc"):connect(function(event, entity, p
 
     local npcCharacter = Character.fromSeleneEntity(entity)
     local playerCharacter = Character.fromSelenePlayer(player)
-    local result, summary = Consequence.fireDefinitions({
+    local _, summary = Consequence.fireDefinitions({
         consequences
     }, "chat", {
         npc = npcCharacter,
@@ -144,12 +154,10 @@ Event.of("illarion-script-loader:talk_to_npc"):connect(function(event, entity, p
     }, {
         defaultNamespaces = DEFAULT_NAMESPACES,
         textHandler = function(text)
-            npcCharacter:talk(Character.say, text)
+            return text
         end
     })
-    if type(result) == "string" then
-        npcCharacter:talk(Character.say, result)
-    end
+    speakActionResults(npcCharacter, summary)
     if summary.matchedDefinitions > 0 then
         event.cancel = true
     end
