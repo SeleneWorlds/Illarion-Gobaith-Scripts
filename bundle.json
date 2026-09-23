@@ -1584,6 +1584,9 @@
     },
     "triggerfield.underground_water": {
       "file": "server/lua/triggerfield/underground_water.lua"
+    },
+    "trading": {
+      "file": "server/lua/trading.lua"
     }
   }
 }

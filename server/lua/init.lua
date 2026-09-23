@@ -5,6 +5,7 @@ local Event = require("selene.event")
 local Registries = require("selene.registries")
 local Resources = require("selene.resources")
 local Network = require("selene.network")
+local Trading = require("trading")
 
 local BUNDLE_NAME = "illarion-gobaith"
 local INTERACTIONS_REGISTRY = "consequence:interactions"
@@ -57,6 +58,8 @@ end
 
 Consequence.registerPositionalArguments("showTrades", { "trade" })
 Consequence.registerPositionalArguments("chatTrading", { "trade" })
+Consequence.registerEffectType("illarion_gobaith:showTrades", Trading.showTrades)
+Consequence.registerEffectType("illarion_gobaith:chatTrading", Trading.chat)
 
 registerLanguageEffect("german", Player.german)
 registerLanguageEffect("english", Player.english)
@@ -130,7 +133,7 @@ Event.of("illarion-script-loader:talk_to_npc"):connect(function(event, entity, p
 
     local npcCharacter = Character.fromSeleneEntity(entity)
     local playerCharacter = Character.fromSelenePlayer(player)
-    local _, summary = Consequence.fireDefinitions({
+    local result, summary = Consequence.fireDefinitions({
         consequences
     }, "chat", {
         npc = npcCharacter,
@@ -144,6 +147,9 @@ Event.of("illarion-script-loader:talk_to_npc"):connect(function(event, entity, p
             npcCharacter:talk(Character.say, text)
         end
     })
+    if type(result) == "string" then
+        npcCharacter:talk(Character.say, result)
+    end
     if summary.matchedDefinitions > 0 then
         event.cancel = true
     end
