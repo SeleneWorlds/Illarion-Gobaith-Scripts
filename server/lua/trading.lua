@@ -27,8 +27,8 @@ local function loadState(name)
         return states[name]
     end
 
-    local definition = Registries.findByName("illarion:trades", "illarion-gobaith:" .. name)
-        or Registries.findByName("illarion:trades", name)
+    local identifier = string.find(name, ":", 1, true) and name or "illarion:" .. name
+    local definition = Registries.findByName("illarion:trades", identifier)
     if definition == nil then
         return nil
     end
