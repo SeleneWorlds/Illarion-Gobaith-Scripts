@@ -1,5 +1,5 @@
 local M = {}
-local InitLibraries, AddBookshelves, CreateBookList, BookshelvesEqual, UseItem, getFreePosition, DistanceFromPosToPos, LookAtItem
+local Libraries
 
 -- Side note: "BS" = Bookshelf
 -- Bookshelves contain a list of positions of bookshelves and a list of books
@@ -12,7 +12,7 @@ function M.InitLibraries()
 
     -- Shelves with misc books (was previously about crafts)
     -- In Troll's Bane
-    PositionsZero = {
+    local PositionsZero = {
       position( -90, -128, 0 ),
       position( -90, -126, 0 ),
       position( -90, -124, 0 ),
@@ -22,7 +22,7 @@ function M.InitLibraries()
 
     -- Shelves with books about histories
     -- In Troll's Bane
-    PositionsOneA = {
+    local PositionsOneA = {
       -- In Troll's Bane
       position( -88, -128, 0 ),
       position( -88, -126, 0 ),
@@ -38,7 +38,7 @@ function M.InitLibraries()
 
     -- Shelves with books about cultures
     -- In Troll's Bane
-    PositionsOneB = {
+    local PositionsOneB = {
       position( -83, -122, 0 ),
       position( -85, -129, 0 ),
       position( -87, -129, 0 ),
@@ -60,7 +60,7 @@ function M.InitLibraries()
 
     -- Shelves with books about Eldan priests and history
     -- In Tol Vanima
-    PositionsTwo = {
+    local PositionsTwo = {
       position( 360, 209, -3 ),
       position( 363, 209, -3 ),
       position( 366, 209, -3 )
@@ -68,7 +68,7 @@ function M.InitLibraries()
 
     -- Shelves with books about other stuff
     -- In Varshikar
-    PositionsThree = {
+    local PositionsThree = {
       position( 272, -310, 0 ),
       position( 274, -310, 0 ),
       position( 276, -310, 0 ),
@@ -76,14 +76,14 @@ function M.InitLibraries()
 
     -- Shelves with books about the old man's tales
     -- In Tol Vanima
-    PositionsFourA = { position( 361, 212, -3 ) };
-    PositionsFourB = { position( 363, 212, -3 ) };
-    PositionsFourC = { position( 365, 212, -3 ) };
-    PositionsFourD = { position( 367, 212, -3 ) };
+    local PositionsFourA = { position( 361, 212, -3 ) };
+    local PositionsFourB = { position( 363, 212, -3 ) };
+    local PositionsFourC = { position( 365, 212, -3 ) };
+    local PositionsFourD = { position( 367, 212, -3 ) };
 
     -- Shelves with dwarven books
     -- In Silverbrand
-    PositionsFive = {
+    local PositionsFive = {
        position( 129, -209, -3 ),
        position( 129, -211, -3 ),
        position( 137, -212, -3 ),
@@ -94,27 +94,27 @@ function M.InitLibraries()
     }
 
     -- In Silverbrand - Hall of the Axe
-    PositionsSix = {
+    local PositionsSix = {
        position( 112, -164, -3 ),
        position( 112, -162, -3 )
     }
 
     -- In Magnus' building in Tol Vanima
-    PositionsSeven = {
+    local PositionsSeven = {
        position( 317, 233, -3 );
     }
 
     -- In Grey Refuge Castle
-    PositionsEight = {
+    local PositionsEight = {
        position( -43, -233, 0 )
     }
     -- In Grey Rose's Castle
-	PositionsEightB = {
+	local PositionsEightB = {
 	   position( -41, -228, 0 )
 	}
 
 	-- Gem Books
-	PositionsNine = {
+	local PositionsNine = {
 		position(-92,-123,1);		-- TB Library first floor
 		position(367,220,0);		-- Tol Vanima
 		position( 278, -308,0);		-- Varshikar
@@ -127,46 +127,46 @@ function M.InitLibraries()
 	}
 
     -- Kadiya's room / magic academy
-    PositionsTen = {
+    local PositionsTen = {
        position( 33, 23, 51 )
     }
 
     -- Greenbriar bookshelf in tavern
-    PositionsEleven = {
+    local PositionsEleven = {
        position( -370, 74, 0 )
     }
 
     -- With books about history/celebrations
     -- Shelves in Varshikar Castle Library
-	PositionsTwelve = {
+	local PositionsTwelve = {
 	   position( 255, -318, -3 )
 	}
 
 	-- With books about basics of magic
     -- Shelves in Varshikar Castle Library
-	PositionsThirteen = {
+	local PositionsThirteen = {
 	   position( 255, -320, -3 )
 	}
 
 	-- With books about Fragments of the lost Chronicles of Manrok
     -- Shelves in Varshikar Castle Library
-	PositionsForteen = {
+	local PositionsForteen = {
 	   position( 238, -325, -6 )
 	}
 
     -- With books about Daughter of Blood
     -- Shelves in Varshikar Castle Library
-	PositionsFifteen = {
+	local PositionsFifteen = {
 	   position( 230, -326, -6 )
 	}
 
 	--In Magic Academy
-	PositionsSixteen = {
+	local PositionsSixteen = {
       	position( 34, 25, 50 )
 	}
 
     -- Misc books (previously about crafts)
-    BooksZero = {
+    local BooksZero = {
         {2622,4},              -- How to be a simple monk
 		{2616,2},              -- Ms. Piggy book
 		{2615,7},             -- Brewyn the Liar
@@ -179,7 +179,7 @@ function M.InitLibraries()
     }
 
     -- Books about histories
-    BooksOneA = {
+    local BooksOneA = {
       {116,0},              -- History of Illarion
       {2607,0},             -- Gods of Illarion
       {2622,1},             -- Religions of Illarion
@@ -187,7 +187,7 @@ function M.InitLibraries()
     }
 
     -- Books about cultures
-    BooksOneB = {
+    local BooksOneB = {
       {2622,2},             -- Human Culture
       {2609,0},             -- Elven History and Culture
       {2619,2},             -- Dwarven History and Culture
@@ -200,7 +200,7 @@ function M.InitLibraries()
     }
 
     -- Books about the Eldan priests and others
-    BooksTwo = {
+    local BooksTwo = {
       {2605,0},             -- Diary of Noira Liv
       {2622,0},             -- Priests of Eldan
       {2615,7},             -- Brewyn the Liar
@@ -208,20 +208,20 @@ function M.InitLibraries()
     }
 
     -- Books about other stuff
-    BooksThree = {
+    local BooksThree = {
       {110,0},              -- Three Guiding truths
       {2619,0},              -- Fragments of the lost Chronicles of Manrok
 	  {2605,3};            -- cooking book
     }
 
     -- Books about the old man's tales
-    BooksFourA = { {2615, 0} };
-    BooksFourB = { {2615, 1} };
-    BooksFourC = { {2615, 2} };
-    BooksFourD = { {2615, 3} };
+    local BooksFourA = { {2615, 0} };
+    local BooksFourB = { {2615, 1} };
+    local BooksFourC = { {2615, 2} };
+    local BooksFourD = { {2615, 3} };
 
     -- Dwarven books
-    BooksFive = {
+    local BooksFive = {
       {2604, 1},            -- The Founding of Silverbrand
       {2610, 2},            -- The Saga of Thiron
       {2615, 4},            -- Tialdin's Oath
@@ -231,26 +231,26 @@ function M.InitLibraries()
       {2598, 1}             -- Dwarven poems
     }
 
-    BooksSix = {
+    local BooksSix = {
       {2605, 1 }            -- Warguide of the Dwarves I
     }
 
-    BooksSeven = {
+    local BooksSeven = {
       {2610, 3}             -- Confusion, by Magnus Magnol
     }
 
-    BooksEight = {
+    local BooksEight = {
       {2622, 3},            -- The Battle Epics of the Grey
       {2617, 6},			-- Glorification to Irmorom
       {2609, 1},            -- Petition in the name of Findari
       {2615, 6}				-- Petition on Zelphia
     }
 
-    BooksEightB = {
+    local BooksEightB = {
 	  {2617, 5}             -- Codex of the Grey Rose
     }
 
-    BooksNine = {
+    local BooksNine = {
       {116, 1};              -- Magic Stones (general)
       {107, 1};             -- Rubine
       {2622,5};             -- Diamanten
@@ -261,11 +261,11 @@ function M.InitLibraries()
       {2615,5};             -- Topas
     }
 
-    BooksTen = {
+    local BooksTen = {
       {2619, 4}             --  Drachentr�ume
     }
 
-    BooksEleven = {
+    local BooksEleven = {
       {2598, 2};			-- Cake Bible
 	  {2617, 4};            -- The Articles of Greenbriar
 	  {2607, 1};            -- Halfling Culture and History
@@ -278,98 +278,98 @@ function M.InitLibraries()
     }
 
     -- Twelve - Fifteen: In Varshikar Castle
-    BooksTwelve = {
+    local BooksTwelve = {
       {116,0},              -- History of Illarion
       {2617,0}              -- Celebrations
     }
 
-    BooksThirteen = {
+    local BooksThirteen = {
       {2610, 4}             -- Basics of Magic
     }
 
-    BooksForteen = {
+    local BooksForteen = {
       {2619,0}              -- Fragments of the lost Chronicles of Manrok
     }
 
-    BooksFifteen = {
+    local BooksFifteen = {
       {2610,0}              -- Schira'thel, Daughter of Blood
     }
 	-- in Magic Academy
-   	BooksSixteen = {
+	local BooksSixteen = {
 
 		{2615,7};             -- Brewyn the Liar
     }
 	--
-  AddBookshelves( PositionsZero, BooksZero,
+  M.AddBookshelves( PositionsZero, BooksZero,
     "\"Seien Sie ein M�nch\", \"Bark�pfige K�nige\", \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \", \"Brewyn der L�gner\"",
     "\"How To Be A Simple Monk\", \"Bareheaded Kings \", \"Cooking in Illarion, volume 1\n Fish and Meat\", \"Brewyn the Liar\"" );
-  AddBookshelves( PositionsOneA, BooksOneA,
+  M.AddBookshelves( PositionsOneA, BooksOneA,
     "Geschichte, G�tter, Religion, Feiertage",
     "History, Gods, Religions, Celebrations" );
-  AddBookshelves( PositionsOneB, BooksOneB,
+  M.AddBookshelves( PositionsOneB, BooksOneB,
     "Kulturen: Menschen, Elfen, Zwerge, Halblinge, Echsenmenschen, Feen, Gnome, Orks, Goblins",
     "Cultures: Human, Elven, Dwarven, Halfling,  Lizardmen, Faery, Gnomish, Orcish, Goblin" );
-  AddBookshelves( PositionsTwo, BooksTwo,
+  M.AddBookshelves( PositionsTwo, BooksTwo,
     "Tagebuch von Noira Liv, Priester Eldans, Tochter des Blutes, \"Brewyn der L�gner\"",
     "Diary of Noira Liv, Priests of Eldan, Daughter of Blood, \"Brewyn the Liar\"" );
-  AddBookshelves( PositionsThree, BooksThree,
+  M.AddBookshelves( PositionsThree, BooksThree,
     "Three Guiding Truths, verlorenen Chroniken von Manrok,  \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \"",
     "Three Guiding Truths, Lost Chronicles of Manrok,  \"Cooking in Illarion, volume 1\n Fish and Meat\"" );
-  AddBookshelves( PositionsFourA, BooksFourA,
+  M.AddBookshelves( PositionsFourA, BooksFourA,
     "Der Alte Mann, Buch 1 1",
     "the Old Man's Tales Book 1" );
-  AddBookshelves( PositionsFourB, BooksFourB,
+  M.AddBookshelves( PositionsFourB, BooksFourB,
     "Der Alte Mann, Buch 1 2",
     "the Old Man's Tales Book 2" );
-  AddBookshelves( PositionsFourC, BooksFourC,
+  M.AddBookshelves( PositionsFourC, BooksFourC,
     "Der Alte Mann, Buch 1 3",
     "the Old Man's Tales Book 3" );
-  AddBookshelves( PositionsFourD, BooksFourD,
+  M.AddBookshelves( PositionsFourD, BooksFourD,
     "Der Alte Mann, Buch 1 4",
     "the Old Man's Tales Book 4" );
-  AddBookshelves( PositionsFive, BooksFive,
+  M.AddBookshelves( PositionsFive, BooksFive,
     "Von der Gr�ndung Silverbrands, Thiron Saga, Tialdins Gel�bnis, Reden K�nig Tialdins, Die Geschichte Urubur, Gedichte",
     "Founding of Silverbrand, Saga of Thiron, Tialdin's Oath, Tialdin's Speeches, Urubur's Story, Festival of Relationship, Poems" );
-  AddBookshelves( PositionsSix, BooksSix,
+  M.AddBookshelves( PositionsSix, BooksSix,
     "Kriegshandbuch der Zwerge I",
     "Warguide of the Dwarves I" );
-  AddBookshelves( PositionsSeven, BooksSeven,
+  M.AddBookshelves( PositionsSeven, BooksSeven,
     "Verwirrung",
     "Confusion" );
-  AddBookshelves( PositionsEight, BooksEight,
+  M.AddBookshelves( PositionsEight, BooksEight,
     "Poesie und epische Geschichten, Lobpreis an Irmorom, Gebet im Namen Findaris, Gebet f�r Zelphia",
     "Poetry and Epic Stories, Glorification to Irmorom, Petition for Findari, Petition for Zelphia" );
-  AddBookshelves( PositionsEightB, BooksEightB,
+  M.AddBookshelves( PositionsEightB, BooksEightB,
 	"Kodex der Grauen Rose",
 	"Codex of the Grey Rose" );
-  AddBookshelves( PositionsNine, BooksNine,
+  M.AddBookshelves( PositionsNine, BooksNine,
     "Magische Steine",
     "Magic stones" );
-  AddBookshelves( PositionsTen, BooksTen,
+  M.AddBookshelves( PositionsTen, BooksTen,
     "Gesammelte Werke",
     "Collected works" );
-  AddBookshelves( PositionsEleven, BooksEleven,
+  M.AddBookshelves( PositionsEleven, BooksEleven,
     "Die Kuchenbibel, Die Satzung Greenbriars, Kultur und Geschichte der Halblinge, Buch der Witze, Stammbaum der Blumfu�ens, �ber die Menschen, \"Evergreen Halblinge\", \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \", \"Brewyn der L�gner\"",
     "The Cake Bible, The Articles of Greenbriar, Halfling Culture and History, Book of the jokes, Chronicle of the Blumfu�ens, About the Humans, \"Evergreen Halflings\", \"Cooking in Illarion, volume 1\n Fish and Meat\", \"Brewyn the Liar\"" );
-  AddBookshelves( PositionsTwelve, BooksTwelve,
+  M.AddBookshelves( PositionsTwelve, BooksTwelve,
     "Geschichte, Feiertage",
     "History, Celebrations" );
-  AddBookshelves( PositionsThirteen, BooksThirteen,
+  M.AddBookshelves( PositionsThirteen, BooksThirteen,
     "Grundlagen der Magie",
     "Basics of Magic" );
-  AddBookshelves( PositionsForteen, BooksForteen,
+  M.AddBookshelves( PositionsForteen, BooksForteen,
     "verlorenen Chroniken von Manrok",
     "Lost Chronicles of Manrok" );
-  AddBookshelves( PositionsFifteen, BooksFifteen,
+  M.AddBookshelves( PositionsFifteen, BooksFifteen,
     "Tochter des Blutes",
     "Daughter of Blood" );
-  AddBookshelves( PositionsSixteen, BooksSixteen,
+  M.AddBookshelves( PositionsSixteen, BooksSixteen,
     "\"Brewyn der L�gner\"",
     "\"Brewyn the Liar\"" );
 end
 
 function M.AddBookshelves( Positions, Books, gBooks, eBooks )
-  offset = # Libraries  + 1;
+  local offset = # Libraries  + 1;
   Libraries[offset] = {};
   Libraries[offset][1] = Positions;
   Libraries[offset][2] = Books;
@@ -381,7 +381,7 @@ function M.CreateBookList( TargetPos )
     local retList={};
     for i = 1, # Libraries  do
         for j = 1, # Libraries[i][1]  do
-            if ( BookshelvesEqual( Libraries[i][1][j], TargetPos ) ) then
+            if ( M.BookshelvesEqual( Libraries[i][1][j], TargetPos ) ) then
                 for k = 1, # Libraries[i][2]  do
                     retList[k] = Libraries[i][2][k][1]
                 end
@@ -400,13 +400,13 @@ end
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ( Libraries == nil ) then
-        InitLibraries()
+        M.InitLibraries()
     end
 
 
     if ( Param == 0 ) then
-        local BookList = CreateBookList( SourceItem.pos );
-        BookMenu = MenuStruct()                    -- make new menu;
+        local BookList = M.CreateBookList( SourceItem.pos );
+        local BookMenu = MenuStruct()                    -- make new menu;
         for i = 1, # BookList  do
             BookMenu:addItem( BookList[i] );
         end
@@ -415,16 +415,16 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 --        end
         User:sendMenu( BookMenu );
     else
-        if DistanceFromPosToPos( SourceItem.pos, User.pos ) > 1 then
+        if M.DistanceFromPosToPos( SourceItem.pos, User.pos ) > 1 then
             return;
         end;
 
-        local bookPos = getFreePosition( User, SourceItem );
+        local bookPos = M.getFreePosition( User, SourceItem );
 
-        done = false;
+        local done = false;
         for i = 1, # Libraries  do
             for j = 1, # Libraries[i][1]  do
-                if ( BookshelvesEqual( Libraries[i][1][j], SourceItem.pos ) ) then
+                if ( M.BookshelvesEqual( Libraries[i][1][j], SourceItem.pos ) ) then
                     for k = 1, # Libraries[i][2]  do
                         if ( Libraries[i][2][k][1] == Param ) and ( not done ) then
                             world:createItemFromId( Param, 1, bookPos, true, 333, Libraries[i][2][k][2] );
@@ -455,12 +455,12 @@ end
 
 function M.LookAtItem(User,Item)
     if ( Libraries == nil ) then
-        InitLibraries()
+        M.InitLibraries()
     end
 
     for i = 1, # Libraries  do
         for j = 1, # Libraries[i][1]  do
-            if ( BookshelvesEqual( Libraries[i][1][j], Item.pos ) ) then
+            if ( M.BookshelvesEqual( Libraries[i][1][j], Item.pos ) ) then
                 if (User:getPlayerLanguage()==0) then
                     --world:itemInform(User,Item, "B�cherregal (" .. Libraries[i][3] .. ")" );
                     User:inform( "Du siehst verschiedene B�cher �ber " .. Libraries[i][3] );

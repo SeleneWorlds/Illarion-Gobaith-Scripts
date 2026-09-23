@@ -1,11 +1,10 @@
 local M = {}
-local LookAtPaintingItem, LookAtItem
 
 local common = require("base.common")
 
 -- UPDATE common SET com_script='item.paintings' WHERE com_itemid IN (264, 265, 748, 749, 750, 751, 1914, 1915);
 
-PaintingListGerman =
+local PaintingListGerman =
 {
 "Du siehst eine Waldlichtung mit einem Schrein, voller Tiere und Feen.",
 "Du siehst einen jungen Mann beim Experimentieren mit der Alchemie.",
@@ -52,7 +51,7 @@ PaintingListGerman =
 "Du siehst wie eine Echse aus dem Wasser auftaucht."
 };
 
-PaintingListEnglish =
+local PaintingListEnglish =
 {
 "You see a clearing with a shrine that's full of animals and fairies.",
 "You see a young man, experimenting with alchemy.",
@@ -112,7 +111,7 @@ function M.LookAtPaintingItem( User, Item )
 end
 
 function M.LookAtItem(User,Item)
-    LookAtPaintingItem(User,Item);
+    M.LookAtPaintingItem(User,Item);
 end
 
 return M
