@@ -39,7 +39,7 @@ chat: match("what.+drink") -> "All kind: bottle of elven wine, of water, of mead
 chat: match("what.+more") -> "Oh, I need glass mugs, copper goblets and grey bottles for they everyday business. Do you have some of them?", showTrades("borgate")
 
 chat: match("who.+you?") -> "Borgate. I work here for Tialdin, the owner of this tavern."
-chat: match("I'm .+") -> "Great. I am Borgate, the barkeeper. Do you want something to drink?"
+chat: match("i'm .+") -> "Great. I am Borgate, the barkeeper. Do you want something to drink?"
 chat: match("tell.+something") -> "Arr, where shall I begin? I could tell you lots of what is spoken in this tavern, but if I would do that, no one would come back. No, I am not a traitor to my guests. Sorry!"
 
 chat: match(
