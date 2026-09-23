@@ -1,0 +1,47 @@
+use: german -> "Fasst mich nicht an!"
+use: english -> "Don't you touch me!"
+
+cycle: pick(
+    if(german, "#me schnippst ein Kupferstück in die Luft", "#me flips a copper coin into the air"),
+    if(german, "#me schnippst ein Silberstück in die Luft", "#me flips a silver coin into the air"),
+    if(german, "#me schnippst ein Goldstück in die Luft", "#me flips a gold coin into the air"),
+    if(german, "#me zählt einige Münzen", "#me counts some coins"),
+)
+
+chat: match(
+    "greet",
+    "hello"
+) -> pick(
+    "Greetings. What can I do for you?",
+    "Greetings. You are interested in money?"
+)
+
+chat: match("what.+sell") -> "I exchange coins.", showTrades("onor")
+
+chat: match(
+    "bye",
+    "farewell",
+    "be well"
+) -> pick(
+    "Good day. Safe travels.",
+    "Farewell. You are always welcome."
+)
+
+chat: match(
+    "grü[ßs]+e",
+    "hallo"
+) -> pick(
+    "Grüße. Was kann ich für Euch tun?",
+    "Grüße. Habt ihr Interesse an Geld?"
+)
+
+chat: match(
+    "auf bald",
+    "bis.+bald",
+    "machs gut"
+) -> pick(
+    "Auf bald. Eine sichere Reise.",
+    "Bis bald. Ihr seid immer willkommen."
+)
+
+chat: chatTrading("onor")

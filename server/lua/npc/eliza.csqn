@@ -1,0 +1,61 @@
+lookat: german -> "Hier steht ein Fisch auf dem Flur."
+lookat: english -> "Here is a fish in the hallway."
+
+use: german -> "Fassst mich nicht an!"
+use: english -> "Don't touch me!"
+
+cycle: pick(
+    if(german, "#me isst einen Fisch", "#me eats a fish"),
+    if(german, "#me schaut sich nach Kunden um", "#me looks around for customers"),
+    if(german, "#me lässt ihren Schwanz hin und her schnalzen", "#me flicks her tail"),
+    if(german, "#me zählt einige Münzen", "#me counts some coins"),
+    if(german, "Die besssten Ssschmiedewaren verkauf ich! Zzzum besssten Preisss.", "I sssell the bessst smithsss productsss. For the bessst pricesss"),
+)
+
+chat: match(
+    "greet",
+    "hello"
+) -> pick(
+    "Greetingsss. What isss it you want? Zss.",
+    "Greetingsss. You are interesssted in my waresss?"
+)
+
+chat: match("what.+sell") -> "I trade with shieldsss, greavesss, armorsss and weaponsss. Everything made of metal. sss", showTrades("eliza")
+chat: match("what.+shield") -> "Whatever you likesss: light, normal and large metal shieldsss and round metalshieldsss", showTrades("eliza")
+chat: match("what.+armor") -> "Besst armosss: steel glovesss, steel bootsss, albarian officersss armorss, light mercenary armorss, Lor-Angur guardiansss armorss, steel plate, heavy red plate armorss and heavy plate armorss. For more goodsss asssk for my lissst of waresss.", showTrades("eliza")
+chat: match("what.+weapon") -> "I trade with two-handed swordss, rapierss, razor bladess, serinjah-swordss. For more goodsss asssk for my lissst of waresss.", showTrades("eliza")
+chat: match("what.+greave") -> "Look. I have: blue steel greavesss, brassss greavesss, red steel greavesss. For more goodsss asssk for my lissst of waresss!", showTrades("eliza")
+
+chat: match(
+    "bye",
+    "farewell",
+    "be well"
+) -> pick(
+    "Good day. Zhelphia may blesss you. Ssss.",
+    "Sss. Farewell. You are welcome to come back."
+)
+
+chat: match(
+    "grü[ßs]+e",
+    "hallo"
+) -> pick(
+    "Grüssse. Wasss wollt ihr? Zsss",
+    "Grüssse. Habt ihr Interessse an meinen Waren? Zsss"
+)
+
+chat: match("was.+kauf") -> "Sss. Ich handle mit Ssschilden, Beinschienen, Rüssstungen und Waffen. Alles aus Metall. ssss", showTrades("eliza")
+chat: match("was.+schild") -> "Wasss auch immer du brauchssst: leichte, normale und große Metallschilde und Metallrundsschilde", showTrades("eliza")
+chat: match("was.+rüstung") -> "Bessste Rüssstungen: Ssstahl Handschuhe und Ssstiefel, Albarische Offiziersss Rüssstungen, leicht Sssöldner Rüssstungen, Lor-Angur Wächter Rüssstungen, Ssstahl Plattenpanzer, ssschwere Rote und ssschwere Ssstahlpanzer.", showTrades("eliza")
+chat: match("was.+waffen") -> "Ich handle mit Degen, Rasssierklingen, Ssserinjah-Ssschwertern und Zzweihänderr.", showTrades("eliza")
+chat: match("was.+schienen") -> "Sssieh! Ich habe: blaue Ssstahl Beinssschienen, Bronze Beinssschienen und rote Ssstahl Beinssschienen.", showTrades("eliza")
+
+chat: match(
+    "auf bald",
+    "bis.+bald",
+    "machs gut"
+) -> pick(
+    "Auf bald. Zhelphia sssegne euch. Zsss.",
+    "Sss. Bis bald. Ihr könnt gern wieder kommen."
+)
+
+chat: chatTrading("eliza")
