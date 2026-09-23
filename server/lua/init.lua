@@ -8,7 +8,7 @@ local Network = require("selene.network")
 
 local BUNDLE_NAME = "illarion-gobaith"
 local INTERACTIONS_REGISTRY = "consequence:interactions"
-local CSQN_GLOB = "server/lua/*.csqn"
+local CSQN_GLOB = "server/lua/**/*.csqn"
 local DEFAULT_NAMESPACES = { "illarion_gobaith", "consequence" }
 
 local function playerUsesLanguage(context, language)
@@ -103,7 +103,7 @@ Event.of("illarion-script-loader:use_npc"):connect(function(event, entity, playe
 
     local npcCharacter = Character.fromSeleneEntity(entity)
     local playerCharacter = Character.fromSelenePlayer(player)
-    local result = Consequence.fireDefinitions({
+    local _, summary = Consequence.fireDefinitions({
         consequences
     }, "use", {
         npc = npcCharacter,
@@ -114,7 +114,37 @@ Event.of("illarion-script-loader:use_npc"):connect(function(event, entity, playe
             npcCharacter:talk(Character.say, text)
         end
     })
-    if result then
+    if summary.matchedDefinitions > 0 then
+        event.cancel = true
+    end
+end)
+
+Event.of("illarion-script-loader:talk_to_npc"):connect(function(event, entity, player, mode, message)
+    local npcCharacterData = entity:getRuntimeData(DataKeys.Character)
+    local npcDefinition = npcCharacterData and npcCharacterData[DataFields.NPC]
+    local consequenceId = npcDefinition and npcDefinition:getField("consequence") or nil
+    local consequences = resolveInteractionDefinition(consequenceId)
+    if consequences == nil then
+        return
+    end
+
+    local npcCharacter = Character.fromSeleneEntity(entity)
+    local playerCharacter = Character.fromSelenePlayer(player)
+    local _, summary = Consequence.fireDefinitions({
+        consequences
+    }, "chat", {
+        npc = npcCharacter,
+        player = playerCharacter
+    }, {
+        mode = mode,
+        message = message
+    }, {
+        defaultNamespaces = DEFAULT_NAMESPACES,
+        textHandler = function(text)
+            npcCharacter:talk(Character.say, text)
+        end
+    })
+    if summary.matchedDefinitions > 0 then
         event.cancel = true
     end
 end)
