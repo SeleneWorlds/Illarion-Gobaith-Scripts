@@ -143,6 +143,10 @@ Event.of("illarion-script-loader:talk_to_npc"):connect(function(event, entity, p
 
     local npcCharacter = Character.fromSeleneEntity(entity)
     local playerCharacter = Character.fromSelenePlayer(player)
+    if not npcCharacter:isInRange(playerCharacter, 2) then
+        return
+    end
+
     local _, summary = Consequence.fireDefinitions({
         consequences
     }, "chat", {
