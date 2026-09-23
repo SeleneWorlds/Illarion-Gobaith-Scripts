@@ -108,13 +108,6 @@ function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     checkCustomInventory(TargetCharacter, SourceCharacter);
 	  
     SourceCharacter:sendCharDescription( TargetCharacter.id , output );
-    SourceCharacter:inform("now checking diseaseeeee:");
-    found,diseaseEffect = TargetCharacter.effects:find(28);
-    if found then
-        SourceCharacter:talk(CCharacter.say,"found!");
-        fndStr,disStr=diseaseEffect:findValue("diseaseStr");
-        SourceCharacter:talk(CCharacter.say,"Char infiziert. Str="..disStr);
-    end
 
     if (mode == 1) then
         if (TargetCharacter:getPlayerLanguage() == 0) then
