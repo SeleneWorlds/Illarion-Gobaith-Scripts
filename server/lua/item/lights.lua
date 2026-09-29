@@ -10,11 +10,11 @@ local common = require("base.common")
 
 -- UPDATE common SET com_script='item.lights' WHERE com_itemid IN (92, 397, 393, 394, 2856, 2855, 391, 392, 401, 402, 403, 404, 2851, 2852, 2853, 2854, 399, 400, 395, 396);
 
-PORTABLE_WEAR = 5; -- default wear value for portable items, when put off
-DEFAULT_WEAR = 5; -- default wear value for light sources, when put on
+local PORTABLE_WEAR = 5; -- default wear value for portable items, when put off
+local DEFAULT_WEAR = 5; -- default wear value for light sources, when put on
 
-LightsOff = {};
-LightsOn = {};
+local LightsOff = {};
+local LightsOn = {};
 -- torch
 LightsOff[391] = { on = 392 };
 LightsOn[392] = { off = 391, portable = true };
@@ -43,7 +43,7 @@ LightsOn[394] = { off = 393, portable = true };
 LightsOff[2856] = { on = 2855, req = { id = 43, num = 1 } }; -- grey, static
 LightsOn[2855] = { off = 2856 };
 
-ReqTexts = {};
+local ReqTexts = {};
 ReqTexts.german = { [392] = "Fackeln", [43] = "Kerzen", [390] = "Lampen�l" };
 ReqTexts.english = { [392] = "torches", [43] = "candles", [390] = "lamp oil" };
 
@@ -56,9 +56,9 @@ function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	end
 	local this = LightsOff[SourceItem.id];
 	if this then
-		local ok, wear = checkReq(User,SourceItem,this)
+		local ok, wear = M.checkReq(User,SourceItem,this)
 		if ok then
-			putOn(SourceItem,wear,false);
+			M.putOn(SourceItem,wear,false);
 		elseif this.req then
 			common.TempInformNLS(User,
 				"Daf�r brauchst du ".. ReqTexts.german[this.req.id] .. " in der Hand oder im G�rtel.",
@@ -67,7 +67,7 @@ function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	elseif LightsOn[SourceItem.id] then
 		this = LightsOn[SourceItem.id];
 		if this.back then
-			giveBack(User,SourceItem,this)
+			M.giveBack(User,SourceItem,this)
 		end
 		M.putOff(SourceItem,this);
 	end
@@ -193,6 +193,7 @@ end
 function M.LookAtItem(User, Item)
 	local ItemName = world:getItemName(Item, User:GetPlayerLanguage());
 	local TimeLeftI;
+	local TimeLeft;
 	if(LightsOn[Item.id]) then
 		TimeLeftI = Item.wear;
 	elseif (LightsOff[Item.id]) then
