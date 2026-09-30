@@ -38,7 +38,7 @@ function M.Dropping(Char)
         if (#SelItemValue>0) then
             for i,values in pairs(SelItemValue) do
                 if ( values[1] ~= nil ) and ( values[2] ~= nil ) and ( values[3] ~= nil ) and ( values[4] ~= nil ) then
-                    Item=world:createItemFromId(values[1],values[2],Char.pos,true,values[3],values[4]);
+                    world:createItemFromId(values[1],values[2],Char.pos,true,values[3],values[4]);
                 end
             end
         end
