@@ -1283,7 +1283,7 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
         local ItemQual=math.floor( CharStruct[FirstWeaponItem].quality / 100 );
         local ItemDura=CharStruct[FirstWeaponItem].quality - ( ItemQual * 100 );
 
-        if (math.random(common.Scale(30,300,ItemQual*11))==1) then
+        if (math.random(math.floor(common.Scale(30,300,ItemQual*11)))==1) then
             if fighting.IsPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
                 ItemDura = ItemDura - 10;
             else
@@ -1546,7 +1546,7 @@ function BreakArmor( CharStruct, Globals )
         local ItemQual=math.floor(HittedItem.quality/100);
         local ItemDura=HittedItem.quality-(ItemQual*100);
 
-        if (math.random(common.Scale(30,300,ItemQual*11))==1) then
+        if (math.random(math.floor(common.Scale(30,300,ItemQual*11)))==1) then
             ItemDura = ItemDura - 1;
             if (ItemDura<1) then
                 CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
@@ -1566,7 +1566,7 @@ function BreakArmor( CharStruct, Globals )
             local ItemQual=math.floor(HittedItem.quality/100);
             local ItemDura=HittedItem.quality-(ItemQual*100);
 
-            if (math.random(common.Scale(30,300,ItemQual*11))==1) then
+            if (math.random(math.floor(common.Scale(30,300,ItemQual*11)))==1) then
                 ItemDura = ItemDura - 1;
                 if (ItemDura<1) then
                     CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
@@ -1745,10 +1745,11 @@ function Learning( Attacker, Defender, Globals )
         Defender.Char:learn(5,"dodge",1,math.min(100,Attacker.skill+small));
     end
 
-    if (math.random(1,common.Scale(6,1,Globals.PositionMod/19)) == 1) then
+    local tacticsLearningChance = math.floor(common.Scale(6,1,Globals.PositionMod/19));
+    if (math.random(1,tacticsLearningChance) == 1) then
         Attacker.Char:learn(5,"tactics",2,math.min(100,Defender.parry+small));
     end
-    if (math.random(1,common.Scale(6,1,Globals.PositionMod/19)) == 1) then
+    if (math.random(1,tacticsLearningChance) == 1) then
         Defender.Char:learn(5,"tactics",2,math.min(100,Attacker.skill+small));
     end
 end

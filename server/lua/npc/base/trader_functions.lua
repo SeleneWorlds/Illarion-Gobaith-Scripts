@@ -19,9 +19,9 @@ end
 -- Auff�llen der Geldbest�nde
 function M.refillMoney()
     if TraderCopper<TraderStdCopper/2 then
-        TraderCopper=TraderCopper+math.random(TraderStdCopper/100,TraderStdCopper/10);
+        TraderCopper=TraderCopper+math.random(math.floor(TraderStdCopper/100),math.floor(TraderStdCopper/10));
     elseif TraderCopper>2*TraderStdCopper then
-        TraderCopper=TraderCopper-math.random(TraderStdCopper/100,TraderStdCopper/10);
+        TraderCopper=TraderCopper-math.random(math.floor(TraderStdCopper/100),math.floor(TraderStdCopper/10));
     end
 end
 

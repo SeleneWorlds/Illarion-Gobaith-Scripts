@@ -44,8 +44,8 @@ function M.CharacterOnField(User)
         end
         resist=SpellResistence(User);      -- Magie Resistenz pr�fen
         if (resist<FieldItem.quality) then
-            damageDealt=math.random((7/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght),(9/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght));--AffectedStren[i]
-            poisonDealt=math.random((2/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20)),(5/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20)));
+            damageDealt=math.random(math.floor((7/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)),math.floor((9/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)));--AffectedStren[i]
+            poisonDealt=math.random(math.floor((2/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))),math.floor((5/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))));
             User:increaseAttrib("hitpoints",-damageDealt);
 		User:setPoisonValue( common.Limit( (User:getPoisonValue() + poisonDealt) , 0, 10000) );
             --User:increasePoisonValue(poisonDealt);

@@ -777,8 +777,8 @@ function M.drinkGame()
 	end
 
 	local calculateOutcomes = function ()
-		local playerRand=math.random(1,18+(self.rundenzahl/9)+self.playerDrinkfactor*10/100);
-		local npcRand=math.random(1,20+(self.rundenzahl/9));
+		local playerRand=math.random(1,math.floor(18+(self.rundenzahl/9)+self.playerDrinkfactor*10/100));
+		local npcRand=math.random(1,math.floor(20+(self.rundenzahl/9)));
 		if self.rundenzahl==1 then
 			self.outcome1=self.playerDrinkfactor-(playerRand*2+self.rundenzahl); self.outcome2=self.npcDrinkfactor-(npcRand*2+self.rundenzahl);
 		else

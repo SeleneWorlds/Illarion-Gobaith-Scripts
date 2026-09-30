@@ -40,7 +40,7 @@ function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
         end
         resist=M.SpellResistence(User);      -- Magie Resistenz pr�fen
         if (resist<FieldItem.quality*2) then   -- Qualit�t des Items --> St�rke mit Magie Resistenz vergleichen
-            damageDealt=math.random((3/100)*math.floor((FieldItem.quality-resist)*RaceStrenght),(5/100)*math.floor((FieldItem.quality-resist)*RaceStrenght));--AffectedStren[i]
+            damageDealt=math.random(math.floor((3/100)*math.floor((FieldItem.quality-resist)*RaceStrenght)),math.floor((5/100)*math.floor((FieldItem.quality-resist)*RaceStrenght)));--AffectedStren[i]
             User:increaseAttrib("hitpoints",-damageDealt); -- Schaden berechnen und bewirken
             -- Added by abcfantasy, inform user
             if (User:getPlayerLanguage()==0) then
