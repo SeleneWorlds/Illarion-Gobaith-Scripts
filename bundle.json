@@ -1444,6 +1444,9 @@
     "server.depot": {
       "file": "server/lua/server/depot.lua"
     },
+    "server.learn": {
+      "file": "server/lua/server/learn.lua"
+    },
     "server.login": {
       "file": "server/lua/server/login.lua"
     },
