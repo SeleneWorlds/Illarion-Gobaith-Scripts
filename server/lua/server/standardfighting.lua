@@ -7,19 +7,8 @@
 local common = require("base.common")
 
 -- Lists with static values of the fighting system
-local content_fighting = require("content.fighting")
 local fighting = require("content.fighting")
 local M = {}
-
-local GetWrestlingGFX = fighting.GetWrestlingGFX
-local GetUnholyRace = fighting.GetUnholyRace
-local IsPlatedWeapon = fighting.IsPlatedWeapon
-local IsMeriniumPlatedWeapon = fighting.IsMeriniumPlatedWeapon
-local IsGoldPlatedWeapon = fighting.IsGoldPlatedWeapon
-local IsSilverPlatedWeapon = fighting.IsSilverPlatedWeapon
-local IsCopperPlatedWeapon = fighting.IsCopperPlatedWeapon
-local GetPlatedBaseWeapon = fighting.GetPlatedBaseWeapon
-local IsTrainingWeapon = fighting.IsTrainingWeapon
 
 --[[
     Main Attacking function
@@ -834,7 +823,7 @@ function CoupDeGrace( Attacker, Defender )
         return false;
     end
     local Hitpoints = Defender.Char:increaseAttrib("hitpoints",0);
-    if (( Attacker.AttackKind ~= 4 ) and ( Hitpoints == 1 ) and not IsTrainingWeapon( Attacker.WeaponItem.id )) then
+    if (( Attacker.AttackKind ~= 4 ) and ( Hitpoints == 1 ) and not fighting.IsTrainingWeapon( Attacker.WeaponItem.id )) then
         local gText = "seinem";
         local eText = "his";
         if (Attacker.Char:increaseAttrib("sex",0) == 1) then
@@ -865,7 +854,7 @@ end
 function ShowAttackGFX( Attacker, Defender )
     local PlayGfx = 0;
     if (Attacker.AttackKind == 0) then -- wrestling
-        world:gfx(GetWrestlingGFX( Attacker ),Attacker.Char.pos);
+        world:gfx(fighting.GetWrestlingGFX( Attacker ),Attacker.Char.pos);
     elseif (Attacker.AttackKind == 1) then -- slashing
         world:gfx(17,Attacker.Char.pos);
     elseif (Attacker.AttackKind == 2) then -- concussion
@@ -969,7 +958,7 @@ function HandleMovepoints( Attacker )
     if( Attacker.isWeapon )then
         weaponMovepoints = Attacker.Weapon.ActionPoints;
     else
-        weaponMovepoints = GetWrestlingMovepoints( Attacker.Race );
+        weaponMovepoints = fighting.GetWrestlingMovepoints( Attacker.Race );
     end
     local reduceMovepoints = weaponMovepoints * Attacker.APMod / Attacker.StiffnessMod / Attacker.HPMod * 0.7;
     Attacker.Char.movepoints=Attacker.Char.movepoints-math.floor( reduceMovepoints );
@@ -1098,7 +1087,7 @@ function Dodge( Attacker, Defender, Globals )
     if ( Attacker.isWeapon ) then
         AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, Attacker.Weapon.Accuracy * Attacker.WeaponQualMod );
     else
-        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, GetWrestlingAccuracy( Attacker.Race ) );
+        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, fighting.GetWrestlingAccuracy( Attacker.Race ) );
     end
 
     local DefenderTry = ( Defender.dodge*2 + Defender.tactics ) / 3 * common.ScaleUnlimited( 0.3, 1.2, ( Defender.perception + Defender.dexterity + Defender.agility*2 ) * 1.25 );
@@ -1194,7 +1183,7 @@ function Parry( Attacker, Defender, Globals )
     if ( Attacker.isWeapon ) then
         AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, Attacker.Weapon.Attack * Attacker.WeaponQualMod / 2 );
     else
-        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, GetWrestlingAttack( Attacker.Race ) / 2 );
+        AttackerTry = AttackerTry * common.Scale( 0.5, 1.5, fighting.GetWrestlingAttack( Attacker.Race ) / 2 );
     end
 
     local DefenderTry = ( Defender.parry*2 + Defender.tactics ) / 3 * Defender.AttribMod * Defender.HPMod * Defender.StiffnessMod;
@@ -1220,7 +1209,7 @@ function Parry( Attacker, Defender, Globals )
 
     local WeaponParry = 0;
     if (Attacker.AttackKind == 0) then
-        WeaponParry = GetWrestlingParry( Defender.Race );
+        WeaponParry = fighting.GetWrestlingParry( Defender.Race );
     else
         WeaponParry = ( math.max( LeftWeaponParry, RightWeaponParry )*2 + math.min( LeftWeaponParry, RightWeaponParry ) ) / 3;
     end
@@ -1295,25 +1284,25 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
         local ItemDura=CharStruct[FirstWeaponItem].quality - ( ItemQual * 100 );
 
         if (math.random(common.Scale(30,300,ItemQual*11))==1) then
-            if IsPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
+            if fighting.IsPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
                 ItemDura = ItemDura - 10;
             else
                 ItemDura = ItemDura - 1;
             end
             if (ItemDura<1) then
-                if IsPlatedWeapon( CharStruct[FirstWeaponItem].id ) and ( ItemQual > 1 ) then
+                if fighting.IsPlatedWeapon( CharStruct[FirstWeaponItem].id ) and ( ItemQual > 1 ) then
                     local CharWeakness = 0;
-                    if IsMeriniumPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
-                        CharWeakness = GetWeaknessMerinium( CharStruct.Race );
-                    elseif IsGoldPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
-                        CharWeakness = GetWeaknessGold( CharStruct.Race );
-                    elseif IsSilverPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
-                        CharWeakness = GetWeaknessSilver( CharStruct.Race );
-                    elseif IsCopperPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
-                        CharWeakness = GetWeaknessCopper( CharStruct.Race );
+                    if fighting.IsMeriniumPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
+                        CharWeakness = fighting.GetWeaknessMerinium( CharStruct.Race );
+                    elseif fighting.IsGoldPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
+                        CharWeakness = fighting.GetWeaknessGold( CharStruct.Race );
+                    elseif fighting.IsSilverPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
+                        CharWeakness = fighting.GetWeaknessSilver( CharStruct.Race );
+                    elseif fighting.IsCopperPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
+                        CharWeakness = fighting.GetWeaknessCopper( CharStruct.Race );
                     end
                     CharStruct[FirstWeaponItem].quality = ( ( ItemQual - 1 ) * 100 ) + 30;
-                    CharStruct[FirstWeaponItem].id = GetPlatedBaseWeapon( CharStruct[FirstWeaponItem].id );
+                    CharStruct[FirstWeaponItem].id = fighting.GetPlatedBaseWeapon( CharStruct[FirstWeaponItem].id );
                     world:changeItem( CharStruct[FirstWeaponItem] );
                     local SecWeaponItem = NameSec.."WeaponItem"
                     if ( CharStruct[SecWeaponItem].id == 228 ) then
@@ -1449,7 +1438,7 @@ function Damage( Attacker, Defender, Globals )
     if ( Attacker.isWeapon ) then
         AttackerTry = AttackerTry * common.Scale( 0.3, 1.8, Attacker.Weapon.Attack * Attacker.WeaponQualMod / 2 );
     else
-        AttackerTry = AttackerTry * common.Scale( 0.3, 1.8, GetWrestlingAttack( Attacker.Race ) / 2 );
+        AttackerTry = AttackerTry * common.Scale( 0.3, 1.8, fighting.GetWrestlingAttack( Attacker.Race ) / 2 );
     end
 
     local ArmorValue = 0;
@@ -1605,7 +1594,7 @@ function SpecialActiveItemEffects( Attacker, Defender, Globals )
     local PoisonStr = 0;
     if Attacker.isWeapon then
         if (Attacker.WeaponItem.id == 91) then -- Malachin Dolch
-            if GetUnholyRace(Defender.Race) then
+            if fighting.GetUnholyRace(Defender.Race) then
                 if (math.random(0,5) == 1) then
                     world:gfx(46,Defender.Char.pos);
                     Globals.Damage = Globals.Damage + ( Globals.Damage * 3 * Attacker.WeaponQualMod );
@@ -1688,14 +1677,14 @@ function SpecialActiveItemEffects( Attacker, Defender, Globals )
                     Globals.Damage = Globals.Damage + 200 * Attacker.WeaponQualMod;
                 end
             end
-        elseif IsMeriniumPlatedWeapon( Attacker.WeaponItem.id ) then
-            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * GetWeaknessMerinium(Defender.Race);
-        elseif IsCopperPlatedWeapon( Attacker.WeaponItem.id ) then
-            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * GetWeaknessCopper(Defender.Race);
-        elseif IsSilverPlatedWeapon( Attacker.WeaponItem.id ) then
-            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * GetWeaknessSilver(Defender.Race);
-        elseif IsGoldPlatedWeapon( Attacker.WeaponItem.id ) then
-            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * GetWeaknessGold(Defender.Race);
+        elseif fighting.IsMeriniumPlatedWeapon( Attacker.WeaponItem.id ) then
+            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * fighting.GetWeaknessMerinium(Defender.Race);
+        elseif fighting.IsCopperPlatedWeapon( Attacker.WeaponItem.id ) then
+            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * fighting.GetWeaknessCopper(Defender.Race);
+        elseif fighting.IsSilverPlatedWeapon( Attacker.WeaponItem.id ) then
+            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * fighting.GetWeaknessSilver(Defender.Race);
+        elseif fighting.IsGoldPlatedWeapon( Attacker.WeaponItem.id ) then
+            Globals.Damage = Globals.Damage + 100 * Attacker.WeaponQualMod * fighting.GetWeaknessGold(Defender.Race);
         end
     end
 
