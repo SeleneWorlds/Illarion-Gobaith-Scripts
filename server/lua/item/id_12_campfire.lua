@@ -22,7 +22,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if not common.CheckItem( User, SourceItem, 12 ) then
+    if not common.CheckItem( User, SourceItem, {12} ) then
         return
     end
     
