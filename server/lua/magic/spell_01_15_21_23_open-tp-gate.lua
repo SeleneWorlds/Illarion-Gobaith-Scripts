@@ -1,7 +1,7 @@
+local M = {}
+
 local common = require("base.common")
 local basics = require("magic.base.basics")
-
-local M = {}
 
 --[[
     Open a teleporter gate
@@ -91,23 +91,23 @@ basics.initRaceBoni(); -- Init or reset all preset racial boni values
 -- make sure that we remember that this is the original script loaded on this spell
 M.orgScript = M.Script
 
-function CastMagic(Caster,counter,param, ltstate)
-    DoTeleportSpell(Caster,common.GetFrontPosition(Caster), ltstate);
+function M.CastMagic(Caster,counter,param, ltstate)
+    M.DoTeleportSpell(Caster,common.GetFrontPosition(Caster), ltstate);
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
-    DoTeleportSpell(Caster,common.GetFrontPosition(TargetCharacter), ltstate);
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
+    M.DoTeleportSpell(Caster,common.GetFrontPosition(TargetCharacter), ltstate);
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
-    DoTeleportSpell(Caster,Targetpos, ltstate);
+function M.CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
+    M.DoTeleportSpell(Caster,Targetpos, ltstate);
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
-    DoTeleportSpell(Caster,TargetItem.pos, ltstate);
+function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
+    M.DoTeleportSpell(Caster,TargetItem.pos, ltstate);
 end
 
-function DoTeleportSpell(Caster,TargetPos, ltstate)
+function M.DoTeleportSpell(Caster,TargetPos, ltstate)
     if ((Caster.lastSpokenText~="JUS FHEN ANTH KEL") and
         (Caster.lastSpokenText~="#me beginnt mit einer mystischen Formel.") and
         (Caster.lastSpokenText~="#me starts with a mystical formula.")) then
@@ -167,7 +167,7 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
     end
 
 
-    if not ChoseAndOpenGate(TalkedText,TargetPos, CasterVal, Caster) then
+    if not M.ChoseAndOpenGate(TalkedText,TargetPos, CasterVal, Caster) then
         common.TempInformNLS( Caster,
         "Der Spruch gelingt doch das Portal schliest sich sogleich wieder.",
         "The spell succeeds but the portal closes again instandly.");
@@ -183,7 +183,7 @@ function DoTeleportSpell(Caster,TargetPos, ltstate)
     Caster:learn( 3, Skill.name, 2, Skill.max );
 end
 
-function ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
+function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
     local GateQual=0;
     if (string.find(Text,"[Tt]roll.*[Bb]ane")~=nil) then
         if (string.find(Text,"[Ll]ibrary")~=nil or string.find(Text,"[Bb]ibliothek")~=nil) then
@@ -441,32 +441,32 @@ end
 
 function M.CastMagic(...)
     activate()
-    return CastMagic(...)
+    return M.CastMagic(...)
 end
 
 function M.CastMagicOnCharacter(...)
     activate()
-    return CastMagicOnCharacter(...)
+    return M.CastMagicOnCharacter(...)
 end
 
 function M.CastMagicOnField(...)
     activate()
-    return CastMagicOnField(...)
+    return M.CastMagicOnField(...)
 end
 
 function M.CastMagicOnItem(...)
     activate()
-    return CastMagicOnItem(...)
+    return M.CastMagicOnItem(...)
 end
 
 function M.DoTeleportSpell(...)
     activate()
-    return DoTeleportSpell(...)
+    return M.DoTeleportSpell(...)
 end
 
 function M.ChoseAndOpenGate(...)
     activate()
-    return ChoseAndOpenGate(...)
+    return M.ChoseAndOpenGate(...)
 end
 
 return M

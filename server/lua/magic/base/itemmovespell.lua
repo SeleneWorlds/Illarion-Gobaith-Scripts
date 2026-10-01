@@ -1,6 +1,8 @@
+local M = {}
+
 local common = require("base.common")
 local base_basics = require("magic.base.basics")
-function DoItemMoveSpell(Caster, TargetPos, ltstate)
+function M.DoItemMoveSpell(Caster, TargetPos, ltstate)
     if ( ltstate == Action.abort ) then
         Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
         Caster:talkLanguage(CCharacter.say, CPlayer.english,"#me abruptly stops casting.");
@@ -85,46 +87,24 @@ function DoItemMoveSpell(Caster, TargetPos, ltstate)
     Caster:learn( 3, Skill.name, 2, Skill.max );
 end
 
-function CastMagic(Caster,counter,param,ltstate)
-    DoItemMoveSpell(Caster,common.GetFrontPosition(Caster),ltstate);
+function M.CastMagic(Caster,counter,param,ltstate)
+    M.DoItemMoveSpell(Caster,common.GetFrontPosition(Caster),ltstate);
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
     if TargetCharacter then
-        DoItemMoveSpell(Caster, TargetCharacter.pos, ltstate);
+        M.DoItemMoveSpell(Caster, TargetCharacter.pos, ltstate);
     else
-        CastMagic(Caster,counter,param,ltstate);
+        M.CastMagic(Caster,counter,param,ltstate);
     end
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
-    DoItemMoveSpell(Caster,Targetpos,ltstate);
+function M.CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
+    M.DoItemMoveSpell(Caster,Targetpos,ltstate);
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
-    DoItemMoveSpell(Caster,TargetItem.pos,ltstate);
-end
-
-local M = {}
-
-function M.DoItemMoveSpell(...)
-    return DoItemMoveSpell(...)
-end
-
-function M.CastMagic(...)
-    return CastMagic(...)
-end
-
-function M.CastMagicOnCharacter(...)
-    return CastMagicOnCharacter(...)
-end
-
-function M.CastMagicOnField(...)
-    return CastMagicOnField(...)
-end
-
-function M.CastMagicOnItem(...)
-    return CastMagicOnItem(...)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
+    M.DoItemMoveSpell(Caster,TargetItem.pos,ltstate);
 end
 
 return M

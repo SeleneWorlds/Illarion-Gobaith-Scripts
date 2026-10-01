@@ -1,6 +1,6 @@
-local basics = require("magic.base.basics")
-
 local M = {}
+
+local basics = require("magic.base.basics")
 
 -- EIGENTELEPORTATION
 -- Rune 1 & 9 & 15 & 20 & 23 JUS TAUR KEL ANTH LEV
@@ -8,7 +8,7 @@ local M = {}
 -- Punkt Zauber
 -- Teleport Zauber
 
-function InitSpell() -- Spell Grundeinstellungen
+function M.InitSpell() -- Spell Grundeinstellungen
     Difficult=20;
     NeededSkill="transformo";
 
@@ -78,24 +78,24 @@ function InitSpell() -- Spell Grundeinstellungen
     basics.SetRaceBoni(36,1.80);--lesserdemon
 end
 
-function CastMagic(Caster,counter,param, ltstate)
-    WriteTeleSpell(Caster, ltstate);
+function M.CastMagic(Caster,counter,param, ltstate)
+    M.WriteTeleSpell(Caster, ltstate);
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
-    WriteTeleSpell(Caster, ltstate);
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
+    M.WriteTeleSpell(Caster, ltstate);
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
-    WriteTeleSpell(Caster, ltstate);
+function M.CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
+    M.WriteTeleSpell(Caster, ltstate);
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
-    WriteTeleSpell(Caster, ltstate);
+function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
+    M.WriteTeleSpell(Caster, ltstate);
 end
 
-function WriteTeleSpell(Caster, ltstate )
-    InitSpell();
+function M.WriteTeleSpell(Caster, ltstate )
+    M.InitSpell();
     basics.InitializeHelpList();
     if ( ltstate == nil or ltstate == Action.success or timeToCast == 0 ) then
         local CasterVal=basics.CasterValue(Caster);
@@ -212,32 +212,32 @@ end
 
 function M.InitSpell(...)
     activate()
-    return InitSpell(...)
+    return M.InitSpell(...)
 end
 
 function M.CastMagic(...)
     activate()
-    return CastMagic(...)
+    return M.CastMagic(...)
 end
 
 function M.CastMagicOnCharacter(...)
     activate()
-    return CastMagicOnCharacter(...)
+    return M.CastMagicOnCharacter(...)
 end
 
 function M.CastMagicOnField(...)
     activate()
-    return CastMagicOnField(...)
+    return M.CastMagicOnField(...)
 end
 
 function M.CastMagicOnItem(...)
     activate()
-    return CastMagicOnItem(...)
+    return M.CastMagicOnItem(...)
 end
 
 function M.WriteTeleSpell(...)
     activate()
-    return WriteTeleSpell(...)
+    return M.WriteTeleSpell(...)
 end
 
 return M

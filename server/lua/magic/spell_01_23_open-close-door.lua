@@ -1,3 +1,5 @@
+local M = {}
+
 -- T�REN AUF UND ZU KLAPPEN
 -- RUNEN 1 & 23 KEL ANTH
 --INSERT INTO spells VALUES (2^0+2^22,0,'m_01_23.lua');
@@ -6,7 +8,7 @@
 
 local base_doors = require("base.doors")
 local common = require("base.common")
-function OpenCloseTarget(Caster,Item)
+function M.OpenCloseTarget(Caster,Item)
     if not common.IsLookingAt(Caster,Item.pos) then
 		common.TurnTo(Caster, Item.pos);
 	end
@@ -17,15 +19,15 @@ function OpenCloseTarget(Caster,Item)
         Caster:talk(CCharacter.say,"KEL ANTH");
         Caster.activeLanguage=Language;
         if base_doors.CloseDoor(Item) then
-            Succeed(Caster)
+            M.Succeed(Caster)
             common.InformNLS(Caster,"Von dem Windsto� getroffen klappt die T�r zu.","A mysterious breeze pushes the door close.");
         else
             local OpenDoor,OpenOK=base_doors.OpenDoor(Item);
             if OpenOK then
-                Succeed(Caster)
+                M.Succeed(Caster)
                 common.InformNLS(Caster,"Vom Wind gef�hrt schwingt die T�r auf.","A mysterious breeze pushes the door open.");
             elseif OpenDoor then
-                Succeed(Caster)
+                M.Succeed(Caster)
                 common.InformNLS(Caster,"Der Wind r�ttelt an der T�r, doch sie �ffnet sich nicht.","The wind tries to open the door, but the door doesn't open.");
             else
                 common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
@@ -36,7 +38,7 @@ function OpenCloseTarget(Caster,Item)
     end
 end
 
-function Succeed(Caster)
+function M.Succeed(Caster)
     if (LuaAnd(Caster:getQuestProgress(24),1) == 0 ) then
         Caster:learn(3,"transformo",1,20);
     end
@@ -44,21 +46,21 @@ function Succeed(Caster)
     world:makeSound(13,Caster.pos);
 end
 
-function CastMagic(Caster,counter,param)
+function M.CastMagic(Caster,counter,param)
     common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
     common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param)
+function M.CastMagicOnField(Caster,Targetpos,counter,param)
     common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
     if ( ltstate == nil or ltstate == Action.success ) then
-        OpenCloseTarget(Caster,TargetItem)
+        M.OpenCloseTarget(Caster,TargetItem)
     elseif ( ltstate == Action.none ) then
         Caster:startAction( 15, 21, 10, 0, 0);
         Caster:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt mit einer mystischen Formel.");
@@ -67,32 +69,6 @@ function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
         Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
         Caster:talkLanguage(CCharacter.say, CPlayer.english,"me stopps appruptly with the casting.");
     end
-end
-
-local M = {}
-
-function M.OpenCloseTarget(...)
-    return OpenCloseTarget(...)
-end
-
-function M.Succeed(...)
-    return Succeed(...)
-end
-
-function M.CastMagic(...)
-    return CastMagic(...)
-end
-
-function M.CastMagicOnCharacter(...)
-    return CastMagicOnCharacter(...)
-end
-
-function M.CastMagicOnField(...)
-    return CastMagicOnField(...)
-end
-
-function M.CastMagicOnItem(...)
-    return CastMagicOnItem(...)
 end
 
 return M

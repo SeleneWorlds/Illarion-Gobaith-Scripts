@@ -1,6 +1,8 @@
+local M = {}
+
 local common = require("base.common")
 local base_basics = require("magic.base.basics")
-function DoGFXSpell(Caster, TargetPos, ltstate)
+function M.DoGFXSpell(Caster, TargetPos, ltstate)
     if not ltstate then
         return false;
     end
@@ -57,7 +59,7 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
         return;
     end
 
-    local SpellRadius=CalcEffectRadius(CalcRadius(),CasterVal);
+    local SpellRadius=M.CalcEffectRadius(M.CalcRadius(),CasterVal);
 
     HittedPosition = {};
     if equapos(Caster.pos,TargetPos) and TargetEffects and (TargetEffects.minSkill.hitpoints < 0 or TargetEffects.minSkill.foodpoints < 0 or TargetEffects.minSkill.actionpoints < 0 or TargetEffects.minSkill.manapoints < 0 or TargetEffects.minSkill.poison > 0 ) then
@@ -95,14 +97,14 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
 
     local reduce = 0;
     for k, HitPosi in pairs(HittedPosition) do
-        retVal = HitOnPosition( Caster, CasterVal, HitPosi, 1-reduce, 0 );
+        retVal = M.HitOnPosition( Caster, CasterVal, HitPosi, 1-reduce, 0 );
         if not HittedSomeone then
             HittedSomeone = retVal;
         end
         if SpellRadius > 0 then
             for i=1,SpellRadius do
                 common.CreateCircle(HitPosi,i,function( posi )
-                    local retVal = HitOnPosition( Caster, CasterVal, posi, 1-0.15*i-reduce, i );
+                    local retVal = M.HitOnPosition( Caster, CasterVal, posi, 1-0.15*i-reduce, i );
                     if not HittedSomeone then
                         HittedSomeone = retVal;
                     end
@@ -121,9 +123,9 @@ function DoGFXSpell(Caster, TargetPos, ltstate)
     end
 end
 
-function HitOnPosition( Caster, CasterValue, posi, percent, radius )
+function M.HitOnPosition( Caster, CasterValue, posi, percent, radius )
     local showEffects = false;
-    showEffects = removeItemFromMap(SpellEffects[radius].removeItem, posi, base_basics.CasterValue );
+    showEffects = M.removeItemFromMap(SpellEffects[radius].removeItem, posi, base_basics.CasterValue );
     if not world:isCharacterOnField(posi) then
         if SpellEffects[radius] ~= nil and ( showEffects or not SpellEffects.justAtHit ) then
             base_basics.performGFX( SpellEffects[radius].gfx, posi );
@@ -148,13 +150,13 @@ function HitOnPosition( Caster, CasterValue, posi, percent, radius )
     end
 
     if ( MagicRes <= base_basics.CasterValue ) then
-        showEffects = TargetHitting( Caster, HitChar, base_basics.CasterValue, MagicRes, percent );
+        showEffects = M.TargetHitting( Caster, HitChar, base_basics.CasterValue, MagicRes, percent );
         if SpellEffects[radius] ~= nil and ( showEffects or not SpellEffects.justAtHit ) then
             base_basics.performGFX( SpellEffects[radius].gfx, posi );
             base_basics.performSFX( SpellEffects[radius].sfx, posi );
         end
     elseif ( MagicRes > base_basics.CasterValue * 2 ) then
-        showEffects = TargetHitting( Caster, Caster, base_basics.CasterValue, base_basics.MagicResistence( Caster ), percent );
+        showEffects = M.TargetHitting( Caster, Caster, base_basics.CasterValue, base_basics.MagicResistence( Caster ), percent );
         world:gfx( 10, posi );
         if SpellEffects[radius] ~= nil and ( showEffects or not SpellEffects.justAtHit ) then
             base_basics.performGFX( SpellEffects[radius].gfx, Caster.pos );
@@ -170,7 +172,7 @@ function HitOnPosition( Caster, CasterValue, posi, percent, radius )
     return true;
 end
 
-function TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
+function M.TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
     if not TargetEffects then
         return false;
     end
@@ -212,7 +214,7 @@ function TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
         local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.foodpoints, TargetEffects.maxSkill.foodpoints, Value));
         if (AttribEffect~=0) then
             while( AttribEffect ~= 0 ) do
-                Target:increaseAttrib( "foodlevel", Limit(AttribEffect,-10000,10000) );
+                Target:increaseAttrib( "foodlevel", common.Limit(AttribEffect,-10000,10000) );
                 AttribEffect = AttribEffect - common.Limit(AttribEffect,-10000,10000);
             end
         end
@@ -268,7 +270,7 @@ function TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
     return true;
 end
 
-function removeItemFromMap( ItemData, Target, CasterVal )
+function M.removeItemFromMap( ItemData, Target, CasterVal )
     if not ItemData then
         return false;
     end
@@ -363,7 +365,7 @@ function removeItemFromMap( ItemData, Target, CasterVal )
     return true;
 end
 
-function CalcRadius()
+function M.CalcRadius()
     local Radius = 0;
     repeat
         if (SpellEffects[Radius+1] == nil) then
@@ -373,70 +375,28 @@ function CalcRadius()
     until( false );
 end
 
-function CalcEffectRadius(Radius,CasterTry)
+function M.CalcEffectRadius(Radius,CasterTry)
     return common.Limit( math.floor( Radius * CasterTry / Skill.max + GemBonis.Radius ), 0, Radius );
 end
 
-function CastMagic(Caster,counter,param,ltstate)
-    DoGFXSpell(Caster,Caster.pos, ltstate);
+function M.CastMagic(Caster,counter,param,ltstate)
+    M.DoGFXSpell(Caster,Caster.pos, ltstate);
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
     if TargetCharacter then
-        DoGFXSpell(Caster, TargetCharacter.pos, ltstate);
+        M.DoGFXSpell(Caster, TargetCharacter.pos, ltstate);
     else
-        CastMagic(Caster,counter,param,ltstate);
+        M.CastMagic(Caster,counter,param,ltstate);
     end
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
-    DoGFXSpell(Caster,Targetpos, ltstate);
+function M.CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
+    M.DoGFXSpell(Caster,Targetpos, ltstate);
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
-    DoGFXSpell(Caster,TargetItem.pos,ltstate );
-end
-
-local M = {}
-
-function M.DoGFXSpell(...)
-    return DoGFXSpell(...)
-end
-
-function M.HitOnPosition(...)
-    return HitOnPosition(...)
-end
-
-function M.TargetHitting(...)
-    return TargetHitting(...)
-end
-
-function M.removeItemFromMap(...)
-    return removeItemFromMap(...)
-end
-
-function M.CalcRadius(...)
-    return CalcRadius(...)
-end
-
-function M.CalcEffectRadius(...)
-    return CalcEffectRadius(...)
-end
-
-function M.CastMagic(...)
-    return CastMagic(...)
-end
-
-function M.CastMagicOnCharacter(...)
-    return CastMagicOnCharacter(...)
-end
-
-function M.CastMagicOnField(...)
-    return CastMagicOnField(...)
-end
-
-function M.CastMagicOnItem(...)
-    return CastMagicOnItem(...)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
+    M.DoGFXSpell(Caster,TargetItem.pos,ltstate );
 end
 
 return M

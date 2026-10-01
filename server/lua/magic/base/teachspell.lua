@@ -34,7 +34,7 @@ function M.DoTeachSpell(TeachingChar,StudentChar)
         return;
     end
 
-    if not LTERuneLock( StudentChar ) then
+    if not M.LTERuneLock( StudentChar ) then
         common.TempInformNLS(TeachingChar,
         "Du kannst diesem Sch�ler im Augenblick nichts beibringen. Er ist noch nicht bereit dazu.",
         "You can't teach this student anything at the moment. He is not ready yet.");
@@ -47,13 +47,13 @@ function M.DoTeachSpell(TeachingChar,StudentChar)
     end
 
     if Teacher.attribsum then
-        if Teacher.attribsum > GetAttributeSum( TeachingChar ) then
+        if Teacher.attribsum > M.GetAttributeSum( TeachingChar ) then
             common.TempInformNLS(TeachingChar,
             "Du bist nicht f�hig diese Rune zu lehren.",
             "You are not able to teach this rune.");
             return;
         end
-    elseif GetAttributeSum( TeachingChar ) < 0 then
+    elseif M.GetAttributeSum( TeachingChar ) < 0 then
         common.TempInformNLS(TeachingChar,
         "Du bist nicht f�hig zu lehren.",
         "You are not able to teach.");
@@ -61,7 +61,7 @@ function M.DoTeachSpell(TeachingChar,StudentChar)
     end
 
     if Teacher.skill then
-        if Teacher.skill.value > GetSkillValue( TeachingChar, Teacher.skill.name ) then
+        if Teacher.skill.value > M.GetSkillValue( TeachingChar, Teacher.skill.name ) then
             common.TempInformNLS(TeachingChar,
             "Du bist noch nicht f�hig diese Rune zu lehren.",
             "You are not able yet to teach this rune.");
@@ -70,7 +70,7 @@ function M.DoTeachSpell(TeachingChar,StudentChar)
     end
 
     if Student.attribsum then
-        if Student.attribsum > GetAttributeSum( StudentChar ) then
+        if Student.attribsum > M.GetAttributeSum( StudentChar ) then
             common.TempInformNLS(StudentChar,
             "Du bist nicht f�hig diese Rune zu lehren.",
             "You are not able to teach this rune.");
@@ -79,7 +79,7 @@ function M.DoTeachSpell(TeachingChar,StudentChar)
             "Your student ist not able to learn this rune.");
             return;
         end
-    elseif GetAttributeSum( StudentChar ) < 0 then
+    elseif M.GetAttributeSum( StudentChar ) < 0 then
         common.TempInformNLS(StudentChar,
         "Du bist nicht f�hig Magie zu erlernen.",
         "You are not able to learn magic.");
@@ -90,7 +90,7 @@ function M.DoTeachSpell(TeachingChar,StudentChar)
     end
 
     if Student.skill then
-        if Student.skill.value > GetSkillValue( StudentChar, Student.skill.name ) then
+        if Student.skill.value > M.GetSkillValue( StudentChar, Student.skill.name ) then
             common.TempInformNLS(StudentChar,
             "Du bist noch nicht f�hig diese Rune zu lehren.",
             "You are not able yet to learn this rune.");
@@ -126,15 +126,15 @@ function M.DoTeachSpell(TeachingChar,StudentChar)
     "Du f�hlst wie die Kraft der Rune "..Rune.name.." deinen K�rper durchflutet.",
     "You feel how the power of the rune "..Rune.name.." flows thougth your body.");
 
-    logToFile_magic(os.date()..": "..TeachingChar.name.." gave rune "..Rune.name.." to "..StudentChar.name.."\n");
+    M.logToFile_magic(os.date()..": "..TeachingChar.name.." gave rune "..Rune.name.." to "..StudentChar.name.."\n");
 
-    LTELockRune( StudentChar );
+    M.LTELockRune( StudentChar );
 
     StudentChar:teachMagic(0,Rune.value);
 
     Students[TeachingChar.id + StudentChar.id] = nil;
 
-    if not TeachingRoom( StudentChar.pos ) then
+    if not M.TeachingRoom( StudentChar.pos ) then
         if Teacher.skill then
             if (Teacher.skill.name~="all") then
                 TeachingChar:increaseSkill(3,Teacher.skill.name,-1);
@@ -251,9 +251,9 @@ end
 
 function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
     if TargetCharacter then
-        DoTeachSpell(Caster, TargetCharacter, ltstate);
+        M.DoTeachSpell(Caster, TargetCharacter, ltstate);
     else
-        CastMagic(Caster,counter,param,ltstate);
+        M.CastMagic(Caster,counter,param,ltstate);
     end
 end
 

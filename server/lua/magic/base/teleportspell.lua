@@ -1,6 +1,8 @@
+local M = {}
+
 local common = require("base.common")
 local base_basics = require("magic.base.basics")
-function DoTeleSpell(Caster, TargetPos, ltstate)
+function M.DoTeleSpell(Caster, TargetPos, ltstate)
     if ( ltstate == Action.abort ) then
         Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
         Caster:talkLanguage(CCharacter.say, CPlayer.english,"#me abruptly stops casting.");
@@ -82,44 +84,22 @@ function DoTeleSpell(Caster, TargetPos, ltstate)
     Caster:learn( 3, Skill.name, 2, Skill.max );
 end
 
-function CastMagic(Caster,counter,param, ltstate)
-    DoTeleSpell(Caster,common.GetFrontPosition( Caster ), ltstate);
+function M.CastMagic(Caster,counter,param, ltstate)
+    M.DoTeleSpell(Caster,common.GetFrontPosition( Caster ), ltstate);
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
     common.TempInformNLS( Caster,
     "Es ist nicht sinnvoll sich auf ein anderes Lebewesen zu teleportieren.",
     "Its not useful to teleport on another entity" );
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
-    DoTeleSpell(Caster,Targetpos, ltstate);
+function M.CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
+    M.DoTeleSpell(Caster,Targetpos, ltstate);
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
-    DoTeleSpell(Caster,TargetItem.pos, ltstate);
-end
-
-local M = {}
-
-function M.DoTeleSpell(...)
-    return DoTeleSpell(...)
-end
-
-function M.CastMagic(...)
-    return CastMagic(...)
-end
-
-function M.CastMagicOnCharacter(...)
-    return CastMagicOnCharacter(...)
-end
-
-function M.CastMagicOnField(...)
-    return CastMagicOnField(...)
-end
-
-function M.CastMagicOnItem(...)
-    return CastMagicOnItem(...)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
+    M.DoTeleSpell(Caster,TargetItem.pos, ltstate);
 end
 
 return M

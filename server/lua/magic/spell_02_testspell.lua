@@ -1,10 +1,12 @@
+local M = {}
+
 -- TestScript f�r neues Magie System
 -- Rune 2 - RA
 -- INSERT INTO spells VALUES (1,0,'m_01_testspell.lua');
 -- Fl�chen Zauber
 -- Effekt Zauber
 
-function CastMagic(Caster,counter,param,ltstate)
+function M.CastMagic(Caster,counter,param,ltstate)
 	Caster:inform("moep");
 	
     find, magicEffect =  Caster.effects:find(600);
@@ -26,31 +28,13 @@ function CastMagic(Caster,counter,param,ltstate)
 	
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
+function M.CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
-end
-
-local M = {}
-
-function M.CastMagic(...)
-    return CastMagic(...)
-end
-
-function M.CastMagicOnCharacter(...)
-    return CastMagicOnCharacter(...)
-end
-
-function M.CastMagicOnField(...)
-    return CastMagicOnField(...)
-end
-
-function M.CastMagicOnItem(...)
-    return CastMagicOnItem(...)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 end
 
 return M

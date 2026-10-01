@@ -1,6 +1,8 @@
+local M = {}
+
 local common = require("base.common")
 local base_basics = require("magic.base.basics")
-function DoItemSpell(Caster, TargetPos, ltstate)
+function M.DoItemSpell(Caster, TargetPos, ltstate)
     Hitted_already = {};
     if ( ltstate == Action.abort ) then
         Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
@@ -55,7 +57,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
     end
 
     if Spot then
-        if Spot.item and createItemOnMap( Spot.item, TargetPos, CasterVal ) then
+        if Spot.item and M.createItemOnMap( Spot.item, TargetPos, CasterVal ) then
             base_basics.performGFX( Spot.gfx, TargetPos );
             base_basics.performSFX( Spot.sfx, TargetPos );
         end
@@ -63,7 +65,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
 
     if Wall then
         common.CreateTangentLine( Caster.pos, TargetPos, math.floor(common.Scale( Wall.minSkill.armlength, Wall.maxSkill.armlength, CasterVal )), function(posi)
-            if Wall.item and createItemOnMap( Wall.item, posi, CasterVal ) then
+            if Wall.item and M.createItemOnMap( Wall.item, posi, CasterVal ) then
                 base_basics.performGFX( Wall.gfx, posi );
                 base_basics.performSFX( Wall.sfx, posi );
             end
@@ -72,7 +74,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
 
     if Circle then
         common.CreateCircle( Caster.pos, Caster:distanceMetricToPosition( TargetPos ), function(posi)
-            if Circle.item and createItemOnMap( Circle.item, posi, CasterVal ) then
+            if Circle.item and M.createItemOnMap( Circle.item, posi, CasterVal ) then
                 base_basics.performGFX( Circle.gfx, posi );
                 base_basics.performSFX( Circle.sfx, posi );
             end
@@ -87,7 +89,7 @@ function DoItemSpell(Caster, TargetPos, ltstate)
 end
 
 
-function createItemOnMap( ItemData, Target, CasterVal )
+function M.createItemOnMap( ItemData, Target, CasterVal )
     if world:isCharacterOnField( Target ) then
         local TargetChar = world:getCharacterOnField( Target );
         CasterVal = CasterVal - base_basics.MagicResistence( TargetChar );
@@ -122,7 +124,7 @@ function createItemOnMap( ItemData, Target, CasterVal )
     return true;
 end
 
-function removeItemFromMap( ItemData, Target, CasterVal )
+function M.removeItemFromMap( ItemData, Target, CasterVal )
     if not world:isItemOnField( Target ) then
         return false;
     end
@@ -198,54 +200,24 @@ function removeItemFromMap( ItemData, Target, CasterVal )
     return true;
 end
 
-function CastMagic(Caster,counter,param, ltstate)
-    DoItemSpell(Caster,common.GetFrontPosition(Caster), ltstate);
+function M.CastMagic(Caster,counter,param, ltstate)
+    M.DoItemSpell(Caster,common.GetFrontPosition(Caster), ltstate);
 end
 
-function CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
+function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param, ltstate)
     if TargetCharacter then
-        DoItemSpell(Caster, TargetCharacter.pos, ltstate);
+        M.DoItemSpell(Caster, TargetCharacter.pos, ltstate);
     else
-        CastMagic(Caster,counter,param,ltstate);
+        M.CastMagic(Caster,counter,param,ltstate);
     end
 end
 
-function CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
-    DoItemSpell(Caster,Targetpos, ltstate);
+function M.CastMagicOnField(Caster,Targetpos,counter,param, ltstate)
+    M.DoItemSpell(Caster,Targetpos, ltstate);
 end
 
-function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
-    DoItemSpell(Caster,TargetItem.pos, ltstate);
-end
-
-local M = {}
-
-function M.DoItemSpell(...)
-    return DoItemSpell(...)
-end
-
-function M.createItemOnMap(...)
-    return createItemOnMap(...)
-end
-
-function M.removeItemFromMap(...)
-    return removeItemFromMap(...)
-end
-
-function M.CastMagic(...)
-    return CastMagic(...)
-end
-
-function M.CastMagicOnCharacter(...)
-    return CastMagicOnCharacter(...)
-end
-
-function M.CastMagicOnField(...)
-    return CastMagicOnField(...)
-end
-
-function M.CastMagicOnItem(...)
-    return CastMagicOnItem(...)
+function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
+    M.DoItemSpell(Caster,TargetItem.pos, ltstate);
 end
 
 return M

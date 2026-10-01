@@ -1,6 +1,8 @@
+local M = {}
+
 local common = require("base.common")
 local lookat_unique = require("content.lookat.unique")
-function initRaceBoni()
+function M.initRaceBoni()
     -- Default Values for racial boni related magic
     -- First value is the boni on offensive magic
     -- Second value is the boni on defending magic
@@ -55,14 +57,14 @@ function initRaceBoni()
     RaceBonis[50] = { 1.80, 0.30 }; --Pack mule
     RaceBonis[53] = { 1.80, 5.00 }; --Icedragon
 end
-initRaceBoni();
+M.initRaceBoni();
 lookat_unique.itemList();
 
-function SetRaceBoni( Race, offValue, defValue)
+function M.SetRaceBoni( Race, offValue, defValue)
     RaceBonis[Race]={offValue, defValue};
 end
 
-function GetOffensiveRaceBoni( Race )
+function M.GetOffensiveRaceBoni( Race )
     if not RaceBonis[Race] then
         return 1;
     end
@@ -72,7 +74,7 @@ function GetOffensiveRaceBoni( Race )
     return RaceBonis[Race][1];
 end
 
-function GetDefensiveRaceBoni( Race )
+function M.GetDefensiveRaceBoni( Race )
     if not RaceBonis[Race] then
         return 1;
     end
@@ -82,18 +84,18 @@ function GetDefensiveRaceBoni( Race )
     return RaceBonis[Race][2];
 end
 
-function MagicResistence( Char )
+function M.MagicResistence( Char )
     local CInt   = Char:increaseAttrib("intelligence",0);
     local CEss   = Char:increaseAttrib("essence",0);
-    local CSkill = Char:getSkill("magic resistance") * GetDefensiveRaceBoni( Char:get_race() );
-    CSkill = common.Limit( CSkill, 0, MaximalMagicResistance( Char ) );
+    local CSkill = Char:getSkill("magic resistance") * M.GetDefensiveRaceBoni( Char:get_race() );
+    CSkill = common.Limit( CSkill, 0, M.MaximalMagicResistance( Char ) );
 
     local ResTry=common.Limit(CSkill * ( ( CEss*3 + CInt*2 ) / 63 ), 0, 100 );
 
     return common.Limit( math.floor( ResTry * math.random(8,12)/10 ), 0, 100 );
 end
 
-function CasterValue( Char )
+function M.CasterValue( Char )
     local CInt   = Char:increaseAttrib("intelligence",0);
     local CWil   = Char:increaseAttrib("willpower",0);
     local CEss   = Char:increaseAttrib("essence",0);
@@ -103,9 +105,9 @@ function CasterValue( Char )
     end
 
     local CSkill = Char:getSkill( Skill.name );
-    CSkill = CSkill * GetOffensiveRaceBoni( Char:get_race() ) + GemBonis.Skill;
+    CSkill = CSkill * M.GetOffensiveRaceBoni( Char:get_race() ) + GemBonis.Skill;
 
-    local Boni=100+(AddBonus(Char,HelpList,HelpLBon)/2);
+    local Boni=100+(M.AddBonus(Char,HelpList,HelpLBon)/2);
     Boni = Boni / 100;
 
     local CasterTry = CSkill * ( ( CEss + CWil/2 + CInt*2 ) / 63 );
@@ -115,14 +117,14 @@ function CasterValue( Char )
     return CasterTry;
 end
 
-function SayRunes( Char )
+function M.SayRunes( Char )
     local Language=Char.activeLanguage;
     Char.activeLanguage=10;
     Char:talk(CCharacter.whisper,Settings.Runes);
     Char.activeLanguage=Language;
 end
 
-function CheckAndReduceRequirements( Char, CasterValue )
+function M.CheckAndReduceRequirements( Char, CasterValue )
     if not CasterValue then
         CasterValue = 0;
     end
@@ -205,7 +207,7 @@ function CheckAndReduceRequirements( Char, CasterValue )
     return true;
 end
 
-function InitializeHelpList()
+function M.InitializeHelpList()
     local PraeList={};
     local PraeLBon={};
     HelpList={};
@@ -309,9 +311,9 @@ function InitializeHelpList()
         end
     end
 end
-InitializeHelpList();
+M.InitializeHelpList();
 
-function AddBonus(User,ItemList,ItemBoniList)   -- Adds bonus/malus for items together
+function M.AddBonus(User,ItemList,ItemBoniList)   -- Adds bonus/malus for items together
     --User:inform("AddBonus los");
     local Bonus=0;
     local SearchAt="";
@@ -334,7 +336,7 @@ function AddBonus(User,ItemList,ItemBoniList)   -- Adds bonus/malus for items to
     return Bonus
 end
 
-function actionDisturbed(Caster,disturber)
+function M.actionDisturbed(Caster,disturber)
     local RItem = disturber:getItemAt(CCharacter.right_tool); -- Item in der Rechten Hand
     local LItem = disturber:getItemAt(CCharacter.left_tool); -- Item in der Linken Hand
     local DefrFound,DefRightWeapon = world:getWeaponStruct(RItem.id);   -- Waffenwerte Rechte Waffe
@@ -352,7 +354,7 @@ function actionDisturbed(Caster,disturber)
         local CSkill = Caster:getSkill(Skill.name);
 
         local contry = (CSkill-Skill.min)*common.Scale( 5, 12, (CIntel*2+CWill*3) ) / 10;
-        if (math.random(0,100)<(conctry * HPMod(Caster:increaseAttrib("hitpoints",0)))) then
+        if (math.random(0,100)<(conctry * M.HPMod(Caster:increaseAttrib("hitpoints",0)))) then
             return false
         else
             return true
@@ -363,11 +365,11 @@ function actionDisturbed(Caster,disturber)
 end
 
 -- Erstellt einen Wert zwischen 0 und 1 abh�ngig der Hitpoints eines Charakters
-function HPMod(Hitpoints)
+function M.HPMod(Hitpoints)
     return math.min(100,math.max(0,math.floor(45.2855+math.sin(0.0003*Hitpoints-1.5161)+55.2571)))/100;
 end
 
-function gemBonis( Char )
+function M.gemBonis( Char )
     GemBonis = {
         ["Skill"] = 0,
         ["Time"] = 0,
@@ -405,7 +407,7 @@ function gemBonis( Char )
 	end
 end
 
-function GenderMessage( Char )
+function M.GenderMessage( Char )
     if (Char:increaseAttrib("sex",0) == 0) then
         return "seine", "his";
     else
@@ -413,12 +415,12 @@ function GenderMessage( Char )
     end
 end;
 
-function MaximalMagicResistance( Char )
+function M.MaximalMagicResistance( Char )
     local maxMagicResist = 1.4 * ( Char:increaseAttrib("intelligence",0) + ( Char:increaseAttrib("willpower",0) * 1.75 ) + ( Char:increaseAttrib("essence",0) * 2 ) ) + 5;
     return common.Limit( maxMagicResist, 0, 100 );
 end
 
-function performGFX( gfxID, posi )
+function M.performGFX( gfxID, posi )
     if (gfxID == nil) then
         return;
     end
@@ -433,7 +435,7 @@ function performGFX( gfxID, posi )
     end
 end
 
-function performTile( TileID, posi )
+function M.performTile( TileID, posi )
     if (TileID == nil) then
         return;
     end
@@ -456,7 +458,7 @@ function performTile( TileID, posi )
 end
 
 
-function performSFX( sfxID, posi )
+function M.performSFX( sfxID, posi )
     if (sfxID == nil) then
         return;
     end
@@ -471,7 +473,7 @@ function performSFX( sfxID, posi )
     end
 end
 
-function SpawnArea( monID, posi )
+function M.SpawnArea( monID, posi )
     if (monID == nil) then
         return;
     end
@@ -492,92 +494,10 @@ function SpawnArea( monID, posi )
 	end
 end
 
-function loadCorrectDefScript()
+function M.loadCorrectDefScript()
     if Script ~= orgScript then
         dofile( orgScript );
     end
-end
-
-local M = {}
-
-function M.initRaceBoni(...)
-    return initRaceBoni(...)
-end
-
-function M.SetRaceBoni(...)
-    return SetRaceBoni(...)
-end
-
-function M.GetOffensiveRaceBoni(...)
-    return GetOffensiveRaceBoni(...)
-end
-
-function M.GetDefensiveRaceBoni(...)
-    return GetDefensiveRaceBoni(...)
-end
-
-function M.MagicResistence(...)
-    return MagicResistence(...)
-end
-
-function M.CasterValue(...)
-    return CasterValue(...)
-end
-
-function M.SayRunes(...)
-    return SayRunes(...)
-end
-
-function M.CheckAndReduceRequirements(...)
-    return CheckAndReduceRequirements(...)
-end
-
-function M.InitializeHelpList(...)
-    return InitializeHelpList(...)
-end
-
-function M.AddBonus(...)
-    return AddBonus(...)
-end
-
-function M.actionDisturbed(...)
-    return actionDisturbed(...)
-end
-
-function M.HPMod(...)
-    return HPMod(...)
-end
-
-function M.gemBonis(...)
-    return gemBonis(...)
-end
-
-function M.GenderMessage(...)
-    return GenderMessage(...)
-end
-
-function M.MaximalMagicResistance(...)
-    return MaximalMagicResistance(...)
-end
-
-function M.performGFX(...)
-    return performGFX(...)
-end
-
-function M.performTile(...)
-    return performTile(...)
-end
-
-function M.performSFX(...)
-    return performSFX(...)
-end
-
-function M.SpawnArea(...)
-    return SpawnArea(...)
-end
-
-function M.loadCorrectDefScript(...)
-    return loadCorrectDefScript(...)
 end
 
 magic = magic or {}
