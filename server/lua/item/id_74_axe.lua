@@ -240,7 +240,7 @@ end
 function M.Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
     local Skill = User:getSkill("lumberjacking");
 	-- Random Events
-	if (not woodchopping:FindRandomItem(User)) then
+	if (not gathering.woodchopping:FindRandomItem(User)) then
 		return;
 	end
     if (logs[ TargetItem.id ] == nil) then
