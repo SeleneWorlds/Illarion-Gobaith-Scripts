@@ -10,6 +10,7 @@ local general_wood = require("item.general.wood")
 local common = require("base.common")
 local gathering = require("content.gathering")
 local base_lookat = require("base.lookat")
+local fishing = require("craft.gathering.fishing")
 
 function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate)
 	gathering.InitGathering();
