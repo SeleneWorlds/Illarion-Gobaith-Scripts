@@ -1,6 +1,5 @@
 local parent = require("item.general.wood")
 local M = {}
-local UseItemWithField, UseItem, LookAtItem
 
 -- Angeln mit neuem Collecting-System
 -- Blay09
@@ -106,9 +105,9 @@ end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if ((TargetItem.id==0) or (TargetItem==nil)) then
-        UseItemWithField(User,SourceItem,common.GetFrontPosition(User),counter,param, ltstate);
+        M.UseItemWithField(User,SourceItem,common.GetFrontPosition(User),counter,param, ltstate);
     else
-        UseItemWithField(User,SourceItem,TargetItem.pos,counter,param, ltstate);
+        M.UseItemWithField(User,SourceItem,TargetItem.pos,counter,param, ltstate);
     end
 end
 

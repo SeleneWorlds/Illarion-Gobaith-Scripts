@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, LookAtItem
 
 local base_books = require("base.books")
 -- UPDATE common SET com_script='item.book.id_106_plants' WHERE com_itemid = 106;

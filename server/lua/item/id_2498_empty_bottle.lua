@@ -1,5 +1,4 @@
 local M = {}
-local UseItemWithField, UseItem
 
 -- Fairy's Tears oder Trolls Blood erhalten (Quellwasser)
 -- Alternativ: Gesegnetes Wasser von Irundar erhalten

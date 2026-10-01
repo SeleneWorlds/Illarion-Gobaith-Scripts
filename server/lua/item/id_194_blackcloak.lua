@@ -1,6 +1,5 @@
 local parent = require("item.priest.cloth")
 local M = {}
-local MoveItemAfterMove
 
 -- UPDATE common SET com_script='item.id_194_blackcloak' WHERE com_itemid IN (194);
 

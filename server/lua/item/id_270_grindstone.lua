@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, CheckSuccess, GenWorkTime
 
 -- Schleifstein ( 270 )
 
@@ -79,7 +78,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     for i, Gem in GemList do -- Edelsteine Absuchen
         if (User:countItemAt("belt",i)>0) then -- Edelsteine gefunden
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
-                User:startAction( GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Edelsteine zu schleifen.");
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to cut gemstones.");
                 return                
@@ -91,7 +90,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 return
             end
             User:eraseItem(i,1); -- Rohen Edelstein entfernen
-            if CheckSuccess(User,Gem[1]) then -- Erfolgspr�fung
+            if M.CheckSuccess(User,Gem[1]) then -- Erfolgspr�fung
                 local notCreated = User:createItem(Gem[2],1,333,0); -- geschliffenen Edelstein erstellen
                 if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
                     world:createItemFromId( Gem[2], notCreated, User.pos, true, 333 ,0);
@@ -99,13 +98,13 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                     "Du kannst nichts mehr halten.",
                     "You can't carry any more.");
                 else
-                    User:startAction( GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
+                    User:startAction( M.GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
                 end
             else -- kein Erfolg
                 common.InformNLS(User,
                 "Der "..world:getItemName(Gem[2],0).." zerbr�ckelt in deinen H�nden",
                 "The "..world:getItemName(Gem[2],1).." breaks in your hands.");
-                User:startAction( GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
             end
             User:learn(2,"gemcutting",2,100); -- Lernen
             common.GetHungry( User, 200 ); -- Hunger

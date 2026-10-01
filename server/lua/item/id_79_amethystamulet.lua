@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem, UseItem
 
 --For the 'The Library' quest - Llama
 

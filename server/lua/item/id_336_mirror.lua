@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- Script muss noch in die Datenbank eingef�gt werden (Handspiegel, ID 336)
 

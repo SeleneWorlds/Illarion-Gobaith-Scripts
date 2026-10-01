@@ -1,5 +1,4 @@
 local M = {}
-local MoveItemAfterMove
 
 -- UPDATE common SET com_script='item.id_456_snowball' WHERE com_itemid IN (456);
 

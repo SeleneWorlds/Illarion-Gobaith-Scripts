@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, LookAtItem
 
 local base_books = require("base.books")
 local books_about_humans = require("content.books.about_humans")

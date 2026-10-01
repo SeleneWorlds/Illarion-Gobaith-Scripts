@@ -1,6 +1,5 @@
 local parent = require("item.general.wood")
 local M = {}
-local UseItem, LookAtItem
 
 -- I_2744_pfeife.lua
 --

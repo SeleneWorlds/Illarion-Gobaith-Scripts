@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- Glasschmelzofen
 
@@ -56,7 +55,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         toolFound = true;
         if ((User:countItemAt("belt",316)>0) and (User:countItemAt("belt",314)>0)) then
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
-                User:startAction( GenWorkTime(User,"glass blowing"), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,"glass blowing"), 0, 0, 0, 0 );
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Glas zu schmelzen.");
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt glass.");
                 return                
@@ -99,7 +98,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
-                User:startAction( GenWorkTime(User,"glass blowing"), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,"glass blowing"), 0, 0, 0, 0 );
             end
             local Tool = User:getItemAt(CCharacter.left_tool); -- Item in Linker Hand auslesen
             if ((Tool == nil) or (Tool.id ~= 311)) then -- Wenn das Item nicht die Zange ist
@@ -124,7 +123,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ((User:countItemAt("body",734)~=0) and not didSomething) then
         if (User:countItemAt("belt",736)>4) then
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
-                User:startAction( GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Ziegel zu brennen.");
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.");
                 return                
@@ -158,14 +157,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
-                User:startAction( GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
             end
             User:learn(2,"fireing bricks",2,100);
             common.GetHungry( User, 300 );
             didSomething = true;
         elseif (User:countItemAt("belt",26)>0) then
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
-                User:startAction( GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Ziegel zu brennen.");
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.");
                 return              
@@ -199,7 +198,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
-                User:startAction( GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
             end
             User:learn(2,"fireing bricks",2,100);
             common.GetHungry( User, 200 );

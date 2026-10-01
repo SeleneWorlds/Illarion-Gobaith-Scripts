@@ -1,5 +1,4 @@
 local M = {}
-local CharacterOnField
 
 -- UPDATE common SET com_script = 'item.id_794_fireportal' WHERE com_itemid = 794;
 

@@ -1,6 +1,5 @@
 local parent = require("item.general.wood")
 local M = {}
-local UseItem
 
 -- I_335 Laute spielen
 

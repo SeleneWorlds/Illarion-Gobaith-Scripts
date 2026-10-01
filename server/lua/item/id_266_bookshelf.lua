@@ -1,6 +1,5 @@
 local M = {}
 local Libraries
-
 -- Side note: "BS" = Bookshelf
 -- Bookshelves contain a list of positions of bookshelves and a list of books
 

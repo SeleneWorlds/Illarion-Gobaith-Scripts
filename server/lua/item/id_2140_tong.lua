@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
-local InitCraftingTool, UseItem
 
 -- Edelsteine schleifen + Edelsteinstaub herstellen
 
@@ -114,7 +113,7 @@ end --function
 
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
-    GemCutting = InitCraftingTool( );
+    GemCutting = M.InitCraftingTool( );
     common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then

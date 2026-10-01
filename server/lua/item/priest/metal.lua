@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem
 
 local base_lookat = require("base.lookat")
 -- UPDATE common SET com_script='item.priest.metal' WHERE com_itemid IN ();

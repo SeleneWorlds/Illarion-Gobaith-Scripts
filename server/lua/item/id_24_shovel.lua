@@ -1,6 +1,5 @@
 local parent = require("item.general.metal")
 local M = {}
-local UseItemWithField, getNumb, checkSuccess, UseItem, GenWorkTime, LocationCheck
 
 -- mining mit Schaufel
 
@@ -99,7 +98,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     if not common.IsLookingAt( User, TargetPos ) then
         common.TurnTo( User, TargetPos );
     end
-    if not LocationCheck(TargetPos,groundTile) then
+    if not M.LocationCheck(TargetPos,groundTile) then
         if ( groundTile == 3 ) then
             common.InformNLS( User,
             "Der Wind hat hier allen Sand fortgeweht.",
@@ -113,7 +112,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         end
     end
     if ( ltstate == Action.none ) then
-        User:startAction( GenWorkTime(User,SourceItem), 0, 0, 0, 0);
+        User:startAction( M.GenWorkTime(User,SourceItem), 0, 0, 0, 0);
         if ( world:getField( TargetPos ):tile() == 3 ) then
             User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt nach Sand zu graben.");
             User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dig for sand.");
@@ -145,11 +144,11 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         step=step+str2;
     end
     Skill=Skill+step;
-    if not checkSuccess( User, Skill ) then
-        User:startAction( GenWorkTime(User,SourceItem), 0, 0, 0, 0);
+    if not M.checkSuccess( User, Skill ) then
+        User:startAction( M.GenWorkTime(User,SourceItem), 0, 0, 0, 0);
         return
     end
-    local numberSand=getNumb( User, Skill );
+    local numberSand=M.getNumb( User, Skill );
     if ( world:getField( TargetPos ):tile() == 3 ) then
         ItemID = 726;
     else
@@ -168,7 +167,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
             "You can't carry more clay and it falls to the ground.");
         end
     end
-    User:startAction( GenWorkTime(User,SourceItem), 0, 0, 0, 0);
+    User:startAction( M.GenWorkTime(User,SourceItem), 0, 0, 0, 0);
 end
 
 function M.getNumb( Char, skillValue )
@@ -197,7 +196,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        UseItemWithField( User, SourceItem, common.GetFrontPosition( User ), Counter, Param, ltstate );
+        M.UseItemWithField( User, SourceItem, common.GetFrontPosition( User ), Counter, Param, ltstate );
         return
     end
 
@@ -209,7 +208,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     if not stumpOkay then
-        UseItemWithField( User, SourceItem, TargetItem.pos, Counter, Param, ltstate );
+        M.UseItemWithField( User, SourceItem, TargetItem.pos, Counter, Param, ltstate );
         return
     end
 

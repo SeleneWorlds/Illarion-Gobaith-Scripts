@@ -1,5 +1,4 @@
 local M = {}
-local InitDrinks, UseItem, LookAtItem, UseItemWithCharacter
 
 -- empty container with drink
 
@@ -40,7 +39,7 @@ end
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     --User:inform("drinking");
     if firstcall==nil then
-        InitDrinks();
+        M.InitDrinks();
         --User:inform("drinking2");
         firstcall=1;
         --User:inform("ini");
@@ -156,7 +155,7 @@ function M.LookAtItem(User,Item)
 
     else
         if firstcall==nil then
-            InitDrinks();
+            M.InitDrinks();
             firstcall=1;
         end
 
@@ -194,7 +193,7 @@ end
 --Please don't remove!!!
 ------------------------AB HIER,SKRIPT F�R DIE PRIESTER SILBERBRANDS(Heilung)-------------------
 function M.UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
-  InitDrinks();
+  M.InitDrinks();
   if (SourceItem.id==2501) then
 	if (User.id==1048559757 or User.id==1322717830) then --for the Priests in Silverbrand(1048559757=Surian Silverbeard, 1322717830=Thogrimm)
     	if (TargetChar.id~=User.id) then

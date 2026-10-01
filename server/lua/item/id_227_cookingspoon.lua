@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
-local InitCraftingTool, UseItem
 
 -- Kochen und Brauen mit Kessel und Fass
 
@@ -230,7 +229,7 @@ function M.InitCraftingTool( )
 end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
-    Cooking,Brewing = InitCraftingTool( );
+    Cooking,Brewing = M.InitCraftingTool( );
     common.ResetInterruption( User, ltstate );
     if not menstate then
         menstate = { };

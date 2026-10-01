@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- Food script
 local common = require("base.common")

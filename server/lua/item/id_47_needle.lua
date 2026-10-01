@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
-local InitCraftingTool, UseItem
 
 -- Schneidern mit Nadel, Schneidertisch
 
@@ -660,7 +659,7 @@ end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     common.ResetInterruption( User, ltstate );
-    Tailoring = InitCraftingTool( );
+    Tailoring = M.InitCraftingTool( );
     if not menstate then
         menstate = { };
     end

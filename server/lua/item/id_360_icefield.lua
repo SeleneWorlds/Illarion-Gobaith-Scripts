@@ -1,5 +1,4 @@
 local M = {}
-local IniFireField, CharacterOnField, DeleteFlame, SpellResistence, ItemRotsOnField
 
 -- UPDATE common SET com_script='item.id_360_icefield' where com_itemid=360;
 
@@ -13,7 +12,7 @@ end
 
 function M.CharacterOnField(User)
     if (AffectedRaces==nil) then
-        IniFireField();
+        M.IniFireField();
     end
 	-- Eisflamme auf dem Feld suchen
 	-- !!Eventuell gibt es Probleme, wenn sich mehrere Flammen auf einem Feld befinden!!
@@ -29,7 +28,7 @@ function M.CharacterOnField(User)
         UserRace=User:get_race();                  -- Char Rasse
         for i,theRace in pairs(AffectedRaces) do   -- Rassenliste durchlaufen
             if UserRace==theRace then              -- User Rasse finden
-                resist=SpellResistence(User);      -- Magie Resistenz pr�fen
+                resist=M.SpellResistence(User);      -- Magie Resistenz pr�fen
                 if resist<FieldItem.quality then   -- Qualit�t des Items --> St�rke mit Magie Resistenz vergleichen
                     damageDealt=common.NormalRnd((7/100)*math.floor((FieldItem.quality-resist)*AffectedStren[i]),(9/100)*math.floor((FieldItem.quality-resist)*AffectedStren[i]));--AffectedStren[i]
                     User:increaseAttrib("hitpoints",-damageDealt); -- Schaden berechnen und bewirken
@@ -37,7 +36,7 @@ function M.CharacterOnField(User)
             end
         end
     else
-        DeleteFlame(User, FieldItem);
+        M.DeleteFlame(User, FieldItem);
         if (User:getPlayerLanguage()==0) then
             User:inform("Die Eisflamme war nur eine Illusion und verpufft");
         else

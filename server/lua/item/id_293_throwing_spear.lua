@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem
 
 -- UPDATE common SET com_script='item.id_293_throwing_spear' WHERE com_itemid IN (293);
 

@@ -1,6 +1,5 @@
 local parent = require("item.general.wood")
 local M = {}
-local UseItem
 
 -- I_533 playing the drum
 

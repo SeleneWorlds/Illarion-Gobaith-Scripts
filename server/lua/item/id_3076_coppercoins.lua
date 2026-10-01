@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 --UPDATE common SET com_script='item.id_3076_coppercoins' WHERE com_itemid=3076;
 local common = require("base.common")

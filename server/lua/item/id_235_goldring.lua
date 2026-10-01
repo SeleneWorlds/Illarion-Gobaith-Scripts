@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem, MoveItemAfterMove
 
 -- data values in use: 100,101,102,666,700,800, 10000
 

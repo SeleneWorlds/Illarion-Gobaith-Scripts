@@ -1,6 +1,5 @@
 local parent = require("item.general.metal")
 local M = {}
-local UseItem, checkRegion
 
 -- Herblore mit Sichel und Ausbreitung der Pflanzen
 
@@ -91,7 +90,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     skill=skill+step;
     
     -- Pruefen, ob man hier ueberhaupt was finden kann
-	if not checkRegion(TargetItem) then
+	if not M.checkRegion(TargetItem) then
 		User:inform("Hier kann man keine brauchbaren Kr�uter finden");
 		return;		
 	end    

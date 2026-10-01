@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 --SYMBOL THICK WHITE BOOK 
 

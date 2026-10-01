@@ -1,6 +1,5 @@
 local common = require("base.common")
 local M = {}
-local LookAtItem, MoveItemBeforeMove
 
 local base_lookat = require("base.lookat")
 -- UPDATE common SET com_script='item.general.jewel' WHERE com_itemid IN (225, 1840, 1858);

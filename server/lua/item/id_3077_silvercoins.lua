@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, MoveItemBeforeMove, findText
 
 local common = require("base.common")
 

@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItemIdent, checkNoobiaSigns, getPopulation, getPlayersOnLevel
 
 -- Wegweiser Script
 -- Nitram
@@ -39,7 +38,7 @@ function M.LookAtItemIdent(User,Item)
 		end
 	end
 
-	local outText = checkNoobiaSigns(User,Item.pos);
+	local outText = M.checkNoobiaSigns(User,Item.pos);
 	if outText and not found then
 		world:itemInform(User,Item,outText);
 		found = true;
@@ -57,7 +56,7 @@ end
 	LookAtItemIdent
 	identity of LookAtItem
 ]]
-LookAtItem = LookAtItemIdent;
+M.LookAtItem = M.LookAtItemIdent;
 
 function M.checkNoobiaSigns( User,TargetPos )
 
@@ -79,7 +78,7 @@ function M.checkNoobiaSigns( User,TargetPos )
 	for i=1,5 do
 		if equapos(TargetPos,NoobiaSigns[i][1]) then
 			local lang = User:getPlayerLanguage();
-			local pop = getPopulation(i);
+			local pop = M.getPopulation(i);
 			local outText = common.GetNLS(User,string.gsub(NoobiaSigns[i][lang+2],"%%POPULATION",""..pop..""),string.gsub(NoobiaSigns[i][lang+2],"%%POPULATION",""..pop..""));
 			return outText;
 		end
@@ -91,24 +90,24 @@ function M.getPopulation( Number )
 
 	local retVal = 0;
 	if Number == 1 then
-		retVal = retVal + getPlayersOnLevel(position(-100,-110,0),50);
-		retVal = retVal + getPlayersOnLevel(position(-100,-110,1),50);
+		retVal = retVal + M.getPlayersOnLevel(position(-100,-110,0),50);
+		retVal = retVal + M.getPlayersOnLevel(position(-100,-110,1),50);
 	elseif Number == 2 then
-		retVal = retVal + getPlayersOnLevel(position(114,-208,2),30);
+		retVal = retVal + M.getPlayersOnLevel(position(114,-208,2),30);
 	elseif Number == 3 then
-		retVal = retVal + getPlayersOnLevel(position(330,230,0),30);
-		retVal = retVal + getPlayersOnLevel(position(330,230,1),30);
-		retVal = retVal + getPlayersOnLevel(position(330,230,2),30);
-		retVal = retVal + getPlayersOnLevel(position(370,216,0),16);
-		retVal = retVal + getPlayersOnLevel(position(370,216,1),16);
-		retVal = retVal + getPlayersOnLevel(position(370,216,2),16);
-		retVal = retVal + getPlayersOnLevel(position(370,216,-3),16);
+		retVal = retVal + M.getPlayersOnLevel(position(330,230,0),30);
+		retVal = retVal + M.getPlayersOnLevel(position(330,230,1),30);
+		retVal = retVal + M.getPlayersOnLevel(position(330,230,2),30);
+		retVal = retVal + M.getPlayersOnLevel(position(370,216,0),16);
+		retVal = retVal + M.getPlayersOnLevel(position(370,216,1),16);
+		retVal = retVal + M.getPlayersOnLevel(position(370,216,2),16);
+		retVal = retVal + M.getPlayersOnLevel(position(370,216,-3),16);
 	elseif Number == 4 then
-		retVal = retVal + getPlayersOnLevel(position(-386,72,0),50);
-		retVal = retVal + getPlayersOnLevel(position(-386,72,1),50);
+		retVal = retVal + M.getPlayersOnLevel(position(-386,72,0),50);
+		retVal = retVal + M.getPlayersOnLevel(position(-386,72,1),50);
 	elseif Number == 5 then
-		retVal = retVal + getPlayersOnLevel(position(262,-305,0),25);
-		retVal = retVal + getPlayersOnLevel(position(238,-326,0),16);
+		retVal = retVal + M.getPlayersOnLevel(position(262,-305,0),25);
+		retVal = retVal + M.getPlayersOnLevel(position(238,-326,0),16);
 	end
 	return retVal;
 end

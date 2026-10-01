@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- UPDATE common SET com_script='item.id_348_wallcorner' WHERE com_itemid = 348;
 

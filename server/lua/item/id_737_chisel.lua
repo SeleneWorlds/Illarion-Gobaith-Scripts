@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
-local UseItem, LookAtItem
 
 -- Chisel ( 737 )
 

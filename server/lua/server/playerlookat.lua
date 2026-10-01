@@ -16,7 +16,6 @@ local lookat_custom = require("content.lookat.custom")
 local uniquechardescription = require("content.uniquechardescription")
 local M = {}
 local CustomLookAt
-
 function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
 	uniquechardescription.InitPlayerDesc();
     -- SourceCharacter:inform("first");

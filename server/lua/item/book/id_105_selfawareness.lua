@@ -1,125 +1,124 @@
 local M = {}
-local InitRanks, UseItem, AddRank, InitBook, AddGermanBookText, AddEnglishBookText, SendBookPage, AddToTable, ModifyText
 
 -- UPDATE common SET com_script='item.book.id_105_selfawareness' WHERE com_itemid = 105;
 
 function M.InitRanks()
-    AddRank("untaught","unwissend");
-    AddRank("unskilled","unge�bt");
-    AddRank("a beginner","ein Anf�nger");
-    AddRank("skilled","ge�bt");
-    AddRank("a assistant","ein Geselle");
-    AddRank("a master","ein Meister");
-    AddRank("a senior master","ein Altmeister");
-    AddRank("a grand master","ein Gro�meister");
+    M.AddRank("untaught","unwissend");
+    M.AddRank("unskilled","unge�bt");
+    M.AddRank("a beginner","ein Anf�nger");
+    M.AddRank("skilled","ge�bt");
+    M.AddRank("a assistant","ein Geselle");
+    M.AddRank("a master","ein Meister");
+    M.AddRank("a senior master","ein Altmeister");
+    M.AddRank("a grand master","ein Gro�meister");
 end
 
 function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if ( TargetItem.id == 266 ) or ( TargetItem.id == 267 ) then
         world:erase(SourceItem,1);
     else
-        if InitBook() then
-            AddGermanBookText("\n \n Das Buch der \n Selbsterkenntniss",105,0);
-            AddGermanBookText("\n   Geschrieben \n      von \n       Nitram",0,0);
-            AddGermanBookText("\n \n        Wissen \n           der \n       Sprachen",0,0);
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der gemeinsammen Sprache aller V�lker",0,"common language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Menschen",0,"human language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Zwerge",0,"dwarf language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Elfen",0,"elf language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Halblinge",0,"halfling language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Echsenmenschen",0,"lizard language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Orks",0,"orc language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Gnome",0,"gnome language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Goblins",0,"goblin language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Feen",0,"fairy language");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Alten",0,"ancient language");
+        if M.InitBook() then
+            M.AddGermanBookText("\n \n Das Buch der \n Selbsterkenntniss",105,0);
+            M.AddGermanBookText("\n   Geschrieben \n      von \n       Nitram",0,0);
+            M.AddGermanBookText("\n \n        Wissen \n           der \n       Sprachen",0,0);
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der gemeinsammen Sprache aller V�lker",0,"common language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Menschen",0,"human language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Zwerge",0,"dwarf language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Elfen",0,"elf language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Halblinge",0,"halfling language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Echsenmenschen",0,"lizard language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Orks",0,"orc language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Gnome",0,"gnome language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Goblins",0,"goblin language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Feen",0,"fairy language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Alten",0,"ancient language");
 
-            AddGermanBookText("\n \n       Wissen \n           der \n       Handwerke",0,0);
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Schmiedens",23,"smithing");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Goldschmiedens",236,"goldsmithing");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Schneiderns",6,"tailoring");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Schreinerns",9,"carpentry");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Bergbaus",2763,"mining");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kochens",227,"baking");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Anbauens",271,"peasantry");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Holzf�llens",74,"lumberjacking");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Edelstein schleifens",270,"gemcutting");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Glasblasens",313,"glass blowing");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Angelns",72,"fishing");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kr�utersammelns",126,"herb lore");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst der Alchemie",58,"alchemy");
+            M.AddGermanBookText("\n \n       Wissen \n           der \n       Handwerke",0,0);
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Schmiedens",23,"smithing");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Goldschmiedens",236,"goldsmithing");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Schneiderns",6,"tailoring");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Schreinerns",9,"carpentry");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Bergbaus",2763,"mining");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kochens",227,"baking");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Anbauens",271,"peasantry");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Holzf�llens",74,"lumberjacking");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Edelstein schleifens",270,"gemcutting");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Glasblasens",313,"glass blowing");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Angelns",72,"fishing");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kr�utersammelns",126,"herb lore");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst der Alchemie",58,"alchemy");
 
-            AddGermanBookText("\n \n       Wissen \n           der \n       Magie",0,0);
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst der Rechersche",266,"library research");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Transformo",0,"transformo");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Transfreto",0,"transfreto");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Pervestigatio",0,"pervestigatio");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Desicio",0,"desicio");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Commotio",0,"commotio");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des magischen Widerstandes",0,"magic resistance");
+            M.AddGermanBookText("\n \n       Wissen \n           der \n       Magie",0,0);
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst der Rechersche",266,"library research");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Transformo",0,"transformo");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Transfreto",0,"transfreto");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Pervestigatio",0,"pervestigatio");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Desicio",0,"desicio");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des Commotio",0,"commotio");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der alten Kunst des magischen Widerstandes",0,"magic resistance");
 
-            AddGermanBookText("\n \n       Wissen \n           des \n       Kampfes",0,0);
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Hiebwaffen",2731,"slashing weapons");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Schlagwaffen",226,"concussion weapons");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Stichwaffen",192,"puncture weapons");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Fernwaffen",2708,"distance weapons");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Anwendung des Ringens",0,"wrestling");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Vergiftens",2668,"poisoning");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Anwendung von Taktik",0,"tactics");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Ausweichens",0,"dodge");
-            AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Parierens",0,"parry");
+            M.AddGermanBookText("\n \n       Wissen \n           des \n       Kampfes",0,0);
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Hiebwaffen",2731,"slashing weapons");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Schlagwaffen",226,"concussion weapons");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Stichwaffen",192,"puncture weapons");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Benutzung von Fernwaffen",2708,"distance weapons");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Anwendung des Ringens",0,"wrestling");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Vergiftens",2668,"poisoning");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Anwendung von Taktik",0,"tactics");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Ausweichens",0,"dodge");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Parierens",0,"parry");
 
-            AddEnglishBookText("\n \n The book of \n Selfawareness",105,0);
-            AddEnglishBookText("\n   written \n      by \n       Nitram",0,0);
-            AddEnglishBookText("\n \n        Knowledge \n         of the \n      Languages",0,0);
-            AddEnglishBookText("\n It seems you are ~level~ in the common language of all races",0,"common language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the humans",0,"human language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the dwarfs",0,"dwarf language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the elves",0,"elf language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the halflings",0,"halfling language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the lizards",0,"lizard language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the orcs",0,"orc language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the gnomes",0,"gnome language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the goblins",0,"goblin language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the fairies",0,"fairy language");
-            AddEnglishBookText("\n It seems you are ~level~ in the Language of the ancients",0,"ancient language");
+            M.AddEnglishBookText("\n \n The book of \n Selfawareness",105,0);
+            M.AddEnglishBookText("\n   written \n      by \n       Nitram",0,0);
+            M.AddEnglishBookText("\n \n        Knowledge \n         of the \n      Languages",0,0);
+            M.AddEnglishBookText("\n It seems you are ~level~ in the common language of all races",0,"common language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the humans",0,"human language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the dwarfs",0,"dwarf language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the elves",0,"elf language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the halflings",0,"halfling language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the lizards",0,"lizard language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the orcs",0,"orc language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the gnomes",0,"gnome language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the goblins",0,"goblin language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the fairies",0,"fairy language");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Language of the ancients",0,"ancient language");
 
-            AddEnglishBookText("\n \n       Knowledge \n         of \n       Crafting",0,0);
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of smithing",23,"smithing");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of gold smithing",236,"goldsmithing");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of tailoring",6,"tailoring");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of carpentry",9,"carpentry");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of mining",2763,"mining");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of baking",227,"baking");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of peasantry",271,"peasantry");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of lumberjacking",74,"lumberjacking");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of gemcutting",270,"gemcutting");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of glass blowing",313,"glass blowing");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of fishing",72,"fishing");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of herb loreing",126,"herb lore");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of alchemy",58,"alchemy");
+            M.AddEnglishBookText("\n \n       Knowledge \n         of \n       Crafting",0,0);
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of smithing",23,"smithing");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of gold smithing",236,"goldsmithing");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of tailoring",6,"tailoring");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of carpentry",9,"carpentry");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of mining",2763,"mining");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of baking",227,"baking");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of peasantry",271,"peasantry");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of lumberjacking",74,"lumberjacking");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of gemcutting",270,"gemcutting");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of glass blowing",313,"glass blowing");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of fishing",72,"fishing");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of herb loreing",126,"herb lore");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of alchemy",58,"alchemy");
 
-            AddEnglishBookText("\n \n       Wissen \n           der \n       Magie",0,0);
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of library research",266,"library research");
-            AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of transformo",0,"transformo");
-            AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of transfreto",0,"transfreto");
-            AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of pervestigatio",0,"pervestigatio");
-            AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of desicio",0,"desicio");
-            AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of commotio",0,"commotio");
-            AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of magic resistance",0,"magic resistance");
+            M.AddEnglishBookText("\n \n       Wissen \n           der \n       Magie",0,0);
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of library research",266,"library research");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of transformo",0,"transformo");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of transfreto",0,"transfreto");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of pervestigatio",0,"pervestigatio");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of desicio",0,"desicio");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of commotio",0,"commotio");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the ancient Art of magic resistance",0,"magic resistance");
 
-            AddEnglishBookText("\n \n       Wissen \n           des \n       Kampfes",0,0);
-            AddEnglishBookText("\n It seems you are ~level~ in the using of slashing weapons",2731,"slashing weapons");
-            AddEnglishBookText("\n It seems you are ~level~ in the using of concussion weapons",226,"concussion weapons");
-            AddEnglishBookText("\n It seems you are ~level~ in the using of puncture weapons",192,"puncture weapons");
-            AddEnglishBookText("\n It seems you are ~level~ in the using of distance weapons",2708,"distance weapons");
-            AddEnglishBookText("\n It seems you are ~level~ in the using of wrestling",0,"wrestling");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of poisoning",2668,"poisoning");
-            AddEnglishBookText("\n It seems you are ~level~ in the using of tactics",0,"tactics");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of dodge",0,"dodge");
-            AddEnglishBookText("\n It seems you are ~level~ in the Art of parry",0,"parry");
+            M.AddEnglishBookText("\n \n       Wissen \n           des \n       Kampfes",0,0);
+            M.AddEnglishBookText("\n It seems you are ~level~ in the using of slashing weapons",2731,"slashing weapons");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the using of concussion weapons",226,"concussion weapons");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the using of puncture weapons",192,"puncture weapons");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the using of distance weapons",2708,"distance weapons");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the using of wrestling",0,"wrestling");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of poisoning",2668,"poisoning");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the using of tactics",0,"tactics");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of dodge",0,"dodge");
+            M.AddEnglishBookText("\n It seems you are ~level~ in the Art of parry",0,"parry");
         end
-        SendBookPage(User,Counter)
+        M.SendBookPage(User,Counter)
         User:learn(4,"library research",2,100)
     end
 end
@@ -139,11 +138,11 @@ function M.InitBook()
 end
 
 function M.AddGermanBookText(Text,ItemID,Diff)
-    AddToTable(gBookText,Text,ItemID,Diff)
+    M.AddToTable(gBookText,Text,ItemID,Diff)
 end
 
 function M.AddEnglishBookText(Text,ItemID,Diff)
-    AddToTable(eBookText,Text,ItemID,Diff)
+    M.AddToTable(eBookText,Text,ItemID,Diff)
 end
 
 function M.SendBookPage(User,Counter)
@@ -158,7 +157,7 @@ function M.SendBookPage(User,Counter)
     local PicID=BookTexts[math.min(Counter,pages)][2];
     if (SendText==nil) then SendText="" end
     if (PicID==nil) then PicID=0 end
-    SendText=ModifyText(User,SendText,BookTexts[math.min(Counter,pages)][3])
+    SendText=M.ModifyText(User,SendText,BookTexts[math.min(Counter,pages)][3])
     User:inform("#b|"..math.min(Counter,pages).."|"..PicID.."|"..SendText);
 end
 

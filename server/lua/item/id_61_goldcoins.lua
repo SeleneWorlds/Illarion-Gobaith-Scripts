@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- I_61.lua Goldm&uuml;nzen einschmelzen
 

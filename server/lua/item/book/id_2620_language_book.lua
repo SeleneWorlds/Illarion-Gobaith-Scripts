@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, LookAtItem, Learning, GetLanguage, GetDifficulty
 
 local common = require("base.common")
 
@@ -24,7 +23,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end 
     
-    local Skillname = GetLanguage(langcode,true);
+    local Skillname = M.GetLanguage(langcode,true);
     
     local Skill=User:getSkill(Skillname);
     if (Skill==0 and modecode==1) then
@@ -33,7 +32,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         world:changeItem(SourceItem);
     end
     
-    if (User:increaseAttrib("intelligence",0) < GetDifficulty(langcode)) then
+    if (User:increaseAttrib("intelligence",0) < M.GetDifficulty(langcode)) then
         common.InformNLS(User,"Du verstehst nichts von dem, was hier steht","You understand nothing from the things, written in this book");
     end
            
@@ -44,7 +43,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     else
         if (Counter ==1) then
             if (Skill<15) then
-                if Learning(User,15,Skillname) then
+                if M.Learning(User,15,Skillname) then
                     common.InformNLS(User,"Du lernst erste Grundlagen der "..GetLanguage(langcode,false),"You learn first basics of the "..Skillname);
                 else
                     common.InformNLS(User,"Du kannst dich nicht auf dieses schwere Thema konzentrieren","You can't concentrate on this topic");
@@ -55,7 +54,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         elseif (Counter==2) then
             if (Skill<30) then
                 if (Skill>14) then
-                    if Learning(User,30,Skillname) then
+                    if M.Learning(User,30,Skillname) then
                         common.InformNLS(User,"Du lernst die Grundlegenden Vokabeln der Sprache","You learn the basic words of the language");
                     else
                         common.InformNLS(User,"Du kannst dich nicht auf dieses schwere Thema konzentrieren","You can't concentrate on this topic");
@@ -69,7 +68,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         elseif (Counter==3) then
             if (Skill<45) then
                 if (Skill>29) then
-                    if Learning(User,45,Skillname) then
+                    if M.Learning(User,45,Skillname) then
                         common.InformNLS(User,"Du lernst die Grammatik der Sprache.","You learn the grammatics of the "..Skillname..".");
                     else
                         common.InformNLS(User,"Du kannst dich nicht auf dieses schwere Thema konzentrieren","You can't concentrate on this topic");
@@ -82,7 +81,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end            
         elseif (Counter==4) then
             if (Skill>30) then
-                if Learning(User,60,Skillname) then
+                if M.Learning(User,60,Skillname) then
                     common.InformNLS(User,"Du lernst die letzten Feinheiten der Sprache.","You learn the last intricacies of the "..Skillname..".");
                 else
                     common.InformNLS(User,"Du kannst dich nicht auf dieses schwere Thema konzentrieren","You can't concentrate on this topic");

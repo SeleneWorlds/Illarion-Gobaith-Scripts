@@ -8,7 +8,6 @@ local ListName
 local ItemList
 local texts
 local pagenumber
-
 -- UPDATE common SET com_script='gm.items.id_100_trowel' WHERE com_itemid = 100;
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)

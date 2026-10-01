@@ -1,6 +1,5 @@
 local parent = require("item.priest.jewel")
 local M = {}
-local MoveItemBeforeMove, LookAtItem, UseItem, RingOfPower, RoadToNode, RemoveMuckyLuck, MuckyLuck
 
 -- UPDATE common SET com_script='item.id_222_amulett' WHERE com_itemid IN (222);
 
@@ -81,15 +80,15 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 
 	elseif SourceItem.data == 111 and SourceItem.itempos == 2 then
 		if counter == 1 then
-			RingOfPower(User);
+			M.RingOfPower(User);
 		elseif counter >= 2 and counter <= 5 then
-			if not RoadToNode(User, counter-1) then
+			if not M.RoadToNode(User, counter-1) then
 				User:inform("#w No valid target found.");
 			end
 		elseif counter == 6 then
-			MuckyLuck(User);
+			M.MuckyLuck(User);
 		elseif counter == 7 then
-			RemoveMuckyLuck(User, TargetItem);
+			M.RemoveMuckyLuck(User, TargetItem);
 		elseif counter == 8 and ((TargetItem ~= nil) and (TargetItem.id ~= 0)) then
 			world:erase(TargetItem,255);
 		end

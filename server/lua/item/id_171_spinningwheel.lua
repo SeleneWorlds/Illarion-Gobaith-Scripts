@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- Spinnrad ( 270 )
 
@@ -76,7 +75,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if ( ltstate == Action.none ) then
-        User:startAction( GenWorkTime(User), 0, 0, 0, 0);
+        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu spinnen.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to spin.");
         return
@@ -95,7 +94,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
-            User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+            User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
         end
     else
         User:eraseItem( 155, 3 );
@@ -106,7 +105,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
-            User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+            User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
         end
     end
 

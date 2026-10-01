@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
-local UseItem, GenAmount, GenWorkTime
 
 -- Dreschflegel ( 258 )
 
@@ -59,7 +58,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
     
     if ( ltstate == Action.none ) then -- Arbeit noch nicht begonnen -> Los gehts
-        User:startAction( GenWorkTime(User), 0, 0, 0, 0);
+        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Getreide zu dreschen");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to flail grain"); 
         return
@@ -99,7 +98,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
                  
     User:eraseItem( 249, 1 ); -- Getreideb�ndel wegnehmen
-    amount = GenAmount(User);                
+    amount = M.GenAmount(User);
     local notCreated = User:createItem( 259, amount, 333 ,0); -- Getreidek�rner erstellen
 		if ( amount==0) then
 			common.InformNLS(User,
@@ -112,7 +111,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         		"Du kannst nichts mehr halten.",
         		"You can't carry any more.");
     		else -- Nicht �berladen -> Neue aktion Starten
-        		User:startAction( GenWorkTime(User), 0, 0, 0, 0);
+			User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
     		end      
     end              
     User:learn( 2, "peasantry", 2, 100 ); -- Lernen

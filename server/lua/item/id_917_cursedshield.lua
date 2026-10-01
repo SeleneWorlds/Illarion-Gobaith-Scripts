@@ -1,6 +1,5 @@
 local parent = require("item.general.metal")
 local M = {}
-local MoveItemBeforeMove, MoveItemAfterMove
 
 -- UPDATE common SET com_script = 'item.id_917_cursedshield' WHERE com_itemid = 917;
 

@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- Harvest various fruits and herbs
 -- Nop & Nitram

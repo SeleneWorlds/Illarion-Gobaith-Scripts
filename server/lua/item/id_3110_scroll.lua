@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem, UseItemWithCharacter, UseItem, teleportTarget, teleportLookAt, teleportUseItem, selfTeleportUseItem, summonCreature
 
 local common = require("base.common")
 local base_orders = require("base.orders")
@@ -16,7 +15,7 @@ function M.LookAtItem(User,Item)
     local spell = Item.quality;
     if (spell == 101) then -- teleport
         
-        User:inform( teleportLookAt( User, Item ) );
+        User:inform( M.teleportLookAt( User, Item ) );
         
     elseif (spell == 102) then -- self-teleport
         
@@ -59,12 +58,12 @@ end
 function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
     local spell = SourceItem.quality;
     if (SourceItem.data == 600) then -- summon creature
-        summonCreature( User, SourceItem );
+        M.summonCreature( User, SourceItem );
     elseif (spell == 101) then -- teleport
-        teleportUseItem( User, SourceItem, TargetItem, counter, param, ltstate );
+        M.teleportUseItem( User, SourceItem, TargetItem, counter, param, ltstate );
     
     elseif (spell == 102) then -- self-teleport
-        selfTeleportUseItem( User, SourceItem );
+        M.selfTeleportUseItem( User, SourceItem );
     elseif (SourceItem.data == 666) then 
     	world:gfx(51,User.pos);
 	world:gfx(31,User.pos);
@@ -156,7 +155,7 @@ end
 function M.teleportUseItem( User, SourceItem, TargetItem, Counter, Param , ltstate )
             if ( ltstate == nil or ltstate == Action.success ) then
                 
-                    destination = teleportTarget( SourceItem );
+                    destination = M.teleportTarget( SourceItem );
                     User:warp(destination);
                     world:gfx(41,destination);
                     world:erase( SourceItem, 1 );
@@ -165,7 +164,7 @@ function M.teleportUseItem( User, SourceItem, TargetItem, Counter, Param , ltsta
                 
                 User:startAction( 100, 41, 10, 0, 0);
                 
-                destination = teleportTarget( SourceItem );
+                destination = M.teleportTarget( SourceItem );
                 world:gfx(41,destination);
                     
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt konzentriert auf eine Pergamentrolle zu starren.");

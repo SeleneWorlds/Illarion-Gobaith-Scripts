@@ -1,5 +1,4 @@
 local M = {}
-local CharacterOnField
 
 -- Spinnennetze
 -- Nitram

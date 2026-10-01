@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- Esse aus und an ( 2835,2836 )
 
@@ -114,7 +113,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if ( ltstate == Action.none ) then
         if (SourceItem.id == 2836) then
-            User:startAction( GenWorkTime(User), 0, 0, 7, 15);
+            User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
             User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt an der Esse Erze einzuschmelzen.");
             User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt ore at the furnace.");
             SourceItem.wear = 1;
@@ -172,7 +171,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         else
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
-            User:startAction( GenWorkTime(User), 0, 0, 7, 15);
+            User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
         end
     elseif (User:countItemAt("belt",2536)>0) then
         User:eraseItem(2536,1);
@@ -191,7 +190,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         else
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
-            User:startAction( GenWorkTime(User), 0, 0, 7, 15);
+            User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
         end
     elseif (User:countItemAt("belt",234)>0) then
         User:eraseItem(234,1);
@@ -210,7 +209,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         else
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
-            User:startAction( GenWorkTime(User), 0, 0, 7, 15);
+            User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
         end
     elseif (User:countItemAt("belt",2534)>0) and (User:countItemAt("belt",2553)>0) then
         User:eraseItem(2534,1);
@@ -232,7 +231,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         else
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
-            User:startAction( GenWorkTime(User), 0, 0, 7, 15);
+            User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
         end
     end
     common.GetHungry( User, 200 );

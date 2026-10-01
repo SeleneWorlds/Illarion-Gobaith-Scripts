@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- Spannrahmen
 
@@ -75,7 +74,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         if (User:countItemAt("belt",i)>0) then -- Rohmaterial gefunden
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                 --User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
-                User:startAction( GenWorkTime(User), 0, 0, 14, 25 );
+                User:startAction( M.GenWorkTime(User), 0, 0, 14, 25 );
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Leder zu gerben.");
                 User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to tan leather.");
                 return
@@ -115,7 +114,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
             else
-                User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
             end
 			-- Lernen wird noch eingebaut
             --User:learn(2,"dying and tanning",2,20); -- Lernen

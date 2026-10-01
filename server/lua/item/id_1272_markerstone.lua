@@ -1,5 +1,4 @@
 local M = {}
-local CheckStone, WriteStone, LookAtItem
 
 -- UPDATE common SET com_script='item.id_1272_markerstone' WHERE com_itemid IN (1272);
 
@@ -28,7 +27,7 @@ end
 function M.LookAtItem(User,Item)
     if (Item.data~=0) then
         DisplayText = common.GetNLS( User, "Ein Markierungsstein der Abenteurer Gilde; er tr�gt die Nummer "..Item.data,"A marker stone of the Explorers Guild; it has the number "..Item.data);
-        WriteStone(User,Item.data, Item.quality);
+        M.WriteStone(User,Item.data, Item.quality);
     else
         DisplayText = common.GetNLS( User, "Stein", "stone");
     end

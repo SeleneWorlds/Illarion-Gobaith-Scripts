@@ -1,5 +1,4 @@
 local M = {}
-local InitDrinks, UseItem, LookAtItem
 
 -- empty container with drink
 local common = require("base.common")
@@ -41,7 +40,7 @@ function M.InitDrinks()
 end
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
-    InitDrinks();
+    M.InitDrinks();
     if User.attackmode then
         common.InformNLS( User, "Du w�rdest alles versch�tten.", "You'd spill everything.");
         return -- Abbrechen wenn Spieler im Kampf ist
@@ -141,7 +140,7 @@ end
 
 
 function M.LookAtItem(User,Item)
-    InitDrinks();
+    M.InitDrinks();
     local food = drinkList[ Item.id ];
     if food == nil then
         User:inform("unkown drink item ID"..Item.id);

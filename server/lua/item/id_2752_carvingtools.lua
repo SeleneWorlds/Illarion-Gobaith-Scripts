@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
-local InitCraftingTool, UseItem
 
 -- Working with carving tools
 
@@ -285,7 +284,7 @@ end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
     common.ResetInterruption( User, ltstate )
-    carpenter = InitCraftingTool( );
+    carpenter = M.InitCraftingTool( );
     if not menstate then
         menstate = { };
     end

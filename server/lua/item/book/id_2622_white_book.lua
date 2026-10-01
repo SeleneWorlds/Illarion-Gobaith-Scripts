@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, LookAtItem
 
 -- BIG HEAVY WHITE BOOK WITH BLACK SIGN
 

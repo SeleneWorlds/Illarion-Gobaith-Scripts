@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem
 
 local base_lookat = require("base.lookat")
 local common = require("base.common")

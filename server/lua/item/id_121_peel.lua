@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
-local InitCraftingTool, UseItem
 
 -- Backen mit Ofenschieber und Backofen
 
@@ -92,7 +91,7 @@ function M.InitCraftingTool( )
 end --function
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
-    baking = InitCraftingTool( );
+    baking = M.InitCraftingTool( );
     common.ResetInterruption( User, ltstate )
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then

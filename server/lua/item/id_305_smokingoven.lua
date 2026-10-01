@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- R�UCHEROFEN
 
@@ -74,7 +73,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if ( ltstate == Action.none ) then
-        User:startAction( GenWorkTime(User), 0, 0, 0, 0);
+        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu r�uchern.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to roast.");
         if (SourceItem.id ~= 305) then
@@ -105,7 +104,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 world:swap(SourceItem,304,0);
             end
         else
-            User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+            User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
         end
     elseif (User:countItemAt("all",355) > 0) then
         User:eraseItem( 355, 1 );
@@ -119,7 +118,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 world:swap(SourceItem,304,0);
             end
         else
-            User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+            User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
         end
     elseif (User:countItemAt("all",73) > 0) then
         User:eraseItem( 73, 1 );
@@ -133,7 +132,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 world:swap(SourceItem,304,0);
             end
         else
-	    User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+	    User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
 	end
     end
 

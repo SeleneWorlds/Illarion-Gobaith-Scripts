@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem, UseItem, destroyGem
 
 -- UPDATE common SET com_script='item.altars' WHERE com_itemid IN (361,1879,1880,2801,2857,2872);
 local common = require("base.common")
@@ -67,7 +66,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
     if ( itemL~=nil and ((itemL.id==PosGem[1]) or (itemL.id==PosGem[2])) and itemL.data>0 and itemL.data<10 and itemL.number==3) then
 		-- Werden die Steine zerst�rt?
 		--
-		if destroyGem(itemL.data) then
+		if M.destroyGem(itemL.data) then
 			world:gfx(5,SourceItem.pos);
 			world:gfx(37,SourceItem.pos);
 			world:makeSound(24,SourceItem.pos);
@@ -85,7 +84,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
     elseif ( itemR~=nil and ((itemR.id==PosGem[1]) or (itemR.id==PosGem[2])) and itemR.data>0 and itemR.data<10 and itemR.number==3) then
 		-- Werden die Steine zerst�rt?
         --
-		if destroyGem(itemR.data) then
+		if M.destroyGem(itemR.data) then
 			world:gfx(5,SourceItem.pos);
             world:gfx(37,SourceItem.pos);
 			world:makeSound(24,SourceItem.pos);

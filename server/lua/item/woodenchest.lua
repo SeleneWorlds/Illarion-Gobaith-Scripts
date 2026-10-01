@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- UPDATE common SET com_script='item.woodenchest' WHERE com_itemid IN (8,1360,1361,1362);
 

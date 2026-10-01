@@ -1,6 +1,5 @@
 local parent = require("item.general.metal")
 local M = {}
-local UseItem
 
 -- Sense ( 271 )
 

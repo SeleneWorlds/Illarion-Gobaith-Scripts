@@ -1,5 +1,4 @@
 local M = {}
-local initStones, initJewel, generateData, LookAtItem, UseItem, checkjewel
 
 local unique_lookat = require("content.lookat.unique")
 local common = require("base.common")
@@ -35,7 +34,7 @@ end
 
 function M.generateData(gemItem,TargetItem,itemCl,dummy)
    if initSt==nil then
-        initStones();
+        M.initStones();
         initSt=1;
     end
     if TargetItem.data==0 then  -- first stone inserted
@@ -97,9 +96,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 
     unique_lookat.itemList();
     if unique_lookat.ItemClass[TargetItem.id] ~= nil then
-		if checkjewel(SourceItem, TargetItem,unique_lookat.ItemClass[TargetItem.id]) then
+		if M.checkjewel(SourceItem, TargetItem,unique_lookat.ItemClass[TargetItem.id]) then
 			if SourceItem.data >0 and SourceItem.data<11 then
-	    	    dataVal=generateData(SourceItem,TargetItem,unique_lookat.ItemClass[TargetItem.id],User);
+			dataVal=M.generateData(SourceItem,TargetItem,unique_lookat.ItemClass[TargetItem.id],User);
 	    	    if dataVal>0 then
 	    	        --User:inform("data. "..dataVal);
 	    	        TargetItem.data=dataVal;
@@ -119,11 +118,11 @@ end
 function M.checkjewel(GemItem, TargetItem,ItemClass)
 	if ItemClass==7 then
 		if initSt==nil then
-	        initStones();
+	        M.initStones();
 	        initSt=1;
 	    end
 		if initJw==nil then
-	        initJewel();
+	        M.initJewel();
 	        initJw=1;
 	    end
 		if ( (stoneNumber[GemItem.id]==jewelNumber[TargetItem.id]) or jewelNumber[TargetItem.id]==8 ) then

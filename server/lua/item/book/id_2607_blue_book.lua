@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 --SMALL THICK BLUE BOOK 
 

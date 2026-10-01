@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, CharacterOnField
 
 -- UPDATE common SET com_script='item.id_12_campfire' where com_itemid=12;
 

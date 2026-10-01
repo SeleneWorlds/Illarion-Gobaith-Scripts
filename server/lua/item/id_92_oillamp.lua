@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- I_92 Oel-Lampe
 

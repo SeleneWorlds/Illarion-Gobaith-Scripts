@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- Sieb ( 727 )
 
@@ -75,7 +74,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if ( ltstate == Action.none ) then
-        User:startAction( GenWorkTime(User), 0, 0, 0, 0);
+        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu sieben.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to sieve.");
         return
@@ -127,10 +126,10 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                     common.InformNLS(User,
                     "Du findest einen Topas im Sand.",
                     "You find a topaz in the sand.");
-                    User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+                    User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
                 end
             else
-                User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+                User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
             end
         end
     end

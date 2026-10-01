@@ -1,5 +1,4 @@
 local M = {}
-local init, LookAtItem, UseItem
 
 local common = require("base.common")
 local chardescription = require("content.chardescription")
@@ -20,7 +19,7 @@ end
 
 function M.LookAtItem( User, Item )
     if (first==nil) then
-        init();
+        M.init();
         first=1;
     end
     lang=User:getPlayerLanguage();

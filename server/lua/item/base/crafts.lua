@@ -1,5 +1,4 @@
 local M = {}
-local GetWineQuality
 
 -- basic function for craft handling
 -- Nitram
@@ -684,7 +683,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         else
             -- Edit by abcfantasy: Wine brewing contest
             if ( ( ItemID == 2500 ) and ( ItemQual >= 100 ) ) then
-                WorkOnItem.data = GetWineQuality( User );
+                WorkOnItem.data = M.GetWineQuality( User );
             end;
             -- end edit
             WorkOnItem.quality = ItemQual;

@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
-local UseItem, UseItemWithCharacter
 
 -- I_6.lua garn aus darm
 
@@ -44,7 +43,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ( User:countItemAt("belt",63) < 1 ) then
         Char = common.GetFrontCharacter( User );
         if (Char ~=nil) then
-            UseItemWithCharacter(User,SourceItem, Char, Counter, Param,ltstate)
+            M.UseItemWithCharacter(User,SourceItem, Char, Counter, Param,ltstate)
         elseif (ltstate ~= Action.success) then
             common.InformNLS( User,
             "Du brauchst entweder ein Schaf dem du die Wolle abnehmen kannst oder Eingeweide die du zerschneiden kannst.",

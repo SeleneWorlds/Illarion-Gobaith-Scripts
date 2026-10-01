@@ -1,7 +1,6 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
-local InitCraftingTool, UseItem
 
 -- Schmieden mit Hammer, Amboss
 
@@ -743,7 +742,7 @@ end
 
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
-    Smithing = InitCraftingTool( );
+    Smithing = M.InitCraftingTool( );
     common.ResetInterruption( User, ltstate )
     if not menstate then
         menstate = { };

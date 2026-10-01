@@ -1,5 +1,4 @@
 local M = {}
-local callFireMan, logToFile, UseItem
 
 -- I_298 Holzstapel entfachen (Lagerfeuer)
 
@@ -63,11 +62,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         world:changeItem(SourceItem);
         world:makeSound(7,User.pos);
         logStrg=os.date()..": "..User.name.." tried "..SourceItem.pos.x.."/"..SourceItem.pos.y.."/"..SourceItem.pos.z.."\n";
-        logToFile(logStrg);
+        M.logToFile(logStrg);
         if SourceItem.data==1 then          -- if data=1 then make a fire!!
             logStrg=os.date()..": "..User.name.." started fire at "..SourceItem.pos.x.."/"..SourceItem.pos.y.."/"..SourceItem.pos.z.."(data=1)\n";
-            logToFile(logStrg);
-            callFireMan(User,SourceItem);
+            M.logToFile(logStrg);
+            M.callFireMan(User,SourceItem);
         elseif (math.random(1,100)==0) and (User.pos.z~=100 and User.pos.z~=101) then      -- Random wildfires deactivated. No fire on Noobia!
 			local fld=world:getField(SourceItem.pos);
 			local cnt=fld:countItems();
@@ -81,8 +80,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			end
 			if not SaveFireplace then
 				logStrg=os.date()..": "..User.name.." started fire at ("..SourceItem.pos.x.."/"..SourceItem.pos.y.."/"..SourceItem.pos.z.."\n";
-	            logToFile(logStrg);
-	            callFireMan(User,SourceItem);
+	            M.logToFile(logStrg);
+	            M.callFireMan(User,SourceItem);
 	            SaveFireplace=false;
 			end
         end

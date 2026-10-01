@@ -10,7 +10,6 @@ local Coordina
 local wMenu
 local wpLight
 local wpWait
-
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if (M.firsttime==nil) then
         M.firsttime=1;

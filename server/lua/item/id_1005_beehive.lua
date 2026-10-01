@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 -- Honig Sammeln mit neuem Collecting-System
 -- Blay09

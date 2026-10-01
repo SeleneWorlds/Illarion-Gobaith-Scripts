@@ -1,5 +1,4 @@
 local M = {}
-local InitializeGate, CharacterOnField, LookAtItem
 
 -- teleporter gate
 -- Nop
@@ -295,7 +294,7 @@ function M.CharacterOnField( User )
         return
     end
 
-    InitializeGate(  );
+    M.InitializeGate(  );
 
     local SourceItem = world:getItemOnField( User.pos );
 

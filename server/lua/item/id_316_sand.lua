@@ -1,5 +1,4 @@
 local M = {}
-local MoveItemBeforeMove, MoveItemAfterMove
 
 -- UPDATE common SET com_script='item.id_316_sand' WHERE com_itemid = 316;
 

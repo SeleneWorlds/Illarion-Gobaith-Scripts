@@ -1,5 +1,4 @@
 local M = {}
-local UseItem
 
 local common = require("base.common")
 

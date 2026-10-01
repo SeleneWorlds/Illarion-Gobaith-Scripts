@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, CharacterOnField, LookAtItem
 
 --Function:    Generic trap script
 --Last Update: 01/04/2006

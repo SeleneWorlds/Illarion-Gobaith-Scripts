@@ -1,5 +1,4 @@
 local M = {}
-local UseItemWithField, UseItem, FillBucket
 
 -- I_51 Eimer mit Wasser fuellen
 
@@ -12,7 +11,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     local boden = common.GetGroundType(Field:tile());
     if (boden == 6) then  -- Am Wasser fuellen
 		common.TurnTo(User, TargetPos);
-        FillBucket( User, SourceItem );
+        M.FillBucket( User, SourceItem );
     end
 end
 
@@ -22,9 +21,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 	local Field = world:getField(pos);
 	local boden = common.GetGroundType(Field:tile());
 	if(common.GetFrontItemID(User) == 2207) then -- Am Brunnen fuellen
-		FillBucket(User, SourceItem);
+		M.FillBucket(User, SourceItem);
 	elseif (boden == 6) then -- Am Wasser fuellen
-		FillBucket(User, SourceItem);
+		M.FillBucket(User, SourceItem);
 	else
 		common.InformNLS(User, "Du musst am Brunnen stehen, um Wasser zu sch�pfen.", "You need to stand in front of the well to scoop water.");
 	end

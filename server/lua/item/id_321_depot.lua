@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem
 
 -- Depots
 

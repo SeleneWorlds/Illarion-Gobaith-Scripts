@@ -1,6 +1,5 @@
 local parent = require("item.general.wood")
 local M = {}
-local LookAtItem, Drop, MoveItemBeforeMove, MoveItemAfterMove, UseItem, Explode, InformChar, CreateCircle, HitChar, Scale
 
 -- UPDATE common SET com_script='item.id_2502_gynkfire' WHERE com_itemid IN (2502);
 
@@ -14,10 +13,10 @@ end;
 
 function M.Drop(User,Item)
     if (math.random(1,User:increaseAttrib("dexterity",0)+7)==1) then
-        Explode(Item);
+        M.Explode(Item);
         User:talkLanguage(CCharacter.say,CPlayer.german,"#me l�sst eine Flasche fallen, welche explodiert.");
         User:talkLanguage(CCharacter.say,CPlayer.english,"#me drops a bottle and it explodes.");
-        InformChar(User,"Das Gynkesische Feuer rutscht dir aus den H�nden und explodiert vor deinen F��en.","The Gynkese Fire slips out of your hands and explodes in front of you feets.");
+        M.InformChar(User,"Das Gynkesische Feuer rutscht dir aus den H�nden und explodiert vor deinen F��en.","The Gynkese Fire slips out of your hands and explodes in front of you feets.");
     end;
 end;
 
@@ -28,7 +27,7 @@ function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
         elseif (TargetItem:getType()~=3) then
             return true;
         else
-            InformChar(User,
+            M.InformChar(User,
             "Du solltest das Gynkesische Feuer in der Hand haben um es zu werfen.",
             "You should have the Gynkese Fire in your hand to throw it.");
             return false;
@@ -42,17 +41,17 @@ function M.MoveItemAfterMove(User, SourceItem, TargetItem)
     if (math.floor(SourceItem.quality/100)==2) then
         if (SourceItem:getType()==4 and (SourceItem.itempos==5 or SourceItem.itempos==6)) then
             if (TargetItem:getType()==3) then
-                Explode(TargetItem);
+                M.Explode(TargetItem);
                 if not User:isAdmin() then
                     User:talkLanguage(CCharacter.say,CPlayer.german,"#me wirft eine Flasche, welche explodiert.");
                     User:talkLanguage(CCharacter.say,CPlayer.english,"#me throws a bottle and it explodes.");
                 end
                 User.movepoints=User.movepoints-30;
             else
-                Drop(User,TargetItem);
+                M.Drop(User,TargetItem);
             end;
         else
-            Drop(User,TargetItem);
+            M.Drop(User,TargetItem);
         end;
     end;
 end;
@@ -60,12 +59,12 @@ end;
 function M.UseItem(User,SourceItem,TargetItem,counter,param)
     local lang=User:getPlayerLanguage();
     if (math.floor(SourceItem.quality/100)==2) then
-        InformChar(User,
+        M.InformChar(User,
         "Du l�schst das Gynkesische Feuer.",
         "You put the Gynkese Fire out.");
         SourceItem.quality=300+(SourceItem.quality-(math.floor(SourceItem.quality/100)*100));
     else
-        InformChar(User,
+        M.InformChar(User,
         "Du z�ndest das Gynkesische Feuer an. Vorsicht damit.",
         "You light the Gynkese Fire up. Be careful with it.");
         SourceItem.quality=200+(SourceItem.quality-(math.floor(SourceItem.quality/100)*100));        
@@ -75,11 +74,11 @@ end;
 
 function M.Explode(Item)    
     local Strength=Item.quality - (math.floor(Item.quality/100)*100);
-    CreateCircle( 1,Scale(  20, 100,Strength),Item.pos,3);
-    CreateCircle( 9,Scale( 100, 500,Strength),Item.pos,2);
-    CreateCircle(44,Scale(1000,3000,Strength),Item.pos,1);
+    M.CreateCircle( 1,M.Scale(  20, 100,Strength),Item.pos,3);
+    M.CreateCircle( 9,M.Scale( 100, 500,Strength),Item.pos,2);
+    M.CreateCircle(44,M.Scale(1000,3000,Strength),Item.pos,1);
     world:gfx(36,Item.pos);
-    HitChar(Item.pos,Scale(3000,6000,Strength));
+    M.HitChar(Item.pos,M.Scale(3000,6000,Strength));
     world:makeSound(5,Item.pos);
     world:erase(Item,1);
 end;
@@ -106,7 +105,7 @@ function M.CreateCircle(gfxid,Damage,CenterPos,Radius)
                and( map[x][y] or   map[x-1][y] or  map[x][y-1] or  map[x-1][y-1] ) then
                 HitPos=position( CenterPos.x + x, CenterPos.y + y, CenterPos.z );
                 world:gfx(gfxid,HitPos);
-                HitChar(HitPos,Damage);
+                M.HitChar(HitPos,Damage);
             end;
         end;
     end;

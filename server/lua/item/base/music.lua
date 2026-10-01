@@ -1,5 +1,4 @@
 local M = {}
-local addTalkText, PlayInstrument
 
 -- Standartscript f�r Instrumente spielen
 -- Nitram

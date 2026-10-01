@@ -1,5 +1,4 @@
 local M = {}
-local init, generateKey, UseItem, AddToLevers
 
 local common = require("base.common")
 local base_lever = require("base.lever")
@@ -53,10 +52,10 @@ function M.init()
     --testlever:bind(0,createBridge(position(118,635,0),2,4)); -- geht
     --testlever:bind(0,createBridge(position(117,640,0),3,4)); -- geht
     testlever:bind(0,createitem.createItem(position(118,639,0),2,333,0,1));
-    AddToLevers(testlever);
-    AddToLevers(testlever2);
-    AddToLevers(myLev1);
-    AddToLevers(myLev2);
+    M.AddToLevers(testlever);
+    M.AddToLevers(testlever2);
+    M.AddToLevers(myLev1);
+    M.AddToLevers(myLev2);
 end
 
 function M.generateKey(posX,posY,posZ)
@@ -65,7 +64,7 @@ end
 
 function M.UseItem (User,SourceItem,TargetItem,counter,param,ltstate)
     if (initi==nil) then
-        myLevers=init();
+        myLevers=M.init();
         User:inform("initialize");
         initi=1;
     end

@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, UseItemWithCharacter, MakeSprout, CheckSucceed, BlockCheck
 
 -- I_52.lua voller Wassereimer
 
@@ -45,11 +44,11 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 	                -- test for seedlings
 	            else
 	                --User:inform( "calling sprouts" );
-	                MakeSprout( User, SourceItem, TargetItem )
+	                M.MakeSprout( User, SourceItem, TargetItem )
 				end
 			end
 		else
-			UseItemWithCharacter(User, SourceItem, User, Counter, Param);
+			M.UseItemWithCharacter(User, SourceItem, User, Counter, Param);
 		end
     end
       SourceItem.id = 51;
@@ -106,14 +105,14 @@ function M.MakeSprout( User, SourceItem, TargetItem )
         --User:inform( "on field" );
 
         --User:inform( "skill "..skillwert.." chance "..chance );
-        if BlockCheck(TargetItem.pos) then
+        if M.BlockCheck(TargetItem.pos) then
 	    -- Auf dem Trainingsfeld der Akademie w�chst nichts
 	    if ((( TargetItem.pos.x > 54 ) and ( TargetItem.pos.x < 64 ) and ( TargetItem.pos.y > 35 ) and ( TargetItem.pos.y < 49 )) and ( TargetItem.pos.z == 50)) then
 	        common.InformNLS( User,
                     "Die Erde hier ist v�llig ausgebrannt...hier kann nichts wachsen.",
                     "The ground here is totaly burned...here can't grow anything." );
         else
-            if CheckSucceed(User) then
+            if M.CheckSucceed(User) then
                 --User:inform( "deleting fruit "..TargetItem.id );
                 world:swap(TargetItem,seed[1],333)
             end

@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, LookAtItem
 
 local base_books = require("base.books")
 local content_ruby = require("druid.content.ruby")

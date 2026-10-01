@@ -1,5 +1,4 @@
 local M = {}
-local UseItemWithCharacter, UseItemWithField, UseItem
 
 -- Schaf melken
 -- Nop

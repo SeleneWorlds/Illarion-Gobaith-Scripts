@@ -2,7 +2,6 @@ local class = require("base.class")
 local M = {}
 
 local bindList
-
 M.Lever = class.class(function(lev, posi, twoState)    -- defines a class
     lev.pos = posi;                             -- this is the constructor!!!!
     lev.twoState = (twoState == true);          -- left-middle-right or just l-r

@@ -1,5 +1,4 @@
 local M = {}
-local IniFireField, CharacterOnField, DeleteFlame, SpellResistence
 
 -- UPDATE common SET com_script='item.id_372_poisonfield' where com_itemid=372;
 
@@ -14,7 +13,7 @@ end
 
 function M.CharacterOnField(User)
     if (AffectedRaces==nil) then
-        IniFireField();
+        M.IniFireField();
     end
     if (User:increaseAttrib("hitpoints",0) == 0) then
         return
@@ -42,7 +41,7 @@ function M.CharacterOnField(User)
             RaceStrenght=100;
             PoisStrength=100;
         end
-        resist=SpellResistence(User);      -- Magie Resistenz pr�fen
+        resist=M.SpellResistence(User);      -- Magie Resistenz pr�fen
         if (resist<FieldItem.quality) then
             damageDealt=math.random(math.floor((7/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)),math.floor((9/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)));--AffectedStren[i]
             poisonDealt=math.random(math.floor((2/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))),math.floor((5/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))));
@@ -50,10 +49,10 @@ function M.CharacterOnField(User)
 		User:setPoisonValue( common.Limit( (User:getPoisonValue() + poisonDealt) , 0, 10000) );
             --User:increasePoisonValue(poisonDealt);
         else
-            DeleteFlame(User, FieldItem);
+            M.DeleteFlame(User, FieldItem);
         end
     else
-        DeleteFlame(User, FieldItem);
+        M.DeleteFlame(User, FieldItem);
         if (User:getPlayerLanguage()==0) then
             User:inform("Die Giftwolke war nur eine Illusion und verpufft");
         else

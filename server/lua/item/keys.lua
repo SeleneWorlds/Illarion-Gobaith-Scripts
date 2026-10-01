@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, LookAtItem, MoveItemBeforeMove, MoveItemAfterMove
 
 local base_keys = require("base.keys")
 local common = require("base.common")

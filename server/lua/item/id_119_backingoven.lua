@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- Backofen
 
@@ -81,7 +80,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
-        User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Teig zu kneten.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to make dough.");
         return              
@@ -118,7 +117,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if startagain then
-        User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
     end
     
     User:learn(2,"baking",2,20);

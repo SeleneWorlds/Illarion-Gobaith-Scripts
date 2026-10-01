@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, LookAtItem
 
 -- zus�tzliches Werkzeug 428 Kerzentisch (statisch)
 -- Wachs (431) zu Kerzen (43)

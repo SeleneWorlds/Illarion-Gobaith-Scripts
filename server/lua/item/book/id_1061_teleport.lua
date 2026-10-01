@@ -1,5 +1,4 @@
 local M = {}
-local InitializeBook, UseItem, LookAtItem
 
 -- UPDATE common SET com_script='item.book.id_1061_teleport' WHERE com_itemid=1061;
 local common = require("base.common")
@@ -32,7 +31,7 @@ end
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     --User:inform( "reading teleport book" )
 
-    InitializeBook(  );
+    M.InitializeBook(  );
 
     --User:inform( "target id "..SourceItem.quality )
     local gate = TargetName[ SourceItem.quality ]
@@ -97,7 +96,7 @@ end
 function M.LookAtItem( User, Item )
     --User:inform( "lookat book" )
 
-    InitializeBook(  );
+    M.InitializeBook(  );
 
     local gate = TargetName[ Item.quality ]
 

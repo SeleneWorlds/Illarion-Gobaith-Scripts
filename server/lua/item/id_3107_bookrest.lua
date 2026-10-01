@@ -1,5 +1,4 @@
 local M = {}
-local LookAtItem, UseItem
 
 -- UPDATE common SET com_script='item.id_3107_bookrest' WHERE com_itemid = 3107;
 

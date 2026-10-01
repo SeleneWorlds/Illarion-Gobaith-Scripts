@@ -1,5 +1,4 @@
 local M = {}
-local UseItem, GenWorkTime
 
 -- F�rberfass ( 220 )
 
@@ -80,7 +79,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         if (User:countItemAt("belt",i)>0) then -- Farbe gefunden
             if (User:countItemAt("belt",Dye[1])>0) then -- passenden Stoff gefunden
                 if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
-                    User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+                    User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
                     User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Stoff zu f�rben.");
                     User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dye clothes.");
                     return
@@ -124,7 +123,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                         "Du kannst nichts mehr halten.",
                         "You can't carry any more.");
                     else
-                        User:startAction( GenWorkTime(User), 0, 0, 0, 0 );
+                        User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
                     end
 
                     User:learn(2,"tailoring",2,100); -- Lernen

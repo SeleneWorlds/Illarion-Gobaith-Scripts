@@ -1,6 +1,5 @@
 local parent = require("item.general.jewel")
 local M = {}
-local MoveItemAfterMove
 
 -- UPDATE common SET com_script = 'item.rings' WHERE com_itemid IN (68, 277, 278, 279, 280, 281, 282);
 
