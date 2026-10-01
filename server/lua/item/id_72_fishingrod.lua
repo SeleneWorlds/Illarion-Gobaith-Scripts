@@ -10,11 +10,10 @@ local general_wood = require("item.general.wood")
 local common = require("base.common")
 local gathering = require("content.gathering")
 local base_lookat = require("base.lookat")
-local fishing = require("craft.gathering.fishing")
 
 function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate)
 	gathering.InitGathering();
-	
+
     common.ResetInterruption(User, ltstate);
 	if (ltstate == Action.abort) then -- Arbeit unterbrochen
         if (User:increaseAttrib("sex", 0) == 0) then
@@ -58,13 +57,13 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
     end
 	
 	if (ltstate == Action.none) then -- Unt�tig: Starte Angeln!
-        User:startAction(fishing:GenWorkTime(User, SourceItem), 0, 0, 0, 0);
+        User:startAction(gathering.fishing:GenWorkTime(User, SourceItem), 0, 0, 0, 0);
         User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu fischen.");
         User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts fishing.");
         return
     end
 	
-	if not fishing:FindRandomItem(User) then
+	if not gathering.fishing:FindRandomItem(User) then
 		return
 	end
 	
@@ -100,12 +99,12 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
         return
     end
 	
-    User:startAction(fishing:GenWorkTime(User, SourceItem), 0, 0, 0, 0);
+    User:startAction(gathering.fishing:GenWorkTime(User, SourceItem), 0, 0, 0, 0);
 
 end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
-    if ((TargetItem.id==0) or (TargetItem==nil)) then
+    if (TargetItem.id == 0) then
         M.UseItemWithField(User,SourceItem,common.GetFrontPosition(User),counter,param, ltstate);
     else
         M.UseItemWithField(User,SourceItem,TargetItem.pos,counter,param, ltstate);
