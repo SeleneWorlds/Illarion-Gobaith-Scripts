@@ -11,7 +11,7 @@ local scheduled_newgaia = require("scheduled.newgaia")
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	
 	-- Krauterliste initialisieren
-	initHerbs();
+	scheduled_newgaia.initHerbs();
 	
 	-- wird die Arbeit durch andere aktion unterbrochen?
     common.ResetInterruption( User, ltstate );

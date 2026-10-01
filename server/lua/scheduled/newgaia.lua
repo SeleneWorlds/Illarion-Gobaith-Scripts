@@ -7,10 +7,10 @@ function M.initHerbs()
 	-- ground	= Ground the herb is dropping on
 	-- item		= item, the herb can found in
 	-- region	= Array with the reagions
-	herbs = {}
-  	herbs[133] = {id = 133, ground = 11, item = {273}, region = {}} 			-- Sunflower
-	herbs[142] = {id = 142, ground =  3, item = {273}, region = {}} 			-- Sandbeere
-	herbs[146] = {id = 146, ground =  3, item = {301}, region = {}} 			-- Wuestenhimmelskaspel
+	M.herbs = {}
+	M.herbs[133] = {id = 133, ground = 11, item = {273}, region = {}} 			-- Sunflower
+	M.herbs[142] = {id = 142, ground =  3, item = {273}, region = {}} 			-- Sandbeere
+	M.herbs[146] = {id = 146, ground =  3, item = {301}, region = {}} 			-- Wuestenhimmelskaspel
 
 	M.initRegions();
 end
@@ -34,30 +34,30 @@ function M.plantdrop()
 	M.initHerbs();
 	if (world:isCharacterOnField(position(136,648,0))) then
 		user = world:getCharacterOnField( position(136,648,0) );
-		table.foreach( herbs, M.setHerb )
+		table.foreach( M.herbs, M.setHerb )
 	end
 end
 
 
 function M.setHerb(HerbID)
-	user:inform("Herb: ".. herbs[HerbID].id);
-	user:inform("Herb ground: " ..herbs[HerbID].ground);
+	user:inform("Herb: ".. M.herbs[HerbID].id);
+	user:inform("Herb ground: " ..M.herbs[HerbID].ground);
 
 	RegionID = 1;
-	while RegionID  <= #herbs[HerbID].region do
-		user:inform("Anzahl der Tiles: "..M.getTileNumbersofRegion(herbs[HerbID].region[RegionID]));
-		user:inform("Drop-Chance: "..M.getDropChance(herbs[HerbID].region[RegionID][4]));
-		for zPos = herbs[HerbID].region[RegionID][3][1], herbs[HerbID].region[RegionID][3][2], 1 do
+	while RegionID  <= #M.herbs[HerbID].region do
+		user:inform("Anzahl der Tiles: "..M.getTileNumbersofRegion(M.herbs[HerbID].region[RegionID]));
+		user:inform("Drop-Chance: "..M.getDropChance(M.herbs[HerbID].region[RegionID][4]));
+		for zPos = M.herbs[HerbID].region[RegionID][3][1], M.herbs[HerbID].region[RegionID][3][2], 1 do
 			user:inform("Z OK");
-			for yPos = herbs[HerbID].region[RegionID][2][1], herbs[HerbID].region[RegionID][2][2], 1 do
+			for yPos = M.herbs[HerbID].region[RegionID][2][1], M.herbs[HerbID].region[RegionID][2][2], 1 do
 				user:inform("y OK");
-				for xPos = herbs[HerbID].region[RegionID][1][1], herbs[HerbID].region[RegionID][1][2], 1 do
+				for xPos = M.herbs[HerbID].region[RegionID][1][1], M.herbs[HerbID].region[RegionID][1][2], 1 do
 					TilePos = position(xPos,yPos,zPos);
 					user:inform("Position: "..TilePos.x.." / " ..TilePos.y.." / "..TilePos.z);
 
-					if (M.checkGround(herbs[HerbID],TilePos)==true) then
+					if (M.checkGround(M.herbs[HerbID],TilePos)==true) then
 						user:inform("TileCheck OK");
-						if (math.random(100)<=M.getDropChance(herbs[HerbID].region[RegionID][4])) then
+						if (math.random(100)<=M.getDropChance(M.herbs[HerbID].region[RegionID][4])) then
 							user:inform("Getroffen, setze Pflanze");
 							world:createItemFromId(HerbID,1,TilePos,false,333,333);
 						else
@@ -75,7 +75,7 @@ function M.setHerb(HerbID)
 end
 
 function M.addRegion(HerbID, xPos, yPos, zPos, season)
-	table.insert (herbs[HerbID].region , {xPos,yPos,zPos,season});
+	table.insert (M.herbs[HerbID].region , {xPos,yPos,zPos,season});
 end
 
 function M.getTileNumbersofRegion(Region)
