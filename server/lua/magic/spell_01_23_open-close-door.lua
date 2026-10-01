@@ -32,7 +32,7 @@ function OpenCloseTarget(Caster,Item)
             end
         end
     else
-        informNLS(Caster,"Nicht genug Mana","Not enougth mana");
+        common.InformNLS(Caster,"Nicht genug Mana","Not enougth mana");
     end
 end
 
@@ -45,15 +45,15 @@ function Succeed(Caster)
 end
 
 function CastMagic(Caster,counter,param)
-    informNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
+    common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
 end
 
 function CastMagicOnCharacter(Caster,TargetCharacter,counter,param)
-    informNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
+    common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
 end
 
 function CastMagicOnField(Caster,Targetpos,counter,param)
-    informNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
+    common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
 end
 
 function CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)

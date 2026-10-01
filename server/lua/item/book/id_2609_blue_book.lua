@@ -136,7 +136,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 			
         end
     end
-    SendBookPage(User,SourceItem.data,Counter);
+    base_books.SendBookPage(User,SourceItem.data,Counter);
 end
 
 function M.LookAtItem(User,Item)

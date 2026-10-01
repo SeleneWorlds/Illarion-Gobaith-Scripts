@@ -474,7 +474,7 @@ end
     @return boolean plated weapon or not
 ]]
 function M.IsPlatedWeapon( ItemID )
-    return ( IsMeriniumPlatedWeapon( ItemID ) or IsGoldPlatedWeapon( ItemID ) or IsSilverPlatedWeapon( ItemID ) or IsCopperPlatedWeapon( ItemID ) );
+    return ( M.IsMeriniumPlatedWeapon( ItemID ) or M.IsGoldPlatedWeapon( ItemID ) or M.IsSilverPlatedWeapon( ItemID ) or M.IsCopperPlatedWeapon( ItemID ) );
 end
 
 --[[
