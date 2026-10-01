@@ -4,6 +4,7 @@
 
 local M = {}
 local common = require("base.common")
+local logging = require("selene.logging")
 
 local Location
 local Coordina
@@ -50,47 +51,41 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 		if s~="" and n>0 then
 			fileName = s;
 		end
-		local file,errmsg = io.open("/home/pharse/waypoints/"..fileName,"a");
-		if file then
-			if wMenu==nil then
-				wMenu = MenuStruct();
-				wMenu:addItem(505);
-				wMenu:addItem(228);
-				wMenu:addItem(43);
-				wMenu:addItem(390);
-				wMenu:addItem(391);
-				wpLight = nil;
-				wpWait = false;
-			end
-			if Param==505 then
-				file:write("Waypoint:new(position("..User.pos.x ..","..User.pos.y ..","..User.pos.z .."),PLACE");
-				if wpWait then
-					file:write(","..User:get_face_to());
-				end
-				if wpLight then
-					file:write(",Light:new(position("..wpLight.pos.x ..","..wpLight.pos.y .. ","..wpLight.pos.z .."),"..wpLight.id ..")");
-				end
-				file:write(");\n");
-				file:close();
-				wpWait = nil;
-				wpLight = nil;
-				User:inform("waypoint added");
-			elseif Param==228 then
-				wpWait = not wpWait;
-				User:inform("waiting point: ".. (wpWait and "true" or "false"));
-			elseif Param~= 0 then
-				if wpLight and wpLight.id==Param then
-					wpLight = nil;
-					User:inform("light: false");
-				else
-					wpLight = {["id"]=Param, ["pos"]=common.CopyPosition(User.pos)};
-					User:inform("light: true");
-				end
-			end
-			User:sendMenu(wMenu);
-		else
-			User:inform("file not found");
+		if wMenu==nil then
+			wMenu = MenuStruct();
+			wMenu:addItem(505);
+			wMenu:addItem(228);
+			wMenu:addItem(43);
+			wMenu:addItem(390);
+			wMenu:addItem(391);
+			wpLight = nil;
+			wpWait = false;
 		end
+		if Param==505 then
+			local waypoint = "Waypoint:new(position("..User.pos.x ..","..User.pos.y ..","..User.pos.z .."),PLACE";
+			if wpWait then
+				waypoint = waypoint..","..User:get_face_to();
+			end
+			if wpLight then
+				waypoint = waypoint..",Light:new(position("..wpLight.pos.x ..","..wpLight.pos.y .. ","..wpLight.pos.z .."),"..wpLight.id ..")";
+			end
+			logging.info("[waypoint:"..fileName.."] "..waypoint..");");
+			wpWait = nil;
+			wpLight = nil;
+			User:inform("waypoint logged");
+		elseif Param==228 then
+			wpWait = not wpWait;
+			User:inform("waiting point: ".. (wpWait and "true" or "false"));
+		elseif Param~= 0 then
+			if wpLight and wpLight.id==Param then
+				wpLight = nil;
+				User:inform("light: false");
+			else
+				wpLight = {["id"]=Param, ["pos"]=common.CopyPosition(User.pos)};
+				User:inform("light: true");
+			end
+		end
+		User:sendMenu(wMenu);
 	else
         for i,value in pairs(Location) do
             if (string.find(User.lastSpokenText,value))~=nil then

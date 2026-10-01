@@ -1,5 +1,6 @@
 local keys = require("base.keys")
 local common = require("base.common")
+local logging = require("selene.logging")
 local M = {}
 
 function M.onLogout( theChar )
@@ -77,11 +78,7 @@ function M.onLogout( theChar )
 		Tying:addValue("logseconds",world:getTime("second"));
 		foundCapturer, Capturer = Tying:findValue("Capturer");
 		local logText = os.date()..": "..theChar.name.." has logged out."..(foundCapturer and " Capturer: "..Capturer or "")
-		coldLog,errMsg=io.open("/home/nitram/logs/tying_log.txt","a");
-	    if (coldLog~=nil) then
-	        coldLog:write(logText.."\n");
-	        coldLog:close();
-		end
+		logging.info("[tying] "..logText);
 	end
 	-- end tying
 

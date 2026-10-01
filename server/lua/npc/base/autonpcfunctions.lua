@@ -230,16 +230,6 @@ function M.TellSmallTalk(message,Char)
     if matchedIndex == nil or state.TraderText[matchedIndex] == nil then
         return;
     end
-    --[[if ( length < i ) then
-        folder = "/home/nitram/npclog/";
-        --filepoint,errmsg=io.open(folder.."npclog_rs.log","r+");  --RS
-        filepoint,errmsg=io.open(folder.."npclog_ts.log","r+");  --TS
-        if (filepoint~=nil) then
-            filepoint:seek("end");
-            filepoint:write(thisNPC.name.." - "..message.."\n");
-            filepoint:close();
-        end
-    end--]]
     local TextSel
     if (#state.TraderText[matchedIndex]>1) then
         TextSel=math.random(1,#state.TraderText[matchedIndex]);

@@ -49,19 +49,7 @@ end
 
 
 function M.logToFile(theString)
-    if true then
-        return true;
-    end
-    retVal=false;
-    diseaseLog,errMsg=io.open("/home/martin/diseaseLog.txt","a");
-    if (diseaseLog~=nil) then
-        diseaseLog:write(theString);
-        diseaseLog:close();
-        retVal=true;
-    else
-        retVal=false;
-    end
-    return retVal;
+    return true;
 end
 
 --------------------------------------------------

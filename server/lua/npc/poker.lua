@@ -37,7 +37,7 @@ function M.npcInit(npcDealer)
             position( 9, 9,30),
             position( 9, 8,30),
             position( 8, 7,30)
-        }, position(10,9,30), position(10,8,30), position(10,7,30), 5, "/home/vilarion/poker/pokertest.txt");
+        }, position(10,9,30), position(10,8,30), position(10,7,30), 5, "poker");
         isInit = true;
     end; 
 end

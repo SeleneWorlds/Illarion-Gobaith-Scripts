@@ -1,4 +1,5 @@
 local cardDeck = require("game_carddeck")
+local taxes = require("taxes")
 local M = {}
 
 function M.newPokerTable(
@@ -16,7 +17,7 @@ function M.newPokerTable(
                         posPotUnits,         -- Position where the units will be displayed
                         posPotHundreds,      -- Position where the hundreds will be displayed
                         rake,                -- Rake in Percent
-                        fileRake             -- Path to the rake file
+                        taxAccount           -- Account used to store the rake
                       )
 
     npcDealer:increaseSkill(1,"common language",100);
@@ -56,7 +57,7 @@ function M.newPokerTable(
         posPotUnits        = posPotUnits,
         posPotHundreds     = posPotHundreds,
         rake               = rake/100,
-        fileRake           = fileRake,
+        taxAccount         = taxAccount,
         initialDelay       = 100,
         cardDeck13         = cardDeck.newCardDeck13(),
         cardDeck52         = cardDeck.newCardDeck52(),
@@ -486,15 +487,7 @@ function M.newPokerTable(
     end;
 
     local nextRound = function() -- start a new round, move button
-        -- store self.roundRake
-        filepoint,errmsg=io.open( self.fileRake , "r+" );
-        if (filepoint~=nil) then
-            filepoint:seek("set");
-            self.roundRake = self.roundRake * 100 + filepoint:read("*n");
-            filepoint:seek("set");
-            filepoint:write(""..self.roundRake);
-            filepoint:close();
-        end
+        taxes.add(self.taxAccount, self.roundRake * 100);
 
         self.isInit             = false;
         init();

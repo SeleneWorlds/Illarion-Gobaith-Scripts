@@ -12,6 +12,7 @@ local M = {}
 local functions = require("npc.base.functions")
 local autonpcfunctions = require("npc.base.autonpcfunctions")
 local basics = require("magic.base.basics");
+local logging = require("selene.logging")
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -557,13 +558,8 @@ function M.CalcSilverCopper(CAmount)
 end
 
 function M.logToFile_npc(theString)
-    coldLog,errMsg=io.open("/home/kadiya/ask_npc.txt","a");
-    if (coldLog~=nil) then
-       coldLog:write(theString);
-       coldLog:close();
-       return true;
-    end
-    return false;
+    logging.info("[npc-question] "..theString);
+    return true;
 end
 
 return M

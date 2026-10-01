@@ -1,4 +1,5 @@
 local common = require("base.common")
+local logging = require("selene.logging")
 local M = {}
 
 --[[ LTE 24
@@ -379,12 +380,7 @@ function M.checkForCapturers( Tying, Captive )
 end
 
 function M.logToFile(theString)
-	
-	coldLog,errMsg=io.open("/home/nitram/logs/tying_log.txt","a");
-    if (coldLog~=nil) then
-        coldLog:write(theString.."\n");
-        coldLog:close();
-	end
+	logging.info("[tying] "..theString);
 end
 
 return M

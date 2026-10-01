@@ -10,18 +10,6 @@ local GOD_THEDEVS = gods.GOD_THEDEVS
 local GOD_THEFIVE = gods.GOD_THEFIVE
 
 function M.LookAtItem( User, Item )
-     filepoint,errmsg=io.open("testserver","r");
-            if (filepoint~=nil) then
-              filepoint:seek("set");
-              text = filepoint:read("*line");
-              filepoint:close();
-              User:inform("text:");
-              User:inform(text);
-            else
-              User:inform("error:");
-              User:inform(errmsg);
-    end;
-
     local ret;
     if Item.data > 0 then
         if User:getPlayerLanguage() == 0 then

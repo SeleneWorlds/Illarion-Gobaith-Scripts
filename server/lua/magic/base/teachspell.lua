@@ -1,4 +1,5 @@
 local common = require("base.common")
+local logging = require("selene.logging")
 
 local M = {}
 
@@ -151,13 +152,8 @@ end
 
 
 function M.logToFile_magic(theString)
-    coldLog,errMsg=io.open("/home/martin/teach_magic.txt","a");
-    if (coldLog~=nil) then
-        coldLog:write(theString);
-        coldLog:close();
-        return true;
-    end
-    return false;
+    logging.info("[teach-magic] "..theString);
+    return true;
 end
 
 

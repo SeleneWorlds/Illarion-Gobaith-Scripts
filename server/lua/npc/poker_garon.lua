@@ -25,7 +25,7 @@ function M.npcInit(npcDealer)
             position(-29,-124,-6),
             position(-29,-125,-6),
             position(-29,-126,-6)
-        }, position(-28,-124,-6), position(-28,-125,-6), position(-28,-126,-6), 5, "/home/vilarion/poker/poker_garon.txt");
+        }, position(-28,-124,-6), position(-28,-125,-6), position(-28,-126,-6), 5, "poker-garon");
         isInit = true;
     end; 
 end

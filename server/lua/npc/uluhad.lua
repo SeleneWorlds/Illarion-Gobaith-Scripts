@@ -2,6 +2,7 @@ local M = {}
 
 -- INSERT INTO npc VALUES (nextval('npc_seq'),0,1,1,0,4,false,'Uluhad','npc_uluhad.lua',0);
 local autonpcfunctions = require("npc.base.autonpcfunctions")
+local taxes = require("taxes")
 function M.buyIn( amount )
     User:setQuestProgress(playerBuyInID, User:getQuestProgress(playerBuyInID)+amount);
     return amount;
@@ -15,14 +16,7 @@ function M.cashOut()
         houseMoney = math.ceil(houseRake*playerWonMon);
         playerMoney = playerMoney - houseMoney;
         
-        filepoint,errmsg=io.open("/home/vilarion/money/gamble"..QuestID..".dat","r+");
-        if (filepoint~=nil) then
-            filepoint:seek("set");
-            coins = houseMoney + filepoint:read("*n");
-            filepoint:seek("set");
-            filepoint:write(""..coins);
-            filepoint:close();
-        end;
+        taxes.add("gamble-"..QuestID, houseMoney);
         
         thisNPC:talkLanguage(CCharacter.say, CPlayer.german, "Der Hausanteil ist "..houseRakePercent.."% aller Gewinne");
         thisNPC:talkLanguage(CCharacter.say, CPlayer.english,"The house rake is "..houseRakePercent.."% of all winnings");

@@ -1,6 +1,7 @@
 -- Seil
 local common = require("base.common")
 local tyingCapturer = require("lte.tying_capturer")
+local logging = require("selene.logging")
 dofile("quest_aquest28.lua");    --the quest file for the Farmer quest
 
 local M = {}
@@ -197,11 +198,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 		
 		-- RS TEST
 		local logText = os.date()..": "..User.name.." tries to capture "..Target.name
-		coldLog,errMsg=io.open("/home/nitram/logs/tying_log.txt","a");
-		if (coldLog~=nil) then
-			coldLog:write(logText.."\n");
-			coldLog:close();
-		end
+		logging.info("[tying] "..logText);
 		return;
 	end
 	-- check if target has moved
@@ -215,11 +212,7 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 	-- tie up!
 	-- RS TEST
 	local logText = os.date()..": "..User.name.." has captured "..Target.name
-	coldLog,errMsg=io.open("/home/nitram/logs/tying_log.txt","a");
-	if (coldLog~=nil) then
-		coldLog:write(logText.."\n");
-		coldLog:close();
-	end
+	logging.info("[tying] "..logText);
 	SourceItem.data = 1;
 	world:changeItem(SourceItem);
 	if not foundEffectTarget then

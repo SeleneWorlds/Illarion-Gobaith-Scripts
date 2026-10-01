@@ -3,6 +3,7 @@ local M = {}
 -- I_298 Holzstapel entfachen (Lagerfeuer)
 
 local common = require("base.common")
+local logging = require("selene.logging")
 
 -- UPDATE common SET com_script='item.id_298_woodstack' WHERE com_itemid IN (298);
 
@@ -38,16 +39,8 @@ function M.callFireMan(User, fireItem)
 end
 
 function M.logToFile(theString)
-    retVal=false;
-    coldLog,errMsg=io.open("/home/martin/brandstifter.txt","a");
-    if (coldLog~=nil) then
-        coldLog:write(theString);
-        coldLog:close();
-        retVal=retVal;
-    else
-        retVal=retVal;
-    end
-    return retVal;
+    logging.info("[arson] "..theString);
+    return true;
 end
 
 
