@@ -1,4 +1,5 @@
 local M = {}
+local taxes = require("taxes")
 
 --Name:        TeleporterNPC
 --Race:        invisble
@@ -129,7 +130,7 @@ function M.TeleportationFunction(thisNPC)
         targetPosition 	   = { },
         townName 		   = { },
         trigger 		   = { },
-        filename 		   = { },
+	        taxAccount 		   = { },
         HomePosition 	   = { },
         
         
@@ -148,27 +149,27 @@ function M.TeleportationFunction(thisNPC)
 	        self.targetPosition[1] = position(-37,-108,0);
 	        self.townName[1] = "Troll's Bane";
 	        self.trigger[1] = "[Tt]roll.+[Bb]ane";
-	        self.filename[1] = "trollsbane.dat";
+	        self.taxAccount[1] = "trollsbane";
 
 	        self.targetPosition[2] = position(79,-185,0);
 	        self.townName[2] = "Silverbrand";
 	        self.trigger[2] = "[Ss]il[bv]erbrand";
-	        self.filename[2] = "silverbrand.dat";
+	        self.taxAccount[2] = "silverbrand";
 
 	        self.targetPosition[3] = position(341,221,0);
 	        self.townName[3] = "Tol Vanima";
 	        self.trigger[3] = "[Vv]anima";
-	        self.filename[3] = "vanima.dat";
+	        self.taxAccount[3] = "vanima";
 
 	        self.targetPosition[4] = position(-433,41,0);
 	        self.townName[4] = "Greenbriar";
 	        self.trigger[4] = "[Gg]reenbriar";
-	        self.filename[4] = "greenbriar.dat";
+	        self.taxAccount[4] = "greenbriar";
 
 	        self.targetPosition[5] = position(262,-264,0);
 	        self.townName[5] = "Varshikar";
 	        self.trigger[5] = "[Vv]arshikar";
-	        self.filename[5] = "varshikar.dat";
+	        self.taxAccount[5] = "varshikar";
 
 	    for i, possHomes in pairs(self.targetPosition) do
 	        if thisNPC:isInRangeToPosition(possHomes,5) then
@@ -235,15 +236,7 @@ function M.TeleportationFunction(thisNPC)
 			originator:createItem(3077,99,333,0);
 			originator:createItem(3076,100-self.travelFee,333,0);
 	    end
-	    coins = self.travelFee;
-	    filepoint,errmsg=io.open("/home/nitram/money/"..self.filename[self.HomePosition[thisNPC.id]],"r+");
-	    if (filepoint~=nil) then
-	        filepoint:seek("set");
-	        coins = coins + filepoint:read("*n");
-	        filepoint:seek("set");
-	        filepoint:write(""..coins);
-	        filepoint:close();
-	    end
+	    taxes.add(self.taxAccount[self.HomePosition[thisNPC.id]], self.travelFee);
 	    M.InformNLS(originator,
 	    "Ihr lasst den Teleporter ein Tor nach "..self.townName[self.desiredDestination[thisNPC.id]].." öffnen, zu einem Preis von "..self.travelFee.." Kupferstücken.",
 	    "You make the teleporter open a portal to "..self.townName[self.desiredDestination[thisNPC.id]].." at a cost of "..self.travelFee.." copper coins.");

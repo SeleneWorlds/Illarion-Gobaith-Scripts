@@ -12,6 +12,8 @@ local M = {}
 -- INSERT INTO npc VALUES (76, 3, 363,214,-3,4,'f','Garair','npc_garair.lua',0);
 
 local functions = require("npc.base.functions")
+local taxes = require("taxes")
+local taxAccount
 function M.useNPC(user,counter,param)
     local lang=user:getPlayerLanguage();
     thisNPC:increaseSkill(1,"common language",100);
@@ -53,7 +55,7 @@ function M.initializeNpc()
     AllowedTaxCollectors[1750279883] = true; -- Isilwen
     AllowedTaxCollectors[1376856181] = true; -- Sideon Vilarion
 
-    file = "vanima.dat";
+    taxAccount = "vanima";
 
     TradSpeakLang={0,1};
     TradStdLang=0;
@@ -160,22 +162,11 @@ function M.TakeTaxes(originator, message)
         if not AllowedTaxCollectors[originator.id] then
             return 1,nil;
         else
-            filepoint,errmsg=io.open("/home/nitram/money/"..file,"r");
-            if (filepoint~=nil) then
-                filepoint:seek("set");
-                coins = filepoint:read("*n");
-                filepoint:close();
-            end
+            local coins = taxes.collect(taxAccount);
             if (coins == 0) then
                 return 3,nil;
             end
-            filepoint,errmsg=io.open("/home/nitram/money/"..file,"w+");
-            if (filepoint~=nil) then
-                filepoint:seek("set");
-                filepoint:write("0");
-                filepoint:close();
-            end
-            GoldCoins,SilverCoins,CopperCoins = M.CalcSilverCopper(coins);
+            local GoldCoins,SilverCoins,CopperCoins = M.CalcSilverCopper(coins);
             if (GoldCoins > 0) then
                 originator:createItem(61,GoldCoins,333,0);
             end
