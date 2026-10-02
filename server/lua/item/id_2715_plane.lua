@@ -273,7 +273,8 @@ end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
 
-    carpenter = M.InitCraftingTool( );
+    local carpenter = M.InitCraftingTool( );
+    print(tostring((carpenter))
     if not menstate then
         menstate = { };
     end

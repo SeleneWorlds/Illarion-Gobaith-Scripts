@@ -39,8 +39,6 @@ function M.LookAtItem( User, Item )
             world:itemInform(User, Item, "You see mirror");
         end
     end;
-	User:inform("in LookAtItem of spiegel");
-	LookAtItemIdent(User,Item);
 end
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)

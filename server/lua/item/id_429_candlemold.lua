@@ -7,6 +7,7 @@ local M = {}
 -- UPDATE common SET com_script='item.id_429_candlemold' WHERE com_itemid IN (429);
 
 local common = require("base.common")
+local lookat = require("base.lookat")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     common.ResetInterruption( User, ltstate );
@@ -104,7 +105,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 end
 
 function M.LookAtItem( User, Item )
-    world:itemInform( User, Item, GetItemDescription( User, Item, 1, false, false ));
+    world:itemInform( User, Item, lookat.GetItemDescription( User, Item, 1, false, false ));
 end
 
 return M

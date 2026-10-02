@@ -29,6 +29,7 @@ local M = {}
 local general_metal = require("item.general.metal")
 local common = require("base.common")
 local base_treasure = require("base.treasure")
+local gathering = require("base.content.gathering")
 function M.Init()
     if InitDone then
         return
@@ -317,7 +318,7 @@ function M.Scale(ScBegin, ScEnd, value)
 end
 
 function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
-	InitGathering();
+	gathering.InitGathering();
     M.Init();
     common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
