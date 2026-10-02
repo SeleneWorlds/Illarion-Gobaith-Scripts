@@ -12,23 +12,15 @@ local getHPText = chardescription.getHPText
 
 -- UPDATE common SET com_script='item.id_2874_mirror' WHERE com_itemid = 2874;
 
-function M.init()
-   lpos = position(-32,193,-8);
-   mpos = position(-28,193,-8);
-end
-
 function M.LookAtItem( User, Item )
-    if (first==nil) then
-        M.init();
-        first=1;
-    end
     lang=User:getPlayerLanguage();
-    if ( equapos(Item.pos, mpos) and (User:get_face_to() == 2) and equapos(User.pos, position(-29,193,-8)) ) then
+    if ( equapos(Item.pos, position(-28,193,-8)) and (User:get_face_to() == 2) and equapos(User.pos, position(-29,193,-8)) ) then
         if lang==0 then
             world:itemInform(User, Item, "Hinter deinem R�cken erkennst du deutlich eine Leiter im Spiegel");
         else
             world:itemInform(User, Item, "Behind your back you can clearly see a ladder in the mirror");
         end
+        local lpos = position(-32,193,-8);
         if ( not common.isItemIdInFieldStack( 35, lpos ) ) then
             world:createItemFromId( 35, 1, lpos, true, 999 ,0);
         end;
