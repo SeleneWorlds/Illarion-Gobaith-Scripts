@@ -621,8 +621,8 @@ function M.GetItemsOnField(Fieldpos)
     local retList = {};
     if (ItemsCount > 0) then
         for i=0, ItemsCount-1 do
-            Item = Field:getStackItem(i);
-            table.insert(retList, Item);
+            local item = Field:getStackItem(i);
+            table.insert(retList, item);
         end;
     end;
     return retList

@@ -49,29 +49,29 @@ function M.GoodItem(Loc)
     if not world:isItemOnField(Loc) then
         return true
     else
-        Item=world:getItemOnField(Loc);
-        if (Item.id==8) or (Item.id==11) or (Item.id==14) or
-        (Item.id>=30 and Item.id<=38) or (Item.id==93) or (Item.id==99) or
-        (Item.id==100) or (Item.id==125) or (Item.id==203) or (Item.id==232) or
-        (Item.id==233) or (Item.id==238) or (Item.id==239) or
-        (Item.id>=240 and Item.id<=245) or (Item.id==250) or
-        (Item.id>=260 and Item.id<=263) or (Item.id==266) or (Item.id==267) or
-        (Item.id==286) or (Item.id<=287) or (Item.id==299) or (Item.id==300) or
-        (Item.id==301) or (Item.id<=304) or (Item.id==305) or (Item.id==308) or
-        (Item.id==309) or (Item.id<=313) or (Item.id==318) or (Item.id==320) or
-        (Item.id==321) or (Item.id==337) or (Item.id>=339 and Item.id<=352) or
-        (Item.id==361) or (Item.id<=382) or (Item.id==384) or (Item.id==386) or
-        (Item.id==387) or (Item.id>=470 and Item.id<=474) or
-        (Item.id>=480 and Item.id<=483) or (Item.id==386) or (Item.id==387) or
-        (Item.id==493) or (Item.id==494) or (Item.id==496) or (Item.id==497) or
-        (Item.id>=903 and Item.id<=906) or (Item.id==914) or (Item.id==915) or
-        (Item.id>=918 and Item.id<=922) or (Item.id==925) or (Item.id==1245) or
-        (Item.id==1246) or (Item.id==1250) or (Item.id==1251) or (Item.id==1254) or
-        (Item.id==1257) or (Item.id==1273) or (Item.id==1276) or (Item.id==1278) or
-        (Item.id>=1792 and Item.id<=1797) or (Item.id==1804) or (Item.id==1807) or
-        (Item.id==1808) or (Item.id==1809) or (Item.id==1812) or (Item.id==1813) or
-        (Item.id==1817) or (Item.id==2805) or (Item.id==2830) or (Item.id==2879) or
-        (Item.id==2880) or (Item.id==2885) or (Item.id>=3081 and Item.id<=3084) then
+        local item=world:getItemOnField(Loc);
+        if (item.id==8) or (item.id==11) or (item.id==14) or
+        (item.id>=30 and item.id<=38) or (item.id==93) or (item.id==99) or
+        (item.id==100) or (item.id==125) or (item.id==203) or (item.id==232) or
+        (item.id==233) or (item.id==238) or (item.id==239) or
+        (item.id>=240 and item.id<=245) or (item.id==250) or
+        (item.id>=260 and item.id<=263) or (item.id==266) or (item.id==267) or
+        (item.id==286) or (item.id<=287) or (item.id==299) or (item.id==300) or
+        (item.id==301) or (item.id<=304) or (item.id==305) or (item.id==308) or
+        (item.id==309) or (item.id<=313) or (item.id==318) or (item.id==320) or
+        (item.id==321) or (item.id==337) or (item.id>=339 and item.id<=352) or
+        (item.id==361) or (item.id<=382) or (item.id==384) or (item.id==386) or
+        (item.id==387) or (item.id>=470 and item.id<=474) or
+        (item.id>=480 and item.id<=483) or (item.id==386) or (item.id==387) or
+        (item.id==493) or (item.id==494) or (item.id==496) or (item.id==497) or
+        (item.id>=903 and item.id<=906) or (item.id==914) or (item.id==915) or
+        (item.id>=918 and item.id<=922) or (item.id==925) or (item.id==1245) or
+        (item.id==1246) or (item.id==1250) or (item.id==1251) or (item.id==1254) or
+        (item.id==1257) or (item.id==1273) or (item.id==1276) or (item.id==1278) or
+        (item.id>=1792 and item.id<=1797) or (item.id==1804) or (item.id==1807) or
+        (item.id==1808) or (item.id==1809) or (item.id==1812) or (item.id==1813) or
+        (item.id==1817) or (item.id==2805) or (item.id==2830) or (item.id==2879) or
+        (item.id==2880) or (item.id==2885) or (item.id>=3081 and item.id<=3084) then
             return false
         else return true
         end
@@ -80,8 +80,8 @@ end
 
 function M.GoodSpawnField(TargetLoc)
     local retval=false;
-    Field=world:getField(TargetLoc)
-    if M.GoodGround(Field.id) then
+    local field=world:getField(TargetLoc)
+    if M.GoodGround(field.id) then
         if world:isItemOnField(TargetLoc) then
             if M.GoodItem(world:getItemOnField(TargetLoc)) then
                 retval=true;

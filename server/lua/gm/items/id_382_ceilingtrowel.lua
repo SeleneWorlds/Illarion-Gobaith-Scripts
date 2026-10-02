@@ -37,17 +37,17 @@ function M.UseItemWithCharacter(User,SourceItem,TargetCharacter,Counter,Param)
     User:inform("...done with skills and stats");
 
     for i=1,11 do
-        Item = TargetCharacter:getItemAt(i);
-        if ((Item ~= nil) and (Item.id ~= 0)) then
-            BlockItem = User:getItemAt(i);
-            if ((BlockItem ~= nil) and (BlockItem.id ~= 0)) then
-                world:erase(BlockItem,BlockItem.number);
+        local item = TargetCharacter:getItemAt(i);
+        if ((item ~= nil) and (item.id ~= 0)) then
+            local blockItem = User:getItemAt(i);
+            if ((blockItem ~= nil) and (blockItem.id ~= 0)) then
+                world:erase(blockItem,blockItem.number);
             end
-            User:createAtPos(i,Item.id,Item.number);
-            NewItem = User:getItemAt(i);
-            NewItem.quality = Item.quality;
-            NewItem.data = Item.data;
-            world:changeItem(NewItem);
+            User:createAtPos(i,item.id,item.number);
+            local newItem = User:getItemAt(i);
+            newItem.quality = item.quality;
+            newItem.data = item.data;
+            world:changeItem(newItem);
         end
     end
     -- LogGMAction(User,User.name.."("..User.id..") copied "..TargetCharacter.name.."("..TargetCharacter.id..")");

@@ -1,7 +1,8 @@
 local M = {}
 
 local lightmaster = require("npc.lightmaster");
-WaypointList[1] = {}; -- Troll's Bane
+local waypoints = require("npc.base.waypoints");
+waypoints.WaypointList[1] = {}; -- Troll's Bane
 WaitingList[1] = {}; -- Troll's Bane
 LightList[1] = {}; -- Troll's Bane
 

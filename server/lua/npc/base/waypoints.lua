@@ -12,7 +12,8 @@ MAX_DISTANCE = 9999999999;
 -- *** INITIALIZE LISTS *** --
 ------------------------------
 
-WaypointList = {};
+local WaypointList = {};
+M.WaypointList = WaypointList;
 
 AreaList = {};
 

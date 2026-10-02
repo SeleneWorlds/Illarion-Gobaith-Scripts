@@ -133,7 +133,7 @@ end
 -- get the respective waypoint or nil if noone exists
 function M.BP_GetWpFromPos(pos)
 	local index = BWP_PosToIndex(pos);
-	for _,area in pairs(WaypointList) do
+	for _,area in pairs(waypoints.WaypointList) do
 		if area[index] then
 			return area[index];
 		end
