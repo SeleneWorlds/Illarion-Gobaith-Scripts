@@ -12,9 +12,9 @@
 
 local common = require("base.common")
 
-module("triggerfield.noobia_wall_desert", package.seeall)
+local M = {}
 
-function MoveToField(Character)
+function M.MoveToField(Character)
 
 	if Character:getQuestProgress(2) < 48 and not Character:isAdmin() then
 		Character:warp(position(56,98,100));
@@ -23,3 +23,5 @@ function MoveToField(Character)
 			"You haven't passed the lessons of Amelia. Go this way back and talk to her. She will send you further if you're done.");
 	end
 end
+
+return M

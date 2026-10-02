@@ -4,9 +4,9 @@
 
 local common = require("base.common")
 
-module("triggerfield.noobia_ladder", package.seeall)
+local M = {}
 
-function MoveToField(Character)
+function M.MoveToField(Character)
     if Character:getQuestProgress(2) == 48 then
 		common.InformNLS(Character,
 		"Um eine Leiter hinauf- oder hinunterzuklettern, trete einfach auf die Leiter.",
@@ -14,3 +14,5 @@ function MoveToField(Character)
 		Character:setQuestProgress(2,49);
 	end
 end
+
+return M

@@ -4,9 +4,9 @@
 
 local base_doors = require("base.doors")
 local base_keys = require("base.keys")
-module("triggerfield.loo_seat", package.seeall)
+local M = {}
 
-function CharacterOnField(Character)
+function M.CharacterOnField(Character)
     if( string.find( Character.lastSpokenText, "[Hh][Oo][Kk][Uu][Ss][Ll][Oo][Kk][Uu][Ss]" ) ~= nil ) then
         local bucket = world:getItemOnField( position( -72, -69, 0 ) );
         local door = world:getItemOnField( position( -74, -68, 0 ) );
@@ -20,3 +20,5 @@ function CharacterOnField(Character)
         end;
     end;
 end;
+
+return M

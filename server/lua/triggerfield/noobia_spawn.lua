@@ -3,9 +3,9 @@
 
 local common = require("base.common")
 
-module("triggerfield.noobia_spawn", package.seeall)
+local M = {}
 
-function MoveToField(Character)
+function M.MoveToField(Character)
     Status=Character:getQuestProgress(2);
 	if (Status<4 and Status~=0) then
 		Character:setQuestProgress(2,4);
@@ -16,3 +16,5 @@ function MoveToField(Character)
 		end
 	end
 end
+
+return M

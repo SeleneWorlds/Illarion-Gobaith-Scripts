@@ -2,9 +2,9 @@
 -- Purpose: Opens the Mage Tower with keyword Lothlendar
 
 local base_keys = require("base.keys")
-module("triggerfield.aq001_magedoor", package.seeall)
+local M = {}
 
-function CharacterOnField(Character)
+function M.CharacterOnField(Character)
     if( string.find( Character.lastSpokenText, "[Ll][Oo][Tt][Hh][Ll][Ee][Nn][Dd][Aa][Rr]" ) ~= nil ) then
         --local doora = GetDoorItem( position( -35, 195, -9 ) );
         --local doorb = GetDoorItem( position( -35, 196, -9 ) );
@@ -22,3 +22,5 @@ function CharacterOnField(Character)
         --Character:inform("opened");
     end
 end
+
+return M

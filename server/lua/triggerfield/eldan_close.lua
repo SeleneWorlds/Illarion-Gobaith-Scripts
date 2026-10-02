@@ -1,7 +1,7 @@
-module("triggerfield.eldan_close", package.seeall)
+local M = {}
 
 -- Eldan Shrine close secret door
-function MoveToField( Ch )
+function M.MoveToField( Ch )
     if( Ch:get_face_to() == 2 ) then
         -- Ch:inform( "T�r zu es zieht..." );
         pos = { position( -169, -94, 46 ), position( -169, -93, 46 ) };
@@ -14,3 +14,5 @@ function MoveToField( Ch )
         world:makeSound( 5, Ch.pos );
     end
 end
+
+return M

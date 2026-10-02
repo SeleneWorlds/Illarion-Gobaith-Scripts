@@ -1,8 +1,8 @@
 -- INSERT INTO triggerfields VALUES (244,-362,-6,'triggerfield.notherot_entrace');
 
-module("triggerfield.notherot_entrace", package.seeall)
+local M = {}
 
-function CharacterOnField(Character)
+function M.CharacterOnField(Character)
     local TestItem = Character:getItemAt(CCharacter.right_tool);
     if ((TestItem.id == 283) and (TestItem.data == 6666)) then
         return
@@ -14,3 +14,5 @@ function CharacterOnField(Character)
         Character:inform("A invisible force throws you backwards!");
     end
 end
+
+return M

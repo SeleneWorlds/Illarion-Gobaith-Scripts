@@ -2,9 +2,9 @@
 --   *  Teleporter for newbies who want to become fighter  *
 --   *******************************************************
 
-module("triggerfield.newbie_fighter", package.seeall)
+local M = {}
 
-function MoveToField(Newbie)
+function M.MoveToField(Newbie)
     Newbie:createItem(3076,150,333,0); --copper
     Newbie:createItem(34,1,333,0); -- trousers
     Newbie:createItem(194,1,333,0); -- shirt
@@ -15,3 +15,5 @@ function MoveToField(Newbie)
     world:gfx(41,Newbie.pos);
     Newbie:warp(position(-100,-100,0));
 end
+
+return M

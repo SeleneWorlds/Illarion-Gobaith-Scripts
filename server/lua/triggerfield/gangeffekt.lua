@@ -1,13 +1,13 @@
 -- INSERT INTO triggerfields VALUES (x,y,z,'triggerfield.gangeffekt');
 
-module("triggerfield.gangeffekt", package.seeall)
+local M = {}
 
-function InitTriggers()
-	AddCreateEffect(position(10, 10, 0), 1, { position(15,10,0), position(5,10,0) }, { 2553, 2553 });
-	AddRemoveEffect(position(10, 15, 0), { position(15,10,0), position(5,10,0) }, { 2553, 2553 });
+function M.InitTriggers()
+	M.AddCreateEffect(position(10, 10, 0), 1, { position(15,10,0), position(5,10,0) }, { 2553, 2553 });
+	M.AddRemoveEffect(position(10, 15, 0), { position(15,10,0), position(5,10,0) }, { 2553, 2553 });
 end
 
-function AddCreateEffect(TriggerPos, TriggerSound, ItemPos, ItemID)
+function M.AddCreateEffect(TriggerPos, TriggerSound, ItemPos, ItemID)
 	table.insert(EItemPos, ItemPos);
 	table.insert(EItemID, ItemID);
 	table.insert(ETriggerPos, TriggerPos);
@@ -15,7 +15,7 @@ function AddCreateEffect(TriggerPos, TriggerSound, ItemPos, ItemID)
 	table.insert(ERemove, false);
 end
 
-function AddRemoveEffect(TriggerPos, ItemPos, ItemID)
+function M.AddRemoveEffect(TriggerPos, ItemPos, ItemID)
 	table.insert(EItemPos, ItemPos);
 	table.insert(EItemID, ItemID);
 	table.insert(ETriggerPos, TriggerPos);
@@ -23,16 +23,16 @@ function AddRemoveEffect(TriggerPos, ItemPos, ItemID)
 	table.insert(ERemove, true);
 end
 
-function MoveToField(User)
+function M.MoveToField(User)
 	if(Init == nil) then
 		EItemPos = {{}};
 		EItemID = {{}};
 		ETriggerPos = {};
 		ETriggerSound = {};
 		ERemove = {};
-		
-		InitTriggers();
-		
+
+		M.InitTriggers();
+
 		Init = 1;
 	end
 	for i,v in pairs(ETriggerPos) do
@@ -57,3 +57,5 @@ function MoveToField(User)
 		end
 	end
 end
+
+return M

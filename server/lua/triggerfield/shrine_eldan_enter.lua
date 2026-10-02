@@ -1,7 +1,7 @@
-module("triggerfield.shrine_eldan_enter", package.seeall)
+local M = {}
 
 -- Eldan Shrine entrance
-function CharacterOnField(Character)
+function M.CharacterOnField(Character)
     if( string.find( Character.lastSpokenText, "[Oo]pfer" ) ~= nil ) then
         HItem = Character:getItemAt( CCharacter.right_tool );
         if( HItem.id ~= 166 ) then    -- 166 == Wine
@@ -14,6 +14,8 @@ function CharacterOnField(Character)
                 Character:startMusic(5);
                 Character:warp( position( -184, -95, 46 ) );
             end
-        end        
+        end
     end
 end
+
+return M

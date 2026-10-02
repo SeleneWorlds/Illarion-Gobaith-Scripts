@@ -43,7 +43,7 @@ INSERT INTO triggerfields VALUES (,'triggerfield.ambient');
 
 local common = require("base.common")
 
-module("triggerfield.ambient", package.seeall)
+local M = {}
 
 --[[
 position: coordinates
@@ -189,14 +189,14 @@ AmbientList:add( position(97,-203,-3), 2, "Dein Blick f�llt auf die fein gearb
 AmbientList:add( position(97,-203,-3), 2, "Dein Blick f�llt auf die fein gearbeiteten S�ulen, die die unglaublich hohe Decke abst�tzen � ein einzigartiges St�ck Zwergischer Baukunst. Die Luft in dieser Halle ist es ziemlich warm. Du h�rst das Klirren von Waffen und Hammerschl�ge. Hinter einen Tisch steht ein m�rrischer alter Zwerg, der dich unfreundlich anbrummt.", "You can see the well-worked pillars, which hold up the incredibile high ceilling � a unique piece of dwarven architecture. The air in this hall is quite warm. You can hear the clang of arms and hammers. Behind one table there is an crusty old dwarf, who grumbles unfriendly at you.", {nil}, {1,2,3,4,5,6,7,8,9,10,11,12} );
 AmbientList:add( position(158,-448,0), 2, "Du endeckst eine grobe Gravierung im Bein der Werkbank. 'Gestohlen bei Murgo!'", "You find a rude engraving at the leg of the workbench. 'Stolen by Murgo!'", nil, nil );
 
-function MoveToField(Char)
-	local this = getAmbient(Char);
+function M.MoveToField(Char)
+	local this = M.getAmbient(Char);
 	if this then
 		common.TempInformNLS(Char,this.german,this.english);
 	end
 end
 
-function getAmbient(Char)
+function M.getAmbient(Char)
 	local pos = Char.pos;
 	local dir = Char:get_face_to();
 	if AmbientList[pos.x] and AmbientList[pos.x][pos.y] and AmbientList[pos.x][pos.y][pos.z] and AmbientList[pos.x][pos.y][pos.z][dir] then
@@ -226,3 +226,5 @@ function getAmbient(Char)
 	end
 	return nil;
 end
+
+return M

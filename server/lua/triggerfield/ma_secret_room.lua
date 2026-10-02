@@ -1,6 +1,6 @@
-module("triggerfield.ma_secret_room", package.seeall)
+local M = {}
 
-function CharacterOnField(Character)
+function M.CharacterOnField(Character)
 
     if not equapos(Character.pos,position(74,41,50)) then
         if not ( string.find( Character.lastSpokenText, "[Zz][Ee][Ll][Uu][Rr][Yy][Aa][Ll][Bb] [Ee][Xx][Cc][Ee][Ll][Ss][Ii][Oo][Rr]" ) ~= nil ) then
@@ -25,3 +25,5 @@ function CharacterOnField(Character)
         end
     end
 end
+
+return M

@@ -1,11 +1,11 @@
 -- Location: -29 193 -8
 -- Purpose: react on by mirror expandable ladder
 
-local common = require("base.common")
+local common = require("base.common")
 
-module("triggerfield.aq001_mirror", package.seeall)
+local M = {}
 
-function MoveFromField( user )
+function M.MoveFromField( user )
 
     if( common.isItemIdInFieldStack( 35, position(-32, 193, -8) ) ) then
         if user:getPlayerLanguage()==0 then
@@ -15,11 +15,11 @@ function MoveFromField( user )
         end
         common.removeItemIdFromFieldStack( 35, position(-32, 193, -8) );
     end;
-    
+
 end
 
 
-function CharacterOnField( user )
+function M.CharacterOnField( user )
 
     if( common.isItemIdInFieldStack( 35, position(-32, 193, -8) ) and ( user:get_face_to() ~= 2 ) ) then
         if user:getPlayerLanguage()==0 then
@@ -31,3 +31,5 @@ function CharacterOnField( user )
     end;
 
 end
+
+return M

@@ -1,12 +1,12 @@
 -- Quest: The Missing Son
 local common = require("base.common")
 
-module("triggerfield.missingson_woods", package.seeall)
+local M = {}
 
-function MoveToField(User)
+function M.MoveToField(User)
 	local QuestID = 999;
 	if (User:getQuestProgress(QuestID) == 1) then
-		common.InformNLS(User, 
+		common.InformNLS(User,
 			"Als du dich im Wald umsiehst, siehst du eine kleine Spielzeugpuppe auf dem Boden liegen.",
 			"While looking around in the wood, you see a small doll on the ground.");
 		common.InformNLS(User,
@@ -15,3 +15,5 @@ function MoveToField(User)
 		User:setQuestProgress(QuestID, 2);
 	end
 end
+
+return M

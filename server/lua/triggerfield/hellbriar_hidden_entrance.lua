@@ -1,14 +1,14 @@
 -- INSERT INTO triggerfields VALUES (-471,241,0,'triggerfield.hellbriar_hidden_entrance');
 -- INSERT INTO triggerfields VALUES (-469,241,0,'triggerfield.hellbriar_hidden_entrance');
 
-module("triggerfield.hellbriar_hidden_entrance", package.seeall)
+local M = {}
 
-function MoveToField(User)
-	
+function M.MoveToField(User)
+
 	local WALLPOS = position(-470,241,0);
 	local theWall = world:getItemOnField(WALLPOS);
 	if theWall.id ~= 287 or (theWall.id == 287 and theWall.wear ~= 255) then
-		
+
 		if world:isCharacterOnField(WALLPOS) then
 			return;
 		end
@@ -26,3 +26,5 @@ function MoveToField(User)
 		end
 	end
 end
+
+return M

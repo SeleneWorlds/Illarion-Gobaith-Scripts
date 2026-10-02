@@ -1,22 +1,22 @@
 local common = require("base.common")
 
-module("triggerfield.traps", package.seeall)
+local M = {}
 
 -- INSERT INTO triggerfields VALUES (x,y,z,'triggerfield.traps');
 
-function InitTraps()
+function M.InitTraps()
 	--AddFireTrap(POSITION, STRENGTH, GFX, SOUND, {DE_INFORM, EN_INFORM});
 	--AddMonsterTrap(POSITION, MONSTERID, GFX, SOUND, {DE_INFORM, EN_INFORM});
 	--AddPoisonTrap(POSITION, STRENGTH, GFX, SOUND, {DE_INFORM, EN_INFORM});
 	--AddExplosionTrap(POSITION, STRENGTH, GFX, SOUND, {DE_INFORM, EN_INFORM});
-	
-	AddMonsterTrap(position(527, 573, 0), 2, 8, 23, {"Du l�st eine Monsterfalle aus, du dummer Noob.", "Too lazy to write it in english as well."}); -- For Testing
-	
+
+	M.AddMonsterTrap(position(527, 573, 0), 2, 8, 23, {"Du l�st eine Monsterfalle aus, du dummer Noob.", "Too lazy to write it in english as well."}); -- For Testing
+
 	-- ADD TRAPS HERE
-	
+
 end
 
-function AddFireTrap(pos, strength, gfx, sound, inform)
+function M.AddFireTrap(pos, strength, gfx, sound, inform)
 	table.insert(TrapFields, pos);
 	table.insert(TrapTag, strength);
 	table.insert(TrapSound, sound);
@@ -26,7 +26,7 @@ function AddFireTrap(pos, strength, gfx, sound, inform)
 	table.insert(TrapInformsEN, inform[2]);
 end
 
-function AddMonsterTrap(pos, monster, gfx, sound, inform)
+function M.AddMonsterTrap(pos, monster, gfx, sound, inform)
 	table.insert(TrapFields, pos);
 	table.insert(TrapSound, sound);
 	table.insert(TrapGFX, gfx);
@@ -36,7 +36,7 @@ function AddMonsterTrap(pos, monster, gfx, sound, inform)
 	table.insert(TrapInformsEN, inform[2]);
 end
 
-function AddPoisonTrap(pos, strength, gfx, sound, inform)
+function M.AddPoisonTrap(pos, strength, gfx, sound, inform)
 	table.insert(TrapFields, pos);
 	table.insert(TrapTag, strength);
 	table.insert(TrapSound, sound);
@@ -46,7 +46,7 @@ function AddPoisonTrap(pos, strength, gfx, sound, inform)
 	table.insert(TrapInformsEN, inform[2]);
 end
 
-function AddExplosionTrap(pos, strength, gfx, sound, inform)
+function M.AddExplosionTrap(pos, strength, gfx, sound, inform)
 	table.insert(TrapFields, pos);
 	table.insert(TrapTag, strength);
 	table.insert(TrapSound, sound);
@@ -56,7 +56,7 @@ function AddExplosionTrap(pos, strength, gfx, sound, inform)
 	table.insert(TrapInformsEN, inform[2]);
 end
 
-function MoveToField(User)
+function M.MoveToField(User)
 	if(Init == nil) then
 		TrapFields = {};
 		TrapTypes = {};
@@ -66,14 +66,14 @@ function MoveToField(User)
 		TrapInformsDE = {};
 		TrapInformsEN = {};
 		LastTime = {};
-		
-		InitTraps();
-		
+
+		M.InitTraps();
+
 		Init = 1;
 	end
-	
+
 	local AktTime = {world:getTime("day"),world:getTime("hour"),world:getTime("minute")};
-	
+
 	for i,v in pairs(TrapFields) do
 		if(User.pos == TrapFields[i]) then
 			-- Falle nur maximal 1 mal pro Minute ausloesen
@@ -109,8 +109,8 @@ function MoveToField(User)
 				return;
 			end
 			if(TrapTypes[i] == 4) then
-				ExplosionDamage(User.pos, TrapGFX[i], TrapTag[i]);
-				CreateCircleCustom(User.pos, 1, TrapGFX[i], TrapTag[i]);
+				M.ExplosionDamage(User.pos, TrapGFX[i], TrapTag[i]);
+				M.CreateCircleCustom(User.pos, 1, TrapGFX[i], TrapTag[i]);
 				world:makeSound(TrapSound[i], User.pos); -- Sound nur einmal spielen
 				common.InformNLS(User, TrapInformsDE[i], TrapInformsEN[i]);
 				return;
@@ -122,7 +122,7 @@ function MoveToField(User)
 	end
 end
 
-function CreateCircleCustom(Center, Range, GFX, Damage)
+function M.CreateCircleCustom(Center, Range, GFX, Damage)
     if not storedCircle then
         storedCircle = {};
     end;
@@ -149,14 +149,16 @@ function CreateCircleCustom(Center, Range, GFX, Damage)
         end;
     end;
     for _, posi in pairs(storedCircle[Range]) do
-        ExplosionDamage(position(Center.x + posi.x, Center.y + posi.y, Center.z), GFX, Damage);
+        M.ExplosionDamage(position(Center.x + posi.x, Center.y + posi.y, Center.z), GFX, Damage);
     end;
 end
 
-function ExplosionDamage(Pos, GFX, Damage)
+function M.ExplosionDamage(Pos, GFX, Damage)
 	world:gfx(GFX, Pos);
 	if(world:isCharacterOnField(Pos)) then
 		local user = world:getCharacterOnField(Pos);
 		user:increaseAttrib("hitpoints", -Damage);
 	end
 end
+
+return M

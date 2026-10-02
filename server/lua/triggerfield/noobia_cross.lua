@@ -3,10 +3,10 @@
 
 local common = require("base.common")
 
-module("triggerfield.noobia_cross", package.seeall)
+local M = {}
 
-function MoveToField(User)
-	
+function M.MoveToField(User)
+
 	if (User:getQuestProgress(2) < 40) and ( not User:isAdmin() )then
 		User:warp(position(39,73,100));
 		common.TempInformNLS(User,
@@ -18,3 +18,5 @@ function MoveToField(User)
 			"*As you stroll along the road, the shiny column next to the Lizardman attracts your attention. This fellow seems to know more about it. Perhaps you say hello and ask him who he is and what this column is.*")
 	end
 end
+
+return M

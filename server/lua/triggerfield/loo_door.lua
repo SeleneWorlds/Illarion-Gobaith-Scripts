@@ -4,9 +4,9 @@
 
 local base_doors = require("base.doors")
 local base_keys = require("base.keys")
-module("triggerfield.loo_door", package.seeall)
+local M = {}
 
-function MoveToField( User )
+function M.MoveToField( User )
 
     if User:get_face_to() == 2 then -- looking east, probably walking inside
         local door = world:getItemOnField( position( -74, -68, 0 ) );
@@ -27,3 +27,5 @@ function MoveToField( User )
         end;
     end;
 end
+
+return M

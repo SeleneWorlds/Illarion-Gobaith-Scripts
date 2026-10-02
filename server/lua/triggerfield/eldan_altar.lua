@@ -1,7 +1,7 @@
-module("triggerfield.eldan_altar", package.seeall)
+local M = {}
 
 -- Eldan Shrine praying at the altar
-function CharacterOnField( Ch )
+function M.CharacterOnField( Ch )
     if( string.find( Ch.lastSpokenText, "eldan" ) ~= nil ) then
         pos = { position( -169, -94, 46 ), position( -169, -93, 46 ) };
         for i = 1,2 do
@@ -19,3 +19,5 @@ Ch:inform("MagicFlags1:" .. Ch:getMagicFlags( 1 ));
         end;
     end;
 end
+
+return M

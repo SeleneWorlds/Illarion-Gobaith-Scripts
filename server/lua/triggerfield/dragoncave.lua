@@ -1,11 +1,11 @@
 -- Questritual Dragon Cave
--- 
+--
 -- In work (Kadiya)
 --
 
-module("triggerfield.dragoncave", package.seeall)
+local M = {}
 
-function CharacterOnField(mindmage)    
+function M.CharacterOnField(mindmage)
     if ( (string.find( mindmage.lastSpokenText, "[Ww][Ii][Nn][Dd]") ~= nil) or (string.find( mindmage.lastSpokenText, "[Aa][Ii][Rr]") ~= nil) ) then -- Ritual starten
 		find, RitualStatus = mindmage.effects:find(666);
 		if not find then
@@ -17,7 +17,7 @@ function CharacterOnField(mindmage)
 	end
 end
 
-function MoveFromField( mindmage )
+function M.MoveFromField( mindmage )
     find, RitualStatus = mindmage.effects:find(666);
     if find then
     	found, StatusIndex = RitualStatus:findValue("StatusIndex");
@@ -29,6 +29,7 @@ function MoveFromField( mindmage )
 	    world:gfx(2,position(46,-328, -23));
 	    world:gfx(2,position(48,-328, -23));
 
+
 	    world:gfx(32,position(50,-328, -23));
             world:gfx(32,position(48,-330, -23));
             world:gfx(32,position(48,-326, -23));
@@ -39,4 +40,4 @@ function MoveFromField( mindmage )
 
 end
 
-
+return M

@@ -5,9 +5,9 @@
 
 local common = require("base.common")
 
-module("triggerfield.noobia_door", package.seeall)
+local M = {}
 
-function MoveToField(Character)
+function M.MoveToField(Character)
     if Character:getQuestProgress(2) == 49 then
 		common.InformNLS(Character,
 		"Um eine T�re zu �ffnen oder zu schlie�en, benutze einfach die T�re.",
@@ -15,3 +15,5 @@ function MoveToField(Character)
 		Character:setQuestProgress(2,50);
 	end
 end
+
+return M

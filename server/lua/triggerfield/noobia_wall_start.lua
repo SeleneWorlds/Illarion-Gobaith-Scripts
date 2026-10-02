@@ -8,9 +8,9 @@
 
 local common = require("base.common")
 
-module("triggerfield.noobia_wall_start", package.seeall)
+local M = {}
 
-function MoveToField(Character)
+function M.MoveToField(Character)
 
 	if Character:getQuestProgress(2) < 20 and not Character:isAdmin() then
 		Character:warp(position(46,32,100));
@@ -23,3 +23,5 @@ function MoveToField(Character)
 			"Du you see the Gnome over there? Perhaps you should go to him and say 'Hello'. If you meet a NPC just greet him to start a conversation.");
 	end
 end
+
+return M

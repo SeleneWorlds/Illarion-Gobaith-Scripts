@@ -1,11 +1,11 @@
 -- Location: 33 185 -12
 -- Purpose: switch for secret passage to well
 
-local common = require("base.common")
+local common = require("base.common")
 
-module("triggerfield.aq001_wcno", package.seeall)
+local M = {}
 
-function MoveToField( user )
+function M.MoveToField( user )
 
     user:inform("*click*");
     if( world:isCharacterOnField(position( 33, 195, -12)) ) then
@@ -15,7 +15,7 @@ function MoveToField( user )
 end
 
 
-function MoveFromField( user )
+function M.MoveFromField( user )
 
     user:inform("*clack*");
     if( not common.isItemIdInFieldStack( 287, position( 28, 190, -12) ) ) then
@@ -23,3 +23,5 @@ function MoveFromField( user )
     end;
 
 end
+
+return M

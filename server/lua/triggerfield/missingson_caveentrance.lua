@@ -1,9 +1,9 @@
 -- Quest: The Missing Son
 local common = require("base.common")
 
-module("triggerfield.missingson_caveentrance", package.seeall)
+local M = {}
 
-function MoveToField(User)
+function M.MoveToField(User)
 	local QuestID = 999;
 	local MonsterPositions = { };
 	MonsterPositions[0] = position(0,0,0);
@@ -19,3 +19,5 @@ function MoveToField(User)
 		world:createDynamicNPC("Fred",0,ChildPosition,0,"npc_missingson_fred.lua");
 	end
 end
+
+return M

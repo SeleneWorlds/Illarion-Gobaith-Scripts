@@ -1,9 +1,9 @@
 -- Location: -50 201 -3
 -- Purpose: simulate illusion wall
 
-module("triggerfield.aq001_wall", package.seeall)
+local M = {}
 
-function MoveFromField(User)
+function M.MoveFromField(User)
     if (User:get_face_to() == 0) then
         if (User:getPlayerLanguage() == 0) then
             User:inform("Die solide aussehende H�hlenwand war anscheinend nur eine Illusion und du stolperst in einen stockfinsteren Schacht...");
@@ -13,3 +13,5 @@ function MoveFromField(User)
         User:warp( position( -50, 200, -9 ) );
     end;
 end
+
+return M

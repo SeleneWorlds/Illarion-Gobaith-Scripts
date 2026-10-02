@@ -2,9 +2,9 @@
 --  pos -19, -5, 0
 local common = require("base.common")
 local base_keys = require("base.keys")
-module("triggerfield.stompthebugs", package.seeall)
+local M = {}
 
-function MoveToField(User)
+function M.MoveToField(User)
 	local QuestID = 27;
 	local MonsterID = 131; -- CHANGE
 	local MonsterPosition = position(-16, -8, 0); -- CHANGE
@@ -27,3 +27,5 @@ function MoveToField(User)
 	--	end
 	end
 end
+
+return M

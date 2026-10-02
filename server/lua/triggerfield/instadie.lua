@@ -1,8 +1,8 @@
 local common = require("base.common")
 
-module("triggerfield.instadie", package.seeall)
+local M = {}
 
-function MoveToField(User)
+function M.MoveToField(User)
 
 	if(Init == nil) then
 		RacesAllowed = {};
@@ -11,10 +11,10 @@ function MoveToField(User)
 		table.insert(RacesAllowed, 29); -- shadow skeleton
 		table.insert(RacesAllowed, 30); -- golem
 		--table.insert(RacesAllowed, RACEID); -- Add more races if you want to
-		
+
 		Init = 1;
 	end
-	
+
 	local race = User:get_race();
 	for i,v in pairs(RacesAllowed) do
 		if(race == RacesAllowed[i]) then
@@ -24,3 +24,5 @@ function MoveToField(User)
 	User:increaseAttrib("hitpoints",-32767);
 	common.InformNLS(User, "X GERMAN", "X ENGLISH");
 end
+
+return M

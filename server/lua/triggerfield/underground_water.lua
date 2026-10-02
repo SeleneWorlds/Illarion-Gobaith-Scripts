@@ -5,9 +5,9 @@ local common = require("base.common")
 
 -- Include triggerfield functions
 local base_triggerfield = require("triggerfield.base.triggerfield")
-module("triggerfield.underground_water", package.seeall)
+local M = {}
 
-function MoveToField(User)
+function M.MoveToField(User)
 	-- Array with things that can happen. Each thing is an array: {function, odds}.
 	events = {
 		{
@@ -15,10 +15,10 @@ function MoveToField(User)
 			function()
 				if User:getItemAt(10).number < 1 then
 					common.InformNLS(User, "Du trittst barfuss in eine Pfuetze. Etwas kaltes, glitschiges und stinkendes quillt zwischen deinen Zehen hervor. Ieeeeeh!",
-						"Something glibbery, cold and stinking quills up between your toes. Yuk, you really should wear boots down here!"); 
+						"Something glibbery, cold and stinking quills up between your toes. Yuk, you really should wear boots down here!");
 				else
 					common.InformNLS(User, "Du trittst unvorsichtig in eine Pfuetze, und etwas Braunes quillt unter deinen Stiefeln hervor. Igitt!",
-						"You step into a puddle of... something, and a brown goo emerges from under your boots. Yuk!"); 
+						"You step into a puddle of... something, and a brown goo emerges from under your boots. Yuk!");
 				end
 			end,
 			10
@@ -29,8 +29,8 @@ function MoveToField(User)
 			10
 		},
 		{
-			function() 
-				common.InformNLS(User, 
+			function()
+				common.InformNLS(User,
 					"Du trittst in die Pfuetze und rutscht aus. Patsch! Igitt, du willst gar nicht wissen, worin du gelandet bist, aber es stinkt hoellisch...",
 					"You slip on something in the puddle. Splat! Bah, you don't even want to know what it is that you landed in, but it stinks like hell....");
 				User:increasePoisonValue(20);
@@ -39,7 +39,7 @@ function MoveToField(User)
 			10
 		},
 		{
-			function() 
+			function()
 				common.InformNLS(User, "Du rutscht auf irgendwas aus, aber kannst mit einem schnellen Schritt zum Glueck dein Gleichgewicht halten.",
 					"You slip, but make a quick move forward and are able to keep your balance.");
 				User:move(User:get_face_to(), false);
@@ -52,6 +52,8 @@ function MoveToField(User)
 		}
 	}
 
-	event = base_triggerfield.getEvent(events, ran); 
+	event = base_triggerfield.getEvent(events, ran);
 	event();
 end
+
+return M

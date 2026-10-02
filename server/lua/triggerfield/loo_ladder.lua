@@ -1,12 +1,12 @@
--- warps upstairs if the loo is not occupied 
+-- warps upstairs if the loo is not occupied
 -- position: -72, -67, -3
 -- author: vilarion
 
 local base_doors = require("base.doors")
 local base_keys = require("base.keys")
-module("triggerfield.loo_ladder", package.seeall)
+local M = {}
 
-function MoveToField( User )
+function M.MoveToField( User )
 
     local bucket = world:getItemOnField( position( -72, -69, 0 ) );
     local door = world:getItemOnField( position( -74, -68, 0 ) );
@@ -16,3 +16,5 @@ function MoveToField( User )
         User:inform( ( User:getPlayerLanguage(  ) == 0 and "Der Ort, zu dem diese Leiter reicht, scheint besetzt zu sein." or "The place where this ladder leads to seems to be occupied." ) );
     end;
 end
+
+return M

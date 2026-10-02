@@ -2,9 +2,9 @@
 --   *  Teleporter for newbies who want to become mages  *
 --   *****************************************************
 
-module("triggerfield.newbie_mage", package.seeall)
+local M = {}
 
-function MoveToField(Newbie)
+function M.MoveToField(Newbie)
     Newbie:createItem(3076,250,333,0); --copper
     Newbie:createItem(34,1,333,0); -- hose
     Newbie:createItem(194,1,333,0); -- hemd
@@ -13,3 +13,5 @@ function MoveToField(Newbie)
     world:gfx(41,Newbie.pos);
     Newbie:warp(position(-100,-100,0));
 end
+
+return M
