@@ -75,7 +75,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    for i, Gem in GemList do -- Edelsteine Absuchen
+    for i, Gem in pairs(GemList) do -- Edelsteine Absuchen
         if (User:countItemAt("belt",i)>0) then -- Edelsteine gefunden
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                 User:startAction( M.GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );

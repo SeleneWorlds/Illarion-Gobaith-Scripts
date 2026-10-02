@@ -20,7 +20,7 @@ function M.LookAtItem(User,Item)
 	if Item.data == 1 then
 		local eQual, gQual;
 		local minutes = (Item.quality - 100)/120;
-		for i,limit in tyingQuality.limits do
+		for i,limit in pairs(tyingQuality.limits) do
 			if ( minutes > limit ) then
 				gQual = tyingQuality[0][i];
 				eQual = tyingQuality[1][i];

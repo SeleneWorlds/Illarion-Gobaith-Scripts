@@ -8,10 +8,10 @@ local common = require("base.common")
 -- ## NOTE: replaced os.time() with 123456789
 
 
-notRepairable = { 1 };
+local notRepairable = { 1 };
 --notRepairable = {1858, 1840, 92, 224, 1001, 399, 2647, 393, 2031};
 
-Product = {
+local Product = {
             Quantity = 1,
             ProductionSteps = { },
             Difficulty = 0,
@@ -30,7 +30,7 @@ function Product:new( p )       -- new: constructor
 end
 
 
-Craft   = {
+local Craft   = {
             Products = { },
             CategoryContent = { },
             Category = { },
@@ -736,5 +736,8 @@ function M.GetWineQuality( User )
 
         return ( skill + attr + randValue );
 end
+
+M.Craft = Craft
+M.Product = Product
 
 return M

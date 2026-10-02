@@ -70,7 +70,7 @@ function M.FireInRain( posX, posY, posZ )
     if ( ( ( curWeather.percipitation_type == 1 ) or ( curWeather.percipitation_type == 2 ) ) and ( curWeather.percipitation_strength > 20 ) and
        ( posZ >= 0 ) and ( potRoof==nil ) ) then
             PlayerList = world:getPlayersOnline();
-            for char in PlayerList do
+            for char in pairs(PlayerList) do
                 char:inform( "Fire at " .. tostring( poxX ) .. " " .. tostring( posY ) .. " " .. tostring( posZ ) );
             end;
             --return true;

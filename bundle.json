@@ -610,9 +610,6 @@
     "item.id_298_woodstack": {
       "file": "server/lua/item/id_298_woodstack.lua"
     },
-    "item.id_2_flour": {
-      "file": "server/lua/item/id_2_flour.lua"
-    },
     "item.id_305_smokingoven": {
       "file": "server/lua/item/id_305_smokingoven.lua"
     },

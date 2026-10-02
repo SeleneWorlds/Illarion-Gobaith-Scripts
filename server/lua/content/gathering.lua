@@ -16,7 +16,7 @@ function M.InitGathering()
 		local herbgathering = gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "herb lore", LeadSkillGroup = 2};
 		local fishing = gcraft.GCraft:new{LeadAttrib = "perception", LeadSkill = "fishing", LeadSkillGroup = 2};
 		local woolcutting = gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "peasantry", LeadSkillGroup = 2};
-		local potashproducing = gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "woodchopping", LeadSkillGroup = 2};
+		local potashproducing = gcraft.GCraft:new{LeadAttrib = "dexterity", LeadSkill = "lumberjacking", LeadSkillGroup = 2};
 		
 		--woodchopping
 

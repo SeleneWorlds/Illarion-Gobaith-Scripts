@@ -42,8 +42,6 @@ function M.LookAtItem(User,Item)
         else
             world:itemInform(User,Item,"You see blueish ash");
         end
-    else
-	User:inform( teleportLookAt( User, Item ) );
     end
 
 end

@@ -201,7 +201,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     local stumpOkay = false;
-    for i,stumpID in listofstumps do
+    for i,stumpID in pairs(listofstumps) do
         if (stumpID == TargetItem.id) then
             stumpOkay = true;
         end

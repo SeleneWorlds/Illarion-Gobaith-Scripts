@@ -130,6 +130,7 @@ function M.GenAmount(User)
     elseif ( chance < (Skill+Attrib) + 25 ) then return 2;
     elseif ( chance < (Skill+Attrib) + 50 ) then return 1;
     end
+    return 0;
 end
 
 -- Arbeitszeit Generieren

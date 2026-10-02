@@ -17,7 +17,7 @@ end
 function M.doRemaining(gemBonus,User)
     -- go through all remaining attributes and lower them
     attList={"intelligence","willpower","perception","essence","dexterity","strength","constitution","agility"};
-    for index,attrName in attList do
+    for index,attrName in pairs(attList) do
         foundAttr,remainAttr=gemBonus:findValue("remain"..attrName)
         if foundAttr then
             content_jewelbonus.intelligentRemove(User,attrName,remainAttr)

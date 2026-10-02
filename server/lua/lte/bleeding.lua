@@ -112,7 +112,7 @@ function M.callEffect( BleedingEffect, Victim )
             end
             if ( Mode > 0 ) then
                 attribChanged = false;
-                for i,attribute in lowerAttribs do
+                for i,attribute in pairs(lowerAttribs) do
                     foundAttrib, Attribmod = BleedingEffect:findValue( attribute );
                     if not foundAttrib then
                         Attribmod = 0;
@@ -142,7 +142,7 @@ function M.dropTheBlood( posi )
 end
 
 function M.removeEffect( BleedingEffect, Victim )
-    for i,attribute in lowerAttribs do
+    for i,attribute in pairs(lowerAttribs) do
         foundAttrib, Attribmod = BleedingEffect:findValue( attribute );
         if not foundAttrib then
             Attribmod = 0;
@@ -154,7 +154,7 @@ function M.removeEffect( BleedingEffect, Victim )
 end
 
 function M.loadEffect( BleedingEffect, Victim )
-    for i,attribute in lowerAttribs do
+    for i,attribute in pairs(lowerAttribs) do
         foundAttrib, Attribmod = BleedingEffect:findValue( attribute );
         if not foundAttrib then
             Attribmod = 0;
