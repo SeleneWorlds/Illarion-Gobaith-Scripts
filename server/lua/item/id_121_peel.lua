@@ -1,6 +1,8 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
+local InitStartedOnce, InitDone, baking, product
+local gText, eText
 
 -- Backen mit Ofenschieber und Backofen
 

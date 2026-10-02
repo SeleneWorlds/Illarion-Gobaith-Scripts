@@ -216,7 +216,7 @@ end
 function Craft:ModifySkill( User,toolItem )
     local Skill = User:getSkill(self.LeadSkill);
     local Attrib = User:increaseAttrib(self.LeadAttrib,0);
-    stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
+    local stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
     local step=0;
     if stone1==3 then       -- ruby raises skill
         step=str1;
@@ -269,7 +269,7 @@ end
 
 function Craft:GenerateQuality( User, ItemID, toolItem )
     local Qual = common.Scale(5,8,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
-    stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
+    local stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
     local step=0;
     local qual_tool=math.floor(toolItem.quality/100);
     if stone1==7 then       -- topas raises quality of product
@@ -308,7 +308,7 @@ end
 
 function Craft:GenerateRepairEffekt( User, ItemID,toolItem )
     local Qual = common.Scale(5,22,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
-    stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
+    local stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
     local step=0;
     if stone1==4 then       -- blackstone raises reparation stuff
         step=0,05*str1;
@@ -327,8 +327,8 @@ function Craft:GenWorkTime(User, ItemID, toolItem)
     local Attrib = User:increaseAttrib(self.LeadAttrib,0);
     local Skill  = math.min(100,User:getSkill(self.LeadSkill)*10);
 
-    gem1, str1, gem2, str2=common.GetBonusFromTool(toolItem);
-    step=0;
+    local gem1, str1, gem2, str2=common.GetBonusFromTool(toolItem);
+    local step=0;
     if gem1==3 then     -- ruby modifies skill!
         step=str1;
     end
@@ -344,8 +344,8 @@ function Craft:GenWorkTime(User, ItemID, toolItem)
         step=step+str2;
     end
     step=step*1.75;
-    time1=math.floor((self.Products[ ItemID ].TimePerStep[1])*(100-step)/100);
-    time2=math.floor((self.Products[ ItemID ].TimePerStep[2])*(100-step)/100);
+    local time1=math.floor((self.Products[ ItemID ].TimePerStep[1])*(100-step)/100);
+    local time2=math.floor((self.Products[ ItemID ].TimePerStep[2])*(100-step)/100);
     return math.floor(common.Scale(time1,time2,(Attrib+Skill-self.Products[ ItemID ].Difficulty[1])/(100 - self.Products[ ItemID ].Difficulty[2])*100));
 end
 
@@ -593,7 +593,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         self:SwapToActiveItem( User );
         return
     end
-    dropLeftOver = true;
+    local dropLeftOver = true;
     local StepInfos = self.Products[ ItemID ].ProductionSteps[Step];
     if (StepInfos[1] ~= 0) then
         if ( not self.Products[ ItemID ].UseDataToWork[Step]) then
@@ -659,9 +659,9 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                 "You cannot carry anything else.");
             else
                 if self:CheckMaterial( User, ItemID, (Step + 1) ) then
-                    foundMadeItem = false;
+                    local foundMadeItem = false;
                     for bodypos=12,17 do
-                        CheckItem = User:getItemAt(bodypos);
+                        local CheckItem = User:getItemAt(bodypos);
                         if ((CheckItem.id == ItemID) and (CheckItem.number == ItemCount) and (CheckItem.quality == ItemQual) and (CheckItem.data == 0)) then
                             User:changeTarget(CheckItem);
                             foundMadeItem = true;

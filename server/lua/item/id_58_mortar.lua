@@ -1,6 +1,8 @@
 local common = require("base.common")
 local parent = require("item.general.jewel")
 local M = {}
+local InitStartedOnce, InitDone, mortar, Mortar, product
+local gText, eText
 
 -- Farben herstellen
 

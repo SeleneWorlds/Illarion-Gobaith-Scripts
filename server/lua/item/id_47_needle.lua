@@ -1,6 +1,8 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
+local InitStartedOnce, InitDone, tailoring, Tailoring, CurrentCatID, product, menstate
+local gText, eText
 
 -- Schneidern mit Nadel, Schneidertisch
 

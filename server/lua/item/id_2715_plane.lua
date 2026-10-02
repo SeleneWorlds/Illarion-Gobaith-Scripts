@@ -1,6 +1,8 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
+local InitStartedOnce, InitDone, carpentry, CurrentCatID, product, menstate
+local gText, eText
 
 -- Holzarbeiten mit dem Hobel
 
@@ -274,7 +276,6 @@ end
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- DONT EDIT THIS LINE!
 
     local carpenter = M.InitCraftingTool( );
-    print(tostring((carpenter))
     if not menstate then
         menstate = { };
     end

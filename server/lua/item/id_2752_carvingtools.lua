@@ -1,6 +1,8 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
+local InitStartedOnce, InitDone, carpentery, carpenter, CurrentCatID, product, menstate
+local gText, eText
 
 -- Working with carving tools
 

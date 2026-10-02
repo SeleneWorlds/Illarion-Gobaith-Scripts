@@ -1,6 +1,8 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
+local InitStartedOnce, InitDone, glassblowing, Glassblowing, product
+local gText, eText
 
 -- Glas Produkte Herstellen
 

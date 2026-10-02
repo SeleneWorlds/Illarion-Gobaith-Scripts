@@ -1,6 +1,8 @@
 local common = require("base.common")
 local parent = require("item.general.wood")
 local M = {}
+local InitStartedOnce, InitDone, cooking, brewing, Cooking, Brewing, CurrentCatID, product, menstate
+local gText, eText, cookstatus, cookmessage, brewstatus, brewmessage
 
 -- Kochen und Brauen mit Kessel und Fass
 
