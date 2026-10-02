@@ -225,7 +225,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     end
     if world:isItemOnField( position( TargetPos.x+1, TargetPos.y, TargetPos.z ) ) then
         local testitem = world:getItemOnField( position( TargetPos.x+1, TargetPos.y, TargetPos.z ) );
-        for a,tree in trees do
+        for a,tree in pairs(trees) do
             if ( tree[5] == testitem.id ) or ( tree[3] == testitem.id ) then
                 M.UseItem( User, SourceItem, testitem, Counter, Param, ltstate );
                 return;
