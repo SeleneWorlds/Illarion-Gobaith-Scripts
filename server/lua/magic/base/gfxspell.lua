@@ -125,7 +125,7 @@ end
 
 function M.HitOnPosition( Caster, CasterValue, posi, percent, radius )
     local showEffects = false;
-    showEffects = M.removeItemFromMap(SpellEffects[radius].removeItem, posi, base_basics.CasterValue );
+    showEffects = M.removeItemFromMap(SpellEffects[radius].removeItem, posi, CasterValue );
     if not world:isCharacterOnField(posi) then
         if SpellEffects[radius] ~= nil and ( showEffects or not SpellEffects.justAtHit ) then
             base_basics.performGFX( SpellEffects[radius].gfx, posi );
@@ -149,14 +149,14 @@ function M.HitOnPosition( Caster, CasterValue, posi, percent, radius )
         MagicRes = 0;
     end
 
-    if ( MagicRes <= base_basics.CasterValue ) then
-        showEffects = M.TargetHitting( Caster, HitChar, base_basics.CasterValue, MagicRes, percent );
+    if ( MagicRes <= CasterValue ) then
+        showEffects = M.TargetHitting( Caster, HitChar, CasterValue, MagicRes, percent );
         if SpellEffects[radius] ~= nil and ( showEffects or not SpellEffects.justAtHit ) then
             base_basics.performGFX( SpellEffects[radius].gfx, posi );
             base_basics.performSFX( SpellEffects[radius].sfx, posi );
         end
-    elseif ( MagicRes > base_basics.CasterValue * 2 ) then
-        showEffects = M.TargetHitting( Caster, Caster, base_basics.CasterValue, base_basics.MagicResistence( Caster ), percent );
+    elseif ( MagicRes > CasterValue * 2 ) then
+        showEffects = M.TargetHitting( Caster, Caster, CasterValue, base_basics.MagicResistence( Caster ), percent );
         world:gfx( 10, posi );
         if SpellEffects[radius] ~= nil and ( showEffects or not SpellEffects.justAtHit ) then
             base_basics.performGFX( SpellEffects[radius].gfx, Caster.pos );
@@ -184,7 +184,7 @@ function M.TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
         return false;
     end
 
-    local Value = (base_basics.CasterValue - Resistance)*Percent;
+    local Value = (CasterValue - Resistance)*Percent;
 
     if TargetEffects.minSkill.hitpoints and TargetEffects.maxSkill.hitpoints then
         local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.hitpoints, TargetEffects.maxSkill.hitpoints, Value));
