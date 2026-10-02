@@ -84,7 +84,7 @@ function M.eat()
 		local foodItems = {158,159,162};
 		local curItem = world:getItemOnField(thisNPC.pos);
 		eatIt = false;
-		for i,id in foodItems do
+		for i,id in pairs(foodItems) do
 			if curItem.id == id and curItem.wear == 255 then
 				eatIt = true;
 			end

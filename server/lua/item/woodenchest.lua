@@ -55,7 +55,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, LTState )
 	end
 	local rest = 0;
 	local num = 0;
-	for _,item in this.Items do
+	for _,item in pairs(this.Items) do
 		num = math.random(item.minNum,(item.maxNum or item.minNum));
 		rest = User:createItem(item.id, num, (item.quality or 333), (item.data or 0));
 		if rest>0 then

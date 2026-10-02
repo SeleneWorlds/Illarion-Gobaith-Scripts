@@ -26,10 +26,10 @@ User:inform("1");
     User:inform("6: "..GodID);
     if blessed and neckItem.id==222 and neckItem.quality==1000 then
     User:inform("7");
-        for attrib, value in Blessings[GodID]["attribs"] do
+        for attrib, value in pairs(Blessings[GodID]["attribs"]) do
             User:inform(attrib..": "..User:increaseAttrib( attrib, value ));
         end;
-        for skill, value in Blessings[GodID]["skills"] do
+        for skill, value in pairs(Blessings[GodID]["skills"]) do
             User:inform(skill..": "..User:increaseSkill( 4, skill, value ));
         end;
     end;

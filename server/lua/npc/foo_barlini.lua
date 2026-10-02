@@ -183,7 +183,7 @@ function M.nextCycle()  -- ~10 times per second
 		-- Positionen checken, ob ein Char dort steht
 		postListe={position(62,39,50),position(62,38,50),position(62,37,50),position(61,39,50),position(61,38,50),position(61,37,50),position(60,39,50),position(60,38,50),position(60,37,50)};
 
-		for i,posi in postListe do
+		for i,posi in pairs(postListe) do
 	            PosChar=world:isCharacterOnField(posi);
                     if not PosChar then
 	                world:createItemFromId(287,1,posi,true,333,0);
@@ -219,7 +219,7 @@ function M.nextCycle()  -- ~10 times per second
 		-- Positionen checken, ob ein Char dort steht
                 postListe={position(58,39,50),position(58,38,50),position(58,37,50),position(57,39,50),position(57,38,50),position(57,37,50),position(56,39,50),position(56,38,50),position(56,37,50)};
 
-		for i,posi in postListe do
+		for i,posi in pairs(postListe) do
 		    PosChar=world:isCharacterOnField(posi);
 		    if not PosChar then
 		        world:createItemFromId(359,1,posi,true,333,0);
@@ -251,7 +251,7 @@ function M.nextCycle()  -- ~10 times per second
                 -- Positionen checken, ob ein Char dort steht
                 postListe={position(62,42,50),position(62,43,50),position(62,44,50),position(61,42,50),position(61,43,50),position(61,44,50),position(60,42,50),position(60,43,50),position(60,44,50)};
  
- 		for i,posi in postListe do
+		for i,posi in pairs(postListe) do
                     PosChar=world:isCharacterOnField(posi);
                     if not PosChar then
                         world:createItemFromId(360,1,posi,true,333,0);
@@ -283,7 +283,7 @@ function M.nextCycle()  -- ~10 times per second
                 -- Positionen checken, ob ein Char dort steht
                 postListe={position(58,42,50),position(58,43,50),position(58,44,50),position(57,42,50),position(57,43,50),position(57,44,50),position(56,42,50),position(56,43,50),position(56,44,50)};
 
-                for i,posi in postListe do
+                for i,posi in pairs(postListe) do
                     PosChar=world:isCharacterOnField(posi);
                     if not PosChar then
                         world:createItemFromId(372,1,posi,true,333,0);

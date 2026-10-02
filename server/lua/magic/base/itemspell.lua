@@ -140,7 +140,7 @@ function M.removeItemFromMap( ItemData, Target, CasterVal )
 
     local found = false;
     if ( type(ItemData.id) == "table" ) then
-        for i,id in ItemData.id do
+        for i,id in pairs(ItemData.id) do
             if id == theItem.id then
                 found = true;
             end

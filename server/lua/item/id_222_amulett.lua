@@ -112,7 +112,7 @@ function M.RoadToNode(User, effectType)
 	local charList = world:getPlayersInRangeOf(User.pos, 5);
 	local validChars = {};
 	local retVal = false;
-	for i,char in charList do
+	for i,char in pairs(charList) do
 		if char.id ~= User.id and char.pos.z == User.pos.z then
 			if not char.effects:find(29) then
 				table.insert(validChars, char);
@@ -134,7 +134,7 @@ function M.RemoveMuckyLuck(User, TargetItem)
 	local radius = 2;
 	local foodItems = {158,159,162};
 	if TargetItem.id ~= 0 then
-		for i,id in foodItems do
+		for i,id in pairs(foodItems) do
 			if id == TargetItem.id and TargetItem.wear == 255 then
 				world:erase(TargetItem,1);
 			end
@@ -144,7 +144,7 @@ function M.RemoveMuckyLuck(User, TargetItem)
 		local event;
 		event = function(pos)
 			item = world:getItemOnField(pos);
-			for i,id in foodItems do
+			for i,id in pairs(foodItems) do
 				if id == item.id and item.wear == 255 then
 					world:erase(item,1);
 					return;

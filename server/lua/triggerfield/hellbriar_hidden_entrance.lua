@@ -17,7 +17,7 @@ function MoveToField(User)
 		theWall.wear = 255;
 		world:changeItem(theWall);
 		local charList = world:getPlayersInRangeOf(WALLPOS,15);
-		for i,char in charList do
+		for i,char in pairs(charList) do
 			if char.pos.z == WALLPOS.z then
 				char:inform(char:getPlayerLanguage()==0 and
 					"#w Du h�rst das Ger�usch von sich verschiebendem Gestein." or

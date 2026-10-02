@@ -66,7 +66,7 @@ function M.GetItems( User, ItemID, DataValue )
 
 	retList[0] = 0;
 
-    for _,i in posList do
+    for _,i in pairs(posList) do
         myItem = User:getItemAt( i );
         if ( myItem.id == ItemID and ( DataValue == nil or myItem.data == DataValue ) and myItem.quality >= 100) then
 			addItem( myItem );

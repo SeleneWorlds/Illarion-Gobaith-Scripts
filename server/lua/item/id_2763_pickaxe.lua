@@ -232,7 +232,7 @@ function M.GetRessource(AreaID, StoneID, Skill)
     AvaiableRess = { };
     MaxTry = 100;
     RessCnt = 0;
-    for i,Ressource in RessourceList do
+    for i,Ressource in pairs(RessourceList) do
         if (Skill >= Ressource[2]) then
             AvaiableRess[i] = Ressource[1];
             RessCnt = RessCnt + 1;
@@ -245,7 +245,7 @@ function M.GetRessource(AreaID, StoneID, Skill)
     end
     RessourceTry = math.random(0,MaxTry);
     TriggerTry = 0;
-    for i,Ressource in AvaiableRess do
+    for i,Ressource in pairs(AvaiableRess) do
         if ((RessourceTry >= TriggerTry) and (RessourceTry < (TriggerTry+Ressource))) then
             return i;
         else

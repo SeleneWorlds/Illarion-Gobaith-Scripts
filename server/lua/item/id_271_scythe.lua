@@ -18,7 +18,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         TargetItem = common.GetFrontItem( User ); -- Wenn nicht Item in Blickrichtung nehmen
     end
     
-    if (TargetItem.id ~= 248) then
+    if (TargetItem == nil or TargetItem.id ~= 248) then
         return
     end
     

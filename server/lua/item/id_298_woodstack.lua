@@ -11,7 +11,7 @@ function M.callFireMan(User, fireItem)
 
     --User:inform("checking NPC");
     Npcs=world:getNPCSInRangeOf(position(-105,-84,0),1);
-    for i,fireMaster  in Npcs do
+    for i,fireMaster  in pairs(Npcs) do
         --User:inform("Name: "..fireMaster.name);
         fndFir, firEffect = fireMaster.effects:find(8);
         if not fndFir then                                  -- if not...

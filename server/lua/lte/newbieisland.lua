@@ -158,8 +158,8 @@ function M.removeEffect(newbieEffect, Character)
 		skillList[2] = {"alchemy", "baking", "blacksmithing", "carpentry", "fireing bricks", "fishing", "gemcutting", "glass blowing", "goldsmithing", "herb lore", "lumberjacking", "mining", "peasantry", "smithing", "tailoring"};
 		skillList[3] = {"commotio","pervestigatio","desicio","transformo","transfreto","library research","magic resistance"};
 		skillList[5] = {"concussion weapons", "distance weapons", "dodge", "parry", "poisoning", "puncture weapons", "slashing weapons", "tactics"};
-		for group,list in skillList do
-    		for i,skill in list do
+		for group,list in pairs(skillList) do
+			for i,skill in pairs(list) do
     		    currentSkill = Character:getSkill(skill);
     		    foundSkill, value = newbieEffect:findValue(skill);
     		    newSkill = math.min( currentSkill, maxSkill );

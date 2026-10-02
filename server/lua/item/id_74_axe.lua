@@ -216,7 +216,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     M.initLists(  );
     if world:isItemOnField( position( TargetPos.x, TargetPos.y+1, TargetPos.z ) ) then
         local testitem = world:getItemOnField( position( TargetPos.x, TargetPos.y+1, TargetPos.z ) );
-        for a,tree in trees do
+        for a,tree in pairs(trees) do
             if ( tree[4] == testitem.id ) or ( tree[2] == testitem.id ) then
                 M.UseItem( User, SourceItem, testitem, Counter, Param, ltstate );
                 return;

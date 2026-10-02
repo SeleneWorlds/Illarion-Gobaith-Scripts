@@ -18,7 +18,7 @@ local M = {}
 function M.P_GetConversionSkill(text)
 	local ret = nil;
 	text = string.lower(text);
-	for _,this in PRAYER_CONVERSION do
+	for _,this in pairs(PRAYER_CONVERSION) do
 		if string.find(text,this.gText) or string.find(text,this.eText) then
 			ret = this.skill;
 			break;
@@ -63,7 +63,7 @@ function M.P_GetDevotion(Char,followers,priests)
 	if priests and god>100 then
 		god = god-100;
 	end
-	for _,cur in GOD_LIST do
+	for _,cur in pairs(GOD_LIST) do
 		if cur==god then
 			return god;
 		end
@@ -91,7 +91,7 @@ end
 ]]
 function M.P_CheckItemsFollower(Char,God,Info)
 	local ret = true;
-	for _,item in ITEMS_FOLLOWER[God] do
+	for _,item in pairs(ITEMS_FOLLOWER[God]) do
 		if Char:countItem(item.id)<item.number then
 			ret = false;
 			break;
@@ -107,7 +107,7 @@ end
 
 function M.P_CheckItemsPriest(Char,God,Info)
 	local ret = true;
-	for _,item in ITEMS_PRIEST[God] do
+	for _,item in pairs(ITEMS_PRIEST[God]) do
 		if Char:countItem(item.id)<item.number then
 			ret = false;
 			break;
@@ -206,13 +206,13 @@ function M.P_GetEffectPriest(Char)
 end
 
 function M.P_DeleteItemsFollower(Char,God)
-	for _,item in ITEMS_FOLLOWER[God] do
+	for _,item in pairs(ITEMS_FOLLOWER[God]) do
 		Char:eraseItem(item.id,item.number);
 	end
 end
 
 function M.P_DeleteItemsPriest(Char,God)
-	for _,item in ITEMS_PRIEST[God] do
+	for _,item in pairs(ITEMS_PRIEST[God]) do
 		Char:eraseItem(item.id,item.number);
 	end
 end
@@ -248,7 +248,7 @@ end
 @return int/nil
 ]]
 function M.P_GetGodOfAltar(Char)
-	for god,pos in ALTARS do
+	for god,pos in pairs(ALTARS) do
 		if Char:isInRangeToPosition(pos,2) then
 			return god;
 		end
@@ -286,7 +286,7 @@ function M.P_GetChanceForOrdination(Char,God,Info)
 	local followers = {};
 	local priests = {};
 	local d = nil;
-	for _,player in players do
+	for _,player in pairs(players) do
 		if player.id~=Char.id then
 			d = M.P_GetDevotion(player,true,false);
 			if d and d==God then
