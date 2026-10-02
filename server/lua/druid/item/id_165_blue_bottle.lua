@@ -87,7 +87,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
      for zaehler = 1,#ListeObjNahrung do
          if ListeObjNahrung[zaehler]==Targetitem.id_id then
             wert = dataZList[2] -5
-            dura = dura + (wert*25*((Character:getSkill("cooking")+math.floor(Sourceitem.id_quality/10))/100))
+            dura = dura + (wert*25*((Character:getSkill("baking")+math.floor(Sourceitem.id_quality/10))/100))
          end
      end
 --   Effekte f�r Leder:
