@@ -210,34 +210,41 @@ local function activate()
     orgScript = M.orgScript
 end
 
+local initSpell = M.InitSpell
+local castMagic = M.CastMagic
+local castMagicOnCharacter = M.CastMagicOnCharacter
+local castMagicOnField = M.CastMagicOnField
+local castMagicOnItem = M.CastMagicOnItem
+local writeTeleSpell = M.WriteTeleSpell
+
 function M.InitSpell(...)
     activate()
-    return M.InitSpell(...)
+    return initSpell(...)
 end
 
 function M.CastMagic(...)
     activate()
-    return M.CastMagic(...)
+    return castMagic(...)
 end
 
 function M.CastMagicOnCharacter(...)
     activate()
-    return M.CastMagicOnCharacter(...)
+    return castMagicOnCharacter(...)
 end
 
 function M.CastMagicOnField(...)
     activate()
-    return M.CastMagicOnField(...)
+    return castMagicOnField(...)
 end
 
 function M.CastMagicOnItem(...)
     activate()
-    return M.CastMagicOnItem(...)
+    return castMagicOnItem(...)
 end
 
 function M.WriteTeleSpell(...)
     activate()
-    return M.WriteTeleSpell(...)
+    return writeTeleSpell(...)
 end
 
 return M
