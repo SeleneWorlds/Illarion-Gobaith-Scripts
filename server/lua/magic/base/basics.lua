@@ -378,9 +378,9 @@ function M.gemBonis( Char )
     }
 
     local StoneItem = Char:getItemAt( CCharacter.right_tool );
-    if ItemClass[StoneItem.id]~=5 then
+    if lookat_unique.ItemClass[StoneItem.id]~=5 then
         StoneItem = Char:getItemAt( CCharacter.left_tool );
-	    if ItemClass[StoneItem.id]~=5 then
+	    if lookat_unique.ItemClass[StoneItem.id]~=5 then
 	        return;
 	    end
 	end
