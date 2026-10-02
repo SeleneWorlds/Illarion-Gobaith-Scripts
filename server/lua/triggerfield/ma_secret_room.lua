@@ -3,7 +3,7 @@ module("triggerfield.ma_secret_room", package.seeall)
 function CharacterOnField(Character)
 
     if not equapos(Character.pos,position(74,41,50)) then
-        if not ( string.find( Character.lastSpokenText, "[Ss][Zz][Ee][Rr][Ss][Cc][Hh][Ee][Yy]" ) ~= nil ) then
+        if not ( string.find( Character.lastSpokenText, "[Zz][Ee][Ll][Uu][Rr][Yy][Aa][Ll][Bb] [Ee][Xx][Cc][Ee][Ll][Ss][Ii][Oo][Rr]" ) ~= nil ) then
             return
         end
 
