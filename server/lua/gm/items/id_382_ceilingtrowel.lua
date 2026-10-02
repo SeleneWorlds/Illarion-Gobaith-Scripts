@@ -124,7 +124,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
             end
             if (string.find(User.lastSpokenText,"setdata (%d+)")==nil and string.find(User.lastSpokenText,"setqual (%d)(%d)(%d)")==nil) then
                 a,b,spoken = string.find(User.lastSpokenText,"(.+)");
-                if User:increaseAttrib(spoken,0)~=0 then
+                if spoken ~= nil and User:increaseAttrib(spoken,0)~=0 then
                     User:setAttrib(spoken,Counter);
                     User:inform(spoken.." set to "..User:increaseAttrib(spoken,0));
                     -- LogGMAction(User,User.name.."("..User.id..") changed attribute "..spoken.." to "..User:increaseAttrib(spoken,0));
