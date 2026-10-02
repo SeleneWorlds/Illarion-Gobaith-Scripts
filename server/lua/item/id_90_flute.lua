@@ -5,7 +5,7 @@ local M = {}
 
 -- UPDATE common SET com_script='item.id_90_flute' WHERE com_itemid=90;
 
-local music = require("item.base.music")
+local music = require("item.base.music").new()
 local general_wood = require("item.general.wood")
 music.addTalkText("#me produces some squeaking sounds on the flute","#me macht einige quietschende Ger�usche auf der Fl�te");
 music.addTalkText("#me plays a horribly out of tune melody","#me spielt eine f�rchterlich verstimmte Melodie auf der Fl�te");

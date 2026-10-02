@@ -5,19 +5,24 @@ local M = {}
 
 local common = require("base.common")
 
-local TalkTexts = {}
+function M.new()
+    local music = {}
+    local talkTexts = {}
 
-function M.addTalkText(eText,gText)
-    table.insert(TalkTexts,{eText,gText});
-end
+    function music.addTalkText(eText,gText)
+        table.insert(talkTexts,{eText,gText});
+    end
 
-function M.PlayInstrument(User,Item,Skill)
-    local Skl=User:getSkill(Skill);
-    local Qual=math.floor(Item.quality/100);
-    local PlayVal=common.Limit(math.floor((Skl+(Qual*5))/120*#TalkTexts*(math.random(8,13)/10)),1,#TalkTexts);
-    User:talkLanguage( CCharacter.say, CPlayer.german, TalkTexts[PlayVal][2]);
-    User:talkLanguage( CCharacter.say, CPlayer.english, TalkTexts[PlayVal][1]);
-    User:learn(8,Skill,3,100);
+    function music.PlayInstrument(User,Item,Skill)
+        local Skl=User:getSkill(Skill);
+        local Qual=math.floor(Item.quality/100);
+        local PlayVal=common.Limit(math.floor((Skl+(Qual*5))/120*#talkTexts*(math.random(8,13)/10)),1,#talkTexts);
+        User:talkLanguage( CCharacter.say, CPlayer.german, talkTexts[PlayVal][2]);
+        User:talkLanguage( CCharacter.say, CPlayer.english, talkTexts[PlayVal][1]);
+        User:learn(8,Skill,3,100);
+    end
+
+    return music
 end
 
 return M

@@ -5,7 +5,7 @@ local M = {}
 
 -- UPDATE common SET com_script='item.id_553_drum' WHERE com_itemid=553;
 
-local music = require("item.base.music")
+local music = require("item.base.music").new()
 local general_wood = require("item.general.wood")
 music.addTalkText("#me hits the drum chaoticly, making a lot of noise.", "#me schl�gt planlos auf die Trommel ein und macht eine Menge L�rm." );
 music.addTalkText("#me makes chattering uncoordinated noises on the drum.", "#me macht klappernde, unkoordinierte Ger�usche auf der Trommel.");

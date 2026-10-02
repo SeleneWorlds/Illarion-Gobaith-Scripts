@@ -5,7 +5,7 @@ local M = {}
 
 -- UPDATE common SET com_script='item.id_532_panpipe' WHERE com_itemid=532;
 
-local music = require("item.base.music")
+local music = require("item.base.music").new()
 local general_wood = require("item.general.wood")
 music.addTalkText("#me blows hard in the panpipes, making a loud, annoying, screeching sound.", "#me pustet in die Panfl�te und erzeugt ein lautes, nerviges, fast schreiendes Ger�usch." );
 music.addTalkText("#me blows in the panpipes randomly, letting out a few loud uncoordinated sounds.", "#me bl��t wirr auf der Panfl�te, laute aber unmelodische T�ne sind die Folge.");
