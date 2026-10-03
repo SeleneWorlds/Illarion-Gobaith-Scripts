@@ -1,3 +1,4 @@
+local TraderFirst
 local M = {}
 
 local functions = require("npc.base.functions")

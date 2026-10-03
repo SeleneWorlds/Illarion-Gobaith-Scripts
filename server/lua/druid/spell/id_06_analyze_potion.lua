@@ -1,3 +1,4 @@
+local firsttime
 --ds_druidspell_06.lua / 6. Rune des Lehrlings
 --Druidensystem
 --Falk

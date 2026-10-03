@@ -1,3 +1,4 @@
+local initLook
 local M = {}
 
 -- INSERT INTO npc VALUES (nextval('npc_seq'),3,-98,-82,0,4,false,'Miss Piggy','npc_miss_piggy.lua',1);

@@ -1,3 +1,4 @@
+local init
 local drop = require("monster.base.drop")
 local base_lookat = require("monster.base.lookat")
 local base_messages = require("base.messages")

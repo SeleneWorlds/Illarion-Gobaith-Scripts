@@ -1,3 +1,6 @@
+local cycleCounter
+local initLook
+local TraderFirst
 local M = {}
 
 -- INSERT INTO npc VALUES (nextval('npc_seq'),1,49, 51, 100,4,false,'Warkol Hammerfaust','npc_warkol_hammerfaust.lua',0);

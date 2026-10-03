@@ -1,3 +1,4 @@
+local firsttime
 --ds_druidspell_12.lua / 5. Rune des Gesellen
 --Druidensystem
 --Falk

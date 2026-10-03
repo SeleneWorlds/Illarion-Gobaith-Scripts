@@ -1,3 +1,4 @@
+local firsttime
 --ds_druidspell_15.lua / 1. Rune des Meisters
 --Druidensystem
 --Falk

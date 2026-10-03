@@ -1,3 +1,4 @@
+local init
 local common = require("base.common")
 local drop = require("monster.base.drop")
 local base_lookat = require("monster.base.lookat")

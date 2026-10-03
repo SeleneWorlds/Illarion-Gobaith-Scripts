@@ -1,3 +1,4 @@
+local TraderFirst
 local M = {}
 
 function M.initializeNpc()

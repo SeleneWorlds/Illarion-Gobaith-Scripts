@@ -1,3 +1,4 @@
+local firstCall
 local base_doors = require("base.doors")
 local base_keys = require("base.keys")
 local M = {}

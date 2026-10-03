@@ -1,3 +1,4 @@
+local firstRun
 local M = {}
 
 -- NPC for Dungeon Monster Control

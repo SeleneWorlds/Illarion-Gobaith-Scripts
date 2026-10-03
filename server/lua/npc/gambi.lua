@@ -1,3 +1,5 @@
+local cycCount
+local TraderFirst
 local M = {}
 
 --Name:        Gambi

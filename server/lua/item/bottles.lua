@@ -1,3 +1,4 @@
+local firstcall
 local M = {}
 
 -- empty container with drink

@@ -1,3 +1,4 @@
+local first
 local uniqueItem = require("quest_giveUniqueItem")
 local M = {}
 

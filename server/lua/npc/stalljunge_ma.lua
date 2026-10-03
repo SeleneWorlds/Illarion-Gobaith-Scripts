@@ -1,3 +1,4 @@
+local TraderInit
 local M = {}
 
 --Name:        Stalljunge

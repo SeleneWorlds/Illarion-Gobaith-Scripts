@@ -1,3 +1,4 @@
+local cycCount
 local M = {}
 
 -- Basisscript f�r NPC H�ndlerfunktionen

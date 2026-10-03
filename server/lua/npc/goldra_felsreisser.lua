@@ -1,3 +1,5 @@
+local cycleCounter
+local initLook
 local M = {}
 
 --[[name="Goldra Felsreisser"

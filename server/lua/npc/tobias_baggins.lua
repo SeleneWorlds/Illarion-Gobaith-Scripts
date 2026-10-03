@@ -1,3 +1,5 @@
+local initLook
+local TraderFirst
 local M = {}
 
 --Name:        Tobias Baggins

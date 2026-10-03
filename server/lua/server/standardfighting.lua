@@ -1,3 +1,4 @@
+local _AntiSpamVar
 -- Fighting System
 -- All fights are handled with this script
 -- Written by Nitram and Xandrina

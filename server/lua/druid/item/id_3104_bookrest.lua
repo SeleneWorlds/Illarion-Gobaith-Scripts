@@ -1,3 +1,4 @@
+local firsttime
 -- ds_3104_pult.lua
 -- Pergament f�r das Druidensystem
 -- Falk

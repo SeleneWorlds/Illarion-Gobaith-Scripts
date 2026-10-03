@@ -1,3 +1,4 @@
+local firsttime
 --ds_druidspell_13.lua / 6. Rune des Gesellen
 --Druidensystem
 --Falk

@@ -1,3 +1,4 @@
+local first
 local M = {}
 
 -- Wegweiser Script

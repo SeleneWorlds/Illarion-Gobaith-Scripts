@@ -1,3 +1,4 @@
+local firsttime
 --I_167_gelbe_flasche / Krankheiten und Gifte
 --Druidensystem in Arbeit
 --Falk

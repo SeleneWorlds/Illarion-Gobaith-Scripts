@@ -1,3 +1,4 @@
+local TraderFirst
 local M = {}
 
 --Name:        Sorgan Stonemate

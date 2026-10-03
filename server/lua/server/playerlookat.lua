@@ -1,3 +1,8 @@
+local iniHPT
+local iniFig
+local initClQText
+local initClText
+local initMod
 -- Character description
 
 -- SourceCharacter - The Char who looks at someone

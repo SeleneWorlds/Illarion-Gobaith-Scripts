@@ -1,3 +1,5 @@
+local TraderFirst
+local firsttime
 --ds_npc_schleifer.lua
 --NPC zur Herstellung von Edelsteinstaub
 --Druidensystem

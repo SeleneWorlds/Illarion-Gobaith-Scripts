@@ -1,3 +1,4 @@
+local cycCount
 local M = {}
 
 function M.useNPC(user,counter,param)

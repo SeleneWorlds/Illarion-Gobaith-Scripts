@@ -1,3 +1,4 @@
+local firstrun
 local M = {}
 
 function M.InitWalkNPC()

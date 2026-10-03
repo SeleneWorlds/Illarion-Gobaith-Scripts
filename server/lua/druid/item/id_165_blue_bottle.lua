@@ -1,3 +1,4 @@
+local firsttime
 --I_165_blaue_flasche
 --Druidensystem in Arbeit / Pasten f�r Items
 --Falk

@@ -1,3 +1,4 @@
+local Init
 local common = require("base.common")
 
 local M = {}

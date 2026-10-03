@@ -1,3 +1,7 @@
+local iniHPT
+local iniFig
+local initClQText
+local initClText
 -- Alle Funktionen geben >nur< die Stichwoerter zurueck.
 -- Zum groe�ten Teil ueberarbeitet von playerlookat.lua
 

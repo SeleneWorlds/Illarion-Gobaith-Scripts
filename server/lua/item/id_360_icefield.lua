@@ -1,3 +1,4 @@
+local firstrot
 local M = {}
 
 -- UPDATE common SET com_script='item.id_360_icefield' where com_itemid=360;

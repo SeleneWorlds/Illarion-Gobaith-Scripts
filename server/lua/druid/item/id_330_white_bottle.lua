@@ -1,3 +1,4 @@
+local firsttime
 --ds_330_weisse_flasche_neu.lua
 --Druidensystem in Arbeit
 --Tempor�re Einzelwirkungen

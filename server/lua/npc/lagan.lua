@@ -1,3 +1,5 @@
+local cycCount
+local TraderFirst
 local M = {}
 
 function M.useNPC(user,counter,param)

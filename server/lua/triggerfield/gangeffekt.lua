@@ -1,3 +1,4 @@
+local Init
 -- INSERT INTO triggerfields VALUES (x,y,z,'triggerfield.gangeffekt');
 
 local M = {}

@@ -1,3 +1,4 @@
+local firsttime
 --I_329_schwarze_flasche
 --Druidensystem in Arbeit
 --Falk
