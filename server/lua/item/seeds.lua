@@ -204,7 +204,7 @@ end
 ---[[
 function M.MoveItemAfterMove(User, SourceItem, TargetItem)
     if (SourceItem.data > 0) then
-        world:erase( SourceItem, SourceItem.number );
+        world:erase( TargetItem, SourceItem.number );
     end
 end
 --]]
