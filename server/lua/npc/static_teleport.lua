@@ -19,7 +19,6 @@ local taxes = require("taxes")
 function M.initializeNpc()
 		Teleportation=M.TeleportationFunction(thisNPC); --initialize the teleportation
 		Teleportation.initializeNpc(thisNPC);
-		thisNPC:talk(CCharacter.say, "debugmsg");
 end
 
 function M.nextCycle()  -- ~10 times per second
