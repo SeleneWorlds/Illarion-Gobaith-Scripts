@@ -126,7 +126,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         else -- Spieler hat den Effekt
             found,value = alcEffect:findValue("alcohol"); -- alten Alkohol wert suchen
             oldAlcValue = ( found and value or 0 ); -- und uebertragen
-            alcEffect:removeEffect(1); -- alten Effekt entfernen
+            User:removeEffect(1); -- alten Effekt entfernen
         end
         alcEffect = CLongTimeEffect( 1, 300 ); -- Effekt Struktur erstellen
         alcEffect:addValue("alcohol",oldAlcValue + math.floor(food[1]*(food[3]/100))); -- neuen Alkohol Wert hinzufuegen
