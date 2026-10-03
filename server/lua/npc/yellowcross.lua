@@ -58,7 +58,7 @@ function M.nextCycle()
     -- Spieler fertig
 end
 
-attribs={"strength","dexterity","constitution","agility","intelligence","perception","willpower","essence"};
+local attribs={"strength","dexterity","constitution","agility","intelligence","perception","willpower","essence"};
 
 function M.doubleEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
