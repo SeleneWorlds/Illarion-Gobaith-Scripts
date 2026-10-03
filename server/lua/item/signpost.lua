@@ -9,7 +9,6 @@ local signpost_content = require("content.signpost")
 -- UPDATE common SET com_script='item.signpost' WHERE com_itemid IN (1817,1809,1808,1807,308,1804,586,3084,3081,3082,3083,519,520,521,337,1914,1915,2046,2069,512,2924,2925,2926,2927);
 
 function M.LookAtItemIdent(User,Item)
-    local test = "no value";
 	if (first==nil) then
         signpost_content.InitWegweiser()
         first=1;
@@ -22,9 +21,9 @@ function M.LookAtItemIdent(User,Item)
     local signItemId     = signpost_content.signItemId;
     local signPerception = signpost_content.signPerception;
     
-    found = false;
-    UserPer = User:increaseAttrib("perception",0);
-    tablePosition = Item.pos.x .. Item.pos.y .. Item.pos.z;
+    local found = false;
+    local UserPer = User:increaseAttrib("perception",0);
+	local tablePosition = signpost_content.PositionKey(Item.pos);
 	if signCoo ~= nil then
 		if (signCoo[tablePosition] ~= nil) then
 			for i, signpos in pairs(signCoo[tablePosition]) do
@@ -32,7 +31,6 @@ function M.LookAtItemIdent(User,Item)
 					if (UserPer >= signPerception[tablePosition][i]) then
 						found = true;
 						world:itemInform(User,Item,common.GetNLS(User,string.gsub(signTextDe[tablePosition][i],"currentChar",User.name),string.gsub(signTextEn[tablePosition][i],"currentChar",User.name)));
-						test = signTextDe[tablePosition][i];
 					end
 				end
 			end
@@ -48,9 +46,6 @@ function M.LookAtItemIdent(User,Item)
 	if not found then
         world:itemInform(User,Item,common.GetNLS(User,"Du siehst ","You see ")..world:getItemName(Item.id,User:getPlayerLanguage()));
     end
-
-		User:inform("in LookAtItem of base_wegweiser.lua");
-		User:inform(test);
 end
 
 --[[

@@ -6,6 +6,10 @@ local M = {
     signPerception = nil
 }
 
+function M.PositionKey(pos)
+    return string.format("%d:%d:%d", pos.x, pos.y, pos.z)
+end
+
 function M.InitWegweiser()
     M.signTextDe={};
     M.signTextEn={};
@@ -364,17 +368,18 @@ function M.InitWegweiser()
 end
 
 function M.AddWeg(Posi,dText,eText,Dir,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local signPosition = position(Posi[1],Posi[2],Posi[3]);
+    local tablePos = M.PositionKey(signPosition);
     M.PrepareTables(tablePos);
-    table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
+    table.insert(M.signCoo[tablePos],signPosition);
     table.insert(M.signTextDe[tablePos],dText);
     table.insert(M.signTextEn[tablePos],eText);
     table.insert(M.signPerception[tablePos],Percept);
-    M.CheckAndPlaceItem(position(Posi[1],Posi[2],Posi[3]),M.DirToItemID(Dir));
+    M.CheckAndPlaceItem(signPosition,M.DirToItemID(Dir));
 end
 
 function M.AddGrave(Posi,dText,eText,Type,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local tablePos = M.PositionKey(position(Posi[1],Posi[2],Posi[3]));
     M.PrepareTables(tablePos);
     table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
     table.insert(M.signTextDe[tablePos],dText);
@@ -384,7 +389,7 @@ function M.AddGrave(Posi,dText,eText,Type,Percept)
 end
 
 function M.AddPicture(Posi,dText,eText,Type,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local tablePos = M.PositionKey(position(Posi[1],Posi[2],Posi[3]));
     M.PrepareTables(tablePos);
     table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
     table.insert(M.signTextDe[tablePos],dText);
@@ -394,7 +399,7 @@ function M.AddPicture(Posi,dText,eText,Type,Percept)
 end
 
 function M.AddPennant(Posi,dText,eText,Type,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local tablePos = M.PositionKey(position(Posi[1],Posi[2],Posi[3]));
     M.PrepareTables(tablePos);
     table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
     table.insert(M.signTextDe[tablePos],dText);
@@ -404,7 +409,7 @@ function M.AddPennant(Posi,dText,eText,Type,Percept)
 end
 
 function M.AddTree(Posi,dText,eText,Type,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local tablePos = M.PositionKey(position(Posi[1],Posi[2],Posi[3]));
     M.PrepareTables(tablePos);
     table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
     table.insert(M.signTextDe[tablePos],dText);
@@ -414,7 +419,7 @@ function M.AddTree(Posi,dText,eText,Type,Percept)
 end
 
 function M.AddPillar(Posi,dText,eText,Type,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local tablePos = M.PositionKey(position(Posi[1],Posi[2],Posi[3]));
     M.PrepareTables(tablePos);
     table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
     table.insert(M.signTextDe[tablePos],dText);
@@ -424,7 +429,7 @@ function M.AddPillar(Posi,dText,eText,Type,Percept)
 end
 
 function M.AddChimney(Posi,dText,eText,Type,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local tablePos = M.PositionKey(position(Posi[1],Posi[2],Posi[3]));
     M.PrepareTables(tablePos);
     table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
     table.insert(M.signTextDe[tablePos],dText);
@@ -434,7 +439,7 @@ function M.AddChimney(Posi,dText,eText,Type,Percept)
 end
 
 function M.AddMirror(Posi,dText,eText,Type,Percept)
-    local tablePos = Posi[1]..Posi[2]..Posi[3];
+    local tablePos = M.PositionKey(position(Posi[1],Posi[2],Posi[3]));
     M.PrepareTables(tablePos);
     table.insert(M.signCoo[tablePos],position(Posi[1],Posi[2],Posi[3]));
     table.insert(M.signTextDe[tablePos],dText);
