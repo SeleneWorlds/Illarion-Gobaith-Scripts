@@ -1,0 +1,62 @@
+lookat: german -> "Ein kleiner Mann, kleiner als ein Zwerg, mit gewaltigem Strohhut, der ihn vor der Sonne schützt. Aus einer Tasche auf seinem Rücken schauen einige Bauernswerkzeuge hervor. Er macht wohl grad Pause."
+lookat: english -> "A small man, smaller than a dwarf but with a giant hat protecting him of the sun. Peeking out of a bag around his shoulder you can see some farming tools. He seems to be taking a break."
+
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+chat: match(
+    "greet",
+    "hello",
+    "hi"
+) -> pick(
+    "Hiho. Who are you?",
+    "Hiho. How i can help you?"
+)
+
+chat: match("you.+trader") -> "Yes, I am a trader. What do you want?", showTrades("feliam_wardstrok")
+chat: match("what.+sell") -> "I sell tools, food and seeds.", showTrades("feliam_wardstrok")
+chat: match("what.+food") -> "I sell bread and ham. Fish and trout.", showTrades("feliam_wardstrok")
+chat: match("what.+seed") -> "I sell grain and cabbage seeds.", showTrades("feliam_wardstrok")
+chat: match("what.+tool") -> "I have flails, scythe, sickles, fishing rod.", showTrades("feliam_wardstrok")
+
+chat: match("goodbye") -> "Have a good day. You are welcomed to come back."
+
+chat: match(
+    "bye",
+    "farewell"
+) -> pick(
+    "Farewell.",
+    "Farewell. Ushara may be with you."
+)
+
+chat: match("who.+you?") -> "I am Feliam Wardstrok, a farmer."
+
+chat: match("help") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match(
+    "hallo",
+    "gr[üu][ßs]*"
+) -> pick(
+    "Hiho! Wer bist du?",
+    "Hiho! Wie kann ich dir helfen?"
+)
+
+chat: match("[di][uh]r*.+händler") -> "Jap, ich bin Händler. Was brauchst du?", showTrades("feliam_wardstrok")
+chat: match("was.+verkauf") -> "Ich verkauf' Werkzeug, Nahrung und Samen.", showTrades("feliam_wardstrok")
+chat: match("was.+nahrung") -> "Ich verkauf' Brot und Schinken. Fische und Forellen", showTrades("feliam_wardstrok")
+chat: match("was.+samen") -> "Ich verkauf' Getreide und Kohlsamen", showTrades("feliam_wardstrok")
+chat: match("was.+werkzeug") -> "Ich habe Dreschflegel, Sensen, Sicheln und Angeln. Interessiert?", showTrades("feliam_wardstrok")
+
+chat: match(
+    "auf.+bald",
+    "bis.+bald"
+) -> pick(
+    "Schönen Tag noch! Bis bald!",
+    "Bis Bald! Ushara mit dir!"
+)
+
+chat: match("wer.+[di][uh]r*") -> "Ich bin Feliam Wardstrok, Bauer."
+
+chat: match("hilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("feliam_wardstrok")
