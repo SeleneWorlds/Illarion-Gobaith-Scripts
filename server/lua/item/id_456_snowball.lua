@@ -1,5 +1,7 @@
 local M = {}
 
+local Round
+
 -- UPDATE common SET com_script='item.id_456_snowball' WHERE com_itemid IN (456);
 
 function M.MoveItemAfterMove(User, SourceItem, TargetItem)
