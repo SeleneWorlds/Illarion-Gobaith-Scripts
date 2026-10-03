@@ -115,7 +115,7 @@ function M.getHPText(HP,language)
         HPText[1][1]="nearly dead";
         iniHPT=1;
     end
-    interval=math.ceil(HP/1700);
+    local interval = math.max(1, math.min(6, math.ceil(HP / 1700)));
     return HPText[language][interval];
 end
 
