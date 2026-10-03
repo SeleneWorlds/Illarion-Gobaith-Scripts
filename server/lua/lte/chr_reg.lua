@@ -6,11 +6,25 @@ local M = {}
 
 --dofile( "p_basics.lua" );
 
-crossPosition={};
+local crossPositions = {
+    position(  40,   76, 100),
+    position(-137, -122,   0),
+    position(   0,    0,   0),
+    position( 274, -270,   0),
+    position(-437,   52,   0),
+    position( 399,  157,   0)
+};
 
--- No final values!
-
-crossPosition[0]= position(0,0,0);       -- Default
+local directionNames = {
+    [CCharacter.dir_north] = { "NORDEN", "NORTH" },
+    [CCharacter.dir_northeast] = { "NORDOSTEN", "NORTHEAST" },
+    [CCharacter.dir_east] = { "OSTEN", "EAST" },
+    [CCharacter.dir_southeast] = { "SUEDOSTEN", "SOUTHEAST" },
+    [CCharacter.dir_south] = { "SUEDEN", "SOUTH" },
+    [CCharacter.dir_southwest] = { "SUEDWESTEN", "SOUTHWEST" },
+    [CCharacter.dir_west] = { "WESTEN", "WEST" },
+    [CCharacter.dir_northwest] = { "NORDWESTEN", "NORTHWEST" }
+};
 
 function M.addEffect( Effect, Character)
     -- it is needed to add at least value to make sure the effect does not get deleted right after
@@ -47,15 +61,15 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
 
 
     if ( Hitpoints == 0 ) then -- Charakter ist tot
-        M.leadToCross( Char , Effect ); -- Warp char to cross
+        M.leadToCross( Char , Effect );
 
 		return M.leaveSavely( Effect );
     else
 
-        local foundValue, cycleCounter = Effect:findValue( "cycleCounter" ); --Is the cycleCounter still there? Can happen when somebody is revived by another method than the cross or runs to the cross himself
+        local foundValue = Effect:findValue( "crossDirectionCounter" );
 
         if foundValue then
-            Effect:removeValue("cycleCounter"); --getting rid of the old counter
+            Effect:removeValue("crossDirectionCounter");
         end
 
     end
@@ -340,27 +354,45 @@ function M.getLimit( Effect, name, default )
 end
 
 function M.leadToCross( Char , Effect )
+    local foundValue, counter = Effect:findValue("crossDirectionCounter");
+    counter = foundValue and counter or 0;
 
-    local foundValue, cycleCounter = Effect:findValue( "cycleCounter" ); --Read the cycleCounter
+    if counter == 0 then
+        if Char.pos.z < 0 then
+            common.TempInformNLS(Char,
+                "Irgendetwas sagt dir, dass es eine gute Idee wäre, wieder an die Oberfläche zu gelangen.",
+                "Something tells you that it would be a good idea to return to the surface.");
+            Effect:addValue("crossDirectionCounter", 1);
+            return;
+        end
 
-    if not foundValue then
-        Effect:addValue("cycleCounter",1); --Start counting
-        common.TempInformNLS( Char,"[Tod] Du bist gestorben. Die Welt um dich herum verblasst und du bereitest dich darauf vor, den G�ttern in Chergas Reich der Toten gegen�berzutreten.","[Death] You have died. The world around faints and you prepare yourself to face the Gods in the afterlife of Cherga's Realm.");
+        local closestCross = crossPositions[1];
+        local closestDistance = math.huge;
+
+        for _, crossPosition in ipairs(crossPositions) do
+            local xDistance = crossPosition.x - Char.pos.x;
+            local yDistance = crossPosition.y - Char.pos.y;
+            local zDistance = crossPosition.z - Char.pos.z;
+            local distance = xDistance * xDistance + yDistance * yDistance + zDistance * zDistance;
+
+            if distance < closestDistance then
+                closestCross = crossPosition;
+                closestDistance = distance;
+            end
+        end
+
+        local direction = directionNames[common.GetDirection(
+            Char.pos,
+            position(closestCross.x, closestCross.y, Char.pos.z)
+        )];
+        if direction then
+            common.TempInformNLS(Char,
+                "Gehe nach "..direction[1]..", um wiederbelebt zu werden.",
+                "Go "..direction[2].." to be resurrected.");
+        end
     end
 
-    if cycleCounter>=12 then --Time is over!
-
-        common.TempInformNLS( Char,"[Wiederbelebung] Der Eintritt in Chergas Reich der Toten wird dir verwehrt. Deine Taten auf Illarion sind noch nicht vor�ber. Die G�tter gew�hren dir eine weitere Chance auf die Ebene der Lebenden zur�ckzukehren.","[Respawn] You are denied access to Cherga's Realm of the Death. Your deeds on Illarion are not over. The gods grant you another chance to return to the Mortal Plane.");
-        world:gfx(31,Char.pos); --GFX, alternatively 16
-        world:makeSound(13,Char.pos); --Healing sound
-        Effect:removeValue("cycleCounter"); --stop counting
-
-    elseif cycleCounter<12 then
-
-        Effect:addValue("cycleCounter",cycleCounter+1); --Counting
-
-    end
-
+    Effect:addValue("crossDirectionCounter", (counter + 1) % 6);
 end
 
 
