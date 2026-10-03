@@ -1,0 +1,72 @@
+use: german -> "He, nicht kitzeln!"
+use: english -> "Hey, don't tickle me!"
+
+cycle: pick(
+    if(german, "#me pfeift vor sich hin", "#me whistles"),
+    if(german, "#me bohrt in der Nase", "#me picks his nose"),
+    if(german, "#me flüstert mit einem Schwein", "#me whispers with a pig"),
+    if(german, "#me riecht an seinem Finger", "#me smells his finger"),
+    if(german, "#me rülpst", "#me burps"),
+    if(german, "#me furzt", "#me farts"),
+    if(german, "#me kichert", "#me giggles"),
+    if(german, "#me starrt eine Wolke an", "#me stares at a cloud"),
+    if(german, "Oink, Oink, meine Freunde", "Oink, Oink, my friends"),
+    if(german, "#me gähnt", "#me yawns"),
+    if(german, "#me steckt fasziniert einen Finger durch ein Loch in seiner Hose", "#me finds a hole in his trousers and puts a finger through it"),
+    if(german, "#me macht Spuckeblasen", "#me makes spitbubbles"),
+)
+
+chat: match(
+    "greetings",
+    "hello"
+) -> pick(
+    "Hiya..",
+    "Hiho"
+)
+
+chat: match("who") -> "Mom says Gloarn, everyone else says dumbhead."
+chat: match("mom") -> "Mom said, Daddy is a pig, the next day, he didn't return home. Now mom is gone too. I think they both turned into pigs, so I watch over them here."
+chat: match("no.+pig") -> "Liar."
+
+chat: match("pig") -> pick(
+    "These Pigs are my friends.",
+    "They all have names. This one is Blinky, there is Pinky, this is Inky, and see, here's Clyde."
+)
+
+chat: match("cloud") -> "Look, another piggie-cloud."
+
+chat: match(
+    "bye.",
+    "farewell"
+) -> pick(
+    "See ya.",
+    "Piggies say I should say bye to you."
+)
+
+chat: match(
+    "grüße",
+    "hallo",
+    "gruesse"
+) -> pick(
+    "Hallo du..",
+    "Huhu duhu"
+)
+
+chat: match("wer") -> "Mama sagt Gloarn, alle anderen nennen mich Dummkopf."
+chat: match("mama") -> "Mama hat gesagt, Papa ist ein Schwein. Am nächsten Tag kam er nicht mehr Heim. Jetzt ist auch Mama weg. Ich glaub sie sind jetzt beide Schweine, also passe ich hier auf sie auf."
+chat: match("kein.+schwein.*") -> "Lügner."
+
+chat: match("schwein") -> pick(
+    "Die Schweine sind meine Freunde.",
+    "Sie haben alle Namen. Da ist Blinkie, dort ist Pinkie, das da ist Inkie, und schau, hier ist Clyde."
+)
+
+chat: match("wolke") -> "Schau, eine Schweichenwolke."
+
+chat: match(
+    "auf.+bald",
+    "bis.+bald"
+) -> pick(
+    "Baba",
+    "Die Schweinchen sagen, ich soll Wiedersehn sagen."
+)
