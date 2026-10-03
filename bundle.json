@@ -1381,6 +1381,12 @@
     "npc.onor": {
       "file": "server/lua/npc/onor.lua"
     },
+    "npc.yellowcross": {
+      "file": "server/lua/npc/yellowcross.lua"
+    },
+    "npc.static_teleport": {
+      "file": "server/lua/npc/static_teleport.lua"
+    },
     "old.I_1316_heiltrank": {
       "file": "server/lua/old/I_1316_heiltrank.lua"
     },
