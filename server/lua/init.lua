@@ -167,6 +167,32 @@ Event.of("illarion-script-loader:talk_to_npc"):connect(function(event, entity, p
     end
 end)
 
+Event.of("illarion-script-loader:npc_cycle"):connect(function(event, entity)
+    local npcCharacterData = entity:getRuntimeData(DataKeys.Character)
+    local npcDefinition = npcCharacterData and npcCharacterData[DataFields.NPC]
+    local consequenceId = npcDefinition and npcDefinition:getField("consequence") or nil
+    local consequences = resolveInteractionDefinition(consequenceId)
+    if consequences == nil then
+        return
+    end
+
+    local npcCharacter = Character.fromSeleneEntity(entity)
+    local _, summary = Consequence.fireDefinitions({
+        consequences
+    }, "cycle", {
+        npc = npcCharacter
+    }, {}, {
+        defaultNamespaces = DEFAULT_NAMESPACES,
+        textHandler = function(text)
+            return text
+        end
+    })
+    speakActionResults(npcCharacter, summary)
+    if summary.matchedDefinitions > 0 then
+        event.cancel = true
+    end
+end)
+
 for _, path in ipairs(Resources.listFiles(BUNDLE_NAME, CSQN_GLOB)) do
     local ok, err = pcall(loadInteractionFile, path)
     if not ok then
