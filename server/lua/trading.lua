@@ -226,8 +226,16 @@ local function requestedCount(message)
     return math.max(1, math.floor(count))
 end
 
-local function showTradeMenu(state, context, buyingFromPlayer)
-    local menu = MenuStruct()
+local function showTradeMenu(trade, state, context, buyingFromPlayer)
+    local menu = MenuStruct(nil, function(dialog)
+        if not dialog.success then
+            return
+        end
+
+        local itemName = world:getItemName(dialog.selectedItemId, context.player:getPlayerLanguage())
+        local action = buyingFromPlayer and "sell " or "buy "
+        Trading.chat({ trade = trade }, context, { message = action .. itemName })
+    end)
     for _, item in ipairs(state.stock) do
         local price = buyingFromPlayer and item.buyPrice or item.sellPrice
         if price > 0 then
@@ -235,7 +243,6 @@ local function showTradeMenu(state, context, buyingFromPlayer)
         end
     end
     context.player:sendMenu(menu)
-    context.player:changeSource(context.npc)
 end
 
 function Trading.showTrades(spec, context)
@@ -243,7 +250,7 @@ function Trading.showTrades(spec, context)
     if state == nil then
         return false
     end
-    showTradeMenu(state, context, false)
+    showTradeMenu(spec.trade, state, context, false)
     return true
 end
 
@@ -262,7 +269,7 @@ function Trading.chat(spec, context, payload)
         or string.find(lowered, "welch.+waren.*kauf")
     local asksForSaleList = string.find(lowered, "list.+your.+ware") or string.find(lowered, "welch.+waren.*verkauf")
     if asksForPurchaseList or asksForSaleList then
-        showTradeMenu(state, context, asksForPurchaseList ~= nil)
+        showTradeMenu(spec.trade, state, context, asksForPurchaseList ~= nil)
         if asksForPurchaseList then
             say(context, "Diese Waren kaufe ich.", "These are the wares I buy.")
         else
