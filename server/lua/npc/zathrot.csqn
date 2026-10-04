@@ -1,0 +1,72 @@
+lookat: german -> "Eine hell geschuppte Echse, in einfaches Leinen gekleidet. Er steht neben einigen Eimern mit Fisch und am Boden liegen auf einer Decke Angeln und Öllampen, die er zum Verkauf anbietet."
+lookat: english -> "A lizard with bright scales, clad in simple linen. He stands next to some buckets filled with fish and spread on the ground is a blanket, on top some fishing rods and oillamps that he is selling."
+
+use: german -> "Fassst mich nicht an!"
+use: english -> "Don't you touch me!"
+
+cycle: pick(
+    if(german, "#me isst einen Fisch", "#me eats a fish"),
+    if(german, "#me schaut sich nach Kunden um", "#me looks around for customers"),
+    if(german, "#me lässt ihren Schwanz hin und her schnalzen", "#me flicks her tail"),
+    if(german, "#me reibt an einer Öllampe", "#me rubs at an oil lamp"),
+)
+
+chat: match(
+    "greetings",
+    "hello"
+) -> pick(
+    "Greetingss. You are interessted on my wares? Look what i have found at the ground of the sea. Ssss.",
+    "Greetss. I found lots of things in the sea. Ssss. You are interested?"
+)
+
+chat: match("you.+trader") -> "Yess! Call me Zathrot. Do you want that i lisst my waresss? I found lots thing in the sea.", showTrades("zathrot")
+chat: match("what.+sell") -> "I trade with fishss, toolss and more. Everything i found in zelphiass oceanss.", showTrades("zathrot")
+chat: match("what.+wares") -> "I trade with fishss, tools and more, what i found in the ssea.", showTrades("zathrot")
+chat: match("what.+fish") -> "I have delicious trouts and salmons.", showTrades("zathrot")
+chat: match("what.+more") -> "Letss me show you. I have old combss, oils lampss and some old ropess", showTrades("zathrot")
+chat: match("what.+tools") -> "I trade with fishing rodsss. But take a look: I found a nice brush.", showTrades("zathrot")
+
+chat: match(
+    "goodbye",
+    "bye",
+    "farewell"
+) -> pick(
+    "Zhelphia may blesss you!",
+    "Farewell!",
+    "Good day. Zhelphia may be with you!"
+)
+
+chat: match("who.+you?") -> "Zathrot! Zathrot iss my name"
+chat: match("i'm .+") -> "Nice to meet you."
+chat: match("tell.+something") -> "Once upon a time, I came here. Now I am here. Isn't that interesting?"
+chat: match("help") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match(
+    "grü[ßs]+e",
+    "hallo"
+) -> pick(
+    "Grüßsse. Ssseid ihr an meine Waren interesssiert? Ssseht wasss ich am Grund desss Meeresss gefunden habe. sss",
+    "Ssseid gegrüßsst. Ich habe viele Sssachen auf den Meeresss Boden gesssammelt. Ssseid ihr interesssiert? Ssss"
+)
+
+chat: match("[di][uh]r*.+händler") -> "Ja. Nennet mich Zathrot. Wollt ihr dasss ich euch eine Lissste meiner Waren gebe? sss", showTrades("zathrot")
+chat: match("was.+verkauf") -> "Ich handle mit Fissschen, Werkzeugen und mehr. Alless wasss ich in Zelphiasss Ozeanen gefunden habe. sss", showTrades("zathrot")
+chat: match("was.+ware") -> "Ich handle mit Fissschen, Werkzeugen und mehr, wasss ich im Meer gefunden habe. sss", showTrades("zathrot")
+chat: match("was.+fisch") -> "Ich habe ssschmackhafte Forellen und Lachssse.", showTrades("zathrot")
+chat: match("was.+mehr") -> "Lassst esss mich euch zsseigen. Ich habe alte Kämme, Öl Lampen und ein paar alte Ssseile. sss", showTrades("zathrot")
+chat: match("was.+werkzeug") -> "Ich habe Angeln. Aber ssschaut auch mal hier: Ich habe eine ssschöne Bürssste gefunden. sss", showTrades("zathrot")
+
+chat: match(
+    "auf.+bald",
+    "bis.+bald"
+) -> pick(
+    "Zhelphia mit euch!",
+    "Ssschönen Tag noch. Zhelphia sei mit euch."
+)
+
+chat: match("wer.+[di][uh]r*?") -> "Zathrot! Zathrot issst mein Name. sss"
+chat: match("ich bin .+") -> "Erfreut sssie kennen zu lernen. sss"
+chat: match("erzähl.+etwas") -> "Vor langer Zeit kam ich her. Nun bin ich hier. Issst dasss nicht interesssant?"
+chat: match("hilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("zathrot")
