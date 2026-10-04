@@ -11,9 +11,9 @@ local M = {}
 function M.initTerms()
   --Einrichten der Textbausteine
   if firsttime == nil then
-    Term_1DE = {"Ketzer ","S�nder ","Laie ","Novize ","Bruder ","Priester ","Abt ","Bischof ","Prior ","Heiliger "}
+    Term_1DE = {"Ketzer ","Sünder ","Laie ","Novize ","Bruder ","Priester ","Abt ","Bischof ","Prior ","Heiliger "}
     Term_1EN = {"heretic ","sinner ","layman ","novice ","brother ","priest ","abbot ","bishop ","prior ","saint "}
-    Term_2DE = {"des Riesen","des Gl�cks","der Qualen","des Ethos","des Flei�es"}
+    Term_2DE = {"des Riesen","des Glücks","der Qualen","des Ethos","des Fleißes"}
     Term_2EN = {"of giants","of luck","of pain","of ethos","of diligence"}
     Term_3 = {"body_height","luck","poisonvalue","attitude","mental capacity"};
     Term_4 = {1,100,1,1,1} --die maximalWerte
@@ -28,7 +28,7 @@ end
 function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 --Caster:inform("debug #13.2")
 	if Caster:getSkill("exquirere")>math.random(100) then
-  --Abfrage der Sekund�rattribute
+  --Abfrage der Sekundärattribute
   M.initTerms()
   textDE = ""
   textEN = ""
@@ -48,7 +48,7 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 
 	else
     common.InformNLS( Caster,
-        "Deine F�higkeiten reichen noch nicht aus.",
+        "Deine Fähigkeiten reichen noch nicht aus.",
         "Your abilities do not last out yet."
     );
 	end

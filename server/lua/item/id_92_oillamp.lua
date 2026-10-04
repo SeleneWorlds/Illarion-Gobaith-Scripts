@@ -9,9 +9,9 @@ local common = require("base.common")
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     x=math.random(99);
     if x < 6 then
-        common.InformNLS(User,"Du bist nicht sicher, aber es scheint als w�rde die Lampe etwas leuchten","You are not sure, but it seems the lamp starts to glow a little.");
+        common.InformNLS(User,"Du bist nicht sicher, aber es scheint als würde die Lampe etwas leuchten","You are not sure, but it seems the lamp starts to glow a little.");
     elseif x < 16 then
-        common.InformNLS(User,"Du glaubst zu f�hlen, dass die Lampe w�rmer wird","You think the lamp gets warmer!");
+        common.InformNLS(User,"Du glaubst zu fühlen, dass die Lampe wärmer wird","You think the lamp gets warmer!");
     elseif x < 30 then
         common.InformNLS(User,"Your strength was " .. User:increaseAttrib("strength",0),"Your strength was " .. User:increaseAttrib("strength",0))
         User:tempChangeAttrib("strength",5,60)

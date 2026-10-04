@@ -2,7 +2,7 @@ local parent = require("item.general.metal")
 local M = {}
 
 -----------------------------------
------------ HOLZ F�LLEN -----------
+----------- HOLZ FÄLLEN -----------
 -----------------------------------
 
 -- UPDATE common SET com_script='item.id_74_axe' WHERE com_itemid IN (74,2946);
@@ -101,7 +101,7 @@ function M.CheckAndHit(TargetPos)
     if world:isCharacterOnField(TargetPos) then
         local Char=world:getCharacterOnField(TargetPos);
         common.InformNLS( Char,
-        "Der Baum f�llt und trifft dich hart",
+        "Der Baum fällt und trifft dich hart",
         "The tree falls and hits you hard");
         Char:increaseAttrib("hitpoints",-7000);
     end
@@ -119,7 +119,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     M.initLists(  );
     if (SourceItem:getType() ~= 4) then
         common.InformNLS( User,
-        "Zum B�ume f�llen musst du die Axt in die Hand nehmen.",
+        "Zum Bäume fällen musst du die Axt in die Hand nehmen.",
         "To chop a tree you need to take the axe in your hands." );
         return
     end
@@ -131,11 +131,11 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if common.Encumbrence(User) then
         if (User.pos.z == 100) then
             common.InformNLS( User,
-            "Deine R�stung behindert Dich beim Holz schlagen. Wenn du arbeiten willst kannst du keine schwere R�stungen tragen. Lege deine R�stung und deinen Helm in deine Tasche. Dann kannst du arbeiten.",
+            "Deine Rüstung behindert Dich beim Holz schlagen. Wenn du arbeiten willst kannst du keine schwere Rüstungen tragen. Lege deine Rüstung und deinen Helm in deine Tasche. Dann kannst du arbeiten.",
             "Your armor disturbes you when chopping trees. If you want to work you must not carry heavy armors. Put your armor and your helmet into your bag. Then you can work." );
         else
             common.InformNLS( User,
-            "Deine R�stung behindert Dich beim Holz schlagen.",
+            "Deine Rüstung behindert Dich beim Holz schlagen.",
             "Your armor disturbes you when chopping trees" );
         end
         return
@@ -171,7 +171,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if ( ltstate == Action.none ) then
         User:startAction( 12, 0, 0, 6, 15);
         if (logs[ TargetItem.id ] == nil) then
-            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt den Baum zu f�llen.");
+            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt den Baum zu fällen.");
             User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to cut down a tree.");
         else
             User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Holz aus dem Baumstamm zu schlagen.");
@@ -181,7 +181,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         if M.Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate ) then
             if common.ToolBreaks( User, SourceItem ) then
                 common.InformNLS(User,
-                "Die alte und abgenutzt Axt in deinen H�nden zerbricht.",
+                "Die alte und abgenutzt Axt in deinen Händen zerbricht.",
                 "The old and used axe in your hands breaks.");
             else
                 User:startAction( 12, 0, 0, 6, 15);
@@ -192,7 +192,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         else
             if common.ToolBreaks( User, SourceItem ) then
                 common.InformNLS(User,
-                "Die alte und abgenutzte Axt in deinen H�nden zerbricht.",
+                "Die alte und abgenutzte Axt in deinen Händen zerbricht.",
                 "The old and used axe in your hands breaks.");
             end
             --if (User:getSkill("lumberjacking") < 100) then
@@ -233,7 +233,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         end
     end
     common.InformNLS( User,
-    "Hier ist nichts was du mit der Axt bearbeiten k�nntest.",
+    "Hier ist nichts was du mit der Axt bearbeiten könntest.",
     "Here is nothing you could work at with your axe." );
 end
 

@@ -57,7 +57,7 @@ function M.DoCreaturSpell(Caster, TargetPos, ltstate)
 
     if not CasterVal then
         common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end

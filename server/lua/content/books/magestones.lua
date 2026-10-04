@@ -22,15 +22,15 @@ function M.loadBook(toData)
 
     base_books.AddGermanBookText("Magische Steine und ihre Verwendung",0,0,toData);
     base_books.AddGermanBookText("Magische Steine sind die wohl am seltensten vorkommenden Edelsteine auf der Welt.",0,0,toData);
-    base_books.AddGermanBookText("Je st�rker die magische Kraft eines solchen Steines ist, desto seltender und wertvoller ist er.",0,0,toData);
-    base_books.AddGermanBookText("Man kann magische Edelsteine am Alter eines der f�nf alten G�tter umwandeln. Dabei ergeben immer 3 Steine gleicher St�rke einen Stein von h�herer Qualit�t.",0,0,toData);
-    base_books.AddGermanBookText("Das Umwandeln solcher Steine gelingt nicht immer. Je h�her die Qualit�t ist, die erreicht werden soll, desto gr��er ist die Gefahr dass der Umwandlungsversuch fehlschl�gt.",0,0,toData);
-    base_books.AddGermanBookText("Steine mit magischen Eigenschaften k�nnen dazu genutzt werden um die ihnen innewohnenden Kr�fte auf bestimmte Gegenst�nde zu �bertragen.",0,0,toData);
-    base_books.AddGermanBookText("Dies ist allerdings nur dann m�glich, wenn der Gegenstand f�r solche Art von magischen Energien empf�nglich ist.",0,0,toData);
-    base_books.AddGermanBookText("Grunds�tzlich gilt, dass jeder Gegenstand nur eine gewisse Menge magischer Energie aufnehmen kann.",0,0,toData);
-    base_books.AddGermanBookText("Einmal �bertragen, kann die magische Energie der Steine nicht mehr aus dem Gegenstand entfernt oder oder mit anderen Energien �berlagert werden.",0,0,toData);
-    base_books.AddGermanBookText("Grunds�tzlich l�sst sich sagen, dass Waffen, R�stungen, Magierst�be und Werkzeuge die Engerien von zwei Steinen aufnehmen k�nnen.",0,0,toData);
-    base_books.AddGermanBookText("In Ringe hingegen kann lediglich die Energien eines Steines �bertragen werden.",0,0,toData);
+    base_books.AddGermanBookText("Je stärker die magische Kraft eines solchen Steines ist, desto seltender und wertvoller ist er.",0,0,toData);
+    base_books.AddGermanBookText("Man kann magische Edelsteine am Alter eines der fünf alten Götter umwandeln. Dabei ergeben immer 3 Steine gleicher Stärke einen Stein von höherer Qualität.",0,0,toData);
+    base_books.AddGermanBookText("Das Umwandeln solcher Steine gelingt nicht immer. Je höher die Qualität ist, die erreicht werden soll, desto größer ist die Gefahr dass der Umwandlungsversuch fehlschlägt.",0,0,toData);
+    base_books.AddGermanBookText("Steine mit magischen Eigenschaften können dazu genutzt werden um die ihnen innewohnenden Kräfte auf bestimmte Gegenstände zu übertragen.",0,0,toData);
+    base_books.AddGermanBookText("Dies ist allerdings nur dann möglich, wenn der Gegenstand für solche Art von magischen Energien empfänglich ist.",0,0,toData);
+    base_books.AddGermanBookText("Grundsätzlich gilt, dass jeder Gegenstand nur eine gewisse Menge magischer Energie aufnehmen kann.",0,0,toData);
+    base_books.AddGermanBookText("Einmal übertragen, kann die magische Energie der Steine nicht mehr aus dem Gegenstand entfernt oder oder mit anderen Energien überlagert werden.",0,0,toData);
+    base_books.AddGermanBookText("Grundsätzlich lässt sich sagen, dass Waffen, Rüstungen, Magierstäbe und Werkzeuge die Engerien von zwei Steinen aufnehmen können.",0,0,toData);
+    base_books.AddGermanBookText("In Ringe hingegen kann lediglich die Energien eines Steines übertragen werden.",0,0,toData);
     base_books.AddGermanBookText("Zudem ist bei diesen auch zu beachten, dass sich die Energien der magischen Steine mit ggf. eingesetzten Steinen gleichen muss.",0,0,toData);
 end;
 

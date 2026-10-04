@@ -12,7 +12,7 @@ function M.CharacterOnField(User)
 	User:warp(position(385,552,0))
 	
 	common.InformNLS(User,
-      "Du findest dich an der Oberfl�che wieder",
+      "Du findest dich an der Oberfläche wieder",
       "You find yourself back on the surface again." );
 	
 	end

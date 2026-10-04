@@ -4,13 +4,13 @@ local M = {}
 
 function M.InitRanks()
     M.AddRank("untaught","unwissend");
-    M.AddRank("unskilled","unge�bt");
-    M.AddRank("a beginner","ein Anf�nger");
-    M.AddRank("skilled","ge�bt");
+    M.AddRank("unskilled","ungeübt");
+    M.AddRank("a beginner","ein Anfänger");
+    M.AddRank("skilled","geübt");
     M.AddRank("a assistant","ein Geselle");
     M.AddRank("a master","ein Meister");
     M.AddRank("a senior master","ein Altmeister");
-    M.AddRank("a grand master","ein Gro�meister");
+    M.AddRank("a grand master","ein Großmeister");
 end
 
 function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
@@ -21,7 +21,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             M.AddGermanBookText("\n \n Das Buch der \n Selbsterkenntniss",105,0);
             M.AddGermanBookText("\n   Geschrieben \n      von \n       Nitram",0,0);
             M.AddGermanBookText("\n \n        Wissen \n           der \n       Sprachen",0,0);
-            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der gemeinsammen Sprache aller V�lker",0,"common language");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der gemeinsammen Sprache aller Völker",0,"common language");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Menschen",0,"human language");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Zwerge",0,"dwarf language");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Sprache der Elfen",0,"elf language");
@@ -41,11 +41,11 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Bergbaus",2763,"mining");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kochens",227,"baking");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Anbauens",271,"peasantry");
-            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Holzf�llens",74,"lumberjacking");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Holzfällens",74,"lumberjacking");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Edelstein schleifens",270,"gemcutting");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Glasblasens",313,"glass blowing");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Angelns",72,"fishing");
-            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kr�utersammelns",126,"herb lore");
+            M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst des Kräutersammelns",126,"herb lore");
             M.AddGermanBookText("\n Es scheint als seid ihr ~level~ in der Kunst der Alchemie",58,"alchemy");
 
             M.AddGermanBookText("\n \n       Wissen \n           der \n       Magie",0,0);

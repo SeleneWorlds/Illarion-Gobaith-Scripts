@@ -12,22 +12,22 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 msgs = base_messages.Messages();
 msgs:addMessage("#me fehlt bei genauerer Betrachtung wohl der Unterkiefer.", "#me is missing its lower jaw on closer inspection.");
-msgs:addMessage("#me greift nach oben zu seinem eigenen Sch�del und verdreht ihn mit einem lauten, knackenden Ger�usch.", "#me reaches up, grabs it's own skull and twists, making a loud cracking noise.");
+msgs:addMessage("#me greift nach oben zu seinem eigenen Schädel und verdreht ihn mit einem lauten, knackenden Geräusch.", "#me reaches up, grabs it's own skull and twists, making a loud cracking noise.");
 msgs:addMessage("#me grinst wie ein Narr.", "#me grins like a fool.");
-msgs:addMessage("#me hebt seine Waffe in die H�he und klappert mit den Z�hnen.", "#me raises his weapon and rattles with its tooth.");
+msgs:addMessage("#me hebt seine Waffe in die Höhe und klappert mit den Zähnen.", "#me raises his weapon and rattles with its tooth.");
 msgs:addMessage("#me kichert still, die Schultern schwanken und knacken.", "#me cackles silently, shoulders heaving and creaking.");
 msgs:addMessage("#me klappert, die Knochen rasseln.", "#me clatters, bones rattling.");
-msgs:addMessage("#me klappt seinen Kiefer zu um b�sartig zu grinsen.", "#me snaps its jaw shut, grinning wickedly.");
-msgs:addMessage("#me kriecht qualvoll �ber den Boden..", "#me shuffles painfully across the floor.");
-msgs:addMessage("#me macht langsame und m�hsame Schritte... Click...clack...click...clack...", "#me takes slow, tedious steps... Click...clack...click...clack...");
-msgs:addMessage("#me schlurft vorw�rts, Gelenke knarren und knacken.", "#me shambles forward, joints clicking and creaking...");
+msgs:addMessage("#me klappt seinen Kiefer zu um bösartig zu grinsen.", "#me snaps its jaw shut, grinning wickedly.");
+msgs:addMessage("#me kriecht qualvoll über den Boden..", "#me shuffles painfully across the floor.");
+msgs:addMessage("#me macht langsame und mühsame Schritte... Click...clack...click...clack...", "#me takes slow, tedious steps... Click...clack...click...clack...");
+msgs:addMessage("#me schlurft vorwärts, Gelenke knarren und knacken.", "#me shambles forward, joints clicking and creaking...");
 msgs:addMessage("#me schwingt eine uralte Waffe, verrostet und verbeult.", "#me brandishes an ancient weapon, rusted and battered.");
 msgs:addMessage("#me schwingt gewaltsam seine verfallene Waffe.", "#me swings its decayed weapon violently.");
 msgs:addMessage("#me streckt eine knochige Hand aus.", "#me reaches out a bony hand.");
-msgs:addMessage("#me taumelt, beinahe zusammenst�rzend.", "#me staggers, nearly toppling over.");
-msgs:addMessage("#mes Kiefer �ffnet sich zu einem lautlosen Schrei.", "#me's jaw swivels in a silent scream...");
+msgs:addMessage("#me taumelt, beinahe zusammenstürzend.", "#me staggers, nearly toppling over.");
+msgs:addMessage("#mes Kiefer öffnet sich zu einem lautlosen Schrei.", "#me's jaw swivels in a silent scream...");
 msgs:addMessage("#mes Knochen schlagen klappernd und rasselnd aneinander.", "#me's bones clinks clacking and rattling together.");
-msgs:addMessage("#mes Kopf h�ngt herab, leere Augenh�hlen starren geradeaus.", "#me's head lolls around, empty eye sockets staring.");
+msgs:addMessage("#mes Kopf hängt herab, leere Augenhöhlen starren geradeaus.", "#me's head lolls around, empty eye sockets staring.");
 
 end
 

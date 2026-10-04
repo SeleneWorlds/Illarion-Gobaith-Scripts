@@ -12,14 +12,14 @@ killer={}; --A list that keeps track of who attacked the monster last
 --Random Messages
 
 msgs = base_messages.Messages();
-msgs:addMessage("#me gackert b�sartig.", "#me cackles softly.");
+msgs:addMessage("#me gackert bösartig.", "#me cackles softly.");
 msgs:addMessage("#me haucht die Worte: 'Ihr werdet sterrrrrrben.'", "#me wheezes the words: 'You will dieee.'");
-msgs:addMessage("#me h�pft auf und ab w�hrend er schwebt.", "#me bobs up and down as it floats.");
-msgs:addMessage("#me keucht erz�rnt.", "#me wheezes angrily.");
-msgs:addMessage("#me �ffnet weit seinen Mund als wolle er etwas essen, heraus kommt jedoch nur ein knarrender Ton.", "#me opens its mouth wide as if to eat, but only a creaking sound follows.");
-msgs:addMessage("#me st��t einen hohen und lautet Ton aus.", "#me releases a piercing and haunting shriek.");
-msgs:addMessage("#me verstr�mt eine t�dliche k�lte.", "#me emanates a deathly chill.");
-msgs:addMessage("#me zischt etwas unverst�ndliches.", "#me hisses words incomprehensibly.");
+msgs:addMessage("#me hüpft auf und ab während er schwebt.", "#me bobs up and down as it floats.");
+msgs:addMessage("#me keucht erzürnt.", "#me wheezes angrily.");
+msgs:addMessage("#me öffnet weit seinen Mund als wolle er etwas essen, heraus kommt jedoch nur ein knarrender Ton.", "#me opens its mouth wide as if to eat, but only a creaking sound follows.");
+msgs:addMessage("#me stößt einen hohen und lautet Ton aus.", "#me releases a piercing and haunting shriek.");
+msgs:addMessage("#me verströmt eine tödliche kälte.", "#me emanates a deathly chill.");
+msgs:addMessage("#me zischt etwas unverständliches.", "#me hisses words incomprehensibly.");
 msgs:addMessage("#me zischt: 'Betretet Chergas Reich!'", "#me hisses: 'Enter Cherga's realm!'.");
 msgs:addMessage("Der Schatten erwartet dich!", "Shadow followsss.");
 msgs:addMessage("Die Dunkelheit wartet.", "Darrrkness awaitsss.");
@@ -74,11 +74,11 @@ function M.EvilLook( monster, enemy )
     end
 
     common.TalkNLS( monster, CCharacter.say,
-    "#me blickt "..enemy.name.." mit einem b�sen Blick an.",
+    "#me blickt "..enemy.name.." mit einem bösen Blick an.",
     "#me gives "..enemy.name.." an evil look." );
 
     common.InformNLS( enemy,
-    "Der Blick es Skelettes f�hrt dir ins Mark und l�hmt kurz deine Glieder.",
+    "Der Blick es Skelettes fährt dir ins Mark und lähmt kurz deine Glieder.",
     "The gaze of the skeleton goes to the core and freezes your limps a moment." );
 
     enemy.movepoints = enemy.movepoints - math.random( 10, 20 );

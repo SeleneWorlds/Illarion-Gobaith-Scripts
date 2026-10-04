@@ -12,7 +12,7 @@ function M.LookAtItem(User, Item)
 
     if not dir then
         world:itemInform( User, Item, common.GetNLS( User,
-            "Du siehst eine Karte mit einer Markierung auf einer Position irgendwo in deiner unmittelbaren N�he. Du vermutest, dass es sich um "..TreasureName.." handelt.",
+            "Du siehst eine Karte mit einer Markierung auf einer Position irgendwo in deiner unmittelbaren Nähe. Du vermutest, dass es sich um "..TreasureName.." handelt.",
             "You see a map that shows a position somewhere really close to your current position. You think it could be "..TreasureName.."." ) );
     else
         world:itemInform( User, Item, common.GetNLS( User,

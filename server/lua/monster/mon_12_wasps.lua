@@ -11,16 +11,16 @@ killer={}; --A list that keeps track of who attacked the monster last
 --Random Messages
 
 msgs = base_messages.Messages();
-msgs:addMessage("#me fliegt, ein hohes, weinerlich klingendes Ger�usch machend umher.", "#me flies around, making a high pitched whining sound.");
-msgs:addMessage("#me landet nur um wieder abheben zu k�nnen begleitet von einem kurzen Summen.", "#me lands, only to take off again with a short buzz.");
+msgs:addMessage("#me fliegt, ein hohes, weinerlich klingendes Geräusch machend umher.", "#me flies around, making a high pitched whining sound.");
+msgs:addMessage("#me landet nur um wieder abheben zu können begleitet von einem kurzen Summen.", "#me lands, only to take off again with a short buzz.");
 msgs:addMessage("#me peitscht, einen Landeplatz suchend durch die Luft.", "#me whips about in the air, searching for somewhere to land.");
 msgs:addMessage("#me schwirrt drohend in keine bestimmte Richtung.", "#me angrily buzzes around in no particular direction.");
 msgs:addMessage("Bzzz.", "Bzzz.");
-msgs:addMessage("#me fliegt in wilden Kreisen und man kann das Gift an ihrem Stachel aufgl�nzen sehen.", "#me darts around, one can see venom dripping from its sting.");
-msgs:addMessage("#me f�hrt ihren spitzen Stachel aus.", "#me extends its sting.");
+msgs:addMessage("#me fliegt in wilden Kreisen und man kann das Gift an ihrem Stachel aufglänzen sehen.", "#me darts around, one can see venom dripping from its sting.");
+msgs:addMessage("#me fährt ihren spitzen Stachel aus.", "#me extends its sting.");
 msgs:addMessage("Summ, summ.", "Buzz, buzz.");
 msgs:addMessage("Bsss.", "Bsss.");
-msgs:addMessage("#mes Fl�gel verbreiten ein hochfrequentes Summen, welches in den Ohren schmerzt.", "#me's wings exude a buzzing with high frequency, it hurts one's ears.");
+msgs:addMessage("#mes Flügel verbreiten ein hochfrequentes Summen, welches in den Ohren schmerzt.", "#me's wings exude a buzzing with high frequency, it hurts one's ears.");
 
 end
 

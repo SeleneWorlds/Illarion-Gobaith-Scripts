@@ -17,7 +17,7 @@ local Interrupt_Messages = { 	add = function (self,gText,eText)
 
 Interrupt_Messages:add(	"Ein schwarzer Fleck huscht durch das Wasser. Etwas erschrocken weichst du zurück.",
 						"You notice a large black dot in the water, you decide not to disturb it.");
-Interrupt_Messages:add(	"Dein Blick verliert sich f�r kurze Zeit in deinem Spiegelbild und du bist abgelenkt.",
+Interrupt_Messages:add(	"Dein Blick verliert sich für kurze Zeit in deinem Spiegelbild und du bist abgelenkt.",
 						"You take a while to admire that good-looking person staring at you from your reflection.");
 Interrupt_Messages:add(	"Der Boden unter dir rutscht leicht weg, sodass du gerade noch das Gleichgewicht halten kannst.",
 						"Some stones slip away from the bank, disturbing all the fish.");
@@ -47,15 +47,15 @@ function M.useTile(User,Position,counter,param,ltstate)
         return
     end
 
-    -- Angeln unterirdisch nicht m�glich
+    -- Angeln unterirdisch nicht möglich
     if (Position.z < 0) then
     	common.InformNLS(User,"In unterirdischen Wasserlöchern wird das Angeln kaum erfolgreich sein.","Fishing in underground waterholes wouldn't be successful.");
 	    return
     end
 
-    if common.Encumbrence(User) then -- Durch Steife R�stung behindert
+    if common.Encumbrence(User) then -- Durch Steife Rüstung behindert
         common.InformNLS( User,
-        "Deine R�stung behindert dich beim Fischen.",
+        "Deine Rüstung behindert dich beim Fischen.",
         "Your armor disturbes you while fishing." );
         return
     end
@@ -81,7 +81,7 @@ function M.useTile(User,Position,counter,param,ltstate)
 
      if ( (rand==2) or (rand==3) ) then
          common.InformNLS(User,
-         "Auf einmal hast du das Gef�hl eine Hand w�rde nach deiner Klaue greifen. Noch w�hrend du dich wunderst teilt sich das Wasser vor dir und eine glitschige Wasserleiche steigt aus den Wellen empor.",
+         "Auf einmal hast du das Gefühl eine Hand würde nach deiner Klaue greifen. Noch während du dich wunderst teilt sich das Wasser vor dir und eine glitschige Wasserleiche steigt aus den Wellen empor.",
          "Suddenly you have the feeling a hand should grap your claw. While you are wondering what it could be, the water in front of you ripples and a slimy mummy climbs out of the water.");
 
          world:createMonster(101,TargetPos,20);

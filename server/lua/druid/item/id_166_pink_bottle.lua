@@ -12,7 +12,7 @@ bottomBorder = 2;
 taste = {};
 topBorder = {10000      ,100          ,60000      ,100   ,10000        ,9000      ,2400             ,10000}
 attribList ={"hitpoints","body_height","foodlevel","luck","poisonvalue","attitude","mental capacity","mana"};
-taste[0]   ={"fruchtig","herb"     ,"bitter"    ,"faulig"      ,"sauer"       ,"salzig" ,"scharf"   ,"s��"};
+taste[0]   ={"fruchtig","herb"     ,"bitter"    ,"faulig"      ,"sauer"       ,"salzig" ,"scharf"   ,"süß"};
 taste[1]   ={"fruity"  ,"tartly"   ,"bitter"    ,"putrefactive","sour"        ,"salty"  ,"hot"      ,"sweet"};
 
 function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
@@ -38,7 +38,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
 	Character:inform(alchemy.generateTasteMessage(Character:getPlayerLanguage(),dataZList));
 
-    -- Dieser Abschnitt wurde von 3.Seite eingebaut und geh�rt nicht in das DS
+    -- Dieser Abschnitt wurde von 3.Seite eingebaut und gehört nicht in das DS
     if Sourceitem.id_data == 75357464 and Character.effects:find(28) then
         Character.effects:removeEffect(28);
         return;
@@ -71,7 +71,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         Character.movepoints=Character.movepoints-50;
 
     else
-        common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+        common.InformNLS(Character,"Du kannst nichts trinken während du kämpfst.", "You can't drink something while fighting.");
     end
 
 end

@@ -1,4 +1,4 @@
--- Buch f�r das Druidensystem
+-- Buch für das Druidensystem
 -- Buch "Alchemie 2"
 -- Falk
 local base_books = require("base.books")
@@ -13,39 +13,39 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         base_books.AddLanguage("common language",0);
 --      base_books.AddGermanBookText("<german site content>",<itemid>,<difficult>,<book data value>);
 
-        base_books.AddGermanBookText("Druiden-Almanach\n\nBuch 2\n\nEinf�hrung in die Pflanzenwelt",1008,0,0);
-        base_books.AddGermanBookText("Einbl�ttrige Vierbeere\n\nStandort:\nWiese\n\nHaupterntezeit:\nFr�hling, Sommer\n\nenth�lt:\nDracolin,Adrazin",133,0,0);
-        base_books.AddGermanBookText("Sonnenkraut\n\nStandort:\nWiese,Blume\n\nHaupterntezeit:\nFr�hling, Sommer\n\nenth�lt:\nAdrazin,Hyperborelium",133,0,0);
-        base_books.AddGermanBookText("Vierbl�ttrige Einbeere\n\nStandort:\n Wiese,Schilf\n\nHaupterntezeit:\nWinter\n\nenth�lt:\nAdrazin,Fenolin",134,0,0);
-        base_books.AddGermanBookText("Gelbkraut\n\nStandort:\nWiese,Blume\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nAdrazin,Caprazin",135,0,0);
-        base_books.AddGermanBookText("Wutbeere\n\nStandort:\nDreck,Hecken\n\nHaupterntezeit:\nHerbst, Winter\n\nenth�lt:\nAdrazin,Dracolin",136,0,0);
-        base_books.AddGermanBookText("Flammkelchbl�te\n\nStandort:\nSand,Blume\n\nHaupterntezeit:\nWinter\n\nenth�lt:\nEcholon,Hyperborelium",137,0,0);
-        base_books.AddGermanBookText("Nachtengelsbl�te\n\nStandort:\nDreck,Blume\n\nHaupterntezeit:\nSommer\n\nenth�lt:\nEcholon,Fenolin",138,0,0);
-        base_books.AddGermanBookText("Donfblatt\n\nStandort:\nWald,Farn\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nEcholon,Caprazin",140,0,0);
-        base_books.AddGermanBookText("Schwarze Distel\n\nStandort:\nSand,Gras\n\nHaupterntezeit:\nSommer\n\nenth�lt:\nEcholon,Dracolin",141,0,0);
-        base_books.AddGermanBookText("Sandbeere\n\nStandort:\nSand,Hecken\n\nHaupterntezeit:\nHerbst\n\nenth�lt:\nOrcanol,Hyperborelium",142,0,0);
-        base_books.AddGermanBookText("Wiesen-Rhabarber\n\nStandort:\nWiese\n\nHaupterntezeit:\nSommer\n\nenth�lt:\nOrcanol,Fenolin",153,0,0);
-        base_books.AddGermanBookText("Jungfernkraut\n\nStandort:\nWald,Blume\n\nHaupterntezeit:\nWinter\n\nenth�lt:\nOrcanol,Caprazin",144,0,0);
-        base_books.AddGermanBookText("Heidebl�te\n\nStandort:\nWiese,Gras\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nOrcanol,Dracolin",145,0,0);
-        base_books.AddGermanBookText("W�stenhimmelskapsel\n\nStandort:\nSand\n\nHaupterntezeit:\nHerbst\n\nenth�lt:\nIllidrium,Hyperborelium",146,0,0);
-        base_books.AddGermanBookText("Trugbl�te\n\nStandort:\nWald\n\nHaupterntezeit:\nSommer, Herbst\n\nenth�lt:\nIllidrium,Fenolin",148,0,0);
-        base_books.AddGermanBookText("Firnisbl�te\n\nStandort:\nFels,Blume\n\nHaupterntezeit:\nSommer\n\nenth�lt:\nIllidrium,Caprazin",148,0,0);
-        base_books.AddGermanBookText("Frommbeere\n\nStandort:\nDreck\n\nHaupterntezeit:\nHerbst,Winter\n\nenth�lt:\nIllidrium,Dracolin",136,0,0);
-        base_books.AddGermanBookText("Lebenswurz\n\nStandort:\nverschieden\n\n\nHaupterntezeit:\nganzj�hrig selten\n\nenth�lt:\nHyperborelium,Adrazin",152,0,0);
-        base_books.AddGermanBookText("Fussblatt\n\nStandort:\nWiese,Fels\nFarn\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nHyperborelium,Echolon",153,0,0);
-        base_books.AddGermanBookText("Wasserbl�te\n\nStandort:\nWiese\n\n\nHaupterntezeit:\nWinter\n\nenth�lt:\nHyperborelium,Orcanol",137,0,0);
-        base_books.AddGermanBookText("Wolfsfarn\n\nStandort:\nWald\n\nHaupterntezeit:\nHerbst\n\nenth�lt:\nHyperborelium,Illidrium",156,0,0);
-        base_books.AddGermanBookText("Steppenfarn\n\nStandort:\nSand,Farn\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nFenolin,Adrazin",156,0,0);
-        base_books.AddGermanBookText("Altweiberkraut\n\nStandort:\nWald\n\n\nHaupterntezeit:\nWinter\n\nenth�lt:\nCaprazin,Illidrium",144,0,0);
-        base_books.AddGermanBookText("Schwefelkraut\n\nStandort:\nFels\n\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nFenolin,Orcanol",135,0,0);
-        base_books.AddGermanBookText("Tagteufel\n\nStandort:\nWald\n\n\nHaupterntezeit:\nHerbsr\n\nenth�lt:\nFenolin,Illidrium",138,0,0);
-        base_books.AddGermanBookText("Rauchblatt\n\nStandort:\nWald\n\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nCaprazin,Adrazin",140,0,0);
-        base_books.AddGermanBookText("Blaue Vogelbeere\n\nStandort:\nWiese\n\n\nHaupterntezeit:\nWinter\n\nenth�lt:\nCaprazin,Echolon",134,0,0);
-        base_books.AddGermanBookText("Graue Distel\n\nStandort:\nSand\n\nHaupterntezeit:\nSommer\n\nenth�lt:\nCaprazin,Orcanol",141,0,0);
-        base_books.AddGermanBookText("W�stenbeere\n\nStandort:\nSand\n\n\nHaupterntezeit:\nHerbst\n\nenth�lt:\nDracolin,Echolon",142,0,0);
-        base_books.AddGermanBookText("Regenkraut\n\nStandort:\nWiese\n\n\nHaupterntezeit:\nFr�hjahr\n\nenth�lt:\nDracolin,Orcanol",145,0,0);
-        base_books.AddGermanBookText("Gottesblume\n\nStandort:\nSand\n\nHaupterntezeit:\nSommer\n\nenth�lt:\nDracolin,Illidrium",146,0,0);
-        base_books.AddGermanBookText("Feuerwurz\n\nStandort:\nSand\n\nHaupterntezeit:\nganzj�hrig\n\nenth�lt:\nFenolin,Echolon",152,0,0);
+        base_books.AddGermanBookText("Druiden-Almanach\n\nBuch 2\n\nEinführung in die Pflanzenwelt",1008,0,0);
+        base_books.AddGermanBookText("Einblättrige Vierbeere\n\nStandort:\nWiese\n\nHaupterntezeit:\nFrühling, Sommer\n\nenthält:\nDracolin,Adrazin",133,0,0);
+        base_books.AddGermanBookText("Sonnenkraut\n\nStandort:\nWiese,Blume\n\nHaupterntezeit:\nFrühling, Sommer\n\nenthält:\nAdrazin,Hyperborelium",133,0,0);
+        base_books.AddGermanBookText("Vierblättrige Einbeere\n\nStandort:\n Wiese,Schilf\n\nHaupterntezeit:\nWinter\n\nenthält:\nAdrazin,Fenolin",134,0,0);
+        base_books.AddGermanBookText("Gelbkraut\n\nStandort:\nWiese,Blume\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nAdrazin,Caprazin",135,0,0);
+        base_books.AddGermanBookText("Wutbeere\n\nStandort:\nDreck,Hecken\n\nHaupterntezeit:\nHerbst, Winter\n\nenthält:\nAdrazin,Dracolin",136,0,0);
+        base_books.AddGermanBookText("Flammkelchblüte\n\nStandort:\nSand,Blume\n\nHaupterntezeit:\nWinter\n\nenthält:\nEcholon,Hyperborelium",137,0,0);
+        base_books.AddGermanBookText("Nachtengelsblüte\n\nStandort:\nDreck,Blume\n\nHaupterntezeit:\nSommer\n\nenthält:\nEcholon,Fenolin",138,0,0);
+        base_books.AddGermanBookText("Donfblatt\n\nStandort:\nWald,Farn\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nEcholon,Caprazin",140,0,0);
+        base_books.AddGermanBookText("Schwarze Distel\n\nStandort:\nSand,Gras\n\nHaupterntezeit:\nSommer\n\nenthält:\nEcholon,Dracolin",141,0,0);
+        base_books.AddGermanBookText("Sandbeere\n\nStandort:\nSand,Hecken\n\nHaupterntezeit:\nHerbst\n\nenthält:\nOrcanol,Hyperborelium",142,0,0);
+        base_books.AddGermanBookText("Wiesen-Rhabarber\n\nStandort:\nWiese\n\nHaupterntezeit:\nSommer\n\nenthält:\nOrcanol,Fenolin",153,0,0);
+        base_books.AddGermanBookText("Jungfernkraut\n\nStandort:\nWald,Blume\n\nHaupterntezeit:\nWinter\n\nenthält:\nOrcanol,Caprazin",144,0,0);
+        base_books.AddGermanBookText("Heideblüte\n\nStandort:\nWiese,Gras\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nOrcanol,Dracolin",145,0,0);
+        base_books.AddGermanBookText("Wüstenhimmelskapsel\n\nStandort:\nSand\n\nHaupterntezeit:\nHerbst\n\nenthält:\nIllidrium,Hyperborelium",146,0,0);
+        base_books.AddGermanBookText("Trugblüte\n\nStandort:\nWald\n\nHaupterntezeit:\nSommer, Herbst\n\nenthält:\nIllidrium,Fenolin",148,0,0);
+        base_books.AddGermanBookText("Firnisblüte\n\nStandort:\nFels,Blume\n\nHaupterntezeit:\nSommer\n\nenthält:\nIllidrium,Caprazin",148,0,0);
+        base_books.AddGermanBookText("Frommbeere\n\nStandort:\nDreck\n\nHaupterntezeit:\nHerbst,Winter\n\nenthält:\nIllidrium,Dracolin",136,0,0);
+        base_books.AddGermanBookText("Lebenswurz\n\nStandort:\nverschieden\n\n\nHaupterntezeit:\nganzjährig selten\n\nenthält:\nHyperborelium,Adrazin",152,0,0);
+        base_books.AddGermanBookText("Fussblatt\n\nStandort:\nWiese,Fels\nFarn\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nHyperborelium,Echolon",153,0,0);
+        base_books.AddGermanBookText("Wasserblüte\n\nStandort:\nWiese\n\n\nHaupterntezeit:\nWinter\n\nenthält:\nHyperborelium,Orcanol",137,0,0);
+        base_books.AddGermanBookText("Wolfsfarn\n\nStandort:\nWald\n\nHaupterntezeit:\nHerbst\n\nenthält:\nHyperborelium,Illidrium",156,0,0);
+        base_books.AddGermanBookText("Steppenfarn\n\nStandort:\nSand,Farn\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nFenolin,Adrazin",156,0,0);
+        base_books.AddGermanBookText("Altweiberkraut\n\nStandort:\nWald\n\n\nHaupterntezeit:\nWinter\n\nenthält:\nCaprazin,Illidrium",144,0,0);
+        base_books.AddGermanBookText("Schwefelkraut\n\nStandort:\nFels\n\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nFenolin,Orcanol",135,0,0);
+        base_books.AddGermanBookText("Tagteufel\n\nStandort:\nWald\n\n\nHaupterntezeit:\nHerbsr\n\nenthält:\nFenolin,Illidrium",138,0,0);
+        base_books.AddGermanBookText("Rauchblatt\n\nStandort:\nWald\n\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nCaprazin,Adrazin",140,0,0);
+        base_books.AddGermanBookText("Blaue Vogelbeere\n\nStandort:\nWiese\n\n\nHaupterntezeit:\nWinter\n\nenthält:\nCaprazin,Echolon",134,0,0);
+        base_books.AddGermanBookText("Graue Distel\n\nStandort:\nSand\n\nHaupterntezeit:\nSommer\n\nenthält:\nCaprazin,Orcanol",141,0,0);
+        base_books.AddGermanBookText("Wüstenbeere\n\nStandort:\nSand\n\n\nHaupterntezeit:\nHerbst\n\nenthält:\nDracolin,Echolon",142,0,0);
+        base_books.AddGermanBookText("Regenkraut\n\nStandort:\nWiese\n\n\nHaupterntezeit:\nFrühjahr\n\nenthält:\nDracolin,Orcanol",145,0,0);
+        base_books.AddGermanBookText("Gottesblume\n\nStandort:\nSand\n\nHaupterntezeit:\nSommer\n\nenthält:\nDracolin,Illidrium",146,0,0);
+        base_books.AddGermanBookText("Feuerwurz\n\nStandort:\nSand\n\nHaupterntezeit:\nganzjährig\n\nenthält:\nFenolin,Echolon",152,0,0);
         ---
 --      base_books.AddEnglishBookText("<English site content>",<itemid>,<difficult>,<book data value>);
         base_books.AddEnglishBookText("Druid-Almanac\n\nbook 2\n\nGuide Book Into The World Of Plants",1008,0,0);

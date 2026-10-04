@@ -5,7 +5,7 @@ local M = {}
 -- Mehl(2) und Wasser(52) zu Teig(5)
 
 -- Arbeitscyclus: 2s - 8s
--- Zus�tzliches Werkzeug: Nudelholz ( 118 )
+-- Zusätzliches Werkzeug: Nudelholz ( 118 )
 
 -- UPDATE common SET com_script='item.id_119_backingoven' WHERE com_itemid IN (119,120);
 
@@ -14,9 +14,9 @@ local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     common.ResetInterruption( User, ltstate );
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim Arbeiten.",
+        "Deine Rüstung behindert beim Arbeiten.",
         "Your armor disturbs while working." );
         return
     end
@@ -26,7 +26,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn nötig
     end
     
     if not common.FitForWork( User ) then -- Kein Hunger
@@ -35,7 +35,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("body",118)==0) then -- kleine Zange
         common.InformNLS( User,
-        "Du ben�tigst ein Nudelholz um hier zu arbeiten.",
+        "Du benötigst ein Nudelholz um hier zu arbeiten.",
         "You need a rolling pin to work here." );
         return
     end
@@ -45,7 +45,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if common.ToolBreaks( User, Tool, true) then -- Zange besch�digen
+    if common.ToolBreaks( User, Tool, true) then -- Zange beschädigen
         common.InformNLS( User, 
         "Dein Nudelholz zerbricht.",
         "Your pin roll breaks." );
@@ -88,7 +88,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if common.IsInterrupted( User ) then
         common.InformNLS(User,
-        "Du sch�ttest dir aus Versehen eine Ladung Wasser an die Kleidung.",
+        "Du schüttest dir aus Versehen eine Ladung Wasser an die Kleidung.",
         "You accidentally pour some water on your clothes.");
         return
     end
@@ -99,7 +99,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     User:eraseItem(52,1);
     local notCreated = User:createItem(51,1,333,0);
     local startagain = true;
-    if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
+    if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
         world:createItemFromId( 51, notCreated, User.pos, true, 333 ,0);
         common.InformNLS(User,
         "Du kannst nichts mehr halten.",
@@ -108,7 +108,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     notCreated = User:createItem(5,handleAtOnce,333,0);
-    if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
+    if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
         world:createItemFromId( 5, notCreated, User.pos, true, 333 ,0);
         common.InformNLS(User,
         "Du kannst nichts mehr halten.",

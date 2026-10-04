@@ -24,19 +24,19 @@ function M.InitCraftingTool( )
         mortar:AddTool( 12 ); -- Lagerfeuer
         
         mortar:AddInterruptMessage(
-        "Du wischst dir den Schwei� von der Stirn.",
+        "Du wischst dir den Schweiß von der Stirn.",
         "You wipe sweat off your forehead.");
         
         mortar:AddInterruptMessage(
-        "Dir f�llt der M�rser aus der Hand. Zum Gl�ck ist er ganz geblieben.",
+        "Dir fällt der Mörser aus der Hand. Zum Glück ist er ganz geblieben.",
         "You drop your mortar. Luckily it didn't break.");
         
         mortar:AddInterruptMessage(
-        "Du �berlegst ob du die Farbe noch intensiver machen solltest, aber entscheidest dich dagegen.",
+        "Du überlegst ob du die Farbe noch intensiver machen solltest, aber entscheidest dich dagegen.",
         "You evaluate whether you should deepen the colour, deciding against doing so.");
         
         mortar:AddInterruptMessage(
-        "Ein gro�er dicker K�fer ist irgendwie in die Zutaten gelangt. Du ben�tigst eine Weile ihn zu fangen und mit ihm das zu machen was er verdient hat.",
+        "Ein großer dicker Käfer ist irgendwie in die Zutaten gelangt. Du benötigst eine Weile ihn zu fangen und mit ihm das zu machen was er verdient hat.",
         "A big, fat bug has found its way into your ingredients. It takes a while to catch it and seal its fate.");
         
         --Red Dye
@@ -103,14 +103,14 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     
     if ( SourceItem:getType() ~= 4 ) then -- Glasblasrohr in der Hand
         common.InformNLS( User, 
-        "Du mu�t den M�rser in die Hand nehmen um damit zu arbeiten.", 
+        "Du mußt den Mörser in die Hand nehmen um damit zu arbeiten.", 
         "You have to take the mortar in your hand, to work with it." )
         return
     end
 
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim Farben herstellen.",
+        "Deine Rüstung behindert beim Farben herstellen.",
         "Your armor disturbes you while creating dyes." );
         Tailoring:SwapToInactiveItem( User );
         return

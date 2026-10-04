@@ -49,7 +49,7 @@ function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     qual,dura=getClothesFactor(TargetCharacter);
     output = "";
     if ( LookingAt > 40 ) then
-        -- Er ist |alt, |sehr kr�ftig |und |tr�gt |noble |Kleidung, |ein Serinjah-Schwert| und |ein Schild.
+        -- Er ist |alt, |sehr kräftig |und |trägt |noble |Kleidung, |ein Serinjah-Schwert| und |ein Schild.
         if ( TargetCharacter:increaseAttrib( "sex", 0 ) == 0 ) then
             output = ( lang == 0 and "Er ist " or "He is " );
         else
@@ -88,7 +88,7 @@ function M.lookAtPlayer( SourceCharacter, TargetCharacter, mode)
     else
         output = output .. ( lang == 0 and "Sie " or "She " );
     end
-    -- Er/Sie | tr�gt | [ einen | gr�nen Mantel | ] 
+    -- Er/Sie | trägt | [ einen | gränen Mantel | ] 
     output = output .. getText( "intro_items", lang );
     -- Lets check for a coat
     if checkCoat( TargetCharacter, lang, SourceCharacter ) then
@@ -303,7 +303,7 @@ end
 function getClothesText(qual, dura, lang, sex,char)
     if initClText==nil then
         ClQualText={};
-        ClQualText[0]={"adelige",     "noble", "sehr feine", "feine", "sehr gute", "gute", "normale", "billige","sch�bige","lumpige"};
+        ClQualText[0]={"adelige",     "noble", "sehr feine", "feine", "sehr gute", "gute", "normale", "billige","schäbige","lumpige"};
         ClQualText[1]={"aristocratic","noble", "very fine",  "fine",  "very good", "good", "normal",  "cheap",  "shabby",  "measly"};
         ClDuraText={};
         ClDuraText[0]={"nagelneu" ,"neu", "leicht abgenutzt","gebraucht","abgenutzt","sehr abgenutzt","alt","dreckig", "kaputt", "zerschlissen"  };
@@ -313,7 +313,7 @@ function getClothesText(qual, dura, lang, sex,char)
         sexText[0]={}
         sexText[1]={}
         sexText[0][0]="Seine " --Kleidung wirkt ";
-        sexText[0][1]="Ihre " --tr�gt ";
+        sexText[0][1]="Ihre " --trägt ";
         sexText[1][0]="His ";
         sexText[1][1]="Her ";
         clText={};
@@ -328,7 +328,7 @@ end
 function getClothesQualText(qual, lang)
     if initClQText==nil then
         ClQQualText={};
-        ClQQualText[0]={"adelig",     "nobel", "sehr fein", "fein", "sehr gut", "gut", "normal", "billig","sch�big","lumpig"};
+        ClQQualText[0]={"adelig",     "nobel", "sehr fein", "fein", "sehr gut", "gut", "normal", "billig","schäbig","lumpig"};
         ClQQualText[1]={"aristocraticly","nobly", "very fine",  "fine",  "very well", "well", "normaly",  "cheaply",  "shabbyly",  "measly"};
         clQText={};
         clQText[0]=" gekleidet"
@@ -387,7 +387,7 @@ function getFigure(height, mass, str, lang)
         highStr={};
         lowStr[0]={"sehr mager ", "sehr zierlich ", "zierlich ", " ", "mollig ", "dick ", "fett "};
         lowStr[1]={"skinny ", "very petite ", "petite ", " ", "chubby ", "plump ", "fat "};
-        normalStr[0]={"schm�chtig ", "dünn ", "schlank ", " ", "mollig ", "dick ", "fett "};
+        normalStr[0]={"schmächtig ", "dünn ", "schlank ", " ", "mollig ", "dick ", "fett "};
         normalStr[1]={"lank ", "thin ", "slim ", " ", "chubby", "plump", "fat"};
         highStr[0]={"drahtig ", "sehr drahtig ", " ", "athletisch ", "muskulös ", "kräftig ", "stimmig "} 
         highStr[1]={"wiry ", "very wiry ", " ", "athletic ", "muscular ", "robust ", "sturdy " };
@@ -404,8 +404,8 @@ function getFigure(height, mass, str, lang)
     Idx=math.max(Idx,1);
     Idx=math.min(Idx,7);
 
-    -- sehr mager, d�nn, schlank, (normal), mollig, dick, fett
-    -- athletisch, drahtig, zierlich, kr�ftig
+    -- sehr mager, dünn, schlank, (normal), mollig, dick, fett
+    -- athletisch, drahtig, zierlich, kräftig
     if str<12 then
         return lowStr[lang][Idx];
     elseif str<17 then
@@ -414,7 +414,7 @@ function getFigure(height, mass, str, lang)
         return highStr[lang][Idx];
     end
 end
--- in seinen H�nden hat er ein Serinjahschwert[ und ein Schild].
+-- in seinen Händen hat er ein Serinjahschwert[ und ein Schild].
 function getWeaponText( Char, lang, SourceChar )
     local message = "";
     local leftItem = Char:getItemAt( CCharacter.left_tool );
@@ -496,7 +496,7 @@ function handleCustomLookat(TargetChar,SourceChar,Item)
 				end
 			else
 				if Item:getType() == 5 then
-					customText = ( lang == 0 and "Am G�rtel hat sie " or "At the belt she has " )
+					customText = ( lang == 0 and "Am Gürtel hat sie " or "At the belt she has " )
 				else
 					if Item.itempos == 5 or Item.itempos == 6 then
 						customText = ( lang == 0 and "In den Händen hat sie " or "In her hands she has " );

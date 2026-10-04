@@ -1,4 +1,4 @@
--- Skript f�r das Druidensystem
+-- Skript für das Druidensystem
 -- Pflanzennamen
 local common = require("base.common")
 
@@ -6,20 +6,20 @@ local M = {}
 		M.dummyIDList = {9001,9002,9003,9004,9005,9006,9007,9008,9009,9010,9011,9012,9013,9014,9015,9016}
 		M.dummyNameListDE = {}
 		M.dummyNameListEN = {}
-		M.dummyNameListDE[1] = "Einbl�ttrige Vierbeere";		-- Sonnenkraut
-		M.dummyNameListDE[2] = "Blaue Vogelbeere";			-- Vierbl�ttrige Einbeere
+		M.dummyNameListDE[1] = "Einblättrige Vierbeere";		-- Sonnenkraut
+		M.dummyNameListDE[2] = "Blaue Vogelbeere";			-- Vierblättrige Einbeere
 		M.dummyNameListDE[3] = "Schwefelkraut";				-- Gelbkraut
 		M.dummyNameListDE[4] = "Frommbeere";					-- Wutbeere
-		M.dummyNameListDE[5] = "Wasserbl�te";					-- Flamkelchbl�te
-		M.dummyNameListDE[6] = "Tagteufel";					-- Nachtengelsbl�te
+		M.dummyNameListDE[5] = "Wasserblüte";					-- Flamkelchblüte
+		M.dummyNameListDE[6] = "Tagteufel";					-- Nachtengelsblüte
 		M.dummyNameListDE[7] = "Rauchblatt";					-- Donfblatt
 		M.dummyNameListDE[8] = "Graue Distel";				-- Schwarze Distel
-		M.dummyNameListDE[9] = "W�stenbeere";					-- Sandbeere
+		M.dummyNameListDE[9] = "Wüstenbeere";					-- Sandbeere
 		M.dummyNameListDE[10] = "Altweiberkraut";				-- Jungfernkraut
-		M.dummyNameListDE[11] = "Regenkraut";					-- Heidebl�te
-		M.dummyNameListDE[12] = "Gottesblume";				-- W�stenhimmelskapsel
+		M.dummyNameListDE[11] = "Regenkraut";					-- Heideblüte
+		M.dummyNameListDE[12] = "Gottesblume";				-- Wüstenhimmelskapsel
 		M.dummyNameListDE[13] = "Feuerwurz";					-- Lebenswurz
-		M.dummyNameListDE[14] = "Trugbl�te";					-- Firnisbl�te
+		M.dummyNameListDE[14] = "Trugblüte";					-- Firnisblüte
 		M.dummyNameListDE[15] = "Wolfsfarn"					-- Steppenfarn
 		M.dummyNameListDE[16] = "Wiesen-Rhabarber"			-- Fussblatt
 
@@ -54,18 +54,18 @@ end
 
 function M.LookAtItem(User,Item)
 -- 133 Sonnenkraut                15 / 9001 / 81
--- 134 Vierbl�ttrige Einbeere     16 / 9002 / 72
+-- 134 Vierblättrige Einbeere     16 / 9002 / 72
 -- 135 Gelbkraut                  17 / 9003 / 63
 -- 136 Wutbeere                   18 / 9004 / 48
--- 137 Flamkelchbl�te             25 / 9005 / 53
--- 138 Nachtengelsbl�te           26 / 9006 / 64
+-- 137 Flamkelchblüte             25 / 9005 / 53
+-- 138 Nachtengelsblüte           26 / 9006 / 64
 -- 140 Donfblatt                  27 / 9007 / 71
 -- 141 Schwarze Distel            28 / 9008 / 73
 -- 142 Sandbeere                  35 / 9009 / 82
 -- 144 Jungfernkraut              37 / 9010 / 74
--- 145 Heidebl�te                 38 / 9011 / 83
--- 146 W�stenhimmelskapsel        45 / 9012 / 84
--- 148 Firnisbl�te                47 / 9014 / 46
+-- 145 Heideblüte                 38 / 9011 / 83
+-- 146 Wüstenhimmelskapsel        45 / 9012 / 84
+-- 148 Firnisblüte                47 / 9014 / 46
 -- 152 Lebenswurz				  51 / 9013 / 62
 -- 153 Fussblatt				  52 / 9016 / 36
 -- 156 Steppenfarn                61 / 9015 / 54

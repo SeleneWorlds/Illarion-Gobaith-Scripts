@@ -27,11 +27,11 @@ function M.InitCraftingTool( )
         carpentery:AddTool( 725 ); -- Werkbank
 
         carpentery:AddInterruptMessage(
-        "Du wischst dir den Schwei� von der Stirn.",
+        "Du wischst dir den Schweiß von der Stirn.",
         "You wipe sweat off your forehead.");
 
         carpentery:AddInterruptMessage(
-        "Du pustest kurz die S�gesp�ne von deiner Kleidung.",
+        "Du pustest kurz die Sägespäne von deiner Kleidung.",
         "You blow some sawdust off your clothes.");
 
         carpentery:AddInterruptMessage(
@@ -43,15 +43,15 @@ function M.InitCraftingTool( )
         "You throw away some rubbish to get more working space.");
 
         carpentery:AddInterruptMessage(
-        "Du bekommst einige Sp�ne in den Mund und mu�t husten.",
+        "Du bekommst einige Späne in den Mund und mußt husten.",
         "Sawdust finds its way into your mouth, causing you to cough loudly.");
 
         carpentery:AddInterruptMessage(
-        "Du bekommst einen Holzsplitter in den Finger und mu�t Pause machen um ihn zu entfernen.",
+        "Du bekommst einen Holzsplitter in den Finger und mußt Pause machen um ihn zu entfernen.",
         "You get a splinter of wood in your finger and have to take a break to pull it out.");
 
         carpentery:AddInterruptMessage(
-        "Du �berpr�fst kurz die Ma�e des Werkst�cks.",
+        "Du überprüfst kurz die Maße des Werkstücks.",
         "You check the fine details of your work.");
 
         --------------------------------------------------------------------------------------------
@@ -325,14 +325,14 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
 
     if ( SourceItem:getType() ~= 4 ) then -- Schnitzmesser in der Hand
         common.InformNLS( User,
-        "Du mu�t die Schnitzmesser in die Hand nehmen um damit zu arbeiten.",
+        "Du mußt die Schnitzmesser in die Hand nehmen um damit zu arbeiten.",
         "You have to take the carving tools in your hand, to work with it." )
         return
     end
 
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim schnitzen.",
+        "Deine Rüstung behindert beim schnitzen.",
         "Your armor disturbes you while carve." );
         carpenter:SwapToInactiveItem( User );
         return

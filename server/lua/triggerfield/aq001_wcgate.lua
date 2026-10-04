@@ -19,7 +19,7 @@ function M.MoveToField( user )
                 world:changeItem(left);
             else
                 if user:getPlayerLanguage()==0 then
-                    user:inform("Eine unsichtbare Wand h�lt dich zur�ck.");
+                    user:inform("Eine unsichtbare Wand hält dich zurück.");
                 else
                     user:inform("An invisible wall holds you back.");
                 end;

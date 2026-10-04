@@ -24,11 +24,11 @@ function M.InitCraftingTool( )
         gemcutting:AddTool( 270 );  -- Schleifstein
 
         gemcutting:AddInterruptMessage(
-        "Du wischst dir den Schwei� von der Stirn.",
+        "Du wischst dir den Schweiß von der Stirn.",
         "You wipe sweat off your forehead.");
         
         gemcutting:AddInterruptMessage(
-        "Der Edelstein rutscht dir aus der Hand und f�llt zu Boden. Du musst kurz suchen, ehe du den Stein wieder findest.",
+        "Der Edelstein rutscht dir aus der Hand und fällt zu Boden. Du musst kurz suchen, ehe du den Stein wieder findest.",
         "The gem slips out of your hand and falls down to the ground. You have to search for a moment to find it again.");
 		
         ---------------- AMETHYST - 197 ----------------
@@ -152,9 +152,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
 
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim Edelstein schleifen.",
+        "Deine Rüstung behindert beim Edelstein schleifen.",
         "Your armor disturbes you while cutting gems." );
         GemCutting:SwapToInactiveItem( User );
         return

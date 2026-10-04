@@ -32,15 +32,15 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
         return
     end
 	
-	-- Angeln unterirdisch nicht m�glich
+	-- Angeln unterirdisch nicht möglich
     if (TargetPos.z < 0) then
-    	common.InformNLS(User, "In unterirdischen Wasserl�chern wird das Angeln kaum erfolgreich sein.", "Fishing in underground waterholes wouldn't be successful.");
+    	common.InformNLS(User, "In unterirdischen Wasserlöchern wird das Angeln kaum erfolgreich sein.", "Fishing in underground waterholes wouldn't be successful.");
 		return
     end
 	
 	if common.Encumbrence(User) then -- Behinderung
         common.InformNLS(User,
-        "Deine R�stung behindert dich beim Fischen.",
+        "Deine Rüstung behindert dich beim Fischen.",
         "Your armor disturbes you while fishing.");
         return
     end
@@ -52,11 +52,11 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
         return
     end
 	
-	if not common.IsLookingAt(User, TargetPos) then -- Drehen wenn n�tig
+	if not common.IsLookingAt(User, TargetPos) then -- Drehen wenn nötig
         common.TurnTo(User, TargetPos);
     end
 	
-	if (ltstate == Action.none) then -- Unt�tig: Starte Angeln!
+	if (ltstate == Action.none) then -- Untätig: Starte Angeln!
         User:startAction(gathering.fishing:GenWorkTime(User, SourceItem), 0, 0, 0, 0);
         User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu fischen.");
         User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts fishing.");
@@ -69,7 +69,7 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
 	
 	-- Spieler fischt bereits
 	local chance = math.random(10)
-	if(chance <= 3) then -- Skill wird nur noch bei GenWorkTime beachtet, Chance betr�gt 30% f�r Lachs
+	if(chance <= 3) then -- Skill wird nur noch bei GenWorkTime beachtet, Chance beträgt 30% für Lachs
 		local notcreated = User:createItem(73, 1, 333, 0);
 		if(notcreated > 0) then
 			world:createItemFromId(73, notcreated, User.pos, true, 333, 0);
@@ -77,7 +77,7 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
 			return false
 		end
 		User:learn(2, "fishing", 2, 100);
-	elseif(chance <= 8) then -- Skill wird nur noch bei GenWorkTime beachtet, Chance betr�gt 60% f�r Forelle
+	elseif(chance <= 8) then -- Skill wird nur noch bei GenWorkTime beachtet, Chance beträgt 60% für Forelle
 		local notcreated = User:createItem(355, 1, 333, 0);
 		if(notcreated > 0) then
 			world:createItemFromId(355, notcreated, User.pos, true, 333, 0);
@@ -93,8 +93,8 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
 	world:gfx(11,TargetPos);
     world:makeSound(9,TargetPos);
 	
-	if common.ToolBreaks(User, SourceItem, true) then -- Angel besch�digen
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me l�sst die Angel aus den H�nden rutschen und die Angel sinkt auf den Grund.");
+	if common.ToolBreaks(User, SourceItem, true) then -- Angel beschädigen
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me lässt die Angel aus den Händen rutschen und die Angel sinkt auf den Grund.");
         User:talkLanguage(CCharacter.say, CPlayer.english, "#me lets the fishing rod slip out of the hands and it sinks to the ground.");
         return
     end

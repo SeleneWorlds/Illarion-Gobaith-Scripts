@@ -1,6 +1,6 @@
 local M = {}
 
--- Standartscript f�r Instrumente spielen
+-- Standartscript für Instrumente spielen
 -- Nitram
 
 local common = require("base.common")

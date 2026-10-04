@@ -11,17 +11,17 @@ local M = {}
 
 function M.ds_codices()
   if firsttime == nil then
-    --F�r Flasche 059,166
-    LVDe={"Ende","H�lle","H�hle","Kerker","Ruhe","Quelle","Orden","Tempel","Siegel"}
+    --Für Flasche 059,166
+    LVDe={"Ende","Hölle","Höhle","Kerker","Ruhe","Quelle","Orden","Tempel","Siegel"}
     PADe={" der Kraft"," des Willens"," der Sinne"," des Wissens"," des Fleisches"," des Windes"," des Diebes"," des Geistes"}
-    SADe={" des Lebens"," des Riesen"," der Quellen"," des Gl�cks"," der Qualen"," des Ethos"," des Flei�es"," des Zaubers"}
+    SADe={" des Lebens"," des Riesen"," der Quellen"," des Glücks"," der Qualen"," des Ethos"," des Fleißes"," des Zaubers"}
     LVEn={"end of ","hell of ","cave of ","dungeon of ","silence of ","spring of ","order of ","temple of ","seal of "}
     PAEn={"power","will","senses","intelligence","constitution","the wind","the thief","spirit"}
     SAEn={"life","giants","springs","luck","pain","ethos","diligence","magic"}
-    -- f�r Flasche 165
+    -- für Flasche 165
     WVDe={"","","","","","","","",""}
     WVEn={"","","","","","","","",""}
-    WMDe={"Metallpaste","Vitalstoff","Lederfett","Edelstein-Creme","Edelmetall-�l","Holzpolitur","Stoffpflegemittel","Hornfett"}
+    WMDe={"Metallpaste","Vitalstoff","Lederfett","Edelstein-Creme","Edelmetall-Öl","Holzpolitur","Stoffpflegemittel","Hornfett"}
     WMEn={"metal","food","leather","gemstones","noble metal","wood","textile","horn"}
 
     firsttime = 1
@@ -37,10 +37,10 @@ end
 
 function M.ds_analyse_059(Caster,Item)
 --rote Flasche
---Prim�rattribute
+--Primärattribute
 --Caster:inform("rote Flasche")
   if Item.data == 0 then
-    EtikettDe ="Heil- und St�rkungstrank"
+    EtikettDe ="Heil- und Stärkungstrank"
     EtikettEn ="Healing- And Refreshment-Potion"
   else
     M.ds_codices()
@@ -66,7 +66,7 @@ function M.ds_analyse_165(Caster,Item)
 --Pasten
 --Caster:inform("hellblaue Flasche")
   if Item.data == 0 then
-    EtikettDe ="ein Pflegemittel,ein �l oder eine Politur"
+    EtikettDe ="ein Pflegemittel,ein Öl oder eine Politur"
     EtikettEn ="A Care Product, Maybe An Oil Or A Polish"
   else
     M.ds_codices()
@@ -90,10 +90,10 @@ end
 
 function M.ds_analyse_166(Caster,Item)
 --lila Flasche
---Sekund�rattribute
+--Sekundärattribute
 --Caster:inform("lila Flasche")
   if Item.data == 0 then
-    EtikettDe ="ein Heil- oder St�rkungstrank"
+    EtikettDe ="ein Heil- oder Stärkungstrank"
     EtikettEn ="a healing- or refreshment-potion"
   else
     M.ds_codices()
@@ -160,7 +160,7 @@ end
 
 function M.ds_analyse_327(Caster,Item)
 --dunkelblaue Flasche
---Wurfk�rper ua
+--Wurfkörper ua
 --Caster:inform("dunkelblaue Flasche")
   if Item.data == 93531588 then
     EtikettDe ="Wurfbombe".."\n"
@@ -187,22 +187,22 @@ function M.ds_analyse_327(Caster,Item)
     EtikettDe ="Sattmacher".."\n" --Sattmacher (noch in Arbeit)
     EtikettEn ="".."\n"
   elseif Item.data == 43245354 then
-    EtikettDe ="Rostschleuder" --Haltbarkeitsschaden f�r R�stungen auf 9er Feld
+    EtikettDe ="Rostschleuder" --Haltbarkeitsschaden für Rüstungen auf 9er Feld
     EtikettEn ="Rusttrap"
   elseif Item.data == 64175321 then
-    EtikettDe ="Holzk�fer" --Haltbarkeitsschaden f�r Holzwaren auf 9er Feld
+    EtikettDe ="Holzkäfer" --Haltbarkeitsschaden für Holzwaren auf 9er Feld
     EtikettEn =""
   elseif Item.data == 15516428 then
-    EtikettDe ="Schwertgrab" --Halbarkeitsschaden f�r Waffen auf 9er Feld
+    EtikettDe ="Schwertgrab" --Halbarkeitsschaden für Waffen auf 9er Feld
     EtikettEn =""
   elseif Item.data == 17616268 then
-    EtikettDe ="Rostfresser" --Haltbarkeitsschaden f�r R�stungen auf 1 Feld
+    EtikettDe ="Rostfresser" --Haltbarkeitsschaden für Rüstungen auf 1 Feld
     EtikettEn =""
   elseif Item.data == 16623552 then
-    EtikettDe ="Holzwurm" --Haltbarkeitsschaden f�r Holzwaren auf 1 Feld
+    EtikettDe ="Holzwurm" --Haltbarkeitsschaden für Holzwaren auf 1 Feld
     EtikettEn =""
   elseif Item.data == 92124379 then
-    EtikettDe ="Waffennarr" --Halbarkeitsschaden f�r Waffen auf 1 Feld
+    EtikettDe ="Waffennarr" --Halbarkeitsschaden für Waffen auf 1 Feld
     EtikettEn =""
   elseif Item.data == 63321157 then
     EtikettDe ="Windtrank" --Herstellen von Windpfeilen
@@ -311,7 +311,7 @@ function M.ds_analyse_329(Caster,Item)
       EtikettDe = "ein Gestaltenwandler-Trunk 'Rotwurm'"
       EtikettEn = "Shape Shifter Potion 'Redworm'"
   elseif Item.data == 99992352 then
-      EtikettDe = "ein Gestaltenwandler-Trunk 'Gro�er D�mon'"
+      EtikettDe = "ein Gestaltenwandler-Trunk 'Großer Dämon'"
       EtikettEn = "Shape Shifter Potion 'Big Demon'"
   elseif Item.data == 38114786 then
       EtikettDe = "ein Gestaltenwandler-Trunk 'Skorpion'"
@@ -323,7 +323,7 @@ function M.ds_analyse_329(Caster,Item)
       EtikettDe = "ein Gestaltenwandler-Trunk 'Luft'"
       EtikettEn = "Shape Shifter Potion 'Air'"
   elseif Item.data == 87611881 then
-      EtikettDe = "ein Gestaltenwandler-Trunk 'Sch�del'"
+      EtikettDe = "ein Gestaltenwandler-Trunk 'Schädel'"
       EtikettEn = "Shape Shifter Potion 'Skull'"
   elseif Item.data == 31231973 then
       EtikettDe = "ein Gestaltenwandler-Trunk 'Wespe'"
@@ -353,7 +353,7 @@ function M.ds_analyse_329(Caster,Item)
       EtikettDe = "ein Gestaltenwandler-Trunk 'Drow-Frau'"
       EtikettEn = "Shape Shifter Potion Female 'Drow'"
   elseif Item.data == 11695753 then
-      EtikettDe = "ein Gestaltenwandler-Trunk 'Kleiner D�mon'"
+      EtikettDe = "ein Gestaltenwandler-Trunk 'Kleiner Dämon'"
       EtikettEn = "Shape Shifter Potion 'Lower Demon'"
   elseif Item.data == 62545579 then
       EtikettDe = "ein Gestaltenwandler-Trunk 'Kuh'"
@@ -381,9 +381,9 @@ function M.ds_analyse_329(Caster,Item)
 end
 
 function M.ds_analyse_330(Caster,Item)
---wei�e Flasche
+--weiße Flasche
 --Sprache
---Caster:inform("wei�e Flasche")
+--Caster:inform("weiße Flasche")
   if Item.data ==  45942235 then
       EtikettDe = "ein Trank des menschlichen Verstehens"
       EtikettEn = "a Potion Of Human Understanding"
@@ -473,7 +473,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
         textDE, textEN = M.ds_analyse_329(Caster,TargetItem)
 				break
 			elseif i == 8 then
-			--wei�e Flasche
+			--weiße Flasche
         textDE, textEN = M.ds_analyse_330(Caster,TargetItem)
 			end
 

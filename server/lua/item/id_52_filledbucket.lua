@@ -19,10 +19,10 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         OpenDoor( door );
     end;
 
-    -- Wasserflasche auff�llen
+    -- Wasserflasche auffüllen
     if( TargetItem.id == 2498 ) then
 		if(TargetItem.number > 1) then
-			common.InformNLS(User, "Du kannst nur eine Flasche bef�llen!", "You can only fill one bottle.");
+			common.InformNLS(User, "Du kannst nur eine Flasche befüllen!", "You can only fill one bottle.");
 			return;
 		end
         world:makeSound( 10, User.pos )
@@ -30,7 +30,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
     else
         if TargetItem.id ~= 0 then
 			if ((TargetItem.id==12 or TargetItem.id == 359) and (User.pos.z==100 or User.pos.z==101)) then --Prevents extinguishing campfires on n00bia(needed for the cook-npc)
-				common.InformNLS(User,"Du solltest das Feuer besser nicht ausmachen, du k�nntest es noch gebrauchen.","You shouldn't extinguish the fire, you maybe could need it.");
+				common.InformNLS(User,"Du solltest das Feuer besser nicht ausmachen, du könntest es noch gebrauchen.","You shouldn't extinguish the fire, you maybe could need it.");
 				return;
 			else	
 				common.InformNLS(User,"platsch!","splash!");
@@ -78,7 +78,7 @@ function M.UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter
                  OpenDoor( door );
              end;
 	     
-	         common.InformNLS(TargetCharacter, "Du f�hlt dich gleich viel sauberer.", "You feel much cleaner.");
+	         common.InformNLS(TargetCharacter, "Du fühlt dich gleich viel sauberer.", "You feel much cleaner.");
 	    end
     end
 end
@@ -106,10 +106,10 @@ function M.MakeSprout( User, SourceItem, TargetItem )
 
         --User:inform( "skill "..skillwert.." chance "..chance );
         if M.BlockCheck(TargetItem.pos) then
-	    -- Auf dem Trainingsfeld der Akademie w�chst nichts
+	    -- Auf dem Trainingsfeld der Akademie wächst nichts
 	    if ((( TargetItem.pos.x > 54 ) and ( TargetItem.pos.x < 64 ) and ( TargetItem.pos.y > 35 ) and ( TargetItem.pos.y < 49 )) and ( TargetItem.pos.z == 50)) then
 	        common.InformNLS( User,
-                    "Die Erde hier ist v�llig ausgebrannt...hier kann nichts wachsen.",
+                    "Die Erde hier ist völlig ausgebrannt...hier kann nichts wachsen.",
                     "The ground here is totaly burned...here can't grow anything." );
         else
             if M.CheckSucceed(User) then

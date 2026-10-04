@@ -25,28 +25,28 @@ function M.loadBook(toData)
     base_books.AddEnglishBookText("But the tall ones like that and tell you about much more worse places. I somehow can't believe that but why should they all trump up the same story?",0,15,toData); 
     base_books.AddEnglishBookText("When you meet tall ones who deal with the Albar-city then run away! They lock you up and compel you to eat awful things.",0,15,toData); 
     
-    base_books.AddGermanBookText("�ber die Menschen von Thomas Berryard",2862,15,toData); -- ### Human ### scarecrow instead of human 
-    base_books.AddGermanBookText("Auf meinen Abenteuern durch das wilde Land Salkamar habe ich nat�rlich viele Menschen gesehen und manche auch kennen gelernt. Denn die leben ja dort.",0,15,toData); 
-    base_books.AddGermanBookText("Und wenn mich nun jemand fragt, Thomas Berryard, wie sind die Menschen so? Habe ich viele Geschichten zu erz�hlen. Manche sind lustig und andere werden uns verr�ckt erscheinen.",0,15,toData); 
-    base_books.AddGermanBookText("Aber so sind die Menschen eben. Zuerst einmal sind sie und das f�llt einem sofort auf, wenn man einen sieht, viel zu lang. Beinahe doppelt so lang wie der Gr��te in deiner Sippschaft, lass dir das",0,15,toData); 
-    base_books.AddGermanBookText("sagen! Die sind wie B�ume. Sie knarren und knacken wenn sie sich bewegen, dabei sind sie aber in der Regel ungelenk und plump. Aber das ist auch ganz verst�ndlich so, weil mit so langen Beinen ist es",0,15,toData); 
-    base_books.AddGermanBookText("sicher schwierig zu laufen und so. Es ist dann bestimmt schwierig f�r den Kopf, den F��en zu sagen was sie tun sollen, weil sie so weit weg sind. Ein weiter Grund daf�r ist wohl, dass die Langen ihre",0,15,toData); 
-    base_books.AddGermanBookText("F��e einsperren. gleich wie die Zwerge. Das machen sie, weil ihre F��e auch wirklich nicht sch�n sind und sie Angst haben, dass wir sie auslachen. Ich hab einen gesehen und der hatte gar keine Haare",0,15,toData); 
+    base_books.AddGermanBookText("Über die Menschen von Thomas Berryard",2862,15,toData); -- ### Human ### scarecrow instead of human 
+    base_books.AddGermanBookText("Auf meinen Abenteuern durch das wilde Land Salkamar habe ich natürlich viele Menschen gesehen und manche auch kennen gelernt. Denn die leben ja dort.",0,15,toData); 
+    base_books.AddGermanBookText("Und wenn mich nun jemand fragt, Thomas Berryard, wie sind die Menschen so? Habe ich viele Geschichten zu erzählen. Manche sind lustig und andere werden uns verrückt erscheinen.",0,15,toData); 
+    base_books.AddGermanBookText("Aber so sind die Menschen eben. Zuerst einmal sind sie und das fällt einem sofort auf, wenn man einen sieht, viel zu lang. Beinahe doppelt so lang wie der Größte in deiner Sippschaft, lass dir das",0,15,toData); 
+    base_books.AddGermanBookText("sagen! Die sind wie Bäume. Sie knarren und knacken wenn sie sich bewegen, dabei sind sie aber in der Regel ungelenk und plump. Aber das ist auch ganz verständlich so, weil mit so langen Beinen ist es",0,15,toData); 
+    base_books.AddGermanBookText("sicher schwierig zu laufen und so. Es ist dann bestimmt schwierig für den Kopf, den Füßen zu sagen was sie tun sollen, weil sie so weit weg sind. Ein weiter Grund dafür ist wohl, dass die Langen ihre",0,15,toData); 
+    base_books.AddGermanBookText("Füße einsperren. gleich wie die Zwerge. Das machen sie, weil ihre Füße auch wirklich nicht schön sind und sie Angst haben, dass wir sie auslachen. Ich hab einen gesehen und der hatte gar keine Haare",0,15,toData); 
     base_books.AddGermanBookText("und war weich und glatt wie ein Fisch.",0,15,toData); 
-    base_books.AddGermanBookText("Was ich aber wirklich sagen muss, ist dass es ganz viele Lange gibt, die ihr Herz am richtigen Fleck tragen. Obwohl sie so ungeschickt sind k�mmern sie sich um ihre Kinder sehr liebevoll und bem�ht.",0,15,toData); 
-    base_books.AddGermanBookText("Und weil ihre Kinder genauso lang sind wie wir, was wirklich seltsam wirkt wenn sie mit dir reden, kann es sein dass sie zuerst gar nicht begreifen, dass man ein Halbling ist. �berhaupt scheint ihr",0,15,toData); 
-    base_books.AddGermanBookText("riesiger Kopf viel mehr Platz f�r Unsinn zu haben. Wenn sie in der Stadt keinen Platz mehr haben, bauen sie ein zweites Haus auf das was auf der Erde steht.",0,15,toData); 
-    base_books.AddGermanBookText("Dann sieht es aus, als w�rde es jeden Moment wieder herunterfallen. Dort hineinzugehen habe ich mich jedenfalls nicht getraut. Dann haben sie einen K�nig. Der wird schon ausgesucht",0,15,toData); 
-    base_books.AddGermanBookText("wenn er noch Brustmilch trinkt oder so und darf dann alle anderen sagen was sie d�rfen und was nicht. Das was er sagt nicht zu machen ist aber nicht erlaubt. Und weil sie uns manchmal",0,15,toData); 
-    base_books.AddGermanBookText("f�r Kinder halten erziehen sie dich immer ein bisschen. Versuchen dir den Groskopf-Unsinn einzureden und geben Ratschl�ge um die man nicht gefragt hat. Am Besten kommst du dann mit ihnen aus, wenn",0,15,toData); 
-    base_books.AddGermanBookText("du zustimmst zu all den Dingen die sie dir einreden m�chten, aber nat�rlich machst du das dann nicht. Wenn du versuchst mit ihnen zu diskutieren geben sie dir nur noch viel mehr Ratschl�ge.",0,15,toData); 
-    base_books.AddGermanBookText("Manche Menschen werden zappelig, wenn es ruhig und gem�tlich ist. Dann gehen sie Unruhe stiften und ich weis nicht was noch alles. In den gro�en St�dten ist es aber nie ruhig und immerzu gibt",0,15,toData); 
-    base_books.AddGermanBookText("es Krawall. Doch die Langen m�gen das und erz�hlen dir von noch viel schlimmeren Orten. Ich kann das alles nicht glauben, aber warum sollten die alle die selbe Geschichte erfinden?",0,15,toData); 
-    base_books.AddGermanBookText("Wenn du Lange triffst die irgendwas mit dieser Albar-stadt zu tun haben, schau das du ganz schnell weg kommst! Die sperren dich n�mlich ein und zwingen dich schreckliche Dinge zu essen.",0,15,toData);
+    base_books.AddGermanBookText("Was ich aber wirklich sagen muss, ist dass es ganz viele Lange gibt, die ihr Herz am richtigen Fleck tragen. Obwohl sie so ungeschickt sind kümmern sie sich um ihre Kinder sehr liebevoll und bemüht.",0,15,toData); 
+    base_books.AddGermanBookText("Und weil ihre Kinder genauso lang sind wie wir, was wirklich seltsam wirkt wenn sie mit dir reden, kann es sein dass sie zuerst gar nicht begreifen, dass man ein Halbling ist. überhaupt scheint ihr",0,15,toData); 
+    base_books.AddGermanBookText("riesiger Kopf viel mehr Platz für Unsinn zu haben. Wenn sie in der Stadt keinen Platz mehr haben, bauen sie ein zweites Haus auf das was auf der Erde steht.",0,15,toData); 
+    base_books.AddGermanBookText("Dann sieht es aus, als würde es jeden Moment wieder herunterfallen. Dort hineinzugehen habe ich mich jedenfalls nicht getraut. Dann haben sie einen König. Der wird schon ausgesucht",0,15,toData); 
+    base_books.AddGermanBookText("wenn er noch Brustmilch trinkt oder so und darf dann alle anderen sagen was sie dürfen und was nicht. Das was er sagt nicht zu machen ist aber nicht erlaubt. Und weil sie uns manchmal",0,15,toData); 
+    base_books.AddGermanBookText("für Kinder halten erziehen sie dich immer ein bisschen. Versuchen dir den Groskopf-Unsinn einzureden und geben Ratschläge um die man nicht gefragt hat. Am Besten kommst du dann mit ihnen aus, wenn",0,15,toData); 
+    base_books.AddGermanBookText("du zustimmst zu all den Dingen die sie dir einreden möchten, aber natürlich machst du das dann nicht. Wenn du versuchst mit ihnen zu diskutieren geben sie dir nur noch viel mehr Ratschläge.",0,15,toData); 
+    base_books.AddGermanBookText("Manche Menschen werden zappelig, wenn es ruhig und gemütlich ist. Dann gehen sie Unruhe stiften und ich weis nicht was noch alles. In den großen Städten ist es aber nie ruhig und immerzu gibt",0,15,toData); 
+    base_books.AddGermanBookText("es Krawall. Doch die Langen mögen das und erzählen dir von noch viel schlimmeren Orten. Ich kann das alles nicht glauben, aber warum sollten die alle die selbe Geschichte erfinden?",0,15,toData); 
+    base_books.AddGermanBookText("Wenn du Lange triffst die irgendwas mit dieser Albar-stadt zu tun haben, schau das du ganz schnell weg kommst! Die sperren dich nämlich ein und zwingen dich schreckliche Dinge zu essen.",0,15,toData);
 end
 
 function loadTitle(toData)
-    base_books.AddGermanBookTitle("Buch mit dem Titel \"�ber die Menschen\"",toData);
+    base_books.AddGermanBookTitle("Buch mit dem Titel \"Über die Menschen\"",toData);
     base_books.AddEnglishBookTitle("Book with the title \"About the Humans\"",toData);
 end
 

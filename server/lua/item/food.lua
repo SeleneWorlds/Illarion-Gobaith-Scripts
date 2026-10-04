@@ -147,11 +147,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			-- inform the player
 			if poison then
 				common.TempInformNLS(User,
-				"Du f�hlst dich krank und etwas benommen.",
+				"Du fühlst dich krank und etwas benommen.",
 				"You feel sick and a little dizzy.");
 			elseif (domMalus < 0) then
 				common.TempInformNLS( User,
-				"Du bekommst kaum noch was runter und dir wird schlecht. Dies schadet sicherlich deinem K�rper.",
+				"Du bekommst kaum noch was runter und dir wird schlecht. Dies schadet sicherlich deinem Körper.",
 				"You hardly manage to eat something more and get sick! This surely harms your body.");
 				-- check for newbie state
 				if not (User:getQuestProgress(2) > 0) and not (User:increaseAttrib("hitpoints",0) < 2000) then
@@ -160,7 +160,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 				foodLevel = foodLevel - 10000;
 			elseif  (foodLevel > 55000) then
 				common.TempInformNLS( User,
-				"Nur mit M�he kannst du dir noch etwas hinunter zwingen.",
+				"Nur mit Mühe kannst du dir noch etwas hinunter zwingen.",
 				"You hardly manage to eat something more.");
 			elseif  (foodLevel > 50000) then
 				common.TempInformNLS( User,
@@ -172,7 +172,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 				"You are stuffed");
 			elseif  (foodLevel > 30000) then
 				common.TempInformNLS( User,
-				"Du f�hlst dich noch etwas hungrig.",
+				"Du fühlst dich noch etwas hungrig.",
 				"You still feel a little hungry.");
 			elseif  (foodLevel > 20000) then
 				common.TempInformNLS( User,
@@ -183,13 +183,13 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 				"Dein Magen schmerzt noch immer vor Hunger.",
 				"Your stomach still hurts because of your hunger.");
 			end
-			-- Gl�ckskeks!
+			-- Glückskeks!
 			--
 			if (SourceItem.id == 453) then
                 if (math.random(1,100)==1) then
                     local deText, enText = furtunecookies.cookie();
                     common.InformNLS( User,
-                    "Du findest ein St�ck Papier in dem Keks: \""..deText.."\"",
+                    "Du findest ein Stück Papier in dem Keks: \""..deText.."\"",
                     "You find a piece of paper inside the cookie: \""..enText.."\"");
                 end
             end
@@ -306,29 +306,29 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 				constMod=0;
 				if (constModOld < constMod) then
 					common.InformNLS(User,
-					"Durch deine ausgewogene Ern�hrung erlangt dein K�rper seine gewohnte Verfassung wieder.",
+					"Durch deine ausgewogene Ernährung erlangt dein Körper seine gewohnte Verfassung wieder.",
 					"Due to your balanced diet your body regains its usual condition.");
 				elseif (constModOld > constMod) then
 					common.InformNLS(User,
-					"Durch deine nur gew�hnliche Ern�hrung kann dein K�rper seine gute Verfassung nicht halten.",
+					"Durch deine nur gewöhnliche Ernährung kann dein Körper seine gute Verfassung nicht halten.",
 					"Due to your commoners' diet your body cannot retain its good condition.");
 				end
 			elseif (dom>=2500 and dom<7500) then
 				constMod=1;
 				if (constModOld < constMod) then
 					common.InformNLS(User,
-					"Durch deine gro�artige Ern�hrung erlangt dein K�rper eine gute Verfassung.",
+					"Durch deine großartige Ernährung erlangt dein Körper eine gute Verfassung.",
 					"Due to your great diet your body gains a good condition.");
 				elseif (constModOld > constMod) then
 					common.InformNLS(User,
-					"Da du deine Ern�hrung etwas vernachl�ssigt hast, kann dein K�rper seine gro�artige Verfassung nicht halten.",
-					"As you have slightly neglected your dietary choices, your body can�t retain its great condition.");
+					"Da du deine Ernährung etwas vernachlässigt hast, kann dein Körper seine großartige Verfassung nicht halten.",
+					"As you have slightly neglected your dietary choices, your body can´t retain its great condition.");
 				end
 			elseif (dom>=7500 and dom<=10000) then
 				constMod=2;
 				if (constModOld < constMod) then
 					common.InformNLS(User,
-					"Durch deine perfekte Ern�hrung erlangt dein K�rper eine gro�artige Verfassung.",
+					"Durch deine perfekte Ernährung erlangt dein Körper eine großartige Verfassung.",
 					"Due to your perfect diet your body gains a great condition.");
 				end
 			else
@@ -349,7 +349,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 		end
 	else
 		common.TempInformNLS( User,
-			"Du kannst nicht w�hrend eines Kampfes essen.",
+			"Du kannst nicht während eines Kampfes essen.",
 			"You cannot eat during a fight.");
 	end
 end

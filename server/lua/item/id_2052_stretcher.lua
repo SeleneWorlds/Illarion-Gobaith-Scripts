@@ -5,7 +5,7 @@ local M = {}
 -- Rohleder und Felle zu Leder
 
 -- Arbeitscyclus: 2s - 5s
--- Zus�tzliches Werkzeug: Rasiermesser ( 2746 )
+-- Zusätzliches Werkzeug: Rasiermesser ( 2746 )
 
 -- UPDATE common SET com_script='item.id_2052_stretcher' WHERE com_itemid = 2052;
 
@@ -19,9 +19,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Leatherlist[2586]=2547; --Fell in Leder
     end
 
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert am Leder gerben.",
+        "Deine Rüstung behindert am Leder gerben.",
         "Your armor disturbes while tanning leather." );
         return
     end
@@ -31,12 +31,12 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
 
     if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn nötig
     end
 
     if (User:countItemAt("body",2746)==0) then -- Rasiermesser
         common.InformNLS( User,
-        "Du ben�tigst ein Rasiermesser um das Leder zu gerben.",
+        "Du benötigst ein Rasiermesser um das Leder zu gerben.",
         "You need a razor blade to tan the leather." );
         return
     end
@@ -46,7 +46,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
 
-    if common.ToolBreaks( User, Tool, true ) then -- Rasiermesser besch�digen
+    if common.ToolBreaks( User, Tool, true ) then -- Rasiermesser beschädigen
         common.InformNLS( User,
         "Das Rasiermesser wird stumpf.",
         "The razor blade wents blunt" );
@@ -84,19 +84,19 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 local selectMessage = math.random(1,5);
                 if ( selectMessage == 1 ) then
                     common.InformNLS(User,
-                    "Du wischst dir den Schwei� von der Stirn.",
+                    "Du wischst dir den Schweiß von der Stirn.",
                     "You wipe sweat off your forehead.");
                 elseif ( selectMessage == 2 ) then
                     common.InformNLS(User,
-                    "Du bekommst ein paar feine Haare in den Mund und mu�t husten.",
+                    "Du bekommst ein paar feine Haare in den Mund und mußt husten.",
                     "A cloud of fine hairs makes you cough.");
                 elseif ( selectMessage == 3 ) then
                     common.InformNLS(User,
-                    "Du �berpr�fst kurz die bereits gegerbte Stelle auf Unebenheiten",
+                    "Du überprüfst kurz die bereits gegerbte Stelle auf Unebenheiten",
                     "You briefly check the quality of the leather.");
                 elseif ( selectMessage == 4 ) then
                     common.InformNLS(User,
-                    "Du h�lst kurz inne um das Messer ein wenig nachzuschleifen.",
+                    "Du hälst kurz inne um das Messer ein wenig nachzuschleifen.",
                     "You breaks to sharp your tool a bit.");
                 else
                     common.InformNLS(User,
@@ -108,7 +108,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
             User:eraseItem(i,1); -- Rohleder oder Felle entfernen
             notCreated = User:createItem(Leather,1,333,0); -- Leder erstellen
-            if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
+            if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
                 world:createItemFromId( Leather, notCreated, User.pos, true, 333 ,0);
                 common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
@@ -124,7 +124,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     if (ltstate ~= Action.success) then
         common.InformNLS( User,
-        "Du hast kein Rohleder und keine Felle die du gerben k�nntest.",
+        "Du hast kein Rohleder und keine Felle die du gerben könntest.",
         "You don't have any rawleather or furs you could tan." );
     end
 end
@@ -133,7 +133,7 @@ end
 function M.GenWorkTime(User)
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
 	local Skill = 1;
-    --local Skill  = User:getSkill("dying and tanning");     -- F�rben und Gerben: 0 - 100
+    --local Skill  = User:getSkill("dying and tanning");     -- Färben und Gerben: 0 - 100
 
     return math.floor(-0.3 * (Attrib + Skill) + 100);
 end

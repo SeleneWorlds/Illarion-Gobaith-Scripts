@@ -23,18 +23,18 @@ function M.InitCraftingTool( )
                             };
 
         smithing:AddTool( 172 ); -- Amboss
-        smithing:AddActiveTool( 172, 13 ); -- Amboss mit gl�hendem Metall
+        smithing:AddActiveTool( 172, 13 ); -- Amboss mit glühendem Metall
 
         smithing:AddInterruptMessage(
-        "Du wischst dir den Schwei� von der Stirn.",
+        "Du wischst dir den Schweiß von der Stirn.",
         "You wipe sweat off your forehead.");
 
         smithing:AddInterruptMessage(
-        "Du schl�gst dir mit dem Hammer auf den Finger.",
+        "Du schlägst dir mit dem Hammer auf den Finger.",
         "You hit your finger with the hammer.");
 
         smithing:AddInterruptMessage(
-        "Du betrachtest das Werkst�ck kurz um die Stellen zu finden welche du noch verbessern m�chtest.",
+        "Du betrachtest das Werkstück kurz um die Stellen zu finden welche du noch verbessern möchtest.",
         "You examine your current work, keeping an eye out for any mistakes.");
 
         smithing:AddInterruptMessage(
@@ -42,15 +42,15 @@ function M.InitCraftingTool( )
         "You correct a very rough area.");
 
         smithing:AddInterruptMessage(
-        "Du sch�ttest etwas Kohle auf das Metall und klopfst sie ein um die H�rte zu steigern.",
+        "Du schüttest etwas Kohle auf das Metall und klopfst sie ein um die Härte zu steigern.",
         "You pour some coal upon the metal and hit it into to increase the hardness.");
 
         smithing:AddInterruptMessage(
-        "Du h�ltst einen Moment inne und �berlegst eine zus�tzliche Gravur anzubringen, entscheidest dich aber dagegen.",
+        "Du hältst einen Moment inne und überlegst eine zusätzliche Gravur anzubringen, entscheidest dich aber dagegen.",
         "You think about to include a additional gravur a moment, but you decide against.");
 
         smithing:AddInterruptMessage(
-        "Du �berpr�fst kurz die Ma�e des Werkst�cks.",
+        "Du überprüfst kurz die Maße des Werkstücks.",
         "You check the fine details of your work.");
 
         --------------------------------------------------------------------------------------------
@@ -784,15 +784,15 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
 
     if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
         common.InformNLS( User,
-        "Du mu�t den Hammer in die Hand nehmen um damit zu arbeiten.",
+        "Du mußt den Hammer in die Hand nehmen um damit zu arbeiten.",
         "You have to take the hammer in your hand, to work with it." );
         Smithing:SwapToInactiveItem( User );
         return
     end
 
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim schmieden.",
+        "Deine Rüstung behindert beim schmieden.",
         "Your armor disturbes you while smithing." );
         Smithing:SwapToInactiveItem( User );
         return

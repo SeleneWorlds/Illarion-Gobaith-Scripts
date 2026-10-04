@@ -16,14 +16,14 @@ function M.loadBook(toData)
     base_books.AddEnglishBookText("There is one important thing to note: One should never let the energies of a Ruby flow into a trinket in which there is another stone embedded.",0,0,toData);
 
     base_books.AddGermanBookText("\n\n~~Rubine~~",46,0,toData);
-    base_books.AddGermanBookText("Das Rot der Rubine wird von Kriegern wie auch von den Anh�ngern der Flamme Irmoroms gleicherma�en gesch�tzt und bewundert. Krieger glauben, das sie dadurch ihr Kampfgeschick st�rken.",0,0,toData);
-    base_books.AddGermanBookText("Die Anh�nger Irmoroms hingegen sind davon �berzeugt, dass die Kr�fte des Rubins ihr handwerkliches K�nnen steigern.",0,0,toData);
-    base_books.AddGermanBookText("Waffen:\n\nLeitet man die magischen Energien eines Rubins in eine Waffe,so verst�rkt man dadurch deren nat�rliche Angriffskraft.",2627,0,toData);
-    base_books.AddGermanBookText("R�stungen und Schilde:\n\nIn R�stungen wie auch in Schilden bewirken die magischen Energien einen zus�tzlichen Schutz vor Hiebschaden.",917,0,toData);
-    base_books.AddGermanBookText("Magierst�be:\n\nFlie�en Rubinenergien durch einen Magierstab, so steigert dies die Kampfmagie des Tr�gers.",323,0,toData);
-    base_books.AddGermanBookText("Werkzeuge:\n\nVerwendet man ein Werkzeug, durch das die magischen Energien eines Rubins flie�en so ist dies f�rderlich f�r das handwerkliche Talent.",102,0,toData);
-    base_books.AddGermanBookText("Schmuckst�cke:\n\nSchmuckst�cke in denen die magische Energie von Rubinen flie�t steigern die Geschicklichkeit des Tr�gers.",67,0,toData);
-    base_books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Rubins in ein Schmuckst�ck flie�en lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
+    base_books.AddGermanBookText("Das Rot der Rubine wird von Kriegern wie auch von den Anhängern der Flamme Irmoroms gleichermaßen geschützt und bewundert. Krieger glauben, das sie dadurch ihr Kampfgeschick stärken.",0,0,toData);
+    base_books.AddGermanBookText("Die Anhänger Irmoroms hingegen sind davon überzeugt, dass die Kräfte des Rubins ihr handwerkliches Können steigern.",0,0,toData);
+    base_books.AddGermanBookText("Waffen:\n\nLeitet man die magischen Energien eines Rubins in eine Waffe,so verstärkt man dadurch deren natürliche Angriffskraft.",2627,0,toData);
+    base_books.AddGermanBookText("Rüstungen und Schilde:\n\nIn Rüstungen wie auch in Schilden bewirken die magischen Energien einen zusätzlichen Schutz vor Hiebschaden.",917,0,toData);
+    base_books.AddGermanBookText("Magierstäbe:\n\nFließen Rubinenergien durch einen Magierstab, so steigert dies die Kampfmagie des Trägers.",323,0,toData);
+    base_books.AddGermanBookText("Werkzeuge:\n\nVerwendet man ein Werkzeug, durch das die magischen Energien eines Rubins fließen so ist dies förderlich für das handwerkliche Talent.",102,0,toData);
+    base_books.AddGermanBookText("Schmuckstücke:\n\nSchmuckstücke in denen die magische Energie von Rubinen fließt steigern die Geschicklichkeit des Trägers.",67,0,toData);
+    base_books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Rubins in ein Schmuckstück fließen lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
 end;
 
 function M.loadTitle(toData)

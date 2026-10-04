@@ -2,19 +2,19 @@
 
 -- PFLANZENLISTE:
 
--- 133 Sonnenkraut                15 / 9001 / 81 "Einbl�ttrige Vierbeere" / "oneleaved fourberry"
--- 134 Vierbl�ttrige Einbeere     16 / 9002 / 72 "Blaue Vogelbeere" / "blue birdsberry"
+-- 133 Sonnenkraut                15 / 9001 / 81 "Einblättrige Vierbeere" / "oneleaved fourberry"
+-- 134 Vierblättrige Einbeere     16 / 9002 / 72 "Blaue Vogelbeere" / "blue birdsberry"
 -- 135 Gelbkraut                  17 / 9003 / 63 "Schwefelkraut" / "sulfur weed"
 -- 136 Wutbeere                   18 / 9004 / 48 "Frommbeere" / "pious berry"
--- 137 Flamkelchbl�te             25 / 9005 / 53 "Wasserbl�te" / "water blossom"
--- 138 Nachtengelsbl�te           26 / 9006 / 64 "Tagteufel" / "daydevil"
+-- 137 Flamkelchblüte             25 / 9005 / 53 "Wasserblüte" / "water blossom"
+-- 138 Nachtengelsblüte           26 / 9006 / 64 "Tagteufel" / "daydevil"
 -- 140 Donfblatt                  27 / 9007 / 71 "Rauchblatt" / "reek leave"
 -- 141 Schwarze Distel            28 / 9008 / 73 "Graue Distel" / "grey thistle"
--- 142 Sandbeere                  35 / 9009 / 82 "W�stenbeere" / "desert berry"
+-- 142 Sandbeere                  35 / 9009 / 82 "Wüstenbeere" / "desert berry"
 -- 144 Jungfernkraut              37 / 9010 / 74 "Altweiberkraut" / "gossamer weed"
--- 145 Heidebl�te                 38 / 9011 / 83 "Regenkraut" / "rain weed"
--- 146 W�stenhimmelskapsel        45 / 9012 / 84 "Gottesblume" / "godsflower"
--- 148 Firnisbl�te                47 / 9014 / 46 "Trugbl�te" / "con blossom"
+-- 145 Heideblüte                 38 / 9011 / 83 "Regenkraut" / "rain weed"
+-- 146 Wüstenhimmelskapsel        45 / 9012 / 84 "Gottesblume" / "godsflower"
+-- 148 Firnisblüte                47 / 9014 / 46 "Trugblüte" / "con blossom"
 -- 152 Lebenswurz                 51 / 9013 / 62 "Feuerwurz" / "Fire root"
 -- 153 Fussblatt                  52 / 9016 / 36 "Wiesen-Rhabarber" / "meadow rhabarb"
 -- 156 Steppenfarn                61 / 9015 / 54 "Wolfsfarn" / "wolverine fern"
@@ -29,8 +29,8 @@ for i,plant in pairs(M.plantList) do
 	M.plantDataListById[plant] = M.plantDataList[i];
 end
 
---Qualit�tsbezeichnungen
-M.qListDe={"f�rchterliche","schlechte","schwache","leicht schwache","durchschnittliche","gute","sehr gute","gro�artige","hervorragende"};
+--Qualitätsbezeichnungen
+M.qListDe={"fürchterliche","schlechte","schwache","leicht schwache","durchschnittliche","gute","sehr gute","großartige","hervorragende"};
 M.qListEn={"awful","bad","weak","slightly weak","average","good","very good","great","outstanding"};
 
 M.bottleList = { 164,331 }
@@ -61,8 +61,8 @@ M.wirkstoff[6] = "Fenolin";
 M.wirkstoff[7] = "Caprazin";
 M.wirkstoff[8] = "Dracolin";
 
-M.wirkung_de[1] = "ges�ttigte Anreicherung von";
-M.wirkung_de[2] = "eine sehr ausgepr�gte Menge";
+M.wirkung_de[1] = "gesättigte Anreicherung von";
+M.wirkung_de[2] = "eine sehr ausgeprägte Menge";
 M.wirkung_de[3] = "merklich";
 M.wirkung_de[4] = "schwache Konzentration an";
 M.wirkung_de[5] = "kein";
@@ -354,7 +354,7 @@ end
 function M.ImpactRow2(User,dataZList)
   for i=1,8 do
      -- block
-     -- Wirkungen der Reihe 2 k�nnen erst eingebaut werden, wenn wir Zeiteffekte haben.
+     -- Wirkungen der Reihe 2 können erst eingebaut werden, wenn wir Zeiteffekte haben.
   end
 end
 -- -------------------------------------------------------------------------------
@@ -420,9 +420,9 @@ function M.generateTasteMessage(lang,dataZList)
 end
 
 function M.ds_skillgain(User)
-  --Alchemieskill erh�hen
+  --Alchemieskill erhöhen
   User:learn(6,"alchemy",3,100)
-  --Auf Runengewinn pr�fen
+  --Auf Runengewinn prüfen
   --Nur Druiden bekommen Runen
   if ( (User:getMagicType() == 3) ) then
       factor_1 = 4
@@ -441,7 +441,7 @@ function M.ds_skillgain(User)
     -- Runen des Lehrlings: Runen 01 - 07 (alchemySkill  0 - 23)
     -- Runen des Gesellen:  Runen 08 - 14 (alchemySkill 24 - 50)
     -- Runen des Meister:   Runen 15 - 21 (alchemySkill 51 - 89)
-    -- R. des Gro�meisters: Runen 22 - 28 (alchemySkill 90 - 99) nur durch Questvergabe
+    -- R. des Großmeisters: Runen 22 - 28 (alchemySkill 90 - 99) nur durch Questvergabe
     -- GM-Runen             Runen 29 - 32
 
     umlauf = math.floor(User:getSkill("alchemy")/factor_1) +factor_2

@@ -1,12 +1,12 @@
 local M = {}
 
--- R�UCHEROFEN
+-- RÄUCHEROFEN
 
 -- Roher Schinken(307) zu Schinken(306)
 -- oder
--- Forelle (73) zu R�ucherfisch (455)
+-- Forelle (73) zu Räucherfisch (455)
 -- oder
--- Lachs (355) zu R�ucherfisch (455)
+-- Lachs (355) zu Räucherfisch (455)
 --
 -- Arbeitscyclus: 2s - 5s
 
@@ -39,9 +39,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert dich am r�uchern",
+        "Deine Rüstung behindert dich am räuchern",
         "Your armor disturbs you roasting ham or fish" );
         if (SourceItem.id ~= 304) then
             world:swap(SourceItem,304,0);
@@ -63,7 +63,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ( (User:countItemAt("belt",307) < 1)  and (User:countItemAt("belt",355) < 1) and (User:countItemAt("belt",73) < 1) ) then
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
-            "Du ben�tigst rohen Schinken oder rohen Fisch um diesen hier zu r�uchern.", 
+            "Du benötigst rohen Schinken oder rohen Fisch um diesen hier zu räuchern.", 
             "You need raw ham or raw fish to roast it here." );
         end
         if (SourceItem.id ~= 304) then
@@ -74,7 +74,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if ( ltstate == Action.none ) then
         User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu r�uchern.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu räuchern.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to roast.");
         if (SourceItem.id ~= 305) then
             world:swap(SourceItem,305,0);

@@ -81,7 +81,7 @@ function M.InitCustomLookAt()
 	M.addDescription(2295,	1,	"verziert mit einer blühenden Rose und den Initialen 'L C'", "ornamented with a blooming rose and the initials 'L C'", false, false, false );
 	M.addDescription(2357,	1,	"Harnisch des Stammesfürsten", "Chieftain's Plate", false, true, false );
 	M.addDescription(2357,	2,	"finsteren Schattenharnisch mit dem Abbild eines roten Ork-Totenkopf auf der Brust", "sinister shadowplate with an image of a red orc skull on the chest", false, true, false );
-	M.addDescription(2377,	1,	"mit dem Wappen von Caelum auf der R�ckseite", "with Caelum coat of arms on the back", false, false, false );
+	M.addDescription(2377,	1,	"mit dem Wappen von Caelum auf der Rückseite", "with Caelum coat of arms on the back", false, false, false );
 	M.addDescription(2377,	2,	"bestickt mit dem Schriftzug 'Erzmagier'", "embroidered with the lettering 'Archmage'", false, false, false );
 	M.addDescription(2377,	3,	"mit dem Wappen des Littlethorn Clans rechts auf der Brust", "with the emblem of the Littlethorn Clan on the right chest", false, false, false );
 	M.addDescription(2377,	4,	"bunte Robe mit dem Wappen des Littlethorn Clans rechts auf der Brust", "colorful robe with the emblem of the Littlethorn Clan on the right chest", false, true, false );
@@ -103,16 +103,16 @@ function M.InitCustomLookAt()
 	M.addDescription(2418,	16,	"grauer Mantel mit einem gelbem, aufgebäumten Pferd", "grey mantle with yellow rampant horse", false, true, 0 );
 	M.addDescription(2419,	1,	"bestickt mit dem Wappen von Silberbrand", "embroidered with the Silverbrand coat of arms", false, false, false );
 	M.addDescription(2420,	1,	"bestickt mit dem Wappen von Silberbrand", "embroidered with the Silverbrand coat of arms", false, false, false );
-	M.addDescription(2421,	1,	"wei�e Robe mit der Stickerei der Druiden des Waldes", "white robe with the embroidery of the Druids of the Forest", false, true, false );
+	M.addDescription(2421,	1,	"weiße Robe mit der Stickerei der Druiden des Waldes", "white robe with the embroidery of the Druids of the Forest", false, true, false );
 	M.addDescription(2421,	2,	"langes weißes Gewand", "long white garment", false, true, 2 );
 	M.addDescription(2421,	16,	"weißer Mantel mit einem blauen, aufgebäumten Pferd", "white mantle with blue rampant horse", false, true, 0 );
-	M.addDescription(2547,	1,	"weißes Stück Leder mit einem gr�nen Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a green ribbon and the emblem of the Nordmark burnt in", true, true, false );
+	M.addDescription(2547,	1,	"weißes Stück Leder mit einem grünen Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a green ribbon and the emblem of the Nordmark burnt in", true, true, false );
 	M.addDescription(2547,	2,	"weißes Stück Leder mit einem roten Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a red ribbon and the emblem of the Nordmark burnt in", true, true, false );
 	M.addDescription(2547,	3,	"weißes Stück Leder mit einem blauen Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a blue ribbon and the emblem of the Nordmark burnt in", true, true, false );
 	M.addDescription(2547,	4,	"weißes Stück Leder mit einem gelben Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a yellow ribbon and the emblem of the Nordmark burnt in", true, true, false );
 	M.addDescription(2547,	5,	"weißes Stück Leder mit einem schwarzen Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a black ribbon and the emblem of the Nordmark burnt in", true, true, false );
 	M.addDescription(2547,	6,	"weißes Stück Leder mit einem grauen Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a grey ribbon and the emblem of the Nordmark burnt in", true, true, false );
-	M.addDescription(2547,	7,	"weißes Stück Leder mit einem gr�n blauen Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a green blue ribbon and the emblem of the Nordmark burnt in", true, true, false );
+	M.addDescription(2547,	7,	"weißes Stück Leder mit einem grün blauen Band und dem Zeichen der Nordmark eingebrandt", "white piece of leather with a green blue ribbon and the emblem of the Nordmark burnt in", true, true, false );
 	M.addDescription(2660,	1,	"mit dem Wappen Silberbrands", "with Silverbrand coat of arms", false, false, false );
 	M.addDescription(2660,	2,	"mit dem Wappen Silberbrands", "with the crest of Silverbrand", false, false, false );
 	M.addDescription(2744,	1,	"knorrige, alte Pfeife, deren Kopf stets mit Sibanac gefüllt ist", "knotty old pipe, the head of which is always filled with Sibanac", true, true, false );

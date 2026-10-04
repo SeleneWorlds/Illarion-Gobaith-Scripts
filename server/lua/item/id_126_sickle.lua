@@ -32,16 +32,16 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	if ( ltstate == Action.success ) then
         if common.IsInterrupted( User ) then
             common.InformNLS( User,
-            "W�hrend du nach Kr�utern suchst, verhakt sich deine Sichel und rutscht dir fast aus der Hand.",
+            "Während du nach Kräutern suchst, verhakt sich deine Sichel und rutscht dir fast aus der Hand.",
             "While searching for herbs your sickle gets stuck and it nearly slides out of your hand.");
             return
         end
     end
     
-     -- Sehr streife R�stung?
+     -- Sehr streife Rüstung?
     if common.Encumbrence(User) then
         common.InformNLS( User,
-        "Deine R�stung behindert dabei Kr�uter zu sammeln.",
+        "Deine Rüstung behindert dabei Kräuter zu sammeln.",
         "Your armor disturbes you collecting herbs." );
         return
     end
@@ -91,7 +91,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     
     -- Pruefen, ob man hier ueberhaupt was finden kann
 	if not M.checkRegion(TargetItem) then
-		User:inform("Hier kann man keine brauchbaren Kr�uter finden");
+		User:inform("Hier kann man keine brauchbaren Kräuter finden");
 		return;		
 	end    
 	

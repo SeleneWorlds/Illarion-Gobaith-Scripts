@@ -15,27 +15,27 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             base_books.AddGermanBookText("Das Tagebuch von Noira Liv",0,0,0);
             base_books.AddGermanBookText("Dies sind die Aufzeichnungen von Noira Liv, hohe Priesterin Eldan's.",0,0,0);
             base_books.AddGermanBookText("Vorwort:",0,0,0);
-            base_books.AddGermanBookText("Das Zeitalter des Kampfes ist vor�ber. Die alten G�tter verlassen uns. Sie gehen �ber das Meer. Ich bin die letzte hohe Priesterin Eldan's. Dies ist meine Geschichte.",0,0,0);
-            base_books.AddGermanBookText("M�ge dieses Verm�chtnis die Zeiten �berdauern, m�gen die versiegelten Alt�re in Vergessenheit geraten: Eines Tages werden die Erben kommen.",0,0,0);
-            base_books.AddGermanBookText("Die alten B�cher werden gefunden werden und alte Lehre wird sich mit neuer vermengen, denn das Wissen stirbt nicht solange wir leben, es schl�ft nur. Und der Schlaf mag lange andauern. Sehr lange.",0,0,0);
+            base_books.AddGermanBookText("Das Zeitalter des Kampfes ist vorüber. Die alten Götter verlassen uns. Sie gehen über das Meer. Ich bin die letzte hohe Priesterin Eldan's. Dies ist meine Geschichte.",0,0,0);
+            base_books.AddGermanBookText("Möge dieses Vermächtnis die Zeiten überdauern, mögen die versiegelten Altäre in Vergessenheit geraten: Eines Tages werden die Erben kommen.",0,0,0);
+            base_books.AddGermanBookText("Die alten Bücher werden gefunden werden und alte Lehre wird sich mit neuer vermengen, denn das Wissen stirbt nicht solange wir leben, es schläft nur. Und der Schlaf mag lange andauern. Sehr lange.",0,0,0);
             base_books.AddGermanBookText("Kapitel I: Auf der Suche nach Eldan:",0,0,0);
-            base_books.AddGermanBookText("Heute begegnete ich einem J�nger Findaris. Er riet mir meine Wanderung nach Murinaa zu dokumentieren. Als Erinnerung.",0,0,0);
-            base_books.AddGermanBookText("Murinaa: Noch liegt es wenige Tagesm�rsche entfernt und doch ist die glanzvolle Stadt schon in der Ferne �ber dem glitzernden Sand zu erkennen.",0,0,0);
-            base_books.AddGermanBookText("Wie viele Anw�rter auf die Priesterschaft zieht es mich nach Murinaa, die n�chste gr��ere Stadt in der sich Heiligt�mer aller G�tter befinden.",0,0,0);
-            base_books.AddGermanBookText("Je n�her ich Murinaa komme desto mehr Anh�nger Bragons, Usharas, Eldans, Tanoras und Findaris kreuzen meinen Weg. Es sind ihrer nicht hunderte aber dennoch einige Dutzend.",0,0,0);
-            base_books.AddGermanBookText("Endlich in Murinaa: Die Bibliothek ist gigantisch. Ich habe das Buch der Priester Eldans gefunden und gelesen. Sehr r�tselhaft.",0,0,0);
-            base_books.AddGermanBookText("Es scheint als w�rde von mir erwartet werden das Gebet zur Weihe selber zu finden. Mein einziger Anhaltspunkt ist das Buch der Priester Eldans.",0,0,0);
-            base_books.AddGermanBookText("Dieses Buch ist mir ein R�tsel. Und die Weihen r�cken n�her. Unaufhaltsam. Wie soll ich es nur deuten?!",0,0,0);
-            base_books.AddGermanBookText("Einer der Novizen bemerkte heute meine M�hen in der Bibliothek. Er hat gesagt dass es genau f�nf G�tter seien - Als ob ich das nicht w�sste.",0,0,0);
-            base_books.AddGermanBookText("Au�erdem sprach er von einem Zyklus des Erschaffens. Offensichtlich wollte er mir einen Hinweis zukommen lassen. Was er wohl meinte?",0,0,0);
-            base_books.AddGermanBookText("Ich habe eine interessante Beobachtung gemacht: Alle f�nf Tage f�llt das Licht durch einen Spalt in der Decke genau auf das Buch der Priester Eldans.",0,0,0);
-            base_books.AddGermanBookText("Wie ich beobachten konnte gilt dies auch f�r die B�cher der anderen Priester der F�nf.",0,0,0);
-            base_books.AddGermanBookText("Endlich konnte ich dem Text innerhalb des Buches das Gebet entrei�en.",0,0,0);
+            base_books.AddGermanBookText("Heute begegnete ich einem Jünger Findaris. Er riet mir meine Wanderung nach Murinaa zu dokumentieren. Als Erinnerung.",0,0,0);
+            base_books.AddGermanBookText("Murinaa: Noch liegt es wenige Tagesmärsche entfernt und doch ist die glanzvolle Stadt schon in der Ferne über dem glitzernden Sand zu erkennen.",0,0,0);
+            base_books.AddGermanBookText("Wie viele Anwärter auf die Priesterschaft zieht es mich nach Murinaa, die nächste größere Stadt in der sich Heiligtümer aller Götter befinden.",0,0,0);
+            base_books.AddGermanBookText("Je näher ich Murinaa komme desto mehr Anhänger Bragons, Usharas, Eldans, Tanoras und Findaris kreuzen meinen Weg. Es sind ihrer nicht hunderte aber dennoch einige Dutzend.",0,0,0);
+            base_books.AddGermanBookText("Endlich in Murinaa: Die Bibliothek ist gigantisch. Ich habe das Buch der Priester Eldans gefunden und gelesen. Sehr rätselhaft.",0,0,0);
+            base_books.AddGermanBookText("Es scheint als würde von mir erwartet werden das Gebet zur Weihe selber zu finden. Mein einziger Anhaltspunkt ist das Buch der Priester Eldans.",0,0,0);
+            base_books.AddGermanBookText("Dieses Buch ist mir ein Rätsel. Und die Weihen rücken näher. Unaufhaltsam. Wie soll ich es nur deuten?!",0,0,0);
+            base_books.AddGermanBookText("Einer der Novizen bemerkte heute meine Mühen in der Bibliothek. Er hat gesagt dass es genau fünf Götter seien - Als ob ich das nicht wüsste.",0,0,0);
+            base_books.AddGermanBookText("Außerdem sprach er von einem Zyklus des Erschaffens. Offensichtlich wollte er mir einen Hinweis zukommen lassen. Was er wohl meinte?",0,0,0);
+            base_books.AddGermanBookText("Ich habe eine interessante Beobachtung gemacht: Alle fünf Tage fällt das Licht durch einen Spalt in der Decke genau auf das Buch der Priester Eldans.",0,0,0);
+            base_books.AddGermanBookText("Wie ich beobachten konnte gilt dies auch für die Bücher der anderen Priester der Fünf.",0,0,0);
+            base_books.AddGermanBookText("Endlich konnte ich dem Text innerhalb des Buches das Gebet entreißen.",0,0,0);
             base_books.AddGermanBookText("Allerdings muss ich Eldan bei der Weihe ein Opfer darbringen. Der Ritualmeister wies mich darauf hin, dass ich Eldan etwas opfern muss was er mag.",0,0,0);
             base_books.AddGermanBookText("Das war der unglaublichste Tag in meinem Leben: Ich hielt die Flasche in der Hand und rief Eldan an das Opfer anzunehmen.",0,0,0);
-            base_books.AddGermanBookText("Daraufhin erfasste mich ein gewaltigiger Sog und es zog mich weit in die Ferne. Ein unglaubliches Gef�hl. Dort angekommen sah ich einen gro�en Altarraum vor mir.",0,0,0);
-            base_books.AddGermanBookText("Ich vermute es war ein geheimer Altarraum Eldans in Nabranoo, der Stadt der G�tter. Dieser Raum sah aus wie f�r die Ewigkeit geschaffen.",0,0,0);
-            base_books.AddGermanBookText("Dort sprach ich, am Altar knieend, das Gebet und ich konnte Eldans Blick auf mir sp�ren als er mich zur Novizin berief.",0,0,0);
+            base_books.AddGermanBookText("Daraufhin erfasste mich ein gewaltigiger Sog und es zog mich weit in die Ferne. Ein unglaubliches Gefühl. Dort angekommen sah ich einen großen Altarraum vor mir.",0,0,0);
+            base_books.AddGermanBookText("Ich vermute es war ein geheimer Altarraum Eldans in Nabranoo, der Stadt der Götter. Dieser Raum sah aus wie für die Ewigkeit geschaffen.",0,0,0);
+            base_books.AddGermanBookText("Dort sprach ich, am Altar knieend, das Gebet und ich konnte Eldans Blick auf mir spüren als er mich zur Novizin berief.",0,0,0);
             base_books.AddGermanBookText("Kapitel II: Die Reise geht weiter:",0,0,0);
             base_books.AddGermanBookText("Du verstehst diese Sprache nicht.",0,0,0);
             
@@ -87,26 +87,26 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             base_books.AddEnglishBookText("Doubleaxe",205,0,1); -- ### doubleaxe ###
             base_books.AddEnglishBookText("With size and dimensions of this axe, strikes with this weapon can inevitably terminates lives.",0,0,1);
             base_books.AddEnglishBookText("But only few can handle this axe with enough skill, even after long years of training.",0,0,1);
-            base_books.AddEnglishBookText("Written by\nBoindil Al'Ad K�z�r\n1st Zhas in the 24th year",0,0,1);
+            base_books.AddEnglishBookText("Written by\nBoindil Al'Ad Kàzár\n1st Zhas in the 24th year",0,0,1);
 
             base_books.AddGermanBookText("Hiebwaffen\n\nDie Axt ist die Mutter aller Waffen, deswegen nutzen wir Zwerge sie.",0,0,1);
-            base_books.AddGermanBookText("Mit diesen Waffen lassen sich heftige Angriffe ausf�hren und geschickt gef�hrt ersetzen sie jedes Schild.",0,0,1);
+            base_books.AddGermanBookText("Mit diesen Waffen lassen sich heftige Angriffe ausführen und geschickt geführt ersetzen sie jedes Schild.",0,0,1);
             base_books.AddGermanBookText("Zwergenaxt",2660,0,1); -- ### dwarvenaxe ###
             base_books.AddGermanBookText("Die meistgenutzte Axt der Zwerge, vereint alle Eigenschaften die eine wahre Zwergenwaffe brauch. Kraft, Schnelligkeit und Geschicklichkeit.",0,0,1);
-            base_books.AddGermanBookText("Kraft, mit der Zwergenaxt k�nnen verheerende Angriffe ausgef�hrt werden.",0,0,1);
-            base_books.AddGermanBookText("Schnelligkeit, durch ihre ausbalancierte Fertigung l�sst sie sich leicht und schnell f�hren.",0,0,1);
-            base_books.AddGermanBookText("Geschicklichkeit, der schlank Griff und die schnittige Klinge geben der Axt eine pr�zise Handhabung. ",0,0,1);
-            base_books.AddGermanBookText("Legenden zufolge soll es sogar magische Zwergen�xte geben.",0,0,1);
+            base_books.AddGermanBookText("Kraft, mit der Zwergenaxt können verheerende Angriffe ausgeführt werden.",0,0,1);
+            base_books.AddGermanBookText("Schnelligkeit, durch ihre ausbalancierte Fertigung lässt sie sich leicht und schnell führen.",0,0,1);
+            base_books.AddGermanBookText("Geschicklichkeit, der schlank Griff und die schnittige Klinge geben der Axt eine präzise Handhabung. ",0,0,1);
+            base_books.AddGermanBookText("Legenden zufolge soll es sogar magische Zwergenäxte geben.",0,0,1);
             base_books.AddGermanBookText("Kriegsaxt",383,0,1); -- ### waraxe ###
-            base_books.AddGermanBookText("Die Kriegsaxt eignet sich gut zum k�mpfen auch sie vereint die wichtigen Werte einer Axt. ",0,0,1);
+            base_books.AddGermanBookText("Die Kriegsaxt eignet sich gut zum kämpfen auch sie vereint die wichtigen Werte einer Axt. ",0,0,1);
             base_books.AddGermanBookText("Doch wird sie durch ihre Fertigung und Form nie an eine Zwergenaxt heranreichen welche durch zwergische Schmiede geformt wurde.",0,0,1);
-            base_books.AddGermanBookText("Legenden zufolge soll es auch magische und Feuer-Kriegs�xte geben.",0,0,1);
+            base_books.AddGermanBookText("Legenden zufolge soll es auch magische und Feuer-Kriegsäxte geben.",0,0,1);
             base_books.AddGermanBookText("Schlachtaxt",2629,0,1); -- ### battleaxe ###
-            base_books.AddGermanBookText("Die Schlachtaxt an sich ist keine sehr gute Axt, von Zwergen wird sie allenfalls zum Trainieren genutzt da man mit ihr keinen gro�en Schaden anrichten kann.",0,0,1);
+            base_books.AddGermanBookText("Die Schlachtaxt an sich ist keine sehr gute Axt, von Zwergen wird sie allenfalls zum Trainieren genutzt da man mit ihr keinen großen Schaden anrichten kann.",0,0,1);
             base_books.AddGermanBookText("Doppelaxt",205,0,1); -- ### doubleaxe ###
-            base_books.AddGermanBookText("Durch Gr��e und Masse �berzeugt die Doppelaxt, Treffer die mit dieser Axt angerichtet werden beenden unweigerlich Leben.",0,0,1);
-            base_books.AddGermanBookText("Doch sind nur wenige in der Lage solch eine wuchtige Waffe, auch nach jahrelangem Training, richtig zu f�hren.",0,0,1);
-            base_books.AddGermanBookText("Geschrieben von\nBoindil Al'Ad K�z�r\n1. Zhas im Jahre 24",0,0,1);
+            base_books.AddGermanBookText("Durch Größe und Masse überzeugt die Doppelaxt, Treffer die mit dieser Axt angerichtet werden beenden unweigerlich Leben.",0,0,1);
+            base_books.AddGermanBookText("Doch sind nur wenige in der Lage solch eine wuchtige Waffe, auch nach jahrelangem Training, richtig zu führen.",0,0,1);
+            base_books.AddGermanBookText("Geschrieben von\nBoindil Al'Ad Kázár\n1. Zhas im Jahre 24",0,0,1);
 
 			------------------------
 			
@@ -122,17 +122,17 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 			base_books.AddEnglishBookText("Prologue\nA few words of warning. Cooking is fun, but it takes time to become a good cook.",0,0,3);
 			base_books.AddEnglishBookText("Cooking goes well with farming. You can make some money, selling your food, if you grow your own vegetables and hunt for yourself.",0,0,3);
 
-			base_books.AddGermanBookText("Einf�hrung\nEin paar Worte der Warnung: Kochen macht Spa�, aber es dauert, eh' man ein guter Koch wird.",0,0,3);
-			base_books.AddGermanBookText("Kochen und Feldarbeit passen gut zusammen. Wenn Du dein eigenes Gem�se anbaust und selbst jagst, kannst Du gut zu Geld kommen.",0,0,3);
+			base_books.AddGermanBookText("Einführung\nEin paar Worte der Warnung: Kochen macht Spaß, aber es dauert, eh' man ein guter Koch wird.",0,0,3);
+			base_books.AddGermanBookText("Kochen und Feldarbeit passen gut zusammen. Wenn Du dein eigenes Gemüse anbaust und selbst jagst, kannst Du gut zu Geld kommen.",0,0,3);
 
 			base_books.AddEnglishBookText("Many people will be willing to bring you ingredients if you cook for them. A good way to become an appreciated member of your community.",0,0,3);
 			base_books.AddEnglishBookText("A word to the wise. Never undersell your dishes. It's hard enough to get to make them. Do not accept big orders, as you will sweat while the others have fun, adventuring and earning the easy silvers!",0,0,3);
 			base_books.AddEnglishBookText("Here are some of my favourite recipes. Price in coppers are only suggestions.",0,0,3);
 
 
-			base_books.AddGermanBookText("Viele Leute werden Dir bereitwillig Zutaten heranschaffen, wenn Du f�r sie kochst. Ein guter Weg, um ein angesehenes Mitglied in Deiner Gemeinschaft zu werden.",0,0,3);
+			base_books.AddGermanBookText("Viele Leute werden Dir bereitwillig Zutaten heranschaffen, wenn Du für sie kochst. Ein guter Weg, um ein angesehenes Mitglied in Deiner Gemeinschaft zu werden.",0,0,3);
 			base_books.AddGermanBookText("Ein Wort der Weisheit: Verkaufe deine Gerichte nie unter Preis. Es ist schwer genug sie anzurichten.",0,0,3);
-			base_books.AddGermanBookText("Nimm auch keine Gro�bestellungen an, da Du sonst schuften mu�t, w�hrend die anderen Spa� haben, auf Abenteuer gehen und leicht verdiente Silberlinge einstecken.",0,0,3);
+			base_books.AddGermanBookText("Nimm auch keine Großbestellungen an, da Du sonst schuften mußt, während die anderen Spaß haben, auf Abenteuer gehen und leicht verdiente Silberlinge einstecken.",0,0,3);
 			base_books.AddGermanBookText("Im Folgenden nun einige meiner Lieblingsgerichte. Die angegebenen Preise in Kupfer sind nur ein Vorschlag.",0,0,3);
 
 
@@ -143,11 +143,11 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 			base_books.AddEnglishBookText("Serve immediately. Accompany this delicate dish with a goblet of Banes Claret or some light chilled Greenbriar Mead",2497,0,3); -- ### bottle of mead ###
 
 			base_books.AddGermanBookText("Fischfilet\n Grundzutaten: Forellenfilets, Kohl, Tomaten \n Einfach, 25 Kupfer.",2459,0,3); -- ### fish filet dish ###
-			base_books.AddGermanBookText("Hacke zwei Handvoll Kohl klein und koche ihn mit einem Glas Wei�wein. ",0,0,3);
-			base_books.AddGermanBookText("W�rfel zwei Tomaten und f�ge sie zum Kohl hinzu. Verfeinere es noch mit Kr�utern; ich liebe Sandbeeren mit Forelle! Lass es k�cheln, bis der Kohl gar ist.",2459,0,3); -- ### fish filet dish ###
-			base_books.AddGermanBookText("Nimm nun eine gute, frische Forelle und filetier sie sorgsam. Leg die Filets mit der Haut nach oben zeigend auf das k�chelnde Gem�se.",0,0,3);
-			base_books.AddGermanBookText("Bedecke es nun und lass es ein paar Minuten kochen, bis sich die Haut vom Filet zu l�sen beginnt. ",73,0,3); -- ### trout ###
-			base_books.AddGermanBookText("Sofort servieren. Begleitend zu diesem Gericht passt ein Kelch 'Banes Claret' oder ein leicht gek�hlter greenbriarscher Met.",2497,0,3); -- ### bottle of mead ###
+			base_books.AddGermanBookText("Hacke zwei Handvoll Kohl klein und koche ihn mit einem Glas Weißwein. ",0,0,3);
+			base_books.AddGermanBookText("Würfel zwei Tomaten und füge sie zum Kohl hinzu. Verfeinere es noch mit Kräutern; ich liebe Sandbeeren mit Forelle! Lass es köcheln, bis der Kohl gar ist.",2459,0,3); -- ### fish filet dish ###
+			base_books.AddGermanBookText("Nimm nun eine gute, frische Forelle und filetier sie sorgsam. Leg die Filets mit der Haut nach oben zeigend auf das köchelnde Gemüse.",0,0,3);
+			base_books.AddGermanBookText("Bedecke es nun und lass es ein paar Minuten kochen, bis sich die Haut vom Filet zu lösen beginnt. ",73,0,3); -- ### trout ###
+			base_books.AddGermanBookText("Sofort servieren. Begleitend zu diesem Gericht passt ein Kelch 'Banes Claret' oder ein leicht gekühlter greenbriarscher Met.",2497,0,3); -- ### bottle of mead ###
 
 			base_books.AddEnglishBookText("Salmon dish\n Basic ingredients: salmon steaks, onions, tomatoes\n Easy, 30 cps.",556,0,3); -- ### salmon dish ###
 			base_books.AddEnglishBookText("Chop 2 cups of onion finely and brown them in some light oil. Add 2 diced tomatoes and some slices of champignons. Leave aside, keeping it warm. ",2952,0,3); -- ### plate ###
@@ -155,9 +155,9 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 			base_books.AddEnglishBookText("Serve with the vegetables sauce and some buttered toasts. Accompany this nourishing dish with a sweet white wine from the Siranis.",2500,0,3); -- ### bottle of wine ###
 
 			base_books.AddGermanBookText("Lachsgericht\n Grundzutaten: Lachssteaks, Zwiebeln, Tomaten\n Einfach, 30 Kupfer.",556,0,3); -- ### salmon dish ###
-			base_books.AddGermanBookText("Zerkleinere 2 Zwiebeln sehr fein und br�une sie in einem leichten �l an. F�ge 2 gew�rfelte Tomaten und ein paar Champignonscheiben hinzu. Stell es zum Warmhalten beiseite. ",2952,0,3); -- ### plate ###
-			base_books.AddGermanBookText("Nimm ein paar dicke Lachssteaks und r�ste sie auf beiden seiten f�r ein paar Minuten, bis sie zart sind. Du k�nntest sie auch in einer Gem�sebr�he pochieren.",355,0,3); -- ### salmon ###
-			base_books.AddGermanBookText("Serviere mit der Gem�seso�e und etwas Toast mit Butter. Passend zu diesem nahrhaften Gericht w�re ein s��er Wei�wein aus den Trauben der Drei Schwestern Siranis.",2500,0,3); -- ### bottle of wine ###
+			base_books.AddGermanBookText("Zerkleinere 2 Zwiebeln sehr fein und bräune sie in einem leichten Öl an. Füge 2 gewürfelte Tomaten und ein paar Champignonscheiben hinzu. Stell es zum Warmhalten beiseite. ",2952,0,3); -- ### plate ###
+			base_books.AddGermanBookText("Nimm ein paar dicke Lachssteaks und röste sie auf beiden seiten für ein paar Minuten, bis sie zart sind. Du könntest sie auch in einer Gemüsebrühe pochieren.",355,0,3); -- ### salmon ###
+			base_books.AddGermanBookText("Serviere mit der Gemüsesoße und etwas Toast mit Butter. Passend zu diesem nahrhaften Gericht wäre ein süßer Weißwein aus den Trauben der Drei Schwestern Siranis.",2500,0,3); -- ### bottle of wine ###
 
 			base_books.AddEnglishBookText("Meat dish\n Basic ingredients: steak, onions, carrots\n Medium easy, 35 cps.",557,0,3); -- ### meat dish ###
 			base_books.AddEnglishBookText("Make a duxelles out of 2 small onions, 2 carrots and some birth mushrooms. Add some cream and reduce to a paste. ",162,0,3); -- ### birth mushroom ###
@@ -165,19 +165,19 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 			base_books.AddEnglishBookText("Serve the steaks with a generous topping of the duxelles sauce. Accompany this savory dish with a mug of dark beer from Silverbrand.",2501,0,3); -- ### bottle of dark beer ###
 
 			base_books.AddGermanBookText("Fleischgericht\n Grundzutaten: Steak, Zwiebeln, Karotten\n Mittel bis leicht, 35 Kupfer.",557,0,3); -- ### meat dish ###
-			base_books.AddGermanBookText("Bereite aus zwei kleinen Zwiebeln, zwei Karotten und etwas Geburtspilz ein Duxelles. F�ge etwas Sahne hinzu und reduziere es zu einer Paste.",162,0,3); -- ### birth mushroom ###
-			base_books.AddGermanBookText("Brate d�nne Scheiben Steak in Butter. Steak aus der Flanke ist das Beste. Lass es nicht anbrennen!",2940,0,3); -- ### steak ###
-			base_books.AddGermanBookText("Serviere die Steaks mit einer gro�z�gigen Menge Duxelles darauf. Zu diesem pikanten Gericht passt ein Krug silverbrandsches Schwarzbier.",2501,0,3); -- ### bottle of dark beer ###
+			base_books.AddGermanBookText("Bereite aus zwei kleinen Zwiebeln, zwei Karotten und etwas Geburtspilz ein Duxelles. Füge etwas Sahne hinzu und reduziere es zu einer Paste.",162,0,3); -- ### birth mushroom ###
+			base_books.AddGermanBookText("Brate dünne Scheiben Steak in Butter. Steak aus der Flanke ist das Beste. Lass es nicht anbrennen!",2940,0,3); -- ### steak ###
+			base_books.AddGermanBookText("Serviere die Steaks mit einer großzügigen Menge Duxelles darauf. Zu diesem pikanten Gericht passt ein Krug silverbrandsches Schwarzbier.",2501,0,3); -- ### bottle of dark beer ###
 
 			base_books.AddEnglishBookText("Sausage dish\n Basic ingredients: sausages, cabbage, carrots\n Medium, 40 cps.",2922,0,3); -- ### sausage dish ###
 			base_books.AddEnglishBookText("Grate or chop finely about 2 cups of carrots and cabbage. Add some blue birdsberry, a dash of wine vinegar and sea-salt. Mix well and leave aside in a cool place for two hours ",753,0,3); -- ### blue birdsberry ###
 			base_books.AddEnglishBookText("Roast some good pork sausages. The pork from Varshikar is the leanest and the best tasting.",3051,0,3); -- ### sausage ###
 			base_books.AddEnglishBookText("Serve the hot sausages in a slitted bread roll, adding the grated vegetables on top. Accompany this popular dish with a mug of light beer or some root beer from Tol Vanima.",2501,0,3); -- ### bottle of dark beer ###
 
-			base_books.AddGermanBookText("W�rstchen mit Beilage\n Grundzutaten: W�rste, Kohl, Karotten\n Mittel, 40 Kupfer.",2922,0,3); -- ### sausage dish ###
-			base_books.AddGermanBookText("Schneide oder hacke etwa 2 Karotten und den Kohl in Streifen. F�ge schwarze Vogelbeeren, einen Spritzer Weinessig und Meersalz hinzu. Mixe es sehr gut und stell es f�r circa zwei Stunden an einen k�hlen Platz.",753,0,3); -- ### blue birdsberry ###
-			base_books.AddGermanBookText("R�ste einige W�rste aus Schweinefleisch. Varshikarisches Schweinefleisch ist das magerste und wohlschmeckendste.",3051,0,3); -- ### sausage ###
-			base_books.AddGermanBookText("Serviere die hei�en w�rste in einem aufgeschnittenem Br�tchen, belege es mit ein wenig des Gem�sesalates. Passend zu diesem beliebten Gericht ist ein Krug leichten Bieres oder Rootbeer aus Tol Vanima.",2501,0,3); -- ### bottle of dark beer ###
+			base_books.AddGermanBookText("Würstchen mit Beilage\n Grundzutaten: Würste, Kohl, Karotten\n Mittel, 40 Kupfer.",2922,0,3); -- ### sausage dish ###
+			base_books.AddGermanBookText("Schneide oder hacke etwa 2 Karotten und den Kohl in Streifen. Füge schwarze Vogelbeeren, einen Spritzer Weinessig und Meersalz hinzu. Mixe es sehr gut und stell es für circa zwei Stunden an einen kühlen Platz.",753,0,3); -- ### blue birdsberry ###
+			base_books.AddGermanBookText("Röste einige Würste aus Schweinefleisch. Varshikarisches Schweinefleisch ist das magerste und wohlschmeckendste.",3051,0,3); -- ### sausage ###
+			base_books.AddGermanBookText("Serviere die heißen würste in einem aufgeschnittenem Brötchen, belege es mit ein wenig des Gemüsesalates. Passend zu diesem beliebten Gericht ist ein Krug leichten Bieres oder Rootbeer aus Tol Vanima.",2501,0,3); -- ### bottle of dark beer ###
 
 			base_books.AddEnglishBookText("Rabbit dish\n Basic ingredients: rabbit, carrots, tomatoes, cabbage\n Medium difficult, 45 cps.",555,0,3); -- ### rabbit dish ###
 			base_books.AddEnglishBookText("Make a stew of tomatoes, carrots and cabbages (about 2 cups of each). Let simmer a nice saddle of rabbit in that stew, until the bones fall to the bottom of the pot. ",553,0,3); -- ### rabbit meat ###
@@ -185,9 +185,9 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 			base_books.AddEnglishBookText("Serve the rabbit pie with a salad of meadow rhubarb. Accompany this country dish with some cider from the Union orchard.",2499,0,3); -- ### bottle of cider ###
 
 			base_books.AddGermanBookText("Hase\n Grundzutaten: Hasenfleisch, Karotten, Tomaten, Kohl\n Mittleschwer, 45 Kupfer.",555,0,3); -- ### rabbit dish ###
-			base_books.AddGermanBookText("Mach aus je zwei Handvoll Tomaten, Karotten und Kohl einen Eintopf. Lass dann ein gutes St�ck Hasenr�cken in dem Eintopf k�cheln, bis die Knochen vom Hasenfleisch abfallen und zum Topfboden sinken.",553,0,3); -- ### rabbit meat###
-			base_books.AddGermanBookText("Leg nun Fleisch, Gem�se und ein Teil der Fl�ssigkeit auf ein Kuchenblech, ummantele es mit etwas Teig und lass es in einem hei�en Ofen backen, bis die Fl�ssigkeit verdampft ist.",555,0,3); -- ### rabbit dish ###
-			base_books.AddGermanBookText("Serviere dieses Gericht mit einem Wiesenrhabarbersalat. Cidre aus den F�ssern der Bauernunion passt zu diesem l�ndlichen Gericht ausgezeichnet.",2499,0,3); -- ### bottle of cider ###
+			base_books.AddGermanBookText("Mach aus je zwei Handvoll Tomaten, Karotten und Kohl einen Eintopf. Lass dann ein gutes Stück Hasenrücken in dem Eintopf köcheln, bis die Knochen vom Hasenfleisch abfallen und zum Topfboden sinken.",553,0,3); -- ### rabbit meat###
+			base_books.AddGermanBookText("Leg nun Fleisch, Gemüse und ein Teil der Flüssigkeit auf ein Kuchenblech, ummantele es mit etwas Teig und lass es in einem heißen Ofen backen, bis die Flüssigkeit verdampft ist.",555,0,3); -- ### rabbit dish ###
+			base_books.AddGermanBookText("Serviere dieses Gericht mit einem Wiesenrhabarbersalat. Cidre aus den Fässern der Bauernunion passt zu diesem ländlichen Gericht ausgezeichnet.",2499,0,3); -- ### bottle of cider ###
 
 			base_books.AddEnglishBookText("Lamb dish\n Basic ingredients: lamb, carrots, tomatoes, onions\n difficult, 55 cps.",559,0,3); -- ### lamb dish ###
 			base_books.AddEnglishBookText("Cook the tomatoes, carrots and onions (about 2 cups of each, diced) with a cup of red wine and some powdered life root. Leave aside.",0,0,3);
@@ -196,31 +196,31 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 			base_books.AddEnglishBookText("Note that lamb dish is probably the best compromise between price and nutritive value.",559,0,3); -- ### lamb dish ###
 
 			base_books.AddGermanBookText("Lamm\n Grundzutaten: Lamm, Karotten, Tomaten, Zwiebeln\n Schwierig, 55 Kupfer.",559,0,3); -- ### lamb dish ###
-			base_books.AddGermanBookText("Koche etwa je zwei Handvoll gew�rfelte Tomaten, Karotten und Zwiebeln mit einem Schluck Rotwein und einer Prise Lebenswurzpulver und stell es dann zur Seite.",0,0,3);
-			base_books.AddGermanBookText("Grill die Lammkoteletts �ber Flammen bis sie braun und saftig sind. Serviere sie mit dem Gem�se und einem Muffin als Nachtisch.",2934,0,3); -- ### lamb meat ###
-			base_books.AddGermanBookText("Zu den Lammkoteletts w�rde gut ein lebendiger, gereifter Wein oder ein sehr starker Met passen. ",2500,0,3); -- ### bottle of wine ###
-			base_books.AddGermanBookText("Als Randnotiz: Lammgerichte stellen m�glicherweise das beste Preis / Leistungsverh�ltnis dar.",559,0,3); -- ### lamb dish ###
+			base_books.AddGermanBookText("Koche etwa je zwei Handvoll gewürfelte Tomaten, Karotten und Zwiebeln mit einem Schluck Rotwein und einer Prise Lebenswurzpulver und stell es dann zur Seite.",0,0,3);
+			base_books.AddGermanBookText("Grill die Lammkoteletts über Flammen bis sie braun und saftig sind. Serviere sie mit dem Gemüse und einem Muffin als Nachtisch.",2934,0,3); -- ### lamb meat ###
+			base_books.AddGermanBookText("Zu den Lammkoteletts würde gut ein lebendiger, gereifter Wein oder ein sehr starker Met passen. ",2500,0,3); -- ### bottle of wine ###
+			base_books.AddGermanBookText("Als Randnotiz: Lammgerichte stellen möglicherweise das beste Preis / Leistungsverhältnis dar.",559,0,3); -- ### lamb dish ###
 
 			base_books.AddEnglishBookText("Venison dish : venison (deer meat), onions, cabbages, berries \n very difficult, 75 cps. \nNote that the berries are not the blackberries used to make muffins.",554,0,3); -- ### venison dish ###
 			base_books.AddEnglishBookText("Marinate some onions and cabbage thickly sliced into 1 part sea salt, 1 part wine vinegar and 1 part sweet mead. Add the wood berries. It should be ready in about 10 days.",81,0,3); -- ### berries ###
-			base_books.AddEnglishBookText("I also add some secret ingredients like night angels blossom�!",138,0,3); -- ### night angels blossom ###
+			base_books.AddEnglishBookText("I also add some secret ingredients like night angels blossom\"!",138,0,3); -- ### night angels blossom ###
 			base_books.AddEnglishBookText("The venison meat should be properly aged to become palatable. There are no fixed rules, but it should hang in a cool, airy place for at least 10 days.",552,0,3); -- ### deer meat ###
-			base_books.AddEnglishBookText("The venison meat should always be cooked on a hot fire or in a hot oven. Do not overcook it! Serve with the �sauerkraut�.",552,0,3); -- ### deer meat ###
+			base_books.AddEnglishBookText("The venison meat should always be cooked on a hot fire or in a hot oven. Do not overcook it! Serve with the \"sauerkraut\".",552,0,3); -- ### deer meat ###
 			base_books.AddEnglishBookText("This hearty meal goes well with old wine or mead, or even with some strong clear liquor.",2502,0,3); -- ### gynkese fire ###
 
-			base_books.AddGermanBookText("Reh\n Grundzutaten: Rehfleisch, Zwiebeln, Kohl, Beeren \n Sehr schwierig, 75 Kupfer. \n Beachte, dass hier Beeren aus dem Wald ben�tigt werden und nicht die Brombeeren.",554,0,3); -- ### venison dish ###
-			base_books.AddGermanBookText("Wende die dick geschnittenen Zwiebeln und den Kohl in einer Marinade aus einem Teil Meersalz, einem Teil Weinessig und einem Teil s��en Met. F�ge dann die Waldbeeren hinzu. Nach etwa zehn Tagen ruhig stehend ist es gut durchgezogen.",81,0,3); -- ### berries ###
-			base_books.AddGermanBookText("Pers�nlich verfeinere ich noch mit ein paar geheimen Zutaten, wie etwa Nachtengelsbl�ten...!",138,0,3); -- ### night angels blossom ###
-			base_books.AddGermanBookText("Das Rehfleisch sollte gut abgehangen sein, damit es wohlschmeckend ist. Es gibt hierbei keine festen Regeln aber es sollte an einem k�hlen, luftigen Platz f�r mindestens zehn Tage h�ngen.",552,0,3);
-			base_books.AddGermanBookText("Das Rehfleisch sollte immer �ber einem hei�en Feuer oder in einem hei�en Ofen zubereitet werden. Koch es aber nicht 'zu' lange! Servier das Fleisch mit dem 'Sauerkraut'.",552,0,3); -- ### deer meat ###
-			base_books.AddGermanBookText("Dieses herzhafte Mahl geht am besten mit einem alten Wein oder Met, oder sogar einem Lik�r. ",2502,0,3); -- ### gynkese fire ###
+			base_books.AddGermanBookText("Reh\n Grundzutaten: Rehfleisch, Zwiebeln, Kohl, Beeren \n Sehr schwierig, 75 Kupfer. \n Beachte, dass hier Beeren aus dem Wald benötigt werden und nicht die Brombeeren.",554,0,3); -- ### venison dish ###
+			base_books.AddGermanBookText("Wende die dick geschnittenen Zwiebeln und den Kohl in einer Marinade aus einem Teil Meersalz, einem Teil Weinessig und einem Teil süßen Met. Füge dann die Waldbeeren hinzu. Nach etwa zehn Tagen ruhig stehend ist es gut durchgezogen.",81,0,3); -- ### berries ###
+			base_books.AddGermanBookText("Persönlich verfeinere ich noch mit ein paar geheimen Zutaten, wie etwa Nachtengelsblüten...!",138,0,3); -- ### night angels blossom ###
+			base_books.AddGermanBookText("Das Rehfleisch sollte gut abgehangen sein, damit es wohlschmeckend ist. Es gibt hierbei keine festen Regeln aber es sollte an einem kühlen, luftigen Platz für mindestens zehn Tage hängen.",552,0,3);
+			base_books.AddGermanBookText("Das Rehfleisch sollte immer über einem heißen Feuer oder in einem heißen Ofen zubereitet werden. Koch es aber nicht 'zu' lange! Servier das Fleisch mit dem 'Sauerkraut'.",552,0,3); -- ### deer meat ###
+			base_books.AddGermanBookText("Dieses herzhafte Mahl geht am besten mit einem alten Wein oder Met, oder sogar einem Likör. ",2502,0,3); -- ### gynkese fire ###
 
 
 			base_books.AddEnglishBookText("I hope you will enjoy these recipes. Just try them for yourselves. Be creative!",0,0,3);
 			base_books.AddEnglishBookText("Also see the volumes about Making Hearty Soups and The Compleat Baker, by the same author",0,0,3);
 
 			base_books.AddGermanBookText("Ich hoffe, dass Du an den Gerichten freude haben wirst. Versuch sie einfach selbst nachzukochen und sei kreativ!",0,0,3);
-			base_books.AddGermanBookText("Weiterf�hrende B�nde der selben Autorin liegen unter den Titeln: 'Kochen herzhafter Suppen' und 'Der Compleat B�cker' vor.",0,0,3);
+			base_books.AddGermanBookText("Weiterführende Bände der selben Autorin liegen unter den Titeln: 'Kochen herzhafter Suppen' und 'Der Compleat Bäcker' vor.",0,0,3);
 			
 			
 			

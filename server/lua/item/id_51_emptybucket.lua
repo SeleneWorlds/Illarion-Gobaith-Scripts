@@ -25,7 +25,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 	elseif (boden == 6) then -- Am Wasser fuellen
 		M.FillBucket(User, SourceItem);
 	else
-		common.InformNLS(User, "Du musst am Brunnen stehen, um Wasser zu sch�pfen.", "You need to stand in front of the well to scoop water.");
+		common.InformNLS(User, "Du musst am Brunnen stehen, um Wasser zu schöpfen.", "You need to stand in front of the well to scoop water.");
 	end
 end
 
@@ -35,7 +35,7 @@ function M.FillBucket( User, SourceItem )
     cntBuckets = User:countItemAt( "body", 51 );
     if ( cntBuckets > 1 ) then
         common.InformNLS( User, 
-        "Du kannst immer nur einen Eimer bef�llen.",
+        "Du kannst immer nur einen Eimer befüllen.",
         "You can only fill one bucket at once.");
     elseif ( cntBuckets == 1 ) and (SourceItem.number == 1) then
         if common.FitForWork( User ) then

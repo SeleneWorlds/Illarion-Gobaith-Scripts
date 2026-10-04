@@ -1,6 +1,6 @@
 local M = {}
 
--- Script muss noch in die Datenbank eingef�gt werden (Handspiegel, ID 336)
+-- Script muss noch in die Datenbank eingefügt werden (Handspiegel, ID 336)
 
 local chardescription = require("content.chardescription")
 

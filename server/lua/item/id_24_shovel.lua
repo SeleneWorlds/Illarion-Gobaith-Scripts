@@ -20,7 +20,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     if equapos( position( 99, 40, 0 ), TargetPos ) then
         User:warp( position( 99, 40, -3 ) );
         common.InformNLS(User,
-        "Du gr�bst ein Loch und der Boden bricht unter dir weg und so f�llst du in eine H�hle",
+        "Du gräbst ein Loch und der Boden bricht unter dir weg und so fällst du in eine Höhle",
         "You dig a hole and the ground under you collapses and you fall into a cave..." );
         return
     end
@@ -43,7 +43,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
 
     if ( SourceItem:getType() ~= 4 ) then
         common.InformNLS( User,
-        "Nimm die Schaufel fest in beide H�nde.",
+        "Nimm die Schaufel fest in beide Hände.",
         "Take the shovel firmly in your hands." );
         return
     end
@@ -54,7 +54,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
 
     if (GroundType ~= 5) and base_treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
                                                 common.GetNLS( User,
-                                                    "Du gr�bst mit deiner Schaufel in den Boden und st��t auf etwas hartes, von dem ein h�lzerner Klang ausgeht. Noch einmal graben und du h�ltst den Schatz in deinen H�nden.",
+                                                    "Du gräbst mit deiner Schaufel in den Boden und stößt auf etwas hartes, von dem ein hölzerner Klang ausgeht. Noch einmal graben und du hältst den Schatz in deinen Händen.",
                                                     "You dig with your shovel into the ground and hit suddenly something hard and wooden sounding. You only have to dig another time to get the treasure." ), false ) then
         return;
     end
@@ -62,15 +62,15 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     if (( groundTile ~= 3 ) and ( groundTile ~= 8 )) then
         if ( GroundType == 1 ) then
             common.InformNLS( User,
-            "Du gr�bst ein kleines Loch in den Ackerboden doch findest du hier gar nichts.",
+            "Du gräbst ein kleines Loch in den Ackerboden doch findest du hier gar nichts.",
             "You dig a small hole into the farming ground. But you find nothing.");
         elseif ( GroundType == 2 ) then
             common.InformNLS( User,
-            "Du gr�bst ein kleines Loch in den Waldboden doch findest du hier gar nichts.",
+            "Du gräbst ein kleines Loch in den Waldboden doch findest du hier gar nichts.",
             "You dig a small hole into the forest ground. But you find nothing.");
         elseif ( GroundType == 4 ) then
             common.InformNLS( User,
-            "Du gr�bst ein kleines Loch in die Wiese doch findest du hier gar nichts.",
+            "Du gräbst ein kleines Loch in die Wiese doch findest du hier gar nichts.",
             "You dig a small hole into the grass. But you find nothing.");
         elseif ( GroundType == 5 ) then
             common.InformNLS( User,
@@ -90,7 +90,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
 
     if common.ToolBreaks( User, SourceItem, true) then
         common.InformNLS(User,
-        "Die alte und abgenutzte Schaufel in deinen H�nden zerbricht.",
+        "Die alte und abgenutzte Schaufel in deinen Händen zerbricht.",
         "The old and used shovel in your hands breaks.");
         return
     end
@@ -163,7 +163,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
             "You can't carry more sand and it falls to the ground.");
         else
             common.InformNLS(User,
-            "Du kannst nicht noch mehr Lehm halten und er f�llt zu Boden.",
+            "Du kannst nicht noch mehr Lehm halten und er fällt zu Boden.",
             "You can't carry more clay and it falls to the ground.");
         end
     end
@@ -213,12 +213,12 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     end
 
     if not common.FitForWork( User ) then
-        common.InformNLS( User, "Du bist zu hungrig um jetzt gro�e Arbeit zu verrichten.", "You are too hungry to do heavy work. " );
+        common.InformNLS( User, "Du bist zu hungrig um jetzt große Arbeit zu verrichten.", "You are too hungry to do heavy work. " );
         return
     end
 
     if ( SourceItem:getType() ~= 4 ) then
-        common.InformNLS( User, "Nimm die Schaufel fest in beide H�nde.", "Take the shovel firmly in your hands." );
+        common.InformNLS( User, "Nimm die Schaufel fest in beide Hände.", "Take the shovel firmly in your hands." );
         return
     end
 

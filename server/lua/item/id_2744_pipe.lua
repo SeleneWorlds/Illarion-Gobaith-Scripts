@@ -12,7 +12,7 @@ function M.UseItem( Character, SourceItem, TargetItem, Counter, Param)
 
     if (Character:countItemAt("belt",155)==0) then -- kein Sibanac???
         common.InformNLS( Character,
-        "Du ben�tigst Sibanac-Bl�tter um Pfeife rauchen zu k�nnen.",
+        "Du benötigst Sibanac-Blätter um Pfeife rauchen zu können.",
         "You need sibanac-leafs to smoke a pipe." );
         return
     end

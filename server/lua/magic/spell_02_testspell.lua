@@ -1,9 +1,9 @@
 local M = {}
 
--- TestScript f�r neues Magie System
+-- TestScript für neues Magie System
 -- Rune 2 - RA
 -- INSERT INTO spells VALUES (1,0,'m_01_testspell.lua');
--- Fl�chen Zauber
+-- Flächen Zauber
 -- Effekt Zauber
 
 function M.CastMagic(Caster,counter,param,ltstate)
@@ -18,7 +18,7 @@ function M.CastMagic(Caster,counter,param,ltstate)
 	if found then
 	       magicWaterNew=magicWaterNew+1;
 	       magicFireNew=magicFireNew-1;
-	Caster:inform("Wasserskill erh�ht - Feuerskill gesenkt");
+	Caster:inform("Wasserskill erhöht - Feuerskill gesenkt");
 	end
     end
     magicEffect:addValue("magicWater",magicWaterNew);

@@ -25,7 +25,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
 --Analyse eines Sudes (komplett)
   if TargetItem.id == 331 then
     dataZList = alchemy.SplitBottleData(Caster,TargetItem.data)
-    local TextDE = "Diese Flasche enth�lt:\n";
+    local TextDE = "Diese Flasche enthält:\n";
 	  local TextEN = "This bottle contains:\n";
 	  local anySubstance = false;
     for i = 1,#dataZList do

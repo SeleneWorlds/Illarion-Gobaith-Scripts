@@ -32,7 +32,7 @@ function M.addEffect( Effect, Character)
     Effect:addValue("10",0);
 end;
 
-function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
+function M.callEffect( Effect, Char ) -- Effect wird ausgeführt
     -----------------------EINLESEN ANFANG------------------------------------
     local Hitpoints   = Char:increaseAttrib("hitpoints",0);   -- Hitpoints einlesen    ( 0 - 10000 )
     local Manapoints  = Char:increaseAttrib("mana",0);        -- Manapoints einlesen   ( 0 - 10000 )
@@ -105,7 +105,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                 Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me krampft zusammen und geht zu Boden.");
                 Char:talkLanguage( CCharacter.say, CPlayer.english, "#me clenches and falls to the ground.");
                 common.InformNLS(Char,
-                    "Dein Magen verkrampft sich und du merkst nur noch wie dein K�rper auf dem Boden aufschl�gt, bevor alles um dich dunkel wird.",
+                    "Dein Magen verkrampft sich und du merkst nur noch wie dein Körper auf dem Boden aufschlägt, bevor alles um dich dunkel wird.",
                     "Your stomach clenches and the last thing you feel is that your body hits the ground, before everything around you becomes dark.");
                 -------------- Meldungen fertig --------------------
             end
@@ -113,20 +113,20 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
     end
     if ( Poisonvalue > 0 ) then -- Vergiftet
         --Char:inform("poison: "..Poisonvalue);
-        Poisonvalue = math.max( 0,Poisonvalue - 15 * 5 ); -- Giftwert f�llt in 2 Stunden, 46 Minuten von 10000 auf 0
+        Poisonvalue = math.max( 0,Poisonvalue - 15 * 5 ); -- Giftwert fällt in 2 Stunden, 46 Minuten von 10000 auf 0
         if ( Poisonvalue == 0 ) then -- Gift besiegt
             -------------- Meldungen ausgeben ------------------
             common.InformNLS(Char,
-                "Du f�hlst wie das Gift in deinem K�rper seine Wirkung verliert",
+                "Du fühlst wie das Gift in deinem Körper seine Wirkung verliert",
                 "You feel how the poison in your body looses its effect.");
             -------------- Meldungen fertig --------------------
         else
             Hitpoints = math.max( 0,Hitpoints - ( ( Poisonvalue * 0.07 ) * ( ( 30 - Const ) / 20 ) * 5 ) );
-            if ( Hitpoints > 0 ) then -- Geschw�cht durch Gift aber kein Tod
+            if ( Hitpoints > 0 ) then -- Geschwächt durch Gift aber kein Tod
                 if ( math.random(1,40) == 2 or not Effect:findValue("poison") ) then -- Meldung nicht immer ausgeben (Spamschutz) ( Meldung theoretisch alle 40 Sekunden )
                     -------------- Meldungen ausgeben ------------------
                     common.InformNLS(Char,
-                        "Du f�hlst wie dein K�rper von innen heraus geschw�cht wird.",
+                        "Du fühlst wie dein Körper von innen heraus geschwächt wird.",
                         "You feel how your body becomes weaker.");
                     -------------- Meldungen fertig --------------------
                     Effect:addValue("poison",1);
@@ -136,7 +136,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                 Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me tropft etwas Speichel aus dem Mund und bricht zusammen.");
                 Char:talkLanguage( CCharacter.say, CPlayer.english,  "#me drips some saliva out of the mouth and falls to the ground.");
                 common.InformNLS(Char,
-                    "Du f�hlst ein Brennen in deinem K�rper und wie sich der Speicheln in deinem Mund zusammen zieht, ehe die Welt um dich herum dunkel wird.",
+                    "Du fühlst ein Brennen in deinem Körper und wie sich der Speicheln in deinem Mund zusammen zieht, ehe die Welt um dich herum dunkel wird.",
                     "You feel a cauterization in your body and that the saliva concentrates in your mouth. Then the world around you becomes dark.");
             end
         end
@@ -248,7 +248,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                 if ( ( Foodvalue < 15000 ) and ( Foodvalue > 6000 ) ) then -- Noch 4 Stunden und 10 Minuten bis zum verhungern
                     if ( math.random(1,360) == 2 ) then -- Meldung nicht immer ausgeben (Spamschutz) ( Meldung theoretisch alle 30 Minuten )
                         common.InformNLS(Char,
-                        "Du f�hlst ein leichtes Grummeln in deinem Magen.",
+                        "Du fühlst ein leichtes Grummeln in deinem Magen.",
                         "You feel a slight mumble in your stomach.");
                     end
                 elseif ( ( Foodvalue < 6000 ) and ( Foodvalue > 3000 ) ) then -- Noch 1 Stunde und 40 Minuten bis zum verhungern
@@ -264,7 +264,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
                     end
                 elseif ( ( Foodvalue < 1000 ) and ( Foodvalue > 100 ) ) then -- Noch 16 Minuten bis zum verhungern
                     if ( math.random(1,36) == 2 ) then -- Meldung nicht immer ausgeben (Spamschutz) ( Meldung theoretisch alle 3 Minuten )
-                        Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me scheint Hunger zu haben, ein gut h�rbares Magenknurren ist zu vernehmen.");
+                        Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me scheint Hunger zu haben, ein gut hörbares Magenknurren ist zu vernehmen.");
                         Char:talkLanguage( CCharacter.say, CPlayer.english,  "#me 's stomach grumbles quite audibly.");
                     end
                 elseif ( Foodvalue < 100 ) then -- Noch 1 Minute 16 Sekunden bis zum verhungern
@@ -289,7 +289,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
     Foodvalue   = common.Limit( Foodvalue,   0, maxFoodvalue  ); -- Nahrungspunkte
     -----------------------OVERLOAD SCHUTZ FERTIG-----------------------------
 
-    --------------�NDERUNGEN PR�FEN UND DURCHF�HREN ANFANG--------------------
+    --------------ÄNDERUNGEN PRÜFEN UND DURCHFÜHREN ANFANG--------------------
     if ( M.getWounds( Char, Effect ) == 0 ) then
         M.ChangeAttrib( Char, "hitpoints", Hitpoints );
     end
@@ -299,7 +299,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgef�hrt
     end
     M.ChangeAttrib( Char, "foodlevel", Foodvalue );
 
-    --------------�NDERUNGEN PR�FEN UND DURCHF�HREN FERTIG--------------------
+    --------------ÄNDERUNGEN PRÜFEN UND DURCHFÜHREN FERTIG--------------------
 
     return M.leaveSavely( Effect );
 end

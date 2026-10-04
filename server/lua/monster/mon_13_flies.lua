@@ -13,10 +13,10 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 msgs = base_messages.Messages();
 msgs:addMessage("#me bewegen sich in der Luft auf und ab.", "#me hang in the air bobbing up and down.");
-msgs:addMessage("#me brummen einfach herum, wie es Insekten mit Fl�geln so tun.", "#me's simple buzzing drone leads one to consider the life of a winged insect.");
-msgs:addMessage("#me fliegen ziellos vor und zur�ck.", "#me fly back and forth aimlessly.");
+msgs:addMessage("#me brummen einfach herum, wie es Insekten mit Flügeln so tun.", "#me's simple buzzing drone leads one to consider the life of a winged insect.");
+msgs:addMessage("#me fliegen ziellos vor und zurück.", "#me fly back and forth aimlessly.");
 msgs:addMessage("#me kreisen wild umher.", "#me spin furiously.");
-msgs:addMessage("#me landen auf der Erde und bleiben dort nur f�r einen Augenblick.", "#me land on the ground for a moment");
+msgs:addMessage("#me landen auf der Erde und bleiben dort nur für einen Augenblick.", "#me land on the ground for a moment");
 msgs:addMessage("#me schwirren umher.", "#me buzz around.");
 msgs:addMessage("#me sind auf Streifzug.", "#me prowl around.");
 msgs:addMessage("Bzzzzz!", "Bzzzzz!");

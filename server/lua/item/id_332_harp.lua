@@ -7,11 +7,11 @@ local M = {}
 
 local music = require("item.base.music").new()
 local general_wood = require("item.general.wood")
-music.addTalkText("#me plays the harp with a horrible crash","#me macht ein furchtbares Ger�usch mit der Harfe");
+music.addTalkText("#me plays the harp with a horrible crash","#me macht ein furchtbares Geräusch mit der Harfe");
 music.addTalkText("#me plays a stilted tune on the harp","#me spielt eine gezierte Melodie auf der Harfe");
 music.addTalkText("#me plays a smooth melody on the harp","#me spielt eine gleichbleibende Melodie auf der Harfe");
 music.addTalkText("#me plays a pretty tune on the harp","#me spielt eine nette Melodie auf der Harfe");
-music.addTalkText("#me plays a beautiful melody on the harp","#me spielt eine wundersch�ne Melodie auf der Harfe");
+music.addTalkText("#me plays a beautiful melody on the harp","#me spielt eine wunderschöne Melodie auf der Harfe");
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     music.PlayInstrument(User,SourceItem,"harp");

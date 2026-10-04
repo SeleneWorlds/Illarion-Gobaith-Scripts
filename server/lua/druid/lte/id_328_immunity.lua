@@ -1,4 +1,4 @@
--- LTE f�r das Druidensystem
+-- LTE für das Druidensystem
 -- by Falk
 -- immunity. Has actually nothing to do with healing potion 328 orange bottle
 
@@ -13,7 +13,7 @@ function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 --Character:inform("debug func M.addEffect")
 end
 
-function M.callEffect(Effect,Character)                  -- Effect wird ausgef�hrt
+function M.callEffect(Effect,Character)                  -- Effect wird ausgeführt
 
 	local foundImmunity, immunity, retVal = nil,nil,false;
 	for i=1,8 do

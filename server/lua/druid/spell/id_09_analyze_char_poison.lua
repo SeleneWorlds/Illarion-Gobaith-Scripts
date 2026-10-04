@@ -14,7 +14,7 @@ function M.CastMagic(Caster,counter,param,ltstate)
 function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 --Caster:inform("debug #09.2")
 	if Caster:getSkill("exquirere")>math.random(100) then
-		--TargetChar auf "PoisonValue" abpr�fen
+		--TargetChar auf "PoisonValue" abprüfen
 	  if TargetCharacter:getPoisonValue() ~= 0 then
 
 	--  Caster:inform("#b|0|0|Der Patient hat eine Vergiftung, wovon auch immer")
@@ -41,7 +41,7 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
     Caster:learn(6,"sanitas",3,100)
 	else
     common.InformNLS( Caster,
-        "Deine F�higkeiten reichen noch nicht aus.",
+        "Deine Fähigkeiten reichen noch nicht aus.",
         "Your abilities do not last out yet."
     );
 	end

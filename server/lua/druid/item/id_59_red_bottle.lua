@@ -12,7 +12,7 @@ topBorder = 30;
 bottomBorder = 2;
 taste = {};
 attribList ={"strength","willpower","perception","intelligence","constitution","agility","dexterity","essence"};
-taste[0]   ={"fruchtig","herb"     ,"bitter"    ,"faulig"      ,"sauer"       ,"salzig" ,"scharf"   ,"s��"};
+taste[0]   ={"fruchtig","herb"     ,"bitter"    ,"faulig"      ,"sauer"       ,"salzig" ,"scharf"   ,"süß"};
 taste[1]   ={"fruity"  ,"tartly"   ,"bitter"    ,"putrefactive","acidly"      ,"salt"   ,"hot"      ,"sweet"};
 
 function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
@@ -70,7 +70,7 @@ end
 function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
 	if Sourceitem.id_data == 0 then
-		-- VOR�BERGEHEND DAS ALTE SKRIPT AUSF�HREN
+		-- VORÜBERGEHEND DAS ALTE SKRIPT AUSFÜHREN
 		if not Character.attackmode then
 			world:erase(SourceItem,1);
 			world:makeSound(12,Character.pos);
@@ -90,14 +90,14 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 			elseif  (Character:increaseAttrib("foodlevel",0) > 40000) then
 				common.InformNLS( Character, "Du bist satt.", "You are stuffed.");
 			else
-				common.InformNLS( Character, "Du trinkst die Flasche aus und f�hlst wie das Gift aus deinem K�rper weicht.", "You drink up the bottle, and you feel the poison leave your body.");
+				common.InformNLS( Character, "Du trinkst die Flasche aus und fühlst wie das Gift aus deinem Körper weicht.", "You drink up the bottle, and you feel the poison leave your body.");
 			end
 		else
-			common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+			common.InformNLS(Character,"Du kannst nichts trinken während du kämpfst.", "You can't drink something while fighting.");
 		end
 
 	else
-		-- DAS NEUE SKRIPT AUSF�HREN
+		-- DAS NEUE SKRIPT AUSFÜHREN
 		if not Character.attackmode then
 			-- Hier verweisen wir auf die Wirkung
 			M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
@@ -114,7 +114,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 			Character.movepoints=Character.movepoints-50;
 
 		else
-			common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+			common.InformNLS(Character,"Du kannst nichts trinken während du kämpfst.", "You can't drink something while fighting.");
 		end
 	end
 end

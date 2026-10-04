@@ -11,7 +11,7 @@ local M = {}
             elseif ( level == 2 ) then
                 return ( lang == 0 and "vergrabenes Diebesgut" or "buried stolen goods" );
             elseif ( level == 3 ) then
-                return ( lang == 0 and "vergrabene Beute von Stra�enr�ubern" or "buried loot of bandits" );
+                return ( lang == 0 and "vergrabene Beute von Straßenräubern" or "buried loot of bandits" );
             elseif ( level == 4 ) then
                 return ( lang == 0 and "ein Schmugglerversteck" or "a hiding place of smugglers loot" );
             elseif ( level == 5 ) then
@@ -33,9 +33,9 @@ local M = {}
             elseif ( level <= 2 ) then
                 return ( lang == 0 and "einen kleinen Schatz" or "a small treasure" );
             elseif ( level <= 4 ) then
-                return ( lang == 0 and "einen mittelgro�en Schatz" or "an average sized treasure" );
+                return ( lang == 0 and "einen mittelgroßen Schatz" or "an average sized treasure" );
             elseif ( level <= 7 ) then
-                return ( lang == 0 and "einen gro�en Schatz" or "a big treasure" );
+                return ( lang == 0 and "einen großen Schatz" or "a big treasure" );
             else
                 return ( lang == 0 and "einen riesigen Schatz" or "a giant treasure" );
             end
@@ -194,7 +194,7 @@ local M = {}
         elseif ( metricDistance < 500 ) then
             return common.GetNLS( User, "sehr fern", "very far" );
         else
-            return common.GetNLS( User, "�u�erst fern", "extremely far" );
+            return common.GetNLS( User, "äußerst fern", "extremely far" );
         end
     end
 
@@ -214,11 +214,11 @@ local M = {}
         elseif ( dir == 2 ) then
             return common.GetNLS( User, "Osten", "east" );
         elseif ( dir == 3 ) then
-            return common.GetNLS( User, "S�dosten", "southeast" );
+            return common.GetNLS( User, "Südosten", "southeast" );
         elseif ( dir == 4 ) then
-            return common.GetNLS( User, "S�den", "south" );
+            return common.GetNLS( User, "Süden", "south" );
         elseif ( dir == 5 ) then
-            return common.GetNLS( User, "S�dwesten", "southwest" );
+            return common.GetNLS( User, "Südwesten", "southwest" );
         elseif ( dir == 6 ) then
             return common.GetNLS( User, "Westen", "west" );
         elseif ( dir == 7 ) then
@@ -312,7 +312,7 @@ local M = {}
             User:inform( foundMessage );
         else
             common.TempInformNLS( User,
-            "Du gr�bst den Schatz aus dem Boden aus und musst dabei leider feststellen, dass der Schatz einige W�chter hat.",
+            "Du gräbst den Schatz aus dem Boden aus und musst dabei leider feststellen, dass der Schatz einige Wächter hat.",
             "You dig the treasure out of the ground and realize that the treasure sadly has some guards." );
         end
 
@@ -327,7 +327,7 @@ local M = {}
             User.effects:addEffect(treasureEff);
         else
             common.InformNLS(User,
-                "Du hast schon einen Schatz ausgegraben und die W�chter noch nicht besiegt.",
+                "Du hast schon einen Schatz ausgegraben und die Wächter noch nicht besiegt.",
                 "You already dug out a treasure and didn't overcome the guardians." );
             treasureEff.nextCalled =20;
         end

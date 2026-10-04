@@ -15,7 +15,7 @@ msgs:addMessage("#me grinst breit.", "#me grins widely.");
 msgs:addMessage("#me kichert.", "#me giggles.");
 msgs:addMessage("#me lacht.", "#me laughs.");
 msgs:addMessage("Bei Adron's Laute!", "By Adron's lute!");
-msgs:addMessage("Der lauteste Tyrann stirbt mit einer Faust im Gem�cht!", "The worst tyrant dies by a fist in his sleep!");
+msgs:addMessage("Der lauteste Tyrann stirbt mit einer Faust im Gemächt!", "The worst tyrant dies by a fist in his sleep!");
 msgs:addMessage("Du bekommst keinen Kuchen von mir!", "You don't get a cake from me!");
 msgs:addMessage("Einen toten Halbling ehren Hunderte!", "A dead halfling is honoured by hundreds!");
 msgs:addMessage("Ich geb dir 'nen Nachschlag!", "Here, let me give you a second helping!");

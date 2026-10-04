@@ -161,7 +161,7 @@ function M.DoTeleportSpell(Caster,TargetPos, ltstate)
 
     if not CasterVal then
         common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
@@ -257,7 +257,7 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         end;
     elseif (string.find(Text,"[Zz]elphia")~=nil) then
         GateQual=15;
-    elseif (string.find(Text,"[Ss]wamp")~=nil or string.find(Text,"[Ss][u�]mpf")~=nil) then
+    elseif (string.find(Text,"[Ss]wamp")~=nil or string.find(Text,"[Ss][uü]mpf")~=nil) then
         GateQual=16;
     elseif (string.find(Text,"[Aa]dron")~=nil) then
         GateQual=17;
@@ -265,7 +265,7 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         if (string.find(Text,"[Cc]opper")~=nil or string.find(Text,"[Kk]upfer")~=nil) then
             GateQual=18;
         elseif (string.find(Text,"[Oo]r[ck]")~=nil) then
-	    if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+	    if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
                 GateQual=20;
 	    elseif (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
 	        GateQual=68;
@@ -277,23 +277,23 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
 	    	GateQual=70;
 	    elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
             	GateQual=71;
-	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
 	    	GateQual=72;
 	    elseif (string.find(Text,"[Ww]est")~=nil) then
 	    	GateQual=22;
 	    end
         end;
-    elseif (string.find(Text,"[Kk]umdah.*[Dd]esert")~=nil or string.find(Text,"[Kk]umdah.*[Ww]�ste")~=nil) then
+    elseif (string.find(Text,"[Kk]umdah.*[Dd]esert")~=nil or string.find(Text,"[Kk]umdah.*[Ww]üste")~=nil) then
         GateQual=19;
     elseif (string.find(Text,"[Bb]loodskull")~=nil) then
         GateQual=21;
-    elseif (string.find(Text,"[Ww]ood")~=nil or string.find(Text,"[Ff]orest")~=nil or string.find(Text,"[Ww][a�]ld")~=nil) then
+    elseif (string.find(Text,"[Ww]ood")~=nil or string.find(Text,"[Ff]orest")~=nil or string.find(Text,"[Ww][aä]ld")~=nil) then
         if (string.find(Text,"[Tt]roll")~=nil) then
             if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
                 GateQual=32;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=33;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
                 GateQual=34;
             elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=35;
@@ -303,23 +303,23 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
                 GateQual=36;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=37;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
                 GateQual=38;
             elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=39;
             end
-        elseif (string.find(Text,"[Ss]outhern")~=nil or string.find(Text,"[Ss]�dlich")~=nil) then
+        elseif (string.find(Text,"[Ss]outhern")~=nil or string.find(Text,"[Ss]üdlich")~=nil) then
             if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
                 GateQual=40;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=41;
 	    elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=43;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
                 GateQual=42;
             end
-        elseif (string.find(Text,"[Nn]orthern")~=nil or string.find(Text,"[Nn]�rdlich")~=nil) then
-            if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+        elseif (string.find(Text,"[Nn]orthern")~=nil or string.find(Text,"[Nn]ördlich")~=nil) then
+            if (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
                 GateQual=46;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=45;
@@ -333,15 +333,15 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
                 GateQual=48;
             elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
                 GateQual=49;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
                 GateQual=50;
             elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=51;
             end
-        elseif (string.find(Text,"[Ee]astern")~=nil or string.find(Text,"[��]stlich")~=nil) then
+        elseif (string.find(Text,"[Ee]astern")~=nil or string.find(Text,"[Öö]stlich")~=nil) then
             if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
                 GateQual=52;
-            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+            elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
                 GateQual=54;
 	    elseif (string.find(Text,"[Ww]est")~=nil) then
                 GateQual=55;
@@ -351,7 +351,7 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
 	elseif (string.find(Text,"[Ww]estern")~=nil or string.find(Text,"[Ww]estlich")~=nil) then
 	    if (string.find(Text,"[Nn]orth")~=nil or string.find(Text,"[Nn]ord")~=nil) then
 	    	GateQual=63;
-	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]�d")~=nil) then
+	    elseif (string.find(Text,"[Ss]outh")~=nil or string.find(Text,"[Ss]üd")~=nil) then
 		GateQual=65;
 	    elseif (string.find(Text,"[Ee]ast")~=nil or string.find(Text,"[Oo]st")~=nil) then
 		GateQual=64;

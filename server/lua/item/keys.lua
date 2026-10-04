@@ -23,18 +23,18 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 		for i,char in pairs(charList) do
 			if char.pos.z == WALLPOS.z then
 				char:inform(char:getPlayerLanguage()==0 and
-					"#w Du h�rst das Ger�usch von sich verschiebendem Gestein." or
+					"#w Du hörst das Geräusch von sich verschiebendem Gestein." or
 					"#w You hear the sound of moving stone.");
 			end
 		end
 	elseif base_keys.CheckKey(SourceItem,DoorItem) then
         if base_keys.LockDoor(DoorItem) then
-            common.InformNLS(User,"Du sperrst die T�r ab.","You lock the door.");
+            common.InformNLS(User,"Du sperrst die Tür ab.","You lock the door.");
         elseif base_keys.UnlockDoor(DoorItem,User) then             -- User eingefuegt
-            common.InformNLS(User,"Du sperrst die T�r auf.","You unlock the door.");
+            common.InformNLS(User,"Du sperrst die Tür auf.","You unlock the door.");
         end
     else
-        common.InformNLS(User,"Der Schl�ssel passt hier nicht.","The key doesn't fit here.");
+        common.InformNLS(User,"Der Schlüssel passt hier nicht.","The key doesn't fit here.");
     end
 end
 
@@ -42,35 +42,35 @@ function M.LookAtItem(User,Item)
     local DataVal=Item.data;
     if (specialnames==nil) then
         specialnames={};
-        specialnames[3001]={"Zwergenschl�ssel","dwarven key"};
-        specialnames[3002]={"Zwergenschl�ssel","dwarven key"};
-        specialnames[4080]={"Garons Schmieden Schl�ssel","Garons goldsmith workshop key"};
-        specialnames[4036]={"Gef�ngnissschl�ssel #1","Prisonkey #1"};
-        specialnames[4037]={"Gef�ngnissschl�ssel #2","Prisonkey #2"};
-        specialnames[4001]={"Stadttor Schl�ssel","Towngate key"};
-        specialnames[5014]={"Graue Zuflucht Schl�ssel #1","Grey Refuge key #1"}
-        specialnames[5015]={"Graue Zuflucht Schl�ssel #2","Grey Refuge key #2"}
-        specialnames[7100]={"Greenbriar Tavernen Schl�ssel","Greenbriar Taverne key"};
-        specialnames[7101]={"Greenbriar 1 Schl�ssel","Greenbriar 1 key"};
-        specialnames[7102]={"Greenbriar 2 Schl�ssel","Greenbriar 2 key"};
-        specialnames[7103]={"Greenbriar 3 Schl�ssel","Greenbriar 3 key"};
-        specialnames[1060]={"Varshikar 1 Schl�ssel","Varshikar 1 key"};
-        specialnames[1061]={"Varshikar 2 Schl�ssel","Varshikar 2 key"};
-        specialnames[1062]={"Varshikar 3 Schl�ssel","Varshikar 3 key"};
-        specialnames[1063]={"Varshikar 4 Schl�ssel","Varshikar 4 key"};
-        specialnames[1064]={"Varshikar 5 Schl�ssel","Varshikar 5 key"};
-        specialnames[1065]={"Varshikar 6 Schl�ssel","Varshikar 6 key"};
-        specialnames[1066]={"Varshikar 7 Schl�ssel","Varshikar 7 key"};
-        specialnames[4031]={"Schl�ssel zur Arena","Key to the Arena"};
-        specialnames[4050]={"Schl�ssel zum Seahorse","Key to the Sea Horse"};
-        specialnames[4051]={"Schl�ssel zum Seahorse #1","Key to the Sea Horse #1"};
-        specialnames[4052]={"Schl�ssel zum Seahorse #2","Key to the Sea Horse #2"};
-        specialnames[4053]={"Schl�ssel zum Badezimmer","Key to the Bathroom"};
-        specialnames[4054]={"Schl�ssel zum Seahorse #3","Key to the Sea Horse #3"};
-		specialnames[666]={"Schl�ssel der Erde","Key of earth"};
-		specialnames[667]={"Schl�ssel des Feuers","Key of fire"};
-		specialnames[668]={"Schl�ssel des Windes","Key of air"};
-		specialnames[669]={"Schl�ssel des Wassers","Key of water"};
+        specialnames[3001]={"Zwergenschlüssel","dwarven key"};
+        specialnames[3002]={"Zwergenschlüssel","dwarven key"};
+        specialnames[4080]={"Garons Schmieden Schlüssel","Garons goldsmith workshop key"};
+        specialnames[4036]={"Gefängnissschlüssel #1","Prisonkey #1"};
+        specialnames[4037]={"Gefängnissschlüssel #2","Prisonkey #2"};
+        specialnames[4001]={"Stadttor Schlüssel","Towngate key"};
+        specialnames[5014]={"Graue Zuflucht Schlüssel #1","Grey Refuge key #1"}
+        specialnames[5015]={"Graue Zuflucht Schlüssel #2","Grey Refuge key #2"}
+        specialnames[7100]={"Greenbriar Tavernen Schlüssel","Greenbriar Taverne key"};
+        specialnames[7101]={"Greenbriar 1 Schlüssel","Greenbriar 1 key"};
+        specialnames[7102]={"Greenbriar 2 Schlüssel","Greenbriar 2 key"};
+        specialnames[7103]={"Greenbriar 3 Schlüssel","Greenbriar 3 key"};
+        specialnames[1060]={"Varshikar 1 Schlüssel","Varshikar 1 key"};
+        specialnames[1061]={"Varshikar 2 Schlüssel","Varshikar 2 key"};
+        specialnames[1062]={"Varshikar 3 Schlüssel","Varshikar 3 key"};
+        specialnames[1063]={"Varshikar 4 Schlüssel","Varshikar 4 key"};
+        specialnames[1064]={"Varshikar 5 Schlüssel","Varshikar 5 key"};
+        specialnames[1065]={"Varshikar 6 Schlüssel","Varshikar 6 key"};
+        specialnames[1066]={"Varshikar 7 Schlüssel","Varshikar 7 key"};
+        specialnames[4031]={"Schlüssel zur Arena","Key to the Arena"};
+        specialnames[4050]={"Schlüssel zum Seahorse","Key to the Sea Horse"};
+        specialnames[4051]={"Schlüssel zum Seahorse #1","Key to the Sea Horse #1"};
+        specialnames[4052]={"Schlüssel zum Seahorse #2","Key to the Sea Horse #2"};
+        specialnames[4053]={"Schlüssel zum Badezimmer","Key to the Bathroom"};
+        specialnames[4054]={"Schlüssel zum Seahorse #3","Key to the Sea Horse #3"};
+		specialnames[666]={"Schlüssel der Erde","Key of earth"};
+		specialnames[667]={"Schlüssel des Feuers","Key of fire"};
+		specialnames[668]={"Schlüssel des Windes","Key of air"};
+		specialnames[669]={"Schlüssel des Wassers","Key of water"};
     end
     local lang=User:getPlayerLanguage();
     if (specialnames[DataVal]~=nil) then
@@ -103,7 +103,7 @@ function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
 
     if (TargetItem:getType()~=3) then
         common.InformNLS(User,
-        "Der Schl�ssel rutscht dir seltsamer Weise aus der Hand.",
+        "Der Schlüssel rutscht dir seltsamer Weise aus der Hand.",
         "The key slips out of your hand for a strange reason.");
         return false;
     end

@@ -54,7 +54,7 @@ function M.DoGFXSpell(Caster, TargetPos, ltstate)
 
     if not CasterVal then
         common.TempInformNLS( Caster,
-        "Es gelingt dir nicht die n�tige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
+        "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
         "You fail to concentrate enought to get this spell to its evolvement." );
         return;
     end
@@ -163,7 +163,7 @@ function M.HitOnPosition( Caster, CasterValue, posi, percent, radius )
             base_basics.performSFX( SpellEffects[radius].sfx, Caster.pos );
         end
         common.InformNLS( Caster,
-        "Dein Ziel ist derart resistent gegen Magie das dein Zauber auf dich zur�ckgeworfen wird.",
+        "Dein Ziel ist derart resistent gegen Magie das dein Zauber auf dich zurückgeworfen wird.",
         "Your target is that resistent against magic that your spell returns to you." );
     else
         world:gfx( 10, posi );
@@ -196,7 +196,7 @@ function M.TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
                 local CharOffsetY = common.Limit(Caster.pos.y - Target.pos.y,-1,1);
                 local newPos = position( Target.pos.x + CharOffsetX, Target.pos.y + CharOffsetY, Target.pos.z );
                 Target:warp( newPos );
-                Target:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zur�ck und geht zu Boden." );
+                Target:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zurück und geht zu Boden." );
                 Target:talkLanguage( CCharacter.say, CPlayer.english, "#me stumbles back and falls to the ground." );
                 common.ParalyseCharacter(Target, 7, false, true);
 

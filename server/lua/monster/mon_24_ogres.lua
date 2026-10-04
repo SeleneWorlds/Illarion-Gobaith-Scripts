@@ -11,19 +11,19 @@ killer={}; --A list that keeps track of who attacked the monster last
 --Random Messages
 
 msgs = base_messages.Messages();
-msgs:addMessage("#me bleckt die von Fleischst�ckchen bedeckten Z�hne.", "#me bares his teeth, which are piled with chunks of flesh.");
-msgs:addMessage("#me br�llt etwas in einer unverst�ndlichen Sprache.", "#me growls something in an inscrutable tongue.");
-msgs:addMessage("#me gibt ein Ger�usch von sich, das einem Grunzen �hnelt.", "#me makes a noise similar to a grunt.");
+msgs:addMessage("#me bleckt die von Fleischstückchen bedeckten Zähne.", "#me bares his teeth, which are piled with chunks of flesh.");
+msgs:addMessage("#me brüllt etwas in einer unverständlichen Sprache.", "#me growls something in an inscrutable tongue.");
+msgs:addMessage("#me gibt ein Geräusch von sich, das einem Grunzen ähnelt.", "#me makes a noise similar to a grunt.");
 msgs:addMessage("#me murmelt ein Gebet.", "#me murmurs a prayer.");
-msgs:addMessage("#me neigt bedrohlich den Kopf und damit die spitzen H�rner.", "#me lowers the head, his horns look threatening.");
+msgs:addMessage("#me neigt bedrohlich den Kopf und damit die spitzen Hörner.", "#me lowers the head, his horns look threatening.");
 msgs:addMessage("#me schwingt seine Keule.", "#me swings his club.");
 msgs:addMessage("#me zieht die Nase hoch.", "#me sniffs deeply.");
-msgs:addMessage("#me�s Knochenschmuck klappert laut als er baumelt.", "#me�s bone jewellery dangles and clatters loudly.");
-msgs:addMessage("#me bleckt die von Fleischst�ckchen bedeckten Z�hne und kauderwelscht gl�cklich: 'Mmh� saftich s��es Ding.'.", "#me bares its teeth, covered with pieces of meat: 'Mmm... tasty sweet thing.'.");
-msgs:addMessage("#me br�llt etwas in einer unverst�ndlichen Sprache.", "#me yells something in an incomprehensible language.");
-msgs:addMessage("#me schl�gt mit der Keule auf den Boden, dass der Grund unter den F��en bebt: 'Niemand so stark wie ich, werde dich jetzt zermalmen und dann deine Knochen abnagen!'", "#me strikes the ground with his mace, shaking the growl: 'No one so strong as I, I will crush you now and then gnaw your bones!'");
-msgs:addMessage("#me malt mit einem schlammigen Finger ein krummes Dreieck auf seine Brust: 'Niemand fordert mich, ich wird deine Eingeweide dir ausrei�en!'", "#me paints a muddy pattern with crooked fingers on its chest: 'Nobody challenges me, me will rip out your entrails!'");
-msgs:addMessage("#me schnauft und kleine gr�ne Flocken stieben aus seiner Nase, ehe er seine Keule mit einem R�hren erhebt.", "#me snorts and little green flakes scurry out of his nose, before it raises its club with a growl.");
+msgs:addMessage("#me’s Knochenschmuck klappert laut als er baumelt.", "#me’s bone jewellery dangles and clatters loudly.");
+msgs:addMessage("#me bleckt die von Fleischstückchen bedeckten Zähne und kauderwelscht glücklich: 'Mmh… saftich süßes Ding.'.", "#me bares its teeth, covered with pieces of meat: 'Mmm... tasty sweet thing.'.");
+msgs:addMessage("#me brüllt etwas in einer unverständlichen Sprache.", "#me yells something in an incomprehensible language.");
+msgs:addMessage("#me schlägt mit der Keule auf den Boden, dass der Grund unter den Füßen bebt: 'Niemand so stark wie ich, werde dich jetzt zermalmen und dann deine Knochen abnagen!'", "#me strikes the ground with his mace, shaking the growl: 'No one so strong as I, I will crush you now and then gnaw your bones!'");
+msgs:addMessage("#me malt mit einem schlammigen Finger ein krummes Dreieck auf seine Brust: 'Niemand fordert mich, ich wird deine Eingeweide dir ausreißen!'", "#me paints a muddy pattern with crooked fingers on its chest: 'Nobody challenges me, me will rip out your entrails!'");
+msgs:addMessage("#me schnauft und kleine grüne Flocken stieben aus seiner Nase, ehe er seine Keule mit einem Röhren erhebt.", "#me snorts and little green flakes scurry out of his nose, before it raises its club with a growl.");
 
 end
 

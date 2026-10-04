@@ -16,7 +16,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
      ListRaces  = {}
      ListRaceId = {}
      ListCodecs = {77744151,18784522,32699619,54876565,61348438,71378653,58548893,45634355,75529399,44554428,18861363,26562174,47418515,58151138,22551786,72225438,99992352,38114786,95371655,71796337,87611881,31231973,14523375,46852135,37531813,85293266,86659455,51464953,97171535,77577615,11695753,62545579,81519773,95153618,52728756,91986793,19831914}
-     ListRaces  = {"Mensch","Zwerg","Halbling","Elb","Orc","Echse","Gnom","Oger","Mumie","Skelett","Beholder","Fliege","Schaf" ,"Spinne","Rotes Skelett","Rotwurm","Big Demon","Skorpion","Schwein","Unsichtbar","Sch�del","Wespe","Waldtroll","Geister-Skelett","SteinGolem","Goblin","Gnoll","Drache", "Drow","Drow-Frau","Kleiner D�mon","Kuh","Hirsch","Wolf","Panther","Hase","Gnom"}
+     ListRaces  = {"Mensch","Zwerg","Halbling","Elb","Orc","Echse","Gnom","Oger","Mumie","Skelett","Beholder","Fliege","Schaf" ,"Spinne","Rotes Skelett","Rotwurm","Big Demon","Skorpion","Schwein","Unsichtbar","Schädel","Wespe","Waldtroll","Geister-Skelett","SteinGolem","Goblin","Gnoll","Drache", "Drow","Drow-Frau","Kleiner Dämon","Kuh","Hirsch","Wolf","Panther","Hase","Gnom"}
      ListRaceId = {0,1,2,3,4,5,6,9,10,11,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,44}
      firsttime = 1
   end
@@ -35,7 +35,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
 --         Neuen Wert sichern
            myEffect:addValue("new_race",ListRaceId[i])
---         Verwandlung ausf�hren
+--         Verwandlung ausführen
 
 					 world:gfx(5,Character.pos)
            Character:setAttrib("racetyp",ListRaceId[i])
@@ -70,7 +70,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        world:gfx(5,Character.pos);
 
        -- Hier verweisen wir auf die Wirkung
-       -- Korrektur von Nitram, erst Flasche l�schen, dann Verwandeln, weil beim Verwandeln die Flasche gedroped wird.
+       -- Korrektur von Nitram, erst Flasche löschen, dann Verwandeln, weil beim Verwandeln die Flasche gedroped wird.
        M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
        if( math.random( 20 ) <= 1 ) then
@@ -82,7 +82,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        Character.movepoints=Character.movepoints-50;
 
     else
-      common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+      common.InformNLS(Character,"Du kannst nichts trinken während du kämpfst.", "You can't drink something while fighting.");
     end
   end
 end
@@ -139,7 +139,7 @@ function M.LookAtItem(User,Item)
         EtikettDe = "Gestaltenwandler Rotwurm"
         EtikettEn = "Shape Shifter Potion Redworm"
     elseif item.id_data == 99992352 then
-        EtikettDe = "Gestaltenwandler Gro�er D�mon"
+        EtikettDe = "Gestaltenwandler Großer Dämon"
         EtikettEn = "Shape Shifter Potion Big Demon"
     elseif item.id_data == 38114786 then
         EtikettDe = "Gestaltenwandler Skorpion"
@@ -151,7 +151,7 @@ function M.LookAtItem(User,Item)
         EtikettDe = "Gestaltenwandler Luft"
         EtikettEn = "Shape Shifter Potion Air"
     elseif item.id_data == 87611881 then
-        EtikettDe = "Gestaltenwandler Sch�del"
+        EtikettDe = "Gestaltenwandler Schädel"
         EtikettEn = "Shape Shifter Potion Skull"
     elseif item.id_data == 31231973 then
         EtikettDe = "Gestaltenwandler Wespe"
@@ -181,7 +181,7 @@ function M.LookAtItem(User,Item)
         EtikettDe = "Gestaltenwandler Drow-Frau"
         EtikettEn = "Shape Shifter Potion Female Drow"
     elseif item.id_data == 11695753 then
-        EtikettDe = "Gestaltenwandler Kleiner D�mon"
+        EtikettDe = "Gestaltenwandler Kleiner Dämon"
         EtikettEn = "Shape Shifter Potion Lower Demon"
     elseif item.id_data == 62545579 then
         EtikettDe = "Gestaltenwandler Kuh"

@@ -12,7 +12,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 
 msgs = base_messages.Messages();
 msgs:addMessage("#me bellt vor Wut.", "#me barks in fury.");
-msgs:addMessage("#me fletscht die Z�hne.", "#me bares its teeth.");
+msgs:addMessage("#me fletscht die Zähne.", "#me bares its teeth.");
 msgs:addMessage("#me hechelt.", "#me utters a noise, half cackle, half howl.");
 msgs:addMessage("#me jault.", "#me howls.");
 msgs:addMessage("#me kichert schrill und laut.", "#me cackles with a loud and piercing sound.");
@@ -20,10 +20,10 @@ msgs:addMessage("#me kneift seine Augen zusammen.", "#me squints its eyes.");
 msgs:addMessage("#me knurrt leise.", "#me snarls quietly.");
 msgs:addMessage("#me schnappt.", "#me snaps its jaw.");
 msgs:addMessage("#me schnauft laut.", "#me gasps loudly.");
-msgs:addMessage("#me's Schwanz str�ubt sich.", "#me's tail rises.");
-msgs:addMessage("#me zieht die Luft scharf schn�ffelnd durch die Nase ein.", "#me breathes through its nose, sniffing.");
-msgs:addMessage("#me legt den Kopf in den Nacken und st��t eine Mischung aus Heulen und Gebell hervor.", "#me throws back its head and lets out a mixture of howling and barking.");
-msgs:addMessage("#me f�hrt sich mit seiner rauhen Zunge �ber die Schnauze, ehe er leise ver�rgert kl�fft.", "#me licks its nose with its rough tongue before it yaps angrily.");
+msgs:addMessage("#me's Schwanz sträubt sich.", "#me's tail rises.");
+msgs:addMessage("#me zieht die Luft scharf schnüffelnd durch die Nase ein.", "#me breathes through its nose, sniffing.");
+msgs:addMessage("#me legt den Kopf in den Nacken und stößt eine Mischung aus Heulen und Gebell hervor.", "#me throws back its head and lets out a mixture of howling and barking.");
+msgs:addMessage("#me fährt sich mit seiner rauhen Zunge über die Schnauze, ehe er leise verärgert kläfft.", "#me licks its nose with its rough tongue before it yaps angrily.");
 
 end
 

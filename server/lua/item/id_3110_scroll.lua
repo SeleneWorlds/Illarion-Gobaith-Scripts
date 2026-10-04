@@ -5,13 +5,13 @@ local base_orders = require("base.orders")
 -- UPDATE common SET com_script = 'item.id_3110_scroll' WHERE com_itemid = 3110;
 
 function M.LookAtItem(User,Item)
-    --abarbeitung der Auftr�ge
+    --abarbeitung der Aufträge
     local order = Order:fromItem(Item);
     if ( order ~= nil ) then
         world:itemInform(User,Item,order:lookAt(User));
         return;
     end
-    --ende der auftr�ge
+    --ende der aufträge
     local spell = Item.quality;
     if (spell == 101) then -- teleport
         
@@ -41,16 +41,16 @@ function M.UseItemWithCharacter(User, SourceItem, Character, counter, param)
     User:inform("useitemwitchchar start");
     if ( Character:get_type() == CCharacter.npc ) then
         User:inform("useitemwitchchar npc");
-        --abarbeitung der Auftr�ge
+        --abarbeitung der Aufträge
         fnd, ordernpc = getNPCFromGlobalList(Character.id,User);
         if ( fnd ) then
-            --wenn funktion true zur�ck gibt dann war es ein auftrag
+            --wenn funktion true zurück gibt dann war es ein auftrag
             --daher restliche funktion abbrechen
             if (ordernpc:checkOrder(SourceItem,User) ) then 
                 return;
             end
         end
-        --ende der auftr�ge
+        --ende der aufträge
     end
     User:inform("useitemwitchchar end");
 end
@@ -92,7 +92,7 @@ function M.teleportLookAt( User, Item )
     dz = dat - math.floor(dat/1024)*1024 - 500 - User.pos.z;
     
     if ( math.abs(dz) > 15) then
-        return common.GetNLS( User, "Die Pergamentrolle gl�ht bl�ulich.", "The scroll of parchment glows blueish." );
+        return common.GetNLS( User, "Die Pergamentrolle glüht bläulich.", "The scroll of parchment glows blueish." );
     end;
     
     dat = math.floor(dat / 1024);
@@ -139,11 +139,11 @@ function M.teleportLookAt( User, Item )
     elseif ( phi < 9*math.pi/8 ) then
         dirTxt = common.GetNLS( User, "Westen", "west" );
     elseif ( phi < 11*math.pi/8 ) then
-        dirTxt = common.GetNLS( User, "S�dwesten", "southwest" );
+        dirTxt = common.GetNLS( User, "Südwesten", "southwest" );
     elseif ( phi < 13*math.pi/8 ) then
-        dirTxt = common.GetNLS( User, "S�den", "south" );
+        dirTxt = common.GetNLS( User, "Süden", "south" );
     elseif ( phi < 15*math.pi/8 ) then
-        dirTxt = common.GetNLS( User, "S�dosten", "southeast" );
+        dirTxt = common.GetNLS( User, "Südosten", "southeast" );
     else
         dirTxt = common.GetNLS( User, "Osten", "east" );
     end;
@@ -236,7 +236,7 @@ function M.summonCreature( Caster, Item )
     elseif (faceto== 6) then 	--west
 	CreaturePos  = position(Caster.pos.x-1,Caster.pos.y,Caster.pos.z);
     else
-    	Caster:inform("moep->Faceto nicht m�glich, weil "..faceto.." ist Blickrichtung.");
+    	Caster:inform("moep->Faceto nicht möglich, weil "..faceto.." ist Blickrichtung.");
     end
 
     if world:isCharacterOnField( CreaturePos ) then

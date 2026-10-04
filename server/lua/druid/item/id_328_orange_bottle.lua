@@ -8,7 +8,7 @@ local M = {}
 -- UPDATE common SET com_script='druid.item.id_328_orange_bottle' WHERE com_itemid = 328;
 
 function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
---Heilmittel f�r 8 Virus-Erkrankungen
+--Heilmittel für 8 Virus-Erkrankungen
   find, myEffect = Character.effects:find(167);
   if find then
 
@@ -26,14 +26,14 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 				potionData = (Sourceitem.id_data % 10000000);
 			end
 			if potionData == codeList[diagnose] then
---            Feststellung, ob die Qualit�t des Heiltrankes �ber der Schwere der Krankheit liegt
---            Je h�her die Krankheit in der Ordnungsnummer (1-8) liegt, umso h�her sind die Anforderungen an den Heiltrank
+--            Feststellung, ob die Qualität des Heiltrankes über der Schwere der Krankheit liegt
+--            Je höher die Krankheit in der Ordnungsnummer (1-8) liegt, umso höher sind die Anforderungen an den Heiltrank
               -- CONST may reduce the needed quality
 			  local const = math.min(25,Character:increaseAttrib("constitution",0));
 			  local seriousness = illness_seriousness[diagnose] - (math.random(30)<const and 1 or 0);
 			  if math.random(111,illness_seriousness[diagnose] * 111) < Sourceitem.id_quality then
 
---               Die Wirkung erfolgt indirekt durch das Herabsetzen des Rundenz�hlers.
+--               Die Wirkung erfolgt indirekt durch das Herabsetzen des Rundenzählers.
                  -- CONST may raise the probability for a good effect
 				 local bottom = math.max(111,math.floor(Sourceitem.id_quality*const/30));
 				 zaehler = zaehler - math.random(bottom,Sourceitem.id_quality)
@@ -47,7 +47,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 					"#w The effect of the potion allays your suffering.");
 				 return;
               else
-                 Character:inform("debug: keine Heilung wegen zu niedriger Trank-Qualit�t")
+                 Character:inform("debug: keine Heilung wegen zu niedriger Trank-Qualität")
               end
            else
               Character:inform("debug: keine Heilung wegen falscher Medikamentation")
@@ -56,7 +56,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
      end
    end
    common.InformNLS(Character,
-	"#w Du trinkst die Fl�ssigkeit, doch sie scheint keine Wirkung auf dich zu haben.",
+	"#w Du trinkst die Flüssigkeit, doch sie scheint keine Wirkung auf dich zu haben.",
 	"#w You drink the liquid but it doesn't seem to have any effect on you.");
 end
 
@@ -80,7 +80,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
      Character.movepoints=Character.movepoints-50;
 
   else
-    common.InformNLS(Character,"#w Du kannst nichts trinken w�hrend du k�mpfst.", "#w You can't drink something while fighting.");
+    common.InformNLS(Character,"#w Du kannst nichts trinken während du kämpfst.", "#w You can't drink something while fighting.");
   end
 end
 

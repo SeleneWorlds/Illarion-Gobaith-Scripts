@@ -25,16 +25,16 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             base_books.AddEnglishBookText("As well, male and female gnomes are equal in our society.",0,0,0);
 
             base_books.AddGermanBookText("\n \n Die Kultur der Gnome",0,0,0);
-            base_books.AddGermanBookText("Gnome sind so etwas �hnliches wie Zwerge, jedoch wesentlich d�nner und auch etwas kleiner als Halblinge. Wir sind schlau und flink und gewandt in der Herstellung von Ger�tschaften.",0,0,0);
-            base_books.AddGermanBookText("Wir taugen nicht als Diebe, unsere Weltanschauung erlaubt uns so etwas nicht. Unsere Nasen sind irgendwie etwas zu gro� geraten und vielleicht kommt daher unsere Vorliebe f�r lange Namen. Manche von uns haben vier Vornamen.",0,0,0);
+            base_books.AddGermanBookText("Gnome sind so etwas Ähnliches wie Zwerge, jedoch wesentlich dünner und auch etwas kleiner als Halblinge. Wir sind schlau und flink und gewandt in der Herstellung von Gerätschaften.",0,0,0);
+            base_books.AddGermanBookText("Wir taugen nicht als Diebe, unsere Weltanschauung erlaubt uns so etwas nicht. Unsere Nasen sind irgendwie etwas zu groß geraten und vielleicht kommt daher unsere Vorliebe für lange Namen. Manche von uns haben vier Vornamen.",0,0,0);
             base_books.AddGermanBookText("Die Kleidung der Gnome ist eher praktisch denn modisch. Wir leben gerne untertage, wie die Zwerge. Unser Minen jedoch sind, verglichen mit denen der Zwerge, sehr viel kleiner.",0,0,0);
-            base_books.AddGermanBookText("F�r gew�hnlich sind unsere Heimst�tten mit hellem Lehm verputzt.",0,0,0);
-            base_books.AddGermanBookText("Wie schon gesagt, wir Gnome haben eine Vorliebe f�r neumodischen mechanischen Kram. H�hlen und Minen sind deshalb oft mit solchen Sachen vollgestopft.",0,0,0);
-            base_books.AddGermanBookText("Unsere Apparate sind oft recht aufw�ndig. H�lzerne Getriebe, Seile, Fahrgestelle, daraus bestehen sie meist. Wir benutzen sie dann f�r so einfache T�tigkeiten wie das zur�ckziehen eines Wassereimers aus dem Brunnen.",0,0,0);
-            base_books.AddGermanBookText("Ganz im Gegensatz zu den Zwergen m�gen wir die Berge nicht, stattdessen besitzen wir einen Hang zur Magie, insbesondere f�r Illuminationszauber. Mit so etwas kann man sich auch gut die Zeit vertreiben.",0,0,0);
-            base_books.AddGermanBookText("Wir, die Gnome, sind die einzige Rasse, die dank ihrer Magie in der Lage ist, durch  Alabrians Siedlungen zu reisen ohne jedwede Anfeindungen. Unsere Magie ist so gro�artig, dass man uns daf�r bezahlt, sie vorzuf�hren.",0,0,0);
-            base_books.AddGermanBookText("Wir beten oft zu Irmorom, wie die Zwerge, aber eigentlich sind wir nicht besonders religi�s. Wir glauben daran, das man alles mit ein wenig Gehirnschmalz und Mystik erreichen kann. Trotzdem gibt es unter uns einige Priester.",0,0,0);
-            base_books.AddGermanBookText("M�nner und Frauen haben in unserer Gesellschaft gleiche Rechte.",0,0,0);
+            base_books.AddGermanBookText("Für gewöhnlich sind unsere Heimstätten mit hellem Lehm verputzt.",0,0,0);
+            base_books.AddGermanBookText("Wie schon gesagt, wir Gnome haben eine Vorliebe für neumodischen mechanischen Kram. Höhlen und Minen sind deshalb oft mit solchen Sachen vollgestopft.",0,0,0);
+            base_books.AddGermanBookText("Unsere Apparate sind oft recht aufwändig. Hölzerne Getriebe, Seile, Fahrgestelle, daraus bestehen sie meist. Wir benutzen sie dann für so einfache Tätigkeiten wie das zurückziehen eines Wassereimers aus dem Brunnen.",0,0,0);
+            base_books.AddGermanBookText("Ganz im Gegensatz zu den Zwergen mögen wir die Berge nicht, stattdessen besitzen wir einen Hang zur Magie, insbesondere für Illuminationszauber. Mit so etwas kann man sich auch gut die Zeit vertreiben.",0,0,0);
+            base_books.AddGermanBookText("Wir, die Gnome, sind die einzige Rasse, die dank ihrer Magie in der Lage ist, durch  Alabrians Siedlungen zu reisen ohne jedwede Anfeindungen. Unsere Magie ist so großartig, dass man uns dafür bezahlt, sie vorzuführen.",0,0,0);
+            base_books.AddGermanBookText("Wir beten oft zu Irmorom, wie die Zwerge, aber eigentlich sind wir nicht besonders religiös. Wir glauben daran, das man alles mit ein wenig Gehirnschmalz und Mystik erreichen kann. Trotzdem gibt es unter uns einige Priester.",0,0,0);
+            base_books.AddGermanBookText("Männer und Frauen haben in unserer Gesellschaft gleiche Rechte.",0,0,0);
 
           end
       end

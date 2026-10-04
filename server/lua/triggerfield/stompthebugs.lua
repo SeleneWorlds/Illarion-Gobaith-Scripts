@@ -14,7 +14,7 @@ function M.MoveToField(User)
 	    User:inform("Questprogress okay->suche Monster");
 		local m = world:getMonstersInRangeOf(MonsterPosition, 10);
 		if(#m < 1) then
-			User:inform("kein Monster in der N�he gefunden->erschaffene eines");
+			User:inform("kein Monster in der Nähe gefunden->erschaffene eines");
 			world:createMonster(MonsterID, MonsterPosition, 20);
 			User:inform("Monster erschaffen");
 		end

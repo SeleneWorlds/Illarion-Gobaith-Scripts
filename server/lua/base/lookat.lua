@@ -50,12 +50,12 @@ function M.GetItemDescription(User,Item,material,Weapon,Priest)
     -- initialize arrays if not already done
     if GenericQualDe == nil then
         -- init german descriptions
-        GenericQualDe={"perfekte","exzellente","sehr gute","gute","normale","m��ige","schlechte","sehr schlechte","schreckliche","furchtbare"};
+        GenericQualDe={"perfekte","exzellente","sehr gute","gute","normale","mäßige","schlechte","sehr schlechte","schreckliche","furchtbare"};
         GenericDuraDe={};
         GenericDuraDe[1]={"nagelneue" ,"neue"     ,"fast neue","gebrauchte","leicht abgenutzte","abgenutzte","sehr abgenutzte","alte"   ,"rostige"       ,"klapprige"  };
         GenericDuraDe[2]={"nagelneue" ,"neue"     ,"fast neue","gebrauchte","leicht abgenutzte","abgenutzte","sehr abgenutzte","alte"   ,"morsche"       ,"zerfallende"};
         GenericDuraDe[3]={"nagelneue" ,"neue"     ,"fast neue","gebrauchte","leicht abgenutzte","abgenutzte","sehr abgenutzte","alte"   ,"fadenscheinige","zerfetzte"  };
-        GenericDuraDe[4]={"funkelnde","strahlende","gl�nzende","gebrauchte","angekratzte",      "zerkratzte","matte",          "alte"   ,"stumpfe",       "br�chige"   };
+        GenericDuraDe[4]={"funkelnde","strahlende","glänzende","gebrauchte","angekratzte",      "zerkratzte","matte",          "alte"   ,"stumpfe",       "brüchige"   };
 
         -- init english descriptions
         GenericQualEn={"perfect","excellent","very good","good","normal","average","bad","very bad","awful","horrible"};
@@ -257,12 +257,12 @@ function M.checkGemsOnItem(User,Item)
 	        return;
 	    end
 
-        FirstGemStr   = lookat_unique.writeStr(User,math.floor((Item.data % 10)/1)); -- Erste Stelle - St�rke des ersten Steins
+        FirstGemStr   = lookat_unique.writeStr(User,math.floor((Item.data % 10)/1)); -- Erste Stelle - Stärke des ersten Steins
 		FirstGemName  = lookat_unique.writeGem(User,math.floor((Item.data % 100)/10));   -- Zweite Stelle - Art des ersten Steins
 		SecondGemStr="";
 		SecondGemName="";
 		if gems==2 then
-	        SecondGemStr   = lookat_unique.writeStr(User,math.floor((Item.data % 1000)/100));       -- Dritte Stelle - St�rke des zweiten Steins
+	        SecondGemStr   = lookat_unique.writeStr(User,math.floor((Item.data % 1000)/100));       -- Dritte Stelle - Stärke des zweiten Steins
 			SecondGemName  = lookat_unique.writeGem(User,math.floor((Item.data % 10000)/1000));       -- Vierte Stelle - Art des zweiten Steins
 		end
 		if gems==2 then

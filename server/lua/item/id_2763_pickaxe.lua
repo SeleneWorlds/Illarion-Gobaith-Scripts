@@ -150,7 +150,7 @@ function M.Init()
     M.SetRessource( 6, 1246,  21, 20,  0); -- coal
     -----------Mine  Kupferberge 3 - FERTIG -----------
 
-    ---------------- Mine W�ste ---------------
+    ---------------- Mine Wüste ---------------
     M.AddArea( 10, position(122,-270,-0), 10 );
     M.AddStone( 10, 1273);
     M.SetRessource( 10, 1273,  22, 80,  0); -- iron ore
@@ -161,7 +161,7 @@ function M.Init()
     M.SetRessource( 10, 914,  234,   1,  0); -- gold nuggets
     M.SetRessource( 10, 914, 254,  2,  0); -- diamonds
     M.SetRessource( 10, 914, 257,  4, 10); -- topas
-    ----------- Mine W�ste - FERTIG -----------
+    ----------- Mine Wüste - FERTIG -----------
 
 
     ---------------- Nordmine ---------------
@@ -350,7 +350,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     if common.Encumbrence(User) then
         common.InformNLS( User,
-        "Deine R�stung behindert Dich Rohstoffe abzubauen.",
+        "Deine Rüstung behindert Dich Rohstoffe abzubauen.",
         "Your armor disturbes you when mining ores" );
         return
     end
@@ -370,7 +370,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     if ( AreaID == false ) then
         common.InformNLS(User,
-        "Die Gegend sieht nicht so aus, als k�nnte man hier etwas finden.",
+        "Die Gegend sieht nicht so aus, als könnte man hier etwas finden.",
         "The area doesn't look like a area to mine.");
         return
     end
@@ -393,13 +393,13 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     if common.ToolBreaks( User, SourceItem, true ) then
         common.InformNLS(User,
-        "Die alte und abgenutzte Spitzhacke in deinen H�nden zerbricht.",
+        "Die alte und abgenutzte Spitzhacke in deinen Händen zerbricht.",
         "The old and used pick-axe in your hands breaks.");
         return
     end
 
     if M.breakRock(TargetItem) then
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me zertr�mmert den Stein.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me zertrümmert den Stein.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me destroys the rock.");
         return
     end
@@ -459,7 +459,7 @@ function M.UseItemWithField(User,SourceItem,TargetPos,counter,param)
     
     if (GroundType ~= 5) and base_treasure.DigForTreasure( User, TargetPos, (User:getSkill("mining")/10)+1,
                                                 common.GetNLS( User,
-                                                    "Du schwingst deine Spitzhacke gegen den steinigen Boden und st��t auf etwas das noch h�rter ist als der Boden. Das muss er sein! Der Schatz. Noch einmal graben und der grenzenlose Reichtum ist dein!",
+                                                    "Du schwingst deine Spitzhacke gegen den steinigen Boden und stößt auf etwas das noch härter ist als der Boden. Das muss er sein! Der Schatz. Noch einmal graben und der grenzenlose Reichtum ist dein!",
                                                     "You swing your pick-axe against the stony ground and hit something that is even harder then the ground. That must it be! The teasure! Digging another time and it yours!" ), false ) then
         return;
     end
@@ -468,15 +468,15 @@ function M.UseItemWithField(User,SourceItem,TargetPos,counter,param)
     if (( groundTile ~= 3 ) and ( groundTile ~= 8 )) then
         if ( GroundType == 1 ) then
             common.InformNLS( User,
-            "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gr�bt sich tief in den Ackerboden.",
+            "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gräbt sich tief in den Ackerboden.",
             "You swing your pick-axe towards the ground and it digs deeply into the farm land.");
         elseif ( GroundType == 2 ) then
             common.InformNLS( User,
-            "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gr�bt sich tief in den Waldboden.",
+            "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gräbt sich tief in den Waldboden.",
             "You swing your pick-axe towards the ground and it digs deeply into the forest ground.");
         elseif ( GroundType == 4 ) then
             common.InformNLS( User,
-            "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gr�bt sich tief in die Wiese.",
+            "Du schwingst deine Spitzhacke schwungvoll gegen den Boden und sie gräbt sich tief in die Wiese.",
             "You swing your pick-axe towards the ground and it digs deeply into the gras.");
         elseif ( GroundType == 5 ) then
             common.InformNLS( User,

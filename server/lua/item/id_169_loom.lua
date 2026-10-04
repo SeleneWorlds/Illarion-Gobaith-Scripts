@@ -2,10 +2,10 @@ local M = {}
 
 -- Webstuhl ( 169 )
 
--- Wollkn�ule  --> grauer Stoff
+-- Wollknäule  --> grauer Stoff
 
 -- Arbeitscyclus: 1s - 4s
--- Zus�tzliches Werkzeug: Schere ( 6 )
+-- Zusätzliches Werkzeug: Schere ( 6 )
 
 -- UPDATE common SET com_script='item.id_169_loom' WHERE com_itemid IN (169);
 
@@ -30,9 +30,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert dich bei deiner Arbeit.",
+        "Deine Rüstung behindert dich bei deiner Arbeit.",
         "Your armor disturbs you while working." );
         return
     end
@@ -66,7 +66,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("belt",170) < 5) then
         common.InformNLS( User, 
-        "Du brauchst ein B�del Wolle in deinem G�rtel, um Stoff herzustellen.", 
+        "Du brauchst ein Büdel Wolle in deinem Gürtel, um Stoff herzustellen.", 
         "You need some wool in your belt to make cloth." );
         return
     end

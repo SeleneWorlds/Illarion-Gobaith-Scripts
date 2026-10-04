@@ -1,7 +1,7 @@
 local firsttime
 --ds_330_weisse_flasche_neu.lua
 --Druidensystem in Arbeit
---Tempor�re Einzelwirkungen
+--Temporäre Einzelwirkungen
 --Falk
 local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
@@ -12,7 +12,7 @@ local M = {}
 function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
 -- Grundwerte, Listen einlesen:
--- Sprachverst�ndnis (man kann eine Zeitlang fremde Sprachen verstehen/lesen)
+-- Sprachverständnis (man kann eine Zeitlang fremde Sprachen verstehen/lesen)
 	if firsttime == nil then
 		ListCodecs = {}
 		ListLanguages  = {}
@@ -61,7 +61,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 		Character:increaseSkill(ListSkillGroup[i],ListLanguages[i],newSkill)
 			--Character:inform(ListCodecs[i].." / "..ListLanguages[i].." / "..Character:getSkill(ListLanguages[i]))
 
---      Verwandlung ausf�hren
+--      Verwandlung ausführen
         world:gfx(5,Character.pos)
 
 --      Effekt an Char binden
@@ -125,7 +125,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
         -- ALTE FASSUNG ALS HEILTRANK
         if (ltstate == Action.abort) then
 
-            User:talkLanguage(CCharacter.say, CPlayer.german, "#me versch�ttet die Milch.");
+            User:talkLanguage(CCharacter.say, CPlayer.german, "#me verschüttet die Milch.");
             User:talkLanguage(CCharacter.say, CPlayer.english, "#me spills the milk.");
 
             world:erase( SourceItem, 1 );
@@ -143,7 +143,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 
         if User.attackmode then
             common.InformNLS( User,
-            "Du kannst nichts trinken w�hrend du k�mpfst.",
+            "Du kannst nichts trinken während du kämpfst.",
             "You can't drink something while fighting." );
             return
         end
@@ -189,7 +189,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
             "You are stuffed.");
         else
             common.InformNLS( User,
-            "Du trinkst die Flasche aus und f�hlst wie neue St�rke dich durchstr�mt.",
+            "Du trinkst die Flasche aus und fühlst wie neue Stärke dich durchströmt.",
             "You drink up the bottle, and you feel the new strength that flows through your body.");
         end
 
@@ -214,7 +214,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 	     Character.movepoints=Character.movepoints-50;
 
 	else
-	    common.InformNLS(Character,"Du kannst nichts trinken w�hrend du k�mpfst.", "You can't drink something while fighting.");
+	    common.InformNLS(Character,"Du kannst nichts trinken während du kämpfst.", "You can't drink something while fighting.");
 	end
   end
 end

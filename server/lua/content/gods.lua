@@ -45,16 +45,16 @@ M.GOD_LIST = {GOD_NARGUN,GOD_ELARA,GOD_ADRON,GOD_OLDRA,GOD_CHERGA,GOD_MALACHIN,
 
 M.GOD_EN = {
     [GOD_USHARA]   = "Ushara",
-    [GOD_BRAGON]   = "Br�gon",
+    [GOD_BRAGON]   = "Brágon",
     [GOD_ELDAN]    = "Eldan",
     [GOD_TANORA]   = "Tanora",
     [GOD_FINDARI]  = "Findari",
-    [GOD_NARGUN]   = "Narg�n",
+    [GOD_NARGUN]   = "Nargún",
     [GOD_ELARA]    = "Elara",
     [GOD_ADRON]    = "Adron",
     [GOD_OLDRA]    = "Oldra",
     [GOD_CHERGA]   = "Cherga",
-    [GOD_MALACHIN] = "Malach�n",
+    [GOD_MALACHIN] = "Malachín",
     [GOD_IRMOROM]  = "Irmorom",
     [GOD_SIRANI]   = "Sirani",
     [GOD_ZHAMBRA]  = "Zhambra",
@@ -66,22 +66,22 @@ M.GOD_EN = {
 
 M.GOD_DE = {
     [GOD_USHARA]   = "Ushara",
-    [GOD_BRAGON]   = "Br�gon",
+    [GOD_BRAGON]   = "Brágon",
     [GOD_ELDAN]    = "Eldan",
     [GOD_TANORA]   = "Tanora",
     [GOD_FINDARI]  = "Findari",
-    [GOD_NARGUN]   = "Narg�n",
+    [GOD_NARGUN]   = "Nargún",
     [GOD_ELARA]    = "Elara",
     [GOD_ADRON]    = "Adron",
     [GOD_OLDRA]    = "Oldra",
     [GOD_CHERGA]   = "Cherga",
-    [GOD_MALACHIN] = "Malach�n",
+    [GOD_MALACHIN] = "Malachín",
     [GOD_IRMOROM]  = "Irmorom",
     [GOD_SIRANI]   = "Sirani",
     [GOD_ZHAMBRA]  = "Zhambra",
     [GOD_RONAGAN]  = "Ronagan",
     [GOD_MOSHRAN]  = "Moshran",
-    [GOD_THEFIVE]  = "F�nf",
+    [GOD_THEFIVE]  = "Fünf",
     [GOD_THEDEVS]  = "Entwickler",
 }
 
@@ -93,8 +93,8 @@ M.PRAYER_CONVERSION = {
 }
 
 M.PRAYER_MASS = {
-	[GOD_NARGUN]   = {gText = "preiset narg[u�]n, gott des chaos",
-						eText = "praise narg[u�]n, god of chaos"},
+	[GOD_NARGUN]   = {gText = "preiset narg[uú]n, gott des chaos",
+						eText = "praise narg[uú]n, god of chaos"},
     [GOD_ELARA]    = {gText = "preiset",
 						eText = "praise"},
     [GOD_ADRON]    = {gText = "preiset",

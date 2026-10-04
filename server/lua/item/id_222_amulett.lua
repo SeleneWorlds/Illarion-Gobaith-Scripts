@@ -46,7 +46,7 @@ function M.LookAtItem(User, Item)
         end
 	elseif ( Item.data == 778 ) then
 		if (User:getPlayerLanguage() == 0) then
-            world:itemInform(User,Item,"Du siehst ein sternf�rmiges Amulett in dessen Mitte eine stilisierte Eisflamme eingelassen ist, die sich um eine ebenso stilisierte Feuerflamme windet.");
+            world:itemInform(User,Item,"Du siehst ein sternförmiges Amulett in dessen Mitte eine stilisierte Eisflamme eingelassen ist, die sich um eine ebenso stilisierte Feuerflamme windet.");
         else
             world:itemInform(User,Item,"You see a star-shaped amulet with a	stylized iceflame in the middle, which twines about an equal stylized fireflame.");
         end
@@ -58,7 +58,7 @@ end
 
 function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 	if (TargetItem.id == 914) and (TargetItem.data == 666) then
-        User:talkLanguage(CCharacter.say,CPlayer.german ,"#me's Hand leuchtet, ebenso wie das Drachenamulett, hell auf und als das Licht verlischt liegt ein seltsam geformter Schl�ssel in der Hand und die Schrift auf dem Steinsockel gl�ht auf.");
+        User:talkLanguage(CCharacter.say,CPlayer.german ,"#me's Hand leuchtet, ebenso wie das Drachenamulett, hell auf und als das Licht verlischt liegt ein seltsam geformter Schlüssel in der Hand und die Schrift auf dem Steinsockel glüht auf.");
         User:talkLanguage(CCharacter.say,CPlayer.english,"#me's Hand, as well as the dragon amulet, starts to glow brightly and as the light is gone there is a strange formed key inside the hand and the letters on the stone socket starts to shine.");
 		world:gfx(8,TargetItem.pos);
 		world:gfx(11,TargetItem.pos);
@@ -182,7 +182,7 @@ function M.MuckyLuck(User)
 		end
 	else
 		common.TempInformNLS(User,
-			"Irgendetwas verhindert die Ausf�hrung des Rituals.",
+			"Irgendetwas verhindert die Ausführung des Rituals.",
 			"Something inhibits performing the ritual.");
 	end
 end

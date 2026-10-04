@@ -1,8 +1,8 @@
 local firsttime
 --I_165_blaue_flasche
---Druidensystem in Arbeit / Pasten f�r Items
+--Druidensystem in Arbeit / Pasten für Items
 --Falk
---HINWEIS: In dieser Ausbaustufe(12/2007) kann nur die Haltbarkeit verbessert werden, nicht die Qualit�t
+--HINWEIS: In dieser Ausbaustufe(12/2007) kann nur die Haltbarkeit verbessert werden, nicht die Qualität
 
 local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
@@ -18,7 +18,7 @@ function M.initLists()
 	ListeObjEdelMet		= {68,95,190,224,225,235,277,278,279,280,281,282,336,383,916,1001,1840,2031,2284,2286,2287,2290,2359,2360,2363,2365,2367,2369,2390,2400,2407,2550,2647,2660,2731}
 	ListeObjHolz   		= {1,9,17,23,24,25,27,39,40,51,57,64,70,72,74,76,77,78,88,90,118,121,126,188,189,190,204,205,207,208,209,226,230,231,237,258,271,277,293,312,332,335,383,734,2185,2193,2194,2445,2448,2525,2527,2528,2530,2541,2544,2548,2549,2561,2566,2567,2570,2572,2573,2584,2585,2629,2635,2636,2642,2645,2646,2658,2660,2675,2685,2701,2708,2711,2714,2715,2718,2719,2723,2725,2731,2740,2746,2752,2705,2744,2757,2763,2775,2778,2781,2935,2952}
 	ListeObjStoff  		= {34,55,180,181,182,183,193,194,195,196,356,357,358,368,370,385,547,548,558,2295,2377,2378,2380,2384,2416,2418,2419,2420,2421,}
---F�r Horn, Fell, Seil, Knochen
+--Für Horn, Fell, Seil, Knochen
 	ListeObjHorn 			= {7,16,39,366,367,2113,2114}
 end
 
@@ -51,7 +51,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
    elseif Character:getItemAt(6).id == Targetitem.id_id then
       objectInHand = true
       objectPos= 6
-	--PflegeObjekt im G�rtel (f�r Zweih�ndige Gegenst�nde)
+	--PflegeObjekt im Gürtel (für Zweihändige Gegenstände)
 	elseif Character:getItemAt(12).id == Targetitem.id_id then
       objectInHand = true
       objectPos= 12
@@ -77,49 +77,49 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
      qual = math.floor(Targetitem.id_quality/100)
      dura = Targetitem.id_quality - qual*100
 
---   Effekte f�r Metall:
+--   Effekte für Metall:
      for zaehler = 1,#ListeObjMetall do
          if ListeObjMetall[zaehler]==Targetitem.id_id then
             wert = dataZList[1] -5
             dura = dura + (wert*25*((Character:getSkill("smithing")+math.floor(Sourceitem.id_quality/10))/100))
          end
      end
---   Effekte f�r Nahrung:
+--   Effekte für Nahrung:
      for zaehler = 1,#ListeObjNahrung do
          if ListeObjNahrung[zaehler]==Targetitem.id_id then
             wert = dataZList[2] -5
             dura = dura + (wert*25*((Character:getSkill("baking")+math.floor(Sourceitem.id_quality/10))/100))
          end
      end
---   Effekte f�r Leder:
+--   Effekte für Leder:
      for zaehler = 1,#ListeObjLeder do
          if ListeObjLeder[zaehler]==Targetitem.id_id then
             wert = dataZList[3] -5
             dura = dura + (wert*25*((Character:getSkill("tailoring")+math.floor(Sourceitem.id_quality/10))/100))
          end
      end
---   Effekte f�r Edelsteine:
+--   Effekte für Edelsteine:
      for zaehler = 1,#ListeObjEdelstein do
          if ListeObjEdelstein[zaehler]==Targetitem.id_id then
             wert = dataZList[4] -5
                    dura = dura + (wert*25*((Character:getSkill("goldsmithing")+math.floor(Sourceitem.id_quality/10))/100))
          end
      end
---   Effekte f�r Edelmetalle:
+--   Effekte für Edelmetalle:
      for zaehler = 1,#ListeObjEdelMet do
          if ListeObjEdelMet[zaehler]==Targetitem.id_id then
             wert = dataZList[5] -5
                    dura = dura + (wert*25*((Character:getSkill("smithing")+math.floor(Sourceitem.id_quality/10))/100))
          end
      end
---   Effekte f�r Holz:
+--   Effekte für Holz:
      for zaehler = 1,#ListeObjHolz do
          if ListeObjHolz[zaehler]==Targetitem.id_id then
             wert = dataZList[6] -5
                    dura = dura + (wert*25*((Character:getSkill("carpentry")+math.floor(Sourceitem.id_quality/10))/100))
          end
      end
---   Effekte f�r Stoff:
+--   Effekte für Stoff:
      for zaehler = 1,#ListeObjStoff do
          if ListeObjStoff[zaehler]==Targetitem.id_id then
             wert = dataZList[7] -5
@@ -127,7 +127,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
          end
      end
 --
---   Effekte f�r Sonstige:
+--   Effekte für Sonstige:
      for zaehler = 1,#ListeObjHorn do
          if ListeObjHorn[zaehler]==Targetitem.id_id then
             wert = dataZList[8] -5
@@ -147,7 +147,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 --
   else
   common.InformNLS( Character,
-            "Paste in der Hand mit einem Objekt in anderer Hand oder im G�rtel benutzen.",
+            "Paste in der Hand mit einem Objekt in anderer Hand oder im Gürtel benutzen.",
             "Paste in your hand has to be used with an object in the other hand or in the belt.");
   end
 end  -- function M.DoDruidism
@@ -160,7 +160,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
     if (ltstate == Action.abort) then
 
         -- Cast forced emotes from the Charakter who uses our potion (german for germans, english for the rest)
-        Character:talkLanguage(CCharacter.say, CPlayer.german, "#me versch�ttet den Trank.");
+        Character:talkLanguage(CCharacter.say, CPlayer.german, "#me verschüttet den Trank.");
         Character:talkLanguage(CCharacter.say, CPlayer.english, "#me spills the potion.");
 
         -- remove the potion item
@@ -190,7 +190,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         -- So he can't drink something
         -- Lets tell him about that...
         common.InformNLS(Character,
-        "Du kannst nichts trinken w�hrend du k�mpfst.",
+        "Du kannst nichts trinken während du kämpfst.",
         "You can't drink something while fighting.");
 
         -- We are done with the script, lets leave. The Character fights so he gets no additional health
@@ -256,7 +256,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
         -- Lets inform the player that he ate too much
 
-        common.InformNLS(Character,"Du f�hlst wie der Trank deine Konzentration wieder steigert",
+        common.InformNLS(Character,"Du fühlst wie der Trank deine Konzentration wieder steigert",
 		"You feel that the potion raises your concentration again");
 
 
@@ -271,7 +271,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         "You are stuffed.");
     else
         -- Still much space in the stomach. Just say him what the potion does to his body
-       common.InformNLS(Character,"Du f�hlst wie der Trank deine Konzentration wieder steigert",
+       common.InformNLS(Character,"Du fühlst wie der Trank deine Konzentration wieder steigert",
 		"You feel that the potion raises your concentration again");
     end
   else
@@ -293,7 +293,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        Character.movepoints=Character.movepoints-50;
 
     else
-      common.InformNLS(Character,"Du kannst die Paste nicht benutzen w�hrend du k�mpfst.", "You can't use the paste something while fighting.");
+      common.InformNLS(Character,"Du kannst die Paste nicht benutzen während du kämpfst.", "You can't use the paste something while fighting.");
     end
   end
 end

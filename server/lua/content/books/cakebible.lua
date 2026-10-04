@@ -31,28 +31,28 @@ function M.loadBook(toData)
     
     base_books.AddGermanBookText("Die Kuchenbibel",0,0,toData);
     base_books.AddGermanBookText("Inhaltsverzeichnung:\nWidmung Seite 3\nVorbereitung Seite 4-5\nRezepte Seite 5-15\nUnterformen Seite 16-20\nPhilosophisches Seite 21-22\nDanksagen, Seite",0,0,toData);
-    base_books.AddGermanBookText("Widmung:\n\n An alle Freunde der s��en Leckereien\n\n\n Die Autoren Lana von Maibach und Cassandria",0,0,toData);
-    base_books.AddGermanBookText("Vorbereitung:\n Um losbacken zu k�nnen, braucht man nat�rlich erstmal ganz viel Teig, ein Nudelholz, um den Teig auszuw�llen, einen Ofenschieber und n�t�rlich die jeweigen Zutaten. Man lege sich dies",0,0,toData);
+    base_books.AddGermanBookText("Widmung:\n\n An alle Freunde der süßen Leckereien\n\n\n Die Autoren Lana von Maibach und Cassandria",0,0,toData);
+    base_books.AddGermanBookText("Vorbereitung:\n Um losbacken zu können, braucht man natürlich erstmal ganz viel Teig, ein Nudelholz, um den Teig auszuwällen, einen Ofenschieber und nätürlich die jeweigen Zutaten. Man lege sich dies",0,0,toData);
     base_books.AddGermanBookText("alles zurecht und schon kann der Backspass beginnen.",0,0,toData);
-    base_books.AddGermanBookText("Apfelhauch:\n\n Man nehme zwei Batzen Teig und fome daraus erstmal eine Runde Form. Dann sch�llt und entkern man die �pfel, a�erbem muss man sie noch in St�ck schneiden. Man nimmt eine der rrunden",353,0,toData); -- ### Apfelkuchen ###
-    base_books.AddGermanBookText("Teiformen und setze darauf vorsichtig die einzelnen Apfelscheiben je nach Geschmack n�her oder weiter auseinander Dann denkt man den Kuchen mit der anderen Teigform zu und backt sie bei mittlerer",0,0,toData);
-    base_books.AddGermanBookText("Hitze bis sich eine goldbrauene Kruste gebildet hat. Man l�sst denn Kuchen eine halbe Stunde im Freien abk�hlen und passt auf, das kein Halbling vorbeikommt um ihn zu klauen und dann guten Appetit!",0,0,toData);
+    base_books.AddGermanBookText("Apfelhauch:\n\n Man nehme zwei Batzen Teig und fome daraus erstmal eine Runde Form. Dann schällt und entkern man die Äpfel, aßerbem muss man sie noch in Stück schneiden. Man nimmt eine der rrunden",353,0,toData); -- ### Apfelkuchen ###
+    base_books.AddGermanBookText("Teiformen und setze darauf vorsichtig die einzelnen Apfelscheiben je nach Geschmack näher oder weiter auseinander Dann denkt man den Kuchen mit der anderen Teigform zu und backt sie bei mittlerer",0,0,toData);
+    base_books.AddGermanBookText("Hitze bis sich eine goldbrauene Kruste gebildet hat. Man lässt denn Kuchen eine halbe Stunde im Freien abkühlen und passt auf, das kein Halbling vorbeikommt um ihn zu klauen und dann guten Appetit!",0,0,toData);
     base_books.AddGermanBookText("Kirschtraum:\n\nMan forme erstmal wieder aus zwei Batzen Teig eine runde Form. Dann entkerme man etwa zwei mal zwei Hand Kirschen. Die eine Teigform wird daraufhin mit den entkernten Kirschen belegt,",303,0,toData); -- ### Kirschtorte ###
-    base_books.AddGermanBookText("woraufhin man diese Teigform mit der anderen zudeckt. Man schiene das ganze in den fen und backe es mit mittlerer Hitze, bis sich eine hellbraune Kruste bildet. Das ganze l�sst man dann noch etwa eine",0,0,toData);
-    base_books.AddGermanBookText("halbe Stunde abk�hlen und passt auf, das es nicht geklaut wird. Dann mit viel Genu� und geschlossenen Augen die Torte essen.",0,0,toData);
-    base_books.AddGermanBookText("Sinfonie aus s�� und s��er:\n\n Diesmal Forme man aus drei Batzen Teig drei runde Formen. Man belege die erste Form mit halbierten Erdeerscheiben und deckte die zweite darauf, genauso verf�hrt man mit",354,0,toData); -- ### Erdbeertorte ###
-    base_books.AddGermanBookText("der zweiten Tortenform. Nun deckr man die dritte auch noch auf die Zweite und verstreicht den Rand mit ein bisschen zus�tzlichem Teig, sodass keine L�cke zwischen den Teigschichten mehr ist. Man b�ckt",0,0,toData);
-    base_books.AddGermanBookText("nun das ganze auf mittlerer Hitze bis sich eine goldbraune Kruste bildet. Danach l�sst man das ganze eine halbe Stunde lang abk�hlen und gibt auf die Kruste noch ein paar Erdbeeren. Man schlie�t die",0,0,toData);
-    base_books.AddGermanBookText("Augen und schmeckt die s��e Sinfonie (essen!!!).",0,0,toData);
-    base_books.AddGermanBookText("Brombeerwolke:\n\nMan nehme zwei Batzen Teig, aus einem Forme man ein becherformiges Beh�ltnis, aus dem anderen ein Tellerformiges. Nun erhitzt man eine Honigwabe in einem Becher, bis sich diese",454,0,toData); -- ### Brombeermuffin ###
-    base_books.AddGermanBookText("vollst�ndig verfl�ssigt hat. Dann gibt man etwa eine Handvoll reifer Brombeeren in den Honig und sch�ttet beidess in das kelchf�rmige Teigbeh�ltnis. Dann deckt man das ganze mit den tellerf�rmigen",0,0,toData);
-    base_books.AddGermanBookText("Teigbeh�ltnis zu und b�ckt das ganze etwa 10 Minuten und dann kann man auf Brombeerwolken schweben.",0,0,toData);
-    base_books.AddGermanBookText("S��e Verf�hrung:\n\nMan w�llt einen Teigklumpen aus und macht Ausstecherchen. Dann erhitzt man Honig, bis sich dieser vollst�ndig verfl�ssigt hat und bestreiche die Ausstecher mit einem Pinzel mit",453,0,toData); -- ### Kekse ###
-    base_books.AddGermanBookText("Honig. Das ganze wird dann noch etwa 15 Minuten bei mittlerer Hitze gebacken und man kann sich dann der Verf�hrung hingeben.",0,0,toData);
-    base_books.AddGermanBookText("Die G�te des Kuchens:\n(Auch auf andere Schleckereien anwendbar)\n\nDie Qualit�t eines Kuchen wird an den Bisstellen im Kuchen gemessen. Sollten soviele Bisstellen vorhanden sein, dass kein Kuchen",0,0,toData);
+    base_books.AddGermanBookText("woraufhin man diese Teigform mit der anderen zudeckt. Man schiene das ganze in den fen und backe es mit mittlerer Hitze, bis sich eine hellbraune Kruste bildet. Das ganze lässt man dann noch etwa eine",0,0,toData);
+    base_books.AddGermanBookText("halbe Stunde abkühlen und passt auf, das es nicht geklaut wird. Dann mit viel Genuß und geschlossenen Augen die Torte essen.",0,0,toData);
+    base_books.AddGermanBookText("Sinfonie aus süß und süßer:\n\n Diesmal Forme man aus drei Batzen Teig drei runde Formen. Man belege die erste Form mit halbierten Erdeerscheiben und deckte die zweite darauf, genauso verfährt man mit",354,0,toData); -- ### Erdbeertorte ###
+    base_books.AddGermanBookText("der zweiten Tortenform. Nun deckr man die dritte auch noch auf die Zweite und verstreicht den Rand mit ein bisschen zusätzlichem Teig, sodass keine Lücke zwischen den Teigschichten mehr ist. Man bückt",0,0,toData);
+    base_books.AddGermanBookText("nun das ganze auf mittlerer Hitze bis sich eine goldbraune Kruste bildet. Danach lässt man das ganze eine halbe Stunde lang abkühlen und gibt auf die Kruste noch ein paar Erdbeeren. Man schließt die",0,0,toData);
+    base_books.AddGermanBookText("Augen und schmeckt die süße Sinfonie (essen!!!).",0,0,toData);
+    base_books.AddGermanBookText("Brombeerwolke:\n\nMan nehme zwei Batzen Teig, aus einem Forme man ein becherformiges Behältnis, aus dem anderen ein Tellerformiges. Nun erhitzt man eine Honigwabe in einem Becher, bis sich diese",454,0,toData); -- ### Brombeermuffin ###
+    base_books.AddGermanBookText("vollständig verflüssigt hat. Dann gibt man etwa eine Handvoll reifer Brombeeren in den Honig und schüttet beidess in das kelchförmige Teigbehältnis. Dann deckt man das ganze mit den tellerförmigen",0,0,toData);
+    base_books.AddGermanBookText("Teigbehältnis zu und bückt das ganze etwa 10 Minuten und dann kann man auf Brombeerwolken schweben.",0,0,toData);
+    base_books.AddGermanBookText("Süße Verführung:\n\nMan wällt einen Teigklumpen aus und macht Ausstecherchen. Dann erhitzt man Honig, bis sich dieser vollständig verflüssigt hat und bestreiche die Ausstecher mit einem Pinzel mit",453,0,toData); -- ### Kekse ###
+    base_books.AddGermanBookText("Honig. Das ganze wird dann noch etwa 15 Minuten bei mittlerer Hitze gebacken und man kann sich dann der Verführung hingeben.",0,0,toData);
+    base_books.AddGermanBookText("Die Güte des Kuchens:\n(Auch auf andere Schleckereien anwendbar)\n\nDie Qualität eines Kuchen wird an den Bisstellen im Kuchen gemessen. Sollten soviele Bisstellen vorhanden sein, dass kein Kuchen",0,0,toData);
     base_books.AddGermanBookText("mehr da ist, kann man davon ausgehen, dass der Kuchen ein guter Kucchen war.",0,0,toData);
-    base_books.AddGermanBookText("Danksagung:\n\n Wir danken allen Kuchen, Keksen und Muffins, die von uns verspeist wurden und uns zu dieser Bibel inspiriert haben. Desweiteren m�chten wir den B�ckern danken, ohne die es diese",0,0,toData);
-    base_books.AddGermanBookText("Leckerein nicht gebe, au�erdem unseren Freunden, die uns mit Leckerein versorgt haben, w�hrend wir dieses Buch schrieben\n\n Die Autoren\n Lana von Maibach und Cassandria",0,0,toData);
+    base_books.AddGermanBookText("Danksagung:\n\n Wir danken allen Kuchen, Keksen und Muffins, die von uns verspeist wurden und uns zu dieser Bibel inspiriert haben. Desweiteren möchten wir den Bäckern danken, ohne die es diese",0,0,toData);
+    base_books.AddGermanBookText("Leckerein nicht gebe, außerdem unseren Freunden, die uns mit Leckerein versorgt haben, während wir dieses Buch schrieben\n\n Die Autoren\n Lana von Maibach und Cassandria",0,0,toData);
 end;
 
 function loadTitle(toData)

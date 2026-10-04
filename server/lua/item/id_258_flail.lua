@@ -4,7 +4,7 @@ local M = {}
 
 -- Dreschflegel ( 258 )
 
--- Getreideb�ndel  --> Getreidek�rner
+-- Getreidebündel  --> Getreidekörner
 
 -- Arbeitscyclus: 0.5s - 4s
 
@@ -30,9 +30,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
     
-    if common.Encumbrence(User) then -- Durch Steife R�stung behindert
+    if common.Encumbrence(User) then -- Durch Steife Rüstung behindert
         common.InformNLS( User,
-        "Deine R�stung behindert Dich beim Getreide dreschen.",
+        "Deine Rüstung behindert Dich beim Getreide dreschen.",
         "Your armor disturbes you when flailing grain" );
         return
     end
@@ -44,11 +44,11 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
     
-    if not common.FitForWork( User ) then -- Nicht ersch�pft
+    if not common.FitForWork( User ) then -- Nicht erschöpft
         return
     end
     
-    if (User:countItemAt("belt",249)==0) then -- Getreideb�ndel im G�rtel
+    if (User:countItemAt("belt",249)==0) then -- Getreidebündel im Gürtel
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
             "Was willst du mich dem Dreschflegel bearbeiten? Dich selbst?", 
@@ -68,11 +68,11 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         local selectMessage = math.random(1,5);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
-            "Du wischst dir den Schwei� von der Stirn.",
+            "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
-            "Die Dreschstange des Flegels l�st sich und du musst sie erneut festbinden.",
+            "Die Dreschstange des Flegels löst sich und du musst sie erneut festbinden.",
             "The flail's chain appears to be stuck, it takes you some time to fix it.");
         elseif ( selectMessage == 3 ) then
             common.InformNLS(User,
@@ -84,33 +84,33 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
             "You sweep the husk into a pile and carry it away.");
         else
             common.InformNLS(User,
-            "Deine H�nde brennen wie Feuer, deshalb machst du eine kurze Pause. Hoffentlich gibt das keine Blase...",
+            "Deine Hände brennen wie Feuer, deshalb machst du eine kurze Pause. Hoffentlich gibt das keine Blase...",
             "Your arms appear to be getting very tired, you decide on a short break.");
         end
         return
     end
     
-    if common.ToolBreaks( User, SourceItem, true ) then -- Dreschflegen besch�digen
+    if common.ToolBreaks( User, SourceItem, true ) then -- Dreschflegen beschädigen
         common.InformNLS(User,
         "Dein alter Dreschflegel zerbricht.",
         "Your old flail breaks.");
         return
     end
                  
-    User:eraseItem( 249, 1 ); -- Getreideb�ndel wegnehmen
+    User:eraseItem( 249, 1 ); -- Getreidebündel wegnehmen
     amount = M.GenAmount(User);
-    local notCreated = User:createItem( 259, amount, 333 ,0); -- Getreidek�rner erstellen
+    local notCreated = User:createItem( 259, amount, 333 ,0); -- Getreidekörner erstellen
 		if ( amount==0) then
 			common.InformNLS(User,
-			"Du versch�ttest etwas Getreide.",
+			"Du verschüttest etwas Getreide.",
 			"You spill some grain.");
 		else
-    		if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
+    		if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
         		world:createItemFromId( 259, notCreated, User.pos, true, 333 ,0);
         		common.InformNLS(User,
         		"Du kannst nichts mehr halten.",
         		"You can't carry any more.");
-    		else -- Nicht �berladen -> Neue aktion Starten
+    		else -- Nicht überladen -> Neue aktion Starten
 			User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
     		end      
     end              

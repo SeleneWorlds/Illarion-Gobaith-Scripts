@@ -30,7 +30,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 
 	  	Caster:learn(6,"exquirere",3,100)
 
-	    textDE="Dieser Trank hat eine "..alchemy.qListDe[qualstat].." Qualit�t"
+	    textDE="Dieser Trank hat eine "..alchemy.qListDe[qualstat].." Qualität"
 	    textEN="This potion has a "..alchemy.qListEn[qualstat].." quality"
 		if Caster:getPlayerLanguage() == 0 then
 			Caster:inform("#b|0|0|"..textDE)

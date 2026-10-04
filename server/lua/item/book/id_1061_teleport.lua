@@ -80,7 +80,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
             -- use up the book
             --if math.random( 1, 3 )==2 then
             --common.InformNLS( User,
-            --"Das Buch wurde zu oft verwendet. Es zerf�lt zu Staub.",
+            --"Das Buch wurde zu oft verwendet. Es zerfällt zu Staub.",
             --"The book was used too often. It decays into dust." );
             world:erase( SourceItem, 1 );
             --end

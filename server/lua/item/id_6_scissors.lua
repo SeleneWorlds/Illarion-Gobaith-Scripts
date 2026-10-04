@@ -63,7 +63,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local selectMessage = math.random(1,3);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
-            "Du wischst dir den Schwei� von der Stirn.",
+            "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
@@ -82,7 +82,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if common.ToolBreaks( User, SourceItem, true ) then
         common.InformNLS(User,
-        "Die alte und abgenutzte Schere in deinen H�nden zerbricht.",
+        "Die alte und abgenutzte Schere in deinen Händen zerbricht.",
         "The old and used scissors in your hands breaks.");
     else
         User:startAction( 16, 0, 0, 0, 0);
@@ -149,7 +149,7 @@ function M.UseItemWithCharacter(User,SourceItem, Character, Counter, Param,ltsta
         local selectMessage = math.random(1,3);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
-            "Du wischst dir den Schwei� von der Stirn.",
+            "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
@@ -168,7 +168,7 @@ function M.UseItemWithCharacter(User,SourceItem, Character, Counter, Param,ltsta
     
     if common.ToolBreaks( User, SourceItem ) then
         common.InformNLS(User,
-        "Die alte und abgenutzte Schere in deinen H�nden zerbricht.",
+        "Die alte und abgenutzte Schere in deinen Händen zerbricht.",
         "The old and used scissors in your hands breaks.");
     else
         User:startAction( 13, 0, 0, 0, 0);

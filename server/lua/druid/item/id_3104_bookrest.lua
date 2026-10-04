@@ -1,6 +1,6 @@
 local firsttime
 -- ds_3104_pult.lua
--- Pergament f�r das Druidensystem
+-- Pergament für das Druidensystem
 -- Falk
 local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
@@ -15,7 +15,7 @@ function M.init()
 		rKey = {}
 		firsttime = 1
 
-	-- Wei�e Flasche / Sprachen lernen
+	-- Weiße Flasche / Sprachen lernen
 	rKey[1] = 15751754; rNameDE[1] = "Sprachtrunk: Echsisch"      ;rNameEN[1] = "Lizard Language";
 	rKey[2] = 32529515; rNameDE[2] = "Sprachtrunk: Elfisch"       ;rNameEN[2] = "Elbian Language";
 	rKey[3] = 45942235; rNameDE[3] = "Sprachtrunk: Mensch"        ;rNameEN[3] = "Human Language";
@@ -48,7 +48,7 @@ function M.init()
 	rKey[28] = 38114786; rNameDE[28] = "Skorpion";      rNameEN[28] = "Scorpion";
 	rKey[29] = 95371655; rNameDE[29] = "Schwein";       rNameEN[29] = "Pig";
 	rKey[30] = 71796337; rNameDE[30] = "Unsichtbar";    rNameEN[30] = "Air";
-	rKey[31] = 87611881; rNameDE[31] = "Sch�del";       rNameEN[31] = "Skull";
+	rKey[31] = 87611881; rNameDE[31] = "Schädel";       rNameEN[31] = "Skull";
 	rKey[32] = 31231973; rNameDE[32] = "Wespe";         rNameEN[32] = "Wasp";
 	rKey[33] = 14523375; rNameDE[33] = "Waldtroll";       rNameEN[33] = "Forest Troll";
 	rKey[34] = 46852135; rNameDE[34] = "Geister-Skelett"; rNameEN[34] = "Shadow Skeleton";
@@ -58,7 +58,7 @@ function M.init()
 	rKey[38] = 51464953; rNameDE[38] = "Drache";          rNameEN[38] = "Dragon";
 	rKey[39] = 97171535; rNameDE[39] = "Drow";            rNameEN[39] = "Drow";
 	rKey[40] = 77577615; rNameDE[40] = "Drow-Frau";       rNameEN[40] = "Female Drow";
-	rKey[41] = 11695753; rNameDE[41] = "Kleiner D�mon";   rNameEN[41] = "Lower Demon";
+	rKey[41] = 11695753; rNameDE[41] = "Kleiner Dämon";   rNameEN[41] = "Lower Demon";
 	rKey[42] = 62545579; rNameDE[42] = "Kuh";             rNameEN[42] = "Cow";
 	rKey[43] = 81519773; rNameDE[43] = "Hirsch";          rNameEN[43] = "Deer";
 	rKey[44] = 95153618; rNameDE[44] = "Wolf";            rNameEN[44] = "Wolve";
@@ -76,7 +76,7 @@ function M.init()
 	rKey[54] = 15386558; rNameDE[54] = "Gwenwyn Sgorpion Epidemig";  rNameEN[54] = "Gwenwyn Sgorpion Epidemig";
 	rKey[55] = 58595367; rNameDE[55] = "Gwenwyn Blaidd Haint";       rNameEN[55] = "Gwenwyn Blaidd Haint";
 
-	-- Orange Flasche / Virus-Medizin   !!! Codecs nochmal pr�fen !!!
+	-- Orange Flasche / Virus-Medizin   !!! Codecs nochmal prüfen !!!
 	rKey[56] = 27315949; rNameDE[56] = "Rhag Anghenfil Twymyn";              rNameEN[56] = "Rhag Anghenfil Twymyn";
 	rKey[57] = 84767916; rNameDE[57] = "Rhag Morfa Cwlwm Gwythi";            rNameEN[57] = "Rhag Morfa Cwlwm Gwythi";
 	rKey[58] = 12224537; rNameDE[58] = "Trolio Caethineb Meddyginiaeth";     rNameEN[58] = "Trolio Caethineb Meddyginiaeth";
@@ -87,8 +87,8 @@ function M.init()
 	rKey[63] = 52515743; rNameDE[63] = "Blaidd Haint Meddyginiaeth";         rNameEN[63] = "Blaidd Haint Meddyginiaeth";
 
 	-- Hellblaue Flasche / Pasten
-	rKey[64] = 95555555; rNameDE[64] = "Metall-Pflege�l";              rNameEN[64] = "Metal Care Product";
-	rKey[65] = 59555555; rNameDE[65] = "Wunderpaste f�r Lebensmittel"; rNameEN[65] = "Foodstuff Panaceas";
+	rKey[64] = 95555555; rNameDE[64] = "Metall-Pflegeöl";              rNameEN[64] = "Metal Care Product";
+	rKey[65] = 59555555; rNameDE[65] = "Wunderpaste für Lebensmittel"; rNameEN[65] = "Foodstuff Panaceas";
 	rKey[66] = 55955555; rNameDE[66] = "Lederfett";                    rNameEN[66] = "Dubbin";
 	rKey[67] = 55595555; rNameDE[67] = "Edelstein-Politur";            rNameEN[67] = "Gemstone Polish" ;
 	rKey[68] = 55559555; rNameDE[68] = "Edelmetall-Pflege";            rNameEN[68] = "Noble Metal Polish";
@@ -115,38 +115,38 @@ function M.init()
 	rKey[86] = 62358491; rNameDE[86] = ""; rNameEN[86] = ""; --Aufgeteilter Sattmacher-Schaden auf 21er Feld
 	rKey[87] = 84613666; rNameDE[87] = ""; rNameEN[87] = ""; --Hasenbarriere auf 9er-Feld
 	rKey[88] = 29732752; rNameDE[88] = ""; rNameEN[88] = ""; --Hasenbarriere auf 21er-Feld
-	rKey[89] = 55938556; rNameDE[89] = ""; rNameEN[89] = ""; --Voller Haltbarkeits-Schaden auf R�stungen auf 1er Feld
-	rKey[90] = 43245354; rNameDE[90] = ""; rNameEN[90] = ""; --Voller Haltbarkeits-Schaden auf R�stungen auf 9er Feld
-	rKey[91] = 95257533; rNameDE[91] = ""; rNameEN[91] = ""; --Aufgeteilter Haltbarkeits-Schaden auf R�stungen auf 9er Feld
-	rKey[92] = 59159412; rNameDE[92] = ""; rNameEN[92] = ""; --Voller Haltbarkeits-Schaden auf R�stungen auf 21er Feld
-	rKey[93] = 36557188; rNameDE[93] = ""; rNameEN[93] = ""; --Aufgeteilter Haltbarkeits-Schaden auf R�stungen auf 21er Feld
-	rKey[94] = 98538617; rNameDE[94] = ""; rNameEN[94] = ""; --Voller Qualit�ts-Schaden auf R�stungen auf 1er Feld
-	rKey[95] = 79684787; rNameDE[95] = ""; rNameEN[95] = ""; --Voller Qualit�ts-Schaden auf R�stungen auf 9er Feld
-	rKey[96] = 32484266; rNameDE[96] = ""; rNameEN[96] = ""; --Aufgeteilter Qualit�ts-Schaden auf R�stungen auf 9er Feld
-	rKey[97] = 96261935; rNameDE[97] = ""; rNameEN[97] = ""; --Voller Qualit�ts-Schaden auf R�stungen auf 21er Feld
-	rKey[98] = 26372612; rNameDE[98] = ""; rNameEN[98] = ""; --Aufgeteilter Qualit�ts-Schaden auf R�stungen auf 21er Feld
+	rKey[89] = 55938556; rNameDE[89] = ""; rNameEN[89] = ""; --Voller Haltbarkeits-Schaden auf Rüstungen auf 1er Feld
+	rKey[90] = 43245354; rNameDE[90] = ""; rNameEN[90] = ""; --Voller Haltbarkeits-Schaden auf Rüstungen auf 9er Feld
+	rKey[91] = 95257533; rNameDE[91] = ""; rNameEN[91] = ""; --Aufgeteilter Haltbarkeits-Schaden auf Rüstungen auf 9er Feld
+	rKey[92] = 59159412; rNameDE[92] = ""; rNameEN[92] = ""; --Voller Haltbarkeits-Schaden auf Rüstungen auf 21er Feld
+	rKey[93] = 36557188; rNameDE[93] = ""; rNameEN[93] = ""; --Aufgeteilter Haltbarkeits-Schaden auf Rüstungen auf 21er Feld
+	rKey[94] = 98538617; rNameDE[94] = ""; rNameEN[94] = ""; --Voller Qualitäts-Schaden auf Rüstungen auf 1er Feld
+	rKey[95] = 79684787; rNameDE[95] = ""; rNameEN[95] = ""; --Voller Qualitäts-Schaden auf Rüstungen auf 9er Feld
+	rKey[96] = 32484266; rNameDE[96] = ""; rNameEN[96] = ""; --Aufgeteilter Qualitäts-Schaden auf Rüstungen auf 9er Feld
+	rKey[97] = 96261935; rNameDE[97] = ""; rNameEN[97] = ""; --Voller Qualitäts-Schaden auf Rüstungen auf 21er Feld
+	rKey[98] = 26372612; rNameDE[98] = ""; rNameEN[98] = ""; --Aufgeteilter Qualitäts-Schaden auf Rüstungen auf 21er Feld
 	rKey[99] = 56548394; rNameDE[99] = ""; rNameEN[99] = ""; --Voller Haltbarkeits-Schaden auf Waffen auf 1er Feld
 	rKey[100] = 81876627; rNameDE[100] = ""; rNameEN[100] = ""; --Voller Haltbarkeits-Schaden auf Waffen auf 9er Feld
 	rKey[101] = 86656358; rNameDE[101] = ""; rNameEN[101] = ""; --Aufgeteilter Haltbarkeits-Schaden auf Waffen auf 9er Feld
 	rKey[102] = 77254231; rNameDE[102] = ""; rNameEN[102] = ""; --Voller Haltbarkeits-Schaden auf Waffen auf 21er Feld
 	rKey[103] = 32185872; rNameDE[103] = ""; rNameEN[103] = ""; --Aufgeteilter Haltbarkeits-Schaden auf Waffen auf 21er Feld
-	rKey[104] = 91357421; rNameDE[104] = ""; rNameEN[104] = ""; --Voller Qualit�ts-Schaden auf Waffen auf 1er Feld
-	rKey[105] = 52761593; rNameDE[105] = ""; rNameEN[105] = ""; --Voller Qualit�ts-Schaden auf Waffen auf 9er Feld
-	rKey[106] = 19123643; rNameDE[106] = ""; rNameEN[106] = ""; --Aufgeteilter Qualit�ts-Schaden auf Waffen auf 9er Feld
-	rKey[107] = 35471525; rNameDE[107] = ""; rNameEN[107] = ""; --Voller Qualit�ts-Schaden auf Waffen auf 21er Feld
-	rKey[108] = 32812622; rNameDE[108] = ""; rNameEN[108] = ""; --Aufgeteilter Qualit�ts-Schaden auf Waffen auf 21er Feld
+	rKey[104] = 91357421; rNameDE[104] = ""; rNameEN[104] = ""; --Voller Qualitäts-Schaden auf Waffen auf 1er Feld
+	rKey[105] = 52761593; rNameDE[105] = ""; rNameEN[105] = ""; --Voller Qualitäts-Schaden auf Waffen auf 9er Feld
+	rKey[106] = 19123643; rNameDE[106] = ""; rNameEN[106] = ""; --Aufgeteilter Qualitäts-Schaden auf Waffen auf 9er Feld
+	rKey[107] = 35471525; rNameDE[107] = ""; rNameEN[107] = ""; --Voller Qualitäts-Schaden auf Waffen auf 21er Feld
+	rKey[108] = 32812622; rNameDE[108] = ""; rNameEN[108] = ""; --Aufgeteilter Qualitäts-Schaden auf Waffen auf 21er Feld
 	rKey[109] = 12836431; rNameDE[109] = ""; rNameEN[109] = ""; --Voller Haltbarkeits-Schaden auf Holzitems auf 1er Feld
 	rKey[110] = 43185342; rNameDE[110] = ""; rNameEN[110] = ""; --Voller Haltbarkeits-Schaden auf Holzitems auf 9er Feld
 	rKey[111] = 57771997; rNameDE[111] = ""; rNameEN[111] = ""; --Aufgeteilter Haltbarkeits-Schaden auf Holzitems auf 9er Feld
 	rKey[112] = 13245638; rNameDE[112] = ""; rNameEN[112] = ""; --Voller Haltbarkeits-Schaden auf Holzitems auf 21er Feld
 	rKey[113] = 88343542; rNameDE[113] = ""; rNameEN[113] = ""; --Aufgeteilter Haltbarkeits-Schaden auf Holzitems auf 21er Feld
-	rKey[114] = 67589591; rNameDE[114] = ""; rNameEN[114] = ""; --Voller Qualit�ts-Schaden auf Holzitems auf 1er Feld
-	rKey[115] = 96566994; rNameDE[115] = ""; rNameEN[115] = ""; --Voller Qualit�ts-Schaden auf Holzitems auf 9er Feld
-	rKey[116] = 13983419; rNameDE[116] = ""; rNameEN[116] = ""; --Aufgeteilter Qualit�ts-Schaden auf Holzitems auf 9er Feld
-	rKey[117] = 42218944; rNameDE[117] = ""; rNameEN[117] = ""; --Voller Qualit�ts-Schaden auf Holzitems auf 21er Feld
-	rKey[118] = 69657293; rNameDE[118] = ""; rNameEN[118] = ""; --Aufgeteilter Qualit�ts-Schaden auf Holzitems auf 21er Feld
+	rKey[114] = 67589591; rNameDE[114] = ""; rNameEN[114] = ""; --Voller Qualitäts-Schaden auf Holzitems auf 1er Feld
+	rKey[115] = 96566994; rNameDE[115] = ""; rNameEN[115] = ""; --Voller Qualitäts-Schaden auf Holzitems auf 9er Feld
+	rKey[116] = 13983419; rNameDE[116] = ""; rNameEN[116] = ""; --Aufgeteilter Qualitäts-Schaden auf Holzitems auf 9er Feld
+	rKey[117] = 42218944; rNameDE[117] = ""; rNameEN[117] = ""; --Voller Qualitäts-Schaden auf Holzitems auf 21er Feld
+	rKey[118] = 69657293; rNameDE[118] = ""; rNameEN[118] = ""; --Aufgeteilter Qualitäts-Schaden auf Holzitems auf 21er Feld
 
-	-- Rote Flasche / Prim�rattribute
+	-- Rote Flasche / Primärattribute
 	rKey[179] = 65555555; rNameDE[179] = "Quelle der Kraft";    rNameEN[179] = "Spring Of Power"; --"strength"
 	rKey[180] = 56555555; rNameDE[180] = "Quelle des Willens"; 	rNameEN[180] = "Spring Of Will"; --"willpower"
 	rKey[181] = 55655555; rNameDE[181] = "Quelle der Sinne"; 	rNameEN[181] = "Spring Of Senses"; --"perception"
@@ -188,22 +188,22 @@ function M.init()
 	rKey[146] = 55555455; rNameDE[146] = "Kerker des Windes";   rNameEN[146] = "Dungeon Of The Wind";  --"agility"
 	rKey[147] = 55555545; rNameDE[147] = "Kerker des Diebes";   rNameEN[147] = "Dungeon Of Thieves"; --"dexterity"
 	rKey[148] = 55555554; rNameDE[148] = "Kerker des Geistes";  rNameEN[148] = "Dungeon Of Soul";    --"essence"
-	rKey[151] = 35555555; rNameDE[151] = "H�hle der Kraft";     rNameEN[151] = "Cave Of Power";      --"strength"
-	rKey[152] = 53555555; rNameDE[152] = "H�hle des Willens";   rNameEN[152] = "Cave Of Will";       --"willpower"
-	rKey[153] = 55355555; rNameDE[153] = "H�hle der Sinne";     rNameEN[153] = "Cave Of Senses";     --"perception"
-	rKey[154] = 55535555; rNameDE[154] = "H�hle des Wissens";   rNameEN[154] = "Cave Of Wit";        --"intelligence"
-	rKey[155] = 55553555; rNameDE[155] = "H�hle des Fleisches"; rNameEN[155] = "Cave Of Endurance";  --"constitution"
-	rKey[156] = 55555355; rNameDE[156] = "H�hle des Windes";    rNameEN[156] = "Cave Of The Wind";   --"agility"
-	rKey[157] = 55555535; rNameDE[157] = "H�hle des Diebes";    rNameEN[157] = "Cave Of Thieves";    --"dexterity"
-	rKey[158] = 55555553; rNameDE[158] = "H�hle des Geistes";   rNameEN[158] = "Cave Of Soul";       --"essence"
-	rKey[161] = 25555555; rNameDE[161] = "H�lle der Kraft";     rNameEN[161] = "Hell Of Power";      --"strength"
-	rKey[162] = 52555555; rNameDE[162] = "H�lle des Willens";   rNameEN[162] = "Hell Of Will";       --"willpower"
-	rKey[163] = 55255555; rNameDE[163] = "H�lle der Sinne";     rNameEN[163] = "Hell Of Senses";     --"perception"
-	rKey[164] = 55525555; rNameDE[164] = "H�lle des Wissens";   rNameEN[164] = "Hell Of Wit";        --"intelligence"
-	rKey[165] = 55552555; rNameDE[165] = "H�lle des Fleisches"; rNameEN[165] = "Hell Of Endurance";  --"constitution"
-	rKey[166] = 55555255; rNameDE[166] = "H�lle des Windes";    rNameEN[166] = "Hell Of The Wind";   --"agility"
-	rKey[167] = 55555525; rNameDE[167] = "H�lle des Diebes";    rNameEN[167] = "Hell Of Thieves";    --"dexterity"
-	rKey[168] = 55555552; rNameDE[168] = "H�lle des Geistes";   rNameEN[168] = "Hell Of Soul";       --"essence"
+	rKey[151] = 35555555; rNameDE[151] = "Höhle der Kraft";     rNameEN[151] = "Cave Of Power";      --"strength"
+	rKey[152] = 53555555; rNameDE[152] = "Höhle des Willens";   rNameEN[152] = "Cave Of Will";       --"willpower"
+	rKey[153] = 55355555; rNameDE[153] = "Höhle der Sinne";     rNameEN[153] = "Cave Of Senses";     --"perception"
+	rKey[154] = 55535555; rNameDE[154] = "Höhle des Wissens";   rNameEN[154] = "Cave Of Wit";        --"intelligence"
+	rKey[155] = 55553555; rNameDE[155] = "Höhle des Fleisches"; rNameEN[155] = "Cave Of Endurance";  --"constitution"
+	rKey[156] = 55555355; rNameDE[156] = "Höhle des Windes";    rNameEN[156] = "Cave Of The Wind";   --"agility"
+	rKey[157] = 55555535; rNameDE[157] = "Höhle des Diebes";    rNameEN[157] = "Cave Of Thieves";    --"dexterity"
+	rKey[158] = 55555553; rNameDE[158] = "Höhle des Geistes";   rNameEN[158] = "Cave Of Soul";       --"essence"
+	rKey[161] = 25555555; rNameDE[161] = "Hölle der Kraft";     rNameEN[161] = "Hell Of Power";      --"strength"
+	rKey[162] = 52555555; rNameDE[162] = "Hölle des Willens";   rNameEN[162] = "Hell Of Will";       --"willpower"
+	rKey[163] = 55255555; rNameDE[163] = "Hölle der Sinne";     rNameEN[163] = "Hell Of Senses";     --"perception"
+	rKey[164] = 55525555; rNameDE[164] = "Hölle des Wissens";   rNameEN[164] = "Hell Of Wit";        --"intelligence"
+	rKey[165] = 55552555; rNameDE[165] = "Hölle des Fleisches"; rNameEN[165] = "Hell Of Endurance";  --"constitution"
+	rKey[166] = 55555255; rNameDE[166] = "Hölle des Windes";    rNameEN[166] = "Hell Of The Wind";   --"agility"
+	rKey[167] = 55555525; rNameDE[167] = "Hölle des Diebes";    rNameEN[167] = "Hell Of Thieves";    --"dexterity"
+	rKey[168] = 55555552; rNameDE[168] = "Hölle des Geistes";   rNameEN[168] = "Hell Of Soul";       --"essence"
 	rKey[171] = 15555555; rNameDE[171] = "Ende der Kraft";      rNameEN[171] = "Abyss Of Power";     --"strength"
 	rKey[172] = 51555555; rNameDE[172] = "Ende des Willens";    rNameEN[172] = "Abyss Of Will";      --"willpower"
 	rKey[173] = 55155555; rNameDE[173] = "Ende der Sinne";      rNameEN[173] = "Abyss Of Senses";    --"perception"
@@ -213,71 +213,71 @@ function M.init()
 	rKey[177] = 55555515; rNameDE[177] = "Ende des Diebes";     rNameEN[177] = "Abyss Of Thieves";   --"dexterity"
 	rKey[178] = 55555551; rNameDE[178] = "Ende des Geistes";    rNameEN[178] = "Abyss Of Soul";      --"essence"
 
-	-- Lila Flasche / Sekund�rattribute
+	-- Lila Flasche / Sekundärattribute
 	rKey[201] = 65555555; rNameDE[201] = "Quelle des Lebens";  rNameEN[201] = "Spring Of Life";      --"hitpoints"
 	rKey[202] = 56555555; rNameDE[202] = "Quelle des Riesen";  rNameEN[202] = "Spring Of Giants";    --"body_height"
 	rKey[203] = 55655555; rNameDE[203] = "Quelle der Quellen"; rNameEN[203] = "Spring Of Sources";   --"foodlevel"
-	rKey[204] = 55565555; rNameDE[204] = "Quelle des Gl�cks";  rNameEN[204] = "Spring Of Luck";      --"luck"
+	rKey[204] = 55565555; rNameDE[204] = "Quelle des Glücks";  rNameEN[204] = "Spring Of Luck";      --"luck"
 	rKey[205] = 55556555; rNameDE[205] = "Quelle der Qualen";  rNameEN[205] = "Spring Of Pain";      --"poisonvalue"
 	rKey[206] = 55555655; rNameDE[206] = "Quelle des Ethos" ;  rNameEN[206] = "Spring Of Ethos";     --"attitude"
-	rKey[207] = 55555565; rNameDE[207] = "Quelle des Flei�es"; rNameEN[207] = "Spring Of Diligence"; --"mental capacity"
+	rKey[207] = 55555565; rNameDE[207] = "Quelle des Fleißes"; rNameEN[207] = "Spring Of Diligence"; --"mental capacity"
 	rKey[208] = 55555556; rNameDE[208] = "Quelle des Zaubers"; rNameEN[208] = "Spring Of Magic";     --"mana"
 	rKey[211] = 75555555; rNameDE[211] = "Orden des Lebens";   rNameEN[211] = "Order Of Life"; --"hitpoints"
 	rKey[212] = 57555555; rNameDE[212] = "Orden des Riesen";   rNameEN[212] = "Order Of Giants"; --"body_height"
 	rKey[213] = 55755555; rNameDE[213] = "Orden der Quellen";  rNameEN[213] = "Order Of Sources"; --"foodlevel"
-	rKey[214] = 55575555; rNameDE[214] = "Orden des Gl�cks";   rNameEN[214] = "Order Of Luck"; --"luck"
+	rKey[214] = 55575555; rNameDE[214] = "Orden des Glücks";   rNameEN[214] = "Order Of Luck"; --"luck"
 	rKey[215] = 55557555; rNameDE[215] = "Orden der Qualen";   rNameEN[215] = "Order Of Pain"; --"poisonvalue"
 	rKey[216] = 55555755; rNameDE[216] = "Orden des Ethos";    rNameEN[216] = "Order Of Ethos"; --"attitude"
-	rKey[217] = 55555575; rNameDE[217] = "Orden des Flei�es";  rNameEN[217] = "Order Of Diligence"; --"mental capacity"
+	rKey[217] = 55555575; rNameDE[217] = "Orden des Fleißes";  rNameEN[217] = "Order Of Diligence"; --"mental capacity"
 	rKey[218] = 55555557; rNameDE[218] = "Orden des Zaubers";  rNameEN[218] = "Order Of Magic"; --"mana"
 	rKey[221] = 85555555; rNameDE[221] = "Tempel des Lebens";  rNameEN[221] = "Temple Of Life"; --"hitpoints"
 	rKey[222] = 58555555; rNameDE[222] = "Tempel der Riesen";  rNameEN[222] = "Temple Of Giants"; --"body_height"
 	rKey[223] = 55855555; rNameDE[223] = "Tempel der Quellen"; rNameEN[223] = "Temple Of Sources"; --"foodlevel"
-	rKey[224] = 55585555; rNameDE[224] = "Tempel des Gl�cks";  rNameEN[224] = "Temple Of Luck"; --"luck"
+	rKey[224] = 55585555; rNameDE[224] = "Tempel des Glücks";  rNameEN[224] = "Temple Of Luck"; --"luck"
 	rKey[225] = 55558555; rNameDE[225] = "Tempel der Qualen";  rNameEN[225] = "Temple Of Pain"; --"poisonvalue"
 	rKey[226] = 55555855; rNameDE[226] = "Tempel des Ethos";   rNameEN[226] = "Temple Of Ethos"; --"attitude"
-	rKey[227] = 55555585; rNameDE[227] = "Tempel des Flei�es"; rNameEN[227] = "Temple Of Diligence"; --"mental capacity"
+	rKey[227] = 55555585; rNameDE[227] = "Tempel des Fleißes"; rNameEN[227] = "Temple Of Diligence"; --"mental capacity"
 	rKey[228] = 55555558; rNameDE[228] = "Tempel des Zaubers"; rNameEN[228] = "Temple Of Magic"; --"mana"
 	rKey[231] = 95555555; rNameDE[231] = "Siegel des Lebens";  rNameEN[231] = "Sanctuary Of Life"; --"hitpoints"
 	rKey[232] = 59555555; rNameDE[232] = "Siegel des Riesen";  rNameEN[232] = "Sanctuary Of Giants"; --"body_height"
 	rKey[233] = 55955555; rNameDE[233] = "Siegel der Quellen"; rNameEN[233] = "Sanctuary Of Sources"; --"foodlevel"
-	rKey[234] = 55595555; rNameDE[234] = "Siegel des Gl�cks";  rNameEN[234] = "Sanctuary Of Luck"; --"luck"
+	rKey[234] = 55595555; rNameDE[234] = "Siegel des Glücks";  rNameEN[234] = "Sanctuary Of Luck"; --"luck"
 	rKey[235] = 55559555; rNameDE[235] = "Siegel der Qualen";  rNameEN[235] = "Sanctuary Of Pain"; --"poisonvalue"
 	rKey[236] = 55555955; rNameDE[236] = "Siegel des Ethos";   rNameEN[236] = "Sanctuary Of Ethos"; --"attitude"
-	rKey[237] = 55555595; rNameDE[237] = "Siegel des Flei�es"; rNameEN[237] = "Sanctuary Of Diligence"; --"mental capacity"
+	rKey[237] = 55555595; rNameDE[237] = "Siegel des Fleißes"; rNameEN[237] = "Sanctuary Of Diligence"; --"mental capacity"
 	rKey[238] = 55555559; rNameDE[238] = "Siegel des Zaubers"; rNameEN[238] = "Sanctuary Of Magic"; --"mana"
 
 	rKey[241] = 45555555; rNameDE[241] = "Kerker des Lebens";  rNameEN[241] = "Dungeon Of Life"; --"hitpoints"
 	rKey[242] = 54555555; rNameDE[242] = "Kerker des Riesen";  rNameEN[242] = "Dungeon Of Giants"; --"body_height"
 	rKey[243] = 55455555; rNameDE[243] = "Kerker der Quellen"; rNameEN[243] = "Dungeon Of Sources"; --"foodlevel"
-	rKey[244] = 55545555; rNameDE[244] = "Kerker des Gl�cks";  rNameEN[244] = "Dungeon Of Luck"; --"luck"
+	rKey[244] = 55545555; rNameDE[244] = "Kerker des Glücks";  rNameEN[244] = "Dungeon Of Luck"; --"luck"
 	rKey[245] = 55554555; rNameDE[245] = "Kerker der Qualen" ; rNameEN[245] = "Dungeon Of Pain"; --"poisonvalue"
 	rKey[246] = 55555455; rNameDE[246] = "Kerker des Ethos";   rNameEN[246] = "Dungeon Of Ethos"; --"attitude"
-	rKey[247] = 55555545; rNameDE[247] = "Kerker des Flei�es"; rNameEN[247] = "Dungeon Of Diligence"; --"mental capacity"
+	rKey[247] = 55555545; rNameDE[247] = "Kerker des Fleißes"; rNameEN[247] = "Dungeon Of Diligence"; --"mental capacity"
 	rKey[248] = 55555554; rNameDE[248] = "Kerker des Zaubers"; rNameEN[248] = "Dungeon Of Magic"; --"mana"
-	rKey[249] = 35555555; rNameDE[249] = "H�hle des Lebens";   rNameEN[249] = "Cave Of Life"; --"hitpoints"
-	rKey[250] = 53555555; rNameDE[250] = "H�hle des Riesen";   rNameEN[250] = "Cave Of Giants"; --"body_height"
-	rKey[239] = 55355555; rNameDE[239] = "H�hle der Quellen";  rNameEN[239] = "Cave Of Sources"; --"foodlevel"
-	rKey[240] = 55535555; rNameDE[240] = "H�hle des Gl�cks";   rNameEN[240] = "Cave Of Luck"; --"luck"
-	rKey[229] = 55553555; rNameDE[229] = "H�hle der Qualen";   rNameEN[229] = "Cave Of Pain"; --"poisonvalue"
-	rKey[230] = 55555355; rNameDE[230] = "H�hle des Ethos";    rNameEN[230] = "Cave Of Ethos"; --"attitude"
-	rKey[219] = 55555535; rNameDE[219] = "H�hle des Flei�es";  rNameEN[219] = "Cave Of Diligence"; --"mental capacity"
-	rKey[220] = 55555553; rNameDE[220] = "H�hle des Zaubers";  rNameEN[220] = "Cave Of Magic"; --"mana"
-	rKey[209] = 25555555; rNameDE[209] = "H�lle des Lebens";   rNameEN[209] = "Hell Of Life"; --"hitpoints"
-	rKey[210] = 52555555; rNameDE[210] = "H�lle des Riesen";   rNameEN[210] = "Hell Of Giants"; --"body_height"
-	rKey[190] = 55255555; rNameDE[190] = "H�lle der Quellen";  rNameEN[190] = "Hell Of Sources"; --"foodlevel"
-	rKey[191] = 55525555; rNameDE[191] = "H�lle des Gl�cks";   rNameEN[191] = "Hell Of Luck"; --"luck"
-	rKey[192] = 55552555; rNameDE[192] = "H�lle der Qualen";   rNameEN[192] = "Hell Of Pain"; --"poisonvalue"
-	rKey[193] = 55555255; rNameDE[193] = "H�lle des Ethos";    rNameEN[193] = "Hell Of Ethos"; --"attitude"
-	rKey[194] = 55555525; rNameDE[194] = "H�lle des Flei�es";  rNameEN[194] = "Hell Of Diligence"; --"mental capacity"
-	rKey[195] = 55555552; rNameDE[195] = "H�lle des Zaubers";  rNameEN[195] = "Hell Of Magic"; --"mana"
+	rKey[249] = 35555555; rNameDE[249] = "Höhle des Lebens";   rNameEN[249] = "Cave Of Life"; --"hitpoints"
+	rKey[250] = 53555555; rNameDE[250] = "Höhle des Riesen";   rNameEN[250] = "Cave Of Giants"; --"body_height"
+	rKey[239] = 55355555; rNameDE[239] = "Höhle der Quellen";  rNameEN[239] = "Cave Of Sources"; --"foodlevel"
+	rKey[240] = 55535555; rNameDE[240] = "Höhle des Glücks";   rNameEN[240] = "Cave Of Luck"; --"luck"
+	rKey[229] = 55553555; rNameDE[229] = "Höhle der Qualen";   rNameEN[229] = "Cave Of Pain"; --"poisonvalue"
+	rKey[230] = 55555355; rNameDE[230] = "Höhle des Ethos";    rNameEN[230] = "Cave Of Ethos"; --"attitude"
+	rKey[219] = 55555535; rNameDE[219] = "Höhle des Fleißes";  rNameEN[219] = "Cave Of Diligence"; --"mental capacity"
+	rKey[220] = 55555553; rNameDE[220] = "Höhle des Zaubers";  rNameEN[220] = "Cave Of Magic"; --"mana"
+	rKey[209] = 25555555; rNameDE[209] = "Hölle des Lebens";   rNameEN[209] = "Hell Of Life"; --"hitpoints"
+	rKey[210] = 52555555; rNameDE[210] = "Hölle des Riesen";   rNameEN[210] = "Hell Of Giants"; --"body_height"
+	rKey[190] = 55255555; rNameDE[190] = "Hölle der Quellen";  rNameEN[190] = "Hell Of Sources"; --"foodlevel"
+	rKey[191] = 55525555; rNameDE[191] = "Hölle des Glücks";   rNameEN[191] = "Hell Of Luck"; --"luck"
+	rKey[192] = 55552555; rNameDE[192] = "Hölle der Qualen";   rNameEN[192] = "Hell Of Pain"; --"poisonvalue"
+	rKey[193] = 55555255; rNameDE[193] = "Hölle des Ethos";    rNameEN[193] = "Hell Of Ethos"; --"attitude"
+	rKey[194] = 55555525; rNameDE[194] = "Hölle des Fleißes";  rNameEN[194] = "Hell Of Diligence"; --"mental capacity"
+	rKey[195] = 55555552; rNameDE[195] = "Hölle des Zaubers";  rNameEN[195] = "Hell Of Magic"; --"mana"
 	rKey[196] = 15555555; rNameDE[196] = "Ende des Lebens";    rNameEN[196] = "Abyss Of Life"; --"hitpoints"
 	rKey[197] = 51555555; rNameDE[197] = "Ende des Riesen";    rNameEN[197] = "Abyss Of Giants"; --"body_height"
 	rKey[198] = 55155555; rNameDE[198] = "Ende der Quellen";   rNameEN[198] = "Abyss Of Sources"; --"foodlevel"
-	rKey[199] = 55515555; rNameDE[199] = "Ende des Gl�cks";    rNameEN[199] = "Abyss Of Luck"; --"luck"
+	rKey[199] = 55515555; rNameDE[199] = "Ende des Glücks";    rNameEN[199] = "Abyss Of Luck"; --"luck"
 	rKey[200] = 55551555; rNameDE[200] = "Ende der Qualen";    rNameEN[200] = "Abyss Of Pain"; --"poisonvalue"
 	rKey[189] = 55555155; rNameDE[189] = "Ende des Ethos";     rNameEN[189] = "Abyss Of Ethos"; --"attitude"
-	rKey[188] = 55555515; rNameDE[188] = "Ende des Flei�es";   rNameEN[188] = "Abyss Of Diligence"; --"mental capacity"
+	rKey[188] = 55555515; rNameDE[188] = "Ende des Fleißes";   rNameEN[188] = "Abyss Of Diligence"; --"mental capacity"
 	rKey[187] = 55555551; rNameDE[187] = "Ende des Zaubers";   rNameEN[187] = "Abyss Of Magic"; --"mana"
 	end
 end
@@ -363,7 +363,7 @@ end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 --User:inform("debug 3104-1")
---Man k�nnte jetzt hergehen und den Standort des Schreines noch als Bedingung festschreiben. Damit g�be es dann nur einen einzigen Schrein auf der Insel, oder eben mehrere, falls gew�nscht.
+--Man könnte jetzt hergehen und den Standort des Schreines noch als Bedingung festschreiben. Damit gäbe es dann nur einen einzigen Schrein auf der Insel, oder eben mehrere, falls gewünscht.
 	if Sourceitem.id_pos.x == -390 and Sourceitem.id_pos.y == -154 and Sourceitem.id_pos.z == 0 then
 
 	-- Eine Auswahl von Pergamenten anzeigen (nur Deko)
@@ -377,13 +377,13 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 			end
 			User:sendMenu(MyMen);
 		else
-			--User:inform("PARAM = "..Param) -- Param gibt die ID des angew�hlten Items an
+			--User:inform("PARAM = "..Param) -- Param gibt die ID des angewählten Items an
 			if Param > 126 and Param <132 then
-				--Ein Alchemie-Lehrbuch wurde ausgew�hlt
+				--Ein Alchemie-Lehrbuch wurde ausgewählt
 				world:createItemFromId(Param,1,Sourceitem.id_pos,true,333,0)
 			end
 
-			--zuf�llige Beschreibung der vorhandenen Rezepte
+			--zufällige Beschreibung der vorhandenen Rezepte
 
 			if Param > 3109 and Param < 3116 then
 
@@ -393,7 +393,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 					M.skilllost(User)	--jede Benutzung kostet skills
 
 					if Param == 3110 then
-						--Prim�r- und Sekund�rattribute
+						--Primär- und Sekundärattribute
 	    				i = math.random(119,256) --Zufallsauswahl des Rezeptes
 	    				langSkill=40
 	    				langType ="goblin language"
@@ -437,7 +437,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 						User:inform("#b|0|1008|"..metaEN)
 
 					end
-					common.InformNLS(User,"Vorsicht, der Gebrauch dieser Pergamente ist nicht kostenlos. Du bezahlst Dein geheimes Wissen mit dem Verlust anderer F�higkeiten","Be careful! The usage of these parchments is not for free. You pay for that secret knowledge with the loss of other abilities!")
+					common.InformNLS(User,"Vorsicht, der Gebrauch dieser Pergamente ist nicht kostenlos. Du bezahlst Dein geheimes Wissen mit dem Verlust anderer Fähigkeiten","Be careful! The usage of these parchments is not for free. You pay for that secret knowledge with the loss of other abilities!")
 				else
 					if User:getPlayerLanguage() == 0 then
 						User:inform("#b|0|1008|Dies Geheimnis bleibe Dir verborgen");

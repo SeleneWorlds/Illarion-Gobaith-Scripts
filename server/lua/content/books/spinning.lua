@@ -7,11 +7,11 @@ function M.loadBook(toData)
     base_books.AddLanguage("common language",toData);
     
     base_books.AddGermanBookText("\n \n \n ~~~Spinner und Weber~~~ \n \n \n von Trudel Fadenschein",47,0,toData);
-    base_books.AddGermanBookText("Lange, wei�e, wollene F�den werden bevorzugt um einen feinen, starken Stoff zu weben, der wesentlich besser gef�rbt werden kann.",178,5,toData);
-    base_books.AddGermanBookText("Gewaltsam jemanden den Hut wegzunehmen wird als eine gro�e Beleidigung angesehen, besonders von Frauen.",357,20,toData);
+    base_books.AddGermanBookText("Lange, weiße, wollene Fäden werden bevorzugt um einen feinen, starken Stoff zu weben, der wesentlich besser gefärbt werden kann.",178,5,toData);
+    base_books.AddGermanBookText("Gewaltsam jemanden den Hut wegzunehmen wird als eine große Beleidigung angesehen, besonders von Frauen.",357,20,toData);
     base_books.AddGermanBookText("Um reiche Edelleute attraktiver zu machen, sollten Schneider Bekleidung in roter und schwarzer Farbe anbieten, da dies die teuersten und privilegiertesten Farben sind.",2681,50,toData);
-    base_books.AddGermanBookText("Die Wolle, die sich die meisten leisten k�nnen, ist blau und gr�n und wird von der Mittelklasse getragen.",2679,80,toData);
-    base_books.AddGermanBookText("Ein guter Schneider misst jeden Kunden aus und macht gew�hnlich alle Art von Kleidung.",0,100,toData);
+    base_books.AddGermanBookText("Die Wolle, die sich die meisten leisten können, ist blau und grün und wird von der Mittelklasse getragen.",2679,80,toData);
+    base_books.AddGermanBookText("Ein guter Schneider misst jeden Kunden aus und macht gewöhnlich alle Art von Kleidung.",0,100,toData);
 
     base_books.AddEnglishBookText("\n \n \n Spinning And Weaving \n \n from Trudel Fadenschein",47,0,toData);
     base_books.AddEnglishBookText("Long, white wool fibers are preferred as they make a stronger, finer cloth that can be dyed more brilliantly.",178,5,toData);

@@ -1,12 +1,12 @@
 local M = {}
 
--- F�rberfass ( 220 )
+-- Färberfass ( 220 )
 
--- Stoffrolle (grau) + wei�e Farbe --> Stoffrolle (wei�)
--- Stoffrolle (wei�) + Farbe --> Stoffrolle (farbig)
+-- Stoffrolle (grau) + weiße Farbe --> Stoffrolle (weiß)
+-- Stoffrolle (weiß) + Farbe --> Stoffrolle (farbig)
 
 -- Arbeitscyclus: 1s - 4s
--- Zus�tzliches Werkzeug: F�rberstab ( 2781 )
+-- Zusätzliches Werkzeug: Färberstab ( 2781 )
 
 -- UPDATE common SET com_script='item.id_220_barrel' WHERE com_itemid IN (220);
 
@@ -17,11 +17,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if (dyersList == nil) then
         dyersList = { };
         dyersList[2678] = {178,175}; -- Schwarze Farbe
-        dyersList[2679] = {178, 54}; -- Gr�ne Farbe
+        dyersList[2679] = {178, 54}; -- Grüne Farbe
         dyersList[2680] = {178,179}; -- Blaue Farbe
         dyersList[2681] = {178,174}; -- Rote Farbe
         dyersList[2682] = {178,177}; -- Gelbe Farbe
-        dyersList[2683] = {176,178}; -- Wei�e Farbe
+        dyersList[2683] = {176,178}; -- Weiße Farbe
     end
 
     if ( ltstate == Action.abort ) then
@@ -41,9 +41,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim f�rben.",
+        "Deine Rüstung behindert beim färben.",
         "Your armor disturbes you while dying." );
         return
     end
@@ -58,7 +58,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
     if (User:countItemAt("body",2781)==0) then -- Schere
         common.InformNLS( User,
-        "Du ben�tigst einen F�rberstab um Stoffe zu f�rben oder zu bleichen.",
+        "Du benötigst einen Färberstab um Stoffe zu färben oder zu bleichen.",
         "You need dyers wand to dye or white clothes." );
         return
     end
@@ -68,9 +68,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
 
-    if common.ToolBreaks( User, Tool, true ) then -- R�hrstab besch�digen
+    if common.ToolBreaks( User, Tool, true ) then -- Rührstab beschädigen
         common.InformNLS( User,
-        "Der F�rberstab zerbricht.",
+        "Der Färberstab zerbricht.",
         "The dyers wand breaks." );
         return
     end
@@ -80,7 +80,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             if (User:countItemAt("belt",Dye[1])>0) then -- passenden Stoff gefunden
                 if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                     User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
-                    User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Stoff zu f�rben.");
+                    User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Stoff zu färben.");
                     User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dye clothes.");
                     return
                 end
@@ -88,7 +88,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
                 if common.IsInterrupted( User ) then
                     common.InformNLS(User,
-                    "Der F�rberstab f�llt dir in den Farbeimer. Nach einigem suchen findest du ihn darin wieder. Die Qualit�t deiner Farbe hast du gleich mal mit deinen H�nden getestet.",
+                    "Der Färberstab fällt dir in den Farbeimer. Nach einigem suchen findest du ihn darin wieder. Die Qualität deiner Farbe hast du gleich mal mit deinen Händen getestet.",
                     "You drop the dyers wand into the bucket with color. After a while of searching you find it again. You can see the quality of your color at your hands now.");
                     return
                 end
@@ -116,7 +116,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
                     User:eraseItem(Dye[1],1);
 
-                    notCreated = User:createItem(Dye[2],1,333,0); -- Gef�rbten Stoff erstellen
+                    notCreated = User:createItem(Dye[2],1,333,0); -- Gefärbten Stoff erstellen
                     if ( notCreated > 0 ) then
                         world:createItemFromId( Dye[2], notCreated, User.pos, true, 333 ,0);
                         common.InformNLS(User,
@@ -136,7 +136,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     if (ltstate ~= Action.success) then
         common.InformNLS( User,
-		"Zum F�rben brauchst du wei�e Stoffe und Farbe.",
+		"Zum Färben brauchst du weiße Stoffe und Farbe.",
         "To dye cloth you need white cloth and dye." );
     end
 

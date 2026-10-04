@@ -1,5 +1,5 @@
---ds_xx_sammelbeh�lter
---ein Beh�lter um Pflanzen stapelbar zu sammeln
+--ds_xx_sammelbehälter
+--ein Behälter um Pflanzen stapelbar zu sammeln
 --nebenfolge: Pflanzen erhalten eine gemeinsame, niedrige quality
 
 --Original: Falk vom Wald
@@ -37,20 +37,20 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
         if (Targetitem.id_id ~= 0) then -- Es soll was eingelagert werden
             if (Targetitem.id_id == basket_id and Targetitem.id_data == basket_data) then -- Ist das Zeug was rein soll das selbe was schon drin ist?
-                if (Sourceitem.id_quality <= 32101) then -- voll bei 32000 Kr�utern
+                if (Sourceitem.id_quality <= 32101) then -- voll bei 32000 Kräutern
                     Sourceitem.id_quality = Sourceitem.id_quality + 1;
                     world:changeItem( SourceItem );
 					world:erase( TargetItem, 1 );
                     return;
                 else
                     common.TempInformNLS( User,
-                    "Der Beh�lter ist voll.",
+                    "Der Behälter ist voll.",
                     "The basket is filled up." );
                     return;
                 end
             else
                 common.TempInformNLS( User,
-                "In dem Beh�lter liegt schon eine andere Pflanze, du kannst nur die selbe Sorte mit dort rein legen.",
+                "In dem Behälter liegt schon eine andere Pflanze, du kannst nur die selbe Sorte mit dort rein legen.",
                 "In the basket is another plant, you can only put in the same kind of plant." );
                 return;
             end
@@ -66,7 +66,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 world:changeItem( SourceItem );
             end
         end
-    else -- Beh�lter ist leer
+    else -- Behälter ist leer
         if (Targetitem.id_id ~= 0) then -- Es soll was eingelagert werden
             if not (alchemy.IsThatAPlant(TargetItem) or Targetitem.id_id == 157) then
                 common.TempInformNLS( User,
@@ -81,7 +81,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             return;
         else -- Es soll etwas rausgenommen werden
             common.TempInformNLS( User,
-            "In dem Beh�lter ist nichts was du herausnehmen k�nntest.",
+            "In dem Behälter ist nichts was du herausnehmen könntest.",
             "There is nothing in that basket you could take out." );
             return;
         end

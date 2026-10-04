@@ -5,7 +5,7 @@ local M = {}
 -- Erz  --> Barren
 
 -- Arbeitscyclus: 1s - 7s
--- Zus�tzliches Werkzeug: Zange mit Tiegel ( 2751 )
+-- Zusätzliches Werkzeug: Zange mit Tiegel ( 2751 )
 
 -- UPDATE common SET com_script='item.id_2836_forge' WHERE com_itemid IN (2835,2836);
 -- UPDATE common SET com_objectafterrot=2836 WHERE com_itemid = 2835;
@@ -40,9 +40,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim schmelzen von Metall.",
+        "Deine Rüstung behindert beim schmelzen von Metall.",
         "Your armor disturbes you while melting ores." );
         return
     end
@@ -53,7 +53,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("body",2751)==0) then -- Zange mit Tiegel
         common.InformNLS( User,
-        "Du ben�tigst eine Zange mit Tiegel um Metal zu schmelzen.",
+        "Du benötigst eine Zange mit Tiegel um Metal zu schmelzen.",
         "You need pincers with crucible to melt the ores." );
         return
     end
@@ -63,7 +63,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if common.ToolBreaks( User, Tool ) then -- Zange besch�digen
+    if common.ToolBreaks( User, Tool ) then -- Zange beschädigen
         common.InformNLS( User, 
         "Die Zange geht zu Bruch.", 
         "The pincers break." );
@@ -88,7 +88,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
        (User:countItemAt("belt",234) == 0) and (User:countItemAt("belt",2534) == 0)) then
         if (ltstate ~= Action.success) then
             common.InformNLS(User,
-            "Du ben�tigst Eisen, Kupfer oder Golderz um an der Esse zu arbeiten.",
+            "Du benötigst Eisen, Kupfer oder Golderz um an der Esse zu arbeiten.",
             "You need iron, copper or gold ores to work with the furnace.");
         end            
         if (SourceItem.id == 2835) then
@@ -101,7 +101,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("belt",21) == 0) then
         common.InformNLS(User,
-        "Du ben�tigst Kohle um an der Esse zu arbeiten",
+        "Du benötigst Kohle um an der Esse zu arbeiten",
         "You need some coal to work with the furnace");
         if (SourceItem.id == 2835) then
            SourceItem.wear = 255;
@@ -131,19 +131,19 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local selectMessage = math.random(1,4);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
-            "Du wischst dir den Schwei� von der Stirn.",
+            "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
-            "Der fertige Barren klemmt in der Form. Du klopfst sehr stark auf die R�ckseite der Form bis er endlich heraus f�llt.",
+            "Der fertige Barren klemmt in der Form. Du klopfst sehr stark auf die Rückseite der Form bis er endlich heraus fällt.",
             "The iron ingot gets stuck in the mould, it takes you a few tries to force it out.");
         elseif ( selectMessage == 3 ) then
             common.InformNLS(User,
-            "Die W�rme der schmelze l�sst kurz nach. Du eilst zum Blasebalg um die Glut neu anzufachen.",
+            "Die Wärme der schmelze lässt kurz nach. Du eilst zum Blasebalg um die Glut neu anzufachen.",
             "The furnace's fire appears to be too weak, you take the bellows in your hand and breathe new life into it.");
         else
             common.InformNLS(User,
-            "Du sch�pfst kurz die Schlacke von der Schmelze ab um die Qualit�t des Metalls zu steigern.",
+            "Du schöpfst kurz die Schlacke von der Schmelze ab um die Qualität des Metalls zu steigern.",
             "You draw the slag away to increase the quality of the metal.");
         end        
         if (SourceItem.id == 2835) then

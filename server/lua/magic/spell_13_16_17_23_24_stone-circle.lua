@@ -32,7 +32,7 @@ M.TimeEffects = {
         ["time"] = 0        -- The time in 1/10 seconds that has to pass before the sound effect is played a second time
     },
     ["msg"] = {             -- The messages that are shown before the time delay is started in german and english
-        [CPlayer.german ] = "#me beginnt mit einer mystischen Formel und von {PP}n H�nden bilden scheinen kleine gr�ne Laubbl�tter nach unten zu sinken die sich noch vor dem Boden wieder aufl�sen.",
+        [CPlayer.german ] = "#me beginnt mit einer mystischen Formel und von {PP}n Händen bilden scheinen kleine grüne Laubblätter nach unten zu sinken die sich noch vor dem Boden wieder auflösen.",
         [CPlayer.english] = "#me starts with a mystical formula and from {PP} hands some small green leaves start falling down, but they disappear before they reach the ground."
     }
 }

@@ -27,11 +27,11 @@ function M.InitCraftingTool( )
         carpentry:AddTool( 725 ); -- Werkbank
         
         carpentry:AddInterruptMessage(
-        "Du wischst dir den Schwei� von der Stirn.",
+        "Du wischst dir den Schweiß von der Stirn.",
         "You wipe sweat off your forehead.");
         
         carpentry:AddInterruptMessage(
-        "Du pustest kurz die S�gesp�ne von deiner Kleidung.",
+        "Du pustest kurz die Sägespäne von deiner Kleidung.",
         "You blow some sawdust off your clothes.");
         
         carpentry:AddInterruptMessage(
@@ -43,7 +43,7 @@ function M.InitCraftingTool( )
         "You throw away some rubbish to get more working space.");
         
         carpentry:AddInterruptMessage(
-        "Du bekommst einige Sp�ne in den Mund und musst husten.",
+        "Du bekommst einige Späne in den Mund und musst husten.",
         "Sawdust finds its way into your mouth, causing you to cough loudly.");
         
         carpentry:AddInterruptMessage(
@@ -51,7 +51,7 @@ function M.InitCraftingTool( )
         "You get a splinter of wood in your finger and have to take a break to pull it out.");
         
         carpentry:AddInterruptMessage(
-        "Du �berpr�fst kurz die Ma�e des Werkst�cks.",
+        "Du überprüfst kurz die Maße des Werkstücks.",
         "You check the fine details of your work.");
 
         --------------------------------------------------------------------------------------------
@@ -319,9 +319,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
 
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim Hobeln.",
+        "Deine Rüstung behindert beim Hobeln.",
         "Your armor disturbs you while slicing." );
         carpenter:SwapToInactiveItem( User );
         return

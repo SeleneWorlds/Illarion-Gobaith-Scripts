@@ -7,13 +7,13 @@ local doors = require("base.doors")
 
 function M.UseItem(User,SourceItem,TargetItem,counter,param)
     if doors.CloseDoor(SourceItem) then
-        common.InformNLS(User,"Du schlie�t die T�r","You close the door.");
+        common.InformNLS(User,"Du schließt die Tür","You close the door.");
     else
         local OpenDoor,OpenOK=doors.OpenDoor(SourceItem);
         if OpenOK then
-            common.InformNLS(User,"Du �ffnest die T�r.","You open the door.");
+            common.InformNLS(User,"Du öffnest die Tür.","You open the door.");
         elseif OpenDoor then
-            common.InformNLS(User,"Du versuchst die T�r zu �ffnen, doch sie ist verschlossen.","You try to open the door, but the door is locked.");
+            common.InformNLS(User,"Du versuchst die Tür zu öffnen, doch sie ist verschlossen.","You try to open the door, but the door is locked.");
         end
     end
 end

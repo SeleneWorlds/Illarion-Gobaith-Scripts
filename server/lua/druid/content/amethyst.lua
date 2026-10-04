@@ -16,14 +16,14 @@ function M.loadBook(toData)
     base_books.AddEnglishBookText("There is one important thing to note: One should never let the energies of an amethyst flow into a trinket in which there is another stone embedded.",0,0,toData);
 
     base_books.AddGermanBookText("\n\n~~Amethysten~~",197,0,toData);
-    base_books.AddGermanBookText("Ob Bogensch�tze, Botenreiter oder Seeman...jeder, der sich die Winde zum Freund machen will schw�rt auf die Energien von magischen Amethysten.",0,0,toData);
-    base_books.AddGermanBookText("Tr�gt man einen Gegenstand am K�rper, in denen Amethystenergien flie�en, so hat man das Gef�hl, dass einem alles schneller von der Hand geht.",0,0,toData);
-    base_books.AddGermanBookText("Waffen:\n\n�bertr�gt man die magischen Energien eines Amethysten auf eine Waffe, so steigert man damit die Geschwindigkeit in der man diese Waffe zu f�hren vermag.",2739,0,toData);
-    base_books.AddGermanBookText("R�stungen und Schilde:\n\nSowohl in R�stungen als auch in Schilden erleichtern Amethystenergien das Gewicht und die Tragbarkeit dieser Gegenst�nde, so dass man das Gef�hl hat, dass man sich leichter und schneller bewegen kann.",2284,0,toData);
-    base_books.AddGermanBookText("Magierst�be:\n\nMagierst�be, durch die Amethystenergien flie�en locker im wahrsten Sinne des Wortes die Zunge des Tr�gers. Alle Spr�che scheinen ihnen schneller von den Lippen zu gleiten, als es sonst m�glich w�re.",2785,0,toData);
-    base_books.AddGermanBookText("Werkzeuge:\n\nAlle Arbeiten scheinen einen viel leichter und schneller von der Hand zu gehen, wenn man ein Werkzeug benutzt, durch das die magischen Energien von Amethysten flie�en.",313,0,toData);
-    base_books.AddGermanBookText("Schmuckst�cke:\n\nSchmuckst�cke, durch die Amethystenergien flie�en machen den Tr�ger schneller.",79,0,toData);
-    base_books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Amethysten in ein Schmuckst�ck flie�en lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
+    base_books.AddGermanBookText("Ob Bogenschütze, Botenreiter oder Seeman...jeder, der sich die Winde zum Freund machen will schwört auf die Energien von magischen Amethysten.",0,0,toData);
+    base_books.AddGermanBookText("Trägt man einen Gegenstand am Körper, in denen Amethystenergien fließen, so hat man das Gefühl, dass einem alles schneller von der Hand geht.",0,0,toData);
+    base_books.AddGermanBookText("Waffen:\n\nÜberträgt man die magischen Energien eines Amethysten auf eine Waffe, so steigert man damit die Geschwindigkeit in der man diese Waffe zu führen vermag.",2739,0,toData);
+    base_books.AddGermanBookText("Rüstungen und Schilde:\n\nSowohl in Rüstungen als auch in Schilden erleichtern Amethystenergien das Gewicht und die Tragbarkeit dieser Gegenstände, so dass man das Gefühl hat, dass man sich leichter und schneller bewegen kann.",2284,0,toData);
+    base_books.AddGermanBookText("Magierstäbe:\n\nMagierstäbe, durch die Amethystenergien fließen locker im wahrsten Sinne des Wortes die Zunge des Trägers. Alle Sprüche scheinen ihnen schneller von den Lippen zu gleiten, als es sonst möglich wäre.",2785,0,toData);
+    base_books.AddGermanBookText("Werkzeuge:\n\nAlle Arbeiten scheinen einen viel leichter und schneller von der Hand zu gehen, wenn man ein Werkzeug benutzt, durch das die magischen Energien von Amethysten fließen.",313,0,toData);
+    base_books.AddGermanBookText("Schmuckstücke:\n\nSchmuckstücke, durch die Amethystenergien fließen machen den Träger schneller.",79,0,toData);
+    base_books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Amethysten in ein Schmuckstück fließen lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
 end;
 
 function M.loadTitle(toData)

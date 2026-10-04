@@ -38,13 +38,13 @@ function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
         if not found then
             RaceStrenght=100;
         end
-        resist=M.SpellResistence(User);      -- Magie Resistenz pr�fen
-        if (resist<FieldItem.quality) then   -- Qualit�t des Items --> St�rke mit Magie Resistenz vergleichen
+        resist=M.SpellResistence(User);      -- Magie Resistenz prüfen
+        if (resist<FieldItem.quality) then   -- Qualität des Items --> Stärke mit Magie Resistenz vergleichen
             damageDealt=math.random(math.floor((3/100)*math.floor((FieldItem.quality-resist)*RaceStrenght)),math.floor((5/100)*math.floor((FieldItem.quality-resist)*RaceStrenght)));--AffectedStren[i]
             User:increaseAttrib("hitpoints",-damageDealt); -- Schaden berechnen und bewirken
             -- Added by abcfantasy, inform user
             if (User:getPlayerLanguage()==0) then
-                User:inform("Du f�hlst, wie das gl�hend hei�e Feuer allm�hlich deine Haut verbrennt.");
+                User:inform("Du fühlst, wie das glühend heiße Feuer allmählich deine Haut verbrennt.");
             else
                 User:inform("You feel the scorching fire gradually burn your skin.");
             end

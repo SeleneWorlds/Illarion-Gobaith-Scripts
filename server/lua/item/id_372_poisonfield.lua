@@ -41,7 +41,7 @@ function M.CharacterOnField(User)
             RaceStrenght=100;
             PoisStrength=100;
         end
-        resist=M.SpellResistence(User);      -- Magie Resistenz pr�fen
+        resist=M.SpellResistence(User);      -- Magie Resistenz prüfen
         if (resist<FieldItem.quality) then
             damageDealt=math.random(math.floor((7/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)),math.floor((9/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)));--AffectedStren[i]
             poisonDealt=math.random(math.floor((2/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))),math.floor((5/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))));

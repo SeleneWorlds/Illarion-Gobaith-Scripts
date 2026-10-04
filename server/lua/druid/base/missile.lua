@@ -1,6 +1,6 @@
 -- ds_base_missile.lua
 -- Druidensystem
--- Effekte f�r Wurfk�rper
+-- Effekte für Wurfkörper
 -- Falk & Nitram
 
 -- Liste der IDs mit Objekten aus Holz
@@ -38,7 +38,7 @@ end
 
 function M.createRabbits( targetArea )
     local rabbit;
-    -- Bestimme lebenszeit der Hasen. Vernichtung Hasen erfolgt �ber die initiale Verwendung von Gift.
+    -- Bestimme lebenszeit der Hasen. Vernichtung Hasen erfolgt über die initiale Verwendung von Gift.
     -- Vergebene Giftpunkte werden Skaliert von 1000 (bei quality 100) bis 50 (bei quality 999)
     local lifeTime = common.Scale( 1000, 50, (Item.quality-100)*100/899 );
 
@@ -68,7 +68,7 @@ function M.causeDamage( Item, DamagedArea, DamagedAttrib, ShieldAttribs, gfxid, 
         if world:isCharacterOnField( posi ) then
             Person = world:getCharacterOnField( posi );
 
-            -- Schaden bestimmt sich aus Item Qualit�t
+            -- Schaden bestimmt sich aus Item Qualität
             -- 1000HP - 9990HP
             local qual = Item.quality;
             if (qual > 999) then
@@ -76,7 +76,7 @@ function M.causeDamage( Item, DamagedArea, DamagedAttrib, ShieldAttribs, gfxid, 
             end
             Schaden = 10 * qual;
 
-            -- Ermittle Summe der als sch�tzend angegebene Attribute
+            -- Ermittle Summe der als schützend angegebene Attribute
             AttribEffect = 0;
             for k, attrib in pairs(ShieldAttribs) do
                 AttribEffect = AttribEffect + Person:increaseAttrib( attrib, 0 );
@@ -85,21 +85,21 @@ function M.causeDamage( Item, DamagedArea, DamagedAttrib, ShieldAttribs, gfxid, 
             -- 0 - 20
             AttribEffect = AttribEffect / # ShieldAttribs ;
 
-            -- Sch�tzender Einfluss der Attribute besteht sich aus dem Quadrat des Mittelwertes * 2
+            -- Schützender Einfluss der Attribute besteht sich aus dem Quadrat des Mittelwertes * 2
             -- 0 - 800
             AttribEffect = ( AttribEffect * AttribEffect * 2 );
 
-            -- Sch�tzender AttributeEffekt vom Schaden abziehen
+            -- Schützender AttributeEffekt vom Schaden abziehen
             Schaden = Schaden - AttribEffect;
 
-            -- Steifheit der R�stung ermitteln. Je steifer die R�stung deszo mehr wird der Schaden durch die R�stung abgefangen
+            -- Steifheit der Rüstung ermitteln. Je steifer die Rüstung deszo mehr wird der Schaden durch die Rüstung abgefangen
             -- 0 - 360
             Stiffness = common.GetStiffness( Person );
 
-            -- Der dreifache Wert der R�stungssteifheit wird vom Schaden abgezogen ( max. -1080 )
+            -- Der dreifache Wert der Rüstungssteifheit wird vom Schaden abgezogen ( max. -1080 )
             Schaden = Schaden - Stiffness * 3;
 
-            -- Modifier f�r Attribute mit mehr als 10000 Punkten
+            -- Modifier für Attribute mit mehr als 10000 Punkten
             Schaden = math.ceil(Schaden * modifier);
 
             if ( Schaden > 0 ) then
@@ -264,7 +264,7 @@ function M.checkHit( User, Item )
     return position( Item.pos.x + math.floor( modX ), Item.pos.y + math.floor( modY ), Item.pos.z );
 end
 
--- Z�hle alle Charakter auf einem bestimmten Gebiet
+-- Zähle alle Charakter auf einem bestimmten Gebiet
 function M.countCharacters( targetPosis )
     local cnt = 0;
     for i, posi in pairs(targetPosis) do
@@ -275,7 +275,7 @@ function M.countCharacters( targetPosis )
     return cnt;
 end
 
--- Feststellen wo es Charaktere gibt und einen ausw�hlen
+-- Feststellen wo es Charaktere gibt und einen auswählen
 function M.selectCharacter( targetPosis )
     local finePosis = {};
     for i, posi in pairs(targetPosis) do
@@ -392,59 +392,59 @@ function M.effect_29732752(User,Item)
     M.createRabbits( M.fieldOfRadius2( M.checkHit( User, Item ) ) );
 end
 
----- SCHADEN AUF R�STUNGEN - HALTBARKEIT ----
+---- SCHADEN AUF RüSTUNGEN - HALTBARKEIT ----
 
--- Voller Haltbarkeits-Schaden auf R�stungen auf 1er Feld
+-- Voller Haltbarkeits-Schaden auf Rüstungen auf 1er Feld
 function M.effect_55938556(User,Item)
     M.damageItemDura( Item, { M.selectCharacter( M.fieldOfRadius1( M.checkHit( User, Item ) ) ) }, 4, 5, 1, "armor" );
 end
 
---Voller Haltbarkeits-Schaden auf R�stungen auf 9er Feld
+--Voller Haltbarkeits-Schaden auf Rüstungen auf 9er Feld
 function M.effect_43245354(User,Item)
     M.damageItemDura( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "armor" );
 end
 
---Aufgeteilter Haltbarkeits-Schaden auf R�stungen auf 9er Feld
+--Aufgeteilter Haltbarkeits-Schaden auf Rüstungen auf 9er Feld
 function M.effect_95257533(User,Item)
     local hitArea = M.fieldOfRadius1( M.checkHit( User, Item ) );
     M.damageItemDura( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "armor" );
 end
 
---Voller Haltbarkeits-Schaden auf R�stungen auf 21er Feld
+--Voller Haltbarkeits-Schaden auf Rüstungen auf 21er Feld
 function M.effect_59159412(User,Item)
     M.damageItemDura( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "armor" );
 end
 
---Aufgeteilter Haltbarkeits-Schaden auf R�stungen auf 21er Feld
+--Aufgeteilter Haltbarkeits-Schaden auf Rüstungen auf 21er Feld
 function M.effect_36557188(User,Item)
     local hitArea = M.fieldOfRadius2( M.checkHit( User, Item ) );
     M.damageItemDura( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "armor" );
 end
 
----- SCHADEN AUF R�STUNGEN - QUALIT�T ----
+---- SCHADEN AUF RüSTUNGEN - QUALITÄT ----
 
---Voller Qualit�ts-Schaden auf R�stungen auf 1er Feld
+--Voller Qualitäts-Schaden auf Rüstungen auf 1er Feld
 function M.effect_98538617(User,Item)
     M.damageItemQual( Item, { M.selectCharacter( M.fieldOfRadius1( M.checkHit( User, Item ) ) ) }, 4, 5, 1, "armor" );
 end
 
---Voller Qualit�ts-Schaden auf R�stungen auf 9er Feld
+--Voller Qualitäts-Schaden auf Rüstungen auf 9er Feld
 function M.effect_79684787(User,Item)
     M.damageItemQual( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "armor" );
 end
 
---Aufgeteilter Qualit�ts-Schaden auf R�stungen auf 9er Feld
+--Aufgeteilter Qualitäts-Schaden auf Rüstungen auf 9er Feld
 function M.effect_32484266(User,Item)
     local hitArea = M.fieldOfRadius1( M.checkHit( User, Item ) );
     M.damageItemQual( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "armor" );
 end
 
---Voller Qualit�ts-Schaden auf R�stungen auf 21er Feld
+--Voller Qualitäts-Schaden auf Rüstungen auf 21er Feld
 function M.effect_96261935(User,Item)
     M.damageItemQual( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "armor" );
 end
 
---Aufgeteilter Qualit�ts-Schaden auf R�stungen auf 21er Feld
+--Aufgeteilter Qualitäts-Schaden auf Rüstungen auf 21er Feld
 function M.effect_26372612(User,Item)
     local hitArea = M.fieldOfRadius2( M.checkHit( User, Item ) );
     M.damageItemQual( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "armor" );
@@ -480,30 +480,30 @@ function M.effect_32185872(User,Item)
     M.damageItemDura( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "weapon" );
 end
 
----- SCHADEN AUF WAFFEN - QUALIT�T ----
+---- SCHADEN AUF WAFFEN - QUALITÄT ----
 
---Voller Qualit�ts-Schaden auf Waffen auf 1er Feld
+--Voller Qualitäts-Schaden auf Waffen auf 1er Feld
 function M.effect_91357421(User,Item)
     M.damageItemQual( Item, { M.selectCharacter( M.fieldOfRadius1( M.checkHit( User, Item ) ) ) }, 4, 5, 1, "weapon" );
 end
 
---Voller Qualit�ts-Schaden auf Waffen auf 9er Feld
+--Voller Qualitäts-Schaden auf Waffen auf 9er Feld
 function M.effect_52761593(User,Item)
     M.damageItemQual( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "weapon" );
 end
 
---Aufgeteilter Qualit�ts-Schaden auf Waffen auf 9er Feld
+--Aufgeteilter Qualitäts-Schaden auf Waffen auf 9er Feld
 function M.effect_19123643(User,Item)
     local hitArea = M.fieldOfRadius1( M.checkHit( User, Item ) );
     M.damageItemQual( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "weapon" );
 end
 
---Voller Qualit�ts-Schaden auf Waffen auf 21er Feld
+--Voller Qualitäts-Schaden auf Waffen auf 21er Feld
 function M.effect_35471525(User,Item)
     M.damageItemQual( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "weapon" );
 end
 
---Aufgeteilter Qualit�ts-Schaden auf Waffen auf 21er Feld
+--Aufgeteilter Qualitäts-Schaden auf Waffen auf 21er Feld
 function M.effect_32812622(User,Item)
     local hitArea = M.fieldOfRadius2( M.checkHit( User, Item ) );
     M.damageItemQual( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "weapon" );
@@ -538,30 +538,30 @@ function M.effect_88343542(User,Item)
     M.damageItemDura( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "wood" );
 end
 
----- SCHADEN AUF HOLZITEMS - QUALIT�T ----
+---- SCHADEN AUF HOLZITEMS - QUALITÄT ----
 
---Voller Qualit�ts-Schaden auf Holzitems auf 1er Feld
+--Voller Qualitäts-Schaden auf Holzitems auf 1er Feld
 function M.effect_67589591(User,Item)
     M.damageItemQual( Item, { M.selectCharacter( M.fieldOfRadius1( M.checkHit( User, Item ) ) ) }, 4, 5, 1, "wood" );
 end
 
---Voller Qualit�ts-Schaden auf Holzitems auf 9er Feld
+--Voller Qualitäts-Schaden auf Holzitems auf 9er Feld
 function M.effect_96566994(User,Item)
     M.damageItemQual( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "wood" );
 end
 
---Aufgeteilter Qualit�ts-Schaden auf Holzitems auf 9er Feld
+--Aufgeteilter Qualitäts-Schaden auf Holzitems auf 9er Feld
 function M.effect_13983419(User,Item)
     local hitArea = M.fieldOfRadius1( M.checkHit( User, Item ) );
     M.damageItemQual( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "wood" );
 end
 
---Voller Qualit�ts-Schaden auf Holzitems auf 21er Feld
+--Voller Qualitäts-Schaden auf Holzitems auf 21er Feld
 function M.effect_42218944(User,Item)
     M.damageItemQual( Item, M.fieldOfRadius1( M.checkHit( User, Item ) ), 4, 5, 1, "wood" );
 end
 
---Aufgeteilter Qualit�ts-Schaden auf Holzitems auf 21er Feld
+--Aufgeteilter Qualitäts-Schaden auf Holzitems auf 21er Feld
 function M.effect_69657293(User,Item)
     local hitArea = M.fieldOfRadius2( M.checkHit( User, Item ) );
     M.damageItemQual( Item, hitArea, 4, 5, 1/M.countCharacters( hitArea ), "wood" );
@@ -569,7 +569,7 @@ end
 
 
 --[[
-function M.effect_58731981(User,Item) --globale Wetterver�nderung
+function M.effect_58731981(User,Item) --globale Wetterveränderung
     return true; -- Script nicht fertig, funktion sofort abbrechen
 
     m_Weather = world.weather;
@@ -590,10 +590,10 @@ end
 function M.effect_59595521(User,Item) --Matschbarriere auf 9er-Feld
     actionfield = fieldOfNine(Item)
     for i = 1,9 do
-        --Bodentiles �ndern
+        --Bodentiles ändern
         local field = world:getField(actionfield[i])
         local tileID= field.tile
-        if tileID == 11 then --Wiese     !!!! id pr�fen
+        if tileID == 11 then --Wiese     !!!! id prüfen
             world:changeTile(4,actionfield[i])  --Kontrolle: screen update?
             world:sendMapUpdate(actionfield[i],5)
             -- Dieser Effekt sollte nun umgebaut werden zu einem LTE 327 (Zeit vergeht, Effekt aufheben.)
@@ -605,7 +605,7 @@ end
 
 
 
-function M.effect_42718255(User,Item) --Einen Effekt vort�uschen
+function M.effect_42718255(User,Item) --Einen Effekt vortäuschen
 
 end
 
@@ -620,20 +620,20 @@ return M
 --dura auf Waffen 9er Feld
 --dura auf Holz 9er Feld
 --dura auf Metall 9er Feld
---das Ganze jeweils f�r 1er Feld
---das Ganze jeweils f�r Quality
+--das Ganze jeweils für 1er Feld
+--das Ganze jeweils für Quality
 
--- Die Effekt-Nummer kann willk�rlich achtstellig sein (ohne Ziffer 0), die Anpassung erfolgt dann in ds_327_blaue_Flasache.lua
+-- Die Effekt-Nummer kann willkürlich achtstellig sein (ohne Ziffer 0), die Anpassung erfolgt dann in ds_327_blaue_Flasache.lua
 -- Datawerte aus Zufallsgenerator
 --
 --
 --
 
---Zum Vort�uschen eines Effektes: Hier soll ein Dummy des Casters erscheinen, also ein Monster gleicher Rasse, das sich nach einer weile wieder selbst zerst�rt. Sinn soll sein, einen Gegner zu verwirren, wen er jetzt angreifen muss.
---Eine Steigerung w�re dann ein Dummy, der den Gegner angreift.
+--Zum Vortäuschen eines Effektes: Hier soll ein Dummy des Casters erscheinen, also ein Monster gleicher Rasse, das sich nach einer weile wieder selbst zerstört. Sinn soll sein, einen Gegner zu verwirren, wen er jetzt angreifen muss.
+--Eine Steigerung wäre dann ein Dummy, der den Gegner angreift.
 
---Zu Wettereffekten: Jeweils ein Effekt f�r je eine Wetter�nderung: also 1 Wurfbombe f�r Nebel, eine f�r Regen etc. Dauer gem�� Quality des Trankes (LTE)
---Man k�nnte auch die Intensit�t �ber quality steuern, zb aquality = 345 ==> Intensit�t = 3 (1-9) und Dauer = 45 (11-99)
+--Zu Wettereffekten: Jeweils ein Effekt für je eine Wetteränderung: also 1 Wurfbombe für Nebel, eine für Regen etc. Dauer gemäß Quality des Trankes (LTE)
+--Man könnte auch die Intensität über quality steuern, zb aquality = 345 ==> Intensität = 3 (1-9) und Dauer = 45 (11-99)
 
---Zur Aufhebung der Matschbarriere folgen noch Vorschl�ge
+--Zur Aufhebung der Matschbarriere folgen noch Vorschläge
 ]]

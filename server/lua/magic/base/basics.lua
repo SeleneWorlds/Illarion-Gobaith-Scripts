@@ -137,14 +137,14 @@ function M.CheckAndReduceRequirements( Char, CasterValue )
 
     if ( Char:increaseAttrib("hitpoints",0) < -HPChange ) then
         common.InformNLS( Char,
-        "Diesen Spruch zu sprechen w�rde dich auf jeden Fall t�ten. Dein �berlebenstrieb wehrt sich dagegen.",
+        "Diesen Spruch zu sprechen würde dich auf jeden Fall töten. Dein Überlebenstrieb wehrt sich dagegen.",
         "This spell would kill you in any way. You will to life holds against this." );
         return false;
     end
 
     if ( Char:increaseAttrib("foodlevel",0) < -FPChange ) then
         common.InformNLS( Char,
-        "Dein Hunger ist zu gro� als das du dich genug konzentrieren k�nntest um diesen Zauber zu sprechen.",
+        "Dein Hunger ist zu groß als das du dich genug konzentrieren könntest um diesen Zauber zu sprechen.",
         "Your hunger is to big to concentrate enougth to cast this spell." );
         return false;
     end
@@ -364,7 +364,7 @@ function M.actionDisturbed(Caster,disturber)
     end
 end
 
--- Erstellt einen Wert zwischen 0 und 1 abh�ngig der Hitpoints eines Charakters
+-- Erstellt einen Wert zwischen 0 und 1 abhängig der Hitpoints eines Charakters
 function M.HPMod(Hitpoints)
     return math.min(100,math.max(0,math.floor(45.2855+math.sin(0.0003*Hitpoints-1.5161)+55.2571)))/100;
 end

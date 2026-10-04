@@ -20,17 +20,17 @@ function M.loadBook(toData)
     base_books.AddEnglishBookText("Sometimes, I hear, we live in Gynkese communities, or even Salkamaerian one. We work as servants, messengers, or merchants there. Sometimes, even as alchemists!",0,0,toData);
 
     base_books.AddGermanBookText("\n \n Das Volk der Goblins",0,0,toData);
-    base_books.AddGermanBookText("Wir, die Goblins, stehen in einer gewissen Beziehung zu Orks, glaube ich. Sicher, wir sind flinker und gewitzter. Wir haben gro�e Augen, Ohren und M�nder. Unser ganzer K�rper ist mit einem Kurzhaarfell bedeckt.",0,0,toData);
-    base_books.AddGermanBookText("Unser Gesicht weist eine gr�ne lederartige Haut auf. Man sagt auch, wir bes��en eine Fistelstimme. Ich wurde mal mit einem S�ugling verglichen, der heult, weil er seinen Schnuller verloren hat. Was soll's.",0,0,toData);
-    base_books.AddGermanBookText("Wir sind etwas klein und nicht gerade sehr stark und leben in lockeren Familienbanden, deren F�hrung sich untereinander stark unterscheidet. Wir sind nicht b�se, nein, aber auch nicht auf den Kopf gefallen und wir m�gen keine langweiligen Religionen.",0,0,toData);
-    base_books.AddGermanBookText("Man sagt, ich w�rde mich schrecklich kleiden und manchmal auch muffeln, aber das glaube ich nicht. Auch dass meine Essmanieren schlecht w�ren, sagt man, und das was ich esse sei nicht schmackhaft - also ich finde es k�stlich.",0,0,toData);
-    base_books.AddGermanBookText("Offenbar ist ein gut gereifter rostiger Dolch keine Nahrung f�r Menschen, aber deshalb sollten sie so etwas trotzdem mal kosten.",0,0,toData);
-    base_books.AddGermanBookText("Bisweilen werden wir eingefangen und von Ork-Horden versklavt, deshalb versuchen wir, ihnen aus dem Weg zu gehen. Wir erschrecken uns leicht, nat�rlich nicht vor Halblingen, die sind ja auch gar nicht schrecklich. Nicht so wie diese riesigen Elben.",0,0,toData);
-    base_books.AddGermanBookText("Geruch und Geschmack sind bei uns stark ausgepr�gt, und wir sind sehr geschickt mit den H�nden. Wir geben gute Alchemisten ab oder Handwerker, sogar Diebe. Aber ich bin nat�rlich keiner, das schw�re ich.",0,0,toData);
-    base_books.AddGermanBookText("Wir m�gen keine Magie, aber einige von uns haben wohl Talent dazu. Ich habe von diesem weisen <highlor-angurian> zauberer geh�rt. Wer wei�, vielleicht nur ein Ger�cht!",0,0,toData);
-    base_books.AddGermanBookText("Wir leben nicht in D�rfern, sondern in kleinen Lagern. Manche Leute finden solche Lager bedrohlich, ich verstehe gar nicht, warum. Auf jemanden mit einer Schleuder einen Stein zu werfen, ist doch nicht wirklich schlimm!",0,0,toData);
+    base_books.AddGermanBookText("Wir, die Goblins, stehen in einer gewissen Beziehung zu Orks, glaube ich. Sicher, wir sind flinker und gewitzter. Wir haben große Augen, Ohren und Münder. Unser ganzer Körper ist mit einem Kurzhaarfell bedeckt.",0,0,toData);
+    base_books.AddGermanBookText("Unser Gesicht weist eine grüne lederartige Haut auf. Man sagt auch, wir besäßen eine Fistelstimme. Ich wurde mal mit einem Säugling verglichen, der heult, weil er seinen Schnuller verloren hat. Was soll's.",0,0,toData);
+    base_books.AddGermanBookText("Wir sind etwas klein und nicht gerade sehr stark und leben in lockeren Familienbanden, deren Führung sich untereinander stark unterscheidet. Wir sind nicht böse, nein, aber auch nicht auf den Kopf gefallen und wir mögen keine langweiligen Religionen.",0,0,toData);
+    base_books.AddGermanBookText("Man sagt, ich würde mich schrecklich kleiden und manchmal auch muffeln, aber das glaube ich nicht. Auch dass meine Essmanieren schlecht wären, sagt man, und das was ich esse sei nicht schmackhaft - also ich finde es köstlich.",0,0,toData);
+    base_books.AddGermanBookText("Offenbar ist ein gut gereifter rostiger Dolch keine Nahrung für Menschen, aber deshalb sollten sie so etwas trotzdem mal kosten.",0,0,toData);
+    base_books.AddGermanBookText("Bisweilen werden wir eingefangen und von Ork-Horden versklavt, deshalb versuchen wir, ihnen aus dem Weg zu gehen. Wir erschrecken uns leicht, natürlich nicht vor Halblingen, die sind ja auch gar nicht schrecklich. Nicht so wie diese riesigen Elben.",0,0,toData);
+    base_books.AddGermanBookText("Geruch und Geschmack sind bei uns stark ausgeprägt, und wir sind sehr geschickt mit den Händen. Wir geben gute Alchemisten ab oder Handwerker, sogar Diebe. Aber ich bin natürlich keiner, das schwöre ich.",0,0,toData);
+    base_books.AddGermanBookText("Wir mögen keine Magie, aber einige von uns haben wohl Talent dazu. Ich habe von diesem weisen <highlor-angurian> zauberer gehört. Wer weiß, vielleicht nur ein Gerücht!",0,0,toData);
+    base_books.AddGermanBookText("Wir leben nicht in Dörfern, sondern in kleinen Lagern. Manche Leute finden solche Lager bedrohlich, ich verstehe gar nicht, warum. Auf jemanden mit einer Schleuder einen Stein zu werfen, ist doch nicht wirklich schlimm!",0,0,toData);
     base_books.AddGermanBookText("In Albar, werden wir Goblins zum Kampf mit Tieren gezwungen. manchmal werden wir auch einfach als Sklaven gehalten, arme Goblins.",0,0,toData);
-    base_books.AddGermanBookText("Manche von uns, so habe ich geh�rt, leben in D�rfern in Gynkese oder sogar Salkamaeria. Dort arbeiten sie als Diener, Boten oder Kaufleute. Einige sogar als Alchemisten!",0,0,toData);
+    base_books.AddGermanBookText("Manche von uns, so habe ich gehört, leben in Dörfern in Gynkese oder sogar Salkamaeria. Dort arbeiten sie als Diener, Boten oder Kaufleute. Einige sogar als Alchemisten!",0,0,toData);
 end;
 
 function loadTitle(toData)

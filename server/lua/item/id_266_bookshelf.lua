@@ -261,7 +261,7 @@ function M.InitLibraries()
     }
 
     local BooksTen = {
-      {2619, 4}             --  Drachentr�ume
+      {2619, 4}             --  Drachenträume
     }
 
     local BooksEleven = {
@@ -300,16 +300,16 @@ function M.InitLibraries()
     }
 	--
   M.AddBookshelves( PositionsZero, BooksZero,
-    "\"Seien Sie ein M�nch\", \"Bark�pfige K�nige\", \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \", \"Brewyn der L�gner\"",
+    "\"Seien Sie ein Mönch\", \"Barköpfige Könige\", \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \", \"Brewyn der Lügner\"",
     "\"How To Be A Simple Monk\", \"Bareheaded Kings \", \"Cooking in Illarion, volume 1\n Fish and Meat\", \"Brewyn the Liar\"" );
   M.AddBookshelves( PositionsOneA, BooksOneA,
-    "Geschichte, G�tter, Religion, Feiertage",
+    "Geschichte, Götter, Religion, Feiertage",
     "History, Gods, Religions, Celebrations" );
   M.AddBookshelves( PositionsOneB, BooksOneB,
     "Kulturen: Menschen, Elfen, Zwerge, Halblinge, Echsenmenschen, Feen, Gnome, Orks, Goblins",
     "Cultures: Human, Elven, Dwarven, Halfling,  Lizardmen, Faery, Gnomish, Orcish, Goblin" );
   M.AddBookshelves( PositionsTwo, BooksTwo,
-    "Tagebuch von Noira Liv, Priester Eldans, Tochter des Blutes, \"Brewyn der L�gner\"",
+    "Tagebuch von Noira Liv, Priester Eldans, Tochter des Blutes, \"Brewyn der Lügner\"",
     "Diary of Noira Liv, Priests of Eldan, Daughter of Blood, \"Brewyn the Liar\"" );
   M.AddBookshelves( PositionsThree, BooksThree,
     "Three Guiding Truths, verlorenen Chroniken von Manrok,  \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \"",
@@ -327,7 +327,7 @@ function M.InitLibraries()
     "Der Alte Mann, Buch 1 4",
     "the Old Man's Tales Book 4" );
   M.AddBookshelves( PositionsFive, BooksFive,
-    "Von der Gr�ndung Silverbrands, Thiron Saga, Tialdins Gel�bnis, Reden K�nig Tialdins, Die Geschichte Urubur, Gedichte",
+    "Von der Gründung Silverbrands, Thiron Saga, Tialdins Gelöbnis, Reden König Tialdins, Die Geschichte Urubur, Gedichte",
     "Founding of Silverbrand, Saga of Thiron, Tialdin's Oath, Tialdin's Speeches, Urubur's Story, Festival of Relationship, Poems" );
   M.AddBookshelves( PositionsSix, BooksSix,
     "Kriegshandbuch der Zwerge I",
@@ -336,7 +336,7 @@ function M.InitLibraries()
     "Verwirrung",
     "Confusion" );
   M.AddBookshelves( PositionsEight, BooksEight,
-    "Poesie und epische Geschichten, Lobpreis an Irmorom, Gebet im Namen Findaris, Gebet f�r Zelphia",
+    "Poesie und epische Geschichten, Lobpreis an Irmorom, Gebet im Namen Findaris, Gebet für Zelphia",
     "Poetry and Epic Stories, Glorification to Irmorom, Petition for Findari, Petition for Zelphia" );
   M.AddBookshelves( PositionsEightB, BooksEightB,
 	"Kodex der Grauen Rose",
@@ -348,8 +348,8 @@ function M.InitLibraries()
     "Gesammelte Werke",
     "Collected works" );
   M.AddBookshelves( PositionsEleven, BooksEleven,
-    "Die Kuchenbibel, Die Satzung Greenbriars, Kultur und Geschichte der Halblinge, Buch der Witze, Stammbaum der Blumfu�ens, �ber die Menschen, \"Evergreen Halblinge\", \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \", \"Brewyn der L�gner\"",
-    "The Cake Bible, The Articles of Greenbriar, Halfling Culture and History, Book of the jokes, Chronicle of the Blumfu�ens, About the Humans, \"Evergreen Halflings\", \"Cooking in Illarion, volume 1\n Fish and Meat\", \"Brewyn the Liar\"" );
+    "Die Kuchenbibel, Die Satzung Greenbriars, Kultur und Geschichte der Halblinge, Buch der Witze, Stammbaum der Blumfußens, Über die Menschen, \"Evergreen Halblinge\", \"Kochen auf Illarion, Band 1\n Fisch und Fleisch \", \"Brewyn der Lügner\"",
+    "The Cake Bible, The Articles of Greenbriar, Halfling Culture and History, Book of the jokes, Chronicle of the Blumfußens, About the Humans, \"Evergreen Halflings\", \"Cooking in Illarion, volume 1\n Fish and Meat\", \"Brewyn the Liar\"" );
   M.AddBookshelves( PositionsTwelve, BooksTwelve,
     "Geschichte, Feiertage",
     "History, Celebrations" );
@@ -363,7 +363,7 @@ function M.InitLibraries()
     "Tochter des Blutes",
     "Daughter of Blood" );
   M.AddBookshelves( PositionsSixteen, BooksSixteen,
-    "\"Brewyn der L�gner\"",
+    "\"Brewyn der Lügner\"",
     "\"Brewyn the Liar\"" );
 end
 
@@ -461,8 +461,8 @@ function M.LookAtItem(User,Item)
         for j = 1, # Libraries[i][1]  do
             if ( M.BookshelvesEqual( Libraries[i][1][j], Item.pos ) ) then
                 if (User:getPlayerLanguage()==0) then
-                    --world:itemInform(User,Item, "B�cherregal (" .. Libraries[i][3] .. ")" );
-                    User:inform( "Du siehst verschiedene B�cher �ber " .. Libraries[i][3] );
+                    --world:itemInform(User,Item, "Bücherregal (" .. Libraries[i][3] .. ")" );
+                    User:inform( "Du siehst verschiedene Bücher über " .. Libraries[i][3] );
                 else
                     --world:itemInform(User,Item, "Bookshelf (" .. Libraries[i][5] .. ")" );
                     User:inform( "There are books about " .. Libraries[i][4] );
@@ -478,7 +478,7 @@ function M.LookAtItem(User,Item)
         world:itemInform(User,Item,"You see "..world:getItemName(Item.id,1))
     end
 end
----- B�cherregal
+---- Bücherregal
 --
 --function InitLibraries()
 --    LibPos={};
@@ -553,7 +553,7 @@ end
 --        end
 --        User:sendMenu(BuecherMenue);
 --    else
---        -- Position f�r Buch
+--        -- Position für Buch
 --        local buchPos = position(SourceItem.pos.x+1, SourceItem.pos.y+1, SourceItem.pos.z )
 --
 --        done = false;

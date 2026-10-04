@@ -28,7 +28,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
   if TargetItem.id == 331 then
     dataZList = alchemy.SplitBottleData(Caster,TargetItem.data)
     i = math.random(#dataZList)
-    textDE= "Dieser Sud enth�lt "..alchemy.wirkung_de[dataZList[i]].." "..alchemy.wirkstoff[i]
+    textDE= "Dieser Sud enthält "..alchemy.wirkung_de[dataZList[i]].." "..alchemy.wirkstoff[i]
     textEN= "This stock contains "..alchemy.wirkung_en[dataZList[i]].." "..alchemy.wirkstoff[i]
 
     if Caster:getPlayerLanguage() == 0 then
@@ -40,7 +40,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
 
   else
     common.InformNLS(Caster,
-    "Das ist kein Kr�utersud","This is not a stock")
+    "Das ist kein Kräutersud","This is not a stock")
   end
 end
 

@@ -194,15 +194,15 @@ function onAttack_debug( Attacker, Defender, AttackPos )
     AddDebugText( "Showed GFX", 3, Attacker.Char );
 --]]
 
-    -- Check if the Attacked character has to be killed by a coup de gr�ce
+    -- Check if the Attacked character has to be killed by a coup de grâce
     if CoupDeGrace( Attacker, Defender ) then
 ---[[DEBUG
-        AddDebugText( "Attack ended due Coup de gr�ce", 3, Attacker.Char );
+        AddDebugText( "Attack ended due Coup de grâce", 3, Attacker.Char );
 --]]
         return true;
     end
 ---[[DEBUG
-    AddDebugText( "No Coup de gr�ce was done", 3, Attacker.Char );
+    AddDebugText( "No Coup de grâce was done", 3, Attacker.Char );
 --]]
 
     -- generate modificators for the Attacker
@@ -508,7 +508,7 @@ function NewbieIsland( Attacker, Defender )
         _AntiSpamVar=_AntiSpamVar+1;
     else
         common.InformNLS(Attacker,
-        "Du darfst jetzt noch keine anderen Spieler angreifen, erst auf Gobaith. Halte STRG gedrÃ¼ckt und klicke nochmals auf deinen Gegner, um den Kampf abzubrechen.",
+        "Du darfst jetzt noch keine anderen Spieler angreifen, erst auf Gobaith. Halte STRG gedrückt und klicke nochmals auf deinen Gegner, um den Kampf abzubrechen.",
         "You are not allowed to attack other players yet, only as soon as you enter Gobaith. Hold CTRL and click again on your enemy in order to cancel the attack.");
         _AntiSpamVar=0;
     end
@@ -528,7 +528,7 @@ function PreAttack_Special( Attacker, Defender, AttackPos )
         if ( AttackPos == CCharacter.right_tool ) then
             Attacker:increaseAttrib("hitpoints", -2000);
             common.InformNLS( Attacker,
-            "Ein Armbrustbolzen trifft dich und du stolperst zurÃ¼ck",
+            "Ein Armbrustbolzen trifft dich und du stolperst zurück",
             "A crossbow bolt hits you and you stumble back." );
             Attacker.movepoints = Attacker.movepoints - 30;
         end
@@ -813,11 +813,11 @@ function SpecialGM( Attacker, Defender )
 end
 
 --[[
-    Checks if a coup de gr�ce is performed on the attacked character and kills the char if needed
+    Checks if a coup de grâce is performed on the attacked character and kills the char if needed
 
     @param  CharacterTable  The table of the attacking character
     @param  CharacterTable  The table of the attacked character
-    @return boolean  true if a coup de gr�ce was done
+    @return boolean  true if a coup de grâce was done
 ]]
 function CoupDeGrace( Attacker, Defender )
     if ( Attacker.Char:get_type() ~= 0 ) then
@@ -831,8 +831,8 @@ function CoupDeGrace( Attacker, Defender )
             gText = "ihrem";
             eText = "her";
         end
-        Attacker.Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me gibt "..gText.." Gegner den Gnadensto�." );
-        Attacker.Char:talkLanguage( CCharacter.say, CPlayer.english, "#me gives "..eText.." enemy the coup de gr�ce." );
+        Attacker.Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me gibt "..gText.." Gegner den Gnadenstoß." );
+        Attacker.Char:talkLanguage( CCharacter.say, CPlayer.english, "#me gives "..eText.." enemy the coup de grâce." );
 
         Defender.Char:increaseAttrib("hitpoints",-1);
         for x=-1,1 do
@@ -1551,7 +1551,7 @@ function BreakArmor( CharStruct, Globals )
             ItemDura = ItemDura - 1;
             if (ItemDura<1) then
                 CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
-                common.InformNLS(CharStruct.Char,"Ein R�stungsteil ist zerbrochen.","A part of your armor just broke.");
+                common.InformNLS(CharStruct.Char,"Ein Rüstungsteil ist zerbrochen.","A part of your armor just broke.");
             else
                 HittedItem.quality = ( ItemQual*100 ) + ItemDura;
                 world:changeItem( HittedItem );
@@ -1571,7 +1571,7 @@ function BreakArmor( CharStruct, Globals )
                 ItemDura = ItemDura - 1;
                 if (ItemDura<1) then
                     CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
-                    common.InformNLS(CharStruct.Char,"Ein R�stungsteil ist zerbrochen.","A part of your armor just broke.");
+                    common.InformNLS(CharStruct.Char,"Ein Rüstungsteil ist zerbrochen.","A part of your armor just broke.");
                 else
                     HittedItem.quality = ( ItemQual*100 ) + ItemDura;
                     world:changeItem( HittedItem );
@@ -1757,7 +1757,7 @@ end
 
 --[[
     Deform some final checks on the damage that would be caused and send it to the character
-    Also here the Coup de GrÃ¢ce is done
+    Also here the Coup de Grâce is done
 
     @param  CharacterTable  Table of the Attacking Character
     @param  CharacterTable  Table of the Attacked Character
@@ -1788,7 +1788,7 @@ function CauseDamage( Attacker, Defender, Globals )
         local newPos = position( Defender.Char.pos.x + CharOffsetX, Defender.Char.pos.y + CharOffsetY, Defender.Char.pos.z );
         Defender.Char:warp( newPos );
 
-        Defender.Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zur�ck und geht zu Boden." );
+        Defender.Char:talkLanguage( CCharacter.say, CPlayer.german,  "#me stolpert zurück und geht zu Boden." );
         Defender.Char:talkLanguage( CCharacter.say, CPlayer.english, "#me stumbles back and falls to the ground." );
 
         common.ParalyseCharacter(Defender.Char, 7, false, true);
@@ -1934,8 +1934,8 @@ function InformAboutCritical(AttChar,DefChar,Area)
         common.InformNLS(AttChar,"Du triffst deinen Gegner hart gegen die Beine.","You land a heavy strike against your enemies legs.");
         common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Beine getroffen.","You are hit by a heavy blow upon your legs.");
     elseif (Area == CCharacter.feet) then
-        common.InformNLS(AttChar,"Du triffst deinen Gegner hart auf die F��e.","You strike the feet of your enemy with a heavy blow.");
-        common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die F��e getroffen.","You are struck upon your feet with a heavy blow.");
+        common.InformNLS(AttChar,"Du triffst deinen Gegner hart auf die Füße.","You strike the feet of your enemy with a heavy blow.");
+        common.InformNLS(DefChar,"Du wirst von deinem Gegner hart gegen die Füße getroffen.","You are struck upon your feet with a heavy blow.");
     end
     return
 end
@@ -2054,7 +2054,7 @@ function CheckTying( Attacker, Defender )
 		end
 	elseif Defender.effects:find(26) then
 		if Defender:increaseAttrib("hitpoints",0) < 2500 then
-			Defender:talkLanguage(CCharacter.say, CPlayer.german, "#me kann das Seil nicht mehr halten und l�sst los.");
+			Defender:talkLanguage(CCharacter.say, CPlayer.german, "#me kann das Seil nicht mehr halten und lässt los.");
 			Defender:talkLanguage(CCharacter.say, CPlayer.english, "#me can't hold the rope any longer and looses it.");
 			Defender.effects:removeEffect(26);
 		end

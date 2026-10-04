@@ -35,7 +35,7 @@ function M.LookAtItem( User, Item )
 end
 
 function M.UseItem(User, SourceItem, TargetItem, Counter, param)
-    -- An welchem Altar stehe ich und was brauche ich da f�r Edelsteine?
+    -- An welchem Altar stehe ich und was brauche ich da für Edelsteine?
     --
     if SourceItem.data==1 then PosGem={45,283} 		-- Ushara   -> Smaragd, Schwarzstein        -> Data 1 (45,283)
     elseif SourceItem.data==2 then PosGem={46,283} 	-- Bragon   -> Rubin, Schwarzstein          -> Data 2 (46,283)
@@ -52,7 +52,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
     itemR = User:getItemAt(6);
 
     if ( itemL~=nil and ((itemL.id==PosGem[1]) or (itemL.id==PosGem[2])) and itemL.data>0 and itemL.data<10 and itemL.number==3) then
-		-- Werden die Steine zerst�rt?
+		-- Werden die Steine zerstört?
 		--
 		if M.destroyGem(itemL.data) then
 			world:gfx(5,SourceItem.pos);
@@ -70,7 +70,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 			--world:changeItem( itemL );
 		end
     elseif ( itemR~=nil and ((itemR.id==PosGem[1]) or (itemR.id==PosGem[2])) and itemR.data>0 and itemR.data<10 and itemR.number==3) then
-		-- Werden die Steine zerst�rt?
+		-- Werden die Steine zerstört?
         --
 		if M.destroyGem(itemR.data) then
 			world:gfx(5,SourceItem.pos);
@@ -91,23 +91,23 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 		god_feel=(math.random(1,50));
 		if god_feel==1 then
 		    common.InformNLS(User,
-                "Du f�hlst dich ein wenig wohler.",
+                "Du fühlst dich ein wenig wohler.",
                 "You feel better now.");
 		elseif god_feel==2 then
 		    common.InformNLS(User,
-                "Der Stein wird warm unter denen H�nden.",
+                "Der Stein wird warm unter denen Händen.",
     	        "The stone become warmer under your hands.");
 		elseif god_feel==3 then
 		    common.InformNLS(User,
-                "Du f�hlst dich gl�cklicher.",
+                "Du fühlst dich glücklicher.",
                 "You feel more happy.");
 		elseif god_feel==4 then
 		    common.InformNLS(User,
-                "Du f�hlst dich spirituell gest�rkt.",
+                "Du fühlst dich spirituell gestärkt.",
                 "You feel spirituel stronger now.");
 		elseif god_feel==5 then
 		    common.InformNLS(User,
-                "Du h�rst ein verr�cktes Lachen in der Ferne.",
+                "Du hörst ein verrücktes Lachen in der Ferne.",
                 "You hear a maniac laughter far away.");
 			world:makeSound(25,SourceItem.pos)
 		else

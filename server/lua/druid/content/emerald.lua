@@ -16,14 +16,14 @@ function M.loadBook(toData)
     base_books.AddEnglishBookText("There is one important thing to note: One should never let the energies of a Emerald flow into a trinket in which there is another stone embedded.",0,0,toData);
 
     base_books.AddGermanBookText("\n\n~~Smaragde~~",45,0,toData);
-    base_books.AddGermanBookText("Das Gr�n der Smaragde erinnert oft an das frische Gr�n einer Fr�hlingswiese oder eines Sommerwaldes. Darum ist es nicht verwunderlich, dass diese Steine h�ufig von naturverbundenen Personen getragen werden.",0,0,toData);
-    base_books.AddGermanBookText("Die Kr�fte magischer Smaragde sind je nach Gegenstand, auf den sie �bertragen werden unterschiedlich. Es l�sst sich jedoch oft erkennen, dass sie helfen sich und die Umgebung besser wahrzunehmen.",0,0,toData);
-    base_books.AddGermanBookText("Waffen:\n\n�bertr�gt man die magischen Kr�fte eines Smaragdes auf eine Waffe, so steigert sie die Zielgenauigkeit der Waffe. Besonders bei Fernkampfwaffen ist dies ein nicht zu untersch�tzender Vorteil.",2780,0,toData);
-    base_books.AddGermanBookText("R�stungen und Schilde:\n\nAuf ein R�stungsteil oder ein Schild �bertragen sch�tzen die magischen Kr�fte eines Smaragdes zus�tzlich vor Stichschaden.",20,0,toData);
-    base_books.AddGermanBookText("Magierst�be:\n\nSmaragdenergien in einem Magierstab b�ndeln die Kr�fte des Tr�gers und erlauben es ihm so seine Zauber mit gr��erer Reichweite zu sprechen.",76,0,toData);
-    base_books.AddGermanBookText("Werkzeuge:\n\nVerst�rkt man ein Werkzeug mit der magischen Energie eines Smaragdes, so wird man feststellen, dass die Gegenst�nde die man mit diesem Werkzeug herstellt eine gr��ere Haltbarkeit aufweisen.",172,0,toData);
-    base_books.AddGermanBookText("Schmuckst�cke:\n\nTr�gt man ein Schmuckst�ck, welches Smaragdenergien enth�lt, so kann man seine Umgebung besser wahrnehmen. ",62,0,toData);
-    base_books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Smaragdes in ein Schmuckst�ck flie�en lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
+    base_books.AddGermanBookText("Das Grün der Smaragde erinnert oft an das frische Grün einer Frühlingswiese oder eines Sommerwaldes. Darum ist es nicht verwunderlich, dass diese Steine häufig von naturverbundenen Personen getragen werden.",0,0,toData);
+    base_books.AddGermanBookText("Die Kräfte magischer Smaragde sind je nach Gegenstand, auf den sie übertragen werden unterschiedlich. Es lässt sich jedoch oft erkennen, dass sie helfen sich und die Umgebung besser wahrzunehmen.",0,0,toData);
+    base_books.AddGermanBookText("Waffen:\n\nÜberträgt man die magischen Kräfte eines Smaragdes auf eine Waffe, so steigert sie die Zielgenauigkeit der Waffe. Besonders bei Fernkampfwaffen ist dies ein nicht zu unterschätzender Vorteil.",2780,0,toData);
+    base_books.AddGermanBookText("Rüstungen und Schilde:\n\nAuf ein Rüstungsteil oder ein Schild übertragen schützen die magischen Kräfte eines Smaragdes zusätzlich vor Stichschaden.",20,0,toData);
+    base_books.AddGermanBookText("Magierstäbe:\n\nSmaragdenergien in einem Magierstab bündeln die Kräfte des Trägers und erlauben es ihm so seine Zauber mit größerer Reichweite zu sprechen.",76,0,toData);
+    base_books.AddGermanBookText("Werkzeuge:\n\nVerstärkt man ein Werkzeug mit der magischen Energie eines Smaragdes, so wird man feststellen, dass die Gegenstände die man mit diesem Werkzeug herstellt eine größere Haltbarkeit aufweisen.",172,0,toData);
+    base_books.AddGermanBookText("Schmuckstücke:\n\nTrägt man ein Schmuckstück, welches Smaragdenergien enthält, so kann man seine Umgebung besser wahrnehmen. ",62,0,toData);
+    base_books.AddGermanBookText("Zu beachten ist hierbei, dass man niemals die Energien eines Smaragdes in ein Schmuckstück fließen lassen sollte, in welches ein andersartiger Stein eingefasst wurde.",0,0,toData);
 end;
 
 function M.loadTitle(toData)

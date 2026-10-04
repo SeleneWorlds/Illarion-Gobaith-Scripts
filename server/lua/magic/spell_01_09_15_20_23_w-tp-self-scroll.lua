@@ -121,24 +121,24 @@ function M.WriteTeleSpell(Caster, ltstate )
                         end
                         --quality setzen
 
-                        -- Meine H�nde
+                        -- Meine Hände
                         itemL = Caster:getItemAt(5);
                         itemR = Caster:getItemAt(6);
 
-                        -- Wo ist die offene Pergamentrolle, haben wir �berhaupt eine?
+                        -- Wo ist die offene Pergamentrolle, haben wir überhaupt eine?
                         local success = true;
                         if (itemL.id == 3109) then
                             parchment = itemL;
                         elseif (itemR.id == 3109) then
                             parchment = itemR;
                         else
-                            InformNLS(Caster,"Ein leichter Windsto� f�hrt �ber dich hinweg.","You feel some wind passing by.");
+                            InformNLS(Caster,"Ein leichter Windstoß fährt über dich hinweg.","You feel some wind passing by.");
                             success = false;
                         end;
                         if success then
                             Caster:eraseItem( 3109, 1 );
 
-                            -- Wenn kein Platz mehr, ab auf den Boden. Quality == 2 ist f�r diesen Spruch reserviert.
+                            -- Wenn kein Platz mehr, ab auf den Boden. Quality == 2 ist für diesen Spruch reserviert.
                             if ( Caster:createItem( 3110, 1, 102, 0 ) ~= 0 ) then
                                world:createItemFromId( 3110, 1, Caster.pos, true, 102, 0 );
                             end;
@@ -150,13 +150,13 @@ function M.WriteTeleSpell(Caster, ltstate )
                         InformNLS(Caster,"Der Spruch gelingt nicht","The spell fails.");
                     end
                 else
-                    InformNLS(Caster,"Nicht gen�gend Mana","Not enough mana.");
+                    InformNLS(Caster,"Nicht genügend Mana","Not enough mana.");
                 end
             else
                 InformNLS(Caster,"Du hast Hunger und kannst dich nicht konzentrieren.","You are hungry and can't concentrate.");
             end
         else
-            InformNLS(Caster,"Du w�rdest es nicht �berleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
+            InformNLS(Caster,"Du würdest es nicht überleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
         end
     elseif ( ltstate == Action.none ) then
         local CasterVal=basics.CasterValue(Caster);
@@ -174,13 +174,13 @@ function M.WriteTeleSpell(Caster, ltstate )
                    Caster:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt mit einer mystischen Formel.");
                    Caster:talkLanguage( CCharacter.say, CPlayer.english, "#me starts with a mystical formula.");
                 else
-                    InformNLS(Caster,"Nicht gen�gend Mana","Not enough mana");
+                    InformNLS(Caster,"Nicht genügend Mana","Not enough mana");
                 end;
             else
                 InformNLS(Caster,"Du hast Hunger und kannst dich nicht konzentrieren.","You are hungry and can't concentrate.");
             end;
         else
-            InformNLS(Caster,"Du w�rdest es nicht �berleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
+            InformNLS(Caster,"Du würdest es nicht überleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
         end;
     elseif ( ltstate == Action.abort ) then
         Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");

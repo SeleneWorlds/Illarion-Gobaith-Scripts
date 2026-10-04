@@ -1,6 +1,6 @@
 --ds_327_blaue_flasche.lua
 --Druidensystem
---Nicht-Tempor�re Einzelwirkungen
+--Nicht-Temporäre Einzelwirkungen
 --Falk
 
 local common = require("base.common")
@@ -10,8 +10,8 @@ local missile = require("druid.base.missile")
 local M = {}
 -- UPDATE common SET com_script='druid.item.id_327_blue_bottle' WHERE com_itemid = 327;
 
--- Datawerte f�r Wurfk�rper
--- Werte m�ssen f�r optimierte Suche aufsteigend geordnet sein
+-- Datawerte für Wurfkörper
+-- Werte müssen für optimierte Suche aufsteigend geordnet sein
 listWK = {12836431, 13245638, 13983419, 16359531, 19123643, 21915579, 24968253, 26372612, 29732752, 32185872, 32484266,
           32812622, 33421656, 35471525, 36557188, 36835636, 42218944, 43185342, 43245354, 47564545, 52761593, 55938556,
           56548394, 57771997, 59159412, 62358491, 63155452, 64312656, 66475155, 67589591, 69657293, 71943574, 75568356,
@@ -41,14 +41,14 @@ function M.checkMissile(ItemData, lower, upper)
 end
 
 function M.windtrank(User,SourceItem,TargetItem)
-    --pr�fen, ob 5 Pfeile vorhanden (ID 64)
+    --prüfen, ob 5 Pfeile vorhanden (ID 64)
 	if (User:countItemAt("all",64) < 5) then
 	    common.InformNLS( User,
 	    "Du brauchst zumindest 5 Pfeile um daraus Windpfeile zu fertigen.",
 	    "You need at least 5 arrows to create wind arrows." );
 	    return false;
 	end
-	--pr�fen, ob sonstige Voraussetzungen erf�llt, zb Skills etc
+	--prüfen, ob sonstige Voraussetzungen erfüllt, zb Skills etc
 
 	--Umwandlung normale Pfeile in Windpfeile
     world:erase(SourceItem,1)
@@ -58,7 +58,7 @@ end
 
 function M.Explode(User,Item)
 
-    -- Effektname des Wurfk�rpers ermitteln und dorthin verzweigen
+    -- Effektname des Wurfkörpers ermitteln und dorthin verzweigen
     if (item.id_data == 12836431) then
         missile.effect_12836431( User, Item );
     elseif (item.id_data == 13245638) then
@@ -167,10 +167,10 @@ end;
 function M.Drop(User,Item)
     if (math.random(1,User:increaseAttrib("dexterity",0)+7)==1) then
         M.Explode(User,Item);
-        User:talkLanguage(CCharacter.say,CPlayer.german,"#me l�sst eine Flasche fallen, welche explodiert.");
+        User:talkLanguage(CCharacter.say,CPlayer.german,"#me lässt eine Flasche fallen, welche explodiert.");
         User:talkLanguage(CCharacter.say,CPlayer.english,"#me drops a bottle and it explodes.");
         common.InformNLS( User,
-        "Der Wurfk�rper rutscht dir aus den H�nden und zerplatzt vor deinen F��en.",
+        "Der Wurfkörper rutscht dir aus den Händen und zerplatzt vor deinen Füßen.",
         "The missile slips out of your hands and burst asunder in front of you feets.");
     end;
 end;
@@ -179,11 +179,11 @@ function M.MoveItemAfterMove(User, SourceItem, TargetItem)
 	if Sourceitem.id_data == 0 then
 	else
     if not M.checkMissile(Sourceitem.id_data) then
-        return; -- kein Wurfk�rper
+        return; -- kein Wurfkörper
     end
 
     if (math.floor(Sourceitem.id_quality/1000)==1) then
-        return; -- Wurfk�rper gesichert
+        return; -- Wurfkörper gesichert
     end
 
     if (SourceItem:getType()~=4 or (Sourceitem.id_itempos~=5 and Sourceitem.id_itempos~=6)) then
@@ -209,11 +209,11 @@ function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
 
 	else
     if not M.checkMissile(Sourceitem.id_data) then
-        return true; -- kein Wurfk�rper
+        return true; -- kein Wurfkörper
     end
 
     if (math.floor(Sourceitem.id_quality/1000)==1) then
-        return true; -- Wurfk�rper gesichert
+        return true; -- Wurfkörper gesichert
     end
 
     if (TargetItem:getType()~=3) then
@@ -222,7 +222,7 @@ function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
 
     if (SourceItem:getType()~=4 or (Sourceitem.id_itempos~=5 and Sourceitem.id_itempos~=6)) then
         common.TempInformNLS( User,
-        "Du musst den Wurfk�rper aus der Hand werfen.",
+        "Du musst den Wurfkörper aus der Hand werfen.",
         "You have to throw the missle out of your hand.");
         return false; -- Nicht in der Hand
     end
@@ -246,22 +246,22 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 		if (Sourceitem.id_data == 63321157) then --Windtrank
 			M.windtrank(User, SourceItem, TargetItem);
 
-		elseif M.checkMissile(Sourceitem.id_data) then --das ist ein Wurfk�rper
-			if (math.floor(Sourceitem.id_quality/1000)==1) then -- Wurfk�rper gesichert (qual: 1xxx) --> entsichern (qual: xxx)
+		elseif M.checkMissile(Sourceitem.id_data) then --das ist ein Wurfkörper
+			if (math.floor(Sourceitem.id_quality/1000)==1) then -- Wurfkörper gesichert (qual: 1xxx) --> entsichern (qual: xxx)
 				common.TempInformNLS( User,
-				"Du entsicherst des Wurfk�rper. Vorsicht damit.",
+				"Du entsicherst des Wurfkörper. Vorsicht damit.",
 				"You activate the missle. Careful with it.");
 				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 );
 				world:changeItem( SourceItem );
-			else -- Wurfk�rper entsichert --> sichern
+			else -- Wurfkörper entsichert --> sichern
 				common.TempInformNLS( User,
-				"Du sicherst den Wurfk�rper.",
+				"Du sicherst den Wurfkörper.",
 				"You deactivate the missile.");
 				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 ) + 1000;
 				world:changeItem( SourceItem );
 			end
 		else
-			-- das ist weder ein Wurfk�rper, noch eine Potion.
+			-- das ist weder ein Wurfkörper, noch eine Potion.
 		end
 	end
 end
@@ -281,7 +281,7 @@ function M.LookAtItem(Character,Item)
 		end
 	else
 		if (Character:getPlayerLanguage()==0) then
-			world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: 'Wurfk�rper'")
+			world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: 'Wurfkörper'")
 		else
 			world:itemInform(Character,Item,"You look at a sticker telling: 'Missile'")
 		end

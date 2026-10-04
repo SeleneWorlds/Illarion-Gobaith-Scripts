@@ -42,7 +42,7 @@ end
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     M.InitDrinks();
     if User.attackmode then
-        common.InformNLS( User, "Du w�rdest alles versch�tten.", "You'd spill everything.");
+        common.InformNLS( User, "Du würdest alles verschütten.", "You'd spill everything.");
         return -- Abbrechen wenn Spieler im Kampf ist
     end
     local food = drinkList[ SourceItem.id ];
@@ -51,7 +51,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         return
     end
     foodLevel = User:increaseAttrib("foodlevel",0) + food[1]; -- Foodlevel anheben
-    world:makeSound(12,User.pos); -- Trink ger�usch machen
+    world:makeSound(12,User.pos); -- Trink geräusch machen
     if ( math.random( 50 ) <= 1 ) then -- 1/50 das die Flasche zerbricht
         world:erase(SourceItem,1);
         common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
@@ -133,8 +133,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         User.effects:addEffect(alcEffect); -- Effekt an User senden
         -- Alkohol Abhandlung fertig
     end
-    if ( User:increaseAttrib("foodlevel",0) ~= foodLevel ) then -- Pr�fen ob Nahrungspunkte ge�ndert wurden
-        User:increaseAttrib("foodlevel",-(User:increaseAttrib("foodlevel",0)-foodLevel)); -- �nderung durchf�hren
+    if ( User:increaseAttrib("foodlevel",0) ~= foodLevel ) then -- Prüfen ob Nahrungspunkte geändert wurden
+        User:increaseAttrib("foodlevel",-(User:increaseAttrib("foodlevel",0)-foodLevel)); -- Änderung durchführen
     end
 end
 

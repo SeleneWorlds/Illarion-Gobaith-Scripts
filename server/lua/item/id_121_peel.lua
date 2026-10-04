@@ -25,7 +25,7 @@ function M.InitCraftingTool( )
         baking:AddTool( 120 ); -- Backofen
         
         baking:AddInterruptMessage(
-        "Du wischst dir den Schwei� von der Stirn.",
+        "Du wischst dir den Schweiß von der Stirn.",
         "You wipe sweat off your forehead.");
         
         baking:AddInterruptMessage(
@@ -33,11 +33,11 @@ function M.InitCraftingTool( )
         "You take a look into the oven and watch with joy how the dough rises.");
         
         baking:AddInterruptMessage(
-        "Du h�ltst einen Moment inne und �berlegst eine zus�tzliche Zutat hinzuzuf�gen, entscheidest dich aber dagegen.",
+        "Du hältst einen Moment inne und überlegst eine zusätzliche Zutat hinzuzufügen, entscheidest dich aber dagegen.",
         "You hesitate and consider to add additional ingredients to the recipe. Finally, you revise your decision.");
         
         baking:AddInterruptMessage(
-        "Du w�schst dir kurz den klebrigen Teig von den Fingern.",
+        "Du wäschst dir kurz den klebrigen Teig von den Fingern.",
         "You stop to wash the slippery dough off your hands.");
         
         --------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ function M.InitCraftingTool( )
         ---------------- BREAD ROLL - 191 ----------------------
         product = baking:AddProduct( 0, 191, {0, 20 }, 1, { 10, 20 } );
         product:AddProductionSteps( {   5, 1, "all" }, 1 ); -- Step 1: Dough (5) 1x
-        -------------- BR�TCHEN - DONE ----------------
+        -------------- BRÖTCHEN - DONE ----------------
 
         ---------------- COOKIES - 453 ----------------------
         product = baking:AddProduct( 0, 453, {10, 30 }, 2, { 15, 30 } );
@@ -126,14 +126,14 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     
     if ( SourceItem:getType() ~= 4 ) then -- Ofenschieber in der Hand
         common.InformNLS( User, 
-        "Du mu�t den Ofenschieber in die Hand nehmen um damit zu arbeiten.", 
+        "Du mußt den Ofenschieber in die Hand nehmen um damit zu arbeiten.", 
         "You have to take the peel in your hand to work with it." )
         return
     end
 
-    if common.Encumbrence(User) then -- Sehr steife R�stung?
+    if common.Encumbrence(User) then -- Sehr steife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim backen.",
+        "Deine Rüstung behindert beim backen.",
         "Your armor disturbs you while baking." );
         baking:SwapToInactiveItem( User );
         return

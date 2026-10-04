@@ -1,6 +1,6 @@
 local M = {}
 
--- T�REN AUF UND ZU KLAPPEN
+-- TÜREN AUF UND ZU KLAPPEN
 -- RUNEN 1 & 23 KEL ANTH
 --INSERT INTO spells VALUES (2^0+2^22,0,'m_01_23.lua');
 --SPEZIALZAUBER
@@ -20,15 +20,15 @@ function M.OpenCloseTarget(Caster,Item)
         Caster.activeLanguage=Language;
         if base_doors.CloseDoor(Item) then
             M.Succeed(Caster)
-            common.InformNLS(Caster,"Von dem Windsto� getroffen klappt die T�r zu.","A mysterious breeze pushes the door close.");
+            common.InformNLS(Caster,"Von dem Windstoß getroffen klappt die Tür zu.","A mysterious breeze pushes the door close.");
         else
             local OpenDoor,OpenOK=base_doors.OpenDoor(Item);
             if OpenOK then
                 M.Succeed(Caster)
-                common.InformNLS(Caster,"Vom Wind gef�hrt schwingt die T�r auf.","A mysterious breeze pushes the door open.");
+                common.InformNLS(Caster,"Vom Wind geführt schwingt die Tür auf.","A mysterious breeze pushes the door open.");
             elseif OpenDoor then
                 M.Succeed(Caster)
-                common.InformNLS(Caster,"Der Wind r�ttelt an der T�r, doch sie �ffnet sich nicht.","The wind tries to open the door, but the door doesn't open.");
+                common.InformNLS(Caster,"Der Wind rüttelt an der Tür, doch sie öffnet sich nicht.","The wind tries to open the door, but the door doesn't open.");
             else
                 common.InformNLS(Caster,"Der Spruch zeigt keine Wirkung.","Nothing happens.");
             end

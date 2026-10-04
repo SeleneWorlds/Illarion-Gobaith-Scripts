@@ -14,7 +14,7 @@ function M.UseItem(User,SourceItem)
     level=SourceItem.data;
     posi=SourceItem.pos;
 
-    common.TempInformNLS(User, "Du �ffnest die Schatzkiste...", "You open the treasure chest...");
+    common.TempInformNLS(User, "Du öffnest die Schatzkiste...", "You open the treasure chest...");
 	world:erase(SourceItem,1);
 	if SourceItem.data ~= 0 and SourceItem.data < 10 then
         world:gfx(16,posi);

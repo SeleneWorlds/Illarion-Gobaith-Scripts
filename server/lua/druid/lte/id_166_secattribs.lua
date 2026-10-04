@@ -1,4 +1,4 @@
--- LTE f�r das Druidensystem
+-- LTE für das Druidensystem
 -- by Falk
 
 local M = {}
@@ -13,14 +13,14 @@ function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 	-- Character:inform("debug func M.addEffect")
 end
 
-function M.callEffect(Effect,Character)               -- Effect wird ausgef�hrt
+function M.callEffect(Effect,Character)               -- Effect wird ausgeführt
 	--Character:inform("debug func M.callEffect")
 	find,zaehler = Effect:findValue("zaehler")
 	if find then
 		zaehler = zaehler -1
 		Effect:addValue("zaehler", zaehler)
 		--Character:inform("Runde "..zaehler)
-		Effect.nextCalled = 10  -- n�chster Aufruf in 1 Sekunde
+		Effect.nextCalled = 10  -- nächster Aufruf in 1 Sekunde
 		if zaehler == 0 then
 
 			find, luc = Effect:findValue("luck")

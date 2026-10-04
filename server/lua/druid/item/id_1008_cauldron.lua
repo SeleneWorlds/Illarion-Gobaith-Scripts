@@ -2,12 +2,12 @@
 -- Herstellung von Pflanzenextrakten
 -- Fixieren von Pflanzenextrakten zu Potions
 -- Neutralisieren von Pflanzenextrakten
--- Kessel 1008 (SourceItem) zur Herstellung von Pflanzens�ften
+-- Kessel 1008 (SourceItem) zur Herstellung von Pflanzensäften
 -- by Falk
 
--- Flasche 164(grau) oder 331(gr�n) in der Hand
+-- Flasche 164(grau) oder 331(grün) in der Hand
 -- Pflanze,Mineral,Filtrat in der Hand
--- Auf Kessel ausl�sen
+-- Auf Kessel auslösen
 
 local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
@@ -17,9 +17,9 @@ local M = {}
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
   --User:inform("debug ds_pflanzensud.lua")
-  -- pr�fe ob der User eine Planze in der Hand hat
+  -- prüfe ob der User eine Planze in der Hand hat
     local plantInHand = alchemy.CheckIfPlantInHand(User);
-    -- pr�fe ob eine Flasche in der Hand ist
+    -- prüfe ob eine Flasche in der Hand ist
     local bottleInHand = alchemy.CheckIfBottleInHand(User);
 		-- check auf mehrere Flaschen(Stapelbug)
 		if User:countItemAt("body",164)>1 or User:countItemAt("body",331)>1 then
@@ -36,7 +36,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             );
             return;
         end
-        -- Flasche und Planze wurden gefunden. Also spalten wir den Wert auf der die Effektinformationen enth�lt
+        -- Flasche und Planze wurden gefunden. Also spalten wir den Wert auf der die Effektinformationen enthält
 
 		-- Manche Pflanzen haben Doppelfunktionen und bekommen eine neue ID
         if plantInHand.data >9000 and plantInHand.data < 9017 then
@@ -50,22 +50,22 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local bottleData = ( bottleInHand.id == 164 and 55555555 or bottleInHand.data );
         local bottleQual = ( bottleInHand.id == 164 and 999 or bottleInHand.quality );
 
-        -- Und wir generieren eine Liste die jeden Eintrag des Datawertes einzeln enth�lt
+        -- Und wir generieren eine Liste die jeden Eintrag des Datawertes einzeln enthält
         local dataZList = alchemy.SplitBottleData(User,bottleData);
 
-        -- Abh�ngig der Effektdaten der Planze wird ein Wert angehoben und ein anderer abgesenkt
+        -- Abhängig der Effektdaten der Planze wird ein Wert angehoben und ein anderer abgesenkt
         dataZList[plusWertPos] = math.min( 9, dataZList[plusWertPos] + 1 );
         dataZList[minusWertPos] = math.max( 1,dataZList[minusWertPos] - 1 );
 
         -- Aus den modifizierten Daten erstellen wir den neuen Datawert.
         bottleData = alchemy.PasteBottleData(User,dataZList);
 
-        -- die Pflanze l�schen
+        -- die Pflanze löschen
         User:increaseAtPos(plantInHand.itempos,-1);
 
         -- Das Flascheitem wird entsprechend aller Daten modifiziert
         bottleInHand.id = 331;
-        -- Die Qualit�t des Sudes richtet sich nach der niedrigsten Qualit�t der benutzten Pflanzen
+        -- Die Qualität des Sudes richtet sich nach der niedrigsten Qualität der benutzten Pflanzen
         bottleInHand.quality = math.min(bottleQual,plantInHand.quality);
         bottleInHand.data = bottleData;
         -- Hier noch einen Text einbauen, dass man gerade eine Pflanze verarbeitet...
@@ -93,7 +93,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         --Mineralstaub und Flasche sind da. Beides wird eingelesen.
         --local bottleInHand = User:getItemAt( bottleInHand );
 
-        --Mit Mineralstaub werden Tr�nke fixiert. Wenn die Flasche leer ist, ist das sinnlos
+        --Mit Mineralstaub werden Tränke fixiert. Wenn die Flasche leer ist, ist das sinnlos
         if( bottleInHand.id == 164 )then
             -- Und sie ist leer! Der User soll um seinen Fehler wissen:
             common.InformNLS( User,
@@ -103,7 +103,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             return;
         end
 
-        --alles ist in Ordnung. Der Mineralstaub wird gel�scht und die Flasche ge�ndert
+        --alles ist in Ordnung. Der Mineralstaub wird gelöscht und die Flasche geändert
 
 --[[  aber nur, wenn der Char ein Druide ist !!!
       ansonsten ein text, der ihm das mitteilt
@@ -117,7 +117,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 			alchemy.ds_skillgain(User);
         else
         common.InformNLS( User,
-                "Du musst schon Druide sein, um so etwas zu k�nnen.",
+                "Du musst schon Druide sein, um so etwas zu können.",
                 "You need to be a druid to do such things."
             );
         end
@@ -137,7 +137,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             return;
         end
 
-        -- Kohle und Flasche sind da. Schauen wir uns die Flasche mal n�her an.
+        -- Kohle und Flasche sind da. Schauen wir uns die Flasche mal näher an.
         if( bottleInHand.id == 164 )then
             -- Die Flasche ist leer und die Kohle damit sinnlos
             common.InformNLS( User,
@@ -147,10 +147,10 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             return;
         end
 
-        -- Alles in Ordnung. Kohle wird gel�scht.
+        -- Alles in Ordnung. Kohle wird gelöscht.
         User:increaseAtPos(coalInHand.itempos,-1);
 
-        -- Flaschen Datawert wird auf default zur�ck gesetzt. Die Kohle hat alle Effekte neutralisiert
+        -- Flaschen Datawert wird auf default zurück gesetzt. Die Kohle hat alle Effekte neutralisiert
         bottleInHand.data = 55555555;
         world:changeItem(bottleInHand);
         return;
@@ -185,7 +185,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         -- Datawert der Flasche aufspalten
         local dataZList = alchemy.SplitBottleData(User,bottleInHand.data);
 
-        -- Und alle Werte um 1 dem Mittelwert ann�hern
+        -- Und alle Werte um 1 dem Mittelwert annähern
         for i=1,8 do
             if (dataZList[i] > 5) then
                 dataZList[i] = dataZList[i] - 1

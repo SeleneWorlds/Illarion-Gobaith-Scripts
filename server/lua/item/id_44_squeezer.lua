@@ -2,7 +2,7 @@ local M = {}
 
 -- Presse
 
--- Distel(141) zu �l (390)
+-- Distel(141) zu Öl (390)
 -- Arbeitscyclus: 3s
 
 -- UPDATE common SET com_script='item.id_44_squeezer' WHERE com_itemid IN (44);
@@ -11,9 +11,9 @@ local common = require("base.common")
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     common.ResetInterruption( User, ltstate );
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim arbeiten.",
+        "Deine Rüstung behindert beim arbeiten.",
         "Your armor disturbes while working." );
         return
     end
@@ -23,7 +23,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
 
     if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn nötig
     end
 
     if not common.FitForWork( User ) then -- Kein Hunger
@@ -47,7 +47,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if (User:countItemAt("all",141)>1) then
         if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
             User:startAction( 30, 0, 0, 0, 0 );
-            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt �l zu pressen.");
+            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Öl zu pressen.");
             User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to squeeze out oil.");
             return;
         end
@@ -55,14 +55,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             local selectMessage = math.random(1,1);
             if ( selectMessage == 1 ) then
                 common.InformNLS(User,
-                "Du wischst dir den Schwei� von der Stirn.",
+                "Du wischst dir den Schweiß von der Stirn.",
                 "You wipe sweat off your forehead.");
             end
             return;
         end
         User:eraseItem(141,2);
         local notCreated = User:createItem(390,1,333,0);
-        if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
+        if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
             world:createItemFromId( 390, notCreated, User.pos, true, 333 ,0);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
@@ -73,7 +73,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         common.GetHungry( User, 300 );
     else
         common.InformNLS(User,
-        "Du ben�tigst schwarze Disteln um �l zu pressen.",
+        "Du benötigst schwarze Disteln um Öl zu pressen.",
         "You need black thistle to sqeeze out oil.");
     end
 end

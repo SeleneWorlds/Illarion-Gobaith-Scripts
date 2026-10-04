@@ -21,22 +21,22 @@ function M.CastMagicOnField(Caster,Targetpos,counter,param,ltstate)
 --Weltkoordinaten:
 --Linke obere Ecke    =  -500 / -500
 --Rechte untere Ecke  =  456 / 274
---1� Grad = 60' Minuten
+--1° Grad = 60' Minuten
 
 
 --Positionsangaben
 if Targetpos.x < 0 then
-  text1DE = " westlicher L�nge "
+  text1DE = " westlicher Länge "
   text1EN = " western longitude"
 elseif Targetpos.x > 0 then
-  text1DE = " �stlicher L�nge "
+  text1DE = " östlicher Länge "
   text1EN = " eastern longitude"
 end
 if Targetpos.y < 0 then
-  text2DE = " n�rdlicher Breite "
+  text2DE = " nördlicher Breite "
   text2EN = " northern latitude"
 elseif Targetpos.y > 0 then
-  text2DE = " s�dlicher Breite "
+  text2DE = " südlicher Breite "
   text2EN = " southern latitude"
 end
 
@@ -49,9 +49,9 @@ latiGrad = math.floor(latitude/60)
 latiMin = latitude - latiGrad*60
 
   if Caster:getPlayerLanguage() == 0 then
-    Caster:inform("#b|0|0|"..longGrad.."�, "..longMin.."\' "..text1DE.."\n"..latiGrad.."�, "..latiMin.."\' "..text2DE)
+    Caster:inform("#b|0|0|"..longGrad.."°, "..longMin.."\' "..text1DE.."\n"..latiGrad.."°, "..latiMin.."\' "..text2DE)
   else
-    Caster:inform("#b|0|0|"..longGrad.."�, "..longMin.."\' "..text1EN.."\n"..latiGrad.."�, "..latiMin.."\' "..text2EN)
+    Caster:inform("#b|0|0|"..longGrad.."°, "..longMin.."\' "..text1EN.."\n"..latiGrad.."°, "..latiMin.."\' "..text2EN)
   end
 end
 
@@ -62,7 +62,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 
 --common.InformNLS( Caster,
 --"Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten",
---"This item weights "..myItem.Weight.." druid weight-units"); -- das kann man sch�ner formulieren
+--"This item weights "..myItem.Weight.." druid weight-units"); -- das kann man schöner formulieren
 	textDE="Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten"
 	textEN="This item weights "..myItem.Weight.." druid weight-units"
 	if Caster:getPlayerLanguage() == 0 then

@@ -33,9 +33,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
     
-    if common.Encumbrence(User) then -- Durch Steife R�stung behindert
+    if common.Encumbrence(User) then -- Durch Steife Rüstung behindert
         common.InformNLS( User,
-        "Deine R�stung behindert Dich beim behauen der Steine",
+        "Deine Rüstung behindert Dich beim behauen der Steine",
         "Your armor disturbes you while working the stones" );
         return
     end
@@ -54,11 +54,11 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
     
-    if not common.FitForWork( User ) then -- Nicht ersch�pft
+    if not common.FitForWork( User ) then -- Nicht erschöpft
         return
     end
     
-    if (User:countItemAt("belt",735)==0) and (User:countItemAt("belt",733)==0) then -- Getreideb�ndel im G�rtel
+    if (User:countItemAt("belt",735)==0) and (User:countItemAt("belt",733)==0) then -- Getreidebündel im Gürtel
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
             "Wenn du keine Steine hast, kannst du auch keine behauen.", 
@@ -80,12 +80,12 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     
     if common.IsInterrupted( User ) then
         common.InformNLS(User,
-        "Du schl�gst daneben und triffst mit dem Hammer deine Finger.",
+        "Du schlägst daneben und triffst mit dem Hammer deine Finger.",
         "You miss the chisel and hit your fingers.");
         return
     end
     
-    if common.ToolBreaks( User, SourceItem ) then -- Dreschflegen besch�digen
+    if common.ToolBreaks( User, SourceItem ) then -- Dreschflegen beschädigen
         common.InformNLS(User,
         "Der Meisel zerbricht.",
         "The chisel breaks.");

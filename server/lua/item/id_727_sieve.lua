@@ -5,7 +5,7 @@ local M = {}
 -- grober Sand (726) --> Quarz Sand (316)
 
 -- Arbeitscyclus: 1s - 4s
--- Zus�tzliches Werkzeug: Holzkelle ( 312 )
+-- Zusätzliches Werkzeug: Holzkelle ( 312 )
 
 -- UPDATE common SET com_script='item.id_727_sieve' WHERE com_itemid IN (727);
 
@@ -30,9 +30,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert dich beim sieben",
+        "Deine Rüstung behindert dich beim sieben",
         "Your armor disturbs you while sieving" );
         return
     end
@@ -57,7 +57,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if common.ToolBreaks( User, Tool, true ) then -- Schere besch�digen
+    if common.ToolBreaks( User, Tool, true ) then -- Schere beschädigen
         common.InformNLS( User, 
         "Die Holzkelle bricht ab.", 
         "The wooden shovel breaks." );
@@ -67,7 +67,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if (User:countItemAt("belt",726) < 1) then
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
-            "Du ben�tigst groben Sand um diesen zu sieben.", 
+            "Du benötigst groben Sand um diesen zu sieben.", 
             "You need coarse sand to sieve it." );
         end
         return
@@ -84,15 +84,15 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local selectMessage = math.random(1,5);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
-            "Du wischst dir den Schwei� von der Stirn.",
+            "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
-            "Eine Windb�e erfasst den Sand als du ihn gerade sieben willst und bl��t dir den Sand ins Gesicht.",
+            "Eine Windböe erfasst den Sand als du ihn gerade sieben willst und bläßt dir den Sand ins Gesicht.",
             "A gust grabs your sand when you tried to sieve it and blows it into your face.");
         elseif ( selectMessage == 3 ) then
             common.InformNLS(User,
-            "Du machst eine k�rzere Pause um die gr��eren Steine aus dem R�ttelsieb zu entfernen.",
+            "Du machst eine kürzere Pause um die größeren Steine aus dem Rüttelsieb zu entfernen.",
             "You toss out some small pebbles from the sieve.");
         elseif ( selectMessage == 4 ) then
             common.InformNLS(User,
@@ -100,7 +100,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             "You blow sand away from your clothes.");
         else
             common.InformNLS(User,
-            "F�r einen Moment dachtest du einen Edelstein im Sieb gefunden zu haben, es war aber doch nur ein St�ck Glas.",
+            "Für einen Moment dachtest du einen Edelstein im Sieb gefunden zu haben, es war aber doch nur ein Stück Glas.",
             "You look with glee at a shining stone in the sand, but then realise its only a piece of glass.");
         end
         return

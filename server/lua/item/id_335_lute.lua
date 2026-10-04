@@ -7,11 +7,11 @@ local M = {}
 
 local music = require("item.base.music").new()
 local general_wood = require("item.general.wood")
-music.addTalkText("#me makes a terrible noise on the lute","#me macht ein furchtbares Ger�usch mit der Laute");
-music.addTalkText("#me plays some halting tunes","#me spielt einige unsichere T�ne auf der Laute");
-music.addTalkText("#me plays some nice tunes on the lute","#me spielt einige sch�ne T�ne auf der Laute");
-music.addTalkText("#me plays some nice sounding tunes on a lute","#me spielt einige gute klingende T�ne auf der Laute");
-music.addTalkText("#me plays a lilting melody on a lute","#me spielt eine tr�llernde Melodie auf der Laute");
+music.addTalkText("#me makes a terrible noise on the lute","#me macht ein furchtbares Geräusch mit der Laute");
+music.addTalkText("#me plays some halting tunes","#me spielt einige unsichere Töne auf der Laute");
+music.addTalkText("#me plays some nice tunes on the lute","#me spielt einige schöne Töne auf der Laute");
+music.addTalkText("#me plays some nice sounding tunes on a lute","#me spielt einige gute klingende Töne auf der Laute");
+music.addTalkText("#me plays a lilting melody on a lute","#me spielt eine trällernde Melodie auf der Laute");
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     music.PlayInstrument(User,SourceItem,"lute");

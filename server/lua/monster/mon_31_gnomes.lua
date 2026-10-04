@@ -12,7 +12,7 @@ killer={}; --A list that keeps track of who attacked the monster last
 --Random Messages
 
 msgs = base_messages.Messages();
-msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte f�r Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu k�nnen!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
+msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte für Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu können!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
 
 end
 
@@ -61,7 +61,7 @@ function M.throwMolotov(Monster,Enemy)
         end );
 
         Monster.fightpoints=Monster.fightpoints-25;
-        Monster:talkLanguage( CCharacter.say, CPlayer.german, "#me schmei�t eine wei�e Flasche nach "..Enemy.name..".");
+        Monster:talkLanguage( CCharacter.say, CPlayer.german, "#me schmeißt eine weiße Flasche nach "..Enemy.name..".");
         Monster:talkLanguage( CCharacter.say, CPlayer.english, "#me tosses a white bottle at "..Enemy.name..".");
         return false;
     end

@@ -2,9 +2,9 @@ local base_orders = require("base.orders")
 local M = {}
 
 --[[
-    Sperrfristeffekt: Falls ein Char zu viele offene Auftr�ge hat ohne diese zu erf�llen
+    Sperrfristeffekt: Falls ein Char zu viele offene Aufträge hat ohne diese zu erfüllen
     wird eine Sperrfrist angelegt. Innerhalb dieser Zeit kann der Char
-    keine neuen Auftr�ge annehmen
+    keine neuen Aufträge annehmen
     ]]--
 
 
@@ -19,7 +19,7 @@ function M.addEffect(eff, User)
 end
 
 function M.removeEffect(eff,User)
-    --beim entfernen die Vertrauensw�rdigkeit erh�hen aber wert f�r gute Auftr�ge senken
+    --beim entfernen die Vertrauenswürdigkeit erhöhen aber wert für gute Aufträge senken
     base_orders.setThrustWorthyness(User,
         base_orders.ThrustworthynessChangeAfterRetentionPeriod,
         base_orders.GoodOrderChangeAfterRetentionPeriod);

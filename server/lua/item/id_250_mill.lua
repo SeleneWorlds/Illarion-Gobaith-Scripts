@@ -1,11 +1,11 @@
 local M = {}
 
--- M�hlstein ( 250 )
+-- Mühlstein ( 250 )
 
--- Getreidek�rner  --> Mehl
+-- Getreidekörner  --> Mehl
 
 -- Arbeitscyclus: 0.5s - 3s
--- Zus�tzliches Werkzeug: Holzkelle ( 312 )
+-- Zusätzliches Werkzeug: Holzkelle ( 312 )
 
 -- UPDATE common SET com_script='item.id_250_mill' WHERE com_itemid IN (250);
 
@@ -26,9 +26,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if common.Encumbrence(User) then -- Durch Steife R�stung behindert
+    if common.Encumbrence(User) then -- Durch Steife Rüstung behindert
         common.InformNLS( User,
-        "Deine R�stung behindert Dich beim Mehl Mahlen.",
+        "Deine Rüstung behindert Dich beim Mehl Mahlen.",
         "Your armor disturbs you when grinding grain" );
         return
     end
@@ -48,7 +48,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if (User:countItemAt("belt",259) == 0) then
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
-            "Du hast nichts was du hier zermahlen k�nntest.", 
+            "Du hast nichts was du hier zermahlen könntest.", 
             "You have nothing that you can grind here." );
         end
         return
@@ -56,7 +56,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("body",312)==0) then -- Holzkelle
         common.InformNLS( User,
-        "Du ben�tigst eine Holzkelle um das Getreide in die M�hle zu bekommen.",
+        "Du benötigst eine Holzkelle um das Getreide in die Mühle zu bekommen.",
         "You need a wooden shovel to get the grain into the mill." );
         return
     end
@@ -66,7 +66,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if common.ToolBreaks( User, Tool ) then -- Holzkelle besch�digen
+    if common.ToolBreaks( User, Tool ) then -- Holzkelle beschädigen
         common.InformNLS( User, 
         "Die Holzkelle zerbricht.", 
         "The wooden shovel breaks." );
@@ -84,23 +84,23 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local selectMessage = math.random(1,5);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
-            "Du wischst dir den Schwei� von der Stirn.",
+            "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
-            "Dir rutscht die Holzkelle aus der Hand und f�llt in den M�hlstein. Nach einigen Versuchen kannst du sie wieder heraus holen.",
+            "Dir rutscht die Holzkelle aus der Hand und fällt in den Mühlstein. Nach einigen Versuchen kannst du sie wieder heraus holen.",
             "Your wooden shovel falls into the mill stone. After some tries you are able to get it out again.");
         elseif ( selectMessage == 3 ) then
             common.InformNLS(User,
-            "Du klopfst dir das Mehl aus der Kleidung, da du das Gef�hl hast wie ein Geist auszusehen.",
+            "Du klopfst dir das Mehl aus der Kleidung, da du das Gefühl hast wie ein Geist auszusehen.",
             "You beat the flour out of your clothes so that you do not look like a ghost anymore.");
         elseif ( selectMessage == 4 ) then
             common.InformNLS(User,
-            "Du s�uberst kurz den M�hlstein um eine bessere Qualit�t des Mehls zu erreichen.",
+            "Du säuberst kurz den Mühlstein um eine bessere Qualität des Mehls zu erreichen.",
             "You clean the millstone.");
         else
             common.InformNLS(User,
-            "Gerade noch kannst du verhindern, dass ein Stein, der sich wohl ins Korn gemogelt hatte, in den M�hlstein f�llt.",
+            "Gerade noch kannst du verhindern, dass ein Stein, der sich wohl ins Korn gemogelt hatte, in den Mühlstein fällt.",
             "You made it to get a stone out the the grain short time before it falls into the millstone");
         end
         

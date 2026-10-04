@@ -495,7 +495,7 @@ function Craft:ToolCreateItem( User, Param, WorkOnItem, ltstate, toolItem )
     end
     if (ProduceItem.Difficulty[1] > self:ModifySkill(User,toolItem)) then
         common.TempInformNLS(User,
-        "Du bist nicht f�hig genug um das zu tun.",
+        "Du bist nicht fähig genug um das zu tun.",
         "You are not skilled enough to do this.");
         return
     end
@@ -577,7 +577,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
 		end
 		if not foundSlot then
 			common.TempInformNLS(User,
-				"Du hast keinen Platz mehr in deinem G�rtel.",
+				"Du hast keinen Platz mehr in deinem Gürtel.",
 				"You have no room left in your belt.");
 			return;
 		end
@@ -641,7 +641,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
     if self:checkSuccess(User, ItemID,toolItem) then
         local ItemQual = 0;
         local ItemCount = 1;
-        if (Step == #self.Products[ ItemID ].ProductionSteps) then -- Item fertig -> Finale Qualit�t
+        if (Step == #self.Products[ ItemID ].ProductionSteps) then -- Item fertig -> Finale Qualität
             ItemQual = self:GenerateQuality( User, ItemID, toolItem );
             ItemCount = self.Products[ ItemID ].Quantity;
 			common.TempInformNLS(User,

@@ -71,7 +71,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 			if User:getQuestProgress(23) <10 then
 				User:setQuestProgress(23, 1 + User:getQuestProgress(23));
 				common.TempInformNLS(User,
-				"Du f�llst die Flasche mit einer wei�en Fl�ssigkeit.",
+				"Du füllst die Flasche mit einer weißen Flüssigkeit.",
 				"You fill the bottle with a white liquid.");
 				SourceItem.id = 330;
 				SourceItem.quality = 888;
@@ -86,7 +86,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 				world:changeItem(SourceItem);
 			else
 				common.TempInformNLS(User,
-				"Anscheinend ist keine Fl�ssigkeit mehr f�r dich �brig.",
+				"Anscheinend ist keine Flüssigkeit mehr für dich übrig.",
 				"Obviously there is no liquid left for you.");
 			end
 		end

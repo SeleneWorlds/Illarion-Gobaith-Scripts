@@ -5,7 +5,7 @@ local M = {}
 -- Rohe Edelsteine  --> geschliffene Edelsteine
 
 -- Arbeitscyclus: 1s - 5s
--- Zus�tzliches Werkzeug: Zange ( 2140 )
+-- Zusätzliches Werkzeug: Zange ( 2140 )
 
 -- UPDATE common SET com_script='item.id_270_grindstone' WHERE com_itemid IN (270);
 
@@ -24,9 +24,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         GemList[257]={45,198}; --Topas
     end
     
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert dabei Edelsteine zu schleifen.",
+        "Deine Rüstung behindert dabei Edelsteine zu schleifen.",
         "Your armor disturbes you grinding gems." );
         return
     end
@@ -36,12 +36,12 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
-        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn n�tig
+        common.TurnTo( User, SourceItem.pos ); -- Drehen wenn nötig
     end
     
     if (User:countItemAt("body",2140)==0) then -- kleine Zange
         common.InformNLS( User,
-        "Du ben�tigst eine kleine Zange um den Edelstein zu halten.",
+        "Du benötigst eine kleine Zange um den Edelstein zu halten.",
         "You need small tongs to cut the gems." );
         return
     end
@@ -51,7 +51,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if common.ToolBreaks( User, Tool ) then -- Zange besch�digen
+    if common.ToolBreaks( User, Tool ) then -- Zange beschädigen
         common.InformNLS( User, 
         "Die Zange bricht am Schleifstein ab.", 
         "The tongs break at the gem grinder." );
@@ -85,14 +85,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end
             if common.IsInterrupted( User ) then
                 common.InformNLS(User,
-                "Der "..world:getItemName(Gem[2],0).." rutscht dir aus der Hand und f�llt zu Boden. Du musst kurz suchen ehe du den Stein wieder findest.",
+                "Der "..world:getItemName(Gem[2],0).." rutscht dir aus der Hand und fällt zu Boden. Du musst kurz suchen ehe du den Stein wieder findest.",
                 "The "..world:getItemName(Gem[2],1).." slips out of your hand and falls down to the ground. You have to search for a moment to find it again.");
                 return
             end
             User:eraseItem(i,1); -- Rohen Edelstein entfernen
-            if M.CheckSuccess(User,Gem[1]) then -- Erfolgspr�fung
+            if M.CheckSuccess(User,Gem[1]) then -- Erfolgsprüfung
                 local notCreated = User:createItem(Gem[2],1,333,0); -- geschliffenen Edelstein erstellen
-                if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char �berladen
+                if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
                     world:createItemFromId( Gem[2], notCreated, User.pos, true, 333 ,0);
                     common.InformNLS(User,
                     "Du kannst nichts mehr halten.",
@@ -102,7 +102,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 end
             else -- kein Erfolg
                 common.InformNLS(User,
-                "Der "..world:getItemName(Gem[2],0).." zerbr�ckelt in deinen H�nden",
+                "Der "..world:getItemName(Gem[2],0).." zerbröckelt in deinen Händen",
                 "The "..world:getItemName(Gem[2],1).." breaks in your hands.");
                 User:startAction( M.GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
             end
@@ -113,13 +113,13 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     if (ltstate ~= Action.success) then
         common.InformNLS( User, 
-        "Du hast keinen Rohen Edelstein den du schleifen k�nntest.", 
+        "Du hast keinen Rohen Edelstein den du schleifen könntest.", 
         "You don't have a raw gemstone you could cut." );
     end
 end
 
--- Erfolgspr�fung
-function M.CheckSuccess(User,Difficulty) -- Erfolgspr�fung
+-- Erfolgsprüfung
+function M.CheckSuccess(User,Difficulty) -- Erfolgsprüfung
     local Attrib = User:increaseAttrib("dexterity",0); -- Geschicklichkeit: 0 - 20
     local Skill  = User:getSkill("gemcutting");     -- Edelstein schleifen: 0 - 100
     

@@ -1,6 +1,6 @@
 local M = {}
 
--- zus�tzliches Werkzeug 428 Kerzentisch (statisch)
+-- zusätzliches Werkzeug 428 Kerzentisch (statisch)
 -- Wachs (431) zu Kerzen (43)
 -- Arbeitszeit 2s
 
@@ -79,11 +79,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         local selectMessage = math.random(1,2);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
-            "Du wischst dir den Schwei� von der Stirn.",
+            "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
-            "Die Kerzen bleiben dir in der Form h�ngen. Es nimmt einige M�he in Anspruch sie endlich heraus zu bekommen.",
+            "Die Kerzen bleiben dir in der Form hängen. Es nimmt einige Mühe in Anspruch sie endlich heraus zu bekommen.",
             "The candle gets stuck in the mold, it takes you a few tries to force it out.");
         end
         return

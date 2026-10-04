@@ -1,6 +1,6 @@
--- LTE f�r das Druidensystem
+-- LTE für das Druidensystem
 -- by Falk
--- Zeitverlauf und R�ckwandlung bei Verwandlungen
+-- Zeitverlauf und Rückwandlung bei Verwandlungen
 local common = require("base.common")
 
 local M = {}
@@ -14,9 +14,9 @@ function M.addEffect(Effect, Character)               -- Nur beim ersten Aufruf
 	--Character:inform("debug func M.addEffect")
 end
 
-function M.callEffect(Effect,Character)                  -- Effect wird ausgef�hrt
+function M.callEffect(Effect,Character)                  -- Effect wird ausgeführt
 --Character:inform("debug func M.callEffect")
---Erst einmal kommt der Rundenz�hler
+--Erst einmal kommt der Rundenzähler
 	find,zaehler = Effect:findValue("zaehler")
 	if find then
 		zaehler = zaehler -1
@@ -25,7 +25,7 @@ function M.callEffect(Effect,Character)                  -- Effect wird ausgef�
 		end
 		Effect:addValue("zaehler", zaehler)
 		--Character:inform("Runde "..zaehler)
-		Effect.nextCalled = 10  -- n�chster Aufruf in 1 Sekunde
+		Effect.nextCalled = 10  -- nächster Aufruf in 1 Sekunde
 		--Hier jetzt die Aktionen, die pro Runde passieren sollen
 		M.getAction(Character,Effect,zaehler)
 
@@ -43,7 +43,7 @@ function M.removeEffect(Effect,Character)
 	--Character:inform("debug func M.removeEffect")
 	find,old_race = Effect:findValue("old_race")
 	if find then
-		--R�ckverwandlung in die alte Rasse
+		--Rückverwandlung in die alte Rasse
 		Character:setAttrib("racetyp",old_race)
 	else
 		Character:inform("LTE-Error 1: please call dev")

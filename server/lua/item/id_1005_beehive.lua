@@ -32,12 +32,12 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 	
 	if common.Encumbrence(User) then -- Behinderung
         common.InformNLS(User,
-        "Deine R�stung behindert dich beim Honig Sammeln.",
+        "Deine Rüstung behindert dich beim Honig Sammeln.",
         "Your armor disturbs you while collecting honeycombs.");
         return
     end
 	
-	if (ltstate == Action.none) then -- Unt�tig: Starte Honig Sammeln!
+	if (ltstate == Action.none) then -- Untätig: Starte Honig Sammeln!
         User:startAction(honeygathering:GenWorkTime(User, nil), 0, 0, 0, 0);
         User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt nach Honig zu suchen.");
         User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to search for honey.");
@@ -49,7 +49,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 	end
 	
 	-- Spieler sammelt bereits Honig
-	if(math.random(10) <= 6) then -- Skill wird nur noch bei GenWorkTime beachtet, Chance betr�gt 60%
+	if(math.random(10) <= 6) then -- Skill wird nur noch bei GenWorkTime beachtet, Chance beträgt 60%
 		local notcreated = User:createItem(2529, 1, 333, 0);
 		if(notcreated > 0) then
 			world:createItemFromId(2529, notcreated, User.pos, true, 333, 0);

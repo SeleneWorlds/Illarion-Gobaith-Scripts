@@ -6,7 +6,7 @@ local basics = require("magic.base.basics")
 -- Rune 6 & 9 & 11 & 19 & 20 LUK TAUR IRA FHAN LEV
 -- INSERT INTO spells VALUES (2^5+2^8+2^10+2^18+2^19,0,'m_06_09_11_19_29_write-summon-creature-scroll.lua');
 -- Spruchrollen Zauber
--- Beschw�rungs Zauber
+-- Beschwörungs Zauber
 
 function M.InitSpell() -- Spell Grundeinstellungen
     Difficult=75;
@@ -130,14 +130,14 @@ function M.WriteTeleSpell(Caster, ltstate )
 
 			--quality setzen
 
-                        -- Meine H�nde
+                        -- Meine Hände
                         itemL = Caster:getItemAt(5);
                         itemR = Caster:getItemAt(6);
 
                      -- Stufe 1: Streue Asche auf die offene Pergamentrolle
 			local successStepOne = true;
 
-                        -- Wo ist die offene Pergamentrolle, haben wir �berhaupt eine?
+                        -- Wo ist die offene Pergamentrolle, haben wir überhaupt eine?
                         if ( (itemL.id == 3109) and (itemL.data~=600) ) then
                             parchment = itemL;
                         elseif ( (itemR.id == 3109) and (itemL.data~=600) ) then
@@ -146,7 +146,7 @@ function M.WriteTeleSpell(Caster, ltstate )
                             successStepOne = false;
                         end
 
-			-- Und was ist �berhaupt mit der Asche?
+			-- Und was ist überhaupt mit der Asche?
 			--
 
 			if  (itemL.id == 314) then
@@ -209,20 +209,20 @@ function M.WriteTeleSpell(Caster, ltstate )
 			    world:gfx(Effect,Caster.pos);
 			    world:makeSound(SFX,Caster.pos);
 			else
-			    InformNLS(Caster,"Ein leichter Windsto� f�hrt �ber dich hinweg.","You feel some wind passing by.");
+			    InformNLS(Caster,"Ein leichter Windstoß fährt über dich hinweg.","You feel some wind passing by.");
 			end
 
                     else
                         InformNLS(Caster,"Der Spruch gelingt nicht","The spell fails.");
                     end
                 else
-                    InformNLS(Caster,"Nicht gen�gend Mana","Not enough mana.");
+                    InformNLS(Caster,"Nicht genügend Mana","Not enough mana.");
                 end
             else
                 InformNLS(Caster,"Du hast Hunger und kannst dich nicht konzentrieren.","You are hungry and can't concentrate.");
             end
         else
-            InformNLS(Caster,"Du w�rdest es nicht �berleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
+            InformNLS(Caster,"Du würdest es nicht überleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
         end
     elseif ( ltstate == Action.none ) then
         local CasterVal=basics.CasterValue(Caster);
@@ -240,13 +240,13 @@ function M.WriteTeleSpell(Caster, ltstate )
                    Caster:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt mit einer mystischen Formel.");
                    Caster:talkLanguage( CCharacter.say, CPlayer.english, "#me starts with a mystical formula.");
                 else
-                    InformNLS(Caster,"Nicht gen�gend Mana","Not enough mana");
+                    InformNLS(Caster,"Nicht genügend Mana","Not enough mana");
                 end;
             else
                 InformNLS(Caster,"Du hast Hunger und kannst dich nicht konzentrieren.","You are hungry and can't concentrate.");
             end;
         else
-            InformNLS(Caster,"Du w�rdest es nicht �berleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
+            InformNLS(Caster,"Du würdest es nicht überleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
         end;
     elseif ( ltstate == Action.abort ) then
         Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");

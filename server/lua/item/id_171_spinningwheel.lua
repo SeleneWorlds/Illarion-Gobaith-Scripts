@@ -6,7 +6,7 @@ local M = {}
 -- Sibanac --> Garn
 
 -- Arbeitscyclus: 1s - 4s
--- Zus�tzliches Werkzeug: Schere ( 6 )
+-- Zusätzliches Werkzeug: Schere ( 6 )
 
 -- UPDATE common SET com_script='item.id_171_spinningwheel' WHERE com_itemid IN (171);
 
@@ -35,9 +35,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if common.Encumbrence(User) then -- Sehr streife R�stung?
+    if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
-        "Deine R�stung behindert beim spinnen.",
+        "Deine Rüstung behindert beim spinnen.",
         "Your armor disturbes you while spinning." );
         return
     end
@@ -48,7 +48,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("body",6)==0) then -- Schere
         common.InformNLS( User,
-        "Du ben�tigst eine Schere um die Wolle oder Sibanac zu spinnen.",
+        "Du benötigst eine Schere um die Wolle oder Sibanac zu spinnen.",
         "You need scissors to spin the wool or sibanac." );
         return
     end
@@ -58,7 +58,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
     end
     
-    if common.ToolBreaks( User, Tool, true) then -- Schere besch�digen
+    if common.ToolBreaks( User, Tool, true) then -- Schere beschädigen
         common.InformNLS( User, 
         "Die Schere wird stumpf.", 
         "The scissors went blunt." );
@@ -68,7 +68,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ((User:countItemAt("belt",170) < 1) and (User:countItemAt("belt",155) < 3)) then
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
-            "Du ben�tigst Wolle oder Sibanac um am Spinnrad zu arbeiten.", 
+            "Du benötigst Wolle oder Sibanac um am Spinnrad zu arbeiten.", 
             "You need some wool or sibanac to work at the spinning wheel." );
         end
         return

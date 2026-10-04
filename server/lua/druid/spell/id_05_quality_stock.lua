@@ -27,9 +27,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
     qualstat = math.floor(TargetItem.quality/100)
 
 --  common.InformNLS(Caster,
---     "#b|0|0|Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualit�t",
+--     "#b|0|0|Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualität",
 --     "#b|0|0|This stock has a "..alchemy.qListEn[qualstat].." quality")
-    textDE="Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualit�t"
+    textDE="Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualität"
     textEN="This stock has a "..alchemy.qListEn[qualstat].." quality"
     if Caster:getPlayerLanguage() == 0 then
 		Caster:inform("#b|0|0|"..textDE)
