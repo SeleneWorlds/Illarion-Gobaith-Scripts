@@ -1,0 +1,80 @@
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+chat: match(
+    "[gg]reet.+",
+    "[hh]ello",
+) -> pick(
+    "Greetings. How I can help you?",
+    "Hello. You are hungry? I have a very good mushroom soup. Or do you need something of my leather wares?",
+)
+
+chat: match(
+    "[gg]rüße",
+    "[hh]allo",
+    "[gg]rüse",
+) -> pick(
+    "Grüße. Wie kann ich euch helfen?",
+    "Hallo. Bist du hungrig? Ich habe sehr gute Pilzsuppe. Oder brauchst du etwas von meinen Lederwaren?",
+)
+
+chat: match("[yy]ou.+[tt]rader") -> "I'm a trader of goods for hunters. Do you need something of my leather wares or weapons? I also have food as proviant for long travels."
+
+chat: match("[ddii][uh]r*.+[hh]ändler") -> "Nunja, ich handle mit Sachen für den Jagdbedarf. Brauchst du vielleicht etwas von meinen Lederwaren oder Waffen? ich biete auch Proviant für Reisende an."
+
+chat: match("[ww]hat.+sell") -> "I trade with leather cloths, leather armors, weapons, food and more."
+
+chat: match("[ww]as.+verkauf") -> "Ich handel mit Lederkleidung, Lederrüstungen, Waffen, Nahrung und mehr."
+
+chat: match("[ww]hat.+[ww]are") -> "I have leather cloths, leather armors, weapons, food and more."
+
+chat: match("[ww]as.+[ww]are") -> "Ich habe Leder Kleidung, Leder Rüstungen, Waffen, Nahrung und mehr."
+
+chat: match("[ww]hat.+[cc]loth") -> "See I made good leather gloves, leather boots, short and long leather legs."
+
+chat: match("[ww]as.+[kk]leidung") -> "Schau, ich habe gute Leder Handschuhe, Stiefel und kurze und lange Leder Hosen."
+
+chat: match("[ww]hat.+[aa]rmor") -> "Lets me show you. Here, I have the best leather armors you can find: full leatherarmor, leather scale armor, light hunting armor, half leather armor."
+
+chat: match("[ww]as.+[rr]üstung") -> "Lass sie mich euch zeigen. Ich habe beste Lederrüstungen. Volle und halbe Lederrüstung, Lederschuppenrüstung und die leichte Jagtrüstung."
+
+chat: match("[ww]hat.+[ww]eapon") -> "Take a look at my sortiment. I trade with simple daggers, sharp daggers, short swords, throwing spear, crossbow and crossbow bolts."
+
+chat: match("[ww]as.+[ww]affe") -> "Schaut euch mein Sortiment an. Ich handel mit einfachen und scharfen Dolche, Kurzschwertern, Wurfspeeren, Armbrüste und Armbrustbolzen."
+
+chat: match("[ww]hat.+[ff]ood") -> "I trade with ham, mushroom soup and bread."
+
+chat: match("[ww]as.+[nn]ahrung") -> "Ich handel mit Schinken, Pilzsuppe und Brot."
+
+chat: match("[ww]hat.+[mm]ore") -> "I have thread and honeycomb."
+
+chat: match("[ww]as.+[mm]ehr") -> "Ich habe Garn und Honigwaben."
+
+chat: match(
+    "[gg]oodbye",
+    "[bb]ye",
+    "[ff]arewell",
+) -> pick(
+    "Have a good day",
+    "Good day.",
+    "Farewell friend!",
+)
+
+chat: match(
+    "[aa]uf.+[bb]ald",
+    "[bb]is.+[bb]ald",
+) -> "Schönen Tag noch"
+
+chat: match("[ww]ho.+you?") -> "Morgan Gronwan I am called. I am ranger and life in the woods"
+
+chat: match("[ww]er.+[ddii][uh]r*") -> "Morgan Gronwan werde ich genannt. Ich bin Jäger und lebe in den Wäldern."
+
+chat: match("i'm.+.+") -> "Nice to meet you. Sit down if you want. ... Do you want to taste my mushroom soup?"
+
+chat: match("[ii]ch.+[bb]in") -> "Freut mich euch kennen zu lernen. Setzt euch wenn ihr wollt. Wollt ihr meine Pilzsuppe kosten?"
+
+chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("morgan")

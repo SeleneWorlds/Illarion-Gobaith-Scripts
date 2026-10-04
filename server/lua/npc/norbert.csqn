@@ -1,0 +1,121 @@
+chat: match(
+    "[gg]rü[sß]",
+    "[hh]allo",
+    "[gg]rue[sß]",
+    "[tt]a[gc].*",
+) -> pick(
+    "Ich grüße euch.",
+    "Seid gegrüßt!",
+)
+
+chat: match(
+    "[aa]uf.+[bb]ald",
+    "[gg]ötter.+euch",
+    "[bb]is.+[bb]ald",
+    "[uu]ff.+[bb]ald",
+    "[ff]ünf.+euch",
+) -> "Auf bald und sichere Wege."
+
+chat: match(
+    "[ww]er.+[bs][ie][si][td].+[di][uh].*",
+    "[ww]ie.+[nn]ame",
+) -> "Ich bin Norbert: Ich lebe in der magischen Akademie und forsche hier im Fachgebiet der Beschwörungsmagie."
+
+chat: match("[hh]ilfe") -> "Willst du trainieren? Wenn möchtest beschwöre ich dir auf dem Arenafeld eine Kreatur zum üben."
+
+chat: match("[kk]reatur") -> "Du möchtest eine Kreatur zum trainieren? Sag mir, ob du eine harmlose oder eine aggressive möchtest."
+
+chat: german, match("[ss]tudent") -> "Oh...Es tut mir leid, aber ich nehme keine Studenten an."
+
+chat: german, match("[ss]chüler") -> "Ich unterrichte nicht."
+
+chat: match(
+    "[gg]reeting",
+    "[hh]ello",
+) -> pick(
+    "Greetings to you!",
+    "Greetings",
+)
+
+chat: match(
+    "[gg]oodbye",
+    "[bb]ye",
+    "[ff]arewell",
+    "[ff]ive.+you",
+) -> pick(
+    "Farewell.",
+    "Goodbye",
+)
+
+chat: match(
+    "[ww]ho.+you",
+    "[ww]hat.+[nn]ame",
+) -> "I am Norbert. I live in the magic academy and research in department of summoning here."
+
+chat: match("[hh]elp") -> "Have a training? If you want I summon a creature for you on the arena field."
+
+chat: match("[cc]reature") -> "Do you want a creature for training? Tell me, if you want a harmless or a aggressive creature."
+
+chat: english, match("[ss]tudent") -> "Oh...I'm sorry, but I take no students."
+
+chat: match("[pp]upil") -> "I'm not a teacher."
+
+chat: match("[ww]hat.+buy") -> "Thanks, but I already have everything I need."
+
+chat: match("[ww]hat.+sell") -> "I don't sell anything. Do I look like a merchant?"
+
+chat: match("buy") -> "I don't sell anything. Do I look like a merchant?"
+
+chat: match("sell") -> "Thanks, but I already have everything I need."
+
+chat: match("[ww]as.+kaufst") -> "Ich habe bereits alles, was ich brauche."
+
+chat: match("[ww]as.+verkaufst") -> "Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?"
+
+chat: match("[kk]aufen") -> "Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?"
+
+chat: match("[vv]erkaufen") -> "Danke nein, ich habe bereits alles, was ich brauche."
+
+chat: english, match("[gg]obaith") -> "This whole island group is called Gobiath. Nice place, the weather usually does not get too rough or too hot, I like it."
+
+chat: english, match("[gg]reenbriar") -> "Greenbriar is a settlement of the Halflings."
+
+chat: match("[hh]arbo[u]+r") -> "Troll's Bane and Vanima both have Harbors. The one southwest from Troll's Bane is bigger though but he is quite far away from the town."
+
+chat: english, match("[hh]ellbriar") -> "That was an evil dungeon near Greenbriar ! The evil cultists there sacrificed most of the halflings of Greenbriar."
+
+chat: match("[mm]agic.+[aa]cademy") -> "This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here."
+
+chat: match("[mm]age.+[aa]cademy") -> "This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here."
+
+chat: match("[nn]orthmark") -> "Some Norodaj-Barbarians have settled in the north of Gobaith...they are a bit simple and have some fear of magic, because they can't understand it...better don't go there."
+
+chat: match("[ss]ilverbrand") -> "Silverbrand is the town of the dwarfes. They don't like elven, mages, fairys, and any other race except there own...in this order."
+
+chat: english, match("[vv]anima") -> "Tol Vanima is the \"Isle of the elven\"...a small island in the east of gobaith. You can reach it over the harbour or with one of the teleporters."
+
+chat: english, match("[tt]roll['s].+[bb]ane") -> "Well, that's the biggest town on Gobiath."
+
+chat: english, match("[vv]arshikar") -> "You find it past the small sand desert in the far northwest. I would use the Teleporter, the desert is full of dangerous scorpions."
+
+chat: german, match("[gg]obiath") -> "Diese ganze Inselgruppe wird Gobiath genannt. Nette Gegend, das Wetter wird nicht zu kalt oder zu heiß, ich bin gerne hier."
+
+chat: german, match("[gg]reenbriar") -> "Greenbriar is eine Halblingssiedlung im Süden Gobaiths."
+
+chat: match("[hh]afen") -> "Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane ist zwar größer aber auch sehr weit von der Stadt entfernt."
+
+chat: german, match("[hh]ellbriar") -> "Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bösartigen Kultisten dort haben die meisten der Halblinge geopfert."
+
+chat: match("[mm]agierakademie") -> "Dies hier ist die magische Akademie. Es ist nur Magiern, Studenten und ihren Gästen gestattet hier zu sein."
+
+chat: match("[mm]agische.+[aa]kademie") -> "Dies hier ist die magische Akademie. Es ist nur Magierin, Studenten und ihren Gästen gestattet hier zu sein."
+
+chat: match("[nn]ordmark") -> "Einige Norodaj-Barbaren haben sich im Norden Gobaiths angesiedelt. Sie sind etwas einfältig und haben große Angst vor Magie...geh besser nicht dorthin."
+
+chat: match("[ss]ilberbrand") -> "Silberbrand ist die unterirdische Stadt der Zwerge. Sie mögen keine Elfen, keine Magier, keine Feen und auch sonst keine Rasse außer ihrer eigenen..."
+
+chat: german, match("[vv]anima") -> "Tol Vanima ist die \"Insel der Elfen\"...eine kleine Insel im Osten von Gobaith. Du kannst sie über den Hafen oder mit einem Teleporter erreichen"
+
+chat: german, match("[tt]roll['s].+[bb]ane") -> "Tja, das ist die grösste Stadt auf Gobiath."
+
+chat: match("[vv]arshikar") -> "Das findet man weit im Nordwesten hinter der kleinen Sandwüste. Ich würde den Teleporter benutzen, die Wüste ist voller gefährlicher Skorpione."

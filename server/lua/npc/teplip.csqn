@@ -1,0 +1,72 @@
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+chat: match(
+    "[gg]reetings",
+    "[hh]ello",
+) -> pick(
+    "Greetings, traveler. Can I help you? Need to travel somewhere?",
+    "Good day. Do you need something?",
+)
+
+chat: match(
+    "[gg]rü[ßs]+e",
+    "[hh]allo",
+) -> pick(
+    "Grüße, Reisender. Kann ich euch helfen? Wollt ihr irgendwohin reisen?",
+    "Guten Tag. Braucht ihr etwas?",
+)
+
+chat: match("[yy]ou.+[tt]rader") -> "I am a trader, yes. I trade with magic journeys."
+
+chat: match("[ddii][uh]r*.+[hh]ändler") -> "Ich bin Händler, Ja. Ich handel mit Magischen Reisen."
+
+chat: match("[ww]hat.+sell") -> "I sell all kinds journeys to the nicest places."
+
+chat: match("[ww]as.+verkauf") -> "Ich verkaufe Reisen zu den schönsten Orten dieser Insel."
+
+chat: match("[ww]hat.+[jj]ourneys") -> "To big cities and some special locations."
+
+chat: match("[ww]as.+[rr]eisen") -> "Zu großen Städten und zu einigen speziellen Orten."
+
+chat: match("[pp]laces") -> "I sell journeys to the following places: The harbor, Eldan monastery, Lighthouse."
+
+chat: match("[oo]rt") -> "Ich verkaufe Reisen zu folgenden Orten: Zum Hafen, zum Eldan Kloster, zum Leuchtturm."
+
+chat: match("[tt]ell.+[ss]omething") -> "I am a trader and a traveler."
+
+chat: match("[ee]rzähl.+[ww]as") -> "Ich bin ein Händler und ein Reisender."
+
+chat: match(
+    "[gg]oodbye",
+    "[bb]ye",
+    "[ff]arewell",
+) -> pick(
+    "Have a nice journey!",
+    "Farewell!",
+    "Good bye.",
+)
+
+chat: match(
+    "[aa]uf.+[bb]ald",
+    "[bb]is.+[bb]ald",
+) -> pick(
+    "Gute Reise!",
+    "Auf bald",
+)
+
+chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match("[tt]ravel") -> "Yes, you can travel with the help of the journeys I sell."
+
+chat: match("[rr]eise") -> "Ja, du kannst mit den Reisen die ich verkaufe, reisen."
+
+chat: match("[cc]ities") -> "I sell journeys to the cities of Troll's Bane, Silverbrand, Varshikar, Greenbriar and Tol Vanima, the elven town."
+
+chat: match("[ss]t[aä]dt") -> "Ich verkaufe Reisen in die Städte Trolls Bane, Silverbrand, Varshikar, Greenbriar und Tol Vanima, die Elfen Stadt."
+
+chat: match("[tt]owns") -> "I sell journeys to the towns of Troll's Bane, Silverbrand, Varshikar, Greenbriar and Tol Vanima, the elven town."
+
+chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("teplip")

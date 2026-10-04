@@ -1,0 +1,60 @@
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+chat: match(
+    "[gg]reetings",
+    "[hh]ello",
+) -> pick(
+    "Indeed. Greetings. Who are you?",
+    "Hello. How may I help you?",
+)
+
+chat: match(
+    "[hh]allo",
+    "[gg]r[uü][sß]+",
+) -> pick(
+    "Hallo. Kann ich euch vielleicht helfen?",
+    "In der Tat. Grüße. Wie geht es euch?",
+)
+
+chat: match("[yy]ou.+[tt]rader") -> "Yes, I am a trader. What can I get you?"
+
+chat: match("[ddii][uh]r*.+[hh][äa]ndler") -> "Ja. Ich bin ein Händler. Kann ich etwas für euch besorgen?"
+
+chat: match("[ww]hat.+sell") -> "I sell clothes, tools and more."
+
+chat: match("[ww]as.+verkauf") -> "Ich verkaufe Kleidung, Werkzeug und mehr."
+
+chat: match("[ww]hat.+[cc]loth") -> "I sell farmer hats, shirts, trousers, capes, gloves, shoes and boots and leatherarmor."
+
+chat: match("[ww]as.+[kk]leidung") -> "Ich verkaufe Schlapphüte, Hemden, Hosen, Umhänge, Handschuhe, Schuhe, Stiefel und Lederrüstungen."
+
+chat: match("[ww]hat.+[tt]ool") -> "I sell needles and scissors, saws, shovels, axes hammers and glass blowing pipes."
+
+chat: match("[ww]as.+[ww]erkzeug") -> "Ich verkaufe Nadeln und Scheren. Sägen und Schaufeln. Äxte und Hammer. Und Glasblasrohre."
+
+chat: match("[ww]hat.+[mm]ore") -> "I have some empty bottles for sale."
+
+chat: match("[ww]as.+[mm]ehr") -> "Ich habe einige leere Flaschen zum verkauf."
+
+chat: match(
+    "[bb]ye.",
+    "[ff]are.+well",
+) -> pick(
+    "Aye. Good day to you",
+    "Aye! Good day.",
+)
+
+chat: match(
+    "[aa]uf.+[bb]ald",
+    "[bb]is.+[bb]ald",
+) -> pick(
+    "Bis bald!",
+    "Kommt doch noch einmal! Ich habe immer die besten Waren",
+)
+
+chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("sam")

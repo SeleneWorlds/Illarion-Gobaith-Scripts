@@ -1,0 +1,78 @@
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+cycle: pick(
+    if(german, "#me notiert ein paar Zahlen auf ein Stück Pergament.", "#me notes a few numbers on a piece of pergament."),
+    if(german, "#me sortiert ein paar Dinge in ihrer Truhe neu.", "#me rearranges some things in her chest. "),
+)
+
+chat: match(
+    "[gg]reetings",
+    "[hh]ello",
+    "[hh]i",
+) -> pick(
+    "Welcome. Can I help you?",
+    "A good day to you.",
+)
+
+chat: match("[yy]ou.+[tt]rader") -> "I am Rijana Thelingham, I sell some usefull things. Do you need something?"
+
+chat: match("[tt]ell.+[aa]cademy") -> "I'm not good in history. If you want to know something about the magic academy better ask someone else."
+
+chat: match("[ww]hat.+sell") -> "I sell potions and some usefull stuff for mages."
+
+chat: match("[ww]hat.+[pp]otion") -> "I sell mana potions and antidots. And I have some bottles of ink."
+
+chat: match("[ww]hat.+[bb]ottle") -> "I trade with empty bottles."
+
+chat: match(
+    "[gg]oodbye",
+    "[bb]ye",
+    "[ff]arewell",
+) -> pick(
+    "You are going? Good luck for your studies.",
+    "Take care of you.",
+    "Farewell. I hope you will come back soon.",
+)
+
+chat: match("[ww]hat.+buy") -> "I buy empty bottles, open pells and ink."
+
+chat: match("[ww]ho.+you?") -> "My name is Rijana Thelingham."
+
+chat: match("i'm.+.+") -> "Nice to meet you. Did you need anything?"
+
+chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match(
+    "[gg]r[üu][ßs]+",
+    "[hh]allo",
+) -> pick(
+    "Seid gegrüßt. Kann ich euch behilflich sein?",
+    "Guten Tag.",
+)
+
+chat: match("[dd]u.+[hh]ändler") -> "Ich bin Rijana Thelingham. Ich verkaufe einige nützliche Dinge hier. Braucht ihr etwas?"
+
+chat: match("[ww]as.+verkauf") -> "Ich verkaufe Tränke sowie diverse Ausrüstung für Magier."
+
+chat: match("[ww]as.+[tt]r[aä]nk") -> "Ich verkaufe Manatranke und Gegengifte. Ich hab sogar ein paar Flaschen Tinte."
+
+chat: match("[ww]as.+[ff]lasch") -> "Ich handel mit leeren Flaschen"
+
+chat: match("[ee]rzähl.+[aa]kademie") -> "Ich bin nicht so gut in Geschichte. Am besten fragt ihr deswegen jemand anderes."
+
+chat: match(
+    "[aa]uf.+[bb]ald",
+    "[bb]is.+[bb]ald",
+) -> pick(
+    "Willst du schon gehen? Viel Glück bei deinen Studien.",
+    "Du gehst schon? Gib auf dich acht, ich hoffe wir sehen uns bald wieder",
+)
+
+chat: match("[ww]as.+%s[kk]auf") -> "Ich kaufe leere Flaschen, offene Pergamentrollen und Tinte."
+
+chat: match("[ww]er.+[ddii][uh]r*?") -> "Ich werde Rijana Thelingham genannt."
+
+chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("rijana")

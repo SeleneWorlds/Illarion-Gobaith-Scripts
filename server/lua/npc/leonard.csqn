@@ -1,0 +1,66 @@
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+chat: match(
+    "[gg]reet",
+    "[hh]ello",
+) -> "Hello sunshine!"
+
+chat: match(
+    "[gg]r[uü][sß+]",
+    "[hh]allo",
+) -> pick(
+    "Hallo Sonnenschein!",
+    "Hallöchen Sonnenschein",
+)
+
+chat: match("[ww]hat.+sell") -> "I don't sell anything, but I trade plants, pipes, beer, elven wine, baby fir trees, buckets, and nice noise-makers for those shiny things"
+
+chat: match("[ww]as.+verkauf") -> "Ich verkaufe nichts, aber ich handel mit Pflanzen, Pfeifen, Bier, Elbenwein, Tannen Kindern, Eimern und nette Geräusche Macher für diese glitzernden Stückchen"
+
+chat: match("[pp]lants") -> "Yes, plants. I have a sibanac farm right here and pipes to go with it."
+
+chat: match("[pp]flanz") -> "Ja. Pflanzen. Ich habe hier eine Sibanac Farm und Pfeifen um es zu rauchen."
+
+chat: match("[ww]hat.+do") -> "I watch plants grow."
+
+chat: match("[ww]as.+[mt][au][cst]") -> "Ich sehe den Pflanzen beim Wachsen zu."
+
+chat: match("[rr]umor") -> "You talking about rumors? I have a fact to tell you, much better than rumors. The other day I saw gnolls dancing in the moonlight. I think they were having fun."
+
+chat: match("[gg]erüch") -> "Du sprichst von Gerüchten? Ich habe etwas wahres was viel besser ist. Ich habe an einem anderen Tag Gnolle, im Mondlicht tanzen sehen. Ich denke sie hatten Spass."
+
+chat: match("[nn]ews") -> "You interested in the latest news? A priest of Sirani told me that the goddess herself told his cousin that all spiders should be loved as our friends. That, my friend, is what happens when you mix 'shrooms with Sibanac."
+
+chat: match("[nn]euigkeit") -> "Du bist an Neuigkeiten interessiert? Ein Priesterin von Sirani hat mir gesagt das ihr Göttin persönlich, ihrem Cousin gesagt hat, das alle Spinnen von unseren Freunden geliebt werden sollen. Das mein Freund, passiert wenn man Pilze und Sibanac mischt."
+
+chat: match("[ww]hat.+buy") -> "I'll give you round shiny things for cylindrical vessels containing hop-flavored brew, or that sweet elven stuff. Ill even trade buckets, harps, lutes, or even horns! I can get a nice fir tree seedling! Isnt a tree much nicer than copper?"
+
+chat: match("[ww]as.+%skauf") -> "Ich gebe dir diese runden glitzernden Dinger für zylindrische Gefäße, befüllt mit, mit Hopfen gewürztem, Gebräu oder mit dem süßen Elbenzeugs. Ich handle auch mit Eimern und Instrumenten. Und ich kauf auch Tannen Setzlinge."
+
+chat: match("[ii]'m.+") -> "Good for you, sunshine"
+
+chat: match("[ii]ch.+bin") -> "Gut für dich, Sonnenschein"
+
+chat: match("[bb]aby.+[ff]ir.+[tt]rees") -> "Yes, I sell baby fir trees. You might call them fir tree seedlings. I buy them, too."
+
+chat: match("[tt]annenbaum.+[kk]ind") -> "Ja. Ich verkaufe Tannenbaum Kinder. Du sagst vielleicht Tannen Baum Setzlinge dazu. Die kaufe ich auch."
+
+chat: match(
+    "[ff]arewell",
+    "[gg]oodbye",
+) -> pick(
+    "Farewell, sunshine",
+    "Bye, sunshine",
+)
+
+chat: match(
+    "[aa]uf.+[bb]ald",
+    "[bb]is.+[bb]ald",
+) -> "Auf bald, Sonnenschein."
+
+chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("leonard")

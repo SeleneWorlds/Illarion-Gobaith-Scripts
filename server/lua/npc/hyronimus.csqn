@@ -1,0 +1,64 @@
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+chat: match(
+    "[hh]ello",
+    "[gg]reetings",
+) -> pick(
+    "Greetings my friend.",
+    "A pleasure to meet you, friend.",
+)
+
+chat: match(
+    "[hh]allo",
+    "[gg]rü[sß]+e",
+) -> pick(
+    "Grüße mein Freund.",
+    "Ist mir eine Freude euch zu treffen.",
+)
+
+chat: match("[mm]ission") -> "My friend, I am selling potions to adventurers who fight the evil in the dungeon of Hellbriar.."
+
+chat: match("[aa]uftrag") -> "Mein Freund, ich verkaufe Tränke an alle Abenteurer, die die Hölle von Briar betreten."
+
+chat: match("[qq]uest") -> "My friend, I am a simple man with no needs."
+
+chat: match("[gg]rave") -> "I take care of them as good as I can, but sometimes they even scare me."
+
+chat: match("[ww]hat.+sell") -> "I cannot offer you much, but my potions."
+
+chat: match("[ww]as.+verkaufen") -> "Ich kann nicht viel Anbieten. Vielleicht ein paar Tränke."
+
+chat: match("[ww]hat.+buy") -> "I fear, my friend, that there is nothing I would want to buy right now."
+
+chat: match("[ww]as.+%skauf") -> "Ich fürchte, mein Freund, es gibt nichts was ich im Augenblick von euch kaufen würde."
+
+chat: match("[ww]ho.+[yy]ou") -> "I am Brother Hyronimus of the White Flame."
+
+chat: match("[ww]er.+[ddii][uh]r*") -> "Ich bin Bruder Hyronimus von der Weißen Flamme."
+
+chat: match("[hh]ellbriar") -> "The foul armies of death and decay live in this area."
+
+chat: match("[hh]ölle") -> "Die Armeen des Todes und der Finsternis leben in diesem Gebiet."
+
+chat: match(
+    "[bb]ye",
+    "[ff]are.*well",
+) -> pick(
+    "Walk in peace, my friend.",
+    "Walk in peace, my friend.",
+)
+
+chat: match(
+    "[aa]uf.+[bb]ald",
+    "[bb]is.+[bb]ald",
+) -> pick(
+    "Geh in Frieden, mein Freund.",
+    "Geh in Frieden, mein Freund.",
+)
+
+chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+
+chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("hyronimus")

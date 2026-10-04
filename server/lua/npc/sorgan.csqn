@@ -1,0 +1,16 @@
+use: german -> "Finger weg!"
+use: english -> "Don't you touch me!"
+
+cycle: pick(
+    if(german, "Arrr...", "Arrr..."),
+    if(german, "Arrr!", "Arrr!"),
+    if(german, "#me brummt verärgert:'Ich streike!'", "#me grumbles in anger:'I am on strike!'"),
+)
+
+chat: match("[ss]ilverbrand") -> "Aaarr, you want to visit our dwarven town? Fine, take the northern or eastern gate and went to northeast. When you passed the Copper Mountains you can see the Faerys Tears River. Take a brigde to cross the river and you arrive the entrance of Silverbrand."
+
+chat: match("[ss]ilberbrand") -> "Arr. Du willst die Zwergenstadt sehen. Nimm die Straße durch das Nord oder Osttor und halte dich nach Nordosten. Wenn du die Kupfer Berge passiert hast, siehst du den Raerys Tears Fluss. Überquere die Brücke und die erreichst den Eingang nach Silberbrand."
+
+chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
+
+chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
