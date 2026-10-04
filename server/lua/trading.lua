@@ -14,7 +14,8 @@ local INITIAL_CASH = {
     feliam_wardstrok = 3000,
     gambret = 400,
     maris = 1000,
-    onor = 0
+    onor = 0,
+    zathrot = 1000
 }
 local states = {}
 
