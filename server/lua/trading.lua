@@ -30,6 +30,7 @@ local INITIAL_CASH = {
     ramond = 0,
     rijana = 400,
     sam = 300,
+    sorgan = 2000,
     teplip = 500,
     timo = 5000,
     tobias_baggins = 500,

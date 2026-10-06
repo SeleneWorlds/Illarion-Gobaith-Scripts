@@ -1,6 +1,6 @@
 # Sorgan Stonemate porting notes
 
-The canonical pre-port source is `server/lua/npc/sorgan.lua` at commit `57581583b460194077d1825088feff9e873283e6` (retrieve with `git show 57581583:server/lua/npc/sorgan.lua`). The CSQN port contains 4 unconditional dialogue groups, 3 idle pairs, and 0 trade items.
+The canonical pre-port source is `server/lua/npc/sorgan.lua` at commit `57581583b460194077d1825088feff9e873283e6` (retrieve with `git show 57581583:server/lua/npc/sorgan.lua`). The CSQN port intentionally restores the NPC's dormant smith dialogue and trade inventory instead of preserving the temporary strike behavior from the final Lua revision.
 
 ## Missing shared legacy behavior
 
@@ -10,11 +10,11 @@ The canonical pre-port source is `server/lua/npc/sorgan.lua` at commit `57581583
 - Legacy idle output, when present, waited a random 900–3000 NPC cycles. CSQN records selection but no explicit cooldown.
 - Literal spaces in legacy trigger patterns were converted to `.+`; the generated CSQN preserves that conversion. Stateful or dynamic registrations are never flattened into unconditional dialogue.
 
-## Commented-out trader content
+## Restored commented-out trader content
 
-The final Lua source had all 20 `AddTraderItem` registrations and most dialogue registrations commented out. It actively retained only the Silverbrand directions, help texts, and three strike-era idle lines. The CSQN preserves only that active behavior; no trade JSON was created.
+The final Lua source had all 20 `AddTraderItem` registrations and most dialogue registrations commented out. It actively retained only the Silverbrand directions, help texts, and three strike-era idle lines. The CSQN and `trades/sorgan.json` restore the intended dialogue and inventory, retain the neutral `Arrr` idle lines, and omit the `I am on strike!` line.
 
-The receive handler still invoked the generic trader and date dispatchers with an empty inventory and `TraderCopper=2000`. This could produce empty-list/date responses, but reactivating it as `chatTrading` would misleadingly make Sorgan look like an operational trader. If the dormant smith inventory is intentionally restored later, recover the exact 20 item definitions and dialogue from the canonical source, create `trades/sorgan.json`, register `sorgan = 2000` in `INITIAL_CASH`, and then add `chatTrading("sorgan")`.
+The receive handler invoked the generic trader and date dispatchers with `TraderCopper=2000`. The restored trade uses that initial cash value and the exact item definitions from the canonical source.
 
 ## Needed CSQN/runtime additions
 

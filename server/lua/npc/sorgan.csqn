@@ -4,8 +4,75 @@ use: english -> "Don't you touch me!"
 cycle: pick(
     if(german, "Arrr...", "Arrr..."),
     if(german, "Arrr!", "Arrr!"),
-    if(german, "#me brummt verärgert:'Ich streike!'", "#me grumbles in anger:'I am on strike!'"),
 )
+
+chat: match(
+    "[Gg]reetings",
+    "[Hh]ello"
+) -> pick(
+    "Greetings. How can I help you?",
+    "Hello. Do you need some of smithed goods? Best quality!"
+)
+
+chat: match(
+    "[Gg]rü[ßs]+e",
+    "[Hh]alle"
+) -> pick(
+    "Tach, wie kann ich dir helfen?",
+    "Grüß dich. Brauchst was geschmiedetes? Beste Qualität!"
+)
+
+chat: match("[Yy]ou.+[Tt]rader") -> "Sure, I am trader of my own goods: gems, armors, helmets and more. You are interested on my wares?"
+chat: match("[IiDd][uh]r*.+[Hh]ändler") -> "Sicher, ich verkauf meine eigenen Sachen: Edelsteine, Rüstungen, Helme und mehr. Bist an meinen Waren interessiert?"
+chat: match("[Ww]hat.+sell") -> "I trade with gems, armors, helmets, weapons and more.", showTrades("sorgan")
+chat: match("[Ww]as.+verkauf") -> "Ich handel mit Edelsteinen, Rüstungen, Waffen und mehr.", showTrades("sorgan")
+chat: match("[Ww]hat.+[Ww]ares") -> "I have gems, armors, helmets, weapons and more.", showTrades("sorgan")
+chat: match("[Ww]as.+[Ww]aren") -> "Ich hab Edelsteinen, Rüstungen, Waffen und mehr.", showTrades("sorgan")
+chat: match("[Ww]hat.+[Gg]em") -> "Take a short look. But do not touch them! I trade with amethysts, emeralds, rubies and topaz."
+chat: match("[Ww]as.+[Ee]delstein") -> "Sieh sie dir kurz an. Aber FASS sie nicht an! Ich handel mit Amethysten, Smaragden, Rubinen und Topasen."
+chat: match("[Ww]hat.+[Aa]rmor") -> "Do not trust the Lizard in the shop and her waste. My armors are better! I have chain shirts, plate armors, dwarvenplates and short blue steel greaves."
+chat: match("[Ww]as.+[Rr]üstung") -> "Trau der Echsen und ihrem Müll im Laden nicht. Meine Rüstungen sind besser! Sind ja von nem Zwerg! Ich hab Kettenhemden, Plattenpanzer, Zwergenpanzer und kurze blaue Stahlbeinschienen."
+chat: match("[Ww]hat.+[Hh]elm") -> "Oh, i have nice helmets. They are made by the smiths of Silverbrand. Look what i have: salkamaerian paladin's helmet, chain helmets and round steel hat"
+chat: match("[Ww]as.+[Hh]elm") -> "Oh, schau dir diese tollen Helme an. Sie wurden von den Schmieden Silberbrands gemacht. Schau welche ist habe: salkamaerischer Paladinhelme, Kettenhelme und runde Stahlhelme."
+chat: match("[Ww]hat.+[Ww]eapon") -> "Ah, You are interested on my weapons? A good choice! I have the best sortiment of axes: throwing axes, dwarven axes, waraxes, double axes, large waraxes, longaxes."
+chat: match("[Ww]as.+[Ww]affe") -> "Ah, du bist an meinen Waffen interessiert? Eine gute Wahl! Har. Ich habe das beste sortiment an Äxten: Wauf, Zwergen und Kriegsäxte. Außerdem Doppeläxte und Langäxte."
+chat: match("[Ww]hat.+[Mm]ore") -> "You are smith yourself? Look, maybe do you want some iron ignots and iron plates?"
+chat: match("[Ww]as.+[Mm]ehr") -> "Du bist auch ein Schmied? Schau, vielleicht willst du Eisen Barren oder Platten?"
+
+chat: match(
+    "[Gg]oodbye",
+    "[Ff]arewell",
+    "[Bb]ye"
+) -> pick(
+    "Irmorom with you. Good day.",
+    "Good day. Irmorom may help you to have good trades.",
+    "Farewell!"
+)
+
+chat: match(
+    "[Aa]uf.+[Bb]ald",
+    "[Bb]is.+[Bb]ald"
+) -> pick(
+    "Irmorom mit dir, Schönen Tag noch.",
+    "Schönen Tag. Irmorom möge dir helfen ein paar gute Geschäfte zu machen"
+)
+
+chat: match("[Ww]ho.+you?") -> "I am Sorgan Stonemate, a miner and smith of Silverbrand"
+chat: match("[Ww]er.+[DdIi][uh]r*") -> "Ich bin Sorgan Stonemate, Bergarbeiter und Schmied von Silberbrand"
+chat: match("I'm .+") -> "Ahr! Nice to meet you."
+chat: match("[Ii]ch.+[Bb]in.+") -> "Arrr, Freut mich!"
+chat: match("[Tt]ell.+[Ss]omething") -> "Hrmm, I know where you can find copper ore, iron ore, coal and some gems. But do not tell it around! This knowledge should not be public. Right?"
+chat: match("[Ee]rzähl.+[Ww]as") -> "Hrm. Ich weis wo du Kupfer und Eisenerz, Kohle und ein paar Edelsteine finden kannst. Aber erzähl es nicht rum. Dieses Wissen sollte nicht jeder haben. Richtig?"
+chat: match("[Cc]opper.+[Oo]re") -> "Hrmm. Where i begin? Do you know the Cooper Mountains in front the East Gate at the path to Silverbrand? What do you think why these Mountains are called so? There you can find this ore everywhere at the surface. You only have to collect it!"
+chat: match("[Kk]upfer.+[Ee]rz") -> "Hrm. Wo soll ich anfangen? Kennst du die Kupfer Berge außerhalb des Ost Tores auf dem Pfad nach Silverbrand. Warum denkst du heißen diese Berge so? Dort kannst du das Erz überall auf der Oberfläche finden. Musst es nur einsammeln."
+chat: match("[Ii]ron.+[Oo]re") -> "Hehe, around this town iron ore is rare. Maybe you have some luck in the mine of the Copper Mountains. But the best mines for iron ore are in Silverbrand and in the north of the Fearys Tears River."
+chat: match("[Ee]isen.+[Ee]rz") -> "Hehe. Das ist um diese Stadt herum ziemlich selten. Villeicht hast du Glück in der Mine in den Kupfer Bergen. Aber die Beste Mine für dieses Erz ist in Silberbrand und im Norden das Fearys Tears Fluss."
+chat: match("[Cc]oal") -> "Coal can be found nearly everywhere. You only have to look for the grey rocks in the next mountains."
+chat: match("[Kk]ohle") -> "Kohle kann eigentlich überall gefunden werden. Musst dich nur nach diesen grauen Steinen im nächsten Gebirge umsehen."
+chat: match("[Gg]em") -> "Oh, hehe. The location of good gems are a big secret. But, i did not tell you, right? Maybe you can find some Smaragds in the center of the Copper Mountains."
+chat: match("[Ee]delstein") -> "Oh. Hehe. Die Verstecke von guten Edelsteinen sind ein großes Geheimniss. Das hab ich dir nicht gesagt, ok? Du findest vielleicht ein paar Smaragde in der Mitte der Kupfer Berge."
+chat: match("[Cc]opper.+[Mm]ountain") -> "You are new here, right? Pass the eastern or northern gate of this town and went to east. You can not fail these big mountains."
+chat: match("[Kk]upfer.+[Bb]erge") -> "Du bist neu hier, oder? Geh aus dem Nord oder Ost Tor dieser Stadt und halte dich nach Osten. Du kannst dieses Gebirge nicht verfehlen."
 
 chat: match("[ss]ilverbrand") -> "Aaarr, you want to visit our dwarven town? Fine, take the northern or eastern gate and went to northeast. When you passed the Copper Mountains you can see the Faerys Tears River. Take a brigde to cross the river and you arrive the entrance of Silverbrand."
 
@@ -14,3 +81,5 @@ chat: match("[ss]ilberbrand") -> "Arr. Du willst die Zwergenstadt sehen. Nimm di
 chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
 
 chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+chat: chatTrading("sorgan")
