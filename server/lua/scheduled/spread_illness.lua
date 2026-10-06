@@ -1,4 +1,3 @@
-dofile('base_functional.lua');
 local common = require("base.common")
 local M = {}
 
