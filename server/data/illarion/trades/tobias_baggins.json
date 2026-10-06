@@ -1,7 +1,7 @@
 {
   "stock": [
     {
-      "name": "",
+      "name": "Portal to Troll's Bane",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 4,
@@ -19,7 +19,7 @@
       "category": 0
     },
     {
-      "name": "",
+      "name": "Portal to Lighthouse",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 4,
@@ -37,7 +37,7 @@
       "category": 0
     },
     {
-      "name": "",
+      "name": "Portal to Eldan monastery",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 2,
@@ -55,7 +55,7 @@
       "category": 0
     },
     {
-      "name": "",
+      "name": "Portal to Harbor",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 4,
@@ -73,7 +73,7 @@
       "category": 0
     },
     {
-      "name": "",
+      "name": "Portal to Greenbriar",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 4,
@@ -91,7 +91,7 @@
       "category": 0
     },
     {
-      "name": "",
+      "name": "Portal to Tol Vanima",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 3,
@@ -109,7 +109,7 @@
       "category": 0
     },
     {
-      "name": "",
+      "name": "Portal to Varshikar",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 4,
@@ -127,7 +127,7 @@
       "category": 0
     },
     {
-      "name": "",
+      "name": "Portal to Silverbrand",
       "item": 1061,
       "sellToPlayerPrice": 100,
       "initialStock": 3,
