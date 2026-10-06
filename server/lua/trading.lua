@@ -236,14 +236,20 @@ local function showTradeMenu(trade, state, context, buyingFromPlayer)
             return
         end
 
-        local itemName = world:getItemName(dialog.selectedItemId, context.player:getPlayerLanguage())
+        local selectedItem = state.stock[dialog.selectedItemIndex]
+        if selectedItem == nil then
+            return
+        end
+        local selectedName = selectedItem.name ~= "" and selectedItem.name
+            or world:getItemName(selectedItem.item, context.player:getPlayerLanguage())
         local action = buyingFromPlayer and "sell " or "buy "
-        Trading.chat({ trade = trade }, context, { message = action .. itemName })
+        Trading.chat({ trade = trade }, context, { message = action .. selectedName })
     end)
     for _, item in ipairs(state.stock) do
         local price = buyingFromPlayer and item.buyPrice or item.sellPrice
         if price > 0 then
-            menu:addItem(item.item)
+            local quality = item.quality[1] * 100 + item.durability[1]
+            menu:addItem(item.item, quality, item.data)
         end
     end
     context.player:sendMenu(menu)
