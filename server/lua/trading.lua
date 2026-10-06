@@ -104,14 +104,17 @@ local function findItem(state, message)
 end
 
 local function adjustedPrice(price, amount, defaultAmount)
+    local adjusted
     if defaultAmount == INFINITE_STOCK then
-        return price
+        adjusted = price
     elseif amount * 2 < defaultAmount then
-        return math.floor(price * 1.5)
+        adjusted = math.floor(price * 1.5)
     elseif amount > defaultAmount * 2 then
-        return math.floor(price * 0.75)
+        adjusted = math.floor(price * 0.75)
+    else
+        adjusted = price
     end
-    return price
+    return price > 0 and math.max(1, adjusted) or 0
 end
 
 local function moneyText(value, german)
