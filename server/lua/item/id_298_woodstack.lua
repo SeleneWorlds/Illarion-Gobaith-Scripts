@@ -51,7 +51,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         --User:inform("starting fire");
         SourceItem.wear = 4;
         SourceItem.id = 12;
-        SourceItem.number = 3;
         world:changeItem(SourceItem);
         world:makeSound(7,User.pos);
         logStrg=os.date()..": "..User.name.." tried "..SourceItem.pos.x.."/"..SourceItem.pos.y.."/"..SourceItem.pos.z.."\n";
