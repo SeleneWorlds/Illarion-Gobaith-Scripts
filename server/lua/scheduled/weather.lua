@@ -194,7 +194,6 @@ function M.changeWeather()
     dayTp=M.getDayNightTemp(newClouds);
     lsModTp=M.largeScaleTempModifier();
     newTemp=math.floor(seasTp+dayTp+lsModTp);
-    world:sendMonitoringMessage("Temp: "..seasTp.." + "..dayTp.." + "..lsModTp,0);
     newRain=M.getRain(month,newClouds);
     newThunder=M.getThunder(newClouds,newRain,newTemp);  -- only when it's cloudy
     newGust=M.getGust(newThunder);            -- boeen
@@ -207,8 +206,6 @@ function M.changeWeather()
         newPerTyp=1;    -- rain
     end
 
-    world:sendMonitoringMessage("(Weather changes) cld: "..newClouds.." fg: "..newFog.." w_dir: "..newWindDir.." gust: "..newGust.." perstr: "..newRain.." perTyp: "..newPerTyp.." new thund: "..newThunder.." temp: "..newTemp,0)
-    
     m_Weather = world.weather;
     m_Weather.cloud_density=newClouds;
     m_Weather.fog_density=newFog;
