@@ -10,7 +10,10 @@ local M = {}
 local common = require("base.common")
 local general_metal = require("item.general.metal")
 local base_treasure = require("base.treasure")
+local gathering = require("content.gathering")
+
 function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
+    gathering.InitGathering();
     common.ResetInterruption( User, ltstate );
     if (StoneList==nil) then
         StoneList={ 914, 915, 1245, 1246, 1273, 1276 };
@@ -124,18 +127,18 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     end
 
 	if ( groundTile == 3 ) then
-		if not sanddigging:FindRandomItem(User) then
+		if not gathering.sanddigging:FindRandomItem(User) then
 			return;
 		end
 	else
-		if not claydigging:FindRandomItem(User) then
+		if not gathering.claydigging:FindRandomItem(User) then
 			return;
 		end
 	end
 
     User:learn( 2, "mining", 2, 50 );
     local Skill = User:getSkill( "mining" );
-    gem1, str1, gem2, str2=getBonusFromItem(SourceItem);
+    gem1, str1, gem2, str2=common.GetBonusFromTool(SourceItem);
     step=0;
     if gem1==3 then     --ruby gives skill
         step=str1;
