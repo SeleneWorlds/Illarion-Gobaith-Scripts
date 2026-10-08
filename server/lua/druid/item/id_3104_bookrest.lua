@@ -317,7 +317,7 @@ function M.skilllost(User)
 		skL[27] = "desicio";			grL[27] = 3;
 		skL[28] = "genese";				grL[28] = 3;
 		skL[29] = "pervestigatio";		grL[29] = 3;
-		skL[30] = "tranfreto";			grL[30] = 3;
+		skL[30] = "transfreto";			grL[30] = 3;
 		skL[31] = "transformo";			grL[31] = 3;
 		skL[32] = "transfreto";			grL[32] = 3;
 		skL[33] = "library research";	grL[33] = 4;

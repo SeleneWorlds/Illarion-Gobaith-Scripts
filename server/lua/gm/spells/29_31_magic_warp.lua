@@ -35,7 +35,7 @@ function M.CastMagic(User,Counter,Param)
     --    User:increaseSkill(7,"sacrificium", wert)
     --    User:increaseSkill(7,"oraculum", wert)
     --    User:increaseSkill(7,"optestatio", wert)
-    --    User:increaseSkill(7,"tranfreto", wert)
+    --    User:increaseSkill(7,"transfreto", wert)
     --    User:increaseSkill(7,"genese", wert)
     --    User:increaseSkill(7,"vaticinari", wert)
     --  end
