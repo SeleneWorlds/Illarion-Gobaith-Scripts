@@ -2,7 +2,6 @@
 local common = require("base.common")
 local tyingCapturer = require("lte.tying_capturer")
 local logging = require("selene.logging")
-dofile("quest_aquest28.lua");    --the quest file for the Farmer quest
 
 local M = {}
 
