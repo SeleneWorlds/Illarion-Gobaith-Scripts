@@ -302,7 +302,7 @@ function M.skilllost(User)
 		skL[12] = "orc language"; 		grL[12] = 1;
 		skL[13] = "tailoring";			grL[13] = 2;
 		skL[14] = "baking"; 			grL[14] = 2;
-		skL[15] = "blacksmithing";		grL[15] = 2;
+		skL[15] = "smithing";		grL[15] = 2;
 		skL[16] = "carpentry";			grL[16] = 2;
 		skL[17] = "fishing";			grL[17] = 2;
 		skL[18] = "gemcutting";			grL[18] = 2;

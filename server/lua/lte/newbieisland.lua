@@ -155,7 +155,7 @@ function M.removeEffect(newbieEffect, Character)
 	local newSkill;
 	if skillList == nil then
 		skillList = {};
-		skillList[2] = {"alchemy", "baking", "blacksmithing", "carpentry", "fireing bricks", "fishing", "gemcutting", "glass blowing", "goldsmithing", "herb lore", "lumberjacking", "mining", "peasantry", "smithing", "tailoring"};
+		skillList[2] = {"alchemy", "baking", "carpentry", "fireing bricks", "fishing", "gemcutting", "glass blowing", "goldsmithing", "herb lore", "lumberjacking", "mining", "peasantry", "smithing", "tailoring"};
 		skillList[3] = {"commotio","pervestigatio","desicio","transformo","transfreto","library research","magic resistance"};
 		skillList[5] = {"concussion weapons", "distance weapons", "dodge", "parry", "poisoning", "puncture weapons", "slashing weapons", "tactics"};
 		for group,list in pairs(skillList) do

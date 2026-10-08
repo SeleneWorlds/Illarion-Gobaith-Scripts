@@ -11,7 +11,6 @@ function M.MoveToField(Newbie)
     Newbie:createItem(180,1,333,0); -- hemd
     Newbie:createItem(97,1,333,0); -- rucksack
     Newbie:increaseSkill(2,"smithing",5);
-    Newbie:increaseSkill(2,"blacksmithing",5);
     Newbie:increaseSkill(2,"smithing",5);
     Newbie:increaseSkill(2,"carpentry",5);
     world:gfx(41,Newbie.pos);
