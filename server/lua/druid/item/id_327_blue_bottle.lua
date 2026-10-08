@@ -52,114 +52,114 @@ function M.windtrank(User,SourceItem,TargetItem)
 
 	--Umwandlung normale Pfeile in Windpfeile
     world:erase(SourceItem,1)
-    User:erase(Targetitem.id_id,5)
+    User:erase(TargetItem.id,5)
     User:createItem(322,5,333,0)
 end
 
 function M.Explode(User,Item)
 
     -- Effektname des Wurfkörpers ermitteln und dorthin verzweigen
-    if (item.id_data == 12836431) then
+    if (Item.data == 12836431) then
         missile.effect_12836431( User, Item );
-    elseif (item.id_data == 13245638) then
+    elseif (Item.data == 13245638) then
         missile.effect_13245638( User, Item );
-    elseif (item.id_data == 13983419) then
+    elseif (Item.data == 13983419) then
         missile.effect_13983419( User, Item );
-    elseif (item.id_data == 16359531) then
+    elseif (Item.data == 16359531) then
         missile.effect_16359531( User, Item );
-    elseif (item.id_data == 19123643) then
+    elseif (Item.data == 19123643) then
         missile.effect_19123643( User, Item );
-    elseif (item.id_data == 21915579) then
+    elseif (Item.data == 21915579) then
         missile.effect_21915579( User, Item );
-    elseif (item.id_data == 24968253) then
+    elseif (Item.data == 24968253) then
         missile.effect_24968253( User, Item );
-    elseif (item.id_data == 26372612) then
+    elseif (Item.data == 26372612) then
         missile.effect_26372612( User, Item );
-    elseif (item.id_data == 29732752) then
+    elseif (Item.data == 29732752) then
         missile.effect_29732752( User, Item );
-    elseif (item.id_data == 32185872) then
+    elseif (Item.data == 32185872) then
         missile.effect_32185872( User, Item );
-    elseif (item.id_data == 32484266) then
+    elseif (Item.data == 32484266) then
         missile.effect_32484266( User, Item );
-    elseif (item.id_data == 32812622) then
+    elseif (Item.data == 32812622) then
         missile.effect_32812622( User, Item );
-    elseif (item.id_data == 33421656) then
+    elseif (Item.data == 33421656) then
         missile.effect_33421656( User, Item );
-    elseif (item.id_data == 35471525) then
+    elseif (Item.data == 35471525) then
         missile.effect_35471525( User, Item );
-    elseif (item.id_data == 36557188) then
+    elseif (Item.data == 36557188) then
         missile.effect_36557188( User, Item );
-    elseif (item.id_data == 36835636) then
+    elseif (Item.data == 36835636) then
         missile.effect_36835636( User, Item );
-    elseif (item.id_data == 42218944) then
+    elseif (Item.data == 42218944) then
         missile.effect_42218944( User, Item );
-    elseif (item.id_data == 43185342) then
+    elseif (Item.data == 43185342) then
         missile.effect_43185342( User, Item );
-    elseif (item.id_data == 43245354) then
+    elseif (Item.data == 43245354) then
         missile.effect_43245354( User, Item );
-    elseif (item.id_data == 47564545) then
+    elseif (Item.data == 47564545) then
         missile.effect_47564545( User, Item );
-    elseif (item.id_data == 52761593) then
+    elseif (Item.data == 52761593) then
         missile.effect_52761593( User, Item );
-    elseif (item.id_data == 55938556) then
+    elseif (Item.data == 55938556) then
         missile.effect_55938556( User, Item );
-    elseif (item.id_data == 56548394) then
+    elseif (Item.data == 56548394) then
         missile.effect_56548394( User, Item );
-    elseif (item.id_data == 57771997) then
+    elseif (Item.data == 57771997) then
         missile.effect_57771997( User, Item );
-    elseif (item.id_data == 59159412) then
+    elseif (Item.data == 59159412) then
         missile.effect_59159412( User, Item );
-    elseif (item.id_data == 62358491) then
+    elseif (Item.data == 62358491) then
         missile.effect_62358491( User, Item );
-    elseif (item.id_data == 63155452) then
+    elseif (Item.data == 63155452) then
         missile.effect_63155452( User, Item );
-    elseif (item.id_data == 64312656) then
+    elseif (Item.data == 64312656) then
         missile.effect_64312656( User, Item );
-    elseif (item.id_data == 66475155) then
+    elseif (Item.data == 66475155) then
         missile.effect_66475155( User, Item );
-    elseif (item.id_data == 67589591) then
+    elseif (Item.data == 67589591) then
         missile.effect_67589591( User, Item );
-    elseif (item.id_data == 69657293) then
+    elseif (Item.data == 69657293) then
         missile.effect_69657293( User, Item );
-    elseif (item.id_data == 71943574) then
+    elseif (Item.data == 71943574) then
         missile.effect_71943574( User, Item );
-    elseif (item.id_data == 75568356) then
+    elseif (Item.data == 75568356) then
         missile.effect_75568356( User, Item );
-    elseif (item.id_data == 77254231) then
+    elseif (Item.data == 77254231) then
         missile.effect_77254231( User, Item );
-    elseif (item.id_data == 79684787) then
+    elseif (Item.data == 79684787) then
         missile.effect_79684787( User, Item );
-    elseif (item.id_data == 81876627) then
+    elseif (Item.data == 81876627) then
         missile.effect_81876627( User, Item );
-    elseif (item.id_data == 84254555) then
+    elseif (Item.data == 84254555) then
         missile.effect_84254555( User, Item );
-    elseif (item.id_data == 84613666) then
+    elseif (Item.data == 84613666) then
         missile.effect_84613666( User, Item );
-    elseif (item.id_data == 86656358) then
+    elseif (Item.data == 86656358) then
         missile.effect_86656358( User, Item );
-    elseif (item.id_data == 87783632) then
+    elseif (Item.data == 87783632) then
         missile.effect_87783632( User, Item );
-    elseif (item.id_data == 88343542) then
+    elseif (Item.data == 88343542) then
         missile.effect_88343542( User, Item );
-    elseif (item.id_data == 91357421) then
+    elseif (Item.data == 91357421) then
         missile.effect_91357421( User, Item );
-    elseif (item.id_data == 93531588) then
+    elseif (Item.data == 93531588) then
         missile.effect_93531588( User, Item );
-    elseif (item.id_data == 95257533) then
+    elseif (Item.data == 95257533) then
         missile.effect_95257533( User, Item );
-    elseif (item.id_data == 96261935) then
+    elseif (Item.data == 96261935) then
         missile.effect_96261935( User, Item );
-    elseif (item.id_data == 96566994) then
+    elseif (Item.data == 96566994) then
         missile.effect_96566994( User, Item );
-    elseif (item.id_data == 98538617) then
+    elseif (Item.data == 98538617) then
         missile.effect_98538617( User, Item );
     else
         -- unbekannter Trank
     end
 
     -- Deko-Effekte
-    world:gfx(36,item.id_pos);
-    world:makeSound(5,item.id_pos);
+    world:gfx(36,Item.pos);
+    world:makeSound(5,Item.pos);
     world:erase(Item,1);
 
 end;
@@ -176,17 +176,17 @@ function M.Drop(User,Item)
 end;
 
 function M.MoveItemAfterMove(User, SourceItem, TargetItem)
-	if Sourceitem.id_data == 0 then
+	if SourceItem.data == 0 then
 	else
-    if not M.checkMissile(Sourceitem.id_data) then
+    if not M.checkMissile(SourceItem.data) then
         return; -- kein Wurfkörper
     end
 
-    if (math.floor(Sourceitem.id_quality/1000)==1) then
+    if (math.floor(SourceItem.quality/1000)==1) then
         return; -- Wurfkörper gesichert
     end
 
-    if (SourceItem:getType()~=4 or (Sourceitem.id_itempos~=5 and Sourceitem.id_itempos~=6)) then
+    if (SourceItem:getType()~=4 or (SourceItem.itempos~=5 and SourceItem.itempos~=6)) then
         M.Drop(User,TargetItem);
         return; -- Nicht in der Hand
     end
@@ -205,14 +205,14 @@ function M.MoveItemAfterMove(User, SourceItem, TargetItem)
 end;
 
 function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
-	if Sourceitem.id_data == 0 then
+	if SourceItem.data == 0 then
 
 	else
-    if not M.checkMissile(Sourceitem.id_data) then
+    if not M.checkMissile(SourceItem.data) then
         return true; -- kein Wurfkörper
     end
 
-    if (math.floor(Sourceitem.id_quality/1000)==1) then
+    if (math.floor(SourceItem.quality/1000)==1) then
         return true; -- Wurfkörper gesichert
     end
 
@@ -220,7 +220,7 @@ function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
         return true; -- Wird nicht auf die Karte geworfen
     end
 
-    if (SourceItem:getType()~=4 or (Sourceitem.id_itempos~=5 and Sourceitem.id_itempos~=6)) then
+    if (SourceItem:getType()~=4 or (SourceItem.itempos~=5 and SourceItem.itempos~=6)) then
         common.TempInformNLS( User,
         "Du musst den Wurfkörper aus der Hand werfen.",
         "You have to throw the missle out of your hand.");
@@ -232,9 +232,9 @@ end
 
 
 function M.UseItem(User,SourceItem,TargetItem,counter,param)
-	if Sourceitem.id_data == 0 then
+	if SourceItem.data == 0 then
 		-- Windtrank alte Art vor DS
-		if ( Targetitem.id_id == 64 ) and (User:countItem(64)>9) and (User:countItem(327)>0) then
+		if ( TargetItem.id == 64 ) and (User:countItem(64)>9) and (User:countItem(327)>0) then
 			User:eraseItem(64,10)
 			User:eraseItem(327,1)
 	        User:createItem(322,10,333,0);
@@ -243,21 +243,21 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 		end
 	else
 		--Neue Wirkungen nach DS
-		if (Sourceitem.id_data == 63321157) then --Windtrank
+		if (SourceItem.data == 63321157) then --Windtrank
 			M.windtrank(User, SourceItem, TargetItem);
 
-		elseif M.checkMissile(Sourceitem.id_data) then --das ist ein Wurfkörper
-			if (math.floor(Sourceitem.id_quality/1000)==1) then -- Wurfkörper gesichert (qual: 1xxx) --> entsichern (qual: xxx)
+		elseif M.checkMissile(SourceItem.data) then --das ist ein Wurfkörper
+			if (math.floor(SourceItem.quality/1000)==1) then -- Wurfkörper gesichert (qual: 1xxx) --> entsichern (qual: xxx)
 				common.TempInformNLS( User,
 				"Du entsicherst des Wurfkörper. Vorsicht damit.",
 				"You activate the missle. Careful with it.");
-				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 );
+				SourceItem.quality = ( SourceItem.quality % 1000 );
 				world:changeItem( SourceItem );
 			else -- Wurfkörper entsichert --> sichern
 				common.TempInformNLS( User,
 				"Du sicherst den Wurfkörper.",
 				"You deactivate the missile.");
-				Sourceitem.id_quality = ( Sourceitem.id_quality % 1000 ) + 1000;
+				SourceItem.quality = ( SourceItem.quality % 1000 ) + 1000;
 				world:changeItem( SourceItem );
 			end
 		else
@@ -267,13 +267,13 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 end
 
 function M.LookAtItem(Character,Item)
-	if (item.id_data == 63321157) then
+	if (Item.data == 63321157) then
 		if (Character:getPlayerLanguage()==0) then
 			world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: 'Windtrank'")
 		else
 			world:itemInform(Character,Item,"You look at a sticker telling: 'Wind Potion'")
 		end
-	elseif (item.id_data == 0) then
+	elseif (Item.data == 0) then
 		if (Character:getPlayerLanguage()==0) then
 			world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: 'Windtrank'")
 		else

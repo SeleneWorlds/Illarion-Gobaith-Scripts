@@ -82,7 +82,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         base_books.AddEnglishBookText("Godsflower\n\nhabitat:\nsand\n\nmajor harvest time:\nsummer\n\ncontains:\nDracolin,Illidrium",146,0,0);
         base_books.AddEnglishBookText("Fire root\n\nhabitat:\nsand\n\nmajor harvest time:\nall-season\n\ncontains:\nFenolin,Echolon",152,0,0);
    end
-   base_books.SendBookPage(User,Sourceitem.id_data,Counter);
+   base_books.SendBookPage(User,SourceItem.data,Counter);
 end
 
 function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )

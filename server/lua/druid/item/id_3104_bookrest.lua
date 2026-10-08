@@ -364,7 +364,7 @@ end
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 --User:inform("debug 3104-1")
 --Man könnte jetzt hergehen und den Standort des Schreines noch als Bedingung festschreiben. Damit gäbe es dann nur einen einzigen Schrein auf der Insel, oder eben mehrere, falls gewünscht.
-	if Sourceitem.id_pos.x == -390 and Sourceitem.id_pos.y == -154 and Sourceitem.id_pos.z == 0 then
+	if SourceItem.pos.x == -390 and SourceItem.pos.y == -154 and SourceItem.pos.z == 0 then
 
 	-- Eine Auswahl von Pergamenten anzeigen (nur Deko)
 	menuList ={}
@@ -380,7 +380,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 			--User:inform("PARAM = "..Param) -- Param gibt die ID des angewählten Items an
 			if Param > 126 and Param <132 then
 				--Ein Alchemie-Lehrbuch wurde ausgewählt
-				world:createItemFromId(Param,1,Sourceitem.id_pos,true,333,0)
+				world:createItemFromId(Param,1,SourceItem.pos,true,333,0)
 			end
 
 			--zufällige Beschreibung der vorhandenen Rezepte

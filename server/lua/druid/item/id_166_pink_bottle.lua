@@ -17,11 +17,11 @@ taste[1]   ={"fruity"  ,"tartly"   ,"bitter"    ,"putrefactive","sour"        ,"
 
 function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
-	local dataZList = alchemy.SplitBottleData(Character,Sourceitem.id_data);
+	local dataZList = alchemy.SplitBottleData(Character,SourceItem.data);
 
     for i=1,8 do
 		  --Trankwirkung
-		  local Val = (dataZList[i]-5) * (topBorder[i]/5) * common.Scale( 0.5, 1, math.floor(Sourceitem.id_quality/100) * 11 );
+		  local Val = (dataZList[i]-5) * (topBorder[i]/5) * common.Scale( 0.5, 1, math.floor(SourceItem.quality/100) * 11 );
 		  --Character:inform(""..Val)
 		  if ( attribList[i] == "poisonvalue" ) then
             Val = common.Limit( (Character:getPoisonValue() + Val) , 0, 10000 );
@@ -39,10 +39,10 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 	Character:inform(alchemy.generateTasteMessage(Character:getPlayerLanguage(),dataZList));
 
     -- Dieser Abschnitt wurde von 3.Seite eingebaut und gehört nicht in das DS
-    if Sourceitem.id_data == 75357464 and Character.effects:find(28) then
+    if SourceItem.data == 75357464 and Character.effects:find(28) then
         Character.effects:removeEffect(28);
         return;
-    elseif Sourceitem.id_data == 75676578 and Character.effects:find(29) then
+    elseif SourceItem.data == 75676578 and Character.effects:find(29) then
         Character.effects:removeEffect(29);
         return;
     end
@@ -54,7 +54,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
     if not Character.attackmode then
         -- Hier verweisen wir auf die Wirkung
-        if Sourceitem.id_data==0 then
+        if SourceItem.data==0 then
           --keine Wirkungen
         else
           M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)

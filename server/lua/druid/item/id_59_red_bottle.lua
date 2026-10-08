@@ -17,7 +17,7 @@ taste[1]   ={"fruity"  ,"tartly"   ,"bitter"    ,"putrefactive","acidly"      ,"
 
 function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
-    local dataZList = alchemy.SplitBottleData(Character,Sourceitem.id_data);
+    local dataZList = alchemy.SplitBottleData(Character,SourceItem.data);
 
 --    for i=1,8 do
 --      Character:inform("PIN "..i..": "..dataZList[i])
@@ -25,10 +25,10 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
     Character:inform(alchemy.generateTasteMessage(Character:getPlayerLanguage(),dataZList));
 
-    if Sourceitem.id_data == 75357464 and Character.effects:find(28) then
+    if SourceItem.data == 75357464 and Character.effects:find(28) then
         Character.effects:removeEffect(28);
         return;
-    elseif Sourceitem.id_data == 75676578 and Character.effects:find(29) then
+    elseif SourceItem.data == 75676578 and Character.effects:find(29) then
         Character.effects:removeEffect(29);
         return;
     end
@@ -43,7 +43,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
     cnt = found and cnt+1 or 1;
     myEffect:addValue("effects",cnt);
 
-    myEffect:addValue("zaehler_"..cnt,math.floor(Sourceitem.id_quality/100)+myEffect.numberCalled);
+    myEffect:addValue("zaehler_"..cnt,math.floor(SourceItem.quality/100)+myEffect.numberCalled);
 
 
     for i, attrib in pairs(attribList) do
@@ -69,7 +69,7 @@ end
 
 function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
-	if Sourceitem.id_data == 0 then
+	if SourceItem.data == 0 then
 		-- VORÜBERGEHEND DAS ALTE SKRIPT AUSFÜHREN
 		if not Character.attackmode then
 			world:erase(SourceItem,1);

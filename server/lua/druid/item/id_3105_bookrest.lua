@@ -145,7 +145,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
 ------------------------------ Dragon Quest End ------------------------------------------------------------
    end
-	base_books.SendBookPage(User,Sourceitem.id_data,Counter);
+	base_books.SendBookPage(User,SourceItem.data,Counter);
 end
 
 function M.LookAtItem(User,Item)

@@ -18,22 +18,22 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
   if not find then
     myEffect=CLongTimeEffect(167,1);
 
-    if Sourceitem.id_data == 83795161 then
+    if SourceItem.data == 83795161 then
 --     Character:inform("Ork-Fieber/orc-fever")
        diagnose=1
-    elseif Sourceitem.id_data == 26343194 then
+    elseif SourceItem.data == 26343194 then
 --     Character:inform("Sumpfkrampf/bog-attack")
        diagnose=2
-    elseif Sourceitem.id_data == 98886573 then
+    elseif SourceItem.data == 98886573 then
 --     Character:inform("Trollsucht/Troll's rash")
        diagnose=3
-    elseif Sourceitem.id_data == 65336351 then
+    elseif SourceItem.data == 65336351 then
 --     Character:inform("Gnom-Wahn/gnome-paranoia")
        diagnose=4
-    elseif (Sourceitem.id_data % 10000000) == 8455363 then
+    elseif (SourceItem.data % 10000000) == 8455363 then
 --     Character:inform("Vein'sches Syndrom/Veins'syndrome")
 		   diagnose=5
-		   local allergy = math.floor(Sourceitem.id_data/10000000);
+		   local allergy = math.floor(SourceItem.data/10000000);
 		   if allergy == 3 then
 			   allergy = 1;
 		   elseif allergy == 5 then
@@ -44,20 +44,20 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 			   allergy = math.random(1,3);
 		   end
 		   myEffect:addValue("allergy",allergy);
-    elseif Sourceitem.id_data == 95819741 then
+    elseif SourceItem.data == 95819741 then
 --     Character:inform("Drachenpocken/dragon's pox")
        diagnose=6
-    elseif Sourceitem.id_data == 15386558 then
+    elseif SourceItem.data == 15386558 then
 --     Character:inform("Skorpion-Seuche/scorpion's pestilence")
        diagnose=7
-    elseif Sourceitem.id_data == 58595367 then
+    elseif SourceItem.data == 58595367 then
 --     Character:inform("Wolfspest/wolves pest")
        diagnose=8
     end
 --
     myEffect:addValue("illness",diagnose)
 --  Laufzeit nach Quality berechnen, maximal 999 Runden
-    myEffect:addValue("zaehler",Sourceitem.id_quality)
+    myEffect:addValue("zaehler",SourceItem.quality)
 
 --  Effekt an Char binden
     Character.effects:addEffect(myEffect);
@@ -75,9 +75,9 @@ function M.DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
    ListPo = {}
    ListPo = {15,47,49,64,73,80,81,147,151,160,163,191,199,200,201,237,293,294,302,303,306,307,322,353,354,355,388,552,553,554,555,553,557,559,2276,2277,2278,2456,2459,2922,2923}
    for i = 1, #ListPo do
-      if Targetitem.id_id == ListPo[i] then
-         Targetitem.id_data = Sourceitem.id_data
-         Targetitem.id_quality = Sourceitem.id_quality
+      if TargetItem.id == ListPo[i] then
+         TargetItem.data = SourceItem.data
+         TargetItem.quality = SourceItem.quality
          world:changeItem(TargetItem)
          world:makeSound(12,Character.pos);
          world:gfx(5,Character.pos)
@@ -91,7 +91,7 @@ end -- function M.DoPoisoning()
 function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
   if not Character.attackmode then
 
-     if Targetitem.id_id == 0 then
+     if TargetItem.id == 0 then
 
 --      Sich selbst vergiften
         M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
@@ -121,7 +121,7 @@ end
 --
 
 function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
-  if Sourceitem.id_data ==0 then
+  if SourceItem.data ==0 then
     UserLang=User:getPlayerLanguage();
     CharLang=Character:getPlayerLanguage();
     if (User.id~=Character.id) then
@@ -181,21 +181,21 @@ end
 
 function M.LookAtItem(User,Item)
 
-  if item.id_data == 83795161 then
+  if Item.data == 83795161 then
      Etikett ="Gwenwyn Anghenfil Twymyn"
-  elseif item.id_data == 26343194 then
+  elseif Item.data == 26343194 then
      Etikett ="Gwenwyn Morfa Cwlwm Gwythi"
-  elseif item.id_data == 98886573 then
+  elseif Item.data == 98886573 then
      Etikett ="Gwenwyn Trolio Caethineb"
-  elseif item.id_data == 65336351 then
+  elseif Item.data == 65336351 then
      Etikett ="Gwenwyn Corrach Rhithdyb"
-  elseif (item.id_data % 10000000) == 8455363 then
+  elseif (Item.data % 10000000) == 8455363 then
      Etikett ="Gwenwyn Rhag Vein-Syndrome"
-  elseif item.id_data == 95819741 then
+  elseif Item.data == 95819741 then
      Etikett ="Gwenwyn Draig Brech Moddion"
-  elseif item.id_data == 15386558 then
+  elseif Item.data == 15386558 then
      Etikett ="Gwenwyn Sgorpion Epidemig"
-  elseif item.id_data == 58595367 then
+  elseif Item.data == 58595367 then
      Etikett ="Gwenwyn Blaidd Haint"
   else
      Etikett ="Siwgr Dwfr"
