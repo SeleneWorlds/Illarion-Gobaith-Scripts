@@ -1,17 +1,11 @@
 local init
 local drop = require("monster.base.drop")
 local base_lookat = require("monster.base.lookat")
-local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
-
---Random Messages
-
-msgs = base_messages.Messages();
-msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte für Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu können!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
 
 end
 
@@ -21,7 +15,6 @@ function M.enemyNear(Monster,Enemy)
         M.ini(Monster);
     end
 
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
     local MonID=Monster:get_mon_type();
     if (MonID==93) then
         return ( drop.SuddenWarp(Monster,Enemy,true) or drop.CastMonMagic(Monster,Enemy,8,{500,1000},{{9,5},{36,5},{38,5}},{{359,320,500,0,7}},40,1,{25,40}) );
@@ -41,8 +34,6 @@ function M.enemyOnSight(Monster,Enemy)
     if init==nil then
         M.ini(Monster);
     end
-
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if drop.DefaultSlowdown( Monster ) then
@@ -118,7 +109,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(2,6),100,333,0,4); --copper coins
 
-
     elseif (MonID==92) then --Goblin Warrior, Level: 4, Armourtype: medium, Weapontype: concussion
 
         --Category 1: Armor
@@ -147,7 +137,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
-
 
     elseif (MonID==93) then --Goblin Shaman, Level: 4, Armourtype: cloth, Weapontype: concussion
 
@@ -178,7 +167,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
 
-
     elseif (MonID==94) then --Goblin Hunter, Level: 4, Armourtype: light, Weapontype: distance
 
         --Category 1: Armor
@@ -207,7 +195,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
-
 
     elseif (MonID==95) then --Goblin Thief, Level: 4, Armourtype: light, Weapontype: puncture
 

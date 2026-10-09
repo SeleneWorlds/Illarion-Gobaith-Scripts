@@ -2,17 +2,11 @@ local init
 local common = require("base.common")
 local drop = require("monster.base.drop")
 local base_lookat = require("monster.base.lookat")
-local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
-
---Random Messages
-
-msgs = base_messages.Messages();
-msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte für Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu können!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
 
 end
 
@@ -22,7 +16,6 @@ function M.enemyNear(Monster,Enemy)
         M.ini(Monster);
     end
 
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
     return false
 end
 
@@ -77,8 +70,6 @@ function M.enemyOnSight(Monster,Enemy)
     if init==nil then
         M.ini(Monster);
     end
-
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if drop.DefaultSlowdown( Monster ) then
@@ -152,7 +143,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(2,6),100,333,0,4); --copper coins
 
-
     elseif (MonID==312) then --Gnome Warrior, Level: 4, Armourtype: light, Weapontype: slashing
 
         --Category 1: Armor
@@ -181,7 +171,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
-
 
     elseif (MonID==313) then --Gnome Champion, Level: 4, Armourtype: medium, Weapontype: slashing
 
@@ -212,7 +201,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
 
-
     elseif (MonID==314) then --Gnome Technician, Level: 4, Armourtype: cloth, Weapontype: slashing
 
         --Category 1: Armor
@@ -241,7 +229,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(3,9),100,333,0,4); --copper coins
-
 
     elseif (MonID==315) then --Gnome King, Level: 5, Armourtype: cloth, Weapontype: slashing
 

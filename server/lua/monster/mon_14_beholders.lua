@@ -1,17 +1,11 @@
 local init
 local drop = require("monster.base.drop")
 local base_lookat = require("monster.base.lookat")
-local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
-
---Random Messages
-
-msgs = base_messages.Messages();
-msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte für Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu können!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
 
 end
 
@@ -20,8 +14,6 @@ function M.enemyNear(Monster,Enemy)
     if init==nil then
         M.ini(Monster);
     end
-
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if (MonID==144) then
@@ -36,8 +28,6 @@ function M.enemyOnSight(Monster,Enemy)
     if init==nil then
         M.ini(Monster);
     end
-
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     local MonID=Monster:get_mon_type();
     if drop.DefaultSlowdown( Monster ) then
@@ -112,7 +102,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3077,math.random(1,3),100,333,0,4); --silver coins
 
-
     elseif (MonID==142) then --Gazer, Level: 7, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
@@ -141,7 +130,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3077,math.random(1,3),100,333,0,4); --silver coins
-
 
     elseif (MonID==143) then --Green Gazer, Level: 8, Armourtype: -, Weapontype: wrestling
 
@@ -172,7 +160,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3077,math.random(3,9),100,333,0,4); --silver coins
 
-
     elseif (MonID==144) then --Deathly Eye, Level: 8, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
@@ -201,7 +188,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3077,math.random(3,9),100,333,0,4); --silver coins
-
 
     elseif (MonID==145) then --Son of Yogsothoththul, Level: 9, Armourtype: -, Weapontype: wrestling
 

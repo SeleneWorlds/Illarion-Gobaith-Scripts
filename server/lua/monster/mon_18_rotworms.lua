@@ -1,17 +1,11 @@
 local init
 local drop = require("monster.base.drop")
 local base_lookat = require("monster.base.lookat")
-local base_messages = require("base.messages")
 local M = {}
 function M.ini(Monster)
 
 init=true;
 killer={}; --A list that keeps track of who attacked the monster last
-
---Random Messages
-
-msgs = base_messages.Messages();
-msgs:addMessage("Dieses Monster wird mit NewIllarion abgeschafft. Bitte für Ersatz sorgen, um die Zahl der Bossmonster und die Balance der Monsterdrops beibehalten zu können!", "This monster will be discontinued with NewIllarion. Please create a replacement to maintain the number of boss monsters and the balance of drops!");
 
 end
 
@@ -21,7 +15,6 @@ function M.enemyNear(Monster,Enemy)
         M.ini(Monster);
     end
 
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
     return false
 end
 
@@ -30,8 +23,6 @@ function M.enemyOnSight(Monster,Enemy)
     if init==nil then
         M.ini(Monster);
     end
-
-    drop.MonsterRandomTalk(Monster,msgs); --a random message is spoken once in a while
 
     if drop.DefaultSlowdown( Monster ) then
         return true
@@ -102,7 +93,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3077,math.random(1,3),100,333,0,4); --silver coins
 
-
     elseif (MonID==182) then --Small Rotworm, Level: 6, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
@@ -131,7 +121,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3076,math.random(18,54),100,333,0,4); --copper coins
-
 
     elseif (MonID==183) then --Stoneworm, Level: 7, Armourtype: -, Weapontype: wrestling
 
@@ -162,7 +151,6 @@ function M.onDeath(Monster)
         --Category 4: Perma Loot
         drop.AddDropItem(3077,math.random(1,3),100,333,0,4); --silver coins
 
-
     elseif (MonID==184) then --Agressive Rotworm, Level: 7, Armourtype: -, Weapontype: wrestling
 
         --Category 1: Armor
@@ -191,7 +179,6 @@ function M.onDeath(Monster)
 
         --Category 4: Perma Loot
         drop.AddDropItem(3077,math.random(1,3),100,333,0,4); --silver coins
-
 
     elseif (MonID==185) then --Giant Earthworm, Level: 8, Armourtype: -, Weapontype: wrestling
 
