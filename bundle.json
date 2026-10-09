@@ -1450,6 +1450,9 @@
     "server.learn": {
       "file": "server/lua/server/learn.lua"
     },
+    "server.playerdeath": {
+      "file": "server/lua/server/playerdeath.lua"
+    },
     "server.login": {
       "file": "server/lua/server/login.lua"
     },

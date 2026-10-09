@@ -358,41 +358,45 @@ function M.leadToCross( Char , Effect )
     counter = foundValue and counter or 0;
 
     if counter == 0 then
-        if Char.pos.z < 0 then
-            common.TempInformNLS(Char,
-                "Irgendetwas sagt dir, dass es eine gute Idee wäre, wieder an die Oberfläche zu gelangen.",
-                "Something tells you that it would be a good idea to return to the surface.");
-            Effect:addValue("crossDirectionCounter", 1);
-            return;
-        end
-
-        local closestCross = crossPositions[1];
-        local closestDistance = math.huge;
-
-        for _, crossPosition in ipairs(crossPositions) do
-            local xDistance = crossPosition.x - Char.pos.x;
-            local yDistance = crossPosition.y - Char.pos.y;
-            local zDistance = crossPosition.z - Char.pos.z;
-            local distance = xDistance * xDistance + yDistance * yDistance + zDistance * zDistance;
-
-            if distance < closestDistance then
-                closestCross = crossPosition;
-                closestDistance = distance;
-            end
-        end
-
-        local direction = directionNames[common.GetDirection(
-            Char.pos,
-            position(closestCross.x, closestCross.y, Char.pos.z)
-        )];
-        if direction then
-            common.TempInformNLS(Char,
-                "Gehe nach "..direction[1]..", um wiederbelebt zu werden.",
-                "Go "..direction[2].." to be resurrected.");
-        end
+        M.showResurrectionDirections(Char);
     end
 
     Effect:addValue("crossDirectionCounter", (counter + 1) % 6);
+end
+
+
+function M.showResurrectionDirections(Char)
+    if Char.pos.z < 0 then
+        common.TempInformNLS(Char,
+            "Irgendetwas sagt dir, dass es eine gute Idee wäre, wieder an die Oberfläche zu gelangen.",
+            "Something tells you that it would be a good idea to return to the surface.");
+        return;
+    end
+
+    local closestCross = crossPositions[1];
+    local closestDistance = math.huge;
+
+    for _, crossPosition in ipairs(crossPositions) do
+        local xDistance = crossPosition.x - Char.pos.x;
+        local yDistance = crossPosition.y - Char.pos.y;
+        local zDistance = crossPosition.z - Char.pos.z;
+        local distance = xDistance * xDistance + yDistance * yDistance + zDistance * zDistance;
+
+        if distance < closestDistance then
+            closestCross = crossPosition;
+            closestDistance = distance;
+        end
+    end
+
+    local direction = directionNames[common.GetDirection(
+        Char.pos,
+        position(closestCross.x, closestCross.y, Char.pos.z)
+    )];
+    if direction then
+        common.TempInformNLS(Char,
+            "Gehe nach "..direction[1]..", um wiederbelebt zu werden.",
+            "Go "..direction[2].." to be resurrected.");
+    end
 end
 
 

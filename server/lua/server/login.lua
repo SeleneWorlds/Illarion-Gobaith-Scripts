@@ -1,6 +1,7 @@
 -- called after every player login
 local common = require("base.common")
 local dailymessage = require("content.dailymessage")
+local regeneration = require("lte.chr_reg")
 local M = {}
 
 function M.onLogin( player )
@@ -162,6 +163,10 @@ function M.onLogin( player )
 		end
 	end
 	-- Überprüfung von Newbie-Status fertig
+
+    if player:increaseAttrib("hitpoints", 0) == 0 then
+        regeneration.showResurrectionDirections(player);
+    end
 
 	return true;
 end
