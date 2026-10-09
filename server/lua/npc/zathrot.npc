@@ -1,0 +1,63 @@
+-- Derived from npc/zathrot.lua; UTF-8.
+
+name = "Zathrot"
+race = lizard
+sex = male
+position = -120, -93, 0
+direction = east
+job = "Public trader"
+language = common
+language = lizard
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Fassst mich nicht an!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+lookatDE = "Eine hell geschuppte Echse, in einfaches Leinen gekleidet. Er steht neben einigen Eimern mit Fisch und am Boden liegen auf einer Decke Angeln und Öllampen, die er zum Verkauf anbietet."
+lookatUS = "A lizard with bright scales, clad in simple linen. He stands next to some buckets filled with fish and spread on the ground is a blanket, on top some fishing rods and oillamps that he is selling."
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(73), price(10), stack(1), quality(333)
+sellItem = id(355), price(15), stack(1), quality(333)
+sellItem = id(72), price(30), stack(1), quality(583)
+buyPrimaryItem = id(72), price(3)
+sellItem = id(92), price(100), stack(1), quality(549)
+buyPrimaryItem = id(92), price(10)
+sellItem = id(2719), price(30), stack(1), quality(549)
+buyPrimaryItem = id(2719), price(1)
+sellItem = id(2760), price(100), stack(1), quality(549)
+
+"[gg]reetings", "[hh]ello" -> "Greetingss. You are interessted on my wares? Look what i have found at the ground of the sea. Ssss.", "Greetss. I found lots of things in the sea. Ssss. You are interested?"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Grüßsse. Ssseid ihr an meine Waren interesssiert? Ssseht wasss ich am Grund desss Meeresss gefunden habe. sss", "Ssseid gegrüßsst. Ich habe viele Sssachen auf den Meeresss Boden gesssammelt. Ssseid ihr interesssiert? Ssss"
+"[yy]ou.+[tt]rader" -> "Yess! Call me Zathrot. Do you want that i lisst my waresss? I found lots thing in the sea."
+"[ddii][uh]r*.+[hh]ändler" -> "Ja. Nennet mich Zathrot. Wollt ihr dasss ich euch eine Lissste meiner Waren gebe? sss"
+"[ww]hat.+sell" -> "I trade with fishss, toolss and more. Everything i found in zelphiass oceanss."
+"[ww]as.+verkauf" -> "Ich handle mit Fissschen, Werkzeugen und mehr. Alless wasss ich in Zelphiasss Ozeanen gefunden habe. sss"
+"[ww]hat.+[ww]ares" -> "I trade with fishss, tools and more, what i found in the ssea."
+"[ww]as.+[ww]are" -> "Ich handle mit Fissschen, Werkzeugen und mehr, wasss ich im Meer gefunden habe. sss"
+"[ww]hat.+[ff]ish" -> "I have delicious trouts and salmons."
+"[ww]as.+[ff]isch" -> "Ich habe ssschmackhafte Forellen und Lachssse."
+"[ww]hat.+[mm]ore" -> "Letss me show you. I have old combss, oils lampss and some old ropess"
+"[ww]as.+[mm]ehr" -> "Lassst esss mich euch zsseigen. Ich habe alte Kämme, Öl Lampen und ein paar alte Ssseile. sss"
+"[ww]hat.+[tt]ools" -> "I trade with fishing rodsss. But take a look: I found a nice brush."
+"[ww]was.+[ww]erkzeug" -> "Ich habe Angeln. Aber ssschaut auch mal hier: Ich habe eine ssschöne Bürssste gefunden. sss"
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Zhelphia may blesss you!", "Farewell!", "Good day. Zhelphia may be with you!"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Zhelphia mit euch!", "Ssschönen Tag noch. Zhelphia sei mit euch."
+"[ww]ho.+you?" -> "Zathrot! Zathrot iss my name"
+"[ww]er.+[ddii][uh]r*?" -> "Zathrot! Zathrot issst mein Name. sss"
+"i'm.+.+" -> "Nice to meet you."
+"ich.+bin.+.+" -> "Erfreut sssie kennen zu lernen. sss"
+"[tt]ell.+[ss]omething" -> "Once upon a time, I came here. Now I am here. Isn't that interesting?"
+"[ee]rzähl.+[ee]twas" -> "Vor langer Zeit kam ich her. Nun bin ich hier. Issst dasss nicht interesssant?"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Idle dialogue
+cycletext "#me isst einen Fisch", "#me eats a fish"
+cycletext "#me schaut sich nach Kunden um", "#me looks around for customers"
+cycletext "#me lässt ihren Schwanz hin und her schnalzen", "#me flicks her tail"
+cycletext "#me reibt an einer Öllampe", "#me rubs at an oil lamp"

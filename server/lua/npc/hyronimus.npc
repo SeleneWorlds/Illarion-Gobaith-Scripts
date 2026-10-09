@@ -1,0 +1,44 @@
+-- Derived from npc/hyronimus.lua; UTF-8.
+
+name = "Hyronimus"
+race = human
+sex = male
+position = -453, 244, 0
+direction = west
+job = "Public Trader"
+language = common
+language = human
+language = ancient
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(253), price(400), stack(1), quality(333)
+buyPrimaryItem = id(253), price(8)
+sellItem = id(329), price(500), stack(1), quality(333)
+
+"[hh]ello", "[gg]reetings" -> "Greetings my friend.", "A pleasure to meet you, friend."
+"[hh]allo", "[gg]rü[sß]+e" -> "Grüße mein Freund.", "Ist mir eine Freude euch zu treffen."
+"[mm]ission" -> "My friend, I am selling potions to adventurers who fight the evil in the dungeon of Hellbriar.."
+"[aa]uftrag" -> "Mein Freund, ich verkaufe Tränke an alle Abenteurer, die die Hölle von Briar betreten."
+"[qq]uest" -> "My friend, I am a simple man with no needs."
+"[gg]rave" -> "I take care of them as good as I can, but sometimes they even scare me."
+"[ww]hat.+sell" -> "I cannot offer you much, but my potions."
+"[ww]as.+verkaufen" -> "Ich kann nicht viel Anbieten. Vielleicht ein paar Tränke."
+"[ww]hat.+buy" -> "I fear, my friend, that there is nothing I would want to buy right now."
+"[ww]as.+%skauf" -> "Ich fürchte, mein Freund, es gibt nichts was ich im Augenblick von euch kaufen würde."
+"[ww]ho.+[yy]ou" -> "I am Brother %NPCNAME of the White Flame."
+"[ww]er.+[ddii][uh]r*" -> "Ich bin Bruder %NPCNAME von der Weißen Flamme."
+"[hh]ellbriar" -> "The foul armies of death and decay live in this area."
+"[hh]ölle" -> "Die Armeen des Todes und der Finsternis leben in diesem Gebiet."
+"[bb]ye", "[ff]are.*well" -> "Walk in peace, my friend.", "Walk in peace, my friend."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Geh in Frieden, mein Freund.", "Geh in Frieden, mein Freund."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

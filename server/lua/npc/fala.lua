@@ -46,7 +46,7 @@ functions.AddTraderTrigger("[Ss]tädte","Da gibt es einmal Trollsbane, Silberbra
 	functions.AddTraderTrigger("[Ss]tadttore","Nun die Tore sind keine Gebäude an sich aber durch sie könnt ihr die Stadt verlassen, es gibt ein Nordtor, ein Osttor und ein Westtor");
 	functions.AddTraderTrigger("[Ss]eahorse Inn","Wenn ihr eine bleibe sucht, seid ihr hier richtig! Es ist ein großes mehrstöckiges Haus am Westtor, gleich neben Lake Adron, ihr könnt es nicht verfehlen!");
 	functions.AddTraderTrigger("[Tt]averne","Die Fluffy Sheep Taverne ist gleich auf der anderen Straßenseite dieses Gebäudes. Der Barkeeper ist ruppig, aber die Getränke sind gut und preiswert.");
-	functions.AddTraderTrigger("[Bb]ücherei","Ihr befindet euch in der Bücherei. Dieser Schrein ist Elara, der"); --- noch schreiben
+	functions.AddTraderTrigger("[Bb]ücherei","Ihr befindet euch in der Bücherei. Dieser Schrein ist Elara gewidmet.");
 	functions.AddTraderTrigger("[Ww]erkstatt","Die Werkstatt ist gleich östlich vom Seahorse Inn. In der Werkstatt findet ihr sperriges Werkzeug für manches Handwerk."); 
 	functions.AddTraderTrigger("[Gg]efängnis","Hofft dass ihr es nie von Innen sehen müsst! Es ist etwas westlich vom Nordtor.");
 	functions.AddTraderTrigger("[Kk]rankenhaus","Das Krankenhaus liegt zwischen Taverne und Seahorse Inn. Dort könnt ihr Kräuter und Heiltränke erstehen und behandelt werden sollte ein Heiler präsent sein.");

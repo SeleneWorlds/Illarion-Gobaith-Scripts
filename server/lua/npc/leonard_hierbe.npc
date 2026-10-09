@@ -1,0 +1,59 @@
+-- Derived from npc/leonard.lua; UTF-8.
+
+name = "Leonard Hierbe"
+race = human
+sex = male
+position = -391, -208, 0
+direction = north
+job = "Public trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(155), price(5), stack(1), quality(333)
+sellItem = id(2744), price(75), stack(1), quality(555)
+sellItem = id(1909), price(12), stack(1), quality(550)
+buyPrimaryItem = id(1909), price(8)
+buyPrimaryItem = id(1318), price(15)
+sellItem = id(332), price(400), stack(1), quality(555)
+buyPrimaryItem = id(332), price(80)
+sellItem = id(335), price(500), stack(1), quality(555)
+buyPrimaryItem = id(335), price(100)
+sellItem = id(333), price(40), stack(1), quality(555)
+buyPrimaryItem = id(333), price(6)
+sellItem = id(150), price(40), stack(1), quality(555), de("fir seedling"), en("fir seedling")
+buyPrimaryItem = id(150), price(3)
+sellItem = id(51), price(55), stack(1), quality(555)
+buyPrimaryItem = id(51), price(5)
+
+"[gg]reet", "[hh]ello" -> "Hello sunshine!"
+"[gg]r[uü][sß+]", "[hh]allo" -> "Hallo Sonnenschein!", "Hallöchen Sonnenschein"
+"[ww]hat.+sell" -> "I don't sell anything, but I trade plants, pipes, beer, elven wine, baby fir trees, buckets, and nice noise-makers for those shiny things"
+"[ww]as.+verkauf" -> "Ich verkaufe nichts, aber ich handel mit Pflanzen, Pfeifen, Bier, Elbenwein, Tannen Kindern, Eimern und nette Geräusche Macher für diese glitzernden Stückchen"
+"[pp]lants" -> "Yes, plants. I have a sibanac farm right here and pipes to go with it."
+"[pp]flanz" -> "Ja. Pflanzen. Ich habe hier eine Sibanac Farm und Pfeifen um es zu rauchen."
+"[ww]hat.+do" -> "I watch plants grow."
+"[ww]as.+[mt][au][cst]" -> "Ich sehe den Pflanzen beim Wachsen zu."
+"[rr]umor" -> "You talking about rumors? I have a fact to tell you, much better than rumors. The other day I saw gnolls dancing in the moonlight. I think they were having fun."
+"[gg]erüch" -> "Du sprichst von Gerüchten? Ich habe etwas wahres was viel besser ist. Ich habe an einem anderen Tag Gnolle, im Mondlicht tanzen sehen. Ich denke sie hatten Spass."
+"[nn]ews" -> "You interested in the latest news? A priest of Sirani told me that the goddess herself told his cousin that all spiders should be loved as our friends. That, my friend, is what happens when you mix 'shrooms with Sibanac."
+"[nn]euigkeit" -> "Du bist an Neuigkeiten interessiert? Ein Priesterin von Sirani hat mir gesagt das ihr Göttin persönlich, ihrem Cousin gesagt hat, das alle Spinnen von unseren Freunden geliebt werden sollen. Das mein Freund, passiert wenn man Pilze und Sibanac mischt."
+"[ww]hat.+buy" -> "I'll give you round shiny things for cylindrical vessels containing hop-flavored brew, or that sweet elven stuff. Ill even trade buckets, harps, lutes, or even horns! I can get a nice fir tree seedling! Isnt a tree much nicer than copper?"
+"[ww]as.+%skauf" -> "Ich gebe dir diese runden glitzernden Dinger für zylindrische Gefäße, befüllt mit, mit Hopfen gewürztem, Gebräu oder mit dem süßen Elbenzeugs. Ich handle auch mit Eimern und Instrumenten. Und ich kauf auch Tannen Setzlinge."
+"[ii]'m.+" -> "Good for you, sunshine"
+"[ii]ch.+bin" -> "Gut für dich, Sonnenschein"
+"[bb]aby.+[ff]ir.+[tt]rees" -> "Yes, I sell baby fir trees. You might call them fir tree seedlings. I buy them, too."
+"[tt]annenbaum.+[kk]ind" -> "Ja. Ich verkaufe Tannenbaum Kinder. Du sagst vielleicht Tannen Baum Setzlinge dazu. Die kaufe ich auch."
+"[ff]arewell", "[gg]oodbye" -> "Farewell, sunshine", "Bye, sunshine"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Auf bald, Sonnenschein."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

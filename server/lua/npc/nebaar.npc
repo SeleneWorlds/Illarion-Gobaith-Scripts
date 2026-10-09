@@ -1,0 +1,51 @@
+-- Derived from npc/nebaar.lua; UTF-8.
+
+name = "Nebaar"
+race = human
+sex = male
+position = -151, -89, 0
+direction = south
+job = "Travel Trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(1061), price(100), stack(1), quality(101), de("Trolls Bane"), en("Trolls Bane")
+sellItem = id(1061), price(100), stack(1), quality(102), de("Lighthouse"), en("Lighthouse")
+sellItem = id(1061), price(100), stack(1), quality(103), de("Eldan"), en("Eldan")
+sellItem = id(1061), price(100), stack(1), quality(104), de("Harbor"), en("Harbor")
+sellItem = id(1061), price(100), stack(1), quality(105), de("Greenbriar"), en("Greenbriar")
+sellItem = id(1061), price(100), stack(1), quality(106), de("Tol Vanima"), en("Tol Vanima")
+sellItem = id(1061), price(100), stack(1), quality(107), de("Varshikar"), en("Varshikar")
+sellItem = id(1061), price(100), stack(1), quality(108), de("Silverbrand"), en("Silverbrand")
+
+"[gg]reetings", "[hh]ello" -> "Greetings, traveler. Can I help you? Need to travel somewhere?", "Good day. Do you need something?"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Grüße, Reisender. Kann ich euch helfen? Wollt ihr irgendwohin reisen?", "Guten Tag. Braucht ihr etwas?"
+"[yy]ou.+[tt]rader" -> "I am a trader, yes. I trade with magic journeys."
+"[ddii][uh]r*.+[hh]ändler" -> "Ich bin Händler, Ja. Ich handel mit Magischen Reisen."
+"[ww]hat.+sell" -> "I sell all kinds journeys to the nicest places."
+"[ww]as.+verkauf" -> "Ich verkaufe Reisen zu den schönsten Orten dieser Insel."
+"[ww]hat.+[jj]ourneys" -> "To big cities and some special locations."
+"[ww]as.+[rr]eisen" -> "Zu großen Städten und zu einigen speziellen Orten."
+"[pp]laces" -> "I sell journeys to the following places: The harbor, Eldan monastery, Lighthouse."
+"[oo]rt" -> "Ich verkaufe Reisen zu folgenden Orten: Zum Hafen, zum Eldan Kloster, zum Leuchtturm."
+"[tt]ell.+[ss]omething" -> "I am a trader and a traveler."
+"[ee]rzähl.+[ww]as" -> "Ich bin ein Händler und ein Reisender."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Have a nice journey!", "Farewell!", "Good bye."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Gute Reise!", "Auf bald"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[tt]ravel" -> "Yes, you can travel with the help of the journeys I sell."
+"[rr]eise" -> "Ja, du kannst mit den Reisen die ich verkaufe, reisen."
+"[cc]ities" -> "I sell journeys to the cities of Troll's Bane, Silverbrand, Varshikar, Greenbriar and Tol Vanima, the elven town."
+"[ss]t[aä]dt" -> "Ich verkaufe Reisen in die Städte Trolls Bane, Silverbrand, Varshikar, Greenbriar und Tol Vanima, die Elfen Stadt."
+"[tt]owns" -> "I sell journeys to the towns of Troll's Bane, Silverbrand, Varshikar, Greenbriar and Tol Vanima, the elven town."
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

@@ -1,0 +1,70 @@
+-- Derived from npc/floro_baggins.lua; UTF-8.
+
+name = "Floro Baggins"
+race = halfling
+sex = male
+position = -381, 69, 0
+direction = south
+job = "Restricted trader"
+language = common
+language = halfling
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+lookatDE = "Ein Halbling, gekleidet wie sein Zwilling in Bane, in Grün und Sommersprossen zieren sein Gesicht. Er untersucht gerade einige getrocknete Blumen."
+lookatUS = "One more Halfling clad just like his twin in Bane, with green clothes and freckles covering his face. At the moment he is examining some dried flowers."
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(136), price(8), stack(1), quality(333), data("data" = "9004")
+buyPrimaryItem = id(136), price(1)
+sellItem = id(137), price(8), stack(1), quality(333)
+buyPrimaryItem = id(137), price(1)
+sellItem = id(138), price(8), stack(1), quality(333)
+buyPrimaryItem = id(138), price(1)
+sellItem = id(140), price(8), stack(1), quality(333)
+buyPrimaryItem = id(140), price(1)
+sellItem = id(142), price(8), stack(1), quality(333)
+buyPrimaryItem = id(142), price(1)
+sellItem = id(146), price(8), stack(1), quality(333)
+buyPrimaryItem = id(146), price(1)
+sellItem = id(148), price(8), stack(1), quality(333)
+buyPrimaryItem = id(148), price(1)
+sellItem = id(164), price(20), stack(1), quality(333)
+buyPrimaryItem = id(164), price(5)
+sellItem = id(1317), price(25), stack(1), quality(333)
+buyPrimaryItem = id(1317), price(5)
+
+"[gg]reetings", "[hh]ello", "[hh]i" -> "Welcome to Greenbriar my friend! Can I help you?", "A good day to you my friend! You look fine today."
+"[yy]ou.+[tt]rader" -> "I am %NPCNAME, one of Greenbriar's best traders!"
+"[tt]ell.+[gg]reenbriar" -> "I'm not as good in history as Timo is. If you want to now something of Greensbriar talk to him my friend."
+"[ww]ho.+[tt]imo" -> "Timo is the trader over there my friend."
+"[ww]here.+[tt]imo" -> "#me points right to the halfling near the house"
+"[ww]hat.+sell" -> "I sell herbs."
+"[ww]hat.+[hh]erb" -> "I trade with all kinds of different herbs. Firnis blossoms for example. What to you my list of wares?"
+"[ww]hat.+[pp]otion" -> "I do not have any potions anymore"
+"[ww]hat.+[bb]ottle" -> "I trade with big and small empty bottles."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "You are going my friend? Take care of yourself.", "You are already on the way my friend? Take care of yourself and have a good meal.", "Farewell. I hope you will come back soon my friend."
+"[ww]hat.+buy" -> "I prefer to buy herbs and bottles."
+"[ww]ho.+you?" -> "My name is %NPCNAME my friend."
+"i'm.+.+" -> "That is the name of a good friend. Nice to meet you!"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]r[üu][ßs]+", "[hh]allo" -> "Hallo mein Freund, du siehst heute wieder gut aus.", "Guten Tag mein Freund! Wie geht es dir mein Freund?"
+"[dd]u.+[hh]ändler" -> "Ich bin %NPCNAME, einer von Greenbriars besten Händlern mein Freund!"
+"[ww]as.+verkauf" -> "Ich verkauf' Pflanzen und Flaschen."
+"[ww]as.+[pp]flanz" -> "Ich handel ne ganze Menge Pflanzen und Kräuter. Firnisblüten zum Beispiel."
+"[ww]as.+[tt]r[aä]nk" -> "Ich habe keine Tränke mehr."
+"[ww]as.+[ff]lasch" -> "Ich handel mit großen und kleinen leeren Flaschen"
+"[ee]rzähl.+[gg]reenbriar" -> "Ich bin bei weitem nicht so gut in Geschichte wie Timo. Am besten sprichst du mit ihm mein Freund."
+"[ww]er.+[tt]imo" -> "Timo ist der Händler dort drüben mein Freund."
+"[ww]o.+[tt]imo" -> "#me deutet nach Rechts auf den Halbling neben dem Haus"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Du bist schon auf dem Weg mein Freund? Pass auf dich auf und komm bald wieder!", "Du gehst schon mein Freund? Gib auf dich acht und iss was Gutes!"
+"[ww]as.+%s[kk]auf" -> "Ich kauf' Pflanzen und Tränke. Hast du sowas dabei?"
+"[ww]er.+[ddii][uh]r*?" -> "Ich werde %NPCNAME genannt mein Freund."
+"[ii]ch.+bin" -> "Das ist der Name eines guten Freundes. Schön dich kennen zu lernen!"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

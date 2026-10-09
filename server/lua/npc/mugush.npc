@@ -1,0 +1,74 @@
+-- Derived from npc/mugush.lua; UTF-8.
+
+name = "Mugush"
+race = human
+sex = male
+position = -56, -131, 0
+direction = west
+job = "Restricted trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(2), price(8), stack(1), quality(333)
+sellItem = id(259), price(4), stack(1), quality(333)
+sellItem = id(291), price(5), stack(1), quality(333)
+sellItem = id(3), price(5), stack(1), quality(333)
+sellItem = id(21), price(5), stack(1), quality(333)
+buyPrimaryItem = id(21), price(1)
+sellItem = id(2536), price(5), stack(1), quality(333)
+buyPrimaryItem = id(2536), price(1)
+sellItem = id(22), price(5), stack(1), quality(333)
+buyPrimaryItem = id(22), price(1)
+sellItem = id(2717), price(10), stack(1), quality(333)
+buyPrimaryItem = id(2717), price(2)
+sellItem = id(2738), price(5), stack(1), quality(333)
+buyPrimaryItem = id(2738), price(1)
+sellItem = id(97), price(100), stack(1), quality(570)
+buyPrimaryItem = id(97), price(10)
+sellItem = id(2763), price(30), stack(1), quality(570)
+buyPrimaryItem = id(2763), price(5)
+sellItem = id(9), price(30), stack(1), quality(570)
+buyPrimaryItem = id(9), price(5)
+sellItem = id(74), price(30), stack(1), quality(570)
+buyPrimaryItem = id(74), price(5)
+sellItem = id(2715), price(50), stack(1), quality(570)
+buyPrimaryItem = id(2715), price(5)
+sellItem = id(2752), price(50), stack(1), quality(570)
+buyPrimaryItem = id(2752), price(5)
+sellItem = id(126), price(25), stack(1), quality(570)
+buyPrimaryItem = id(126), price(5)
+sellItem = id(24), price(25), stack(1), quality(570)
+buyPrimaryItem = id(24), price(5)
+sellItem = id(23), price(25), stack(1), quality(570)
+buyPrimaryItem = id(23), price(5)
+sellItem = id(311), price(40), stack(1), quality(570)
+buyPrimaryItem = id(311), price(5)
+
+"[gg]reetings", "[hh]ello" -> "Welcome. How can I help you?", "Good day. Do you need something?"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Willkommen. Wie kann ich euch helfen?", "Guten Tag. Braucht ihr etwas?"
+"[yy]ou.+[tt]rader" -> "A trader I am, right. I trade very different wares."
+"[iidd][hu][r.+].*[hh]ändler" -> "Ich bin ein Händer, richtig. Ich handle mit verschiedenen Waren."
+"[ww]hat.+sell" -> "I sell all kinds of wares for everyday useage."
+"[ww]as.+verkauf" -> "Ich verkaufe alle Arten von Waren für den täglichen Gebrauch."
+"[ww]hat.+[ww]ares" -> "Ressources, for example. Or different tools."
+"[ww]as.+[ww]are" -> "Rohstoffe zum Beispiel. Oder verschiedene Werkzeuge."
+"[tt]ell.+[ss]omething" -> "Once upon a time, I came here. Now I am here. Isn't that interesting?"
+"[ee]rzähl.+was" -> "Es war einmal, da kam ich hier her. Jetzt bin ich da. Ist das nicht interessant?"
+"[gg]oodbye", "[ff]arewell", "[bb]ye" -> "Have a nice day.", "Good bye.", "Farewell!"
+"[aa]uf.+[bb]ald", "[tt]schüs", "[bb]is.+[bb]ald" -> "Bis bald.", "Schönen Tag noch.", "Auf bald!"
+"[ww]ho.+you?" -> "My name is %NPCNAME."
+"[ww]er.+[iidd][hu][r.+]?" -> "Ich bin %NPCNAME."
+"i'm.+.+" -> "Nice to meet you."
+"ich.+bin.+.+" -> "Erfreut euch kennen zu lernen."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

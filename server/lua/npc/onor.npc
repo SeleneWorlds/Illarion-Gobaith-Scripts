@@ -1,0 +1,37 @@
+-- Derived from npc/onor.lua; UTF-8.
+
+name = "Onor"
+race = human
+sex = male
+position = -61, -133, 0
+direction = south
+job = "Public trader"
+language = common
+language = human
+language = ancient
+defaultLanguage = common
+autointroduce = on
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(3077), price(100), stack(1), quality(333)
+sellItem = id(61), price(10000), stack(1), quality(333)
+
+"[gg]reet", "[hh]ello" -> "Greetings. What can I do for you?", "Greetings. You are interested in money?"
+"[ww]hat.+sell" -> "I exchange coins."
+"[bb]ye", "[ff]arewell", "[bb]e.+[ww]ell" -> "Good day. Safe travels.", "Farewell. You are always welcome."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'Price of ...'"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Grüße. Was kann ich für Euch tun?", "Grüße. Habt ihr Interesse an Geld?"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]als", "[mm]achs.+[gg]ut" -> "Auf bald. Eine sichere Reise.", "Bis bald. Ihr seid immer willkommen."
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Was ist der Preis von <Ware>'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Idle dialogue
+cycletext "#me schnippst ein Kupferstück in die Luft", "#me flips a copper coin into the air"
+cycletext "#me schnippst ein Silberstück in die Luft", "#me flips a silver coin into the air"
+cycletext "#me schnippst ein Goldstück in die Luft", "#me flips a gold coin into the air"
+cycletext "#me zählt einige Münzen", "#me counts some coins"

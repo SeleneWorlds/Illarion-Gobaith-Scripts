@@ -1,0 +1,57 @@
+-- Derived from npc/feliam_wardstrok.lua; UTF-8.
+
+name = "Feliam Wardstrok"
+race = halfling
+sex = male
+position = -118, -68, 0
+direction = south
+job = "Public trader"
+language = common
+language = halfling
+defaultLanguage = common
+autointroduce = on
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+lookatDE = "Ein kleiner Mann, kleiner als ein Zwerg, mit gewaltigem Strohhut, der ihn vor der Sonne schützt. Aus einer Tasche auf seinem Rücken schauen einige Bauernswerkzeuge hervor. Er macht wohl grad Pause."
+lookatUS = "A small man, smaller than a dwarf but with a giant hat protecting him of the sun. Peeking out of a bag around his shoulder you can see some farming tools. He seems to be taking a break."
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(49), price(20), stack(1), quality(333)
+buyPrimaryItem = id(49), price(3)
+buyPrimaryItem = id(191), price(1)
+sellItem = id(306), price(10), stack(1), quality(333)
+buyPrimaryItem = id(306), price(2)
+sellItem = id(73), price(10), stack(1), quality(333)
+buyPrimaryItem = id(73), price(1)
+sellItem = id(355), price(15), stack(1), quality(333)
+buyPrimaryItem = id(355), price(1)
+sellItem = id(258), price(40), stack(1), quality(588)
+sellItem = id(271), price(40), stack(1), quality(588)
+sellItem = id(126), price(40), stack(1), quality(588)
+sellItem = id(72), price(40), stack(1), quality(588)
+sellItem = id(259), price(3), stack(1), quality(333)
+sellItem = id(534), price(3), stack(1), quality(333), de("onion seeds"), en("onion seeds")
+sellItem = id(291), price(3), stack(1), quality(333), de("cabbage"), en("cabbage")
+
+"[gg]reet", "[hh]ello", "[hh]i" -> "Hiho. Who are you?", "Hiho. How i can help you?"
+"[hh]allo", "[gg]r[uü][sß]*" -> "Hiho! Wer bist du?", "Hiho! Wie kann ich dir helfen?"
+"[yy]ou.+[tt]rader" -> "Yes, I am a trader. What do you want?"
+"[ddii][uh]r*.+[hh]ändler" -> "Jap, ich bin Händler. Was brauchst du?"
+"[ww]hat.+sell" -> "I sell tools, food and seeds."
+"[ww]as.+verkauf" -> "Ich verkauf' Werkzeug, Nahrung und Samen."
+"[ww]hat.+[ff]ood" -> "I sell bread and ham. Fish and trout."
+"[ww]as.+[nn]ahrung" -> "Ich verkauf' Brot und Schinken. Fische und Forellen"
+"[ww]hat.+[ss]eed" -> "I sell grain and cabbage seeds."
+"[ww]as.+[ss]amen" -> "Ich verkauf' Getreide und Kohlsamen"
+"[ww]hat.+[tt]ool" -> "I have flails, scythe, sickles, fishing rod."
+"[ww]as.+[ww]erkzeug" -> "Ich habe Dreschflegel, Sensen, Sicheln und Angeln. Interessiert?"
+"[gg]oodbye" -> "Have a good day. You are welcomed to come back."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch! Bis bald!", "Bis Bald! Ushara mit dir!"
+"[bb]ye", "[ff]arewell" -> "Farewell.", "Farewell. Ushara may be with you."
+"[ww]ho.+you?" -> "I am %NPCNAME, a farmer."
+"[ww]er.+[ddii][uh]r*" -> "Ich bin %NPCNAME, Bauer."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

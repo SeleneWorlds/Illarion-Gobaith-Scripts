@@ -1,0 +1,81 @@
+-- Derived from npc/tony_baggins.lua; UTF-8.
+
+name = "Tony Baggins"
+race = halfling
+sex = male
+position = -110, -94, 0
+direction = west
+job = "Public trader"
+language = common
+language = halfling
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Hee! Finger weg!"
+useMsgUS = "Hee! Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+lookatDE = "Ein laufender Meter, der da ans Fass lehnt und sich mit einem Fächer aus Blättern Luft zuwedelt. Er ist ganz in grün gekleidet und hat Sommersprossen um die Nase."
+lookatUS = "A midget leaning against that barrel there waving himself some air with a fan made of leaves. He is completely clad in green fabric and his nose is covered with freckles."
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(2680), price(50), stack(1), quality(555)
+sellItem = id(2681), price(30), stack(1), quality(555)
+sellItem = id(2682), price(30), stack(1), quality(333)
+sellItem = id(2679), price(30), stack(1), quality(555)
+sellItem = id(2678), price(30), stack(1), quality(555)
+sellItem = id(2683), price(30), stack(1), quality(533)
+sellItem = id(58), price(50), stack(1), quality(683)
+sellItem = id(2781), price(50), stack(1), quality(683)
+buyPrimaryItem = id(2781), price(5)
+buyPrimaryItem = id(51), price(2)
+buyPrimaryItem = id(253), price(10)
+buyPrimaryItem = id(21), price(1)
+buyPrimaryItem = id(136), price(1)
+buyPrimaryItem = id(157), price(1)
+buyPrimaryItem = id(161), price(1)
+sellItem = id(148), price(10), stack(1), quality(333)
+buyPrimaryItem = id(148), price(1)
+sellItem = id(153), price(10), stack(1), quality(333)
+buyPrimaryItem = id(153), price(1)
+sellItem = id(133), price(10), stack(1), quality(333)
+buyPrimaryItem = id(133), price(1)
+sellItem = id(144), price(10), stack(1), quality(333)
+buyPrimaryItem = id(144), price(1)
+sellItem = id(145), price(10), stack(1), quality(333)
+buyPrimaryItem = id(145), price(1)
+sellItem = id(155), price(10), stack(1), quality(333)
+buyPrimaryItem = id(155), price(1)
+sellItem = id(178), price(15), stack(1), quality(333)
+buyPrimaryItem = id(178), price(1)
+sellItem = id(2744), price(60), stack(1), quality(333)
+buyPrimaryItem = id(2744), price(5)
+
+"[gg]reetings", "[hh]ello" -> "Hiho. How can I help you?", "Hello. Do you need something? I'm alchemist and dyes of all colors. All are selfmade!"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Hiho! Wie kann ich dir helfen? Ich habe allerhand Farben. Alle selbst gemacht!", "Hallo. Wer bist du denn?."
+"[yy]ou.+[tt]rader" -> "Yes, i trade with dyes and ingredients to make them."
+"[ddii][uh]r*.+[hh][äa]ndler" -> "Ja, ich handle mit Farben und Zutaten zur Herstellung von Farben."
+"[yy]ou.+[hh]ealer" -> "No, i am not. I am alchemist and sell dyes"
+"[ddii][uh]r*.+[hh]eiler" -> "Nein bin ich nicht. Ich bin Alchemist und verkaufe Farben."
+"[ww]hat.+sell" -> "Do you want that i list my wares? Here take a look at the best dyes you can find!"
+"[ww]as.+verkauf" -> "Willst du eine Liste meiner Waren sehen? Hier, schau. Das sind die besten Farben die du finden wirst"
+"[ww]hat.+[ww]ares" -> "I trade with dyes and ingredients to make them."
+"[ww]as.+[ww]aren" -> "Ich handele mit Farben und Zutaten zu deren Herstellung."
+"[ww]hat.+[pp]otion" -> "I have no potions anymore. I only trade with dyes and ingredients to make them."
+"[ww]as.+[tt]ränke" -> "Ich habe keine Tränke mehr. Ich handele nur noch mit Farben und Zutaten zu deren Herstellung."
+"[ww]hat.+[cc]loth" -> "I don't trade with cloth anymore. The business with cloths didn't work."
+"[ww]as.+[kk]leidung" -> "Ich habe keine Kleidung mehr im Angebot. Das Geschäft mit den abgetragenen Klamotten lief nicht gut."
+"[ww]hat.+[mm]ore" -> "I need different tools and goods to make dyes"
+"[ww]as.+[mm]ehr" -> "Ich brauche verschiedene Werkzeuge und Sachen um Farben herzustellen."
+"[ww]hat.+[dd]ye" -> "I'm an alchemist and prepare differnet dyes. You are interested in red, blue, yellow or other?."
+"[ww]as.+[ff]arbe" -> "Ja, ich bin Alchemist und verkaufe verschiedene Farben. Bist du vielleicht an Rot oder Blau interessiert? Was anderes?"
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Have a nice day. Oldra my bless you.", "Farewell!", "Good day."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch! Oldra segne euch!", "Schönen Tag!"
+"[ww]ho.+you?" -> "My name is Tony Baggins. I am an alchemist and I work here. But I come from Greenbriar. Do you know my home village?"
+"[ww]er.+[ddii][uh]r*" -> "Ich bin Tony Baggins. Ich bin Alchemist und arbeite hier. Aber ich komme von Greenbriar. Kennst du mein Heimatdorf?"
+"i'm.+.+" -> "Nice to meet you. Do you need my help?"
+"[ii]ch.+[bb]in" -> "Freut mich! Kann ich dir helfen?"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?', 'Erzähl über <etwas>'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

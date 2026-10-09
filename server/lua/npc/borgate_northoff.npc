@@ -1,0 +1,71 @@
+-- Derived from npc/borgate.lua; UTF-8.
+
+name = "Borgate Northoff"
+race = dwarf
+sex = male
+position = -86, -96, 0
+direction = west
+job = "Barkeeper"
+language = common
+language = dwarf
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+lookatDE = "Ein breit lächelnder Zwergenwirt, dessen prächtiger Bart und Kleidung von Bierflecken übersät ist."
+lookatUS = "A broadly smiling dwarfen barkeeper whose proud beard and clothes are covered with beer stains."
+-- Normal registrations restored from commented lines; strike idle lines excluded.
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(2496), price(15), stack(1), quality(549)
+buyPrimaryItem = id(2496), price(5)
+sellItem = id(2497), price(25), stack(1), quality(549)
+buyPrimaryItem = id(2497), price(8)
+sellItem = id(2499), price(25), stack(1), quality(549)
+buyPrimaryItem = id(2499), price(8)
+sellItem = id(2500), price(25), stack(1), quality(549)
+buyPrimaryItem = id(2500), price(8)
+sellItem = id(2501), price(25), stack(1), quality(549)
+buyPrimaryItem = id(2501), price(8)
+sellItem = id(1860), price(15), stack(1), quality(549)
+sellItem = id(1855), price(11), stack(1), quality(549)
+sellItem = id(1859), price(15), stack(1), quality(549)
+sellItem = id(1853), price(15), stack(1), quality(549)
+buyPrimaryItem = id(1908), price(2)
+sellItem = id(1909), price(15), stack(1), quality(549)
+sellItem = id(1858), price(10), stack(1), quality(549)
+buyPrimaryItem = id(1858), price(2)
+buyPrimaryItem = id(2498), price(1)
+
+"[gg]reet", "[hh]ello" -> "Aahr! Be greeted in 'The Fluffy Sheep Tavern'. What do you want to drink?", "Hello. What do I have to make you?"
+"[ww]hat.+sell" -> "Drinks and more. What do you thought? It's a Bar. And now, tell me: What do you want?"
+"[yy]ou.+[bb]arkeeper" -> "What do you think I have to do here? What a stupid question. Aaarh! Drink or eat something or leave!"
+"[ww]hat.+[ww]are" -> "It's a damned bar, what do you think I sell? But here, look at the list: drinks and more."
+"[ww]hat.+[dd]rink" -> "All kind: bottle of elven wine, of water, of mead, of cider, of red wine, of beer, beer mug, goblet red wine, goblet water, goblet cider, goblet mead. But the mugs, goblets and bottles - give them back when you are ready. There is a refund on them."
+"[ww]hat.+[mm]ore" -> "Oh, I need glass mugs, copper goblets and grey bottles for they everyday business. Do you have some of them?"
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Good day!", "Aye. Come back whenever you are thirsty.", "Farewell friend!"
+"[ww]ho.+you?" -> "%NPCNAME. I work here for Tialdin, the owner of this tavern."
+"i'm.+.+" -> "Great. I am %NPCNAME, the barkeeper. Do you want something to drink?"
+"[tt]ell.+[ss]omething" -> "Arr, Where shall I begin? I could tell you lots of what is spoken in this tavern, but if I would do that, no one would come back. No, I am not a traitor to my guests. Sorry!"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Willkommen in der Fluffy Sheep Taverne, was willst Du trinken?", "Guten Tag. Was soll ich Dir machen?"
+"[iidd][hu][r.+].*[ww]irt" -> "Genau, ich bin hier der Wirt. Was willst Du trinken?"
+"[ww]as.+verkauf" -> "Ich verkaufe alles, was das Herz begehrt: Met, Wein, Bier, und so weiter. Willst du was?"
+"[ww]as.+[gg]etränke" -> "Das hier ist 'ne Kneipe, was glaubst du, was wir hier verkaufen?"
+"[ee]rzähl.+was" -> "Ich höre viel und weiss eigentlich fast alles. Ich erzähl' dir aber nichts davon, das geht dich nunmal nichts an."
+"[tt]schüss", "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch.", "Bis bald.", "Auf bald!"
+"[ww]er.+[iidd][hu][r.+]?" -> "Ich bin %NPCNAME. Ich arbeite hier für Tialdin als Wirt der Kneipe."
+"ich.+bin.+.+" -> "Ich bin %NPCNAME. Willst Du was trinken?"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Idle dialogue
+cycletext "#me trocknet einen Bierkrug ab", "#me wipes a beer mug clean"
+cycletext "#me sieht sich gelangweilt um", "#me looks around bored"
+cycletext "#me spielt mit einer Kupfermünze", "#me plays with a copper coin"
+cycletext "#me wischt über die Theke", "#me wipes over the bar"
+cycletext "#me trinkt ein Bier", "#me gulps down a beer"

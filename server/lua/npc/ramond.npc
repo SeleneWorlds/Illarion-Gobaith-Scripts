@@ -1,0 +1,50 @@
+-- Derived from npc/ramond.lua; UTF-8.
+
+name = "Ramond"
+race = human
+sex = male
+position = 95, 36, 0
+direction = north
+job = "Public Trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(24), price(24), stack(1), quality(216)
+
+"[hh]ello", "[gg]reetings" -> "Greetings my friend.", "A pleasure to meet you, friend."
+"[hh]allo", "[gg]rü[sß]+e" -> "Grüße mein Freund.", "Ist mir eine Freude euch zu treffen."
+"[jj]ob" -> "I take care of this graveyard"
+"[bb]eruf" -> "Ich kümmere mich um diesen Friedhof"
+"[gg]ravejard" -> "This is the place where everybody finds the eternal sleep."
+"[ff]riedhof" -> "Das ist der Ort wo jeder seine ewige Ruhe finden kann."
+"[mm]ission" -> "My friend, I am a simple man with no needs."
+"[aa]uftrag" -> "Mein Freund, ich bin ein einfach Mann der nichts braucht."
+"[qq]uest" -> "My friend, I am a simple man with no needs."
+"[nn]eed.+help" -> "All you could do for me, is helping me with the garden work. Like taking care of the graves."
+"[bb]rauch.+[hh]ilfe" -> "Alles was ihr für mich tun könntet, ist mir bei der Garten Arbeit zu helfen. Zum Beispiel könntet ihr euch etwas um die Gräber kümmern."
+"[gg]rave" -> "I take care of them as good as I can, but sometimes they even scare me."
+"[gg]r[aä]b" -> "Ich kümmere mich um sie, so gut ich kann, aber machmal erschrecken sie mich."
+"[ss]care" -> "During these nights without moon, I could swear that a body left a grave and walked away!"
+"[ss]reck" -> "Während der Nächte ohne Mond, könnte ich schwören das ein Körper sein Grab verlassen hat und weg gelaufen ist!"
+"[ww]hat.+sell" -> "I cannot offer you much, only maybe one of my old shovels."
+"[ww]as.+verkaufen" -> "I kann nicht viel Anbieten. Allerhöchstens vielleicht meine alten Schaufeln."
+"[ww]hat.+buy" -> "I fear, my friend, that there is nothing I would want to buy right now."
+"[ww]as.+%skauf" -> "Ich fürchte, mein Freund, es gibt nichts was ich im Augenblick von euch kaufen würde."
+"[ww]ho.+[yy]ou" -> "I am Brother %NPCNAME"
+"[ww]er.+[ddii][uh]r*" -> "Ich bin Bruder %NPCNAME"
+"[dd]ungeon.+below.+[gg]raveyard", "[tt]empel.+below.+[gg]raveyard" -> "What!? I know nothing about it.", "What!? I know nothing about it."
+"[hh]öhle.+unter.+[ff]riedhof", "[tt]empel.+unter.+[ff]riedhof" -> "Was? Davon weis ich nichts.", "Was?! Davon wüsste ich doch!"
+"[bb]ye", "[ff]are.*well" -> "Walk in peace, my friend.", "Walk in peace, my friend."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Geh in Frieden, mein Freund.", "Geh in Frieden, mein Freund."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

@@ -1,0 +1,59 @@
+-- Derived from npc/todd_baggins.lua; UTF-8.
+
+name = "Todd Baggins"
+race = halfling
+sex = male
+position = -403, 77, 0
+direction = west
+job = "Public trader"
+language = common
+language = halfling
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Hee! Finger weg!"
+useMsgUS = "Hee! Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+lookatDE = "Ein weiterer Halbling, der auf einem löchrigen Sack sitzt, der mit Karotten gefüllt ist. Er putzt gerade eine Zwiebel, sieht aber hungrig auf die Torten, die er verkaufen möchte."
+lookatUS = "Another halfling sitting on a holey bag filled with carrots. He is cleaning an onion tossing hungry looks at some pies and cakes that he sells."
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(180), price(120), stack(1), quality(666)
+buyPrimaryItem = id(180), price(12)
+sellItem = id(183), price(140), stack(1), quality(666)
+buyPrimaryItem = id(183), price(14)
+sellItem = id(369), price(100), stack(1), quality(666)
+buyPrimaryItem = id(369), price(10)
+sellItem = id(191), price(10), stack(1), quality(333)
+buyPrimaryItem = id(191), price(1)
+sellItem = id(306), price(20), stack(1), quality(333)
+buyPrimaryItem = id(306), price(2)
+sellItem = id(353), price(100), stack(1), quality(333)
+buyPrimaryItem = id(353), price(8)
+sellItem = id(354), price(100), stack(1), quality(333)
+buyPrimaryItem = id(354), price(8)
+sellItem = id(303), price(100), stack(1), quality(333)
+buyPrimaryItem = id(303), price(8)
+sellItem = id(49), price(20), stack(1), quality(333)
+buyPrimaryItem = id(49), price(2)
+sellItem = id(201), price(5), stack(1), quality(333)
+buyPrimaryItem = id(201), price(1)
+sellItem = id(2493), price(5), stack(1), quality(333)
+buyPrimaryItem = id(2493), price(1)
+
+"[gg]reetings", "[hh]ello" -> "Hi ho, friend! Do you need something?", "Good day! Is there something you need?"
+"i'm.+.+" -> "Oh! A pleasure, friend."
+"[ww]ho.+you?" -> "I'm %NPCNAME ! I live here in Greenbriar with the other halflings. Wouldn't want to live anywhere else at all!"
+"[tt]ell.+[ss]omething" -> "If you ever go picking 'shrooms in the forest, be sure to look out for fireflies! I hear the tiny fairies ride on those."
+"[gg]oodbye", "[ff]arewell" -> "Buh-bye, friend! Come around Greenbriar again when you can."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Grüß' dich!", "Hiho!"
+"[ww]er.+[ddii][uh]r*" -> "Ich bin %NPCNAME! Ich leb hier in Greenbriar mit den anderen Halblingen. Und würd nicht um alles in der Welt hier weggehen!"
+"[ee]rzähl.+[ww]as" -> "Wenn du jemals in den Wald gehst und Pilze sammelst, pass auf Leuchtkäfer auf. Ich hab gehört das Feen auf denen reiten."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Du gehst schon? Ach schade... Na, dann mach's mal gut!", "Ich hoffe, du kommst mal wieder vorbei!"
+"[ww]er.+du?" -> "Ich werde %NPCNAME genannt."
+"ich.+bin.+.+" -> "Huhu! Schön, dich kennenzulernen!"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

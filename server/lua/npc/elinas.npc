@@ -1,0 +1,78 @@
+-- Derived from npc/elina.lua; UTF-8.
+
+name = "Elinas"
+race = elf
+sex = male
+position = 371, 209, 2
+direction = south
+job = "Restricted trader"
+language = elf
+defaultLanguage = elf
+autointroduce = on
+useMsgDE = "Fasst mich nicht an!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(64), price(5), stack(1), quality(583)
+buyPrimaryItem = id(64), price(1)
+sellItem = id(65), price(80), stack(1), quality(583)
+buyPrimaryItem = id(65), price(8)
+sellItem = id(2714), price(120), stack(1), quality(583)
+buyPrimaryItem = id(2714), price(12)
+sellItem = id(2646), price(150), stack(1), quality(583)
+buyPrimaryItem = id(2646), price(16)
+sellItem = id(2718), price(500), stack(1), quality(583)
+buyPrimaryItem = id(2718), price(50)
+sellItem = id(2708), price(200), stack(1), quality(583)
+buyPrimaryItem = id(2708), price(20)
+sellItem = id(90), price(100), stack(1), quality(583)
+buyPrimaryItem = id(90), price(10)
+sellItem = id(335), price(400), stack(1), quality(583)
+buyPrimaryItem = id(335), price(40)
+sellItem = id(332), price(500), stack(1), quality(583)
+buyPrimaryItem = id(332), price(50)
+sellItem = id(2445), price(200), stack(1), quality(583)
+buyPrimaryItem = id(2445), price(20)
+sellItem = id(17), price(100), stack(1), quality(583)
+buyPrimaryItem = id(17), price(10)
+sellItem = id(2194), price(200), stack(1), quality(583)
+buyPrimaryItem = id(2194), price(20)
+sellItem = id(2193), price(400), stack(1), quality(583)
+buyPrimaryItem = id(2193), price(40)
+sellItem = id(207), price(250), stack(1), quality(583)
+buyPrimaryItem = id(207), price(25)
+sellItem = id(208), price(500), stack(1), quality(583)
+buyPrimaryItem = id(208), price(50)
+sellItem = id(209), price(500), stack(1), quality(583)
+buyPrimaryItem = id(209), price(50)
+
+"[gg]reetings", "[hh]ello" -> "The five with you. Can I help you?", "Be blessed, my friend. Do you need something?"
+"[yy]ou.+[tt]rader" -> "I am a trader, yes. I trade different carpentry tools."
+"[ww]hat.+sell" -> "I sell all kinds of carpentry tools"
+"[ww]hat.+[tt]ools" -> "I sell tools for carpenters. Saws, axes, planes and carving tools."
+"[tt]ell.+[ss]omething" -> "This is Tol Vanima, the home of us elves."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "The five with you!.", "May the gods bless your path!", "Farewell, my friend!"
+"[ww]hat.+buy" -> "I buy all kinds of bows and crossbows."
+"[ww]ho.+you?" -> "My name is %NPCNAME."
+"i'm.+.+" -> "Be greeted!"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]r[üu][ßs]+", "[hh]allo" -> "Die Fünf zum Gruße, kann ich euch helfen?", "Möge euer Pfad gesegnet sein! Wie kann ich euch helfen?"
+"[ddii][uh]r*.+[hh]ändler" -> "Ich bin ein Händler, ja, und ich verkaufe unter anderem Werkzeuge."
+"[ww]as.+verkauf" -> "Ich verkaufe Werkzeuge für jede Art von Tischlerei."
+"[ww]as.+[ww]erkzeug" -> "Nun, ich verkaufe Tischlerwerkzeug...Sägen, Äxte, Hobel und Schnitzwerkzeuge."
+"[ee]rzähl.+[ww]as" -> "Dies ist Tol Vanima, die Heimat von uns Elfen."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Die Fünf seien mit euch. Bis bald!", "Bis bald, mein Freund, der Segen der Fünf mit euch!"
+"[ww]as.+%s[kk]auf" -> "Ich kaufe alle Arten von Bögen und Armbrüsten."
+"[ww]er.+[iidd][hu]r*" -> "Ich bin %NPCNAME."
+"ich.+bin.+.+" -> "So grüße ich euch, mein Freund!"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Idle dialogue
+cycletext "#me schnitzt mit eleganten Bewegungen an einer kleinen Holzstatue herum", "#me carves on a small wooden statue with a elegant motions"
+cycletext "#me blickt sich kurz um", "#me looks around a moment"
+cycletext "#me betrachtet einen Pfeil prüfend", "#me looks on an arrow with a checking glance"

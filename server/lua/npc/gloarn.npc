@@ -1,0 +1,46 @@
+-- Derived from npc/gloarn.lua; UTF-8.
+
+name = "Gloarn"
+race = human
+sex = male
+position = -105, -84, 0
+direction = south
+job = "Schweinehirte/Dorfdepp"
+language = common
+language = human
+language = lizard
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "He, nicht kitzeln!"
+useMsgUS = "Hey, don't tickle me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+"[gg]rüße", "[hh]allo", "[gg]ruesse" -> "Hallo du..", "Huhu duhu"
+"[gg]reetings", "[hh]ello" -> "Hiya..", "Hiho"
+"[ww]ho" -> "Mom says %NPCNAME, everyone else says dumbhead."
+"[ww]er" -> "Mama sagt %NPCNAME, alle anderen nennen mich Dummkopf."
+"[mm]om" -> "Mom said, Daddy is a pig, the next day, he didn't return home. Now mom is gone too. I think they both turned into pigs, so I watch over them here."
+"[mm]ama" -> "Mama hat gesagt, Papa ist ein Schwein. Am nächsten Tag kam er nicht mehr Heim. Jetzt ist auch Mama weg. Ich glaub sie sind jetzt beide Schweine, also passe ich hier auf sie auf."
+"[nn]o.+pig" -> "Liar."
+"[kk]ein.+[ss]chwein.*" -> "Lügner."
+"[pp]ig" -> "These Pigs are my friends.", "They all have names. This one is Blinky, there is Pinky, this is Inky, and see, here's Clyde."
+"[ss]chwein" -> "Die Schweine sind meine Freunde.", "Sie haben alle Namen. Da ist Blinkie, dort ist Pinkie, das da ist Inkie, und schau, hier ist Clyde."
+"[cc]loud" -> "Look, another piggie-cloud."
+"[ww]olke" -> "Schau, eine Schweichenwolke."
+"[bb]ye.", "[ff]arewell" -> "See ya.", "Piggies say I should say bye to you."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Baba", "Die Schweinchen sagen, ich soll Wiedersehn sagen."
+
+-- Idle dialogue
+cycletext "#me pfeift vor sich hin", "#me whistles"
+cycletext "#me bohrt in der Nase", "#me picks his nose"
+cycletext "#me flüstert mit einem Schwein", "#me whispers with a pig"
+cycletext "#me riecht an seinem Finger", "#me smells his finger"
+cycletext "#me rülpst", "#me burps"
+cycletext "#me furzt", "#me farts"
+cycletext "#me kichert", "#me giggles"
+cycletext "#me starrt eine Wolke an", "#me stares at a cloud"
+cycletext "Oink, Oink, meine Freunde", "Oink, Oink, my friends"
+cycletext "#me gähnt", "#me yawns"
+cycletext "#me steckt fasziniert einen Finger durch ein Loch in seiner Hose", "#me finds a hole in his trousers and puts a finger through it"
+cycletext "#me macht Spuckeblasen", "#me makes spitbubbles"

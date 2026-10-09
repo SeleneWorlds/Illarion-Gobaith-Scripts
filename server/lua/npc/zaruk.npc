@@ -1,0 +1,50 @@
+-- Derived from npc/zaruk.lua; UTF-8.
+
+name = "Zaruk"
+race = human
+sex = male
+position = -287, 38, 0
+direction = south
+job = "Public trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Fast mich nicht an!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(333), price(100), stack(1), quality(777)
+buyPrimaryItem = id(333), price(5)
+sellItem = id(2760), price(100), stack(1), quality(777)
+buyPrimaryItem = id(2760), price(40)
+sellItem = id(58), price(40), stack(1), quality(777)
+sellItem = id(2586), price(90), stack(1), quality(777)
+buyPrimaryItem = id(2586), price(5)
+sellItem = id(2588), price(3), stack(1), quality(333)
+sellItem = id(92), price(150), stack(1), quality(649)
+buyPrimaryItem = id(92), price(30)
+sellItem = id(236), price(400), stack(1), quality(649)
+buyPrimaryItem = id(236), price(50)
+sellItem = id(1008), price(400), stack(1), quality(649)
+buyPrimaryItem = id(1008), price(50)
+
+"[hh]ello", "[gg]reetings" -> "Greetin's.", "Aye! Greetins to ye'."
+"[hh]allo", "[gg]rü[ßs]+e" -> "Moin", "Aye. Grüß euch."
+"[jj]ob" -> "I'm an importer, and I pull in wares from far and wide. Puts the jingle in me purse."
+"[bb]eruf" -> "Ich bin ein Importierer und bekomm Waren von weit, weit weg."
+"[ii]mported" -> "Aye, imported wares, from the mainland to right here. See all the ships? Well, it's a quiet day today. Aye?"
+"[ii]mportiert" -> "Aye, importiere Waren, vom Festland direkt hier her. Siehst all die Schiffe. Nuja, ist ein ruhiger Tag heute, aye?"
+"[ww]ares" -> "I have all sorts of gimcracks that ye'll surely be interested in. You seen my list?"
+"[ww]are" -> "Ich hab alle Arten von Zeug die dich garantiert interessieren. Willst meine Warenliste sehen?"
+"[ss]hip" -> "Aye! I once sailed across the seas. Hard work. Not enough coin."
+"[ss]chiff" -> "Aye! Bin lange zur See gefahren. Harte Arbeit und beschissene Bezahlung."
+"[bb]ye", "[ff]arewell" -> "Aye! Farewell there.", "'Ave a pleasant day, there!"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Aye. Auf bald.", "Aye. Schön Tag noch."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

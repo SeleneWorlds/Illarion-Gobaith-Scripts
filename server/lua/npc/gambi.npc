@@ -1,0 +1,68 @@
+-- Derived from npc/gambi.lua; UTF-8.
+
+name = "Gambi"
+race = dwarf
+sex = male
+position = 80, -193, 0
+direction = west
+job = "Public trader"
+language = common
+language = dwarf
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(2922), price(30), stack(1), quality(583)
+buyPrimaryItem = id(2922), price(6)
+sellItem = id(554), price(120), stack(1), quality(583)
+buyPrimaryItem = id(554), price(20)
+sellItem = id(49), price(20), stack(1), quality(333)
+buyPrimaryItem = id(49), price(4)
+sellItem = id(3051), price(10), stack(1), quality(333)
+buyPrimaryItem = id(3051), price(2)
+sellItem = id(306), price(15), stack(1), quality(333)
+buyPrimaryItem = id(306), price(3)
+sellItem = id(6), price(30), stack(1), quality(583)
+buyPrimaryItem = id(6), price(2)
+sellItem = id(9), price(30), stack(1), quality(583)
+buyPrimaryItem = id(9), price(2)
+sellItem = id(24), price(20), stack(1), quality(583)
+buyPrimaryItem = id(24), price(2)
+sellItem = id(47), price(25), stack(1), quality(583)
+buyPrimaryItem = id(47), price(2)
+sellItem = id(74), price(30), stack(1), quality(583)
+buyPrimaryItem = id(74), price(2)
+sellItem = id(126), price(30), stack(1), quality(583)
+buyPrimaryItem = id(126), price(2)
+sellItem = id(271), price(30), stack(1), quality(583)
+buyPrimaryItem = id(271), price(2)
+sellItem = id(311), price(30), stack(1), quality(583)
+buyPrimaryItem = id(311), price(2)
+sellItem = id(737), price(30), stack(1), quality(583)
+buyPrimaryItem = id(737), price(2)
+sellItem = id(2717), price(10), stack(1), quality(333)
+buyPrimaryItem = id(2717), price(2)
+sellItem = id(2738), price(5), stack(1), quality(333)
+buyPrimaryItem = id(2738), price(1)
+buyPrimaryItem = id(391), price(5)
+buyPrimaryItem = id(92), price(20)
+
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]reet", "[hh]ello", "[hh]i" -> "Greetingsss. How i can help you?.", "Aye! You are interested in my wares?"
+"[ww]hat.+sell" -> "I sell different tools"
+"[ww]hat.+[tt]ool" -> "Whatever you want: scrissors, saws, hammers, shovels, needles, axes, sickles, scythes and glas blow pipes."
+"[ww]ho.+[ii]rmorom" -> "Irmorom is the god of the dwarves, of the trade and the craftsmanship"
+"[bb]ye", "[ff]arewell" -> "Aye! Irmorom may bless you.", "Farewell. You are welcome to come back and to trade with me."
+"[gg]r[uü][sß]+", "[hh]allo" -> "Aye! Was willst du?", "Hallo. Willst du was von meinen Waren kaufen?"
+"[ww]as.+kauf" -> "Ja, ich habe Verschiedene Werkzeuge."
+"[ww]as.+[ww]erkzeug" -> "Was auch immer dir helfen mag: Scheren, Sägen, Hammer, Schaufeln, Nadeln, Äxte, Sicheln, Sensen und Glasblas Rohre."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Ja, du kannst gern wieder herkommen, wenn du was brauchst. Irmorom sei mit dir!", "Aye! Kannst gern wieder herkommen, wenn du was brauchst."
+"[ww]er.+[ii]rmorom" -> "Irmorom ist der Gott der Zwerge, des Handels und der Handwerker"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

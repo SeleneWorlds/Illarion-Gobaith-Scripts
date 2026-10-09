@@ -1,0 +1,80 @@
+-- Derived from npc/morgan.lua; UTF-8.
+
+name = "Morgan Gronwan"
+race = human
+sex = male
+position = -68, -120, 0
+direction = west
+job = "Restricted trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(48), price(150), stack(1), quality(671)
+buyPrimaryItem = id(48), price(5)
+sellItem = id(53), price(300), stack(1), quality(671)
+buyPrimaryItem = id(53), price(5)
+sellItem = id(367), price(500), stack(1), quality(671)
+buyPrimaryItem = id(367), price(8)
+sellItem = id(366), price(900), stack(1), quality(671)
+buyPrimaryItem = id(366), price(15)
+sellItem = id(2113), price(400), stack(1), quality(349)
+buyPrimaryItem = id(2113), price(35)
+buyPrimaryItem = id(362), price(35)
+buyPrimaryItem = id(363), price(15)
+buyPrimaryItem = id(364), price(55)
+buyPrimaryItem = id(365), price(15)
+sellItem = id(27), price(250), stack(1), quality(671)
+buyPrimaryItem = id(27), price(3)
+sellItem = id(189), price(550), stack(1), quality(671)
+buyPrimaryItem = id(189), price(5)
+sellItem = id(78), price(750), stack(1), quality(671)
+buyPrimaryItem = id(78), price(7)
+sellItem = id(293), price(10), stack(1), quality(671)
+buyPrimaryItem = id(293), price(2)
+sellItem = id(237), price(4), stack(1), quality(333)
+buyPrimaryItem = id(237), price(1)
+buyPrimaryItem = id(70), price(10)
+sellItem = id(306), price(15), stack(1), quality(333)
+buyPrimaryItem = id(306), price(1)
+sellItem = id(2456), price(120), stack(1), quality(671)
+buyPrimaryItem = id(2456), price(10)
+sellItem = id(49), price(20), stack(1), quality(333)
+buyPrimaryItem = id(49), price(5)
+sellItem = id(2529), price(5), stack(1), quality(333)
+
+"[gg]reet.+", "[hh]ello" -> "Greetings. How I can help you?", "Hello. You are hungry? I have a very good mushroom soup. Or do you need something of my leather wares?"
+"[gg]rüße", "[hh]allo", "[gg]rüse" -> "Grüße. Wie kann ich euch helfen?", "Hallo. Bist du hungrig? Ich habe sehr gute Pilzsuppe. Oder brauchst du etwas von meinen Lederwaren?"
+"[yy]ou.+[tt]rader" -> "I'm a trader of goods for hunters. Do you need something of my leather wares or weapons? I also have food as proviant for long travels."
+"[ddii][uh]r*.+[hh]ändler" -> "Nunja, ich handle mit Sachen für den Jagdbedarf. Brauchst du vielleicht etwas von meinen Lederwaren oder Waffen? ich biete auch Proviant für Reisende an."
+"[ww]hat.+sell" -> "I trade with leather cloths, leather armors, weapons, food and more."
+"[ww]as.+verkauf" -> "Ich handel mit Lederkleidung, Lederrüstungen, Waffen, Nahrung und mehr."
+"[ww]hat.+[ww]are" -> "I have leather cloths, leather armors, weapons, food and more."
+"[ww]as.+[ww]are" -> "Ich habe Leder Kleidung, Leder Rüstungen, Waffen, Nahrung und mehr."
+"[ww]hat.+[cc]loth" -> "See I made good leather gloves, leather boots, short and long leather legs."
+"[ww]as.+[kk]leidung" -> "Schau, ich habe gute Leder Handschuhe, Stiefel und kurze und lange Leder Hosen."
+"[ww]hat.+[aa]rmor" -> "Lets me show you. Here, I have the best leather armors you can find: full leatherarmor, leather scale armor, light hunting armor, half leather armor."
+"[ww]as.+[rr]üstung" -> "Lass sie mich euch zeigen. Ich habe beste Lederrüstungen. Volle und halbe Lederrüstung, Lederschuppenrüstung und die leichte Jagtrüstung."
+"[ww]hat.+[ww]eapon" -> "Take a look at my sortiment. I trade with simple daggers, sharp daggers, short swords, throwing spear, crossbow and crossbow bolts."
+"[ww]as.+[ww]affe" -> "Schaut euch mein Sortiment an. Ich handel mit einfachen und scharfen Dolche, Kurzschwertern, Wurfspeeren, Armbrüste und Armbrustbolzen."
+"[ww]hat.+[ff]ood" -> "I trade with ham, mushroom soup and bread."
+"[ww]as.+[nn]ahrung" -> "Ich handel mit Schinken, Pilzsuppe und Brot."
+"[ww]hat.+[mm]ore" -> "I have thread and honeycomb."
+"[ww]as.+[mm]ehr" -> "Ich habe Garn und Honigwaben."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Have a good day", "Good day.", "Farewell friend!"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch"
+"[ww]ho.+you?" -> "Morgan Gronwan I am called. I am ranger and life in the woods"
+"[ww]er.+[ddii][uh]r*" -> "Morgan Gronwan werde ich genannt. Ich bin Jäger und lebe in den Wäldern."
+"i'm.+.+" -> "Nice to meet you. Sit down if you want. ... Do you want to taste my mushroom soup?"
+"[ii]ch.+[bb]in" -> "Freut mich euch kennen zu lernen. Setzt euch wenn ihr wollt. Wollt ihr meine Pilzsuppe kosten?"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

@@ -1,0 +1,27 @@
+-- Derived from npc/eltareon.lua; UTF-8.
+
+name = "Eltareon"
+race = human
+sex = male
+position = -92, -127, 0
+direction = south
+job = "Libarian"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+"[hh]ello", "[gg]reetings", "[hh]i" -> "Greetings. Nice to meet you."
+"[hh]allo", "[gg]r[uü][sß]+" -> "Grüße. Freut mich euch zu treffen."
+"[ww]ho" -> "I am %NPCNAME"
+"[ww]er" -> "Ich bin %NPCNAME."
+"[bb]ye.", "[ff]arewell" -> "Be well", "Farewell"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Bis Bald", "Auf bald", "Auf balde"
+
+-- Idle dialogue
+cycletext "#me blättert in einem Buch herum", "#me browses through a book"
+cycletext "#me gähnt verhalten", "#me yawns restrained"

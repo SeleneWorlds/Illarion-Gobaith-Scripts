@@ -1,0 +1,68 @@
+-- Derived from npc/maris.lua; UTF-8.
+
+name = "Maris Maroqu"
+race = human
+sex = male
+position = -59, -138, 0
+direction = south
+job = "Public trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(176), price(5), stack(1), quality(333)
+sellItem = id(174), price(9), stack(1), quality(333)
+buyPrimaryItem = id(174), price(1)
+sellItem = id(175), price(9), stack(1), quality(333)
+buyPrimaryItem = id(175), price(1)
+sellItem = id(179), price(9), stack(1), quality(333)
+buyPrimaryItem = id(179), price(1)
+sellItem = id(54), price(9), stack(1), quality(333)
+buyPrimaryItem = id(54), price(1)
+sellItem = id(177), price(9), stack(1), quality(333)
+buyPrimaryItem = id(177), price(1)
+sellItem = id(50), price(5), stack(1), quality(333)
+sellItem = id(47), price(20), stack(1), quality(583)
+sellItem = id(6), price(20), stack(1), quality(583)
+sellItem = id(2295), price(30), stack(1), quality(555)
+buyPrimaryItem = id(2295), price(2)
+sellItem = id(385), price(100), stack(1), quality(555)
+buyPrimaryItem = id(385), price(10)
+sellItem = id(34), price(40), stack(1), quality(555)
+buyPrimaryItem = id(34), price(4)
+sellItem = id(180), price(30), stack(1), quality(555)
+buyPrimaryItem = id(180), price(3)
+sellItem = id(182), price(30), stack(1), quality(555)
+buyPrimaryItem = id(182), price(3)
+sellItem = id(55), price(30), stack(1), quality(555)
+buyPrimaryItem = id(55), price(3)
+sellItem = id(2380), price(70), stack(1), quality(555)
+buyPrimaryItem = id(2380), price(7)
+
+"[gg]reetings", "[hh]ello" -> "Greetings", "Hello"
+"[gg]r[uü][sß]+", "[hh]allo" -> "Grüß euch", "Hallo"
+"[ww]hat.+sell" -> "I sell grey and fine dyed cloth, red and black shirts, cloth gloves, blue dresses and coats, black trousers, needles, scissors and thread."
+"[ww]as.+verkauf" -> "Ich verkaufe graue und gefärbte Stoffe, rote und schwarze Hemden, Stoffhandschuhe, blaue Kleider und Mäntel, schwarze Hose, Nadeln, Scheren und Garn."
+"[ww]hat.+buy" -> "I buy dyed cloth, red and black shirts, cloth gloves, blue dresses and coats and black trousers."
+"[ww]as.+%skauf" -> "Ich kaufe gefärbten Stoff, rote, blaue und schwarze Hemden, Stoff Handschuhe, blaue Kleider und schwarze Hosen."
+"[ww]ho.+you" -> "I'm Maris Maroqué, tailor and trader of tailor needs"
+"[ww]er.+[ddii][uh]r*" -> "Ich bin Maris Maroqué, Schneider und Händler für Schneidereibedarf."
+"[dd]yer" -> "No, I'm not a dyer. Can't tell you any secrets."
+"[ff]ärber" -> "Nein. Ich bin kein Färber. Ich kann dir keine Geheimnisse verraten."
+"[tt]ailor" -> "Yes, I'm a tailor. If you want to be too, buy needle and scissor, thread and cloth and work with the tailoring table in the workshop."
+"[ss]chneider" -> "Ja, ich bin Schneider. Wenn du selbst einer werden willst, besorg die Schere und Nadel, Garn und Stoff und arbeite am Schneidertisch in der Werkstatt."
+"[ww]orkshop" -> "Yes, the workshop is in the western part of the town. There you also can find tools for tailors: a tailoring table, a spinning wheel and a loom"
+"[ww]erkstatt" -> "Ja, die Werkstatt befindet sich im westlichen teil der Stadt. Da findest du auch als Schneider Werkzeuge: Schneidertisch, Spinnrad und Webstuhl."
+"[ii]'m.+" -> "Lovely to meet you. Care to buy anything?"
+"[ii]ch.+[bb]in" -> "Freut mich euch kennen zu lernen. Wollt ihr etwas kaufen?"
+"[ff]arewell", "[gg]oodbye" -> "Farewell", "Come back soon"
+"[bb]is.+[bb]ald", "[aa]uf.+[bb]ald" -> "Auf bald", "Auf bald"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

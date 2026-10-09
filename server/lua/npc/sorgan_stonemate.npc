@@ -1,0 +1,95 @@
+-- Derived from npc/sorgan.lua; UTF-8.
+
+name = "Sorgan Stonemate"
+race = dwarf
+sex = male
+position = -113, -128, 0
+direction = south
+job = "Public trader"
+language = common
+language = dwarf
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Normal registrations restored from commented lines; strike idle lines excluded.
+-- Trade offers and requests; stock and trader cash are unlimited.
+buyPrimaryItem = id(197), price(10)
+buyPrimaryItem = id(198), price(10)
+buyPrimaryItem = id(45), price(10)
+buyPrimaryItem = id(46), price(10)
+sellItem = id(2645), price(200), stack(1), quality(777)
+buyPrimaryItem = id(2645), price(10)
+sellItem = id(188), price(600), stack(1), quality(777)
+buyPrimaryItem = id(188), price(15)
+sellItem = id(205), price(700), stack(1), quality(777)
+buyPrimaryItem = id(205), price(15)
+buyPrimaryItem = id(383), price(15)
+sellItem = id(88), price(1000), stack(1), quality(777)
+buyPrimaryItem = id(88), price(12)
+sellItem = id(101), price(1200), stack(1), quality(549)
+buyPrimaryItem = id(101), price(50)
+sellItem = id(4), price(1500), stack(1), quality(549)
+buyPrimaryItem = id(4), price(60)
+buyPrimaryItem = id(2395), price(100)
+sellItem = id(2112), price(500), stack(1), quality(549)
+buyPrimaryItem = id(2112), price(20)
+sellItem = id(2535), price(15), stack(1), quality(333)
+buyPrimaryItem = id(2535), price(3)
+sellItem = id(2444), price(600), stack(1), quality(777)
+buyPrimaryItem = id(2444), price(25)
+sellItem = id(324), price(400), stack(1), quality(777)
+buyPrimaryItem = id(324), price(10)
+sellItem = id(2290), price(200), stack(1), quality(777)
+buyPrimaryItem = id(2290), price(10)
+sellItem = id(23), price(30), stack(1), quality(683)
+sellItem = id(2751), price(50), stack(1), quality(683)
+sellItem = id(2140), price(40), stack(1), quality(483)
+buyPrimaryItem = id(2140), price(3)
+
+"[gg]reetings", "[hh]ello" -> "Greetings. How can I help you?", "Hello. Do you need some of smithed goods? Best quality!"
+"[gg]rü[ßs]+e", "[hh]alle" -> "Tach, wie kann ich dir helfen?", "Grüß dich. Brauchst was geschmiedetes? Beste Qualität!"
+"[yy]ou.+[tt]rader" -> "Sure, I am trader of my own goods: gems, armors, helmets and more. You are interested on my wares?"
+"[iidd][uh]r*.+[hh]ändler" -> "Sicher, ich verkauf meine eigenen Sachen: Edelsteine, Rüstungen, Helme und mehr. Bist an meinen Waren interessiert?"
+"[ww]hat.+sell" -> "I trade with gems, armors, helmets, weapons and more."
+"[ww]as.+verkauf" -> "Ich handel mit Edelsteinen, Rüstungen, Waffen und mehr."
+"[ww]hat.+[ww]ares" -> "I have gems, armors, helmets, weapons and more."
+"[ww]as.+[ww]aren" -> "Ich hab Edelsteinen, Rüstungen, Waffen und mehr."
+"[ww]hat.+[gg]em" -> "Take a short look. But do not touch them! I trade with amethysts, emeralds, rubies and topaz."
+"[ww]as.+[ee]delstein" -> "Sieh sie dir kurz an. Aber FASS sie nicht an! Ich handel mit Amethysten, Smaragden, Rubinen und Topasen."
+"[ww]hat.+[aa]rmor" -> "Do not trust the Lizard in the shop and her waste. My armors are better! I have chain shirts, plate armors, dwarvenplates and short blue steel greaves."
+"[ww]as.+[rr]üstung" -> "Trau der Echsen und ihrem Müll im Laden nicht. Meine Rüstungen sind besser! Sind ja von nem Zwerg! Ich hab Kettenhemden, Plattenpanzer, Zwergenpanzer und kurze blaue Stahlbeinschienen."
+"[ww]hat.+[hh]elm" -> "Oh, i have nice helmets. They are made by the smiths of Silverbrand. Look what i have: salkamaerian paladin's helmet, chain helmets and round steel hat"
+"[ww]as.+[hh]elm" -> "Oh, schau dir diese tollen Helme an. Sie wurden von den Schmieden Silberbrands gemacht. Schau welche ist habe: salkamaerischer Paladinhelme, Kettenhelme und runde Stahlhelme."
+"[ww]hat.+[ww]eapon" -> "Ah, You are interested on my weapons? A good choice! I have the best sortiment of axes: throwing axes, dwarven axes, waraxes, double axes, large waraxes, longaxes."
+"[ww]as.+[ww]affe" -> "Ah, du bist an meinen Waffen interessiert? Eine gute Wahl! Har. Ich habe das beste sortiment an Äxten: Wauf, Zwergen und Kriegsäxte. Außerdem Doppeläxte und Langäxte."
+"[ww]hat.+[mm]ore" -> "You are smith yourself? Look, maybe do you want some iron ignots and iron plates?"
+"[ww]as.+[mm]ehr" -> "Du bist auch ein Schmied? Schau, vielleicht willst du Eisen Barren oder Platten?"
+"[gg]oodbye", "[ff]arewell", "[bb]ye" -> "Irmorom with you. Good day.", "Good day. Irmorom may help you to have good trades.", "Farewell!"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Irmorom mit dir, Schönen Tag noch.", "Schönen Tag. Irmorom möge dir helfen ein paar gute Geschäfte zu machen"
+"[ww]ho.+you?" -> "I am Sorgan Stonemate, a miner and smith of Silverbrand"
+"[ww]er.+[ddii][uh]r*" -> "Ich bin Sorgan Stonemate, Bergarbeiter und Schmied von Silberbrand"
+"i'm.+.+" -> "Ahr! Nice to meet you."
+"[ii]ch.+[bb]in.+" -> "Arrr, Freut mich!"
+"[tt]ell.+[ss]omething" -> "Hrmm, I know where you can find copper ore, iron ore, coal and some gems. But do not tell it around! This knowledge should not be public. Right?"
+"[ee]rzähl.+[ww]as" -> "Hrm. Ich weis wo du Kupfer und Eisenerz, Kohle und ein paar Edelsteine finden kannst. Aber erzähl es nicht rum. Dieses Wissen sollte nicht jeder haben. Richtig?"
+"[cc]opper.+[oo]re" -> "Hrmm. Where i begin? Do you know the Cooper Mountains in front the East Gate at the path to Silverbrand? What do you think why these Mountains are called so? There you can find this ore everywhere at the surface. You only have to collect it!"
+"[kk]upfer.+[ee]rz" -> "Hrm. Wo soll ich anfangen? Kennst du die Kupfer Berge außerhalb des Ost Tores auf dem Pfad nach Silverbrand. Warum denkst du heißen diese Berge so? Dort kannst du das Erz überall auf der Oberfläche finden. Musst es nur einsammeln."
+"[ii]ron.+[oo]re" -> "Hehe, around this town iron ore is rare. Maybe you have some luck in the mine of the Copper Mountains. But the best mines for iron ore are in Silverbrand and in the north of the Fearys Tears River."
+"[ee]isen.+[ee]rz" -> "Hehe. Das ist um diese Stadt herum ziemlich selten. Villeicht hast du Glück in der Mine in den Kupfer Bergen. Aber die Beste Mine für dieses Erz ist in Silberbrand und im Norden das Fearys Tears Fluss."
+"[cc]oal" -> "Coal can be found nearly everywhere. You only have to look for the grey rocks in the next mountains."
+"[kk]ohle" -> "Kohle kann eigentlich überall gefunden werden. Musst dich nur nach diesen grauen Steinen im nächsten Gebirge umsehen."
+"[gg]em" -> "Oh, hehe. The location of good gems are a big secret. But, i did not tell you, right? Maybe you can find some Smaragds in the center of the Copper Mountains."
+"[ee]delstein" -> "Oh. Hehe. Die Verstecke von guten Edelsteinen sind ein großes Geheimniss. Das hab ich dir nicht gesagt, ok? Du findest vielleicht ein paar Smaragde in der Mitte der Kupfer Berge."
+"[cc]opper.+[mm]ountain" -> "You are new here, right? Pass the eastern or northern gate of this town and went to east. You can not fail these big mountains."
+"[kk]upfer.+[bb]erge" -> "Du bist neu hier, oder? Geh aus dem Nord oder Ost Tor dieser Stadt und halte dich nach Osten. Du kannst dieses Gebirge nicht verfehlen."
+"[ss]ilverbrand" -> "Aaarr, you want to visit our dwarven town? Fine, take the northern or eastern gate and went to northeast. When you passed the Copper Mountains you can see the Faerys Tears River. Take a brigde to cross the river and you arrive the entrance of Silverbrand."
+"[ss]ilberbrand" -> "Arr. Du willst die Zwergenstadt sehen. Nimm die Straße durch das Nord oder Osttor und halte dich nach Nordosten. Wenn du die Kupfer Berge passiert hast, siehst du den Raerys Tears Fluss. Überquere die Brücke und die erreichst den Eingang nach Silberbrand."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

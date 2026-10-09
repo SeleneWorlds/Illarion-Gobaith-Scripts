@@ -1,0 +1,55 @@
+-- Derived from npc/gambret.lua; UTF-8.
+
+name = "Gambret Mandarett"
+race = human
+sex = male
+position = -86, -107, -3
+direction = west
+job = "Public trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(227), price(30), stack(1), quality(583)
+buyPrimaryItem = id(227), price(2)
+sellItem = id(121), price(30), stack(1), quality(583)
+buyPrimaryItem = id(121), price(2)
+sellItem = id(118), price(30), stack(1), quality(583)
+buyPrimaryItem = id(118), price(2)
+sellItem = id(2952), price(10), stack(1), quality(333)
+buyPrimaryItem = id(2952), price(2)
+sellItem = id(2935), price(10), stack(1), quality(333)
+buyPrimaryItem = id(2935), price(2)
+buyPrimaryItem = id(2647), price(5)
+buyPrimaryItem = id(1908), price(1)
+buyPrimaryItem = id(2185), price(2)
+buyPrimaryItem = id(223), price(6)
+buyPrimaryItem = id(1858), price(4)
+buyPrimaryItem = id(164), price(1)
+buyPrimaryItem = id(1317), price(2)
+buyPrimaryItem = id(2498), price(3)
+buyPrimaryItem = id(2055), price(3)
+
+"[hh]ello", "[gg]reetings" -> "Hello", "Greetings"
+"[hh]allo", "[gg]r[üu][ßs]+" -> "Hallo", "Grüße"
+"[ww]hat.+buy" -> "Ill buy cutlery, plates and bowls, cups, goblets, bottles and cooking tools."
+"[ww]as.+%skauf" -> "Ich kaufe Besteck, Teller und Schüsseln, Becher, Kelche, diverse Flaschen und Kochutensilien."
+"[ww]hat.+do" -> "I buy table supplies for the tavern"
+"[ww]as.+[tm][ua][tsc]" -> "Ich kaufe Tisch Gedeck für die Taverne"
+"[ww]ho.+you" -> "Gambret."
+"[ww]er.+[ddii][uh]r*" -> "Gambret."
+"[ii]['.+]*m.+" -> "Alright then. Have anything to sell me?"
+"[ii]ch.+[bb]in" -> "In Ordnung. Habt ihr was, das ihr mir verkaufen könntet?"
+"[bb]ye", "[ff]arewell" -> "Goodbye", "Goodbye"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Auf bald", "Auf bald"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

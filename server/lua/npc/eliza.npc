@@ -1,0 +1,75 @@
+-- Derived from npc/eliza.lua; UTF-8.
+
+name = "Eliza"
+race = lizard
+sex = male
+position = -56, -122, 0
+direction = west
+job = "Public trader"
+language = common
+language = human
+language = lizard
+defaultLanguage = common
+autointroduce = on
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(18), price(60), stack(1), quality(449)
+buyPrimaryItem = id(18), price(5)
+sellItem = id(20), price(120), stack(1), quality(449)
+buyPrimaryItem = id(20), price(7)
+sellItem = id(186), price(300), stack(1), quality(449)
+buyPrimaryItem = id(186), price(10)
+sellItem = id(19), price(90), stack(1), quality(449)
+buyPrimaryItem = id(19), price(7)
+sellItem = id(325), price(400), stack(1), quality(449)
+buyPrimaryItem = id(325), price(25)
+sellItem = id(326), price(400), stack(1), quality(449)
+buyPrimaryItem = id(326), price(25)
+sellItem = id(2359), price(1200), stack(1), quality(449)
+buyPrimaryItem = id(2359), price(80)
+buyPrimaryItem = id(2360), price(150)
+buyPrimaryItem = id(2393), price(120)
+sellItem = id(2364), price(1500), stack(1), quality(449)
+buyPrimaryItem = id(2364), price(100)
+buyPrimaryItem = id(2731), price(30)
+sellItem = id(2675), price(100), stack(1), quality(449)
+buyPrimaryItem = id(2675), price(6)
+sellItem = id(1), price(150), stack(1), quality(449)
+buyPrimaryItem = id(1), price(8)
+sellItem = id(2658), price(100), stack(1), quality(449)
+buyPrimaryItem = id(2658), price(6)
+sellItem = id(2701), price(100), stack(1), quality(449)
+buyPrimaryItem = id(2701), price(6)
+sellItem = id(2111), price(400), stack(1), quality(449)
+buyPrimaryItem = id(2111), price(35)
+sellItem = id(2116), price(400), stack(1), quality(449)
+buyPrimaryItem = id(2116), price(35)
+
+"[gg]reet", "[hh]ello" -> "Greetingsss. What isss it you want? Zss.", "Greetingsss. You are interesssted in my waresss?"
+"[ww]hat.+sell" -> "I trade with shieldsss, greavesss, armorsss and weaponsss. Everything made of metal. sss"
+"[ww]hat.+[ss]hield" -> "Whatever you likesss: light, normal and large  metal shieldsss and round metalshieldsss"
+"[ww]hat.+[aa]rmor" -> "Besst armosss: steel glovesss, steel bootsss, albarian officersss armorss, light mercenary armorss, Lor-Angur guardiansss armorss, steel plate, heavy red plate armorss and heavy plate armorss. For more goodsss asssk for my lissst of waresss."
+"[ww]hat.+[ww]eapon" -> "I trade with two-handed swordss, rapierss, razor bladess, serinjah-swordss. For more goodsss asssk for my lissst of waresss."
+"[ww]hat.+[gg]reave" -> "Look. I have: blue steel greavesss, brassss greavesss, red steel greavesss. For more goodsss asssk for my lissst of waresss!"
+"[bb]ye", "[ff]arewell", "[bb]e.+[ww]ell" -> "Good day. Zhelphia may blesss you. Ssss.", "Sss. Farewell. You are welcome to come back."
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Grüssse. Wasss wollt ihr? Zsss", "Grüssse. Habt ihr Interessse an meinen Waren? Zsss"
+"[ww]as.+kauf" -> "Sss. Ich handle mit Ssschilden, Beinschienen, Rüssstungen und Waffen. Alles aus Metall. ssss"
+"[ww]as.+[ss]child" -> "Wasss auch immer du brauchssst: leichte, normale und große Metallschilde und Metallrundsschilde"
+"[ww]as.+[rr]üstung" -> "Bessste Rüssstungen: Ssstahl Handschuhe und Ssstiefel, Albarische Offiziersss Rüssstungen, leicht Sssöldner Rüssstungen, Lor-Angur Wächter Rüssstungen, Ssstahl Plattenpanzer, ssschwere Rote und ssschwere Ssstahlpanzer."
+"[ww]as.+[ww]affen" -> "Ich handle mit Degen, Rasssierklingen, Ssserinjah-Ssschwertern und Zzweihänderr."
+"[ww]as.+[ss]chienen" -> "Sssieh! Ich habe: blaue Ssstahl Beinssschienen, Bronze Beinssschienen und rote Ssstahl Beinssschienen."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]als", "[mm]achs.+[gg]ut" -> "Auf bald. Zhelphia sssegne euch. Zsss.", "Sss. Bis bald. Ihr könnt gern wieder kommen."
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Idle dialogue
+cycletext "#me isst einen Fisch", "#me eats a fish"
+cycletext "#me schaut sich nach Kunden um", "#me looks around for customers"
+cycletext "#me lässt ihren Schwanz hin und her schnalzen", "#me flicks her tail"
+cycletext "#me zählt einige Münzen", "#me counts some coins"
+cycletext "Die besssten Ssschmiedewaren verkauf ich! Zzzum besssten Preisss.", "I sssell the bessst smithsss productsss. For the bessst pricesss"

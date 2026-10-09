@@ -1,0 +1,89 @@
+-- Derived from npc/timo.lua; UTF-8.
+
+name = "Timo"
+race = halfling
+sex = male
+position = -394, 69, 0
+direction = south
+job = "Public trader && AutoQuest 1 (Holy Water Quest)"
+language = common
+language = halfling
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Hee! Finger weg!"
+useMsgUS = "Hee! Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+lookatDE = "Ein Halbling, kaum größer als sein Thresen, der eifrig seine Waren, überwiegend Kleidung, ordnet."
+lookatUS = "A halfling barely taller than his counter but who is eagerly sorting out his wares, mainly clothes."
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(356), price(120), stack(1), quality(683)
+buyPrimaryItem = id(356), price(7)
+sellItem = id(55), price(150), stack(1), quality(683)
+buyPrimaryItem = id(55), price(15)
+sellItem = id(2295), price(120), stack(1), quality(683)
+buyPrimaryItem = id(2295), price(12)
+sellItem = id(97), price(50), stack(1), quality(683)
+sellItem = id(312), price(30), stack(1), quality(583)
+sellItem = id(24), price(35), stack(1), quality(583)
+sellItem = id(258), price(25), stack(1), quality(583)
+sellItem = id(271), price(25), stack(1), quality(583)
+sellItem = id(74), price(35), stack(1), quality(583)
+sellItem = id(51), price(20), stack(1), quality(583)
+sellItem = id(121), price(20), stack(1), quality(583)
+sellItem = id(118), price(20), stack(1), quality(583)
+sellItem = id(249), price(2), stack(1), quality(333)
+sellItem = id(728), price(5), stack(1), quality(333)
+sellItem = id(2917), price(2), stack(1), quality(333)
+sellItem = id(291), price(2), stack(1), quality(333)
+sellItem = id(2494), price(2), stack(1), quality(333)
+
+german, "[ii]rundar" -> "Irundar...Die Höhle von Irundar. Ich bin da gewesen...langweiliger Ort, hehe. Sie ist einfach leer. Wenn du rein willst, vom Nordende des kleinen Strandes an der Südküste von Gobaith, 40 Schritte nach Norden und 12 Schritte nach Westen."
+english, "[ii]rundar" -> "Irundar...The Cave of Irundar. I have been there...a boring place, hehe. It is just empty. If you want to get in, walk from the north end of a little bay at the south coast of Gobaith 40 steps north and then 12 steps west. Hehe."
+"[gg]reetings" -> "Welcome to Greenbriar! Can I help you?"
+"[hh]ello" -> "A good day to you! What do you want to buy?"
+"[yy]ou.+[tt]rader" -> "I am %NPCNAME, once I was one of Greenbriar's traders!"
+"[tt]ell.+[gg]reenbriar" -> "It was Crosis, leader of the Evergreen halflings, who animated all the other halflings to build the Briary bridge."
+"[tt]ell.+[cr]osis" -> "His group of halflings built the Briary bridge."
+"[ww]ho.+[cr]osis" -> "Crosis lead the Evergreen halflings to this land."
+"[ww]hat.+[gg]reenbriar" -> "Once, Greenbriar was a peacefull little town not far from here. But the peacefull times, in which all live together in harmony are gone."
+"[ww]here.+[gg]reenbriar" -> "Go to the west, over the bridge and follow the path."
+"[ww]hat.+[bb]riary.+bridge" -> "The Briary bridge was built by the Evergreen halflings, the first people around here."
+"[ww]here.+[bb]riary.+bridge" -> "Go to the south."
+"[ww]ho.+[ee]vergreen.+halflings" -> "The Evergreen halflings are a group of halflings that founded Greenbriar."
+"[ww]hat.+sell" -> "Oh, I sell clothes, tools and seeds Want to see my list?"
+"[ww]hat.+[cc]lothe" -> "I have really nice hats, gloves and capes."
+"[ww]hat.+[tt]ool" -> "I have axes, scythes, shovels and so on. For more ask for my list of wares"
+"[ww]hat.+[ss]eed" -> "I have seeds of grain, cabbage, carrots and tomatos."
+"[tt]ell.+[ss]omething" -> "We halflings discovered this beautiful island when we walked around in the east. It were the Evergreen halflings who built the Briary bridge."
+"[gg]oodbye" -> "Have a nice day!"
+"[bb]ye" -> "Good bye!"
+"[ff]arewell" -> "Bye!"
+"[ww]ho.+you?" -> "My name is %NPCNAME."
+"i'm.+.+" -> "Nice to meet you!"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]rü[ßs]+e" -> "Grüß' dich!"
+"[hh]allo" -> "Huhu!"
+"[ddii][uh]r*.+[hh]ändler" -> "Ich bin %NPCNAME, früher war ich einer von Greenbriars Händlern!"
+"[ww]as.+verkauf" -> "Oh, ich verkaufe Kleidung, Werkzeuge und Samen. Willst du meine Liste sehen?"
+"[ww]as.+[kk]leidung" -> "Ich hab sehr schöne Hüte, Umhänge und Handschuhe."
+"[ww]as.+[ww]erkzeuge" -> "Ich hab Äxte, Sensen, Schaufeln und so weiter. Frag nach meiner Warenliste wenn du es genau wissen willst."
+"[ww]as.+[ss]ame" -> "Ich habe Samen von Getreide, Kohl, Karotten und Tomaten."
+"[ee]rzähl.+[ee]twas" -> "Weisst Du, wie wir Halblinge diese Insel entdeckt haben? Das geschah, als wir im Osten herumgewandert sind."
+"[ee]rzähl.+[gg]reenbriar" -> "Crosis, der Anführer der Evergreen Halblinge hat den Bau der Briary Brücke veranlasst."
+"[ee]rzähl.+[cr]osis" -> "Er hat die Briary Brücke bauen lassen, mit seinen Halblingen."
+"[ww]er.+[cr]osis" -> "Crosis hat eine Gruppe von Halblingen angeführt: die Evergreen Halblinge."
+"[ww]as.+[gg]reenbriar" -> "Einst war Greenbriar ein wunderschöne, friedlicher Ort. Aber Missgunst und Unmut hat sich unter den Bewohnern breit gemacht und den Freiden vertrieben."
+"[ww]o.+[gg]reenbriar" -> "Geh nach Westen, über die Brücke und folge einfach dem Pfad."
+"[ww]as.+[bb]riary.+[bb]rücke" -> "Die Briary Brücke wurd' damals von den Evergreen Halblingen gebaut."
+"[ww]o.+[bb]riary.+[bb]rücke" -> "Sie liegt genau westlich von hier!"
+"[ww]er.+[ee]vergreen.+[hh]alblinge" -> "Die Evergreen Halblinge haben die Brücke bauen lassen und diese schöne Insel besiedelt."
+"[aa]uf.+[bb]ald" -> "Du gehst schon? Ach schade... Na, dann mach's mal gut!"
+"[bb]is.+[bb]ald" -> "Ich hoffe, du kommst mal wieder vorbei!"
+"[ww]er.+du?" -> "Ich werde %NPCNAME genannt."
+"ich.+bin.+.+" -> "Huhu! Schön, dich kennenzulernen!"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade

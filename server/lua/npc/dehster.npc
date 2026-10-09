@@ -1,0 +1,76 @@
+-- Derived from npc/dehster.lua; UTF-8.
+
+name = "Dehster"
+race = elf
+sex = male
+position = 356, 153, 0
+direction = south
+job = "Public trader"
+language = common
+language = elf
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(312), price(25), stack(1), quality(483)
+buyPrimaryItem = id(312), price(2)
+sellItem = id(227), price(25), stack(1), quality(483)
+buyPrimaryItem = id(227), price(2)
+sellItem = id(121), price(25), stack(1), quality(483)
+buyPrimaryItem = id(121), price(2)
+sellItem = id(118), price(25), stack(1), quality(483)
+buyPrimaryItem = id(118), price(2)
+sellItem = id(2781), price(25), stack(1), quality(483)
+buyPrimaryItem = id(2781), price(2)
+sellItem = id(126), price(40), stack(1), quality(483)
+buyPrimaryItem = id(126), price(4)
+sellItem = id(9), price(40), stack(1), quality(483)
+buyPrimaryItem = id(9), price(4)
+sellItem = id(74), price(40), stack(1), quality(483)
+buyPrimaryItem = id(74), price(4)
+sellItem = id(2715), price(50), stack(1), quality(483)
+buyPrimaryItem = id(2715), price(5)
+sellItem = id(2752), price(50), stack(1), quality(483)
+buyPrimaryItem = id(2752), price(5)
+sellItem = id(1001), price(5), stack(1), quality(583)
+sellItem = id(2935), price(5), stack(1), quality(583)
+sellItem = id(429), price(25), stack(1), quality(583)
+buyPrimaryItem = id(429), price(2)
+sellItem = id(399), price(150), stack(1), quality(683)
+buyPrimaryItem = id(399), price(10)
+sellItem = id(43), price(10), stack(1), quality(683)
+buyPrimaryItem = id(43), price(2)
+sellItem = id(49), price(20), stack(1), quality(483)
+buyPrimaryItem = id(49), price(4)
+sellItem = id(2923), price(30), stack(1), quality(483)
+buyPrimaryItem = id(2923), price(4)
+sellItem = id(556), price(50), stack(1), quality(483)
+buyPrimaryItem = id(556), price(5)
+
+"[gg]reet", "[hh]ello" -> "Greetings. I'm %NPCNAME, travelling hawker", "Hello. I'm %NPCNAME, travelling hawker."
+"[ww]hat.+do" -> "I m here to trade. I come from Gobaith to sell different tools and buy other things from here."
+"[ll]ist.+wares" -> "I trade with different things. Take a look."
+"[ww]hat.+sell" -> "I sell tools and food."
+"[ww]hat.+buy" -> "I buy different things."
+"[ww]hat.+[tt]ool" -> "Of every kind what people can need here. Axes and saws for lumberjacks, craving tools and planes for carpenters and some other for bakers and cooks."
+"[ff]arewell", "[gg]oodbye" -> "Farewell.", "Bye!"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Willkommen, ich bin %NPCNAME, ein fliegender Händler.", "Guten Tag, ich bin %NPCNAME, ein fliegender Händler."
+"[ww]as.+machst" -> "Ich bin von Gobaith und bringe jeden Tag Dinge des täglichen Bedarfs mit."
+"[ww]as.+verkauf" -> "Ich verkaufe vor allem Werkzeuge und mancherlei anderes. Schau selbst!"
+"[ww]as.kauf" -> "Ich kaufe verschiedene Dinge an."
+"[ww]as.+[ww]erkzeu" -> "Alles was die Leute hier gebrauchen können: Äxte udn Sägen für die Holzfäller, Schnitzmesser und Hobel für Schreiner und mancherlei mehr für Köche und Bäker."
+"[tt]schüs", "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch.", "Bis bald.", "Auf bald!"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Idle dialogue
+cycletext "#me blickt sich nach neuen Kunden um", "#me looks around for a new cosmtumer."
+cycletext "#me summt eine glückliche Melodie", "#me hums a happy melodie"
+cycletext "#me sieht sich mit einem Lächeln auf den Lippen um", "#me looks around with a smile on his face"

@@ -1,0 +1,59 @@
+-- Derived from npc/sam.lua; UTF-8.
+
+name = "Sam"
+race = human
+sex = male
+position = -58, -224, 0
+direction = north
+job = "Public trader"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+wrongLangDE = "#me sieht dich leicht verwirrt an"
+wrongLangUS = "#me looks at you a little confused"
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(180), price(80), stack(1), quality(671)
+buyPrimaryItem = id(180), price(2)
+sellItem = id(183), price(50), stack(1), quality(671)
+buyPrimaryItem = id(183), price(2)
+sellItem = id(369), price(120), stack(1), quality(671)
+buyPrimaryItem = id(369), price(3)
+sellItem = id(55), price(250), stack(1), quality(671)
+buyPrimaryItem = id(55), price(3)
+sellItem = id(48), price(200), stack(1), quality(671)
+buyPrimaryItem = id(48), price(4)
+sellItem = id(53), price(350), stack(1), quality(671)
+buyPrimaryItem = id(53), price(4)
+sellItem = id(356), price(120), stack(1), quality(671)
+buyPrimaryItem = id(356), price(2)
+sellItem = id(9), price(25), stack(1), quality(583)
+sellItem = id(126), price(25), stack(1), quality(583)
+sellItem = id(24), price(25), stack(1), quality(583)
+sellItem = id(2763), price(40), stack(1), quality(583)
+sellItem = id(23), price(25), stack(1), quality(583)
+sellItem = id(311), price(40), stack(1), quality(583)
+sellItem = id(74), price(25), stack(1), quality(583)
+
+"[gg]reetings", "[hh]ello" -> "Indeed. Greetings. Who are you?", "Hello. How may I help you?"
+"[hh]allo", "[gg]r[uü][sß]+" -> "Hallo. Kann ich euch vielleicht helfen?", "In der Tat. Grüße. Wie geht es euch?"
+"[yy]ou.+[tt]rader" -> "Yes, I am a trader. What can I get you?"
+"[ddii][uh]r*.+[hh][äa]ndler" -> "Ja. Ich bin ein Händler. Kann ich etwas für euch besorgen?"
+"[ww]hat.+sell" -> "I sell clothes, tools and more."
+"[ww]as.+verkauf" -> "Ich verkaufe Kleidung, Werkzeug und mehr."
+"[ww]hat.+[cc]loth" -> "I sell farmer hats, shirts, trousers, capes, gloves, shoes and boots and leatherarmor."
+"[ww]as.+[kk]leidung" -> "Ich verkaufe Schlapphüte, Hemden, Hosen, Umhänge, Handschuhe, Schuhe, Stiefel und Lederrüstungen."
+"[ww]hat.+[tt]ool" -> "I sell needles and scissors, saws, shovels, axes hammers and glass blowing pipes."
+"[ww]as.+[ww]erkzeug" -> "Ich verkaufe Nadeln und Scheren. Sägen und Schaufeln. Äxte und Hammer. Und Glasblasrohre."
+"[ww]hat.+[mm]ore" -> "I have some empty bottles for sale."
+"[ww]as.+[mm]ehr" -> "Ich habe einige leere Flaschen zum verkauf."
+"[bb]ye.", "[ff]are.+well" -> "Aye. Good day to you", "Aye! Good day."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Bis bald!", "Kommt doch noch einmal! Ich habe immer die besten Waren"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+-- Open the trading menu.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
