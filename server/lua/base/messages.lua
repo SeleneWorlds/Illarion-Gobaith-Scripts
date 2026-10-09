@@ -98,4 +98,8 @@ function M.Messages:__len()
     return self.__count;
 end
 
+function M.Messages:hasMessages()
+    return self.__count > 0;
+end
+
 return M
