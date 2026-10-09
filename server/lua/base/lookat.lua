@@ -238,6 +238,13 @@ end
 
 --
 --
+-- Gobaith stores one or two socketed gems in the legacy numeric item data.
+function M.hasSocketedGems(Item)
+    local data = tonumber(Item.data)
+    return data ~= nil and ((data >= 10 and data <= 79)
+        or (data >= 1010 and data <= 7979))
+end
+
 function M.checkGemsOnItem(User,Item)
 	gems=nil;
 	if ( (Item.data >= 10) and (Item.data <= 79) )then
