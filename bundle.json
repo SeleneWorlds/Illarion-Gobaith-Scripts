@@ -1596,8 +1596,167 @@
     "triggerfield.underground_water": {
       "file": "server/lua/triggerfield/underground_water.lua"
     },
-    "trading": {
-      "file": "server/lua/trading.lua"
+    "npc.base.basic": {
+      "file": "server/lua/npc/base/basic.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.admin": {
+      "file": "server/lua/npc/base/condition/admin.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.attribute": {
+      "file": "server/lua/npc/base/condition/attribute.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.basestate": {
+      "file": "server/lua/npc/base/condition/basestate.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.chance": {
+      "file": "server/lua/npc/base/condition/chance.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.condition": {
+      "file": "server/lua/npc/base/condition/condition.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.item": {
+      "file": "server/lua/npc/base/condition/item.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.language": {
+      "file": "server/lua/npc/base/condition/language.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.magictype": {
+      "file": "server/lua/npc/base/condition/magictype.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.money": {
+      "file": "server/lua/npc/base/condition/money.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.number": {
+      "file": "server/lua/npc/base/condition/number.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.quest": {
+      "file": "server/lua/npc/base/condition/quest.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.race": {
+      "file": "server/lua/npc/base/condition/race.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.rune": {
+      "file": "server/lua/npc/base/condition/rune.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.sex": {
+      "file": "server/lua/npc/base/condition/sex.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.skill": {
+      "file": "server/lua/npc/base/condition/skill.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.state": {
+      "file": "server/lua/npc/base/condition/state.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.condition.talkmode": {
+      "file": "server/lua/npc/base/condition/talkmode.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.attribute": {
+      "file": "server/lua/npc/base/consequence/attribute.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.consequence": {
+      "file": "server/lua/npc/base/consequence/consequence.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.deleteitem": {
+      "file": "server/lua/npc/base/consequence/deleteitem.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.inform": {
+      "file": "server/lua/npc/base/consequence/inform.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.introduce": {
+      "file": "server/lua/npc/base/consequence/introduce.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.item": {
+      "file": "server/lua/npc/base/consequence/item.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.money": {
+      "file": "server/lua/npc/base/consequence/money.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.quest": {
+      "file": "server/lua/npc/base/consequence/quest.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.rune": {
+      "file": "server/lua/npc/base/consequence/rune.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.skill": {
+      "file": "server/lua/npc/base/consequence/skill.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.spawn": {
+      "file": "server/lua/npc/base/consequence/spawn.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.state": {
+      "file": "server/lua/npc/base/consequence/state.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.talkstate": {
+      "file": "server/lua/npc/base/consequence/talkstate.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.trade": {
+      "file": "server/lua/npc/base/consequence/trade.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.treasure": {
+      "file": "server/lua/npc/base/consequence/treasure.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.consequence.warp": {
+      "file": "server/lua/npc/base/consequence/warp.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.responses": {
+      "file": "server/lua/npc/base/responses.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.talk": {
+      "file": "server/lua/npc/base/talk.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.tools": {
+      "file": "server/lua/npc/base/tools.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.base.trade": {
+      "file": "server/lua/npc/base/trade.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "base.money": {
+      "file": "server/lua/base/money.lua",
+      "encoding": "ISO-8859-15"
+    },
+    "npc.compiler": {
+      "file": "server/lua/npc/compiler.lua"
+    },
+    "npc.runtime": {
+      "file": "server/lua/npc/runtime.lua"
     }
   }
 }
