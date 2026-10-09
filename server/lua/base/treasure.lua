@@ -243,19 +243,19 @@ local M = {}
     	end
     end
 
-    function M.createMap( Char )
+    function M.createMap( Char, level )
         local MapPosition = M.findPosition( );
         if not MapPosition then
             return false;
         end
         local MapData = common.PositionToData( MapPosition )
-        local MapQuality = (10-math.floor(math.sqrt(math.random(1,99))))*100+99;
-        if Char:createItem(505,1,MapQuality,MapData) ~= 0 then
-            world:createItemFromId(505, 1, Char.pos, true, MapQuality, MapData);
-			common.TempInformNLS(User,
-				"Du kannst nichts mehr tragen.",
-				"You can't carry any more.");
+        local MapQuality
+        if type(level) == "number" and level == math.floor(level) and level >= 1 and level <= 9 then
+            MapQuality = level * 100 + 99;
+        else
+            MapQuality = (10-math.floor(math.sqrt(math.random(1,99))))*100+99;
         end
+        common.CreateItem(Char, 505, 1, MapQuality, {data = MapData});
 		return true;
     end
 
