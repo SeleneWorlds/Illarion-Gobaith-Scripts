@@ -231,12 +231,13 @@ local function requestedCount(message)
 end
 
 local function showTradeMenu(trade, state, context, buyingFromPlayer)
+    local menuStock = {}
     local menu = MenuStruct(nil, function(dialog)
         if not dialog.success then
             return
         end
 
-        local selectedItem = state.stock[dialog.selectedItemIndex]
+        local selectedItem = menuStock[dialog.selectedItemIndex]
         if selectedItem == nil then
             return
         end
@@ -250,6 +251,7 @@ local function showTradeMenu(trade, state, context, buyingFromPlayer)
         if price > 0 then
             local quality = item.quality[1] * 100 + item.durability[1]
             menu:addItem(item.item, quality, item.data)
+            table.insert(menuStock, item)
         end
     end
     context.player:sendMenu(menu)
