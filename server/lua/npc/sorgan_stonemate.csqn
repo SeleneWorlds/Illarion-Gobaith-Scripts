@@ -24,10 +24,10 @@ chat: match(
 
 chat: match("[Yy]ou.+[Tt]rader") -> "Sure, I am trader of my own goods: gems, armors, helmets and more. You are interested on my wares?"
 chat: match("[IiDd][uh]r*.+[Hh]ändler") -> "Sicher, ich verkauf meine eigenen Sachen: Edelsteine, Rüstungen, Helme und mehr. Bist an meinen Waren interessiert?"
-chat: match("[Ww]hat.+sell") -> "I trade with gems, armors, helmets, weapons and more.", showTrades("sorgan")
-chat: match("[Ww]as.+verkauf") -> "Ich handel mit Edelsteinen, Rüstungen, Waffen und mehr.", showTrades("sorgan")
-chat: match("[Ww]hat.+[Ww]ares") -> "I have gems, armors, helmets, weapons and more.", showTrades("sorgan")
-chat: match("[Ww]as.+[Ww]aren") -> "Ich hab Edelsteinen, Rüstungen, Waffen und mehr.", showTrades("sorgan")
+chat: match("[Ww]hat.+sell") -> "I trade with gems, armors, helmets, weapons and more.", showTrades("sorgan_stonemate")
+chat: match("[Ww]as.+verkauf") -> "Ich handel mit Edelsteinen, Rüstungen, Waffen und mehr.", showTrades("sorgan_stonemate")
+chat: match("[Ww]hat.+[Ww]ares") -> "I have gems, armors, helmets, weapons and more.", showTrades("sorgan_stonemate")
+chat: match("[Ww]as.+[Ww]aren") -> "Ich hab Edelsteinen, Rüstungen, Waffen und mehr.", showTrades("sorgan_stonemate")
 chat: match("[Ww]hat.+[Gg]em") -> "Take a short look. But do not touch them! I trade with amethysts, emeralds, rubies and topaz."
 chat: match("[Ww]as.+[Ee]delstein") -> "Sieh sie dir kurz an. Aber FASS sie nicht an! Ich handel mit Amethysten, Smaragden, Rubinen und Topasen."
 chat: match("[Ww]hat.+[Aa]rmor") -> "Do not trust the Lizard in the shop and her waste. My armors are better! I have chain shirts, plate armors, dwarvenplates and short blue steel greaves."
@@ -82,4 +82,4 @@ chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 
 
 chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
-chat: chatTrading("sorgan")
+chat: chatTrading("sorgan_stonemate")

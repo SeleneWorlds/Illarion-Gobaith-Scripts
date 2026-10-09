@@ -69,4 +69,4 @@ chat: match("[tt]owns") -> "I sell journeys to the towns of Troll's Bane, Silver
 
 chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
-chat: chatTrading("teplip")
+chat: chatTrading("teplip_efrullop")

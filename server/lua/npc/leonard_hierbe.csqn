@@ -63,4 +63,4 @@ chat: match("[hh]elp") -> "'List your wares', 'I want to buy <number> <wares>', 
 
 chat: match("[hh]ilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
-chat: chatTrading("leonard")
+chat: chatTrading("leonard_hierbe")

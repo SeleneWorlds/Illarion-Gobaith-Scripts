@@ -5,7 +5,6 @@ The CSQN and trade JSON represent Borgate's intended full barkeeper behavior. Th
 ## Active behavior missing from CSQN
 
 - The active English `help` response listed the normal trade phrases plus `Tell <something>`; active German `hilfe` listed the corresponding trade phrases. Neither help trigger is in CSQN.
-- The active idle set contained `Arrr...`, `Arrr!`, `Arrr...?`, and `#me grumbles in anger:'I am on strike!'` / `#me brummt verärgert:'Ich streike!'`. CSQN includes the three vocalizations but omits the strike line.
 - Chat accepted active languages `{0, 2}` (common and dwarf), raised both skills to 100, adopted the speaker's active language, and restored common (`0`) after processing. Unsupported speech emitted `#me sieht dich leicht verwirrt an` / `#me looks at you a little confused` once until the 600-cycle reset.
 - Idle speech used the randomized 900–3000-cycle `SpeakerCycle` delay, which is not explicit in CSQN.
 - Borgate supported shared day/date queries with the standard 16 month names and randomized cardinal/ordinal English formatting.
@@ -13,7 +12,7 @@ The CSQN and trade JSON represent Borgate's intended full barkeeper behavior. Th
 
 ## Dormant intended behavior restored by CSQN/data
 
-The final Lua revision commented out all 13 `AddTraderItem` calls and most small-talk/cycle registrations. The CSQN and `trades/borgate.json` intentionally restore those definitions rather than reproduce the strike-only state. The dormant cycle lines restored by CSQN include drinking beer, drying a mug, looking bored, playing with a copper coin, and wiping the bar.
+The final Lua revision commented out all 13 `AddTraderItem` calls and most small-talk/cycle registrations. The CSQN and `trades/borgate_northoff.json` intentionally restore those definitions rather than reproduce the strike-only state. The dormant cycle lines restored by CSQN include drinking beer, drying a mug, looking bored, playing with a copper coin, and wiping the bar.
 
 The dormant dialogue used `thisNPC.name` for “who are you” and introduction replies. CSQN hardcodes `Borgate`; future interpolation should use the NPC context. One malformed dormant call combined the trigger and answer expression for the English “who” response, so the intended sentence—not the invalid call—is the useful reconstruction target.
 

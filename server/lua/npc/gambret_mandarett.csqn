@@ -9,8 +9,8 @@ chat: match(
     "Greetings"
 )
 
-chat: match("what.+buy") -> "I'll buy cutlery, plates and bowls, cups, goblets, bottles and cooking tools.", showTrades("gambret")
-chat: match("what.+do") -> "I buy table supplies for the tavern", showTrades("gambret")
+chat: match("what.+buy") -> "I'll buy cutlery, plates and bowls, cups, goblets, bottles and cooking tools.", showTrades("gambret_mandarett")
+chat: match("what.+do") -> "I buy table supplies for the tavern", showTrades("gambret_mandarett")
 chat: match("who.+you") -> "Gambret."
 chat: match("i[' ]*m.+") -> "Alright then. Have anything to sell me?"
 
@@ -29,8 +29,8 @@ chat: match(
     "Grüße"
 )
 
-chat: match("was.+kauf") -> "Ich kaufe Besteck, Teller und Schüsseln, Becher, Kelche, diverse Flaschen und Kochutensilien.", showTrades("gambret")
-chat: match("was.+[tm][ua][tsc]") -> "Ich kaufe Tisch Gedeck für die Taverne", showTrades("gambret")
+chat: match("was.+kauf") -> "Ich kaufe Besteck, Teller und Schüsseln, Becher, Kelche, diverse Flaschen und Kochutensilien.", showTrades("gambret_mandarett")
+chat: match("was.+[tm][ua][tsc]") -> "Ich kaufe Tisch Gedeck für die Taverne", showTrades("gambret_mandarett")
 chat: match("wer.+[di][uh]r*") -> "Gambret."
 chat: match("ich.+bin") -> "In Ordnung. Habt ihr was, das ihr mir verkaufen könntet?"
 
@@ -41,4 +41,4 @@ chat: match(
 
 chat: match("hilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
-chat: chatTrading("gambret")
+chat: chatTrading("gambret_mandarett")

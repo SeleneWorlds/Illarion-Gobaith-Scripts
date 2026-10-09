@@ -9,8 +9,8 @@ chat: match(
     "Hello"
 )
 
-chat: match("what.+sell") -> "I sell grey and fine dyed cloth, red and black shirts, cloth gloves, blue dresses and coats, black trousers, needles, scissors and thread.", showTrades("maris")
-chat: match("what.+buy") -> "I buy dyed cloth, red and black shirts, cloth gloves, blue dresses and coats and black trousers.", showTrades("maris")
+chat: match("what.+sell") -> "I sell grey and fine dyed cloth, red and black shirts, cloth gloves, blue dresses and coats, black trousers, needles, scissors and thread.", showTrades("maris_maroqu")
+chat: match("what.+buy") -> "I buy dyed cloth, red and black shirts, cloth gloves, blue dresses and coats and black trousers.", showTrades("maris_maroqu")
 chat: match("who.+you") -> "I'm Maris Maroqué, tailor and trader of tailor needs"
 chat: match("dyer") -> "No, I'm not a dyer. Can't tell you any secrets."
 chat: match("tailor") -> "Yes, I'm a tailor. If you want to be too, buy needle and scissor, thread and cloth and work with the tailoring table in the workshop."
@@ -35,8 +35,8 @@ chat: match(
     "Hallo"
 )
 
-chat: match("was.+verkauf") -> "Ich verkaufe graue und gefärbte Stoffe, rote und schwarze Hemden, Stoffhandschuhe, blaue Kleider und Mäntel, schwarze Hose, Nadeln, Scheren und Garn.", showTrades("maris")
-chat: match("was.+kauf") -> "Ich kaufe gefärbten Stoff, rote, blaue und schwarze Hemden, Stoff Handschuhe, blaue Kleider und schwarze Hosen.", showTrades("maris")
+chat: match("was.+verkauf") -> "Ich verkaufe graue und gefärbte Stoffe, rote und schwarze Hemden, Stoffhandschuhe, blaue Kleider und Mäntel, schwarze Hose, Nadeln, Scheren und Garn.", showTrades("maris_maroqu")
+chat: match("was.+kauf") -> "Ich kaufe gefärbten Stoff, rote, blaue und schwarze Hemden, Stoff Handschuhe, blaue Kleider und schwarze Hosen.", showTrades("maris_maroqu")
 chat: match("wer.+[di][uh]r*") -> "Ich bin Maris Maroqué, Schneider und Händler für Schneidereibedarf."
 chat: match("färber") -> "Nein. Ich bin kein Färber. Ich kann dir keine Geheimnisse verraten."
 chat: match("schneider") -> "Ja, ich bin Schneider. Wenn du selbst einer werden willst, besorg die Schere und Nadel, Garn und Stoff und arbeite am Schneidertisch in der Werkstatt."
@@ -50,4 +50,4 @@ chat: match(
 
 chat: match("hilfe") -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
-chat: chatTrading("maris")
+chat: chatTrading("maris_maroqu")

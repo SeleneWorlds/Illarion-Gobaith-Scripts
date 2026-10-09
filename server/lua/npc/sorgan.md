@@ -12,7 +12,7 @@ The canonical pre-port source is `server/lua/npc/sorgan.lua` at commit `57581583
 
 ## Restored commented-out trader content
 
-The final Lua source had all 20 `AddTraderItem` registrations and most dialogue registrations commented out. It actively retained only the Silverbrand directions, help texts, and three strike-era idle lines. The CSQN and `trades/sorgan.json` restore the intended dialogue and inventory, retain the neutral `Arrr` idle lines, and omit the `I am on strike!` line.
+The final Lua source had all 20 `AddTraderItem` registrations and most dialogue registrations commented out. It actively retained only the Silverbrand directions, help texts, and three strike-era idle lines. The CSQN and `trades/sorgan_stonemate.json` restore the intended dialogue and inventory, retain the neutral `Arrr` idle lines, and omit the `I am on strike!` line.
 
 The receive handler invoked the generic trader and date dispatchers with `TraderCopper=2000`. The restored trade uses that initial cash value and the exact item definitions from the canonical source.
 

@@ -32,11 +32,11 @@ chat: match(
     "Farewell friend!"
 )
 
-chat: match("what.+sell") -> "Drinks and more. What do you thought? It's a Bar. And now, tell me: What do you want?", showTrades("borgate")
-chat: match("you.+barkeeper") -> "What do you think I have to do here? What a stupid question. Aaarh! Drink or eat something or leave!", showTrades("borgate")
-chat: match("what.+ware") -> "It's a damned bar, what do you think I sell? But here, look at the list: drinks and more.", showTrades("borgate")
-chat: match("what.+drink") -> "All kind: bottle of elven wine, of water, of mead, of cider, of red wine, of beer, beer mug, goblet red wine, goblet water, goblet cider, goblet mead. But the mugs, goblets and bottles - give them back when you are ready. There is a refund on them.", showTrades("borgate")
-chat: match("what.+more") -> "Oh, I need glass mugs, copper goblets and grey bottles for they everyday business. Do you have some of them?", showTrades("borgate")
+chat: match("what.+sell") -> "Drinks and more. What do you thought? It's a Bar. And now, tell me: What do you want?", showTrades("borgate_northoff")
+chat: match("you.+barkeeper") -> "What do you think I have to do here? What a stupid question. Aaarh! Drink or eat something or leave!", showTrades("borgate_northoff")
+chat: match("what.+ware") -> "It's a damned bar, what do you think I sell? But here, look at the list: drinks and more.", showTrades("borgate_northoff")
+chat: match("what.+drink") -> "All kind: bottle of elven wine, of water, of mead, of cider, of red wine, of beer, beer mug, goblet red wine, goblet water, goblet cider, goblet mead. But the mugs, goblets and bottles - give them back when you are ready. There is a refund on them.", showTrades("borgate_northoff")
+chat: match("what.+more") -> "Oh, I need glass mugs, copper goblets and grey bottles for they everyday business. Do you have some of them?", showTrades("borgate_northoff")
 
 chat: match("who.+you?") -> "Borgate. I work here for Tialdin, the owner of this tavern."
 chat: match("i'm .+") -> "Great. I am Borgate, the barkeeper. Do you want something to drink?"
@@ -55,8 +55,8 @@ chat: match(
     "ihr.+wirt"
 ) -> "Genau, ich bin hier der Wirt. Was willst du trinken?"
 
-chat: match("was.+verkauf") -> "Ich verkaufe alles, was das Herz begehrt: Met, Wein, Bier, und so weiter. Willst du was?", showTrades("borgate")
-chat: match("was.+getränke") -> "Das hier ist 'ne Kneipe, was glaubst du, was wir hier verkaufen?", showTrades("borgate")
+chat: match("was.+verkauf") -> "Ich verkaufe alles, was das Herz begehrt: Met, Wein, Bier, und so weiter. Willst du was?", showTrades("borgate_northoff")
+chat: match("was.+getränke") -> "Das hier ist 'ne Kneipe, was glaubst du, was wir hier verkaufen?", showTrades("borgate_northoff")
 chat: match("erzähl.+was") -> "Ich höre viel und weiss eigentlich fast alles. Ich erzähl' dir aber nichts davon, das geht dich nunmal nichts an."
 chat: match(
     "tschüss",
@@ -76,4 +76,4 @@ chat: match(
     "ich bin .+"
 ) -> "Ich bin Borgate. Willst du was trinken?"
 
-chat: chatTrading("borgate")
+chat: chatTrading("borgate_northoff")
