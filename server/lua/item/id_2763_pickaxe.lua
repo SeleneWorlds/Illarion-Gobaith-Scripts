@@ -406,7 +406,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     Skill = M.GetModifiedSkill(User);
 
-	if not mining:FindRandomItem(User) then
+	if not gathering.mining:FindRandomItem(User) then
 		return
 	end
 	
