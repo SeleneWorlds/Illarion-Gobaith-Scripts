@@ -1243,4 +1243,152 @@ function M.removeItemIdFromFieldStack( id, pos )
 
 end
 
+function M.IsNilOrEmpty(text)
+    return ((text == nil) or (text == ""))
+end
+
+function M.GetFreePositions(centerPosition, searchRadius, allowPassableItems, shuffle)
+    local coords = {}
+    for x = -searchRadius, searchRadius do
+        for y = -searchRadius, searchRadius do
+            table.insert(coords, {centerPosition.x + x, centerPosition.y + y})
+        end
+    end
+    if shuffle then
+        coords = M.Shuffle(coords)
+    end
+
+    local currentIndex = 1
+    local lastIndex = #coords
+    return function()
+        while currentIndex <= lastIndex do
+            local xyCoords = coords[currentIndex]
+            local targetPos = position(xyCoords[1], xyCoords[2], centerPosition.z)
+
+            currentIndex = currentIndex + 1
+
+            local field = world:getField(targetPos)
+            if field ~= nil then
+                if field:isPassable() and not world:isCharacterOnField(targetPos) then
+                    if allowPassableItems or not world:isItemOnField(targetPos) then
+                        return targetPos
+                    end
+                end
+            end
+        end
+        return nil
+    end
+end
+
+-- Get one random free location
+function M.getFreePos(CenterPos, Rad)
+    local pos = M.GetFreePositions(CenterPos, Rad, false, true)()
+    if pos == nil then
+        return CenterPos
+    end
+    return pos
+end
+
+
+local function _isNumber(value)
+    return type(value) == "number"
+end
+
+local function _isTable(value)
+    return type(value) == "table"
+end
+
+local TimeList = {}
+function M.spamProtect(character, delay)
+    if not isValidChar(character) then
+        error("The parameter 'character' is not a valid character as it was expected.")
+    end
+
+    delay = delay or 1
+    if not _isNumber(delay) then
+        error("The parameter 'delay' is not a number as it was expected.")
+    elseif delay < 1 then
+        error("The parameter 'delay' must be a positive number.")
+    end
+
+    if TimeList[character.id] ~= nil then
+        if (math.abs(world:getTime("unix") - TimeList[character.id])) <= delay then
+            return true
+        end
+    end
+    TimeList[character.id] = world:getTime("unix")
+    return false
+end
+
+--[[
+    CreateItem
+    Safely create an item
+    @return boolean - true if all fits in player's inventory, false if something was created on the ground
+]]
+function M.CreateItem(character, id, amount, quality, data)
+    if not isValidChar(character) then
+        error("The parameter 'character' is not a valid character as it was expected.")
+    end
+
+    if not _isNumber(id) then
+        error("The parameter 'id' is not a number as it was expected.")
+    elseif id < 1 then
+        error("The parameter 'id' must be a positive number.")
+    end
+
+    if not _isNumber(amount) then
+        error("The parameter 'amount' is not a number as it was expected.")
+    elseif amount < 1 then
+        error("The parameter 'amount' must be a positive number.")
+    end
+
+    if not _isNumber(quality) then
+        error("The parameter 'quality' is not a number as it was expected.")
+    elseif quality < 100 or quality > 999 then
+        error("The parameter 'quality' must be a number between 100 and 999.")
+    end
+
+    if data ~= nil and not _isTable(data) then
+        error("The parameter 'data' is not a table as it was expected.")
+    end
+
+    local notCreated = character:createItem(id, amount, quality, data)
+    if notCreated == 0 then
+        return true
+    end
+
+    local maxStack = world:getItemStatsFromId(id).MaxStack
+    if type(maxStack) ~= "number" or maxStack < 1 then
+        error("Item maximum stack size must be positive.")
+    end
+    while (notCreated > 0) do
+        -- work around an issue to prevent creation of stacks of unstackable items
+        local minimum = math.min(notCreated, maxStack)
+        world:createItemFromId(id, minimum, character.pos, true, quality, data)
+        notCreated = notCreated - minimum
+    end
+
+    if not M.spamProtect(character) then
+        character:inform(
+            "Du kannst nichts mehr halten und der Rest fällt zu Boden.",
+            "You can't carry any more and the rest drops to the ground.",
+            Player.highPriority)
+    end
+    return false
+end
+
+function M.Shuffle(List)
+    local minIndex = 1
+    local maxIndex = #List
+    if (List[0] ~= nil) then -- check if zero index is used
+        minIndex = 0
+        maxIndex = maxIndex - 1
+    end
+    for i = maxIndex, minIndex+1, -1 do -- shuffle all elements
+        local j = math.random(minIndex, i)
+        List[i], List[j] = List[j], List[i]
+    end
+    return List
+end
+
 return M
