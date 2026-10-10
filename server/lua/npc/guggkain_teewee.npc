@@ -1,0 +1,83 @@
+-- Migrated from druid/npc/guggkain_teewee.lua; UTF-8.
+name = "Guggkain Teewee"
+race = goblin
+sex = male
+position = -208, 29, 0
+direction = south
+job = "Gem and mineral dust trader"
+language = common
+language = human
+language = lizard
+defaultLanguage = common
+autointroduce = on
+wrongLangDE = "#me sieht dich leicht verwirrt an."
+wrongLangUS = "#me looks at you in mild confusion."
+
+-- Trade offers and requests; stock and trader cash are unlimited.
+-- Item definitions identify 446 as bluestone dust and 447 as ruby dust.
+sellItem = id(450), price(110), stack(1), quality(349)
+buyPrimaryItem = id(450), price(5)
+sellItem = id(449), price(110), stack(1), quality(349)
+buyPrimaryItem = id(449), price(5)
+sellItem = id(447), price(120), stack(1), quality(349)
+buyPrimaryItem = id(447), price(5)
+sellItem = id(452), price(130), stack(1), quality(349)
+buyPrimaryItem = id(452), price(5)
+sellItem = id(446), price(110), stack(1), quality(349)
+buyPrimaryItem = id(446), price(5)
+sellItem = id(448), price(120), stack(1), quality(349)
+buyPrimaryItem = id(448), price(5)
+sellItem = id(451), price(120), stack(1), quality(349)
+buyPrimaryItem = id(451), price(5)
+sellItem = id(197), price(60), stack(1), quality(349)
+buyPrimaryItem = id(197), price(5)
+sellItem = id(283), price(60), stack(1), quality(349)
+buyPrimaryItem = id(283), price(5)
+sellItem = id(284), price(60), stack(1), quality(349)
+buyPrimaryItem = id(284), price(5)
+sellItem = id(285), price(80), stack(1), quality(349)
+buyPrimaryItem = id(285), price(5)
+sellItem = id(46), price(70), stack(1), quality(349)
+buyPrimaryItem = id(46), price(5)
+sellItem = id(45), price(70), stack(1), quality(349)
+buyPrimaryItem = id(45), price(5)
+sellItem = id(198), price(70), stack(1), quality(349)
+buyPrimaryItem = id(198), price(5)
+sellItem = id(251), price(10), stack(1), quality(349)
+buyPrimaryItem = id(251), price(5)
+sellItem = id(252), price(10), stack(1), quality(349)
+buyPrimaryItem = id(252), price(5)
+sellItem = id(253), price(10), stack(1), quality(349)
+buyPrimaryItem = id(253), price(5)
+sellItem = id(254), price(30), stack(1), quality(349)
+buyPrimaryItem = id(254), price(5)
+sellItem = id(255), price(20), stack(1), quality(349)
+buyPrimaryItem = id(255), price(5)
+sellItem = id(256), price(20), stack(1), quality(349)
+buyPrimaryItem = id(256), price(5)
+sellItem = id(257), price(20), stack(1), quality(349)
+buyPrimaryItem = id(257), price(5)
+
+-- Dialogue keeps the original greeting and farewell alternatives.
+"[gg]reet", "[hh]ello" -> "Greetings. What is it you want? Jodele.", "Greetings. Are you interested in my wares?"
+"[gg]r[üu][ßs]+e", "[hh]allo" -> "Grüße. Was wollt Ihr? Jodele.", "Grüße. Habt Ihr Interesse an meinen Waren? Jodele."
+"[ww]hat.+sell", "[ww]hat.+[gg]em" -> "I trade in raw and cut gems, and mineral dust. Jodele. Ask for my list of wares."
+"[ww]as.+kauf", "[ww]as.+verkauf" -> "Jodele. Ich handle mit rohen und geschliffenen Edelsteinen und Mineralstaub. Lasst Euch meine Liste zeigen."
+"[ww]hat.+[kk]ind" -> "All kinds of gems: rubies, emeralds, diamonds, topaz, bluestone, blackstone and amethyst. Ask for my list of wares."
+"[ww]as.+[ee]delstein" -> "Was auch immer Ihr braucht: Rubine, Smaragde, Topas, Diamanten, Blausteine, Schwarzsteine und Amethyste. Lasst Euch meine Liste zeigen."
+"[ww]hat.+[dd]ust" -> "All kinds of gem dust: ruby, emerald, diamond, topaz, bluestone, blackstone and amethyst dust. Ask for my list of wares."
+"[ww]as.+[ss]taub" -> "Besseres Mineralpulver werdet Ihr nirgendwo im Land bekommen. Lasst Euch meine Liste zeigen. Jodele!"
+"[bb]ye", "[ff]arewell", "[bb]e.+[ww]ell" -> "Good day. May someone bless you. Jodele.", "Jodele. Farewell. You are welcome to come back."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald", "[mm]ach.+es.+[gg]ut" -> "Auf bald. Irgendwer segne Euch. Jodele.", "Jodele. Bis bald. Ihr könnt gern wiederkommen."
+"[hh]elp" -> "Ask to trade or to list my wares. You can buy and sell gems and mineral dust using the trade menu or chat."
+"[hh]ilfe" -> "Fragt nach meinen Waren oder dem Handel. Ihr könnt Edelsteine und Mineralstaub über das Handelsmenü oder im Gespräch kaufen und verkaufen."
+"what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
+
+-- Open the trading menu after the more specific dialogue rules.
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+cycletext "#me kaut auf einem dicken Käfer herum.", "#me chews on a large beetle."
+cycletext "#me schaut sich nach Kunden um.", "#me looks around for customers."
+cycletext "#me lässt seine Zunge hin und her schnalzen.", "#me clicks his tongue."
+cycletext "#me zählt einige Münzen.", "#me counts some coins."
+cycletext "Den besten Edelsteinstaub verkaufe ich! Zum besten Preis.", "Best gem dust for the best price, that's what I sell."

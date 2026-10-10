@@ -232,9 +232,6 @@
     "druid.lte.id_59_attribs": {
       "file": "server/lua/druid/lte/id_59_attribs.lua"
     },
-    "druid.npc.guggkain_teewee": {
-      "file": "server/lua/druid/npc/guggkain_teewee.lua"
-    },
     "druid.spell.id_01_analyze_plant": {
       "file": "server/lua/druid/spell/id_01_analyze_plant.lua"
     },
