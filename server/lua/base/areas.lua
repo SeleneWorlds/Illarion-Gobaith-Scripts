@@ -7,10 +7,12 @@ local function identifier(name)
 end
 
 ---Read a named registry area. Returns its shape object and ignoreFloor flag.
+---Disabled entries resolve to an empty area for all gameplay helpers.
 ---Resolve each call so editor changes and registry reloads are immediately visible.
 function M.get(name)
     local id = identifier(name)
     local entry = assert(Registries.findByName("illarion:areas", id), "Unknown area: " .. id)
+    if entry:getField("enabled") ~= true then return { include = {}, exclude = {} }, false end
     local area = entry:getField("area")
     assert(type(area) == "table" and type(area.include) == "table" and type(area.exclude) == "table",
         "Invalid area: " .. id)
@@ -49,6 +51,24 @@ function M.contains(area, coordinate, options)
         if M.containsShape(shape, coordinate, ignoreFloor) then return false end
     end
     return true
+end
+
+---Check every area carrying a tag, keeping each area's own exclusions and floors.
+function M.containsTag(tag, coordinate, options)
+    assert(type(tag) == "string" and tag ~= "", "Area tag must be a non-empty string")
+    for _, entry in pairs(Registries.findAll("illarion:areas")) do
+        for _, entryTag in ipairs(entry:getField("enabled") == true and (entry:getField("tags") or {}) or {}) do
+            if entryTag == tag then
+                local ignoreFloor = entry:getField("ignoreFloor") == true
+                if options and options.ignoreFloor ~= nil then ignoreFloor = options.ignoreFloor end
+                if M.contains(entry:getField("area"), coordinate, { ignoreFloor = ignoreFloor }) then
+                    return true
+                end
+                break
+            end
+        end
+    end
+    return false
 end
 
 local function bounds(shape)
