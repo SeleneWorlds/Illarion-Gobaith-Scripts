@@ -1,0 +1,23 @@
+-- Derived from old/elinadoron.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Elina Doron"
+language = common
+language = human
+language = lizard
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Fasst mich nicht an!"
+useMsgUS = "Don't you touch me!"
+
+
+"[gg]rüß", "[hh]allo" -> "Scht! Ihr verscheucht die Tiere.", "Bleibt doch ruhig! Sonst verscheucht ihr die Tiere."
+"[gg]reetings", "[hh]ello", "[hh]i" -> "Hush! You scare the animals.", "Be quiet! You scare the animals."
+
+-- Idle dialogue
+cycletext "#me blick still in den Wald hinaus", "#me quietly peers into the forest"
+cycletext "#me scheint zu horchen", "#me seems to hark"
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: IrundarInfo, Arrows
+-- Custom event dispatch outside registration rules requires review.

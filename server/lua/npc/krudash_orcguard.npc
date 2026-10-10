@@ -1,0 +1,73 @@
+-- Derived from old/krudash_orcguard.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Krudash Orcguard"
+language = common
+language = orc
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Nimm Greifer deine weg, sonst du haben gleich keine mehr!"
+useMsgUS = "Nub touch meh, stoopid!"
+
+
+"[gg]rü[sß]", "[hh]allo", "[gg]rue[sß]", "[tt]a[gc].*" -> "Ullo.", "Grubas!"
+"[aa]uf.+[bb]ald", "[gg]ötter.+euch", "[bb]is.+[bb]ald", "[aa]uf.+[bb]ald", "[ff]ünf.+euch" -> "Farebas."
+"[ww]er.+[bs][ie][si][td].+[di][uh].*", "[ww]ie.+[nn]ame" -> "Mir Gefängniswärter für Orktor! Keine Ratte hier rein kommen ohne dass %NPCNAME merken!"
+"[hh]ilfe" -> "%NPCNAME dir nur kann öffnen Tor! Muss bewachen Tor! Frag anderen Bruder oder Schwester für andere Sachen!"
+"[ww]as.+[mm]ach.*t" -> "%NPCNAME öffnen und schließen Gefängnis! Du wollen rein oder raus? Dann du mir sagen Losungswort!"
+"[ll]osung.*[ww]ort" -> "#me grunzt verärgert 'Du denken %NPCNAME Maden im Kopf haben? Ich dir nicht sagen Wort! Mir nur hören auf Brüder und Schwester, die wissen Wort!'"
+"[hh]eilig.*[bb]erg" -> "Dies hier sein Heiliger Berg, yubba! Heiliger Berg von 'Vater'!"
+"[gg]reeting", "[hh]ello", "gr.*eebs", "gr.*eebas" -> "Greebas!", "Greebs"
+"[gg]oodbye", "[bb]ye", "[ff]ar.*e.*well", "[ff]ar.*ebas", "[ff]ive.+you", "[ff]ive.+yoo" -> "Farrebas!", "Goodbyes."
+"[ww]ho.+yo.+" -> "Meh beh %NPCNAME, nub single rat whub enterr orc embassy witout meh sees it!"
+"[ww]hat.+[nn]ame" -> "Meh %NPCNAME! Meh guard ob orc embassy!"
+"[ww]hub.+[nn]ame" -> "Meh %NPCNAME! Meh guard ob orc embassy!"
+"[hh]elp" -> "%NPCNAME nub can help yoo muchs! Ask ottur bruddah or sistah! Meh busy beh guardin...hurr, yoo hab seen rat running dere?!"
+"[ww]hat.+[yy]o.*do" -> "%NPCNAME opens and closes embassy! Yoo wunt get in or out? Den tell meh keyword"
+"[kk]ey.*[ww]ord", "[pp]as.*word" -> "Yoo tink %NPCNAME stoopid beh? Meh nub tell yoo keyword! Meh just open gate fer bruddahs and sistahs whoo know word!"
+"buy" -> "Tanks, meh hab eberytin' meh need."
+"sell" -> "Meh nub sell anyting! Meh looks like merchant? Hurrr, nub!"
+"[ww]hat.+buy" -> "Tanks, meh hab all meh need."
+"[ww]hat.+sell" -> "Meh nub sell anyting! Meh do look like merchant? Hurrr, nub!"
+"[vv]erkaufen" -> "Mir verkaufen nichts. %NPCNAME aussehen wie Händler?"
+"[kk]aufen" -> "Danks, mir haben alles was Ork brauchen!"
+"[ww]as.+verkaufst" -> "Mir verkaufen nichts. %NPCNAME aussehen wie Händler?"
+"[ww]as.+kaufst" -> "Danks, mir haben alles was Ork brauchen!"
+english, "[gg]obaith" -> "Tis whole island beh called Gobaith. Nice place, yubba! Good hunting grounds here beh near holy mountain!"
+english, "[gg]obiath" -> "Tis whole island beh called Gobaith. Nice place, yubba! Good hunting grounds here beh near holy mountain!"
+english, "[gg]reenbriar" -> "Greenbriar beh small settlement ob tiny and tasty Halflings. Albays good turr go dere fer snack. *he laughs*"
+"[hh]arbo.*r" -> "Oomie town Troll's Bane and Vanima both hab harbors. The one southwest ob oomie town beh bigger though. Beddur nub go turr smelly elfie island!"
+english, "[hh]ellbriar" -> "Hellbriar wus place ob sum servants ob our 'father' in past. Buts dere nub any orcs beh in dis Cult anymor', so father left dem alone and dey all got smashed, dey say."
+"[mm]agic.+[aa]cademy" -> "Yoo nub wunt go dere! Smelly mages beh dere. Dey nub honorable warriors beh but cowards! Dey whub burrrn yoo... ib yoo lucky beh!"
+"[mm]age.+[aa]cademy" -> "Yoo nub wunt go dere! Smelly mages beh dere. Dey nub honorable warriors beh but cowards! Dey whub burn yoo... ib yoo lucky beh!"
+"[nn]orthmark" -> "Dey lib on ottur side ob island far in north. Dey hab strrong warriors meh hab heard! And best beh dat dey nub like magic neithurrr - jus' bit like orcs, hurrr."
+"[ss]ilverbrand" -> "Dis beh stumpie town. Dey hab best smithes on isle, still dey beh hairy stumpies. Meh whub tink twice befor' going into deir halls!"
+english, "[vv]anima" -> "Tol Vanima ? Dis beh island full ob flowers, trees and elfies. Beddur avoid going dere! Dey nub like visitors!"
+english, "[tt]roll['s].*[bb]ane" -> "Oomie town Troll's Bane beh biggest town on Gobaith. Though, orcs ususally get in trouble in here! Beh careful when passing town gates!"
+english, "[vv]arshikar" -> "Desert town Varshikar beh far abay from here! Orcs hab peace wit dem! Treat dem fair and dey whub treat yoo fair toos! But beh careful ob mages in desert town!"
+"[dd]esert.*town" -> "Desert town Varshikar beh far abay from here! Orcs hab peace wit dem! Treat dem fair and dey whub treat yoo fair toos! But beh careful ob mages in desert town!"
+english, "[ff]ather" -> "Yoo nub know father ob orcs? *he snorts* Yoo should talk turr Chief den! He whub make yoo rememburr 'fathurr' fer yoos whole life!"
+"[cc]lan" -> "Yubba, dis beh embassy ob strong orc clan! Tell meh clan name and meh whub open gate fer yoo!"
+"[dd]eser.*t" -> "#me snorts 'Da desert ob Kumdah beh in south ob orc lands! Oomies and scorpies beh all yoo whub find dere. Some rich mines beh dere after all.'"
+"[ww][üue]ste" -> "#me schaubt 'Wüste Kumdah in Süden sein von Orkland! Menschen und Skorpione sein alles du finden da! Die Berge immerhin haben reiche Schätze.'"
+"or.*c.*" -> "#me hits his chest with his right fist and grunts 'Hurrr, Orc Nation beh strrongest! Praise father and holy mountain!'"
+"or.*k.*" -> "#me schlägt mit seiner rechten Faust auf seine Brust 'Hurrr, Ork Nation die stärksten sein! Ehre für unseren Vater und heiligen Berg!'"
+"tor" -> "Du wollen dass mir machen Tor auf? Dann du mir sagen Losungswort!"
+"gate" -> "Yoo wunt meh open da gate? Den tell meh da keyword!"
+"moshran" -> "#me growls angrily and shouts at you 'Nub tell father's name! Dis whub brring shame on us! Call him father, hurrr... and now leave meh alone!'"
+german, "moshran" -> "#grunzt erzürnt auf und schreit dich an 'Nicht nennen Vater bei Namen! Bringt Schande über uns! Vater du ihn nennen, hurrr... und jetzt in Ruhe lassen du mich!'"
+german, "[gg]obiath" -> "Insel genannt wird Gobaith. Gute Gegend für Orks! Gute Jagdgründe hier sind in Nähe von heiligem Berg!"
+german, "[gg]obaith" -> "Ja, diese Insel genannt wird Gobaith. Gute Gegend für Orks! Gute Jagdgründe hier sind in Nähe von heiligem Berg!"
+german, "[gg]reenbriar" -> "Greenbriar kleine Siedlung ist, bewohnt von klein und lecker Halblings. Immer gut da hin gehen für Leckerbissen. *er lacht grunzend auf*"
+"[hh]afen" -> "Hafen sein im Süden von Menschenstadt Troll's Bane. Auch stinkende Elfeninsel haben Hafen. Aber Wasser nix für Orkse ist, hurr!"
+german, "[hh]ellbriar" -> "Hellbriarkult war von Anhängern von unser 'Vater'! Aber alle Orks haben verlassen Kult! Nicht gut er mehr ist. Nur Unheil bringen über orks, wenn du mich fragen."
+"[mm]agierakademie" -> "Du besser nicht gehen besuchen Magier! Sie keine Ehre haben und keinen Spaß verstehen. Sie dich gleich verbrennen oder verwandeln in Kröte mit bloßem Blick!"
+"[nn]ordmark" -> "Die Nordmarkmänner gute Menschen sein! Wie Orks sie nicht mögen Magie! Auch Nordmarkfrauen mit Waffen umgeh'n könn'! Trotzdem sie stinkende Menschen bleiben!"
+"[ss]ilberbrand" -> "Zwergenstadt groß und heiß sein. Schmelzofen laufen ganzen Tag und Hammerschläge erfüllen Hallen immer mit Lärm. Wenn nicht Zerge wären da, schöner Ort es wäre."
+german, "[vv]anima" -> "Hurr! Fern bleiben du von dieser stinkenden Elfeninsel! Nur Unheil auf Orks dort warten!"
+german, "[tt]roll['s].*[bb]ane" -> "Menschenstadt in Mitte der Insel du fragen nach? Groß und hässlich sie sein! Orkse nicht gern gesehen heir! Nim Waffen mit, wenn du in Stadt müssen!"
+german, "[vv]arshikar" -> "Meisten Wesen dort dumm und stinkig - aber Clanführer, Grrrypus, Ehre haben! Sei gut zu Wüstenvolk, dann sie gut zu Orks sind!"
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: standardAnswer, mainTask
+-- Custom event dispatch outside registration rules requires review.

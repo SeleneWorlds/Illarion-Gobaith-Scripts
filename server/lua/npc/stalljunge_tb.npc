@@ -1,0 +1,32 @@
+-- Derived from old/stalljunge_tb.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Stalljunge"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+
+
+"[hh]ello", "[gg]reetings", "[hh]i" -> "Hello, Hello"
+"[hh]allo", "[gg]r[uü][sß]+" -> "Grüße euch!"
+"[ww]ho.+" -> "I am %NPCNAME"
+"[ww]er.+" -> "Ich bin %NPCNAME."
+"[ff]arewell" -> "Farewell!"
+"[bb]ye.+" -> "Be well"
+"[ww]as.+verkauf" -> "Ich verkaufe nicht! Ich verleihe Esel als Transport- und Lastentiere."
+"[ww]hat.+sell" -> "I don't sell! But you can lend a mule as pack animal."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Bis Bald"
+"[kk]uh" -> "Ich habe keine Kühe, ich habe nur Esel hier."
+"cow" -> "I have no cows, I have just mules."
+
+-- Idle dialogue
+cycletext "#me schaut sich um", "#me looks around"
+cycletext "#me niest", "#me sneezes"
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: SayPrice, createCow, GetCow, returnCow, CheckMoney, Pay, CalcSilverCopper
+-- Custom event dispatch outside registration rules requires review.
+-- Movement, spawning or world changes require Lua hooks.

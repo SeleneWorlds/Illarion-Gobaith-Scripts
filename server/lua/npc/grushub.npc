@@ -1,0 +1,206 @@
+-- Derived from old/grushub.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Gru'shub"
+language = common
+language = orc
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Geh weg!"
+useMsgUS = "Nhub touch me!"
+
+sellItem = id(45), price(500), stack(1), quality(549)
+sellItem = id(46), price(500), stack(1), quality(549)
+sellItem = id(68), price(1200), stack(1), quality(549)
+sellItem = id(164), price(10), stack(1), quality(549)
+sellItem = id(197), price(500), stack(1), quality(549)
+sellItem = id(198), price(500), stack(1), quality(549)
+sellItem = id(222), price(2000), stack(1), quality(549)
+sellItem = id(224), price(500), stack(1), quality(549)
+sellItem = id(225), price(1000), stack(1), quality(549)
+sellItem = id(235), price(500), stack(1), quality(549)
+sellItem = id(277), price(1050), stack(1), quality(549)
+sellItem = id(278), price(1100), stack(1), quality(549)
+sellItem = id(279), price(1110), stack(1), quality(549)
+sellItem = id(280), price(1250), stack(1), quality(549)
+sellItem = id(281), price(1210), stack(1), quality(549)
+sellItem = id(282), price(1600), stack(1), quality(549)
+sellItem = id(283), price(500), stack(1), quality(549)
+sellItem = id(284), price(500), stack(1), quality(549)
+sellItem = id(285), price(500), stack(1), quality(549)
+sellItem = id(334), price(2150), stack(1), quality(549)
+sellItem = id(336), price(1000), stack(1), quality(549)
+sellItem = id(2355), price(250), stack(1), quality(549)
+sellItem = id(2559), price(4550), stack(1), quality(549)
+sellItem = id(1317), price(20), stack(1), quality(549)
+sellItem = id(2183), price(30), stack(1), quality(549)
+sellItem = id(2184), price(30), stack(1), quality(549)
+sellItem = id(2185), price(30), stack(1), quality(549)
+sellItem = id(1908), price(20), stack(1), quality(549)
+sellItem = id(310), price(20), stack(1), quality(549)
+sellItem = id(2457), price(40), stack(1), quality(549)
+buyPrimaryItem = id(7), price(12)
+buyPrimaryItem = id(16), price(30)
+buyPrimaryItem = id(18), price(64)
+buyPrimaryItem = id(19), price(90)
+buyPrimaryItem = id(20), price(120)
+buyPrimaryItem = id(34), price(12)
+buyPrimaryItem = id(39), price(140)
+buyPrimaryItem = id(40), price(80)
+buyPrimaryItem = id(48), price(2)
+buyPrimaryItem = id(49), price(10)
+buyPrimaryItem = id(53), price(12)
+buyPrimaryItem = id(55), price(12)
+buyPrimaryItem = id(57), price(140)
+buyPrimaryItem = id(65), price(20)
+buyPrimaryItem = id(70), price(140)
+buyPrimaryItem = id(74), price(20)
+buyPrimaryItem = id(76), price(220)
+buyPrimaryItem = id(77), price(100)
+buyPrimaryItem = id(80), price(2)
+buyPrimaryItem = id(81), price(1)
+buyPrimaryItem = id(94), price(160)
+buyPrimaryItem = id(95), price(160)
+buyPrimaryItem = id(96), price(150)
+buyPrimaryItem = id(134), price(4)
+buyPrimaryItem = id(137), price(4)
+buyPrimaryItem = id(138), price(4)
+buyPrimaryItem = id(140), price(4)
+buyPrimaryItem = id(141), price(4)
+buyPrimaryItem = id(143), price(4)
+buyPrimaryItem = id(145), price(4)
+buyPrimaryItem = id(147), price(4)
+buyPrimaryItem = id(151), price(4)
+buyPrimaryItem = id(154), price(4)
+buyPrimaryItem = id(158), price(4)
+buyPrimaryItem = id(159), price(4)
+buyPrimaryItem = id(160), price(4)
+buyPrimaryItem = id(161), price(4)
+buyPrimaryItem = id(162), price(4)
+buyPrimaryItem = id(163), price(4)
+buyPrimaryItem = id(180), price(2)
+buyPrimaryItem = id(181), price(2)
+buyPrimaryItem = id(182), price(2)
+buyPrimaryItem = id(183), price(12)
+buyPrimaryItem = id(184), price(200)
+buyPrimaryItem = id(185), price(320)
+buyPrimaryItem = id(186), price(64)
+buyPrimaryItem = id(187), price(30)
+buyPrimaryItem = id(191), price(10)
+buyPrimaryItem = id(199), price(1)
+buyPrimaryItem = id(200), price(1)
+buyPrimaryItem = id(201), price(1)
+buyPrimaryItem = id(290), price(4)
+buyPrimaryItem = id(303), price(40)
+buyPrimaryItem = id(306), price(20)
+buyPrimaryItem = id(353), price(30)
+buyPrimaryItem = id(354), price(40)
+buyPrimaryItem = id(2276), price(20)
+buyPrimaryItem = id(2277), price(20)
+buyPrimaryItem = id(2278), price(20)
+buyPrimaryItem = id(2456), price(30)
+buyPrimaryItem = id(2459), price(20)
+buyPrimaryItem = id(2493), price(4)
+buyPrimaryItem = id(2922), price(20)
+buyPrimaryItem = id(2923), price(6)
+buyPrimaryItem = id(2940), price(14)
+buyPrimaryItem = id(3051), price(10)
+buyPrimaryItem = id(193), price(12)
+buyPrimaryItem = id(194), price(12)
+buyPrimaryItem = id(195), price(12)
+buyPrimaryItem = id(196), price(12)
+buyPrimaryItem = id(356), price(2)
+buyPrimaryItem = id(357), price(12)
+buyPrimaryItem = id(358), price(18)
+buyPrimaryItem = id(368), price(22)
+buyPrimaryItem = id(370), price(98)
+buyPrimaryItem = id(371), price(102)
+buyPrimaryItem = id(385), price(6)
+buyPrimaryItem = id(2295), price(20)
+buyPrimaryItem = id(2377), price(22)
+buyPrimaryItem = id(2380), price(22)
+buyPrimaryItem = id(2384), price(22)
+buyPrimaryItem = id(2416), price(22)
+buyPrimaryItem = id(2418), price(22)
+buyPrimaryItem = id(2419), price(22)
+buyPrimaryItem = id(2421), price(22)
+buyPrimaryItem = id(362), price(120)
+buyPrimaryItem = id(363), price(30)
+buyPrimaryItem = id(364), price(64)
+buyPrimaryItem = id(365), price(80)
+buyPrimaryItem = id(366), price(50)
+buyPrimaryItem = id(367), price(30)
+buyPrimaryItem = id(369), price(6)
+buyPrimaryItem = id(2111), price(160)
+buyPrimaryItem = id(2112), price(90)
+buyPrimaryItem = id(2113), price(160)
+buyPrimaryItem = id(2114), price(90)
+buyPrimaryItem = id(2116), price(160)
+buyPrimaryItem = id(2117), price(90)
+buyPrimaryItem = id(202), price(30)
+buyPrimaryItem = id(324), price(100)
+buyPrimaryItem = id(2286), price(300)
+buyPrimaryItem = id(2287), price(120)
+buyPrimaryItem = id(2290), price(50)
+buyPrimaryItem = id(2291), price(40)
+buyPrimaryItem = id(2302), price(30)
+buyPrimaryItem = id(2441), price(40)
+buyPrimaryItem = id(2444), price(80)
+buyPrimaryItem = id(207), price(240)
+buyPrimaryItem = id(208), price(240)
+buyPrimaryItem = id(209), price(290)
+buyPrimaryItem = id(2707), price(90)
+buyPrimaryItem = id(226), price(200)
+buyPrimaryItem = id(230), price(120)
+buyPrimaryItem = id(231), price(240)
+buyPrimaryItem = id(2664), price(16)
+buyPrimaryItem = id(2728), price(120)
+buyPrimaryItem = id(2737), price(240)
+buyPrimaryItem = id(293), price(4)
+buyPrimaryItem = id(2646), price(44)
+buyPrimaryItem = id(2685), price(80)
+buyPrimaryItem = id(2708), price(74)
+buyPrimaryItem = id(2714), price(20)
+buyPrimaryItem = id(2718), price(110)
+buyPrimaryItem = id(2727), price(10)
+buyPrimaryItem = id(498), price(46)
+buyPrimaryItem = id(916), price(150)
+buyPrimaryItem = id(917), price(130)
+buyPrimaryItem = id(2284), price(120)
+buyPrimaryItem = id(2388), price(20)
+buyPrimaryItem = id(2439), price(80)
+buyPrimaryItem = id(2445), price(24)
+buyPrimaryItem = id(2447), price(50)
+buyPrimaryItem = id(2448), price(12)
+buyPrimaryItem = id(330), price(6)
+
+"[gg]reetings" -> "Greebas! You want buy from great %NPCNAME?"
+"[hh]ello" -> "Hullo! Buy me things!"
+"[yy]ou.+[tt]rader" -> "Yub, me trader."
+"[ww]hat.+sell" -> "Me sell many shiny things, har har!"
+"[ww]hat.+[ss]hiny.+things" -> "Gems 'n stuff."
+"[tt]ell.+[ss]omething" -> "Nhub, you buy or go away!"
+"[gg]oodbye" -> "Hurr!"
+"[bb]ye" -> "Buy Buy!"
+"[ff]arewell" -> "Fareeba!"
+"[ww]hat.+buy" -> "Lots! Things wit' fight, armor, herbs, clothes 'n eating stuff!"
+"[ww]ho.+you?" -> "I'm strong and great %NPCNAME!"
+"i'm.+.+" -> "Me not interested. You buy or go 'way!"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]rü[ßs]e" -> "Greebas! Will kaufen von %NPCNAME?"
+"[gg]rüsse" -> "Hullo! Du kaufen Zeug!"
+"[hh]allo" -> "#me grunzt"
+"[dd]u.+[hh]ändler" -> "Yubba! Du will kaufen?"
+"[ww]as.+verkauf" -> "Mir verkaufen alles was glänzt!"
+"[ee]rzähl.+[ee]twas" -> "Kein' Lust! Kauf, oder geh weg!"
+"[aa]uf.+[bb]ald" -> "Hurr!"
+"[bb]is.+[bb]ald" -> "Fareeba!"
+"[ww]as.+%s[kk]auf" -> "Har Har! Ich kauf' Krieg Zeugs, Kleidung, Essen und Kräuters!"
+"[ww]er.+du?" -> "Ich bin starker %NPCNAME!"
+"ich.+bin.+.+" -> "Mir nix interessiert! Du kaufen, oder du gehen weg!"
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom event dispatch outside registration rules requires review.

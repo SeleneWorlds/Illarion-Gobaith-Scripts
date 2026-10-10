@@ -1,0 +1,36 @@
+-- Derived from old/stalljunge_ma.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Stalljunge"
+language = common
+language = human
+language = ancient
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+
+
+"[hh]ello", "[gg]reetings", "[hh]i" -> "Greetings."
+"[hh]allo", "[gg]r[uü][sß]+" -> "Grüß euch!"
+"[ww]ho.+" -> "I am %NPCNAME, ich bin Magier an dieser Akademie"
+"[ww]er.+" -> "Ich bin %NPCNAME, I'm a mage of this academy"
+"[bb]ye.+" -> "Be well"
+"[ww]as.+verkauf" -> "Ich verkaufe nichts! Ich beschwöre höhstens etwas."
+"[ww]hat.+sell" -> "I don't sell anything! I just summon things."
+"[ww]as.+beschwör" -> "Ich kann euch einen Golem beschwören, der Eure Sachen für euch trägt...wäre das nicht toll?"
+"[ww]hat.+summon" -> "I can summon a golem for you, which can carry your things...isn't that great?."
+"[ww]hat.+sell" -> "I don't sell anything!"
+"[ff]arewell" -> "Farewell"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Bis Bald", "Auf bald"
+"[kk]uh" -> "Ich habe keine Kühe."
+"cow" -> "I have no cows."
+
+-- Idle dialogue
+cycletext "#me schaut sich um", "#me looks around"
+cycletext "#me niest", "#me sneezes"
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: SayPrice, createCow, GetCow, returnCow, CheckMoney, Pay, CalcSilverCopper
+-- Custom event dispatch outside registration rules requires review.
+-- Movement, spawning or world changes require Lua hooks.

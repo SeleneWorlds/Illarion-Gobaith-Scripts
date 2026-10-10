@@ -1,0 +1,26 @@
+-- Derived from old/rosi.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Rosi Baggins"
+language = common
+language = halfling
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+
+
+"[gg]reetings", "[hh]ello" -> "Greetings. Can i help you?", "Be greeted. I'm %NPCNAME. Can I help you?"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Grüße. Kann ich euch helfen?", "Guten Tag. Ich bin %NPCNAME. Kann ich euch helfen?"
+"[yy]ou.+[tt]rader" -> "No. I'm no trader. I'm the tax collector of Greenbriar."
+"[ddii][uh]r*.+[hh]ändler" -> "Nein ich bin kein Händler. Ich bin der Steuerneintreiber von Greenbriar."
+"[ww]hat.+sell" -> "Nothing. I'm no trader so i sell nothing."
+"[ww]as.+verkauf" -> "Ich bin kein Händler also verkaufe ich auch nichts."
+"[tt]ell.+[ss]omething" -> "Sorry, I'm pretty busy right now."
+"[ee]rzähl.+[ww]as" -> "Tut mir leid, ich bin grad ziemlich beschäftigt."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Be well.", "Farewell!", "Good bye."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Auf wiedersehen.", "Auf bald"
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: CalcSilverCopper, TakeTaxes, MoneyText, Zeitform
+-- Custom event dispatch outside registration rules requires review.

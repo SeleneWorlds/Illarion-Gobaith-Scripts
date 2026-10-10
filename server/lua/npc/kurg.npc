@@ -1,0 +1,60 @@
+-- Derived from old/kurg.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Kurg"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+
+
+german, "gr[üue]+[sß]+e", "hallo", "guten.+tag" -> "Schön dich zu sehen! Wie gehts dir?  Ich bin Kurg der Metzger. Wie kann ich Ihnen helfen?"
+english, "greetings", "hello" -> "Greebas! How are joo?  Meh is Kurg da Butcher.  How may meh help joo?"
+"was.+verkaufe" -> "Ich verkaufe alle Arten von Fleisch: Kaninchen, Lamm, Rehe und Schweinefleisch für nur 2 Kupfer jeder. Schinken, Steak und Würste kosten 3 jeder."
+english, "what.+sell" -> "Meh sells all kinds ob meats: Rabbit, Lamb, Deer and Pork for only 2 coppers each.  Ham, Steak and sausages cost 3 each."
+"was.+kaufe" -> "Ich kaufe alle Arten von Fleisch: Kaninchen, Lamm, Rehe und Schweinefleisch für nur 1 Kupfer jeder. Schinken, Steak und Würste sind 2 jeder wert."
+english, "what.+buy" -> "Meh buys all kinds ob meats: Rabbit, Lamb, Deer and Pork for only 1 copper each.  Ham, Steak and Sausages are worth 2 each."
+"auf.+bald", "bis.+bald", "tschüss" -> "Bis bald!"
+"farewell", "bye", "good.+day" -> "Farrebas!"
+
+-- Idle dialogue
+cycletext "#me sieht sich für Kunden um", "#me looks around for customers"
+cycletext "#me haut etwas Fleisch ab und hängt es ", "#me chops up some meat and hangs it"
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- kurg.lua:23: AddCondition: unsupported condition idlestate
+-- kurg.lua:26: AddCondition: unsupported condition idlestate
+-- kurg.lua:47: AddConsequence: unsupported consequence talk
+-- kurg.lua:53: AddConsequence: unsupported consequence talk
+-- kurg.lua:59: AddConsequence: unsupported consequence talk
+-- kurg.lua:65: AddConsequence: unsupported consequence talk
+-- kurg.lua:71: AddConsequence: unsupported consequence talk
+-- kurg.lua:77: AddConsequence: unsupported consequence talk
+-- kurg.lua:83: AddConsequence: unsupported consequence talk
+-- kurg.lua:89: AddConsequence: unsupported consequence talk
+-- kurg.lua:95: AddConsequence: unsupported consequence talk
+-- kurg.lua:101: AddConsequence: unsupported consequence talk
+-- kurg.lua:107: AddConsequence: unsupported consequence talk
+-- kurg.lua:113: AddConsequence: unsupported consequence talk
+-- kurg.lua:119: AddConsequence: unsupported consequence talk
+-- kurg.lua:125: AddConsequence: unsupported consequence talk
+-- kurg.lua:130: AddConsequence: unsupported consequence talk
+-- kurg.lua:134: AddConsequence: unsupported consequence talk
+-- kurg.lua:140: AddConsequence: unsupported consequence talk
+-- kurg.lua:146: AddConsequence: unsupported consequence talk
+-- kurg.lua:152: AddConsequence: unsupported consequence talk
+-- kurg.lua:158: AddConsequence: unsupported consequence talk
+-- kurg.lua:164: AddConsequence: unsupported consequence talk
+-- kurg.lua:170: AddConsequence: unsupported consequence talk
+-- kurg.lua:176: AddConsequence: unsupported consequence talk
+-- kurg.lua:182: AddConsequence: unsupported consequence talk
+-- kurg.lua:188: AddConsequence: unsupported consequence talk
+-- kurg.lua:194: AddConsequence: unsupported consequence talk
+-- kurg.lua:200: AddConsequence: unsupported consequence talk
+-- kurg.lua:206: AddConsequence: unsupported consequence talk
+-- kurg.lua:212: AddConsequence: unsupported consequence talk
+-- kurg.lua:218: AddConsequence: unsupported consequence talk
+-- Custom event dispatch outside registration rules requires review.
+-- 32 complete dialogue rules omitted because a condition/action could not be represented safely.

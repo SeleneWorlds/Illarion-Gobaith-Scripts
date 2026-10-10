@@ -1,0 +1,27 @@
+-- Derived from old/yastahl.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Yastahl"
+language = common
+language = elf
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Fast mich nicht an!"
+useMsgUS = "Don't you touch me!"
+
+
+"[gg]reetings", "[hh]ello" -> "Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?", "Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?"
+"[gg]r[uü][sß]+", "[hh]allo" -> "Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?", "Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?"
+"[ss]ir.+[ee]lf" -> "Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?"
+"[hh]err.+[ee]lf" -> "Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?"
+"[cc]ommon" -> "'Tis a dreadful language, I fear. It's horribley blunt and unpoetic. It lacks the fluidity and poetic qualities of my people's language."
+"[aa]llgemein" -> "Das ist eine grässliche Sprache, fürchte ich. Sie ist furchtbar plump und unpoetisch. Ihr fehlt der Fluss und die Poetischen Qualitäten der Sprache meines Volkes."
+"[tt]each.*[ee]lven" -> "Not so fast. It is not that I am greedy, but it is customary among Elves that a student provide a tribute to his/her teacher."
+"[ee]lvish", "[ee]lven.+[ll]anguage", "[ee]lven.+[tt]ongue" -> "Are you interested in learning the Elven Tongue? I assure you that you would find new pathways of thought with the tools that the Elven language provides for the expression of those that understand it."
+"[ee]lfisch", "[ee]lfen.+[ss]prache", "[ss]prache.+[ee]lfen" -> "Seit ihr daran interessiert die Hohe Sprache der Elfen zu erlernen? Es besteht kein Zweifel, das ihr neue Pfade des Denkens dank der Sprache der Elfen begehen könntet."
+"[tt]ribute" -> "A Tribute...Now what shall be my tribute? There is no greater tribute than that which is found in nature. Perhaps you could provide me with a Night Angel's Blossom and a Firnis Blossom for starters. Come back with them an i will teach you the language."
+"[gg]abe" -> "Eine Gabe..was soll es sein? Es gibt keine größere Gabe als die die in der Natur gefunden werden kann. Vielleicht könntest du mir eine Nacht Engels Blüte und eine Firnis Blüte bringen. Bring mir diese ich werde dir die Sprache beibringen."
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: StartLearning, FirnisGeben, NachtGeben, SibanacGeben, GenLangSkill
+-- Custom event dispatch outside registration rules requires review.

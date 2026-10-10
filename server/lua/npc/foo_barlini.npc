@@ -1,0 +1,80 @@
+-- Derived from old/foo_barlini.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Foo Barlini"
+language = common
+language = human
+language = ancient
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger wech!"
+useMsgUS = "Dont ya' touch me!"
+
+
+"[gg]rü[sß]", "[hh]allo", "[gg]rue[sß]", "[tt]a[gc].*" -> "Ich grüße euch.", "Seid gegrüßt!"
+"[aa]uf.+[bb]ald", "[gg]ötter.+euch", "[bb]is.+[bb]ald", "[uu]ff.+[bb]ald", "[ff]ünf.+euch" -> "Auf bald."
+"[ww]er.+[bs][ie][si][td].+[di][uh].*", "[ww]ie.+[nn]ame", "[ww]ie.+[hh]ei[sß].+[di][uh]" -> "Ich bin %NPCNAME. Ich erhole mich hier grad ein wenig von dem Training."
+"[mm]agier" -> "Ich bin Magier an dieser Akademie."
+"[ww]as.+[tt]raini" -> "Ich habe das Erschaffen und Auflösen von Elementen geübt."
+"[ee]rschaff" -> "Eigentlich wollte ich mich ein wenig ausruhen, aber mit ein paar Münzen lasse ich mich vielleicht umstimmen."
+"[zz]eig" -> "Eigentlich wollte ich mich ein wenig ausruhen, aber mit ein paar Münzen lasse ich mich vielleicht umstimmen."
+"[hh]ilfe" -> "Willst du trainieren? Wenn du möchtest beschwöre ich dir ein paar Flammen, Giftwolken oder Steinmauern zum üben."
+german, "[tt]raining" -> "Willst du trainieren? Wenn du möchtest beschwöre ich dir ein paar Flammen, Giftwolken oder Steinmauern zum üben."
+"[ff]lamme" -> "Was für Flammen möchtest du? Feuerflammen sind im übrigen etwas günstiger als Eisflammen, aber sie sind auch schwächer."
+"[ss]tein", "[mm]auer" -> "Soll ich dir ein paar Steinmauern zum üben erschaffen? Das kostet dich aber ein paar Kupferstücke"
+"[gg]ift" -> "Wenn du mir ein paar Kupfermünzen gibt, dann beschwöre ich dir ein Feld mit Giftwolken, damit du üben kannst."
+german, "[ss]tudent" -> "Ich bin selbst grade erst mit dem Studium durch...ich möchte mich noch nicht mit Studenten belasten."
+"[ss]chüler" -> "Ich unterrichte nicht, tut mir leid."
+"[gg]reeting", "[hh]ello" -> "Greetings to you!", "Greetings"
+"[gg]oodbye", "[bb]ye", "[ff]arewell", "[ff]ive.+you" -> "Farewell.", "Goodbye"
+"[ww]ho.+you", "[ww]hat.+[nn]ame" -> "I am %NPCNAME. I just have a rest here from training."
+"[mm]age" -> "I'm a mage on this academy."
+"[ww]hat.+train" -> "I trained summoning and extinguishing of elements."
+"[ss]ummon" -> "I've actually wanted to make a rest. But maybe with a few coins you can return me."
+"[ss]how" -> "I've actually wanted to make a rest. But maybe with a few coins you can return me."
+"[hh]elp" -> "Have a training? If you want I summon a few flames, poison clouds or stone walls for you."
+english, "[tt]raining" -> "Have a training? If you want I summon a few flames, poison clouds or stone walls for you."
+"[ff]lame" -> "What kind of flames did you want? Fire flames area bit cheaper than ice flames, but they are also weaker."
+"[ww]all", "[ss]tone" -> "Should I summon a few stone walls for you? But this costs you a few coppercoins."
+"[pp]oison" -> "If you give me a few coppercoins, I'll summon a small field of poison clouds for you."
+english, "[ss]tudent" -> "I'm just finished my one apprenticeship...I take no students yet."
+"[pp]upil" -> "I'm not a teacher, sorry."
+"[ww]hat.+buy" -> "Thanks, but I already have everything I need."
+"[ww]hat.+sell" -> "I don't sell anything. Do I look like a merchant?"
+"buy" -> "I don't sell anything. Do I look like a merchant?"
+"sell" -> "Thanks, but I already have everything I need."
+"[ww]as.+kaufst" -> "Ich habe bereits alles, was ich brauche."
+"[ww]as.+verkaufst" -> "Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?"
+"[kk]aufen" -> "Ich verkaufe nichts. Sehe ich etwa aus wie ein Händler?"
+"[vv]erkaufen" -> "Danke nein, ich habe bereits alles, was ich brauche."
+english, "[gg]obaith" -> "This whole island group is called Gobiath. Nice place, the weather usually does not get too rough or too hot, I like it."
+english, "[gg]reenbriar" -> "Greenbriar is a settlement of the Halflings."
+"[hh]arbo[u]+r" -> "Troll's Bane and Vanima both have Harbors. The one southwest from Troll's Bane is bigger though but he is quite far away from the town."
+english, "[hh]ellbriar" -> "That was an evil dungeon near Greenbriar ! The evil cultists there sacrificed most of the halflings of Greenbriar."
+"[mm]agic.+[aa]cademy" -> "This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here."
+"[mm]age.+[aa]cademy" -> "This is the magic academy of gobaith. Its just allowed for mages, students and guests to be here."
+"[nn]orthmark" -> "Some Norodaj-Barbarians have settled in the north of Gobaith...they are a bit simple and have some fear of magic, because they can't understand it...better don't go there."
+"[ss]ilverbrand" -> "Silverbrand is the town of the dwarfes. They don't like elven, mages, fairys, and any other race except there own...in this order."
+english, "[vv]anima" -> "Tol Vanima is the \"Isle of the elven\"...a small island in the east of gobaith. You can reach it over the harbour or with one of the teleporters."
+english, "[tt]roll['s].+[bb]ane" -> "Well, that's the biggest town on Gobiath."
+english, "[vv]arshikar" -> "You find it past the small sand desert in the far northwest. I would use the Teleporter, the desert is full of dangerous scorpions."
+german, "[gg]obiath" -> "Diese ganze Inselgruppe wird Gobiath genannt. Nette Gegend, das Wetter wird nicht zu kalt oder zu heiß, ich bin gerne hier."
+german, "[gg]reenbriar" -> "Greenbriar is eine Halblingssiedlung im Süden Gobaiths."
+"[hh]afen" -> "Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane ist zwar größer aber auch sehr weit von der Stadt entfernt."
+german, "[hh]ellbriar" -> "Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bösartigen Kultisten dort haben die meisten der Halblinge geopfert."
+"[mm]agierakademie" -> "Dies hier ist die magische Akademie. Es ist nur Magiern, Studenten und ihren Gästen gestattet hier zu sein."
+"[mm]agische.+[aa]kademie" -> "Dies hier ist die magische Akademie. Es ist nur Magierin, Studenten und ihren Gästen gestattet hier zu sein."
+"[nn]ordmark" -> "Einige Norodaj-Barbaren haben sich im Norden Gobaiths angesiedelt. Sie sind etwas einfältig und haben große Angst vor Magie...geh besser nicht dorthin."
+"[ss]ilberbrand" -> "Silberbrand ist die unterirdische Stadt der Zwerge. Sie mögen keine Elfen, keine Magier, keine Feen und auch sonst keine Rasse außer ihrer eigenen..."
+german, "[vv]anima" -> "Tol Vanima ist die \"Insel der Elfen\"...eine kleine Insel im Osten von Gobaith. Du kannst sie über den Hafen oder mit einem Teleporter erreichen"
+german, "[tt]roll['s].+[bb]ane" -> "Tja, das ist die grösste Stadt auf Gobiath."
+"[vv]arshikar" -> "Das findet man weit im Nordwesten hinter der kleinen Sandwüste. Ich würde den Teleporter benutzen, die Wüste ist voller gefährlicher Skorpione."
+
+-- Idle dialogue
+cycletext "#me pflückt ein paar Früchte vom Baum.", "#me pick some fruits from the trees."
+cycletext "#me formt einen schimmernden Eisball in ihrer Hand.", "#me forms a gleaming iceball in her hand."
+cycletext "#me formt einen leuchtenden Feuerball in ihrer Hand.", "#me forms a shiny fireball in her hand."
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: SayPrice, getCreature, Pay, CalcSilverCopper, logToFile_npc
+-- Custom event dispatch outside registration rules requires review.

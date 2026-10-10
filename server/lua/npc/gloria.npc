@@ -1,0 +1,58 @@
+-- Derived from old/gloria.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Gloria"
+language = common
+language = human
+language = ancient
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't you touch me!"
+
+sellItem = id(2057), price(15), stack(1), quality(549)
+sellItem = id(2058), price(11), stack(1), quality(549)
+sellItem = id(2059), price(15), stack(1), quality(549)
+sellItem = id(2056), price(15), stack(1), quality(549)
+sellItem = id(1909), price(15), stack(1), quality(549)
+sellItem = id(49), price(30), stack(1), quality(333)
+sellItem = id(191), price(20), stack(1), quality(666)
+sellItem = id(306), price(20), stack(1), quality(666)
+sellItem = id(2276), price(120), stack(1), quality(333)
+sellItem = id(555), price(150), stack(1), quality(666)
+sellItem = id(2744), price(100), stack(1), quality(333)
+sellItem = id(155), price(5), stack(1), quality(666)
+buyPrimaryItem = id(2055), price(2)
+buyPrimaryItem = id(2952), price(3)
+buyPrimaryItem = id(2935), price(3)
+buyPrimaryItem = id(2497), price(5)
+buyPrimaryItem = id(2499), price(5)
+buyPrimaryItem = id(2500), price(5)
+buyPrimaryItem = id(2501), price(5)
+
+"[gg]reetings", "[hh]ello", "[hh]i" -> "Welcome. Can I help you?", "A good day to you."
+"[yy]ou.+[tt]rader" -> "I am %NPCNAME, I sell some usefull things. Do you need something?"
+"[tt]ell.+[aa]cademy" -> "I'm not good in history. If you want to now something of the magic academy better ask someone else."
+"[ww]hat.+sell" -> "I sell everything you need for a enjoyable break. You should not learn with a empty stomach."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "You are going? Good luck for your studies.", "Take care of you.", "Farewell. I hope you will come back soon."
+"[ww]hat.+buy" -> "I buy bottles with drinks and also the empty glasses and plates back."
+"[ww]ho.+you?" -> "My name is %NPCNAME."
+"i'm.+.+" -> "Nice to meet you. Did you need anything?"
+"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[gg]r[üu][ßs]+", "[hh]allo" -> "Seid gegrüßt. Kann ich euch behilflich sein?", "Guten Tag."
+"[dd]u.+[hh]ändler" -> "Ich bin %NPCNAME. Ich verkaufe einige nützliche Dinge hier. Braucht ihr etwas?"
+"[ww]as.+verkauf" -> "Ich verkaufe alles, was ihr für eine angenehme Pause braucht. Man sollte schließlich nicht auf hungrigem Magen studieren."
+"[ee]rzähl.+[aa]kademie" -> "Ich bin nicht so gut in Geschichte. Am besten fragt ihr deswegen jemand anderes."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Willst du schon gehen? Viel Glück bei deinen Studien.", "Du gehst schon? Gib auf dich acht, ich hoffe wir sehen uns bald wieder"
+"[ww]as.+.+%s[kk]auf" -> "Ich kaufe Getränke an und auch die leeren Gläser und Teller zurück."
+"[ww]er.+[ddii][uh]r*?" -> "Ich werde %NPCNAME genannt."
+"[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
+
+"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+
+-- Idle dialogue
+cycletext "#me notiert ein paar Zahlen auf ein Stück Pergament.", "#me notes a few numbers on a piece of pergament."
+cycletext "#me sortiert ein paar Dinge in ihrer Truhe neu.", "#me rearranges some things in her chest. "
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom event dispatch outside registration rules requires review.

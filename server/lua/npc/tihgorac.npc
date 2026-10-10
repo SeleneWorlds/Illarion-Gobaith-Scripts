@@ -1,0 +1,20 @@
+-- Derived from old/tihgorac.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Tihgorac"
+language = common
+language = orc
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Fast mich nicht an!"
+useMsgUS = "Don't you touch me!"
+
+
+"[gg]reetings", "[hh]ello", "[oo]rc" -> "Greebs, how be yoo? I is %NPCNAME, the warrior.", "Whub? Wut yoo wunt? Mes %NPCNAME, strung warrior. Yubba!"
+"[mm]ummies", "[mm]ummy" -> "Yuh. Yoo comes back wid innards of mummies tuh prove yerself and meh will teach yoo some tricks yoo can use tuh knock down big critters!"
+"[gg]rü[ßs]+e", "[hh]allo", "[oo]rk" -> "Gruß, wies dir geht? Ich %NPCNAME, großer Krieger.", "Wus? Wus willst? Ich %NPCNAME, starker Krieger! Har"
+"[mm]umie" -> "Ja. Komm her mit Innereinen um dich zu beweisen, dann %NPCNAME zeigen dir ein paar Tricks um große Viecher tot zu haun!"
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: StartLearning, AcceptLearning, EingeweideGeben, AxtGeben, CheckAxt, Teach
+-- Custom event dispatch outside registration rules requires review.

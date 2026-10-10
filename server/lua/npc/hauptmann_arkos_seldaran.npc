@@ -1,0 +1,128 @@
+-- Derived from old/hauptmann_arkos_seldaran.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Hauptmann Arkos Seldaran"
+language = common
+language = human
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Dont you touch me!"
+
+
+"[ww]er.+bist.+du" -> "Ich bin %NPCNAME. Wie ist dein Name?"
+"[ww]er.+seid.+ihr" -> "Mein Name ist %NPCNAME, wie lautet den eurer?"
+"[ww]ie.+hei[sß]+t.+du" -> "Ich heisse %NPCNAME. Wie ist dein Name?"
+"[dd]u.+bist" -> "Ich bin %NPCNAME. Wie ist dein Name?"
+"[ii]hr.+seid" -> "Ich bin %NPCNAME. Wie ist euer Name?"
+"[ii]ch.+bin.+neu" -> "Tach, schön dich zu treffen. Mein Name ist %NPCNAME, wie ist deiner?"
+"[ww]ie.+geht[s]" -> "Mir geht es eigentlich ganz gut, danke."
+queststatus(589) = 0, "[hh]elping,.+[mm]aking" -> "Aye, I could need your help. Maybe you can bring me a pipe and after this about 10 Sibanac leaves?"
+"[dd]ein.+[jj]ob" -> "Was interessiert dich was ich mache?"
+"[dd]ein.+[bb]eruf" -> "Was interessiert dich was ich mache?"
+"[ee]uer.+[bb]eruf" -> "Was interessiert dich was ich mache?"
+"[dd]eine.+[tt][äae]+tigkeit" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?"
+"[ee]ure.+[tt][äae]+tigkeit" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?"
+"[dd]eine.+[aa]ufgabe" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?"
+"[ee]ure.+[aa]ufgabe" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?"
+"[ww]as.+tust.+du" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?"
+"[ww]as.+tut.+ihr" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?"
+"[kk]aufen" -> "Ich verkaufe nichts! Sehe ich etwa aus wie ein Händler ?"
+"[vv]erkaufen" -> "Nein! Ich habe bereits alles, was ich brauche."
+"[ww]as.+kaufst" -> "Nein! Ich habe bereits alles, was ich brauche."
+"[ww]as.+verkaufst" -> "Ich verkaufe nichts! Sehe ich etwa aus wie ein Händler ?"
+german, "[gg]obiath" -> "Diese ganze Inselgruppe wird Gobiath genannt. Nette Gegend, das Wetter wird nicht zu rauh oder zu heiß, ich mag es."
+german, "[gg]reenbriar" -> "Greenbriar ist eine Halblingsstadt."
+"[hh]afen" -> "Troll's Bane und Vanima haben Häfen. Der Hafen südwestlich von Troll's Bane ist aber größer."
+german, "[hh]ellbriar" -> "Das war ein von einem barbarischen Kult besetzter Dungeon nahe bei Greenbriar. Die bösartigen Kultisten dort haben die meisten der Halblinge geopfert."
+"[mm]agierakademie" -> "Ihr wollt nicht wirklich DA hin ! Es wird gesagt, den Ort kann nur ein Magier erreichen. Die verwandeln dort Leute in Schweine, Kühe oder schlimmeres !"
+"[nn]ordmark" -> "Es ist da nicht kälter als anderswo auf Gobiath, abgesehen vom Nordwind im Winter. Dort haben sich einige Norodaj-Barbaren angesiedelt."
+"[ss]ilberbrand" -> "Silberbrand ist eine Zwergenstadt, in den bergen nordöstlich von Troll's Bane."
+german, "[vv]anima" -> "Tol Vanima ? Das ist eine ganze kleine Insel voller Bäume und Elfen."
+german, "[tt]roll['s].+bane" -> "Tja, das ist die grösste Stadt auf Gobiath."
+german, "[vv]arshikar" -> "Das findet man weit im Nordwesten hinter der kleinen Sandwüste. Ich würde den Teleporter benutzen, die Wüste ist voller Skorpione."
+"[ww]ho.+[a']+re.+you" -> "I am %NPCNAME. What's your name ?"
+"[ww]ho.+might.+you.+be" -> "I'm called %NPCNAME. And what might your name be ?"
+"[yy]our.+name" -> "My name is %NPCNAME. What is your name ?"
+"[yy]ou.+are" -> "I am %NPCNAME. What's your name ?"
+"[ii][.+a']+m.+new" -> "Nice to meet you, then. I am %NPCNAME, what is your name ?"
+"[hh]ow.+are.+you" -> "Oh, i am fine, thanks."
+"[yy]our.+job" -> "I don't want to talk about that right now."
+"[yy]our.+profession" -> "I don't want to talk about that right now."
+"[yy]our.+mission" -> "I'm looking for someone who can bring me some things. Would you like to help me?"
+"[yy]our.+mission" -> "I'm looking for someone who can bring me some things. Would you like to help me?"
+"[yy]our.+mission" -> "I'm looking for someone who can bring me some things. Would you like to help me?"
+"[yy]our.+task" -> "I'm looking for someone who can bring me some things. Would you like to help me?"
+"[ww]hat.+do.+you" -> "I'm looking for someone who can bring me some things. Would you like to help me?"
+"[bb]uy" -> "I don't sell anything. Do i look like a merchant ?"
+"[ss]ell" -> "Thanks, but i already have everything i need."
+"[ww]hat.+buy" -> "Thanks, but i already have everything i need."
+"[ww]hat.+sell" -> "I don't sell anything. Do i look like a merchant ?"
+english, "[gg]obaith" -> "This whole island group is called Gobiath. Nice place, the weather usually does not get too rough or too hot, i like it."
+english, "[gg]reenbriar" -> "Greenbriar is the city of the halflings."
+"[hh]arbo[u]+r" -> "Troll's Bane and Vanima both have Harbors. The one southwest from Troll's Bane is bigger though."
+english, "[hh]ellbriar" -> "That was an evil dungeon near Greenbriar ! The evil Cultists there sacrificed most of the Halflings of Greenbriar."
+"[mm]agic.+academy" -> "You don't want to go THERE ! It can only be reached by a mage, they say. They turn people into pigs or cows or worse things there!"
+"[nn]orthmark" -> "it's not cooler there than elsewhere on Gobiath, except for the north wind in winter. Some Norodaj-Barbarians have settled there."
+"[ss]ilverbrand" -> "Silverbrand is a dwarven town in the mountains northeast from Troll's Bane."
+english, "[vv]anima" -> "Tol Vanima ? That's a whole small island full of trees and elves."
+english, "[tt]roll['s].+bane" -> "Well, that's the biggest town on Gobiath."
+english, "[vv]arshikar" -> "You find it past the small sand desert in the far northwest. I would use the Teleporter, the desrt is full of scorpions."
+queststatus(589) = 0, "[hh]elfen", "[mm]achen" -> "Aye, ich könnt deine Hilfe gebrauchen, kannst du mir erstma' ne Pfeife bringen und danach etwa 10 Sibanacblätter?", queststatus(589) = 2
+queststatus(589) = 2, "[pp]feife" -> "Eine Pfeife kannst du dir sicher von einem Schreiner machen lassen, oder frag einen der Händler hier in der Stadt vielleicht verkauft dir einer von denen die Pfeife."
+queststatus(589) = 2, "[pp]ipe" -> "A pipe? A carpenter can make you surely one or even ask a merchant here in town. Maybe he would sell you one."
+queststatus(589) = 2, german, "[ss]ibanac", "[bb]lätter" -> "Sibanacblätter findet man in der nähe von Flüssen hinter Schilf und falls du da kein Glück hast schau dich mal in den Wäldern um, da findet man ab und zu auch Sibanac."
+queststatus(589) = 2, english, "[ss]ibanac", "[ll]eaves" -> "You can find Sibanac leaves not far away from rivers behind reed and if you can't find it there you could search for at the forest. From time to time you can find Sibanac there."
+queststatus(589) = 2, "[hh]elfen" -> "Aye, ich könnt deine Hilfe gebrauchen, kannst du mir erstma' ne Pfeife bringen und danach etwa 10 Sibanacblätter?"
+queststatus(589) = 2, "[hh]elping" -> "Aye, I could need your help. Maybe you can bring me a pipe and after this about 10 Sibanac leaves?", queststatus(589) = 2
+queststatus(589) = 2, "[jj]a" -> "Dann geh mal los und bring mir ne Pfeife und die 10 Sibanacblätter! Dann bring ich dir auch was bei.", queststatus(589) = 3
+queststatus(589) = 2, "[yy]es" -> "Well, then go and bring me a pipe and 10 sibanac leaves! Maybe then I might teach you something.", queststatus(589) = 3
+queststatus(589) = 2, "[nn]ein" -> "Dann verschwinde....oder komm wieder wenn du mir doch helfen willst!", queststatus(589) = 0
+queststatus(589) = 2, "[nn]o" -> "Come again, if you want to help me!", queststatus(589) = 0
+item(2744, "all") >= 1, queststatus(589) = 3, "[pp]feife" -> "Dank dir und jetzt bring mir noch die 10 Sibanacblätter!", queststatus(589) = 4, deleteItem(2744, 1)
+item(2744, "all") >= 1, queststatus(589) = 3, "[pp]ipe" -> "Thank you. Now bring me the 10 Sibanac leaves!", queststatus(589) = 4, deleteItem(2744, 1)
+item(155, "all") >= 10, queststatus(589) = 4, german, "[ss]ibanac" -> "Arr...das hast du gut gemacht. Aber mir fällt noch ein, dass ich kein Essen mehr hab. Kannst mir noch 20 geräucherten Schinken bringen?", queststatus(589) = 5, deleteItem(155, 10)
+item(155, "all") >= 10, queststatus(589) = 4, english, "[ss]ibanac" -> "Arr...well done! But there I remember, I got nothing to eat! Maybe you can bring me 20 ham?", queststatus(589) = 5, deleteItem(155, 10)
+item(306, "all") >= 20, queststatus(589) = 6, "[ss]chinken" -> "Gut, gut dann pass mal gut auf was ich dir jetzt zeige. Sag 'Los' wenn ich beginnen soll.", queststatus(589) = 7, deleteItem(306, 20)
+queststatus(589) = 5, "[ss]chinken" -> "Den Schinken kannst du in Trollsbane bei den Schweinen holen und dann musst du zum Räucheroffen gehn und den rohen Schinken räuchern. Und dann kommst du zu mir und gibst es mir!"
+item(306, "all") >= 20, queststatus(589) = 6, "[hh]am" -> "Well, pay attention to what I say you now! If you are ready, say ready.", queststatus(589) = 7, deleteItem(306, 20)
+queststatus(589) = 5, "[hh]am" -> "You can pick up meat by the pigs in Trollsbane and after this, you have to go to the fumigation house for curing the meat. If you've done this, come to me and give it me!"
+queststatus(589) = 3, german, "[ss]ibanac" -> "Ey..was soll ich damit? Bring mir erstmal die Pfeife und dann erst die 10 Sibanacblätter!"
+queststatus(589) = 3, english, "[ss]ibanac" -> "Ey, what I should do with this? First bring me the pipe and after this the 10 Sibanac leaves!"
+item(2744, "all") < 1, queststatus(589) = 3, "[pp]feife" -> "Sach mal bist du taub oder dämlich? Du hast die Pfeife gar nicht dabei, bring sie mir wenn ich dir was beibringen soll!"
+item(2744, "all") < 1, queststatus(589) = 3, "[pp]ipe" -> "Say, are you deaf or daffy? You haven't got the pipe in you inventory, bring it me, if you want to learn something!"
+queststatus(589) = 4, item(155, "all") < 10, german, "[ss]ibanac" -> "Bring mir die 10 Sibanacblätter wenn du was von mir lernen willst."
+queststatus(589) = 4, item(155, "all") < 10, english, "[ss]ibanac" -> "Bring me 10 Sibanac leaves, if you want to learn someting!"
+queststatus(589) = 5, "[jj]a" -> "Spitze! Ich wart hier auf dich und wärm mich schon mal auf, für dein Training.", queststatus(589) = 6
+queststatus(589) = 5, "[yy]es" -> "Good! I'll wait on you and I will warm me up for your training!", queststatus(589) = 6
+queststatus(589) = 5, "[nn]ein" -> "Wenn du mir kein Essen bringen willst Freundchen, bring ich dir auch nix bei, so einfach is das! Wenn du es dir anders überlegst, dann sprich mich einfach wieder an.", queststatus(589) = 100
+queststatus(589) = 5, "[nn]o" -> "If you don't want to bring me something to eat, I won't teach you something! If you've decided you in another way, come and talk to me again!", queststatus(589) = 100
+queststatus(589) = 7, skill("tactics") <= 60, "[ll]os" -> "#me zeigt dir ein taktisches Kampfmanöver.", skill("tactics") + 5, queststatus(589) = 8
+queststatus(589) = 7, skill("tactics") > 60, "[ll]os" -> "#me zeigt dir ein taktisches Kampfmanöver.", skill("tactics") + 1, queststatus(589) = 8
+queststatus(589) = 7, skill("tactics") <= 60, "[rr]eady" -> "#me shows you some tactical maneuvers.", skill("tactics") + 5, queststatus(589) = 8
+queststatus(589) = 7, skill("tactics") > 60, "[rr]eady" -> "#me shows you some tactical maneuvers.", skill("tactics") + 1, queststatus(589) = 8
+queststatus(589) = 8, german, "" -> "Lass mich in Ruhe, ich hab dir schon etwas beigebracht."
+queststatus(589) = 8, english, "" -> "Don't bother me, I've taught you anything yet!"
+queststatus(589) < 2, "[hh]elp" -> "I'm looking for someone who can bring me some things. Would you like to help me?", queststatus(589) = 2
+queststatus(589) < 2, "[hh]ilfe" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?", queststatus(589) = 2
+
+-- Idle dialogue
+cycletext "#me blickt sich um, offenbar jemanden suchend.", "#me looks around, it seems he's looking for someone."
+cycletext "#me trägt eine alte albarische Rüstung", "#me wears an old albarian armor"
+cycletext "#me blickt gedankenverloren zum Himmel", "#me looks lost in thought to the sky"
+cycletext "#me versucht vergeblich, seine stumpf gewordene albarische Rüstung zu polieren.", "#me tries in vain to polish his dull albarian armor."
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- hauptmann_arkos_seldaran.lua:101: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:106: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:111: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:152: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:159: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:238: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:246: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:254: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:262: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:270: AddConsequence: unsupported consequence talk
+-- hauptmann_arkos_seldaran.lua:277: AddConsequence: unsupported consequence talk
+-- Custom event dispatch outside registration rules requires review.
+-- 11 complete dialogue rules omitted because a condition/action could not be represented safely.

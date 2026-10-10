@@ -1,0 +1,14 @@
+-- Derived from old/lasttier_ma.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Transportkuh"
+language = common
+defaultLanguage = common
+autointroduce = on
+
+
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom Lua functions require review: InitNPC, genDepotPos, MoveX, MoveY, CheckItem, isPassable, GetTileMod
+-- Hand-written Lua event handlers require migration beyond extracted static dialogue/metadata.
+-- Movement, spawning or world changes require Lua hooks.

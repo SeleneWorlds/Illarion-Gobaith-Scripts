@@ -1,0 +1,24 @@
+-- Derived from old/bob.lua; UTF-8.
+-- Archived Lua remains the reference for custom behavior.
+name = "Bob"
+language = common
+language = gnome
+defaultLanguage = common
+autointroduce = on
+useMsgDE = "Finger weg!"
+useMsgUS = "Don't touch me!"
+
+
+german, "hallo", "gr[üue]+[sß]", "guten.+tag", "aho[ij]", "tach" -> "Sei mir gegrüßt. Brauchst du Hilfe bei der Suche nach einem bestimmten Buch?"
+german, "[gg]ute.+nacht", "wieder.+sehen", "[tt]sch[üue]+[sß]", "[tt]tschau", "[gg]ehabt.+euch", "[aa]uf.+bald", "[bb]is.+bald" -> "Machs gut. Ich hoff, wir sehen uns bald wieder. Und halt die Großen immer schön fern."
+german, "name", "wie.+hei[sß].+du", "wer.+bist.+du", "wer.+seid.+ihr" -> "Ich bin %name, die Schreiberin hier in der Grauen Zuflucht."
+race(orc), german, ".+" -> "So einer wie Du hat hier nichts zu suchen. Hau ab oder ich ruf die Wachen!"
+race(orc), english, ".+" -> "You should not be here. Leave before i call for guards!"
+german, item(68, "body") >= 1, money >= 100, "[bb]rauch.+[ss]chl[üue]ssel", "[mm][öoe]chte.+schl[üue]ssel" -> "Hier hast du einen.", money - 100, item(1, 1, 199, 0)
+
+-- Idle dialogue
+cycletext "#me sortiert Bücher in den Regalen", "#me sorts books in the shelfs."
+
+-- Migration follow-up
+-- No NPC data record: supply appearance and placement before spawning.
+-- Custom event dispatch outside registration rules requires review.
