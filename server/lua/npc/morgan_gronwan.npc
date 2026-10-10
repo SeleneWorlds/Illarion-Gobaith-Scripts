@@ -49,12 +49,13 @@ sellItem = id(49), price(20), stack(1), quality(333)
 buyPrimaryItem = id(49), price(5)
 sellItem = id(2529), price(5), stack(1), quality(333)
 
+"[ww]hat.+sell" -> "I trade with leather clothes, leather armors, weapons, food and more.", trade_buy
+"[ww]as.+verkauf" -> "Ich handel mit Lederkleidung, Lederrüstungen, Waffen, Nahrung und mehr.", trade_buy
+"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reet.+", "[hh]ello" -> "Greetings. How can I help you?", "Hello. You are hungry? I have a very good mushroom soup. Or do you need something of my leather wares?"
 "[gg]rüße", "[hh]allo", "[gg]rüse" -> "Grüße. Wie kann ich euch helfen?", "Hallo. Bist du hungrig? Ich habe sehr gute Pilzsuppe. Oder brauchst du etwas von meinen Lederwaren?"
 "[yy]ou.+[tt]rader" -> "I'm a trader of goods for hunters. Do you need something of my leather wares or weapons? I also have food as provisions for long travels."
 "[ddii][uh]r*.+[hh]ändler" -> "Nunja, ich handle mit Sachen für den Jagdbedarf. Brauchst du vielleicht etwas von meinen Lederwaren oder Waffen? ich biete auch Proviant für Reisende an."
-"[ww]hat.+sell" -> "I trade with leather clothes, leather armors, weapons, food and more."
-"[ww]as.+verkauf" -> "Ich handel mit Lederkleidung, Lederrüstungen, Waffen, Nahrung und mehr."
 "[ww]hat.+[ww]are" -> "I have leather clothes, leather armors, weapons, food and more."
 "[ww]as.+[ww]are" -> "Ich habe Leder Kleidung, Leder Rüstungen, Waffen, Nahrung und mehr."
 "[ww]hat.+[cc]loth" -> "See I made good leather gloves, leather boots, short and long leather legs."
@@ -77,4 +78,6 @@ sellItem = id(2529), price(5), stack(1), quality(333)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy

@@ -31,6 +31,8 @@ buyPrimaryItem = id(236), price(50)
 sellItem = id(1008), price(400), stack(1), quality(649)
 buyPrimaryItem = id(1008), price(50)
 
+"[ww]hat.+sell", "[ww]as.+verkauf" -> trade_buy
+"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
 "[hh]ello", "[gg]reetings" -> "Greetin's.", "Aye! Greetins to ye'."
 "[hh]allo", "[gg]rü[ßs]+e" -> "Moin", "Aye. Grüß euch."
 "[jj]ob" -> "I'm an importer, and I pull in wares from far and wide. Puts the jingle in me purse."
@@ -47,4 +49,6 @@ buyPrimaryItem = id(1008), price(50)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy

@@ -177,17 +177,19 @@ buyPrimaryItem = id(2447), price(50)
 buyPrimaryItem = id(2448), price(12)
 buyPrimaryItem = id(330), price(6)
 
+"[ww]hat.+sell" -> "Me sell many shiny things, har har!", trade_buy
+"[ww]as.+verkauf" -> "Mir verkaufen alles was glänzt!", trade_buy
+"[ww]hat.+buy" -> "Lots! Things wit' fight, armor, herbs, clothes 'n eating stuff!", trade_sell
+"[ww]as.+%s[kk]auf", "[ww]as.*%s[kk]auf" -> "Har Har! Ich kauf' Krieg Zeugs, Kleidung, Essen und Kräuters!", trade_sell
 "what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 "[gg]reetings" -> "Greebas! You want buy from great %NPCNAME?"
 "[hh]ello" -> "Hullo! Buy me things!"
 "[yy]ou.+[tt]rader" -> "Yub, me trader."
-"[ww]hat.+sell" -> "Me sell many shiny things, har har!"
 "[ww]hat.+[ss]hiny.+things" -> "Gems 'n stuff."
 "[tt]ell.+[ss]omething" -> "Nhub, you buy or go away!"
 "[gg]oodbye" -> "Hurr!"
 "[bb]ye" -> "Buy Buy!"
 "[ff]arewell" -> "Fareeba!"
-"[ww]hat.+buy" -> "Lots! Things wit' fight, armor, herbs, clothes 'n eating stuff!"
 "[ww]ho.+you?" -> "I'm strong and great %NPCNAME!"
 "i'm.+.+" -> "Me not interested. You buy or go 'way!"
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
@@ -195,13 +197,13 @@ buyPrimaryItem = id(330), price(6)
 "[gg]rüsse" -> "Hullo! Du kaufen Zeug!"
 "[hh]allo" -> "#me grunzt"
 "[dd]u.+[hh]ändler" -> "Yubba! Du will kaufen?"
-"[ww]as.+verkauf" -> "Mir verkaufen alles was glänzt!"
 "[ee]rzähl.+[ee]twas" -> "Kein' Lust! Kauf, oder geh weg!"
 "[aa]uf.+[bb]ald" -> "Hurr!"
 "[bb]is.+[bb]ald" -> "Fareeba!"
-"[ww]as.+%s[kk]auf" -> "Har Har! Ich kauf' Krieg Zeugs, Kleidung, Essen und Kräuters!"
 "[ww]er.+du?" -> "Ich bin starker %NPCNAME!"
 "ich.+bin.+.+" -> "Mir nix interessiert! Du kaufen, oder du gehen weg!"
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy

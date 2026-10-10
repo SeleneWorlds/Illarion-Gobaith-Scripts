@@ -51,12 +51,13 @@ buyPrimaryItem = id(23), price(5)
 sellItem = id(311), price(40), stack(1), quality(570)
 buyPrimaryItem = id(311), price(5)
 
+"[ww]hat.+sell" -> "I sell all kinds of wares for everyday use.", trade_buy
+"[ww]as.+verkauf" -> "Ich verkaufe alle Arten von Waren für den täglichen Gebrauch.", trade_buy
+"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reetings", "[hh]ello" -> "Welcome. How can I help you?", "Good day. Do you need something?"
 "[gg]rü[ßs]+e", "[hh]allo" -> "Willkommen. Wie kann ich euch helfen?", "Guten Tag. Braucht ihr etwas?"
 "[yy]ou.+[tt]rader" -> "A trader I am, right. I trade very different wares."
 "[iidd][hu][r.+].*[hh]ändler" -> "Ich bin ein Händler, richtig. Ich handle mit verschiedenen Waren."
-"[ww]hat.+sell" -> "I sell all kinds of wares for everyday use."
-"[ww]as.+verkauf" -> "Ich verkaufe alle Arten von Waren für den täglichen Gebrauch."
 "[ww]hat.+[ww]ares" -> "Resources, for example. Or different tools."
 "[ww]as.+[ww]are" -> "Rohstoffe zum Beispiel. Oder verschiedene Werkzeuge."
 "[tt]ell.+[ss]omething" -> "Once upon a time, I came here. Now I am here. Isn't that interesting?"
@@ -71,4 +72,6 @@ buyPrimaryItem = id(311), price(5)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy

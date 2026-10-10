@@ -37,23 +37,24 @@ buyPrimaryItem = id(164), price(5)
 sellItem = id(1317), price(25), stack(1), quality(333)
 buyPrimaryItem = id(1317), price(5)
 
+"[ww]hat.+sell" -> "I sell herbs.", trade_buy
+"[ww]as.+verkauf" -> "Ich verkauf' Pflanzen und Flaschen.", trade_buy
+"[ww]hat.+buy" -> "I prefer to buy herbs and bottles.", trade_sell
+"[ww]as.+%s[kk]auf", "[ww]as.*%s[kk]auf" -> "Ich kauf' Pflanzen und Tränke. Hast du sowas dabei?", trade_sell
 "[gg]reetings", "[hh]ello", "[hh]i" -> "Welcome to Greenbriar my friend! Can I help you?", "A good day to you my friend! You look fine today."
 "[yy]ou.+[tt]rader" -> "I am %NPCNAME, one of Greenbriar's best traders!"
 "[tt]ell.+[gg]reenbriar" -> "I'm not as good in history as Timo is. If you want to know something of Greenbriar talk to him my friend."
 "[ww]ho.+[tt]imo" -> "Timo is the trader over there my friend."
 "[ww]here.+[tt]imo" -> "#me points right to the halfling near the house"
-"[ww]hat.+sell" -> "I sell herbs."
 "[ww]hat.+[hh]erb" -> "I trade with all kinds of different herbs. Firnis blossoms for example. Would you like to see my list of wares?"
 "[ww]hat.+[pp]otion" -> "I do not have any potions anymore"
 "[ww]hat.+[bb]ottle" -> "I trade with big and small empty bottles."
 "[gg]oodbye", "[bb]ye", "[ff]arewell" -> "You are going my friend? Take care of yourself.", "You are already on the way my friend? Take care of yourself and have a good meal.", "Farewell. I hope you will come back soon my friend."
-"[ww]hat.+buy" -> "I prefer to buy herbs and bottles."
 "[ww]ho.+you?" -> "My name is %NPCNAME my friend."
 "i'm.+.+" -> "That is the name of a good friend. Nice to meet you!"
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
 "[gg]r[üu][ßs]+", "[hh]allo" -> "Hallo mein Freund, du siehst heute wieder gut aus.", "Guten Tag mein Freund! Wie geht es dir mein Freund?"
 "[dd]u.+[hh]ändler" -> "Ich bin %NPCNAME, einer von Greenbriars besten Händlern mein Freund!"
-"[ww]as.+verkauf" -> "Ich verkauf' Pflanzen und Flaschen."
 "[ww]as.+[pp]flanz" -> "Ich handel ne ganze Menge Pflanzen und Kräuter. Firnisblüten zum Beispiel."
 "[ww]as.+[tt]r[aä]nk" -> "Ich habe keine Tränke mehr."
 "[ww]as.+[ff]lasch" -> "Ich handel mit großen und kleinen leeren Flaschen"
@@ -61,10 +62,11 @@ buyPrimaryItem = id(1317), price(5)
 "[ww]er.+[tt]imo" -> "Timo ist der Händler dort drüben mein Freund."
 "[ww]o.+[tt]imo" -> "#me deutet nach rechts auf den Halbling neben dem Haus"
 "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Du bist schon auf dem Weg mein Freund? Pass auf dich auf und komm bald wieder!", "Du gehst schon mein Freund? Gib auf dich acht und iss was Gutes!"
-"[ww]as.+%s[kk]auf" -> "Ich kauf' Pflanzen und Tränke. Hast du sowas dabei?"
 "[ww]er.+[ddii][uh]r*?" -> "Ich werde %NPCNAME genannt mein Freund."
 "[ii]ch.+bin" -> "Das ist der Name eines guten Freundes. Schön dich kennen zu lernen!"
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy

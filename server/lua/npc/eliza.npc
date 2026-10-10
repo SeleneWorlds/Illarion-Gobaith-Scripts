@@ -47,8 +47,11 @@ buyPrimaryItem = id(2111), price(35)
 sellItem = id(2116), price(400), stack(1), quality(449)
 buyPrimaryItem = id(2116), price(35)
 
+"[ww]hat.+sell" -> "I trade with shieldsss, greavesss, armorsss and weaponsss. Everything made of metal. sss", trade_buy
+"[ww]as.+verkauf" -> trade_buy
+"[ww]as.+kauf", "[ww]as.*%s[kk]auf" -> "Sss. Ich handle mit Ssschilden, Beinschienen, Rüssstungen und Waffen. Alles aus Metall. ssss", trade_sell
+"[ww]hat.+buy" -> trade_sell
 "[gg]reet", "[hh]ello" -> "Greetingsss. What isss it you want? Zss.", "Greetingsss. You are interesssted in my waresss?"
-"[ww]hat.+sell" -> "I trade with shieldsss, greavesss, armorsss and weaponsss. Everything made of metal. sss"
 "[ww]hat.+[ss]hield" -> "Whatever you likesss: light, normal and large metal shieldsss and round metal shieldsss"
 "[ww]hat.+[aa]rmor" -> "Besst armorsss: steel glovesss, steel bootsss, albarian officersss armorss, light mercenary armorss, Lor-Angur guardiansss armorss, steel plate, heavy red plate armorss and heavy plate armorss. For more goodsss asssk for my lissst of waresss."
 "[ww]hat.+[ww]eapon" -> "I trade with two-handed swordss, rapierss, razor bladess, serinjah-swordss. For more goodsss asssk for my lissst of waresss."
@@ -56,7 +59,6 @@ buyPrimaryItem = id(2116), price(35)
 "[bb]ye", "[ff]arewell", "[bb]e.+[ww]ell" -> "Good day. Zhelphia may blesss you. Ssss.", "Sss. Farewell. You are welcome to come back."
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
 "[gg]rü[ßs]+e", "[hh]allo" -> "Grüssse. Wasss wollt ihr? Zsss", "Grüssse. Habt ihr Interessse an meinen Waren? Zsss"
-"[ww]as.+kauf" -> "Sss. Ich handle mit Ssschilden, Beinschienen, Rüssstungen und Waffen. Alles aus Metall. ssss"
 "[ww]as.+[ss]child" -> "Wasss auch immer du brauchssst: leichte, normale und große Metallschilde und Metallrundsschilde"
 "[ww]as.+[rr]üstung" -> "Bessste Rüssstungen: Ssstahl Handschuhe und Ssstiefel, Albarische Offiziersss Rüssstungen, leicht Sssöldner Rüssstungen, Lor-Angur Wächter Rüssstungen, Ssstahl Plattenpanzer, ssschwere Rote und ssschwere Ssstahlpanzer."
 "[ww]as.+[ww]affen" -> "Ich handle mit Degen, Rasssierklingen, Ssserinjah-Ssschwertern und Zzweihänderr."
@@ -65,7 +67,9 @@ buyPrimaryItem = id(2116), price(35)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 -- Idle dialogue
 cycletext "#me isst einen Fisch", "#me eats a fish"

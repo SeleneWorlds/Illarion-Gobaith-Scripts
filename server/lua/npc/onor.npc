@@ -19,9 +19,10 @@ wrongLangUS = "#me looks at you a little confused"
 sellItem = id(3077), price(100), stack(1), quality(333)
 sellItem = id(61), price(10000), stack(1), quality(333)
 
+"[ww]hat.+sell" -> "I exchange coins.", trade_buy
+"[ww]as.+verkauf" -> "Ich tausche Münzen.", trade_buy
+"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reet", "[hh]ello" -> "Greetings. What can I do for you?", "Greetings. You are interested in money?"
-"[ww]hat.+sell" -> "I exchange coins."
-"[ww]as.+verkauf" -> "Ich tausche Münzen."
 "[bb]ye", "[ff]arewell", "[bb]e.+[ww]ell" -> "Good day. Safe travels.", "Farewell. You are always welcome."
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'Price of ...'"
 "[gg]rü[ßs]+e", "[hh]allo" -> "Grüße. Was kann ich für Euch tun?", "Grüße. Habt ihr Interesse an Geld?"
@@ -29,7 +30,9 @@ sellItem = id(61), price(10000), stack(1), quality(333)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Was ist der Preis von <Ware>'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 -- Idle dialogue
 cycletext "#me schnippst ein Kupferstück in die Luft", "#me flips a copper coin into the air"

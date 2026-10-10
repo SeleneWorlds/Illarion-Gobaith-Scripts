@@ -43,12 +43,12 @@ buyPrimaryItem = id(55), price(3)
 sellItem = id(2380), price(70), stack(1), quality(555)
 buyPrimaryItem = id(2380), price(7)
 
+"[ww]hat.+sell" -> "I sell grey and fine dyed cloth, red and black shirts, cloth gloves, blue dresses and coats, black trousers, needles, scissors and thread.", trade_buy
+"[ww]as.+verkauf" -> "Ich verkaufe graue und gefärbte Stoffe, rote und schwarze Hemden, Stoffhandschuhe, blaue Kleider und Mäntel, schwarze Hose, Nadeln, Scheren und Garn.", trade_buy
+"[ww]hat.+buy" -> "I buy dyed cloth, red and black shirts, cloth gloves, blue dresses and coats and black trousers.", trade_sell
+"[ww]as.+%skauf", "[ww]as.*%s[kk]auf" -> "Ich kaufe gefärbten Stoff, rote, blaue und schwarze Hemden, Stoff Handschuhe, blaue Kleider und schwarze Hosen.", trade_sell
 "[gg]reetings", "[hh]ello" -> "Greetings", "Hello"
 "[gg]r[uü][sß]+", "[hh]allo" -> "Grüß euch", "Hallo"
-"[ww]hat.+sell" -> "I sell grey and fine dyed cloth, red and black shirts, cloth gloves, blue dresses and coats, black trousers, needles, scissors and thread."
-"[ww]as.+verkauf" -> "Ich verkaufe graue und gefärbte Stoffe, rote und schwarze Hemden, Stoffhandschuhe, blaue Kleider und Mäntel, schwarze Hose, Nadeln, Scheren und Garn."
-"[ww]hat.+buy" -> "I buy dyed cloth, red and black shirts, cloth gloves, blue dresses and coats and black trousers."
-"[ww]as.+%skauf" -> "Ich kaufe gefärbten Stoff, rote, blaue und schwarze Hemden, Stoff Handschuhe, blaue Kleider und schwarze Hosen."
 "[ww]ho.+you" -> "I'm Maris Maroqué, tailor and trader of tailor needs"
 "[ww]er.+[ddii][uh]r*" -> "Ich bin Maris Maroqué, Schneider und Händler für Schneidereibedarf."
 "[dd]yer" -> "No, I'm not a dyer. Can't tell you any secrets."
@@ -65,4 +65,6 @@ buyPrimaryItem = id(2380), price(7)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy

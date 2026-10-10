@@ -26,30 +26,32 @@ sellItem = id(547), price(1000), stack(1), quality(333)
 sellItem = id(548), price(1500), stack(1), quality(333)
 buyPrimaryItem = id(164), price(3)
 
+"[ww]hat.+sell" -> "I sell potions and some useful stuff for mages.", trade_buy
+"[ww]as.+verkauf" -> "Ich verkaufe Tränke sowie diverse Ausrüstung für Magier.", trade_buy
+"[ww]hat.+buy" -> "I buy empty bottles, open scrolls and ink.", trade_sell
+"[ww]as.+%s[kk]auf", "[ww]as.*%s[kk]auf" -> "Ich kaufe leere Flaschen, offene Pergamentrollen und Tinte.", trade_sell
 "[gg]reetings", "[hh]ello", "[hh]i" -> "Welcome. Can I help you?", "A good day to you."
 "[yy]ou.+[tt]rader" -> "I am %NPCNAME, I sell some useful things. Do you need something?"
 "[tt]ell.+[aa]cademy" -> "I'm not good in history. If you want to know something about the magic academy better ask someone else."
-"[ww]hat.+sell" -> "I sell potions and some useful stuff for mages."
 "[ww]hat.+[pp]otion" -> "I sell mana potions and antidotes. And I have some bottles of ink."
 "[ww]hat.+[bb]ottle" -> "I trade with empty bottles."
 "[gg]oodbye", "[bb]ye", "[ff]arewell" -> "You are going? Good luck for your studies.", "Take care of yourself.", "Farewell. I hope you will come back soon."
-"[ww]hat.+buy" -> "I buy empty bottles, open scrolls and ink."
 "[ww]ho.+you?" -> "My name is %NPCNAME."
 "i'm.+.+" -> "Nice to meet you. Did you need anything?"
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
 "[gg]r[üu][ßs]+", "[hh]allo" -> "Seid gegrüßt. Kann ich euch behilflich sein?", "Guten Tag."
 "[dd]u.+[hh]ändler" -> "Ich bin %NPCNAME. Ich verkaufe einige nützliche Dinge hier. Braucht ihr etwas?"
-"[ww]as.+verkauf" -> "Ich verkaufe Tränke sowie diverse Ausrüstung für Magier."
 "[ww]as.+[tt]r[aä]nk" -> "Ich verkaufe Manatränke und Gegengifte. Ich hab sogar ein paar Flaschen Tinte."
 "[ww]as.+[ff]lasch" -> "Ich handel mit leeren Flaschen"
 "[ee]rzähl.+[aa]kademie" -> "Ich bin nicht so gut in Geschichte. Am besten fragt ihr deswegen jemand anderes."
 "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Willst du schon gehen? Viel Glück bei deinen Studien.", "Du gehst schon? Gib auf dich acht, ich hoffe wir sehen uns bald wieder"
-"[ww]as.+%s[kk]auf" -> "Ich kaufe leere Flaschen, offene Pergamentrollen und Tinte."
 "[ww]er.+[ddii][uh]r*?" -> "Ich werde %NPCNAME genannt."
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 -- Idle dialogue
 cycletext "#me notiert ein paar Zahlen auf ein Stück Pergament.", "#me notes a few numbers on a piece of parchment."

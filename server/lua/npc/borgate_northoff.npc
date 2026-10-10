@@ -39,8 +39,10 @@ sellItem = id(1858), price(10), stack(1), quality(549)
 buyPrimaryItem = id(1858), price(2)
 buyPrimaryItem = id(2498), price(1)
 
+"[ww]hat.+sell" -> "Drinks and more. What did you think? It's a Bar. And now, tell me: What do you want?", trade_buy
+"[ww]as.+verkauf" -> "Ich verkaufe alles, was das Herz begehrt: Met, Wein, Bier, und so weiter. Willst du was?", trade_buy
+"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reet", "[hh]ello" -> "Aahr! Be greeted in 'The Fluffy Sheep Tavern'. What do you want to drink?", "Hello. What do I have to make you?"
-"[ww]hat.+sell" -> "Drinks and more. What did you think? It's a Bar. And now, tell me: What do you want?"
 "[yy]ou.+[bb]arkeeper" -> "What do you think I have to do here? What a stupid question. Aaarh! Drink or eat something or leave!"
 "[ww]hat.+[ww]are" -> "It's a damned bar, what do you think I sell? But here, look at the list: drinks and more."
 "[ww]hat.+[dd]rink" -> "All kind: bottle of elven wine, of water, of mead, of cider, of red wine, of beer, beer mug, goblet red wine, goblet water, goblet cider, goblet mead. But the mugs, goblets and bottles - give them back when you are ready. There is a refund on them."
@@ -52,7 +54,6 @@ buyPrimaryItem = id(2498), price(1)
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
 "[gg]rü[ßs]+e", "[hh]allo" -> "Willkommen in der Fluffy Sheep Taverne, was willst Du trinken?", "Guten Tag. Was soll ich Dir machen?"
 "[iidd][hu][r.+].*[ww]irt" -> "Genau, ich bin hier der Wirt. Was willst Du trinken?"
-"[ww]as.+verkauf" -> "Ich verkaufe alles, was das Herz begehrt: Met, Wein, Bier, und so weiter. Willst du was?"
 "[ww]as.+[gg]etränke" -> "Das hier ist 'ne Kneipe, was glaubst du, was wir hier verkaufen?"
 "[ee]rzähl.+was" -> "Ich höre viel und weiss eigentlich fast alles. Ich erzähl' dir aber nichts davon, das geht dich nunmal nichts an."
 "[tt]schüss", "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch.", "Bis bald.", "Auf bald!"
@@ -61,7 +62,9 @@ buyPrimaryItem = id(2498), price(1)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 -- Idle dialogue
 cycletext "#me trocknet einen Bierkrug ab", "#me wipes a beer mug clean"

@@ -21,6 +21,10 @@ sellItem = id(253), price(400), stack(1), quality(333)
 buyPrimaryItem = id(253), price(8)
 sellItem = id(329), price(500), stack(1), quality(333)
 
+"[ww]hat.+sell" -> "I cannot offer you much, but my potions.", trade_buy
+"[ww]as.+verkaufen", "[ww]as.+verkauf" -> "Ich kann nicht viel anbieten. Vielleicht ein paar Tränke.", trade_buy
+"[ww]hat.+buy" -> "I fear, my friend, that there is nothing I would want to buy right now.", trade_sell
+"[ww]as.+%skauf", "[ww]as.*%s[kk]auf" -> "Ich fürchte, mein Freund, es gibt nichts was ich im Augenblick von euch kaufen würde.", trade_sell
 "[hh]ello", "[gg]reetings" -> "Greetings my friend.", "A pleasure to meet you, friend."
 "[hh]allo", "[gg]rü[sß]+e" -> "Grüße mein Freund.", "Ist mir eine Freude euch zu treffen."
 "[mm]ission" -> "My friend, I am selling potions to adventurers who fight the evil in the dungeon of Hellbriar."
@@ -29,10 +33,6 @@ english, "[qq]uest" -> "My friend, I am a simple man with no needs."
 german, "[qq]uest" -> "Mein Freund, ich bin ein einfacher Mann ohne Bedürfnisse."
 "[gg]rave" -> "I take care of them as well as I can, but sometimes they even scare me."
 "[gg]r[aä]b" -> "Ich kümmere mich um sie, so gut ich kann, aber manchmal erschrecken sie sogar mich."
-"[ww]hat.+sell" -> "I cannot offer you much, but my potions."
-"[ww]as.+verkaufen" -> "Ich kann nicht viel anbieten. Vielleicht ein paar Tränke."
-"[ww]hat.+buy" -> "I fear, my friend, that there is nothing I would want to buy right now."
-"[ww]as.+%skauf" -> "Ich fürchte, mein Freund, es gibt nichts was ich im Augenblick von euch kaufen würde."
 "[ww]ho.+[yy]ou" -> "I am Brother %NPCNAME of the White Flame."
 "[ww]er.+[ddii][uh]r*" -> "Ich bin Bruder %NPCNAME von der Weißen Flamme."
 "[hh]ellbriar" -> "The foul armies of death and decay live in this area."
@@ -43,4 +43,6 @@ german, "[qq]uest" -> "Mein Freund, ich bin ein einfacher Mann ohne Bedürfnisse
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy

@@ -48,29 +48,31 @@ buyPrimaryItem = id(208), price(50)
 sellItem = id(209), price(500), stack(1), quality(583)
 buyPrimaryItem = id(209), price(50)
 
+"[ww]hat.+sell" -> "I sell all kinds of carpentry tools", trade_buy
+"[ww]as.+verkauf" -> "Ich verkaufe Werkzeuge für jede Art von Tischlerei.", trade_buy
+"[ww]hat.+buy" -> "I buy all kinds of bows and crossbows.", trade_sell
+"[ww]as.+%s[kk]auf", "[ww]as.*%s[kk]auf" -> "Ich kaufe alle Arten von Bögen und Armbrüsten.", trade_sell
 "[gg]reetings", "[hh]ello" -> "The five with you. Can I help you?", "Be blessed, my friend. Do you need something?"
 "[yy]ou.+[tt]rader" -> "I am a trader, yes. I trade different carpentry tools."
-"[ww]hat.+sell" -> "I sell all kinds of carpentry tools"
 "[ww]hat.+[tt]ools" -> "I sell tools for carpenters. Saws, axes, planes and carving tools."
 "[tt]ell.+[ss]omething" -> "This is Tol Vanima, the home of us elves."
 "[gg]oodbye", "[bb]ye", "[ff]arewell" -> "The Five be with you!", "May the gods bless your path!", "Farewell, my friend!"
-"[ww]hat.+buy" -> "I buy all kinds of bows and crossbows."
 "[ww]ho.+you?" -> "My name is %NPCNAME."
 "i'm.+.+" -> "Be greeted!"
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
 "[gg]r[üu][ßs]+", "[hh]allo" -> "Die Fünf zum Gruße, kann ich euch helfen?", "Möge euer Pfad gesegnet sein! Wie kann ich euch helfen?"
 "[ddii][uh]r*.+[hh]ändler" -> "Ich bin ein Händler, ja, und ich verkaufe unter anderem Werkzeuge."
-"[ww]as.+verkauf" -> "Ich verkaufe Werkzeuge für jede Art von Tischlerei."
 "[ww]as.+[ww]erkzeug" -> "Nun, ich verkaufe Tischlerwerkzeug...Sägen, Äxte, Hobel und Schnitzwerkzeuge."
 "[ee]rzähl.+[ww]as" -> "Dies ist Tol Vanima, die Heimat von uns Elfen."
 "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Die Fünf seien mit euch. Bis bald!", "Bis bald, mein Freund, der Segen der Fünf mit euch!"
-"[ww]as.+%s[kk]auf" -> "Ich kaufe alle Arten von Bögen und Armbrüsten."
 "[ww]er.+[iidd][hu]r*" -> "Ich bin %NPCNAME."
 "ich.+bin.+.+" -> "So grüße ich euch, mein Freund!"
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 -- Idle dialogue
 cycletext "#me schnitzt mit eleganten Bewegungen an einer kleinen Holzstatue herum", "#me carves on a small wooden statue with elegant motions"

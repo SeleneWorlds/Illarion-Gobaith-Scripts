@@ -59,10 +59,13 @@ sellItem = id(257), price(20), stack(1), quality(349)
 buyPrimaryItem = id(257), price(5)
 
 -- Dialogue keeps the original greeting and farewell alternatives.
+"[ww]hat.+sell" -> "I trade in raw and cut gems, and mineral dust. Jodele. Ask for my list of wares.", trade_buy
+"[ww]as.+verkauf" -> "Jodele. Ich handle mit rohen und geschliffenen Edelsteinen und Mineralstaub. Lasst Euch meine Liste zeigen.", trade_buy
+"[ww]as.+kauf", "[ww]as.*%s[kk]auf" -> "Jodele. Ich handle mit rohen und geschliffenen Edelsteinen und Mineralstaub. Lasst Euch meine Liste zeigen.", trade_sell
+"[ww]hat.+buy" -> trade_sell
 "[gg]reet", "[hh]ello" -> "Greetings. What is it you want? Jodele.", "Greetings. Are you interested in my wares?"
 "[gg]r[üu][ßs]+e", "[hh]allo" -> "Grüße. Was wollt Ihr? Jodele.", "Grüße. Habt Ihr Interesse an meinen Waren? Jodele."
-"[ww]hat.+sell", "[ww]hat.+[gg]em" -> "I trade in raw and cut gems, and mineral dust. Jodele. Ask for my list of wares."
-"[ww]as.+kauf", "[ww]as.+verkauf" -> "Jodele. Ich handle mit rohen und geschliffenen Edelsteinen und Mineralstaub. Lasst Euch meine Liste zeigen."
+"[ww]hat.+[gg]em" -> "I trade in raw and cut gems, and mineral dust. Jodele. Ask for my list of wares."
 "[ww]hat.+[kk]ind" -> "All kinds of gems: rubies, emeralds, diamonds, topaz, bluestone, blackstone and amethyst. Ask for my list of wares."
 "[ww]as.+[ee]delstein" -> "Was auch immer Ihr braucht: Rubine, Smaragde, Topas, Diamanten, Blausteine, Schwarzsteine und Amethyste. Lasst Euch meine Liste zeigen."
 "[ww]hat.+[dd]ust" -> "All kinds of gem dust: ruby, emerald, diamond, topaz, bluestone, blackstone and amethyst dust. Ask for my list of wares."
@@ -74,7 +77,9 @@ buyPrimaryItem = id(257), price(5)
 "what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 
 -- Open the trading menu after the more specific dialogue rules.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 cycletext "#me kaut auf einem dicken Käfer herum.", "#me chews on a large beetle."
 cycletext "#me schaut sich nach Kunden um.", "#me looks around for customers."

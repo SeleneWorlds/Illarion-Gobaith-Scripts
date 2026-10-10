@@ -46,10 +46,13 @@ buyPrimaryItem = id(2751), price(5)
 sellItem = id(2140), price(25), stack(1), quality(583)
 buyPrimaryItem = id(2140), price(5)
 
+"[ww]hat.+sell" -> "I'm sellin' important things for the daily dwarven life. So ya should buy them, 'eard? BUY!. With money an' so, I 'ope ya hav' money?", trade_buy
+"[ww]as.+verkauf" -> "Ick verkauf wichtiges Zeuch für dat täglich Zwergenleben. Du solltest dat also kaufn, verstanden? KAUFEN! Dat heisst mit Geld un' so. Du hast doch Geld, oder?", trade_buy
+"[ww]hat.+buy" -> "#me speaks with a faked, sophisticated voice \"Oooh, I buy pretty flowers an' the sunshine in a glass...BAH! Damn it, what do ya think? I am a dwarf in a dwarven town! Of course I buy smithed stuff!\"", trade_sell
+"[ww]as.*%skauf", "[ww]as.*%s[kk]auf" -> "#me spricht mit verstellt gehobener Stimme \" Ooooh, ick kaufe hübsche Blumen un' den Sonnenschein im Einmachglas....BAH! Verflucht nochmal, wat denkste denn? Ick bin' Zwerg inner Zwergenstadt! Natürlich kauf ick geschmiedetes Zeuch!\"", trade_sell
 "[gg]reetings" -> "#me grumbles \"Ya ya. Can't ya see me workin'?\"", "#me looks up and shows a fresh smithed swordblade \"Isn't it good? Aye, of course it is, it's crafted by me, har har...Oh, right. Greetings or whatever.\""
 "[hh]ello" -> "Whatever. Need somethin'? If not, bye", "Hello? Did you just say \"Hello\"?! Are ya a darn elven girl? That's \"Hey boss\" or \"Greetings ol' buddy\". Try it again!"
 "[yy]ou.+[tt]rader" -> "Aye, I sell an' buy different wares, all a matter of money.", "No, I am a damn elf kneelin' on the floor and wearin' a damn false beard because I want to spy for the damn secret of 'ow to make really good dwarven beer....Of course I am a trader!", "#me grumbles and looks around \" Let me see. I am standin' in front of some smithed stuff offered for sale and, oh, yeh, I have a 'uge purse full of coins .... No, dunno think I am a darn trader.\""
-"[ww]hat.+sell" -> "I'm sellin' important things for the daily dwarven life. So ya should buy them, 'eard? BUY!. With money an' so, I 'ope ya hav' money?"
 "[ww]hat.+[tt]hings" -> "Narrrr. You are stealin' my time. Weapons, helmets, shields an' tools, that kinda stuff..."
 "[ww]hat.+[tt]ools" -> "#me grumbles and numerates in a harried voice \"pickaxes, moulds, crucibles an' crucible-pincers. Happy now? Ya stole a lot of my time, so buy somethin'!\""
 "[ww]hat.+[ww]eapon" -> "Gaaaaarrg...serinjah-swords, sabres, short swords, daggers an' maces. An' if you don't buy anythin' now, i throw all this stuff on ya head!"
@@ -57,14 +60,12 @@ buyPrimaryItem = id(2140), price(5)
 "[ww]hat.+[ss]hield" -> "#me grumbles \"simple, normal, advanced and round metal shields. Okay? Now leave.\""
 "[tt]ell.+[ss]omething" -> "Do I look like ya Grandpa? Go an' ask 'im, I won't waste my time tellin' ya stories", "Ever 'eard the story of the little dwarf who annoyed that dwarven trader too much with questions an' got thrown into the damn oven for that? Aye, there ya hav' ya story! Now let me alone.", "Well, think ya won't stop askin' until I tell ya somethin'. What do ya want to 'ear? About our gods? Somethin' about famous dwarves of our town? The work of a smith? Or perhaps somethin' about the isle or Silverbrand?"
 "[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Finally. Thanks, Irmorom!", "Ya, leave. Why are ya still 'ere?", "Ya, go away. Fast."
-"[ww]hat.+buy" -> "#me speaks with a faked, sophisticated voice \"Oooh, I buy pretty flowers an' the sunshine in a glass...BAH! Damn it, what do ya think? I am a dwarf in a dwarven town! Of course I buy smithed stuff!\""
 "[ww]ho.+you?" -> "What's ya interest in my name? I won't marry ya. Well, I'm called %NPCNAME."
 "i'm.+.+" -> "Iiiinteresting...no, not really, just wanted to be nice. Who cares? Me not!"
 "[hh]elp" -> "'What do you sell?', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
 "[gg]rü[ßs]e" -> "#me grummelt \"Ja ja. Siehste net dat Ick am arbeiten bin?! pfff...\"", "#me sieht auf und zeigt dir eine frisch geschmiedete Schwertklinge \"Is' es nich' nen Prachtstück? Aye, natürlich isses, is' ja auch von mir, har har...Oh, richtig. Grüße, oder wat auch immer.\""
 "[hh]allo" -> "Aye, Wat auch immer. Brauchste wat? Wenn net, geh!", " Hallo? Haste gerade \"Hallo\" gesagt?! Wat bisse? Nen Elfenmädchen? Dat heisst \"Hey Meister\" oder \"Grüß dich alter Kumpel\". Versuchs nochmal!"
 "[dd]u.+[hh]ändler" -> "Aye, Ick verkauf un' kauf verschiedenstes Zeuch, allet ne Sach vom Geld!", "Ne, ick bin nen verdammter Elf der hier aufm Boden kniet un' nen falschen Bart trägt um dat Geheimnis des verdammt guten Zwerchenbieres aus zu spionieren....Natürlich bin ick nen Händler!", "#me brummt und sieht sich um \"Lass mal sehn. Ick steh hier vor ner menge geschmiedetes Zeuch welches zum Verkauf angeboten wird un', oh, ja, ick hab hier diesen großen Geldbeutel voller Münzen...Nein, denke nich' dat ick nen Händler bin\""
-"[ww]as.+verkauf" -> "Ick verkauf wichtiges Zeuch für dat täglich Zwergenleben. Du solltest dat also kaufn, verstanden? KAUFEN! Dat heisst mit Geld un' so. Du hast doch Geld, oder?"
 "[ww]as.+[zz]eug" -> "Gaaaa! Du stiehlst mir de Zeit! Waff'n, Helme, Schilde un' Werkzeuch, so'n Zeuch halt. Grmpf"
 "[ww]as.+[ww]erkzeug" -> "#me grummelt und zählt genervt auf \"Spitzhacken, Gußformen, Tiegel, Tiegelzangen! Biste nu glücklich? Du hast mir wichtig Zeit gestohln, nu kauf auch wat!"
 "[ww]as.+[ww]affe" -> "Gaaaaaarrg...Serinjahschwerter, Säbel, Kurzschwerter, Dolche un' Streitkolben. Un' wenn du nu nix kaufst, dann schmeiss ich dir das ganze Zeug gegn deinen Kopp!"
@@ -72,7 +73,6 @@ buyPrimaryItem = id(2140), price(5)
 "[ww]as.+[ss]child" -> "#me grummelt \"einfache, normale, gute und Rundschilde. Okay? Jetzt zieh ab."
 "[ee]rzähl.+[ee]twas" -> "Seh ick aus wie dein Großvater, oder wat?! Geh un' frag den! Ick werd mein Zeit nich' vergeudn un' dir Geschichtn erzähln.", "Na jut. Schonmal die Geschicht von dem Zwerchen gehört der nen alten Zwerchenhändler mit Fragen ärgerte un' von dem deshalb innen Ofen gesteckt wurde? Aye, da hasse deine Geschicht. Un' nu lass mich allein!", "Nun, ick fürchte du hörst doch nich' auf zu fragen bis ick wat erzähl, aye? Nun gut, wat willste hören? Wat über die Götter? Wat über manche der berühmten Zwerche Silverbrands? Wat übers Schmieden? Oder gar wat über die Insel oder Silverbrand?"
 "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald", "[tt]schüss" -> "Na endlich. Irmorom sei dank!", "Ja! Verschwinde! Warum bisse noch hier?", "Ja! Geh weg! Schnell."
-"[ww]as.*%skauf" -> "#me spricht mit verstellt gehobener Stimme \" Ooooh, ick kaufe hübsche Blumen un' den Sonnenschein im Einmachglas....BAH! Verflucht nochmal, wat denkste denn? Ick bin' Zwerg inner Zwergenstadt! Natürlich kauf ick geschmiedetes Zeuch!\""
 "[ww]er.+du?" -> "Wat interessiert dich mein Name?! Ick würd dich eh nich' heiraten! Nun...nen mich %NPCNAME."
 "ich.+bin.+.+" -> "Iiiiinteressant...ne, nich' wirklich, wollt nur freundlich sein. Wen interessierts? Mich nich'!"
 "[hh]ilfe" -> "'Was für Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
@@ -174,7 +174,9 @@ buyPrimaryItem = id(2140), price(5)
 "[ee]rzähl.+[tt]horam" -> "Thoram Steinfaust, auch Josef genannt. Er war der beste Schmied des Klans. Nen alter un' ehrenvoller Zwerch. Hohes Mitglied des Klans. Ick bin sicher Belegi kann dir mehr erzähln, ick weiss auch net alles."
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 -- Idle dialogue
 cycletext "#me zählt und sortiert seine Sachen", "#me counts and sorts his wares"

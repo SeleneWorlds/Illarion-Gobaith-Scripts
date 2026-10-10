@@ -51,24 +51,26 @@ buyPrimaryItem = id(2923), price(4)
 sellItem = id(556), price(50), stack(1), quality(483)
 buyPrimaryItem = id(556), price(5)
 
+"[ww]hat.+sell" -> "I sell tools and food.", trade_buy
+"[ww]as.+verkauf" -> "Ich verkaufe vor allem Werkzeuge und mancherlei anderes. Schau selbst!", trade_buy
+"[ww]hat.+buy" -> "I buy different things.", trade_sell
+"[ww]as.kauf", "[ww]as.*%s[kk]auf" -> "Ich kaufe verschiedene Dinge an.", trade_sell
 "[gg]reet", "[hh]ello" -> "Greetings. I'm %NPCNAME, travelling hawker", "Hello. I'm %NPCNAME, travelling hawker."
 "[ww]hat.+do" -> "I am here to trade. I come from Gobaith to sell different tools and buy other things from here."
 "[ll]ist.+wares" -> "I trade with different things. Take a look."
-"[ww]hat.+sell" -> "I sell tools and food."
-"[ww]hat.+buy" -> "I buy different things."
 "[ww]hat.+[tt]ool" -> "Of every kind what people can need here. Axes and saws for lumberjacks, carving tools and planes for carpenters and some other for bakers and cooks."
 "[ff]arewell", "[gg]oodbye" -> "Farewell.", "Bye!"
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?', 'Tell <something>'"
 "[gg]rü[ßs]+e", "[hh]allo" -> "Willkommen, ich bin %NPCNAME, ein fliegender Händler.", "Guten Tag, ich bin %NPCNAME, ein fliegender Händler."
 "[ww]as.+machst" -> "Ich bin von Gobaith und bringe jeden Tag Dinge des täglichen Bedarfs mit."
-"[ww]as.+verkauf" -> "Ich verkaufe vor allem Werkzeuge und mancherlei anderes. Schau selbst!"
-"[ww]as.kauf" -> "Ich kaufe verschiedene Dinge an."
 "[ww]as.+[ww]erkzeu" -> "Alles was die Leute hier gebrauchen können: Äxte und Sägen für die Holzfäller, Schnitzmesser und Hobel für Schreiner und mancherlei mehr für Köche und Bäcker."
 "[tt]schüs", "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch.", "Bis bald.", "Auf bald!"
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.
-"trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
+"trade", "wares", "handel", "waren" -> trade
+"sell", "verkauf" -> trade_sell
+"buy", "kauf" -> trade_buy
 
 -- Idle dialogue
 cycletext "#me blickt sich nach neuen Kunden um", "#me looks around for a new customer."
