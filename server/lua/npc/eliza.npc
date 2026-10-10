@@ -15,6 +15,7 @@ wrongLangDE = "#me sieht dich leicht verwirrt an"
 wrongLangUS = "#me looks at you a little confused"
 
 -- Trade offers and requests; stock and trader cash are unlimited.
+sellItem = id(2746), price(30), stack(1), quality(449)
 sellItem = id(18), price(60), stack(1), quality(449)
 buyPrimaryItem = id(18), price(5)
 sellItem = id(20), price(120), stack(1), quality(449)
