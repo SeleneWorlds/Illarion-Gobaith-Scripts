@@ -18,158 +18,263 @@ sex=female
 QuestID = 558
 
 -- CYCLE TEXT
-cycletext( "", "#me crouches down and looks closely at the flowers, frowning slightly." )
-cycletext( "", "#me sniffs a flower she's holding." )
-cycletext( "", "#me whispers something inaudible while plucking out the petals of a flower." )
+cycletext( "#me hockt sich hin und betrachtet die Blumen aufmerksam, wobei sie leicht die Stirn runzelt.", "#me crouches down and looks closely at the flowers, frowning slightly." )
+cycletext( "#me riecht an einer Blume in ihrer Hand.", "#me sniffs a flower she's holding." )
+cycletext( "#me flüstert etwas Unverständliches, während sie die Blütenblätter einer Blume abzupft.", "#me whispers something inaudible while plucking out the petals of a flower." )
 
 -- Queststatus = 10 (COMPLETED) (Person wounded)
-"hello", queststatus = 10, attrib( hitpoints ) < 1500 -> "Hello again. Oh, you seem to be wounded. Would you allow me to tend to your wounds?", queststatus = 11
-"greet", queststatus = 10, attrib( hitpoints ) < 1500 -> "Greetings again. Hmm, you seem to be hurt. May I tend to your wounds?", queststatus = 11
+english, "hello", queststatus = 10, attrib( hitpoints ) < 1500 -> "Hello again. Oh, you seem to be wounded. Would you allow me to tend to your wounds?", queststatus = 11
+german, "hallo", queststatus = 10, attrib( hitpoints ) < 1500 -> "Hallo wieder. Oh, du scheinst verwundet zu sein. Darf ich deine Wunden versorgen?", queststatus = 11
+english, "greet", queststatus = 10, attrib( hitpoints ) < 1500 -> "Greetings again. Hmm, you seem to be hurt. May I tend to your wounds?", queststatus = 11
+german, "grüß", queststatus = 10, attrib( hitpoints ) < 1500 -> "Sei erneut gegrüßt. Hm, du scheinst verletzt zu sein. Darf ich deine Wunden versorgen?", queststatus = 11
 -- Queststatus = 10 (COMPLETED) (Person named)
-"hello", queststatus = 10, state = 1 -> "Hello %CHARNAME, it is always nice seeing you."
-"greet", queststatus = 10, state = 1 -> "%CHARNAME, a pleasure seeing you again."
+english, "hello", queststatus = 10, state = 1 -> "Hello %CHARNAME, it is always nice seeing you."
+german, "hallo", queststatus = 10, state = 1 -> "Hallo %CHARNAME, es ist immer schön, dich zu sehen."
+english, "greet", queststatus = 10, state = 1 -> "%CHARNAME, a pleasure seeing you again."
+german, "grüß", queststatus = 10, state = 1 -> "%CHARNAME, schön, dich wiederzusehen."
 -- Queststatus = 10 (COMPLETED) (Person not named)
-"hello", queststatus = 10 -> "Hello again there! It is so nice to see you."
-"greet", queststatus = 10 -> "Greetings once again. It is always nice seeing you."
-"farewell", queststatus = 10 -> "Farewell and come back soon to see me!"
+english, "hello", queststatus = 10 -> "Hello again there! It is so nice to see you."
+german, "hallo", queststatus = 10 -> "Hallo wieder! Es ist so schön, dich zu sehen."
+english, "greet", queststatus = 10 -> "Greetings once again. It is always nice seeing you."
+german, "grüß", queststatus = 10 -> "Sei erneut gegrüßt. Es ist immer schön, dich zu sehen."
+english, "farewell", queststatus = 10 -> "Farewell and come back soon to see me!"
+german, "leb wohl", queststatus = 10 -> "Leb wohl und komm bald wieder zu mir!"
 
-"yes", queststatus = 11, attrib( hitpoints ) < 1500 -> "#me uses a small bottle of liquid which helps cure the wounds, 'There you go. You should feel better.'", attrib( hitpoints ) + 5000, queststatus = 10
-"sure", queststatus = 11, attrib( hitpoints ) < 1500 -> "#me applies a small bottle of liquid, soothing the pain of the wounds, 'There. You should feel less pain now.'", attrib( hitpoints ) + 5000, queststatus = 10
-"yes", queststatus = 11 -> "Oh well, you aren't that bad. I'll heal you when you are in a worse condition."
-"no", queststatus = 11 -> "If you insist. Take care then.", queststatus = 10
+english, "yes", queststatus = 11, attrib( hitpoints ) < 1500 -> "#me uses a small bottle of liquid which helps cure the wounds, 'There you go. You should feel better.'", attrib( hitpoints ) + 5000, queststatus = 10
+german, "ja", queststatus = 11, attrib( hitpoints ) < 1500 -> "#me versorgt die Wunden mit der Flüssigkeit aus einer kleinen Flasche. 'So. Jetzt sollte es dir besser gehen.'", attrib( hitpoints ) + 5000, queststatus = 10
+english, "sure", queststatus = 11, attrib( hitpoints ) < 1500 -> "#me applies a small bottle of liquid, soothing the pain of the wounds, 'There. You should feel less pain now.'", attrib( hitpoints ) + 5000, queststatus = 10
+german, "sicher", queststatus = 11, attrib( hitpoints ) < 1500 -> "#me trägt die Flüssigkeit aus einer kleinen Flasche auf und lindert den Wundschmerz. 'So. Jetzt sollten die Schmerzen nachlassen.'", attrib( hitpoints ) + 5000, queststatus = 10
+english, "yes", queststatus = 11 -> "Oh well, you aren't that bad. I'll heal you when you are in a worse condition."
+german, "ja", queststatus = 11 -> "Nun, so schlecht geht es dir gar nicht. Ich werde dich heilen, wenn du in einem schlechteren Zustand bist."
+english, "no", queststatus = 11 -> "If you insist. Take care then.", queststatus = 10
+german, "nein", queststatus = 11 -> "Wenn du darauf bestehst. Pass auf dich auf.", queststatus = 10
 
-"thank", queststatus = 10, state = 6 -> "I am glad to be of help, just as you were to me."
+english, "thank", queststatus = 10, state = 6 -> "I am glad to be of help, just as you were to me."
+german, "dank", queststatus = 10, state = 6 -> "Ich helfe dir gern, so wie du mir geholfen hast."
 
-"why", queststatus >= 2 -> "My mother used to tell me stories about this wonderful flower. But now she passed out, and I have no memories of her. The flower can serve as one."
+english, "why", queststatus >= 2 -> "My mother used to tell me stories about this wonderful flower. But now she passed away, and I have no memories of her. The flower can serve as one."
+german, "warum", queststatus >= 2 -> "Meine Mutter erzählte mir früher Geschichten über diese wundervolle Blume. Doch nun ist sie verstorben und ich habe kein Andenken an sie. Die Blume könnte eines sein."
 
 -- Queststatus = 1
-"I like flowers", queststatus = 1 -> "You like the flowers? That makes me happy! May I ask you a question?", queststatus = 2
-"I love flowers", queststatus = 1 -> "You love the flowers? Wow, I love them too! Can I ask you a question?", queststatus = 2
-"yes", queststatus = 1 -> "Oh you like them too? That is so nice to hear. May I ask you a question?", queststatus = 2
-"no", queststatus = 1 -> "Oh, pity. You should look at them closely, their colors, their scent, it's a unique sensation.", queststatus = 0
+english, "I like flowers", queststatus = 1 -> "You like the flowers? That makes me happy! May I ask you a question?", queststatus = 2
+german, "ich mag blumen", queststatus = 1 -> "Du magst die Blumen? Das freut mich! Darf ich dir eine Frage stellen?", queststatus = 2
+english, "I love flowers", queststatus = 1 -> "You love the flowers? Wow, I love them too! Can I ask you a question?", queststatus = 2
+german, "ich liebe blumen", queststatus = 1 -> "Du liebst die Blumen? Oh, ich liebe sie auch! Darf ich dir eine Frage stellen?", queststatus = 2
+english, "yes", queststatus = 1 -> "Oh you like them too? That is so nice to hear. May I ask you a question?", queststatus = 2
+german, "ja", queststatus = 1 -> "Oh, du magst sie auch? Das ist schön zu hören. Darf ich dir eine Frage stellen?", queststatus = 2
+english, "no", queststatus = 1 -> "Oh, pity. You should look at them closely, their colors, their scent, it's a unique sensation.", queststatus = 0
+german, "nein", queststatus = 1 -> "Oh, schade. Du solltest sie genau betrachten, ihre Farben und ihren Duft. Es ist ein einzigartiges Erlebnis.", queststatus = 0
 
 -- Queststatus = 2
-"ask", queststatus = 2 -> "Did you ever see a Night Angels Blossom?", queststatus = 3
-"yes", queststatus = 2 -> "Have you ever seen a Night Angels Blossom?", queststatus = 3
-"of course", queststatus = 2 -> "#me smiles before she inquires, 'Have you ever seen the lovely Night Angels Blossom?'", queststatus = 3
-"sure", queststatus = 2 -> "#me smiles before she inquires, 'Have you ever seen the lovely Night Angels Blossom?'", queststatus = 3
-"no", queststatus = 2 -> "Sorry then, I won't disturb you."
+english, "ask", queststatus = 2 -> "Did you ever see a Night Angels Blossom?", queststatus = 3
+german, "frag", queststatus = 2 -> "Hast du jemals eine Nachtengelsblüte gesehen?", queststatus = 3
+english, "yes", queststatus = 2 -> "Have you ever seen a Night Angels Blossom?", queststatus = 3
+german, "ja", queststatus = 2 -> "Hast du jemals eine Nachtengelsblüte gesehen?", queststatus = 3
+english, "of course", queststatus = 2 -> "#me smiles before she inquires, 'Have you ever seen the lovely Night Angels Blossom?'", queststatus = 3
+german, "natürlich", queststatus = 2 -> "#me lächelt, bevor sie fragt: 'Hast du jemals die wunderschöne Nachtengelsblüte gesehen?'", queststatus = 3
+english, "sure", queststatus = 2 -> "#me smiles before she inquires, 'Have you ever seen the lovely Night Angels Blossom?'", queststatus = 3
+german, "sicher", queststatus = 2 -> "#me lächelt, bevor sie fragt: 'Hast du jemals die wunderschöne Nachtengelsblüte gesehen?'", queststatus = 3
+english, "no", queststatus = 2 -> "Sorry then, I won't disturb you."
+german, "nein", queststatus = 2 -> "Verzeih, dann werde ich dich nicht stören."
 
 -- Queststatus = 3
-"many times", queststatus = 3 -> "Oh that is so nice to hear. Do you think you'll be able to bring me one?", queststatus = 4
-"yes", queststatus = 3 -> "Really? You have seen it? Would you be kind enough if you brought me one?", queststatus = 4
-"once", queststatus = 3 -> "You've seen it once? A rare flower, isn't it? Do you think you'll be able to bring me one?", queststatus = 4
-"of course", queststatus = 3 -> "That's lovely. Would you be able to bring me one please?", queststatus = 4
-"no", queststatus = 3 -> "Oh, what a pity. You see, my biggest wish is to see and experience the scent of that flower.", queststatus = 5
-"never", queststatus = 3 -> "#me frowns then, before she says, 'A pity. You know, my biggest wish is to see the Night Angels Blossom.'", queststatus = 5
-"saw", queststatus = 3 -> "That is very nice but...I would really wish to see one. Can you bring me one, please?", queststatus = 4
-"seen", queststatus = 3 -> "Really? You've seen it? Could you bring me one, please?", queststatus = 4
+english, "many times", queststatus = 3 -> "Oh that is so nice to hear. Do you think you'll be able to bring me one?", queststatus = 4
+german, "oft", queststatus = 3 -> "Oh, das ist schön zu hören. Meinst du, du könntest mir eine bringen?", queststatus = 4
+english, "yes", queststatus = 3 -> "Really? You have seen it? Would you be kind enough if you brought me one?", queststatus = 4
+german, "ja", queststatus = 3 -> "Wirklich? Du hast sie gesehen? Wärst du so freundlich, mir eine zu bringen?", queststatus = 4
+english, "once", queststatus = 3 -> "You've seen it once? A rare flower, isn't it? Do you think you'll be able to bring me one?", queststatus = 4
+german, "einmal", queststatus = 3 -> "Du hast sie einmal gesehen? Eine seltene Blume, nicht wahr? Meinst du, du könntest mir eine bringen?", queststatus = 4
+english, "of course", queststatus = 3 -> "That's lovely. Would you be able to bring me one please?", queststatus = 4
+german, "natürlich", queststatus = 3 -> "Das ist schön. Könntest du mir bitte eine bringen?", queststatus = 4
+english, "no", queststatus = 3 -> "Oh, what a pity. You see, my biggest wish is to see and experience the scent of that flower.", queststatus = 5
+german, "nein", queststatus = 3 -> "Oh, wie schade. Mein größter Wunsch ist es, diese Blume zu sehen und ihren Duft zu erleben.", queststatus = 5
+english, "never", queststatus = 3 -> "#me frowns then, before she says, 'A pity. You know, my biggest wish is to see the Night Angels Blossom.'", queststatus = 5
+german, "nie", queststatus = 3 -> "#me runzelt die Stirn, bevor sie sagt: 'Schade. Mein größter Wunsch ist es, eine Nachtengelsblüte zu sehen.'", queststatus = 5
+english, "saw", queststatus = 3 -> "That is very nice but...I would really wish to see one. Can you bring me one, please?", queststatus = 4
+german, "gesehen", queststatus = 3 -> "Das ist sehr schön, aber... ich würde wirklich gern eine sehen. Kannst du mir bitte eine bringen?", queststatus = 4
+english, "seen", queststatus = 3 -> "Really? You've seen it? Could you bring me one, please?", queststatus = 4
+german, "gesehen", queststatus = 3 -> "Wirklich? Du hast sie gesehen? Könntest du mir bitte eine bringen?", queststatus = 4
 
 -- Queststatus = 4
-"yes", queststatus = 4 -> "#me smiles widely suddenly before she says, 'You are too kind. I will eagerly wait to see it.'", queststatus = 6
-"sure", queststatus = 4 -> "You are too kind. I will wait for you to bring it.", queststatus = 6
-"of course", queststatus = 4 -> "I am so glad you will. Thank you. I will wait patiently.", queststatus = 6
-"will try", queststatus = 4, -> "Oh please do try. I will be so grateful if you did.", queststatus = 6
-"no", queststatus = 4 -> "#me frowns and lowers her head before she says, 'Oh, I understand. I would have loved to see it.'", queststatus = 7
-"I have flower", queststatus = 4 -> "What? You have the Night Angels Blossom?", queststatus = 8
-"I got flower", queststatus = 4 -> "What? You have the Night Angels Blossom?", queststatus = 8
-"I have it", queststatus = 4 -> "You mean, the Night Angels Blossom? You have it?", queststatus = 8
-"I got it", queststatus = 4 -> "You mean, the Night Angels Blossom? You have it?", queststatus = 8
-"I have night angels blossom", queststatus = 4 -> "What? You have the flower with you?", queststatus = 8
-"I got night angels blossom", queststatus = 4 -> "What? You have got the flower with you?", queststatus = 8
+english, "yes", queststatus = 4 -> "#me smiles widely suddenly before she says, 'You are too kind. I will eagerly wait to see it.'", queststatus = 6
+german, "ja", queststatus = 4 -> "#me lächelt plötzlich breit, bevor sie sagt: 'Du bist zu freundlich. Ich werde sehnsüchtig darauf warten, sie zu sehen.'", queststatus = 6
+english, "sure", queststatus = 4 -> "You are too kind. I will wait for you to bring it.", queststatus = 6
+german, "sicher", queststatus = 4 -> "Du bist zu freundlich. Ich werde warten, bis du sie bringst.", queststatus = 6
+english, "of course", queststatus = 4 -> "I am so glad you will. Thank you. I will wait patiently.", queststatus = 6
+german, "natürlich", queststatus = 4 -> "Ich bin so froh, dass du es tun wirst. Danke. Ich werde geduldig warten.", queststatus = 6
+english, "will try", queststatus = 4, -> "Oh please do try. I will be so grateful if you did.", queststatus = 6
+german, "werde es versuchen", queststatus = 4 -> "Oh, bitte versuch es. Ich wäre dir sehr dankbar.", queststatus = 6
+english, "no", queststatus = 4 -> "#me frowns and lowers her head before she says, 'Oh, I understand. I would have loved to see it.'", queststatus = 7
+german, "nein", queststatus = 4 -> "#me runzelt die Stirn und senkt den Kopf, bevor sie sagt: 'Oh, ich verstehe. Ich hätte sie so gern gesehen.'", queststatus = 7
+english, "I have flower", queststatus = 4 -> "What? You have the Night Angels Blossom?", queststatus = 8
+german, "ich habe blume", queststatus = 4 -> "Was? Du hast die Nachtengelsblüte?", queststatus = 8
+english, "I got flower", queststatus = 4 -> "What? You have the Night Angels Blossom?", queststatus = 8
+german, "ich hab blume", queststatus = 4 -> "Was? Du hast die Nachtengelsblüte?", queststatus = 8
+english, "I have it", queststatus = 4 -> "You mean, the Night Angels Blossom? You have it?", queststatus = 8
+german, "ich habe sie", queststatus = 4 -> "Du meinst die Nachtengelsblüte? Du hast sie?", queststatus = 8
+english, "I got it", queststatus = 4 -> "You mean, the Night Angels Blossom? You have it?", queststatus = 8
+german, "ich hab sie", queststatus = 4 -> "Du meinst die Nachtengelsblüte? Du hast sie?", queststatus = 8
+english, "I have night angels blossom", queststatus = 4 -> "What? You have the flower with you?", queststatus = 8
+german, "ich habe nachtengelsblüte", queststatus = 4 -> "Was? Du hast die Blume dabei?", queststatus = 8
+english, "I got night angels blossom", queststatus = 4 -> "What? You have got the flower with you?", queststatus = 8
+german, "ich hab nachtengelsblüte", queststatus = 4 -> "Was? Du hast die Blume dabei?", queststatus = 8
 
 -- Queststatus = 5
-"seen", queststatus = 5 -> "What? Have I understood well? You've seen the Night Angels Blossom?", queststatus = 3
-"saw", queststatus = 5 -> "Have I heard well? Did you see the Night Angels Blossom?", queststatus = 3
-"I have flower", queststatus = 5 -> "What? You have the Night Angels Blossom? Can you give it to me?", queststatus = 8
-"I got flower", queststatus = 5 -> "What? You have the Night Angels Blossom? Can you give it to me?", queststatus = 8
-"I have it", queststatus = 5 -> "You mean, the Night Angels Blossom? You have it? May I take it?", queststatus = 8
-"I got it", queststatus = 5 -> "You mean, the Night Angels Blossom? You have it? May I take it?", queststatus = 8
-"I have night angel blossom", queststatus = 7 -> "Oh you have it?", queststatus = 8
-"I brought night angel blossom", queststatus = 7 -> "You brought the flower? May I look at it?", queststatus = 8
+english, "seen", queststatus = 5 -> "What? Have I understood well? You've seen the Night Angels Blossom?", queststatus = 3
+german, "gesehen", queststatus = 5 -> "Was? Habe ich richtig verstanden? Du hast die Nachtengelsblüte gesehen?", queststatus = 3
+english, "saw", queststatus = 5 -> "Have I heard well? Did you see the Night Angels Blossom?", queststatus = 3
+german, "gesehen", queststatus = 5 -> "Habe ich richtig gehört? Hast du die Nachtengelsblüte gesehen?", queststatus = 3
+english, "I have flower", queststatus = 5 -> "What? You have the Night Angels Blossom? Can you give it to me?", queststatus = 8
+german, "ich habe blume", queststatus = 5 -> "Was? Du hast die Nachtengelsblüte? Kannst du sie mir geben?", queststatus = 8
+english, "I got flower", queststatus = 5 -> "What? You have the Night Angels Blossom? Can you give it to me?", queststatus = 8
+german, "ich hab blume", queststatus = 5 -> "Was? Du hast die Nachtengelsblüte? Kannst du sie mir geben?", queststatus = 8
+english, "I have it", queststatus = 5 -> "You mean, the Night Angels Blossom? You have it? May I take it?", queststatus = 8
+german, "ich habe sie", queststatus = 5 -> "Du meinst die Nachtengelsblüte? Du hast sie? Darf ich sie nehmen?", queststatus = 8
+english, "I got it", queststatus = 5 -> "You mean, the Night Angels Blossom? You have it? May I take it?", queststatus = 8
+german, "ich hab sie", queststatus = 5 -> "Du meinst die Nachtengelsblüte? Du hast sie? Darf ich sie nehmen?", queststatus = 8
+english, "I have night angel blossom", queststatus = 7 -> "Oh you have it?", queststatus = 8
+german, "ich habe nachtengelsblüte", queststatus = 7 -> "Oh, du hast sie?", queststatus = 8
+english, "I brought night angel blossom", queststatus = 7 -> "You brought the flower? May I look at it?", queststatus = 8
+german, "ich bringe nachtengelsblüte", queststatus = 7 -> "Du hast die Blume gebracht? Darf ich sie ansehen?", queststatus = 8
 
 -- Queststatus = 6
-"hello", queststatus = 6 -> "Hello again! Have you brought the Night Angels Blossom?", queststatus = 8
-"greet", queststatus = 6 -> "Ah it's you! The flower? Have you brought it?", queststatus = 8
-"I have flower", queststatus = 6 -> "What? You have the Night Angels Blossom? Can you give it to me please?", queststatus = 8
-"I got flower", queststatus = 6 -> "What? You have the Night Angels Blossom? Can you give it to me please?", queststatus = 8
-"I brought flower", queststatus = 6 -> "You brought the flower? Really? Can I take it please?", queststatus = 8
-"I have night angel blossom", queststatus = 7 -> "You have the flower with you? Can I see it?", queststatus = 8
-"I brought night angel blossom", queststatus = 7 -> "You brought the flower? May I look at it?", queststatus = 8
+english, "hello", queststatus = 6 -> "Hello again! Have you brought the Night Angels Blossom?", queststatus = 8
+german, "hallo", queststatus = 6 -> "Hallo wieder! Hast du die Nachtengelsblüte gebracht?", queststatus = 8
+english, "greet", queststatus = 6 -> "Ah it's you! The flower? Have you brought it?", queststatus = 8
+german, "grüß", queststatus = 6 -> "Ah, du bist es! Die Blume? Hast du sie gebracht?", queststatus = 8
+english, "I have flower", queststatus = 6 -> "What? You have the Night Angels Blossom? Can you give it to me please?", queststatus = 8
+german, "ich habe blume", queststatus = 6 -> "Was? Du hast die Nachtengelsblüte? Kannst du sie mir bitte geben?", queststatus = 8
+english, "I got flower", queststatus = 6 -> "What? You have the Night Angels Blossom? Can you give it to me please?", queststatus = 8
+german, "ich hab blume", queststatus = 6 -> "Was? Du hast die Nachtengelsblüte? Kannst du sie mir bitte geben?", queststatus = 8
+english, "I brought flower", queststatus = 6 -> "You brought the flower? Really? Can I take it please?", queststatus = 8
+german, "ich bringe blume", queststatus = 6 -> "Du hast die Blume gebracht? Wirklich? Darf ich sie bitte nehmen?", queststatus = 8
+english, "I have night angel blossom", queststatus = 7 -> "You have the flower with you? Can I see it?", queststatus = 8
+german, "ich habe nachtengelsblüte", queststatus = 7 -> "Du hast die Blume dabei? Darf ich sie sehen?", queststatus = 8
+english, "I brought night angel blossom", queststatus = 7 -> "You brought the flower? May I look at it?", queststatus = 8
+german, "ich bringe nachtengelsblüte", queststatus = 7 -> "Du hast die Blume gebracht? Darf ich sie ansehen?", queststatus = 8
 
 -- Queststatus = 7
-"hello", queststatus = 7 -> "#me speaks with a gloomy, unenthusiastic voice, 'Hello.'"
-"greet", queststatus = 7 -> "#me shows a lack of enthusiasm as she speaks, 'Greetings.'"
-"I have flower", queststatus = 7 -> "#me blinks and lifts her eyebrows, 'What? You have the flower? Can I see it?'", queststatus = 8
-"I got flower", queststatus = 7 -> "#me blinks and lifts her eyebrows, 'What? You have the flower? Can I see it?'", queststatus = 8
-"I brought flower", queststatus = 7 -> "#me blinks and raises her eyebrows, 'You brought the flower? Really? Can I see it?", queststatus = 8
-"I have night angel blossom", queststatus = 7 -> "Hm? You've brought the flower? Really? May I see it?", queststatus = 8
-"I brought night angel blossom", queststatus = 7 -> "What? You brought the flower? Can I see it?", queststatus = 8
+english, "hello", queststatus = 7 -> "#me speaks with a gloomy, unenthusiastic voice, 'Hello.'"
+german, "hallo", queststatus = 7 -> "#me spricht mit einer düsteren, lustlosen Stimme: 'Hallo.'"
+english, "greet", queststatus = 7 -> "#me shows a lack of enthusiasm as she speaks, 'Greetings.'"
+german, "grüß", queststatus = 7 -> "#me spricht ohne Begeisterung: 'Sei gegrüßt.'"
+english, "I have flower", queststatus = 7 -> "#me blinks and lifts her eyebrows, 'What? You have the flower? Can I see it?'", queststatus = 8
+german, "ich habe blume", queststatus = 7 -> "#me blinzelt und hebt die Augenbrauen. 'Was? Du hast die Blume? Darf ich sie sehen?'", queststatus = 8
+english, "I got flower", queststatus = 7 -> "#me blinks and lifts her eyebrows, 'What? You have the flower? Can I see it?'", queststatus = 8
+german, "ich hab blume", queststatus = 7 -> "#me blinzelt und hebt die Augenbrauen. 'Was? Du hast die Blume? Darf ich sie sehen?'", queststatus = 8
+english, "I brought flower", queststatus = 7 -> "#me blinks and raises her eyebrows, 'You brought the flower? Really? Can I see it?'", queststatus = 8
+german, "ich bringe blume", queststatus = 7 -> "#me blinzelt und hebt die Augenbrauen. 'Du hast die Blume gebracht? Wirklich? Darf ich sie sehen?'", queststatus = 8
+english, "I have night angel blossom", queststatus = 7 -> "Hm? You've brought the flower? Really? May I see it?", queststatus = 8
+german, "ich habe nachtengelsblüte", queststatus = 7 -> "Hm? Du hast die Blume gebracht? Wirklich? Darf ich sie sehen?", queststatus = 8
+english, "I brought night angel blossom", queststatus = 7 -> "What? You brought the flower? Can I see it?", queststatus = 8
+german, "ich bringe nachtengelsblüte", queststatus = 7 -> "Was? Du hast die Blume gebracht? Darf ich sie sehen?", queststatus = 8
 
 -- Queststatus = 8
-"yes", queststatus = 8, item( 138, all ) >= 1 -> "Wow. This is the magnificent Night Angels Blossom. It will remind me of my passed away mother. Here, take these bottles for your troubles. Thank you.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
-"sure", queststatus = 8, item( 138, all ) >= 1 -> "Wow. This is the magnificent Night Angels Blossom. It will remind me of my passed away mother. Here, take these bottles for your troubles. Thank you.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
-"of course", queststatus = 8, item( 138, all ) >= 1 -> "Wow. This is the magnificent Night Angels Blossom. It will remind me of my passed away mother. Here, take these bottles for your troubles. Thank you.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
-"yes", queststatus = 8 -> "So? Where is it? Don't lie to me!", queststatus = 6
-"sure", queststatus = 8 -> "You don't have it! Do not lie!", queststatus = 6
-"of course", queststatus = 8 -> "Lies! You have none.", queststatus = 6
-"no", queststatus = 8 -> "A pity. I will continue to wait.", queststatus = 6
+english, "yes", queststatus = 8, item( 138, all ) >= 1 -> "Wow. This is the magnificent Night Angels Blossom. It will remind me of my passed away mother. Here, take these bottles for your troubles. Thank you.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
+german, "ja", queststatus = 8, item( 138, all ) >= 1 -> "Oh. Das ist die prächtige Nachtengelsblüte. Sie wird mich an meine verstorbene Mutter erinnern. Hier, nimm diese Flaschen für deine Mühe. Danke.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
+english, "sure", queststatus = 8, item( 138, all ) >= 1 -> "Wow. This is the magnificent Night Angels Blossom. It will remind me of my passed away mother. Here, take these bottles for your troubles. Thank you.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
+german, "sicher", queststatus = 8, item( 138, all ) >= 1 -> "Oh. Das ist die prächtige Nachtengelsblüte. Sie wird mich an meine verstorbene Mutter erinnern. Hier, nimm diese Flaschen für deine Mühe. Danke.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
+english, "of course", queststatus = 8, item( 138, all ) >= 1 -> "Wow. This is the magnificent Night Angels Blossom. It will remind me of my passed away mother. Here, take these bottles for your troubles. Thank you.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
+german, "natürlich", queststatus = 8, item( 138, all ) >= 1 -> "Oh. Das ist die prächtige Nachtengelsblüte. Sie wird mich an meine verstorbene Mutter erinnern. Hier, nimm diese Flaschen für deine Mühe. Danke.", queststatus = 10, deleteitem( 138, 1 ), item( 1316, 2, 333, 0 )
+english, "yes", queststatus = 8 -> "So? Where is it? Don't lie to me!", queststatus = 6
+german, "ja", queststatus = 8 -> "Nun? Wo ist sie? Belüg mich nicht!", queststatus = 6
+english, "sure", queststatus = 8 -> "You don't have it! Do not lie!", queststatus = 6
+german, "sicher", queststatus = 8 -> "Du hast sie nicht! Lüg nicht!", queststatus = 6
+english, "of course", queststatus = 8 -> "Lies! You have none.", queststatus = 6
+german, "natürlich", queststatus = 8 -> "Lügen! Du hast keine.", queststatus = 6
+english, "no", queststatus = 8 -> "A pity. I will continue to wait.", queststatus = 6
+german, "nein", queststatus = 8 -> "Schade. Ich werde weiter warten.", queststatus = 6
 
 -- NPC DESCRIPTION
-"#me examine" -> "#me looks in her mid 20s, with dark orange hair reaching just below her shoulders, brown eyes and freckles on her cheek."
-"#me examine clothes" -> "#me is wearing a simple white dress, decorated with small pink circles."
+english, "#me examine" -> "#me looks in her mid 20s, with dark orange hair reaching just below her shoulders, brown eyes and freckles on her cheek."
+german, "#me betrachtet" -> "#me sieht aus, als wäre sie Mitte zwanzig. Ihr dunkeloranges Haar reicht bis knapp unter die Schultern. Sie hat braune Augen und Sommersprossen auf den Wangen."
+english, "#me examine clothes" -> "#me is wearing a simple white dress, decorated with small pink circles."
+german, "#me betrachtet kleidung" -> "#me trägt ein schlichtes weißes Kleid, das mit kleinen rosa Kreisen verziert ist."
 
 -- SHOUT
-"#s" -> "Ooww! Would you mind not shouting so loud?"
+english, "#s" -> "Ooww! Would you mind not shouting so loud?"
+german, "#s" -> "Aua! Könntest du bitte nicht so laut schreien?"
 
 -- GREETINGS/GOODBYES - known person
-"hello", state = 1 -> "Hello again, %CHARNAME"
-"greet", state = 1 -> "Greetings %CHARNAME"
-"see you", state = 1 -> "Be well %CHARNAME"
-"good night", state = 1 -> "Have a good night, %CHARNAME"
-"how are you", state = 1 -> "I am fine, thank you."
+english, "hello", state = 1 -> "Hello again, %CHARNAME"
+german, "hallo", state = 1 -> "Hallo wieder, %CHARNAME"
+english, "greet", state = 1 -> "Greetings %CHARNAME"
+german, "grüß", state = 1 -> "Sei gegrüßt, %CHARNAME"
+english, "see you", state = 1 -> "Be well %CHARNAME"
+german, "bis bald", state = 1 -> "Leb wohl, %CHARNAME"
+english, "good night", state = 1 -> "Have a good night, %CHARNAME"
+german, "gute nacht", state = 1 -> "Gute Nacht, %CHARNAME"
+english, "how are you", state = 1 -> "I am fine, thank you."
+german, "wie geht es dir", state = 1 -> "Mir geht es gut, danke."
 
 -- GREETINGS/GOODBYES - unknown person
-"hello" -> "Hello."
-"greet" -> "Greetings to you."
-"farewell" -> "Farewell and take care."
-"bye" -> "Goodbye and be well."
-"see you" -> "Goodbye."
-"good day" -> "And good day to you too."
-"good night" -> "Have a good night."
+english, "hello" -> "Hello."
+german, "hallo" -> "Hallo."
+english, "greet" -> "Greetings to you."
+german, "grüß" -> "Sei gegrüßt."
+english, "farewell" -> "Farewell and take care."
+german, "leb wohl" -> "Leb wohl und pass auf dich auf."
+english, "bye" -> "Goodbye and be well."
+german, "tschüss" -> "Auf Wiedersehen und alles Gute."
+english, "see you" -> "Goodbye."
+german, "bis bald" -> "Auf Wiedersehen."
+english, "good day" -> "And good day to you too."
+german, "guten tag" -> "Dir auch einen guten Tag."
+english, "good night" -> "Have a good night."
+german, "gute nacht" -> "Gute Nacht."
 
 -- INTRODUCTION PHRASES
-"my name is", state = 0 -> "It is a real pleasure to meet you, %CHARNAME", state = 1
-"is my name", state = 0 -> "It is my pleasure to meet you, %CHARNAME'", state=1
-"who [a']+re you", state = 0 -> "I am %NPCNAME. What is your name?"
-"who might you be", state = 0 -> "My name is %NPCNAME. And you might be?"
-"your name", state = 0 -> "My name is %NPCNAME. What is your name?"
+english, "my name is", state = 0 -> "It is a real pleasure to meet you, %CHARNAME", state = 1
+german, "mein name ist", state = 0 -> "Es ist mir eine große Freude, dich kennenzulernen, %CHARNAME", state = 1
+english, "is my name", state = 0 -> "It is my pleasure to meet you, %CHARNAME", state=1
+german, "ist mein name", state = 0 -> "Es freut mich, dich kennenzulernen, %CHARNAME", state=1
+english, "who [a']+re you", state = 0 -> "I am %NPCNAME. What is your name?"
+german, "wer bist du", state = 0 -> "Ich bin %NPCNAME. Wie heißt du?"
+english, "who might you be", state = 0 -> "My name is %NPCNAME. And you might be?"
+german, "wer seid ihr", state = 0 -> "Mein Name ist %NPCNAME. Und wer bist du?"
+english, "your name", state = 0 -> "My name is %NPCNAME. What is your name?"
+german, "dein name", state = 0 -> "Mein Name ist %NPCNAME. Wie heißt du?"
 
 -- HELP
-"help" -> "[Game Help]: ((This is a NPC, you can talk to them just like other player characters. NPCs will react to keywords like 'Hello', so listen closely to what they say.))"
+"help" -> "[Game Help]: ((This is an NPC, you can talk to them just like other player characters. NPCs will react to keywords like 'Hello', so listen closely to what they say.))"
 "hilfe" -> "[Game Help]: ((Das ist ein NPC, du kannst mit ihnen sprechen wie mit anderen Spielercharakteren. NPCs werden auf Schlüsselwörter wie 'Hallo' reagieren, also achte gut auf das was sie dir sagen.))"
 
 -- GENERAL
-"I[ a']+m new", state = 0 -> "Nice to meet you, then. I am %NPCNAME, what is your name?"
-"newbie" -> "#w((A newbie? Welcome! I am an NPC. I cannot really help you, but other players can. Please remember to mark OOC talk in double brackets.))"
-"n[0O]b" -> "#w((A newbie? Welcome! I am an NPC. I cannot really help you, but other players can. Please remember to mark OOC talk in double brackets.))"
-"how are you" -> "I am doing well, thank you."
+english, "I[ a']+m new", state = 0 -> "Nice to meet you, then. I am %NPCNAME, what is your name?"
+german, "ich bin neu", state = 0 -> "Dann freut es mich, dich kennenzulernen. Ich bin %NPCNAME. Wie heißt du?"
+english, "newbie" -> "#w((A newbie? Welcome! I am an NPC. I cannot really help you, but other players can. Please remember to mark OOC talk in double brackets.))"
+german, "neuling" -> "#w((Neu hier? Willkommen! Ich bin ein NPC. Ich kann dir nicht wirklich helfen, aber andere Spieler können es. Bitte kennzeichne OOC-Gespräche mit doppelten Klammern.))"
+english, "n[0O]b" -> "#w((A newbie? Welcome! I am an NPC. I cannot really help you, but other players can. Please remember to mark OOC talk in double brackets.))"
+german, "anfänger" -> "#w((Neu hier? Willkommen! Ich bin ein NPC. Ich kann dir nicht wirklich helfen, aber andere Spieler können es. Bitte kennzeichne OOC-Gespräche mit doppelten Klammern.))"
+english, "how are you" -> "I am doing well, thank you."
+german, "wie geht es dir" -> "Mir geht es gut, danke."
 
 -- JOB after quest completed
-"your job", queststatus = 10 -> "I have basic abilities in druidry. If you are injured, please come to me."
-"what do you", queststatus = 10 -> "I'm a competent druid. Should you be injured, come to me."
-"what you doing", queststatus = 10 -> "Observing the beauty of the flowers."
+english, "your job", queststatus = 10 -> "I have basic abilities in druidry. If you are injured, please come to me."
+german, "dein beruf", queststatus = 10 -> "Ich beherrsche die Grundlagen der Druidenkunst. Wenn du verletzt bist, komm bitte zu mir."
+english, "what do you", queststatus = 10 -> "I'm a competent druid. Should you be injured, come to me."
+german, "was machst du", queststatus = 10 -> "Ich bin eine fähige Druidin. Wenn du verletzt bist, komm zu mir."
+english, "what you doing", queststatus = 10 -> "Observing the beauty of the flowers."
+german, "was tust du", queststatus = 10 -> "Ich betrachte die Schönheit der Blumen."
 
 -- JOB
-"your job", queststatus = 0 -> "I...sometimes work as a druid. I study the plants, especially the flowers. Aren't they lovely?", queststatus = 1
-"what do you", queststatus = 0 -> "Sometimes I study the plants, or better the flowers. Don't you find them lovely?", queststatus = 1
-"what you doing", queststatus = 0 -> "I'm just observing the flowers. Aren't they pretty?", queststatus = 1
+english, "your job", queststatus = 0 -> "I...sometimes work as a druid. I study the plants, especially the flowers. Aren't they lovely?", queststatus = 1
+german, "dein beruf", queststatus = 0 -> "Ich... arbeite manchmal als Druidin. Ich studiere die Pflanzen, besonders die Blumen. Sind sie nicht wunderschön?", queststatus = 1
+english, "what do you", queststatus = 0 -> "Sometimes I study the plants, or better the flowers. Don't you find them lovely?", queststatus = 1
+german, "was machst du", queststatus = 0 -> "Manchmal studiere ich die Pflanzen, genauer gesagt die Blumen. Findest du sie nicht wunderschön?", queststatus = 1
+english, "what you doing", queststatus = 0 -> "I'm just observing the flowers. Aren't they pretty?", queststatus = 1
+german, "was tust du", queststatus = 0 -> "Ich betrachte nur die Blumen. Sind sie nicht hübsch?", queststatus = 1
 
 -- QUEST STARTERS
-"you like flowers", queststatus = 0 -> "Yes, I love flowers. They are the passion of my life. Don't you like them too?", queststatus = 1
-"i like flowers", queststatus = 0 -> "You like flowers too? That is so lovely. May I ask you a question then?", queststatus = 2
-"i love flowers", queststatus = 0 -> "You love the flowers? Really? I love them too! Then may I ask you a question?", queststatus = 2
-"flowers", queststatus = 0 -> "What? You mentioned flowers? Do you like them?", queststatus = 1
+english, "you like flowers", queststatus = 0 -> "Yes, I love flowers. They are the passion of my life. Don't you like them too?", queststatus = 1
+german, "du magst blumen", queststatus = 0 -> "Ja, ich liebe Blumen. Sie sind die Leidenschaft meines Lebens. Magst du sie nicht auch?", queststatus = 1
+english, "i like flowers", queststatus = 0 -> "You like flowers too? That is so lovely. May I ask you a question then?", queststatus = 2
+german, "ich mag blumen", queststatus = 0 -> "Du magst Blumen auch? Wie schön. Darf ich dir dann eine Frage stellen?", queststatus = 2
+english, "i love flowers", queststatus = 0 -> "You love the flowers? Really? I love them too! Then may I ask you a question?", queststatus = 2
+german, "ich liebe blumen", queststatus = 0 -> "Du liebst die Blumen? Wirklich? Ich liebe sie auch! Darf ich dir dann eine Frage stellen?", queststatus = 2
+english, "flowers", queststatus = 0 -> "What? You mentioned flowers? Do you like them?", queststatus = 1
+german, "blumen", queststatus = 0 -> "Was? Du hast Blumen erwähnt? Magst du sie?", queststatus = 1
 
 -- DEBUGGING
-"reset me" -> "I will reset you", queststatus = 0, state = 0
+english, "reset me" -> "I will reset you", queststatus = 0, state = 0
+german, "setz mich zurück" -> "Ich werde deinen Fortschritt zurücksetzen", queststatus = 0, state = 0

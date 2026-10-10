@@ -14,11 +14,15 @@ useMsgUS = "Don't touch me!"
 
 
 german, "hallo", "gr[üue]+[sß]", "guten.+tag", "aho[ij]", "tach" -> "Sei mir gegrüßt. Brauchst du Hilfe bei der Suche nach einem bestimmten Buch?"
+english, "hello", "greet", "good.+day", "ahoy" -> "Greetings. Do you need help finding a particular book?"
 german, "[gg]ute.+nacht", "wieder.+sehen", "[tt]sch[üue]+[sß]", "[tt]tschau", "[gg]ehabt.+euch", "[aa]uf.+bald", "[bb]is.+bald" -> "Machs gut. Ich hoff, wir sehen uns bald wieder. Und halt die Großen immer schön fern."
-german, "name", "wie.+hei[sß].+du", "wer.+bist.+du", "wer.+seid.+ihr" -> "Ich bin %name, die Schreiberin hier in der Grauen Zuflucht."
+english, "good.+night", "goodbye", "farewell", "bye", "be.+well" -> "Be well. I hope we see each other again soon. And keep the big folk away."
+german, "name", "wie.+hei[sß].+du", "wer.+bist.+du", "wer.+seid.+ihr" -> "Ich bin %NPCNAME, die Schreiberin hier in der Grauen Zuflucht."
+english, "name", "who.+you" -> "I am %NPCNAME, the scribe here at the Grey Refuge."
 race(orc), german, ".+" -> "So einer wie Du hat hier nichts zu suchen. Hau ab oder ich ruf die Wachen!"
 race(orc), english, ".+" -> "You should not be here. Leave before i call for guards!"
 german, item(68, "body") >= 1, money >= 100, "[bb]rauch.+[ss]chl[üue]ssel", "[mm][öoe]chte.+schl[üue]ssel" -> "Hier hast du einen.", money - 100, item(1, 1, 199, 0)
+english, item(68, "body") >= 1, money >= 100, "need.+key", "want.+key" -> "Here is one.", money - 100, item(1, 1, 199, 0)
 
 -- Idle dialogue
-cycletext "#me sortiert Bücher in den Regalen", "#me sorts books in the shelfs."
+cycletext "#me sortiert Bücher in den Regalen", "#me sorts books in the shelves."

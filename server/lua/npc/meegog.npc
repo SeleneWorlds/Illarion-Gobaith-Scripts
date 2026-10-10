@@ -14,32 +14,32 @@ useMsgUS = "Don't you touch me!"
 
 
 "greetings", "hello", "greeb+[a]+s" -> "Greetinks! How may poor %NPCNAME serve my Masters?  I can saw logs for you!"
-"gr[üue]+[sß]+e", "hallo", "guten.+tag" -> "Grüße! Wie kann schlechter %NPCNAME meinen Mastern dienen? Ich kann sah Klotz für Sie!"
+"gr[üue]+[sß]+e", "hallo", "guten.+tag" -> "Grüße! Wie kann schlechter %NPCNAME meinen Mastern dienen? Mir können Baumstämme sägen für Meister!"
 "saw.+logs" -> "Which type shall I make master?  Apple, Cherry, Conifer or Naldor?"
-"sah.+klotz" -> "Welchen Typ werde ich Master machen? Apfel, Kirsch, Tannen oder Naldor?"
+"st[aä]mm.+s[aä]g", "s[aä]g.+st[aä]mm", "sah.+klotz" -> "Welches Holz sollen mir sägen, Meister? Apfel, Kirsch, Tannen oder Naldor?"
 item(2560, "belt") >= 1, "apple" -> "#me takes your logs and immediately saws them into boards. ", item(2716, 1, 333, 0), deleteItem(2560, 1)
-item(2560, "belt") >= 1, "apfel" -> "#me nimmt Ihren Klotz und sägt sie sofort in Ausschüsse. ", item(2716, 1, 333, 0), deleteItem(2560, 1)
+item(2560, "belt") >= 1, "apfel" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(2716, 1, 333, 0), deleteItem(2560, 1)
 item(543, "belt") >= 1, "cherry" -> "#me takes your logs and immediately saws them into boards. ", item(545, 1, 333, 0), deleteItem(543, 1)
-item(543, "belt") >= 1, "kirsch" -> "#me nimmt Ihren Klotz und sägt sie sofort in Ausschüsse. ", item(545, 1, 333, 0), deleteItem(543, 1)
+item(543, "belt") >= 1, "kirsch" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(545, 1, 333, 0), deleteItem(543, 1)
 item(3, "belt") >= 1, "conifer" -> "#me takes your logs and immediately saws them into boards. ", item(2543, 1, 333, 0), deleteItem(3, 1)
-item(3, "belt") >= 1, "tannen" -> "#me nimmt Ihren Klotz und sägt sie sofort in Ausschüsse. ", item(2543, 1, 333, 0), deleteItem(3, 1)
+item(3, "belt") >= 1, "tannen" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(2543, 1, 333, 0), deleteItem(3, 1)
 item(544, "belt") >= 1, english, "naldor", "oak" -> "#me takes your logs and immediately saws them into boards. ", item(546, 1, 333, 0), deleteItem(544, 1)
-item(544, "belt") >= 1, german, "naldor" -> "#me nimmt Ihren Klotz und sägt sie sofort in Ausschüsse. ", item(546, 1, 333, 0), deleteItem(544, 1)
-"kick", "boot" -> "Ooohhh!  Please dont hurt poor %NPCNAME, Ill do as you asks!"
+item(544, "belt") >= 1, german, "naldor" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(546, 1, 333, 0), deleteItem(544, 1)
+"kick", "boot" -> "Ooohhh!  Please don't hurt poor %NPCNAME, I'll do as you asks!"
 "tritt", "trete", "stiefel" -> " Ooohhh! Du nicht bestrafen armen %NPCNAME, ich alles machen was du sagst!"
 "beat", "punch", "hit", "slap" -> "#me cringes into a corner, begging for mercy."
-"erfolg", "schlag" -> "#me duckt sich an einer Ecke, um die Gnade bittend."
+"schlag", "hieb" -> "#me duckt sich an einer Ecke, um die Gnade bittend."
 "whip", "slash" -> "#me cringes in a corner and screams for mercy!"
 "peitsche", "schlag", "hieb", "prügel" -> "#me duckt sich ängstlich und winselt um Gnade!"
 "make", "do" -> "I can saw Logs for you master."
-"machen", "tun", "tust" -> " Ich kann sah Klotz für Sie um zu meistern. "
-"was.+verkaufe" -> "Ich habe nickts, Ich verkaufe gar nix."
+"machen", "tun", "tust" -> " Mir können Baumstämme sägen für Meister. "
+"was.+verkaufe" -> "Ich habe nichts, Ich verkaufe gar nix."
 english, "what.+sell" -> "I have nothing, so I sell nothing."
-"was.+kaufe" -> "Ich habe kein geld, Ich kaufe gar nix."
+"was.+kaufe" -> "Ich habe kein Geld, Ich kaufe gar nix."
 english, "what.+buy" -> "I have no money, so I buy nothing."
 "auf.+bald", "bis.+bald", "tschüss" -> "Bis bald!"
 "farewell", "bye", "good.+day" -> "Be well!"
 
 -- Idle dialogue
-cycletext "#me pickt seine Nase auf", "#me picks his nose"
+cycletext "#me bohrt in der Nase", "#me picks his nose"
 cycletext "#me räumt die Höhle auf", "#me cleans up the cave"

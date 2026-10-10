@@ -35,10 +35,10 @@ buyPrimaryItem = id(2501), price(5)
 
 "what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 "[gg]reetings", "[hh]ello", "[hh]i" -> "Welcome. Can I help you?", "A good day to you."
-"[yy]ou.+[tt]rader" -> "I am %NPCNAME, I sell some usefull things. Do you need something?"
-"[tt]ell.+[aa]cademy" -> "I'm not good in history. If you want to now something of the magic academy better ask someone else."
-"[ww]hat.+sell" -> "I sell everything you need for a enjoyable break. You should not learn with a empty stomach."
-"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "You are going? Good luck for your studies.", "Take care of you.", "Farewell. I hope you will come back soon."
+"[yy]ou.+[tt]rader" -> "I am %NPCNAME, I sell some useful things. Do you need something?"
+"[tt]ell.+[aa]cademy" -> "I'm not good in history. If you want to know something of the magic academy better ask someone else."
+"[ww]hat.+sell" -> "I sell everything you need for an enjoyable break. You should not learn with an empty stomach."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "You are going? Good luck for your studies.", "Take care of yourself.", "Farewell. I hope you will come back soon."
 "[ww]hat.+buy" -> "I buy bottles with drinks and also the empty glasses and plates back."
 "[ww]ho.+you?" -> "My name is %NPCNAME."
 "i'm.+.+" -> "Nice to meet you. Did you need anything?"
@@ -55,5 +55,5 @@ buyPrimaryItem = id(2501), price(5)
 "trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
 
 -- Idle dialogue
-cycletext "#me notiert ein paar Zahlen auf ein Stück Pergament.", "#me notes a few numbers on a piece of pergament."
+cycletext "#me notiert ein paar Zahlen auf ein Stück Pergament.", "#me notes a few numbers on a piece of parchment."
 cycletext "#me sortiert ein paar Dinge in ihrer Truhe neu.", "#me rearranges some things in her chest. "

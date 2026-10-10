@@ -20,7 +20,7 @@ wrongLangUS = "#me looks at you a little confused"
 "[ww]ho" -> "I am %NPCNAME"
 "[ww]er" -> "Ich bin %NPCNAME."
 "[bb]ye.", "[ff]arewell" -> "Be well", "Farewell"
-"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Bis Bald", "Auf bald", "Auf balde"
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Bis bald", "Auf bald", "Auf bald"
 
 -- Idle dialogue
 cycletext "#me blättert in einem Buch herum", "#me browses through a book"

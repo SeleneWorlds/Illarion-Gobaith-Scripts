@@ -20,7 +20,7 @@ questid=2
 "how are you" -> "Oh, I am fine. I hope you too."
 "wie geht dir", "wie geht euch", "wohlbefinden" -> "Oh, mir geht es gut. Ich hoffe Euch auch."
 
-"bye", "farewell", "be well" -> "Be well.", "Farewell.", "Good bye."
+"bye", "farewell", "be well" -> "Be well.", "Farewell.", "Goodbye."
 "auf bald", "bis bald", "leb.+wohl", "tsch[üu][ßs]", "mach.+gut" -> "Auf bald.", "Bis bald.", "Lebt wohl."
 
 -- infos

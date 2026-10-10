@@ -50,11 +50,11 @@ buyPrimaryItem = id(178), price(1)
 sellItem = id(2744), price(60), stack(1), quality(333)
 buyPrimaryItem = id(2744), price(5)
 
-"[gg]reetings", "[hh]ello" -> "Hiho. How can I help you?", "Hello. Do you need something? I'm alchemist and dyes of all colors. All are selfmade!"
-"[gg]rü[ßs]+e", "[hh]allo" -> "Hiho! Wie kann ich dir helfen? Ich habe allerhand Farben. Alle selbst gemacht!", "Hallo. Wer bist du denn?."
+"[gg]reetings", "[hh]ello" -> "Hiho. How can I help you?", "Hello. Do you need something? I'm an alchemist and sell dyes of all colors. All are selfmade!"
+"[gg]rü[ßs]+e", "[hh]allo" -> "Hiho! Wie kann ich dir helfen? Ich habe allerhand Farben. Alle selbst gemacht!", "Hallo. Wer bist du denn?"
 "[yy]ou.+[tt]rader" -> "Yes, i trade with dyes and ingredients to make them."
 "[ddii][uh]r*.+[hh][äa]ndler" -> "Ja, ich handle mit Farben und Zutaten zur Herstellung von Farben."
-"[yy]ou.+[hh]ealer" -> "No, i am not. I am alchemist and sell dyes"
+"[yy]ou.+[hh]ealer" -> "No, i am not. I am an alchemist and sell dyes"
 "[ddii][uh]r*.+[hh]eiler" -> "Nein bin ich nicht. Ich bin Alchemist und verkaufe Farben."
 "[ww]hat.+sell" -> "Do you want that i list my wares? Here take a look at the best dyes you can find!"
 "[ww]as.+verkauf" -> "Willst du eine Liste meiner Waren sehen? Hier, schau. Das sind die besten Farben die du finden wirst"
@@ -66,9 +66,9 @@ buyPrimaryItem = id(2744), price(5)
 "[ww]as.+[kk]leidung" -> "Ich habe keine Kleidung mehr im Angebot. Das Geschäft mit den abgetragenen Klamotten lief nicht gut."
 "[ww]hat.+[mm]ore" -> "I need different tools and goods to make dyes"
 "[ww]as.+[mm]ehr" -> "Ich brauche verschiedene Werkzeuge und Sachen um Farben herzustellen."
-"[ww]hat.+[dd]ye" -> "I'm an alchemist and prepare differnet dyes. You are interested in red, blue, yellow or other?."
+"[ww]hat.+[dd]ye" -> "I'm an alchemist and prepare different dyes. You are interested in red, blue, yellow or other?"
 "[ww]as.+[ff]arbe" -> "Ja, ich bin Alchemist und verkaufe verschiedene Farben. Bist du vielleicht an Rot oder Blau interessiert? Was anderes?"
-"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Have a nice day. Oldra my bless you.", "Farewell!", "Good day."
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Have a nice day. Oldra may bless you.", "Farewell!", "Good day."
 "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch! Oldra segne euch!", "Schönen Tag!"
 "[ww]ho.+you?" -> "My name is Tony Baggins. I am an alchemist and I work here. But I come from Greenbriar. Do you know my home village?"
 "[ww]er.+[ddii][uh]r*" -> "Ich bin Tony Baggins. Ich bin Alchemist und arbeite hier. Aber ich komme von Greenbriar. Kennst du mein Heimatdorf?"

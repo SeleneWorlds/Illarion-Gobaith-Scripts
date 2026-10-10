@@ -38,10 +38,10 @@ buyPrimaryItem = id(2055), price(3)
 
 "[hh]ello", "[gg]reetings" -> "Hello", "Greetings"
 "[hh]allo", "[gg]r[üu][ßs]+" -> "Hallo", "Grüße"
-"[ww]hat.+buy" -> "Ill buy cutlery, plates and bowls, cups, goblets, bottles and cooking tools."
+"[ww]hat.+buy" -> "I'll buy cutlery, plates and bowls, cups, goblets, bottles and cooking tools."
 "[ww]as.+%skauf" -> "Ich kaufe Besteck, Teller und Schüsseln, Becher, Kelche, diverse Flaschen und Kochutensilien."
 "[ww]hat.+do" -> "I buy table supplies for the tavern"
-"[ww]as.+[tm][ua][tsc]" -> "Ich kaufe Tisch Gedeck für die Taverne"
+"[ww]as.+[tm][ua][tsc]" -> "Ich kaufe Tischgedeck für die Taverne"
 "[ww]ho.+you" -> "Gambret."
 "[ww]er.+[ddii][uh]r*" -> "Gambret."
 "[ii]['.+]*m.+" -> "Alright then. Have anything to sell me?"

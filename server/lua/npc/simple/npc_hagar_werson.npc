@@ -10,13 +10,13 @@ dir=south
 "greetings","hello", race=elf -> "G'day..."
 
 "gr[üue]+[sß]+e","Hallo","Guten Tag", "Gruss", "Moin", sex=female -> "Sei gegrüßt, holde Maid! Komm näher! Ich wisch auch den Tisch ab."
-"greetings","hello", sex=female -> "G'day, beautyfull maiden! come here! I'll clean that table."
+"greetings","hello", sex=female -> "G'day, beautiful maiden! come here! I'll clean that table."
 
 item(7, all)>=1, item(333, all) >= 1, "gr[üue]+[sß]+e","Hallo","Guten Tag", "Gruss", "Moin" -> "Moin, Moin, %CHARNAME! Komm ran! Hier kannste Dich vollkippen."
 item(7, all)>=1, item(333, all) >= 1, "greetings","hello" -> "G'day, %CHARNAME! Here's yer place! Fill yer up?"
 
 "gr[üue]+[sß]+e","Hallo","Guten Tag", "Gruss", "Moin" -> "Moin, seid willkommen in der Drachentränke!"
-"greetings","hello" -> "G'day, be wellcome in the Dragon's Pond!"
+"greetings","hello" -> "G'day, be welcome in the Dragon's Pond!"
 
 "name", german, sex=female                      -> "Es ist mir ein Vergnügen! Ich bin %NPCNAME, der Wirt."
 "name", english, sex=female                     -> "What a pleasure! I am %NPCNAME, the innkeeper."
@@ -25,12 +25,12 @@ item(7, all)>=1, item(333, all) >= 1, "greetings","hello" -> "G'day, %CHARNAME! 
 
 "Was verkauft", sex=female -> "Ich hab Jungfernglück, den beliebten Apfelwein, nur sechs Kupfer fürn Kelch. Wär das nix fuer Euch? Oder Gnollgift, den guten Rotwein, nur acht Kupfer. Bärenfalle, den besten Met auch für acht. Und Nordburger Schädelbrecher, unser Bier. Der Krug zu lumpigen acht Kupfer"
 "Was kauft", "Was kaufst", sex=female -> "Ich kauf Kupferkelche zurück, meine Liebe. Ein'n Kupfer fürn Kelch. Und Bierkruege, auch für'n Kupfer. Für graue Flaschen zahl ich zwei."
-"what sell", sex=female -> "I got virgen's delight, our applewine, six copper the goblet. Specially for you, my dear. An' Gnollpoison, a red wine, or Beartrap, our meade, both for eight copper the goblet. An' Northburger scullcracker, our beer, for eight copper the mug."
+"what sell", sex=female -> "I got virgin's delight, our applewine, six copper the goblet. Specially for you, my dear. An' Gnollpoison, a red wine, or Beartrap, our meade, both for eight copper the goblet. An' Northburger skullcracker, our beer, for eight copper the mug."
 "what do buy", sex=female -> "I buy back the empty mugs and coppergoblets, my dear. For a copper each. And grey bottles, for two copper each."
 
 "Was verkauft" -> "Ich hab Jungfernglück, den beliebten Apfelwein, nur sechs Kupfer fürn Kelch. Oder Gnollgift, den guten Rotwein, nur acht Kupfer. Bärenfalle, den besten Met auch für acht. Und Nordburger Schädelbrecher, unser Bier. Der Krug  zu lumpigen acht Kupfer"
 "Was kauft", "Was kaufst" -> "Ich kauf Kupferkelche zurück. Ein'n Kupfer fürn Kelch. Und Bierkruege, auch für'n Kupfer. Für graue Flaschen zahl ich zwei."
-"what sell" -> "I got virgen's delight, our applewine, six copper the goblet. An' Gnollpoison, a red wine, or Beartrap,  our meade, both for eight copper the goblet. An' Northburger scullcracker, our beer, for eight copper the mug."
+"what sell" -> "I got virgin's delight, our applewine, six copper the goblet. An' Gnollpoison, a red wine, or Beartrap,  our meade, both for eight copper the goblet. An' Northburger skullcracker, our beer, for eight copper the mug."
 "what do buy" -> "I buy back the empty mugs and coppergoblets. For a copper each. And grey bottles, for two copper each."
 
 "buy milk" -> "Here is no monastery! get lost!"
@@ -43,7 +43,7 @@ sex=female,"buy a virgen's delight", "buy a cyder", money < 6 -> "My dear, I cai
 "buy a virgen's delight", "buy a cyder", money < 6 -> "Yer 'ave not enuff money, come back, when yer can pay."
 
 race=elf, "buy a virgen's delight", "buy a cyder" -> "Yer cyder. Gimme six copper.",money-6,item(1844,1,333,0)
-sex=female, "buy a virgen's delight", "buy a cyder" -> "Here yer got it. Virgen's delight for the gracious maid!",money-6,item(1844,1,333,0)
+sex=female, "buy a virgen's delight", "buy a cyder" -> "Here yer got it. Virgin's delight for the gracious maid!",money-6,item(1844,1,333,0)
 "buy a virgen's delight", "buy a cyder" -> "Here yer got it. drink, before the goblet gets rusty!",money-6,item(1844,1,333,0)
 
 race=elf, "ein Apfelmost kauf", "ein Apfelwein kauf", "ein Cider kauf", "ein Jungferngl[üue]+ck kauf", money < 6 -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
@@ -71,7 +71,7 @@ money < 8, sex=female,"buy a beer", "buy a scullcracker" -> "My dear, I cain't g
 money < 8, "buy a beer", "buy a scullcracker" -> "Yer 'ave not enuff money, come back, when yer can pay."
 
 race=elf, "buy a beer", "buy a scullcracker" -> "Yer beer. Gimme eight copper.",money-8,item(1909,1,333,0)
-sex=female, "buy a beer", "buy a scullcracker" -> "Here yer got it. a scullcracker for the daring gal! that'll give yer more headaches than a husband!", money-8,item(1909,1,333,0)
+sex=female, "buy a beer", "buy a scullcracker" -> "Here yer got it. a skullcracker for the daring gal! that'll give yer more headaches than a husband!", money-8,item(1909,1,333,0)
 "buy a beer", "buy a scullcracker" -> "Here yer got it. drink, before it cools down!",money-8,item(1909,1,333,0)
 
 money < 8, race=elf, "ein bier kauf", "ein sch[äae]+delbrecher kauf" -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
@@ -193,7 +193,7 @@ sex=female, "%NUMBER Met kauf", "%NUMBER B[äae]+renfalle kauf",money<expr(%NUMBE
 " kauf", "kauf " ->"So was verkauf ich nicht!"
 
 "auf bald","bis bald","tschüss" -> "Bis bald! Und lass dir nich auffe Hände treten..."
-"farewell","bye","good day" -> "Be well! An' carefull, that no one steps on yer hands..."
+"farewell","bye","good day" -> "Be well! An' careful, that no one steps on yer hands..."
 cycletext "wir laaagen vor Sor-Ann-Araah... und hatten 'nen Elf ahan Bord....  In den Kesseln da faulte das Wassah...  da soffen wir Bier soohofort... ","Blow wi-ind, blow... to Salkamar we go.... her hair was blond her eyes were blue... her lips were red, her axe was new... ter my hodae, ter my hodae, ter my hodae, hodae ho!"
 cycletext "#me verwischt den Dreck auf dem Tisch","#me wipes in the dirt on the table"
 cycletext "#me steht in einer Wolke übler Gerüche","#me stands in a cloud of bad smells"

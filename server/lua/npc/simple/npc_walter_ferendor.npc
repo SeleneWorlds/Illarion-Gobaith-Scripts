@@ -8,10 +8,10 @@ sex=male
 "hello", "greet", "good day" -> "Be greeted. Nice weather, isn't it?", "Hm ... delicious cake ... Oh, greetings to you.", "Hello there."
 "hallo", "gr[üu][sß]", "guten tag", "tach", "grue[sß]" -> "Seid gegrüßt. Ganz nettes Wetter, nicht?", "Hm ... leckerer Kuchen ... Oh, grüß' Euch.", "Hallöchen."
 
-"bye", "be well", "farewell" -> "Good bye.", "The Five with you.", "Farewell.", "Have a nice day."
+"bye", "be well", "farewell" -> "Goodbye.", "The Five with you.", "Farewell.", "Have a nice day."
 "auf bald", "bis bald", "auf wiederseh", "leb wohl" -> "Auf Wiedersehen.", "Schönen Tag noch!", "Auf bald.", "Bis bald.", "Lebt wohl."
 
-"weather" -> "Well, any weather is nice as it is needed aswell."
+"weather" -> "Well, any weather is nice as it is needed as well."
 "wetter" -> "Naja, jedes Wetter ist schön, da es ja auch gebraucht wird."
 
 "cake" -> "Oh, this delicious cake ...  a halfling near the fields outside the walls gave it to me."
@@ -42,7 +42,7 @@ sex=male
 ".+", state=20, money>=V2 -> state=2, money-V2
 
 ".+", state=30, english, money<V3 -> "I won't heal you fully unless you have T3 copper coins for me.", "Come back when you have T3 copper coins! Then I'll heal you fully."
-".+", state=30, german, money<V3 -> "Ich werde Eure nicht vollständig heilen, es sei denn Ihr bringt mir T3 Kupfermünzen.", "Kommt wieder, wenn Ihr T3 Kupfermünzen habt! Dann werde ich Euch vollständig heilen."
+".+", state=30, german, money<V3 -> "Ich werde Euch nicht vollständig heilen, es sei denn Ihr bringt mir T3 Kupfermünzen.", "Kommt wieder, wenn Ihr T3 Kupfermünzen habt! Dann werde ich Euch vollständig heilen."
 ".+", state=30, money>=V3 -> state=3, money-V3
 
 ".+", state=40, english, money<V4 -> "I won't cure your poisoning unless you have T4 copper coins for me.", "Come back when you have T4 copper coins! Then I'll cure your poisoning."

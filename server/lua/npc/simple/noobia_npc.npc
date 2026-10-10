@@ -1,4 +1,4 @@
--- Noobia NPC
+-- Noobian NPC
 name = "..."
 position = 43,40,100
 sex = male
@@ -6,9 +6,9 @@ race = gnome
 direction = west
 
 "greet", "hello" -> "Be greeted, stranger. I am %NPCNAME. I can show you how to turn around, if you want."
-"gr[üu][sß]", "grue[sß]", "hallo" -> "Sei gegrüßt, Fremder. Ich bin %NPCNAME. Ich kann dir zeigen, wie man sich dreht, wenn du wollt."
+"gr[üu][sß]", "grue[sß]", "hallo" -> "Sei gegrüßt, Fremder. Ich bin %NPCNAME. Ich kann dir zeigen, wie man sich dreht, wenn du willst."
 
-"bye", "farewell", "be well" -> "Be well.", "Farewell.", "Good bye."
+"bye", "farewell", "be well" -> "Be well.", "Farewell.", "Goodbye."
 "auf bald", "bis bald", "leb.+wohl", "tsch[üu][ßs]", "mach.+gut" -> "Auf bald.", "Bis bald.", "Leb wohl.", "Mach's gut."
 
 "who you", "what you" -> "I'm %NPCNAME, I can show you how to turn around."
@@ -26,4 +26,5 @@ direction = west
 "island" -> "I have told you already something about this island and I'm about to tell you even more! Shall I continue?"
 "insel" -> "Ich habe dir schon etwas über diese Insel erzählt und ich bin gerade dabei, dir sogar noch mehr zu erzählen! Soll ich weitermachen?"
 
-"yes", state=1 -> "
+"yes", state=1 -> "Follow this road to the dwarves. The NPCs here can teach you the basics. Listen closely to their instructions and complete their lessons before continuing to Gobaith.", state=0
+"ja", state=1 -> "Folge diesem Weg zu den Zwergen. Die NPCs hier können dir die Grundlagen beibringen. Höre ihren Anweisungen aufmerksam zu und schließe ihre Lektionen ab, bevor du nach Gobaith weitergehst.", state=0

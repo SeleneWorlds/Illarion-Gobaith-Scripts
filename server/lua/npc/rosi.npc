@@ -12,19 +12,19 @@ autointroduce = on
 useMsgDE = "Finger weg!"
 useMsgUS = "Don't you touch me!"
 lookatDE = "Eine misstrauisch dreinsehende, kleine Frau, die an ihrem Gürtel einen prallen Geldbeutel trägt. Allerdings hat sie auch ein gefährliches Nudelholz in der Rechten."
-lookatUS = "A suspiciously glancing, small woman who has a stuffed purse attached to her belt. Sadly she is also holding a dangerlous-looking rolling pin."
+lookatUS = "A suspiciously glancing, small woman who has a stuffed purse attached to her belt. Sadly she is also holding a dangerous-looking rolling pin."
 
 
 "[tt]ax", "[ss]teuer" -> lua("npc.custom.tax_collector", "collect", "greenbriar")
 "what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 
-"[gg]reetings", "[hh]ello" -> "Greetings. Can i help you?", "Be greeted. I'm %NPCNAME. Can I help you?"
+"[gg]reetings", "[hh]ello" -> "Greetings. Can I help you?", "Be greeted. I'm %NPCNAME. Can I help you?"
 "[gg]rü[ßs]+e", "[hh]allo" -> "Grüße. Kann ich euch helfen?", "Guten Tag. Ich bin %NPCNAME. Kann ich euch helfen?"
 "[yy]ou.+[tt]rader" -> "No. I'm no trader. I'm the tax collector of Greenbriar."
-"[ddii][uh]r*.+[hh]ändler" -> "Nein ich bin kein Händler. Ich bin der Steuerneintreiber von Greenbriar."
-"[ww]hat.+sell" -> "Nothing. I'm no trader so i sell nothing."
+"[ddii][uh]r*.+[hh]ändler" -> "Nein ich bin kein Händler. Ich bin der Steuereintreiber von Greenbriar."
+"[ww]hat.+sell" -> "Nothing. I'm no trader so I sell nothing."
 "[ww]as.+verkauf" -> "Ich bin kein Händler also verkaufe ich auch nichts."
 "[tt]ell.+[ss]omething" -> "Sorry, I'm pretty busy right now."
 "[ee]rzähl.+[ww]as" -> "Tut mir leid, ich bin grad ziemlich beschäftigt."
-"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Be well.", "Farewell!", "Good bye."
-"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Auf wiedersehen.", "Auf bald"
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Be well.", "Farewell!", "Goodbye."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Auf Wiedersehen.", "Auf bald"

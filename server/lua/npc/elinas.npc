@@ -53,7 +53,7 @@ buyPrimaryItem = id(209), price(50)
 "[ww]hat.+sell" -> "I sell all kinds of carpentry tools"
 "[ww]hat.+[tt]ools" -> "I sell tools for carpenters. Saws, axes, planes and carving tools."
 "[tt]ell.+[ss]omething" -> "This is Tol Vanima, the home of us elves."
-"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "The five with you!.", "May the gods bless your path!", "Farewell, my friend!"
+"[gg]oodbye", "[bb]ye", "[ff]arewell" -> "The Five be with you!", "May the gods bless your path!", "Farewell, my friend!"
 "[ww]hat.+buy" -> "I buy all kinds of bows and crossbows."
 "[ww]ho.+you?" -> "My name is %NPCNAME."
 "i'm.+.+" -> "Be greeted!"
@@ -73,6 +73,6 @@ buyPrimaryItem = id(209), price(50)
 "trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
 
 -- Idle dialogue
-cycletext "#me schnitzt mit eleganten Bewegungen an einer kleinen Holzstatue herum", "#me carves on a small wooden statue with a elegant motions"
+cycletext "#me schnitzt mit eleganten Bewegungen an einer kleinen Holzstatue herum", "#me carves on a small wooden statue with elegant motions"
 cycletext "#me blickt sich kurz um", "#me looks around a moment"
 cycletext "#me betrachtet einen Pfeil prüfend", "#me looks on an arrow with a checking glance"

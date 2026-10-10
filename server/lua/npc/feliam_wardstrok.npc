@@ -13,8 +13,8 @@ autointroduce = on
 wrongLangDE = "#me sieht dich leicht verwirrt an"
 wrongLangUS = "#me looks at you a little confused"
 
-lookatDE = "Ein kleiner Mann, kleiner als ein Zwerg, mit gewaltigem Strohhut, der ihn vor der Sonne schützt. Aus einer Tasche auf seinem Rücken schauen einige Bauernswerkzeuge hervor. Er macht wohl grad Pause."
-lookatUS = "A small man, smaller than a dwarf but with a giant hat protecting him of the sun. Peeking out of a bag around his shoulder you can see some farming tools. He seems to be taking a break."
+lookatDE = "Ein kleiner Mann, kleiner als ein Zwerg, mit gewaltigem Strohhut, der ihn vor der Sonne schützt. Aus einer Tasche auf seinem Rücken schauen einige Bauernwerkzeuge hervor. Er macht wohl grad Pause."
+lookatUS = "A small man, smaller than a dwarf but with a giant hat protecting him from the sun. Peeking out of a bag around his shoulder you can see some farming tools. He seems to be taking a break."
 -- Trade offers and requests; stock and trader cash are unlimited.
 sellItem = id(49), price(20), stack(1), quality(333)
 buyPrimaryItem = id(49), price(3)
@@ -33,7 +33,7 @@ sellItem = id(259), price(3), stack(1), quality(333)
 sellItem = id(534), price(3), stack(1), quality(333), de("onion seeds"), en("onion seeds")
 sellItem = id(291), price(3), stack(1), quality(333), de("cabbage"), en("cabbage")
 
-"[gg]reet", "[hh]ello", "[hh]i" -> "Hiho. Who are you?", "Hiho. How i can help you?"
+"[gg]reet", "[hh]ello", "[hh]i" -> "Hiho. Who are you?", "Hiho. How can I help you?"
 "[hh]allo", "[gg]r[uü][sß]*" -> "Hiho! Wer bist du?", "Hiho! Wie kann ich dir helfen?"
 "[yy]ou.+[tt]rader" -> "Yes, I am a trader. What do you want?"
 "[ddii][uh]r*.+[hh]ändler" -> "Jap, ich bin Händler. Was brauchst du?"
@@ -45,8 +45,8 @@ sellItem = id(291), price(3), stack(1), quality(333), de("cabbage"), en("cabbage
 "[ww]as.+[ss]amen" -> "Ich verkauf' Getreide und Kohlsamen"
 "[ww]hat.+[tt]ool" -> "I have flails, scythe, sickles, fishing rod."
 "[ww]as.+[ww]erkzeug" -> "Ich habe Dreschflegel, Sensen, Sicheln und Angeln. Interessiert?"
-"[gg]oodbye" -> "Have a good day. You are welcomed to come back."
-"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch! Bis bald!", "Bis Bald! Ushara mit dir!"
+"[gg]oodbye" -> "Have a good day. You are welcome to come back."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Schönen Tag noch! Bis bald!", "Bis bald! Ushara mit dir!"
 "[bb]ye", "[ff]arewell" -> "Farewell.", "Farewell. Ushara may be with you."
 "[ww]ho.+you?" -> "I am %NPCNAME, a farmer."
 "[ww]er.+[ddii][uh]r*" -> "Ich bin %NPCNAME, Bauer."

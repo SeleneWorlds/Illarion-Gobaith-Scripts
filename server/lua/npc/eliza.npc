@@ -49,8 +49,8 @@ buyPrimaryItem = id(2116), price(35)
 
 "[gg]reet", "[hh]ello" -> "Greetingsss. What isss it you want? Zss.", "Greetingsss. You are interesssted in my waresss?"
 "[ww]hat.+sell" -> "I trade with shieldsss, greavesss, armorsss and weaponsss. Everything made of metal. sss"
-"[ww]hat.+[ss]hield" -> "Whatever you likesss: light, normal and large  metal shieldsss and round metalshieldsss"
-"[ww]hat.+[aa]rmor" -> "Besst armosss: steel glovesss, steel bootsss, albarian officersss armorss, light mercenary armorss, Lor-Angur guardiansss armorss, steel plate, heavy red plate armorss and heavy plate armorss. For more goodsss asssk for my lissst of waresss."
+"[ww]hat.+[ss]hield" -> "Whatever you likesss: light, normal and large metal shieldsss and round metal shieldsss"
+"[ww]hat.+[aa]rmor" -> "Besst armorsss: steel glovesss, steel bootsss, albarian officersss armorss, light mercenary armorss, Lor-Angur guardiansss armorss, steel plate, heavy red plate armorss and heavy plate armorss. For more goodsss asssk for my lissst of waresss."
 "[ww]hat.+[ww]eapon" -> "I trade with two-handed swordss, rapierss, razor bladess, serinjah-swordss. For more goodsss asssk for my lissst of waresss."
 "[ww]hat.+[gg]reave" -> "Look. I have: blue steel greavesss, brassss greavesss, red steel greavesss. For more goodsss asssk for my lissst of waresss!"
 "[bb]ye", "[ff]arewell", "[bb]e.+[ww]ell" -> "Good day. Zhelphia may blesss you. Ssss.", "Sss. Farewell. You are welcome to come back."
@@ -61,7 +61,7 @@ buyPrimaryItem = id(2116), price(35)
 "[ww]as.+[rr]üstung" -> "Bessste Rüssstungen: Ssstahl Handschuhe und Ssstiefel, Albarische Offiziersss Rüssstungen, leicht Sssöldner Rüssstungen, Lor-Angur Wächter Rüssstungen, Ssstahl Plattenpanzer, ssschwere Rote und ssschwere Ssstahlpanzer."
 "[ww]as.+[ww]affen" -> "Ich handle mit Degen, Rasssierklingen, Ssserinjah-Ssschwertern und Zzweihänderr."
 "[ww]as.+[ss]chienen" -> "Sssieh! Ich habe: blaue Ssstahl Beinssschienen, Bronze Beinssschienen und rote Ssstahl Beinssschienen."
-"[aa]uf.+[bb]ald", "[bb]is.+[bb]als", "[mm]achs.+[gg]ut" -> "Auf bald. Zhelphia sssegne euch. Zsss.", "Sss. Bis bald. Ihr könnt gern wieder kommen."
+"[aa]uf.+[bb]ald", "[bb]is.+[bb]ald", "[mm]achs.+[gg]ut" -> "Auf bald. Zhelphia sssegne euch. Zsss.", "Sss. Bis bald. Ihr könnt gern wieder kommen."
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 -- Open the trading menu.

@@ -18,22 +18,22 @@ race(elf), "gr[üue]+[sß]+e", "hallo", "guten.+tag", "gruss", "moin" -> "Moin..
 race(elf), chance(15), "greetings", "hello" -> "G'day...long-ear"
 race(elf), "greetings", "hello" -> "G'day..."
 sex(female), "gr[üue]+[sß]+e", "hallo", "guten.+tag", "gruss", "moin" -> "Sei gegrüßt, holde Maid! Komm näher! Ich wisch auch den Tisch ab."
-sex(female), "greetings", "hello" -> "G'day, beautyfull maiden! come here! I'll clean that table."
+sex(female), "greetings", "hello" -> "G'day, beautiful maiden! come here! I'll clean that table."
 item(7, "all") >= 1, item(333, "all") >= 1, "gr[üue]+[sß]+e", "hallo", "guten.+tag", "gruss", "moin" -> "Moin, Moin, %CHARNAME! Komm ran! Hier kannste Dich vollkippen."
 item(7, "all") >= 1, item(333, "all") >= 1, "greetings", "hello" -> "G'day, %CHARNAME! Here's yer place! Fill yer up?"
 "gr[üue]+[sß]+e", "hallo", "guten.+tag", "gruss", "moin" -> "Moin, seid willkommen in der Drachentränke!"
-"greetings", "hello" -> "G'day, be wellcome in the Dragon's Pond!"
+"greetings", "hello" -> "G'day, be welcome in the Dragon's Pond!"
 german, sex(female), "name" -> "Es ist mir ein Vergnügen! Ich bin %NPCNAME, der Wirt."
 english, sex(female), "name" -> "What a pleasure! I am %NPCNAME, the innkeeper."
 german, "name" -> "Ich bin %NPCNAME, der Wirt."
 english, "name" -> "I am %NPCNAME, the innkeeper."
 sex(female), "was.+verkauft" -> "Ich hab Jungfernglück, den beliebten Apfelwein, nur sechs Kupfer fürn Kelch. Wär das nix fuer Euch? Oder Gnollgift, den guten Rotwein, nur acht Kupfer. Bärenfalle, den besten Met auch für acht. Und Nordburger Schädelbrecher, unser Bier. Der Krug zu lumpigen acht Kupfer"
 sex(female), "was.+kauft", "was.+kaufst" -> "Ich kauf Kupferkelche zurück, meine Liebe. Ein'n Kupfer fürn Kelch. Und Bierkruege, auch für'n Kupfer. Für graue Flaschen zahl ich zwei."
-sex(female), "what.+sell" -> "I got virgen's delight, our applewine, six copper the goblet. Specially for you, my dear. An' Gnollpoison, a red wine, or Beartrap, our meade, both for eight copper the goblet. An' Northburger scullcracker, our beer, for eight copper the mug."
+sex(female), "what.+sell" -> "I got virgin's delight, our applewine, six copper the goblet. Specially for you, my dear. An' Gnollpoison, a red wine, or Beartrap, our meade, both for eight copper the goblet. An' Northburger skullcracker, our beer, for eight copper the mug."
 sex(female), "what.+do.+buy" -> "I buy back the empty mugs and coppergoblets, my dear. For a copper each. And grey bottles, for two copper each."
 "was.+verkauft" -> "Ich hab Jungfernglück, den beliebten Apfelwein, nur sechs Kupfer fürn Kelch. Oder Gnollgift, den guten Rotwein, nur acht Kupfer. Bärenfalle, den besten Met auch für acht. Und Nordburger Schädelbrecher, unser Bier. Der Krug  zu lumpigen acht Kupfer"
 "was.+kauft", "was.+kaufst" -> "Ich kauf Kupferkelche zurück. Ein'n Kupfer fürn Kelch. Und Bierkruege, auch für'n Kupfer. Für graue Flaschen zahl ich zwei."
-"what.+sell" -> "I got virgen's delight, our applewine, six copper the goblet. An' Gnollpoison, a red wine, or Beartrap,  our meade, both for eight copper the goblet. An' Northburger scullcracker, our beer, for eight copper the mug."
+"what.+sell" -> "I got virgin's delight, our applewine, six copper the goblet. An' Gnollpoison, a red wine, or Beartrap,  our meade, both for eight copper the goblet. An' Northburger skullcracker, our beer, for eight copper the mug."
 "what.+do.+buy" -> "I buy back the empty mugs and coppergoblets. For a copper each. And grey bottles, for two copper each."
 "buy.+milk" -> "Here is no monastery! get lost!"
 "milch.+kauf", "kauf.+milch" -> "Hier iss doch kein Kloster! Verschwinde!"
@@ -43,7 +43,7 @@ race(elf), money < 6, "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Bugger of
 sex(female), money < 6, "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "My dear, I cain't give yer a drink without money."
 money < 6, "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Yer 'ave not enuff money, come back, when yer can pay."
 race(elf), "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Yer cyder. Gimme six copper.", money - 6, item(1844, 1, 333, 0)
-sex(female), "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Here yer got it. Virgen's delight for the gracious maid!", money - 6, item(1844, 1, 333, 0)
+sex(female), "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Here yer got it. Virgin's delight for the gracious maid!", money - 6, item(1844, 1, 333, 0)
 "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Here yer got it. drink, before the goblet gets rusty!", money - 6, item(1844, 1, 333, 0)
 race(elf), money < 6, "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
 sex(female), money < 6, "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Ohne Kupfer kriegt selbst so'n hübsches Ding wie Du hier nix zu trinken!"
@@ -63,7 +63,7 @@ money < 8, race(elf), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Bugger off! We 
 money < 8, sex(female), "buy.+a.+beer", "buy.+a.+scullcracker" -> "My dear, I cain't give yer a drink without money."
 money < 8, "buy.+a.+beer", "buy.+a.+scullcracker" -> "Yer 'ave not enuff money, come back, when yer can pay."
 race(elf), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Yer beer. Gimme eight copper.", money - 8, item(1909, 1, 333, 0)
-sex(female), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Here yer got it. a scullcracker for the daring gal! that'll give yer more headaches than a husband!", money - 8, item(1909, 1, 333, 0)
+sex(female), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Here yer got it. a skullcracker for the daring gal! that'll give yer more headaches than a husband!", money - 8, item(1909, 1, 333, 0)
 "buy.+a.+beer", "buy.+a.+scullcracker" -> "Here yer got it. drink, before it cools down!", money - 8, item(1909, 1, 333, 0)
 money < 8, race(elf), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
 money < 8, sex(female), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Ohne Kupfer kriegt selbst so'n hübsches Ding wie Du hier nix zu trinken!"
@@ -158,7 +158,7 @@ item(2497, "all") < %NUMBER, "%number.+orange.+flasche.+verkauf", "verkauf.+%num
 ".+verkauf", "verkauf.+" -> "Das kauf ich nicht!"
 ".+kauf", "kauf.+" -> "So was verkauf ich nicht!"
 "auf.+bald", "bis.+bald", "tschüss" -> "Bis bald! Und lass dir nich auffe Hände treten..."
-"farewell", "bye", "good.+day" -> "Be well! An' carefull, that no one steps on yer hands..."
+"farewell", "bye", "good.+day" -> "Be well! An' careful, that no one steps on yer hands..."
 
 -- Idle dialogue
 cycletext "wir laaagen vor Sor-Ann-Araah... und hatten 'nen Elf ahan Bord....  In den Kesseln da faulte das Wassah...  da soffen wir Bier soohofort... ", "Blow wi-ind, blow... to Salkamar we go.... her hair was blond her eyes were blue... her lips were red, her axe was new... ter my hodae, ter my hodae, ter my hodae, hodae ho!"

@@ -8,56 +8,83 @@ direction=west
 
 QuestID = 1001
 
-"[Hh]ello", "[Gg]reetings", "[Hh]i" -> "Ahh, fresh meat.. Know, motal, that you are now in the presence of great Varkiosh, the Forsaken. I should destroy you for your tressapassing, but since you are here, we should make it proffitable for us both. Accept to offer me some of your blood to nourish my rotten flesh and I shall tell you a great story.", queststatus=1
+english, "[Hh]ello", "[Gg]reetings", "[Hh]i" -> "Ahh, fresh meat.. Know, mortal, that you are now in the presence of great Varkiosh, the Forsaken. I should destroy you for your trespassing, but since you are here, we should make it profitable for us both. Accept to offer me some of your blood to nourish my rotten flesh and I shall tell you a great story.", queststatus=1
+german, "[Hh]allo", "[Gg]rüße", "[Gg]uten [Tt]ag" -> "Ahh, frisches Fleisch... Wisse, Sterblicher, dass du nun vor dem großen Varkiosh, dem Verlassenen, stehst. Ich sollte dich für dein Eindringen vernichten, doch da du hier bist, sollten wir beide davon profitieren. Biete mir etwas von deinem Blut, um mein verrottetes Fleisch zu nähren, und ich werde dir eine große Geschichte erzählen.", queststatus=1
 
-"[Aa]lright", "[Oo]k", "[Yy]es", "[Aa]greed", "[Aa]gree","[Bb]lood", queststatus=1 -> "#me suddenly hits the %CHARRACE with his sharp boney claws, licking them of blood afterwards 'Yeees, your blood rejuvenates me.. Thank you mortal, are you ready for my part of the deal?'", attrib(hitpoints)-3000, queststatus=2
+english, "[Aa]lright", "[Oo]k", "[Yy]es", "[Aa]greed", "[Aa]gree","[Bb]lood", queststatus=1 -> "#me suddenly hits the %CHARRACE with his sharp bony claws, licking the blood off them afterwards 'Yeees, your blood rejuvenates me.. Thank you mortal, are you ready for my part of the deal?'", attrib(hitpoints)-3000, queststatus=2
+german, "[Ii]n [Oo]rdnung", "[Oo]k", "[Jj]a", "[Ee]inverstanden", "[Ee]inverstanden", "[Bb]lut", queststatus=1 -> "#me schlägt plötzlich mit seinen scharfen knochigen Klauen nach dem %CHARRACE und leckt anschließend das Blut von ihnen. 'Jaaa, dein Blut verjüngt mich... Danke, Sterblicher. Bist du bereit für meinen Teil der Abmachung?'", attrib(hitpoints)-3000, queststatus=2
 
-"[Yy]es", "[Oo]k", "[Aa]lright", queststatus=2 -> "There was once a great mage, a mage so great that all of his enemies shivered in fear only at the sound of his unholy name. Everyone feared him, everyone hated him, all wanted to see him defeated, but no power, nor man, nor creature, could face him in battle and survive. Can you comprehand this concept, mortal?", queststatus=3
+english, "[Yy]es", "[Oo]k", "[Aa]lright", queststatus=2 -> "There was once a great mage, a mage so great that all of his enemies shivered in fear only at the sound of his unholy name. Everyone feared him, everyone hated him, all wanted to see him defeated, but no power, nor man, nor creature, could face him in battle and survive. Can you comprehend this concept, mortal?", queststatus=3
+german, "[Jj]a", "[Oo]k", "[Ii]n [Oo]rdnung", queststatus=2 -> "Einst gab es einen großen Magier, so groß, dass all seine Feinde allein beim Klang seines unheiligen Namens vor Angst zitterten. Jeder fürchtete ihn, jeder hasste ihn, alle wollten ihn besiegt sehen. Doch keine Macht, kein Mensch und keine Kreatur konnte ihm im Kampf gegenübertreten und überleben. Kannst du das begreifen, Sterblicher?", queststatus=3
 
-"[Yy]es", "[Ii]ndeed", queststatus=3 -> "Find, mortal, that this great mage, loyal servant of the dark gods, was tricked and ambushed by no less than 50 mages. The battle lasted more than 7 days, at the end, the mage stepping on the burning ashes of his carbonised enemies. Shall I continue?", queststatus=4
+english, "[Yy]es", "[Ii]ndeed", queststatus=3 -> "Know, mortal, that this great mage, loyal servant of the dark gods, was tricked and ambushed by no less than 50 mages. The battle lasted more than 7 days, at the end, the mage stepping on the burning ashes of his carbonised enemies. Shall I continue?", queststatus=4
+german, "[Jj]a", "[Ii]n der [Tt]at", queststatus=3 -> "Wisse, Sterblicher, dass dieser große Magier, treuer Diener der dunklen Götter, von nicht weniger als 50 Magiern überlistet und in einen Hinterhalt gelockt wurde. Der Kampf dauerte mehr als sieben Tage. Am Ende stand der Magier auf der brennenden Asche seiner verkohlten Feinde. Soll ich fortfahren?", queststatus=4
 
-"[Nn]o", queststatus=4 -> "Then get out of my sight!"
+english, "[Nn]o", queststatus=4 -> "Then get out of my sight!"
+german, "[Nn]ein", queststatus=4 -> "Dann verschwinde aus meinen Augen!"
 
-"[Yy]es", "[Pp]lease", queststatus=4 -> "The mage destroyed all of his enemies, but he himself, received a serious, magic wound, that he could not manage to heal. Gattering his left strenght, he warped himself to the temple of his worshipped gods, praying to them for healing. But no.. the gods considered him unworthy for allowing himself to receive the hit and insted of healing, he received a gruesome curse... Do you know who that mage was, mostal?", queststatus=5
+english, "[Yy]es", "[Pp]lease", queststatus=4 -> "The mage destroyed all of his enemies, but he himself, received a serious, magic wound, that he could not manage to heal. Gathering his remaining strength, he warped himself to the temple of his worshipped gods, praying to them for healing. But no.. the gods considered him unworthy for allowing himself to receive the hit and instead of healing, he received a gruesome curse... Do you know who that mage was, mortal?", queststatus=5
+german, "[Jj]a", "[Bb]itte", queststatus=4 -> "Der Magier vernichtete alle seine Feinde, doch er selbst erlitt eine schwere magische Wunde, die er nicht heilen konnte. Mit seiner verbliebenen Kraft teleportierte er sich in den Tempel seiner Götter und bat sie um Heilung. Doch nein... Die Götter hielten ihn für unwürdig, weil er sich hatte treffen lassen. Statt Heilung erhielt er einen grausamen Fluch... Weißt du, wer dieser Magier war, Sterblicher?", queststatus=5
 
-"[Yy]ou", queststatus=5 -> "Indeed mortal, my soul has been cursed to inhabit this decaying body for all eternity, being binded to guard this infernal temple, where, a long time ago, I have kneeled to the gods asking them for healing. I will never leave this place, mortal, for that my curse if given by the gods and it is eternal. Do a few tasks for me, frail one, and you shall have my gratitude. Do you accept?", queststatus=6
+english, "[Yy]ou", queststatus=5 -> "Indeed mortal, my soul has been cursed to inhabit this decaying body for all eternity, being bound to guard this infernal temple, where, a long time ago, I have kneeled to the gods asking them for healing. I will never leave this place, mortal, for that my curse is given by the gods and it is eternal. Do a few tasks for me, frail one, and you shall have my gratitude. Do you accept?", queststatus=6
+german, "[Dd]u", queststatus=5 -> "In der Tat, Sterblicher. Meine Seele wurde dazu verflucht, diesen verfallenden Körper für alle Ewigkeit zu bewohnen und diesen höllischen Tempel zu bewachen, in dem ich vor langer Zeit vor den Göttern kniete und um Heilung bat. Ich werde diesen Ort niemals verlassen, Sterblicher, denn mein Fluch stammt von den Göttern und ist ewig. Erledige ein paar Aufgaben für mich, Schwächling, und ich werde dir dankbar sein. Nimmst du an?", queststatus=6
 
-"[Nn]o", queststatus=6 -> "Then get out of my sight!"
+english, "[Nn]o", queststatus=6 -> "Then get out of my sight!"
+german, "[Nn]ein", queststatus=6 -> "Dann verschwinde aus meinen Augen!"
 
-"[Yy]es", "[Aa]lright", "[Oo]k", "[Aa]gree", queststatus=6 -> "Very well, mortal one, then this it shall be. I may be a lich now, but I am still a powerful mage.. they robbed me of my life, but my powers they did not take, and my supply of mana potions has long expired. Bring me 20 bottles and we shall discuss further", queststatus=7
+english, "[Yy]es", "[Aa]lright", "[Oo]k", "[Aa]gree", queststatus=6 -> "Very well, mortal one, then this it shall be. I may be a lich now, but I am still a powerful mage.. they robbed me of my life, but my powers they did not take, and my supply of mana potions has long expired. Bring me 20 bottles and we shall discuss further", queststatus=7
+german, "[Jj]a", "[Ii]n [Oo]rdnung", "[Oo]k", "[Ee]inverstanden", queststatus=6 -> "Sehr gut, Sterblicher, dann soll es so sein. Ich mag nun ein Lich sein, doch ich bin noch immer ein mächtiger Magier... Sie raubten mir mein Leben, aber nicht meine Kräfte. Mein Vorrat an Manatränken ist längst erschöpft. Bring mir 20 Flaschen und wir werden weiterreden.", queststatus=7
 
-"[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=7 -> "Do you have what I required of you? If not, you should better not waste my time anymore..", queststatus=8
+english, "[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=7 -> "Do you have what I required of you? If not, you should better not waste my time anymore..", queststatus=8
+german, "[Hh]allo", "[Gg]rüße", "[Gg]uten [Tt]ag", queststatus=7 -> "Hast du, was ich von dir verlangt habe? Wenn nicht, verschwende besser nicht weiter meine Zeit...", queststatus=8
 
-"[Nn]o", queststatus=8 -> "Why are you wasting my time then? I am eternally busy", queststatus=7
+english, "[Nn]o", queststatus=8 -> "Why are you wasting my time then? I am eternally busy", queststatus=7
+german, "[Nn]ein", queststatus=8 -> "Warum verschwendest du dann meine Zeit? Ich bin auf ewig beschäftigt.", queststatus=7
 
-"[Yy]es", queststatus=8 , item(165,belt) < 20 -> "Idiotic piece of flesh, bring them first!", queststatus=7
+english, "[Yy]es", queststatus=8 , item(165,belt) < 20 -> "Idiotic piece of flesh, bring them first!", queststatus=7
+german, "[Jj]a", queststatus=8 , item(165,belt) < 20 -> "Dummes Stück Fleisch, bring sie zuerst!", queststatus=7
 
-"[Yy]es", queststatus=8, item(165,belt) > 19 -> "Ah, excellent my dark friend, excellent indeed. Let us continue, shall we? I require to use the dark energies for a ritual, but I have no items to draw them from. Be so kind and bring me arround 100 entrails and we shall see what will follow.", deleteitem(165,20), queststatus=9
+english, "[Yy]es", queststatus=8, item(165,belt) > 19 -> "Ah, excellent my dark friend, excellent indeed. Let us continue, shall we? I require to use the dark energies for a ritual, but I have no items to draw them from. Be so kind and bring me around 100 entrails and we shall see what will follow.", deleteitem(165,20), queststatus=9
+german, "[Jj]a", queststatus=8, item(165,belt) > 19 -> "Ah, ausgezeichnet, mein dunkler Freund, wahrlich ausgezeichnet. Fahren wir fort? Ich benötige dunkle Energien für ein Ritual, habe jedoch keine Gegenstände, aus denen ich sie schöpfen könnte. Sei so freundlich und bring mir etwa 100 Eingeweide, dann sehen wir weiter.", deleteitem(165,20), queststatus=9
 
-"[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=9 -> "Do you have what I required of you? If not, you should better not waste my time anymore..", queststatus=10
+english, "[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=9 -> "Do you have what I required of you? If not, you should better not waste my time anymore..", queststatus=10
+german, "[Hh]allo", "[Gg]rüße", "[Gg]uten [Tt]ag", queststatus=9 -> "Hast du, was ich von dir verlangt habe? Wenn nicht, verschwende besser nicht weiter meine Zeit...", queststatus=10
 
-"[Nn]o", queststatus=10 -> "Why are you wasting my time then? I am eternally busy", queststatus=9
+english, "[Nn]o", queststatus=10 -> "Why are you wasting my time then? I am eternally busy", queststatus=9
+german, "[Nn]ein", queststatus=10 -> "Warum verschwendest du dann meine Zeit? Ich bin auf ewig beschäftigt.", queststatus=9
 
-"[Yy]es", queststatus=10 , item(63,belt) < 100 -> "Idiotic piece of flesh, bring them first!", queststatus=9
+english, "[Yy]es", queststatus=10 , item(63,belt) < 100 -> "Idiotic piece of flesh, bring them first!", queststatus=9
+german, "[Jj]a", queststatus=10 , item(63,belt) < 100 -> "Dummes Stück Fleisch, bring sie zuerst!", queststatus=9
 
-"yes", queststatus=10, item(63,belt) > 99 -> "Your worth never stops to amaze me, living one.. Good good, give them to me and be on your way to bring me 10 bottles of the finest poison, the one that only spiders can breed", deleteitem(63,100),queststatus=11
+english, "yes", queststatus=10, item(63,belt) > 99 -> "Your worth never stops to amaze me, living one.. Good good, give them to me and be on your way to bring me 10 bottles of the finest poison, the one that only spiders can breed", deleteitem(63,100),queststatus=11
+german, "ja", queststatus=10, item(63,belt) > 99 -> "Dein Wert erstaunt mich immer wieder, Lebender... Gut, gut, gib sie mir und mach dich auf den Weg, mir 10 Flaschen des feinsten Giftes zu bringen, das nur Spinnen erzeugen können.", deleteitem(63,100),queststatus=11
 
-"[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=11 -> "Do you have what I required of you? If not, you should better not waste my time anymore..", queststatus=12
+english, "[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=11 -> "Do you have what I required of you? If not, you should better not waste my time anymore..", queststatus=12
+german, "[Hh]allo", "[Gg]rüße", "[Gg]uten [Tt]ag", queststatus=11 -> "Hast du, was ich von dir verlangt habe? Wenn nicht, verschwende besser nicht weiter meine Zeit...", queststatus=12
 
-"[Nn]o", queststatus=12 -> "Why are you wasting my time then? I am eternally busy", queststatus=11 
+english, "[Nn]o", queststatus=12 -> "Why are you wasting my time then? I am eternally busy", queststatus=11
+german, "[Nn]ein", queststatus=12 -> "Warum verschwendest du dann meine Zeit? Ich bin auf ewig beschäftigt.", queststatus=11
 
-"[Yy]es", queststatus=12 , item(167,belt) < 10 -> "Idiotic piece of flesh, bring them first!", queststatus=11
+english, "[Yy]es", queststatus=12 , item(167,belt) < 10 -> "Idiotic piece of flesh, bring them first!", queststatus=11
+german, "[Jj]a", queststatus=12 , item(167,belt) < 10 -> "Dummes Stück Fleisch, bring sie zuerst!", queststatus=11
 
-"yes", queststatus=12, item(167,belt) > 9 -> "Oh excellent work, dark one, excellent work indeed. Are you ready? I shall now give you a special power to help you in your next task.", deleteitem(167,10), queststatus=13
+english, "yes", queststatus=12, item(167,belt) > 9 -> "Oh excellent work, dark one, excellent work indeed. Are you ready? I shall now give you a special power to help you in your next task.", deleteitem(167,10), queststatus=13
+german, "ja", queststatus=12, item(167,belt) > 9 -> "Oh, ausgezeichnete Arbeit, Dunkler, wahrlich ausgezeichnet. Bist du bereit? Ich werde dir nun eine besondere Kraft verleihen, die dir bei deiner nächsten Aufgabe hilft.", deleteitem(167,10), queststatus=13
 
-"yes", queststatus=13  -> " #me waves his skeletral hand in from of the %CHARRACE 's face, humming darkly 'Yes my dark friend, yes.. feel the power? Yes.. Now tell me, are you ready for the last task?' ", queststatus=14
+english, "yes", queststatus=13  -> " #me waves his skeletal hand in front of the %CHARRACE 's face, humming darkly 'Yes my dark friend, yes.. feel the power? Yes.. Now tell me, are you ready for the last task?' ", queststatus=14
+german, "ja", queststatus=13 -> "#me bewegt seine skelettartige Hand vor dem Gesicht des %CHARRACE und summt düster. 'Ja, mein dunkler Freund, ja... Spürst du die Kraft? Ja... Sag mir nun, bist du bereit für die letzte Aufgabe?'", queststatus=14
 
-"yes", queststatus=14 -> "During my... lifetime... a grand order of paladins was watching my every move, trying at every step to end my dark existance. Their leader, Antonius Cornelius, hunted me his entire life, since his childhood, when I slayed his troublemaking parents. When I received the curse, he swore that one day he will destroy me, even if he'd have to wait an eternity for it. As no servant of the light would ever dare to step in this doomed place, he prayed and prayed to his weak gods, asking them for mercy. The gods showed pitty to their loyal servant, blessing him with neverending life and ethernal yought. Thus, even today, Antonius resides somewhere in the dungeoun below, waiting for a chance to slay me, until the end of time. Find him, %CHARNAME, and end his pittyful existance. Bring me his holy sword as proof of his demise.",queststatus=15
+english, "yes", queststatus=14 -> "During my... lifetime... a grand order of paladins was watching my every move, trying at every step to end my dark existence. Their leader, Antonius Cornelius, hunted me his entire life, since his childhood, when I slew his troublemaking parents. When I received the curse, he swore that one day he will destroy me, even if he'd have to wait an eternity for it. As no servant of the light would ever dare to step in this doomed place, he prayed and prayed to his weak gods, asking them for mercy. The gods showed pity to their loyal servant, blessing him with neverending life and eternal youth. Thus, even today, Antonius resides somewhere in the dungeon below, waiting for a chance to slay me, until the end of time. Find him, %CHARNAME, and end his pitiful existence. Bring me his holy sword as proof of his demise.",queststatus=15
+german, "ja", queststatus=14 -> "Zu meinen... Lebzeiten... beobachtete ein großer Paladinorden jede meiner Bewegungen und versuchte auf Schritt und Tritt, meiner dunklen Existenz ein Ende zu setzen. Ihr Anführer, Antonius Cornelius, jagte mich sein ganzes Leben lang, seit seiner Kindheit, als ich seine lästigen Eltern erschlug. Als ich den Fluch erhielt, schwor er, mich eines Tages zu vernichten, selbst wenn er eine Ewigkeit darauf warten müsste. Da kein Diener des Lichts diesen verdammten Ort je betreten würde, betete er immer wieder zu seinen schwachen Göttern und bat um Gnade. Die Götter hatten Mitleid mit ihrem treuen Diener und segneten ihn mit endlosem Leben und ewiger Jugend. So haust Antonius noch heute irgendwo im Verlies unter uns und wartet bis ans Ende der Zeit auf eine Gelegenheit, mich zu erschlagen. Finde ihn, %CHARNAME, und beende seine erbärmliche Existenz. Bring mir sein heiliges Schwert als Beweis seines Todes.",queststatus=15
 
-"[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=15 -> "Have you slayed the paladin, %CHARNAME and brought me his sword? If not, you should better not waste my time anymore..", queststatus=16
+english, "[Hh]ello", "[Gg]reetings", "[Hh]i", queststatus=15 -> "Have you slain the paladin, %CHARNAME and brought me his sword? If not, you should better not waste my time anymore..", queststatus=16
+german, "[Hh]allo", "[Gg]rüße", "[Gg]uten [Tt]ag", queststatus=15 -> "Hast du den Paladin erschlagen, %CHARNAME, und mir sein Schwert gebracht? Wenn nicht, verschwende besser nicht weiter meine Zeit...", queststatus=16
 
-"[Nn]o", queststatus=16 -> "Why are you wasting my time then? I am eternally busy", queststatus=15 
+english, "[Nn]o", queststatus=16 -> "Why are you wasting my time then? I am eternally busy", queststatus=15
+german, "[Nn]ein", queststatus=16 -> "Warum verschwendest du dann meine Zeit? Ich bin auf ewig beschäftigt.", queststatus=15
 
-"[Yy]es", queststatus=16 , item(206,belt) < 1 -> "Idiotic piece of flesh, do what I asked!", queststatus=15
+english, "[Yy]es", queststatus=16 , item(206,belt) < 1 -> "Idiotic piece of flesh, do what I asked!", queststatus=15
+german, "[Jj]a", queststatus=16 , item(206,belt) < 1 -> "Dummes Stück Fleisch, tu, was ich verlangt habe!", queststatus=15
 
-"yes", queststatus=16, item(206,belt) = 1 -> "Well done %CHARNAME, well done! I must say that I wasn't expecting you to return. Your dark heart allowed you to slay the poor paladin, you are truely worthy of baring darkness in your soul. Receive this gift, dark one, receive it and bare it well.", queststatus=17, deleteitem(206,1), item(278,1,1001,0000)
+english, "yes", queststatus=16, item(206,belt) = 1 -> "Well done %CHARNAME, well done! I must say that I wasn't expecting you to return. Your dark heart allowed you to slay the poor paladin, you are truly worthy of bearing darkness in your soul. Receive this gift, dark one, receive it and bear it well.", queststatus=17, deleteitem(206,1), item(278,1,1001,0000)
+german, "ja", queststatus=16, item(206,belt) = 1 -> "Gut gemacht, %CHARNAME, gut gemacht! Ich muss sagen, ich hatte nicht mit deiner Rückkehr gerechnet. Dein dunkles Herz ließ dich den armen Paladin erschlagen. Du bist wahrlich würdig, Dunkelheit in deiner Seele zu tragen. Empfange dieses Geschenk, Dunkler, empfange es und trage es mit Würde.", queststatus=17, deleteitem(206,1), item(278,1,1001,0000)

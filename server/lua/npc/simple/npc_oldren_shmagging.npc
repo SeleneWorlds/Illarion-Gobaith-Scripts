@@ -12,7 +12,7 @@ direction=south
 "hello", "greet", "hiho", state=0, english -> "Hello my friend! I am %NPCNAME, a cook and a baker. I can teach you some things of my craft."
 "hallo", "gr[üu][sß]", "hiho", state=0, german  -> "Hallo mein Freund! Ich bin %NPCNAME, ein Koch und Bäcker. Ich kann dir ein paar Dinge meines Handwerks beibringen."
 
-"hello", "greet", "hiho", english -> "Hello my friend! Back again, eh? Hm... Where did we stop?."
+"hello", "greet", "hiho", english -> "Hello my friend! Back again, eh? Hm... Where did we stop?"
 "hallo", "gr[üu][sß]", "hiho", german -> "Hallo mein Freund! Na, wieder zurück? Hm... Wo waren wir stehen geblieben?"
 
 "who you", "what you" -> "I am %NPCNAME, a cook and a baker. I can teach you some things of my craft."
@@ -74,7 +74,7 @@ direction=south
 -- standard explanations
 
 "dough", "flour", "grain", "mill" -> "Dough is made out of flour, which is made out of grain. But I don't know how to mill grain to flour. I am just a baker, not a farmer. If you need flour for one of my tasks, I can give you some bags."
-"teig", "mehl", "getreide", "mahlen" -> "Teig wird aus Mehl gemacht, welches wiederrum aus Getreide gemacht wird. Aber ich weiß nicht, wie man Getreide zu Mehl zermahlen kann. Ich bin nur ein Bäcker, kein Bauer. Falls du für eine meiner Aufgaben Mehl brauchst, kann ich dir ein paar Säcke geben."
+"teig", "mehl", "getreide", "mahlen" -> "Teig wird aus Mehl gemacht, welches wiederum aus Getreide gemacht wird. Aber ich weiß nicht, wie man Getreide zu Mehl zermahlen kann. Ich bin nur ein Bäcker, kein Bauer. Falls du für eine meiner Aufgaben Mehl brauchst, kann ich dir ein paar Säcke geben."
 
 "pork" -> "Pork can be cooked to sausages. You always get a pair out of it. Kill a pig. Then you can easily take the pork from the cadaver. But if you need it for one of my tasks, I can give you some pork."
 "fleisch" -> "Schweinefleisch kann zu Würsten gekocht werden. Du bekommst immer gleich ein Paar. Töte ein Schwein. Dann kannst du ganz einfach dessen Fleisch vom Kadaver entfernen. Falls du für eine meiner Aufgaben Schweinefleisch brauchst, kann ich dir auch etwas geben."
@@ -82,7 +82,7 @@ direction=south
 "baking house" -> "The baking house is over there, next to the cherry tree. You need a baking house to bake bread, cakes or other delicacies."
 "backofen" -> "Der Backofen ist dort drüben bei dem Kirschbaum. Du brauchst einen Backofen, um Brot, Kuchen und andere Leckereien zu backen."
 
-"fire" -> "You can cook tasty dishes at any campfire, like the one next to me. Amelia has surely shown you how to spark off a fire. But you can use my one of course".
+"fire" -> "You can cook tasty dishes at any campfire, like the one next to me. Amelia has surely shown you how to spark off a fire. But you can use my one of course."
 "feuer" -> "Du kannst an jedem Lagerfeuer, wie das hier neben mir, leckere Gerichte kochen. Amelia hat dir bestimmt gezeigt, wie man eines entfacht. Aber du kannst gern meines benutzen."
 
 "soup", "bowl", "plate", "dish", "category" -> "Concerning cooking, you can choose between two categories: soups or other dishes. For soups you need a soup bowl, for the most other dishes you need a plate - of course not for sausages. Both can be made by carpenters."

@@ -15,8 +15,8 @@ useMsgUS = "Don't you touch me!"
 wrongLangDE = "#me sieht dich leicht verwirrt an"
 wrongLangUS = "#me looks at you a little confused"
 
-lookatDE = "Ein breit lächelnder Zwergenwirt, dessen prächtiger Bart und Kleidung von Bierflecken übersät ist."
-lookatUS = "A broadly smiling dwarfen barkeeper whose proud beard and clothes are covered with beer stains."
+lookatDE = "Ein breit lächelnder Zwergenwirt, dessen prächtiger Bart und Kleidung von Bierflecken übersät sind."
+lookatUS = "A broadly smiling dwarven barkeeper whose proud beard and clothes are covered with beer stains."
 -- Normal registrations restored from commented lines; strike idle lines excluded.
 -- Trade offers and requests; stock and trader cash are unlimited.
 sellItem = id(2496), price(15), stack(1), quality(549)
@@ -40,11 +40,11 @@ buyPrimaryItem = id(1858), price(2)
 buyPrimaryItem = id(2498), price(1)
 
 "[gg]reet", "[hh]ello" -> "Aahr! Be greeted in 'The Fluffy Sheep Tavern'. What do you want to drink?", "Hello. What do I have to make you?"
-"[ww]hat.+sell" -> "Drinks and more. What do you thought? It's a Bar. And now, tell me: What do you want?"
+"[ww]hat.+sell" -> "Drinks and more. What did you think? It's a Bar. And now, tell me: What do you want?"
 "[yy]ou.+[bb]arkeeper" -> "What do you think I have to do here? What a stupid question. Aaarh! Drink or eat something or leave!"
 "[ww]hat.+[ww]are" -> "It's a damned bar, what do you think I sell? But here, look at the list: drinks and more."
 "[ww]hat.+[dd]rink" -> "All kind: bottle of elven wine, of water, of mead, of cider, of red wine, of beer, beer mug, goblet red wine, goblet water, goblet cider, goblet mead. But the mugs, goblets and bottles - give them back when you are ready. There is a refund on them."
-"[ww]hat.+[mm]ore" -> "Oh, I need glass mugs, copper goblets and grey bottles for they everyday business. Do you have some of them?"
+"[ww]hat.+[mm]ore" -> "Oh, I need glass mugs, copper goblets and grey bottles for my everyday business. Do you have some of them?"
 "[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Good day!", "Aye. Come back whenever you are thirsty.", "Farewell friend!"
 "[ww]ho.+you?" -> "%NPCNAME. I work here for Tialdin, the owner of this tavern."
 "i'm.+.+" -> "Great. I am %NPCNAME, the barkeeper. Do you want something to drink?"

@@ -18,7 +18,7 @@ cycletext "#me seufzt", "#me sighs"
 "Be greeted", queststatus=0  -> "Be greeted, my friend. Are you really sure that you will kill those lovely piggies?", state=1 
 
 "Nein", state=1   -> "Du bist ein wahrer Tierfreund. Ich gebe dir etwas gegen deinen Hunger." item(49,1,333,0),  state=3, queststatus=1 
-"No", state=1   -> "You are a real animals friend. I’ll give you something against your hunger." item(49,1,333,0),  state=3, queststatus=1 
+"No", state=1   -> "You are a real animal lover. I’ll give you something against your hunger." item(49,1,333,0),  state=3, queststatus=1
 
 "Ja", state=1     -> "Kann ich dich nicht umstimmen? Ich gebe dir fünf Kupfer. Dann kannst du dir ein Brot kaufen. Bist du einverstanden?", state=2 
 "Yes", state=1     -> "Can I change your mind somehow? I will give you five copper. You can buy yourself a bread with the money. Do you consider?", state=2 

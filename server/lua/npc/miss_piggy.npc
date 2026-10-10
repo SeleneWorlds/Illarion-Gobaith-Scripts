@@ -19,29 +19,29 @@ language = ancient
 defaultLanguage = common
 autointroduce = on
 useMsgDE = "#me springt empört grunzend umher, so dass man die Krone auf ihrer Pobacke unmöglich zu fassen bekommt."
-useMsgUS = "#me hops indignantly grunting arround, so it's impossible to grab the crown on its buttock."
+useMsgUS = "#me hops indignantly grunting around, so it's impossible to grab the crown on its buttock."
 lookatDE = "Eine große schwere, glücklich schnüffelnde und grunzende Sau. Sie trägt eine goldene Krone auf ihrer linken Pobacke."
-lookatUS = "It's a big heavy, lucky sniffling and gruntig sow. Wearing a golden crown on the left buttock."
+lookatUS = "It's a big heavy, happily sniffing and grunting sow. Wearing a golden crown on the left buttock."
 
 
-race(dwarf), "krone" -> "#me trägt, wie du plötzlich begreifst die Krone des Königs von Silberbrand auf der Pobacke mit sich umher!", "#me springt empört grunzend umher, so dass man die Krone auf ihrer Pobacke unmöglich zu fassen bekommt.", "#me legt sich in ein Schlammloch. Würde jemand nach der goldenen Krone schnappen, viele auf, das sie wohl magisch angebracht wurde.", inform("Spielt dir dein Kopf einen Streich, oder hast du tatsächlich über dieses Schwein etwas in der Bibliothek gelesen?")
-race(dwarf), "crown" -> "#me wears, you realize now, the crown of the king from Silverbrand on its buttock!", "#me hops indignantly grunting arround, so it's impossible to grab the crown on its buttock.", "#me lays down into the mud. If someone would trie to grab it, those will notice that it seem to be fixed in a magical way.", inform("Is your head kidding you? Or do you read about this pig at the library?")
-"krone" -> "#me springt empört grunzend umher, so dass man die Krone auf ihrer Pobacke unmöglich zu fassen bekommt.", "#me legt sich in ein Schlammloch. Würde jemand nach der goldenen Krone schnappen, viele auf, das sie wohl magisch angebracht wurde.", inform("Spielt dir dein Kopf einen Streich, oder hast du tatsächlich über dieses Schwein etwas in der Bibliothek gelesen?")
-"crown" -> "#me hops indignantly grunting arround, so it's impossible to grab the crown on its buttock.", "#me lays down into the mud. If someone would trie to grab it, those will notice that it seem to be fixed in a magical way.", inform("Is your head kidding you? Or do you read about this pig at the library?")
-"hilfe" -> "", inform("Eine Sau die eine Krone auf ihrem Po trägt. Was es wohl damit aufsich hat?")
-"helfen" -> "", inform("Eine Sau die eine Krone auf ihrem Po trägt. Was es wohl damit aufsich hat?")
-"help" -> "", inform("A sow, waering a crown on her buttock. What could be the reason for that?")
-german, "?" -> "#me scheint dir interessiert zu zu hören. Mit einer Art nicken stimmt sie der Frage zu.", "#me grunzt glücklich und begutachtet interessiert den Schlamm zu ihren Hufen.", "#me scheint dich verwirrt anzusehen.", "#me scheint dir interessiert zu zu höhren. Dann scheint sie ihren Kopf kräftig zu schütteln."
+race(dwarf), "krone" -> "#me trägt, wie du plötzlich begreifst die Krone des Königs von Silberbrand auf der Pobacke mit sich umher!", "#me springt empört grunzend umher, so dass man die Krone auf ihrer Pobacke unmöglich zu fassen bekommt.", "#me legt sich in ein Schlammloch. Würde jemand nach der goldenen Krone schnappen, fiele auf, dass sie wohl magisch angebracht wurde.", inform("Spielt dir dein Kopf einen Streich, oder hast du tatsächlich über dieses Schwein etwas in der Bibliothek gelesen?")
+race(dwarf), "crown" -> "#me wears, you realize now, the crown of the king from Silverbrand on its buttock!", "#me hops indignantly grunting around, so it's impossible to grab the crown on its buttock.", "#me lays down into the mud. If someone would try to grab it, those will notice that it seems to be fixed in a magical way.", inform("Is your head kidding you? Or do you read about this pig at the library?")
+"krone" -> "#me springt empört grunzend umher, so dass man die Krone auf ihrer Pobacke unmöglich zu fassen bekommt.", "#me legt sich in ein Schlammloch. Würde jemand nach der goldenen Krone schnappen, fiele auf, dass sie wohl magisch angebracht wurde.", inform("Spielt dir dein Kopf einen Streich, oder hast du tatsächlich über dieses Schwein etwas in der Bibliothek gelesen?")
+"crown" -> "#me hops indignantly grunting around, so it's impossible to grab the crown on its buttock.", "#me lays down into the mud. If someone would try to grab it, those will notice that it seems to be fixed in a magical way.", inform("Is your head kidding you? Or do you read about this pig at the library?")
+"hilfe" -> "", inform("Eine Sau die eine Krone auf ihrem Po trägt. Was es wohl damit auf sich hat?")
+"helfen" -> "", inform("Eine Sau die eine Krone auf ihrem Po trägt. Was es wohl damit auf sich hat?")
+"help" -> "", inform("A sow, wearing a crown on her buttock. What could be the reason for that?")
+german, "?" -> "#me scheint dir interessiert zuzuhören. Mit einer Art nicken stimmt sie der Frage zu.", "#me grunzt glücklich und begutachtet interessiert den Schlamm zu ihren Hufen.", "#me scheint dich verwirrt anzusehen.", "#me scheint dir interessiert zuzuhören. Dann scheint sie ihren Kopf kräftig zu schütteln."
 german, "!" -> "#me scheint ihre Augen zusammen zu kneifen. Fragender Weise in deine Augen blickend.", "#me grunzt mehrere Male. Es erinnert an ein lachen.", "#me dreht herum und lässt sich in das nächste Schlammloch sinken."
-english, "?" -> "#me seems watching you interested. Giving you a kind of nod, in agreement to your question.", "#me grunts happyly and looks interested at the mud on the ground.", "#me seems like giving you a confused looking face.", "#me seems watching you interested. Then frequently shaking it's head."
-english, "!" -> "#me seems like narrow it's eyes. Looking up to your face, in a askening way.", "#me grunts several times. It sound a little bit similar to a laughter.", "#me turns around to get sunk into the next mud hole."
+english, "?" -> "#me seems watching you interested. Giving you a kind of nod, in agreement to your question.", "#me grunts happily and looks interested at the mud on the ground.", "#me seems like giving you a confused looking face.", "#me seems watching you interested. Then frequently shaking its head."
+english, "!" -> "#me seems like narrow its eyes. Looking up to your face, in a questioning way.", "#me grunts several times. It sounds a little bit similar to a laughter.", "#me turns around to get sunk into the next mud hole."
 german, "." -> "#me leckt ihre Nase mit der Zunge ab.", "#me scheint dich anzusehen, dann grunzt sie einige Male in deine Richtung als würde sie mit dir sprechen.", "#me scheint ihren Kopf langsam zu schütteln. Sie blickt dich mit seltsamen Blick an."
-english, "." -> "#me licks it's own nose with the tounge.", "#me seems watching you and starts to grunt several times into your direction, like talking to you.", "#me seems to shake its big head a little. Looking at you with a weird gaze."
+english, "." -> "#me licks its own nose with the tongue.", "#me seems watching you and starts to grunt several times into your direction, like talking to you.", "#me seems to shake its big head a little. Looking at you with a weird gaze."
 
 -- Idle dialogue
-cycletext "#me grunzt glücklich und steckt ihren Rüssel in den schlammigen Boden.", "#me grunts happyly and pokes its trunk into the muddy ground."
+cycletext "#me grunzt glücklich und steckt ihren Rüssel in den schlammigen Boden.", "#me grunts happily and pokes its snout into the muddy ground."
 cycletext "#me quiekt aufgeregt.", "#me squeals with glee."
-cycletext "#me scharrt mit dem Vorderhuf im Boden.", "#me scrabbles with it's foot on the ground."
-cycletext "#me lässt sich mit einem langezogenen grunzen in den Schlamm fallen.", "#me drops its body with a lucky grunt into the mud."
+cycletext "#me scharrt mit dem Vorderhuf im Boden.", "#me scrabbles with its hoof on the ground."
+cycletext "#me lässt sich mit einem langgezogenen Grunzen in den Schlamm fallen.", "#me drops its body with a happy grunt into the mud."
 cycletext "#me wälzt sich voller Freude im Schlamm.", " #me wallows amused in the mud."
-cycletext "#me ist eine große schwere, glücklich schnüffelnde und grunzende Sau. Sie trägt eine goldene Krone auf ihrer linken Pobacke.", "#me is a big heavy, lucky sniffling and gruntig sow. Wearing a golden crown on the left buttock."
+cycletext "#me ist eine große schwere, glücklich schnüffelnde und grunzende Sau. Sie trägt eine goldene Krone auf ihrer linken Pobacke.", "#me is a big heavy, happily sniffing and grunting sow. Wearing a golden crown on the left buttock."
