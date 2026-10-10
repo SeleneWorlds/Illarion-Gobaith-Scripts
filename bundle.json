@@ -1753,6 +1753,9 @@
     "npc.custom.tax_collector": {
       "file": "server/lua/npc/custom/tax_collector.lua"
     },
+    "npc.custom.stalljunge": {
+      "file": "server/lua/npc/custom/stalljunge.lua"
+    },
     "npc.custom.calendar": {
       "file": "server/lua/npc/custom/calendar.lua"
     },

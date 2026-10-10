@@ -14,6 +14,20 @@ useMsgDE = "Finger weg!"
 useMsgUS = "Don't you touch me!"
 
 
+-- Rental and return rules take priority over small talk.
+queststatus(8) = 0, german, "golem.+zurück", "golem.+verkaufen", "verkaufe.+golem", "sell.+golem", "return.+golem" -> "Ihr habt gar kein Lasttier gemietet."
+queststatus(8) = 0, english, "golem.+zurück", "golem.+verkaufen", "verkaufe.+golem", "sell.+golem", "return.+golem" -> "You have not rented a pack animal."
+queststatus(8) != 0, "golem.+zurück", "golem.+verkaufen", "verkaufe.+golem", "sell.+golem", "return.+golem" -> lua("npc.custom.stalljunge", "returnAnimal")
+queststatus(8) != 0, german, "golem.+leihen", "leihe.+golem", "rent.+golem", "lend.+golem", "hire.+golem", "golem.+beschwör", "beschwör.+golem", "summon.+golem" -> "Ihr habt schon ein Lasttier. Mehr als eines geht nicht."
+queststatus(8) != 0, english, "golem.+leihen", "leihe.+golem", "rent.+golem", "lend.+golem", "hire.+golem", "golem.+beschwör", "beschwör.+golem", "summon.+golem" -> "You already have a pack animal. You can only rent one."
+queststatus(8) = 0, money < 250, german, "golem.+leihen", "leihe.+golem", "rent.+golem", "lend.+golem", "hire.+golem", "golem.+beschwör", "beschwör.+golem", "summon.+golem" -> "Ihr braucht 50 Kupferstücke Leihgebühr und 2 Silberstücke Kaution."
+queststatus(8) = 0, money < 250, english, "golem.+leihen", "leihe.+golem", "rent.+golem", "lend.+golem", "hire.+golem", "golem.+beschwör", "beschwör.+golem", "summon.+golem" -> "You need 50 copper coins for the rental fee and 2 silver coins for the deposit."
+queststatus(8) = 0, money >= 250, "golem.+leihen", "leihe.+golem", "rent.+golem", "lend.+golem", "hire.+golem", "golem.+beschwör", "beschwör.+golem", "summon.+golem" -> lua("npc.custom.stalljunge", "rent", 30)
+"golem.+kaufen", "kaufe.+golem" -> "Ich verkaufe keine Lasttiere. Ich verleihe sie nur."
+"buy.+golem" -> "I do not sell pack animals. I only rent them out."
+"koste", "preis" -> "Die Leihgebühr beträgt 50 Kupferstücke, die Kaution 2 Silberstücke. Bei Rückgabe bekommt ihr die Kaution zurück."
+"cost", "price" -> "The rental fee is 50 copper coins, plus a deposit of 2 silver coins. You get the deposit back on return."
+
 "[hh]ello", "[gg]reetings", "[hh]i" -> "Greetings."
 "[hh]allo", "[gg]r[uü][sß]+" -> "Grüß euch!"
 "[ww]ho.+" -> "I am %NPCNAME, ich bin Magier an dieser Akademie"
@@ -32,8 +46,3 @@ useMsgUS = "Don't you touch me!"
 -- Idle dialogue
 cycletext "#me schaut sich um", "#me looks around"
 cycletext "#me niest", "#me sneezes"
-
--- Migration follow-up
--- Custom Lua functions require review: SayPrice, createCow, GetCow, returnCow, CheckMoney, Pay, CalcSilverCopper
--- Custom event dispatch outside registration rules requires review.
--- Movement, spawning or world changes require Lua hooks.

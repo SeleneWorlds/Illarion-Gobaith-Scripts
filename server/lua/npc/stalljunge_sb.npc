@@ -12,6 +12,20 @@ useMsgDE = "Finger weg!"
 useMsgUS = "Don't you touch me!"
 
 
+-- Rental and return rules take priority over small talk.
+queststatus(8) = 0, german, "esel.+zurück", "esel.+verkaufen", "verkaufe.+esel", "sell.+esel", "return.+esel", "lasttier.+zurück", "lasttier.+verkaufen", "verkaufe.+lasttier", "sell.+lasttier", "return.+lasttier", "mule.+zurück", "mule.+verkaufen", "verkaufe.+mule", "sell.+mule", "return.+mule", "donkey.+zurück", "donkey.+verkaufen", "verkaufe.+donkey", "sell.+donkey", "return.+donkey", "pack.+animal.+zurück", "pack.+animal.+verkaufen", "verkaufe.+pack.+animal", "sell.+pack.+animal", "return.+pack.+animal" -> "Ihr habt gar kein Lasttier gemietet."
+queststatus(8) = 0, english, "esel.+zurück", "esel.+verkaufen", "verkaufe.+esel", "sell.+esel", "return.+esel", "lasttier.+zurück", "lasttier.+verkaufen", "verkaufe.+lasttier", "sell.+lasttier", "return.+lasttier", "mule.+zurück", "mule.+verkaufen", "verkaufe.+mule", "sell.+mule", "return.+mule", "donkey.+zurück", "donkey.+verkaufen", "verkaufe.+donkey", "sell.+donkey", "return.+donkey", "pack.+animal.+zurück", "pack.+animal.+verkaufen", "verkaufe.+pack.+animal", "sell.+pack.+animal", "return.+pack.+animal" -> "You have not rented a pack animal."
+queststatus(8) != 0, "esel.+zurück", "esel.+verkaufen", "verkaufe.+esel", "sell.+esel", "return.+esel", "lasttier.+zurück", "lasttier.+verkaufen", "verkaufe.+lasttier", "sell.+lasttier", "return.+lasttier", "mule.+zurück", "mule.+verkaufen", "verkaufe.+mule", "sell.+mule", "return.+mule", "donkey.+zurück", "donkey.+verkaufen", "verkaufe.+donkey", "sell.+donkey", "return.+donkey", "pack.+animal.+zurück", "pack.+animal.+verkaufen", "verkaufe.+pack.+animal", "sell.+pack.+animal", "return.+pack.+animal" -> lua("npc.custom.stalljunge", "returnAnimal")
+queststatus(8) != 0, german, "esel.+leihen", "leihe.+esel", "rent.+esel", "lend.+esel", "hire.+esel", "lasttier.+leihen", "leihe.+lasttier", "rent.+lasttier", "lend.+lasttier", "hire.+lasttier", "mule.+leihen", "leihe.+mule", "rent.+mule", "lend.+mule", "hire.+mule", "donkey.+leihen", "leihe.+donkey", "rent.+donkey", "lend.+donkey", "hire.+donkey", "pack.+animal.+leihen", "leihe.+pack.+animal", "rent.+pack.+animal", "lend.+pack.+animal", "hire.+pack.+animal" -> "Ihr habt schon ein Lasttier. Mehr als eines geht nicht."
+queststatus(8) != 0, english, "esel.+leihen", "leihe.+esel", "rent.+esel", "lend.+esel", "hire.+esel", "lasttier.+leihen", "leihe.+lasttier", "rent.+lasttier", "lend.+lasttier", "hire.+lasttier", "mule.+leihen", "leihe.+mule", "rent.+mule", "lend.+mule", "hire.+mule", "donkey.+leihen", "leihe.+donkey", "rent.+donkey", "lend.+donkey", "hire.+donkey", "pack.+animal.+leihen", "leihe.+pack.+animal", "rent.+pack.+animal", "lend.+pack.+animal", "hire.+pack.+animal" -> "You already have a pack animal. You can only rent one."
+queststatus(8) = 0, money < 250, german, "esel.+leihen", "leihe.+esel", "rent.+esel", "lend.+esel", "hire.+esel", "lasttier.+leihen", "leihe.+lasttier", "rent.+lasttier", "lend.+lasttier", "hire.+lasttier", "mule.+leihen", "leihe.+mule", "rent.+mule", "lend.+mule", "hire.+mule", "donkey.+leihen", "leihe.+donkey", "rent.+donkey", "lend.+donkey", "hire.+donkey", "pack.+animal.+leihen", "leihe.+pack.+animal", "rent.+pack.+animal", "lend.+pack.+animal", "hire.+pack.+animal" -> "Ihr braucht 50 Kupferstücke Leihgebühr und 2 Silberstücke Kaution."
+queststatus(8) = 0, money < 250, english, "esel.+leihen", "leihe.+esel", "rent.+esel", "lend.+esel", "hire.+esel", "lasttier.+leihen", "leihe.+lasttier", "rent.+lasttier", "lend.+lasttier", "hire.+lasttier", "mule.+leihen", "leihe.+mule", "rent.+mule", "lend.+mule", "hire.+mule", "donkey.+leihen", "leihe.+donkey", "rent.+donkey", "lend.+donkey", "hire.+donkey", "pack.+animal.+leihen", "leihe.+pack.+animal", "rent.+pack.+animal", "lend.+pack.+animal", "hire.+pack.+animal" -> "You need 50 copper coins for the rental fee and 2 silver coins for the deposit."
+queststatus(8) = 0, money >= 250, "esel.+leihen", "leihe.+esel", "rent.+esel", "lend.+esel", "hire.+esel", "lasttier.+leihen", "leihe.+lasttier", "rent.+lasttier", "lend.+lasttier", "hire.+lasttier", "mule.+leihen", "leihe.+mule", "rent.+mule", "lend.+mule", "hire.+mule", "donkey.+leihen", "leihe.+donkey", "rent.+donkey", "lend.+donkey", "hire.+donkey", "pack.+animal.+leihen", "leihe.+pack.+animal", "rent.+pack.+animal", "lend.+pack.+animal", "hire.+pack.+animal" -> lua("npc.custom.stalljunge", "rent", 50)
+"esel.+kaufen", "kaufe.+esel", "lasttier.+kaufen", "kaufe.+lasttier", "mule.+kaufen", "kaufe.+mule", "donkey.+kaufen", "kaufe.+donkey", "pack.+animal.+kaufen", "kaufe.+pack.+animal" -> "Ich verkaufe keine Lasttiere. Ich verleihe sie nur."
+"buy.+esel", "buy.+lasttier", "buy.+mule", "buy.+donkey", "buy.+pack.+animal" -> "I do not sell pack animals. I only rent them out."
+"koste", "preis" -> "Die Leihgebühr beträgt 50 Kupferstücke, die Kaution 2 Silberstücke. Bei Rückgabe bekommt ihr die Kaution zurück."
+"cost", "price" -> "The rental fee is 50 copper coins, plus a deposit of 2 silver coins. You get the deposit back on return."
+
 "[hh]ello", "[gg]reetings", "[hh]i" -> "Hello, Hello"
 "[hh]allo", "[gg]r[uü][sß]+" -> "Grüße euch!"
 "[ww]ho.+" -> "I am %NPCNAME"
@@ -27,8 +41,3 @@ useMsgUS = "Don't you touch me!"
 -- Idle dialogue
 cycletext "#me schaut sich um", "#me looks around"
 cycletext "#me niest", "#me sneezes"
-
--- Migration follow-up
--- Custom Lua functions require review: SayPrice, createCow, GetCow, returnCow, CheckMoney, Pay, CalcSilverCopper
--- Custom event dispatch outside registration rules requires review.
--- Movement, spawning or world changes require Lua hooks.
