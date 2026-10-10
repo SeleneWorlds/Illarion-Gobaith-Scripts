@@ -89,6 +89,7 @@ end
 -- Include requests without inventory matches so the NPC's full buying list is visible.
 -- Mode uses the player perspective: buy offers or sell requested items.
 function tradeNPC:showDialog(npcChar, player, mode)
+    mode = mode or "buy"
     local entries = {}
     if mode ~= "sell" then
         for index, item in ipairs(self._sellItems) do
