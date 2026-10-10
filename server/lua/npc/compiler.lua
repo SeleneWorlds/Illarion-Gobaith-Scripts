@@ -246,7 +246,7 @@ local function validateAction(node,hasTrades)
     if node.kind == 'literal' and type(node.value) == 'string' then return end
     if node.kind == 'symbol' then
         if node.value == 'trade' then if not hasTrades then fail(node.token,"trade action has no offers or requests") end; return end
-        if node.value == 'introduce' then return end
+        if node.value == 'introduce' or node.value == 'begin' or node.value == 'end' then return end
     elseif node.kind == 'operation' then
         local subject=node.subject; local name=subject.name or subject.value
         if node.op ~= '=' and node.op ~= '+' and node.op ~= '-' then fail(node.token,"unsupported assignment operator") end
@@ -423,6 +423,7 @@ end
 local function makeAction(node,trader)
     if node.kind == 'symbol' then
         if node.value == 'trade' then return require('npc.base.consequence.trade')(trader) end
+        if node.value == 'begin' or node.value == 'end' then return require('npc.base.consequence.talkstate')(node.value) end
         return require('npc.base.consequence.introduce')()
     end
     if node.kind == 'operation' then
