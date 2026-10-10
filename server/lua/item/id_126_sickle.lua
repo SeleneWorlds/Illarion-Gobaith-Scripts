@@ -1,124 +1,82 @@
-local areas = require("base.areas")
 local parent = require("item.general.metal")
+local common = require("base.common")
+local gathering = require("content.gathering")
+local harvests = require("content.herb_harvests")
 local M = {}
 
--- Herblore mit Sichel und Ausbreitung der Pflanzen
-
--- UPDATE common SET com_script='item.id_126_sickle' WHERE com_itemid=126;
-
-local general_metal = require("item.general.metal")
-local common = require("base.common")
-local scheduled_newgaia = require("scheduled.newgaia")
-function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
-	
-	-- Krauterliste initialisieren
-	scheduled_newgaia.initHerbs();
-	
-	-- wird die Arbeit durch andere aktion unterbrochen?
-    common.ResetInterruption( User, ltstate );
-    if ( ltstate == Action.abort ) then
-        if (User:increaseAttrib("sex",0) == 0) then
-            gText = "seine";
-            eText = "his";
-        else
-            gText = "ihre";
-            eText = "her";
-        end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
-        return
-    end
-    
-    -- Unterbrechungsmeldungen
-	if ( ltstate == Action.success ) then
-        if common.IsInterrupted( User ) then
-            common.InformNLS( User,
-            "Während du nach Kräutern suchst, verhakt sich deine Sichel und rutscht dir fast aus der Hand.",
-            "While searching for herbs your sickle gets stuck and it nearly slides out of your hand.");
-            return
+local function findHarvest(target)
+    local ground = common.GetGroundType(world:getField(target.pos):tile())
+    for _, harvest in ipairs(harvests[target.id] or {}) do
+        if harvest.ground == 0 or harvest.ground == ground then
+            return harvest
         end
     end
-    
-     -- Sehr streife Rüstung?
-    if common.Encumbrence(User) then
-        common.InformNLS( User,
-        "Deine Rüstung behindert dabei Kräuter zu sammeln.",
-        "Your armor disturbes you collecting herbs." );
-        return
-    end
-    
-    -- Sicherheitscheck
-    if not common.CheckItem( User, SourceItem ) then
-        return
-    end
-    
-    -- Ist ueberhaupt ein Item da, in dem gesucht wird?
-    if ((TargetItem == nil) or (TargetItem.id == 0)) then
-        TargetItem = common.GetFrontItem( User );
-    end
-    if not TargetItem then
-        common.InformNLS( User,
-        "Hier kannst du nicht finden.",
-        "You can't find anything here.");
-        return;
-    end
-    
-    -- Zum Item drehen, falls dies nicht der Fall ist
-    if not common.IsLookingAt( User, TargetItem.pos ) then
-        common.TurnTo( User, TargetItem.pos );
-    end
-
-	-- ist die Sichel in der Hand?
-    if ( SourceItem:getType() ~= 4 ) then
-        common.InformNLS( User,
-        "Du musst die Sichel in der Hand haben um damit zu arbeiten",
-        "You have to hold the sickle in your hand to work with it.");
-        return
-    end
-    
-    -- Kraeuterkundeskill des Users laden
-    local skill = User:getSkill( "herb lore" );
-
-	-- Boni durch magische Edelsteine in der Sichel? Rubine modifizieren den skill!
-    gem1, str1, gem2, str2=common.GetBonusFromTool(SourceItem);
-    step=0;
-    if gem1==3 then   
-        step=str1;
-    end
-    if gem2==3 then
-        step=step+str2;
-    end
-    skill=skill+step;
-    
-    -- Pruefen, ob man hier ueberhaupt was finden kann
-	if not M.checkRegion(TargetItem) then
-		User:inform("Hier kann man keine brauchbaren Kräuter finden");
-		return;		
-	end    
-	
-	User:inform("Hier kann man "..currentHerb.." finden");
-	
-
 end
 
-
-function M.checkRegion(TargetItem)
-    local TileID = world:getField(TargetItem.pos):tile()
-    for _, herb in pairs(scheduled_newgaia.herbs) do
-        if TileID == herb.ground then
-            for _, item in pairs(herb.item) do
-                if TargetItem.id == item then
-                    for _, region in ipairs(herb.region) do
-                        if areas.contains(region.area, TargetItem.pos) then
-                            currentHerb = herb.id
-                            return true
-                        end
-                    end
-                end
-            end
-        end
+function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
+    common.ResetInterruption(User, ltstate)
+    if ltstate == Action.abort then return end
+    if ltstate == Action.success and common.IsInterrupted(User) then
+        common.InformNLS(User, "Du unterbrichst die Suche nach Kräutern.", "You interrupt your search for herbs.")
+        return
     end
-    return false
+    if not common.CheckItem(User, SourceItem) then return end
+    if SourceItem:getType() ~= 4 then
+        common.InformNLS(User, "Du musst die Sichel in der Hand halten.", "You have to hold the sickle in your hand.")
+        return
+    end
+    if common.Encumbrence(User) or not common.FitForWork(User) then return end
+
+    -- Resolve the plant again on each action callback so harvested crops cannot
+    -- be gathered twice from a stale target supplied by the action system.
+    local target = common.GetFrontItem(User)
+    local harvest = target and findHarvest(target)
+    if not harvest then
+        common.InformNLS(User, "Hier kannst du nichts sammeln.", "You can't gather anything here.")
+        return
+    end
+
+    local skill = User:getSkill("herb lore")
+    local gem1, strength1, gem2, strength2 = common.GetBonusFromTool(SourceItem)
+    if gem1 == 3 then skill = skill + strength1 end
+    if gem2 == 3 then skill = skill + strength2 end
+    if skill < harvest.skill then
+        common.InformNLS(User, "Deine Kräuterkunde reicht dafür nicht aus.", "Your knowledge of herbs is insufficient to gather this plant.")
+        return
+    end
+
+    gathering.InitGathering()
+    if ltstate == Action.none then
+        User:startAction(math.max(1, gathering.herbgathering:GenWorkTime(User, SourceItem)), 0, 0, 0, 0)
+        return
+    end
+    if ltstate ~= Action.success then return end
+    if common.ToolBreaks(User, SourceItem) then
+        common.InformNLS(User, "Deine Sichel zerbricht.", "Your sickle breaks.")
+        return
+    end
+
+    local month = world:getTime("month")
+    if month == 0 then month = 16 end
+    local season = math.max(1, math.min(4, math.ceil(month / 4)))
+    local success = harvest.consume and (harvest.skill == 0 or math.random(100) < 80)
+        or (not harvest.consume and math.random(20) <= harvest.seasons[season])
+    if success then
+        local remaining = User:createItem(harvest.product, 1, 333, harvest.data)
+        if remaining > 0 then
+            world:createItemFromId(harvest.product, remaining, User.pos, true, 333, harvest.data)
+            common.InformNLS(User, "Du kannst nichts mehr tragen.", "You can't carry any more.")
+        end
+        if harvest.consume then world:erase(target, 1) end
+        User.movepoints = User.movepoints - 4
+        User:learn(2, "herb lore", 2, harvest.skill > 0 and 100 or 5)
+        if harvest.skill > 0 then common.GetHungry(User, 200) end
+    else
+        common.InformNLS(User, "Du findest nichts Brauchbares.", "You find nothing useful.")
+    end
+    if not harvest.consume then
+        User:startAction(math.max(1, gathering.herbgathering:GenWorkTime(User, SourceItem)), 0, 0, 0, 0)
+    end
 end
 
 if M.UseItem == nil then M.UseItem = parent.UseItem end

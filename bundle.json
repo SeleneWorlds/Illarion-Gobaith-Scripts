@@ -1770,6 +1770,9 @@
     },
     "npc.runtime": {
       "file": "server/lua/npc/runtime.lua"
+    },
+    "content.herb_harvests": {
+      "file": "server/lua/content/herb_harvests.lua"
     }
   }
 }
