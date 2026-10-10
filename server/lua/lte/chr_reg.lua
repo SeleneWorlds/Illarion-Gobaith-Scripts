@@ -116,7 +116,7 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgeführt
             -------------- Meldungen ausgeben ------------------
             common.InformNLS(Char,
                 "Du fühlst wie das Gift in deinem Körper seine Wirkung verliert",
-                "You feel how the poison in your body looses its effect.");
+                "You feel how the poison in your body loses its effect.");
             -------------- Meldungen fertig --------------------
         else
             Hitpoints = math.max( 0,Hitpoints - ( ( Poisonvalue * 0.07 ) * ( ( 30 - Const ) / 20 ) * 5 ) );

@@ -18,7 +18,7 @@ function M.UseItem( User, Item, TargetItem, counter, param )
             if lang==0 then
                 User:inform("Nachdem du den verborgenen Schalter erneut betätigst gleitet die Leiter zurück in die Decke und die Luke schließt sich wieder.");
             else
-                User:inform("After touching the hidden switch again the ladder slides back into the ceiling and the batch closes again.");
+                User:inform("After touching the hidden switch again the ladder slides back into the ceiling and the hatch closes again.");
             end
             common.removeItemIdFromFieldStack( 35, position(-29, 195, -9) );
         end
@@ -28,7 +28,7 @@ function M.UseItem( User, Item, TargetItem, counter, param )
             if lang==0 then
                 User:inform("Als du die Statue berührst verschwimmt die Welt um dich und dir wird schwummrig. Als du wieder klar siehst, bist du an einem völlig anderen Ort");
             else
-                User:inform("You touch the statue and the world around you become blurred and you feel a little strange. A moment after you can see clearly again and you are on a completly other place");
+                User:inform("You touch the statue and the world around you becomes blurred and you feel a little strange. A moment later you can see clearly again, and you are in a completely different place");
             end
         end
     elseif equapos(Item.pos,position(102,55,52)) then
@@ -36,7 +36,7 @@ function M.UseItem( User, Item, TargetItem, counter, param )
         if lang==0 then
             User:inform("Als du die Statue berührst verschwimmt die Welt um dich und dir wird schwummrig. Als du wieder klar siehst, bist du an einem völlig anderen Ort");
         else
-            User:inform("You touch the statue and the world around you become blurred and you feel a little strange. A moment after you can see clearly again and you are on a completly other place");
+            User:inform("You touch the statue and the world around you becomes blurred and you feel a little strange. A moment later you can see clearly again, and you are in a completely different place");
         end
     elseif equapos(Item.pos,position(-60,-229,0)) then
         for i=-69,-61 do

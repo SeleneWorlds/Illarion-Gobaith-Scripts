@@ -18,7 +18,7 @@ end
 function M.addEffect(addPerc, User)    -- Wird nur beim Start des Effektes aufgerufen (-> Perc+1)
     User:inform("function addEffect erreicht")
     AttribToBoost, boostSteps, boostValue, reboostValue = M.initBoost(User)
-    common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticably.");
+    common.InformNLS(User, "Deine Sinne werden merkbar sensibler.", "Your senses grow noticeably.");
     User:increaseAttrib(AttribToBoost,boostValue);    -- (erste Steigerung)
 end
 

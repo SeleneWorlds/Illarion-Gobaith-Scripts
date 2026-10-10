@@ -38,7 +38,7 @@ function M.callEffect(Effect,Character)               -- Effect wird ausgeführt
                 Effect:removeValue("zaehler_"..i);
                 if not MessageSend then
                     MessageSend = true;
-                    common.InformNLS( Character, "Du fühlst, dass der Trank seine Wirkung verliert.", "You feel that the potion looses its effect.");
+                    common.InformNLS( Character, "Du fühlst, dass der Trank seine Wirkung verliert.", "You feel that the potion loses its effect.");
                 end
             else
                 Effect:addValue("zaehler_"..i,zaehler);
@@ -74,7 +74,7 @@ function M.removeEffect(Effect,Character)
             Effect:removeValue("zaehler_"..i);
             if not MessageSend then
                 MessageSend = true;
-                common.InformNLS( Character, "Du fühlst, dass der Trank seine Wirkung verliert.", "You feel that the potion looses its effect.");
+                common.InformNLS( Character, "Du fühlst, dass der Trank seine Wirkung verliert.", "You feel that the potion loses its effect.");
             end
         end
     end

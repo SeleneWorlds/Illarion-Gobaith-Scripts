@@ -68,18 +68,18 @@ function M.teach(context)
     say(context, 10)
     if learned then
         player:inform(player:getPlayerLanguage() == 0
-            and 'Seine Ausführungen lassen die Sprache recht leicht erscheinen und du denkst das du schnell lernst.'
+            and 'Seine Ausführungen lassen die Sprache recht leicht erscheinen und du denkst, dass du schnell lernst.'
             or 'His discourses make the language seem quite simple as compared to the common tongue, and you find yourself learning fast.')
         player:inform(player:getPlayerLanguage() == 0
-            and 'Du erkennst das du nun viele Wörter schon kennst und die Sprache schon etwas anwenden kannst.'
+            and 'Du erkennst, dass du nun viele Wörter schon kennst und die Sprache schon etwas anwenden kannst.'
             or 'You begin to realize that many words you already know have a common heritage with many of the words you are learning.')
     else
         player:inform(player:getPlayerLanguage() == 0
             and 'Yastahl fängt mit den Grundlagen der Sprache der Elfen an, aber du kennst die Wörter schon seit einiger Zeit, wie auch immer, Yastahl nimmt es nicht wohlwollend hin, wenn sein Unterricht unterbrochen wird.'
             or 'Yastahl begins with the basics of the Elven Tongue, but you already have known these words for some time; however, Yastahl does not take kindly to being interrupted during lessons.')
         player:inform(player:getPlayerLanguage() == 0
-            and 'Nach einiger Zeit fängt er an von den Komplexeren Teilen der Sprache zu sprechen, doch dann beginnt das Sibanac sein denken zu beeinflussen und so kannst du nicht mehr lernen.'
-            or 'By the time he begins to get to the more advanced rules of the language, the sibanac has started to effect his thinking, and he is no longer of any use to you.')
+            and 'Nach einiger Zeit fängt er an von den komplexeren Teilen der Sprache zu sprechen, doch dann beginnt das Sibanac sein Denken zu beeinflussen und so kannst du nicht mehr lernen.'
+            or 'By the time he begins to get to the more advanced rules of the language, the sibanac has started to affect his thinking, and he is no longer of any use to you.')
     end
 end
 

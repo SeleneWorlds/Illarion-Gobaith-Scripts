@@ -97,7 +97,7 @@ function M.Lever:switchLever(Char)                    -- switch the lever; retur
                 end
             end
         else
-            if Char~=nil then Char:inform("Not strong enough.") end;
+            if Char~=nil then Char:inform(Char:getPlayerLanguage() == 0 and "Du bist nicht stark genug." or "You are not strong enough.") end;
             return thisState;
         end
 

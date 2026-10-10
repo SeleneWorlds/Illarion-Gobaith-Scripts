@@ -5,7 +5,7 @@ local M = {}
 function M.LookAtItem(User,Item)
 if (Item.data==701) then
 	if (User:getPlayerLanguage() == 0) then
-            world:itemInform(User,Item,"German");
+            world:itemInform(User,Item,"Du siehst eine seltsame Konstruktion mit einem Loch in der Mitte. Darunter steht: 'Das Schloss'.");
         else
             world:itemInform(User,Item,"You see a strange construction with a hole carved in the middle. 'The Lock' is carved underneath");
         end
@@ -15,7 +15,7 @@ end;
 
 if (Item.data~=701) then
 	if (User:getPlayerLanguage() == 0) then
-            world:itemInform(User,Item,"German");
+            world:itemInform(User,Item,"Du siehst einen Altar.");
         else
             world:itemInform(User,Item,"You see an Altar");
         end
@@ -34,7 +34,7 @@ if (SourceItem.data==701) then
 				for i, item in pairs(items) do
 					if (item.data == 705) then --full amulet
 							if (User:getPlayerLanguage() ==0) then
-								User:inform("German");
+								User:inform("Das Amulett passt in das Loch. Du spürst eine schnelle Bewegung.");
 							else
 								User:inform("The amulet fits in the hole. You feel rapid motion");
 							end

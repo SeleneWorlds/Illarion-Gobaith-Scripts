@@ -9,7 +9,7 @@ function M.addEffect( BleedingEffect, Victim )
     if ( Victim:getPlayerLanguage() == 0 ) then
         Victim:inform( "Durch den Schlag fängst du dir eine stark blutende Wunde ein." );
     else
-        Victim:inform( "Due the hit you receive a heavily bleeding wound." );
+        Victim:inform( "Due to the hit you receive a heavily bleeding wound." );
     end
     BleedingEffect.nextCalled = 10;
     return true;
@@ -25,7 +25,7 @@ function M.doubleEffect( BleedingEffect, Victim )
     if ( Victim:getPlayerLanguage() == 0 ) then
         Victim:inform( "Durch den Schlag fängst du dir noch eine stark blutende Wunde ein." );
     else
-        Victim:inform( "Due the hit you receive another heavily bleeding wound." );
+        Victim:inform( "Due to the hit you receive another heavily bleeding wound." );
     end
     BleedingEffect.nextCalled = 10;
     return true;

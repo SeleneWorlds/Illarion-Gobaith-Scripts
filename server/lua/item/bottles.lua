@@ -132,7 +132,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
                 "Take the bottle in your hands.");
             end
         else
-            User:inform("unkown bottle item ");
+            User:inform("unknown bottle item ");
         end
     end
 end
@@ -162,7 +162,7 @@ function M.LookAtItem(User,Item)
 
         local food = drinkList[ Item.id ];
         if food == nil then
-            User:inform("unkown bottle item ");
+            User:inform("unknown bottle item ");
             return
         end
 

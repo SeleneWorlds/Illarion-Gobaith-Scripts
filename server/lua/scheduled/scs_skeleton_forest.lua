@@ -35,7 +35,7 @@ function M.SpawnSkeleton(Charakter)
     end
 
     if (Charakter:getPlayerLanguage() == 0) then
-        Charakter:inform("Um dich herum raschelt der Wald und du hört das Klappern von Knochen.");
+        Charakter:inform("Um dich herum raschelt der Wald und du hörst das Klappern von Knochen.");
     else
         Charakter:inform("Around you the forest rustles and you hear the clacking of bones.");
     end

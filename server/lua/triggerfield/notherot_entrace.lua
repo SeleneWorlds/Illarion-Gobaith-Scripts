@@ -11,7 +11,7 @@ function M.CharacterOnField(Character)
     if (Character:getPlayerLanguage()==0) then
         Character:inform("Eine unsichtbare Kraft wirft dich zurück!");
     else
-        Character:inform("A invisible force throws you backwards!");
+        Character:inform("An invisible force throws you backwards!");
     end
 end
 

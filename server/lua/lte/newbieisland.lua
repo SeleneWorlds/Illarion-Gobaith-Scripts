@@ -43,7 +43,7 @@ function M.removeEffect(newbieEffect, Character)
 	  "#w You now have left the tutorial island and you are on the actual island 'Gobaith'. Let your character act as if he is a real person in the world of Illarion. The Illarion community wishes you much fun!");
 	common.InformNLS(Character,
 	  "*Du schüttelst das letzte Kribbeln von dir ab und ein frisches, euphorisches Gefühl durchströmt deinen Körper.*",
-	  "*You shake off the last tingling and a fresh, euphorical feeling flows through your body.*");
+	  "*You shake off the last tingling and a fresh, euphoric feeling flows through your body.*");
 	-- full health and foodpoints
 	--
 	local FoodToAdd = 60000 - Character:increaseAttrib("foodlevel",0);

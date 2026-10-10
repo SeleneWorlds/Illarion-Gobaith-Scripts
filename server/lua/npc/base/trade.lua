@@ -166,7 +166,7 @@ function tradeNPC:buyItemFromPlayer(npcChar, player, boughtItem)
     end
 
     if lookat.hasSocketedGems(boughtItem) then
-        player:inform("NPCs kaufen keine Gegestände mit gesockelten Edelsteinen.","NPCs don't buy gemmed items.", Character.highPriority)
+        player:inform("NPCs kaufen keine Gegenstände mit gesockelten Edelsteinen.","NPCs don't buy gemmed items.", Character.highPriority)
         return
     end
 
@@ -253,7 +253,7 @@ function tradeNPC:sellItemToPlayer(npcChar, player, itemIndex, amount)
 
         common.CreateItem(player, item._itemId, amount, item._quality, item._data)
         local itemName = common.GetNLS(player, world:getItemName(item._itemId, 0), world:getItemName(item._itemId, 1))
-        common.InformNLS(player, "Du hast "..amount.." "..itemName.." zu einem Preis von"..priceStringGerman.." gekauft.", "You bought "..amount.." "..itemName.." at a price of"..priceStringEnglish..".")
+        common.InformNLS(player, "Du hast "..amount.." "..itemName.." zu einem Preis von "..priceStringGerman.." gekauft.", "You bought "..amount.." "..itemName.." at a price of "..priceStringEnglish..".")
         world:makeSound(24, player.pos)
 
     elseif (self._notEnoughMoneyMsg:hasMessages()) then

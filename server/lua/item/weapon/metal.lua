@@ -47,13 +47,13 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltState)
             end 
         elseif (User:increaseAttrib("intelligence",0) > 15) then
             if (User:getPlayerLanguage() == 0) then
-                User:inform("Du kannst die Schrift nicht lesen, aber du meinst das diese Runen wohl Zwergenrunen sind.");
+                User:inform("Du kannst die Schrift nicht lesen, aber du meinst, dass diese Runen wohl Zwergenrunen sind.");
             else
-                User:inform("You can't read whats written here. But you think these runes could be dwarfen runes.");
+                User:inform("You can't read what's written here. But you think these runes could be dwarven runes.");
             end
         else
             if (User:getPlayerLanguage() == 0) then
-                User:inform("Du kannst die Runen nicht auf dem Schwert nicht deuten.");
+                User:inform("Du kannst die Runen auf dem Schwert nicht deuten.");
             else
                 User:inform("You don't know what the runes on the sword are about.");
             end
@@ -68,10 +68,10 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltState)
                 --blsEffect = CLongTimeEffect( 2701, 600 );
                 User.effects:addEffect( blsEffect );
             else
-                User:inform( "The power of the sword appears to be drained." );
+                User:inform(User:getPlayerLanguage() == 0 and "Die Kraft des Schwertes scheint erschöpft zu sein." or "The power of the sword appears to be drained.");
             end;   
         else
-            User:inform( "You must be wielding the sword to invoke its power." );
+            User:inform(User:getPlayerLanguage() == 0 and "Du musst das Schwert in der Hand halten, um seine Kraft zu nutzen." or "You must be wielding the sword to invoke its power.");
         end;      
     end;
 end

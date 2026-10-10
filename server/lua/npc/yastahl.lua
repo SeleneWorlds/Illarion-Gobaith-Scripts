@@ -132,8 +132,8 @@ function M.receiveText(texttype, message, originator)
                 thisNPC:talk(CCharacter.say,functions.GetNLS(originator,gText,eText));
                 if (Status==10) then
                     if (lang==0) then
-                        originator:inform("Seine Ausführungen lassen die Sprache recht leicht erscheinen und du denkst das du schnell lernst.");
-                        originator:inform("Du erkennst das du nun viele Wörter schon kennst und die Sprache schon etwas anwenden kannst.");
+                        originator:inform("Seine Ausführungen lassen die Sprache recht leicht erscheinen und du denkst, dass du schnell lernst.");
+                        originator:inform("Du erkennst, dass du nun viele Wörter schon kennst und die Sprache schon etwas anwenden kannst.");
                     else
                         originator:inform("His discourses make the language seem quite simple as compared to the common tongue, and you find yourself learning fast.");
                         originator:inform("You begin to realize that many words you already know have a common heritage with many of the words you are learning.");
@@ -141,10 +141,10 @@ function M.receiveText(texttype, message, originator)
                 elseif (Status==11) then
                     if (lang==0) then
                         originator:inform("Yastahl fängt mit den Grundlagen der Sprache der Elfen an, aber du kennst die Wörter schon seit einiger Zeit, wie auch immer, Yastahl nimmt es nicht wohlwollend hin, wenn sein Unterricht unterbrochen wird.");
-                        originator:inform("Nach einiger Zeit fängt er an von den Komplexeren Teilen der Sprache zu sprechen, doch dann beginnt das Sibanac sein denken zu beeinflussen und so kannst du nicht mehr lernen.");
+                        originator:inform("Nach einiger Zeit fängt er an von den komplexeren Teilen der Sprache zu sprechen, doch dann beginnt das Sibanac sein Denken zu beeinflussen und so kannst du nicht mehr lernen.");
                     else
                         originator:inform("Yastahl begins with the basics of the Elven Tongue, but you already have known these words for some time; however, Yastahl does not take kindly to being interrupted during lessons.");
-                        originator:inform("By the time he begins to get to the more advanced rules of the language, the sibanac has started to effect his thinking, and he is no longer of any use to you.");
+                        originator:inform("By the time he begins to get to the more advanced rules of the language, the sibanac has started to affect his thinking, and he is no longer of any use to you.");
                     end
                 end
             end

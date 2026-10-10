@@ -12,7 +12,7 @@ function M.callEffect( myEffect, Character )
     item2 = Character:getItemAt( 6 );
     if ( ( ( item1.id == 2701 ) and ( item1.data == 100 ) ) or
          ( ( item2.id == 2701 ) and ( item2.data == 100 ) ) ) then
-        Character:inform( "Your sword seems to have regained the energy." );
+        Character:inform(Character:getPlayerLanguage() == 0 and "Dein Schwert scheint seine Energie zurückgewonnen zu haben." or "Your sword seems to have regained its energy.");
     end;
     return false;
 end;

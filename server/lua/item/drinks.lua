@@ -143,7 +143,7 @@ function M.LookAtItem(User,Item)
     M.InitDrinks();
     local food = drinkList[ Item.id ];
     if food == nil then
-        User:inform("unkown drink item ID"..Item.id);
+        User:inform("unknown drink item ID"..Item.id);
         return
     end
     world:itemInform(User,Item,common.GetNLS(User,"Du siehst ","You see ")..world:getItemName(Item.id,User:getPlayerLanguage()));

@@ -23,7 +23,7 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
     elseif found2 and not found then -- Keine Direkten Alkohol Effekte mehr. Warten auf nächsten Login
         Character:inform("Keine direkten Alkohol folgen mehr");
         if (value2 == 2) then
-            User:inform(M.Informing(Character,"Deine Kopfschmerzen lassen langsam nach.","Your headache becomes less slowly."));
+            User:inform(M.Informing(Character,"Deine Kopfschmerzen lassen langsam nach.","Your headache slowly subsides."));
             return false
         else
             Effect.nextCalled = 1000000;
@@ -48,7 +48,7 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
         if found then
             Effect:removeValue("alcohol");
         end
-        User:inform(M.Informing(Character,"Du merkst das der Alkohol aufhört zu wirken.","You feel stops affecting you."));
+        User:inform(M.Informing(Character,"Du merkst, dass der Alkohol aufhört zu wirken.","You feel the alcohol stop affecting you."));
         Character:inform("Zurück gesetzt");
         return true
     end
@@ -61,7 +61,7 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
         Effect:addValue("AlcEffect",1);
         Effect:addValue("time",(world:getTime("day")*24)+world:getTime("hour"));
         Character:inform("auswirkungen ausgeführt");
-        User:inform(M.Informing(Character,"Du merkst wie der Alkohol seine Wirkung entfaltet.","You feel that the alcohol starts to affect you."));
+        User:inform(M.Informing(Character,"Du merkst, wie der Alkohol seine Wirkung entfaltet.","You feel that the alcohol starts to affect you."));
         Character:talkLanguage( CCharacter.say, CPlayer.german, "#me 's Nase bekommt eine leicht rötliche Färbung.");
         Character:talkLanguage( CCharacter.say, CPlayer.english, "#me 's nose get a slightly red color.");
     end
@@ -108,7 +108,7 @@ function M.loadEffect(Effect, Character)
     found,value = Effect:findValue("alcohol");    
     found3,value3 = Effect:findValue("AlcEffect");
     if found2 then
-        Character:inform(M.Informing(Character,"Dein Kopf dröhnt und fühlt sich doppelt so schwer an wie er wirklich ist.","You head hurts and feels like it weights the twice as normal."));
+        Character:inform(M.Informing(Character,"Dein Kopf dröhnt und fühlt sich doppelt so schwer an, wie er wirklich ist.","Your head throbs and feels twice as heavy as normal."));
         Effect.nextCalled = 1200;
         Effect:addValue("hangover",2);
         return true
@@ -119,7 +119,7 @@ function M.loadEffect(Effect, Character)
         Character:increaseAttrib("intelligence",-5);
         Character:increaseAttrib("perception",-5);
         Effect:addValue("alcohol",math.max(0,value - Character:increaseAttrib("constitution",0)*8)); -- Alkohol abbauen
-        Character:inform(M.Informing(Character,"Der Alkohol scheint dich noch immer zu beeinflussen.","The alcohol still seems to effect you."));
+        Character:inform(M.Informing(Character,"Der Alkohol scheint dich noch immer zu beeinflussen.","The alcohol still seems to affect you."));
     end
 end
 

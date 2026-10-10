@@ -136,13 +136,13 @@ function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
                     PoiDef=(5*AttribValDef)-11;
                     if (PoiTry>PoiDef) then
                         common.InformNLS(User,"Du verabreichst deinem Opfer das Gift.","You administer your victim the toxin.");
-                        common.InformNLS(Character,"Jemand hat dir Gift in den in den Mund geschüttet.","Someone pour you a toxin into your mouth.");
+                        common.InformNLS(Character,"Jemand hat dir Gift in den Mund geschüttet.","Someone pours poison into your mouth.");
                         world:erase(SourceItem,1);
                         world:makeSound(12,Character.pos);
 				Character:setPoisonValue( common.Limit( (Character:getPoisonValue() + (math.floor((825/100)*(SkillVal-AttribValDef)+(175/10)))) , 0, 10000) );
                         --Character:increasePoisonValue(math.floor((825/100)*(SkillVal-AttribValDef)+(175/10)));
                     else
-                        common.InformNLS(User,"Du versuchst deinem Opfer das Gift zu verabreichen, aber du scheiterst.","You try to administer the toxin to your victim, buy you fail.");
+                        common.InformNLS(User,"Du versuchst deinem Opfer das Gift zu verabreichen, aber du scheiterst.","You try to administer the toxin to your victim, but you fail.");
                         common.InformNLS(Character,"Jemand versuchte dir den Inhalt einer Flasche in den Mund zu schütten.","Someone tried to make you drink a potion.");
                         world:erase(SourceItem,1);
                     end

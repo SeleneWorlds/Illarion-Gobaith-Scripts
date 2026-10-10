@@ -104,7 +104,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
             -- Trauring von Roveig und Katarine
         elseif ( TargetItem:getType() == 4 and (TargetItem.itempos == 7 or TargetItem.itempos == 8) and (TargetItem.data == 101
             or TargetItem.data == 102) and (User.id==479308490 or User.id==975152582) ) then
-                User:inform("Als du den Ring anlegst, überkommt Dich ein wohliges Gefühl");
+                User:inform(User:getPlayerLanguage() == 0 and "Als du den Ring anlegst, überkommt dich ein wohliges Gefühl." or "As you put on the ring, a comforting feeling comes over you.");
             end
         end
     end

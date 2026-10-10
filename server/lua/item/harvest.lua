@@ -59,7 +59,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     -- get configuration for current item
     local harvestList = harvestItem[ SourceItem.id ];
     if harvestList == nil then
-        User:inform( "unkown harvest item " );
+        User:inform( "unknown harvest item " );
         return
     end
 

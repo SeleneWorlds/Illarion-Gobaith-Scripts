@@ -14,7 +14,7 @@ function M.MoveItemBeforeMove( who, sourceItem, targetItem )
     else
         if ( targetItem.data == 777 ) then
 		    if ( sourceItem.itempos == 2) then
-		    	who:inform("Du kannst das Amulett nicht abnehmen.")
+                common.InformNLS(who, "Du kannst das Amulett nicht abnehmen.", "You cannot remove the amulet.")
 		        return false;
 	 	    else
 		    	return true;
@@ -83,7 +83,7 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 			M.RingOfPower(User);
 		elseif counter >= 2 and counter <= 5 then
 			if not M.RoadToNode(User, counter-1) then
-				User:inform("#w No valid target found.");
+				common.TempInformNLS(User, "Kein gültiges Ziel gefunden.", "No valid target found.");
 			end
 		elseif counter == 8 and ((TargetItem ~= nil) and (TargetItem.id ~= 0)) then
 			world:erase(TargetItem,255);

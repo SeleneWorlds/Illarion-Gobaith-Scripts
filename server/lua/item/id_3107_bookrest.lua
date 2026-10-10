@@ -6,7 +6,7 @@ function M.LookAtItem(User, Item) -- Used for THE LIBRARY QUEST
 
 	if Item.data ==100 then --used for THE LIBRARY quest -- ruby bonus
 		if (User:getPlayerLanguage() ==0) then
-			User:inform("Du vermagst, eine Belohnung zur erlangen - ein magischer Rubin liegt in dem Buch")
+			User:inform("Du vermagst, eine Belohnung zu erlangen - ein magischer Rubin liegt in dem Buch")
 			else
 			User:inform("You may obtain one reward - a magical ruby lies inside this book")
 		end
@@ -14,7 +14,7 @@ function M.LookAtItem(User, Item) -- Used for THE LIBRARY QUEST
 
 	if Item.data ==101 then --used for THE LIBRARY quest -- blackstone bonus
 		if (User:getPlayerLanguage() ==0) then
-			User:inform("Du vermagst, eine Belohnung zur erlangen - ein magischer Schwarzstein liegt in dem Buch")
+			User:inform("Du vermagst, eine Belohnung zu erlangen - ein magischer Schwarzstein liegt in dem Buch")
 			else
 			User:inform("You may obtain one reward - a magical blackstone lies inside this book")
 		end
@@ -22,7 +22,7 @@ function M.LookAtItem(User, Item) -- Used for THE LIBRARY QUEST
 	
 	if Item.data ==102 then --used for THE LIBRARY quest -- diamond bonus
 		if (User:getPlayerLanguage() ==0) then
-			User:inform("Du vermagst, eine Belohnung zur erlangen - ein magischer Diamant liegt in dem Buch")
+			User:inform("Du vermagst, eine Belohnung zu erlangen - ein magischer Diamant liegt in dem Buch")
 			else
 			User:inform("You may obtain one reward - a magical diamond lies inside this book")
 		end
@@ -41,7 +41,7 @@ function M.UseItem(User,SourceItem)
 					if (item.data == 705) then --if he has 705, give the ruby and change the item
 							world:erase(item, item.number)
 							if (User:getPlayerLanguage() ==0) then
-								User:inform("Nachdem du den Stein an dich genommen hast, bemerkst du, wie das Amulet seinen Glanz verliert");
+								User:inform("Nachdem du den Stein an dich genommen hast, bemerkst du, wie das Amulett seinen Glanz verliert");
 							else
 								User:inform("As you take the gem out, you notice the amulet seems to have lost its shine");
 							end

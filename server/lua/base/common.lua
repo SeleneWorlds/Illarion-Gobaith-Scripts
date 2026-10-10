@@ -449,7 +449,7 @@ function M.ToolBreaks(User, theItem, fast)
             theItem.quality = qual * 100 + dura - 90;
             world:changeItem(theItem);
             M.InformNLS(User,
-            "Das Werkzeugs erleidet durch dauernde Beanspruchung einen Qualitätsverlust.",
+            "Das Werkzeug erleidet durch dauernde Beanspruchung einen Qualitätsverlust.",
             "The quality of the tool is lowered by overuse.");
         end;
     end;

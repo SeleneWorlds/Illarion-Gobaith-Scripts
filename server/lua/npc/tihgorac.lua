@@ -119,7 +119,7 @@ function M.receiveText(texttype, message, originator)
                 thisNPC:talk(CCharacter.say,functions.GetNLS(originator,gText,eText));
                 if (Status==7) then
                     if (lang==0) then
-                        originator:inform("Du denkst du das vielleicht etwas gelernt hast, dadurch das du ihm zugesehen hast.");
+                        originator:inform("Du denkst, dass du vielleicht etwas gelernt hast, dadurch, dass du ihm zugesehen hast.");
                     else
                         originator:inform("You think you may have learned something from watching him.");
                     end

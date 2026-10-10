@@ -178,7 +178,7 @@ function M.findText ()
 	number=math.random(i);
     if (number==1) then
 		deutsch="Morgenstund hat Gold im Mund";
-		englisch="";
+		englisch="The early bird catches the worm.";
 	elseif (number==2) then
 	    deutsch="Ja.";
 	    englisch="Yes.";
@@ -193,21 +193,21 @@ function M.findText ()
 	    englisch="Let it be.";
 	elseif (number==6) then
 	    deutsch="Denk noch einmal darüber nach";
-	    englisch="Think about.";
+	    englisch="Think about it again.";
 	elseif (number==7) then
 	    deutsch="Triff deine Entscheidung bald, sonst wird sie für dich getroffen.";
-	    englisch="";
+	    englisch="Make your decision soon, or it will be made for you.";
 	else
-	    deutsch="Wer wagt gewinnt!";
-	    englisch="";
+	    deutsch="Wer wagt, gewinnt!";
+	    englisch="Nothing ventured, nothing gained!";
 	end
 	
 	CharsInRange = world:getPlayersInRangeOf(TargetItem.Pos,10);
     for i, Chara in pairs(CharsInRange) do
     	if (Chara:getPlayerLanguage() == 0) then
-        	Chara:inform("..deutsch..");
+            Chara:inform(deutsch);
         else
-            Chara:inform("..englisch..");
+            Chara:inform(englisch);
         end
     end
     

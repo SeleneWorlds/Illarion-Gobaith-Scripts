@@ -64,7 +64,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 		else 
 			world:gfx(32,SourceItem.pos);
 			world:makeSound(18,SourceItem.pos);
-			User:inform("Die Edelsteine zerfallen zu Staub. Das hat wohl nicht geklappt...");
+			common.InformNLS(User, "Die Edelsteine zerfallen zu Staub. Das hat wohl nicht geklappt...", "The gems crumble to dust. That does not seem to have worked...");
 			world:erase(itemL,3);
 			--itemL.number=itemL.number-3;
 			--world:changeItem( itemL );
@@ -82,7 +82,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 		else
 			world:gfx(32,SourceItem.pos);
 			world:makeSound(18,SourceItem.pos)
-			User:inform("Die Edelsteine zerfallen zu Staub. Das hat wohl nicht geklappt...");
+			common.InformNLS(User, "Die Edelsteine zerfallen zu Staub. Das hat wohl nicht geklappt...", "The gems crumble to dust. That does not seem to have worked...");
 			world:erase(itemR,3);
             --itemR.number=itemR.number-3;
             --world:changeItem( itemR );
@@ -95,8 +95,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
                 "You feel better now.");
 		elseif god_feel==2 then
 		    common.InformNLS(User,
-                "Der Stein wird warm unter denen Händen.",
-    	        "The stone become warmer under your hands.");
+                "Der Stein wird warm unter deinen Händen.",
+                "The stone becomes warmer under your hands.");
 		elseif god_feel==3 then
 		    common.InformNLS(User,
                 "Du fühlst dich glücklicher.",
@@ -104,7 +104,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 		elseif god_feel==4 then
 		    common.InformNLS(User,
                 "Du fühlst dich spirituell gestärkt.",
-                "You feel spirituel stronger now.");
+                "You feel spiritually stronger now.");
 		elseif god_feel==5 then
 		    common.InformNLS(User,
                 "Du hörst ein verrücktes Lachen in der Ferne.",
