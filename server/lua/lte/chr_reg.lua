@@ -4,8 +4,6 @@
 local common = require("base.common")
 local M = {}
 
---dofile( "p_basics.lua" );
-
 local crossPositions = {
     position(  40,   76, 100),
     position(-137, -122,   0),
@@ -182,45 +180,6 @@ function M.callEffect( Effect, Char ) -- Effect wird ausgeführt
 	else
 		Manapoints = 0;
 	end
-    --[[elseif ( ( Char:getMagicType() == 1 ) and ( Char:getMagicFlags( 1 ) > 0 ) ) then -- char is priest
-		local pSkill = P_GetConversionSkill(Char.lastSpokenText);
-		if pSkill and P_CheckAltarConversion(Char,true) and Manapoints>0 then
-			Manapoints = Manapoints - 1;
-			Char:increaseSkill(7,pSkill,1);
-			if Char:getSkill(pSkill) == 100 or Manapoints == 0 then
-				Char:talkLanguage(CCharacter.say,CPlayer.german,"#me beendet das Gebet.");
-				Char:talkLanguage(CCharacter.say,CPlayer.english,"#me finishes the prayer.");
-			end
-		else
-			Manapoints = Manapoints + 1;
-		end
-	else -- Wenn der Charakter kein Magier ist, Manapunkte auf 0
-        Char:inform("1");
-		Manapoints = 0;
-		local pGod = P_GetGodOfAltar(Char);
-		Char:inform("2");
-		if pGod then
-			Char:inform("3");
-			if P_CheckPrayerFollower(Char,pGod) and P_CheckDevotionTime(Char,pGod,true) and P_CheckItemsFollower(Char,pGod,true) then
-				P_DeleteItemsFollower(Char,pGod);
-				P_DevoteFollower(Char,pGod);
-			elseif P_CheckPrayerPriest(Char,pGod) then
-				if P_CheckDevotionForOrdination(Char,pGod,true) then
-					local pChance = P_GetChanceForOrdination(Char,pGod,true);
-					if pChance and P_CheckItemsPriest(Char,pGod,true) then
-						P_DeleteItemsPriest(Char,pGod);
-						if ( math.random(1,100) <= pChance ) then
-							P_CharToPriest(Char,pGod);
-						else
-							common.TempInformNLS(Char,
-								"Nichts passiert.",
-								"Nothing happens.");
-						end
-					end
-				end
-			end
-		end
-    end ]]
 
     found1, _ = Effect:findValue( "rapidMana" );
     found2, startingTime = Effect:findValue( "rapidManaTime" );
