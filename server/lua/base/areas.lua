@@ -80,6 +80,51 @@ local function bounds(shape)
     error("Unsupported area shape: " .. tostring(shape.type))
 end
 
+---Pick a uniformly distributed tile from a named or raw area without enumerating it.
+---Requires fixed floors. Returns nil for empty/disabled areas or exhausted attempts
+---(default 256); very sparse areas may require a higher maxAttempts.
+function M.randomPosition(area, maxAttempts)
+    local ignoreFloor = false
+    if type(area) == "string" then area, ignoreFloor = M.get(area) end
+    assert(not ignoreFloor, "Cannot pick a position from a floor-independent area")
+    maxAttempts = maxAttempts or 256
+    assert(type(maxAttempts) == "number" and maxAttempts >= 1 and maxAttempts % 1 == 0,
+        "Random position attempts must be a positive integer")
+    local boxes, total = {}, 0
+    for _, shape in ipairs(area.include) do
+        local x1, y1, x2, y2 = bounds(shape)
+        local width, height = x2 - x1 + 1, y2 - y1 + 1
+        local size = width * height
+        assert(size >= 1 and size <= 9007199254740991 - total, "Area is too large to sample")
+        boxes[#boxes + 1] = { x = x1, y = y1, z = shape.z, width = width, height = height, size = size }
+        total = total + size
+    end
+    if total == 0 then return nil end
+    for _ = 1, maxAttempts do
+        local index = math.random(1, total) - 1
+        local coordinate
+        for _, box in ipairs(boxes) do
+            if index < box.size then
+                coordinate = position(box.x + index % box.width, box.y + math.floor(index / box.width), box.z)
+                break
+            end
+            index = index - box.size
+        end
+        if M.contains(area, coordinate) then
+            -- Correct for tiles appearing in multiple include bounding boxes.
+            local overlaps = 0
+            for _, box in ipairs(boxes) do
+                if coordinate.z == box.z and coordinate.x >= box.x and coordinate.x < box.x + box.width
+                    and coordinate.y >= box.y and coordinate.y < box.y + box.height then
+                    overlaps = overlaps + 1
+                end
+            end
+            if overlaps == 1 or math.random(1, overlaps) == 1 then return coordinate end
+        end
+    end
+    return nil
+end
+
 ---An anchor for visual effects: the center of the first include shape.
 ---Empty areas have no anchor. Additional includes do not change this anchor.
 function M.center(name)
