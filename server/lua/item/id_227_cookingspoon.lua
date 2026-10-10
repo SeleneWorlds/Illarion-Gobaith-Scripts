@@ -34,6 +34,39 @@ function M.InitCraftingTool( )
 		
         cooking:AddTool( 2488 ); -- Kettle
         brewing:AddTool( 339 ); -- Weinfass
+
+        function cooking:LocationFine(User, ltstate, mode)
+            local kettle, hasFire
+            for _, item in ipairs(common.GetItemsOnField(common.GetFrontPosition(User))) do
+                if item.id == 2488 then
+                    kettle = item
+                elseif item.id == 12 then
+                    hasFire = true
+                end
+            end
+
+            local german, english
+            if not kettle then
+                german, english = "Hier kannst du nicht arbeiten.", "You cannot work here."
+            elseif kettle.quality < 100 then
+                german, english = "Das Werkzeug ist kaputt.", "The tool is broken."
+            elseif not hasFire then
+                german = "Du benötigst ein brennendes Lagerfeuer unter dem Kessel."
+                english = "You need a burning campfire under the kettle."
+            end
+
+            if german then
+                if mode then
+                    return 1, common.GetNLS(User, "#w " .. german, "#w " .. english)
+                end
+                common.TempInformNLS(User, german, english)
+                return false
+            end
+            if mode then
+                return 0, ""
+            end
+            return true
+        end
         
         cooking:AddInterruptMessage(
         "Du wischst dir den Schweiß von der Stirn.",
