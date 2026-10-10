@@ -336,12 +336,14 @@ function M.AddBonus(User,ItemList,ItemBoniList)   -- Adds bonus/malus for items 
     return Bonus
 end
 
-function M.actionDisturbed(Caster,disturber)
+function M.actionDisturbed(Caster,disturber,spellSkill)
+    -- Other casters can replace the global Skill while this cast is pending.
+    local skill = spellSkill or Skill
     local RItem = disturber:getItemAt(CCharacter.right_tool); -- Item in der Rechten Hand
     local LItem = disturber:getItemAt(CCharacter.left_tool); -- Item in der Linken Hand
     local DefrFound,DefRightWeapon = world:getWeaponStruct(RItem.id);   -- Waffenwerte Rechte Waffe
     local DeflFound,DefLeftWeapon = world:getWeaponStruct(LItem.id);     -- Waffenwerte linke Waffe
-    Distance = 1;
+    local Distance = 1;
     if DefrFound then
         Distance = math.max(Distance,DefRightWeapon.Range);
     end
@@ -351,10 +353,10 @@ function M.actionDisturbed(Caster,disturber)
     if Caster:isInRange(disturber,Distance) then
         local CIntel = Caster:increaseAttrib("intelligence",0);
         local CWill = Caster:increaseAttrib("willpower",0);
-        local CSkill = Caster:getSkill(Skill.name);
+        local CSkill = Caster:getSkill(skill.name);
 
-        local contry = (CSkill-Skill.min)*common.Scale( 5, 12, (CIntel*2+CWill*3) ) / 10;
-        if (math.random(0,100)<(conctry * M.HPMod(Caster:increaseAttrib("hitpoints",0)))) then
+        local concentration = (CSkill-skill.min)*common.Scale( 5, 12, (CIntel*2+CWill*3) ) / 10;
+        if (math.random(0,100)<(concentration * M.HPMod(Caster:increaseAttrib("hitpoints",0)))) then
             return false
         else
             return true

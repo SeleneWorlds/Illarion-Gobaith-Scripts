@@ -476,4 +476,8 @@ function M.ChoseAndOpenGate(...)
     return choseAndOpenGate(...)
 end
 
+function M.actionDisturbed(Caster, disturber)
+    return basics.actionDisturbed(Caster, disturber, M.Skill)
+end
+
 return M

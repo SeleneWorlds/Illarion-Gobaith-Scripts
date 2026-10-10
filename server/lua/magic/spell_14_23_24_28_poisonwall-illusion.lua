@@ -133,4 +133,8 @@ function M.CastMagicOnItem(...)
     return Base.CastMagicOnItem(...)
 end
 
+function M.actionDisturbed(Caster, disturber)
+    return basics.actionDisturbed(Caster, disturber, M.Skill)
+end
+
 return M
