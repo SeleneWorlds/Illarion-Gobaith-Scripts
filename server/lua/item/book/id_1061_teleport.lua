@@ -54,9 +54,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                 -- never create it on people
                 -- never create it on items
                 if not world:isCharacterOnField( loc ) and not world:isItemOnField( loc ) and (world:getField( loc ):tile()~=6)
-                and not areas.contains("teleport_blocked_grey_rose_cell", loc)
-                and not areas.contains("teleport_blocked_vanima_garden", loc)
-                and not areas.contains("teleport_blocked_underground_cell", loc) then
+                and not areas.containsTag("teleport_blocked", loc) then
                     -- create a gate to the destination
                     --User:inform( "creating" )
                     world:createItemFromId( 10, 1, loc, true, 933 ,(SourceItem.quality-100));
