@@ -207,8 +207,25 @@ local function dataValue(node)
     return result
 end
 
+local function validateLuaHook(node)
+    args(node,2,math.max(2,#(node.args or {})))
+    for index=1,2 do
+        local value=stringValue(node.args[index])
+        if value == '' then fail(node.args[index].token,"Lua hook module and function names must not be empty") end
+    end
+    for index=3,#node.args do
+        local value=node.args[index]
+        if value.kind == 'literal' and type(value.value) == 'string' then
+            -- Literal strings are passed unchanged.
+        elseif value.kind == 'symbol' and (value.value == 'true' or value.value == 'false') then
+            -- Boolean hook arguments do not change the surrounding language grammar.
+        else dynamicNumber(value) end
+    end
+end
+
 local numericSubjects = {state=true, number=true, money=true, queststatus=true, item=true, skill=true, attrib=true}
 local function validateCondition(node)
+    if node.kind == 'call' and node.name == 'lua' then validateLuaHook(node); return end
     if node.kind == 'symbol' and (node.value == 'english' or node.value == 'german' or node.value == 'admin') then return end
     if node.kind == 'call' and node.name == 'basestate' then
         args(node,1,1)
@@ -259,6 +276,7 @@ local function validateAction(node,hasTrades)
         return
     elseif node.kind == 'call' then
         local name=node.name
+        if name == 'lua' then validateLuaHook(node); return end
         if name == 'talkstate' then
             args(node,1,1)
             local value=scalar(node.args[1])
@@ -402,12 +420,24 @@ function Compiler.parse(source,options)
     return definition
 end
 
+local function makeLuaHook(node,kind)
+    local parameters={}
+    for index=3,#node.args do
+        local value=node.args[index]
+        if value.kind == 'symbol' and (value.value == 'true' or value.value == 'false') then
+            parameters[index-2] = value.value == 'true'
+        else parameters[index-2] = runtimeValue(value) end
+    end
+    return require('npc.base.' .. kind .. '.lua')(scalar(node.args[1]),scalar(node.args[2]),parameters)
+end
+
 local function makeCondition(node)
     if node.kind == 'symbol' then
         if node.value == 'admin' then return require('npc.base.condition.admin')() end
         return require('npc.base.condition.language')(node.value)
     end
     if node.kind == 'call' then
+        if node.name == 'lua' then return makeLuaHook(node,'condition') end
         if node.name == 'basestate' then return require('npc.base.condition.basestate')(scalar(node.args[1])) end
         if node.name == 'race' then return require('npc.base.condition.race')(races[scalar(node.args[1])]) end
         if node.name == 'sex' then return require('npc.base.condition.sex')(scalar(node.args[1])) end
@@ -434,6 +464,7 @@ local function makeAction(node,trader)
         return require('npc.base.consequence.' .. name)(node.op,value)
     end
     local name=node.name
+    if name == 'lua' then return makeLuaHook(node,'consequence') end
     if name == 'item' then
         local data=node.args[4]
         data=data and (data.kind == 'call' and dataValue(data) or {data=scalar(data)}) or nil

@@ -1598,6 +1598,15 @@
       "file": "server/lua/npc/base/condition/chance.lua",
       "encoding": "ISO-8859-15"
     },
+    "npc.base.lua_hook": {
+      "file": "server/lua/npc/base/lua_hook.lua"
+    },
+    "npc.base.condition.lua": {
+      "file": "server/lua/npc/base/condition/lua.lua"
+    },
+    "npc.base.consequence.lua": {
+      "file": "server/lua/npc/base/consequence/lua.lua"
+    },
     "npc.base.condition.condition": {
       "file": "server/lua/npc/base/condition/condition.lua",
       "encoding": "ISO-8859-15"

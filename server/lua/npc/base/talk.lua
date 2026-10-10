@@ -82,7 +82,7 @@ function talkNPC:receiveText(npcChar, texttype, player, text)
 
     for _, entry in ipairs(self._entry or {}) do
         if entry:checkEntry(npcChar, texttype, player, text) then
-            entry:execute(npcChar, player)
+            entry:execute(npcChar, player, texttype, text)
             return true
         end
     end
@@ -175,7 +175,7 @@ function talkNPCEntry:checkEntry(npcChar, texttype, player, text)
         if a ~= nil then
             local conditionsResult = true
             for _, cond in ipairs(self._conditions) do
-                if not cond:check(npcChar, texttype, player) then
+                if not cond:check(npcChar, texttype, player, text) then
                     conditionsResult = false
                     break
                 end
@@ -188,7 +188,7 @@ function talkNPCEntry:checkEntry(npcChar, texttype, player, text)
     end
 end
 
-function talkNPCEntry:execute(npcChar, player)
+function talkNPCEntry:execute(npcChar, player, texttype, text)
 
     if (self._responsesCount > 0) then
         local selectedResponse = math.random(1, self._responsesCount)
@@ -208,7 +208,7 @@ function talkNPCEntry:execute(npcChar, player)
 
     for _, conseq in ipairs(self._consequences) do
         if conseq then
-            conseq:perform(npcChar, player)
+            conseq:perform(npcChar, player, texttype, text)
         end
     end
 end

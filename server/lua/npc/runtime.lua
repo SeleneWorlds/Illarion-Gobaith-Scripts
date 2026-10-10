@@ -74,6 +74,7 @@ local function preserveState(old, new)
     new.talk._saidNumber = old.talk._saidNumber
     new.talk._nextCycleText = old.talk._nextCycleText
     new.root.state = old.root.state
+    new.root._luaHookState = old.root._luaHookState
     new.root._cycleCounter = old.root._cycleCounter
     new.root._nextCycleCalls = old.root._nextCycleCalls
     if old.root._equipmentList == nil then
