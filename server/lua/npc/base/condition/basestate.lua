@@ -15,7 +15,6 @@ You should have received a copy of the GNU Affero General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
 local class = require("base.class").class
-local baseNPC = require("npc.base.basic")
 local condition = require("npc.base.condition.condition")
 
 local _basestate_helper_equal
@@ -24,17 +23,19 @@ local basestate = class(condition,
 function(self, value)
     condition:init(self)
     if (value == "busy") then
-        self["value"] = baseNPC.stateBusyTalking
+        self["value"] = "stateBusyTalking"
     elseif (value == "idle") then
-        self["value"] = baseNPC.stateNormal
+        self["value"] = "stateNormal"
     else
-        self["value"] = -1
+        self["value"] = "invalidState"
     end
     self["check"] = _basestate_helper_equal
 end)
 
 function _basestate_helper_equal(self, npcChar, texttype, player)
-    return (self.npc._parent.state == self.value)
+    local root = self.npc._parent
+    local expected = root[self.value]
+    return expected ~= nil and root.state == expected
 end
 
 return basestate
