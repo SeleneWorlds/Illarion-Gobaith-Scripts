@@ -85,10 +85,6 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
 			if not M.RoadToNode(User, counter-1) then
 				User:inform("#w No valid target found.");
 			end
-		elseif counter == 6 then
-			M.MuckyLuck(User);
-		elseif counter == 7 then
-			M.RemoveMuckyLuck(User, TargetItem);
 		elseif counter == 8 and ((TargetItem ~= nil) and (TargetItem.id ~= 0)) then
 			world:erase(TargetItem,255);
 		end
@@ -127,64 +123,6 @@ function M.RoadToNode(User, effectType)
 		target.effects:addEffect(effect);
 	end
 	return retVal;
-end
-
-function M.RemoveMuckyLuck(User, TargetItem)
-
-	local radius = 2;
-	local foodItems = {158,159,162};
-	if TargetItem.id ~= 0 then
-		for i,id in pairs(foodItems) do
-			if id == TargetItem.id and TargetItem.wear == 255 then
-				world:erase(TargetItem,1);
-			end
-		end
-	else
-		local item;
-		local event;
-		event = function(pos)
-			item = world:getItemOnField(pos);
-			for i,id in pairs(foodItems) do
-				if id == item.id and item.wear == 255 then
-					world:erase(item,1);
-					return;
-				end
-			end
-		end
-		for i=1,radius do
-			common.CreateCircle(User.pos,i,event);
-		end
-	end
-end
-
-function M.MuckyLuck(User)
-
-	local radius = 2;
-	local foodItems = {158,159,162};
-	local pos = common.GetFrontPosition(User);
-	if world:createDynamicNPC("Mucky Luck Sheep",18,pos,0,"npc_mucky_luck_sheep.lua") then
-		world:makeSound(13,User.pos);
-		local event;
-		local item;
-		local count = 1;
-		event = function(posi)
-			item = world:getItemOnField(posi);
-			if item.id == 0 then
-				count = (count > #foodItems) and 1 or count;
-				item = world:createItemFromId(foodItems[count],1,posi,false,333,0);
-				item.wear = 255;
-				world:changeItem(item);
-				count = count + 1;
-			end
-		end
-		for i=1,radius do
-			common.CreateCircle(pos,i,event);
-		end
-	else
-		common.TempInformNLS(User,
-			"Irgendetwas verhindert die Ausführung des Rituals.",
-			"Something inhibits performing the ritual.");
-	end
 end
 
 if M.UseItem == nil then M.UseItem = parent.UseItem end
