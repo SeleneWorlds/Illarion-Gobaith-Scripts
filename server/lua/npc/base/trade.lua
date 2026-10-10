@@ -133,7 +133,8 @@ function tradeNPC:showDialog(npcChar, player, mode)
             -- Revalidate ownership after the menu was opened.
             for _, current in ipairs(player:getItemList(entry.offer._itemId)) do
                 if isFittingItem(entry.offer, current) and (entry.item == nil or
-                    (current.SeleneInventoryItem ~= nil and current.SeleneInventoryItem == entry.item.SeleneInventoryItem)) then
+                    (current.SeleneInventory ~= nil and current.SeleneInventory == entry.item.SeleneInventory
+                        and current.itempos == entry.item.itempos)) then
                     self:buyItemFromPlayer(npcChar, player, current)
                     break
                 end
