@@ -1402,9 +1402,6 @@
     "scheduled.invisible_crosses": {
       "file": "server/lua/scheduled/invisible_crosses.lua"
     },
-    "scheduled.newgaia": {
-      "file": "server/lua/scheduled/newgaia.lua"
-    },
     "scheduled.sc_ma_close_wall": {
       "file": "server/lua/scheduled/sc_ma_close_wall.lua"
     },
