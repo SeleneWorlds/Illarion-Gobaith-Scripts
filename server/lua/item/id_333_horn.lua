@@ -7,11 +7,11 @@ local M = {}
 
 local music = require("item.base.music").new()
 local general_wood = require("item.general.wood")
-music.addTalkText("#me 's cheeks turn red while blowing in a horn but no sound is audible","#me's Wangen werden beim Blasen in das Horn rot, aber kein Ton ist zu hören.");
-music.addTalkText("#me blows in a horn producing a buzzing sound","#me bläst in das Horn und erzeugt ein summendes Geräusch");
-music.addTalkText("#me blows in a horn, sounding like a dying animal","#me bläst in das Horn und macht ein Geräusch das wie ein sterbendes Tier klingt.");
+music.addTalkText("#me's cheeks turn red while blowing into a horn but no sound is audible","#me's Wangen werden beim Blasen in das Horn rot, aber kein Ton ist zu hören.");
+music.addTalkText("#me blows into a horn producing a buzzing sound","#me bläst in das Horn und erzeugt ein summendes Geräusch");
+music.addTalkText("#me blows into a horn, sounding like a dying animal","#me bläst in das Horn und macht ein Geräusch, das wie ein sterbendes Tier klingt.");
 music.addTalkText("#me blows into a horn and produces a great sound","#me bläst in das Horn und erzeugt so einen guten Klang");
-music.addTalkText("#me blows into a horn and produces a awesome sound","#me bläst in das Horn und erzeugt einen beeindruckenden Klang");
+music.addTalkText("#me blows into a horn and produces an awesome sound","#me bläst in das Horn und erzeugt einen beeindruckenden Klang");
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     music.PlayInstrument(User,SourceItem,"horn");

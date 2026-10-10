@@ -28,7 +28,7 @@ function M.operate(context, name)
     if not mode then return end
     if context.player.activeLanguage ~= 2 then
         say(context, 'Sprich zwergisch mit mir, wenn ich das Tor öffnen oder schließen soll!',
-            "Talk dwarfish with me if you want me to open or close the gate!")
+            "Speak Dwarvish to me if you want me to open or close the gate!")
         return
     end
     if mode == 'impolite' then
@@ -40,9 +40,9 @@ function M.operate(context, name)
             say(context, 'Dat verrate ick dir doch nich!', "I don't tell that to you!")
         elseif context.state.lastUser then
             say(context, "Dem dem ick zuletzt aufjemacht hab war '" .. context.state.lastUser .. "', jau!",
-                "The one who I opened last time the door was '" .. context.state.lastUser .. "', aye!")
+                "The one I last opened the gate for was '" .. context.state.lastUser .. "', aye!")
         else
-            say(context, 'Tut mir leid, hab ick schon vergessen.', 'I am sorry, I have forgot who I opened last time the gate.')
+            say(context, 'Tut mir leid, hab ick schon vergessen.', 'I am sorry, I have forgotten who I last opened the gate for.')
         end
         return
     end
@@ -51,7 +51,7 @@ function M.operate(context, name)
     local left, right = world:getItemOnField(a), world:getItemOnField(b)
     if mode == 'close' then
         if world:isCharacterOnField(a) or world:isCharacterOnField(b) then
-            say(context, 'Ich kann dat Tor nich zumachen wenn da jemand steht.', "I can't close the gate during someone stands there.")
+            say(context, 'Ich kann dat Tor nich zumachen wenn da jemand steht.', "I can't close the gate while someone is standing there.")
             return
         end
         if doors.CheckClosedDoor(left.id) and doors.CheckClosedDoor(right.id) then
@@ -61,13 +61,13 @@ function M.operate(context, name)
         doors.CloseDoor(left); doors.CloseDoor(right)
         left, right = world:getItemOnField(a), world:getItemOnField(b)
         keys.LockDoor(left); keys.LockDoor(right)
-        say(context, '#me lässt die Flügel des Tores krachend zufallen und sperrt ab.', '#me shuts the gate crashing then locks it.')
+        say(context, '#me lässt die Flügel des Tores krachend zufallen und sperrt ab.', '#me slams the gate shut and locks it.')
         return
     end
     if math.random(0,200) == 1 then
         if math.random(0,10) == 1 then
-            say(context, '#me hält ihren Kopf "Nay, bin heut nich im Stimmung, hab Kopfweh! Beweg deinen Hintern selber!".',
-                '#me holds her head "Nay, today I\'m in a foul mood, I\'ve headache! Mov\' yer behind yerself!".')
+            say(context, '#me hält ihren Kopf "Nay, bin heut nich in Stimmung, hab Kopfweh! Beweg deinen Hintern selber!".',
+                '#me holds her head "Nay, today I\'m in a foul mood, I\'ve a headache! Mov\' yer behind yerself!".')
         else
             say(context, '#me grummelt "Mach doch selber auf!".', '#me grumbles "I don\'t feel like it today. Do it yourself!".')
         end
@@ -89,7 +89,7 @@ function M.operate(context, name)
         else say(context, 'Willkommen zurück Schwester.', 'Welcome back sister') end
     elseif name == 'magda_rosenzopf' and player.pos.x < 101 then
         if player.id == 956233928 then
-            say(context, 'Willkommmen zurück Friedl, heut schon wen verkloppt?', 'Welcome back Friedl, anyone beated today?')
+            say(context, 'Willkommen zurück Friedl, heut schon wen verkloppt?', 'Welcome back Friedl, beaten anyone up today?')
         elseif player.id == 2082906332 then
             say(context, 'Willkommen zurück Boindil, hübsch siehste heut aus.', 'Welcome back Boindil, you look beautiful today.')
         end

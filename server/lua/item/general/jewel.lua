@@ -114,8 +114,8 @@ function M.MoveItemBeforeMove( Character, SourceItem, TargetItem)
         end
 
 	if ( SourceItem.data == 666 ) then
-		Character:talkLanguage( CCharacter.say, CPlayer.german, "#me fährt mit "..gText.." Hand direkt durch die Krone hindurch. "..gText2.." scheint nicht in der Lage zu sein das Metall zu berühren.");
-        Character:talkLanguage( CCharacter.say, CPlayer.english, "#me run's with "..eText.." hand directly through the crown. It seems, that "..eText2.."'s not able to touch the metal.");
+		Character:talkLanguage( CCharacter.say, CPlayer.german, "#me fährt mit "..gText.." Hand direkt durch die Krone hindurch. "..gText2.." scheint nicht in der Lage zu sein, das Metall zu berühren.");
+        Character:talkLanguage( CCharacter.say, CPlayer.english, "#me passes "..eText.." hand directly through the crown. It seems that "..eText2.." is not able to touch the metal.");
         return false;
 	end
 	return true;

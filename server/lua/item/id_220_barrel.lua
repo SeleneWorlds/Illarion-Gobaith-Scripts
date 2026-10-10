@@ -81,7 +81,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                     User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
                     User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Stoff zu färben.");
-                    User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dye clothes.");
+                    User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dye cloth.");
                     return
                 end
                 UsedDye = nil;

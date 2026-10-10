@@ -75,7 +75,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ( ltstate == Action.none ) then
         User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu räuchern.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to roast.");
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to smoke food.");
         if (SourceItem.id ~= 305) then
             world:swap(SourceItem,305,0);
         end

@@ -14,8 +14,8 @@ end
 function M.collect(context, account)
     local allowed = assert(permissions[account], 'Unknown tax account ' .. tostring(account))
     if not allowed[context.player.id] then
-        say(context, 'Ja. Ich sammel die Steuern der Händler ein. Aber euch geb ich diese Gelder ganz sicher nicht.',
-            "Indeed. I collect the money of the traders. But i won't give you these money.")
+        say(context, 'Ja. Ich sammle die Steuern der Händler ein. Aber euch geb ich diese Gelder ganz sicher nicht.',
+            "Indeed. I collect the money of the traders. But I won't give you this money.")
         return
     end
     local taxes = require('taxes')
@@ -34,8 +34,8 @@ function M.collect(context, account)
         return
     end
     local german, english = money.MoneyToString(amount)
-    say(context, 'Hier habt ihr die' .. german .. ' aus der Steuerkasse.',
-        'There you got the' .. english .. ' from the tax money.')
+    say(context, 'Hier habt ihr die ' .. german .. ' aus der Steuerkasse.',
+        'Here is the ' .. english .. ' from the tax fund.')
 end
 
 return M

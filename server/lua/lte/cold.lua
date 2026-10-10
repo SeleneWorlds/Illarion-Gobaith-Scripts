@@ -223,8 +223,7 @@ function M.informUser(effect, user)
 		message = getFromOddsArray(oddsArray);
 		if(message[1] ~= nil) then
 			common.InformNLS(user, message[1], message[2]);
-			-- TODO: Make this language specific. 
-			user:talk(CCharacter.say, message[1]);
+			common.TalkNLS(user, CCharacter.say, "#me " .. message[3], "#me " .. message[4]);
 		end
 	end
 end

@@ -75,7 +75,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ( ltstate == Action.none ) then
         User:startAction( 20, 0, 0, 0, 0 );
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Wachs zu schmelzen.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to smelt wax.");
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt wax.");
         return
     end
     

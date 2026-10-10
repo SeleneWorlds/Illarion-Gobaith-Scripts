@@ -62,8 +62,8 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
         Effect:addValue("time",(world:getTime("day")*24)+world:getTime("hour"));
         Character:inform("auswirkungen ausgeführt");
         User:inform(M.Informing(Character,"Du merkst, wie der Alkohol seine Wirkung entfaltet.","You feel that the alcohol starts to affect you."));
-        Character:talkLanguage( CCharacter.say, CPlayer.german, "#me 's Nase bekommt eine leicht rötliche Färbung.");
-        Character:talkLanguage( CCharacter.say, CPlayer.english, "#me 's nose get a slightly red color.");
+        Character:talkLanguage( CCharacter.say, CPlayer.german, "#me's Nase bekommt eine leicht rötliche Färbung.");
+        Character:talkLanguage( CCharacter.say, CPlayer.english, "#me's nose takes on a slightly red color.");
     end
     if found3 then
         EffectValue = value - ( Character:increaseAttrib("constitution",0)*24 ) - RaceBon;

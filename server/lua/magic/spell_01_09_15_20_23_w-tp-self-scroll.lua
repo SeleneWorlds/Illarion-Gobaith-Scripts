@@ -183,7 +183,7 @@ function M.WriteTeleSpell(Caster, ltstate )
             InformNLS(Caster,"Du würdest es nicht überleben, jetzt diesen Spruch zu sprechen.","You die if you cast this spell now.");
         end;
     elseif ( ltstate == Action.abort ) then
-        Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
+        Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt abrupt mit dem Zaubern.");
         Caster:talkLanguage(CCharacter.say, CPlayer.english,"#me abruptly stops casting.");
     end
 end

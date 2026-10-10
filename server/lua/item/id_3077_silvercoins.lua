@@ -35,8 +35,8 @@ end
 function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
 	ZielItem=world:getItemOnField( TargetItem.pos );
 	if ( (ZielItem.id==2207) and (ZielItem.data==666) ) then
-		User:talkLanguage(CCharacter.say,CPlayer.german ,"#me wirft eine handvoll Silberstücke in den Brunnen.");
-	        User:talkLanguage(CCharacter.say,CPlayer.english,"#me tosses a fistful silver coins into the well.");
+		User:talkLanguage(CCharacter.say,CPlayer.german ,"#me wirft eine Handvoll Silberstücke in den Brunnen.");
+	        User:talkLanguage(CCharacter.say,CPlayer.english,"#me tosses a handful of silver coins into the well.");
 
 		EffektTyp=math.random(10);
 		User:inform("moep!");

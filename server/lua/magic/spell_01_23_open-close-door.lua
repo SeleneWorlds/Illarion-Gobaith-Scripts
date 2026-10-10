@@ -66,8 +66,8 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param, ltstate)
         Caster:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt mit einer mystischen Formel.");
         Caster:talkLanguage( CCharacter.say, CPlayer.english, "#me starts with a mystical formula.");
     elseif ( ltstate == Action.abort ) then
-        Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
-        Caster:talkLanguage(CCharacter.say, CPlayer.english,"me stopps appruptly with the casting.");
+        Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt abrupt mit dem Zaubern.");
+        Caster:talkLanguage(CCharacter.say, CPlayer.english,"me stopps abruptly with the casting.");
     end
 end
 

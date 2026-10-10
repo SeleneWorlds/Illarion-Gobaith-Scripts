@@ -66,7 +66,7 @@ function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
                 rnd=math.random(1,10);
                 if rnd==2 then
                     Patient:talkLanguage(CCharacter.say, CPlayer.german, "#me kratzt sich.");
-                    Patient:talkLanguage(CCharacter.say, CPlayer.english, "#me has a scratch.");
+                    Patient:talkLanguage(CCharacter.say, CPlayer.english, "#me scratches.");
                 elseif rnd==3 then
                     common.InformNLS(Patient,"Du fühlst dich verwundbar.","You feel vulnerable.");
                 elseif rnd==4 then

@@ -36,7 +36,7 @@ function M.callEffect(stinkEffect, Character)    -- Effect wird ausgeführt
         Character:talkLanguage(CCharacter.say,CPlayer.english,"#me smells a bit of cow.");
     elseif ((stinkIndex_n>=20) and (stinkIndex_n<30)) then
         Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me riecht dezent nach Kuh.");
-	      Character:talkLanguage(CCharacter.say,CPlayer.english,"#me smells decently of cow.");
+	      Character:talkLanguage(CCharacter.say,CPlayer.english,"#me smells faintly of cow.");
     elseif ((stinkIndex_n>=30) and (stinkIndex_n<40)) then
         Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me riecht deutlich nach Kuhmist.");
 	      Character:talkLanguage(CCharacter.say,CPlayer.english,"#me smells noticeably of cow dung.");

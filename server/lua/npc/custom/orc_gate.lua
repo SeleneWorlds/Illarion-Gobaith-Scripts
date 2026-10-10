@@ -64,7 +64,7 @@ function M.operate(context, name)
         left, right = world:getItemOnField(a), world:getItemOnField(b)
         doors.OpenDoor(left); doors.OpenDoor(right)
         say(context, '#me öffnet schwerfällig das Tor wodurch die Höhle mit einem markerschütternden Knarren erfüllt wird.',
-            '#me opens the gate. The whole cave is fillied with a loud noise.')
+            '#me opens the gate. The whole cave is filled with a loud noise.')
     else
         if doors.CheckClosedDoor(left.id) and doors.CheckClosedDoor(right.id) then
             say(context, 'Du keine Augen in deinem stinkigen Kopf haben? Tor sein schon zu!',
@@ -80,7 +80,7 @@ function M.operate(context, name)
         left, right = world:getItemOnField(a), world:getItemOnField(b)
         keys.LockDoor(left); keys.LockDoor(right)
         say(context, '#me lässt die Flügel des Tores krachend zufallen und sperrt ab.',
-            '#me shuts the gate crashing then locks it.')
+            '#me slams the gate shut and locks it.')
     end
 end
 

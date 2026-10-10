@@ -168,7 +168,7 @@ function M.teleportUseItem( User, SourceItem, TargetItem, Counter, Param , ltsta
                 world:gfx(41,destination);
                     
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt konzentriert auf eine Pergamentrolle zu starren.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me begins to stare on a scroll of parchment intensely.");
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me begins to stare at a scroll of parchment intensely.");
             
             elseif ( ltstate == Action.abort ) then
                 
@@ -205,7 +205,7 @@ function M.selfTeleportUseItem( Caster, Item )
     TelePos.y = TelePos.y - dy;
     
     Caster:talkLanguage( CCharacter.say, CPlayer.german, "#me starrt konzentriert auf eine Pergamentrolle.");
-    Caster:talkLanguage( CCharacter.say, CPlayer.english, "#me stares on a scroll of parchment intensely.");
+    Caster:talkLanguage( CCharacter.say, CPlayer.english, "#me stares at a scroll of parchment intensely.");
                    
     world:gfx(41,Caster.pos);
     world:gfx(41,TelePos);

@@ -53,7 +53,7 @@ function M.addEffect(fireEffect, Patient)         -- Infection starts
 end
 
 function M.loadEffect(fireEffect, Patient)         -- Infection starts
-    Patient:talk(CCharacter.say, "Ich habs geladen.");
+    Patient:talk(CCharacter.say, "Ich habe es geladen.", "I have loaded it.");
     if burnList == nil then
         burnList = M.initBurnList();
         burnLength = #burnList;
@@ -176,6 +176,6 @@ function M.callEffect(fireEffect, NPC)
 end
 
 function M.removeEffect( Effect, Character )
-    Character:talk(CCharacter.say, "Feuer gelöscht!");
+    Character:talk(CCharacter.say, "Feuer gelöscht!", "Fire extinguished!");
 end
 return M

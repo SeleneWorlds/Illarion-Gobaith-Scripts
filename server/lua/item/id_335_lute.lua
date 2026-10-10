@@ -10,7 +10,7 @@ local general_wood = require("item.general.wood")
 music.addTalkText("#me makes a terrible noise on the lute","#me macht ein furchtbares Geräusch mit der Laute");
 music.addTalkText("#me plays some halting tunes","#me spielt einige unsichere Töne auf der Laute");
 music.addTalkText("#me plays some nice tunes on the lute","#me spielt einige schöne Töne auf der Laute");
-music.addTalkText("#me plays some nice sounding tunes on a lute","#me spielt einige gute klingende Töne auf der Laute");
+music.addTalkText("#me plays some nice sounding tunes on a lute","#me spielt einige gut klingende Töne auf der Laute");
 music.addTalkText("#me plays a lilting melody on a lute","#me spielt eine trällernde Melodie auf der Laute");
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)

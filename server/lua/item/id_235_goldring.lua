@@ -149,7 +149,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
             and (User.activeLanguage == 10) 		-- Ancient aktiv?
             and ( string.find( User.lastSpokenText, "[Hh][Oo][Nn][Ii][Gg][Kk][Uu][Cc][Hh][Ee][Nn][Pp][Ff][Ee][Rr][Dd]" ) ~= nil ) then  -- Losung ok?
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me dreht den schmalen Goldring an "..gText.." Finger.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me spins the small goldring on "..eText.." finger.");
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me spins the small gold ring on "..eText.." finger.");
                 if equapos(User.pos,position(-89,-123,0)) then		-- Standort: Bane
                     world:gfx(31,position(-88,-123,0));
                     world:gfx(31,position(-90,-123,0));
@@ -169,7 +169,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
                 end
             else
                 User:talkLanguage( CCharacter.say, CPlayer.german, "#me dreht den schmalen Goldring an "..gText.." Finger, aber nichts passiert.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me spins the small goldring on "..eText.." finger, but nothing happens.");
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me spins the small gold ring on "..eText.." finger, but nothing happens.");
             end
         end
         if ( SourceItem.data == 100 ) then
@@ -185,7 +185,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
             if ( (User:isAdmin())  or (User.id==923280786) ) then -- nur für gm!!
                 if ( string.find( User.lastSpokenText, "[Aa][Ss][Tt][Rr][Aa][Ll]" ) ~= nil ) then
                     User:talkLanguage( CCharacter.say, CPlayer.german, "#me's Konturen scheinen für einen kurzen Augenblick zu flimmern, bevor sich seine Gestalt vollständig auflöst.");
-                    User:talkLanguage( CCharacter.say, CPlayer.english, "#me's outlines begins to glimmer, before his form dissolves completely.");
+                    User:talkLanguage( CCharacter.say, CPlayer.english, "#me's outline begins to shimmer briefly before his form dissolves completely.");
                     world:gfx(52,User.pos);
                     User:warp(position(-37,-193,1));
                     world:gfx(52,position(-37,-193,1));

@@ -7,12 +7,12 @@ local M = {}
 
 local music = require("item.base.music").new()
 local general_wood = require("item.general.wood")
-music.addTalkText("#me hits the drum chaoticly, making a lot of noise.", "#me schlägt planlos auf die Trommel ein und macht eine Menge Lärm." );
+music.addTalkText("#me hits the drum chaotically, making a lot of noise.", "#me schlägt planlos auf die Trommel ein und macht eine Menge Lärm." );
 music.addTalkText("#me makes chattering uncoordinated noises on the drum.", "#me macht klappernde, unkoordinierte Geräusche auf der Trommel.");
-music.addTalkText("#me pounds upon the drum in a low sounding monotonous rythm.","#me schlägt im monotonen Rhythmus klangarm auf die Trommel. ");
+music.addTalkText("#me pounds upon the drum in a low sounding monotonous rhythm.","#me schlägt im monotonen Rhythmus klangarm auf die Trommel. ");
 music.addTalkText("#me drums a loud though simple rhythm.","#me trommelt einen lauten aber einfachen Rhythmus. ");
 music.addTalkText("#me bangs a powerful, coordinated beat upon the drum.","#me trommelt gut klingende mehrteilige Rhythmen. ");
-music.addTalkText("#me beats in a wild, frenzied pulse, a deep broad sound emitting from the drum.","#me schlägt in wilden vielschichtigen Rhythmen, mit vollem, tiefen Klängen auf die Trommel.");
+music.addTalkText("#me beats in a wild, frenzied pulse, a deep broad sound emitting from the drum.","#me schlägt in wilden vielschichtigen Rhythmen, mit vollen, tiefen Klängen auf die Trommel.");
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     music.PlayInstrument(User,SourceItem,"drum");

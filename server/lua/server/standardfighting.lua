@@ -2056,7 +2056,7 @@ function CheckTying( Attacker, Defender )
 	elseif Defender.effects:find(26) then
 		if Defender:increaseAttrib("hitpoints",0) < 2500 then
 			Defender:talkLanguage(CCharacter.say, CPlayer.german, "#me kann das Seil nicht mehr halten und lässt los.");
-			Defender:talkLanguage(CCharacter.say, CPlayer.english, "#me can't hold the rope any longer and looses it.");
+			Defender:talkLanguage(CCharacter.say, CPlayer.english, "#me can't hold the rope any longer and lets go of it.");
 			Defender.effects:removeEffect(26);
 		end
 	end

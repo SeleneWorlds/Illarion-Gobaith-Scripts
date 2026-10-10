@@ -5,7 +5,7 @@ local base_basics = require("magic.base.basics")
 function M.DoItemSpell(Caster, TargetPos, ltstate)
     Hitted_already = {};
     if ( ltstate == Action.abort ) then
-        Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt apprupt mit dem Zaubern.");
+        Caster:talkLanguage(CCharacter.say, CPlayer.german, "#me stoppt abrupt mit dem Zaubern.");
         Caster:talkLanguage(CCharacter.say, CPlayer.english,"#me abruptly stops casting.");
         return;
     end

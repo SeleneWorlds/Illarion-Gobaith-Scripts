@@ -60,7 +60,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if ( ltstate == Action.none ) then -- Arbeit noch nicht begonnen -> Los gehts
         User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Getreide zu dreschen");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to flail grain"); 
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to thresh grain");
         return
     end
     

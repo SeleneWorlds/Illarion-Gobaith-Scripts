@@ -251,7 +251,7 @@ function M.CastHealing( Caster, rndTry, HealAmmount, Range, Effect, AP )
 
     common.TalkNLS( Monster, CCharacter.say,
     "#me murmelt eine mystische Formel und wird von einem warmen Leuchten umgeben.",
-    "#me mumbles a mystical formula and gets surrounded by a warm glowing.");
+    "#me mumbles a mystical formula and is surrounded by a warm glow.");
     return true;
 end
 

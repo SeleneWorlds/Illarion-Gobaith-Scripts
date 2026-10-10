@@ -78,7 +78,7 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
             Character:talkLanguage(CCharacter.say,CPlayer.english,"#me blinks irritatedly.");
         else
             Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me sieht sich verwirrt um.");
-            Character:talkLanguage(CCharacter.say,CPlayer.english,"#me looks around like a lunatic.");
+            Character:talkLanguage(CCharacter.say,CPlayer.english,"#me looks around in confusion.");
         end
     elseif ((stonedIndex_n>=10) and (stonedIndex_n<15)) then
         if ((stonedIndex_n==13) and (clearIndex_n==2)) then
