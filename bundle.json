@@ -654,9 +654,6 @@
     "item.id_336_mirror": {
       "file": "server/lua/item/id_336_mirror.lua"
     },
-    "item.id_348_wallcorner": {
-      "file": "server/lua/item/id_348_wallcorner.lua"
-    },
     "item.id_359_firefield": {
       "file": "server/lua/item/id_359_firefield.lua"
     },
