@@ -115,7 +115,7 @@ local M = {}
         for i, monID in pairs(monList) do
             newPos=M.getFreePos( TargetPos, 4 );
             world:gfx(31,newPos);
-            world:createMonster(monID, newPos, 10);
+            mon = world:createMonster(monID, newPos, 10);
 
             if ( monID > 260 and monID < 270 ) then
                 table.insert( showMsgs, {
@@ -124,7 +124,6 @@ local M = {}
                 );
             end
 
-            mon = world:getCharacterOnField( newPos );
             table.insert( treasureMonsters[User.id], mon );
         end
     end
