@@ -40,6 +40,7 @@ AddToDoorList(685, 653);
 AddToDoorList(664, 644);
 AddToDoorList(665, 645);
 AddToDoorList(670, 658);
+AddToDoorList(666, 654);
 AddToDoorList(671, 659);
 AddToDoorList(667, 655);
 AddToDoorList(662, 650);
