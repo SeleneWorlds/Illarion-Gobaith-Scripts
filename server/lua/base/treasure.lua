@@ -2,6 +2,7 @@
 -- Useable for creating maps and finding treasures
 
 local common = require("base.common")
+local areas = require("base.areas")
 local M = {}
 
     function M.GetTreasureName( level, lang, details )
@@ -265,7 +266,8 @@ local M = {}
         local itemID;
         local i = 0;
         while true do
-            newPos=position(math.random(475,1000),math.random(0,650),0); --only in the wilderness, outside any homeland
+            newPos = areas.randomPosition("treasure_wilderness");
+            if not newPos then return false end
             tileID = world:getField(newPos):tile();
             if tileID == 2 or tileID == 3 or tileID == 4 or tileID == 8 or tileID == 9 or tileID == 10 or tileID == 11 or tileID == 15 then -- only "non-urban" basic tiles
                 if not world:isItemOnField(newPos) then

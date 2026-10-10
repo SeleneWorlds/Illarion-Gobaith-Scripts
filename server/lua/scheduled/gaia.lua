@@ -1,4 +1,5 @@
 local common = require("base.common")
+local areas = require("base.areas")
 
 local M = {}
 
@@ -94,7 +95,8 @@ function M.plantdrop()
             check = grnd[auswahl][math.random(1,#grnd[auswahl])]
             pflwert = dataval[auswahl]
             ---- Standortbestimmung
-            newpos = position( math.random(0,1000), math.random(0,1000), 0 );
+            newpos = areas.randomPosition("gaia_herb_drops");
+            if not newpos then return end
             ---- bodentile feststellen
             local bodenart = common.GetGroundType( world:getField(newpos):tile() );
             if ((bodenart == check) or (check == 0)) then
