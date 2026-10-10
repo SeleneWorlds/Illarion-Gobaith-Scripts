@@ -85,7 +85,7 @@ function M.useTile(User,Position,counter,param,ltstate)
          "Suddenly you have the feeling a hand should grap your claw. While you are wondering what it could be, the water in front of you ripples and a slimy mummy climbs out of the water.");
 
          world:createMonster(101,TargetPos,20);
-         world:gfx(1,TargetPos);
+         world:gfx(32,TargetPos);
          world:gfx(37,TargetPos);
          world:makeSound(1,TargetPos);
 	     return

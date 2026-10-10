@@ -49,7 +49,7 @@ function M.throwMolotov(Monster,Enemy)
         end );
         hitpoints = common.Scale( 20, 100, Strength );
         common.CreateCircle( hitPos, 3, function( targetPos )
-            world:gfx( 1, targetPos );
+            world:gfx( 32, targetPos );
             M.HitChar( targetPos, hitpoints );
         end );
 

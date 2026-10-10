@@ -24,7 +24,7 @@ M.Settings = {
 M.SpellEffects = {
     ["line"] = nil,
     [0] = {                 -- Radius 0 around the target location (so this IS exactly the target location)
-        ["gfx"] = 35,       -- Grafic effect that is shown on the position the spell hitted
+        ["gfx"] = 44,       -- Grafic effect that is shown on the position the spell hitted
         ["sfx"] = 5         -- Sound effect that is placed in the position the spell hitted
     },
     [1] = {                 -- Radius 1 around the target location

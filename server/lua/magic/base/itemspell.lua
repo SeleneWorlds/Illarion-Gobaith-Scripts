@@ -95,7 +95,7 @@ function M.createItemOnMap( ItemData, Target, CasterVal )
         CasterVal = CasterVal - base_basics.MagicResistence( TargetChar );
 
         if (CasterVal < 0) then
-            world:gfx( 10, Target );
+            world:gfx( 12, Target );
             return false;
         end
     end

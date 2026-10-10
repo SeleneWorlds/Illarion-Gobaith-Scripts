@@ -282,7 +282,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 
        world:erase(SourceItem,1);
        world:makeSound(10,TargetItem.pos);
-       world:gfx(1,TargetItem.pos)
+       world:gfx(32,TargetItem.pos)
        world:makeSound(13,TargetItem.pos);
        if( math.random( 20 ) <= 1 ) then
          common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");

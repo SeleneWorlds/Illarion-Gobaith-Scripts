@@ -157,7 +157,7 @@ function M.HitOnPosition( Caster, CasterValue, posi, percent, radius )
         end
     elseif ( MagicRes > CasterValue * 2 ) then
         showEffects = M.TargetHitting( Caster, Caster, CasterValue, base_basics.MagicResistence( Caster ), percent );
-        world:gfx( 10, posi );
+        world:gfx( 12, posi );
         if SpellEffects[radius] ~= nil and ( showEffects or not SpellEffects.justAtHit ) then
             base_basics.performGFX( SpellEffects[radius].gfx, Caster.pos );
             base_basics.performSFX( SpellEffects[radius].sfx, Caster.pos );
@@ -166,7 +166,7 @@ function M.HitOnPosition( Caster, CasterValue, posi, percent, radius )
         "Dein Ziel ist derart resistent gegen Magie das dein Zauber auf dich zurückgeworfen wird.",
         "Your target is that resistent against magic that your spell returns to you." );
     else
-        world:gfx( 10, posi );
+        world:gfx( 12, posi );
     end
 
     return true;

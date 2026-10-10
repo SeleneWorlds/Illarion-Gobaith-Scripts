@@ -132,7 +132,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     User:talkLanguage(CCharacter.say, CPlayer.english, "#me drinks the green viscous broth.");
 
 	world:makeSound(12,User.pos);
-	world:gfx(1,User.pos);
+	world:gfx(32,User.pos);
 
 	if (SourceItem.number == 1) then
 		SourceItem.id = 164;

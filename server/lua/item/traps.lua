@@ -14,7 +14,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         world:swap(SourceItem,375,333);
     else
         common.InformNLS( User,"Du löst die Falle aus!","You set off the trap!" );
-        world:gfx(14,SourceItem.pos);
+        world:gfx(13,SourceItem.pos);
         User:increaseAttrib("hitpoints", -5000);
         world:swap(SourceItem,376,333);
     end
@@ -28,7 +28,7 @@ function M.CharacterOnField( User )
         if (User:increaseAttrib("hitpoints",0)>0) then
             if( SourceItem.id >= 377 ) and (SourceItem.id <= 381) then
                 common.InformNLS( User,"Du löst eine Falle aus!","You set off a trap!" );
-                world:gfx(14,User.pos);
+                world:gfx(13,User.pos);
                 User:increaseAttrib("hitpoints", -4999);
                 world:swap(SourceItem,376,333);
                 SetOff=true;

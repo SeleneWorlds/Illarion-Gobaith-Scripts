@@ -62,7 +62,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 			itemL.number=itemL.number-2;
 			world:changeItem( itemL );
 		else 
-			world:gfx(1,SourceItem.pos);
+			world:gfx(32,SourceItem.pos);
 			world:makeSound(18,SourceItem.pos);
 			User:inform("Die Edelsteine zerfallen zu Staub. Das hat wohl nicht geklappt...");
 			world:erase(itemL,3);
@@ -80,7 +80,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
 			itemR.number=itemR.number-2;
 			world:changeItem( itemR );
 		else
-			world:gfx(1,SourceItem.pos);
+			world:gfx(32,SourceItem.pos);
 			world:makeSound(18,SourceItem.pos)
 			User:inform("Die Edelsteine zerfallen zu Staub. Das hat wohl nicht geklappt...");
 			world:erase(itemR,3);

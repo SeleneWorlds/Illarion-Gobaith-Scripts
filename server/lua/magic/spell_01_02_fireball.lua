@@ -23,7 +23,7 @@ M.Settings = {
 -- Grafik and Sound effects that appear when the spell is casted successfully
 M.SpellEffects = {
     ["line"] = {            -- Targets along the line of flight, if this list is set to nil the line of flight calculation is spared
-        ["gfx"] = 10,       -- Grafic effect that is shown on every tile along the line of flight
+        ["gfx"] = 12,       -- Grafic effect that is shown on every tile along the line of flight
         ["sfx"] = 0         -- Sound effect that is played on every tile along the line of flight (carefully with that)
     },
     [0] = {                 -- Radius 0 around the target location (so this IS exactly the target location)
