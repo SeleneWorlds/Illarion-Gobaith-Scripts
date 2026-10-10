@@ -9,6 +9,9 @@
     "server/lua/init.lua"
   ],
   "preloads": {
+    "base.areas": {
+      "file": "server/lua/base/areas.lua"
+    },
     "I_2760_seil": {
       "file": "server/lua/I_2760_seil.lua"
     },
