@@ -1,7 +1,7 @@
 -- Derived from old/miss_piggy.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Miss Piggy"
-race = elf
+race = pig
 sex = female
 position = -98, -82, 0
 direction = south
