@@ -1743,6 +1743,21 @@
       "file": "server/lua/base/money.lua",
       "encoding": "ISO-8859-15"
     },
+    "npc.custom.yastahl": {
+      "file": "server/lua/npc/custom/yastahl.lua"
+    },
+    "npc.custom.tax_collector": {
+      "file": "server/lua/npc/custom/tax_collector.lua"
+    },
+    "npc.custom.calendar": {
+      "file": "server/lua/npc/custom/calendar.lua"
+    },
+    "npc.custom.dwarf_gate": {
+      "file": "server/lua/npc/custom/dwarf_gate.lua"
+    },
+    "npc.custom.orc_gate": {
+      "file": "server/lua/npc/custom/orc_gate.lua"
+    },
     "npc.compiler": {
       "file": "server/lua/npc/compiler.lua"
     },
