@@ -86,7 +86,8 @@ end
 
 -- MenuStruct has item slots and no quantity input: buy an offer stack or sell
 -- an inventory stack. Map slots, rather than item IDs, so ticket variants work.
--- Mode uses the player perspective: buy offers or sell inventory items.
+-- Include requests without inventory matches so the NPC's full buying list is visible.
+-- Mode uses the player perspective: buy offers or sell requested items.
 function tradeNPC:showDialog(npcChar, player, mode)
     local entries = {}
     if mode ~= "sell" then
@@ -100,10 +101,15 @@ function tradeNPC:showDialog(npcChar, player, mode)
             for _, offer in ipairs(list) do
                 if not seen[offer._itemId] then
                     seen[offer._itemId] = true
+                    local matched = false
                     for _, item in ipairs(player:getItemList(offer._itemId)) do
                         if isFittingItem(offer, item) then
                             entries[#entries + 1] = {offer=offer, item=item, count=item.number, buying=false}
+                            matched = true
                         end
+                    end
+                    if not matched then
+                        entries[#entries + 1] = {offer=offer, count=1, buying=false}
                     end
                 end
             end
@@ -125,7 +131,8 @@ function tradeNPC:showDialog(npcChar, player, mode)
         else
             -- Revalidate ownership after the menu was opened.
             for _, current in ipairs(player:getItemList(entry.offer._itemId)) do
-                if current.SeleneInventoryItem ~= nil and current.SeleneInventoryItem == entry.item.SeleneInventoryItem then
+                if isFittingItem(entry.offer, current) and (entry.item == nil or
+                    (current.SeleneInventoryItem ~= nil and current.SeleneInventoryItem == entry.item.SeleneInventoryItem)) then
                     self:buyItemFromPlayer(npcChar, player, current)
                     break
                 end
@@ -134,8 +141,8 @@ function tradeNPC:showDialog(npcChar, player, mode)
     end)
     for _, entry in ipairs(entries) do
         local item = entry.offer
-        local quality = entry.buying and item._quality or entry.item.quality
-        local data = entry.buying and item._data or nil
+        local quality = entry.item and entry.item.quality or item._quality
+        local data = (entry.buying or entry.item == nil) and item._data or nil
         menu:addItem(item._itemId, quality, data and tonumber(data.data) or 0)
     end
     menu.lookAt = function(slot)
