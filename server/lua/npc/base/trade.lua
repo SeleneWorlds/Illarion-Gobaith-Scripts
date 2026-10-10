@@ -86,19 +86,24 @@ end
 
 -- MenuStruct has item slots and no quantity input: buy an offer stack or sell
 -- an inventory stack. Map slots, rather than item IDs, so ticket variants work.
-function tradeNPC:showDialog(npcChar, player)
+-- Mode uses the player perspective: buy offers or sell inventory items.
+function tradeNPC:showDialog(npcChar, player, mode)
     local entries = {}
-    for index, item in ipairs(self._sellItems) do
-        entries[#entries + 1] = {offer=item, index=index - 1, count=item._stack, buying=true}
+    if mode ~= "sell" then
+        for index, item in ipairs(self._sellItems) do
+            entries[#entries + 1] = {offer=item, index=index - 1, count=item._stack, buying=true}
+        end
     end
-    local seen = {}
-    for _, list in ipairs({self._buyPrimaryItems, self._buySecondaryItems}) do
-        for _, offer in ipairs(list) do
-            if not seen[offer._itemId] then
-                seen[offer._itemId] = true
-                for _, item in ipairs(player:getItemList(offer._itemId)) do
-                    if isFittingItem(offer, item) then
-                        entries[#entries + 1] = {offer=offer, item=item, count=item.number, buying=false}
+    if mode ~= "buy" then
+        local seen = {}
+        for _, list in ipairs({self._buyPrimaryItems, self._buySecondaryItems}) do
+            for _, offer in ipairs(list) do
+                if not seen[offer._itemId] then
+                    seen[offer._itemId] = true
+                    for _, item in ipairs(player:getItemList(offer._itemId)) do
+                        if isFittingItem(offer, item) then
+                            entries[#entries + 1] = {offer=offer, item=item, count=item.number, buying=false}
+                        end
                     end
                 end
             end

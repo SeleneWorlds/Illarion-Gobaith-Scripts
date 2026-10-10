@@ -20,10 +20,11 @@ local consequence = require("npc.base.consequence.consequence")
 local _trade_helper
 
 local trade = class(consequence,
-function(self, tradeNPC)
+function(self, tradeNPC, mode)
     consequence:init(self)
 
     self["tradeNPC"] = tradeNPC
+    self["mode"] = mode
     self["perform"] = _trade_helper
 end)
 
@@ -32,7 +33,7 @@ function _trade_helper(self, npcChar, player)
         player:inform("This NPC has a bug, no trading items were set. Please inform a developer so he can beat the person responsible.")
         return
     end
-    self.tradeNPC:showDialog(npcChar, player)
+    self.tradeNPC:showDialog(npcChar, player, self.mode)
 end
 
 return trade
