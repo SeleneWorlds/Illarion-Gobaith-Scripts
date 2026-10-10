@@ -210,6 +210,12 @@ end
 local numericSubjects = {state=true, number=true, money=true, queststatus=true, item=true, skill=true, attrib=true}
 local function validateCondition(node)
     if node.kind == 'symbol' and (node.value == 'english' or node.value == 'german' or node.value == 'admin') then return end
+    if node.kind == 'call' and node.name == 'basestate' then
+        args(node,1,1)
+        local value=scalar(node.args[1])
+        if value ~= 'busy' and value ~= 'idle' then fail(node.token,"basestate must be busy or idle") end
+        return
+    end
     if node.kind == 'call' and (node.name == 'race' or node.name == 'sex') then
         args(node,1,1)
         local value=scalar(node.args[1])
@@ -253,6 +259,12 @@ local function validateAction(node,hasTrades)
         return
     elseif node.kind == 'call' then
         local name=node.name
+        if name == 'talkstate' then
+            args(node,1,1)
+            local value=scalar(node.args[1])
+            if value ~= 'begin' and value ~= 'end' then fail(node.token,"talkstate must be begin or end") end
+            return
+        end
         if name == 'inform' then args(node,1,1); stringValue(node.args[1]); return end
         if name == 'item' then
             args(node,2,4); number(node.args[1],true,true); dynamicNumber(node.args[2])
@@ -396,6 +408,7 @@ local function makeCondition(node)
         return require('npc.base.condition.language')(node.value)
     end
     if node.kind == 'call' then
+        if node.name == 'basestate' then return require('npc.base.condition.basestate')(scalar(node.args[1])) end
         if node.name == 'race' then return require('npc.base.condition.race')(races[scalar(node.args[1])]) end
         if node.name == 'sex' then return require('npc.base.condition.sex')(scalar(node.args[1])) end
         return require('npc.base.condition.chance')(scalar(node.args[1]))
