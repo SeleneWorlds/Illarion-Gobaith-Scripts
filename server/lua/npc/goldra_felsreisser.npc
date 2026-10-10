@@ -7,6 +7,8 @@ defaultLanguage = common
 autointroduce = on
 useMsgDE = "Nimm deine Finger da wech!"
 useMsgUS = "Dont ya' touch me!"
+lookatDE = "Sie trägt eine neu aussehende Wächterrobe mit einem aufgestickten Wappen Silberbrands darauf. In der Hand hält die grimmig blickende Zwergin eine große, doppelschneidige Axt, während sie ihren Blick aufmerksam schweifen lässt."
+lookatUS = "She wears a quite new-looking Guardian's robe with an embroidered emblem of Silverbrand on it. The frowning looking dwarf holds a big, sharp axe in her hand, whilst her eyes wander across the hall."
 
 
 german, "[mm]ein.+[nn]ame.+ist.*", "[ii]c[hk].+bin.*", "man.+nennt.+mich.*", "[ii]c[hk].+hei[sß][se].*" -> "Freut mich %CHARNAME, nenn mick Goldra, ick bin von der Bürgerwehr Silberbrands!", state = 1
@@ -17,6 +19,7 @@ state = 1, "[gg]rü[sß]", "[hh]allo", "[gg]rue[sß]", "[tt]a[gc].*" -> "Tach %C
 "[aa]uf.+[bb]ald", "[gg]ötter.+euch", "[bb]is.+[bb]ald", "[uu]ff.+[bb]ald", "[ff]ünf.+euch" -> "Auf bald. Irmorom mit dir."
 "[ww]er.+[bs][ie][si][td].+[di][uh].*", "[ww]ie.+[nn]ame" -> "Ick bin die %NPCNAME von der Bürgerwehr Silberbrands, jau! Ick bin Torwächterin. Und wer bist du?"
 "[hh]ilfe", "helfen", "hilf" -> "Ick fürchte ick kann dir nich' helfen, muss hier Wache stehen. Frag am besten nen anderen Zwergen nach Hilfe."
+english, "where.+am.+[ii]" -> "You are in Silverbrand, the town of the dwarfes on Gobaith."
 german, "[ww]o.+bin.+ich" -> "Das hier ist Silberbrand, die Stadt der Zwerge auf Gobaith."
 english, "[hh]ow.+are.you" -> "I am fine and how are ya'?."
 german, "[ww]ie.+gehts" -> "Eigentlich ganz gut, danke der Nachfrage.", "Mir geht es gut und dir?"
@@ -87,8 +90,6 @@ german, "[tt]or.*" -> "Aye, jeden Tag und jede Stund' steh ick da draussen am To
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- goldra_felsreisser.lua:82: AddCondition: quest progress has no explicit QuestID
 -- Custom Lua functions require review: nextCycleDisabled, mainTask, standardAnswer, keinBock, wait, checkGender, drinkBeer, drinkGame, hicks, moveFunction, isPassable, tellJoke, initJoke
 -- Custom event dispatch outside registration rules requires review.
 -- Movement, spawning or world changes require Lua hooks.
--- 1 complete dialogue rules omitted because a condition/action could not be represented safely.

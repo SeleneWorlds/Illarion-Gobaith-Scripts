@@ -8,6 +8,17 @@ useMsgDE = "Don't touch me!"
 useMsgUS = "Don't touch me!"
 
 
+-- Quest 2113: 0 not started, 1 awaiting blessed water, 2 completed.
+-- Check equipped water (item 2496, data 3); Lurandir takes only drops, so keep the bottle.
+queststatus(2113) = 1, item(2496, "body", 3) >= 1, german, "[ww]asser" -> "Habt Dank mein Freund. Ich benötige nur einige Tropfen, den Rest könnt Ihr behalten. Aber seid gewarnt: Eine übermäßige Anwendung könnte schädlich sein. Verwendet es weise! Kommt später wieder, vielleicht weiß ich dann mehr...", queststatus(2113) = 2
+queststatus(2113) = 1, item(2496, "body", 3) < 1, german, "[ww]asser" -> "Ihr habt also das gesegnete Wasser von Irundar gefunden, mein Freund? So lasst es mich denn sehen!"
+queststatus(2113) = 1, item(2496, "body", 3) >= 1, english, "[ww]ater" -> "Be thanked my friend. I need just a few drops, you can keep the rest for yourself. But be warned: Do not use it too often, it might be harmful. Use it wisely. Come back later and I might have found out more...", queststatus(2113) = 2
+queststatus(2113) = 1, item(2496, "body", 3) < 1, english, "[ww]ater" -> "So you have found the blessed water of Irundar, my friend. Please, let me see it!"
+queststatus(2113) = 0, english, "service" -> "Let me introduce myself. I am Lurandir, a wanderer and alchemist. Far have I travelled to find the last ingredient for a ... special recipe. I need the blessed water of Irundar... *sigh*", queststatus(2113) = 1
+queststatus(2113) = 0, english, "help" -> "Let me introduce myself. I am Lurandir, a wanderer and alchemist. Far have I travelled to find the last ingredient for a ... special recipe. I need the blessed water of Irundar... *sigh*", queststatus(2113) = 1
+queststatus(2113) = 0, german, "[dd]ienste" -> "Lasst mich Euch meinen Namen nennen. Ich bin Lurandir, ein Wanderer und Alchemist. Weit bin ich gereist um die letzte Zutat zu finden für ein... spezielles Rezept. Ich benötige das gesegnete Wasser von Irundar... *seufz*", queststatus(2113) = 1
+queststatus(2113) = 0, german, "[hh]ilfe" -> "Lasst mich Euch meinen Namen nennen. Ich bin Lurandir, ein Wanderer und Alchemist. Weit bin ich gereist um die letzte Zutat zu finden für ein... spezielles Rezept. Ich benötige das gesegnete Wasser von Irundar... *seufz*", queststatus(2113) = 1
+
 english, "[gg]reetings" -> "Hello, my friend, stay a while and listen! I need your service."
 english, "[hh]ello" -> "Hello, my friend, stay a while and listen! I need your service."
 english, "service" -> "Let me introduce myself. I am Lurandir, a wanderer and alchemist. Far have I travelled to find the last ingredient for a ... special recipe. I need the blessed water of Irundar... *sigh*"
@@ -25,4 +36,3 @@ german, "[ii]rundar" -> "Das gesegnete Wasser von Irundar kann in der Höhle von
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Hand-written Lua event handlers require migration beyond extracted static dialogue/metadata.

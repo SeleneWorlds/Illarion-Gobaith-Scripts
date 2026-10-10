@@ -173,6 +173,7 @@ buyPrimaryItem = id(2447), price(50)
 buyPrimaryItem = id(2448), price(12)
 buyPrimaryItem = id(330), price(6)
 
+"what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 "[gg]reetings" -> "Greebas! You want buy from great %NPCNAME?"
 "[hh]ello" -> "Hullo! Buy me things!"
 "[yy]ou.+[tt]rader" -> "Yub, me trader."
@@ -203,4 +204,3 @@ buyPrimaryItem = id(330), price(6)
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom event dispatch outside registration rules requires review.

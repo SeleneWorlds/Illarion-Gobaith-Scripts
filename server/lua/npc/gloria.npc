@@ -29,6 +29,7 @@ buyPrimaryItem = id(2499), price(5)
 buyPrimaryItem = id(2500), price(5)
 buyPrimaryItem = id(2501), price(5)
 
+"what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 "[gg]reetings", "[hh]ello", "[hh]i" -> "Welcome. Can I help you?", "A good day to you."
 "[yy]ou.+[tt]rader" -> "I am %NPCNAME, I sell some usefull things. Do you need something?"
 "[tt]ell.+[aa]cademy" -> "I'm not good in history. If you want to now something of the magic academy better ask someone else."
@@ -55,4 +56,3 @@ cycletext "#me sortiert ein paar Dinge in ihrer Truhe neu.", "#me rearranges som
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom event dispatch outside registration rules requires review.

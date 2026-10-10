@@ -173,4 +173,3 @@ cycletext "#me's Atem riecht nach schalem Bier", "#me's breath smells of stale b
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom event dispatch outside registration rules requires review.

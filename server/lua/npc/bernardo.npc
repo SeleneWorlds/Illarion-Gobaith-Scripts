@@ -9,6 +9,9 @@ useMsgDE = "Finger weg!"
 useMsgUS = "Don't you touch me!"
 
 
+"[tt]ax", "[ss]teuer" -> lua("npc.custom.tax_collector", "collect", "trollsbane")
+"what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
+
 "[gg]reetings", "[hh]ello" -> "Greetings. Can i help you?", "Be greeted. I'm %NPCNAME. Can I help you?"
 "[gg]rü[ßs]+e", "[hh]allo" -> "Grüße. Kann ich euch helfen?", "Guten Tag. Ich bin %NPCNAME. Kann ich euch helfen?"
 "[yy]ou.+[tt]rader" -> "No. I'm no trader. I'm the tax collector of Trollsbane."
@@ -22,5 +25,3 @@ useMsgUS = "Don't you touch me!"
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom Lua functions require review: CalcSilverCopper, TakeTaxes, MoneyText, Zeitform
--- Custom event dispatch outside registration rules requires review.

@@ -21,4 +21,3 @@ cycletext "#me sortiert Bücher in den Regalen", "#me sorts books in the shelfs.
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom event dispatch outside registration rules requires review.

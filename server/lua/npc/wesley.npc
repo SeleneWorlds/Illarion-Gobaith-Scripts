@@ -42,5 +42,3 @@ buyPrimaryItem = id(371), price(16)
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom Lua functions require review: refill, CalcPrice
--- Custom event dispatch outside registration rules requires review.

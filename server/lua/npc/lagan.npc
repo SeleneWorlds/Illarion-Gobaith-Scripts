@@ -30,11 +30,9 @@ buyPrimaryItem = id(13), price(2)
 "[ff]arewell" -> "Goodbye!"
 "[ww]ho.+you?" -> "I'm %NPCNAME."
 "i'm" -> "Nice to meet you. Do you want to buy some of my wares. Look at what i have. Or do you want to sell something to me?"
-"[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
+"[hh]elp" -> "Say trade, buy, sell or wares to browse my goods and prices."
 
 "trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom Lua functions require review: refill, CalcPrice
--- Custom event dispatch outside registration rules requires review.

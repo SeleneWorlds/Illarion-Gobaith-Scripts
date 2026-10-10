@@ -9,6 +9,7 @@ useMsgDE = "Finger wech oder du bist ein Kopf kürzer!"
 useMsgUS = "Dont ya' touch me!"
 
 
+lua("npc.custom.dwarf_gate", "isCommand", "magda_rosenzopf"), ".+" -> lua("npc.custom.dwarf_gate", "operate", "magda_rosenzopf")
 "[gg]rü[sß]", "[hh]allo", "[gg]rue[sß]", "[tt]a[gc].*" -> "Tach du.", "Grüß dich!"
 "[aa]uf.+[bb]ald", "[gg]ötter.+euch", "[bb]is.+[bb]ald", "[uu]ff.+[bb]ald", "[ff]ünf.+euch" -> "Auf bald. Irmorom mit dir."
 "[ww]er.+[bs][ie][si][td].+[di][uh].*", "[ww]ie.+[nn]ame" -> "Ick bin die %NPCNAME von der Bürgerwehr Silberbrands, jau! Ick bewache die Tore."
@@ -56,4 +57,4 @@ cycletext "#me zieht eine Flasche Bier aus der Tasche und nimmt einen großzügi
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom event dispatch outside registration rules requires review.
+-- Legacy commands from up to ten tiles away require a dialogue-range extension.

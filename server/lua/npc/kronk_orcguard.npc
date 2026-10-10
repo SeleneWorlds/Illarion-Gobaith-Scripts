@@ -9,6 +9,8 @@ useMsgDE = "Nimm Greifer deine weg, sonst du haben gleich keine mehr!"
 useMsgUS = "Nub touch meh, stoopid!"
 
 
+lua("npc.custom.orc_gate", "isCommand", "kronk_orcguard"), ".+" -> lua("npc.custom.orc_gate", "operate", "kronk_orcguard")
+
 "[gg]rü[sß]", "[hh]allo", "[gg]rue[sß]", "[tt]a[gc].*" -> "Ullo.", "Grubas!"
 "[aa]uf.+[bb]ald", "[gg]ötter.+euch", "[bb]is.+[bb]ald", "[aa]uf.+[bb]ald", "[ff]ünf.+euch" -> "Farebas."
 "[ww]er.+[bs][ie][si][td].+[di][uh].*", "[ww]ie.+[nn]ame" -> "Mir Gefängniswärter für Orktor! Keine Ratte hier rein kommen ohne dass %NPCNAME merken!"
@@ -72,5 +74,4 @@ german, "[vv]arshikar" -> "Wüstenstadt nicht fern von hier. Meisten Wesen dort 
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom Lua functions require review: standardAnswer, mainTask
--- Custom event dispatch outside registration rules requires review.
+-- Legacy gate commands from up to eight tiles away require a dialogue-range extension.

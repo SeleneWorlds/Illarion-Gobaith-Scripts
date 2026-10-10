@@ -10,6 +10,32 @@ useMsgDE = "Ich würde es bevorzugen, wenn ihr mich nicht anfasst!"
 useMsgUS = "Ich would prefer, that you don't touch me!!"
 
 
+queststatus(2111) = 1, german, "[bb]ring.+[bb]ei.*", "[mm]ehr.*", "[tt]each.*", "[mm]ore.*" -> "Über welche der fünf Schulen wollt ihr mehr erfahren?", queststatus(2111) = 2
+queststatus(2111) = 1, english, "[bb]ring.+[bb]ei.*", "[mm]ehr.*", "[tt]each.*", "[mm]ore.*" -> "Which school do you want to know more about?", queststatus(2111) = 2
+queststatus(2111) = 3, german, "[bb]ring.+[bb]ei.*", "[mm]ehr.*", "[tt]each.*", "[mm]ore.*" -> "Ich hab euch bereits etwas beigebracht, den Rest müsst ihr euch selber beibringen wenn ihr ein richtiger Magier werden wollt."
+queststatus(2111) = 3, english, "[bb]ring.+[bb]ei.*", "[mm]ehr.*", "[tt]each.*", "[mm]ore.*" -> "I taught you already something, you have to learn the rest by yourself if you want to become a real mage."
+queststatus(2111) = 2, skill("commotio") <= 10, german, "commotio" -> "In Ordnung, hört mir nun bitte genau zu...", inform("Es scheint als wären dir nun einige Grundlagen dieser Runenschule klarer."), skill("commotio") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("commotio") <= 10, english, "commotio" -> "Alright, please listen to me carefully now...", inform("It seems that you understand some basics of this school of rune now better."), skill("commotio") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("commotio") > 10, german, "commotio" -> "Ihr scheint die Grundlagen dieser Runenschule bereits zu kennen, mehr als das kann ich euch nicht beibringen."
+queststatus(2111) = 2, skill("commotio") > 10, english, "commotio" -> "You already seem to know the basics of this runeschool, I can't teach you more than that."
+queststatus(2111) = 2, skill("transformo") <= 10, german, "transformo" -> "In Ordnung, hört mir nun bitte genau zu...", inform("Es scheint als wären dir nun einige Grundlagen dieser Runenschule klarer."), skill("transformo") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("transformo") <= 10, english, "transformo" -> "Alright, please listen to me carefully now...", inform("It seems that you understand some basics of this school of rune now better."), skill("transformo") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("transformo") > 10, german, "transformo" -> "Ihr scheint die Grundlagen dieser Runenschule bereits zu kennen, mehr als das kann ich euch nicht beibringen."
+queststatus(2111) = 2, skill("transformo") > 10, english, "transformo" -> "You already seem to know the basics of this runeschool, I can't teach you more than that."
+queststatus(2111) = 2, skill("transfreto") <= 10, german, "transfreto" -> "In Ordnung, hört mir nun bitte genau zu...", inform("Es scheint als wären dir nun einige Grundlagen dieser Runenschule klarer."), skill("transfreto") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("transfreto") <= 10, english, "transfreto" -> "Alright, please listen to me carefully now...", inform("It seems that you understand some basics of this school of rune now better."), skill("transfreto") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("transfreto") > 10, german, "transfreto" -> "Ihr scheint die Grundlagen dieser Runenschule bereits zu kennen, mehr als das kann ich euch nicht beibringen."
+queststatus(2111) = 2, skill("transfreto") > 10, english, "transfreto" -> "You already seem to know the basics of this runeschool, I can't teach you more than that."
+queststatus(2111) = 2, skill("pervestigatio") <= 10, german, "pervestigatio" -> "In Ordnung, hört mir nun bitte genau zu...", inform("Es scheint als wären dir nun einige Grundlagen dieser Runenschule klarer."), skill("pervestigatio") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("pervestigatio") <= 10, english, "pervestigatio" -> "Alright, please listen to me carefully now...", inform("It seems that you understand some basics of this school of rune now better."), skill("pervestigatio") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("pervestigatio") > 10, german, "pervestigatio" -> "Ihr scheint die Grundlagen dieser Runenschule bereits zu kennen, mehr als das kann ich euch nicht beibringen."
+queststatus(2111) = 2, skill("pervestigatio") > 10, english, "pervestigatio" -> "You already seem to know the basics of this runeschool, I can't teach you more than that."
+queststatus(2111) = 2, skill("desicio") <= 10, german, "desicio" -> "In Ordnung, hört mir nun bitte genau zu...", inform("Es scheint als wären dir nun einige Grundlagen dieser Runenschule klarer."), skill("desicio") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("desicio") <= 10, english, "desicio" -> "Alright, please listen to me carefully now...", inform("It seems that you understand some basics of this school of rune now better."), skill("desicio") + 1, queststatus(2111) = 3
+queststatus(2111) = 2, skill("desicio") > 10, german, "desicio" -> "Ihr scheint die Grundlagen dieser Runenschule bereits zu kennen, mehr als das kann ich euch nicht beibringen."
+queststatus(2111) = 2, skill("desicio") > 10, english, "desicio" -> "You already seem to know the basics of this runeschool, I can't teach you more than that."
+queststatus(2111) = 2, ".+" -> queststatus(2111) = 1
+
 "[hh]elp" -> "I can tell you something about the different runes and runeschools if you are interested."
 "[gg]reetings" -> "Be greeted - take a seat next to me."
 english, "[hh]eho" -> "Be greeted - take a seat next to me."
@@ -163,4 +189,3 @@ cycletext "#me kritzelt etwas an den Rand des Buches.", "#me scrawls something o
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom event dispatch outside registration rules requires review.

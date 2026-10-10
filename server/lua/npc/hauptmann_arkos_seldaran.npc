@@ -16,6 +16,8 @@ useMsgUS = "Dont you touch me!"
 "[ii]hr.+seid" -> "Ich bin %NPCNAME. Wie ist euer Name?"
 "[ii]ch.+bin.+neu" -> "Tach, schön dich zu treffen. Mein Name ist %NPCNAME, wie ist deiner?"
 "[ww]ie.+geht[s]" -> "Mir geht es eigentlich ganz gut, danke."
+item(306, "all") >= 20, queststatus(589) = 6, "[ss]chinken" -> "Gut, gut dann pass mal gut auf was ich dir jetzt zeige. Sag 'Los' wenn ich beginnen soll.", queststatus(589) = 7, deleteItem(306, 20)
+item(306, "all") >= 20, queststatus(589) = 6, "[hh]am" -> "Well, pay attention to what I say you now! If you are ready, say ready.", queststatus(589) = 7, deleteItem(306, 20)
 queststatus(589) = 0, "[hh]elping,.+[mm]aking" -> "Aye, I could need your help. Maybe you can bring me a pipe and after this about 10 Sibanac leaves?"
 "[dd]ein.+[jj]ob" -> "Was interessiert dich was ich mache?"
 "[dd]ein.+[bb]eruf" -> "Was interessiert dich was ich mache?"
@@ -82,9 +84,7 @@ item(2744, "all") >= 1, queststatus(589) = 3, "[pp]feife" -> "Dank dir und jetzt
 item(2744, "all") >= 1, queststatus(589) = 3, "[pp]ipe" -> "Thank you. Now bring me the 10 Sibanac leaves!", queststatus(589) = 4, deleteItem(2744, 1)
 item(155, "all") >= 10, queststatus(589) = 4, german, "[ss]ibanac" -> "Arr...das hast du gut gemacht. Aber mir fällt noch ein, dass ich kein Essen mehr hab. Kannst mir noch 20 geräucherten Schinken bringen?", queststatus(589) = 5, deleteItem(155, 10)
 item(155, "all") >= 10, queststatus(589) = 4, english, "[ss]ibanac" -> "Arr...well done! But there I remember, I got nothing to eat! Maybe you can bring me 20 ham?", queststatus(589) = 5, deleteItem(155, 10)
-item(306, "all") >= 20, queststatus(589) = 6, "[ss]chinken" -> "Gut, gut dann pass mal gut auf was ich dir jetzt zeige. Sag 'Los' wenn ich beginnen soll.", queststatus(589) = 7, deleteItem(306, 20)
 queststatus(589) = 5, "[ss]chinken" -> "Den Schinken kannst du in Trollsbane bei den Schweinen holen und dann musst du zum Räucheroffen gehn und den rohen Schinken räuchern. Und dann kommst du zu mir und gibst es mir!"
-item(306, "all") >= 20, queststatus(589) = 6, "[hh]am" -> "Well, pay attention to what I say you now! If you are ready, say ready.", queststatus(589) = 7, deleteItem(306, 20)
 queststatus(589) = 5, "[hh]am" -> "You can pick up meat by the pigs in Trollsbane and after this, you have to go to the fumigation house for curing the meat. If you've done this, come to me and give it me!"
 queststatus(589) = 3, german, "[ss]ibanac" -> "Ey..was soll ich damit? Bring mir erstmal die Pfeife und dann erst die 10 Sibanacblätter!"
 queststatus(589) = 3, english, "[ss]ibanac" -> "Ey, what I should do with this? First bring me the pipe and after this the 10 Sibanac leaves!"
@@ -102,6 +102,18 @@ queststatus(589) = 7, skill("tactics") <= 60, "[rr]eady" -> "#me shows you some 
 queststatus(589) = 7, skill("tactics") > 60, "[rr]eady" -> "#me shows you some tactical maneuvers.", skill("tactics") + 1, queststatus(589) = 8
 queststatus(589) = 8, german, "" -> "Lass mich in Ruhe, ich hab dir schon etwas beigebracht."
 queststatus(589) = 8, english, "" -> "Don't bother me, I've taught you anything yet!"
+-- Restored quest replies use the VBU busy/idle state.
+"[aa]uf.+bald" -> "Man sieht sich, aber hoffentlich nicht in nächster Zeit.", end
+queststatus(589) < 2, "[hh]allo", "[gg]rü[ßs]+e", "[ss]eid.+gegrüßt" -> "Grüß dich, was willst du?", begin
+queststatus(589) < 2, "[hh]ello", "[gg]reeting[s]", "[bb]e.+greeted" -> "Greetings, what do you want?", begin
+queststatus(589) = 3, "[hh]allo", "[gg]r[üs][sß]e", "[ss]eid.+gegrüßt", "[hh][ei]lf", "[mm]achen" -> " Hast du endlich die Pfeife und die 10 Sibanacblätter dabei?", begin
+queststatus(589) = 3, "[hh]ello", "[gg]reeting[s]", "[bb]e.+greeted", "[hh]elp", "[mm]ake" -> " Do you have the pipe and the 10 sibanac leaves with you?", begin
+queststatus(589) = 100, "[hh]allo", "[gg]r[üs][sß]e", "[ss]eid.+gegrüßt", "[ss]chinken", "[hh][ei]lf" -> "Arr..da bist du ja wieder, bringst mir jetzt die 20 geräucherten Schinken oder nicht?", queststatus(589) = 5, begin
+queststatus(589) = 100, "[hh]ello", "[gg]reeting[s]", "[bb]e.+greeted", "[hh]am", "[hh]elping" -> "Arr, there you are again! You're bringing me the 20 ham now or not?", queststatus(589) = 5, begin
+queststatus(589) = 5, "[hh]allo", "[gg]r[üs][sß]e", "[ss]eid.+gegrüßt", "[ss]chinken", "[hh][ei]lf" -> "Arr..da bist du ja wieder, bringst mir jetzt die 20 geräucherten Schinken oder nicht?", begin
+queststatus(589) = 5, "[hh]ello", "[gg]reet", "[bb]e.+greeted", "[hh]am", "[hh]elping" -> "Arr, there you are again! You're bringing me the 20 ham now or not?", begin
+queststatus(589) = 6, "[hh]allo", "[gg]r[üs][sß]e", "[ss]eid.+gegrüßt", "[ss]chinken", "[hh][ei]lf" -> "Arr..da bist du ja wieder, hast du nun die 20 geräucherten Schinken dabei? Wenn nicht dann verschwinde!", begin
+queststatus(589) = 6, "[hh]ello", "[gg]reeting[s]", "[bb]e.+greeted", "[hh]am", "[hh]elp" -> "Arr, there you are again! Do you have the 20 ham with you? If not then leave!", begin
 queststatus(589) < 2, "[hh]elp" -> "I'm looking for someone who can bring me some things. Would you like to help me?", queststatus(589) = 2
 queststatus(589) < 2, "[hh]ilfe" -> "Ich suche nach jemanden der mir was besorgt! Willst mir helfen?", queststatus(589) = 2
 
@@ -113,16 +125,5 @@ cycletext "#me versucht vergeblich, seine stumpf gewordene albarische Rüstung z
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- hauptmann_arkos_seldaran.lua:101: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:106: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:111: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:152: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:159: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:238: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:246: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:254: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:262: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:270: AddConsequence: unsupported consequence talk
--- hauptmann_arkos_seldaran.lua:277: AddConsequence: unsupported consequence talk
+-- Talk begin/end uses VBU base state; legacy wandering and player-facing behavior still need Lua hooks.
 -- Custom event dispatch outside registration rules requires review.
--- 11 complete dialogue rules omitted because a condition/action could not be represented safely.

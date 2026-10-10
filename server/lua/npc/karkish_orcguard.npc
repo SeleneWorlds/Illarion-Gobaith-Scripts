@@ -9,6 +9,8 @@ useMsgDE = "Nimm Greifer deine weg, sonst du haben gleich keine mehr!"
 useMsgUS = "Nub touch meh, stoopid!"
 
 
+lua("npc.custom.orc_gate", "isCommand", "karkish_orcguard"), ".+" -> lua("npc.custom.orc_gate", "operate", "karkish_orcguard")
+
 "[gg]rü[sß]", "[hh]allo", "[gg]rue[sß]", "[tt]a[gc].*" -> "Ullo.", "Grubas!"
 "[aa]uf.+[bb]ald", "[gg]ötter.+euch", "[bb]is.+[bb]ald", "[aa]uf.+[bb]ald", "[ff]ünf.+euch" -> "Farebas."
 "[ww]er.+[bs][ie][si][td].+[di][uh].*", "[ww]ie.+[nn]ame" -> "Mir Wache sein für Orktor! Keine Ratte hier rein kommen ohne dass %NPCNAME merken!"
@@ -94,5 +96,4 @@ cycletext "#me wirft dir einen aufmerksamen Blick zu, jede deiner Bewegungen fü
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom Lua functions require review: standardAnswer, mainTask
--- Custom event dispatch outside registration rules requires review.
+-- Legacy gate commands from up to eight tiles away require a dialogue-range extension.

@@ -9,6 +9,11 @@ useMsgDE = "Fast mich nicht an!"
 useMsgUS = "Don't you touch me!"
 
 
+"[ee]lf.+[ll]ernen", "[tt]each.*[ee]lvish", "[tt]each.*[ee]lven" -> lua("npc.custom.yastahl", "start")
+"[ff]irnis" -> lua("npc.custom.yastahl", "firnis")
+"[nn]ight.*[aa]ngel", "[nn]acht.*[ee]ngel" -> lua("npc.custom.yastahl", "night")
+"[ss]ibanac" -> lua("npc.custom.yastahl", "teach")
+
 "[gg]reetings", "[hh]ello" -> "Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?", "Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?"
 "[gg]r[uü][sß]+", "[hh]allo" -> "Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?", "Zum Gruße. Ich muss zu meinem Bedauern sagen, das ich der Allgemeinen Sprache nicht zur Gänze mächtig bin. Könnt ihr die Sprache der Elfen sprechen?"
 "[ss]ir.+[ee]lf" -> "Greetings. I fear I am not-so good at speaking the Common Tongue. Please forgive me. Can you speak Elvish?"
@@ -23,5 +28,3 @@ useMsgUS = "Don't you touch me!"
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom Lua functions require review: StartLearning, FirnisGeben, NachtGeben, SibanacGeben, GenLangSkill
--- Custom event dispatch outside registration rules requires review.

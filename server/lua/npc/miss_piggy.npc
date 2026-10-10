@@ -16,6 +16,8 @@ defaultLanguage = common
 autointroduce = on
 useMsgDE = "#me springt empört grunzend umher, so dass man die Krone auf ihrer Pobacke unmöglich zu fassen bekommt."
 useMsgUS = "#me hops indignantly grunting arround, so it's impossible to grab the crown on its buttock."
+lookatDE = "Eine große schwere, glücklich schnüffelnde und grunzende Sau. Sie trägt eine goldene Krone auf ihrer linken Pobacke."
+lookatUS = "It's a big heavy, lucky sniffling and gruntig sow. Wearing a golden crown on the left buttock."
 
 
 race(dwarf), "krone" -> "#me trägt, wie du plötzlich begreifst die Krone des Königs von Silberbrand auf der Pobacke mit sich umher!", "#me springt empört grunzend umher, so dass man die Krone auf ihrer Pobacke unmöglich zu fassen bekommt.", "#me legt sich in ein Schlammloch. Würde jemand nach der goldenen Krone schnappen, viele auf, das sie wohl magisch angebracht wurde.", inform("Spielt dir dein Kopf einen Streich, oder hast du tatsächlich über dieses Schwein etwas in der Bibliothek gelesen?")
@@ -42,4 +44,3 @@ cycletext "#me ist eine große schwere, glücklich schnüffelnde und grunzende S
 
 -- Migration follow-up
 -- No NPC data record: supply appearance and placement before spawning.
--- Custom event dispatch outside registration rules requires review.
