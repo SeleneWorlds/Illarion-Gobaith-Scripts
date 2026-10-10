@@ -504,6 +504,7 @@ function Compiler.instantiate(definition)
         end
         local messages={tradeWrongItemMsg='addWrongItemMsg',tradeNotEnoughMoneyMsg='addNotEnoughMoneyMsg',tradeFinishedMsg='addDialogClosedMsg',tradeFinishedWithoutTradingMsg='addDialogClosedNoTradeMsg'}
         for name,method in pairs(messages) do if property[name] then trader[method](trader,scalar(property[name].values[1]),scalar(property[name].values[2])) end end
+        root:addRecvText(require('npc.chat_trade').new(trader))
     end
     for _,rule in ipairs(definition.rules) do
         local entry=Talk.talkNPCEntry()

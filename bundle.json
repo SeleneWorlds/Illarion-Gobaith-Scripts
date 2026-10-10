@@ -1743,6 +1743,9 @@
       "file": "server/lua/base/money.lua",
       "encoding": "ISO-8859-15"
     },
+    "npc.chat_trade": {
+      "file": "server/lua/npc/chat_trade.lua"
+    },
     "npc.custom.yastahl": {
       "file": "server/lua/npc/custom/yastahl.lua"
     },
