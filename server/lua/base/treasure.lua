@@ -163,7 +163,7 @@ local M = {}
         while true do
             tarPos = position(CenterPos.x+math.random(-Rad,Rad),CenterPos.y+math.random(-Rad,Rad),CenterPos.z);
             if not world:isItemOnField( tarPos ) and not world:isCharacterOnField( tarPos ) then
-                tileID = world:getField( TargetPos ):tile();
+                local tileID = world:getField( tarPos ):tile();
                 if tileID ~= 0 and tileID ~= 5 and tileID ~= 6 and tileID~=42 and tileID ~= 43 and tileID~= 34 then --no inpassable tiles
                     return tarPos;
                 end
