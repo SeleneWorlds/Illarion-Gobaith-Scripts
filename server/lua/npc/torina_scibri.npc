@@ -1,6 +1,10 @@
 -- Derived from old/bob.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
-name = "Bob"
+name = "Torina Scibri"
+race = human
+sex = female
+position = -54, -236, 1
+direction = north
 language = common
 language = gnome
 defaultLanguage = common
@@ -18,6 +22,3 @@ german, item(68, "body") >= 1, money >= 100, "[bb]rauch.+[ss]chl[üue]ssel", "[m
 
 -- Idle dialogue
 cycletext "#me sortiert Bücher in den Regalen", "#me sorts books in the shelfs."
-
--- Migration follow-up
--- Legacy source does not specify race, sex, position, direction; data-record defaults remain where available.
