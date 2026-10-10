@@ -140,6 +140,10 @@ function onAttack_debug( Attacker, Defender, AttackPos )
     -- Check if the Attack misses the target
     Defender = MissingTarget( Attacker, Defender );
     if not Defender then
+        Attacker = GenAttackerMods( Attacker );
+        Attacker = GenStiffnessMod( Attacker );
+        Attacker = HPMod( Attacker );
+        HandleMovepoints( Attacker );
 ---[[DEBUG
         AddDebugText( "Attack canceled due missing target", 3, Attacker.Char );
 --]]
