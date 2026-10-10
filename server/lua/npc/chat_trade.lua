@@ -28,10 +28,11 @@ local function parse(text)
     if action == 'verkaufen' or action == 'verkaufe' then action = 'sell' end
     if action ~= 'buy' and action ~= 'sell' then return nil end
     local quantity, name = rest:match('^(%S+) (.+)$')
-    if not quantity then return nil end -- Bare buy/sell still opens the dialogue/menu.
     local articles = {a=true, an=true, ein=true, eine=true, einen=true}
     local amount = articles[quantity] and 1 or tonumber(quantity)
-    if not amount then return nil end
+    if not amount then
+        amount, name = 1, rest
+    end
     return action, amount, normalize(name)
 end
 
