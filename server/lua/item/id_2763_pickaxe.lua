@@ -147,8 +147,8 @@ function M.Init()
     M.SetRessource( 9, 914,  2536, 20,0); -- copper
     M.SetRessource( 9, 914,  256, 5,  0); -- emerald
     M.SetRessource( 9, 914,  234, 1,  0); -- gold nuggets
-    M.AddStone( 6, 1246 );
-    M.SetRessource( 6, 1246,  21, 20,  0); -- coal
+    M.AddStone( 9, 1246 );
+    M.SetRessource( 9, 1246,  21, 20,  0); -- coal
     -----------Mine  Kupferberge 3 - FERTIG -----------
 
     ---------------- Mine Wüste ---------------
