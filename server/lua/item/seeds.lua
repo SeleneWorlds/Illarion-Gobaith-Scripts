@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local M = {}
 
 -- base_seeds - sew seeds on fields
@@ -41,47 +42,47 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     if M.seedList == nil then
         M.seedList = {  };
 		
-		-- ID der Pflanze, Skill für 3 Pflanzen, Skill für 2 Pflanze, Skill für 1 Pflanze, anbaubar in {spring,summer,fall,winter}, Regionale Einschränkung x-Koord., Regionale Einschränkung Y-Koord.		
+		-- ID der Pflanze, Skill für 3 Pflanzen, Skill für 2 Pflanze, Skill für 1 Pflanze, anbaubar in {spring,summer,fall,winter}, Name der Pflanzregion (optional).
         
         M.seedList[  259 ] = {
           246,50,30,10,              -- Getreide: -V247 -V248 (sense) -V249 ( Skript dreschen )- 246
           {true ,true,true ,false},
-          {nil,nil},{nil,nil} }; 
+          nil };
            
         M.seedList[  291 ] = {
           288,30,15, 5,              -- Kohl: Fruchtfolge: 291  -V288 -V -V -291
           {false,true,true ,false},
-          {nil,nil},{-100,500} }; 
+          "planting_cabbage" };
               
         M.seedList[  534 ] = {
           535,40,30,10,
           {true ,true,true ,false},
-          {nil,nil},{-500,-150} };     -- Zwiebeln: 535 - 536 - 537 (ernten)
+          "planting_onions" };     -- Zwiebeln: 535 - 536 - 537 (ernten)
           
         M.seedList[ 2494 ] = {
           2490,45,20,10,
           {false,true,true ,false},
-          {nil,nil},{nil,nil} };     -- Karotten: 2490 - 2491 - 2492 - 2493( fertige Möhren )
+          nil };     -- Karotten: 2490 - 2491 - 2492 - 2493( fertige Möhren )
           
         M.seedList[ 2917 ] = {
           538,10, 3, 0,
           {false,true,false,false},
-          {nil,nil},{0,500} };     -- Tomaten: 538 - 539 - 540 (ernten)
+          "planting_tomatoes" };     -- Tomaten: 538 - 539 - 540 (ernten)
           
         M.seedList[  728 ] = {
           729,30,10, 5,
           {false,true,true ,false},
-          {nil,nil},{nil,nil} };     -- Hopfen: 729 - 730 - 731 (Hopfen ernten) - 732 ( Wurzel ernten ) 
+          nil };     -- Hopfen: 729 - 730 - 731 (Hopfen ernten) - 732 ( Wurzel ernten )
 
 		M.seedList[  773 ] = {
           774,30,10, 5,
           {true,true,true,true},
-          {-250,0},{-100,100} };     -- Tabak: 774 - 775 - 776 - 777 (Tabak ernten)
+          "planting_tobacco" };     -- Tabak: 774 - 775 - 776 - 777 (Tabak ernten)
 
 		M.seedList[  779 ] = {
           780,30,10, 5,
           {true,true,true,true},
-          {-250,100},{-100,100} };     -- Zuckerrohr: 780 - 781 - 782 (Zuckerrohr ernten)
+          "planting_sugar_cane" };     -- Zuckerrohr: 780 - 781 - 782 (Zuckerrohr ernten)
           
     end
 
@@ -130,22 +131,11 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
             return
     end
 
-    if (seed[6][1] ~= nil) then
-        if ((TargetPos.x < seed[6][1]) or (TargetPos.x > seed[6][2])) then
-            common.InformNLS(User,
-            "Das wächst hier nicht.",
-            "This doesn't grow here.");
-            return
-        end
-    end
-    
-    if (seed[7][1] ~= nil) then
-        if ((TargetPos.y < seed[7][1]) or (TargetPos.y > seed[7][2])) then
-            common.InformNLS(User,
-            "Das wächst hier nicht.",
-            "This doesn't grow here.");
-            return
-        end
+    if seed[6] and not areas.contains(seed[6], TargetPos) then
+        common.InformNLS(User,
+        "Das wächst hier nicht.",
+        "This doesn't grow here.");
+        return
     end
 
     if not common.FitForWork( User ) then

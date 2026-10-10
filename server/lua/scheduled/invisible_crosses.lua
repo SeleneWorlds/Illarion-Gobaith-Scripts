@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local M = {}
 
 function M.InvisibleCross()
@@ -5,9 +6,9 @@ function M.InvisibleCross()
     local makeCircle = false
     repeat
         ListPos = ListPos + 1;
-        listfine,posi,lineGFX,rescureGFX,randGFX = M.CrossPositions(ListPos);
+        listfine,posi,lineGFX,rescureGFX,randGFX,areaName = M.CrossPositions(ListPos);
         if not listfine then break; end
-        players = world:getPlayersInRangeOf(posi,4);
+        players = areas.getPlayers(areaName);
         makeCircle = false;
         if (#players>0) then
             for i, player in pairs(players) do
@@ -50,10 +51,10 @@ end
 
 
 function M.CrossPositions(ListID)
-    if (ListID == 1) then     return true,position(-249,  41,-25), 9,44, 0; -- Blackstone Temple
-    elseif (ListID == 2) then return true,position( 295,-341, -6),32,45, 0; -- Northerot
-    elseif (ListID == 3) then return true,position( -26,-213, -3),46,31, 0; -- Grey Rose
-    elseif (ListID == 4) then return true,position(-366,-474,  0),52,31,46; -- Northmark
+    if (ListID == 1) then     return true,areas.center("resurrection_blackstone_temple"), 9,44, 0,"resurrection_blackstone_temple"; -- Blackstone Temple
+    elseif (ListID == 2) then return true,areas.center("resurrection_northerot"),32,45, 0,"resurrection_northerot"; -- Northerot
+    elseif (ListID == 3) then return true,areas.center("resurrection_grey_rose"),46,31, 0,"resurrection_grey_rose"; -- Grey Rose
+    elseif (ListID == 4) then return true,areas.center("resurrection_northmark"),52,31,46,"resurrection_northmark"; -- Northmark
     end
     return false;
 end

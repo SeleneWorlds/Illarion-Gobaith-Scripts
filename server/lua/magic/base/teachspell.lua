@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local common = require("base.common")
 local logging = require("selene.logging")
 
@@ -223,13 +224,13 @@ function M.GetSkillValue( Char, Skill )
 end
 
 function M.TeachingRoom( posi )
-    if ((posi.x>=14) and (posi.x<=16) and (posi.y>=3) and (posi.y<=5) and (posi.z==-60)) then
+    if areas.contains("magic_teaching_room_1", posi) then
         world:gfx(53,position(12,1,-60));
         world:gfx(53,position(12,7,-60));
         world:gfx(53,position(18,1,-60));
         world:gfx(53,position(18,7,-60));
         return true;
-    elseif ((posi.x>=290) and (posi.x<=296) and (posi.y>=-342) and (posi.y<=-336) and (posi.z==-6)) then
+    elseif areas.contains("magic_teaching_room_northerot", posi) then
         world:gfx(53,position(290,-342,-6));
         world:gfx(53,position(296,-342,-6));
         world:gfx(53,position(296,-336,-6));

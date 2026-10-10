@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local M = {}
 
 -- UPDATE common SET com_script='item.book.id_1061_teleport' WHERE com_itemid=1061;
@@ -53,12 +54,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                 -- never create it on people
                 -- never create it on items
                 if not world:isCharacterOnField( loc ) and not world:isItemOnField( loc ) and (world:getField( loc ):tile()~=6)
-                -- not in GR Cell, protected by ritual
-                and (( (loc.x < -72) or (loc.x > -67) ) or ( (loc.y < -220) or (loc.y > -216) ))
-                -- not on Vanima Garden Island...same as above
-                and (( (loc.x < 404) or (loc.x > 410) ) or ( (loc.y < 203) or (loc.y > 209) ))
-                -- not in secret underground cell...same as above
-                and ((( (loc.x < -72) or (loc.x > -55) ) or ( (loc.y < -74) or (loc.y > -60) )) or loc.z~=-3) then
+                and not areas.contains("teleport_blocked_grey_rose_cell", loc)
+                and not areas.contains("teleport_blocked_vanima_garden", loc)
+                and not areas.contains("teleport_blocked_underground_cell", loc) then
                     -- create a gate to the destination
                     --User:inform( "creating" )
                     world:createItemFromId( 10, 1, loc, true, 933 ,(SourceItem.quality-100));

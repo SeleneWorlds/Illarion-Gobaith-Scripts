@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local M = {}
 
 -- I_52.lua voller Wassereimer
@@ -107,7 +108,7 @@ function M.MakeSprout( User, SourceItem, TargetItem )
         --User:inform( "skill "..skillwert.." chance "..chance );
         if M.BlockCheck(TargetItem.pos) then
 	    -- Auf dem Trainingsfeld der Akademie wächst nichts
-	    if ((( TargetItem.pos.x > 54 ) and ( TargetItem.pos.x < 64 ) and ( TargetItem.pos.y > 35 ) and ( TargetItem.pos.y < 49 )) and ( TargetItem.pos.z == 50)) then
+	    if areas.contains("academy_training_ground", TargetItem.pos) then
 	        common.InformNLS( User,
                     "Die Erde hier ist völlig ausgebrannt...hier kann nichts wachsen.",
                     "The ground here is totaly burned...here can't grow anything." );

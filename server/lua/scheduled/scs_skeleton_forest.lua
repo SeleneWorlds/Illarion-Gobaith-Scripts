@@ -1,10 +1,11 @@
+local areas = require("base.areas")
 -- Skeleton Forest
 -- Skeleton Spawn Script
 
 local M = {}
 
 function M.ForestSkells()
-    local Charakters = world:getPlayersInRangeOf(position(-54,72,0),35);
+    local Charakters = areas.getPlayers("skeleton_forest");
     for i, Char in pairs(Charakters) do
         RndTry = math.random(0,15)
         if (RndTry == 1) then

@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local parent = require("item.general.metal")
 local M = {}
 
@@ -102,33 +103,22 @@ end
 
 
 function M.checkRegion(TargetItem)
-	for HerbID, herb in pairs(scheduled_newgaia.herbs) do  
-		-- untergrund checken um Regionen zu bestimmen
-		TileID = world:getField(TargetItem.pos):tile();
-		if (TileID==herb.ground) then
-			-- checken, ob die Itemid des Targets fuer das Kraut stimmt
-			for ItemID, item in pairs(herb.item) do
-				if (TargetItem.id == item) then
-					-- wenn bisher alles zutrifft, dann region durchsuchen
-					for RegionIndex, region in pairs(herb.region) do
-						for zPos = herb.region[RegionIndex][3][1], herb.region[RegionIndex][3][2], 1 do
-							for yPos = herb.region[RegionIndex][2][1], herb.region[RegionIndex][2][2], 1 do
-								for xPos = herb.region[RegionIndex][1][1], herb.region[RegionIndex][1][2], 1 do
-									TilePos = position(xPos,yPos,zPos);
-									if (TilePos==TargetItem.pos) then
-										-- wenn alles stimmt, dann die HerbID definieren
-										currentHerb=herb.id;
-										return true;
-									end
-								end
-							end
-						end		
-					end
-				end
-			end
-		end
-	end
-	return false;
+    local TileID = world:getField(TargetItem.pos):tile()
+    for _, herb in pairs(scheduled_newgaia.herbs) do
+        if TileID == herb.ground then
+            for _, item in pairs(herb.item) do
+                if TargetItem.id == item then
+                    for _, region in ipairs(herb.region) do
+                        if areas.contains(region.area, TargetItem.pos) then
+                            currentHerb = herb.id
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return false
 end
 
 if M.UseItem == nil then M.UseItem = parent.UseItem end

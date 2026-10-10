@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local keys = require("base.keys")
 local common = require("base.common")
 local logging = require("selene.logging")
@@ -10,7 +11,7 @@ function M.onLogout( theChar )
 
     -- begin loo
     local posi = theChar.pos;
-    if (posi.x == -73 or posi.x == -72) and (posi.y == -68 or posi.y == -67) and posi.z == 0 then
+    if areas.contains("trolls_bane_toilet", posi) then
         local bucket = world:getItemOnField( position( -72, -69, 0 ) );
         local door = world:getItemOnField( position( -74, -68, 0 ) );
         keys.UnlockDoor( door );

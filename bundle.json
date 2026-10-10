@@ -3,6 +3,7 @@
   "description": "Lua scripts for Illarion as a Selene bundle.",
   "dependencies": [
     "illarion-api",
+    "illarion-gobaith-data",
     "illarion-script-loader"
   ],
   "entrypoints": [

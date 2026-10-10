@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local M = {}
 
 -- INSERT INTO scheduledscripts VALUES('scheduled.newgaia', 10, 30, 'plantdrop');
@@ -17,17 +18,11 @@ end
 
 
 function M.initRegions()
-	-- id
-	-- x-Koord: {From, To} 2 Values!, smaller value must be named first. Take care by neg. values!
-	-- y-Koord: {From, To} 2 Values!, smaller value must be named first. Take care by neg. values!
-	-- z-Koord: {From, To} 2 Values! Use p.E. {0,0} if you want just area 0. smaller value must be named first. Take care by neg. values!
-	-- Chance of Drop for this reagion in % {spring, summer, autum, winter}
-	-- Sunflowers
-	M.addRegion(133, {132,133},{648,649},{0,0},{30, 60, 40, 50});
-	M.addRegion(142,{143,144},{648,649},{0,0}, {30, 60, 40, 50});
-	M.addRegion(146,{143,144},{648,649},{0,0}, {30, 60, 40, 50});
+    -- Area name and seasonal drop chances {spring, summer, autumn, winter}.
+    M.addRegion(133, "herb_growth_sunflower", {30, 60, 40, 50});
+    M.addRegion(142, "herb_growth_sandberry", {30, 60, 40, 50});
+    M.addRegion(146, "herb_growth_desert_sky_capsule", {30, 60, 40, 50});
 end
-
 
 
 function M.plantdrop()
@@ -40,47 +35,27 @@ end
 
 
 function M.setHerb(HerbID)
-	user:inform("Herb: ".. M.herbs[HerbID].id);
-	user:inform("Herb ground: " ..M.herbs[HerbID].ground);
-
-	RegionID = 1;
-	while RegionID  <= #M.herbs[HerbID].region do
-		user:inform("Anzahl der Tiles: "..M.getTileNumbersofRegion(M.herbs[HerbID].region[RegionID]));
-		user:inform("Drop-Chance: "..M.getDropChance(M.herbs[HerbID].region[RegionID][4]));
-		for zPos = M.herbs[HerbID].region[RegionID][3][1], M.herbs[HerbID].region[RegionID][3][2], 1 do
-			user:inform("Z OK");
-			for yPos = M.herbs[HerbID].region[RegionID][2][1], M.herbs[HerbID].region[RegionID][2][2], 1 do
-				user:inform("y OK");
-				for xPos = M.herbs[HerbID].region[RegionID][1][1], M.herbs[HerbID].region[RegionID][1][2], 1 do
-					TilePos = position(xPos,yPos,zPos);
-					user:inform("Position: "..TilePos.x.." / " ..TilePos.y.." / "..TilePos.z);
-
-					if (M.checkGround(M.herbs[HerbID],TilePos)==true) then
-						user:inform("TileCheck OK");
-						if (math.random(100)<=M.getDropChance(M.herbs[HerbID].region[RegionID][4])) then
-							user:inform("Getroffen, setze Pflanze");
-							world:createItemFromId(HerbID,1,TilePos,false,333,333);
-						else
-							user:inform("Nicht getroffen");
-						end
-
-					else
-						user:inform("TileCheck FALSE");
-					end
-				end
-			end
-		end
-		RegionID = RegionID + 1;
-	end
+    local herb = M.herbs[HerbID]
+    user:inform("Herb: " .. herb.id)
+    user:inform("Herb ground: " .. herb.ground)
+    for _, region in ipairs(herb.region) do
+        local positions = areas.positions(region.area)
+        user:inform("Anzahl der Tiles: " .. #positions)
+        user:inform("Drop-Chance: " .. M.getDropChance(region.season))
+        for _, TilePos in ipairs(positions) do
+            if M.checkGround(herb, TilePos) and math.random(100) <= M.getDropChance(region.season) then
+                world:createItemFromId(HerbID, 1, TilePos, false, 333, 333)
+            end
+        end
+    end
 end
 
-function M.addRegion(HerbID, xPos, yPos, zPos, season)
-	table.insert (M.herbs[HerbID].region , {xPos,yPos,zPos,season});
+function M.addRegion(HerbID, areaName, season)
+    table.insert(M.herbs[HerbID].region, { area = areaName, season = season })
 end
 
-function M.getTileNumbersofRegion(Region)
-	count = (((Region[1][2])-(Region[1][1]))+1) * (((Region[2][2])-(Region[2][1]))+1) * (((Region[3][2])-(Region[3][1])+1));
-	return count;
+function M.getTileNumbersofRegion(region)
+    return #areas.positions(region.area)
 end
 
 function M.getDropChance(Season)

@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local parent = require("item.general.metal")
 local M = {}
 
@@ -47,7 +48,7 @@ function M.Init()
 
     ---------------- MINEN IN SILBERBRAND -----
     ------SILBERBRAND 1 -----
-    M.AddArea( 1, position(106,-150,-3), 20 );
+    M.AddArea( 1, "mine_silberbrand_1" );
     M.AddStone( 1, 1245 );
     M.SetRessource( 1, 1245,  21, 40,  0); -- coal
     M.SetRessource( 1, 1245, 251, 5, 20); -- amethysts
@@ -59,7 +60,7 @@ function M.Init()
     M.SetRessource( 1, 914, 22,  40, 0); -- iron ore
     M.SetRessource( 1, 914, 234,  1, 0); -- gold nuggets
     ------SILBERBRAND 2 -----
-    M.AddArea( 2, position(105,-163,-9), 15 );
+    M.AddArea( 2, "mine_silberbrand_2" );
     M.AddStone( 2, 1245 );
     M.SetRessource( 2, 1245,  21, 50,  0); -- coal
     M.SetRessource( 2, 1245,  254, 1,  0); -- diamonds
@@ -69,20 +70,20 @@ function M.Init()
     M.AddStone( 2, 1273 );
     M.SetRessource( 2, 1273, 22,  50, 0); -- iron ore
     ------SILBERBRAND 3-----
-    M.AddArea( 3, position(134,-144,-9), 10 );
+    M.AddArea( 3, "mine_silberbrand_3" );
     M.AddStone( 3, 232 );
     M.SetRessource( 3, 232, 2536, 10,  0); -- copper
     M.SetRessource( 3, 232, 22,   50,  0); -- iron ore
     M.SetRessource( 3, 232, 234,   1,  0); -- gold nuggets
     ------SILBERBRAND 4 -----
-    M.AddArea( 4, position(103,-152,-6), 20 );
+    M.AddArea( 4, "mine_silberbrand_4" );
     M.AddStone( 4, 914 );
     M.SetRessource( 4, 914,  22, 80,  0); -- iron ore
     M.SetRessource( 4, 914, 234, 1, 0); -- gold nuggets
     ----------- MINEN in SILBERBRAND - FERTIG -----------
 
     ------MINE in Tol Vanima-----------------
-    M.AddArea( 5, position(388,157,-10), 10 );
+    M.AddArea( 5, "mine_tol_vanima" );
     M.AddStone( 5, 1245 );
     M.SetRessource( 5, 1245,  21, 50,  0); -- coal
     M.SetRessource( 5, 1245, 253,  5, 10); -- bluestone
@@ -95,7 +96,7 @@ function M.Init()
     ----------- MINE in Tol Vanima - FERTIG -----------
 
     ---------------- MINE in Varshikar ---------------
-    M.AddArea( 6, position(282,-377,0), 20 );
+    M.AddArea( 6, "mine_varshikar" );
     M.AddStone( 6, 232 );
     M.SetRessource( 6, 232,  2536, 10,  0); -- copper
     M.SetRessource( 6, 232,  22, 50,  0); -- iron ore
@@ -113,7 +114,7 @@ function M.Init()
 
 
     ---------------- Mine Kupferberge 1 ---------------
-    M.AddArea( 7, position(-10,-141,-3), 20 );
+    M.AddArea( 7, "mine_kupferberge_1" );
     M.AddStone( 7, 232 );
     M.SetRessource( 7, 232,  2536, 30, 0); -- copper
     M.SetRessource( 7, 232,  22, 30,   0); -- iron ore
@@ -125,7 +126,7 @@ function M.Init()
     M.SetRessource( 7, 914,  234, 2,   0); -- gold nuggets
     ----------- Mine Kupferberge 1 - FERTIG -----------
     ---------------- Mine Kupferberge 2 ---------------
-    M.AddArea( 8, position(49,-124,0), 20 );
+    M.AddArea( 8, "mine_kupferberge_2" );
     M.AddStone( 8, 232 );
     M.SetRessource( 8, 232,  2536, 70, 0); -- copper
     M.SetRessource( 8, 232,  22, 20,   0); -- iron ore
@@ -136,7 +137,7 @@ function M.Init()
     ----------- Mine Kupferberge 2 - FERTIG -----------
 
     ---------------- Mine Kupferberge 3  ---------------
-    M.AddArea( 9, position(84,-141,0), 5 );
+    M.AddArea( 9, "mine_kupferberge_3" );
     M.AddStone( 9, 232 );
     M.SetRessource( 9, 232,  2536, 60,0); -- copper
     M.SetRessource( 9, 232,  22, 20,  0); -- iron ore
@@ -151,7 +152,7 @@ function M.Init()
     -----------Mine  Kupferberge 3 - FERTIG -----------
 
     ---------------- Mine Wüste ---------------
-    M.AddArea( 10, position(122,-270,-0), 10 );
+    M.AddArea( 10, "mine_desert" );
     M.AddStone( 10, 1273);
     M.SetRessource( 10, 1273,  22, 80,  0); -- iron ore
     M.SetRessource( 10, 1273,  254, 4,  0); -- diamonds
@@ -165,7 +166,7 @@ function M.Init()
 
 
     ---------------- Nordmine ---------------
-    M.AddArea( 11, position(-73,-332,0), 10 );
+    M.AddArea( 11, "mine_north" );
     M.AddStone( 11, 914 );
     M.SetRessource( 11, 914,  22, 40,  0); -- iron ore
     M.SetRessource( 11, 914,  234, 1,  0); -- gold nuggets
@@ -179,7 +180,7 @@ function M.Init()
     ----------- Nordmine - FERTIG -----------
 
     ---------------- Merinium Mine in Tol Vanima ----
-	M.AddArea( 12, position(401,134,-13), 10 );
+	M.AddArea( 12, "mine_tol_vanima_merinium" );
 	M.AddStone( 12, 1273 );
 	M.SetRessource( 12, 1273, 2534, 10, 0); -- Merinium Ore
 	M.SetRessource( 12, 1273, 22, 90, 0); -- Iron Ore
@@ -190,7 +191,7 @@ function M.Init()
 	----------- Merinium Mine - FERTIG -----------
 	
 	----------- Noobia Mine -----------
-	M.AddArea( 13, position(122,25,100), 10 );
+	M.AddArea( 13, "mine_noobia" );
 	M.AddStone( 13, 1245 );
 	M.SetRessource( 13, 1245, 21, 90, 0 ); -- coal
 	M.AddStone( 13, 1246 );
@@ -206,13 +207,12 @@ function M.Init()
     InitDone = true;
 end
 
-function M.AddArea(AreaID,Center,Rad)
+function M.AddArea(AreaID,Name)
     if (Area == nil) then
         Area = { };
     end
     Area[AreaID] = { };
-    Area[AreaID]["Center"] = Center;
-    Area[AreaID]["Radius"] = Rad;
+    Area[AreaID]["Name"] = Name;
 end
 
 function M.AddStone(AreaID,StoneID)
@@ -281,16 +281,8 @@ function M.CheckRock(AreaID,StoneID)
 end
 
 function M.Areas(TargetPos)
-    local XDiff = 0;
-    local YDiff = 0;
     for i, AreaData in pairs(Area) do
-        XDiff = AreaData["Center"].x - TargetPos.x;
-        YDiff = AreaData["Center"].y - TargetPos.y;
-        if (math.sqrt((XDiff * XDiff) + (YDiff * YDiff)) <= AreaData["Radius"]) then
-            if (TargetPos.z == AreaData["Center"].z) then
-                return i;
-            end
-        end
+        if areas.contains(AreaData.Name, TargetPos) then return i end
     end
     return false;
 end

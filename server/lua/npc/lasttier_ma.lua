@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local M = {}
 
 --Name:        Transportkuh
@@ -199,7 +200,7 @@ function M.nextCycle()
         end
 
         if not char_owner then
-            if ( ( thisNPC.pos.x > -289 ) and ( thisNPC.pos.x < -279 ) and ( thisNPC.pos.y > 46 ) and ( thisNPC.pos.y < 56 ) and ( thisNPC.pos.z == 0 ) ) then
+            if areas.contains("transporter_destination_west", thisNPC.pos) then
                 players = world:getPlayersInRangeOf( position( 302, 229, 0 ), 12);
                 if (#players>0) then
                     for i, player in pairs(players) do
@@ -221,7 +222,7 @@ function M.nextCycle()
                         end
                     end
                 end
-            elseif ( ( thisNPC.pos.x > 296 ) and ( thisNPC.pos.x < 305 ) and ( thisNPC.pos.y > 223 ) and ( thisNPC.pos.y < 298 ) and ( thisNPC.pos.z == 0 ) ) then
+            elseif areas.contains("transporter_destination_vanima", thisNPC.pos) then
                 players = world:getPlayersInRangeOf( position( -285, 49, 0 ), 12);
                 if (#players>0) then
                     for i, player in pairs(players) do

@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local _AntiSpamVar
 -- Fighting System
 -- All fights are handled with this script
@@ -524,7 +525,7 @@ end
     @return bool    true if the attack can go on, false if not
 ]]
 function PreAttack_Special( Attacker, Defender, AttackPos )
-    if (Defender.id == 1502327199) and common.GetInArea( Defender, position(-35,-135,0), position( -20, -110, 1 ) ) then
+    if (Defender.id == 1502327199) and areas.contains("combat_protected_npc", Defender.pos) then
         if ( AttackPos == CCharacter.right_tool ) then
             Attacker:increaseAttrib("hitpoints", -2000);
             common.InformNLS( Attacker,

@@ -1,3 +1,4 @@
+local areas = require("base.areas")
 local parent = require("item.general.metal")
 local M = {}
 
@@ -288,12 +289,7 @@ function M.LocationCheck(TargetPos,DigginType)
         end
         return false;
     else -- Lehm
-        if ((( TargetPos.x > -409 ) and ( TargetPos.x < -257 ) and ( TargetPos.y > -245 ) and ( TargetPos.y < -187 )) or
-        (( TargetPos.x >  114 ) and ( TargetPos.x <  178 ) and ( TargetPos.y > -129 ) and ( TargetPos.y <  -75 ))) then
-            return true;
-        else
-            return false;
-        end
+        return areas.contains("clay_digging", TargetPos)
     end
     return false
 end
