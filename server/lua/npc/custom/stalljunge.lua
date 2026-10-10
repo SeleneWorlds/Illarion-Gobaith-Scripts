@@ -1,4 +1,4 @@
--- Rental bookkeeping only. The carrier deliberately has no lasttier script yet.
+-- Rental bookkeeping for carriers using npc.special.lasttier.
 local Money = require('base.money')
 local M = {}
 local FEE, DEPOSIT, QUEST = 50, 200, 8
@@ -16,7 +16,7 @@ local function spawn(player, race)
             local field = world:getField(pos)
             if not world:isCharacterOnField(pos) and not world:isItemOnField(pos)
                     and field:isPassable() and not blockedTiles[field:tile()] then
-                local called, ok, carrier = pcall(world.createDynamicNPC, world, 'Lasttier', race, pos, 0, '')
+                local called, ok, carrier = pcall(world.createDynamicNPC, world, 'Lasttier', race, pos, 0, 'npc.special.lasttier')
                 if not called then
                     print('Failed to spawn rental carrier: ' .. tostring(ok))
                     return nil
@@ -41,8 +41,12 @@ function M.rent(context, race)
     carrier.effects:addEffect(effect)
     Money.TakeMoneyFromChar(player, FEE+DEPOSIT)
     player:setQuestProgress(QUEST, 1)
+    -- Even an unused carrier has an empty cargo depot that can be transferred.
+    player:getDepot(player.id)
     say(context, 'Hier ist euer Lasttier. Bei Rückgabe bekommt ihr 2 Silberstücke Kaution zurück.',
         'Here is your pack animal. Return it to get your deposit of 2 silver coins back.')
+    say(context, 'Sagt "bleib stehen", um die Ladekiste zu öffnen, und "weiter", damit das Lasttier euch wieder folgt. Bleibt in seiner Nähe.',
+        'Say "stay" to access the cargo crate and "follow me" to resume following. Stay close to your pack animal.')
 end
 
 function M.returnAnimal(context)
@@ -54,6 +58,7 @@ function M.returnAnimal(context)
             if hasOwner and owner == player.id and world:deleteNPC(carrier.id) then
                 -- Despawning is deferred until the next cycle. Invalidate ownership
                 -- immediately so another request cannot refund this carrier again.
+                require('npc.special.lasttier').removeDepot(carrier)
                 effect:addValue('owner', 0)
                 player:setQuestProgress(QUEST, 0)
                 if not Money.GiveMoneyToChar(player, DEPOSIT) then

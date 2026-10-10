@@ -1381,6 +1381,9 @@
     "npc.onor": {
       "file": "server/lua/npc/onor.lua"
     },
+    "npc.special.lasttier": {
+      "file": "server/lua/npc/special/lasttier.lua"
+    },
     "npc.special.yellowcross": {
       "file": "server/lua/npc/special/yellowcross.lua"
     },
