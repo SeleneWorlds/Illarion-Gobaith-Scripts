@@ -1,6 +1,10 @@
 -- Derived from old/miss_piggy.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Miss Piggy"
+race = elf
+sex = female
+position = -98, -82, 0
+direction = south
 language = common
 language = human
 language = dwarf
@@ -41,6 +45,3 @@ cycletext "#me scharrt mit dem Vorderhuf im Boden.", "#me scrabbles with it's fo
 cycletext "#me lässt sich mit einem langezogenen grunzen in den Schlamm fallen.", "#me drops its body with a lucky grunt into the mud."
 cycletext "#me wälzt sich voller Freude im Schlamm.", " #me wallows amused in the mud."
 cycletext "#me ist eine große schwere, glücklich schnüffelnde und grunzende Sau. Sie trägt eine goldene Krone auf ihrer linken Pobacke.", "#me is a big heavy, lucky sniffling and gruntig sow. Wearing a golden crown on the left buttock."
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

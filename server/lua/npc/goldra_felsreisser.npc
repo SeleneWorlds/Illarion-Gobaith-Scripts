@@ -1,6 +1,11 @@
 -- Derived from old/goldra_felsreisser.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Goldra Felsreisser"
+race = dwarf
+sex = female
+position = 112, -198, -3
+direction = south
+radius = 0
 language = common
 language = dwarf
 defaultLanguage = common
@@ -89,7 +94,6 @@ german, "[tt]or.*" -> "Aye, jeden Tag und jede Stund' steh ick da draussen am To
 "[dd]unkel.*", "[dd]üster.*" -> "Wie? Du findest es dunkel hier? Dann schneid' dir mal die Haare und mach die Augen richtig uff'! Du meckerst ja fast so viel wie Trokamm, wenn er mal wieder zum Training muss!"
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Custom Lua functions require review: nextCycleDisabled, mainTask, standardAnswer, keinBock, wait, checkGender, drinkBeer, drinkGame, hicks, moveFunction, isPassable, tellJoke, initJoke
 -- Custom event dispatch outside registration rules requires review.
 -- Movement, spawning or world changes require Lua hooks.

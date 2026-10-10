@@ -1,6 +1,10 @@
 -- Derived from old/kurg.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Kurg"
+race = orc
+sex = male
+position = 183, -447, 1
+direction = south
 language = common
 language = human
 defaultLanguage = common
@@ -37,6 +41,3 @@ english, "what.+buy" -> "Meh buys all kinds ob meats: Rabbit, Lamb, Deer and Por
 -- Idle dialogue
 cycletext "#me sieht sich für Kunden um", "#me looks around for customers"
 cycletext "#me haut etwas Fleisch ab und hängt es ", "#me chops up some meat and hangs it"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

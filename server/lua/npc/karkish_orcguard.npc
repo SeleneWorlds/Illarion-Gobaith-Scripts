@@ -1,6 +1,11 @@
 -- Derived from old/karkish_orcguard.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Karkish Orcguard"
+race = orc
+sex = female
+position = 159, -435, 0
+direction = west
+radius = 0
 language = common
 language = orc
 defaultLanguage = common
@@ -95,5 +100,4 @@ cycletext "#me kratzt sich am kahlen Kopf", "#me scratches his pale head."
 cycletext "#me wirft dir einen aufmerksamen Blick zu, jede deiner Bewegungen für einige Augenblicke wahrnehmend.", "#me glances at you with attentive gaze, watching any single movement of you for a few moments."
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Legacy gate commands from up to eight tiles away require a dialogue-range extension.

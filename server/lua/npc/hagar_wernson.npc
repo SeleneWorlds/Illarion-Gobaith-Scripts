@@ -1,6 +1,10 @@
 -- Derived from old/hagar_wernson.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Hagar Wernson"
+race = human
+sex = male
+position = -345, -441, 0
+direction = south
 language = common
 language = human
 defaultLanguage = common
@@ -170,6 +174,3 @@ cycletext "#me kratzt sich abwesend unterm Kilt", "#me scratches himself below h
 cycletext "#me sieht sich gelangweilt um", "#me looks around bored"
 cycletext "#me trocknet sich mit dem Geschirrtuch unter den Achseln", "#me dries his armpits with the dishrag"
 cycletext "#me's Atem riecht nach schalem Bier", "#me's breath smells of stale beer"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

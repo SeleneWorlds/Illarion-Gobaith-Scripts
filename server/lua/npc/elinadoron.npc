@@ -1,6 +1,10 @@
 -- Derived from old/elinadoron.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Elina Doron"
+race = human
+sex = female
+position = -257, -292, 0
+direction = south
 language = common
 language = human
 language = lizard
@@ -26,7 +30,3 @@ item(64, "all") < 5, english, "[pp]feil", "[aa]rrow" -> "Don't try to cheat me! 
 -- Idle dialogue
 cycletext "#me blick still in den Wald hinaus", "#me quietly peers into the forest"
 cycletext "#me scheint zu horchen", "#me seems to hark"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
--- IrundarInfo and Arrows are ported; ordinary event dispatch uses the .npc runtime.

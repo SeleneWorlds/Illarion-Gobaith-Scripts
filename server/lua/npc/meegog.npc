@@ -1,6 +1,10 @@
 -- Derived from old/meegog.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Meegog"
+race = goblin
+sex = male
+position = 156, -448, 0
+direction = south
 language = common
 language = human
 defaultLanguage = common
@@ -39,6 +43,3 @@ english, "what.+buy" -> "I have no money, so I buy nothing."
 -- Idle dialogue
 cycletext "#me pickt seine Nase auf", "#me picks his nose"
 cycletext "#me räumt die Höhle auf", "#me cleans up the cave"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

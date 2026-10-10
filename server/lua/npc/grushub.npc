@@ -1,6 +1,10 @@
 -- Derived from old/grushub.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Gru'shub"
+race = orc
+sex = male
+position = 263, -309, 0
+direction = south
 language = common
 language = orc
 defaultLanguage = common
@@ -201,6 +205,3 @@ buyPrimaryItem = id(330), price(6)
 "[hh]ilfe" -> "'Welche Waren verkauft ihr', 'Ich möchte <Anzahl> <Ware> kaufen', 'Ich möchte <Ware> kaufen', 'Ich möchte <Anzahl> <Ware> verkaufen', 'Was ist der Preis von <Ware>','Was zahlt ihr für <Ware>', 'Was kauft ihr?'"
 
 "trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

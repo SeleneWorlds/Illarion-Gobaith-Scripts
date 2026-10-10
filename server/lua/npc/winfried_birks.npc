@@ -1,6 +1,10 @@
 -- Derived from old/winfried_birks.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Magister Winfried Birks"
+race = human
+sex = male
+position = 261, -317, -3
+direction = east
 language = common
 language = human
 language = ancient
@@ -186,6 +190,3 @@ cycletext "KEL RI? KEL RE? KEL RA? *knall* aua!*?", "KEL RI? KEL RE? KEL RA? *ba
 cycletext "#me murmelt \"SIM -SALA- BIM? Was ist das denn für eine alberne Runenfolge?\"", "#me mumbles \"SIM -SALA - BIM? What  silly rune combination is that?\""
 cycletext "#me blättert eine Seite weiter?", "#me pages a side forward"
 cycletext "#me kritzelt etwas an den Rand des Buches.", "#me scrawls something on the edge of the book"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

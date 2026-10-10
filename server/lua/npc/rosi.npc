@@ -1,6 +1,10 @@
 -- Derived from old/rosi.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Rosi Baggins"
+race = halfling
+sex = female
+position = -372, 85, 0
+direction = west
 language = common
 language = halfling
 defaultLanguage = common
@@ -24,6 +28,3 @@ lookatUS = "A suspiciously glancing, small woman who has a stuffed purse attache
 "[ee]rzähl.+[ww]as" -> "Tut mir leid, ich bin grad ziemlich beschäftigt."
 "[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Be well.", "Farewell!", "Good bye."
 "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Auf wiedersehen.", "Auf bald"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

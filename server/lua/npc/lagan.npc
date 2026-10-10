@@ -35,4 +35,4 @@ buyPrimaryItem = id(13), price(2)
 "trade", "buy", "sell", "wares", "handel", "kauf", "verkauf", "waren" -> trade
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
+-- Legacy source does not specify race, sex, position, direction; data-record defaults remain where available.

@@ -1,6 +1,10 @@
 -- Derived from old/rian_delarn.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Rian Delarn"
+race = human
+sex = male
+position = 31, 56, 50
+direction = west
 language = common
 language = human
 language = ancient
@@ -61,7 +65,6 @@ cycletext "#me setzt sich auf den Baumstamm und beginnt in einem kleinen Buch zu
 cycletext "#me geht, leise Formeln vor sich hermurmelnd, langsam ein Stück auf und ab.", "#me walks, mumbling silent formulas, a short way."
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Custom Lua functions require review: SayPrice, getCreature, Pay, CalcSilverCopper, logToFile_npc
 -- Custom event dispatch outside registration rules requires review.
 -- Movement, spawning or world changes require Lua hooks.

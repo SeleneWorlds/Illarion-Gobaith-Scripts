@@ -1,6 +1,10 @@
 -- Derived from old/lucius.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Lucius van Sareth"
+race = human
+sex = male
+position = 267, -303, 0
+direction = west
 language = common
 language = human
 defaultLanguage = common
@@ -22,6 +26,3 @@ useMsgUS = "Don't you touch me!"
 "[ee]rzähl.+[ww]as" -> "Tut mir leid, ich bin grad ziemlich beschäftigt."
 "[gg]oodbye", "[bb]ye", "[ff]arewell" -> "Be well.", "Farewell!", "Good bye."
 "[aa]uf.+[bb]ald", "[bb]is.+[bb]ald" -> "Auf wiedersehen.", "Auf bald"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

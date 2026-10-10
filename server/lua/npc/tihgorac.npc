@@ -1,6 +1,10 @@
 -- Derived from old/tihgorac.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Tihgorac"
+race = orc
+sex = male
+position = 235, -324, 0
+direction = north
 language = common
 language = orc
 defaultLanguage = common
@@ -134,6 +138,3 @@ queststatus(2112) < 3, english, "[aa]x[et]" -> "Axe good weapon. %NPCNAME good a
 "[mm]ummies", "[mm]ummy" -> "Yuh. Yoo comes back wid innards of mummies tuh prove yerself and meh will teach yoo some tricks yoo can use tuh knock down big critters!"
 "[gg]rü[ßs]+e", "[hh]allo", "[oo]rk" -> "Gruß, wies dir geht? Ich %NPCNAME, großer Krieger.", "Wus? Wus willst? Ich %NPCNAME, starker Krieger! Har"
 "[mm]umie" -> "Ja. Komm her mit Innereinen um dich zu beweisen, dann %NPCNAME zeigen dir ein paar Tricks um große Viecher tot zu haun!"
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

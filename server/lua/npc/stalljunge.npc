@@ -1,6 +1,10 @@
 -- Derived from old/stalljunge.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Stalljunge"
+race = human
+sex = male
+position = -16, 16, 0
+direction = south
 language = common
 language = human
 defaultLanguage = common
@@ -25,7 +29,7 @@ cycletext "#me schaut sich um", "#me looks around"
 cycletext "#me niest", "#me sneezes"
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
+-- Static data record remains disabled: duplicate of stalljunge_tb at the same placement.
 -- Custom Lua functions require review: SayPrice, createCow, GetCow, returnCow, CheckMoney, Pay, CalcSilverCopper
 -- Custom event dispatch outside registration rules requires review.
 -- Movement, spawning or world changes require Lua hooks.

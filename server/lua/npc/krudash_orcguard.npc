@@ -1,6 +1,11 @@
 -- Derived from old/krudash_orcguard.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Krudash Orcguard"
+race = orc
+sex = male
+position = -63, -142, 0
+direction = south
+radius = 0
 language = common
 language = orc
 defaultLanguage = common
@@ -70,5 +75,4 @@ german, "[tt]roll['s].*[bb]ane" -> "Menschenstadt in Mitte der Insel du fragen n
 german, "[vv]arshikar" -> "Meisten Wesen dort dumm und stinkig - aber Clanführer, Grrrypus, Ehre haben! Sei gut zu Wüstenvolk, dann sie gut zu Orks sind!"
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Legacy gate commands from up to eight tiles away require a dialogue-range extension.

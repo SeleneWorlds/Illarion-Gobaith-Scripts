@@ -1,6 +1,10 @@
 -- Derived from old/lurandir.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Lurandir"
+race = elf
+sex = female
+position = -166, -107, 0
+direction = south
 language = common
 defaultLanguage = common
 autointroduce = on
@@ -33,6 +37,3 @@ german, "[hh]ilfe" -> "Lasst mich Euch meinen Namen nennen. Ich bin Lurandir, ei
 german, "[rr]ezept" -> "Das Rezept selbst soll nicht Eure Sorge sein mein Freund. Bringt mir das Wasser und vielleicht erzähle ich euch mehr darber."
 german, "[ww]asser" -> "Das gesegnete Wasser von Irundar kann in der Höhle von Irundar gefunden werden. Ich weiß weder, wo diese Höhle ist, noch wie man sie betritt. Doch hörte ich von einer Waldläuferin in den Nördlichen Wäldern, welche mehr wissen mag. Ihr Name ist Elina Doron."
 german, "[ii]rundar" -> "Das gesegnete Wasser von Irundar kann in der Höhle von Irundar gefunden werden. Ich weiß weder, wo diese Höhle ist, noch wie man sie betritt. Doch hörte ich von einer Waldläuferin in den Nördlichen Wäldern, welche mehr wissen mag. Ihr Name ist Elina Doron."
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

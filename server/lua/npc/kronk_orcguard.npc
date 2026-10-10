@@ -1,6 +1,11 @@
 -- Derived from old/kronk_orcguard.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Kronk Orcguard"
+race = orc
+sex = male
+position = 162, -448, -1
+direction = south
+radius = 0
 language = common
 language = orc
 defaultLanguage = common
@@ -73,5 +78,4 @@ german, "[vv]arshikar" -> "Wüstenstadt nicht fern von hier. Meisten Wesen dort 
 "[ww]uestenstadt" -> "Wüstenstadt nicht fern von hier. Meisten Wesen dort dumm und stinkig - aber Clanführer, Grrrypus, Ehre haben! Sei gut zu Wüstenvolk, dann sie gut zu Orks sind!"
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Legacy gate commands from up to eight tiles away require a dialogue-range extension.

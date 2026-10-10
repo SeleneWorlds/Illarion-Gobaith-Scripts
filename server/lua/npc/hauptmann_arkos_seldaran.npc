@@ -1,6 +1,10 @@
 -- Derived from old/hauptmann_arkos_seldaran.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Hauptmann Arkos Seldaran"
+race = human
+sex = male
+position = -86, -23, 0
+direction = east
 language = common
 language = human
 defaultLanguage = common
@@ -124,6 +128,5 @@ cycletext "#me blickt gedankenverloren zum Himmel", "#me looks lost in thought t
 cycletext "#me versucht vergeblich, seine stumpf gewordene albarische Rüstung zu polieren.", "#me tries in vain to polish his dull albarian armor."
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Talk begin/end uses VBU base state; legacy wandering and player-facing behavior still need Lua hooks.
 -- Custom event dispatch outside registration rules requires review.

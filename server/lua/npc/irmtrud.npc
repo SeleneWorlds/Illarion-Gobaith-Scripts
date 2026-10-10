@@ -1,6 +1,11 @@
 -- Derived from old/irmtrud.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Irmtrud"
+race = dwarf
+sex = female
+position = 136, -161, -9
+direction = south
+radius = 0
 language = common
 language = dwarf
 defaultLanguage = common
@@ -56,5 +61,4 @@ cycletext "#me geht vor die Tore und rüttelt an ihnen \"Aye, is zu!\"", "#me st
 cycletext "#me zieht eine Flasche Bier aus der Tasche und nimmt einen großzügigen Schluck.", "#me pulls a bottle of beer out of her bag and takes a generous sip."
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Legacy commands from up to ten tiles away require a dialogue-range extension.

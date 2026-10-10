@@ -1,6 +1,7 @@
 -- Derived from old/lasttier_ma.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Transportkuh"
+direction = south
 language = common
 defaultLanguage = common
 autointroduce = on
@@ -8,7 +9,8 @@ autointroduce = on
 
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
+-- Dynamic donkey (legacy type 50); appearance is in the data record and placement comes from rental spawning.
+-- Legacy source does not specify sex; data-record defaults remain where available.
 -- Custom Lua functions require review: InitNPC, genDepotPos, MoveX, MoveY, CheckItem, isPassable, GetTileMod
 -- Hand-written Lua event handlers require migration beyond extracted static dialogue/metadata.
 -- Movement, spawning or world changes require Lua hooks.

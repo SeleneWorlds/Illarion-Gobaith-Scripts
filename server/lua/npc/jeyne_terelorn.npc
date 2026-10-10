@@ -19,5 +19,5 @@ state = 2, "yes", "sure" -> "Thank you! I fear he's at the [WALD] again, though 
 "kauft", "kaufst" -> "Ich kaufe nichts."
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
+-- Legacy source does not specify race, sex, position, direction; data-record defaults remain where available.
 -- Custom event dispatch outside registration rules requires review.

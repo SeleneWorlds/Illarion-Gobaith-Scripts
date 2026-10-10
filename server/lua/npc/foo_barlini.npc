@@ -1,6 +1,10 @@
 -- Derived from old/foo_barlini.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Foo Barlini"
+race = human
+sex = female
+position = 31, 56, 50
+direction = south
 language = common
 language = human
 language = ancient
@@ -75,6 +79,5 @@ cycletext "#me formt einen schimmernden Eisball in ihrer Hand.", "#me forms a gl
 cycletext "#me formt einen leuchtenden Feuerball in ihrer Hand.", "#me forms a shiny fireball in her hand."
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
 -- Custom Lua functions require review: SayPrice, getCreature, Pay, CalcSilverCopper, logToFile_npc
 -- Custom event dispatch outside registration rules requires review.

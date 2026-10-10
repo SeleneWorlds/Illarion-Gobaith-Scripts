@@ -20,4 +20,4 @@ german, item(68, "body") >= 1, money >= 100, "[bb]rauch.+[ss]chl[üue]ssel", "[m
 cycletext "#me sortiert Bücher in den Regalen", "#me sorts books in the shelfs."
 
 -- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
+-- Legacy source does not specify race, sex, position, direction; data-record defaults remain where available.

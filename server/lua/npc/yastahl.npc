@@ -1,6 +1,10 @@
 -- Derived from old/yastahl.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Yastahl"
+race = elf
+sex = male
+position = -281, -436, 0
+direction = south
 language = common
 language = elf
 defaultLanguage = common
@@ -25,6 +29,3 @@ useMsgUS = "Don't you touch me!"
 "[ee]lfisch", "[ee]lfen.+[ss]prache", "[ss]prache.+[ee]lfen" -> "Seit ihr daran interessiert die Hohe Sprache der Elfen zu erlernen? Es besteht kein Zweifel, das ihr neue Pfade des Denkens dank der Sprache der Elfen begehen könntet."
 "[tt]ribute" -> "A Tribute...Now what shall be my tribute? There is no greater tribute than that which is found in nature. Perhaps you could provide me with a Night Angel's Blossom and a Firnis Blossom for starters. Come back with them an i will teach you the language."
 "[gg]abe" -> "Eine Gabe..was soll es sein? Es gibt keine größere Gabe als die die in der Natur gefunden werden kann. Vielleicht könntest du mir eine Nacht Engels Blüte und eine Firnis Blüte bringen. Bring mir diese ich werde dir die Sprache beibringen."
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.

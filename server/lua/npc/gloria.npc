@@ -1,6 +1,10 @@
 -- Derived from old/gloria.lua; UTF-8.
 -- Archived Lua remains the reference for custom behavior.
 name = "Gloria"
+race = human
+sex = female
+position = 58, 58, 50
+direction = south
 language = common
 language = human
 language = ancient
@@ -53,6 +57,3 @@ buyPrimaryItem = id(2501), price(5)
 -- Idle dialogue
 cycletext "#me notiert ein paar Zahlen auf ein Stück Pergament.", "#me notes a few numbers on a piece of pergament."
 cycletext "#me sortiert ein paar Dinge in ihrer Truhe neu.", "#me rearranges some things in her chest. "
-
--- Migration follow-up
--- No NPC data record: supply appearance and placement before spawning.
