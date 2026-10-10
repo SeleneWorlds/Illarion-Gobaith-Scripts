@@ -210,6 +210,13 @@ end
 local numericSubjects = {state=true, number=true, money=true, queststatus=true, item=true, skill=true, attrib=true}
 local function validateCondition(node)
     if node.kind == 'symbol' and (node.value == 'english' or node.value == 'german' or node.value == 'admin') then return end
+    if node.kind == 'call' and (node.name == 'race' or node.name == 'sex') then
+        args(node,1,1)
+        local value=scalar(node.args[1])
+        if node.name == 'race' and races[value] == nil then fail(node.token,"unknown NPC race condition") end
+        if node.name == 'sex' and value ~= 'male' and value ~= 'female' then fail(node.token,"sex condition must be male or female") end
+        return
+    end
     if node.kind == 'call' and node.name == 'chance' then
         args(node,1,1); local chance=number(node.args[1]); if chance < 0 or chance > 100 then fail(node.token,"chance must be between 0 and 100") end; return
     end
@@ -388,7 +395,11 @@ local function makeCondition(node)
         if node.value == 'admin' then return require('npc.base.condition.admin')() end
         return require('npc.base.condition.language')(node.value)
     end
-    if node.kind == 'call' then return require('npc.base.condition.chance')(scalar(node.args[1])) end
+    if node.kind == 'call' then
+        if node.name == 'race' then return require('npc.base.condition.race')(races[scalar(node.args[1])]) end
+        if node.name == 'sex' then return require('npc.base.condition.sex')(scalar(node.args[1])) end
+        return require('npc.base.condition.chance')(scalar(node.args[1]))
+    end
     local subject=node.subject; local name=subject.name or subject.value
     local value=runtimeValue(node.value)
     if name == 'queststatus' then return require('npc.base.condition.quest')(scalar(subject.args[1]),node.op,value) end
