@@ -39,9 +39,9 @@ sellItem = id(1858), price(10), stack(1), quality(549)
 buyPrimaryItem = id(1858), price(2)
 buyPrimaryItem = id(2498), price(1)
 
-"[ww]hat.+sell" -> "Drinks and more. What did you think? It's a Bar. And now, tell me: What do you want?", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "Drinks and more. What did you think? It's a Bar. And now, tell me: What do you want?", trade_buy
 "[ww]as.+verkauf" -> "Ich verkaufe alles, was das Herz begehrt: Met, Wein, Bier, und so weiter. Willst du was?", trade_buy
-"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reet", "[hh]ello" -> "Aahr! Be greeted in 'The Fluffy Sheep Tavern'. What do you want to drink?", "Hello. What do I have to make you?"
 "[yy]ou.+[bb]arkeeper" -> "What do you think I have to do here? What a stupid question. Aaarh! Drink or eat something or leave!"
 "[ww]hat.+[ww]are" -> "It's a damned bar, what do you think I sell? But here, look at the list: drinks and more."

@@ -33,9 +33,9 @@ buyPrimaryItem = id(2499), price(5)
 buyPrimaryItem = id(2500), price(5)
 buyPrimaryItem = id(2501), price(5)
 
-"[ww]hat.+sell" -> "I sell everything you need for an enjoyable break. You should not learn with an empty stomach.", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I sell everything you need for an enjoyable break. You should not learn with an empty stomach.", trade_buy
 "[ww]as.+verkauf" -> "Ich verkaufe alles, was ihr für eine angenehme Pause braucht. Man sollte schließlich nicht auf hungrigem Magen studieren.", trade_buy
-"[ww]hat.+buy" -> "I buy bottles with drinks and also the empty glasses and plates back.", trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "I buy bottles with drinks and also the empty glasses and plates back.", trade_sell
 "[ww]as.+.+%s[kk]auf", "[ww]as.*%s[kk]auf" -> "Ich kaufe Getränke an und auch die leeren Gläser und Teller zurück.", trade_sell
 "what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 "[gg]reetings", "[hh]ello", "[hh]i" -> "Welcome. Can I help you?", "A good day to you."

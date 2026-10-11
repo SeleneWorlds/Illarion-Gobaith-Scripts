@@ -51,9 +51,9 @@ buyPrimaryItem = id(2923), price(4)
 sellItem = id(556), price(50), stack(1), quality(483)
 buyPrimaryItem = id(556), price(5)
 
-"[ww]hat.+sell" -> "I sell tools and food.", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I sell tools and food.", trade_buy
 "[ww]as.+verkauf" -> "Ich verkaufe vor allem Werkzeuge und mancherlei anderes. Schau selbst!", trade_buy
-"[ww]hat.+buy" -> "I buy different things.", trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "I buy different things.", trade_sell
 "[ww]as.kauf", "[ww]as.*%s[kk]auf" -> "Ich kaufe verschiedene Dinge an.", trade_sell
 "[gg]reet", "[hh]ello" -> "Greetings. I'm %NPCNAME, travelling hawker", "Hello. I'm %NPCNAME, travelling hawker."
 "[ww]hat.+do" -> "I am here to trade. I come from Gobaith to sell different tools and buy other things from here."

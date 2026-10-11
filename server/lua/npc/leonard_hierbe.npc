@@ -32,9 +32,9 @@ buyPrimaryItem = id(150), price(3)
 sellItem = id(51), price(55), stack(1), quality(555)
 buyPrimaryItem = id(51), price(5)
 
-"[ww]hat.+sell" -> "I don't sell anything, but I trade plants, pipes, beer, elven wine, baby fir trees, buckets, and nice noise-makers for those shiny things", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I don't sell anything, but I trade plants, pipes, beer, elven wine, baby fir trees, buckets, and nice noise-makers for those shiny things", trade_buy
 "[ww]as.+verkauf" -> "Ich verkaufe nichts, aber ich handel mit Pflanzen, Pfeifen, Bier, Elbenwein, Tannen Kindern, Eimern und nette Geräusche Macher für diese glitzernden Stückchen", trade_buy
-"[ww]hat.+buy" -> "I'll give you round shiny things for cylindrical vessels containing hop-flavored brew, or that sweet elven stuff. I'll even trade buckets, harps, lutes, or even horns! I can get a nice fir tree seedling! Isn't a tree much nicer than copper?", trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "I'll give you round shiny things for cylindrical vessels containing hop-flavored brew, or that sweet elven stuff. I'll even trade buckets, harps, lutes, or even horns! I can get a nice fir tree seedling! Isn't a tree much nicer than copper?", trade_sell
 "[ww]as.+%skauf", "[ww]as.*%s[kk]auf" -> "Ich gebe dir diese runden glitzernden Dinger für zylindrische Gefäße, befüllt mit, mit Hopfen gewürztem, Gebräu oder mit dem süßen Elbenzeugs. Ich handle auch mit Eimern und Instrumenten. Und ich kauf auch Tannen Setzlinge.", trade_sell
 "[gg]reet", "[hh]ello" -> "Hello sunshine!"
 "[gg]r[uü][sß+]", "[hh]allo" -> "Hallo Sonnenschein!", "Hallöchen Sonnenschein"

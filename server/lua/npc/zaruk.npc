@@ -31,8 +31,8 @@ buyPrimaryItem = id(236), price(50)
 sellItem = id(1008), price(400), stack(1), quality(649)
 buyPrimaryItem = id(1008), price(50)
 
-"[ww]hat.+sell", "[ww]as.+verkauf" -> trade_buy
-"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]", "[ww]as.+verkauf" -> trade_buy
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]", "[ww]as.*%s[kk]auf" -> trade_sell
 "[hh]ello", "[gg]reetings" -> "Greetin's.", "Aye! Greetins to ye'."
 "[hh]allo", "[gg]rü[ßs]+e" -> "Moin", "Aye. Grüß euch."
 "[jj]ob" -> "I'm an importer, and I pull in wares from far and wide. Puts the jingle in me purse."

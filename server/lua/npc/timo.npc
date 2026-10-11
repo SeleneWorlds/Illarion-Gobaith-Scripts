@@ -39,9 +39,9 @@ sellItem = id(2917), price(2), stack(1), quality(333)
 sellItem = id(291), price(2), stack(1), quality(333)
 sellItem = id(2494), price(2), stack(1), quality(333)
 
-"[ww]hat.+sell" -> "Oh, I sell clothes, tools and seeds. Want to see my list?", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "Oh, I sell clothes, tools and seeds. Want to see my list?", trade_buy
 "[ww]as.+verkauf" -> "Oh, ich verkaufe Kleidung, Werkzeuge und Samen. Willst du meine Liste sehen?", trade_buy
-"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]", "[ww]as.*%s[kk]auf" -> trade_sell
 german, "[ii]rundar" -> "Irundar...Die Höhle von Irundar. Ich bin da gewesen...langweiliger Ort, hehe. Sie ist einfach leer. Wenn du rein willst, vom Nordende des kleinen Strandes an der Südküste von Gobaith, 40 Schritte nach Norden und 12 Schritte nach Westen."
 english, "[ii]rundar" -> "Irundar...The Cave of Irundar. I have been there...a boring place, hehe. It is just empty. If you want to get in, walk from the north end of a little bay at the south coast of Gobaith 40 steps north and then 12 steps west. Hehe."
 "[gg]reetings" -> "Welcome to Greenbriar! Can I help you?"

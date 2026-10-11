@@ -18,9 +18,9 @@ wrongLangUS = "#me looks at you a little confused"
 -- Trade offers and requests; stock and trader cash are unlimited.
 sellItem = id(24), price(24), stack(1), quality(216)
 
-"[ww]hat.+sell" -> "I cannot offer you much, only maybe one of my old shovels.", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I cannot offer you much, only maybe one of my old shovels.", trade_buy
 "[ww]as.+verkaufen", "[ww]as.+verkauf" -> "Ich kann nicht viel anbieten. Allerhöchstens vielleicht meine alten Schaufeln.", trade_buy
-"[ww]hat.+buy" -> "I fear, my friend, that there is nothing I would want to buy right now.", trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "I fear, my friend, that there is nothing I would want to buy right now.", trade_sell
 "[ww]as.+%skauf", "[ww]as.*%s[kk]auf" -> "Ich fürchte, mein Freund, es gibt nichts was ich im Augenblick von euch kaufen würde.", trade_sell
 "[hh]ello", "[gg]reetings" -> "Greetings my friend.", "A pleasure to meet you, friend."
 "[hh]allo", "[gg]rü[sß]+e" -> "Grüße mein Freund.", "Ist mir eine Freude euch zu treffen."

@@ -28,9 +28,9 @@ sellItem = id(3051), price(3), stack(1), quality(333)
 buyPrimaryItem = id(3051), price(2)
 
 "was.+verkaufe", "[ww]as.+verkauf" -> "Ich verkaufe alle Arten von Fleisch: Kaninchen, Lamm, Rehe und Schweinefleisch für nur 2 Kupfer jeder. Schinken, Steak und Würste kosten 3 jeder.", trade_buy
-english, "what.+sell", "[ww]hat.+sell" -> "Meh sells all kinds ob meats: Rabbit, Lamb, Deer and Pork for only 2 coppers each.  Ham, Steak and sausages cost 3 each.", trade_buy
+english, "what.+sell", "[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "Meh sells all kinds ob meats: Rabbit, Lamb, Deer and Pork for only 2 coppers each.  Ham, Steak and sausages cost 3 each.", trade_buy
 "was.+kaufe", "[ww]as.*%s[kk]auf" -> "Ich kaufe alle Arten von Fleisch: Kaninchen, Lamm, Rehe und Schweinefleisch für nur 1 Kupfer jeder. Schinken, Steak und Würste sind 2 jeder wert.", trade_sell
-english, "what.+buy", "[ww]hat.+buy" -> "Meh buys all kinds ob meats: Rabbit, Lamb, Deer and Pork for only 1 copper each.  Ham, Steak and Sausages are worth 2 each.", trade_sell
+english, "what.+buy", "[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "Meh buys all kinds ob meats: Rabbit, Lamb, Deer and Pork for only 1 copper each.  Ham, Steak and Sausages are worth 2 each.", trade_sell
 german, "gr[üue]+[sß]+e", "hallo", "guten.+tag" -> "Schön dich zu sehen! Wie gehts dir?  Ich bin Kurg der Metzger. Wie kann ich Ihnen helfen?"
 english, "greetings", "hello" -> "Greebas! How are joo?  Meh is Kurg da Butcher.  How may meh help joo?"
 "auf.+bald", "bis.+bald", "tschüss" -> "Bis bald!"

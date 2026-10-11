@@ -36,8 +36,8 @@ buyPrimaryItem = id(1317), price(2)
 buyPrimaryItem = id(2498), price(3)
 buyPrimaryItem = id(2055), price(3)
 
-"[ww]hat.+sell", "[ww]as.+verkauf" -> trade_buy
-"[ww]hat.+buy" -> "I'll buy cutlery, plates and bowls, cups, goblets, bottles and cooking tools.", trade_sell
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]", "[ww]as.+verkauf" -> trade_buy
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "I'll buy cutlery, plates and bowls, cups, goblets, bottles and cooking tools.", trade_sell
 "[ww]as.+%skauf", "[ww]as.*%s[kk]auf" -> "Ich kaufe Besteck, Teller und Schüsseln, Becher, Kelche, diverse Flaschen und Kochutensilien.", trade_sell
 "[hh]ello", "[gg]reetings" -> "Hello", "Greetings"
 "[hh]allo", "[gg]r[üu][ßs]+" -> "Hallo", "Grüße"

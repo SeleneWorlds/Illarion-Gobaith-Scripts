@@ -177,9 +177,9 @@ buyPrimaryItem = id(2447), price(50)
 buyPrimaryItem = id(2448), price(12)
 buyPrimaryItem = id(330), price(6)
 
-"[ww]hat.+sell" -> "Me sell many shiny things, har har!", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "Me sell many shiny things, har har!", trade_buy
 "[ww]as.+verkauf" -> "Mir verkaufen alles was glänzt!", trade_buy
-"[ww]hat.+buy" -> "Lots! Things wit' fight, armor, herbs, clothes 'n eating stuff!", trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "Lots! Things wit' fight, armor, herbs, clothes 'n eating stuff!", trade_sell
 "[ww]as.+%s[kk]auf", "[ww]as.*%s[kk]auf" -> "Har Har! Ich kauf' Krieg Zeugs, Kleidung, Essen und Kräuters!", trade_sell
 "what.+day.+today", "what.+today.+day", "what.+date", "welch.+tag.+heute", "was.+tag.+heute", "was.+datum", "welch.+datum" -> lua("npc.custom.calendar", "date")
 "[gg]reetings" -> "Greebas! You want buy from great %NPCNAME?"

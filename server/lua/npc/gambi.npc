@@ -51,10 +51,10 @@ buyPrimaryItem = id(2738), price(1)
 buyPrimaryItem = id(391), price(5)
 buyPrimaryItem = id(92), price(20)
 
-"[ww]hat.+sell" -> "I sell different tools", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I sell different tools", trade_buy
 "[ww]as.+verkauf" -> trade_buy
 "[ww]as.+kauf", "[ww]as.*%s[kk]auf" -> "Ja, ich habe verschiedene Werkzeuge.", trade_sell
-"[ww]hat.+buy" -> trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> trade_sell
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'I want to sell <number|a> <wares>', 'Price of ...','What do you pay for ...', 'What wares do you buy?'"
 "[gg]reet", "[hh]ello", "[hh]i" -> "Greetingsss. How can I help you?", "Aye! You are interested in my wares?"
 "[ww]hat.+[tt]ool" -> "Whatever you want: scissors, saws, hammers, shovels, needles, axes, sickles, scythes and glassblowing pipes."

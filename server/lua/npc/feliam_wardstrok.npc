@@ -33,9 +33,9 @@ sellItem = id(259), price(3), stack(1), quality(333)
 sellItem = id(534), price(3), stack(1), quality(333), de("onion seeds"), en("onion seeds")
 sellItem = id(291), price(3), stack(1), quality(333), de("cabbage"), en("cabbage")
 
-"[ww]hat.+sell" -> "I sell tools, food and seeds.", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I sell tools, food and seeds.", trade_buy
 "[ww]as.+verkauf" -> "Ich verkauf' Werkzeug, Nahrung und Samen.", trade_buy
-"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reet", "[hh]ello", "[hh]i" -> "Hiho. Who are you?", "Hiho. How can I help you?"
 "[hh]allo", "[gg]r[uü][sß]*" -> "Hiho! Wer bist du?", "Hiho! Wie kann ich dir helfen?"
 "[yy]ou.+[tt]rader" -> "Yes, I am a trader. What do you want?"

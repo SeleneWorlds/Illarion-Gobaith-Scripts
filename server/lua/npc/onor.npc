@@ -19,9 +19,9 @@ wrongLangUS = "#me looks at you a little confused"
 sellItem = id(3077), price(100), stack(1), quality(333)
 sellItem = id(61), price(10000), stack(1), quality(333)
 
-"[ww]hat.+sell" -> "I exchange coins.", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I exchange coins.", trade_buy
 "[ww]as.+verkauf" -> "Ich tausche Münzen.", trade_buy
-"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reet", "[hh]ello" -> "Greetings. What can I do for you?", "Greetings. You are interested in money?"
 "[bb]ye", "[ff]arewell", "[bb]e.+[ww]ell" -> "Good day. Safe travels.", "Farewell. You are always welcome."
 "[hh]elp" -> "'List your wares', 'I want to buy <number> <wares>', 'I want to buy a <ware>', 'Price of ...'"

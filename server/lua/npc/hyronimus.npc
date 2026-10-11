@@ -21,9 +21,9 @@ sellItem = id(253), price(400), stack(1), quality(333)
 buyPrimaryItem = id(253), price(8)
 sellItem = id(329), price(500), stack(1), quality(333)
 
-"[ww]hat.+sell" -> "I cannot offer you much, but my potions.", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I cannot offer you much, but my potions.", trade_buy
 "[ww]as.+verkaufen", "[ww]as.+verkauf" -> "Ich kann nicht viel anbieten. Vielleicht ein paar Tränke.", trade_buy
-"[ww]hat.+buy" -> "I fear, my friend, that there is nothing I would want to buy right now.", trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "I fear, my friend, that there is nothing I would want to buy right now.", trade_sell
 "[ww]as.+%skauf", "[ww]as.*%s[kk]auf" -> "Ich fürchte, mein Freund, es gibt nichts was ich im Augenblick von euch kaufen würde.", trade_sell
 "[hh]ello", "[gg]reetings" -> "Greetings my friend.", "A pleasure to meet you, friend."
 "[hh]allo", "[gg]rü[sß]+e" -> "Grüße mein Freund.", "Ist mir eine Freude euch zu treffen."

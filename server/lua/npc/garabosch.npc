@@ -46,9 +46,9 @@ buyPrimaryItem = id(2751), price(5)
 sellItem = id(2140), price(25), stack(1), quality(583)
 buyPrimaryItem = id(2140), price(5)
 
-"[ww]hat.+sell" -> "I'm sellin' important things for the daily dwarven life. So ya should buy them, 'eard? BUY!. With money an' so, I 'ope ya hav' money?", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I'm sellin' important things for the daily dwarven life. So ya should buy them, 'eard? BUY!. With money an' so, I 'ope ya hav' money?", trade_buy
 "[ww]as.+verkauf" -> "Ick verkauf wichtiges Zeuch für dat täglich Zwergenleben. Du solltest dat also kaufn, verstanden? KAUFEN! Dat heisst mit Geld un' so. Du hast doch Geld, oder?", trade_buy
-"[ww]hat.+buy" -> "#me speaks with a faked, sophisticated voice \"Oooh, I buy pretty flowers an' the sunshine in a glass...BAH! Damn it, what do ya think? I am a dwarf in a dwarven town! Of course I buy smithed stuff!\"", trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> "#me speaks with a faked, sophisticated voice \"Oooh, I buy pretty flowers an' the sunshine in a glass...BAH! Damn it, what do ya think? I am a dwarf in a dwarven town! Of course I buy smithed stuff!\"", trade_sell
 "[ww]as.*%skauf", "[ww]as.*%s[kk]auf" -> "#me spricht mit verstellt gehobener Stimme \" Ooooh, ick kaufe hübsche Blumen un' den Sonnenschein im Einmachglas....BAH! Verflucht nochmal, wat denkste denn? Ick bin' Zwerg inner Zwergenstadt! Natürlich kauf ick geschmiedetes Zeuch!\"", trade_sell
 "[gg]reetings" -> "#me grumbles \"Ya ya. Can't ya see me workin'?\"", "#me looks up and shows a fresh smithed swordblade \"Isn't it good? Aye, of course it is, it's crafted by me, har har...Oh, right. Greetings or whatever.\""
 "[hh]ello" -> "Whatever. Need somethin'? If not, bye", "Hello? Did you just say \"Hello\"?! Are ya a darn elven girl? That's \"Hey boss\" or \"Greetings ol' buddy\". Try it again!"

@@ -41,8 +41,8 @@ buyPrimaryItem = id(201), price(1)
 sellItem = id(2493), price(5), stack(1), quality(333)
 buyPrimaryItem = id(2493), price(1)
 
-"[ww]hat.+sell", "[ww]as.+verkauf" -> trade_buy
-"[ww]hat.+buy", "[ww]as.*%s[kk]auf" -> trade_sell
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]", "[ww]as.+verkauf" -> trade_buy
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]", "[ww]as.*%s[kk]auf" -> trade_sell
 "[gg]reetings", "[hh]ello" -> "Hi ho, friend! Do you need something?", "Good day! Is there something you need?"
 "i'm.+.+" -> "Oh! A pleasure, friend."
 "[ww]ho.+you?" -> "I'm %NPCNAME ! I live here in Greenbriar with the other halflings. Wouldn't want to live anywhere else at all!"

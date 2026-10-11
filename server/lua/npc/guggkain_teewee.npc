@@ -59,10 +59,10 @@ sellItem = id(257), price(20), stack(1), quality(349)
 buyPrimaryItem = id(257), price(5)
 
 -- Dialogue keeps the original greeting and farewell alternatives.
-"[ww]hat.+sell" -> "I trade in raw and cut gems, and mineral dust. Jodele. Ask for my list of wares.", trade_buy
+"[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I trade in raw and cut gems, and mineral dust. Jodele. Ask for my list of wares.", trade_buy
 "[ww]as.+verkauf" -> "Jodele. Ich handle mit rohen und geschliffenen Edelsteinen und Mineralstaub. Lasst Euch meine Liste zeigen.", trade_buy
 "[ww]as.+kauf", "[ww]as.*%s[kk]auf" -> "Jodele. Ich handle mit rohen und geschliffenen Edelsteinen und Mineralstaub. Lasst Euch meine Liste zeigen.", trade_sell
-"[ww]hat.+buy" -> trade_sell
+"[ww]hat.+buy", "[dd]o%s+you%s+buy%f[^%w]" -> trade_sell
 "[gg]reet", "[hh]ello" -> "Greetings. What is it you want? Jodele.", "Greetings. Are you interested in my wares?"
 "[gg]r[üu][ßs]+e", "[hh]allo" -> "Grüße. Was wollt Ihr? Jodele.", "Grüße. Habt Ihr Interesse an meinen Waren? Jodele."
 "[ww]hat.+[gg]em" -> "I trade in raw and cut gems, and mineral dust. Jodele. Ask for my list of wares."
