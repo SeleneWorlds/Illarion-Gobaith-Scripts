@@ -65,7 +65,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if ((User:countItemAt("belt",170) < 1) and (User:countItemAt("belt",155) < 3)) then
+    if ((User:countItemAt("belt",170) < 2) and (User:countItemAt("belt",155) < 3)) then
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
             "Du benötigst Wolle oder Sibanac um am Spinnrad zu arbeiten.", 
@@ -85,11 +85,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 		return false;
 	end
 	
-    if (User:countItemAt("belt",170) > 1) then --Removes 2 wool, and returns 1 thread for each
+    if (User:countItemAt("belt",170) >= 2) then -- Removes 2 wool and returns 2 thread
         User:eraseItem( 170, 2 );
-        local notcreated = User:createItem(50, 1, 333 ,0 );
+        local notcreated = User:createItem(50, 2, 333 ,0 );
         if (notcreated > 0) then
-            world:createItemFromId( 50, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 50, notcreated, User.pos, true, 333 ,0);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
