@@ -36,19 +36,35 @@ local function parse(text)
     return action, amount, normalize(name)
 end
 
+local function matchedNameLength(text, name)
+    name = normalize(name)
+    if name == '' or text:sub(1, #name) ~= name then return 0 end
+    local suffix = text:sub(#name + 1, #name + 1)
+    if suffix == '' or suffix:match('[%s%p]') then return #name end
+    return 0
+end
+
 local function findOffer(lists, name)
-    local found, index
+    local found, index, ambiguous
+    local longest = 0
     for _, list in ipairs(lists) do
         for i, offer in ipairs(list) do
-            if name == normalize(offer._nameDe) or name == normalize(offer._nameEn) then
+            local length = math.max(matchedNameLength(name, offer._nameDe),
+                matchedNameLength(name, offer._nameEn))
+            if length > longest then
+                found, index, ambiguous = nil, nil, false
+                longest = length
+            end
+            if length > 0 and length == longest then
                 -- Primary requests take precedence over secondary requests for the same ID.
                 if found and (found._itemId ~= offer._itemId or found._type == 'sell') then
-                    return nil, nil, true
+                    ambiguous = true
                 end
                 if not found then found, index = offer, i - 1 end
             end
         end
     end
+    if ambiguous then return nil, nil, true end
     return found, index
 end
 
