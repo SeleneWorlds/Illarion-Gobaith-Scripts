@@ -130,10 +130,13 @@ function tradeNPC:showDialog(npcChar, player, mode)
         if entry.buying then
             self:sellItemToPlayer(npcChar, player, entry.index, entry.count)
         else
-            -- Revalidate ownership after the menu was opened.
+            -- Revalidate ownership after the menu was opened. Bag lookups
+            -- create fresh inventory wrappers around the same backing data.
             for _, current in ipairs(player:getItemList(entry.offer._itemId)) do
                 if isFittingItem(entry.offer, current) and (entry.item == nil or
-                    (current.SeleneInventory ~= nil and current.SeleneInventory == entry.item.SeleneInventory
+                    (current.SeleneInventory ~= nil and entry.item.SeleneInventory ~= nil
+                        and current.SeleneInventory.data ~= nil
+                        and current.SeleneInventory.data == entry.item.SeleneInventory.data
                         and current.itempos == entry.item.itempos)) then
                     self:buyItemFromPlayer(npcChar, player, current)
                     break
