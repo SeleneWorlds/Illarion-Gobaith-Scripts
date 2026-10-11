@@ -7,7 +7,8 @@ local snowTile = require("tile.id_10_snow")
 local M = {}
 
 function M.useTile(User,Position,counter,param)
-	if (world:getTime("month") <= 13) then
+	local month = world:getTime("month")
+	if (month >= 13 and month <= 16) then
 		snowTile.useTile(User, Position, counter, param)
 		return;
 	end;
