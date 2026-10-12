@@ -11,12 +11,15 @@ local function normalize(text)
 end
 
 local function parse(text)
-    text = normalize(text)
+    text = normalize(text):gsub('[.!?]+$', ''):match('^%s*(.-)%s*$')
     -- The script loader prefixes non-common speech for display. Language
     -- permission and comprehension have already been checked by the base.
     local language, speech = text:match('^%[(%a+)%] (.+)$')
     if languagePrefixes[language] then text = speech end
     local action, rest = text:match('^(%a+) (.+)$')
+    if action ~= 'buy' and action ~= 'sell' and action ~= 'kaufe' and action ~= 'verkaufe' then
+        action, rest = text:match('^i (%a+) (.+)$')
+    end
     if action ~= 'buy' and action ~= 'sell' and action ~= 'kaufe' and action ~= 'verkaufe' then
         action, rest = text:match('^i want to (%a+) (.+)$')
     end
