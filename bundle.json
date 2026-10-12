@@ -13,8 +13,8 @@
     "base.areas": {
       "file": "server/lua/base/areas.lua"
     },
-    "I_2760_seil": {
-      "file": "server/lua/I_2760_seil.lua"
+    "item.I_2760_seil": {
+      "file": "server/lua/item/I_2760_seil.lua"
     },
     "base.books": {
       "file": "server/lua/base/books.lua"

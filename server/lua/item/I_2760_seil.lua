@@ -5,7 +5,7 @@ local logging = require("selene.logging")
 
 local M = {}
 
--- UPDATE common SET com_script='I_2760_seil.lua' WHERE com_itemid=2760;
+-- UPDATE common SET com_script='item.I_2760_seil.lua' WHERE com_itemid=2760;
 
 tyingQuality = {};
 tyingQuality[0] = {"starkes", "stabiles", "", "fadenscheiniges", "schwaches"};
