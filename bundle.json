@@ -1366,9 +1366,6 @@
     "npc.special.static_teleport": {
       "file": "server/lua/npc/special/static_teleport.lua"
     },
-    "quest_createMaze": {
-      "file": "server/lua/quest_createMaze.lua"
-    },
     "quest_giveUniqueItem": {
       "file": "server/lua/quest_giveUniqueItem.lua"
     },
