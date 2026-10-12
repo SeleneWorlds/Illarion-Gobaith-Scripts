@@ -289,15 +289,6 @@
     "druid.spell.id_19_analyze_item_wear": {
       "file": "server/lua/druid/spell/id_19_analyze_item_wear.lua"
     },
-    "game_card": {
-      "file": "server/lua/game_card.lua"
-    },
-    "game_carddeck": {
-      "file": "server/lua/game_carddeck.lua"
-    },
-    "game_poker": {
-      "file": "server/lua/game_poker.lua"
-    },
     "gm.base.log": {
       "file": "server/lua/gm/base/log.lua"
     },
