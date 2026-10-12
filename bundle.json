@@ -55,9 +55,6 @@
     "base_spawnmonster": {
       "file": "server/lua/base_spawnmonster.lua"
     },
-    "base_wind": {
-      "file": "server/lua/base_wind.lua"
-    },
     "content.bonusitems": {
       "file": "server/lua/content/bonusitems.lua"
     },
