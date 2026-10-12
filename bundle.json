@@ -52,9 +52,6 @@
     "base_quest_items": {
       "file": "server/lua/base_quest_items.lua"
     },
-    "base_spawnmonster": {
-      "file": "server/lua/base_spawnmonster.lua"
-    },
     "content.bonusitems": {
       "file": "server/lua/content/bonusitems.lua"
     },
