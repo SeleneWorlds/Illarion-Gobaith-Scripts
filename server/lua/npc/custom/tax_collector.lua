@@ -18,7 +18,7 @@ function M.collect(context, account)
             "Indeed. I collect the money of the traders. But I won't give you this money.")
         return
     end
-    local taxes = require('taxes')
+    local taxes = require('base.taxes')
     local amount = taxes.collect(account)
     if amount == 0 then
         say(context, 'Die Steuerkasse ist zur Zeit leider leer.', 'There is currently no tax money.')

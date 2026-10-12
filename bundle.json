@@ -1423,8 +1423,8 @@
     "server.standardfighting": {
       "file": "server/lua/server/standardfighting.lua"
     },
-    "taxes": {
-      "file": "server/lua/taxes.lua"
+    "base.taxes": {
+      "file": "server/lua/base/taxes.lua"
     },
     "tile.id_10_snow": {
       "file": "server/lua/tile/id_10_snow.lua"

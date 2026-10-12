@@ -1,5 +1,5 @@
 local M = {}
-local taxes = require("taxes")
+local taxes = require("base.taxes")
 
 --Name:        TeleporterNPC
 --Race:        invisble
