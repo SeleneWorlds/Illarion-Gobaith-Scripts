@@ -1498,12 +1498,6 @@
     "triggerfield.ma_secret_room": {
       "file": "server/lua/triggerfield/ma_secret_room.lua"
     },
-    "triggerfield.missingson_caveentrance": {
-      "file": "server/lua/triggerfield/missingson_caveentrance.lua"
-    },
-    "triggerfield.missingson_woods": {
-      "file": "server/lua/triggerfield/missingson_woods.lua"
-    },
     "triggerfield.newbie_craft": {
       "file": "server/lua/triggerfield/newbie_craft.lua"
     },
@@ -1533,15 +1527,6 @@
     },
     "triggerfield.notherot_entrace": {
       "file": "server/lua/triggerfield/notherot_entrace.lua"
-    },
-    "triggerfield.shrine_eldan_enter": {
-      "file": "server/lua/triggerfield/shrine_eldan_enter.lua"
-    },
-    "triggerfield.stompthebugs": {
-      "file": "server/lua/triggerfield/stompthebugs.lua"
-    },
-    "triggerfield.traps": {
-      "file": "server/lua/triggerfield/traps.lua"
     },
     "triggerfield.underground_entrance": {
       "file": "server/lua/triggerfield/underground_entrance.lua"
