@@ -919,9 +919,6 @@
     "lte.tying_capturer": {
       "file": "server/lua/lte/tying_capturer.lua"
     },
-    "lttest": {
-      "file": "server/lua/lttest.lua"
-    },
     "magic.base.basics": {
       "file": "server/lua/magic/base/basics.lua"
     },
