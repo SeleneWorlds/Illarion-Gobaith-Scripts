@@ -7,6 +7,7 @@ local M = {}
 
 local common = require("base.common")
 local base_keys = require("base.keys")
+local base_doors = require("base.doors")
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 
     -- Loo Bucket for hands
@@ -17,7 +18,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         door = world:getItemOnField( position( -74, -68, 0 ) );
         base_keys.UnlockDoor( door );
         door = world:getItemOnField( position( -74, -68, 0 ) );
-        OpenDoor( door );
+        base_doors.OpenDoor( door );
     end;
 
     -- Wasserflasche auffüllen
@@ -76,7 +77,7 @@ function M.UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter
                  door = world:getItemOnField( position( -74, -68, 0 ) );
                  base_keys.UnlockDoor( door );
                  door = world:getItemOnField( position( -74, -68, 0 ) );
-                 OpenDoor( door );
+                 base_doors.OpenDoor( door );
              end;
 	     
 	         common.InformNLS(TargetCharacter, "Du fühlt dich gleich viel sauberer.", "You feel much cleaner.");
