@@ -1,5 +1,6 @@
 local areas = require("base.areas")
 local keys = require("base.keys")
+local doors = require("base.doors")
 local common = require("base.common")
 local logging = require("selene.logging")
 local M = {}
@@ -16,7 +17,7 @@ function M.onLogout( theChar )
         local door = world:getItemOnField( position( -74, -68, 0 ) );
         keys.UnlockDoor( door );
         door = world:getItemOnField( position( -74, -68, 0 ) );
-        OpenDoor( door );
+        doors.OpenDoor( door );
         bucket.id = 51;
         world:changeItem( bucket );
     end;
