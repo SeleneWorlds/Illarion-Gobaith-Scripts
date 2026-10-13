@@ -1,117 +1,57 @@
-local common = require("base.common")
-local areas = require("base.areas")
+local Common = require("base.common")
+local Areas = require("base.areas")
+local Rolls = require("moonlight-rolls.server.lua.rolls")
+local Registries = require("selene.registries")
 
 local M = {}
+local seasons = { "spring", "summer", "autumn", "winter" }
+local herbRolls = Rolls:new()
 
--- INSERT INTO scheduledscripts VALUES('scheduled.gaia', 10, 10, 'plantdrop');
+herbRolls:registerCondition("is_season", function(condition, context)
+    return context.season == condition.data
+end, { type = "enum", values = {
+    { value = "spring", label = "Spring" }, { value = "summer", label = "Summer" },
+    { value = "autumn", label = "Autumn" }, { value = "winter", label = "Winter" }
+} })
 
-function M.AddPlant(ItemID,Ground,Frequenz,Season,Datawert)
-    table.insert(plnt,ItemID);
-    table.insert(grnd,Ground);
-    table.insert(freq,Frequenz);
-    table.insert(seas,Season);
-    table.insert(dataval,Datawert);
+herbRolls:registerCondition("ground_is_any_of", function(condition, context)
+    for _, reference in ipairs(condition.data) do
+        local tile = assert(Registries.findByName("selene:tiles", reference),
+            "Unknown Gaia ground tile: " .. tostring(reference))
+        local tileId = assert(tile:getMetadata("tileId"), "Missing tile ID: " .. reference)
+        if tileId == context.tileId then return true end
+    end
+    return false
+end, { type = "array", valueType = { type = "registry", registry = "selene:tiles" } })
+
+herbRolls:registerType("herb", function(entry, context)
+    local herb = entry.data
+    local item = assert(Registries.findByName("illarion:items", herb.item),
+        "Unknown Gaia herb item: " .. tostring(herb.item))
+    local itemId = assert(item:getMetadata("id"), "Missing item ID: " .. herb.item)
+    world:createItemFromId(itemId, 1, context.position, false,
+        math.random(111, 999), herb.data or 0)
+end, { type = "object", properties = {
+    item = { type = "registry", registry = "illarion:items" },
+    data = { type = "integer", optional = true }
+} })
+
+function M.schema()
+    return { herbs = herbRolls:schema() }
 end
 
-function M.Init()
-    plnt = {};
-    grnd = {};
-    freq = {};
-    seas = {};
-    dataval= {};
-    M.AddPlant(133,{1,1,1,1,4},1,{8,10,2,0},0);  -- Sonnenkraut
-    M.AddPlant(134,{4},1,{6,1,5,10},0);          -- Vierblättrige Einbeere
-    M.AddPlant(135,{1},1,{10,6,3,0},0);          -- Gelbkraut
-    M.AddPlant(136,{5},1,{4,3,10,7},0);          -- Wutbeere
-    M.AddPlant(137,{3},1,{3,1,4,10},0);          -- Flammkelchblüte
-    M.AddPlant(138,{2,7},1,{2,2,9,5},0);         -- Nachtengelsblüte
-    M.AddPlant(140,{2},1,{10,2,7,3},0);          -- Donfblatt
-    M.AddPlant(141,{4},1,{3,10,5,0},0);          -- Schwarze Distel
-    M.AddPlant(142,{3},1,{2,3,10,6},0);          -- Sandbeere
-    M.AddPlant(143,{4},1,{0,5,10,5},0);          -- Roter Holunder
-    M.AddPlant(144,{5},1,{5,0,2,10},0);          -- Jungfernkraut
-    M.AddPlant(145,{4},1,{10,6,3,0},0);          -- Heideblüte
-    M.AddPlant(146,{3},1,{6,5,10,5},0);          -- Wüstenhimmelkapsel
-    M.AddPlant(148,{5},1,{2,10,3,0},0);          -- Firnisblüte
-    M.AddPlant(152,{2,3,5,6},1,{4,4,4,4},0);     -- Lebenswurz
-    M.AddPlant(153,{5},1,{10,4,1,0},0);          -- Fussblatt
-    M.AddPlant(155,{7},1,{4,10,5,1},0);          -- Sibanac Blatt
-    M.AddPlant(156,{3},1,{10,1,2,4},0);          -- Steppenfarn
-	M.AddPlant(2696,{2,4,5},1,{6,4,8,1},80);	   -- Federn
-
-	-- Pflanzen des DS-Systems mit SonderID in data
-    M.AddPlant(133,{4},1,{8,10,6,0},9001); -- "Einblättrige Vierbeere" / "oneleaved fourberry"
-	M.AddPlant(134,{4},1,{6,0,6,10},9002); -- "Blaue Vogelbeere" / "blue birdsberry"
-    M.AddPlant(135,{5},1,{10,6,0,8},9003); -- "Schwefelkraut" / "sulfur weed"
-    M.AddPlant(136,{5},1,{0,6,10,7},9004); -- "Frommbeere" / "pious berry"
-    M.AddPlant(137,{4},1,{6,0,6,10},9005); -- "Wasserblüte" / "water blossom"
-    M.AddPlant(138,{2},1,{0,6,10,6},9006); -- "Tagteufel" / "daydevil"
-    M.AddPlant(140,{2},1,{10,6,0,6},9007); -- "Rauchblatt" / "reek leave"
-    M.AddPlant(141,{5},1,{6,10,6,0},9008); -- "Graue Distel" / "grey thistle"
-    M.AddPlant(142,{3},1,{0,6,10,6},9009); -- "Wüstenbeere" / "desert berry"
-    M.AddPlant(152,{4},1,{4,4, 4,4},9013); -- "Feuerwurz" / "fire root"
-    M.AddPlant(144,{2},1,{6,0,6,10},9010); -- "Altweiberkraut" / "gossamer weed"
-    M.AddPlant(145,{4},1,{10,6,0,6},9011); -- "Regenkraut" / "rain weed"
-    M.AddPlant(146,{3},1,{6,10,6,0},9012); -- "Gottesblume" / "godsflower"
-    M.AddPlant(148,{2},1,{6,10,6,0},9014); -- "Trugblüte" / "con blossom"
-    M.AddPlant(156,{2},1,{0,6,10,6},9015); -- "Wolfsfarn" / "wolverine fern"
-    M.AddPlant(153,{4},1,{6,10,6,0},9016); -- "Wiesen-Rhabarber" / "meadow rhabarb"
-
-    -- 0 alle / 1 Acker / 2 Wald / 3 Sand / 4 Wiese / 5 Fels / 6 Wasser / 7 Dreck
-
-    anz_pflanzen = #plnt;
-    anz_voraussetzungen = #grnd;
-end
-
-function M.plantdrop()
-    if ( plnt==nil ) then
-        M.Init();
-    end
-
-    local season=math.ceil( world:getTime("month") / 4 );
-    season = common.Limit( season, 1, 4 );
-    local spawn_amm = 15;
-    if (season == 1) then --Frühling
-        spawn_amm = 40;
-    elseif (season == 2) then --Sommer
-        spawn_amm = 40;
-    elseif (season == 3) then --Herbst
-        spawn_amm = 40;
-    elseif (season == 4) then --Winter
-        spawn_amm = 40;
-    end
-
-    for i=1,spawn_amm do
-        ---- Pflanze aussuchen
-        auswahl = math.random( anz_pflanzen );
-
-        if( seas[ auswahl ][ season ] >= math.random(10) ) then
-            success = true;
-        else
-            success = false;
-        end
-
-        if success then
-            check = grnd[auswahl][math.random(1,#grnd[auswahl])]
-            pflwert = dataval[auswahl]
-            ---- Standortbestimmung
-            newpos = areas.randomPosition("gaia_herb_drops");
-            if not newpos then return end
-            ---- bodentile feststellen
-            local bodenart = common.GetGroundType( world:getField(newpos):tile() );
-            if ((bodenart == check) or (check == 0)) then
-
-              -- --------------------------------------------------------------------------------------------------------
-              -- 1. Qualifizierung : werte nach zufall anpassen, wertstellung auf alchemie-bedürfnisse anpassen
-              qualitaet = math.random(111,999)
-              -- 2. Qualifizierung : wertstellung an Jahreszeiten und Boden anpassen
-
-              -- 3. Qualifizierung: wertstellung unter Berücksichtigung von Umgebungskomponenten,. Wetter, Region etc.
-
-              -- --------------------------------------------------------------------------------------------------------
-                world:createItemFromId(plnt[auswahl],1,newpos,false,qualitaet,pflwert);
-            end
-        end
+function M.spawnHerbs(ScheduledScript)
+    local data = assert(ScheduledScript:getField("data"), "Missing Gaia roll data")
+    local herbs = assert(data.herbs, "Missing Gaia herbs roll definition")
+    local season = seasons[Common.Limit(math.ceil(world:getTime("month") / 4), 1, 4)]
+    for i = 1, 40 do
+        local position = Areas.randomPosition("gaia_herb_drops")
+        if not position then return end
+        herbRolls:roll(herbs, {
+            season = season,
+            position = position,
+            tileId = world:getField(position):tile()
+        })
     end
 end
 

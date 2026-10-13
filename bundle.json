@@ -4,7 +4,8 @@
   "dependencies": [
     "illarion-api",
     "illarion-gobaith-data",
-    "illarion-script-loader"
+    "illarion-script-loader",
+    "moonlight-rolls"
   ],
   "entrypoints": [
     "server/lua/init.lua"
