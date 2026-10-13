@@ -42,8 +42,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 	if ( TargetItem.id ~= 2207 ) or SourceItem.data == 1 then
 		return false;
     end
-    local dummy_1, task = split_questdata(User);
-    
+
     if equapos(TargetItem.pos,position(-73,-108,0)) then
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me klettert an einem Seil den Brunnen hinunter.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me climbs down into the well on a rope.");
@@ -52,16 +51,6 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me klettert an einem Seil den Brunnen hinunter.");
         User:talkLanguage( CCharacter.say, CPlayer.english, "#me climbs down into the well on a rope.");
         User:warp(position(-131,-123,-3));
-    elseif ( equapos(TargetItem.pos,position(787,801,0)) and (task == 4 or true)) then --FARMER WELL POSITION TO PUT HERE
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me klettert an einem Seil den Brunnen hinunter.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me climbs down into the well on a rope.");
-        local monster_list = world:getMonstersInRangeOf(position(787,791,0),3); --check if already a monster spawned there
-		if (monster_list[1]==nil) then
-        	User:inform("blub, monsterlist was nil");
-        	world:createMonster(133,position(787,791,0), 14);--create a monster here
-		end
-		User:inform("blub, monsterlist was not nil");
-		User:warp(position(787,793,0));
 	else
     	if ( User:getPlayerLanguage() == 0 ) then
             User:inform( "Das Wasser steht recht hoch im Brunnen. Hier hinein zu klettern bringt nichts." );
