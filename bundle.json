@@ -5,7 +5,8 @@
     "illarion-api",
     "illarion-gobaith-data",
     "illarion-script-loader",
-    "moonlight-rolls"
+    "moonlight-rolls",
+    "moonlight-scenarios"
   ],
   "entrypoints": [
     "server/lua/init.lua"
@@ -1532,8 +1533,8 @@
     "triggerfield.underground_entrance": {
       "file": "server/lua/triggerfield/underground_entrance.lua"
     },
-    "triggerfield.underground_water": {
-      "file": "server/lua/triggerfield/underground_water.lua"
+    "triggerfield.roll_scenario": {
+      "file": "server/lua/triggerfield/roll_scenario.lua"
     },
     "npc.base.basic": {
       "file": "server/lua/npc/base/basic.lua",
