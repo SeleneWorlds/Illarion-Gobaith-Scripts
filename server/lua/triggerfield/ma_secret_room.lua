@@ -1,9 +1,16 @@
 local M = {}
 
-function M.CharacterOnField(Character)
+function M.schema()
+    return {
+        password = "string",
+        door = "coordinate"
+    }
+end
 
-    if not equapos(Character.pos,position(74,41,50)) then
-        if not ( string.find( Character.lastSpokenText, "[Zz][Ee][Ll][Uu][Rr][Yy][Aa][Ll][Bb] [Ee][Xx][Cc][Ee][Ll][Ss][Ii][Oo][Rr]" ) ~= nil ) then
+function M.CharacterOnField(Character, TriggerField)
+    local data = TriggerField:getField("data")
+    if data.password ~= nil and data.password ~= "" then
+        if not (string.find(Character.lastSpokenText:lower(), data.password:lower(), 1, true) ~= nil) then
             return
         end
 
@@ -11,11 +18,10 @@ function M.CharacterOnField(Character)
             return
         end
     end
-    local DoorPos = position(73,41,50);
-    if (world:isItemOnField(DoorPos)) then
-        local Item = world:getItemOnField(DoorPos);
+    if (world:isItemOnField(data.door)) then
+        local Item = world:getItemOnField(data.door);
         world:erase(Item,1);
-        CharsInRange = world:getPlayersInRangeOf(DoorPos,15);
+        CharsInRange = world:getPlayersInRangeOf(data.door,15);
         for i, Chara in pairs(CharsInRange) do
             if (Chara:getPlayerLanguage() == 0) then
                 Chara:inform("Du hörst das Geräusch von sich verschiebendem Stein");
