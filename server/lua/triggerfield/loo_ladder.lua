@@ -6,15 +6,23 @@ local base_doors = require("base.doors")
 local base_keys = require("base.keys")
 local M = {}
 
-function M.MoveToField( User )
+function M.schema()
+    return {
+        bucket = "coordinate",
+        door = "coordinate",
+        target = "coordinate"
+    }
+end
 
-    local bucket = world:getItemOnField( position( -72, -69, 0 ) );
-    local door = world:getItemOnField( position( -74, -68, 0 ) );
-    if not ( bucket.id == 52 and door.quality == 333 and base_doors.CheckClosedDoor( door.id ) ) then
-        User:warp( position( -72, -67, 0 ) );
+function M.MoveToField(User, TriggerField)
+    local data = TriggerField:getField("data")
+    local bucket = world:getItemOnField(data.bucket);
+    local door = world:getItemOnField(data.door);
+    if not (bucket.id == 52 and door.quality == 333 and base_doors.CheckClosedDoor(door.id )) then
+        User:warp(data.target)
     else
-        User:inform( ( User:getPlayerLanguage(  ) == 0 and "Der Ort, zu dem diese Leiter reicht, scheint besetzt zu sein." or "The place where this ladder leads to seems to be occupied." ) );
-    end;
+        User:inform((User:getPlayerLanguage() == 0 and "Der Ort, zu dem diese Leiter reicht, scheint besetzt zu sein." or "The place where this ladder leads to seems to be occupied."))
+    end
 end
 
 return M

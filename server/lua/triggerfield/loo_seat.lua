@@ -6,19 +6,29 @@ local base_doors = require("base.doors")
 local base_keys = require("base.keys")
 local M = {}
 
-function M.CharacterOnField(Character)
-    if( string.find( Character.lastSpokenText, "[Hh][Oo][Kk][Uu][Ss][Ll][Oo][Kk][Uu][Ss]" ) ~= nil ) then
-        local bucket = world:getItemOnField( position( -72, -69, 0 ) );
-        local door = world:getItemOnField( position( -74, -68, 0 ) );
-        if bucket.id == 52 and door.quality == 333 and base_doors.CheckClosedDoor( door.id ) then
-            base_keys.UnlockDoor( door );
-            door = world:getItemOnField( position( -74, -68, 0 ) );
-            base_doors.OpenDoor( door );
-            bucket.id = 51;
-            world:changeItem( bucket );
-            Character:warp( position( -72, -67, -3 ) );
-        end;
-    end;
-end;
+function M.schema()
+    return {
+        bucket = "coordinate",
+        door = "coordinate",
+        target = "coordinate",
+        password = "string"
+    }
+end
+
+function M.CharacterOnField(Character, TriggerField)
+    local data = TriggerField:getField("data")
+    if string.find(Character.lastSpokenText:lower(), data.password:lower()) ~= nil then
+        local bucket = world:getItemOnField(data.bucket)
+        local door = world:getItemOnField(data.door)
+        if bucket.id == 52 and door.quality == 333 and base_doors.CheckClosedDoor(door.id) then
+            base_keys.UnlockDoor(door)
+            door = world:getItemOnField(data.door)
+            base_doors.OpenDoor(door)
+            bucket.id = 51
+            world:changeItem(bucket)
+            Character:warp(data.target)
+        end
+    end
+end
 
 return M
