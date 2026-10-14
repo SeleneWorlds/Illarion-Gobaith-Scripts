@@ -35,11 +35,13 @@ function M.Dropping(Char)
     end
 
     if first then
-        if (#SelItemValue>0) then
-            for i,values in pairs(SelItemValue) do
-                if ( values[1] ~= nil ) and ( values[2] ~= nil ) and ( values[3] ~= nil ) and ( values[4] ~= nil ) then
-                    world:createItemFromId(values[1],values[2],Char.pos,true,values[3],values[4]);
-                end
+        for _, category in ipairs(Char:getLoot()) do
+            for _, item in ipairs(category) do
+                local amount = math.random(item.minAmount, item.maxAmount)
+                local quality = math.random(item.minQuality, item.maxQuality)
+                local durability = math.random(item.minDurability, item.maxDurability)
+                world:createItemFromId(item.itemId, amount, Char.pos, true,
+                    quality * 100 + durability, item.data)
             end
         end
         if FirstThief then
