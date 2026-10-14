@@ -1,31 +1,5 @@
 local common = require("base.common")
 local M = {}
-function M.ClearDropping()
-    SelItemValue={};
-    Catsdone={};
-end
-
-function M.AddDropItem(ItemID,Amount,Prob,Qual,DataValue,Category)
-    if( Amount == nil ) then
-        return false;
-    elseif (Amount>0) then
-        if (Catsdone[Category]~=true) then
-            Catsdone[Category]=true;
-            gesProb=0;
-            CatTry=math.random(100);
-        end
-        if ((CatTry>gesProb) and (CatTry<=gesProb+Prob)) then
-            if (Qual < 101) then
-                Qual = Qual + 100;
-            end
-            table.insert(SelItemValue,{ItemID,Amount,Qual,DataValue});
-            return true;
-        end
-        gesProb=gesProb+Prob;
-    end
-    return false;
-end
-
 function M.Dropping(Char)
     if ((dropped == nil) or (dropped ~= Char.id)) then
         dropped = Char.id;
@@ -51,7 +25,7 @@ function M.Dropping(Char)
             end;
             if (StealAmmS[Char.id]~=nil and StealAmmS[Char.id]>0) then
                 world:createItemFromId(3077,StealAmmS[Char.id],Char.pos,true,333,0);
-                StealAmmS[Monster.id]=nil;
+                StealAmmS[Char.id]=nil;
             end
             if (StealAmmK[Char.id]~=nil and StealAmmK[Char.id]>0) then
                 world:createItemFromId(3076,StealAmmK[Char.id],Char.pos,true,333,0);

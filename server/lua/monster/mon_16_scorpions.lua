@@ -82,10 +82,6 @@ function M.onDeath(Monster)
         end
     end
 
-    drop.ClearDropping();
-
---No drops
-
     drop.Dropping(Monster);
 end
 

@@ -85,9 +85,6 @@ function M.onDeath(Monster)
         end
     end
 
-    drop.ClearDropping();
-    drop.AddDropItem(63,1,50,333,0,1); --inners
-    drop.AddDropItem(2586,1,100,333,0,2); --fur
     drop.Dropping(Monster);
 end
 

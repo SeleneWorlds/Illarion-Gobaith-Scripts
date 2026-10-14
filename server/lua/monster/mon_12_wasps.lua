@@ -91,10 +91,7 @@ function M.onDeath(Monster)
         end
     end
 
-    drop.ClearDropping();
     local MonID=Monster:get_mon_type();
-
-    drop.AddDropItem(2529,1,100,333,0,1); --honeycombs
 
     if (MonID==126) then -- wasp of Fire!!!
 

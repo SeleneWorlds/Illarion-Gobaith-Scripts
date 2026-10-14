@@ -83,29 +83,6 @@ function M.onDeath(Monster)
         end
     end
 
-    drop.ClearDropping();
-    local MonID=Monster:get_mon_type();
-    if (MonID==131) then
-        -- Drops
-    elseif (MonID==132) then
-        -- Drops
-    elseif (MonID==133) then
-		--Drops
-    elseif (MonID==134) then
-        --Drops
-    elseif (MonID==135) then
-        --Drops
-    elseif (MonID==136) then
-        -- Drops
-    elseif (MonID==137) then
-        --Drops
-    elseif (MonID==138) then
-        --Drops
-    elseif (MonID==139) then
-        --Drops
-    else
-        --Drops
-    end
     drop.Dropping(Monster);
 end
 

@@ -20,8 +20,6 @@ local drops = {pools={
         count={min=1,max=1}, quality={min=5,max=5}, durability={min=42,max=42}, data={test='pig'}}}}},
     {entries={{type='nothing', weight=1}}},
 }}
--- An optional fixture allows exercising an actual registry file exported as Lua.
-if arg[1] then drops = dofile(arg[1]).drops end
 local created = {}
 world = {createItemFromId=function(_, id, amount, pos, always, quality, data)
     created[#created + 1] = {id=id,amount=amount,pos=pos,always=always,quality=quality,data=data}
@@ -42,7 +40,7 @@ for _, item in ipairs(created) do
     assert(item.id ~= 69, 'Legacy pig leather must not supplement registry loot')
     if item.id == 71 then
         assert(item.amount == 1)
-        if not arg[1] then assert(item.quality == 542 and item.data.test == 'pig') end
+        assert(item.quality == 542 and item.data.test == 'pig')
         found = true
     end
 end
@@ -57,4 +55,18 @@ drops = {pools={}}
 created = {}
 animals.onDeath(pig)
 assert(#created == 1 and created[1].id == 61, 'Empty registry spawned legacy drops')
+
+-- Stolen money remains separate from static registry loot, including silver.
+pig.id = 294
+FirstThief = true
+StealAmmG = {[pig.id]=3}
+StealAmmS = {[pig.id]=4}
+StealAmmK = {[pig.id]=5}
+created = {}
+animals.onDeath(pig)
+assert(#created == 4)
+assert(created[1].id == 61 and created[1].amount == 3)
+assert(created[2].id == 3077 and created[2].amount == 4)
+assert(created[3].id == 3076 and created[3].amount == 5)
+assert(StealAmmG[pig.id] == nil and StealAmmS[pig.id] == nil and StealAmmK[pig.id] == nil)
 print('Monster death registry drops tests passed')
