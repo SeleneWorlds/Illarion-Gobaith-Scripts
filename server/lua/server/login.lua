@@ -165,7 +165,7 @@ function M.onLogin( player )
 	-- Überprüfung von Newbie-Status fertig
 
     if player:increaseAttrib("hitpoints", 0) == 0 then
-        regeneration.showResurrectionDirections(player);
+        regeneration.showResurrectionDirections(player, true);
     end
 
 	return true;

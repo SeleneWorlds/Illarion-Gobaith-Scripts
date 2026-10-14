@@ -324,11 +324,14 @@ function M.leadToCross( Char , Effect )
 end
 
 
-function M.showResurrectionDirections(Char)
+function M.showResurrectionDirections(Char, initialMessage)
+    local prefixDe = initialMessage and "Das Tor zu Cherga's Reich bleibt dir verwehrt. " or "";
+    local prefixEn = initialMessage and "The gate to Cherga's realm remains closed to you. " or "";
+
     if Char.pos.z < 0 then
         common.TempInformNLS(Char,
-            "Irgendetwas sagt dir, dass es eine gute Idee wäre, wieder an die Oberfläche zu gelangen.",
-            "Something tells you that it would be a good idea to return to the surface.");
+            prefixDe.."Irgendetwas sagt dir, dass es eine gute Idee wäre, wieder an die Oberfläche zu gelangen.",
+            prefixEn.."Something tells you that it would be a good idea to return to the surface.");
         return;
     end
 
@@ -353,8 +356,8 @@ function M.showResurrectionDirections(Char)
     )];
     if direction then
         common.TempInformNLS(Char,
-            "Gehe nach "..direction[1]..", um wiederbelebt zu werden.",
-            "Go "..direction[2].." to be resurrected.");
+            prefixDe.."Gehe nach "..direction[1]..", um wiederbelebt zu werden.",
+            prefixEn.."Go "..direction[2].." to be resurrected.");
     end
 end
 
