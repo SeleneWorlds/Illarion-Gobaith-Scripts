@@ -1,27 +1,27 @@
--- Run a registry-defined scenario roll when a character enters a trigger field.
+-- Run a registry-defined behavior roll when a character enters a trigger field.
 local Registries = require("selene.registries")
 local Rolls = require("moonlight-rolls.server.lua.rolls")
 local Behaviors = require("moonlight-behaviors.server.lua.behaviors")
-local ScenarioDefaults = require("illarion-script-loader.server.lua.lib.scenarioDefaults")
+local BehaviorDefaults = require("illarion-script-loader.server.lua.lib.behaviorDefaults")
 
 local M = {}
 local events = Rolls:new()
-local scenarios = ScenarioDefaults.registerScenarioDefaults(Behaviors:new())
+local behaviors = BehaviorDefaults.registerBehaviorDefaults(Behaviors:new())
 
-events:registerType("scenario", function(entry, context)
-    return scenarios:run(entry.data, context)
-end, scenarios:schema())
+events:registerType("behavior", function(entry, context)
+    return behaviors:run(entry.data, context)
+end, behaviors:schema())
 
 function M.schema()
     return { events = { type = "registry", registry = "illarion:rolls" } }
 end
 
 function M.MoveToField(User, TriggerField)
-    local data = assert(TriggerField:getField("data"), "Missing scenario roll trigger field data")
-    local reference = assert(data.events, "Missing scenario roll reference")
+    local data = assert(TriggerField:getField("data"), "Missing behavior roll trigger field data")
+    local reference = assert(data.events, "Missing behavior roll reference")
     local roll = assert(Registries.findByName("illarion:rolls", reference),
-        "Unknown scenario roll: " .. tostring(reference))
-    events:roll(assert(roll:getField("definition"), "Missing scenario roll definition"), {
+        "Unknown behavior roll: " .. tostring(reference))
+    events:roll(assert(roll:getField("definition"), "Missing behavior roll definition"), {
         character = User, triggerField = TriggerField
     })
 end
