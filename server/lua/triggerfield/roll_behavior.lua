@@ -1,12 +1,12 @@
 -- Run a registry-defined scenario roll when a character enters a trigger field.
 local Registries = require("selene.registries")
 local Rolls = require("moonlight-rolls.server.lua.rolls")
-local Scenarios = require("moonlight-scenarios.server.lua.scenarios")
+local Behaviors = require("moonlight-behaviors.server.lua.behaviors")
 local ScenarioDefaults = require("illarion-script-loader.server.lua.lib.scenarioDefaults")
 
 local M = {}
 local events = Rolls:new()
-local scenarios = ScenarioDefaults.registerScenarioDefaults(Scenarios:new())
+local scenarios = ScenarioDefaults.registerScenarioDefaults(Behaviors:new())
 
 events:registerType("scenario", function(entry, context)
     return scenarios:run(entry.data, context)
