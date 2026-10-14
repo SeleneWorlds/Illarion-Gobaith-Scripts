@@ -40,7 +40,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         common.TurnTo( User, TargetItem.pos ); -- notfalls drehen
     end
     
-	if not farming:FindRandomItem(User) then
+	if not gathering.farming:FindRandomItem(User) then
 		return
 	end
 	
