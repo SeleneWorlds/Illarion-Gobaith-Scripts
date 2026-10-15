@@ -1488,15 +1488,6 @@
     "triggerfield.loginfield": {
       "file": "server/lua/triggerfield/loginfield.lua"
     },
-    "triggerfield.loo_door": {
-      "file": "server/lua/triggerfield/loo_door.lua"
-    },
-    "triggerfield.loo_ladder": {
-      "file": "server/lua/triggerfield/loo_ladder.lua"
-    },
-    "triggerfield.loo_seat": {
-      "file": "server/lua/triggerfield/loo_seat.lua"
-    },
     "triggerfield.ma_secret_room": {
       "file": "server/lua/triggerfield/ma_secret_room.lua"
     },
