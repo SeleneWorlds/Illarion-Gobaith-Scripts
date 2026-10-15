@@ -86,11 +86,6 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
     if Character.effects:find(3) then
 		  Character.effects:removeEffect(3)
     end
-  elseif  SourceItem.data == 55555515 then
-    --Ende des LTE 15 /illnes1
-    if Character.effects:find(15) then
-		  Character.effects:removeEffect(15)
-    end
   elseif  SourceItem.data == 55555518 then
     --Ende des LTE 18 /smell
     if Character.effects:find(18) then
