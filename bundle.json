@@ -1476,9 +1476,6 @@
     "triggerfield.hellbriar_hidden_entrance": {
       "file": "server/lua/triggerfield/hellbriar_hidden_entrance.lua"
     },
-    "triggerfield.instadie": {
-      "file": "server/lua/triggerfield/instadie.lua"
-    },
     "triggerfield.loginfield": {
       "file": "server/lua/triggerfield/loginfield.lua"
     },
