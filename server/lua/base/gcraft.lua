@@ -39,6 +39,7 @@ function M.GCraft:new(gc)
     self.__index = self;
     gc.RandomItems = {{}};
     gc.InterruptMsg = {};
+    gc.TreasureMsg = {};
     return gc;
 end
 
@@ -62,8 +63,8 @@ end
 
 function M.GCraft:SetTreasureMap(Probability, MessageDE, MessageEN)
     self.Treasure = Probability;
-    self.TreasureMsg[0] = MessageDE;
-    self.TreasureMsg[1] = MessageEN;
+    self.TreasureMsg[1] = MessageDE;
+    self.TreasureMsg[2] = MessageEN;
 end
 
 function M.GCraft:AddRandomItem(ItemID, Quantity, Quality, Data, Probability)
