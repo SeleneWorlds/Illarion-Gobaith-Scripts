@@ -6,20 +6,8 @@ local M = {}
 -- UPDATE common SET com_script='item.id_52_filledbucket' WHERE com_itemid IN (52);
 
 local common = require("base.common")
-local base_keys = require("base.keys")
-local base_doors = require("base.doors")
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 
-    -- Loo Bucket for hands
-    if equapos( SourceItem.pos, position( -72, -69, 0 ) ) then
-        local bucket = world:getItemOnField( position( -72, -69, 0 ) );
-        bucket.wear = 255;
-        world:changeItem( bucket );
-        door = world:getItemOnField( position( -74, -68, 0 ) );
-        base_keys.UnlockDoor( door );
-        door = world:getItemOnField( position( -74, -68, 0 ) );
-        base_doors.OpenDoor( door );
-    end;
 
     -- Wasserflasche auffüllen
     if( TargetItem.id == 2498 ) then
@@ -69,16 +57,6 @@ function M.UseItemWithCharacter (Character, SourceItem, TargetCharacter, Counter
                SourceItem.data = 0;
                world:changeItem(SourceItem);
 	     
-    	     -- Loo Bucket for hands
-             if equapos( SourceItem.pos, position( -72, -69, 0 ) ) then
-                 local bucket = world:getItemOnField( position( -72, -69, 0 ) );
-                 bucket.wear = 255;
-                 world:changeItem( bucket );
-                 door = world:getItemOnField( position( -74, -68, 0 ) );
-                 base_keys.UnlockDoor( door );
-                 door = world:getItemOnField( position( -74, -68, 0 ) );
-                 base_doors.OpenDoor( door );
-             end;
 	     
 	         common.InformNLS(TargetCharacter, "Du fühlt dich gleich viel sauberer.", "You feel much cleaner.");
 	    end
