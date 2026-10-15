@@ -1470,12 +1470,6 @@
     "triggerfield.dragoncave": {
       "file": "server/lua/triggerfield/dragoncave.lua"
     },
-    "triggerfield.eldan_altar": {
-      "file": "server/lua/triggerfield/eldan_altar.lua"
-    },
-    "triggerfield.eldan_close": {
-      "file": "server/lua/triggerfield/eldan_close.lua"
-    },
     "triggerfield.gangeffekt": {
       "file": "server/lua/triggerfield/gangeffekt.lua"
     },
