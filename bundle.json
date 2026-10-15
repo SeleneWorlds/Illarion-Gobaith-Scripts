@@ -1473,9 +1473,6 @@
     "triggerfield.hellbriar_hidden_entrance": {
       "file": "server/lua/triggerfield/hellbriar_hidden_entrance.lua"
     },
-    "triggerfield.loginfield": {
-      "file": "server/lua/triggerfield/loginfield.lua"
-    },
     "triggerfield.ma_secret_room": {
       "file": "server/lua/triggerfield/ma_secret_room.lua"
     },
