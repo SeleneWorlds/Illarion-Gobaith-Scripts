@@ -204,8 +204,10 @@ local M = {}
         if not TargetLocation then
             return false;
         end
-        User:inform("Real Target --> x: "..RealTarget.x.." - y: "..RealTarget.y.." - z: "..RealTarget.z );
-        User:inform("Modified Target --> x: "..TargetLocation.x.." - y: "..TargetLocation.y.." - z: "..TargetLocation.z );
+        if User:isAdmin() then
+            User:inform("Real Target --> x: "..RealTarget.x.." - y: "..RealTarget.y.." - z: "..RealTarget.z );
+            User:inform("Modified Target --> x: "..TargetLocation.x.." - y: "..TargetLocation.y.." - z: "..TargetLocation.z );
+        end
         local dir = common.GetDirection( User.pos, TargetLocation );
         if ( dir == 0 ) then
             return common.GetNLS( User, "Norden", "north" );

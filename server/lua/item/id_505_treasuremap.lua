@@ -11,15 +11,16 @@ function M.LookAtItem(User, Item)
     local TreasureName = base_treasure.GetTreasureName( math.floor(Item.quality/100), User:getPlayerLanguage(), not dir );
 
     if not dir then
-        world:itemInform( User, Item, common.GetNLS( User,
+        common.InformNLS( User,
             "Du siehst eine Karte mit einer Markierung auf einer Position irgendwo in deiner unmittelbaren Nähe. Du vermutest, dass es sich um "..TreasureName.." handelt.",
-            "You see a map that shows a position somewhere really close to your current position. You think it could be "..TreasureName.."." ) );
+            "You see a map that shows a position somewhere really close to your current position. You think it could be "..TreasureName.."." );
     else
-        world:itemInform( User, Item, common.GetNLS( User,
+        common.InformNLS( User,
             "Du siehst eine Karte mit einer Markierung, die sich wahrscheinlich von dir aus gesehen "..distance.." im "..dir.." befindet. Du vermutest, dass es sich um "..TreasureName.." handelt.",
-            "You see a map that shows a mark that is probably located somewhere "..distance.." in the "..dir.." of your current position. You believe the map leads to "..TreasureName.."." ) );
+            "You see a map that shows a mark that is probably located somewhere "..distance.." in the "..dir.." of your current position. You believe the map leads to "..TreasureName.."." );
     end;
 
+    world:itemInform(User, Item, common.GetNLS(User, "Schatzkarte", "Treasure Map"))
 end;
 
 return M
