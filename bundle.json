@@ -1470,9 +1470,6 @@
     "triggerfield.dragoncave": {
       "file": "server/lua/triggerfield/dragoncave.lua"
     },
-    "triggerfield.gangeffekt": {
-      "file": "server/lua/triggerfield/gangeffekt.lua"
-    },
     "triggerfield.hellbriar_hidden_entrance": {
       "file": "server/lua/triggerfield/hellbriar_hidden_entrance.lua"
     },
