@@ -786,23 +786,11 @@
     "lte.alcohol": {
       "file": "server/lua/lte/alcohol.lua"
     },
-    "lte.aquest28": {
-      "file": "server/lua/lte/aquest28.lua"
-    },
-    "lte.attrib_boost": {
-      "file": "server/lua/lte/attrib_boost.lua"
-    },
-    "lte.base_raid": {
-      "file": "server/lua/lte/base_raid.lua"
-    },
     "lte.bleeding": {
       "file": "server/lua/lte/bleeding.lua"
     },
     "lte.blessedheal": {
       "file": "server/lua/lte/blessedheal.lua"
-    },
-    "lte.blessing": {
-      "file": "server/lua/lte/blessing.lua"
     },
     "lte.chr_reg": {
       "file": "server/lua/lte/chr_reg.lua"
@@ -819,26 +807,14 @@
     "lte.drachenpocken": {
       "file": "server/lua/lte/drachenpocken.lua"
     },
-    "lte.effect2": {
-      "file": "server/lua/lte/effect2.lua"
-    },
-    "lte.fighting": {
-      "file": "server/lua/lte/fighting.lua"
-    },
     "lte.fire": {
       "file": "server/lua/lte/fire.lua"
     },
     "lte.gembonus": {
       "file": "server/lua/lte/gembonus.lua"
     },
-    "lte.irmorom_bless": {
-      "file": "server/lua/lte/irmorom_bless.lua"
-    },
     "lte.lasttier": {
       "file": "server/lua/lte/lasttier.lua"
-    },
-    "lte.magic": {
-      "file": "server/lua/lte/magic.lua"
     },
     "lte.newbieisland": {
       "file": "server/lua/lte/newbieisland.lua"
@@ -849,26 +825,14 @@
     "lte.parish_nargun": {
       "file": "server/lua/lte/parish_nargun.lua"
     },
-    "lte.perc_boost": {
-      "file": "server/lua/lte/perc_boost.lua"
-    },
     "lte.resurrected": {
       "file": "server/lua/lte/resurrected.lua"
-    },
-    "lte.savetest": {
-      "file": "server/lua/lte/savetest.lua"
-    },
-    "lte.segen": {
-      "file": "server/lua/lte/segen.lua"
     },
     "lte.shadow_cloack_effect": {
       "file": "server/lua/lte/shadow_cloack_effect.lua"
     },
     "lte.smell": {
       "file": "server/lua/lte/smell.lua"
-    },
-    "lte.spookey": {
-      "file": "server/lua/lte/spookey.lua"
     },
     "lte.stoned": {
       "file": "server/lua/lte/stoned.lua"
