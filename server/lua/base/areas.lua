@@ -1,5 +1,19 @@
 local Registries = require("selene.registries")
+local Behaviors = require("moonlight-behaviors.server.lua.behaviors")
+local BehaviorDefaults = require("illarion-script-loader.server.lua.lib.behaviorDefaults")
 local M = {}
+local behaviors = BehaviorDefaults.registerBehaviorDefaults(Behaviors:new())
+
+---Dispatch an event to enabled areas containing the character at emission time.
+function M.emit(event, context)
+    for _, entry in pairs(Registries.findAll("illarion:areas")) do
+        if entry:getField("enabled") == true
+            and M.contains(entry:getField("area"), context.character,
+                { ignoreFloor = entry:getField("ignoreFloor") == true }) then
+            behaviors:emit(event, entry:getField("behaviors") or {}, context)
+        end
+    end
+end
 
 local function identifier(name)
     assert(type(name) == "string" and name ~= "", "Area name must be a non-empty string")

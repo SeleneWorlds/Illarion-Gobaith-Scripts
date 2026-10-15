@@ -1,6 +1,4 @@
 local areas = require("base.areas")
-local keys = require("base.keys")
-local doors = require("base.doors")
 local common = require("base.common")
 local logging = require("selene.logging")
 local M = {}
@@ -10,18 +8,7 @@ function M.onLogout( theChar )
 	  	  return true;
 	  end
 
-    -- begin loo
-    local posi = theChar.pos;
-    if areas.contains("trolls_bane_toilet", posi) then
-        local bucket = world:getItemOnField( position( -72, -69, 0 ) );
-        local door = world:getItemOnField( position( -74, -68, 0 ) );
-        keys.UnlockDoor( door );
-        door = world:getItemOnField( position( -74, -68, 0 ) );
-        doors.OpenDoor( door );
-        bucket.id = 51;
-        world:changeItem( bucket );
-    end;
-    -- end loo
+    areas.emit("logout", { character = theChar })
     
 	-- begin cow transporter
 	local setQP = true;
