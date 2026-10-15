@@ -1416,9 +1416,6 @@
     "triggerfield.base.triggerfield": {
       "file": "server/lua/triggerfield/base/triggerfield.lua"
     },
-    "triggerfield.dragoncave": {
-      "file": "server/lua/triggerfield/dragoncave.lua"
-    },
     "triggerfield.hellbriar_hidden_entrance": {
       "file": "server/lua/triggerfield/hellbriar_hidden_entrance.lua"
     },
