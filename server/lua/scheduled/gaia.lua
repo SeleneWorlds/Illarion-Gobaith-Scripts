@@ -48,11 +48,14 @@ function M.spawnHerbs(ScheduledScript)
     for i = 1, rolls do
         local position = Areas.randomPosition("gaia_herb_drops")
         if not position then return end
-        herbRolls:roll(herbs, {
-            season = season,
-            position = position,
-            tileId = world:getField(position):tile()
-        })
+        local field = world:getField(position)
+        if field:countItems() == 0 then
+            herbRolls:roll(herbs, {
+                season = season,
+                position = position,
+                tileId = field:tile()
+            })
+        end
     end
 end
 
