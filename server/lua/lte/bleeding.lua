@@ -1,3 +1,5 @@
+-- currently commented out in fighting
+
 local M = {}
 
 -- Bleeding Mainscript

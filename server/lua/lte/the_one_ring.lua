@@ -1,3 +1,5 @@
+-- very similar to shadow_cloack_effect.lua, but currently unused
+
 local M = {}
 
 function M.addEffect( theEffect, User )
