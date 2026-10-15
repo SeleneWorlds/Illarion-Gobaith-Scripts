@@ -846,12 +846,6 @@
     "lte.order_retention_period": {
       "file": "server/lua/lte/order_retention_period.lua"
     },
-    "lte.p_followers": {
-      "file": "server/lua/lte/p_followers.lua"
-    },
-    "lte.p_priests": {
-      "file": "server/lua/lte/p_priests.lua"
-    },
     "lte.paralysis": {
       "file": "server/lua/lte/paralysis.lua"
     },
