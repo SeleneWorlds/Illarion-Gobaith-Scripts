@@ -831,9 +831,6 @@
     "lte.gembonus": {
       "file": "server/lua/lte/gembonus.lua"
     },
-    "lte.godot": {
-      "file": "server/lua/lte/godot.lua"
-    },
     "lte.irmorom_bless": {
       "file": "server/lua/lte/irmorom_bless.lua"
     },
@@ -845,9 +842,6 @@
     },
     "lte.newbieisland": {
       "file": "server/lua/lte/newbieisland.lua"
-    },
-    "lte.no_idea": {
-      "file": "server/lua/lte/no_idea.lua"
     },
     "lte.order_retention_period": {
       "file": "server/lua/lte/order_retention_period.lua"
