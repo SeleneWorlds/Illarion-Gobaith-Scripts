@@ -843,9 +843,6 @@
     "lte.newbieisland": {
       "file": "server/lua/lte/newbieisland.lua"
     },
-    "lte.order_retention_period": {
-      "file": "server/lua/lte/order_retention_period.lua"
-    },
     "lte.paralysis": {
       "file": "server/lua/lte/paralysis.lua"
     },
