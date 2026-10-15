@@ -29,7 +29,10 @@ local definition = {
         {type='swap_item',data={position=position(-72,-69,0),oldItem='illarion:item_52',item='illarion:item_51'}},
     }}},
 }
+local function signal() return {connect=function() end} end
+package.loaded['selene.server'] = {serverReloaded=signal()}
 package.loaded['selene.registries'] = {
+    entryAdded=signal, entryChanged=signal, entryRemoved=signal, reloaded=signal,
     findAll=function(registry)
         assert(registry == 'illarion:areas')
         return {{getField=function(_, key) return definition[key] end}}

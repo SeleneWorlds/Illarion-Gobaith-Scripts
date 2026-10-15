@@ -1,4 +1,5 @@
 local Registries = require("selene.registries")
+local Server = require("selene.server")
 local Behaviors = require("moonlight-behaviors.server.lua.behaviors")
 local BehaviorDefaults = require("illarion-script-loader.server.lua.lib.behaviorDefaults")
 local M = {}
@@ -202,5 +203,20 @@ function M.getPlayers(name)
     end
     return result
 end
+
+local function reloadAreas()
+    for _, entry in pairs(Registries.findAll("illarion:areas")) do
+        if entry:getField("enabled") == true then
+            behaviors:emit("init", entry:getField("behaviors") or {}, { area = entry })
+        end
+    end
+end
+
+reloadAreas()
+Server.serverReloaded:connect(reloadAreas)
+Registries.entryAdded("illarion:areas"):connect(reloadAreas)
+Registries.entryChanged("illarion:areas"):connect(reloadAreas)
+Registries.entryRemoved("illarion:areas"):connect(reloadAreas)
+Registries.reloaded("illarion:areas"):connect(reloadAreas)
 
 return M
