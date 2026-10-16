@@ -51,9 +51,6 @@
     "base.treasure": {
       "file": "server/lua/base/treasure.lua"
     },
-    "base_quest_items": {
-      "file": "server/lua/base_quest_items.lua"
-    },
     "content.bonusitems": {
       "file": "server/lua/content/bonusitems.lua"
     },
@@ -1304,9 +1301,6 @@
     },
     "npc.special.static_teleport": {
       "file": "server/lua/npc/special/static_teleport.lua"
-    },
-    "quest_giveUniqueItem": {
-      "file": "server/lua/quest_giveUniqueItem.lua"
     },
     "scheduled.closedoors": {
       "file": "server/lua/scheduled/closedoors.lua"
