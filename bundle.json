@@ -540,9 +540,6 @@
     "item.id_2763_pickaxe": {
       "file": "server/lua/item/id_2763_pickaxe.lua"
     },
-    "item.id_2801_altar": {
-      "file": "server/lua/item/id_2801_altar.lua"
-    },
     "item.id_2830_chest": {
       "file": "server/lua/item/id_2830_chest.lua"
     },
@@ -572,9 +569,6 @@
     },
     "item.id_3105_bookrest": {
       "file": "server/lua/item/id_3105_bookrest.lua"
-    },
-    "item.id_3107_bookrest": {
-      "file": "server/lua/item/id_3107_bookrest.lua"
     },
     "item.id_3110_scroll": {
       "file": "server/lua/item/id_3110_scroll.lua"
@@ -671,12 +665,6 @@
     },
     "item.id_74_axe": {
       "file": "server/lua/item/id_74_axe.lua"
-    },
-    "item.id_794_fireportal": {
-      "file": "server/lua/item/id_794_fireportal.lua"
-    },
-    "item.id_79_amethystamulet": {
-      "file": "server/lua/item/id_79_amethystamulet.lua"
     },
     "item.id_90_flute": {
       "file": "server/lua/item/id_90_flute.lua"
