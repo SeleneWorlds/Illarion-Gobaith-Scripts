@@ -133,45 +133,6 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
     end
 
     function UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
-        if (User:increaseAttrib("sex",0) == 0) then
-            gText = "seinem";
-            eText = "his";
-        else
-            gText = "ihrem";
-            eText = "her";
-        end
-
-        -----------------------------------------
-        -- Teleportringe
-        -----------------------------------------
-        if (SourceItem.data == 666 ) then    -- Ring der Akademie
-            if ( (SourceItem.itempos == 7) or (SourceItem.itempos == 8) )   	-- am Finger getragen?
-            and (User.activeLanguage == 10) 		-- Ancient aktiv?
-            and ( string.find( User.lastSpokenText, "[Hh][Oo][Nn][Ii][Gg][Kk][Uu][Cc][Hh][Ee][Nn][Pp][Ff][Ee][Rr][Dd]" ) ~= nil ) then  -- Losung ok?
-                User:talkLanguage( CCharacter.say, CPlayer.german, "#me dreht den schmalen Goldring an "..gText.." Finger.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me spins the small gold ring on "..eText.." finger.");
-                if equapos(User.pos,position(-89,-123,0)) then		-- Standort: Bane
-                    world:gfx(31,position(-88,-123,0));
-                    world:gfx(31,position(-90,-123,0));
-                    world:gfx(41,position(-89,-123,0));
-                    User:warp(position(35,26,50));
-                    world:gfx(31,position(34,26,50));
-                    world:gfx(31,position(36,26,50));
-                    world:gfx(41,position(35,26,50));
-                elseif equapos(User.pos,position(35,26,50)) then
-                    world:gfx(31,position(34,26,50));
-                    world:gfx(31,position(36,26,50));
-                    world:gfx(41,position(35,26,50));
-                    User:warp(position(-89,-123,0));
-                    world:gfx(31,position(-88,-123,0));
-                    world:gfx(31,position(-90,-123,0));
-                    world:gfx(41,position(-89,-123,0));
-                end
-            else
-                User:talkLanguage( CCharacter.say, CPlayer.german, "#me dreht den schmalen Goldring an "..gText.." Finger, aber nichts passiert.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me spins the small gold ring on "..eText.." finger, but nothing happens.");
-            end
-        end
         if ( SourceItem.data == 100 ) then
             if ( TargetItem.id == 12 or TargetItem.id == 119 or TargetItem.id == 120 or TargetItem.id == 268 or TargetItem.id == 269 or TargetItem.id == 304 or TargetItem.id == 305 or TargetItem.id == 313 or TargetItem.id == 359 ) then
                 User:inform("you can read on the ring: Ash nazg durbatuluk, Ash nazg gimbatul, Ash nazg thrakatuluk, Agh burzum-ishi krimpatul.");
