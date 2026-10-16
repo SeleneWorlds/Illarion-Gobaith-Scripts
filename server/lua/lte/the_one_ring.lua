@@ -1,5 +1,3 @@
--- very similar to shadow_cloack_effect.lua, but currently unused
-
 local M = {}
 
 function M.addEffect( theEffect, User )
@@ -10,14 +8,14 @@ function M.callEffect(theEffect, User )
     theEffect.nextCalled = 10; --erneut in 1 sec
     ringItemL = User:getItemAt( 7 );
     ringItemR = User:getItemAt( 8 );
-    --reduce the quality of the cloak
+    --reduce the quality of the ring
     if ( ringItemL.id == 235 and ringItemL.data == 100) then
         world:changeQuality( ringItemL, -1 );
     elseif ( ringItemR.id == 235 and ringItemR.data == 100) then
         world:changeQuality( ringItemR, -1 );
     end
     
-    --check if the cloak is on the right place
+    --check if the ring is still worn
     ringItemL = User:getItemAt( 7 );
     ringItemR = User:getItemAt( 8 );
     if ( ringItemL.id == 235  and ringItemL.data == 100) then

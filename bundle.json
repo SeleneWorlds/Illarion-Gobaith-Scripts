@@ -462,9 +462,6 @@
     "item.id_171_spinningwheel": {
       "file": "server/lua/item/id_171_spinningwheel.lua"
     },
-    "item.id_194_blackcloak": {
-      "file": "server/lua/item/id_194_blackcloak.lua"
-    },
     "item.id_2052_stretcher": {
       "file": "server/lua/item/id_2052_stretcher.lua"
     },
@@ -776,9 +773,6 @@
     },
     "lte.resurrected": {
       "file": "server/lua/lte/resurrected.lua"
-    },
-    "lte.shadow_cloack_effect": {
-      "file": "server/lua/lte/shadow_cloack_effect.lua"
     },
     "lte.smell": {
       "file": "server/lua/lte/smell.lua"
