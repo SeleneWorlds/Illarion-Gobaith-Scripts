@@ -222,7 +222,6 @@ function initDoors()
     AddDoor(-262, 25,-25, 7010, true); -- Hell Briar, Temple Entrace
     AddDoor(-250, 31,-22, 7011,false); -- Hell Briar, Temple Prison
     AddDoor(-250, 27,-22, 7011,false); -- Hell Briar, Temple Prison
-	-- Data in use: 7300 -- Hell Briar, hidden wall entrance
     AddDoor(-469, -69, 0, 7200,false); -- Caelum Gate
     AddDoor(-469, -68, 0, 7200,false); -- Caelum Gate
 

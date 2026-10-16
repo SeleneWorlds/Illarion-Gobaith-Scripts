@@ -6,7 +6,6 @@ local common = require("base.common")
 -- UPDATE common SET com_script='item.keys' WHERE com_itemid IN (2121,2122,2123,2124,2141,2144,2145,2161,2556,2558,3054,3055,3056);
 
 function M.UseItem(User,SourceItem,TargetItem,counter,param)
-    local WALLPOS = position(-470,241,0);
     local DoorItem = TargetItem;
     if DoorItem.id == 0 then
         DoorItem = common.GetFrontItem( User );
@@ -16,18 +15,7 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
         return;
     end
 
-    if SourceItem.data == 7300 and DoorItem.id == 287 and DoorItem.pos == WALLPOS then
-
-		world:erase(DoorItem,1);
-		local charList = world:getPlayersInRangeOf(WALLPOS,15);
-		for i,char in pairs(charList) do
-			if char.pos.z == WALLPOS.z then
-				char:inform(char:getPlayerLanguage()==0 and
-					"#w Du hörst das Geräusch von sich verschiebendem Gestein." or
-					"#w You hear the sound of moving stone.");
-			end
-		end
-	elseif base_keys.CheckKey(SourceItem,DoorItem) then
+    if base_keys.CheckKey(SourceItem,DoorItem) then
         if base_keys.LockDoor(DoorItem) then
             common.InformNLS(User,"Du sperrst die Tür ab.","You lock the door.");
         elseif base_keys.UnlockDoor(DoorItem,User) then             -- User eingefuegt
