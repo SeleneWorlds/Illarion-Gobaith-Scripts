@@ -1317,9 +1317,6 @@
     "scheduled.invisible_crosses": {
       "file": "server/lua/scheduled/invisible_crosses.lua"
     },
-    "scheduled.sc_ma_close_wall": {
-      "file": "server/lua/scheduled/sc_ma_close_wall.lua"
-    },
     "scheduled.scs_shining_mine": {
       "file": "server/lua/scheduled/scs_shining_mine.lua"
     },
@@ -1412,9 +1409,6 @@
     },
     "triggerfield.hellbriar_hidden_entrance": {
       "file": "server/lua/triggerfield/hellbriar_hidden_entrance.lua"
-    },
-    "triggerfield.ma_secret_room": {
-      "file": "server/lua/triggerfield/ma_secret_room.lua"
     },
     "triggerfield.newbie_craft": {
       "file": "server/lua/triggerfield/newbie_craft.lua"
