@@ -1380,30 +1380,6 @@
     "triggerfield.ambient": {
       "file": "server/lua/triggerfield/ambient.lua"
     },
-    "triggerfield.aq001_magedoor": {
-      "file": "server/lua/triggerfield/aq001_magedoor.lua"
-    },
-    "triggerfield.aq001_mirror": {
-      "file": "server/lua/triggerfield/aq001_mirror.lua"
-    },
-    "triggerfield.aq001_mirrorladder": {
-      "file": "server/lua/triggerfield/aq001_mirrorladder.lua"
-    },
-    "triggerfield.aq001_statueladder": {
-      "file": "server/lua/triggerfield/aq001_statueladder.lua"
-    },
-    "triggerfield.aq001_wall": {
-      "file": "server/lua/triggerfield/aq001_wall.lua"
-    },
-    "triggerfield.aq001_wcgate": {
-      "file": "server/lua/triggerfield/aq001_wcgate.lua"
-    },
-    "triggerfield.aq001_wcno": {
-      "file": "server/lua/triggerfield/aq001_wcno.lua"
-    },
-    "triggerfield.aq001_wcso": {
-      "file": "server/lua/triggerfield/aq001_wcso.lua"
-    },
     "triggerfield.base.triggerfield": {
       "file": "server/lua/triggerfield/base/triggerfield.lua"
     },
