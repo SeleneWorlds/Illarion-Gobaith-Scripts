@@ -1395,24 +1395,6 @@
     "triggerfield.newbie_mage": {
       "file": "server/lua/triggerfield/newbie_mage.lua"
     },
-    "triggerfield.noobia_cross": {
-      "file": "server/lua/triggerfield/noobia_cross.lua"
-    },
-    "triggerfield.noobia_door": {
-      "file": "server/lua/triggerfield/noobia_door.lua"
-    },
-    "triggerfield.noobia_ladder": {
-      "file": "server/lua/triggerfield/noobia_ladder.lua"
-    },
-    "triggerfield.noobia_spawn": {
-      "file": "server/lua/triggerfield/noobia_spawn.lua"
-    },
-    "triggerfield.noobia_wall_desert": {
-      "file": "server/lua/triggerfield/noobia_wall_desert.lua"
-    },
-    "triggerfield.noobia_wall_start": {
-      "file": "server/lua/triggerfield/noobia_wall_start.lua"
-    },
     "triggerfield.notherot_entrace": {
       "file": "server/lua/triggerfield/notherot_entrace.lua"
     },
