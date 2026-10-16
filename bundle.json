@@ -741,9 +741,6 @@
     "item.weapon.wood": {
       "file": "server/lua/item/weapon/wood.lua"
     },
-    "item.woodenchest": {
-      "file": "server/lua/item/woodenchest.lua"
-    },
     "item.woodlogs": {
       "file": "server/lua/item/woodlogs.lua"
     },
