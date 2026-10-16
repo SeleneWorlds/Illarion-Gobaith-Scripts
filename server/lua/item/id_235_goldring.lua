@@ -1,6 +1,6 @@
 local M = {}
 
--- data values in use: 100,101,102,666,700,800, 10000
+-- data values in use: 100, 101, 102, 103, 666, 700, 10000
 
 local base_lookat = require("base.lookat")
 local common = require("base.common")
@@ -41,42 +41,6 @@ function M.LookAtItem(User,Item)
         else
             world:itemInform(User,Item,"You see a peculiar dagger.");
         end
-    elseif (Item.data == 800) then -- Questitem für Noradur (Char löst sich ig auf - teleport zum gm schloss)
-        if ( (User:isAdmin()) or (User.id==923280786)) then -- nur für gm
-            if (User:getPlayerLanguage()==0) then
-                world:itemInform(User,Item,"Auf dem Ring sind am Rand verschlungene arkane Symbole zu erkennen.");
-            else
-                world:itemInform(User,Item,"You can see some arcane symbols engraved in the ring.");
-            end
-        end
-    elseif (Item.data == 801) then -- Questitem für Noradur (Firebreathing)
-        if (User:isAdmin()) then -- nur für gm
-            if (User:getPlayerLanguage()==0) then
-                world:itemInform(User,Item,"Ring des Feuers");
-            else
-                world:itemInform(User,Item,"Ring of fire");
-            end
-        end
-    elseif (Item.data == 802) then -- Questitem  (Ritual)
-        if (User:isAdmin()) then -- nur für gm
-            if (User:getPlayerLanguage()==0) then
-                world:itemInform(User,Item,"Ritual");
-            else
-                world:itemInform(User,Item,"Ritual");
-            end
-        end
-	elseif (Item.data == 803) then -- Questitem (Icebreathing)
-        if (User:isAdmin()) then -- nur für gm
-            if (User:getPlayerLanguage()==0) then
-                world:itemInform(User,Item,"Ring des Eises");
-            else
-                world:itemInform(User,Item,"Ring of ice");
-            end
-        end
-    elseif (Item.data == 804) then -- Questitem  (Give the crown)
-        if (User:isAdmin()) then -- nur für gm
-                world:itemInform(User,Item,"Give the crown! (Krone erscheint auf 370, 134, -10)");
-        end
     else
         world:itemInform(User,Item,base_lookat.GetItemDescription(User,Item,4,false,false ));
     end
@@ -109,7 +73,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
         end
     end
 
-    function MoveItemBeforeMove( Character, SourceItem, TargetItem)
+    function M.MoveItemBeforeMove( Character, SourceItem, TargetItem)
         if ( SourceItem.data == 666 ) then
             if ( (TargetItem.itempos == 7) or (TargetItem.itempos == 8) ) then -- Wenn versucht wird den Ring anzulegen.
                 if ((Character:increaseAttrib("essence",0)+Character:increaseAttrib("willpower",0)+Character:increaseAttrib("intelligence",0))>29) then
@@ -132,256 +96,13 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
         return true;
     end
 
-    function UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
+    function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
         if ( SourceItem.data == 100 ) then
             if ( TargetItem.id == 12 or TargetItem.id == 119 or TargetItem.id == 120 or TargetItem.id == 268 or TargetItem.id == 269 or TargetItem.id == 304 or TargetItem.id == 305 or TargetItem.id == 313 or TargetItem.id == 359 ) then
                 User:inform("you can read on the ring: Ash nazg durbatuluk, Ash nazg gimbatul, Ash nazg thrakatuluk, Agh burzum-ishi krimpatul.");
             end
         end
 
-        ---------------------------------------------------------------
-        -- Questring (Rilduran-quest)
-        ---------------------------------------------------------------
-        if (SourceItem.data == 800) then
-            if ( (User:isAdmin())  or (User.id==923280786) ) then -- nur für gm!!
-                if ( string.find( User.lastSpokenText, "[Aa][Ss][Tt][Rr][Aa][Ll]" ) ~= nil ) then
-                    User:talkLanguage( CCharacter.say, CPlayer.german, "#me's Konturen scheinen für einen kurzen Augenblick zu flimmern, bevor sich seine Gestalt vollständig auflöst.");
-                    User:talkLanguage( CCharacter.say, CPlayer.english, "#me's outline begins to shimmer briefly before his form dissolves completely.");
-                    world:gfx(52,User.pos);
-                    User:warp(position(-37,-193,1));
-                    world:gfx(52,position(-37,-193,1));
-                    world:gfx(52,position(-36,-194,1));
-                    world:gfx(52,position(-38,-192,1));
-                    world:gfx(52,position(-38,-194,1));
-                    world:gfx(52,position(-36,-192,1));
-                else
-                    common.InformNLS( User,"Du versuchst den Ring zu benutzen, aber nichts passiert.","You try to use the ring, but nothing happens.");
-                end
-            end
-        end
-        -----------------------------------------------------------------
-        -- Questring (Drachen-quest)
-        -----------------------------------------------------------------
-		if (User:isAdmin()) then -- nur für gm!!
-        	if (SourceItem.data == 801) then
-                if (User:get_race() == 33) then
-                    FireBreath(User);
-                end
-        	end
-			if (SourceItem.data == 803) then
-                if (User:get_race() == 53) then
-                    IceBreath(User);
-                end
-            end
-        end
-
-        -------------------------------------------------------------------
-        -- Questring (Ritual)
-        ------------------------------------------------------------------
-        if (SourceItem.data == 802) then
-            if (User:isAdmin()) then -- nur für gm!!
-                if ( string.find( User.lastSpokenText, "Stufe1" ) ~= nil ) then
-                    world:gfx(37,position(50,-328,-23));	-- wasser
-                    world:gfx(5,position(48,-330, -23));	-- erde
-                    world:gfx(36,position(48,-326,-23));	-- feuer
-                    world:gfx(46,position(46,-328,-23));	-- geist
-                    world:gfx(7,position(48,-328, -23));	-- wind
-                end
-                if( string.find( User.lastSpokenText, "Stufe2" ) ~= nil ) then
-                    world:gfx(37,position(50,-328,-23));       -- wasser
-                    world:gfx(5,position(48,-330, -23));        -- erde
-                    world:gfx(36,position(48,-326,-23));       -- feuer
-                    world:gfx(46,position(46,-328,-23));       -- geist
-                    world:gfx(7,position(48,-328, -23));        -- wind
-
-                    mage1 = world:getCharacterOnField(position(50,-328,-23));
-                    mage2 = world:getCharacterOnField(position(48,-330,-23));
-                    mage3 = world:getCharacterOnField(position(48,-326,-23));
-                    mage4 = world:getCharacterOnField(position(46,-328,-23));
-                    mage5 = world:getCharacterOnField(position(48,-328,-23));
-
-                    world:gfx(53,position(50,-328,-23));
-                    world:gfx(53,position(48,-330,-23));
-                    world:gfx(53,position(48,-326,-23));
-                    world:gfx(53,position(46,-328,-23));
-                    world:gfx(53,position(48,-328,-23));
-
-
-                    mage1:createItem( 3110, 2, 333, 666 );
-                    mage1:eraseItem( 3109, 1 );
-                    mage1:eraseItem( 285, 1 );
-                    mage2:createItem( 3110, 2, 333, 666 );
-                    mage2:eraseItem( 3109, 1 );
-                    mage2:eraseItem( 285, 1 );
-                    mage3:createItem( 3110, 2, 333, 666 );
-                    mage3:eraseItem( 3109, 1 );
-                    mage3:eraseItem( 285, 1 );
-                    mage4:createItem( 3110, 2, 333, 666 );
-                    mage4:eraseItem( 3109, 1 );
-                    mage4:eraseItem( 285, 1 );
-                    mage5:createItem( 3110, 2, 333, 666 );
-                    mage5:eraseItem( 3109, 1 );
-                    mage5:eraseItem( 285, 1 );
-
-                end
-                if( string.find( User.lastSpokenText, "Stufe3" ) ~= nil ) then
-
-                end
-
-            end
-		end
-		------------------------------------------------------------------
-		-- Questring (Give the crown)
-        ------------------------------------------------------------------
-		if (SourceItem.data == 804) then
-            if (User:isAdmin()) then -- nur für gm!!
-				world:gfx(7,position(370,134, -10));    -- wind
-                world:gfx(7,position(371,134, -10));    -- wind
-                world:gfx(7,position(369,134, -10));    -- wind
-                world:gfx(7,position(370,133, -10));    -- wind
-                world:gfx(7,position(370,135, -10));    -- wind
-
-                world:gfx(7,position(371,131, -10));    -- wind
-                world:gfx(7,position(372,136, -10));    -- wind
-                world:gfx(7,position(366,134, -10));    -- wind
-
-				world:makeSound(28,position(370,134,-10));
-				world:makeSound(4,position(370,134,-10));
-				world:makeSound(27,position(370,134,-10));
-                world:makeSound(9,position(370,134,-10));
-				
-				world:changeTile(55,position(370,134,-10));
-				world:changeTile(55,position(371,134,-10));
-				world:changeTile(55,position(369,134,-10));
-				world:changeTile(55,position(370,133,-10));
-				world:changeTile(55,position(370,135,-10));
-
-				world:sendMapUpdate(position(370,134,-10),10);
-
-				world:createItemFromId(3104,1,position(370,134,-10),true,333,0);
-				world:createItemFromId(225,1,position(370,134,-10),true,333,666);
-			end
-        end
-
-
-
-
-        --------------------------------------
-    end
-    function UseItemWithField(User,SourceItem,TargetPos,Counter,Param,ltstate)
-		if (User:isAdmin()) then -- nur für gm!!
-        	if (SourceItem.data == 801) then
-        	    if (User:get_race() == 33) then
-        	        FireBreath(User);
-        	    end
-        	end
-			if (SourceItem.data == 803) then
-                if (User:get_race() == 53) then
-                    IceBreath(User);
-                end
-            end
-		end
-    end
-
-
-    function FireBreath(Monster)
-        if (firstFireBreath==nil) then
-            FireNearBreathShape={};
-            FireNearBreathShape[1]={9,9,9,9,9};
-            FireNearBreathShape[2]={0,9,9,9,0};
-            FireNearBreathShape[3]={0,9,9,9,0};
-            FireNearBreathShape[4]={0,0,9,0,0};
-            FireNearBreathShape[5]={0,0,9,0,0};
-            firstFireBreath=true;
-        end
-        FireLooking=Monster:get_face_to()
-        if (FireLooking==0) then
-            FireBreathShape=FireNearBreathShape;
-        elseif (FireLooking==2) then
-            FireBreathShape=ShapeDrehen(FireNearBreathShape);
-        elseif (FireLooking==4) then
-            FireBreathShape=ShapeDrehen(ShapeDrehen(FireNearBreathShape));
-        elseif (FireLooking==6) then
-            FireBreathShape=ShapeDrehen(ShapeDrehen(ShapeDrehen(FireNearBreathShape)));
-        end
-        for i=1,5 do
-            for k=1,5 do
-                if (FireLooking==0) then
-                    FireBreathPos=position(Monster.pos.x-3+k,Monster.pos.y-7+i,Monster.pos.z);
-                elseif (FireLooking==2) then
-                    FireBreathPos=position(Monster.pos.x+k,Monster.pos.y-3+i,Monster.pos.z);
-                elseif (FireLooking==4) then
-                    FireBreathPos=position(Monster.pos.x-3+k,Monster.pos.y+i,Monster.pos.z);
-                elseif (FireLooking==6) then
-                    FireBreathPos=position(Monster.pos.x-7+k,Monster.pos.y-3+i,Monster.pos.z);
-                end
-                if (FireBreathShape[i][k]~=0) then
-                    world:gfx(FireBreathShape[i][k],FireBreathPos);
-                    if (math.random(1,5)==1) then
-                        world:createItemFromId(359,1,FireBreathPos,true,math.random(200,600),0);
-                        world:makeSound(5,FireBreathPos);
-                    end
-                    if world:isCharacterOnField(FireBreathPos) then
-                        HitChar=world:getCharacterOnField(FireBreathPos);
-                        HitChar:increaseAttrib("hitpoints",-2000)
-                    end
-                end
-            end
-        end
-    end
-
-	function IceBreath(Monster)
-        if (firstIceBreath==nil) then
-            IceNearBreathShape={};
-            IceNearBreathShape[1]={4,4,4,4,4};
-            IceNearBreathShape[2]={0,4,4,4,0};
-            IceNearBreathShape[3]={0,4,4,4,0};
-            IceNearBreathShape[4]={0,0,4,0,0};
-            IceNearBreathShape[5]={0,0,4,0,0};
-            firstIceBreath=true;
-        end
-        IceLooking=Monster:get_face_to()
-        if (IceLooking==0) then
-            IceBreathShape=IceNearBreathShape;
-        elseif (IceLooking==2) then
-            IceBreathShape=ShapeDrehen(IceNearBreathShape);
-        elseif (IceLooking==4) then
-            IceBreathShape=ShapeDrehen(ShapeDrehen(IceNearBreathShape));
-        elseif (IceLooking==6) then
-            IceBreathShape=ShapeDrehen(ShapeDrehen(ShapeDrehen(IceNearBreathShape)));
-        end
-        for i=1,5 do
-            for k=1,5 do
-                if (IceLooking==0) then
-                    IceBreathPos=position(Monster.pos.x-3+k,Monster.pos.y-7+i,Monster.pos.z);
-                elseif (IceLooking==2) then
-                    IceBreathPos=position(Monster.pos.x+k,Monster.pos.y-3+i,Monster.pos.z);
-                elseif (IceLooking==4) then
-                    IceBreathPos=position(Monster.pos.x-3+k,Monster.pos.y+i,Monster.pos.z);
-                elseif (IceLooking==6) then
-                    IceBreathPos=position(Monster.pos.x-7+k,Monster.pos.y-3+i,Monster.pos.z);
-                end
-                if (IceBreathShape[i][k]~=0) then
-                    world:gfx(IceBreathShape[i][k],IceBreathPos);
-                    if (math.random(1,5)==1) then
-                        world:createItemFromId(360,1,IceBreathPos,true,math.random(200,600),0);
-                        world:makeSound(5,IceBreathPos);
-                    end
-                    if world:isCharacterOnField(IceBreathPos) then
-                        HitChar=world:getCharacterOnField(IceBreathPos);
-                        HitChar:increaseAttrib("hitpoints",-2000)
-                    end
-                end
-            end
-        end
-    end
-
-    function ShapeDrehen(Shape)
-        retShape={};
-        for i=1,5 do
-            retShape[i]={Shape[5][i],Shape[4][i],Shape[3][i],Shape[2][i],Shape[1][i]};
-        end
-        return retShape
     end
 
 return M

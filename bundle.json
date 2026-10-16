@@ -282,6 +282,24 @@
     "gm.base.log": {
       "file": "server/lua/gm/base/log.lua"
     },
+    "gm.items.admin_astral_ring": {
+      "file": "server/lua/gm/items/admin_astral_ring.lua"
+    },
+    "gm.items.admin_crown_ring": {
+      "file": "server/lua/gm/items/admin_crown_ring.lua"
+    },
+    "gm.items.admin_fire_ring": {
+      "file": "server/lua/gm/items/admin_fire_ring.lua"
+    },
+    "gm.items.admin_ice_ring": {
+      "file": "server/lua/gm/items/admin_ice_ring.lua"
+    },
+    "gm.items.admin_ritual_ring": {
+      "file": "server/lua/gm/items/admin_ritual_ring.lua"
+    },
+    "gm.items.dragon_breath": {
+      "file": "server/lua/gm/items/dragon_breath.lua"
+    },
     "gm.items.id_100_trowel": {
       "file": "server/lua/gm/items/id_100_trowel.lua"
     },
