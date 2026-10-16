@@ -561,9 +561,6 @@
     "item.id_271_scythe": {
       "file": "server/lua/item/id_271_scythe.lua"
     },
-    "item.id_272_statue": {
-      "file": "server/lua/item/id_272_statue.lua"
-    },
     "item.id_2744_pipe": {
       "file": "server/lua/item/id_2744_pipe.lua"
     },
