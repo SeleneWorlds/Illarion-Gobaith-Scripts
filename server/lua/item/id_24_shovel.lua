@@ -21,14 +21,6 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         foundTreasureAt = {};
     end
 
-    if equapos( position( 99, 40, 0 ), TargetPos ) then
-        User:warp( position( 99, 40, -3 ) );
-        common.InformNLS(User,
-        "Du gräbst ein Loch und der Boden bricht unter dir weg und so fällst du in eine Höhle",
-        "You dig a hole and the ground under you collapses and you fall into a cave..." );
-        return
-    end
-
     local groundTile = world:getField( TargetPos ):tile();
     local GroundType = common.GetGroundType( groundTile );
 

@@ -43,20 +43,10 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 		return false;
     end
 
-    if equapos(TargetItem.pos,position(-73,-108,0)) then
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me klettert an einem Seil den Brunnen hinunter.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me climbs down into the well on a rope.");
-        User:warp(position(-73,-108,-3));
-    elseif equapos(TargetItem.pos,position(-131,-123,0)) then
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me klettert an einem Seil den Brunnen hinunter.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me climbs down into the well on a rope.");
-        User:warp(position(-131,-123,-3));
-	else
-    	if ( User:getPlayerLanguage() == 0 ) then
-            User:inform( "Das Wasser steht recht hoch im Brunnen. Hier hinein zu klettern bringt nichts." );
-    	else
-            User:inform( "The water is rather high in the well. To climb in here is useless." );
-		end
+    if User:getPlayerLanguage() == 0 then
+        User:inform("Das Wasser steht recht hoch im Brunnen. Hier hinein zu klettern bringt nichts.");
+    else
+        User:inform("The water is rather high in the well. To climb in here is useless.");
     end
 end
 
