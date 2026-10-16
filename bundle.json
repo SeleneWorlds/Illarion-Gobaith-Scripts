@@ -1383,15 +1383,6 @@
     "triggerfield.base.triggerfield": {
       "file": "server/lua/triggerfield/base/triggerfield.lua"
     },
-    "triggerfield.newbie_craft": {
-      "file": "server/lua/triggerfield/newbie_craft.lua"
-    },
-    "triggerfield.newbie_fighter": {
-      "file": "server/lua/triggerfield/newbie_fighter.lua"
-    },
-    "triggerfield.newbie_mage": {
-      "file": "server/lua/triggerfield/newbie_mage.lua"
-    },
     "triggerfield.notherot_entrace": {
       "file": "server/lua/triggerfield/notherot_entrace.lua"
     },
