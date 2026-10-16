@@ -36,9 +36,6 @@
     "base.keys": {
       "file": "server/lua/base/keys.lua"
     },
-    "base.lever": {
-      "file": "server/lua/base/lever.lua"
-    },
     "base.log": {
       "file": "server/lua/base/log.lua"
     },
@@ -314,45 +311,6 @@
     },
     "gm.spells.31_runes": {
       "file": "server/lua/gm/spells/31_runes.lua"
-    },
-    "handler.closedoor": {
-      "file": "server/lua/handler/closedoor.lua"
-    },
-    "handler.createbridge": {
-      "file": "server/lua/handler/createbridge.lua"
-    },
-    "handler.createeffect": {
-      "file": "server/lua/handler/createeffect.lua"
-    },
-    "handler.createitem": {
-      "file": "server/lua/handler/createitem.lua"
-    },
-    "handler.createsound": {
-      "file": "server/lua/handler/createsound.lua"
-    },
-    "handler.deletebridge": {
-      "file": "server/lua/handler/deletebridge.lua"
-    },
-    "handler.deleteitem": {
-      "file": "server/lua/handler/deleteitem.lua"
-    },
-    "handler.lockdoor": {
-      "file": "server/lua/handler/lockdoor.lua"
-    },
-    "handler.movelever": {
-      "file": "server/lua/handler/movelever.lua"
-    },
-    "handler.opendoor": {
-      "file": "server/lua/handler/opendoor.lua"
-    },
-    "handler.sendmessage": {
-      "file": "server/lua/handler/sendmessage.lua"
-    },
-    "handler.settile": {
-      "file": "server/lua/handler/settile.lua"
-    },
-    "handler.unlockdoor": {
-      "file": "server/lua/handler/unlockdoor.lua"
     },
     "item.altars": {
       "file": "server/lua/item/altars.lua"
@@ -722,9 +680,6 @@
     },
     "item.keys": {
       "file": "server/lua/item/keys.lua"
-    },
-    "item.lever": {
-      "file": "server/lua/item/lever.lua"
     },
     "item.lights": {
       "file": "server/lua/item/lights.lua"
