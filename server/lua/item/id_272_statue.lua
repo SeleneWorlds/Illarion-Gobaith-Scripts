@@ -1,28 +1,10 @@
 local M = {}
 
-local common = require("base.common")
-
 -- UPDATE common SET com_script='item.id_272_statue' WHERE com_itemid=272;
 
 function M.UseItem( User, Item, TargetItem, counter, param )
     lang=User:getPlayerLanguage();
-    if equapos(Item.pos,position(-28, 192, -9)) then
-        if ( not common.isItemIdInFieldStack( 35, position(-29, 195, -9) ) ) then
-            if lang==0 then
-                User:inform("Während du vorsichtig die Statue abtastest öffnet sich plötzlich eine Luke in der Decke und eine hölzerne Leiter fährt herab.");
-            else
-                User:inform("While you carefully feel the statue, suddenly a hatch in the ceiling opens and a wooden ladder slides down.");
-            end
-            world:createItemFromId( 35, 1, position(-29, 195, -9), true, 999,0 );
-        else
-            if lang==0 then
-                User:inform("Nachdem du den verborgenen Schalter erneut betätigst gleitet die Leiter zurück in die Decke und die Luke schließt sich wieder.");
-            else
-                User:inform("After touching the hidden switch again the ladder slides back into the ceiling and the hatch closes again.");
-            end
-            common.removeItemIdFromFieldStack( 35, position(-29, 195, -9) );
-        end
-    elseif equapos(Item.pos,position(-389,-218,2)) then
+    if equapos(Item.pos,position(-389,-218,2)) then
         if ((User:increaseAttrib("essence",0)+User:increaseAttrib("willpower",0)+User:increaseAttrib("intelligence",0))>29) then
             User:warp(position(102,56,52));
             if lang==0 then
