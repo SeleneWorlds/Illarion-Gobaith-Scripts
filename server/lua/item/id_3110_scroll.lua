@@ -1,17 +1,9 @@
 local M = {}
 
 local common = require("base.common")
-local base_orders = require("base.orders")
 -- UPDATE common SET com_script = 'item.id_3110_scroll' WHERE com_itemid = 3110;
 
 function M.LookAtItem(User,Item)
-    --abarbeitung der Aufträge
-    local order = Order:fromItem(Item);
-    if ( order ~= nil ) then
-        world:itemInform(User,Item,order:lookAt(User));
-        return;
-    end
-    --ende der aufträge
     local spell = Item.quality;
     if (spell == 101) then -- teleport
         
@@ -35,24 +27,6 @@ function M.LookAtItem(User,Item)
 									  "Unban decree of the town "..TownNameEList[Item.data][1])
 		world:itemInform(User,Item, InformText);
 	end
-end
-
-function M.UseItemWithCharacter(User, SourceItem, Character, counter, param)
-    User:inform("useitemwitchchar start");
-    if ( Character:get_type() == CCharacter.npc ) then
-        User:inform("useitemwitchchar npc");
-        --abarbeitung der Aufträge
-        fnd, ordernpc = getNPCFromGlobalList(Character.id,User);
-        if ( fnd ) then
-            --wenn funktion true zurück gibt dann war es ein auftrag
-            --daher restliche funktion abbrechen
-            if (ordernpc:checkOrder(SourceItem,User) ) then 
-                return;
-            end
-        end
-        --ende der aufträge
-    end
-    User:inform("useitemwitchchar end");
 end
 
 function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
