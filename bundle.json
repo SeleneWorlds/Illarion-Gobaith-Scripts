@@ -486,9 +486,6 @@
     "item.id_2140_tong": {
       "file": "server/lua/item/id_2140_tong.lua"
     },
-    "item.id_2207_wishingwell": {
-      "file": "server/lua/item/id_2207_wishingwell.lua"
-    },
     "item.id_220_barrel": {
       "file": "server/lua/item/id_220_barrel.lua"
     },
