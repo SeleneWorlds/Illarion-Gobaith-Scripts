@@ -7,7 +7,6 @@ local M = {}
 
 -- uses items of the new client - don't put this on the RS yet!
 local common = require("base.common")
-local blessedWater = require("content.blessed_water")
 
 function M.InitDrinks()  -- initialisiert die coolen softdrinks in da hood.
     if ( drinkList == nil) then
@@ -50,85 +49,64 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     --User:inform("Hier");
     --User:inform("Test= "..SourceItem.id)
 
-    if (SourceItem.id==2496 and SourceItem.data==3) then
-        local month = blessedWater.currentMonth();
-        if User:getQuestProgress(blessedWater.drinkingQuest) ~= month then
-		User:increaseAttrib("hitpoints", 10000);
-		User:increaseAttrib("mana", 10000);
-		User:setPoisonValue(0);
-		User:increaseAttrib("foodlevel", 30000);
-		User:setMentalCapacity(0);
-		User:tempChangeAttrib("constitution", 250, 60);
-		--User:inform("You're going to drink that megapotion, sucker");
-		world:erase(SourceItem,1);
-		world:gfx( 53, User.pos );
-		world:makeSound( 12, User.pos );
-		User:setQuestProgress(blessedWater.drinkingQuest, month);
-        else
-		common.InformNLS( User,
-		"Plötzlich kommen dir aus unerklärlichen Gründen Bedenken die Flasche zu auszutrinken.",
-		"Suddenly you begin to doubt whether it would be wise to quaff this potion");
-        end;
-    else
-        local food = drinkList[ SourceItem.id ];
-        if (food ~= nil ) then
+    local food = drinkList[ SourceItem.id ];
+    if (food ~= nil ) then
 
-            -- bottle in hand
-            if( User:countItemAt("body", SourceItem.id) > 0) then
+        -- bottle in hand
+        if( User:countItemAt("body", SourceItem.id) > 0) then
 
-                -- search target container
-                for i, combo in pairs(food[4]) do
-                    if combo[1] == TargetItem.id then
+            -- search target container
+            for i, combo in pairs(food[4]) do
+                if combo[1] == TargetItem.id then
 
-                        -- glass in hand or belt
-                        if( User:countItemAt("belt", combo[1]) > 0) or (User:countItemAt("body", combo[1]) > 0) then
+                    -- glass in hand or belt
+                    if( User:countItemAt("belt", combo[1]) > 0) or (User:countItemAt("body", combo[1]) > 0) then
 
-                            -- fill drink
-                            if (TargetItem.number > 1) then
-                                world:erase( TargetItem, 1 );
-                                User:createItem( combo[2], 1, 333,0);
-                            else
-                                TargetItem.id = combo[2];
-                                world:changeItem(TargetItem);
-                            end
-                            world:makeSound(10,User.pos)
-
-                            -- create leftovers
-                            if( SourceItem.quality > 199 ) then
-                                -- reduce one portion
-                                world:changeQuality( SourceItem, -100 );
-                            else
-                                if( math.random( 50 ) <= 1 ) then
-                                    common.InformNLS( User,
-                                    "Die leere Flasche ist angeschlagen und unbrauchbar.",
-                                    "The empty bottle is broken and no longer usable.");
-                                    world:erase(SourceItem,1);
-                                else
-                                    SourceItem.id = food[3];
-                                    SourceItem.quality = 333;
-                                    world:changeItem(SourceItem);
-                                end
-                            end
-
+                        -- fill drink
+                        if (TargetItem.number > 1) then
+                            world:erase( TargetItem, 1 );
+                            User:createItem( combo[2], 1, 333,0);
                         else
-                            common.InformNLS( User,
-                            "Das Gefäß ist nicht in Griffweite.",
-                            "The vessel is out of reach.");
+                            TargetItem.id = combo[2];
+                            world:changeItem(TargetItem);
+                        end
+                        world:makeSound(10,User.pos)
+
+                        -- create leftovers
+                        if( SourceItem.quality > 199 ) then
+                            -- reduce one portion
+                            world:changeQuality( SourceItem, -100 );
+                        else
+                            if( math.random( 50 ) <= 1 ) then
+                                common.InformNLS( User,
+                                "Die leere Flasche ist angeschlagen und unbrauchbar.",
+                                "The empty bottle is broken and no longer usable.");
+                                world:erase(SourceItem,1);
+                            else
+                                SourceItem.id = food[3];
+                                SourceItem.quality = 333;
+                                world:changeItem(SourceItem);
+                            end
                         end
 
-                        -- cancel after one found item
-                        break;
-                    end -- found item
+                    else
+                        common.InformNLS( User,
+                        "Das Gefäß ist nicht in Griffweite.",
+                        "The vessel is out of reach.");
+                    end
 
-                end -- search loop
-            else
-                common.InformNLS( User,
-                "Nimm die Flasche in die Hand.",
-                "Take the bottle in your hands.");
-            end
+                    -- cancel after one found item
+                    break;
+                end -- found item
+
+            end -- search loop
         else
-            User:inform("unknown bottle item ");
+            common.InformNLS( User,
+            "Nimm die Flasche in die Hand.",
+            "Take the bottle in your hands.");
         end
+    else
+        User:inform("unknown bottle item ");
     end
 end
 

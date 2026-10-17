@@ -504,9 +504,6 @@
     "item.id_23_smithinghammer": {
       "file": "server/lua/item/id_23_smithinghammer.lua"
     },
-    "item.id_2498_empty_bottle": {
-      "file": "server/lua/item/id_2498_empty_bottle.lua"
-    },
     "item.id_24_shovel": {
       "file": "server/lua/item/id_24_shovel.lua"
     },
