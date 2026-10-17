@@ -57,12 +57,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     --    User:inform("data is ");--..SourceItem.data);
     --SourceItem.data = 1;
 
-	if SourceItem.data==3 then --blay's testitem
-		User:setAttrib("willpower", 30);
-		User:setAttrib("essence", 30);
-		User:setAttrib("intelligence", 30);
-		return;
-	end
     if (SourceItem.data==0) then
         if (TargetItem.id~=0) then
             User:inform("target item");
@@ -255,8 +249,6 @@ function M.LookAtItem(User,Item)
         world:itemInform(User,Item,"Decke Kelle(Weather)");
 	elseif (Item.data==2) then
         world:itemInform(User,Item,"Decke Kelle(Ranksystem)");
-	elseif (Item.data==3) then
-		world:itemInform(User,Item,"Decke Kelle(Blay)");
 	else
         world:itemInform(User,Item,"Decke Kelle");
     end
