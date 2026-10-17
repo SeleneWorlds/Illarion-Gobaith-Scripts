@@ -1251,9 +1251,6 @@
     "scheduled.gaia": {
       "file": "server/lua/scheduled/gaia.lua"
     },
-    "scheduled.invisible_crosses": {
-      "file": "server/lua/scheduled/invisible_crosses.lua"
-    },
     "scheduled.scs_skeleton_forest": {
       "file": "server/lua/scheduled/scs_skeleton_forest.lua"
     },
