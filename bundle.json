@@ -555,9 +555,6 @@
     "item.id_3077_silvercoins": {
       "file": "server/lua/item/id_3077_silvercoins.lua"
     },
-    "item.id_3105_bookrest": {
-      "file": "server/lua/item/id_3105_bookrest.lua"
-    },
     "item.id_311_glassblowpipe": {
       "file": "server/lua/item/id_311_glassblowpipe.lua"
     },
@@ -1493,9 +1490,6 @@
     },
     "item.power_amulet": {
       "file": "server/lua/item/power_amulet.lua"
-    },
-    "item.dragon_amulet": {
-      "file": "server/lua/item/dragon_amulet.lua"
     },
     "item.book.book_of_ephraim": {
       "file": "server/lua/item/book/book_of_ephraim.lua"
