@@ -14,19 +14,7 @@ function M.LookAtItem(User,Item)
         common.InformNLS( User, "Auf der Pergamentrolle ist lediglich das Symbol eines Vogels abgebildet.", "Just the symbol of a bird has been painted on this scroll of parchment." );
     elseif (Item.data == 600) then -- Summon Creature
 	common.InformNLS( User, "Die Pergamentrolle ist mit einem blutroten Siegel verschlossen.", "The scroll is sealed with a bloody red seal." );
-    elseif ( Item.data== 666 ) then -- quest scroll
-    	common.InformNLS( User, "Auf der Pergamentrolle ist das Symbol eines Drachen abgebildet.", "The symbol of a dragon has been painted on this scroll of parchment." );
-    elseif ( Item.quality== 750) then -- guild membership decree
- 	
-		local rank 	  = math.floor(Item.data/100); -- the rank in the Guild(1 digit)
-		local GuildID = (Item.data - rank*100);-- the Guild ID(2 digits(10-99))	
-    	InformText = common.GetNLS( User, "Dekret der Gilde "..GuildNameGList[GuildID][1]..GuildRanklist[rank].gusage, "Decree of the guild "..GuildNameEList[GuildID][1]..GuildRanklist[rank].eusage )
-   	    world:itemInform(User,Item, InformText);
-   	elseif ( Item.quality == 751) then -- unban decree
-    	InformText = common.GetNLS( User, "Entbannungsdekret der Stadt "..TownNameGList[Item.data][1],
-									  "Unban decree of the town "..TownNameEList[Item.data][1])
-		world:itemInform(User,Item, InformText);
-	end
+    end
 end
 
 function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
@@ -38,13 +26,6 @@ function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
     
     elseif (spell == 102) then -- self-teleport
         M.selfTeleportUseItem( User, SourceItem );
-    elseif (SourceItem.data == 666) then 
-    	world:gfx(51,User.pos);
-	world:gfx(31,User.pos);
-    	User:warp(position(48,-327,-23));
-	world:gfx(51,User.pos);
-	world:gfx(31,User.pos);
-	world:erase(SourceItem,1);
     end;
 
 end

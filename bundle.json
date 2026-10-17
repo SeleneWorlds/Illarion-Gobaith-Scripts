@@ -294,9 +294,6 @@
     "gm.items.admin_ice_ring": {
       "file": "server/lua/gm/items/admin_ice_ring.lua"
     },
-    "gm.items.admin_ritual_ring": {
-      "file": "server/lua/gm/items/admin_ritual_ring.lua"
-    },
     "gm.items.dragon_breath": {
       "file": "server/lua/gm/items/dragon_breath.lua"
     },
