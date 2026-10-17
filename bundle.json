@@ -1505,6 +1505,9 @@
     },
     "item.dragon_amulet": {
       "file": "server/lua/item/dragon_amulet.lua"
+    },
+    "item.book.book_of_ephraim": {
+      "file": "server/lua/item/book/book_of_ephraim.lua"
     }
   }
 }
