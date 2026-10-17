@@ -541,6 +541,9 @@ function M.GenusData(ItemID) -- returns (0=male, 1=female, 2=neuter)
     genus[3106]=2;
     genus[3107]=2;
     genus[3108]=2;
+    genus[3110]=1;
+    genus[3130]=1;
+    genus[3131]=1;
     return ( genus[ItemID] and genus[ItemID] or 1 )
 end
 

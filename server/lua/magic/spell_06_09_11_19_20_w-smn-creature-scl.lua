@@ -1,6 +1,7 @@
 local M = {}
 
 local basics = require("magic.base.basics")
+local summoningScroll = require("item.summoning_scroll")
 
 -- SUMMON AGRESSIVE CREATURE
 -- Rune 6 & 9 & 11 & 19 & 20 LUK TAUR IRA FHAN LEV
@@ -120,94 +121,27 @@ function M.WriteTeleSpell(Caster, ltstate )
                             Caster:learn(3,NeededSkill,3,math.max(0,math.min(100,CasterVal+30)));
                         end
 
-			-- Variablen setzen
-			--
-			parchment=nil;
-			itemL=nil;
-			itemR=nil;
-			ash=nil;
-			diamond=nil;
+                        local left, right = Caster:getItemAt(5), Caster:getItemAt(6)
+                        local parchment, reagent
+                        if left.id == 3109 then parchment, reagent = left, right
+                        elseif right.id == 3109 then parchment, reagent = right, left end
 
-			--quality setzen
-
-                        -- Meine Hände
-                        itemL = Caster:getItemAt(5);
-                        itemR = Caster:getItemAt(6);
-
-                     -- Stufe 1: Streue Asche auf die offene Pergamentrolle
-			local successStepOne = true;
-
-                        -- Wo ist die offene Pergamentrolle, haben wir überhaupt eine?
-                        if ( (itemL.id == 3109) and (itemL.data~=600) ) then
-                            parchment = itemL;
-                        elseif ( (itemR.id == 3109) and (itemL.data~=600) ) then
-                            parchment = itemR;
-                        else
-                            successStepOne = false;
-                        end
-
-			-- Und was ist überhaupt mit der Asche?
-			--
-
-			if  (itemL.id == 314) then
-                            ash = itemL;
-                        elseif (itemR.id == 314) then
-                            ash = itemR;
-                        else
-			    if ( (ash~=nil) and ((ash.quality==101) or (ash.quality==111) or (ash.quality==171) or (ash.quality==211) or (ash.quality==231)) ) then
-                            	successStepOne = true;
-			    else
-			    	successStepOne = false;
-			    end
-                        end
-
-		    -- Stufe 2: Schriftrolle versiegeln
-		    	local successStepTwo = true;
-
-			-- Wo ist die angefangene Pergamentrolle, haben wir eine und ist es auch die richtige?
-			Caster:inform("moep->start");
-			if ( (itemL.id == 3109) and (itemL.data==600) ) then
-			    Caster:inform("moep->Scroll links");
-			    parchment = itemL;
-			elseif ( (itemR.id == 3109) and (itemR.data==600) ) then
-			    Caster:inform("moep->Scroll rechts");
-			    parchment = itemR;
-			else
-			    successStepTwo = false;
-			end
-
-			-- Und ist auch der Diamant zu versiegeln da?
-			if (itemL.id == 285) then
-			    Caster:inform("moep->Stein links");
-			    diamond = itemL;
-			elseif (itemR.id == 285) then
-			    Caster:inform("moep->Stein rechts");
-			    diamond = itemR;
-                        else
-                            successStepTwo = false;
-                        end
-
-                        if successStepOne then
-                            world:erase( ash, 1 );
-			    parchment.quality=ash.quality;
-			    parchment.data=600;
-
-			    world:changeItem(parchment);
-
-			    world:gfx(Effect,Caster.pos);
-			    world:makeSound(SFX,Caster.pos);
-
-			elseif successStepTwo then
-			    world:erase( diamond,1 );
-
-			    Caster:inform("moep1->ID: "..parchment.id..", QUAL: "..parchment.quality..", DATA: "..parchment.data);
-			    parchment.quality=parchment.quality;
-			    Caster:inform("moep2->ID: "..parchment.id..", QUAL: "..parchment.quality..", DATA: "..parchment.data);
-			    world:swap(parchment, 3110, parchment.quality);
-			    Caster:inform("moep3->ID: "..parchment.id..", QUAL: "..parchment.quality..", DATA: "..parchment.data);
-
-			    world:gfx(Effect,Caster.pos);
-			    world:makeSound(SFX,Caster.pos);
+                        if parchment and parchment.data == 0 and reagent.id == 314
+                            and summoningScroll.isCreature(reagent.quality) then
+                            -- Prepare the parchment with the creature encoded in the ashes.
+                            parchment.data = reagent.quality
+                            world:erase(reagent, 1)
+                            world:changeItem(parchment)
+                            world:gfx(Effect, Caster.pos)
+                            world:makeSound(SFX, Caster.pos)
+                        elseif parchment and summoningScroll.isCreature(parchment.data)
+                            and reagent.id == 285 then
+                            -- Seal the prepared parchment; quality remains item quality.
+                            world:erase(reagent, 1)
+                            parchment.id = 3131
+                            world:changeItem(parchment)
+                            world:gfx(Effect, Caster.pos)
+                            world:makeSound(SFX, Caster.pos)
 			else
 			    InformNLS(Caster,"Ein leichter Windstoß fährt über dich hinweg.","You feel some wind passing by.");
 			end

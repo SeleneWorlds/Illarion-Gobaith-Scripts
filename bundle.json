@@ -558,9 +558,6 @@
     "item.id_3105_bookrest": {
       "file": "server/lua/item/id_3105_bookrest.lua"
     },
-    "item.id_3110_scroll": {
-      "file": "server/lua/item/id_3110_scroll.lua"
-    },
     "item.id_311_glassblowpipe": {
       "file": "server/lua/item/id_311_glassblowpipe.lua"
     },
@@ -1508,6 +1505,15 @@
     },
     "item.academy_ring": {
       "file": "server/lua/item/academy_ring.lua"
+    },
+    "item.teleport_scroll": {
+      "file": "server/lua/item/teleport_scroll.lua"
+    },
+    "item.self_teleport_scroll": {
+      "file": "server/lua/item/self_teleport_scroll.lua"
+    },
+    "item.summoning_scroll": {
+      "file": "server/lua/item/summoning_scroll.lua"
     }
   }
 }
