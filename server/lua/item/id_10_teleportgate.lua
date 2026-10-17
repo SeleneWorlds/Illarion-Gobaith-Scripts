@@ -19,17 +19,8 @@ function M.CharacterOnField( User )
         local y = tonumber(SourceItem:getData("y"))
         local z = tonumber(SourceItem:getData("z"))
 
-        --Vanima Magic Trap
-        vanTrap = false;
-        if (SourceItem.quality == 6) and (User:getQuestProgress(6) == 1) then
-            vanTrap = true;
-        end;
-
         if x ~= nil and y ~= nil and z ~= nil then
             local dest = position(x, y, z);
-            if vanTrap then
-                dest = position(405,207,0);
-            end;
 
 			-- Quest Special
             allOK = true;
@@ -55,11 +46,6 @@ function M.CharacterOnField( User )
                 common.InformNLS( User,
                 "Du machst eine magische Reise.",
                 "You travel by the realm of magic." );
-                if (vanTrap) then
-                    common.InformNLS( User,
-                    "Eine Stimme schallt: IHR WURDET GEWARNT NICHT UNGEBETEN IN UNSER LAND EINZUDRINGEN...WILLKOMMEN IN VANIMA",
-                    "A voice booms: YOU HAVE BEEN WARNED NOT TO ENTER OUR LANDS UNINVITED...WELCOME TO VANIMA" );
-                end;
 
                 if ( SourceItem.wear ~= 255 ) then
                     if ( SourceItem.quality < 900 ) then
