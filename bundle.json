@@ -648,9 +648,6 @@
     "item.id_90_flute": {
       "file": "server/lua/item/id_90_flute.lua"
     },
-    "item.id_917_cursedshield": {
-      "file": "server/lua/item/id_917_cursedshield.lua"
-    },
     "item.id_92_oillamp": {
       "file": "server/lua/item/id_92_oillamp.lua"
     },
