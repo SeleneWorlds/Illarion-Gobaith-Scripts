@@ -65,13 +65,6 @@ function M.LookAtItem(User,Item)
         end
     elseif (Item.data==14) then
         LookAtStr = LookAtStr.."Caelum";
-    elseif (Item.data==1337) then
-        if (lang==0) then
-            LookAtStr = LookAtStr.."Estralis - Hand ab, sonst Hand ab!";
-        else
-            LookAtStr = LookAtStr.."Estralis - Hands off or hands off!";
-        end
-
     else
 
         theOwner=getCharForId(Item.data);
