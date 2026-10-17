@@ -28,9 +28,6 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
     if SourceItem.data == 75357464 and Character.effects:find(28) then
         Character.effects:removeEffect(28);
         return;
-    elseif SourceItem.data == 75676578 and Character.effects:find(29) then
-        Character.effects:removeEffect(29);
-        return;
     end
 
     -- Hier kommt die Sache mit dem Langzeiteffekt:
