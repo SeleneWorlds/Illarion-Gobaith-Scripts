@@ -7,6 +7,7 @@ local M = {}
 
 -- uses items of the new client - don't put this on the RS yet!
 local common = require("base.common")
+local blessedWater = require("content.blessed_water")
 
 function M.InitDrinks()  -- initialisiert die coolen softdrinks in da hood.
     if ( drinkList == nil) then
@@ -49,12 +50,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     --User:inform("Hier");
     --User:inform("Test= "..SourceItem.id)
 
-    local progress = User:getQuestProgress(1);
-    --if blessed water and
-    --   (not drank before) or (not drank this month)
     if (SourceItem.id==2496 and SourceItem.data==3) then
-        if ( ((LuaAnd( progress, 128 ) == 0) or
-           (LuaAnd( progress, 61440 ) ~= (world:getTime("month")-1)*4096)) ) then  -- cool bottle
+        local month = blessedWater.currentMonth();
+        if User:getQuestProgress(blessedWater.drinkingQuest) ~= month then
 		User:increaseAttrib("hitpoints", 10000);
 		User:increaseAttrib("mana", 10000);
 		User:setPoisonValue(0);
@@ -65,10 +63,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 		world:erase(SourceItem,1);
 		world:gfx( 53, User.pos );
 		world:makeSound( 12, User.pos );
-		progress = LuaOr( progress, 128 ); -- set "drank at least once"
-		progress = LuaAnd( progress, 4294905855 ); -- clear bit 13-16 (last month when used)
-		progress = LuaOr( progress, (world:getTime("month")-1)*4096 ); -- set bit 13-16 (last month when used)
-		User:setQuestProgress( 1, progress );
+		User:setQuestProgress(blessedWater.drinkingQuest, month);
         else
 		common.InformNLS( User,
 		"Plötzlich kommen dir aus unerklärlichen Gründen Bedenken die Flasche zu auszutrinken.",
