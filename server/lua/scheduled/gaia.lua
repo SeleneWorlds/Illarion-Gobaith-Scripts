@@ -37,16 +37,21 @@ end, { type = "object", properties = {
 } })
 
 function M.schema()
-    return { rolls = "number", herbs = herbRolls:schema() }
+    return {
+        area = { type = "registry", registry = "illarion:areas" },
+        rolls = "number",
+        herbs = herbRolls:schema()
+    }
 end
 
 function M.spawnHerbs(ScheduledScript)
     local data = assert(ScheduledScript:getField("data"), "Missing Gaia roll data")
+    local area = assert(data.area, "Missing Gaia area")
     local rolls = assert(tonumber(data.rolls), "Missing Gaia rolls count")
     local herbs = assert(data.herbs, "Missing Gaia herbs roll definition")
     local season = seasons[Common.Limit(math.ceil(world:getTime("month") / 4), 1, 4)]
     for i = 1, rolls do
-        local position = Areas.randomPosition("gaia_herb_drops")
+        local position = Areas.randomPosition(area)
         if not position then return end
         local field = world:getField(position)
         if field:countItems() == 0 then
