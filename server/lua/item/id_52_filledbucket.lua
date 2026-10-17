@@ -19,23 +19,18 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         world:swap(TargetItem,2496,933);
     else
         if TargetItem.id ~= 0 then
-			if ((TargetItem.id==12 or TargetItem.id == 359) and (User.pos.z==100 or User.pos.z==101)) then --Prevents extinguishing campfires on n00bia(needed for the cook-npc)
-				common.InformNLS(User,"Du solltest das Feuer besser nicht ausmachen, du könntest es noch gebrauchen.","You shouldn't extinguish the fire, you maybe could need it.");
-				return;
-			else	
-				common.InformNLS(User,"platsch!","splash!");
-				world:makeSound( 9, User.pos );
-	            -- Lagerfeuer ausmachen
-	            if (TargetItem.id == 12 or TargetItem.id == 359) then
-	                world:erase(TargetItem,1);
-	                -- Esse ausmachen
-	            elseif ( TargetItem.id == 2835 ) then
-	                world:swap(TargetItem,2836,333);
-	                -- test for seedlings
-	            else
-	                --User:inform( "calling sprouts" );
-	                M.MakeSprout( User, SourceItem, TargetItem )
-				end
+			common.InformNLS(User,"platsch!","splash!");
+			world:makeSound( 9, User.pos );
+            -- Lagerfeuer ausmachen
+            if (TargetItem.id == 12 or TargetItem.id == 359) then
+                world:erase(TargetItem,1);
+                -- Esse ausmachen
+            elseif ( TargetItem.id == 2835 ) then
+                world:swap(TargetItem,2836,333);
+                -- test for seedlings
+            else
+                --User:inform( "calling sprouts" );
+                M.MakeSprout( User, SourceItem, TargetItem )
 			end
 		else
 			M.UseItemWithCharacter(User, SourceItem, User, Counter, Param);
