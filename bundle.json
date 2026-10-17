@@ -120,9 +120,6 @@
     "content.lookat.unique": {
       "file": "server/lua/content/lookat/unique.lua"
     },
-    "content.signpost": {
-      "file": "server/lua/content/signpost.lua"
-    },
     "content.uniquechardescription": {
       "file": "server/lua/content/uniquechardescription.lua"
     },
