@@ -1263,9 +1263,6 @@
     "scheduled.scs_teleport_effect": {
       "file": "server/lua/scheduled/scs_teleport_effect.lua"
     },
-    "scheduled.scs_windfire_quest": {
-      "file": "server/lua/scheduled/scs_windfire_quest.lua"
-    },
     "scheduled.spread_illness": {
       "file": "server/lua/scheduled/spread_illness.lua"
     },
