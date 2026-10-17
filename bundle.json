@@ -1317,15 +1317,6 @@
     "tile.id_6_water": {
       "file": "server/lua/tile/id_6_water.lua"
     },
-    "triggerfield.ambient": {
-      "file": "server/lua/triggerfield/ambient.lua"
-    },
-    "triggerfield.base.triggerfield": {
-      "file": "server/lua/triggerfield/base/triggerfield.lua"
-    },
-    "triggerfield.notherot_entrace": {
-      "file": "server/lua/triggerfield/notherot_entrace.lua"
-    },
     "npc.base.basic": {
       "file": "server/lua/npc/base/basic.lua",
       "encoding": "ISO-8859-15"
