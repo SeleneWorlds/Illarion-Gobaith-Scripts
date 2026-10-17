@@ -1,3 +1,5 @@
+local I18n = require("selene.i18n")
+
 local M = {}
 
 local base_keys = require("base.keys")

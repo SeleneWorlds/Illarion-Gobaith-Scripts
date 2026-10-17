@@ -1,3 +1,5 @@
+local I18n = require("selene.i18n")
+
 local M = {}
 
 local common = require("base.common")
