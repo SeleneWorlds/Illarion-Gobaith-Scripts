@@ -5,8 +5,6 @@ local M = {}
 
 -- UPDATE common SET com_script='item.id_164_emptybottle' WHERE com_itemid IN (164);
 
-local common = require("base.common")
-
 function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
     --User:inform("char selected");
     -- target is a sheep
@@ -55,42 +53,6 @@ function M.UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
            world:changeItem(bottles);
         end
     end
-end
-
-function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
-
-	-- bottle in hand?
-	if SourceItem:getType() == 4 and (SourceItem.itempos == 5 or SourceItem.itempos == 6) then
-
-		-- fill bottle with language potion (druid system)
-		-- used with barrels in druid house? user=druid?
-		if TargetItem.id == 513 and equapos( TargetItem.pos, position(-391,-154,0) )
-		 and User:getMagicType() == 3 then
-			local gText, eText;
-			-- druid can still get a potion?
-			if User:getQuestProgress(23) <10 then
-				User:setQuestProgress(23, 1 + User:getQuestProgress(23));
-				common.TempInformNLS(User,
-				"Du füllst die Flasche mit einer weißen Flüssigkeit.",
-				"You fill the bottle with a white liquid.");
-				SourceItem.id = 330;
-				SourceItem.quality = 888;
-				local val = math.random(3)
-				if val == 1 then
-					SourceItem.data = 95738184;     --gnomisch
-				elseif val == 2 then
-					SourceItem.data = 49582625;     --fee'isch					
-				else
-					SourceItem.data = 53261566;     --goblin						
-				end
-				world:changeItem(SourceItem);
-			else
-				common.TempInformNLS(User,
-				"Anscheinend ist keine Flüssigkeit mehr für dich übrig.",
-				"Obviously there is no liquid left for you.");
-			end
-		end
-	end
 end
 
 return M
