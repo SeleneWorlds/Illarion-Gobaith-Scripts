@@ -18,27 +18,19 @@ function M.addBonus(User,gem,str)
     --User:inform("in addbonus mit gem="..gem.." str= "..str);
     if gem==1 then
         User:increaseAttrib("intelligence",str);
-        User:inform("incr intelligence by ".. str);
     elseif gem==2 then
         User:increaseAttrib("perception",str);
-        User:inform("incr perception by ".. str);
     elseif gem==3 then
         User:increaseAttrib("dexterity",str);
-        User:inform("incr dexterity by ".. str);
     elseif gem==4 then
         User:increaseAttrib("strength",str);
-        User:inform("incr strength by ".. str);
     elseif gem==5 then
         User:increaseAttrib("constitution",str);
-        User:inform("incr constitution by ".. str);
     elseif gem==6 then
         User:increaseAttrib("agility",str);
-        User:inform("incr agility by ".. str);
     elseif gem==7 then
         User:increaseAttrib("willpower",str);
-        User:inform("incr willpower by ".. str);
         User:increaseAttrib("essence",str);
-        User:inform("incr essence by ".. str);
     end
     --User:inform("durch mit addbonus");
 end

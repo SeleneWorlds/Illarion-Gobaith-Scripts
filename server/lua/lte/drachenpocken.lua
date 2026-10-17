@@ -18,7 +18,6 @@ function M.infect(Char)
     found,diseaseEffect = Char.effects:find(28);    -- look if he already has disease
     if not found then                               -- if not...
         Char.effects:addEffect(CLongTimeEffect(28,math.random(30000,40000)));    -- give disease to the patient
-        Char:inform("du wurdest infizier!");
     end                                       -- first call in about 1 hour.
 end
 
@@ -56,7 +55,6 @@ end
 -- Character is affected by the disease he got. --
 --------------------------------------------------
 function M.callEffect(diseaseEffect, Patient)    -- Effect wird ausgeführt
-    Patient:inform("callEffect called");
     found,diseaseStr = diseaseEffect:findValue("diseaseStr");   -- get the strength of the effect
     diseaseEffect.nextCalled =math.random(150,250);            -- call it again in 15-25 seconds
     if found then           --  still having the disease?

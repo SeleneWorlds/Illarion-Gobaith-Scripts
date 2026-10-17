@@ -62,7 +62,6 @@ local attribs={"strength","dexterity","constitution","agility","intelligence","p
 
 function M.doubleEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
-    Reborn:inform("double...");
 	  return false;
     end
 
@@ -81,12 +80,9 @@ function M.doubleEffect( rebirthEffect, Reborn )
         rebirthEffect:addValue( attrib, changeBy );
         maxChange = math.max( maxChange, changeBy );
         Reborn:increaseAttrib( attrib, 1 - Reborn:increaseAttrib( attrib, 0 ) );
-        --Reborn:inform(attrib.." changed by -"..changeBy);
     end;
     local foundRegen, regEffect = Reborn.effects:find(2);
     if foundRegen then
-        --Reborn:inform("maxChange: "..maxChange);
-        --Reborn:inform("maxHP: "..math.floor( 10000 / ( maxChange + 1 ) ) );
         regEffect:addValue( "maxHP", math.floor( 10000 / ( maxChange + 1 ) ) );
         rebirthEffect:addValue( "maxChange", maxChange );
     end;

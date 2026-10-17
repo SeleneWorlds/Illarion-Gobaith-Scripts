@@ -5,9 +5,6 @@ local M = {}
 -------- Character lernt eine Rune
 ---------------------------------
 function M.addEffect(teachEffect, Character)
-    Character:inform("AddEffect ausgeführt");
-
-    
     year=world:getTime("year");
     year=(year-1)*31536000;					-- (year-1)*((15*24) + 5)*24*60*60;
     month=world:getTime("month");
@@ -25,28 +22,17 @@ function M.addEffect(teachEffect, Character)
 	 
 	timestamp=year+month+day+hour+minute+second+waittime;
 
-	
  	teachEffect:addValue("Rune1Index",timestamp);
 	teachEffect:addValue("Rune2Index",1);
-	--Character:inform("moep->AddEffect erfolgreich");
-	
-
 end
 
 -----------------------------------------------
 ------ Character is affected 
 -----------------------------------------------
 function M.callEffect(teachEffect, Character)    -- Effect wird ausgeführt
-
-
    	teachEffect.nextCalled =99999999999999;       -- call it again in öhm...never!
-
-
     return true;
 end
-
-
-
 
 ----------------------------------------------
 ---- Character lost effect
@@ -55,7 +41,6 @@ end
 function M.removeEffect( Effect, Character )
   	-- Character:inform("moep->Und weiter gehts!");
 end
-
 
 function M.loadEffect(Effect, Character)
 

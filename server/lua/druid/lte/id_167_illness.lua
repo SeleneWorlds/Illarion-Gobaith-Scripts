@@ -129,8 +129,6 @@ function M.getEffect_3(Character,Effect,Runde)
          find,wert = Effect:findValue(sprache[i])
          if find then
             Character:increaseSkill(sprache[i],wert)
-         else
-            Character:inform("debug 167-333: Value missing, please call dev")
          end
       end
    end
@@ -367,12 +365,7 @@ function M.getAction(Character,Effect,Runde)
        M.getEffect_7(Character,Runde)
     elseif waserhat == 8 then
        M.getEffect_8(Character,Effect,Runde)
-    else
-		Character:inform("LTE-Error 167-1: value out of range. Please inform a developer.");
 	end
-  else
-    Character:inform("LTE-Error 167-1: missing value. Please inform a developer.");
-	return false;
   end
   return true;
 end
@@ -466,8 +459,6 @@ function M.callEffect(Effect,Character)               -- Effect wird ausgeführt
      else
         return true
      end
-  else
-    Character:inform("LTE-Error 167-0: please call dev")
   end
   return false;
 end
@@ -505,7 +496,6 @@ function M.loadEffect(Effect,Character)                  -- wenn der Charakter e
 	find,zaehler = Effect:findValue("zaehler")
 
 	if not find then
-		Character:inform("LTE-Error 167-3: please call dev");
 		Character.effects:removeEffect(167);
 		return;
 	end

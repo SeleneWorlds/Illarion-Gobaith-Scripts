@@ -626,9 +626,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
 								User:eraseItem(StepInfos[1],1);
 							else
 								TestItem.data = TestItem.data - 1;
-								User:inform("before changeItem");
 								world:changeItem(TestItem);
-								User:inform("after changeItem");
 								dropLeftOver = false;
 							end
 						end

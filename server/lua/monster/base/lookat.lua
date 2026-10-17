@@ -2,8 +2,6 @@
 local M = {}
 -- mode is always 0
 function M.lookAtMonster( player, monster, mode )
-	
-	player:inform("name: ".. monster.name .. "; ID: ".. monster:get_mon_type());
 	local output = "";
 	
 	local lang = player:getPlayerLanguage();

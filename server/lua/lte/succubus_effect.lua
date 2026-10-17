@@ -17,9 +17,7 @@ function M.createAmulett( Target )
 end
 
 function M.addEffect( theEffect, Target )
-    Target:inform("suceffect");
     M.createAmulett( Target );
-    Target:inform("cA");
     --store the old/new values and change the attribs
     oldVal = Target:increaseAttrib("strength",0);
     theEffect:addValue("oldStr", oldVal );

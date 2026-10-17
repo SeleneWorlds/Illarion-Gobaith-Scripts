@@ -241,7 +241,6 @@ function M.addEffect(effect, user)
 	--   4: strong sore throat
 	--   5: pneumonia
 	--   6: severe pneumonia
-	user:inform("Test");
 	effect:addValue("level", 1);
 
 	-- Automatic handling of duration and penalties when entering an illness level 

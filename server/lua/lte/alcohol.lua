@@ -6,22 +6,15 @@ local M = {}
 
 function M.addEffect( Effect, Character) -- Initiallisierungs Funktion
     -- nichts
-    Character:inform("AddEffect ausgeführt");
 end
 
 function M.callEffect( Effect, Character) -- Initiallisierungs Script
-    Character:inform("call Effect!");
     found,value = Effect:findValue("alcohol");
-    Character:inform("alcohol gelesen!");
     found2,value2 = Effect:findValue("hangover");
-    Character:inform("hangover gelesen!");
     found3,value3 = Effect:findValue("AlcEffect");
-    Character:inform("Werte eingelesen");
     if not found and not found2 then -- Fehler aufgetreten. Script wird abgebrochen
-        Character:inform("Fehler aufgetreten. Script abbruch");
         return false
     elseif found2 and not found then -- Keine Direkten Alkohol Effekte mehr. Warten auf nächsten Login
-        Character:inform("Keine direkten Alkohol folgen mehr");
         if (value2 == 2) then
             User:inform(M.Informing(Character,"Deine Kopfschmerzen lassen langsam nach.","Your headache slowly subsides."));
             return false
@@ -32,10 +25,8 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
     end
     if ( Character:get_race()==1 ) then -- Zwerg mit Boni aufs betrinken
         RaceBon = 60;
-        Character:inform("Zwergenboni");
     end
     if (value == 0) then -- keine Alkohol Wirkung mehr - Auf nächsten Login für Kater Effekt warten
-        Character:inform("Alkwirkungen zurück setzen");
         Effect:addValue("hangover",1);
         Effect.nextCalled = 1000000;
         Character:increaseAttrib("dexterity",5);
@@ -49,18 +40,15 @@ function M.callEffect( Effect, Character) -- Initiallisierungs Script
             Effect:removeValue("alcohol");
         end
         User:inform(M.Informing(Character,"Du merkst, dass der Alkohol aufhört zu wirken.","You feel the alcohol stop affecting you."));
-        Character:inform("Zurück gesetzt");
         return true
     end
     if (found3 and (value >= Character:increaseAttrib("constitution",0)*24 + RaceBon)) then -- Alkohol Effekt tritt ein
-        Character:inform("Alkohol wirkung tritt ein");
         Character:increaseAttrib("dexterity",-5);
         Character:increaseAttrib("stregth",5);
         Character:increaseAttrib("intelligence",-5);
         Character:increaseAttrib("perception",-5);
         Effect:addValue("AlcEffect",1);
         Effect:addValue("time",(world:getTime("day")*24)+world:getTime("hour"));
-        Character:inform("auswirkungen ausgeführt");
         User:inform(M.Informing(Character,"Du merkst, wie der Alkohol seine Wirkung entfaltet.","You feel that the alcohol starts to affect you."));
         Character:talkLanguage( CCharacter.say, CPlayer.german, "#me's Nase bekommt eine leicht rötliche Färbung.");
         Character:talkLanguage( CCharacter.say, CPlayer.english, "#me's nose takes on a slightly red color.");

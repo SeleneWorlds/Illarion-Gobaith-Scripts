@@ -66,49 +66,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
             foodLevel = foodLevel - food[1];
         end
     else -- Alkohol
-
-        -- Edit by abcfantasy: Wine brewing contest
-        if ( food[3] == 15 ) then -- wine
-            local perc = User:increaseAttrib("perception",0);
-            if perc>19 then
-                perc=19;
-            end
-            User:inform( "part1" );
-            local itemData = SourceItem.data + math.random( -40 + (perc*2), 40 - (perc*2) );
-            User:inform( "data: " .. itemData );
-            local wineQual = 0;
-            local modv = itemData - math.floor(itemData/10)*10;
-            local result = itemData / 10;
-            if ( modv >= 5 ) then
-                wineQual = math.ceil( result )
-            else
-                wineQual = math.floor( result )
-            end;
-            User:inform( "part3" );
-            
-
-            if ( wineQual < 1 ) then
-                common.InformNLS( User, "", "The wine tastes plainly horrible. You won't even dare another sip." );
-            elseif ( wineQual < 3 ) then
-                common.InformNLS( User, "", "It's not wine that you would spit out, but a bad taste nonetheles." );
-            elseif ( wineQual < 5 ) then
-                common.InformNLS( User, "", "The taste leaves you just a bit discontent." );
-            elseif ( wineQual < 7 ) then
-                common.InformNLS( User, "", "The taste is so and so, leaving you a bit unsure." );
-            elseif ( wineQual < 9 ) then
-                common.InformNLS( User, "", "That's a promising wine, not quite good, but not bad at all." );
-            elseif ( wineQual < 11 ) then
-                common.InformNLS( User, "", "You can state that that wine is good wine, but not the best." );
-            elseif ( wineQual < 13 ) then
-                common.InformNLS( User, "", "The taste of this wine on your lips makes you content, definitely good and fine wine." );
-            elseif ( wineQual < 15 ) then
-                common.InformNLS( User, "", "Elven wine perhaps? This one tastes fantastic and makes you crave more." );
-            elseif ( wineQual >= 15 ) then
-                common.InformNLS( User, "", "Perfect wine! You have never tasted wine as good as this before." );
-            end;
-        end
-        -- end edit
-        
         -- Abhandlung Foodlevel
         if ( foodLevel > 40000 ) then 
             common.InformNLS( User, "Du hast genug getrunken.", "You have drunk enough.");

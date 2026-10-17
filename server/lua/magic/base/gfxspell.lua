@@ -230,7 +230,6 @@ function M.TargetHitting( Caster, Target, CasterValue, Resistance, Percent)
     if TargetEffects.minSkill.poison and TargetEffects.maxSkill.poison then
         local AttribEffect = math.floor(common.Scale(TargetEffects.minSkill.poison, TargetEffects.maxSkill.poison, Value));
         if (AttribEffect~=0) then
-		Caster:inform("poison: "..AttribEffect);
             Target:setPoisonValue( Target:getPoisonValue() + AttribEffect );
         end
     end

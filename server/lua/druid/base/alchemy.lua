@@ -259,11 +259,6 @@ function M.PasteBottleData(User,dataZList)
 
 end
 -- --------------------------------------------------------------------
-
-function M.DisplayData(User,debugtxt,wert)
-    User:inform("debug:"..debugtxt..wert)
-end
--- --------------------------------------------------------------------
 function M.IsThatAPlant(einItem)
    retVal = false
    for i =1,#M.plantList do
@@ -322,19 +317,14 @@ function M.CheckAttrRow(User,dataZList)
 end
 -- -------------------------------------------------------------------------------
 function M.ImpactRow1(User,dataZList)
-   --User:inform("debug 12")
-
   for i=1,8 do
 
     if dataZList[i] < 4 then
 
-        User:inform(dataZList[i].." Vor-Wirkung R1 : "..attr_r1[i].." : "..User:increaseAttrib(attr_r1[i],0 ))
         User:setAttrib(attr_r1[i],(User:increaseAttrib(attr_r1[i],0)*(dataZList[i]*30/100)))
-        User:inform("Nach-Wirkung R1: "..attr_r1[i].." : "..User:increaseAttrib(attr_r1[i],0 ))
 
     elseif dataZList[i] > 5 then
 
-        User:inform(dataZList[i].." Vor-Wirkung R1 : "..attr_r1[i].." : "..User:increaseAttrib(attr_r1[i],0 ))
         dasIstWirkung = math.floor(User:increaseAttrib(attr_r1[i],0)+(User:increaseAttrib(attr_r1[i],0)*(dataZList[i]-5)*10/100))
 
           if dasIstWirkung > obererGrenzwert[i] then
@@ -342,13 +332,9 @@ function M.ImpactRow1(User,dataZList)
           end
 
           User:setAttrib(attr_r1[i],dasIstWirkung)
-          User:inform("Nach-Wirkung R1: "..attr_r1[i].." : "..User:increaseAttrib(attr_r1[i],0 ))
      end
 
   end
-
-
-  --User:inform("debug 13")
 end
 -- -------------------------------------------------------------------------------
 function M.ImpactRow2(User,dataZList)

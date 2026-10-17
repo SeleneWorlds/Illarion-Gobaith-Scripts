@@ -51,13 +51,11 @@ function M.createdeathtree(Tree,User,Qual)
                 M.CheckAndHit(position(Tree.pos.x-1,Tree.pos.y,Tree.pos.z));
                 M.CheckAndHit(createpos);
                 world:createItemFromId(trees[ Tree.id ][5],1,createpos,true,Qual,0);
-		    User:inform("11111");
             elseif (User.pos.x>Tree.pos.x) then
                 local createpos=position(Tree.pos.x+1,Tree.pos.y,Tree.pos.z);
                 M.CheckAndHit(createpos);
                 M.CheckAndHit(position(Tree.pos.x+2,Tree.pos.y,Tree.pos.z));
                 world:createItemFromId(trees[ Tree.id ][3],1,createpos,true,Qual,0);
-		    User:inform("22222");
             end
         else
             if (User.pos.y<Tree.pos.y) then
@@ -65,13 +63,11 @@ function M.createdeathtree(Tree,User,Qual)
                 M.CheckAndHit(createpos);
                 M.CheckAndHit(position(Tree.pos.x,Tree.pos.y-2,Tree.pos.z));
                 world:createItemFromId(trees[ Tree.id ][2],1,createpos,true,Qual,0);
-		    User:inform("33333");
             elseif (User.pos.y>Tree.pos.y) then
                 local createpos=position(Tree.pos.x,Tree.pos.y+1,Tree.pos.z)
                 M.CheckAndHit(position(Tree.pos.x,Tree.pos.y+1,Tree.pos.z));
                 M.CheckAndHit(createpos);
                 world:createItemFromId(trees[ Tree.id ][4],1,createpos,true,Qual,0);
-		    User:inform("444444");
             end
         end
     elseif DiffX then
@@ -113,9 +109,6 @@ end
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	gathering.InitGathering();
 
-    if User:isAdmin() then
-        User:inform("mental: "..User:getMentalCapacity());
-    end
     M.initLists(  );
     if (SourceItem:getType() ~= 4) then
         common.InformNLS( User,
@@ -251,9 +244,6 @@ function M.Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
         local Strength=User:increaseAttrib("strength",0);
         local DecreaseQual=math.floor((0.6*(Skill+Strength)+37)*math.random(8,12)/10);
         local NewBaumQual=TargetItem.quality-DecreaseQual;
-		if User:isAdmin() then
-			User:inform("qual: "..TargetItem.quality.." decrease: "..DecreaseQual.." newqual: "..NewBaumQual);
-		end
         if (NewBaumQual<=100) then
             local GenericQual=math.max(1,math.ceil((Skill/100)*trees[ TargetItem.id ][6]))+300;
             M.createdeathtree(TargetItem,User,GenericQual);

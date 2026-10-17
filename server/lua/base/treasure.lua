@@ -204,10 +204,6 @@ local M = {}
         if not TargetLocation then
             return false;
         end
-        if User:isAdmin() then
-            User:inform("Real Target --> x: "..RealTarget.x.." - y: "..RealTarget.y.." - z: "..RealTarget.z );
-            User:inform("Modified Target --> x: "..TargetLocation.x.." - y: "..TargetLocation.y.." - z: "..TargetLocation.z );
-        end
         local dir = common.GetDirection( User.pos, TargetLocation );
         if ( dir == 0 ) then
             return common.GetNLS( User, "Norden", "north" );
@@ -292,7 +288,6 @@ local M = {}
 
         worked,mapItem,mapItemNr = M.checkMap( User, TargetPosition );
         if not worked then
-            User:inform( "map check failed" );
             return false;
         end
 
@@ -325,7 +320,6 @@ local M = {}
         if not fndTreasure then --User:inform("Effect given");
             treasureEff=CLongTimeEffect(16,1);
             treasureEff:addValue("pos",mapItem.data);
-            User:inform("added pos value: "..mapItem.data);
             treasureEff:addValue("category",treasureLevel);
             User.effects:addEffect(treasureEff);
         else

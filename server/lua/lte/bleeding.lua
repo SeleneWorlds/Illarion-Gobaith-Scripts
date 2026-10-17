@@ -81,7 +81,6 @@ function M.callEffect( BleedingEffect, Victim )
         else
             HP = Victim:increaseAttrib("hitpoints",0);
             changeHP = -math.floor((0.0000086372*HP*HP-0.177*HP+1158.1836));
-            Victim:inform("HP werden geändert um: "..changeHP );
             if( HP+changeHP < 0 ) then
                 Victim:increaseAttrib("hitpoints",-HP);
                 BleedingEffect:addValue( "wounds", 0 );

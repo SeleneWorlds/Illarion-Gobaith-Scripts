@@ -5,7 +5,6 @@ local M = {}
 ------ Character starts to smoke
 -------------------------------
 function M.addEffect(stonedEffect, Character)       
-    Character:inform("AddEffect ausgeführt");
     stonedEffect:addValue("stonedIndex",1);
     stonedEffect:addValue("clearIndex",1);
 end
@@ -44,9 +43,6 @@ function M.callEffect(stonedEffect, Character)    -- Effect wird ausgeführt
     end
 
     stonedEffect.nextCalled =math.random(200,300);       -- call it again in 300-600 seconds
-
-    -- Character:inform("HL: "..stonedIndex_n);
-    -- Character:inform("CI: "..clearIndex_n);
 
     stonedEffect:addValue("stonedIndex",stonedIndex_n);
     stonedEffect:addValue("clearIndex",clearIndex_n);
@@ -138,9 +134,6 @@ end
 function M.removeEffect( Effect, Character )
     LogString=os.date()..": Patient "..Character.name.."completely healed because the cold ended.\n";
     logToFile(LogString);
-    --common.InformNLS(Character,
-    --"Du fühlst dich endlich wieder klarer.",
-    --"You finally feel sober now.");
 end
 	 
 function M.loadEffect(Effect, Character)

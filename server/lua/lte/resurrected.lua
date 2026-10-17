@@ -5,11 +5,9 @@ attribs={"strength","dexterity","constitution","agility","intelligence","percept
 
 function M.addEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
-        Reborn:inform("woopss admin...");
 	  return false;
     end
 
-    --Reborn:inform("addEffect");
     common.InformNLS( Reborn,
         "Du fühlst dich noch sehr schwach.",
         "You feel very weak." );
@@ -20,12 +18,9 @@ function M.addEffect( rebirthEffect, Reborn )
         rebirthEffect:addValue( attrib, changeBy );
         maxChange = math.max( maxChange, changeBy );
         Reborn:increaseAttrib( attrib, -changeBy );
-        --Reborn:inform(attrib.." changed by -"..changeBy);
     end;
     local foundRegen, regEffect = Reborn.effects:find(2);
     if foundRegen then
-        --Reborn:inform("maxChange: "..maxChange);
-        --Reborn:inform("maxHP: "..math.floor( 10000 / ( maxChange + 1 ) ) );
         regEffect:addValue( "maxHP", math.floor( 10000 / ( maxChange + 1 ) ) );
         rebirthEffect:addValue( "maxChange", maxChange );
     end;
@@ -44,7 +39,6 @@ end;
 
 function M.loadEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
-    Reborn:inform("loading...");
 	  return;
     end
 
@@ -67,7 +61,6 @@ function M.loadEffect( rebirthEffect, Reborn )
             rebirthEffect:addValue( attrib, changeBy );
             maxChange = math.max( maxChange, changeBy );
             Reborn:increaseAttrib( attrib, -changeBy );
-            --Reborn:inform(attrib.." changed by -"..changeBy);
         else
             rebirthEffect:removeValue( attrib );
         end;
@@ -81,15 +74,11 @@ function M.loadEffect( rebirthEffect, Reborn )
             rebirthEffect:addValue( "maxChange", maxChange );
         end;
         regEffect:addValue( "maxHP", math.floor( 10000 / ( oldMaxChange + 1 ) * ( oldMaxChange + 1 - maxChange ) ) );
-        --Reborn:inform("maxChange: "..maxChange);
-        --Reborn:inform("oldMaxChange: "..oldMaxChange);
-        --Reborn:inform("maxHP: "..math.floor( 10000 / ( oldMaxChange + 1 ) * ( oldMaxChange + 1 - maxChange ) ) );
     end;
 end;
 
 function M.callEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
-    Reborn:inform("calls....");
 	  return false;
     end
 
@@ -115,7 +104,6 @@ function M.callEffect( rebirthEffect, Reborn )
             if changeBy > 0 then
                 rebirthEffect:addValue( attrib, changeBy );
                 callAgain = true;
-                --Reborn:inform(attrib.." changed by -"..changeBy);
                 maxChange = math.max( maxChange, changeBy );
             else
                 rebirthEffect:removeValue( attrib );
@@ -131,16 +119,12 @@ function M.callEffect( rebirthEffect, Reborn )
             rebirthEffect:addValue( "maxChange", maxChange );
         end;
         regEffect:addValue( "maxHP", math.floor( 10000 / ( oldMaxChange + 1 ) * ( oldMaxChange + 1 - maxChange ) ) );
-        --Reborn:inform("maxChange: "..maxChange);
-        --Reborn:inform("oldMaxChange: "..oldMaxChange);
-        --Reborn:inform("maxHP: "..math.floor( 10000 / ( oldMaxChange + 1 ) * ( oldMaxChange + 1 - maxChange ) ) );
     end;
     return callAgain;
 end;
 
 function M.removeEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
-    Reborn:inform("removing...");
 	  return;
     end
 
@@ -150,21 +134,18 @@ function M.removeEffect( rebirthEffect, Reborn )
         foundChange, changeBy = rebirthEffect:findValue( attrib );
         if foundChange and changeBy > 0 then
             Reborn:increaseAttrib( attrib, changeBy );
-            --Reborn:inform(attrib.." reset");
         end;
     end;
 
     local foundRegen, regEffect = Reborn.effects:find(2);
     if foundRegen then
         regEffect:removeValue( "maxHP" );
-        --Reborn:inform("removed maxHP");
     end;
 end;
 
 -- NOTE: function is saved locally in npc_yellowcross.lua; Workaround for Mantis issue #451
 function M.doubleEffect( rebirthEffect, Reborn )
     if Reborn:isAdmin() then
-    Reborn:inform("double...");
 	  return false;
     end
 
@@ -183,12 +164,9 @@ function M.doubleEffect( rebirthEffect, Reborn )
         rebirthEffect:addValue( attrib, changeBy );
         maxChange = math.max( maxChange, changeBy );
         Reborn:increaseAttrib( attrib, 1 - Reborn:increaseAttrib( attrib, 0 ) );
-        --Reborn:inform(attrib.." changed by -"..changeBy);
     end;
     local foundRegen, regEffect = Reborn.effects:find(2);
     if foundRegen then
-        --Reborn:inform("maxChange: "..maxChange);
-        --Reborn:inform("maxHP: "..math.floor( 10000 / ( maxChange + 1 ) ) );
         regEffect:addValue( "maxHP", math.floor( 10000 / ( maxChange + 1 ) ) );
         rebirthEffect:addValue( "maxChange", maxChange );
     end;

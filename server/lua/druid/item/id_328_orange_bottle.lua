@@ -13,13 +13,9 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
   if find then
 
      find2,zaehler = myEffect:findValue("zaehler")
-     if not find2 then
-        Character:inform("Error in 328.1 - please call dev")
-     else
+     if find2 then
         find3,diagnose = myEffect:findValue("illness")
-        if not find3 then
-           Character:inform("Error in 328.2 - please call dev")
-        else
+        if find3 then
 			local codeList = {16159738,49134362,37568889,15363356,3635548,14791859,85568351,76359585};
 			local potionData = SourceItem.data;
 			if diagnose == 5 then
@@ -46,11 +42,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 					"#w Die Wirkung des Tranks lindert dein Leiden.",
 					"#w The effect of the potion allays your suffering.");
 				 return;
-              else
-                 Character:inform("debug: keine Heilung wegen zu niedriger Trank-Qualität")
               end
-           else
-              Character:inform("debug: keine Heilung wegen falscher Medikamentation")
            end
         end
      end
