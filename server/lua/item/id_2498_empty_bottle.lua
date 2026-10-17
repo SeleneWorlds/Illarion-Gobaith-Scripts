@@ -1,44 +1,9 @@
 local M = {}
 
--- Fairy's Tears oder Trolls Blood erhalten (Quellwasser)
--- Alternativ: Gesegnetes Wasser von Irundar erhalten
+-- Gesegnetes Wasser von Irundar erhalten
 -- vilarion
 
 -- UPDATE common SET com_script='item.id_2498_empty_bottle' WHERE com_itemid IN (2498);
-
-function M.UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
-    --User:inform("using bottle on field");
-    if ((User:getItemAt(6).id == 2498)or(User:getItemAt(5).id == 2498)) then
-        --User:inform("bottle in hand");
-        if (User:getItemAt(6).id == 2498) then
-            itempos = 6;
-        else 
-            itempos = 5;
-        end
-        bottles = User:getItemAt(itempos);
-        number = bottles.number;
-        -- if at trolls vein spring
-        if ((TargetPos.x == 51) and (TargetPos.y==-55) and (TargetPos.z==0)) then
-            --User:inform("at vein");
-           world:erase(SourceItem,number);
-           User:createAtPos(itempos, 2496, number);
-           bottles = User:getItemAt(itempos);
-           bottles.data = 1;
-           bottles.number = number;
-           world:changeItem(bottles);
-        end
-        if ((TargetPos.x == 116) and (TargetPos.y==-121) and (TargetPos.z==0)) then
-            --User:inform("at tears");
-           world:erase(SourceItem,number);
-           User:createAtPos(itempos, 2496, number);
-           bottles = User:getItemAt(itempos);
-           bottles.data = 2;
-           bottles.number = number;
-           world:changeItem(bottles);
-        end
-    end
-end
-
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ((User:getItemAt(6).id == 2498)or(User:getItemAt(5).id == 2498)) then
