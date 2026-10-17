@@ -282,9 +282,6 @@
     "gm.items.admin_astral_ring": {
       "file": "server/lua/gm/items/admin_astral_ring.lua"
     },
-    "gm.items.admin_crown_ring": {
-      "file": "server/lua/gm/items/admin_crown_ring.lua"
-    },
     "gm.items.admin_fire_ring": {
       "file": "server/lua/gm/items/admin_fire_ring.lua"
     },
