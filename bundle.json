@@ -1260,9 +1260,6 @@
     "scheduled.scs_skeleton_forest": {
       "file": "server/lua/scheduled/scs_skeleton_forest.lua"
     },
-    "scheduled.scs_teleport_effect": {
-      "file": "server/lua/scheduled/scs_teleport_effect.lua"
-    },
     "scheduled.spread_illness": {
       "file": "server/lua/scheduled/spread_illness.lua"
     },
