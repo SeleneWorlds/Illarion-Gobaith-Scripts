@@ -708,9 +708,6 @@
     "lte.bleeding": {
       "file": "server/lua/lte/bleeding.lua"
     },
-    "lte.blessedheal": {
-      "file": "server/lua/lte/blessedheal.lua"
-    },
     "lte.chr_reg": {
       "file": "server/lua/lte/chr_reg.lua"
     },
