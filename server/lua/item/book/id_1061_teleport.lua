@@ -1,41 +1,23 @@
 local areas = require("base.areas")
 local M = {}
+local portals = require("content.mage_portals")
+local Registries = require("selene.registries")
+
+local function destination(item)
+    local name = item:getData("destination")
+    if type(name) ~= "string" or name == "" then return nil end
+    return Registries.findByName("illarion:mage_portal_destinations", name)
+end
 
 -- UPDATE common SET com_script='item.book.id_1061_teleport' WHERE com_itemid=1061;
 local common = require("base.common")
 
-function M.InitializeBook(  )
-
-    if TargetName == nil then
-
-        TargetName={  };
-        TargetName[ 101 ]="Troll's Bane";
-
-        TargetName[ 102 ]="Lighthouse";
-
-        TargetName[ 103 ]="Eldan monastary";
-
-        TargetName[ 104 ]="Harbor";
-
-        TargetName[ 105 ]="Greenbriar";
-
-        TargetName[ 106 ]="Tol Vanima";
-
-        TargetName[ 107 ]="Varshikar";
-
-        TargetName[ 108 ]="Silverbrand";
-
-    end
-
-end
-
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     --User:inform( "reading teleport book" )
 
-    M.InitializeBook(  );
 
     --User:inform( "target id "..SourceItem.quality )
-    local gate = TargetName[ SourceItem.quality ]
+    local gate = destination(SourceItem)
 
     if gate ~= nil then
         --User:inform( "gate found" )
@@ -57,7 +39,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                 and not areas.containsTag("teleport_blocked", loc) then
                     -- create a gate to the destination
                     --User:inform( "creating" )
-                    world:createItemFromId( 10, 1, loc, true, 933 ,(SourceItem.quality-100));
+                    world:createItemFromId(10, 1, loc, true, 933, portals.data(gate));
                     world:makeSound( 4, loc )
 
                     success = true;
@@ -92,14 +74,13 @@ end
 function M.LookAtItem( User, Item )
     --User:inform( "lookat book" )
 
-    M.InitializeBook(  );
 
-    local gate = TargetName[ Item.quality ]
+    local gate = destination(Item)
 
     if gate == nil then
         world:itemInform( User, Item, common.GetNLS( User, "Zauberbuch", "Magical book" ) );
     else
-        world:itemInform( User, Item, common.GetNLS( User, "Portal nach ", "Portal to " )..gate );
+        world:itemInform( User, Item, common.GetNLS( User, "Portal nach ", "Portal to " )..gate:getField("name") );
     end
 end
 

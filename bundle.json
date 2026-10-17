@@ -1490,6 +1490,9 @@
     },
     "druid.item.research_bookrest": {
       "file": "server/lua/druid/item/research_bookrest.lua"
+    },
+    "content.mage_portals": {
+      "file": "server/lua/content/mage_portals.lua"
     }
   }
 }

@@ -2,6 +2,7 @@ local M = {}
 
 local common = require("base.common")
 local Registries = require("selene.registries")
+local portals = require("content.mage_portals")
 local basics = require("magic.base.basics")
 
 --[[
@@ -226,7 +227,6 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
 
     selected = common.Limit(selected + math.random(-offset, offset), 1, #destinations)
     local destination = destinations[selected]
-    local coordinate = destination:getField("coordinate")
 
 
 
@@ -234,12 +234,7 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         return false;
     end
 
-    world:createItemFromId(10, 1, TPos, true, stability*100+33, {
-        x = coordinate.x,
-        y = coordinate.y,
-        z = coordinate.z,
-        CustomName = destination:getField("name")
-    });
+    world:createItemFromId(10, 1, TPos, true, stability*100+33, portals.data(destination));
     return true;
 end
 

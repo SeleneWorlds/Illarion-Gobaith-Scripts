@@ -42,11 +42,6 @@ function M.CharacterOnField( User )
                     if 0 < newbieState then
                         if  ( (newbieState == 100) and (User.effects:find(13)) )then
                                 User.effects:removeEffect(13);
-                        elseif not (76 <= SourceItem.data and SourceItem.data <= 85) then
-                            common.InformNLS(User,
-                            "Nichts passiert, du scheinst noch nicht bereit zu sein. Frage Findecano Melwasul, den Elfen bei dem Thron, wie du nach Gobaith gelangen kannst.",
-                            "Nothing happens, it seems that you are not ready yet. Ask Findecano Melwasul, the Elf next to the throne, how you can enter Gobaith.");
-                            return;
                         end
                     end
                 end
