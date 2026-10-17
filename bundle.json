@@ -1508,6 +1508,9 @@
     },
     "item.invisibility_ring": {
       "file": "server/lua/item/invisibility_ring.lua"
+    },
+    "item.academy_ring": {
+      "file": "server/lua/item/academy_ring.lua"
     }
   }
 }

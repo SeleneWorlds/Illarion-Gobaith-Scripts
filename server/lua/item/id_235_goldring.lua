@@ -1,6 +1,6 @@
 local M = {}
 
--- data values in use: 101, 102, 103, 666, 700, 10000
+-- data values in use: 101, 102, 103, 700, 10000
 
 local base_lookat = require("base.lookat")
 local common = require("base.common")
@@ -29,13 +29,7 @@ function M.LookAtItem(User,Item)
         end
 
         -------------------------------- QUESTRINGE [ Data > 500 ] ------------------------------------------------------------------------------------
-    elseif ( Item.data == 666) then  -- Ring der Akademie
-        if (User:getPlayerLanguage()==0) then
-            world:itemInform(User,Item,"Du siehst einen Ring mit dem Wappen der magischen Akademie Gobaiths.");
-        else
-            world:itemInform(User,Item,"You see the ring with the emblem of the magical academy Gobaith.");
-        end
-    elseif ( Item.data == 10000) then  -- Ring der Akademie
+    elseif ( Item.data == 10000) then
         if (User:getPlayerLanguage()==0) then
             world:itemInform(User,Item,"Du siehst einen auffälligen Ring.");
         else
@@ -59,16 +53,7 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
 end
 
     function M.MoveItemBeforeMove( Character, SourceItem, TargetItem)
-        if ( SourceItem.data == 666 ) then
-            if ( (TargetItem.itempos == 7) or (TargetItem.itempos == 8) ) then -- Wenn versucht wird den Ring anzulegen.
-                if ((Character:increaseAttrib("essence",0)+Character:increaseAttrib("willpower",0)+Character:increaseAttrib("intelligence",0))>29) then
-                    return true;
-                else
-                    common.InformNLS( Character,"Ein warnendes Kribbeln durchströhmt deinen Arm als du den Ring berührst. Du willst ihn lieber nicht anlegen.","A warning prickle travels through your arm as you touch the ring. You seems, it is better to let them lay.");
-                    return false;
-                end
-            end
-        elseif ( SourceItem.data == 700 ) then
+        if ( SourceItem.data == 700 ) then
             if ( (TargetItem.itempos == 7) or (TargetItem.itempos == 8) ) then -- Wenn versucht wird den Ring anzulegen.
                 if ( Character.id == 489898022) then
                     return true;
