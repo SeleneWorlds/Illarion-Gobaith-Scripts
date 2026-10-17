@@ -489,9 +489,6 @@
     "item.id_220_barrel": {
       "file": "server/lua/item/id_220_barrel.lua"
     },
-    "item.id_224_goldengoblet": {
-      "file": "server/lua/item/id_224_goldengoblet.lua"
-    },
     "item.id_227_cookingspoon": {
       "file": "server/lua/item/id_227_cookingspoon.lua"
     },
