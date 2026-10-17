@@ -1505,6 +1505,9 @@
     },
     "item.book.book_of_ephraim": {
       "file": "server/lua/item/book/book_of_ephraim.lua"
+    },
+    "item.invisibility_ring": {
+      "file": "server/lua/item/invisibility_ring.lua"
     }
   }
 }

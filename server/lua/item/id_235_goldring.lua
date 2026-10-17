@@ -1,6 +1,6 @@
 local M = {}
 
--- data values in use: 100, 101, 102, 103, 666, 700, 10000
+-- data values in use: 101, 102, 103, 666, 700, 10000
 
 local base_lookat = require("base.lookat")
 local common = require("base.common")
@@ -55,23 +55,8 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
         elseif ((SourceItem.itempos==7) or (SourceItem.itempos==8)) then  -- taken off of a finger
             jewelbonus.takeBonus(User,SourceItem,stoneNr,stoneStr);     -- now lower corresponding attribute(s) and remove/change LTE
         end
-    else
-        if ( TargetItem:getType() == 4 and (TargetItem.itempos == 7 or TargetItem.itempos == 8) and TargetItem.data == 100 ) then
-            --unsichtbarkeitseffekt hinzufuegen
-            User.effects:addEffect( CLongTimeEffect(11,10) );
-            --ablegen des einen rings
-        elseif ( TargetItem.data == 100 ) then
-            fnd, eff = User.effects:find( 11 );
-            if ( fnd ) then
-                User.effects:removeEffect( 11 );
-            end
-            -- Trauring von Roveig und Katarine
-        elseif ( TargetItem:getType() == 4 and (TargetItem.itempos == 7 or TargetItem.itempos == 8) and (TargetItem.data == 101
-            or TargetItem.data == 102) and (User.id==479308490 or User.id==975152582) ) then
-                User:inform(User:getPlayerLanguage() == 0 and "Als du den Ring anlegst, überkommt dich ein wohliges Gefühl." or "As you put on the ring, a comforting feeling comes over you.");
-            end
-        end
     end
+end
 
     function M.MoveItemBeforeMove( Character, SourceItem, TargetItem)
         if ( SourceItem.data == 666 ) then
@@ -94,15 +79,6 @@ function M.MoveItemAfterMove( User, SourceItem, TargetItem )
             end
         end
         return true;
-    end
-
-    function M.UseItem(User,SourceItem,TargetItem,counter,param,ltstate)
-        if ( SourceItem.data == 100 ) then
-            if ( TargetItem.id == 12 or TargetItem.id == 119 or TargetItem.id == 120 or TargetItem.id == 268 or TargetItem.id == 269 or TargetItem.id == 304 or TargetItem.id == 305 or TargetItem.id == 313 or TargetItem.id == 359 ) then
-                User:inform("you can read on the ring: Ash nazg durbatuluk, Ash nazg gimbatul, Ash nazg thrakatuluk, Agh burzum-ishi krimpatul.");
-            end
-        end
-
     end
 
 return M

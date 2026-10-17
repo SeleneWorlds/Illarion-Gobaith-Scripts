@@ -9,18 +9,18 @@ function M.callEffect(theEffect, User )
     ringItemL = User:getItemAt( 7 );
     ringItemR = User:getItemAt( 8 );
     --reduce the quality of the ring
-    if ( ringItemL.id == 235 and ringItemL.data == 100) then
+    if ( ringItemL.id == 3128) then
         world:changeQuality( ringItemL, -1 );
-    elseif ( ringItemR.id == 235 and ringItemR.data == 100) then
+    elseif ( ringItemR.id == 3128) then
         world:changeQuality( ringItemR, -1 );
     end
     
     --check if the ring is still worn
     ringItemL = User:getItemAt( 7 );
     ringItemR = User:getItemAt( 8 );
-    if ( ringItemL.id == 235  and ringItemL.data == 100) then
+    if ( ringItemL.id == 3128) then
         return true;
-    elseif ( ringItemR.id == 235  and ringItemR.data == 100) then
+    elseif ( ringItemR.id == 3128) then
         return true;
     else
         return false;
