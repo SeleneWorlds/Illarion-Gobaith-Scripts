@@ -1,0 +1,31 @@
+{
+  "name": "Arena",
+  "coordinate": {
+    "x": -31,
+    "y": -94,
+    "z": 0
+  },
+  "order": 73,
+  "patterns": [
+    [
+      "[Tt]roll.*[Bb]ane"
+    ],
+    [
+      "[Aa]rena"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Ll]ibrary",
+    "[Bb]ibliothek",
+    "[Ww]orkshop",
+    "[Ww]erkstatt",
+    "[Ee]liza",
+    "[Ss]hop",
+    "[Ll]aden",
+    "[Mm]arket.*[Pp]lace",
+    "[Mm]arkt.*[Pp]latz",
+    "[Tt]avern",
+    "[Ii]nn",
+    "[Gg]ast"
+  ]
+}

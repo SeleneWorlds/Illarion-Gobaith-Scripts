@@ -1,0 +1,32 @@
+{
+  "name": "Graveyard",
+  "coordinate": {
+    "x": 93,
+    "y": 36,
+    "z": 0
+  },
+  "order": 11,
+  "patterns": [
+    [
+      "[Gg]raveyard",
+      "[Ff]riedhof"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Gg]r[ea][uy].+[Rr]ose",
+    "[Tt]emple.*[Rr]uin"
+  ]
+}

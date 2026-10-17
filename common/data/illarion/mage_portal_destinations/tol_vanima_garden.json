@@ -1,0 +1,28 @@
+{
+  "name": "Tol Vanima Garden",
+  "coordinate": {
+    "x": 428,
+    "y": 213,
+    "z": 0
+  },
+  "order": 60,
+  "patterns": [
+    [
+      "[Tt]ol.*[Vv]anima"
+    ],
+    [
+      "[Gg]arten",
+      "[Gg]arden"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar"
+  ]
+}

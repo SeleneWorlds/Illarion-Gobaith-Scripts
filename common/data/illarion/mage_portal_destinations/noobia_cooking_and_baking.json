@@ -1,0 +1,11 @@
+{
+  "name": "Noobia - Cooking and Baking",
+  "coordinate": {
+    "x": 165,
+    "y": 21,
+    "z": 100
+  },
+  "order": 76,
+  "patterns": [],
+  "excludedPatterns": []
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Noobia - Mining",
+  "coordinate": {
+    "x": 107,
+    "y": 30,
+    "z": 100
+  },
+  "order": 82,
+  "patterns": [],
+  "excludedPatterns": []
+}

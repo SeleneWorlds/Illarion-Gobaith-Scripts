@@ -1,0 +1,35 @@
+{
+  "name": "Grey Rose Castle",
+  "coordinate": {
+    "x": -64,
+    "y": -229,
+    "z": 0
+  },
+  "order": 56,
+  "patterns": [
+    [
+      "[Gg]r[ea][uy].+[Rr]ose"
+    ],
+    [
+      "[Cc]astle",
+      "[Bb]urg"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Tt]op",
+    "[Dd]ach"
+  ]
+}

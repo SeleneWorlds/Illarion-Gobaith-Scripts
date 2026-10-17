@@ -1,0 +1,11 @@
+{
+  "name": "Noobia - Fishing",
+  "coordinate": {
+    "x": 66,
+    "y": 154,
+    "z": 100
+  },
+  "order": 84,
+  "patterns": [],
+  "excludedPatterns": []
+}

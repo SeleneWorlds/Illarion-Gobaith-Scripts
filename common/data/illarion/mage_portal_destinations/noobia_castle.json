@@ -1,0 +1,11 @@
+{
+  "name": "Noobia - Castle",
+  "coordinate": {
+    "x": 71,
+    "y": 38,
+    "z": 101
+  },
+  "order": 85,
+  "patterns": [],
+  "excludedPatterns": []
+}

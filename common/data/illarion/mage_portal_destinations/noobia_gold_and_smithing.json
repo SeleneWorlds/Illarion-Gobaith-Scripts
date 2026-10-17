@@ -1,0 +1,11 @@
+{
+  "name": "Noobia - Gold- and Smithing",
+  "coordinate": {
+    "x": 110,
+    "y": 163,
+    "z": 100
+  },
+  "order": 80,
+  "patterns": [],
+  "excludedPatterns": []
+}

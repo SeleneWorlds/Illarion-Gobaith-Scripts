@@ -1,0 +1,32 @@
+{
+  "name": "Trollsbane Tavern Top",
+  "coordinate": {
+    "x": -89,
+    "y": -96,
+    "z": 1
+  },
+  "order": 28,
+  "patterns": [
+    [
+      "[Tt]roll.*[Bb]ane"
+    ],
+    [
+      "[Tt]avern"
+    ],
+    [
+      "[Tt]op",
+      "[Dd]ach"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Ll]ibrary",
+    "[Bb]ibliothek",
+    "[Ww]orkshop",
+    "[Ww]erkstatt",
+    "[Ee]liza",
+    "[Ss]hop",
+    "[Ll]aden",
+    "[Mm]arket.*[Pp]lace",
+    "[Mm]arkt.*[Pp]latz"
+  ]
+}

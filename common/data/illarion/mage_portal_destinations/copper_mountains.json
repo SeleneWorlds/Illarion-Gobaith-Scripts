@@ -1,0 +1,46 @@
+{
+  "name": "Copper Mountains",
+  "coordinate": {
+    "x": 0,
+    "y": -176,
+    "z": 0
+  },
+  "order": 18,
+  "patterns": [
+    [
+      "[Mm]ountain",
+      "[Bb]erg",
+      "[Gg]ebirg"
+    ],
+    [
+      "[Cc]opper",
+      "[Kk]upfer"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Gg]r[ea][uy].+[Rr]ose",
+    "[Tt]emple.*[Rr]uin",
+    "[Gg]raveyard",
+    "[Ff]riedhof",
+    "[Oo]asis",
+    "[Oo]ase",
+    "[Ss]irani",
+    "[Zz]elphia",
+    "[Ss]wamp",
+    "[Ss][uü]mpf",
+    "[Aa]dron"
+  ]
+}

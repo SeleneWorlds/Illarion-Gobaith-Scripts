@@ -1,0 +1,25 @@
+{
+  "name": "Trollsbane Eliza",
+  "coordinate": {
+    "x": -59,
+    "y": -119,
+    "z": 0
+  },
+  "order": 25,
+  "patterns": [
+    [
+      "[Tt]roll.*[Bb]ane"
+    ],
+    [
+      "[Ee]liza",
+      "[Ss]hop",
+      "[Ll]aden"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Ll]ibrary",
+    "[Bb]ibliothek",
+    "[Ww]orkshop",
+    "[Ww]erkstatt"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Hug of Sirani",
+  "coordinate": {
+    "x": 354,
+    "y": -77,
+    "z": 0
+  },
+  "order": 14,
+  "patterns": [
+    [
+      "[Ss]irani"
+    ],
+    [
+      "[Hh]ug",
+      "[Bb]ucht"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Gg]r[ea][uy].+[Rr]ose",
+    "[Tt]emple.*[Rr]uin",
+    "[Gg]raveyard",
+    "[Ff]riedhof",
+    "[Oo]asis",
+    "[Oo]ase",
+    "[Ii]sland",
+    "[Ii]nsel"
+  ]
+}

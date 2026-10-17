@@ -1,0 +1,26 @@
+{
+  "name": "Tol Vanima",
+  "coordinate": {
+    "x": 308,
+    "y": 228,
+    "z": 0
+  },
+  "order": 6,
+  "patterns": [
+    [
+      "[Tt]ol.*[Vv]anima"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Gg]arten",
+    "[Gg]arden"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Noobia - Farming",
+  "coordinate": {
+    "x": 170,
+    "y": 156,
+    "z": 100
+  },
+  "order": 79,
+  "patterns": [],
+  "excludedPatterns": []
+}

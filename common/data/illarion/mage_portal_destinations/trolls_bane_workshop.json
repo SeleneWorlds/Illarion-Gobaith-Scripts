@@ -1,0 +1,22 @@
+{
+  "name": "Trollsbane Workshop",
+  "coordinate": {
+    "x": -109,
+    "y": -119,
+    "z": 0
+  },
+  "order": 29,
+  "patterns": [
+    [
+      "[Tt]roll.*[Bb]ane"
+    ],
+    [
+      "[Ww]orkshop",
+      "[Ww]erkstatt"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Ll]ibrary",
+    "[Bb]ibliothek"
+  ]
+}

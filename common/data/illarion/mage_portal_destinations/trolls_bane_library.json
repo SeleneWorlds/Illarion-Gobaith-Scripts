@@ -1,0 +1,22 @@
+{
+  "name": "Trollsbane Library",
+  "coordinate": {
+    "x": -95,
+    "y": -116,
+    "z": 0
+  },
+  "order": 23,
+  "patterns": [
+    [
+      "[Tt]roll.*[Bb]ane"
+    ],
+    [
+      "[Ll]ibrary",
+      "[Bb]ibliothek"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]op",
+    "[Dd]ach"
+  ]
+}

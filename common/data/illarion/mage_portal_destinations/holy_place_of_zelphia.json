@@ -1,0 +1,36 @@
+{
+  "name": "Holy Place of Zelphia",
+  "coordinate": {
+    "x": -364,
+    "y": -475,
+    "z": 0
+  },
+  "order": 15,
+  "patterns": [
+    [
+      "[Zz]elphia"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Gg]r[ea][uy].+[Rr]ose",
+    "[Tt]emple.*[Rr]uin",
+    "[Gg]raveyard",
+    "[Ff]riedhof",
+    "[Oo]asis",
+    "[Oo]ase",
+    "[Ss]irani"
+  ]
+}

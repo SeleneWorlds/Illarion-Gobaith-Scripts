@@ -1,0 +1,37 @@
+{
+  "name": "Grey Rose Castle Top",
+  "coordinate": {
+    "x": -58,
+    "y": -222,
+    "z": 1
+  },
+  "order": 9,
+  "patterns": [
+    [
+      "[Gg]r[ea][uy].+[Rr]ose"
+    ],
+    [
+      "[Cc]astle",
+      "[Bb]urg"
+    ],
+    [
+      "[Tt]op",
+      "[Dd]ach"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand"
+  ]
+}

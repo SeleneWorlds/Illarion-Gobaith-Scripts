@@ -1,0 +1,23 @@
+{
+  "name": "Greenbriar",
+  "coordinate": {
+    "x": -433,
+    "y": 41,
+    "z": 0
+  },
+  "order": 5,
+  "patterns": [
+    [
+      "[Gg]reen.*[Bb]riar"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen"
+  ]
+}

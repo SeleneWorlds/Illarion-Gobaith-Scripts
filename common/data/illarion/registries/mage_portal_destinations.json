@@ -1,0 +1,21 @@
+{
+  "name": "mage_portal_destinations",
+  "platform": "server",
+  "icon": "map-pin",
+  "schema": {
+    "name": "string",
+    "coordinate": "coordinate",
+    "order": "integer",
+    "patterns": {
+      "type": "array",
+      "valueType": {
+        "type": "array",
+        "valueType": "string"
+      }
+    },
+    "excludedPatterns": {
+      "type": "array",
+      "valueType": "string"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Trollsbane Marketplace",
+  "coordinate": {
+    "x": -66,
+    "y": -107,
+    "z": 0
+  },
+  "order": 26,
+  "patterns": [
+    [
+      "[Tt]roll.*[Bb]ane"
+    ],
+    [
+      "[Mm]arket.*[Pp]lace",
+      "[Mm]arkt.*[Pp]latz"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Ll]ibrary",
+    "[Bb]ibliothek",
+    "[Ww]orkshop",
+    "[Ww]erkstatt",
+    "[Ee]liza",
+    "[Ss]hop",
+    "[Ll]aden"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Noobia - Carpentry",
+  "coordinate": {
+    "x": 164,
+    "y": 60,
+    "z": 100
+  },
+  "order": 77,
+  "patterns": [],
+  "excludedPatterns": []
+}

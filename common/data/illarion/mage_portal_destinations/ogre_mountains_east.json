@@ -1,0 +1,54 @@
+{
+  "name": "Ogre mountains east",
+  "coordinate": {
+    "x": 414,
+    "y": -293,
+    "z": 0
+  },
+  "order": 71,
+  "patterns": [
+    [
+      "[Mm]ountain",
+      "[Bb]erg",
+      "[Gg]ebirg"
+    ],
+    [
+      "[Oo]g[er]+"
+    ],
+    [
+      "[Ee]ast",
+      "[Oo]st"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Gg]r[ea][uy].+[Rr]ose",
+    "[Tt]emple.*[Rr]uin",
+    "[Gg]raveyard",
+    "[Ff]riedhof",
+    "[Oo]asis",
+    "[Oo]ase",
+    "[Ss]irani",
+    "[Zz]elphia",
+    "[Ss]wamp",
+    "[Ss][uü]mpf",
+    "[Aa]dron",
+    "[Cc]opper",
+    "[Kk]upfer",
+    "[Oo]r[ck]",
+    "[Nn]orth",
+    "[Nn]ord"
+  ]
+}

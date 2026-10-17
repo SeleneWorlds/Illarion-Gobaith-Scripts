@@ -1,0 +1,51 @@
+{
+  "name": "Orcen Mountains South",
+  "coordinate": {
+    "x": 150,
+    "y": -400,
+    "z": 0
+  },
+  "order": 20,
+  "patterns": [
+    [
+      "[Mm]ountain",
+      "[Bb]erg",
+      "[Gg]ebirg"
+    ],
+    [
+      "[Oo]r[ck]"
+    ],
+    [
+      "[Ss]outh",
+      "[Ss]üd"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Gg]r[ea][uy].+[Rr]ose",
+    "[Tt]emple.*[Rr]uin",
+    "[Gg]raveyard",
+    "[Ff]riedhof",
+    "[Oo]asis",
+    "[Oo]ase",
+    "[Ss]irani",
+    "[Zz]elphia",
+    "[Ss]wamp",
+    "[Ss][uü]mpf",
+    "[Aa]dron",
+    "[Cc]opper",
+    "[Kk]upfer"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Eldan Monastery",
+  "coordinate": {
+    "x": -413,
+    "y": -132,
+    "z": 0
+  },
+  "order": 3,
+  "patterns": [
+    [
+      "[Ee]ldan.*[Mm]onastery",
+      "[Ee]ldan.*[Kk]loster"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Temple Ruins",
+  "coordinate": {
+    "x": -45,
+    "y": -283,
+    "z": 0
+  },
+  "order": 10,
+  "patterns": [
+    [
+      "[Tt]emple.*[Rr]uin"
+    ]
+  ],
+  "excludedPatterns": [
+    "[Tt]roll.*[Bb]ane",
+    "[Ll]ighthouse",
+    "[Ll]euchtturm",
+    "[Ee]ldan.*[Mm]onastery",
+    "[Ee]ldan.*[Kk]loster",
+    "[Hh]arbor",
+    "[Hh]afen",
+    "[Gg]reen.*[Bb]riar",
+    "[Tt]ol.*[Vv]anima",
+    "[Mm]eeting",
+    "[Tt]reff",
+    "[Vv]arshikar",
+    "[Ss]il[bv]erbrand",
+    "[Gg]r[ea][uy].+[Rr]ose"
+  ]
+}
