@@ -1248,9 +1248,6 @@
     "npc.special.static_teleport": {
       "file": "server/lua/npc/special/static_teleport.lua"
     },
-    "scheduled.closedoors": {
-      "file": "server/lua/scheduled/closedoors.lua"
-    },
     "scheduled.gaia": {
       "file": "server/lua/scheduled/gaia.lua"
     },
