@@ -116,13 +116,6 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, param)
             	"Nothing happens.");
 		end
     end
-	-- User:inform("moep-> "..PosGem[1]);
-	-- User:inform("moep-> "..PosGem[2]);
-
-	if SourceItem.data==666 then
-		Intelligence=User:increaseAttrib("intelligence",0);
-		User:inform("#w Deine Intelligenz ist: "..Intelligence);
-	end 
 end
 
 function M.destroyGem (gemData)
