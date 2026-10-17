@@ -1326,12 +1326,6 @@
     "triggerfield.notherot_entrace": {
       "file": "server/lua/triggerfield/notherot_entrace.lua"
     },
-    "triggerfield.underground_entrance": {
-      "file": "server/lua/triggerfield/underground_entrance.lua"
-    },
-    "triggerfield.roll_behavior": {
-      "file": "server/lua/triggerfield/roll_behavior.lua"
-    },
     "npc.base.basic": {
       "file": "server/lua/npc/base/basic.lua",
       "encoding": "ISO-8859-15"
