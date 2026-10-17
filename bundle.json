@@ -489,9 +489,6 @@
     "item.id_220_barrel": {
       "file": "server/lua/item/id_220_barrel.lua"
     },
-    "item.id_222_amulett": {
-      "file": "server/lua/item/id_222_amulett.lua"
-    },
     "item.id_224_goldengoblet": {
       "file": "server/lua/item/id_224_goldengoblet.lua"
     },
@@ -1493,6 +1490,21 @@
     },
     "content.herb_harvests": {
       "file": "server/lua/content/herb_harvests.lua"
+    },
+    "item.succubus_amulet": {
+      "file": "server/lua/item/succubus_amulet.lua"
+    },
+    "item.leeven_amulet": {
+      "file": "server/lua/item/leeven_amulet.lua"
+    },
+    "item.ice_flame_amulet": {
+      "file": "server/lua/item/ice_flame_amulet.lua"
+    },
+    "item.power_amulet": {
+      "file": "server/lua/item/power_amulet.lua"
+    },
+    "item.dragon_amulet": {
+      "file": "server/lua/item/dragon_amulet.lua"
     }
   }
 }

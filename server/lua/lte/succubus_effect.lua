@@ -8,10 +8,10 @@ function M.createAmulett( Target )
         world:erase(oldItem,255);
         common.InformNLS(Target,"dein altes Amulett fällt zu boden","You drop your old Amulett!");
     end
-    Target:createAtPos(2,222,1)
+    Target:createAtPos(2,3122,1)
     newItem = Target:getItemAt(2);
     newItem.quality = 999;
-    newItem.data = 666;
+    newItem.data = 0;
     world:changeItem( newItem );
     common.InformNLS(Target,"Die macht des Dämons hält deinen Hals fest im Griff","The power of the Demon holds your neck in a strong grasp");
 end
