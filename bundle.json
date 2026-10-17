@@ -180,9 +180,6 @@
     "druid.item.id_2952_plate": {
       "file": "server/lua/druid/item/id_2952_plate.lua"
     },
-    "druid.item.id_3104_bookrest": {
-      "file": "server/lua/druid/item/id_3104_bookrest.lua"
-    },
     "druid.item.id_3105_bookrest": {
       "file": "server/lua/druid/item/id_3105_bookrest.lua"
     },
@@ -1508,6 +1505,9 @@
     },
     "item.summoning_scroll": {
       "file": "server/lua/item/summoning_scroll.lua"
+    },
+    "druid.item.research_bookrest": {
+      "file": "server/lua/druid/item/research_bookrest.lua"
     }
   }
 }

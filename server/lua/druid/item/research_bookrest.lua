@@ -1,12 +1,11 @@
 local firsttime
--- ds_3104_pult.lua
 -- Pergament für das Druidensystem
 -- Falk
 local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
 
 local M = {}
--- UPDATE common SET com_script='druid.item.id_3104_bookrest' WHERE com_itemid = 3104;
+-- Druid research lectern; the item definition selects this behavior.
 
 function M.init()
 	if firsttime == nil then
@@ -362,9 +361,6 @@ function M.MetamorphosisEN(User,Difficult,CharLangSkillName)
 end
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
---User:inform("debug 3104-1")
---Man könnte jetzt hergehen und den Standort des Schreines noch als Bedingung festschreiben. Damit gäbe es dann nur einen einzigen Schrein auf der Insel, oder eben mehrere, falls gewünscht.
-	if SourceItem.pos.x == -390 and SourceItem.pos.y == -154 and SourceItem.pos.z == 0 then
 
 	-- Eine Auswahl von Pergamenten anzeigen (nur Deko)
 	menuList ={}
@@ -432,7 +428,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 						User:inform("#b|0|1008|"..metaDE)
 
 					else
-						local metaEN=M.MetamorphosisEN(User)
+						local metaEN=M.MetamorphosisEN(User,langSkill,langType)
 						--User:inform("#b|0|1008|"..rNameEN[i].."\n\n"..alchemy.wirkung_en[dataZList[1]].." "..alchemy.wirkstoff[1].."\n"..alchemy.wirkung_en[dataZList[2]].." "..alchemy.wirkstoff[2].."\n"..alchemy.wirkung_en[dataZList[3]].." "..alchemy.wirkstoff[3].."\n"..alchemy.wirkung_en[dataZList[4]].." "..alchemy.wirkstoff[4].."\n"..alchemy.wirkung_en[dataZList[5]].." "..alchemy.wirkstoff[5].."\n"..alchemy.wirkung_en[dataZList[6]].." "..alchemy.wirkstoff[6].."\n"..alchemy.wirkung_en[dataZList[7]].." "..alchemy.wirkstoff[7].."\n"..alchemy.wirkung_en[dataZList[8]].." "..alchemy.wirkstoff[8]);
 						User:inform("#b|0|1008|"..metaEN)
 
@@ -447,12 +443,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 				end
 			end	--rezepte auf pergamentrollen
 		end	--Menu check
-	end	--position check
 end	--function
 
-
-function M.LookAtItem( User, Item )
-	--  User:inform("debug 3104-4")
-end
 
 return M
