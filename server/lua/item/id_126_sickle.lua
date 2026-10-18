@@ -78,11 +78,10 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     if not work.check(User, "herbgathering") then return end
     local output = { user = User, season = season }
     yields:roll(harvest:getField("yield"), output)
+    User:learn(2, "herb lore", output.produced and 2 or 1, 100)
     if output.produced then
         if harvest:getField("consumePlant") then world:erase(target, 1) end
         User.movepoints = User.movepoints - 4
-        User:learn(2, "herb lore", 2, (harvest:getField("minimumSkill") or 0) > 0 and 100 or 5)
-        if (harvest:getField("minimumSkill") or 0) > 0 then common.GetHungry(User, 200) end
     else
         common.InformNLS(User, "Du findest nichts Brauchbares.", "You find nothing useful.")
     end
