@@ -1488,6 +1488,9 @@
     "base.gathering": {
       "file": "server/lua/base/gathering.lua"
     },
+    "item.unfinished_item": {
+      "file": "server/lua/item/unfinished_item.lua"
+    },
     "base.roll_items": {
       "file": "server/lua/base/roll_items.lua"
     }

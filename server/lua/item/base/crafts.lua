@@ -4,6 +4,19 @@ local M = {}
 -- Nitram
 -- added object orientation by vilarion
 local common = require("base.common")
+local Registries = require("selene.registries")
+
+local function unfinishedItemId()
+    return assert(Registries.findByName("illarion:items", "illarion:unfinished_item"),
+        "Missing unfinished_item definition"):getMetadata("id")
+end
+
+local function productId(item)
+    if item.id == unfinishedItemId() then
+        return tonumber(item:getData("CraftProduct"))
+    end
+    return item.id
+end
 
 -- ## NOTE: replaced os.time() with 123456789
 
@@ -125,7 +138,6 @@ function Product:AddProductionSteps( ItemList, Amount, LeftOvers, FailLeftOvers,
         self["FailLeftOvers"][offset+i] = FailLeftOvers;
         self["UseDataToWork"][offset+i] = UseDataToWork;
     end;
-    self["QualPerStep"] = 100 / #self["ProductionSteps"];
 end
 
 function Product:AddDummySteps( Amount )
@@ -350,7 +362,7 @@ function Craft:GenWorkTime(User, ItemID, toolItem)
 end
 
 function Craft:GetNextStep( User, Item )
-    return math.ceil(Item.quality / self.Products[ Item.id ].QualPerStep)+1;
+    return assert(tonumber(Item:getData("CraftStep")), "Unfinished item is missing CraftStep") + 1;
 end
 
 function Craft:LocationFine( User, ltstate, mode )
@@ -480,7 +492,10 @@ function Craft:ToolCreateItem( User, Param, WorkOnItem, ltstate, toolItem )
     local repair = true;
 
     if (WorkOnItem ~= nil) then
-        ItemID = WorkOnItem.id;
+        if WorkOnItem.id ~= unfinishedItemId() and WorkOnItem.quality < 100 then
+            return;
+        end
+        ItemID = productId(WorkOnItem);
         ProduceItem = self.Products[ ItemID ];
     end
 
@@ -510,7 +525,7 @@ function Craft:ToolCreateItem( User, Param, WorkOnItem, ltstate, toolItem )
             didSomething = true;
         end
     else
-        if (WorkOnItem.quality >= 100) then
+        if (WorkOnItem.id ~= unfinishedItemId()) then
             for i,checkId in pairs(notRepairable) do
                 if ItemID == checkId then
                     repair = false;
@@ -637,21 +652,32 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         end
     end
     if self:checkSuccess(User, ItemID,toolItem) then
-        local ItemQual = 0;
+        local ItemQual = 333;
+        local finished = Step == #self.Products[ ItemID ].ProductionSteps;
         local ItemCount = 1;
-        if (Step == #self.Products[ ItemID ].ProductionSteps) then -- Item fertig -> Finale Qualität
+        if finished then -- Generate quality only for the finished product
             ItemQual = self:GenerateQuality( User, ItemID, toolItem );
             ItemCount = self.Products[ ItemID ].Quantity;
 			common.TempInformNLS(User,
 				"Du beendest die Arbeit.",
 				"You finish the work.");
-        else
-            ItemQual = math.floor(self.Products[ ItemID ].QualPerStep * Step);
+        end
+        local createdId = ItemID;
+        local createdData = 0;
+        if not finished then
+            createdId = unfinishedItemId();
+            local definition = assert(Registries.findByMetadata("illarion:items", "id", ItemID));
+            createdData = {
+                CraftProduct = tostring(ItemID),
+                CraftStep = tostring(Step),
+                CraftSteps = tostring(#self.Products[ ItemID ].ProductionSteps),
+                SeleneVisual = definition:getField("visual")
+            };
         end
         if (WorkOnItem == nil) then
-			local notcreated = User:createItem(ItemID,ItemCount,ItemQual,0);
+			local notcreated = User:createItem(createdId,ItemCount,ItemQual,createdData);
             if (notcreated ~= 0) then
-                world:createItemFromId(ItemID,notcreated,User.pos,true,ItemQual,0);
+                world:createItemFromId(createdId,notcreated,User.pos,true,ItemQual,createdData);
                 common.TempInformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You cannot carry anything else.");
@@ -660,7 +686,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                     local foundMadeItem = false;
                     for bodypos=12,17 do
                         local CheckItem = User:getItemAt(bodypos);
-                        if ((CheckItem.id == ItemID) and (CheckItem.number == ItemCount) and (CheckItem.quality == ItemQual) and (CheckItem.data == 0)) then
+                        if ((CheckItem.id == createdId) and (CheckItem.number == ItemCount) and (CheckItem.quality == ItemQual) and (productId(CheckItem) == ItemID) and (tonumber(CheckItem:getData("CraftStep")) == Step)) then
                             User:changeTarget(CheckItem);
                             foundMadeItem = true;
                             break;
@@ -679,11 +705,18 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                 end
             end
         else
-            -- Edit by abcfantasy: Wine brewing contest
-            if ( ( ItemID == 2500 ) and ( ItemQual >= 100 ) ) then
-                WorkOnItem.data = M.GetWineQuality( User );
-            end;
-            -- end edit
+            WorkOnItem.id = createdId;
+            if not finished then
+                WorkOnItem:setData("CraftProduct", createdData.CraftProduct);
+                WorkOnItem:setData("CraftStep", createdData.CraftStep);
+                WorkOnItem:setData("CraftSteps", createdData.CraftSteps);
+                WorkOnItem:setData("SeleneVisual", createdData.SeleneVisual);
+            else
+                WorkOnItem:setData("CraftProduct", nil);
+                WorkOnItem:setData("CraftStep", nil);
+                WorkOnItem:setData("CraftSteps", nil);
+                WorkOnItem:setData("SeleneVisual", nil);
+            end
             WorkOnItem.quality = ItemQual;
             WorkOnItem.number = ItemCount;
             world:changeItem(WorkOnItem);
@@ -723,16 +756,6 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
             "You cannot carry anything else.");
         end
     end
-end
-
--- Added by abcfantasy for wine contest
-function M.GetWineQuality( User )
-        local skill = User:getSkill( "baking" );
-        local attr = User:increaseAttrib( "dexterity", 0 );
-
-        local randValue = math.random( -23, 23 );
-
-        return ( skill + attr + randValue );
 end
 
 M.Craft = Craft
