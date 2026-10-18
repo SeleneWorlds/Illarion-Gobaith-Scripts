@@ -6,12 +6,16 @@ local M = {}
 -- UPDATE common SET com_script='item.id_1005_beehive' WHERE com_itemid=1005;
 
 local common = require("base.common")
-local gathering = require("content.gathering")
+local work = require("base.gathering")
+local Registries = require("selene.registries")
+local Rolls = require("moonlight-rolls.server.lua.rolls")
+local items = require("base.roll_items")
+local honey = Rolls:new()
+honey:registerType("item", items.item)
+honey:registerType("nothing", items.nothing)
+
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-	gathering.InitGathering();
-	local honeygathering = gathering.honeygathering;
-	
     common.ResetInterruption(User, ltstate);
 	if (ltstate == Action.abort) then -- Arbeit unterbrochen
         if (User:increaseAttrib("sex", 0) == 0) then
@@ -38,30 +42,23 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
 	
 	if (ltstate == Action.none) then -- Untätig: Starte Honig Sammeln!
-        User:startAction(honeygathering:GenWorkTime(User, nil), 0, 0, 0, 0);
+        User:startAction(work.time(User, "honeygathering"), 0, 0, 0, 0);
         User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt nach Honig zu suchen.");
         User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to search for honey.");
         return
     end
 	
-	if not honeygathering:FindRandomItem(User, SourceItem) then
+	if not work.check(User, "honeygathering") then
 		return
 	end
 	
-	-- Spieler sammelt bereits Honig
-	if(math.random(10) <= 6) then -- Skill wird nur noch bei GenWorkTime beachtet, Chance beträgt 60%
-		local notcreated = User:createItem(2529, 1, 333, 0);
-		if(notcreated > 0) then
-			world:createItemFromId(2529, notcreated, User.pos, true, 333, 0);
-			common.InformNLS(User, "Du kannst nichts mehr halten!", "You can't carry anymore!");
-			return false
-		end
-		User:learn(2, "peasantry", 2, 100);
-	else
-		User:learn(2, "peasantry", 1, 100);
-	end
-	
-	User:startAction(honeygathering:GenWorkTime(User, SourceItem), 0, 0, 0, 0);
+    local definition = assert(Registries.findByName("illarion:honey_harvests", "illarion:default"))
+    local output = { user = User }
+    honey:roll(definition:getField("yield"), output)
+    if output.overflow then return false end
+    User:learn(2, "peasantry", output.produced and 2 or 1, 100)
+
+	User:startAction(work.time(User, "honeygathering", SourceItem), 0, 0, 0, 0);
 end
 
 return M

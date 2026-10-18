@@ -11,12 +11,28 @@ local M = {}
 -- UPDATE common SET com_script='item.id_171_spinningwheel' WHERE com_itemid IN (171);
 
 local common = require("base.common")
-local gathering = require("content.gathering")
+local work = require("base.gathering")
+local Registries = require("selene.registries")
+local Rolls = require("moonlight-rolls.server.lua.rolls")
+local items = require("base.roll_items")
+local yields = Rolls:new()
+yields:registerType("item", items.item)
+yields:registerType("nothing", items.nothing)
+
+local function findRecipe(user)
+    local selected
+    for _, recipe in pairs(Registries.findAll("illarion:spinning_recipes")) do
+        local input = recipe:getField("input")
+        if user:countItemAt(input.location, input.id) >= input.quantity
+            and (not selected or recipe:getField("priority") < selected:getField("priority")) then
+            selected = recipe
+        end
+    end
+    return selected
+end
+
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
-	gathering.InitGathering();
-	local woolcutting = gathering.woolcutting;
-	
     common.ResetInterruption( User, ltstate );
     if ( ltstate == Action.abort ) then
         if (User:increaseAttrib("sex",0) == 0) then
@@ -65,7 +81,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if ((User:countItemAt("belt",170) < 2) and (User:countItemAt("belt",155) < 3)) then
+    local recipe = findRecipe(User)
+    if not recipe then
         if (ltstate ~= Action.success) then
             common.InformNLS( User, 
             "Du benötigst Wolle oder Sibanac um am Spinnrad zu arbeiten.", 
@@ -81,32 +98,18 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-	if not woolcutting:FindRandomItem(User) then
+	if not work.check(User, "woolcutting") then
 		return false;
 	end
 	
-    if (User:countItemAt("belt",170) >= 2) then -- Removes 2 wool and returns 2 thread
-        User:eraseItem( 170, 2 );
-        local notcreated = User:createItem(50, 2, 333 ,0 );
-        if (notcreated > 0) then
-            world:createItemFromId( 50, notcreated, User.pos, true, 333 ,0);
-            common.InformNLS(User,
-            "Du kannst nichts mehr halten.",
-            "You can't carry any more.");
-        else
-            User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
-        end
-    else
-        User:eraseItem( 155, 3 );
-        local notcreated = User:createItem(50, 1, 333 ,0 );
-        if (notcreated > 0) then
-            world:createItemFromId( 50, 1, User.pos, true, 333 ,0);
-            common.InformNLS(User,
-            "Du kannst nichts mehr halten.",
-            "You can't carry any more.");
-        else
-            User:startAction( M.GenWorkTime(User), 0, 0, 0, 0 );
-        end
+    local yield = recipe:getField("yield")
+    yields:validate(yield)
+    local input = recipe:getField("input")
+    User:eraseItem(input.id, input.quantity)
+    local output = { user = User }
+    yields:roll(yield, output)
+    if not output.overflow then
+        User:startAction(M.GenWorkTime(User), 0, 0, 0, 0)
     end
 
     User:learn( 2, "tailoring", 2, 10 );

@@ -30,9 +30,6 @@
     "base.doors": {
       "file": "server/lua/base/doors.lua"
     },
-    "base.gcraft": {
-      "file": "server/lua/base/gcraft.lua"
-    },
     "base.keys": {
       "file": "server/lua/base/keys.lua"
     },
@@ -98,9 +95,6 @@
     },
     "content.furtunecookies": {
       "file": "server/lua/content/furtunecookies.lua"
-    },
-    "content.gathering": {
-      "file": "server/lua/content/gathering.lua"
     },
     "content.genus": {
       "file": "server/lua/content/genus.lua"
@@ -1458,9 +1452,6 @@
     "npc.runtime": {
       "file": "server/lua/npc/runtime.lua"
     },
-    "content.herb_harvests": {
-      "file": "server/lua/content/herb_harvests.lua"
-    },
     "item.succubus_amulet": {
       "file": "server/lua/item/succubus_amulet.lua"
     },
@@ -1493,6 +1484,12 @@
     },
     "content.mage_portals": {
       "file": "server/lua/content/mage_portals.lua"
+    },
+    "base.gathering": {
+      "file": "server/lua/base/gathering.lua"
+    },
+    "base.roll_items": {
+      "file": "server/lua/base/roll_items.lua"
     }
   }
 }

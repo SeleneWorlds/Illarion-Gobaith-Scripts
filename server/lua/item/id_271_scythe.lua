@@ -9,18 +9,28 @@ local M = {}
 
 local common = require("base.common")
 local general_metal = require("item.general.metal")
-local gathering = require("content.gathering")
+local work = require("base.gathering")
+local Registries = require("selene.registries")
+local Rolls = require("moonlight-rolls.server.lua.rolls")
+local items = require("base.roll_items")
+local yields = Rolls:new()
+yields:registerType("item", items.item)
+yields:registerType("nothing", items.nothing)
+
+local function findCrop(id)
+    for _, crop in pairs(Registries.findAll("illarion:crop_harvests")) do
+        if crop:getField("item") == id then return crop end
+    end
+end
+
 
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param )   
-	gathering.InitGathering();
-	
     if ((TargetItem == nil) or (TargetItem.id == 0)) then -- Anvisiertes Item Vorhanden
         TargetItem = common.GetFrontItem( User ); -- Wenn nicht Item in Blickrichtung nehmen
     end
     
-    if (TargetItem == nil or TargetItem.id ~= 248) then
-        return
-    end
+    local crop = TargetItem and findCrop(TargetItem.id)
+    if not crop then return end
     
     if common.Encumbrence(User) then -- Durch Steife Rüstung behindert
         common.InformNLS( User,
@@ -40,7 +50,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         common.TurnTo( User, TargetItem.pos ); -- notfalls drehen
     end
     
-	if not gathering.farming:FindRandomItem(User) then
+	if not work.check(User, "farming") then
 		return
 	end
 	
@@ -51,18 +61,14 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         return
     end
     
+    local output = { user = User }
+    yields:roll(crop:getField("yield"), output)
+    if not output.produced then return end
     if (TargetItem.data > 1) then
         TargetItem.data = TargetItem.data - 1;
         world:changeItem(TargetItem);
     else
         world:erase( TargetItem, 1 );     -- Getreideitem löschen
-    end
-    local notCreated = User:createItem( 249, 1, 333 ,0); -- Getreidebündel erstellen
-    if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-        world:createItemFromId( 249, notCreated, User.pos, true, 333 ,0);
-        common.InformNLS(User,
-        "Du kannst nichts mehr halten.",
-        "You can't carry any more.");
     end
 end
 

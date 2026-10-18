@@ -11,10 +11,50 @@ local M = {}
 local common = require("base.common")
 local general_metal = require("item.general.metal")
 local base_treasure = require("base.treasure")
-local gathering = require("content.gathering")
+local work = require("base.gathering")
+local Registries = require("selene.registries")
+local Rolls = require("moonlight-rolls.server.lua.rolls")
+local items = require("base.roll_items")
+local digging = Rolls:new()
+digging:registerType("nothing", items.nothing)
+digging:registerType("material", function(entry, context)
+    local data = entry.data
+    local maximum = math.max(1, math.ceil(context.skill * data.perSkill
+        + context.user:increaseAttrib("perception", 0) * data.perPerception))
+    local item = {}
+    for key, value in pairs(data) do item[key] = value end
+    item.quantity = math.random(maximum)
+    items.item({ data = item }, context)
+end)
+digging:registerCondition("digging_success", function(condition, context)
+    local data = condition.data
+    local threshold = data.base + data.perSkill * context.skill
+        + data.perDexterity * context.user:increaseAttrib("dexterity", 0)
+    return math.random(0, 100) < threshold
+end)
+local roots = Rolls:new()
+roots:registerType("nothing", items.nothing)
+roots:registerType("root", function(entry, context)
+    local data = entry.data
+    local quality = data.qualityMin and math.random(data.qualityMin, data.qualityMax) or data.quality
+    world:createItemFromId(data.id, data.quantity, context.target.pos, true, quality, data.data)
+    if data.message then common.InformNLS(context.user, data.message.de, data.message.en) end
+    context.produced = true
+end)
+roots:registerCondition("uprooting_success", function(condition, context)
+    local data = condition.data
+    return math.random(100) < context.user:getSkill("lumberjacking") * data.perSkill
+        + context.user:increaseAttrib("strength", 0) * data.perStrength
+end)
+
+local function findStump(id)
+    for _, tree in pairs(Registries.findAll("illarion:trees")) do
+        if tree:getField("stump") == id then return tree end
+    end
+end
+
 
 function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstate )
-    gathering.InitGathering();
     common.ResetInterruption( User, ltstate );
     if (StoneList==nil) then
         StoneList={ 914, 915, 1245, 1246, 1273, 1276 };
@@ -120,11 +160,11 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     end
 
 	if ( groundTile == 3 ) then
-		if not gathering.sanddigging:FindRandomItem(User) then
+		if not work.check(User, "sanddigging") then
 			return;
 		end
 	else
-		if not gathering.claydigging:FindRandomItem(User) then
+		if not work.check(User, "claydigging") then
 			return;
 		end
 	end
@@ -140,53 +180,14 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         step=step+str2;
     end
     Skill=Skill+step;
-    if not M.checkSuccess( User, Skill ) then
-        User:startAction( M.GenWorkTime(User,SourceItem), 0, 0, 0, 0);
-        return
-    end
-    local numberSand=M.getNumb( User, Skill );
-    if ( world:getField( TargetPos ):tile() == 3 ) then
-        ItemID = 726;
-    else
-        ItemID = 26;
-    end
-    local left = User:createItem(ItemID,numberSand,333,0);
-    if (left<0) then
-        world:createItemFromId( ItemID, numberSand, User.pos, true, 333 ,0);
-        if ( world:getField( TargetPos ):tile() == 3 ) then
-            common.InformNLS(User,
-            "Du kannst nicht noch mehr Sand halten und er rieselt zu Boden.",
-            "You can't carry more sand and it falls to the ground.");
-        else
-            common.InformNLS(User,
-            "Du kannst nicht noch mehr Lehm halten und er fällt zu Boden.",
-            "You can't carry more clay and it falls to the ground.");
-        end
-    end
+    local definition = assert(Registries.findByName("illarion:digging",
+        groundTile == 3 and "illarion:sand" or "illarion:clay"))
+    digging:roll(definition:getField("yield"), { user = User, skill = Skill })
     User:startAction( M.GenWorkTime(User,SourceItem), 0, 0, 0, 0);
 end
 
-function M.getNumb( Char, skillValue )
-    UPerc=Char:increaseAttrib( "perception", 0 );
-    return math.max(1, math.ceil( math.random( math.ceil(( skillValue+UPerc*2 )/30 )) ) );
-end
-
-function M.checkSuccess( Char, skillValue )
-    local usertest= 0.46*(2*Char:increaseAttrib( "dexterity", 0 )+skillValue)+30;
-    if ( usertest > math.random( 0, 100 )) then
-        return true
-    else
-        return false
-    end
-end
-
-
 -- dig out a tree stump
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
-    if (listofstumps == nil) then
-        listofstumps = {125,309,541,542,584,585,587};
-    end
-
     if ((TargetItem == nil) or (TargetItem.id == 0)) then
         TargetItem = common.GetFrontItem( User );
     end
@@ -196,15 +197,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
 
-    local stumpOkay = false;
-    for i,stumpID in pairs(listofstumps) do
-        if (stumpID == TargetItem.id) then
-            stumpOkay = true;
-        end
-    end
-
-    if not stumpOkay then
-        M.UseItemWithField( User, SourceItem, TargetItem.pos, Counter, Param, ltstate );
+    local tree = findStump(TargetItem.id)
+    if not tree then
+        M.UseItemWithField(User, SourceItem, TargetItem.pos, Counter, Param, ltstate)
         return
     end
 
@@ -222,17 +217,13 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         common.TurnTo( User, TargetItem.pos );
     end
 
-    local skill = User:getSkill( "lumberjacking" )+ User:increaseAttrib( "strength", 0 );
-    if ( skill > math.random( 100 ) ) then
-        world:erase( TargetItem, 1 )
-        if ( math.random(1) == 1 ) then
-            	world:createItemFromId( 152, 1, TargetItem.pos, true, 999 ,0);
-            	common.InformNLS(User,
-            	"Unter dem Baumstumpf findest du seltsame Wurzeln.",
-            	"Below the tree stump you find strange roots.");
-        end
+    local output = { user = User, target = TargetItem }
+    roots:roll(tree:getField("roots"), output)
+    if output.produced then
+        world:erase(TargetItem, 1)
     else
-        common.InformNLS( User, "Die Wurzeln sind stark und tief und halten deiner Kraft stand.", "This roots are deep and strong. They resist you strength." );
+        common.InformNLS(User, "Die Wurzeln sind stark und tief und halten deiner Kraft stand.",
+            "This roots are deep and strong. They resist you strength.")
     end
     User:learn( 2, "lumberjacking", 2, 50 )
     common.GetHungry( User, 200 );

@@ -1,17 +1,28 @@
 local parent = require("item.general.metal")
 local common = require("base.common")
-local gathering = require("content.gathering")
-local harvests = require("content.herb_harvests")
-local M = {}
+local work = require("base.gathering")
+local Registries = require("selene.registries")
+local Rolls = require("moonlight-rolls.server.lua.rolls")
+local items = require("base.roll_items")
+local yields = Rolls:new()
+yields:registerType("item", items.item)
+yields:registerType("nothing", items.nothing)
 
-local function findHarvest(target)
-    local ground = common.GetGroundType(world:getField(target.pos):tile())
-    for _, harvest in ipairs(harvests[target.id] or {}) do
-        if harvest.ground == 0 or harvest.ground == ground then
+yields:registerCondition("chance", function(condition) return math.random() < condition.data end)
+yields:registerCondition("seasonal_chance", function(condition, context)
+    return math.random(20) <= condition.data[context.season]
+end)
+
+local function findHarvest(target, ground)
+    for _, harvest in pairs(Registries.findAll("illarion:herb_harvests")) do
+        if harvest:getField("item") == target.id
+            and (harvest:getField("ground") == 0 or harvest:getField("ground") == ground) then
             return harvest
         end
     end
 end
+
+local M = {}
 
 function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     common.ResetInterruption(User, ltstate)
@@ -30,7 +41,9 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     -- Resolve the plant again on each action callback so harvested crops cannot
     -- be gathered twice from a stale target supplied by the action system.
     local target = common.GetFrontItem(User)
-    local harvest = target and findHarvest(target)
+
+    local ground = target and common.GetGroundType(world:getField(target.pos):tile())
+    local harvest = target and findHarvest(target, ground)
     if not harvest then
         common.InformNLS(User, "Hier kannst du nichts sammeln.", "You can't gather anything here.")
         return
@@ -40,14 +53,13 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     local gem1, strength1, gem2, strength2 = common.GetBonusFromTool(SourceItem)
     if gem1 == 3 then skill = skill + strength1 end
     if gem2 == 3 then skill = skill + strength2 end
-    if skill < harvest.skill then
+    if skill < (harvest:getField("minimumSkill") or 0) then
         common.InformNLS(User, "Deine Kräuterkunde reicht dafür nicht aus.", "Your knowledge of herbs is insufficient to gather this plant.")
         return
     end
 
-    gathering.InitGathering()
     if ltstate == Action.none then
-        User:startAction(math.max(1, gathering.herbgathering:GenWorkTime(User, SourceItem)), 0, 0, 0, 0)
+        User:startAction(math.max(1, work.time(User, "herbgathering", SourceItem)), 0, 0, 0, 0)
         return
     end
     if ltstate ~= Action.success then return end
@@ -59,23 +71,19 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     local month = world:getTime("month")
     if month == 0 then month = 16 end
     local season = math.max(1, math.min(4, math.ceil(month / 4)))
-    local success = harvest.consume and (harvest.skill == 0 or math.random(100) < 80)
-        or (not harvest.consume and math.random(20) <= harvest.seasons[season])
-    if success then
-        local remaining = User:createItem(harvest.product, 1, 333, harvest.data)
-        if remaining > 0 then
-            world:createItemFromId(harvest.product, remaining, User.pos, true, 333, harvest.data)
-            common.InformNLS(User, "Du kannst nichts mehr tragen.", "You can't carry any more.")
-        end
-        if harvest.consume then world:erase(target, 1) end
+    if not work.check(User, "herbgathering") then return end
+    local output = { user = User, season = season }
+    yields:roll(harvest:getField("yield"), output)
+    if output.produced then
+        if harvest:getField("consumePlant") then world:erase(target, 1) end
         User.movepoints = User.movepoints - 4
-        User:learn(2, "herb lore", 2, harvest.skill > 0 and 100 or 5)
-        if harvest.skill > 0 then common.GetHungry(User, 200) end
+        User:learn(2, "herb lore", 2, (harvest:getField("minimumSkill") or 0) > 0 and 100 or 5)
+        if (harvest:getField("minimumSkill") or 0) > 0 then common.GetHungry(User, 200) end
     else
         common.InformNLS(User, "Du findest nichts Brauchbares.", "You find nothing useful.")
     end
-    if not harvest.consume then
-        User:startAction(math.max(1, gathering.herbgathering:GenWorkTime(User, SourceItem)), 0, 0, 0, 0)
+    if not harvest:getField("consumePlant") then
+        User:startAction(math.max(1, work.time(User, "herbgathering", SourceItem)), 0, 0, 0, 0)
     end
 end
 
