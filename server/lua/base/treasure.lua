@@ -151,7 +151,7 @@ end
     end
 
     function M.getDistance( User, Item )
-        local RealTarget = common.DataToPosition( Item.data );
+        local RealTarget = position(tonumber(Item:getData("x")), tonumber(Item:getData("y")), tonumber(Item:getData("z")));
         local TargetLocation = M.modPosition( User, RealTarget );
         if not TargetLocation then
             return false;
@@ -171,7 +171,7 @@ end
     end
 
     function M.getDirection( User, Item )
-        local RealTarget = common.DataToPosition( Item.data );
+        local RealTarget = position(tonumber(Item:getData("x")), tonumber(Item:getData("y")), tonumber(Item:getData("z")));
         local TargetLocation = M.modPosition( User, RealTarget );
         if not TargetLocation then
             return false;
@@ -218,7 +218,6 @@ end
         if not MapPosition then
             return false;
         end
-        local MapData = common.PositionToData( MapPosition )
         local MapQuality
         if type(level) == "number" and level == math.floor(level)
             and Registries.findByMetadata("illarion:treasure_maps", "id", level) then
@@ -234,7 +233,7 @@ end
             local selectedLevel = assert(selected[1], "No treasure levels available for maps").value
             MapQuality = selectedLevel * 100 + 99
         end
-        common.CreateItem(Char, 505, 1, MapQuality, {data = MapData});
+        common.CreateItem(Char, 505, 1, MapQuality, {x = MapPosition.x, y = MapPosition.y, z = MapPosition.z});
 		return true;
     end
 
@@ -280,10 +279,11 @@ end
             return false;
         end
 
-        local mapPosData = mapItem.data;
-        if diggingOutMsg and not foundTreasureAt[mapItem.data] then
+        local mapPosition = position(tonumber(mapItem:getData("x")), tonumber(mapItem:getData("y")), tonumber(mapItem:getData("z")));
+        local mapPositionKey = table.concat({mapPosition.x, mapPosition.y, mapPosition.z}, ",");
+        if diggingOutMsg and not foundTreasureAt[mapPositionKey] then
             User:inform( diggingOutMsg );
-            foundTreasureAt[mapItem.data] = true;
+            foundTreasureAt[mapPositionKey] = true;
             return true;
         end
 
@@ -300,7 +300,9 @@ end
         fndTreasure, treasureEff = User.effects:find(16);
         if not fndTreasure then --User:inform("Effect given");
             treasureEff=CLongTimeEffect(16,1);
-            treasureEff:addValue("pos",mapItem.data);
+            treasureEff:addValue("x", mapPosition.x);
+            treasureEff:addValue("y", mapPosition.y);
+            treasureEff:addValue("z", mapPosition.z);
             treasureEff:addValue("category",treasureLevel);
             User.effects:addEffect(treasureEff);
         else
@@ -336,10 +338,11 @@ end
         local theMax;
         local theDiff;
         local thePart;
-        local neededData = common.PositionToData( TargetPosition );
         for i=1,17 do
             myItem = User:getItemAt( i );
-            if ( myItem.id == 505 and myItem.data == neededData ) then
+            if ( myItem.id == 505 and tonumber(myItem:getData("x")) == TargetPosition.x
+                    and tonumber(myItem:getData("y")) == TargetPosition.y
+                    and tonumber(myItem:getData("z")) == TargetPosition.z ) then
                 return true, myItem, 0;
             end
         end
@@ -356,7 +359,9 @@ end
             i = i + 1;
             worked,myItem,thisCont=theBackpack:viewItemNr(i);
             if worked then
-                if ( myItem.id == 505 and myItem.data == neededData ) then
+                if ( myItem.id == 505 and tonumber(myItem:getData("x")) == TargetPosition.x
+                    and tonumber(myItem:getData("y")) == TargetPosition.y
+                    and tonumber(myItem:getData("z")) == TargetPosition.z ) then
                     return true, myItem, i;
                 end
             end

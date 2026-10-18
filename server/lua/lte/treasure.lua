@@ -15,7 +15,7 @@ function M.callEffect(trsEff, trsHunter)
     if (trsHunter:increaseAttrib("hitpoints",0) == 0) then
         common.TempInformNLS( trsHunter,
         "Der Schatz ist für immer verloren. Die Wächter haben gesiegt.",
-        "The treasure is lost forever. The guardians defeated you.)");
+        "The treasure is lost forever. The guardians defeated you.");
         return false;
     end
 
@@ -24,13 +24,15 @@ function M.callEffect(trsEff, trsHunter)
     local fnd;
     local trsPosition;
     local cat;
-    fnd, trsPosition=trsEff:findValue("pos");
+    local foundX, x = trsEff:findValue("x");
+    local foundY, y = trsEff:findValue("y");
+    local foundZ, z = trsEff:findValue("z");
 
-    if not fnd then
+    if not foundX or not foundY or not foundZ then
         return false;       -- treasure lost!
     end
 
-    trsPosition = common.DataToPosition( trsPosition );
+    trsPosition = position(x, y, z);
     if not trsHunter:isInRangeToPosition( trsPosition, 40 ) then
         common.TempInformNLS( trsHunter,
         "Der Schatz ist für immer verloren. Die Wächter haben euch in die Flucht geschlagen.",
