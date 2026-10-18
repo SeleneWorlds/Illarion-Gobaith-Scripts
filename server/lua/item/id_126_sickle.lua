@@ -26,9 +26,11 @@ local M = {}
 
 function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     common.ResetInterruption(User, ltstate)
-    if ltstate == Action.abort then return end
-    if ltstate == Action.success and common.IsInterrupted(User) then
-        common.InformNLS(User, "Du unterbrichst die Suche nach Kräutern.", "You interrupt your search for herbs.")
+    if ltstate == Action.abort then
+        local germanPronoun = User:increaseAttrib("sex", 0) == 0 and "seine" or "ihre"
+        local englishPronoun = User:increaseAttrib("sex", 0) == 0 and "his" or "her"
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht " .. germanPronoun .. " Arbeit.")
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me interrupts " .. englishPronoun .. " work.")
         return
     end
     if not common.CheckItem(User, SourceItem) then return end
@@ -60,6 +62,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     if ltstate == Action.none then
         User:startAction(math.max(1, work.time(User, "herbgathering", SourceItem)), 0, 0, 0, 0)
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt nach Kräutern zu suchen.")
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to search for herbs.")
         return
     end
     if ltstate ~= Action.success then return end
