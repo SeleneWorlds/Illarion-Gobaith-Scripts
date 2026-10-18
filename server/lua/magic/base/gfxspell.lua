@@ -55,7 +55,7 @@ function M.DoGFXSpell(Caster, TargetPos, ltstate)
     if not CasterVal then
         common.TempInformNLS( Caster,
         "Es gelingt dir nicht die nötige Konzentration aufzubringen um diesen Zauber zur Entfaltung zu bringen.",
-        "You fail to concentrate enought to get this spell to its evolvement." );
+        "You fail to concentrate enough to get this spell to its evolvement." );
         return;
     end
 
