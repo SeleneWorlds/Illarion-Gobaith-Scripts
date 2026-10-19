@@ -1,0 +1,30 @@
+{
+  "craft": "baking",
+  "order": 2,
+  "category": 0,
+  "categoryOrder": 0,
+  "item": 453,
+  "quantity": 2,
+  "difficulty": [
+    10,
+    30
+  ],
+  "time": [
+    15,
+    30
+  ],
+  "steps": [
+    {
+      "item": 5,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 2529,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "craft": "brewing",
+  "order": 2,
+  "category": 0,
+  "categoryOrder": 0,
+  "item": 2497,
+  "quantity": 1,
+  "difficulty": [
+    25,
+    55
+  ],
+  "time": [
+    23,
+    46
+  ],
+  "steps": [
+    {
+      "item": 2498,
+      "quantity": 1,
+      "location": "all",
+      "count": 1,
+      "failure": [
+        2498,
+        1,
+        70
+      ]
+    },
+    {
+      "item": 2529,
+      "quantity": 1,
+      "location": "all",
+      "count": 3
+    },
+    {
+      "item": 52,
+      "quantity": 1,
+      "location": "all",
+      "count": 1,
+      "leftover": [
+        51,
+        1
+      ],
+      "useData": true
+    }
+  ]
+}

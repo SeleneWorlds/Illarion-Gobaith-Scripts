@@ -1,0 +1,30 @@
+{
+  "craft": "gemcutting",
+  "order": 12,
+  "category": 0,
+  "categoryOrder": 0,
+  "item": 451,
+  "quantity": 1,
+  "difficulty": [
+    50,
+    100
+  ],
+  "time": [
+    70,
+    110
+  ],
+  "steps": [
+    {
+      "item": 198,
+      "quantity": 2,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 198,
+      "quantity": 2,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

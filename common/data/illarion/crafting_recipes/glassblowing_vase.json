@@ -1,0 +1,36 @@
+{
+  "craft": "glassblowing",
+  "order": 6,
+  "category": 0,
+  "categoryOrder": 0,
+  "item": 315,
+  "quantity": 1,
+  "difficulty": [
+    90,
+    110
+  ],
+  "time": [
+    55,
+    110
+  ],
+  "steps": [
+    {
+      "item": 41,
+      "quantity": 1,
+      "location": "all",
+      "count": 3
+    },
+    {
+      "item": 197,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 46,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

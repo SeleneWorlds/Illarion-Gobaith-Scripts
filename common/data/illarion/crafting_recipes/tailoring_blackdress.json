@@ -1,0 +1,30 @@
+{
+  "craft": "tailoring",
+  "order": 14,
+  "category": 838,
+  "categoryOrder": 2,
+  "item": 805,
+  "quantity": 1,
+  "difficulty": [
+    13,
+    33
+  ],
+  "time": [
+    17,
+    34
+  ],
+  "steps": [
+    {
+      "item": 175,
+      "quantity": 1,
+      "location": "all",
+      "count": 3
+    },
+    {
+      "item": 50,
+      "quantity": 2,
+      "location": "all",
+      "count": 3
+    }
+  ]
+}

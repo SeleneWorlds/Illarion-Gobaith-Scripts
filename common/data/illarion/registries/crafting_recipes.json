@@ -1,0 +1,57 @@
+{
+  "name": "crafting_recipes",
+  "platform": "server",
+  "icon": "hammer",
+  "schema": {
+    "craft": "string",
+    "order": "integer",
+    "category": "integer",
+    "categoryOrder": "integer",
+    "item": "integer",
+    "difficulty": {
+      "type": "array",
+      "valueType": "integer"
+    },
+    "quantity": {
+      "type": "integer",
+      "min": 1
+    },
+    "time": {
+      "type": "array",
+      "valueType": "integer"
+    },
+    "repairable": {
+      "type": "boolean",
+      "optional": true
+    },
+    "steps": {
+      "type": "array",
+      "valueType": {
+        "type": "object",
+        "properties": {
+          "item": "integer",
+          "quantity": "integer",
+          "location": "string",
+          "count": {
+            "type": "integer",
+            "min": 1
+          },
+          "leftover": {
+            "type": "array",
+            "valueType": "integer",
+            "optional": true
+          },
+          "failure": {
+            "type": "array",
+            "valueType": "integer",
+            "optional": true
+          },
+          "useData": {
+            "type": "boolean",
+            "optional": true
+          }
+        }
+      }
+    }
+  }
+}

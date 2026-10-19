@@ -1,0 +1,24 @@
+{
+  "craft": "glassblowing",
+  "order": 1,
+  "category": 0,
+  "categoryOrder": 0,
+  "item": 1317,
+  "quantity": 1,
+  "difficulty": [
+    0,
+    40
+  ],
+  "time": [
+    10,
+    20
+  ],
+  "steps": [
+    {
+      "item": 41,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

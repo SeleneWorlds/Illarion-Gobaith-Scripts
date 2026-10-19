@@ -1,0 +1,48 @@
+{
+  "craft": "goldsmithing",
+  "order": 20,
+  "category": 465,
+  "categoryOrder": 3,
+  "item": 225,
+  "quantity": 1,
+  "difficulty": [
+    70,
+    90
+  ],
+  "time": [
+    45,
+    90
+  ],
+  "steps": [
+    {
+      "item": 2250,
+      "quantity": 1,
+      "location": "all",
+      "count": 3
+    },
+    {
+      "item": 236,
+      "quantity": 1,
+      "location": "all",
+      "count": 3
+    },
+    {
+      "item": 284,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 198,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 285,
+      "quantity": 1,
+      "location": "all",
+      "count": 2
+    }
+  ]
+}

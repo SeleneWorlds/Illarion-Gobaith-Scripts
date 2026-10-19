@@ -1,0 +1,24 @@
+{
+  "craft": "goldsmithing",
+  "order": 6,
+  "category": 1858,
+  "categoryOrder": 1,
+  "item": 1840,
+  "quantity": 1,
+  "difficulty": [
+    45,
+    85
+  ],
+  "time": [
+    33,
+    66
+  ],
+  "steps": [
+    {
+      "item": 2550,
+      "quantity": 1,
+      "location": "all",
+      "count": 2
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "craft": "smithing",
+  "order": 105,
+  "category": 189,
+  "categoryOrder": 7,
+  "item": 91,
+  "quantity": 1,
+  "difficulty": [
+    93,
+    113
+  ],
+  "time": [
+    57,
+    114
+  ],
+  "steps": [
+    {
+      "item": 2535,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 2530,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 2550,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 236,
+      "quantity": 1,
+      "location": "all",
+      "count": 2
+    },
+    {
+      "item": 2751,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

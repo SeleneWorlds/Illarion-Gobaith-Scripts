@@ -1,7 +1,7 @@
 local common = require("base.common")
 local parent = require("item.general.jewel")
 local M = {}
-local InitStartedOnce, InitDone, mortar, Mortar, product
+local InitStartedOnce, InitDone, mortar, Mortar
 local gText, eText
 
 -- Farben herstellen
@@ -40,29 +40,8 @@ function M.InitCraftingTool( )
         "A big, fat bug has found its way into your ingredients. It takes a while to catch it and seal its fate.");
         
         --Red Dye
-product = mortar:AddProduct( 0, 2681, { 0, 20}, 1, { 10, 20 } );
-product:AddProductionSteps( { 143, 1, "all" }, 3 ); -- Red Elder: 3x1
-product:AddProductionSteps( { 52, 1, "all" }, 1 ); -- Water bucket: 1x1
+        mortar:LoadRecipes("dye_making")
 
---Green Dye
-product = mortar:AddProduct( 0, 2679, { 5, 25}, 1, { 13, 26 } );
-product:AddProductionSteps( { 140, 1, "all" }, 3 ); -- Donf Blade: 3x1
-product:AddProductionSteps( { 52, 1, "all" }, 1 ); -- Water bucket: 1x1
-
---Black Dye
-product = mortar:AddProduct( 0, 2678, { 10, 30}, 1, { 15, 30 } );
-product:AddProductionSteps( { 141, 1, "all" }, 3 ); -- Black Thistle: 3x1
-product:AddProductionSteps( { 52, 1, "all" }, 1 ); -- Water bucket: 1x1
-
---Yellow Dye
-product = mortar:AddProduct( 0, 2682, { 15, 35}, 1, { 18, 36 } );
-product:AddProductionSteps( { 135, 1, "all" }, 3 ); -- Yellow Weed: 3x1
-product:AddProductionSteps( { 52, 1, "all" }, 1 ); -- Water bucket: 1x1
-
---Blue Dye
-product = mortar:AddProduct( 0, 2680, { 20, 40}, 1, { 20, 40 } );
-product:AddProductionSteps( { 147, 1, "all" }, 3 ); -- Black Berry: 3x1
-product:AddProductionSteps( { 52, 1, "all" }, 1 ); -- Water bucket: 1x1 
         
         InitDone = true;
     end

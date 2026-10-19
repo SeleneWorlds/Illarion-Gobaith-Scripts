@@ -1,0 +1,30 @@
+{
+  "craft": "carving",
+  "order": 35,
+  "category": 64,
+  "categoryOrder": 5,
+  "item": 322,
+  "quantity": 100,
+  "difficulty": [
+    90,
+    110
+  ],
+  "time": [
+    55,
+    110
+  ],
+  "steps": [
+    {
+      "item": 56,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 2551,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

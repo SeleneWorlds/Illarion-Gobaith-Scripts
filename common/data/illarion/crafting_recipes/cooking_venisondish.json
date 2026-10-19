@@ -1,0 +1,53 @@
+{
+  "craft": "cooking",
+  "order": 14,
+  "category": 2952,
+  "categoryOrder": 2,
+  "item": 554,
+  "quantity": 1,
+  "difficulty": [
+    90,
+    100
+  ],
+  "time": [
+    55,
+    110
+  ],
+  "steps": [
+    {
+      "item": 2952,
+      "quantity": 1,
+      "location": "all",
+      "count": 1,
+      "failure": [
+        2952,
+        1,
+        80
+      ]
+    },
+    {
+      "item": 552,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 201,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 290,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 81,
+      "quantity": 5,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

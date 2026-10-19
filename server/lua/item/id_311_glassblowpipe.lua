@@ -1,7 +1,7 @@
 local common = require("base.common")
 local parent = require("item.general.metal")
 local M = {}
-local InitStartedOnce, InitDone, glassblowing, Glassblowing, product
+local InitStartedOnce, InitDone, glassblowing, Glassblowing
 local gText, eText
 
 -- Glas Produkte Herstellen
@@ -40,30 +40,8 @@ function M.InitCraftingTool( )
         "You interrupt to apply a gravure, but you reconsider.");
         
         --Small Empty Bottle
-product = glassblowing:AddProduct( 0, 1317, { 0, 40}, 1, { 10, 20 } );
-product:AddProductionSteps( { 41, 1, "all" }, 1 ); -- Glass Ingot: 1x1
+        glassblowing:LoadRecipes("glassblowing")
 
---Empty Bottle
-product = glassblowing:AddProduct( 0, 164, { 10, 50}, 1, { 15, 30 } );
-product:AddProductionSteps( { 41, 1, "all" }, 1 ); -- Glass Ingot: 1x1
-
---Large Empty Bottle
-product = glassblowing:AddProduct( 0, 2498, { 30, 70}, 1, { 25, 50 } );
-product:AddProductionSteps( { 41, 1, "all" }, 1 ); -- Glass Ingot: 1x1
-
---Glass
-product = glassblowing:AddProduct( 0, 2055, { 50, 90}, 1, { 35, 70 } );
-product:AddProductionSteps( { 41, 1, "all" }, 1 ); -- Glass Ingot: 1x1
-
---Glass Mug
-product = glassblowing:AddProduct( 0, 1908, { 60, 100}, 1, { 40, 80 } );
-product:AddProductionSteps( { 41, 1, "all" }, 1 ); -- Glass Ingot: 1x1
-
---Vase
-product = glassblowing:AddProduct( 0, 315, { 90, 110}, 1, { 55, 110 } );
-product:AddProductionSteps( { 41, 1, "all" }, 3 ); -- Glass Ingot: 3x1
-product:AddProductionSteps( { 197, 1, "all" }, 1 ); -- Amethyst: 1x1
-product:AddProductionSteps( { 46, 1, "all" }, 1 ); -- Ruby: 1x1 
         
         InitDone = true;
     end

@@ -173,6 +173,41 @@ function Craft:AddProduct( CatID, ItemID, Difficulty, Quantity, TimePerStep, Rep
     return self.Products[ ItemID ];
 end
 
+-- Load recipes in their explicit menu order; registry iteration order is unspecified.
+function Craft:LoadRecipes(craft)
+    local recipes = {}
+    for _, entry in pairs(Registries.findAll("illarion:crafting_recipes")) do
+        if entry:getField("craft") == craft then
+            table.insert(recipes, entry)
+        end
+    end
+    assert(#recipes > 0, "Missing crafting recipes: " .. craft)
+    table.sort(recipes, function(a, b)
+        return a:getField("order") < b:getField("order")
+    end)
+    local categories, categoryItems = {}, {}
+    for _, entry in ipairs(recipes) do
+        local order = entry:getField("categoryOrder")
+        if order > 0 then
+            categoryItems[order] = entry:getField("category")
+        end
+    end
+    for order, item in ipairs(categoryItems) do
+        categories[order] = self:AddCategory(item)
+    end
+    for _, entry in ipairs(recipes) do
+        local category = entry:getField("categoryOrder")
+        local product = self:AddProduct(category == 0 and 0 or assert(categories[category]),
+            entry:getField("item"), entry:getField("difficulty"), entry:getField("quantity"),
+            entry:getField("time"), entry:getField("repairable"))
+        for _, step in ipairs(entry:getField("steps")) do
+            product:AddProductionSteps({step.item, step.quantity, step.location}, step.count,
+                step.leftover, step.failure, step.useData)
+        end
+    end
+end
+
+
 function Craft:AddInterruptMessage(gText,eText)
     table.insert(self.Interrupt_Messages,{["german"] = gText,["english"] = eText});
 end

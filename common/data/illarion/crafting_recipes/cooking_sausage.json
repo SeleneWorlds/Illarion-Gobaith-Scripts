@@ -1,0 +1,30 @@
+{
+  "craft": "cooking",
+  "order": 5,
+  "category": 2952,
+  "categoryOrder": 2,
+  "item": 3051,
+  "quantity": 2,
+  "difficulty": [
+    0,
+    20
+  ],
+  "time": [
+    10,
+    20
+  ],
+  "steps": [
+    {
+      "item": 307,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    },
+    {
+      "item": 63,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

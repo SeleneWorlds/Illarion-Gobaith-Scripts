@@ -1,0 +1,30 @@
+{
+  "craft": "dye_making",
+  "order": 5,
+  "category": 0,
+  "categoryOrder": 0,
+  "item": 2680,
+  "quantity": 1,
+  "difficulty": [
+    20,
+    40
+  ],
+  "time": [
+    20,
+    40
+  ],
+  "steps": [
+    {
+      "item": 147,
+      "quantity": 1,
+      "location": "all",
+      "count": 3
+    },
+    {
+      "item": 52,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

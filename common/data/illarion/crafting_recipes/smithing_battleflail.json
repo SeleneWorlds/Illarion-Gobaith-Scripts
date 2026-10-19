@@ -1,0 +1,30 @@
+{
+  "craft": "smithing",
+  "order": 66,
+  "category": 230,
+  "categoryOrder": 5,
+  "item": 231,
+  "quantity": 1,
+  "difficulty": [
+    48,
+    68
+  ],
+  "time": [
+    34,
+    68
+  ],
+  "steps": [
+    {
+      "item": 2535,
+      "quantity": 1,
+      "location": "all",
+      "count": 7
+    },
+    {
+      "item": 2549,
+      "quantity": 1,
+      "location": "all",
+      "count": 1
+    }
+  ]
+}

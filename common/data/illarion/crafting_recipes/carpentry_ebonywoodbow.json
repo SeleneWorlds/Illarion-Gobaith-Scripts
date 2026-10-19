@@ -1,0 +1,30 @@
+{
+  "craft": "carpentry",
+  "order": 16,
+  "category": 2646,
+  "categoryOrder": 2,
+  "item": 2780,
+  "quantity": 1,
+  "difficulty": [
+    60,
+    80
+  ],
+  "time": [
+    40,
+    80
+  ],
+  "steps": [
+    {
+      "item": 2716,
+      "quantity": 1,
+      "location": "all",
+      "count": 5
+    },
+    {
+      "item": 50,
+      "quantity": 1,
+      "location": "all",
+      "count": 2
+    }
+  ]
+}
