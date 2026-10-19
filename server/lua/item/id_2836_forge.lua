@@ -169,6 +169,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
+            SourceItem.id = 2835;
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
             User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
@@ -188,6 +189,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
+            SourceItem.id = 2835;
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
             User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
@@ -207,6 +209,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
+            SourceItem.id = 2835;
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
             User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
@@ -229,6 +232,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
+            SourceItem.id = 2835;
             SourceItem.wear = 1;
             world:changeItem(SourceItem);
             User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
