@@ -3,6 +3,8 @@ local drop = require("monster.base.drop")
 local base_lookat = require("monster.base.lookat")
 local base_messages = require("base.messages")
 local M = {}
+local lastGrowl = {}
+local growlCooldown = 10 -- seconds per dragon
 function M.ini(Monster)
 
 init=true;
@@ -50,6 +52,7 @@ function M.FireBreath(Monster,Enemy)
             elseif (Looking==6) then
                 BreathShape=M.ShapeDrehen(M.ShapeDrehen(M.ShapeDrehen(NearBreathShape)));
             end
+            local breathSoundPlayed = false
             for i=1,5 do
                 for k=1,5 do
                     if (Looking==0) then
@@ -65,7 +68,10 @@ function M.FireBreath(Monster,Enemy)
                         world:gfx(BreathShape[i][k],BreathPos);
                         if (math.random(1,5)==1) then
                             world:createItemFromId(359,1,BreathPos,true,math.random(200,600),0);
-                            world:makeSound(5,BreathPos);
+                            if not breathSoundPlayed then
+                                world:makeSound(5,BreathPos);
+                                breathSoundPlayed = true
+                            end
                         end
                         if world:isCharacterOnField(BreathPos) then
                             HitChar=world:getCharacterOnField(BreathPos);
@@ -78,9 +84,11 @@ function M.FireBreath(Monster,Enemy)
             drop.CastMonMagic(Monster,Enemy,1,{2500,2500},{{9,5}},{},0,1)
         end
     end
-    growltry=math.random(1,8);
-    if (growltry==1) then
+    local now = world:getTime("unix")
+    if (lastGrowl[Monster.id] == nil or now - lastGrowl[Monster.id] >= growlCooldown)
+        and math.random(1,8) == 1 then
         world:makeSound(26,Monster.pos);
+        lastGrowl[Monster.id] = now
     end
     return retVal
 end
@@ -139,6 +147,7 @@ function M.onCasted(Monster,Enemy)
 end
 
 function M.onDeath(Monster)
+    lastGrowl[Monster.id] = nil
 
     if killer[Monster.id] ~= nil then
 
