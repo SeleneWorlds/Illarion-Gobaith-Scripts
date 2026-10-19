@@ -192,9 +192,6 @@
     "druid.item.id_59_red_bottle": {
       "file": "server/lua/druid/item/id_59_red_bottle.lua"
     },
-    "druid.lte.id_166_secattribs": {
-      "file": "server/lua/druid/lte/id_166_secattribs.lua"
-    },
     "druid.lte.id_167_illness": {
       "file": "server/lua/druid/lte/id_167_illness.lua"
     },
