@@ -191,7 +191,7 @@ function M.SetNextTrap(Posi,CenterPos)
     if ((TestItem.id >= 377) and (TestItem.id <=381)) then
         world:createMonster(401,Posi,-50);
         local tempmonster = world:getCharacterOnField(Posi);
-        tempmonster.fightpoints = tempmonster.fightpoints - 100;
+        tempmonster.movepoints = tempmonster.movepoints - 100;
         return true
     end
     return false

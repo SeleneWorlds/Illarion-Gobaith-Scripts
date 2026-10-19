@@ -38,9 +38,9 @@ function M.FireBreath(Monster,Enemy)
     end
     local retVal=false;
     BreathTry=math.random(1,12);
-    if (BreathTry==1) and (Monster.pos.z==Enemy.pos.z) then
+    if (BreathTry==1) and Monster.movepoints >= 21 and (Monster.pos.z==Enemy.pos.z) then
         retVal=true;
-        Monster.fightpoints=Monster.fightpoints-40;
+        Monster.movepoints=Monster.movepoints-40;
         if (Monster:distanceMetric(Enemy)<=4) then
             Looking=Monster:get_face_to()
             if (Looking==0) then
@@ -56,13 +56,13 @@ function M.FireBreath(Monster,Enemy)
             for i=1,5 do
                 for k=1,5 do
                     if (Looking==0) then
-                        BreathPos=position(Monster.pos.x-3+k,Monster.pos.y-7+i,Monster.pos.z);
+                        BreathPos=position(Monster.pos.x-3+k,Monster.pos.y-6+i,Monster.pos.z);
                     elseif (Looking==2) then
                         BreathPos=position(Monster.pos.x+k,Monster.pos.y-3+i,Monster.pos.z);
                     elseif (Looking==4) then
                         BreathPos=position(Monster.pos.x-3+k,Monster.pos.y+i,Monster.pos.z);
                     elseif (Looking==6) then
-                        BreathPos=position(Monster.pos.x-7+k,Monster.pos.y-3+i,Monster.pos.z);
+                        BreathPos=position(Monster.pos.x-6+k,Monster.pos.y-3+i,Monster.pos.z);
                     end
                     if (BreathShape[i][k]~=0) then
                         world:gfx(BreathShape[i][k],BreathPos);

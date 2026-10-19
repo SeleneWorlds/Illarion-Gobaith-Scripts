@@ -20,7 +20,7 @@ function M.enemyNear(Monster,Enemy)
 end
 
 function M.throwMolotov(Monster,Enemy)
-    if (math.random(1,30)==1) and (Monster.pos.z==Enemy.pos.z) then --does not throw very often, half the frequency of casting monsters
+    if (math.random(1,30)==1) and Monster.movepoints >= 21 and (Monster.pos.z==Enemy.pos.z) then --does not throw very often, half the frequency of casting monsters
         local hitPos=position( Enemy.pos.x+math.random(-2,2), Enemy.pos.y+math.random(-2,2), Enemy.pos.z );
         local distance = Monster:distanceMetricToPosition( hitPos );
         if ( distance < 3 ) then
@@ -53,12 +53,12 @@ function M.throwMolotov(Monster,Enemy)
             M.HitChar( targetPos, hitpoints );
         end );
 
-        Monster.fightpoints=Monster.fightpoints-25;
+        Monster.movepoints=Monster.movepoints-25;
         Monster:talkLanguage( CCharacter.say, CPlayer.german, "#me schmeißt eine weiße Flasche nach "..Enemy.name..".");
         Monster:talkLanguage( CCharacter.say, CPlayer.english, "#me tosses a white bottle at "..Enemy.name..".");
-        return false;
+        return true;
     end
-    return true;
+    return false;
 end
 
 function M.HitChar(Posi,Hitpoints)
