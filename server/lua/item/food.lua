@@ -3,123 +3,48 @@ local M = {}
 -- Food script
 local common = require("base.common")
 
--- UPDATE common SET com_script='item.food' WHERE com_itemid IN (15,49,73,80,81,142,143,147,151,158,159,160,161,162,163,191,199,200,201,302,303,306,307,353,354,355,388,453,454,455,552,553,554,555,556,557,559,2276,2277,2278,2456,2459,2493,2922,2923,2934,2940,3051);
-
+local Registries = require("selene.registries")
 local furtunecookies = require("content.furtunecookies")
 
---[[ create FoodList
-FoodList:add() adds an element
-  @param integer - item ID
-  @param integer - food value
-  @param integer - leftover item id
-  @param integer - common diet value
-  @param table{ 10 integer } - racial diet value which is added to the common
-  @param table{ 10 boolean } - if not eatable for each race. Do not set it if eatable for all
-  @param integer - poison value OR nil if no poison at all
-
---
-if parameter is nil the default values are chosen.
-the racial tables have the following struct (in order of the race numbers):
-{ human, dwarf, halfling, elf, orc, lizardman, gnome, fairy, goblin, *all others* }
-]]
-FoodList = { add = function (self,id,Value,Leftover,Diet,RacialDiet,UnEatable,Poison)
-				self[id] = {};
-				self[id].Value = Value or 0;
-				self[id].Leftover = Leftover or 0;
-				self[id].Diet = Diet or 0;
-				self[id].RacialDiet = RacialDiet or {0,0,0,0,0,0,0,0,0,0};
-				self[id].UnEatable = UnEatable or {};
-				self[id].Poison = Poison or nil;
-			end
-};
-
--- Free Food
-FoodList:add(  15,	 2000,	   0,	-20,	{0,0,0,0,0,0,0,20,0,0}); -- apple
-FoodList:add(  80,	 3000,	   0,	-30,	{0,0,0,0,0,0,0,30,0,0}); -- banana
-FoodList:add(  81,	 1750,	   0,	-18,	{0,0,0,0,0,0,0,18,0,0}); -- berries
-FoodList:add( 142,	 1500,	   0,	-15); -- sand berry
-FoodList:add( 143,	 1250,	   0,	-13); -- red elder
-FoodList:add( 147,	 1500,	   0, -15); -- black berry
-FoodList:add( 151,	 1500,	   0,	-15,	{0,0,0,0,0,0,0,15,0,0}); -- strawberries
-FoodList:add( 160,	  750,	   0,	 -8); -- redhead
-FoodList:add( 161,	 1250,	   0,	-13); -- herders mushroom
-FoodList:add( 163,	 1000,	   0,	-10); -- champignon
-FoodList:add( 199,	 1000,	   0,	-10,	{0,0,0,0,0,0,0,10,0,0}); -- tangerine
-FoodList:add( 200,	 1500,	   0,	-15); -- tomato
-FoodList:add( 201,	  750,	   0,	 -8); -- onion
-FoodList:add( 302,	 1250,	   0,	-13,	{0,0,0,0,0,0,0,13,0,0}); -- cherry
-FoodList:add( 388,	 1750,	   0,	-18,	{0,0,0,0,0,0,0,18,0,0}); -- grapes
-FoodList:add(2493,	 2500,	   0,	-25); -- carrots
-
--- Racial Food (no racial diet necessary)
-FoodList:add(  73,	 4000,	   0,	-40,	nil,	{true,true,true,true,true,false,true,true,true,true}); -- trout (lizard)
-FoodList:add( 307,	 3000,	   0,	-30,	nil,	{true,true,true,true,false,true,true,true,true,true}); -- pork (orc)
-FoodList:add( 355,	 5000,	   0,	-50,	nil,	{true,true,true,true,true,false,true,true,true,true}); -- salmon (lizard)
-FoodList:add( 552,	 4500,	   0,	-45,	nil,	{true,true,true,true,false,true,true,true,true,true}); -- deer meat (orc)
-FoodList:add( 553,	 3500,	   0,	-35,	nil,	{true,true,true,true,false,true,true,true,true,true}); -- rabbit meat (orc)
-FoodList:add(2934,	 4000,	   0,	-40,	nil,	{true,true,true,true,false,true,true,true,true,true}); -- lamb meat (orc)
-
--- Simple Food
-FoodList:add( 306,	 5000,	   0,	-10,	{0,0,0,0,10,0,0,-10,0,0}); -- ham
-FoodList:add( 455,	 6000,	   0,	-10,	{0,0,-10,0,0,10,0,-10,0,0}); -- smoked fish
-
--- Processed Food
-FoodList:add(3051,	 4000,	   0,	  0,	{0,0,0,0,5,0,0,-5,0,0}); -- sausage
-FoodList:add( 191,	 5000,	   0,	  0,	{0,0,0,0,0,-5,0,0,0,0}); -- bread roll
-FoodList:add(2940,	 7000,	   0,	  5,	{0,0,0,0,5,0,0,-5,0,0}); -- steak
-FoodList:add(2456,	 8000,	2935,	  7,	{0,0,0,0,-7,0,0,0,0,0}); -- mushroom soup
-FoodList:add( 453,	 3500,	   0,	 10,	{0,0,10,0,-10,-10,0,10,0,0}); -- cookies
-FoodList:add(2923,	10000,	2935,	 15,	{0,0,0,0,-15,0,0,0,0,0}); -- onion soup
-FoodList:add(2459,	12500,	2952,	 20,	{0,0,-20,0,0,20,0,-20,0,0}); -- fish filet dish
-FoodList:add(  49,	10000,	   0,	 25,	{0,0,0,0,0,-25,0,0,0,0}); -- bread
-FoodList:add(2278,	12500,	2935,	 30,	{0,0,0,0,-30,0,0,0,0,0}); -- cabbage stew
-FoodList:add( 556,	15000,	2952,	 35,	{0,0,-35,0,0,35,0,-35,0,0}); -- salmon dish
-FoodList:add(2276,	17000,	2935,	 40,	{0,0,0,0,-40,0,0,0,0,0}); -- mulligan
-FoodList:add( 454,	 8000,	   0,	 45,	{0,0,45,0,-45,-45,0,45,0,0}); -- muffin
-FoodList:add(2277,	20000,	2952,	 50,	{0,0,0,0,50,0,0,-50,0,0}); -- meat dish
-FoodList:add( 353,	20000,	   0,	 55,	{0,0,55,0,-55,-55,0,55,0,0}); -- applecake
-FoodList:add(2922,	25000,	2952,	 60,	{0,0,0,0,60,0,0,-60,0,0}); -- sausages dish
-FoodList:add( 557,	30000,	2952,	 65,	{0,0,0,0,65,0,0,-65,0,0}); -- steak dish
-FoodList:add( 303,	30000,	   0,	 70,	{0,0,70,0,-70,-70,0,70,0,0}); -- cherrycake
-FoodList:add( 555,	35000,	2952,	 75,	{0,0,0,0,75,0,0,-75,0,0}); -- rabbit dish
-FoodList:add( 354,	38000,	   0,	 80,	{0,0,80,0,-80,-80,0,80,0,0}); -- strawberry cake
-FoodList:add( 559,	40000,	2952,	 85,	{0,0,0,0,85,0,0,-85,0,0}); -- lamb dish
-FoodList:add( 554,	45000,	2952,	 90,	{0,0,0,0,90,0,0,-90,0,0}); -- venison dish
-
--- Poisoned Food
-FoodList:add( 162,	 -300,	   0,	-30,	nil,	nil,	 600); -- birth mushroom
-FoodList:add( 158,	 -200,	   0,	-20,	nil,	nil,	 400); -- bulbsponge mushroom
-FoodList:add( 159,	 -500,	   0,	-50,	nil,	nil,	1000); -- toadstool
+-- Racial arrays use race ID + 1; index 10 covers all other races.
+local function findFood(id)
+    local item = Registries.findByMetadata("illarion:items", "id", id)
+    return item and item:getField("food")
+end
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 	-- Item not on map!
 	if SourceItem.wear == 255 then
 		return;
 	end
+	local food = findFood(SourceItem.id);
+	if not food then
+		User:inform("unknown food item ");
+		return;
+	end
 	-- define user's race (+1 for valid table index), non-playable races are set to 10
 	local race = math.min(User:get_race()+1, 10);
 	-- not eatable for user's race
-	if FoodList[SourceItem.id].UnEatable[race] then
+	if food.uneatable[race] then
 		return;
 	end
 	
 	-- user is not fighting
 	if not User.attackmode then
-		local food = FoodList[ SourceItem.id ];
 		
 		-- known food item?
 		if (food ~= nil ) then
 			-- consume food
-			local poison = food.Poison;
+			local poison = food.poison;
 			local foodLevel = User:increaseAttrib("foodlevel",0);
 			-- adjust food value for small races
 			local foodVal;
 			if ( User:get_race() == 7 ) then                                    -- fairy (food * 1.8)
-				foodVal = math.ceil( food.Value * 1.8 )
+				foodVal = math.ceil( food.value * 1.8 )
 			elseif ( User:get_race() == 2 ) or ( User:get_race() == 6 ) or ( User:get_race() == 8 ) then    -- halfling or gnome and goblin (food * 1.4)
-				foodVal = math.ceil( food.Value * 1.4 )
+				foodVal = math.ceil( food.value * 1.4 )
 			else                                                                -- other races
-				foodVal = food.Value;
+				foodVal = food.value;
 			end
 			foodLevel = foodLevel + foodVal;
 			
@@ -137,11 +62,12 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			world:erase(SourceItem,1);
 			
 			-- create leftovers
-			if( food.Leftover > 0 ) then
+			if( food.leftover ~= nil ) then
 				if( math.random( 50 ) <= 1 ) then
 					common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
 				else
-					User:createItem( food.Leftover, 1, 333,0);
+					local leftover = assert(Registries.findByName("illarion:items", food.leftover));
+					User:createItem( leftover:getMetadata("id"), 1, 333,0);
 				end
 			end
 			-- inform the player
@@ -248,9 +174,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 			if (dom<=2500) then domRange=0 end
 			if (dom>2500 and dom<7500) then domRange=1 end
 			if (dom>=7500) then domRange=2 end
-			foodMod=food.Value/60000;
+			foodMod=food.value/60000;
 
-			dietMod = food.Diet + food.RacialDiet[race];
+			dietMod = food.diet + food.racialDiet[race];
 
 			if dietMod>=0 then
 				if math.random(50)<=dietMod then
