@@ -21,6 +21,9 @@
     "base.books": {
       "file": "server/lua/base/books.lua"
     },
+    "base.registry_books": {
+      "file": "server/lua/base/registry_books.lua"
+    },
     "base.class": {
       "file": "server/lua/base/class.lua"
     },

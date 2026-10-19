@@ -17,7 +17,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
     if Param == 0 then
         local menu = MenuStruct()
         for _, book in ipairs(books) do
-            menu:addItem(book:getField("itemId"))
+            menu:addItem(book:getField("itemId"), 333, book:getField("variant"))
         end
         User:sendMenu(menu)
     else
