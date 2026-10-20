@@ -617,20 +617,21 @@ end
 
 function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
     if (ltstate == Action.none) then
-        -- check for free slot in belt
-		local foundSlot = false;
-		for i=12,17 do
-			if (User:getItemAt(i).id==0) then
-				foundSlot = true;
-				break;
-			end
-		end
-		if not foundSlot then
-			common.TempInformNLS(User,
-				"Du hast keinen Platz mehr in deinem Gürtel.",
-				"You have no room left in your belt.");
-			return;
-		end
+        if WorkOnItem == nil then
+            local foundSlot = false;
+            for i=12,17 do
+                if (User:getItemAt(i).id==0) then
+                    foundSlot = true;
+                    break;
+                end
+            end
+            if not foundSlot then
+                common.TempInformNLS(User,
+                    "Du hast keinen Platz mehr in deinem Gürtel.",
+                    "You have no room left in your belt.");
+                return;
+            end
+        end
 		User:startAction( self:GenWorkTime( User, ItemID,toolItem ), self.Products[ ItemID ].GfxEffect[1], self.Products[ ItemID ].GfxEffect[2], self.Products[ ItemID ].SfxEffect[1], self.Products[ ItemID ].SfxEffect[2]);
         if (Step == 1) then
             User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu arbeiten.");
