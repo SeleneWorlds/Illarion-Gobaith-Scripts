@@ -9,7 +9,7 @@ local M = {}
 function M.LookAtItem(User, Item)
     local lang = User:getPlayerLanguage()
     local locale = lang == 0 and "de" or "en"
-    local name = I18n.get("depot." .. Item.data .. ".name", locale)
+    local name = I18n.get(string.format("depot.%d.name", Item.data), locale)
     if not name then
         local owner = getCharForId(Item.data)
         name = owner and owner.name or I18n.get("depot.unknown", locale)
