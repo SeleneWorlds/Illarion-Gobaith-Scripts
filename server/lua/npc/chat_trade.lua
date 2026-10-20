@@ -47,13 +47,23 @@ local function matchedNameLength(text, name)
     return 0
 end
 
+local function englishPlural(name)
+    name = normalize(name)
+    if name:match('[^aeiou]y$') then return name:sub(1, -2) .. 'ies' end
+    if name:match('[sxz]$') or name:match('ch$') or name:match('sh$') then
+        return name .. 'es'
+    end
+    return name .. 's'
+end
+
 local function findOffer(lists, name)
     local found, index, ambiguous
     local longest = 0
     for _, list in ipairs(lists) do
         for i, offer in ipairs(list) do
             local length = math.max(matchedNameLength(name, offer._nameDe),
-                matchedNameLength(name, offer._nameEn))
+                matchedNameLength(name, offer._nameEn),
+                matchedNameLength(name, englishPlural(offer._nameEn)))
             if length > longest then
                 found, index, ambiguous = nil, nil, false
                 longest = length
