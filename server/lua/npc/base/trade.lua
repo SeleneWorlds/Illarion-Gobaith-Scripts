@@ -130,13 +130,10 @@ function tradeNPC:showDialog(npcChar, player, mode)
         if entry.buying then
             self:sellItemToPlayer(npcChar, player, entry.index, entry.count)
         else
-            -- Revalidate ownership after the menu was opened. Bag lookups
-            -- create fresh inventory wrappers around the same backing data.
             for _, current in ipairs(player:getItemList(entry.offer._itemId)) do
                 if isFittingItem(entry.offer, current) and (entry.item == nil or
                     (current.SeleneInventory ~= nil and entry.item.SeleneInventory ~= nil
-                        and current.SeleneInventory.data ~= nil
-                        and current.SeleneInventory.data == entry.item.SeleneInventory.data
+                        and current.SeleneInventory == entry.item.SeleneInventory
                         and current.itempos == entry.item.itempos)) then
                     self:buyItemFromPlayer(npcChar, player, current)
                     break
@@ -178,12 +175,12 @@ function tradeNPC:buyItemFromPlayer(npcChar, player, boughtItem)
 
     local glyphEff = tonumber(boughtItem:getData("glyphEffNo"))
     if nil~= glyphEff and glyphEff > 0 then
-        player:inform("NPCs kaufen keine Gegenstände mit Glyphen.","NPCs do not buy glyphed items.", Character.highPriority)
+        player:inform("NPCs kaufen keine Gegenstï¿½nde mit Glyphen.","NPCs do not buy glyphed items.", Character.highPriority)
         return
     end
 
     if lookat.hasSocketedGems(boughtItem) then
-        player:inform("NPCs kaufen keine Gegenstände mit gesockelten Edelsteinen.","NPCs don't buy gemmed items.", Character.highPriority)
+        player:inform("NPCs kaufen keine Gegenstï¿½nde mit gesockelten Edelsteinen.","NPCs don't buy gemmed items.", Character.highPriority)
         return
     end
 
