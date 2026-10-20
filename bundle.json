@@ -1164,6 +1164,9 @@
     "monster.mon_28_femaledrows": {
       "file": "server/lua/monster/mon_28_femaledrows.lua"
     },
+    "monster.sheep": {
+      "file": "server/lua/monster/sheep.lua"
+    },
     "monster.mon_29_animals": {
       "file": "server/lua/monster/mon_29_animals.lua"
     },
