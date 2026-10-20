@@ -42,8 +42,13 @@ function M.LookAtItem(User,Item)
         else
             world:itemInform(User,Item,"You see blueish ash");
         end
+    else
+        if (User:getPlayerLanguage() == 0) then
+            world:itemInform(User,Item,"Du siehst Pottasche");
+        else
+            world:itemInform(User,Item,"You see potash");
+        end
     end
-
 end
 
 return M
