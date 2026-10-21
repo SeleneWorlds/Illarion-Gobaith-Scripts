@@ -49,10 +49,9 @@ ReqTexts.english = { [392] = "torches", [43] = "candles", [390] = "lamp oil" };
 
 function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	if SourceItem:getType()==1 or SourceItem:getType()==2 then
-		common.TempInformNLS(User,
-			"Nimm das Licht in die Hand oder lege es am Grütel ab.",
-			"Take the light into your hand or put it on your belt.");
-		return;
+		if not common.AutoEquipTool(User, SourceItem) then
+			return;
+		end
 	end
 	local this = LightsOff[SourceItem.id];
 	if this then
