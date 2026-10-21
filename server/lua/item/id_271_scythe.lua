@@ -61,15 +61,12 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         return
     end
     
-    local output = { user = User }
-    yields:roll(crop:getField("yield"), output)
-    if not output.produced then return end
-    if (TargetItem.data > 1) then
-        TargetItem.data = TargetItem.data - 1;
-        world:changeItem(TargetItem);
-    else
-        world:erase( TargetItem, 1 );     -- Getreideitem löschen
+    local remaining = math.max(1, TargetItem.data)
+    for _ = 1, remaining do
+        local output = { user = User }
+        yields:roll(crop:getField("yield"), output)
     end
+    world:erase(TargetItem, 1);
 end
 
 if M.UseItem == nil then M.UseItem = parent.UseItem end
