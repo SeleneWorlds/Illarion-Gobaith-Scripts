@@ -22,51 +22,45 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     if gate ~= nil then
         --User:inform( "gate found" )
 
-        if ( User:countItemAt( "body", 1061 ) > 0 ) then
 
-            local loc;
-            local success = false;
-            local radius = 4;
+        local loc;
+        local success = false;
+        local radius = 4;
 
-            for i = 1, 10 do
-                --User:inform( "placing" )
-                loc = position( User.pos.x - radius + math.random( 2*radius ), User.pos.y - radius + math.random( 2*radius ), User.pos.z )
-                --User:inform( "trying pos "..loc.x..", "..loc.y )
+        for i = 1, 10 do
+            --User:inform( "placing" )
+            loc = position( User.pos.x - radius + math.random( 2*radius ), User.pos.y - radius + math.random( 2*radius ), User.pos.z )
+            --User:inform( "trying pos "..loc.x..", "..loc.y )
 
-                -- never create it on people
-                -- never create it on items
-                if not world:isCharacterOnField( loc ) and not world:isItemOnField( loc ) and (world:getField( loc ):tile()~=6)
-                and not areas.containsTag("teleport_blocked", loc) then
-                    -- create a gate to the destination
-                    --User:inform( "creating" )
-                    world:createItemFromId(10, 1, loc, true, 9, portals.data(gate), 33);
-                    world:makeSound( 4, loc )
+            -- never create it on people
+            -- never create it on items
+            if not world:isCharacterOnField( loc ) and not world:isItemOnField( loc ) and (world:getField( loc ):tile()~=6)
+            and not areas.containsTag("teleport_blocked", loc) then
+                -- create a gate to the destination
+                --User:inform( "creating" )
+                world:createItemFromId(10, 1, loc, true, 9, portals.data(gate), 33);
+                world:makeSound( 4, loc )
 
-                    success = true;
-                    break
-                end
-
+                success = true;
+                break
             end
 
-            -- no free space found
-            if not success then
-                common.InformNLS( User,
-                "Rings um Dich erzittern Boden und Gegenstände!",
-                "All around you ground and items are trembling!" );
-            end
-
-            -- use up the book
-            --if math.random( 1, 3 )==2 then
-            --common.InformNLS( User,
-            --"Das Buch wurde zu oft verwendet. Es zerfällt zu Staub.",
-            --"The book was used too often. It decays into dust." );
-            world:erase( SourceItem, 1 );
-            --end
-        else
-            common.InformNLS( User,
-            "Nimm das Buch zum Lesen in die Hände.",
-            "Take the book in your hands to read it." );
         end
+
+        -- no free space found
+        if not success then
+            common.InformNLS( User,
+            "Rings um Dich erzittern Boden und Gegenstände!",
+            "All around you ground and items are trembling!" );
+        end
+
+        -- use up the book
+        --if math.random( 1, 3 )==2 then
+        --common.InformNLS( User,
+        --"Das Buch wurde zu oft verwendet. Es zerfällt zu Staub.",
+        --"The book was used too often. It decays into dust." );
+        world:erase( SourceItem, 1 );
+        --end
 
     end
 end

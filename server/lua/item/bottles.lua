@@ -52,59 +52,52 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     local food = drinkList[ SourceItem.id ];
     if (food ~= nil ) then
 
-        -- bottle in hand
-        if( User:countItemAt("body", SourceItem.id) > 0) then
 
-            -- search target container
-            for i, combo in pairs(food[4]) do
-                if combo[1] == TargetItem.id then
+        -- search target container
+        for i, combo in pairs(food[4]) do
+            if combo[1] == TargetItem.id then
 
-                    -- glass in hand or belt
-                    if( User:countItemAt("belt", combo[1]) > 0) or (User:countItemAt("body", combo[1]) > 0) then
+                -- glass in hand or belt
+                if( User:countItemAt("belt", combo[1]) > 0) or (User:countItemAt("body", combo[1]) > 0) then
 
-                        -- fill drink
-                        if (TargetItem.number > 1) then
-                            world:erase( TargetItem, 1 );
-                            User:createItem( combo[2], 1, 3,0, 33);
-                        else
-                            TargetItem.id = combo[2];
-                            world:changeItem(TargetItem);
-                        end
-                        world:makeSound(10,User.pos)
-
-                        -- create leftovers
-                        if( SourceItem.quality > 1 ) then
-                            -- reduce one portion
-                            world:changeQuality( SourceItem, -1 );
-                        else
-                            if( math.random( 50 ) <= 1 ) then
-                                common.InformNLS( User,
-                                "Die leere Flasche ist angeschlagen und unbrauchbar.",
-                                "The empty bottle is broken and no longer usable.");
-                                world:erase(SourceItem,1);
-                            else
-                                SourceItem.id = food[3];
-                                SourceItem.quality = 3;
-                                world:changeItem(SourceItem);
-                            end
-                        end
-
+                    -- fill drink
+                    if (TargetItem.number > 1) then
+                        world:erase( TargetItem, 1 );
+                        User:createItem( combo[2], 1, 3,0, 33);
                     else
-                        common.InformNLS( User,
-                        "Das Gefäß ist nicht in Griffweite.",
-                        "The vessel is out of reach.");
+                        TargetItem.id = combo[2];
+                        world:changeItem(TargetItem);
+                    end
+                    world:makeSound(10,User.pos)
+
+                    -- create leftovers
+                    if( SourceItem.quality > 1 ) then
+                        -- reduce one portion
+                        world:changeQuality( SourceItem, -1 );
+                    else
+                        if( math.random( 50 ) <= 1 ) then
+                            common.InformNLS( User,
+                            "Die leere Flasche ist angeschlagen und unbrauchbar.",
+                            "The empty bottle is broken and no longer usable.");
+                            world:erase(SourceItem,1);
+                        else
+                            SourceItem.id = food[3];
+                            SourceItem.quality = 3;
+                            world:changeItem(SourceItem);
+                        end
                     end
 
-                    -- cancel after one found item
-                    break;
-                end -- found item
+                else
+                    common.InformNLS( User,
+                    "Das Gefäß ist nicht in Griffweite.",
+                    "The vessel is out of reach.");
+                end
 
-            end -- search loop
-        else
-            common.InformNLS( User,
-            "Nimm die Flasche in die Hand.",
-            "Take the bottle in your hands.");
-        end
+                -- cancel after one found item
+                break;
+            end -- found item
+
+        end -- search loop
     else
         User:inform("unknown bottle item ");
     end
