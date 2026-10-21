@@ -144,7 +144,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     
     cookstatus,cookmessage = Cooking:LocationFine( User, ltstate, true );
     if (cookstatus == 0) then
-        if not common.AutoEquipTool(User, SourceItem) then
+        if common.AutoEquipTool(User, SourceItem) ~= "equipped" then
             return
         end
         
@@ -188,7 +188,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     
     brewstatus,brewmessage = Brewing:LocationFine( User, ltstate, true );      
     if (brewstatus == 0) then
-        if not common.AutoEquipTool(User, SourceItem) then
+        if common.AutoEquipTool(User, SourceItem) ~= "equipped" then
             return
         end
         

@@ -276,13 +276,14 @@ function M.GetInArea(User, Pos1, Pos2)
     return true;
 end
 
+--- Returns "picked_up", "equipped", "failed_to_pickup", or "failed_to_equip".
 function M.AutoEquipTool(User, Tool)
-    if User:equipItem(Tool) then
-        return true
+    local result = User:equipItem(Tool)
+    if result == "failed_to_equip" then
+        M.InformNLS(User, "Du kannst das Werkzeug gerade nicht in die Hand nehmen.",
+            "You cannot equip the tool in your hand right now.")
     end
-    M.InformNLS(User, "Du kannst das Werkzeug gerade nicht in die Hand nehmen.",
-        "You cannot equip the tool in your hand right now.")
-    return false
+    return result
 end
 
 --[[

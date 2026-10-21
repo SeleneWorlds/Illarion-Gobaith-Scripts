@@ -49,7 +49,7 @@ ReqTexts.english = { [392] = "torches", [43] = "candles", [390] = "lamp oil" };
 
 function M.UseItem( User, SourceItem, TargetItem, counter, param, ltstate )
 	if SourceItem:getType()==1 or SourceItem:getType()==2 then
-		if not common.AutoEquipTool(User, SourceItem) then
+		if common.AutoEquipTool(User, SourceItem) ~= "equipped" then
 			return;
 		end
 	end

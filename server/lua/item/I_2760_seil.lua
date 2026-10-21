@@ -65,7 +65,7 @@ end
 
 function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate )
 	
-	if not common.AutoEquipTool(User, SourceItem) then
+	if common.AutoEquipTool(User, SourceItem) ~= "equipped" then
 		return;
 	end
 	

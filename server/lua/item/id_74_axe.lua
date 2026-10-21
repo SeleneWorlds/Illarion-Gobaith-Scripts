@@ -106,7 +106,7 @@ end
 --Hauptfunktion / Einsprung
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     M.initLists(  );
-    if not common.AutoEquipTool(User, SourceItem) then
+    if common.AutoEquipTool(User, SourceItem) ~= "equipped" then
         return
     end
 

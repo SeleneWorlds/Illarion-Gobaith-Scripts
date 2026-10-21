@@ -78,7 +78,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         return
     end
 
-    if not common.AutoEquipTool(User, SourceItem) then
+    if common.AutoEquipTool(User, SourceItem) ~= "equipped" then
         return
     end
 
@@ -206,7 +206,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
 
-    if not common.AutoEquipTool(User, SourceItem) then
+    if common.AutoEquipTool(User, SourceItem) ~= "equipped" then
         return
     end
 
