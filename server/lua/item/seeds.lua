@@ -153,7 +153,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
         world:createItemFromId( seed[1], 1, TargetPos, false, 233 ,3);
     elseif ( chance  < ( skillwert+seed[3] ) ) then
         world:createItemFromId( seed[1], 1, TargetPos, false, 233 ,2);
-    elseif ( chance  < ( skillwert+seed[2] ) ) then
+    else
         world:createItemFromId( seed[1], 1, TargetPos, false, 233 ,1);
     end
 
