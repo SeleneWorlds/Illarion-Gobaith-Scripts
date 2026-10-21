@@ -116,10 +116,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
         return
     end
 
-    if (SourceItem:getType() ~= 4) then
-        common.InformNLS( User,
-        "Du musst eine Spitzhacke in der Hand haben!",
-        "You need to hold the pick-axe in your hand!" );
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
 

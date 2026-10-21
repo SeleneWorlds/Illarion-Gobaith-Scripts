@@ -78,10 +78,7 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
         return
     end
 
-    if ( SourceItem:getType() ~= 4 ) then
-        common.InformNLS( User,
-        "Nimm die Schaufel fest in beide Hände.",
-        "Take the shovel firmly in your hands." );
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
 
@@ -209,8 +206,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
 
-    if ( SourceItem:getType() ~= 4 ) then
-        common.InformNLS( User, "Nimm die Schaufel fest in beide Hände.", "Take the shovel firmly in your hands." );
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
 

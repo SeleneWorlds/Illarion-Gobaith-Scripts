@@ -276,6 +276,15 @@ function M.GetInArea(User, Pos1, Pos2)
     return true;
 end
 
+function M.AutoEquipTool(User, Tool)
+    if User:equipItem(Tool) then
+        return true
+    end
+    M.InformNLS(User, "Du kannst das Werkzeug gerade nicht in die Hand nehmen.",
+        "You cannot equip the tool in your hand right now.")
+    return false
+end
+
 --[[
     CheckItem
     Check if a ItemStruct is valid for a special character

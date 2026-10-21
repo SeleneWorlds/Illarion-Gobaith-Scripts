@@ -39,10 +39,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
         return
     end
     
-    if ( SourceItem:getType() ~= 4 ) then -- Sense in der Hand
-        common.InformNLS( User, 
-        "Du mußt die Sense in die Hände nehmen.", 
-        "Take the scythe into your hands." )
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
     

@@ -73,10 +73,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if ( SourceItem:getType() ~= 4 ) then -- Zange in der Hand
-        common.InformNLS( User, 
-        "Du musst die Zange in die Hand nehmen um damit zu arbeiten.", 
-        "You have to take the tongs in your hand, to work with it." )
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
 

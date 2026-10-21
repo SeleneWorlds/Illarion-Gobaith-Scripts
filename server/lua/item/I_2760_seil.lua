@@ -65,11 +65,7 @@ end
 
 function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltstate )
 	
-	-- check if rope is in hands
-	if SourceItem:getType() ~= 4 then
-		common.TempInformNLS(User,
-			"Du musst das Seil in die Hand nehmen, wenn du jemanden fesseln willst.",
-			"You have to take the rope in your hand if you want to tie up someone.")
+	if not common.AutoEquipTool(User, SourceItem) then
 		return;
 	end
 	

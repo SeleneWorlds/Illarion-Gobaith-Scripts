@@ -106,10 +106,7 @@ end
 --Hauptfunktion / Einsprung
 function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     M.initLists(  );
-    if (SourceItem:getType() ~= 4) then
-        common.InformNLS( User,
-        "Zum Bäume fällen musst du die Axt in die Hand nehmen.",
-        "To chop a tree you need to take the axe in your hands." );
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
 

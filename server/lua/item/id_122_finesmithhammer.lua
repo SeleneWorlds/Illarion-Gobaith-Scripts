@@ -119,10 +119,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
-        common.InformNLS( User, 
-        "Du mußt den Goldschmiedehammer in die Hand nehmen um damit zu arbeiten.", 
-        "You have to take the finesmithing hammer in your hand, to work with it." )
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
 
@@ -192,10 +189,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
-        common.InformNLS( User, 
-        "Du mußt den Goldschmiedehammer in die Hand nehmen um damit zu arbeiten.", 
-        "You have to take the finesmithing hammer in your hand, to work with it." )
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
 

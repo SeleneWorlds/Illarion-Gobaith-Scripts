@@ -50,12 +50,9 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
         return
     end
 	
-	if (SourceItem:getType() ~= 4) then -- Angel in der Hand?
-        common.InformNLS(User,
-        "Du solltest die Angel in der Hand haben, wenn du angeln willst.",
-        "You should have the fishing rod in your hand if you want to catch any fish.");
-        return
-    end
+	if not common.AutoEquipTool(User, SourceItem) then
+	    return
+	end
 	
 	if not common.IsLookingAt(User, TargetPos) then -- Drehen wenn nötig
         common.TurnTo(User, TargetPos);

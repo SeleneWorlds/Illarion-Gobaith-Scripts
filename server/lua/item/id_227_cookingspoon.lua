@@ -144,10 +144,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     
     cookstatus,cookmessage = Cooking:LocationFine( User, ltstate, true );
     if (cookstatus == 0) then
-        if ( SourceItem:getType() ~= 4 ) then -- Kochlöffel in der Hand
-            common.InformNLS( User, 
-            "Du mußt den Kochlöffel in die Hand nehmen um damit zu arbeiten.", 
-            "You have to take the cooking spoon in your hand to work with it." )
+        if not common.AutoEquipTool(User, SourceItem) then
             return
         end
         
@@ -191,10 +188,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
     
     brewstatus,brewmessage = Brewing:LocationFine( User, ltstate, true );      
     if (brewstatus == 0) then
-        if ( SourceItem:getType() ~= 4 ) then -- Kochlöffel in der Hand
-            common.InformNLS( User, 
-            "Du mußt den Kochlöffel in die Hand nehmen um damit zu arbeiten.", 
-            "You have to take the cooking spoon in your hand to work with it." )
+        if not common.AutoEquipTool(User, SourceItem) then
             return
         end
         

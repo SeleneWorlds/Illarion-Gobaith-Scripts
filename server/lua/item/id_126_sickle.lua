@@ -34,8 +34,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
         return
     end
     if not common.CheckItem(User, SourceItem) then return end
-    if SourceItem:getType() ~= 4 then
-        common.InformNLS(User, "Du musst die Sichel in der Hand halten.", "You have to hold the sickle in your hand.")
+    if not common.AutoEquipTool(User, SourceItem) then
         return
     end
     if common.Encumbrence(User) or not common.FitForWork(User) then return end
