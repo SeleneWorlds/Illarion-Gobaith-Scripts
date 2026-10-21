@@ -136,7 +136,7 @@ end
 
 function M.dropTheBlood( posi )
     if not world:isItemOnField( posi ) then
-        local Blood=world:createItemFromId(3101,1,posi,true,333,0);
+        local Blood=world:createItemFromId(3101,1,posi,true,3,0, 33);
         Blood.wear=2;
         world:changeItem(Blood);
     end

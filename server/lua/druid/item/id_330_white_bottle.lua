@@ -55,7 +55,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
         myEffect:addValue( "skillGroup",ListSkillGroup[i])
 
 --      Laufzeit nach Quality berechnen
-        myEffect:addValue("zaehler",SourceItem.quality)
+        myEffect:addValue("zaehler",SourceItem.quality * 100)
 
 			--Character:inform(ListCodecs[i].." / "..ListLanguages[i].." / "..oldSkill)
 		Character:increaseSkill(ListSkillGroup[i],ListLanguages[i],newSkill)
@@ -126,7 +126,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
                 "Die Flasche zerbricht.",
                 "The bottle breaks.");
             else
-                User:createItem( 164, 1, 333, 0 );
+                User:createItem( 164, 1, 3, 0 , 33);
             end
 
             return
@@ -154,7 +154,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
             "Die Flasche zerbricht.",
             "The bottle breaks.");
         else
-            User:createItem( 164, 1, 333,0);
+            User:createItem( 164, 1, 3,0, 33);
         end
 
         User:LTIncreaseHP(333,3,1); --1000HP+
@@ -199,7 +199,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param,ltstate)
 	     if( math.random( 20 ) <= 1 ) then
 	       common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
 	     else
-	       Character:createItem( 164, 1, 333,0);
+           Character:createItem( 164, 1, 3,0, 33);
 	     end
 
 	     Character.movepoints=Character.movepoints-50;

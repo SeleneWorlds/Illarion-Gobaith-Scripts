@@ -318,7 +318,7 @@ function Craft:GenerateQuality( User, ItemID, toolItem )
     local Qual = common.Scale(5,8,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
     local stone1, str1, stone2, str2=common.GetBonusFromTool(toolItem);
     local step=0;
-    local qual_tool=math.floor(toolItem.quality/100);
+    local qual_tool=toolItem.quality;
     if stone1==7 then       -- topas raises quality of product
         step=0.05*str1;
     end
@@ -336,21 +336,7 @@ function Craft:GenerateQuality( User, ItemID, toolItem )
     Qual = Qual * common.Scale(4,11,math.floor(qual_tool*11))/10; --Changing lower bounds will make tools matter less
     Qual = math.floor(Qual);
     Qual = math.max(1,math.min(9,Qual));
-    local Dura = common.Scale(66,88,(self:ModifySkill(User,toolItem)-self.Products[ItemID].Difficulty[1])/(math.min(100,self.Products[ItemID].Difficulty[2])-self.Products[ItemID].Difficulty[1])*100);
-   --[[ step=0;
-    if stone1==2 then       -- smaragd raises durability of product
-        step=0.05*str1;
-    end
-    if stone2==2 then
-        step=step+0.05*str2;
-    end
-    Dura = Dura * (((math.random()+step)*0.2)+0.9);
-    Dura = Dura * (((math.random()+step)*0.2)+0.9);
-    Dura = Dura * common.Scale(4,11,math.floor(qual_tool*11))/10;
-    Dura = math.floor(Dura);
-    Dura = math.max(01,math.min(99,Dura)); ]]--
-	Dura = 99; -- all produced items will have maximum durability
-    return math.min(999,math.max(101,Qual*100+Dura));
+    return Qual;
 end
 
 function Craft:GenerateRepairEffekt( User, ItemID,toolItem )
@@ -438,7 +424,7 @@ function Craft:LocationFine( User, ltstate, mode )
                 "#w Hier kannst du nicht arbeiten.",
                 "#w You cannot work here.");
             end
-        elseif common.GetFrontItem( User ).quality < 100 then
+        elseif common.GetFrontItem( User ).quality < 1 then
             if not mode then
                 common.TempInformNLS(User,
                 "Das Werkzeug ist kaputt.",
@@ -449,7 +435,7 @@ function Craft:LocationFine( User, ltstate, mode )
                 "#w Das Werkzeug ist kaputt.",
                 "#w The tool is broken.");
             end
-		elseif common.GetFrontItem( User ).id==359 and common.GetFrontItem( User ).quality==100 then
+        elseif common.GetFrontItem( User ).id==359 and common.GetFrontItem( User ):getData("illusion") == "true" then
 			if not mode then
                 common.TempInformNLS(User,
                 "Die Flamme ist nur eine Illusion.",
@@ -527,7 +513,7 @@ function Craft:ToolCreateItem( User, Param, WorkOnItem, ltstate, toolItem )
     local repair = true;
 
     if (WorkOnItem ~= nil) then
-        if WorkOnItem.id ~= unfinishedItemId() and WorkOnItem.quality < 100 then
+        if WorkOnItem.id ~= unfinishedItemId() and WorkOnItem.quality < 1 then
             return;
         end
         ItemID = productId(WorkOnItem);
@@ -595,7 +581,7 @@ function Craft:RepairItem( User, Item, ltstate ,toolItem)
         return
     end
 
-    if (Item.quality < 200) then
+    if (Item.quality < 2) then
         common.TempInformNLS(User,
         "Der Gegenstand zerbricht, bei dem Versuch ihn zu reparieren.",
         "The Item breaks, while trying to repair it.");
@@ -605,12 +591,11 @@ function Craft:RepairItem( User, Item, ltstate ,toolItem)
     end
 
     if self:checkSuccess(User, Item.id,toolItem) then
-        local Qual = math.floor(Item.quality/100);
-        local Dura = Item.quality - (Qual*100);
+        local Dura = Item.durability;
         Dura = Dura + self:GenerateRepairEffekt( User, Item.id ,toolItem);
-        Item.quality = Qual*100 + math.min(99,Dura);
+        Item.durability = math.min(99,Dura);
     end
-    Item.quality = Item.quality - 100;
+    Item.quality = Item.quality - 1;
     world:changeItem( Item );
     self:SwapToInactiveItem( User );
 end
@@ -688,7 +673,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         end
     end
     if self:checkSuccess(User, ItemID,toolItem) then
-        local ItemQual = 333;
+        local ItemQual = 3;
         local finished = Step == #self.Products[ ItemID ].ProductionSteps;
         local ItemCount = 1;
         if finished then -- Generate quality only for the finished product
@@ -754,6 +739,7 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                 WorkOnItem:setData("SeleneVisual", nil);
             end
             WorkOnItem.quality = ItemQual;
+            WorkOnItem.durability = 99;
             WorkOnItem.number = ItemCount;
             world:changeItem(WorkOnItem);
             if self:CheckMaterial( User, ItemID, (Step + 1) ) then
@@ -772,9 +758,9 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         "Your work fails.");
         if (self.Products[ ItemID ].FailLeftOvers[Step] ~= nil) then
             if ((self.Products[ ItemID ].FailLeftOvers[Step][3] == nil) or (math.random(100) <= self.Products[ ItemID ].FailLeftOvers[Step][3])) then
-                local notcreated = User:createItem(self.Products[ ItemID ].FailLeftOvers[Step][1],self.Products[ ItemID ].FailLeftOvers[Step][2],333,0);
+                local notcreated = User:createItem(self.Products[ ItemID ].FailLeftOvers[Step][1],self.Products[ ItemID ].FailLeftOvers[Step][2],3,0, 33);
                 if (notcreated ~= 0) then
-                    world:createItemFromId(self.Products[ ItemID ].FailLeftOvers[Step][1],notcreated,User.pos,true,333,0);
+                    world:createItemFromId(self.Products[ ItemID ].FailLeftOvers[Step][1],notcreated,User.pos,true,3,0, 33);
                     common.TempInformNLS(User,
                     "Du kannst nichts mehr halten.",
                     "You cannot carry anything else.");
@@ -784,9 +770,9 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         self:SwapToInactiveItem( User );
     end
     if ((self.Products[ ItemID ].LeftOvers[Step] ~= nil) and (dropLeftOver)) then
-        local notcreated = User:createItem(self.Products[ ItemID ].LeftOvers[Step][1],self.Products[ ItemID ].LeftOvers[Step][2],333,0);
+        local notcreated = User:createItem(self.Products[ ItemID ].LeftOvers[Step][1],self.Products[ ItemID ].LeftOvers[Step][2],3,0, 33);
         if (notcreated ~= 0) then
-            world:createItemFromId(self.Products[ ItemID ].LeftOvers[Step][1],notcreated,User.pos,true,333,0);
+            world:createItemFromId(self.Products[ ItemID ].LeftOvers[Step][1],notcreated,User.pos,true,3,0, 33);
             common.TempInformNLS(User,
             "Du kannst nichts mehr halten.",
             "You cannot carry anything else.");

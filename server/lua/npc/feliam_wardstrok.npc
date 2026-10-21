@@ -16,22 +16,22 @@ wrongLangUS = "#me looks at you a little confused"
 lookatDE = "Ein kleiner Mann, kleiner als ein Zwerg, mit gewaltigem Strohhut, der ihn vor der Sonne schützt. Aus einer Tasche auf seinem Rücken schauen einige Bauernwerkzeuge hervor. Er macht wohl grad Pause."
 lookatUS = "A small man, smaller than a dwarf but with a giant hat protecting him from the sun. Peeking out of a bag around his shoulder you can see some farming tools. He seems to be taking a break."
 -- Trade offers and requests; stock and trader cash are unlimited.
-sellItem = id(49), price(20), stack(1), quality(333)
+sellItem = id(49), price(20), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(49), price(3)
 buyPrimaryItem = id(191), price(1)
-sellItem = id(306), price(10), stack(1), quality(333)
+sellItem = id(306), price(10), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(306), price(2)
-sellItem = id(73), price(10), stack(1), quality(333)
+sellItem = id(73), price(10), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(73), price(1)
-sellItem = id(355), price(15), stack(1), quality(333)
+sellItem = id(355), price(15), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(355), price(1)
-sellItem = id(258), price(40), stack(1), quality(588)
-sellItem = id(271), price(40), stack(1), quality(588)
-sellItem = id(126), price(40), stack(1), quality(588)
-sellItem = id(72), price(40), stack(1), quality(588)
-sellItem = id(259), price(3), stack(1), quality(333)
-sellItem = id(534), price(3), stack(1), quality(333), de("onion seeds"), en("onion seeds")
-sellItem = id(291), price(3), stack(1), quality(333), de("cabbage"), en("cabbage")
+sellItem = id(258), price(40), stack(1), quality(5), durability(88)
+sellItem = id(271), price(40), stack(1), quality(5), durability(88)
+sellItem = id(126), price(40), stack(1), quality(5), durability(88)
+sellItem = id(72), price(40), stack(1), quality(5), durability(88)
+sellItem = id(259), price(3), stack(1), quality(3), durability(33)
+sellItem = id(534), price(3), stack(1), quality(3), durability(33), de("onion seeds"), en("onion seeds")
+sellItem = id(291), price(3), stack(1), quality(3), durability(33), de("cabbage"), en("cabbage")
 
 "[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I sell tools, food and seeds.", trade_buy
 "[ww]as.+verkauf" -> "Ich verkauf' Werkzeug, Nahrung und Samen.", trade_buy

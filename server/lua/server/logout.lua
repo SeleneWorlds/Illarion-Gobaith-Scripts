@@ -29,7 +29,7 @@ function M.onLogout( theChar )
                                 checkpos = position( npcpos.x+i, npcpos.y+k, npcpos.z );
                                 if world:isItemOnField( checkpos ) then
                                     checkitem = world:getItemOnField( checkpos );
-                                    if ( ( checkitem.id == 321 ) and ( checkitem.quality == 111 ) and ( checkitem.data == theChar.id ) ) then
+                                    if ( ( checkitem.id == 321 ) and ( checkitem:getData("personalDepot") == "true" ) and ( checkitem.data == theChar.id ) ) then
                                         world:erase( checkitem, 1 );
                                     end
                                 end

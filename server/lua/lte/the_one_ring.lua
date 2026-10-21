@@ -10,9 +10,9 @@ function M.callEffect(theEffect, User )
     ringItemR = User:getItemAt( 8 );
     --reduce the quality of the ring
     if ( ringItemL.id == 3128) then
-        world:changeQuality( ringItemL, -1 );
+        world:changeDurability( ringItemL, -1 );
     elseif ( ringItemR.id == 3128) then
-        world:changeQuality( ringItemR, -1 );
+        world:changeDurability( ringItemR, -1 );
     end
     
     --check if the ring is still worn

@@ -31,14 +31,14 @@ end
 
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
-    if (SourceItem.quality > 101 and SourceItem.data > 0) then  -- Es befinden sich Pflanzen auf dem Teller
+    if ((tonumber(SourceItem:getData("basketCount")) or 0) > 0 and SourceItem.data > 0) then  -- Es befinden sich Pflanzen auf dem Teller
         local basket_id = ( SourceItem.data % 10000 );
         local basket_data = math.floor( SourceItem.data / 10000 );
 
         if (TargetItem.id ~= 0) then -- Es soll was eingelagert werden
             if (TargetItem.id == basket_id and TargetItem.data == basket_data) then -- Ist das Zeug was rein soll das selbe was schon drin ist?
-                if (SourceItem.quality <= 32101) then -- voll bei 32000 Kräutern
-                    SourceItem.quality = SourceItem.quality + 1;
+                if ((tonumber(SourceItem:getData("basketCount")) or 0) < 32000) then -- voll bei 32000 Kräutern
+                    SourceItem:setData("basketCount", (tonumber(SourceItem:getData("basketCount")) or 0) + 1);
                     world:changeItem( SourceItem );
 					world:erase( TargetItem, 1 );
                     return;
@@ -55,13 +55,13 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 return;
             end
         else -- es soll etwas rausgenommen werden
-            local numberOut = math.min( Counter, SourceItem.quality - 101 );
-            SourceItem.quality = SourceItem.quality - numberOut;
+            local numberOut = math.min( Counter, (tonumber(SourceItem:getData("basketCount")) or 0) );
+            SourceItem:setData("basketCount", (tonumber(SourceItem:getData("basketCount")) or 0) - numberOut);
             world:changeItem( SourceItem );
-            User:createItem( basket_id, numberOut, 111, basket_data );
+            User:createItem( basket_id, numberOut, 1, basket_data , 11);
 
-            if (SourceItem.quality <= 101) then
-                SourceItem.quality = 101;
+            if ((tonumber(SourceItem:getData("basketCount")) or 0) <= 0) then
+                SourceItem:setData("basketCount", 0);
                 SourceItem.data = 0;
                 world:changeItem( SourceItem );
             end
@@ -75,7 +75,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 return;
             end
             world:erase( TargetItem, 1 );
-            SourceItem.quality = 102;
+            SourceItem:setData("basketCount", 1);
             SourceItem.data = TargetItem.id + TargetItem.data * 10000;
             world:changeItem( SourceItem );
             return;
@@ -99,7 +99,7 @@ function M.LookAtItem( User, Item )
         local basket_data = math.floor( Item.data / 10000 );
 
 
-        local count = Item.quality-101;
+        local count = (tonumber(Item:getData("basketCount")) or 0);
         if (count < 40) then
             count = count;
         elseif (count < 100) then

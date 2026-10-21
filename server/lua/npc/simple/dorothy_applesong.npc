@@ -43,16 +43,17 @@ QuestId=22
 "Hello", queststatus=2 -> "Please tell me you found my locket... it was a gift from my mother, and very precious to me"
 "Hallo", queststatus=2 -> "Bitte sagt mir, wenn ihr das Medaillon gefunden habt... es war ein Geschenk meiner Mutter und ist sehr wertvoll für mich."
 
-"Greetings", queststatus=2 -> "Please tell me you found my locket... it was a gift from my mother, and very precious to me"
+"Greetings", queststatus=2 -> "Please tell me you found my locket... it was a gift from my mother, and very precious to me"
 
-"Locket", queststatus=2, item(222,belt)>0 -> "Oh Thank you! Thank you!, I don't know what I can do to ever repay you... here, have this, I made it myself", deleteitem(222,1),  item(353,1,333,0), queststatus=3
-"Medaillon", queststatus=2, item(222, belt)>0 -> "Oh, ich danke euch! Danke! Ich weiß nicht, wie ich euch das vergelten könnte... hier, nehmt dies, ich habe es selbst gemacht.", deleteitem(222,1),  item(353,1,333,0), queststatus=3
 
-"Here", queststatus=2, item(222,belt)>0 -> "Oh Thank you! Thank you!, I don't know what I can do to ever repay you... here, have this, I made it myself", deleteitem(222,1),  item(353,1,333,0), queststatus=3
-"Hier", queststatus=2, item(222, belt)>0 -> "Oh, ich danke euch! Danke! Ich weiß nicht, wie ich euch das vergelten könnte... hier, nehmt dies, ich habe es selbst gemacht.", deleteitem(222,1),  item(353,1,333,0), queststatus=3
+"Locket", queststatus=2, item(222,belt)>0 -> "Oh Thank you! Thank you!, I don't know what I can do to ever repay you... here, have this, I made it myself", deleteitem(222,1),  item(353,1,3,0, 33), queststatus=3
+"Medaillon", queststatus=2, item(222, belt)>0 -> "Oh, ich danke euch! Danke! Ich weiß nicht, wie ich euch das vergelten könnte... hier, nehmt dies, ich habe es selbst gemacht.", deleteitem(222,1),  item(353,1,3,0, 33), queststatus=3
 
-"Have", queststatus=2, item(222,belt)>0 -> "Oh Thank you! Thank you!, I don't know what I can do to ever repay you... here, have this, I made it myself", deleteitem(222,1),  item(353,1,333,0), queststatus=3
-"Habe", queststatus=2, item(222, belt)>0 -> "Oh, ich danke euch! Danke! Ich weiß nicht, wie ich euch das vergelten könnte... hier, nehmt dies, ich habe es selbst gemacht.", deleteitem(222,1),  item(353,1,333,0), queststatus=3
+"Here", queststatus=2, item(222,belt)>0 -> "Oh Thank you! Thank you!, I don't know what I can do to ever repay you... here, have this, I made it myself", deleteitem(222,1),  item(353,1,3,0, 33), queststatus=3
+"Hier", queststatus=2, item(222, belt)>0 -> "Oh, ich danke euch! Danke! Ich weiß nicht, wie ich euch das vergelten könnte... hier, nehmt dies, ich habe es selbst gemacht.", deleteitem(222,1),  item(353,1,3,0, 33), queststatus=3
+
+"Have", queststatus=2, item(222,belt)>0 -> "Oh Thank you! Thank you!, I don't know what I can do to ever repay you... here, have this, I made it myself", deleteitem(222,1),  item(353,1,3,0, 33), queststatus=3
+"Habe", queststatus=2, item(222, belt)>0 -> "Oh, ich danke euch! Danke! Ich weiß nicht, wie ich euch das vergelten könnte... hier, nehmt dies, ich habe es selbst gemacht.", deleteitem(222,1),  item(353,1,3,0, 33), queststatus=3
 
 "Locket", queststatus=2 -> "You have my locket? Where is it? *smiles hopefully*"
 "Medaillon", queststatus=2 -> "Ihr habt mein Medaillon? Wo ist es? *lächelt hoffnungsvoll*"

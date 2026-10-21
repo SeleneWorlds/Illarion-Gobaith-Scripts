@@ -34,7 +34,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 --Caster:inform("debug #16.4")
 --Haltbarkeit eines Items feststellen
   M.unitDecleration()
-  ergebnis = TargetItem.quality - (math.floor(TargetItem.quality/100)*100)
+  ergebnis = TargetItem.durability
   ergebnis = math.floor(ergebnis/10)+1
   --Caster:inform("ergebnis: "..ergebnis)
 

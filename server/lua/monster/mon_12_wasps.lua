@@ -128,7 +128,7 @@ function M.CreateCircle(gfxid,Damage,CenterPos,Radius,setFlames)
                 if not M.SetNextTrap(HitPos,CenterPos) then
                     if setFlames then
                         if (math.random(1,5)==1) then
-                            world:createItemFromId(359,1,HitPos,true,math.random(200,600),0);
+                            world:createItemFromId(359,1,HitPos,true, 3, {magicStrength = math.random(200, 600)});
                         end
                     end
                 end

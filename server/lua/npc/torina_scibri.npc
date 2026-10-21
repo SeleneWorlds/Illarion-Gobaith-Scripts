@@ -21,8 +21,8 @@ german, "name", "wie.+hei[sß].+du", "wer.+bist.+du", "wer.+seid.+ihr" -> "Ich b
 english, "name", "who.+you" -> "I am %NPCNAME, the scribe here at the Grey Refuge."
 race(orc), german, ".+" -> "So einer wie Du hat hier nichts zu suchen. Hau ab oder ich ruf die Wachen!"
 race(orc), english, ".+" -> "You should not be here. Leave before i call for guards!"
-german, item(68, "body") >= 1, money >= 100, "[bb]rauch.+[ss]chl[üue]ssel", "[mm][öoe]chte.+schl[üue]ssel" -> "Hier hast du einen.", money - 100, item(1, 1, 199, 0)
-english, item(68, "body") >= 1, money >= 100, "need.+key", "want.+key" -> "Here is one.", money - 100, item(1, 1, 199, 0)
+german, item(68, "body") >= 1, money >= 100, "[bb]rauch.+[ss]chl[üue]ssel", "[mm][öoe]chte.+schl[üue]ssel" -> "Hier hast du einen.", money - 100, item(1, 1, 1, 0, 99)
+english, item(68, "body") >= 1, money >= 100, "need.+key", "want.+key" -> "Here is one.", money - 100, item(1, 1, 1, 0, 99)
 
 -- Idle dialogue
 cycletext "#me sortiert Bücher in den Regalen", "#me sorts books in the shelves."

@@ -26,7 +26,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
 --Analyse einer Pflanze (Qualität)
 
   if (alchemy.IsThatAPlant(TargetItem) == true) then
-    qualstat = math.floor(TargetItem.quality/100)
+    qualstat = TargetItem.quality
 
     textDE= "Diese Pflanze hat eine "..alchemy.qListDe[qualstat].." Qualität"
     textEN= "This plant has a "..alchemy.qListEn[qualstat].." quality"

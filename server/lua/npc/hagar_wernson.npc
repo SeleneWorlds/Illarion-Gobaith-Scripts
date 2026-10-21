@@ -42,83 +42,83 @@ sex(female), "what.+do.+buy" -> "I buy back the empty mugs and coppergoblets, my
 race(elf), money < 6, "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Bugger off! We don't like beggars without money here!"
 sex(female), money < 6, "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "My dear, I cain't give yer a drink without money."
 money < 6, "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Yer 'ave not enuff money, come back, when yer can pay."
-race(elf), "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Yer cyder. Gimme six copper.", money - 6, item(1844, 1, 333, 0)
-sex(female), "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Here yer got it. Virgin's delight for the gracious maid!", money - 6, item(1844, 1, 333, 0)
-"buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Here yer got it. drink, before the goblet gets rusty!", money - 6, item(1844, 1, 333, 0)
+race(elf), "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Yer cyder. Gimme six copper.", money - 6, item(1844, 1, 3, 0, 33)
+sex(female), "buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Here yer got it. Virgin's delight for the gracious maid!", money - 6, item(1844, 1, 3, 0, 33)
+"buy.+a.+virgen's.+delight", "buy.+a.+cyder" -> "Here yer got it. drink, before the goblet gets rusty!", money - 6, item(1844, 1, 3, 0, 33)
 race(elf), money < 6, "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
 sex(female), money < 6, "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Ohne Kupfer kriegt selbst so'n hübsches Ding wie Du hier nix zu trinken!"
 money < 6, "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Ohne Moos nix los! Komm wieder, wenn Du Geld hast!"
-race(elf), "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Ein Apfelwein. Sechs Kupfer.", money - 6, item(1844, 1, 333, 0)
-sex(female), "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Jungfernglück gestellt, vor die Dame hier von Welt!", money - 6, item(1844, 1, 333, 0)
-"ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Hier hast Du. Trink, bevor der Kelch rostet!", money - 6, item(1844, 1, 333, 0)
+race(elf), "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Ein Apfelwein. Sechs Kupfer.", money - 6, item(1844, 1, 3, 0, 33)
+sex(female), "ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Jungfernglück gestellt, vor die Dame hier von Welt!", money - 6, item(1844, 1, 3, 0, 33)
+"ein.+apfelmost.+kauf", "ein.+apfelwein.+kauf", "ein.+cider.+kauf", "ein.+jungferngl[üue]+ck.+kauf" -> "Hier hast Du. Trink, bevor der Kelch rostet!", money - 6, item(1844, 1, 3, 0, 33)
 race(elf), money < expr(%NUMBER*6), "buy.+%number.+cyder", "buy.+%number.+virgen's.+delight" -> "Wanna get more'n yer can pay, long-ear?  That ain't enuff money!"
 sex(female), money < expr(%NUMBER*6), "buy.+%number.+cyder", "buy.+%number.+virgen's.+delight" -> "That ain't enuff money, my dear, why don't yer take less?"
 money < expr(%NUMBER*6), "buy.+%number.+cyder", "buy.+%number.+virgen's.+delight" -> "That ain't enuff money!"
-money >= expr(%NUMBER*6), "buy.+%number.+cyder", "buy.+%number.+virgen's.+delight" -> "Here are your %NUMBER cyder!", money - expr(%NUMBER*6), item(1844, %NUMBER, 333, 0)
+money >= expr(%NUMBER*6), "buy.+%number.+cyder", "buy.+%number.+virgen's.+delight" -> "Here are your %NUMBER cyder!", money - expr(%NUMBER*6), item(1844, %NUMBER, 3, 0, 33)
 race(elf), money < expr(%NUMBER*6), "%number.+cider.+kauf", "%number.+apfelmost.+kauf", "%number.+apfelwein.+kauf", "%number.+jungferngl[üue]+ck.+kauf" -> "Na? Willst mehr saufen, als Du zahlen kannst, Langohr? Datt is nich genug Kupfer!"
 sex(female), money < expr(%NUMBER*6), "%number.+cider.+kauf", "%number.+apfelmost.+kauf", "%number.+apfelwein.+kauf", "%number.+jungferngl[üue]+ck.+kauf" -> "Datt is nich genug Kupfer, meine Liebe. Nimm doch weniger."
 money < expr(%NUMBER*6), "%number.+cider.+kauf", "%number.+apfelmost.+kauf", "%number.+apfelwein.+kauf", "%number.+jungferngl[üue]+ck.+kauf" -> "Datt is nich genug Kupfer!"
-money >= expr(%NUMBER*6), "%number.+cider.+kauf", "%number.+apfelmost.+kauf", "%number.+apfelwein.+kauf", "%number.+jungferngl[üue]+ck.+kauf" -> "Hier hast du deine %NUMBER Apfelwein!", money - expr(%NUMBER*6), item(1844, %NUMBER, 333, 0)
+money >= expr(%NUMBER*6), "%number.+cider.+kauf", "%number.+apfelmost.+kauf", "%number.+apfelwein.+kauf", "%number.+jungferngl[üue]+ck.+kauf" -> "Hier hast du deine %NUMBER Apfelwein!", money - expr(%NUMBER*6), item(1844, %NUMBER, 3, 0, 33)
 money < 8, race(elf), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Bugger off! We don't like beggars without money here!"
 money < 8, sex(female), "buy.+a.+beer", "buy.+a.+scullcracker" -> "My dear, I cain't give yer a drink without money."
 money < 8, "buy.+a.+beer", "buy.+a.+scullcracker" -> "Yer 'ave not enuff money, come back, when yer can pay."
-race(elf), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Yer beer. Gimme eight copper.", money - 8, item(1909, 1, 333, 0)
-sex(female), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Here yer got it. a skullcracker for the daring gal! that'll give yer more headaches than a husband!", money - 8, item(1909, 1, 333, 0)
-"buy.+a.+beer", "buy.+a.+scullcracker" -> "Here yer got it. drink, before it cools down!", money - 8, item(1909, 1, 333, 0)
+race(elf), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Yer beer. Gimme eight copper.", money - 8, item(1909, 1, 3, 0, 33)
+sex(female), "buy.+a.+beer", "buy.+a.+scullcracker" -> "Here yer got it. a skullcracker for the daring gal! that'll give yer more headaches than a husband!", money - 8, item(1909, 1, 3, 0, 33)
+"buy.+a.+beer", "buy.+a.+scullcracker" -> "Here yer got it. drink, before it cools down!", money - 8, item(1909, 1, 3, 0, 33)
 money < 8, race(elf), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
 money < 8, sex(female), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Ohne Kupfer kriegt selbst so'n hübsches Ding wie Du hier nix zu trinken!"
 money < 8, "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Ohne Kohle kein Bier! Komm wieder, wenn Du Geld hast!"
-race(elf), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Ein Bier. Acht Kupfer.", money - 8, item(1909, 1, 333, 0)
-sex(female), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Den Schädelbrecher der Herzensbrecherin!", money - 8, item(1909, 1, 333, 0)
-"ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Hier hast es. Trink, bevor es kalt wird!", money - 8, item(1909, 1, 333, 0)
+race(elf), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Ein Bier. Acht Kupfer.", money - 8, item(1909, 1, 3, 0, 33)
+sex(female), "ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Den Schädelbrecher der Herzensbrecherin!", money - 8, item(1909, 1, 3, 0, 33)
+"ein.+bier.+kauf", "ein.+sch[äae]+delbrecher.+kauf" -> "Hier hast es. Trink, bevor es kalt wird!", money - 8, item(1909, 1, 3, 0, 33)
 race(elf), money < expr(%NUMBER*8), "buy.+%number.+beer", "buy.+%number.+scullcracker" -> "Wanna get more'n yer can pay, long-ear?  That ain't enuff money!"
 sex(female), money < expr(%NUMBER*8), "buy.+%number.+beer", "buy.+%number.+scullcracker" -> "That ain't enuff money, my dear, why don't yer take less?"
 money < expr(%NUMBER*8), "buy.+%number.+beer", "buy.+%number.+scullcracker" -> "That ain't enuff money!"
-money >= expr(%NUMBER*8), "buy.+%number.+beer", "buy.+%number.+scullcracker" -> "Here are your %NUMBER beer!", money - expr(%NUMBER*8), item(1909, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "buy.+%number.+beer", "buy.+%number.+scullcracker" -> "Here are your %NUMBER beer!", money - expr(%NUMBER*8), item(1909, %NUMBER, 3, 0, 33)
 race(elf), money < expr(%NUMBER*8), "%number.+bier.+kauf", "%number.+sch[äae]+delbrecher.+kauf" -> "Na? Willst mehr saufen, als Du zahlen kannst, Langohr? Datt is nich genug Kupfer!"
 sex(female), money < expr(%NUMBER*8), "%number.+bier.+kauf", "%number.+sch[äae]+delbrecher.+kauf" -> "Datt is nich genug Kupfer, meine Liebe. Nimm doch weniger."
 money < expr(%NUMBER*8), "%number.+bier.+kauf", "%number.+sch[äae]+delbrecher.+kauf" -> "Datt is nich genug Kupfer!"
-money >= expr(%NUMBER*8), "%number.+bier.+kauf", "%number.+sch[äae]+delbrecher.+kauf" -> "Hier hast du deine %NUMBER Bier!", money - expr(%NUMBER*8), item(1909, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "%number.+bier.+kauf", "%number.+sch[äae]+delbrecher.+kauf" -> "Hier hast du deine %NUMBER Bier!", money - expr(%NUMBER*8), item(1909, %NUMBER, 3, 0, 33)
 money < 8, race(elf), "buy.+a.+wine", "buy.+a.+gnollpoison" -> "Bugger off! We don't like beggars without money here!"
 money < 8, sex(female), "buy.+a.+wine", "buy.+a.+gnollpoison" -> "My dear, I cain't give yer a drink without money."
 money < 8, "buy.+a.+wine", "buy.+a.+gnollpoison" -> "Yer 'ave not enuff money, come back, when yer can pay."
-race(elf), "buy.+a.+wine", "buy.+a.+gnollpoison" -> "Yer wine. Gimme eight copper.", money - 8, item(1842, 1, 333, 0)
-sex(female), "buy.+a.+wine", "buy.+a.+gnollpoison" -> "Here yer got it. Gnollpoison for the beauty! that's good for yer skin!", money - 8, item(1842, 1, 333, 0)
-"buy.+a.+wine", "buy.+a.+gnollpoison" -> "Here yer got it. drink, before the gnolls come for it!", money - 8, item(1842, 1, 333, 0)
+race(elf), "buy.+a.+wine", "buy.+a.+gnollpoison" -> "Yer wine. Gimme eight copper.", money - 8, item(1842, 1, 3, 0, 33)
+sex(female), "buy.+a.+wine", "buy.+a.+gnollpoison" -> "Here yer got it. Gnollpoison for the beauty! that's good for yer skin!", money - 8, item(1842, 1, 3, 0, 33)
+"buy.+a.+wine", "buy.+a.+gnollpoison" -> "Here yer got it. drink, before the gnolls come for it!", money - 8, item(1842, 1, 3, 0, 33)
 money < 8, race(elf), "ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
 money < 8, sex(female), "ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Ohne Kupfer kriegt selbst so'n strammes Weib wie Du hier nix zu trinken!"
 money < 8, "ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Ohne Kupfer keinen Wein! Komm wieder, wenn Du Geld hast!"
-race(elf), "ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Ein Wein. Acht Kupfer.", money - 8, item(1842, 1, 333, 0)
-sex(female), "ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Das Gnollgift für die Hübsche! Der iss gut für die Haut.", money - 8, item(1842, 1, 333, 0)
-"ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Hier hast ihn. Trink, wenn Du kein Gnoll bist!", money - 8, item(1842, 1, 333, 0)
+race(elf), "ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Ein Wein. Acht Kupfer.", money - 8, item(1842, 1, 3, 0, 33)
+sex(female), "ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Das Gnollgift für die Hübsche! Der iss gut für die Haut.", money - 8, item(1842, 1, 3, 0, 33)
+"ein.+wein.+kauf", "ein.+gnollgift.+kauf" -> "Hier hast ihn. Trink, wenn Du kein Gnoll bist!", money - 8, item(1842, 1, 3, 0, 33)
 race(elf), money < expr(%NUMBER*8), "buy.+%number.+wine", "buy.+%number.+gnollpoison" -> "Wanna get more'n yer can pay, long-ear?  That ain't enuff money!"
 sex(female), money < expr(%NUMBER*8), "buy.+%number.+wine", "buy.+%number.+gnollpoison" -> "That ain't enuff money, my dear, why don't yer take less?"
 money < expr(%NUMBER*8), "buy.+%number.+wine", "buy.+%number.+gnollpoison" -> "That ain't enuff money!"
-money >= expr(%NUMBER*8), "buy.+%number.+wine", "buy.+%number.+gnollpoison" -> "Here are your %NUMBER wine!", money - expr(%NUMBER*8), item(1842, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "buy.+%number.+wine", "buy.+%number.+gnollpoison" -> "Here are your %NUMBER wine!", money - expr(%NUMBER*8), item(1842, %NUMBER, 3, 0, 33)
 race(elf), money < expr(%NUMBER*8), "%number.+wein.+kauf", "%number.+gnollgift.+kauf" -> "Na? Willst mehr saufen, als Du zahlen kannst, Langohr? Datt is nich genug Kupfer!"
 sex(female), money < expr(%NUMBER*8), "%number.+wein.+kauf", "%number.+gnollgift.+kauf" -> "Datt is nich genug Kupfer, meine Teuerste. Nimm doch weniger."
 money < expr(%NUMBER*8), "%number.+wein.+kauf", "%number.+gnollgift.+kauf" -> "Datt is nich genug Kupfer!"
-money >= expr(%NUMBER*8), "%number.+wein.+kauf", "%number.+gnollgift.+kauf" -> "Hier hast du deine %NUMBER Weine!", money - expr(%NUMBER*8), item(1842, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "%number.+wein.+kauf", "%number.+gnollgift.+kauf" -> "Hier hast du deine %NUMBER Weine!", money - expr(%NUMBER*8), item(1842, %NUMBER, 3, 0, 33)
 money < 8, race(elf), "buy.+a.+meade", "buy.+a.+beartrap" -> "Bugger off! We don't like beggars without money here!"
 money < 8, sex(female), "buy.+a.+meade", "buy.+a.+beartrap" -> "Honey, I cain't give yer a drink without money."
 money < 8, "buy.+a.+meade", "buy.+a.+beartrap" -> "Yer 'ave not enuff money, come back, when yer can pay."
-race(elf), "buy.+a.+meade", "buy.+a.+beartrap" -> "Yer meade. Eight copper.", money - 8, item(1843, 1, 333, 0)
-sex(female), "buy.+a.+meade", "buy.+a.+beartrap" -> "Here it is. As sweet, as ye are!", money - 8, item(1843, 1, 333, 0)
-"buy.+a.+meade", "buy.+a.+beartrap" -> "Here yer meade. Sweet, sticky ann' strong!", money - 8, item(1843, 1, 333, 0)
+race(elf), "buy.+a.+meade", "buy.+a.+beartrap" -> "Yer meade. Eight copper.", money - 8, item(1843, 1, 3, 0, 33)
+sex(female), "buy.+a.+meade", "buy.+a.+beartrap" -> "Here it is. As sweet, as ye are!", money - 8, item(1843, 1, 3, 0, 33)
+"buy.+a.+meade", "buy.+a.+beartrap" -> "Here yer meade. Sweet, sticky ann' strong!", money - 8, item(1843, 1, 3, 0, 33)
 money < 8, race(elf), "ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Mach das Du rauskommst! nich' bloss'n Elf, nee, auch noch'n Bettler! Also so was!"
 money < 8, sex(female), "ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Ohne Kupfer kriegt nich ma' so'n süßes Mädel wie Du hier watt zu trinken!"
 money < 8, "ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Ohne Kupfer keinen Met! Komm wieder, wenn Du Dir das Saufen leisten kannst!"
-race(elf), "ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Ein Met. Acht Kupfer.", money - 8, item(1843, 1, 333, 0)
-sex(female), "ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Ein Met für die Holde! Der iss fast so süss, wie Du!", money - 8, item(1843, 1, 333, 0)
-"ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Hier hast ihn. Kipp weg, eh die Fliegen dran kleben!", money - 8, item(1843, 1, 333, 0)
+race(elf), "ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Ein Met. Acht Kupfer.", money - 8, item(1843, 1, 3, 0, 33)
+sex(female), "ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Ein Met für die Holde! Der iss fast so süss, wie Du!", money - 8, item(1843, 1, 3, 0, 33)
+"ein.+met.+kauf", "ein.+b[äae]+renfalle.+kauf" -> "Hier hast ihn. Kipp weg, eh die Fliegen dran kleben!", money - 8, item(1843, 1, 3, 0, 33)
 race(elf), money < expr(%NUMBER*8), "buy.+%number.+beartrap", "buy.+%number.+meade" -> "Wanna get more'n yer can pay, long-ear?  That ain't enuff money!"
 sex(female), money < expr(%NUMBER*8), "buy.+%number.+beartrap", "buy.+%number.+meade" -> "That ain't enuff money, my beauty, why don't yer take less?"
 money < expr(%NUMBER*8), "buy.+%number.+beartrap", "buy.+%number.+meade" -> "That ain't enuff money!"
-money >= expr(%NUMBER*8), "buy.+%number.+beartrap", "buy.+%number.+meade" -> "Here are your %NUMBER meade!", money - expr(%NUMBER*8), item(1843, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "buy.+%number.+beartrap", "buy.+%number.+meade" -> "Here are your %NUMBER meade!", money - expr(%NUMBER*8), item(1843, %NUMBER, 3, 0, 33)
 race(elf), money < expr(%NUMBER*8), "%number.+met.+kauf", "%number.+b[äae]+renfalle.+kauf" -> "Na? Willst nich alles zahlen,watt Du saufen willst, Langohr? Datt is nich genug Kupfer!"
 sex(female), money < expr(%NUMBER*8), "%number.+met.+kauf", "%number.+b[äae]+renfalle.+kauf" -> "Datt Kupfer reicht nich, meine Süsse. Nimm doch weniger."
 money < expr(%NUMBER*8), "%number.+met.+kauf", "%number.+b[äae]+renfalle.+kauf" -> "Datt is zu wenig Kupfer!"
-money >= expr(%NUMBER*8), "%number.+met.+kauf", "%number.+b[äae]+renfalle.+kauf" -> "Hier hast du deine %NUMBER Met!", money - expr(%NUMBER*8), item(1843, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "%number.+met.+kauf", "%number.+b[äae]+renfalle.+kauf" -> "Hier hast du deine %NUMBER Met!", money - expr(%NUMBER*8), item(1843, %NUMBER, 3, 0, 33)
 item(1840, "all") < %NUMBER, "%number.+goblet.+sale", "sell.+%number.+goblet" -> "That ain't so many!"
 item(1840, "all") >= %NUMBER, "%number.+goblet.+sale", "sell.+%number.+goblet" -> "Here's yer money!", money + %NUMBER, deleteItem(1840, %NUMBER)
 item(1908, "all") < %NUMBER, "%number.+mug.+sale", "sell.+%number.+mug" -> "That ain't so many!"
@@ -131,12 +131,12 @@ item(2498, "all") < %NUMBER, "%number.+grey.+bottle.+sale", "sell.+%number.+grey
 item(2498, "all") >= %NUMBER, "%number.+grey.+bottle.+sale", "sell.+%number.+grey.+bottle" -> "Here's yer money!", money + expr(%NUMBER*2), deleteItem(2498, %NUMBER)
 money < expr(%NUMBER*8), "%number.+grey.+bottle.+buy", "buy.+%number.+grey.+bottle" -> "That ain't enuff money!"
 number > 10, "%number.+grey.+bottle.+buy", "buy.+%number.+grey.+bottle" -> "I ain't got so many!"
-money >= expr(%NUMBER*8), "%number.+grey.+bottle.+buy", "buy.+%number.+grey.+bottle" -> "Here ye got yer %NUMBER bottles!", money - expr(%NUMBER*8), item(2498, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "%number.+grey.+bottle.+buy", "buy.+%number.+grey.+bottle" -> "Here ye got yer %NUMBER bottles!", money - expr(%NUMBER*8), item(2498, %NUMBER, 3, 0, 33)
 item(2498, "all") < %NUMBER, "%number.+grau.+flasche.+verkauf", "verkauf.+%number.+grau.+flasche" -> "Datt sind weniger!"
 item(2498, "all") < %NUMBER, "%number.+grau.+flasche.+verkauf", "verkauf.+%number.+grau.+flasche" -> "Hier is datt Geld!", money + %NUMBER, deleteItem(2498, %NUMBER)
 money < expr(%NUMBER*8), "%number.+grau.+flasche.+kauf", "kauf.+%number.+grau.+flasche" -> "Datt kost' mehr!"
 number > 10, "%number.+grau.+flasche.+kauf", "kauf.+%number.+grau.+flasche" -> "So viel hab ich nich!"
-money >= expr(%NUMBER*8), "%number.+grau.+flasche.+kauf", "kauf.+%number.+grau.+flasche" -> "Hier hast du deine %NUMBER Flaschen!", money - expr(%NUMBER*8), item(2498, %NUMBER, 333, 0)
+money >= expr(%NUMBER*8), "%number.+grau.+flasche.+kauf", "kauf.+%number.+grau.+flasche" -> "Hier hast du deine %NUMBER Flaschen!", money - expr(%NUMBER*8), item(2498, %NUMBER, 3, 0, 33)
 item(2499, "all") < %NUMBER, "%number.+green.+bottle.+sale", "sell.+%number.+green.+bottle" -> "That ain't so many!"
 item(2499, "all") >= %NUMBER, "%number.+green.+bottle.+sale", "sell.+%number.+green.+bottle" -> "Here's yer money!", money + expr(%NUMBER*9), deleteItem(2499, %NUMBER)
 item(2501, "all") < %NUMBER, "%number.+black.+bottle.+sale", "sell.+%number.+black.+bottle" -> "That ain't so many!"

@@ -96,7 +96,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 for ipos=12,17 do
                     dyeItem = User:getItemAt(ipos);
                     if (dyeItem.id == i) then
-                        if (dyeItem.quality >= 100) then
+                        if (dyeItem.quality >= 1) then
                             UsedDye = dyeItem;
                             break;
                         end
@@ -104,21 +104,21 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 end
 
                     if (UsedDye ~= nil) then
-                    if (UsedDye.quality <= 100) then
-						UsedDye.quality = 333;
+                    if (UsedDye.quality <= 1) then
+                        UsedDye.quality = 3;
 						UsedDye.data = 0;
 						UsedDye.id = 51;
                         world:changeItem(UsedDye);
                     else
-                        UsedDye.quality = UsedDye.quality - 100;
+                        UsedDye.quality = UsedDye.quality - 1;
                         world:changeItem(UsedDye);
                     end
 
                     User:eraseItem(Dye[1],1);
 
-                    notCreated = User:createItem(Dye[2],1,333,0); -- Gefärbten Stoff erstellen
+                    notCreated = User:createItem(Dye[2],1,3,0, 33); -- Gefärbten Stoff erstellen
                     if ( notCreated > 0 ) then
-                        world:createItemFromId( Dye[2], notCreated, User.pos, true, 333 ,0);
+                        world:createItemFromId( Dye[2], notCreated, User.pos, true, 3 ,0, 33);
                         common.InformNLS(User,
                         "Du kannst nichts mehr halten.",
                         "You can't carry any more.");

@@ -75,7 +75,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
   	if ( SourceItem:getType() ~= 4 ) then -- Wenn Hammer nicht in der Hand dann
        	if (TargetItem.id~=0) then
 			if (User.id==1551888478 or User.id==1322717830) then  --not so strong flame
-				world:createItemFromId(359, 1, TargetItem.pos, true, 677, 0);   --create flame
+                world:createItemFromId(359, 1, TargetItem.pos, true, 6, {data = 0, magicStrength = 677}, 77);   --create flame
                 world:gfx(36,TargetItem.pos);
         		User:increaseAttrib("hitpoints",-(1600+math.random(500))); --2000HP damage for the Irmorom priest
         	end
@@ -235,7 +235,7 @@ end --function
 ------------------------Part 2:-------
 function M.UseItemWithField( User, SourceItem,TargetPos ,Counter , Param)
 		if (User.id==1551888478 or User.id==1322717830) then  --not so strong flame
-				world:createItemFromId(359, 1, TargetPos, true, 677, 0);   --create flame
+                world:createItemFromId(359, 1, TargetPos, true, 6, {data = 0, magicStrength = 677}, 77);   --create flame
 				world:gfx(36,TargetPos);
         		User:increaseAttrib("hitpoints",-(1600+math.random(500))); --2000HP damage for the Irmorom priest
 		end
@@ -245,7 +245,7 @@ function M.UseItemWithCharacter(User,SourceItem,TargetChar,Counter,Param)
 		if (User.id==1551888478 or User.id==1322717830) then
 			if (TargetChar.id~=User.id) then
 				if (User.id==1551888478 or User.id==1322717830) then  --not so strong flame
-					world:createItemFromId(359, 1, TargetChar.pos, true, 677, 0);   --create flame
+                    world:createItemFromId(359, 1, TargetChar.pos, true, 6, {data = 0, magicStrength = 677}, 77);   --create flame
 					world:gfx(36,TargetChar.pos);
         			User:increaseAttrib("hitpoints",-(1600+math.random(500))); --2000HP damage for the Irmorom priest
         		end

@@ -21,7 +21,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
     for i=1,8 do
 		  --Trankwirkung
-		  local Val = (dataZList[i]-5) * (topBorder[i]/5) * common.Scale( 0.5, 1, math.floor(SourceItem.quality/100) * 11 );
+          local Val = (dataZList[i]-5) * (topBorder[i]/5) * common.Scale( 0.5, 1, SourceItem.quality * 11 );
 		  --Character:inform(""..Val)
 		  if ( attribList[i] == "poisonvalue" ) then
             Val = common.Limit( (Character:getPoisonValue() + Val) , 0, 10000 );
@@ -62,7 +62,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         if( math.random( 20 ) <= 1 ) then
             common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
         else
-            Character:createItem( 164, 1, 333,0);
+            Character:createItem( 164, 1, 3,0, 33);
         end
 
         Character.movepoints=Character.movepoints-50;

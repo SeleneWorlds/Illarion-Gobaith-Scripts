@@ -10,7 +10,7 @@ function M.createAmulett( Target )
     end
     Target:createAtPos(2,3122,1)
     newItem = Target:getItemAt(2);
-    newItem.quality = 999;
+    newItem.quality = 9;
     newItem.data = 0;
     world:changeItem( newItem );
     common.InformNLS(Target,"Die macht des Dämons hält deinen Hals fest im Griff","The power of the Demon holds your neck in a strong grasp");

@@ -63,14 +63,14 @@ M.Spot = {
     ["item"] = {                -- informations about the created item
         ["id"] = 360,           -- id of the item that should be created
         ["minSkill"] = {        -- values of the item at the minimal skill
-            ["quality"] = 101,  -- Item quality
+            ["strength"] = 101,  -- Spell strength
             ["data"] = 0,       -- Item data
             ["wear"] = 1,       -- Item wear
             ["number"] = 1,     -- Item number
             ["chance"] = 50     -- Chance that this Item is created
         },           -- id of the item that should be created
         ["maxSkill"] = {        -- values of the item at the maximal skill
-            ["quality"] = 800,  -- Item quality
+            ["strength"] = 800,  -- Spell strength
             ["data"] = 0,       -- Item data
             ["wear"] = 5,       -- Item wear
             ["number"] = 1,     -- Item number

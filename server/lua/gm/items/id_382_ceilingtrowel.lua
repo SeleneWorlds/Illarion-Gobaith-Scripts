@@ -46,6 +46,7 @@ function M.UseItemWithCharacter(User,SourceItem,TargetCharacter,Counter,Param)
             User:createAtPos(i,item.id,item.number);
             local newItem = User:getItemAt(i);
             newItem.quality = item.quality;
+            newItem.durability = item.durability;
             newItem.data = item.data;
             world:changeItem(newItem);
         end

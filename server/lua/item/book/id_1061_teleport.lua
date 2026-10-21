@@ -39,7 +39,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                 and not areas.containsTag("teleport_blocked", loc) then
                     -- create a gate to the destination
                     --User:inform( "creating" )
-                    world:createItemFromId(10, 1, loc, true, 933, portals.data(gate));
+                    world:createItemFromId(10, 1, loc, true, 9, portals.data(gate), 33);
                     world:makeSound( 4, loc )
 
                     success = true;

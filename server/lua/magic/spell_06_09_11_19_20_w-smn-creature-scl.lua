@@ -127,9 +127,9 @@ function M.WriteTeleSpell(Caster, ltstate )
                         elseif right.id == 3109 then parchment, reagent = right, left end
 
                         if parchment and parchment.data == 0 and reagent.id == 314
-                            and summoningScroll.isCreature(reagent.quality) then
+                            and summoningScroll.isCreature(tonumber(reagent:getData("creature"))) then
                             -- Prepare the parchment with the creature encoded in the ashes.
-                            parchment.data = reagent.quality
+                            parchment.data = tonumber(reagent:getData("creature"))
                             world:erase(reagent, 1)
                             world:changeItem(parchment)
                             world:gfx(Effect, Caster.pos)

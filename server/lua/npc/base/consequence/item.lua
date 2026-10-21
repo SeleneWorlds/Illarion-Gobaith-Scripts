@@ -22,20 +22,21 @@ local tools = require("npc.base.tools")
 local _item_helper
 
 local item = class(consequence,
-function(self, id, count, quality, data)
+function(self, id, count, quality, data, durability)
     consequence:init(self)
 
     self["id"] = tonumber(id)
     self["count"], self["counttype"] = tools.set_value(count)
     self["quality"], self["qualitytype"] = tools.set_value(quality)
     self["data"] = data
+    self.durability, self.durabilitytype = tools.set_value(durability or 99)
     self["perform"] = _item_helper
 end)
 
 function _item_helper(self, npcChar, player)
     local count = tools.get_value(self.npc, self.count, self.counttype)
     local quality = tools.get_value(self.npc, self.quality, self.qualitytype)
-    common.CreateItem(player, self.id, count, quality, self.data)
+    common.CreateItem(player, self.id, count, quality, self.data, tools.get_value(self.npc, self.durability, self.durabilitytype))
 end
 
 return item

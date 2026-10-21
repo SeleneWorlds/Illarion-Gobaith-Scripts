@@ -126,24 +126,27 @@ function M.removeEffect(newbieEffect, Character)
 		foundData, data = newbieEffect:findValue("itemdata_"..i);
 		foundNumber, number = newbieEffect:findValue("itemnumber_"..i);
 		foundQuality, quality = newbieEffect:findValue("itemquality_"..i);
+        local foundDurability, durability = newbieEffect:findValue("itemdurability_"..i);
+        if not foundDurability then durability = 99 end
 		if foundId and foundData and foundNumber and foundQuality then
 			pos = i-1;
 			if pos == 0 then
 			    if not backPack then
-			        Character:createItem( id, 1, quality, data );
+                    Character:createItem( id, 1, quality, data, durability );
 			    end;
 			else
 			    Character:createAtPos(pos,id,number);
 			    item = Character:getItemAt(pos);
 			    item.data = data;
 			    item.quality = quality;
+                item.durability = durability;
 			    world:changeItem(item);
 			end;
 		end
 	end
 	backPack = Character:getBackPack();
 	while backPack:countItem(61) == 0 do
-		Character:createItem(61,250,333,0)
+        Character:createItem(61,250,3,0, 33)
 	end
 	while Character:countItem(61) ~= 0 do
 		Character:eraseItem(61,250);

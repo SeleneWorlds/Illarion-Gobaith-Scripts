@@ -97,19 +97,19 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     User:eraseItem(2,handleAtOnce);
     User:eraseItem(52,1);
-    local notCreated = User:createItem(51,1,333,0);
+    local notCreated = User:createItem(51,1,3,0, 33);
     local startagain = true;
     if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-        world:createItemFromId( 51, notCreated, User.pos, true, 333 ,0);
+        world:createItemFromId( 51, notCreated, User.pos, true, 3 ,0, 33);
         common.InformNLS(User,
         "Du kannst nichts mehr halten.",
         "You can't carry any more.");
         startagain = false;
     end
     
-    notCreated = User:createItem(5,handleAtOnce,333,0);
+    notCreated = User:createItem(5,handleAtOnce,3,0, 33);
     if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-        world:createItemFromId( 5, notCreated, User.pos, true, 333 ,0);
+        world:createItemFromId( 5, notCreated, User.pos, true, 3 ,0, 33);
         common.InformNLS(User,
         "Du kannst nichts mehr halten.",
         "You can't carry any more.");

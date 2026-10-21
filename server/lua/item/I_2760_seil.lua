@@ -18,7 +18,7 @@ function M.LookAtItem(User,Item)
 	local eText = "";
 	if Item.data == 1 then
 		local eQual, gQual;
-		local minutes = (Item.quality - 100)/120;
+        local minutes = ((tonumber(Item:getData("tyingDuration")) or 100) - 100)/120;
 		for i,limit in pairs(tyingQuality.limits) do
 			if ( minutes > limit ) then
 				gQual = tyingQuality[0][i];
@@ -256,7 +256,7 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 				if Target then
 					local AttribOffset = tyingCapturer.GetBestAttribOffset(User,Target,{"strength","dexterity"});
 					local Quality = math.min(600,120+math.random(25,35)*AttribOffset);
-					TargetItem.quality = math.min(2500,TargetItem.quality+(Quality*2));
+                    TargetItem:setData("tyingDuration", math.min(2500,(tonumber(TargetItem:getData("tyingDuration")) or 100)+(Quality*2)));
 					world:changeItem(TargetItem);
 					common.TempInformNLS(User,
 						"Du verstärkst den Knoten mit dem neuen Seil.",
@@ -298,7 +298,7 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 				User:talkLanguage(CCharacter.say, CPlayer.english, "#me tightens the rope.");
 				local rope = tyingCapturer.GetRope(User);
 				if rope then
-					rope.quality = math.max(104,rope.quality-60);
+                    rope:setData("tyingDuration", math.max(104,(tonumber(rope:getData("tyingDuration")) or 100)-60));
 					world:changeItem(rope);
 				end
 			end

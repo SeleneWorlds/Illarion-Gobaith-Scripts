@@ -78,7 +78,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     User:eraseItem( 63, 1 );
-    User:createItem(50,1,333,0);
+    User:createItem(50,1,3,0, 33);
     
     if common.ToolBreaks( User, SourceItem, true ) then
         common.InformNLS(User,
@@ -163,7 +163,7 @@ function M.UseItemWithCharacter(User,SourceItem, Character, Counter, Param,ltsta
         return
     end
     
-    User:createItem(170,1,333,0);
+    User:createItem(170,1,3,0, 33);
     Character.movepoints = Character.movepoints - 20;
     
     if common.ToolBreaks( User, SourceItem ) then

@@ -17,14 +17,14 @@ useMsgUS = "Don't you touch me!"
 "gr[üue]+[sß]+e", "hallo", "guten.+tag" -> "Grüße! Wie kann schlechter %NPCNAME meinen Mastern dienen? Mir können Baumstämme sägen für Meister!"
 "saw.+logs" -> "Which type shall I make master?  Apple, Cherry, Conifer or Naldor?"
 "st[aä]mm.+s[aä]g", "s[aä]g.+st[aä]mm", "sah.+klotz" -> "Welches Holz sollen mir sägen, Meister? Apfel, Kirsch, Tannen oder Naldor?"
-item(2560, "belt") >= 1, "apple" -> "#me takes your logs and immediately saws them into boards. ", item(2716, 1, 333, 0), deleteItem(2560, 1)
-item(2560, "belt") >= 1, "apfel" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(2716, 1, 333, 0), deleteItem(2560, 1)
-item(543, "belt") >= 1, "cherry" -> "#me takes your logs and immediately saws them into boards. ", item(545, 1, 333, 0), deleteItem(543, 1)
-item(543, "belt") >= 1, "kirsch" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(545, 1, 333, 0), deleteItem(543, 1)
-item(3, "belt") >= 1, "conifer" -> "#me takes your logs and immediately saws them into boards. ", item(2543, 1, 333, 0), deleteItem(3, 1)
-item(3, "belt") >= 1, "tannen" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(2543, 1, 333, 0), deleteItem(3, 1)
-item(544, "belt") >= 1, english, "naldor", "oak" -> "#me takes your logs and immediately saws them into boards. ", item(546, 1, 333, 0), deleteItem(544, 1)
-item(544, "belt") >= 1, german, "naldor" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(546, 1, 333, 0), deleteItem(544, 1)
+item(2560, "belt") >= 1, "apple" -> "#me takes your logs and immediately saws them into boards. ", item(2716, 1, 3, 0, 33), deleteItem(2560, 1)
+item(2560, "belt") >= 1, "apfel" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(2716, 1, 3, 0, 33), deleteItem(2560, 1)
+item(543, "belt") >= 1, "cherry" -> "#me takes your logs and immediately saws them into boards. ", item(545, 1, 3, 0, 33), deleteItem(543, 1)
+item(543, "belt") >= 1, "kirsch" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(545, 1, 3, 0, 33), deleteItem(543, 1)
+item(3, "belt") >= 1, "conifer" -> "#me takes your logs and immediately saws them into boards. ", item(2543, 1, 3, 0, 33), deleteItem(3, 1)
+item(3, "belt") >= 1, "tannen" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(2543, 1, 3, 0, 33), deleteItem(3, 1)
+item(544, "belt") >= 1, english, "naldor", "oak" -> "#me takes your logs and immediately saws them into boards. ", item(546, 1, 3, 0, 33), deleteItem(544, 1)
+item(544, "belt") >= 1, german, "naldor" -> "#me nimmt deinen Baumstamm und sägt ihn sofort in Bretter. ", item(546, 1, 3, 0, 33), deleteItem(544, 1)
 "kick", "boot" -> "Ooohhh!  Please don't hurt poor %NPCNAME, I'll do as you asks!"
 "tritt", "trete", "stiefel" -> " Ooohhh! Du nicht bestrafen armen %NPCNAME, ich alles machen was du sagst!"
 "beat", "punch", "hit", "slap" -> "#me cringes into a corner, begging for mercy."

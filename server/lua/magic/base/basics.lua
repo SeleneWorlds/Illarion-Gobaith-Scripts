@@ -445,13 +445,13 @@ function M.performTile( TileID, posi )
 	if (math.random(1,10)==1) then
 		TileID=5;
 		if (world:isCharacterOnField(posi)) then
-            world:createItemFromId( 373, 1, posi, true, 333 ,1);
+            world:createItemFromId( 373, 1, posi, true, 3 ,{data = 1, magicStrength = 333}, 33);
         else
-            world:createItemFromId( 359, 1, posi, true, 333 ,1);
+            world:createItemFromId( 359, 1, posi, true, 3 ,{data = 1, magicStrength = 333}, 33);
         end
 	end
 	if (math.random(1,10)==1) then
-		world:createItemFromId( 373, 1, posi, true, 333 ,1);
+        world:createItemFromId( 373, 1, posi, true, 3 ,{data = 1, magicStrength = 333}, 33);
 	end
 
     if (TileID ~= 0) then

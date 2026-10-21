@@ -38,7 +38,7 @@ local function depotItem(data)
     if not data.depotpos or not world:isItemOnField(data.depotpos) then return end
     local item = world:getItemOnField(data.depotpos)
     -- Never erase or refresh an unrelated depot that replaced our temporary one.
-    if item.id == 321 and item.quality == 1111 and item.data == data.depotOwner then return item end
+    if item.id == 321 and item:getData("personalDepot") == "true" and item.data == data.depotOwner then return item end
 end
 
 function M.removeDepot(npc)
@@ -63,7 +63,7 @@ local function stop(npc, player, data)
     local pos = depotPosition(npc)
     if not world:isCharacterOnField(pos) and not world:isItemOnField(pos)
             and world:getField(pos):isPassable() then
-        world:createItemFromId(321, 1, pos, true, 1111, player.id)
+        world:createItemFromId(321, 1, pos, true, 3, {data = player.id, personalDepot = "true"})
         data.depotpos, data.depotOwner = pos, player.id
         local item = depotItem(data)
         if item then item.wear = 2; world:changeItem(item)

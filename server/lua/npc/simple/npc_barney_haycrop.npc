@@ -10,7 +10,8 @@ QuestId=22
 
 "Hello" -> "Ah, good day, and welcome to Greenbriar! Fine day for a nice smoke"
 "Hallo" -> "Ah, Guten Tag und Willkommen in Greenbriar! Ein guter Tag, um eine Pfeife zu rauchen."
-"Greetings"-> "Ah, good day, and welcome to Greenbriar! Fine day for a nice smoke"
+"Greetings"-> "Ah, good day, and welcome to Greenbriar! Fine day for a nice smoke"
+
 "Grüße" -> "Ah, Guten Tag und Willkommen in Greenbriar! Ein guter Tag, um eine Pfeife zu rauchen."
 "Who" -> "Me name's Barney Haycrop, and it's a pleasure to meet you"
 "Wer" -> "Mein Name ist Barney Haycrop und es ist mir ein Vergnügen, euch zu treffen."
@@ -27,8 +28,8 @@ QuestId=22
 
 --Quest Related--
 
-"Locket", queststatus=1 -> "A locket you say... what a coincidence; I found one a few days ago... here, I trust you'll give it to the right owner", queststatus=2, item(222,1,199,0)
-"Medaillon", queststatus=1 -> "Ein Medaillon, sagt ihr? Was für ein Zufall, ich habe eines vor einigen Tagen gefunden. Hier, ich vertraue darauf, dass ihr es dem rechtmäßigen Eigentümer übergebt.", queststatus=2, item(222,1,199,0)
+"Locket", queststatus=1 -> "A locket you say... what a coincidence; I found one a few days ago... here, I trust you'll give it to the right owner", queststatus=2, item(222,1,1,0, 99)
+"Medaillon", queststatus=1 -> "Ein Medaillon, sagt ihr? Was für ein Zufall, ich habe eines vor einigen Tagen gefunden. Hier, ich vertraue darauf, dass ihr es dem rechtmäßigen Eigentümer übergebt.", queststatus=2, item(222,1,1,0, 99)
 
 --Cycles--
 

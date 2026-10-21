@@ -109,9 +109,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end;
             
             User:eraseItem(i,1); -- Holz Scheite entfernen
-            notCreated = User:createItem(Wood,1,333,0); -- Holzbretter erstellen
+            notCreated = User:createItem(Wood,1,3,0, 33); -- Holzbretter erstellen
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-                world:createItemFromId( Wood, notCreated, User.pos, true, 333 ,0);
+                world:createItemFromId( Wood, notCreated, User.pos, true, 3 ,0, 33);
                 common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");

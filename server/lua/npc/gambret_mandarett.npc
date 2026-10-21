@@ -16,15 +16,15 @@ wrongLangDE = "#me sieht dich leicht verwirrt an"
 wrongLangUS = "#me looks at you a little confused"
 
 -- Trade offers and requests; stock and trader cash are unlimited.
-sellItem = id(227), price(30), stack(1), quality(583)
+sellItem = id(227), price(30), stack(1), quality(5), durability(83)
 buyPrimaryItem = id(227), price(2)
-sellItem = id(121), price(30), stack(1), quality(583)
+sellItem = id(121), price(30), stack(1), quality(5), durability(83)
 buyPrimaryItem = id(121), price(2)
-sellItem = id(118), price(30), stack(1), quality(583)
+sellItem = id(118), price(30), stack(1), quality(5), durability(83)
 buyPrimaryItem = id(118), price(2)
-sellItem = id(2952), price(10), stack(1), quality(333)
+sellItem = id(2952), price(10), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(2952), price(2)
-sellItem = id(2935), price(10), stack(1), quality(333)
+sellItem = id(2935), price(10), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(2935), price(2)
 buyPrimaryItem = id(2647), price(5)
 buyPrimaryItem = id(1908), price(1)

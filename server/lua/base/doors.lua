@@ -102,7 +102,7 @@ end
 ]]
 function M.CloseDoor(Door)
     if M.OpenDoors[Door.id] then
-        world:swap(Door, M.OpenDoors[Door.id], 233);
+        world:swap(Door, M.OpenDoors[Door.id], 2);
         world:makeSound(21, Door.pos);
         return true;
     end;
@@ -111,8 +111,8 @@ end
 
 function M.OpenDoor(Door)
     if M.ClosedDoors[Door.id] then
-        if (Door.quality == 233 or Door.data == 0) then
-            world:swap(Door, M.ClosedDoors[Door.id], 233);
+        if (Door:getData("locked") ~= "true" or Door.data == 0) then
+            world:swap(Door, M.ClosedDoors[Door.id], 2);
             world:makeSound(21, Door.pos);
             return true, true;
         end

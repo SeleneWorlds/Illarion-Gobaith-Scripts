@@ -69,14 +69,14 @@ M.Wall = {
     ["item"] = {                -- informations about the created item
         ["id"] = 359,           -- id of the item that should be created
         ["minSkill"] = {        -- values of the item at the minimal skill
-            ["quality"] = 101,  -- Item quality
+            ["strength"] = 101,  -- Spell strength
             ["data"] = 0,       -- Item data
             ["wear"] = 1,       -- Item wear
             ["number"] = 1,     -- Item number
             ["chance"] = 50     -- Chance that this Item is created
         },           -- id of the item that should be created
         ["maxSkill"] = {        -- values of the item at the maximal skill
-            ["quality"] = 700,  -- Item quality
+            ["strength"] = 700,  -- Spell strength
             ["data"] = 0,       -- Item data
             ["wear"] = 4,       -- Item wear
             ["number"] = 1,     -- Item number

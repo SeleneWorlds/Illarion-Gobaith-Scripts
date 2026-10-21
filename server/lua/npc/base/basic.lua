@@ -178,7 +178,7 @@ function baseNPC:nextCycle(npcChar)
             npcChar:createAtPos(value[1], value[2], 1)
             local item = npcChar:getItemAt(value[1])
             item.wear = 255
-            item.quality = 999
+            item.quality = 9
             world:changeItem(item)
         end
     end

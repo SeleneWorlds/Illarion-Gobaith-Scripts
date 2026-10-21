@@ -404,19 +404,19 @@ function M.ToolBreaks(User, theItem, fast)
         factor = 0.093;
     end;
 
-    local      dura = ( theItem.quality % 100 ); -- Dura-Wert zwischen 1 und 99
-    local      qual = (theItem.quality - dura) / 100;   -- Qual-Wert zwischen 1 und 9
+    local      dura = theItem.durability; -- Dura-Wert zwischen 1 und 99
+    local      qual = theItem.quality;   -- Qual-Wert zwischen 1 und 9
     local durabrake = 0.5 * (100 - dura);               -- Bremse des Duraverlusts bei niedriger Dura
     local qualbrake = 0.5 * (10  - qual);               -- Bremse beim Senken von Qual, wenn Qual schon niedrig
 
     --Zerstörung des Werkzeugs bei Minimum an Quality oder niedriger Durabilität
-    if (theItem.quality <= 101) or (dura <=1) then
+    if (theItem.quality < 1) or (dura <=1) then
         world:erase( theItem, 1 );
         return true;
 
         --theItem.quality wird um 1 gesenken (Dura)
 
-    elseif (math.random(95) > (theItem.quality * factor + durabrake)) then
+    elseif (math.random(95) > (theItem.quality * 100 * factor + durabrake)) then
         gem1, str1, gem2, str2 = M.GetBonusFromTool(theItem);
         step = 0;
         if (gem1 == 1) then         -- diamond increases durability of item
@@ -427,7 +427,7 @@ function M.ToolBreaks(User, theItem, fast)
         end;
         if math.random(1,20) > step then      -- for step 20, it becomes indestructable!
             dura = dura - 1;
-            theItem.quality = qual * 100 + dura;
+            theItem.durability = dura;
             world:changeItem( theItem );
 
             if (dura == 20) then
@@ -446,7 +446,8 @@ function M.ToolBreaks(User, theItem, fast)
                 world:erase(theItem, 1);
                 return true;
             end;
-            theItem.quality = qual * 100 + dura - 90;
+            theItem.quality = qual - 1;
+            theItem.durability = math.min(99, dura + 10);
             world:changeItem(theItem);
             M.InformNLS(User,
             "Das Werkzeug erleidet durch dauernde Beanspruchung einen Qualitätsverlust.",
@@ -1325,7 +1326,7 @@ end
     Safely create an item
     @return boolean - true if all fits in player's inventory, false if something was created on the ground
 ]]
-function M.CreateItem(character, id, amount, quality, data)
+function M.CreateItem(character, id, amount, quality, data, durability)
     if not isValidChar(character) then
         error("The parameter 'character' is not a valid character as it was expected.")
     end
@@ -1344,15 +1345,15 @@ function M.CreateItem(character, id, amount, quality, data)
 
     if not _isNumber(quality) then
         error("The parameter 'quality' is not a number as it was expected.")
-    elseif quality < 100 or quality > 999 then
-        error("The parameter 'quality' must be a number between 100 and 999.")
+    elseif quality < 1 or quality > 9 then
+        error("The parameter 'quality' must be a number between 1 and 9.")
     end
 
     if data ~= nil and not _isTable(data) then
         error("The parameter 'data' is not a table as it was expected.")
     end
 
-    local notCreated = character:createItem(id, amount, quality, data)
+    local notCreated = character:createItem(id, amount, quality, data, durability)
     if notCreated == 0 then
         return true
     end
@@ -1364,7 +1365,7 @@ function M.CreateItem(character, id, amount, quality, data)
     while (notCreated > 0) do
         -- work around an issue to prevent creation of stacks of unstackable items
         local minimum = math.min(notCreated, maxStack)
-        world:createItemFromId(id, minimum, character.pos, true, quality, data)
+        world:createItemFromId(id, minimum, character.pos, true, quality, data, durability)
         notCreated = notCreated - minimum
     end
 

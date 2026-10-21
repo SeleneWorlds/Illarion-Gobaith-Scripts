@@ -16,7 +16,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
 			return;
 		end
         world:makeSound( 10, User.pos )
-        world:swap(TargetItem,2496,933);
+        world:swap(TargetItem,2496,9);
     else
         if TargetItem.id ~= 0 then
 			common.InformNLS(User,"platsch!","splash!");
@@ -26,7 +26,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param )
                 world:erase(TargetItem,1);
                 -- Esse ausmachen
             elseif ( TargetItem.id == 2835 ) then
-                world:swap(TargetItem,2836,333);
+                world:swap(TargetItem,2836,3);
                 -- test for seedlings
             else
                 --User:inform( "calling sprouts" );
@@ -89,7 +89,7 @@ function M.MakeSprout( User, SourceItem, TargetItem )
         else
             if M.CheckSucceed(User) then
                 --User:inform( "deleting fruit "..TargetItem.id );
-                world:swap(TargetItem,seed[1],333)
+                world:swap(TargetItem,seed[1],3)
             end
 	    end	
         else

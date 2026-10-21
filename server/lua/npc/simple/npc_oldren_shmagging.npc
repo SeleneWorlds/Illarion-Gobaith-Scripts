@@ -28,48 +28,48 @@ direction=south
 
 -- STATE 1
 
-"yes", state=1 -> "Very nice. Firstly, take this cooking spoon and this bucket. Go to the water with the bucket in your hands and 'use' it with the water. Come again when you have filled the bucket.", state=2, item(227,1,999,0), item(51,1,333,0)
-"ja", state=1 -> "Sehr schön. Nimm erstmal diesen Kochlöffel und diesen Eimer. Geh zum Wasser mit dem Eimer in deinen Händen und 'benutze' ihn mit dem Wasser. Komm wieder, wenn du den Eimer gefüllt hast.", state=2, item(227,1,999,0), item(51,1,333,0)
+"yes", state=1 -> "Very nice. Firstly, take this cooking spoon and this bucket. Go to the water with the bucket in your hands and 'use' it with the water. Come again when you have filled the bucket.", state=2, item(227,1,9,0, 99), item(51,1,3,0, 33)
+"ja", state=1 -> "Sehr schön. Nimm erstmal diesen Kochlöffel und diesen Eimer. Geh zum Wasser mit dem Eimer in deinen Händen und 'benutze' ihn mit dem Wasser. Komm wieder, wenn du den Eimer gefüllt hast.", state=2, item(227,1,9,0, 99), item(51,1,3,0, 33)
 
 "no", state=1 -> "But why are you here if you don't want to learn anything? Well, you can leave through the portal you just used at any time."
 "nein", state=1 -> "Aber warum bist du dann hier, wenn du nichts lernen willst? Nunja, du kannst wieder durch das Portal gehen, das du eben benutzt hast, wann immer du willst."
 
 -- STATE 2
 
-"spoon", state>=2, item(227,all)=0 -> "You need another cooking spoon, right? Here you are.", item(227,1,999,0)
-"l[öo]ffel", "loeffel", state>=2, item(227,all)=0 -> "Du brauchst einen neuen Kochlöffel, richtig? Hier bitte sehr.", item(227,1,999,0)
+"spoon", state>=2, item(227,all)=0 -> "You need another cooking spoon, right? Here you are.", item(227,1,9,0, 99)
+"l[öo]ffel", "loeffel", state>=2, item(227,all)=0 -> "Du brauchst einen neuen Kochlöffel, richtig? Hier bitte sehr.", item(227,1,9,0, 99)
 
-"bucket", state>=2, item(51,all)=0, item(52,all)=0 -> "You need another bucket, right? Here you are.", item(51,1,333,0)
-"eimer", state>=2, item(51,all)=0, item(52,all)=0 -> "Du brauchst einen neuen Eimer, richtig? Hier bitte sehr.", item(51,1,333,0)
+"bucket", state>=2, item(51,all)=0, item(52,all)=0 -> "You need another bucket, right? Here you are.", item(51,1,3,0, 33)
+"eimer", state>=2, item(51,all)=0, item(52,all)=0 -> "Du brauchst einen neuen Eimer, richtig? Hier bitte sehr.", item(51,1,3,0, 33)
 
 -- STATE 3
 
-"pork", state>=3, state<10, item(307,all)<3 -> "You need more pork, right? Here you are.", item(307,5,333,0)
-"fleisch", state>=3, state<10, item(307,all)<3 -> "Du brauchst mehr Schweinefleisch, richtig? Hier bitte sehr.", item(307,5,333,0)
+"pork", state>=3, state<10, item(307,all)<3 -> "You need more pork, right? Here you are.", item(307,5,3,0, 33)
+"fleisch", state>=3, state<10, item(307,all)<3 -> "Du brauchst mehr Schweinefleisch, richtig? Hier bitte sehr.", item(307,5,3,0, 33)
 
 -- STATE 10
 
-"yes", state=10 -> "Alright, at the very beginning you need flour to make dough. That is made out of grain, but better ask a farmer about milling grain. I give you some bags of flour, place them and a bucket of water at the belt, and a rolling pin. Holding it in your hands and standing in front of the baking house over there, just 'use' that baking house. Come again when you have at least 5 pieces of dough.", state=11, item(2,10,333,0), item(118,1,999,0)
-"ja", state=10 -> "Nun gut, zu allererst brauchst du Mehl um Teig zu machen. Das wird aus Getreide gemacht, aber frage besser einen Bauern über das Mahlen von Getreide. Ich gebe dir ein paar Säcke mit Mehl, trage sie und einen Eimer mit Wasser am Gürtel, und ein Nudelholz. Halte jenes in der Hand und stelle dich einfach direkt vor den Backofen dort und 'benutze' ihn. Komm wieder, wenn du mindestens 5 Klumpen Teig hast.", state=11, item(2,10,333,0), item(118,1,999,0)
+"yes", state=10 -> "Alright, at the very beginning you need flour to make dough. That is made out of grain, but better ask a farmer about milling grain. I give you some bags of flour, place them and a bucket of water at the belt, and a rolling pin. Holding it in your hands and standing in front of the baking house over there, just 'use' that baking house. Come again when you have at least 5 pieces of dough.", state=11, item(2,10,3,0, 33), item(118,1,9,0, 99)
+"ja", state=10 -> "Nun gut, zu allererst brauchst du Mehl um Teig zu machen. Das wird aus Getreide gemacht, aber frage besser einen Bauern über das Mahlen von Getreide. Ich gebe dir ein paar Säcke mit Mehl, trage sie und einen Eimer mit Wasser am Gürtel, und ein Nudelholz. Halte jenes in der Hand und stelle dich einfach direkt vor den Backofen dort und 'benutze' ihn. Komm wieder, wenn du mindestens 5 Klumpen Teig hast.", state=11, item(2,10,3,0, 33), item(118,1,9,0, 99)
 
 "no", state=10 -> "As you want. You can come back whenever you want and continue the lesson about baking."
 "nein", state=10 -> "Wie du willst. Du kannst jederzeit wiederkommen und die Lektion über Backen fortsetzen."
 
 -- STATE 11
 
-"flour", state=11, item(2,all)<5 -> "You need more flour, right? Here you are.", item(2,10,333,0)
-"mehl", state=11, item(2,all)<5 -> "Du brauchst mehr Mehl, richtig? Hier bitte schön.", item(2,10,333,0)
+"flour", state=11, item(2,all)<5 -> "You need more flour, right? Here you are.", item(2,10,3,0, 33)
+"mehl", state=11, item(2,all)<5 -> "Du brauchst mehr Mehl, richtig? Hier bitte schön.", item(2,10,3,0, 33)
 
-"rolling pin", state>=11, item(118,all)=0 -> "You need a new rolling pin, right? Here you are.", item(118,1,999,0)
-"nudelholz", state>=11, item(118,all)=0 -> "Du brauchst ein neues Nudelholz, richtig? Hier bitte schön.", item(118,1,999,0)
+"rolling pin", state>=11, item(118,all)=0 -> "You need a new rolling pin, right? Here you are.", item(118,1,9,0, 99)
+"nudelholz", state>=11, item(118,all)=0 -> "Du brauchst ein neues Nudelholz, richtig? Hier bitte schön.", item(118,1,9,0, 99)
 
 -- STATE 12
 
-"help", "dough", "more", state=12, item(5,all)=0 -> "Oh, you have no more dough, right? You don't need to make it again, so I give you 5 new pieces.", item(5,5,333,0)
-"hilfe", "teig", "mehr", state=12, item(5,all)=0 -> "Oh, du hast keinen Teig mehr, richtig? Du musst es nicht nochmal machen, also gebe ich dir 5 neue Klumpen.", item(5,5,333,0)
+"help", "dough", "more", state=12, item(5,all)=0 -> "Oh, you have no more dough, right? You don't need to make it again, so I give you 5 new pieces.", item(5,5,3,0, 33)
+"hilfe", "teig", "mehr", state=12, item(5,all)=0 -> "Oh, du hast keinen Teig mehr, richtig? Du musst es nicht nochmal machen, also gebe ich dir 5 neue Klumpen.", item(5,5,3,0, 33)
 
-"peel", state>=12, item(121,all)=0 -> "You need a new peel, right? Here you are.", item(121,1,999,0)
-"ofenschieber", state>=12, item(121,all)=0 -> "Du brauchst einen neuen Ofenschieber, richtig? Hier bitte schön.", item(121,1,999,0)
+"peel", state>=12, item(121,all)=0 -> "You need a new peel, right? Here you are.", item(121,1,9,0, 99)
+"ofenschieber", state>=12, item(121,all)=0 -> "Du brauchst einen neuen Ofenschieber, richtig? Hier bitte schön.", item(121,1,9,0, 99)
 
 -- standard explanations
 
@@ -101,8 +101,8 @@ direction=south
 ".+", state=2, english, item(52,all)=0 -> "You should first fill the bucket with water. Go to the water with the bucket in your hands and 'use' it with the water. Come again when you have filled the bucket."
 ".+", state=2, german, item(52,all)=0 -> "Du solltest erst den Eimer mit Wasser füllen. Geh zum Wasser mit dem Eimer in deinen Händen und 'benutze' ihn mit dem Wasser. Komm wieder, wenn du den Eimer gefüllt hast."
 
-".+", state=2, english, item(52,all)>0 -> "Ah, you have a full bucket. Now I give you pork, you'll cook sausages. Stand directly in front of the fire with the spoon in your hands and the pork and the bucket of water at your belt and 'use' the spoon. You can choose a category, soups -represented by a soup bowl- or other dishes -represented by a plate. Choose the plate and then the sausages. When you are finished or if it doesn't work, just come to me again.", state=3, item(307,5,333,0)
-".+", state=2, german, item(52,all)>0 -> "Ah, du hast einen vollen Eimer. Jetzt gebe ich dir Schweinefleisch, du wirst Würste kochen. Steh direkt vor das Feuer mit dem Löffel in der Hand und dem Fleisch und dem Eimer mit Wasser am Gürtel und 'benutze' den Löffel. Du kannst eine Kategorie wählen, Suppen -dargestellt durch eine Schüssel- oder andere Gerichte -dargestellt durch einen Teller. Wähle den Teller und dann die Würste. Wenn du fertig bist oder falls es nicht klappt, komm einfach wieder zu mir.", state=3, item(307,5,333,0)
+".+", state=2, english, item(52,all)>0 -> "Ah, you have a full bucket. Now I give you pork, you'll cook sausages. Stand directly in front of the fire with the spoon in your hands and the pork and the bucket of water at your belt and 'use' the spoon. You can choose a category, soups -represented by a soup bowl- or other dishes -represented by a plate. Choose the plate and then the sausages. When you are finished or if it doesn't work, just come to me again.", state=3, item(307,5,3,0, 33)
+".+", state=2, german, item(52,all)>0 -> "Ah, du hast einen vollen Eimer. Jetzt gebe ich dir Schweinefleisch, du wirst Würste kochen. Steh direkt vor das Feuer mit dem Löffel in der Hand und dem Fleisch und dem Eimer mit Wasser am Gürtel und 'benutze' den Löffel. Du kannst eine Kategorie wählen, Suppen -dargestellt durch eine Schüssel- oder andere Gerichte -dargestellt durch einen Teller. Wähle den Teller und dann die Würste. Wenn du fertig bist oder falls es nicht klappt, komm einfach wieder zu mir.", state=3, item(307,5,3,0, 33)
 
 -- STATE 3
 ".+", state=3, english, item(3051,all)=0 -> "Come again when you have cooked at least one pair of sausages. Stand directly in front of the fire with the spoon in your hands and the pork and the bucket of water at your belt and 'use' the spoon. You can choose a category, soups -represented by a soup bowl- or other dishes -represented by a plate. Choose the plate and then the sausages."
@@ -124,8 +124,8 @@ direction=south
 ".+", state=11, english, item(5,all)<5 -> "We can only proceed if you have 5 pieces of dough. Place the flour and a bucket of water at the belt and hold the rolling pin in your hands. Stand in front of the baking house and just 'use' it."
 ".+", state=11, german, item(5,all)<5 -> "Wir können erst weiter machen, wenn du 5 Klumpen Teig hast. Trage das Mehl und einen Eimer mit Wasser am Gürtel und halte das Nudelholz in den Händen. Stelle dich direkt vor den Backofen und 'benutze' ihn."
 
-".+", state=11, english -> "Very good! Now take this peel and hold it in your hands. Go again to the baking house and place the dough at your belt. Now 'use' the peel and choose the bread roll. It is the easiest-to-make baked good. Come again when you have at least one bread roll.", state=12, item(121,1,999,0)
-".+", state=11, german -> "Sehr gut! Nun nimm diesen Ofenschieber und halte ihn in deinen Händen. Geh' wieder zum Backofen und trage den Teig am Gürtel. Jetzt 'benutze' den Ofenschieber und wähle das Brötchen. Es ist die am einfachsten herzustellende Backware. Komm wieder, wenn du mindestens ein Brötchen hast.", state=12, item(121,1,999,0)
+".+", state=11, english -> "Very good! Now take this peel and hold it in your hands. Go again to the baking house and place the dough at your belt. Now 'use' the peel and choose the bread roll. It is the easiest-to-make baked good. Come again when you have at least one bread roll.", state=12, item(121,1,9,0, 99)
+".+", state=11, german -> "Sehr gut! Nun nimm diesen Ofenschieber und halte ihn in deinen Händen. Geh' wieder zum Backofen und trage den Teig am Gürtel. Jetzt 'benutze' den Ofenschieber und wähle das Brötchen. Es ist die am einfachsten herzustellende Backware. Komm wieder, wenn du mindestens ein Brötchen hast.", state=12, item(121,1,9,0, 99)
 
 -- STATE 12
 ".+", state=12, english -> "Come again when you have baked at least one bread roll. Go to the baking house and place the dough at your belt. Now 'use' the peel, while holding it in your hands, and choose the bread roll. It is the easiest-to-make baked good."

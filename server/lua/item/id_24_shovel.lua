@@ -37,7 +37,8 @@ roots:registerType("nothing", items.nothing)
 roots:registerType("root", function(entry, context)
     local data = entry.data
     local quality = data.qualityMin and math.random(data.qualityMin, data.qualityMax) or data.quality
-    world:createItemFromId(data.id, data.quantity, context.target.pos, true, quality, data.data)
+    local durability = data.durabilityMin and math.random(data.durabilityMin, data.durabilityMax) or data.durability or 99
+    world:createItemFromId(data.id, data.quantity, context.target.pos, true, quality, data.data, durability)
     if data.message then common.InformNLS(context.user, data.message.de, data.message.en) end
     context.produced = true
 end)

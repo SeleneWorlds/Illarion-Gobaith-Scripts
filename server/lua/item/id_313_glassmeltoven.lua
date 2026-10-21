@@ -91,9 +91,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end
             User:eraseItem(316,1);
             User:eraseItem(314,1); 
-            notCreated = User:createItem(41,1,333,0);
+            notCreated = User:createItem(41,1,3,0, 33);
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-                world:createItemFromId( 41, notCreated, User.pos, true, 333 ,0);
+                world:createItemFromId( 41, notCreated, User.pos, true, 3 ,0, 33);
                 common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
@@ -150,9 +150,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 return
             end
             User:eraseItem(736,5);
-            notCreated = User:createItem(2588,5,333,0);
+            notCreated = User:createItem(2588,5,3,0, 33);
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-                world:createItemFromId( 2588, notCreated, User.pos, true, 333 ,0);
+                world:createItemFromId( 2588, notCreated, User.pos, true, 3 ,0, 33);
                 common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");
@@ -191,9 +191,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                 return
             end
             User:eraseItem(26,1);
-            notCreated = User:createItem(736,1,333,0);
+            notCreated = User:createItem(736,1,3,0, 33);
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-                world:createItemFromId( 736, notCreated, User.pos, true, 333 ,0);
+                world:createItemFromId( 736, notCreated, User.pos, true, 3 ,0, 33);
                 common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");

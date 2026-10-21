@@ -285,7 +285,8 @@ local function validateAction(node,hasTrades)
         end
         if name == 'inform' then args(node,1,1); stringValue(node.args[1]); return end
         if name == 'item' then
-            args(node,2,4); number(node.args[1],true,true); dynamicNumber(node.args[2])
+            args(node,2,5); number(node.args[1],true,true); dynamicNumber(node.args[2])
+            if node.args[5] then dynamicNumber(node.args[5]) end
             if node.args[3] then dynamicNumber(node.args[3]) end
             if node.args[4] then
                 if node.args[4].kind == 'call' then dataValue(node.args[4]) else number(node.args[4],false,true) end
@@ -311,10 +312,11 @@ local function tradeFields(statement)
         if field.kind ~= 'call' then fail(field.token,"expected a trade field") end
         if fields[field.name] then fail(field.token,"duplicate trade field " .. field.name) end
         if field.name == 'data' then fields.data=dataValue(field)
-        elseif field.name == 'id' or field.name == 'stack' or field.name == 'quality' or field.name == 'price' then
+        elseif field.name == 'id' or field.name == 'stack' or field.name == 'quality' or field.name == 'durability' or field.name == 'price' then
             args(field,1,1); fields[field.name]=number(field.args[1],field.name == 'id' or field.name == 'stack',true)
             if field.name == 'price' and fields.price < 0 then fail(field.token,"price cannot be negative") end
-            if field.name == 'quality' and (fields.quality < 100 or fields.quality > 999) then fail(field.token,"quality must be between 100 and 999") end
+            if field.name == 'quality' and (fields.quality < 1 or fields.quality > 9) then fail(field.token,"quality must be between 1 and 9") end
+        if field.name == 'durability' and (fields.durability < 0 or fields.durability > 99) then fail(field.token,"durability must be between 0 and 99") end
         elseif field.name == 'de' or field.name == 'en' then args(field,1,1); fields[field.name]=stringValue(field.args[1])
         else fail(field.token,"unsupported trade field " .. field.name) end
     end
@@ -471,7 +473,7 @@ local function makeAction(node,trader)
     if name == 'item' then
         local data=node.args[4]
         data=data and (data.kind == 'call' and dataValue(data) or {data=scalar(data)}) or nil
-        return require('npc.base.consequence.item')(scalar(node.args[1]),runtimeValue(node.args[2]),node.args[3] and runtimeValue(node.args[3]) or 333,data)
+        return require('npc.base.consequence.item')(scalar(node.args[1]),runtimeValue(node.args[2]),node.args[3] and runtimeValue(node.args[3]) or 3,data,node.args[5] and runtimeValue(node.args[5]) or 99)
     end
     if name == 'deleteItem' then return require('npc.base.consequence.deleteitem')(scalar(node.args[1]),runtimeValue(node.args[2]),node.args[3] and scalar(node.args[3])) end
     local values={}
@@ -503,7 +505,7 @@ function Compiler.instantiate(definition)
         local Trade=require('npc.base.trade')
         trader=Trade(root)
         for _,offer in ipairs(definition.trades) do
-            trader:addItem(Trade.tradeNPCItem(offer.id,offer.type,offer.de,offer.en,offer.price,offer.stack,offer.quality,offer.data))
+            trader:addItem(Trade.tradeNPCItem(offer.id,offer.type,offer.de,offer.en,offer.price,offer.stack,offer.quality,offer.data,offer.durability))
         end
         local messages={tradeWrongItemMsg='addWrongItemMsg',tradeNotEnoughMoneyMsg='addNotEnoughMoneyMsg',tradeFinishedMsg='addDialogClosedMsg',tradeFinishedWithoutTradingMsg='addDialogClosedNoTradeMsg'}
         for name,method in pairs(messages) do if property[name] then trader[method](trader,scalar(property[name].values[1]),scalar(property[name].values[2])) end end

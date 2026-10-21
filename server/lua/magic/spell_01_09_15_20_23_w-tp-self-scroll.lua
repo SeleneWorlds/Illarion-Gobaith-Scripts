@@ -139,8 +139,8 @@ function M.WriteTeleSpell(Caster, ltstate )
                             Caster:eraseItem( 3109, 1 );
 
                             -- Wenn kein Platz mehr, ab auf den Boden. Die Schriftrolle ist ein eigener Gegenstand.
-                            if ( Caster:createItem( 3130, 1, 333, 0 ) ~= 0 ) then
-                               world:createItemFromId( 3130, 1, Caster.pos, true, 333, 0 );
+                            if ( Caster:createItem( 3130, 1, 3, 0 , 33) ~= 0 ) then
+                               world:createItemFromId( 3130, 1, Caster.pos, true, 3, 0 , 33);
                             end;
 
                             world:gfx(Effect,Caster.pos);

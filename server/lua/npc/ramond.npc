@@ -16,7 +16,7 @@ wrongLangDE = "#me sieht dich leicht verwirrt an"
 wrongLangUS = "#me looks at you a little confused"
 
 -- Trade offers and requests; stock and trader cash are unlimited.
-sellItem = id(24), price(24), stack(1), quality(216)
+sellItem = id(24), price(24), stack(1), quality(2), durability(16)
 
 "[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I cannot offer you much, only maybe one of my old shovels.", trade_buy
 "[ww]as.+verkaufen", "[ww]as.+verkauf" -> "Ich kann nicht viel anbieten. Allerhöchstens vielleicht meine alten Schaufeln.", trade_buy

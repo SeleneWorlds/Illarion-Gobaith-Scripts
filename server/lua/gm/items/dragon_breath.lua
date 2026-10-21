@@ -30,7 +30,7 @@ function M.perform(user, gfxId, itemId)
                 local coordinate = position(x, y, user.pos.z)
                 world:gfx(gfxId, coordinate)
                 if math.random(1, 5) == 1 then
-                    world:createItemFromId(itemId, 1, coordinate, true, math.random(200, 600), 0)
+                    world:createItemFromId(itemId, 1, coordinate, true, 3, {magicStrength = math.random(200, 600)})
                     world:makeSound(5, coordinate)
                 end
                 if world:isCharacterOnField(coordinate) then

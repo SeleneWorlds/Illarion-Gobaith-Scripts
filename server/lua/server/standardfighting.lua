@@ -556,17 +556,17 @@ function LoadWeapons( CharStruct, AttackPos )
         CharStruct["WeaponItem"] = Item;
         CharStruct["isWeapon"] = AttFound;
         CharStruct["Weapon"] = AttWeapon;
-        CharStruct["WeaponQualMod"] = GetQualityEffect( Item.quality );
+        CharStruct["WeaponQualMod"] = GetQualityEffect( Item.quality, Item.durability );
     elseif (AttackPos==CCharacter.left_tool) then
         CharStruct["SecWeaponItem"] = Item;
         CharStruct["SecisWeapon"] = AttFound;
         CharStruct["SecWeapon"] = AttWeapon;
-        CharStruct["SecWeaponQualMod"] = GetQualityEffect( Item.quality );
+        CharStruct["SecWeaponQualMod"] = GetQualityEffect( Item.quality, Item.durability );
     else
         CharStruct["RightWeaponItem"] = Item;
         CharStruct["RightisWeapon"] = AttFound;
         CharStruct["RightWeapon"] = AttWeapon;
-        CharStruct["RightWeaponQualMod"] = GetQualityEffect( Item.quality );
+        CharStruct["RightWeaponQualMod"] = GetQualityEffect( Item.quality, Item.durability );
     end
 
     Item = CharStruct.Char:getItemAt( CCharacter.left_tool );
@@ -575,17 +575,17 @@ function LoadWeapons( CharStruct, AttackPos )
         CharStruct["WeaponItem"] = Item;
         CharStruct["isWeapon"] = AttFound;
         CharStruct["Weapon"] = AttWeapon;
-        CharStruct["WeaponQualMod"] = GetQualityEffect( Item.quality );
+        CharStruct["WeaponQualMod"] = GetQualityEffect( Item.quality, Item.durability );
     elseif (AttackPos==CCharacter.right_tool) then
         CharStruct["SecWeaponItem"] = Item;
         CharStruct["SecisWeapon"] = AttFound;
         CharStruct["SecWeapon"] = AttWeapon;
-        CharStruct["SecWeaponQualMod"] = GetQualityEffect( Item.quality );
+        CharStruct["SecWeaponQualMod"] = GetQualityEffect( Item.quality, Item.durability );
     else
         CharStruct["LeftWeaponItem"] = Item;
         CharStruct["LeftisWeapon"] = AttFound;
         CharStruct["LeftWeapon"] = AttWeapon;
-        CharStruct["LeftWeaponQualMod"] = GetQualityEffect( Item.quality );
+        CharStruct["LeftWeaponQualMod"] = GetQualityEffect( Item.quality, Item.durability );
     end
     return CharStruct;
 end
@@ -596,9 +596,7 @@ end
     @param  int Quality of the item
     @return int modificator
 ]]
-function GetQualityEffect( Qual )
-    local Quali = math.floor( Qual / 100 );
-    local Durab = ( Qual % 100 );
+function GetQualityEffect( Quali, Durab )
     return common.Limit( common.Scale( 0.55, 1.36, Quali * 100 / 9 ) * common.Scale( 0.9, 1.1, Durab * 100 / 99 ), 0.5, 1.5 );
 end
 
@@ -1286,8 +1284,8 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
             return true;
         end
 
-        local ItemQual=math.floor( CharStruct[FirstWeaponItem].quality / 100 );
-        local ItemDura=CharStruct[FirstWeaponItem].quality - ( ItemQual * 100 );
+        local ItemQual=CharStruct[FirstWeaponItem].quality;
+        local ItemDura=CharStruct[FirstWeaponItem].durability;
 
         if (math.random(math.floor(common.Scale(30,300,ItemQual*11)))==1) then
             if fighting.IsPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
@@ -1307,7 +1305,8 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
                     elseif fighting.IsCopperPlatedWeapon( CharStruct[FirstWeaponItem].id ) then
                         CharWeakness = fighting.GetWeaknessCopper( CharStruct.Race );
                     end
-                    CharStruct[FirstWeaponItem].quality = ( ( ItemQual - 1 ) * 100 ) + 30;
+                    CharStruct[FirstWeaponItem].quality = ItemQual - 1;
+                    CharStruct[FirstWeaponItem].durability = 30;
                     CharStruct[FirstWeaponItem].id = fighting.GetPlatedBaseWeapon( CharStruct[FirstWeaponItem].id );
                     world:changeItem( CharStruct[FirstWeaponItem] );
                     local SecWeaponItem = NameSec.."WeaponItem"
@@ -1332,7 +1331,7 @@ function BreakWeapon( CharStruct, NameFirst, NameSec )
                     end
                 end
             else
-                CharStruct[FirstWeaponItem].quality = ( ItemQual*100 ) + ItemDura;
+                CharStruct[FirstWeaponItem].durability = ItemDura;
                 world:changeItem( CharStruct[FirstWeaponItem] );
                 local SecWeaponItem = NameSec.."WeaponItem"
                 if ( CharStruct[SecWeaponItem].id == 228 ) then
@@ -1467,7 +1466,7 @@ function Damage( Attacker, Defender, Globals )
         end
         ArmorAbsorb = Armor.Absorb;
         if (Defender.Char:get_type()~=1) then
-            local qualMod = GetQualityEffect(HittedItem.quality);
+            local qualMod = GetQualityEffect(HittedItem.quality, HittedItem.durability);
             ArmorValue  = ArmorValue  * qualMod;
             ArmorAbsorb = ArmorAbsorb * qualMod;
         end
@@ -1492,7 +1491,7 @@ function Damage( Attacker, Defender, Globals )
             end
             addArmorAbsorb = Armor.Absorb;
             if (Defender.Char:get_type()~=1) then
-                local qualMod = GetQualityEffect(HittedItem.quality);
+                local qualMod = GetQualityEffect(HittedItem.quality, HittedItem.durability);
                 addArmorValue  = addArmorValue  * qualMod;
                 addArmorAbsorb = addArmorAbsorb * qualMod;
             end
@@ -1549,8 +1548,8 @@ function BreakArmor( CharStruct, Globals )
 
     if ( HittedItem.id ~= 0 ) then
 
-        local ItemQual=math.floor(HittedItem.quality/100);
-        local ItemDura=HittedItem.quality-(ItemQual*100);
+        local ItemQual=HittedItem.quality;
+        local ItemDura=HittedItem.durability;
 
         if (math.random(math.floor(common.Scale(30,300,ItemQual*11)))==1) then
             ItemDura = ItemDura - 1;
@@ -1558,7 +1557,7 @@ function BreakArmor( CharStruct, Globals )
                 CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
                 common.InformNLS(CharStruct.Char,"Ein Rüstungsteil ist zerbrochen.","A part of your armor just broke.");
             else
-                HittedItem.quality = ( ItemQual*100 ) + ItemDura;
+                HittedItem.durability = ItemDura;
                 world:changeItem( HittedItem );
             end
         end
@@ -1569,8 +1568,8 @@ function BreakArmor( CharStruct, Globals )
 
         if ( HittedItem.id ~= 0 ) then
 
-            local ItemQual=math.floor(HittedItem.quality/100);
-            local ItemDura=HittedItem.quality-(ItemQual*100);
+            local ItemQual=HittedItem.quality;
+            local ItemDura=HittedItem.durability;
 
             if (math.random(math.floor(common.Scale(30,300,ItemQual*11)))==1) then
                 ItemDura = ItemDura - 1;
@@ -1578,7 +1577,7 @@ function BreakArmor( CharStruct, Globals )
                     CharStruct.Char:increaseAtPos(HittedItem.itempos,-1);
                     common.InformNLS(CharStruct.Char,"Ein Rüstungsteil ist zerbrochen.","A part of your armor just broke.");
                 else
-                    HittedItem.quality = ( ItemQual*100 ) + ItemDura;
+                    HittedItem.durability = ItemDura;
                     world:changeItem( HittedItem );
                 end
             end
@@ -1880,7 +1879,7 @@ function DropBlood(Posi,ItemID)
             return;
         end
     end
-    Blood=world:createItemFromId(ItemID,1,Posi,true,333,0);
+    Blood=world:createItemFromId(ItemID,1,Posi,true,3,0, 33);
     Blood.wear=2;
     world:changeItem(Blood);
 end
@@ -2023,7 +2022,7 @@ function DropAmmo( Attacker, dropPos, dropChar )
             if world:isItemOnField( dropPos ) then
                 local oldItem = world:getItemOnField( dropPos );
                 if ( oldItem.wear < 255 ) then
-                    if ( oldItem.id == AmmoItem.id and oldItem.quality == AmmoItem.quality and oldItem.data == AmmoItem.data ) then
+                    if ( oldItem.id == AmmoItem.id and oldItem.quality == AmmoItem.quality and oldItem.durability == AmmoItem.durability and oldItem.data == AmmoItem.data ) then
                         oldItem.number = oldItem.number + 1;
                         oldItem.wear = 5;
                         world:changeItem( oldItem );
@@ -2033,9 +2032,9 @@ function DropAmmo( Attacker, dropPos, dropChar )
                     return;
                 end
             end
-            world:createItemFromId( AmmoItem.id, 1, dropPos, true, AmmoItem.quality, AmmoItem.data );
+            world:createItemFromId( AmmoItem.id, 1, dropPos, true, AmmoItem.quality, AmmoItem.data, AmmoItem.durability );
         elseif ( dropChar:get_type() == 1 ) then -- dropping ammo only into monsters
-            dropChar:createItem( AmmoItem.id, 1, AmmoItem.quality, AmmoItem.data );
+            dropChar:createItem( AmmoItem.id, 1, AmmoItem.quality, AmmoItem.data, AmmoItem.durability );
         end
     end
 end

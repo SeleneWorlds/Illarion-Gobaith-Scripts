@@ -106,7 +106,7 @@ function M.createItemOnMap( ItemData, Target, CasterVal )
         return false;
     end
 
-    local qual = common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal );
+    local qual = common.Scale( ItemData.minSkill.strength, ItemData.maxSkill.strength, CasterVal );
     local data = common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal );
     local wear = common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal );
     local numb = common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal );
@@ -115,7 +115,7 @@ function M.createItemOnMap( ItemData, Target, CasterVal )
         itemid = ItemData.id[ math.random( 1, # ItemData.id  ) ];
     end
 
-    world:createItemFromId( itemid, numb, Target, true, qual, data );
+    world:createItemFromId( itemid, numb, Target, true, 3, {data = data, magicStrength = qual, illusion = qual == 100 and "true" or nil} );
     local TempItem = world:getItemOnField( Target );
     if (TempItem.id == ItemData.id) then
         TempItem.wear = wear;
@@ -155,14 +155,14 @@ function M.removeItemFromMap( ItemData, Target, CasterVal )
         return false;
     end
 
-    local qual = common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal );
+    local qual = common.Scale( ItemData.minSkill.strength, ItemData.maxSkill.strength, CasterVal );
     local data = common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal );
     local wear = common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal );
     local numb = common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal );
 
     if (qual ~= 0 ) then
-        if ( theItem.quality + qual > 101 ) then
-            theItem.quality = theItem.quality + qual;
+        if ( (tonumber(theItem:getData("magicStrength")) or 333) + qual > 101 ) then
+            theItem:setData("magicStrength", (tonumber(theItem:getData("magicStrength")) or 333) + qual);
         else
             world:erase( theItem, theItem.number );
             return true;

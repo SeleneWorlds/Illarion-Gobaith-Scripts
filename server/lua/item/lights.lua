@@ -117,7 +117,7 @@ function M.giveBack(User, Item, this)
 	end
 	local myItem=nil;
 	local finalItem = nil;
-	if User:createItem(this.back,1,333,15734) == 0 then
+    if User:createItem(this.back,1,3,15734, 33) == 0 then
 		for i=1,17 do
 			myItem = User:getItemAt( i );
 			if ( myItem.id == this.back and myItem.data==15734 ) then
@@ -139,7 +139,7 @@ function M.giveBack(User, Item, this)
 					if worked then
 						if ( myItem.id == this.back and myItem.data==15734 ) then
 							theBackpack:takeItemNr(i,1);
-							User:createItem(LightsOn[this.back].off,1,333,Item.wear+1000);
+                            User:createItem(LightsOn[this.back].off,1,3,Item.wear+1000, 33);
 							break;
 						end
 					end
@@ -147,7 +147,7 @@ function M.giveBack(User, Item, this)
 			end
 		end
 	else
-		finalItem = world:createItemFromId(this.back,1,User.pos,true,333,1);
+        finalItem = world:createItemFromId(this.back,1,User.pos,true,3,1, 33);
 	end
     if finalItem then
         finalItem.data = 1;

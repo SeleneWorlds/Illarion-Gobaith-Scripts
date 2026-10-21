@@ -95,9 +95,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("belt",2529) > 0) then
         User:eraseItem( 2529, 1 ); --Honigwabe wird gelöscht
-        local notcreated = User:createItem(431, 1, 333 ,0 );
+        local notcreated = User:createItem(431, 1, 3 ,0 , 33);
         if (notcreated > 0) then
-            world:createItemFromId( 431, 1, User.pos, true, 333 ,0); -- Wachs wird erstellt
+            world:createItemFromId( 431, 1, User.pos, true, 3 ,0, 33); -- Wachs wird erstellt
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");

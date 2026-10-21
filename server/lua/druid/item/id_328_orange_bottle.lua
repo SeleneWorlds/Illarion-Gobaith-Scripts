@@ -27,12 +27,12 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
               -- CONST may reduce the needed quality
 			  local const = math.min(25,Character:increaseAttrib("constitution",0));
 			  local seriousness = illness_seriousness[diagnose] - (math.random(30)<const and 1 or 0);
-			  if math.random(111,illness_seriousness[diagnose] * 111) < SourceItem.quality then
+              if math.random(111,illness_seriousness[diagnose] * 111) < SourceItem.quality * 100 then
 
 --               Die Wirkung erfolgt indirekt durch das Herabsetzen des Rundenzählers.
                  -- CONST may raise the probability for a good effect
-				 local bottom = math.max(111,math.floor(SourceItem.quality*const/30));
-				 zaehler = zaehler - math.random(bottom,SourceItem.quality)
+                 local bottom = math.max(111,math.floor(SourceItem.quality*100*const/30));
+                 zaehler = zaehler - math.random(bottom,SourceItem.quality * 100)
                  world:gfx(52,Character.pos)
                  if zaehler <1 then
                     zaehler = 1
@@ -65,7 +65,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         if( math.random( 20 ) <= 1 ) then
            common.InformNLS( Character, "#w Die Flasche zerbricht.", "#w The bottle breaks.");
         else
-           Character:createItem( 164, 1, 333,0);
+           Character:createItem( 164, 1, 3,0, 33);
         end
      end
 

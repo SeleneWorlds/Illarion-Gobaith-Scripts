@@ -48,7 +48,7 @@ function M.InitCraftingTool( )
             local german, english
             if not kettle then
                 german, english = "Hier kannst du nicht arbeiten.", "You cannot work here."
-            elseif kettle.quality < 100 then
+            elseif kettle.quality < 1 then
                 german, english = "Das Werkzeug ist kaputt.", "The tool is broken."
             elseif not hasFire then
                 german = "Du benötigst ein brennendes Lagerfeuer unter dem Kessel."

@@ -145,7 +145,7 @@ function tradeNPC:showDialog(npcChar, player, mode)
         local item = entry.offer
         local quality = entry.item and entry.item.quality or item._quality
         local data = (entry.buying or entry.item == nil) and item._data or nil
-        menu:addItem(item._itemId, quality, data and tonumber(data.data) or 0)
+        menu:addItem(item._itemId, quality, data and tonumber(data.data) or 0, entry.item and entry.item.durability or item._durability)
     end
     menu.lookAt = function(slot)
         local entry = entries[slot]
@@ -265,7 +265,7 @@ function tradeNPC:sellItemToPlayer(npcChar, player, itemIndex, amount)
         money.TakeMoneyFromChar(player, item._price * amount)
         local priceStringGerman, priceStringEnglish = money.MoneyToString(item._price * amount)
 
-        common.CreateItem(player, item._itemId, amount, item._quality, item._data)
+        common.CreateItem(player, item._itemId, amount, item._quality, item._data, item._durability)
         local itemName = common.GetNLS(player, world:getItemName(item._itemId, 0), world:getItemName(item._itemId, 1))
         common.InformNLS(player, "Du hast "..amount.." "..itemName.." zu einem Preis von "..priceStringGerman.." gekauft.", "You bought "..amount.." "..itemName.." at a price of "..priceStringEnglish..".")
         world:makeSound(24, player.pos)
@@ -277,7 +277,7 @@ function tradeNPC:sellItemToPlayer(npcChar, player, itemIndex, amount)
 end
 
 
-tradeNPCItem = class(function(self, id, itemType, nameDe, nameEn, price, stack, quality, data)
+tradeNPCItem = class(function(self, id, itemType, nameDe, nameEn, price, stack, quality, data, durability)
     if (id == nil or id <= 0) then
         error("Invalid ItemID for trade item")
     end
@@ -319,10 +319,11 @@ tradeNPCItem = class(function(self, id, itemType, nameDe, nameEn, price, stack, 
         end
     end
 
+    self._durability = durability or 99
     if (itemType == "sell" and quality ~= nil) then
         self["_quality"] = quality
     else
-        self["_quality"] = 580
+        self["_quality"] = 5
     end
 
     if (itemType == "sell") then

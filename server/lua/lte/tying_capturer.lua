@@ -63,14 +63,14 @@ function M.callEffect( Tying, Capturer )
 				if Tying.numberCalled == 0 then -- first call (set in I_2760_seil.lua), calculate duration
 					local AttribOffset = M.GetBestAttribOffset(Capturer,Captive,{"strength","dexterity"});
 					local Quality = math.min(1200,120+math.random(55,65)*AttribOffset);
-					Rope.quality = (Quality*2)+100; -- *2 -> nextCalled = 5. Duration min=2minutes max=20minutes
-				elseif Rope.quality == 100 then -- break rope
+                    Rope:setData("tyingDuration", (Quality*2)+100); -- *2 -> nextCalled = 5. Duration min=2minutes max=20minutes
+                elseif (tonumber(Rope:getData("tyingDuration")) or 100) == 100 then -- break rope
 					Capturer:talkLanguage(CCharacter.say,CPlayer.german,"#me's Seil zerreißt, es wurde wohl zu lange belastet.");
 					Capturer:talkLanguage(CCharacter.say,CPlayer.english,"#me's rope is torn, it has been used for too long apparently.");
 					world:erase(Rope,1);
 					return false;
 				else
-					Rope.quality = Rope.quality-1; -- count down the duration
+                    Rope:setData("tyingDuration", (tonumber(Rope:getData("tyingDuration")) or 100)-1); -- count down the duration
 				end
 				world:changeItem(Rope);
 			end
@@ -136,7 +136,7 @@ function M.removeEffect( Tying, Capturer )
 	local rope = M.GetRope(Capturer);
 	if rope then
 		local eraseIt = true;
-		local qual = rope.quality;
+        local qual = (tonumber(rope:getData("tyingDuration")) or 100);
 		qual = ((qual-100)/2);
 		if qual <= 450 then
 			if math.random(500) < qual then
@@ -152,7 +152,7 @@ function M.removeEffect( Tying, Capturer )
 				"The rope breaks.");
 		else
 			rope.data = 0;
-			rope.quality = 333;
+            rope:setData("tyingDuration", nil);
 			world:changeItem(rope);
 		end
 	end

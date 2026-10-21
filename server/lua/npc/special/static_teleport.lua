@@ -45,10 +45,10 @@ function M.ShowAnimationFrame( frame, posi )
         world:gfx(41,position(posi.x+1,posi.y-1,posi.z));
         world:gfx(41,position(posi.x-1,posi.y+1,posi.z));
     elseif (frame == 7) then
-        world:createItemFromId(360,1,position(posi.x+1,posi.y+1,posi.z),true,333,0);
-        world:createItemFromId(360,1,position(posi.x-1,posi.y-1,posi.z),true,333,0);
-        world:createItemFromId(360,1,position(posi.x+1,posi.y-1,posi.z),true,333,0);
-        world:createItemFromId(360,1,position(posi.x-1,posi.y+1,posi.z),true,333,0);
+        world:createItemFromId(360,1,position(posi.x+1,posi.y+1,posi.z),true,3,{data = 0, magicStrength = 333}, 33);
+        world:createItemFromId(360,1,position(posi.x-1,posi.y-1,posi.z),true,3,{data = 0, magicStrength = 333}, 33);
+        world:createItemFromId(360,1,position(posi.x+1,posi.y-1,posi.z),true,3,{data = 0, magicStrength = 333}, 33);
+        world:createItemFromId(360,1,position(posi.x-1,posi.y+1,posi.z),true,3,{data = 0, magicStrength = 333}, 33);
     elseif (frame == 8) then
         world:gfx(31,posi);
         world:gfx(53,position(posi.x+1,posi.y+2,posi.z));
@@ -229,11 +229,11 @@ function M.TeleportationFunction(thisNPC)
 	        originator:eraseItem(3076,self.travelFee);
 	    elseif (originator:countItem(3077)>0) then
 	        originator:eraseItem(3077,1);
-	        originator:createItem(3076,100-self.travelFee,333,0);
+            originator:createItem(3076,100-self.travelFee,3,0, 33);
 		else
 			originator:eraseItem(61,1);
-			originator:createItem(3077,99,333,0);
-			originator:createItem(3076,100-self.travelFee,333,0);
+            originator:createItem(3077,99,3,0, 33);
+            originator:createItem(3076,100-self.travelFee,3,0, 33);
 	    end
 	    taxes.add(self.taxAccount[self.HomePosition[thisNPC.id]], self.travelFee);
 	    M.InformNLS(originator,

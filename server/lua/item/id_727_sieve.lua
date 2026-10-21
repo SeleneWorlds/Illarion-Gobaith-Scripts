@@ -108,17 +108,17 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("belt",726) > 0) then
         User:eraseItem( 726, 1 );
-        local notcreated = User:createItem(316, 1, 333 ,0 );
+        local notcreated = User:createItem(316, 1, 3 ,0 , 33);
         if (notcreated > 0) then
-            world:createItemFromId( 316, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 316, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
         else
             if (math.random(0,3000) == 1) then
-                notcreated = User:createItem(198, 1, 333 ,0 );
+                notcreated = User:createItem(198, 1, 3 ,0 , 33);
                 if (notcreated > 0) then
-                    world:createItemFromId( 198, 1, User.pos, true, 333 ,0);
+                    world:createItemFromId( 198, 1, User.pos, true, 3 ,0, 33);
                     common.InformNLS(User,
                     "Du kannst nichts mehr halten.",
                     "You can't carry any more.");

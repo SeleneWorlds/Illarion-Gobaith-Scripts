@@ -105,21 +105,21 @@ function M.useTile(User,Position,counter,param,ltstate)
         local FTry=math.random(0,1000);
         -- Forelle
         if (FTry<660) then
-            User:createItem(73,1,333,0)
+            User:createItem(73,1,3,0, 33)
         -- Lachs
         elseif (FTry>=660 and FTry<920) then
-            User:createItem(355,1,333,0)
+            User:createItem(355,1,3,0, 33)
         -- Stiefel
         elseif (FTry>=920 and FTry<940) then
-            User:createItem(53,1,100,0)
+            User:createItem(53,1,1,0, 0)
             common.InformNLS(User,"Ein alter, durchlöcherter Lederstiefel findet sich in deiner Klaue.","An old, perforated leather boot is in your claw.");
         -- Ölampe
         elseif (FTry>=940 and FTry<990) then
-            User:createItem(92,1,333,0);
+            User:createItem(92,1,3,0, 33);
             common.InformNLS(User,"Du ziehst eine glitzernde Ölampe aus dem Wasser. Wo die wohl herkommt...?","You pull a sparkling oil lamp out of the water. Where did that come from?");
         -- Eimer
         elseif (FTry>=990 and FTry<=1000) then
-            User:createItem(51,1,333,0)
+            User:createItem(51,1,3,0, 33)
             common.InformNLS(User,"Du ergreifst einen Eimer im Wasser und ziehst ihn heraus. Den hat hier wohl jemand verloren.","You grap a bucket and drag it out of the water. Someone has lost it here.");
         end
 	    User:learn(2,"fishing",2,100);

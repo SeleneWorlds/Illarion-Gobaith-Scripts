@@ -108,9 +108,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     User:eraseItem(259,1);
-    notCreated = User:createItem(2,1,333,0);
+    notCreated = User:createItem(2,1,3,0, 33);
     if (notCreated > 0) then
-        world:createItemFromId( 2, 1, User.pos, true, 333 ,0);
+        world:createItemFromId( 2, 1, User.pos, true, 3 ,0, 33);
         common.InformNLS(User,
         "Du kannst nichts mehr halten.",
         "You can't carry any more.");

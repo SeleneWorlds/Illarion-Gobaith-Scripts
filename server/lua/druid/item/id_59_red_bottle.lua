@@ -40,7 +40,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
     cnt = found and cnt+1 or 1;
     myEffect:addValue("effects",cnt);
 
-    myEffect:addValue("zaehler_"..cnt,math.floor(SourceItem.quality/100)+myEffect.numberCalled);
+    myEffect:addValue("zaehler_"..cnt,SourceItem.quality+myEffect.numberCalled);
 
 
     for i, attrib in pairs(attribList) do
@@ -74,7 +74,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 			if( math.random( 20 ) <= 1 ) then
 				common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
 			else
-				Character:createItem( 164, 1, 333,0);
+                Character:createItem( 164, 1, 3,0, 33);
 			end
 			A=math.random(7500)+5000;
 		      Character:setPoisonValue( common.Limit( (Character:getPoisonValue() - A) , 0, 10000) );
@@ -105,7 +105,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 			if( math.random( 20 ) <= 1 ) then
 				common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
 			else
-				Character:createItem( 164, 1, 333,0);
+                Character:createItem( 164, 1, 3,0, 33);
 			end
 
 			Character.movepoints=Character.movepoints-50;

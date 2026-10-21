@@ -40,7 +40,7 @@ function M.createRabbits( targetArea )
     local rabbit;
     -- Bestimme lebenszeit der Hasen. Vernichtung Hasen erfolgt über die initiale Verwendung von Gift.
     -- Vergebene Giftpunkte werden Skaliert von 1000 (bei quality 100) bis 50 (bei quality 999)
-    local lifeTime = common.Scale( 1000, 50, (Item.quality-100)*100/899 );
+    local lifeTime = common.Scale( 1000, 50, (Item.quality-1)*100/8 );
 
     for i, posi in pairs(targetArea) do
         if not world:isCharacterOnField( posi ) then
@@ -70,7 +70,7 @@ function M.causeDamage( Item, DamagedArea, DamagedAttrib, ShieldAttribs, gfxid, 
 
             -- Schaden bestimmt sich aus Item Qualität
             -- 1000HP - 9990HP
-            local qual = Item.quality;
+            local qual = Item.quality * 100;
             if (qual > 999) then
                 qual = ( qual % 1000 );
             end
@@ -126,7 +126,7 @@ function M.damageItemDura( Item, targetArea, gfxid, sfxid, modifier, ItemType )
     local minReduce;
     local maxReduce;
 
-    local qual = Item.quality;
+    local qual = Item.quality * 100;
     if (qual > 999) then
         qual = ( qual % 1000 );
     end
@@ -149,15 +149,16 @@ function M.damageItemDura( Item, targetArea, gfxid, sfxid, modifier, ItemType )
                 end
 
                 if found then
-                    ItemQual = math.floor( slotItem.quality / 100 );
-                    ItemDura = slotItem.quality - ItemQual * 100;
+                    ItemQual = slotItem.quality;
+                    ItemDura = slotItem.durability;
 
                     minReduce = common.Scale(  30, -1, ItemQual * 11 );
                     maxReduce = common.Scale( 100, 50, ItemQual * 11 );
 
                     ItemDura = common.Limit( ItemDura - math.floor( common.Scale( minReduce, maxReduce, (qual-100)/8.99 ) )*modifier, 1, ItemDura );
 
-                    slotItem.quality = ItemQual*100 + ItemDura;
+                    slotItem.quality = ItemQual;
+                    slotItem.durability = ItemDura;
                     world:changeItem( slotItem );
                 end
             end
@@ -180,7 +181,7 @@ function M.damageItemQual( Item, targetArea, gfxid, sfxid, modifier, ItemType )
     local ItemQual;
     local ItemDura;
 
-    local qual = Item.quality;
+    local qual = Item.quality * 100;
     if (qual > 999) then
         qual = ( qual % 1000 );
     end
@@ -203,12 +204,13 @@ function M.damageItemQual( Item, targetArea, gfxid, sfxid, modifier, ItemType )
                 end
 
                 if found then
-                    ItemQual = math.floor( slotItem.quality / 100 );
-                    ItemDura = slotItem.quality - ItemQual * 100;
+                    ItemQual = slotItem.quality;
+                    ItemDura = slotItem.durability;
 
                     ItemQual = common.Limit( ItemDura - math.floor( common.Scale( 1, 9, (qual-100)/8.99 ) )*modifier, 1, 9 );
 
-                    slotItem.quality = ItemQual*100 + ItemDura;
+                    slotItem.quality = ItemQual;
+                    slotItem.durability = ItemDura;
                     world:changeItem( slotItem );
                 end
             end

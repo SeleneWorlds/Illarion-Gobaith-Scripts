@@ -11,12 +11,12 @@ local common = require("base.common")
 function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     if ((User:increaseAttrib("dexterity",0) + 0.5*User:increaseAttrib("perception",0) + math.random(1,30)) >= 30) then
         common.InformNLS( User,"Du entschärfst die Falle.","You disarm the trap." );
-        world:swap(SourceItem,375,333);
+        world:swap(SourceItem,375,3);
     else
         common.InformNLS( User,"Du löst die Falle aus!","You set off the trap!" );
         world:gfx(13,SourceItem.pos);
         User:increaseAttrib("hitpoints", -5000);
-        world:swap(SourceItem,376,333);
+        world:swap(SourceItem,376,3);
     end
     User.movepoints=User.movepoints-10;
 end
@@ -30,7 +30,7 @@ function M.CharacterOnField( User )
                 common.InformNLS( User,"Du löst eine Falle aus!","You set off a trap!" );
                 world:gfx(13,User.pos);
                 User:increaseAttrib("hitpoints", -4999);
-                world:swap(SourceItem,376,333);
+                world:swap(SourceItem,376,3);
                 SetOff=true;
             else
                 world:erase(SourceItem,1);

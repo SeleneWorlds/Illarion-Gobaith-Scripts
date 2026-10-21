@@ -234,7 +234,7 @@ function M.ChoseAndOpenGate(Text,TPos, CasterVal, Caster)
         return false;
     end
 
-    world:createItemFromId(10, 1, TPos, true, stability*100+33, portals.data(destination));
+    world:createItemFromId(10, 1, TPos, true, stability, portals.data(destination));
     return true;
 end
 

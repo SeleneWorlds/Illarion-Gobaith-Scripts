@@ -49,7 +49,7 @@ function M.callEffect(trsEff, trsHunter)
         common.TempInformNLS( trsHunter,
         "Die Wächter des Schatzes wurden besiegt. Gebt nicht alles auf einmal aus!",
         "The guardians of the treasure have been slain. Do not spend it all at once!");
-        world:createItemFromId(2830,1,trsPosition,true,333,cat); --spawn a treasure chest
+        world:createItemFromId(2830,1,trsPosition,true,3,cat, 33); --spawn a treasure chest
         world:gfx(16,trsPosition);
         world:makeSound(13,trsPosition);
         --base_treasure.SpawnTreasure(cat, trsPosition);

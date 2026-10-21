@@ -67,7 +67,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
 					common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
 				else
 					local leftover = assert(Registries.findByName("illarion:items", food.leftover));
-					User:createItem( leftover:getMetadata("id"), 1, 333,0);
+                    User:createItem( leftover:getMetadata("id"), 1, 3,0, 33);
 				end
 			end
 			-- inform the player

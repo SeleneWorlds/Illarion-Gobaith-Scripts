@@ -136,7 +136,7 @@ end
 --  @return boolean - true in case all items were created properly
 function M.GiveCoinsToChar(char, gCoins, sCoins, cCoins)
     if (gCoins > 0) then
-        local notCreated = char:createItem(GoldCoinsID, gCoins, 333, nil)
+        local notCreated = char:createItem(GoldCoinsID, gCoins, 3, nil, 33)
         if (notCreated > 0) then
             char:eraseItem(GoldCoinsID, gCoins - notCreated)
             return false
@@ -144,7 +144,7 @@ function M.GiveCoinsToChar(char, gCoins, sCoins, cCoins)
     end
 
     if (sCoins > 0) then
-        local notCreated = char:createItem(SilverCoinsID, sCoins, 333, nil)
+        local notCreated = char:createItem(SilverCoinsID, sCoins, 3, nil, 33)
         if (notCreated > 0) then
             char:eraseItem(SilverCoinsID, sCoins - notCreated)
             if (gCoins > 0) then
@@ -155,7 +155,7 @@ function M.GiveCoinsToChar(char, gCoins, sCoins, cCoins)
     end
 
     if (cCoins > 0) then
-        local notCreated = char:createItem(CopperCoinsID, cCoins, 333, nil)
+        local notCreated = char:createItem(CopperCoinsID, cCoins, 3, nil, 33)
         if (notCreated > 0) then
             char:eraseItem(CopperCoinsID, cCoins - notCreated)
             if (sCoins > 0) then
@@ -198,27 +198,27 @@ function M.GiveCoinsToPosition(pos, gCoins, sCoins, cCoins)
     local noData = {}
 
     while (cCoins > maxStack) do
-        world:createItemFromId(CopperCoinsID, maxStack, pos, true, 333, noData)
+        world:createItemFromId(CopperCoinsID, maxStack, pos, true, 3, noData, 33)
         cCoins = cCoins - maxStack
     end
     if (cCoins > 0) then
-        world:createItemFromId(CopperCoinsID, cCoins, pos, true, 333, noData)
+        world:createItemFromId(CopperCoinsID, cCoins, pos, true, 3, noData, 33)
     end
 
     while (sCoins > maxStack) do
-        world:createItemFromId(SilverCoinsID, maxStack, pos, true, 333, noData)
+        world:createItemFromId(SilverCoinsID, maxStack, pos, true, 3, noData, 33)
         sCoins = sCoins - maxStack
     end
     if (sCoins > 0) then
-        world:createItemFromId(SilverCoinsID, sCoins, pos, true, 333, noData)
+        world:createItemFromId(SilverCoinsID, sCoins, pos, true, 3, noData, 33)
     end
 
     while (gCoins > maxStack) do
-        world:createItemFromId(GoldCoinsID, maxStack, pos, true, 333, noData)
+        world:createItemFromId(GoldCoinsID, maxStack, pos, true, 3, noData, 33)
         gCoins = gCoins - maxStack
     end
     if (gCoins > 0) then
-        world:createItemFromId(GoldCoinsID, gCoins, pos, true, 333, noData)
+        world:createItemFromId(GoldCoinsID, gCoins, pos, true, 3, noData, 33)
     end
 end
 

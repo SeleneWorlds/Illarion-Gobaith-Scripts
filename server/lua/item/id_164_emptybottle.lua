@@ -15,7 +15,7 @@ function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
             --User:inform("milking");
             -- replace by bottle with sheep milk
             world:erase(SourceItem,1)
-            User:createItem(330,1,333,0)
+            User:createItem(330,1,3,0, 33)
         end
     end
 end

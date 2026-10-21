@@ -106,7 +106,7 @@ function M.callEffect(fireEffect, NPC)
             --while world:isItemOnField( flamePos ) do
                 --world:erase( world:getItemOnField( flamePos ), 1 );
             --end;
-            flame = world:createItemFromId( 359, 1, flamePos, true, 999, 0);
+            flame = world:createItemFromId( 359, 1, flamePos, true, 9, {data = 0, magicStrength = 999}, 99);
             flame.wear = 1;
             world:changeItem( flame );
 
@@ -120,7 +120,7 @@ function M.callEffect(fireEffect, NPC)
                                 burnPos = position(x,y,z);
                                 if (world:isItemOnField( burnPos ) and not M.isFireOnField( burnPos )) and M.isBurnableField( burnPos ) then
                                     -- NPC:talk(CCharacter.say,"Neues Feuer!");
-                                    world:createItemFromId( 359, 1, burnPos, true, 999, 0);
+                                    world:createItemFromId( 359, 1, burnPos, true, 9, {data = 0, magicStrength = 999}, 99);
                                     nextFree = lstNo + 1;
                                     fireEffect:addValue("fireX"..nextFree,x+100000);
                                     fireEffect:addValue("fireY"..nextFree,y+100000);

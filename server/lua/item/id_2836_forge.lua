@@ -157,14 +157,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if (User:countItemAt("belt",22)>0) then
         User:eraseItem(22,1);
         User:eraseItem(21,1);
-        notCreated = User:createItem(2535,1,333,0);
+        notCreated = User:createItem(2535,1,3,0, 33);
         if (notCreated > 0) then
             if (SourceItem.id == 2835) then
                 SourceItem.wear = 255;
                 SourceItem.id = 2836;
                 world:changeItem(SourceItem);
             end
-            world:createItemFromId( 2535, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 2535, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
@@ -177,14 +177,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     elseif (User:countItemAt("belt",2536)>0) then
         User:eraseItem(2536,1);
         User:eraseItem(21,1);
-        notCreated = User:createItem(2550,1,333,0);
+        notCreated = User:createItem(2550,1,3,0, 33);
         if (notCreated > 0) then
             if (SourceItem.id == 2835) then
                SourceItem.wear = 255;
                SourceItem.id = 2836;
                world:changeItem(SourceItem);
             end
-            world:createItemFromId( 2550, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 2550, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
@@ -197,14 +197,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     elseif (User:countItemAt("belt",234)>0) then
         User:eraseItem(234,1);
         User:eraseItem(21,1);
-        notCreated = User:createItem(236,1,333,0);
+        notCreated = User:createItem(236,1,3,0, 33);
         if (notCreated > 0) then
             if (SourceItem.id == 2835) then
                SourceItem.wear = 255;
                SourceItem.id = 2836;
                world:changeItem(SourceItem);
             end
-            world:createItemFromId( 236, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 236, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
@@ -220,14 +220,14 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         if math.random(3) == 1 then
             User:eraseItem(2553,1);
         end;
-        notCreated = User:createItem(2571,1,333,0);
+        notCreated = User:createItem(2571,1,3,0, 33);
         if (notCreated > 0) then
             if (SourceItem.id == 2835) then
                 SourceItem.wear = 255;
                 SourceItem.id = 2836;
                 world:changeItem(SourceItem);
             end
-            world:createItemFromId( 2571, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 2571, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");

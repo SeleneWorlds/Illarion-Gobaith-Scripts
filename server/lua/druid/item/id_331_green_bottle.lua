@@ -28,7 +28,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                 "Die Flasche zerbricht.",
                 "The bottle breaks.");
             else
-                User:createItem( 164, 1, 333, 0 );
+                User:createItem( 164, 1, 3, 0 , 33);
             end
 
             return
@@ -58,7 +58,7 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
             "Die Flasche zerbricht.",
             "The bottle breaks.");
         else
-            User:createItem( 164, 1, 333,0);
+            User:createItem( 164, 1, 3,0, 33);
         end
 
         User:LTIncreaseHP(500,14,2);
@@ -136,14 +136,15 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
 	if (SourceItem.number == 1) then
 		SourceItem.id = 164;
-		SourceItem.quality = 111;
+        SourceItem.quality = 1;
+        SourceItem.durability = 11;
 		SourceItem.data = 0;
 		world:changeItem( SourceItem );
     else
         world:erase( SourceItem, 1 );
-        local notcreated = User:createItem( 164, 1, 111, 0 );
+        local notcreated = User:createItem( 164, 1, 1, 0 , 11);
         if (notcreated > 0) then
-            world:createItemFromId( 164, 1, User.pos, true, 111, 0 );
+            world:createItemFromId( 164, 1, User.pos, true, 1, 0 , 11);
         end
     end
 

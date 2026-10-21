@@ -15,20 +15,20 @@ function M.Dropping(Char)
                 local quality = math.random(item.minQuality, item.maxQuality)
                 local durability = math.random(item.minDurability, item.maxDurability)
                 world:createItemFromId(item.itemId, amount, Char.pos, true,
-                    quality * 100 + durability, item.data)
+                    quality, item.data, durability)
             end
         end
         if FirstThief then
             if (StealAmmG[Char.id]~=nil and StealAmmG[Char.id]>0) then
-                world:createItemFromId(61,StealAmmG[Char.id],Char.pos,true,333,0);
+                world:createItemFromId(61,StealAmmG[Char.id],Char.pos,true,3,0, 33);
                 StealAmmG[Char.id]=nil;
             end;
             if (StealAmmS[Char.id]~=nil and StealAmmS[Char.id]>0) then
-                world:createItemFromId(3077,StealAmmS[Char.id],Char.pos,true,333,0);
+                world:createItemFromId(3077,StealAmmS[Char.id],Char.pos,true,3,0, 33);
                 StealAmmS[Char.id]=nil;
             end
             if (StealAmmK[Char.id]~=nil and StealAmmK[Char.id]>0) then
-                world:createItemFromId(3076,StealAmmK[Char.id],Char.pos,true,333,0);
+                world:createItemFromId(3076,StealAmmK[Char.id],Char.pos,true,3,0, 33);
                 StealAmmK[Char.id]=nil;
             end
         end
@@ -36,7 +36,7 @@ function M.Dropping(Char)
         for i,CheckItemItemid in pairs(checkItems) do
             ItemCnt = Char:countItem(CheckItemItemid);
             if (ItemCnt > 0) then
-                world:createItemFromId(CheckItemItemid,ItemCnt,Char.pos,true,222,0);
+                world:createItemFromId(CheckItemItemid,ItemCnt,Char.pos,true,2,0, 22);
             end
         end
     end
@@ -134,11 +134,11 @@ function M.CastMonMagic(Monster,Enemy,rndTry,DamageRange,Effect,Item,AP,LineOfFl
                     if world:isItemOnField( targetPos ) then
                         local foundItem = world:getItemOnField( targetPos );
                         if ( foundItem.id == Item[EffectTry-#Effect][1] ) then
-                            foundItem.quality = math.min( Item[EffectTry-#Effect][3], foundItem.quality + Item[EffectTry-#Effect][2] );
+                            foundItem:setData("magicStrength", math.min(Item[EffectTry-#Effect][3], (tonumber(foundItem:getData("magicStrength")) or 333) + Item[EffectTry-#Effect][2]));
                             return false;
                         end
                     end
-                    world:createItemFromId(Item[EffectTry-#Effect][1],1,targetPos,true,math.random(Item[EffectTry-#Effect][2],Item[EffectTry-#Effect][3]),Item[EffectTry-#Effect][4]);
+                    world:createItemFromId(Item[EffectTry-#Effect][1],1,targetPos,true,3,{data = Item[EffectTry-#Effect][4], magicStrength = math.random(Item[EffectTry-#Effect][2],Item[EffectTry-#Effect][3])});
                     if ( Item[EffectTry-#Effect][5] > 0 ) then
                         world:makeSound(Item[EffectTry-#Effect][5],targetPos);
                     end

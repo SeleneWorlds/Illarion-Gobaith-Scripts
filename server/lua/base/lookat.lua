@@ -104,8 +104,8 @@ function M.GetItemDescription(User,Item,material,Weapon,Priest)
     -- calculate values
 
    -- decode item quality, extract duration
-    local itemDura=(Item.quality % 100);
-    local itemQual=(Item.quality-itemDura)/100;
+    local itemDura=Item.durability;
+    local itemQual=Item.quality;
     --User:inform("qual");
 
     if not ((User:getItemAt(5).id == 336) or (User:getItemAt(6).id == 336)) then

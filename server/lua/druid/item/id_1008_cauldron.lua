@@ -48,7 +48,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
         -- Wenn es eine leere Flasche ist werden default Werte verwendet.
         local bottleData = ( bottleInHand.id == 164 and 55555555 or bottleInHand.data );
-        local bottleQual = ( bottleInHand.id == 164 and 999 or bottleInHand.quality );
+        local bottleQual = ( bottleInHand.id == 164 and 9 or bottleInHand.quality );
 
         -- Und wir generieren eine Liste die jeden Eintrag des Datawertes einzeln enthält
         local dataZList = alchemy.SplitBottleData(User,bottleData);
@@ -67,6 +67,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         bottleInHand.id = 331;
         -- Die Qualität des Sudes richtet sich nach der niedrigsten Qualität der benutzten Pflanzen
         bottleInHand.quality = math.min(bottleQual,plantInHand.quality);
+        bottleInHand.durability = 99;
         bottleInHand.data = bottleData;
         -- Hier noch einen Text einbauen, dass man gerade eine Pflanze verarbeitet...
         world:changeItem(bottleInHand);

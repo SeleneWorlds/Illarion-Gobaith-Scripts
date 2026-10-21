@@ -34,7 +34,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 --Caster:inform("debug #15.4")
   --Quality eines Items feststellen
   M.unitDecleration()
-  ergebnis = math.floor(TargetItem.quality/100)
+  ergebnis = TargetItem.quality
   common.InformNLS( Caster,
                 "#b|0|0|die Prüfung ergibt eine "..ListDE[ergebnis].." Qualität",
                 "#b|0|0|this inspection results a "..ListEN[ergebnis].." quality" )

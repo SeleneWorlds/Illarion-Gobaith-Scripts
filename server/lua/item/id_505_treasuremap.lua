@@ -8,7 +8,7 @@ function M.LookAtItem(User, Item)
 
     local dir = base_treasure.getDirection( User, Item );
     local distance = base_treasure.getDistance (User, Item );
-    local TreasureName = base_treasure.GetTreasureName( math.floor(Item.quality/100), User:getPlayerLanguage(), not dir );
+    local TreasureName = base_treasure.GetTreasureName( Item.quality, User:getPlayerLanguage(), not dir );
 
     if not dir then
         common.InformNLS( User,

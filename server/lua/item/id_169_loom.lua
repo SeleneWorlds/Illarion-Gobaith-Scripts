@@ -86,9 +86,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     User:eraseItem(170,5); --takes 5 wool to produce 1 unit of cloth
-    local notcreated = User:createItem(176,1,333,0);
+    local notcreated = User:createItem(176,1,3,0, 33);
     if (notcreated > 0) then
-        world:createItemFromId( 176, 1, User.pos, true, 333 ,0);
+        world:createItemFromId( 176, 1, User.pos, true, 3 ,0, 33);
         common.InformNLS(User,
         "Du kannst nichts mehr halten.",
         "You can't carry any more.");

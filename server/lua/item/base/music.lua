@@ -15,7 +15,7 @@ function M.new()
 
     function music.PlayInstrument(User,Item,Skill)
         local Skl=User:getSkill(Skill);
-        local Qual=math.floor(Item.quality/100);
+        local Qual=Item.quality;
         local PlayVal=common.Limit(math.floor((Skl+(Qual*5))/120*#talkTexts*(math.random(8,13)/10)),1,#talkTexts);
         User:talkLanguage( CCharacter.say, CPlayer.german, talkTexts[PlayVal][2]);
         User:talkLanguage( CCharacter.say, CPlayer.english, talkTexts[PlayVal][1]);

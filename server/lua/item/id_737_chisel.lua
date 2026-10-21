@@ -94,10 +94,10 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                
     if (User:countItemAt("belt",735)>0) then
         User:eraseItem( 735, 1 ); -- roher Stein weg.
-        local notCreated = User:createItem( 733, 1, 333 ,0); -- behauener Stein her.
+        local notCreated = User:createItem( 733, 1, 3 ,0, 33); -- behauener Stein her.
         local stop_working = false;
         if ( notCreated > 0 ) then
-            world:createItemFromId( 733, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 733, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
@@ -108,9 +108,9 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         end
     elseif (User:countItemAt("belt",733)>0) then
         User:eraseItem( 733, 1 ); -- roher Stein weg.
-        local notCreated = User:createItem( 1266, 25, 333 ,0); -- kleine Steiner erstellen.
+        local notCreated = User:createItem( 1266, 25, 3 ,0, 33); -- kleine Steiner erstellen.
         if ( notCreated > 0 ) then
-            world:createItemFromId( 1266, notCreated, User.pos, true, 333 ,0);
+            world:createItemFromId( 1266, notCreated, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");

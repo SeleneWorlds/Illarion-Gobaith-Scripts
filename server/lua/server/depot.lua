@@ -2,7 +2,7 @@ local common = require("base.common")
 local M = {}
 
 function M.onOpenDepot( User, Depot )
-    if ( ( Depot.quality == 1111 ) and not ( Depot.data == User.id ) ) then
+    if ( ( Depot:getData("personalDepot") == "true" ) and not ( Depot.data == User.id ) ) then
         common.InformNLS(User,
         "Ihr schafft es nicht diese Kiste zu öffnen.",
         "You fail to open this depot.");

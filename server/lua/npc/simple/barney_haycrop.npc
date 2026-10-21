@@ -35,8 +35,8 @@ QuestId=22
 
 --Quest Related--
 
-"Locket", queststatus=1 -> "A locket you say... what a coincidence; I found one a few days ago... here, I trust you'll give it to the right owner", queststatus=2, item(222,1,199,0)
-"Medaillon", queststatus=1 -> "Ein Medaillon, sagt ihr? Was für ein Zufall, ich habe eines vor einigen Tagen gefunden. Hier, ich vertraue darauf, dass ihr es dem rechtmäßigen Eigentümer übergebt.", queststatus=2, item(222,1,199,0)
+"Locket", queststatus=1 -> "A locket you say... what a coincidence; I found one a few days ago... here, I trust you'll give it to the right owner", queststatus=2, item(222,1,1,0, 99)
+"Medaillon", queststatus=1 -> "Ein Medaillon, sagt ihr? Was für ein Zufall, ich habe eines vor einigen Tagen gefunden. Hier, ich vertraue darauf, dass ihr es dem rechtmäßigen Eigentümer übergebt.", queststatus=2, item(222,1,1,0, 99)
 
 --Cycles--
 

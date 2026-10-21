@@ -29,11 +29,11 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     local target = common.GetFrontPosition(User);
     
     local itemId = tonumber(spoken);
-    local itemQual = 333;
+    local itemQual = 3;
     local itemData = 0;
     
     if (alchemy.plantDataListById ~= nil and alchemy.plantDataListById[itemId] ~= nil) then
-        itemQual = common.NormalRnd(111, 999);
+        itemQual = common.NormalRnd(1, 9);
         itemData = alchemy.plantDataListById[itemId];
     end;
     
@@ -60,7 +60,7 @@ function M.UseItemWithField(User,SourceItem,TargetPos,Counter,Param)
         end;
         User:sendMenu(MyMen);
     else
-        quality = common.NormalRnd(111, 999);
+        quality = common.NormalRnd(1, 9);
         world:createItemFromId(Param, 1, TargetPos, true, quality, 0);
         User:inform("ItemID: "..Param.." mit Qual.: "..quality)
     end;

@@ -16,20 +16,20 @@ wrongLangDE = "#me sieht dich leicht verwirrt an"
 wrongLangUS = "#me looks at you a little confused"
 
 -- Trade offers and requests; stock and trader cash are unlimited.
-sellItem = id(155), price(5), stack(1), quality(333)
-sellItem = id(2744), price(75), stack(1), quality(555)
-sellItem = id(1909), price(12), stack(1), quality(550)
+sellItem = id(155), price(5), stack(1), quality(3), durability(33)
+sellItem = id(2744), price(75), stack(1), quality(5), durability(55)
+sellItem = id(1909), price(12), stack(1), quality(5), durability(50)
 buyPrimaryItem = id(1909), price(8)
 buyPrimaryItem = id(1318), price(15)
-sellItem = id(332), price(400), stack(1), quality(555)
+sellItem = id(332), price(400), stack(1), quality(5), durability(55)
 buyPrimaryItem = id(332), price(80)
-sellItem = id(335), price(500), stack(1), quality(555)
+sellItem = id(335), price(500), stack(1), quality(5), durability(55)
 buyPrimaryItem = id(335), price(100)
-sellItem = id(333), price(40), stack(1), quality(555)
+sellItem = id(333), price(40), stack(1), quality(5), durability(55)
 buyPrimaryItem = id(333), price(6)
-sellItem = id(150), price(40), stack(1), quality(555), de("fir seedling"), en("fir seedling")
+sellItem = id(150), price(40), stack(1), quality(5), durability(55), de("fir seedling"), en("fir seedling")
 buyPrimaryItem = id(150), price(3)
-sellItem = id(51), price(55), stack(1), quality(555)
+sellItem = id(51), price(55), stack(1), quality(5), durability(55)
 buyPrimaryItem = id(51), price(5)
 
 "[ww]hat.+sell", "[dd]o%s+you%s+sell%f[^%w]" -> "I don't sell anything, but I trade plants, pipes, beer, elven wine, baby fir trees, buckets, and nice noise-makers for those shiny things", trade_buy

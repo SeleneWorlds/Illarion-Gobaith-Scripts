@@ -43,22 +43,22 @@ direction=west
 "nein","nicht", state=1 -> "Nagut, dann komm einfach wieder, wenn du es willst.", state=0
 "no", state=1           -> "Well, then come back when you want to learn it.", state=0
 
-"ja", state=1 -> "Dann gebe ich dir erstmal alles was du brauchst. Packe den Sand und die Pottasche in deinen Gürtel und halte das Glasblasrohr in der Hand. Nun gehe zum Glasschmelzofen und 'benutze' ihn, um Glasblöcke herzustellen. Komm wieder, wenn du mindestens einen Glasblock hast.", item(316,10,333,0), item(314,10,333,0), item(311,1,999,0), state=2
-"yes", state=1 -> "Then I will give you everything you need. Put the sand and the potash in the belt and hold the glass blow pipe in your hand. Then go to the glass melting oven and 'use' it in order to make glass ingots. Come again, when you have at least one ingot.", item(316,10,333,0), item(314,10,333,0), item(311,1,999,0), state=2
+"ja", state=1 -> "Dann gebe ich dir erstmal alles was du brauchst. Packe den Sand und die Pottasche in deinen Gürtel und halte das Glasblasrohr in der Hand. Nun gehe zum Glasschmelzofen und 'benutze' ihn, um Glasblöcke herzustellen. Komm wieder, wenn du mindestens einen Glasblock hast.", item(316,10,3,0, 33), item(314,10,3,0, 33), item(311,1,9,0, 99), state=2
+"yes", state=1 -> "Then I will give you everything you need. Put the sand and the potash in the belt and hold the glass blow pipe in your hand. Then go to the glass melting oven and 'use' it in order to make glass ingots. Come again, when you have at least one ingot.", item(316,10,3,0, 33), item(314,10,3,0, 33), item(311,1,9,0, 99), state=2
 
 -- STATE 2
-"asche", state>1, item(314,all)=0 -> "Du hast ja gar keine Pottasche mehr! Na dann, hier hast du noch welche.", item(314,5,333,0)
-"ash", state>1, item(314,all)=0 -> "You don't have any ash any more! Well then, here is some more.", item(314,5,333,0)
+"asche", state>1, item(314,all)=0 -> "Du hast ja gar keine Pottasche mehr! Na dann, hier hast du noch welche.", item(314,5,3,0, 33)
+"ash", state>1, item(314,all)=0 -> "You don't have any ash any more! Well then, here is some more.", item(314,5,3,0, 33)
 
-"sand", state>1, german, item(316,all)=0 -> "Du hast ja gar keinen Sand mehr! Na dann, hier hast du noch welchen.", item(316,5,333,0)
-"sand", state>1, item(314,all)=0 -> "You don't have any sand any more! Well then, here is some more.", item(316,5,333,0)
+"sand", state>1, german, item(316,all)=0 -> "Du hast ja gar keinen Sand mehr! Na dann, hier hast du noch welchen.", item(316,5,3,0, 33)
+"sand", state>1, item(314,all)=0 -> "You don't have any sand any more! Well then, here is some more.", item(316,5,3,0, 33)
 
-"rohr", state>1, item(311,all)=0 -> "Du hast ja gar kein Glasblasrohr mehr! Na dann, hier hast du noch eines.", item(311,1,999,0)
-"pipe", state>1, item(311,all)=0 -> "You don't have a glass blowing pipe any more! Well then, here is one more.", item(311,1,999,0)
+"rohr", state>1, item(311,all)=0 -> "Du hast ja gar kein Glasblasrohr mehr! Na dann, hier hast du noch eines.", item(311,1,9,0, 99)
+"pipe", state>1, item(311,all)=0 -> "You don't have a glass blowing pipe any more! Well then, here is one more.", item(311,1,9,0, 99)
 
 -- STATE 3
-"bl[öo]ck", "bloeck", state>2, item(41,all)=0 -> "Du hast ja gar keinen Glasblock mehr! Na dann, hier hast du noch welche.", item(41,5,333,0)
-"ingot", state>2, item(41,all)=0 -> "You don't have any glass ingots any more! Well then, here are some more.", item(41,5,333,0)
+"bl[öo]ck", "bloeck", state>2, item(41,all)=0 -> "Du hast ja gar keinen Glasblock mehr! Na dann, hier hast du noch welche.", item(41,5,3,0, 33)
+"ingot", state>2, item(41,all)=0 -> "You don't have any glass ingots any more! Well then, here are some more.", item(41,5,3,0, 33)
 
 "bl[öo]ck", "bloeck", state>2 -> "Glasblöcke sind die Grundlage für das Glasblasen. Du brauchst nur Pottasche, Sand und einen Glasschmelzofen, um welche herzustellen. Falls du aber keine mehr hast und weitermachen willst, kann ich dir welche geben."
 "ingot", state>2 -> "Glass ingots are a necessity for glass blowing. You just need potash, sand and a glass melting oven to produce them. If you have no ingots any more and you want to continue, I can give you a couple."

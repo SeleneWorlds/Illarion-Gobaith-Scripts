@@ -99,14 +99,14 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
                  
     User:eraseItem( 249, 1 ); -- Getreidebündel wegnehmen
     amount = M.GenAmount(User);
-    local notCreated = User:createItem( 259, amount, 333 ,0); -- Getreidekörner erstellen
+    local notCreated = User:createItem( 259, amount, 3 ,0, 33); -- Getreidekörner erstellen
 		if ( amount==0) then
 			common.InformNLS(User,
 			"Du verschüttest etwas Getreide.",
 			"You spill some grain.");
 		else
     		if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-        		world:createItemFromId( 259, notCreated, User.pos, true, 333 ,0);
+                world:createItemFromId( 259, notCreated, User.pos, true, 3 ,0, 33);
         		common.InformNLS(User,
         		"Du kannst nichts mehr halten.",
         		"You can't carry any more.");

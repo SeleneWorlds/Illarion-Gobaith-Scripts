@@ -8,7 +8,7 @@ function M.useTile(User,Position,counter,param)
     User:talkLanguage(CCharacter.say, CPlayer.german, "#me formt einen Schneeball.");
     User:talkLanguage(CCharacter.say, CPlayer.english,"#me makes a snowball.");
 
-    User:createItem(456,1,333,0);
+    User:createItem(456,1,3,0, 33);
 end
 
 return M

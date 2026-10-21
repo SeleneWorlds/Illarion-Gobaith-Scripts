@@ -90,7 +90,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
 
     User:eraseItem( 431, 1 );
-    User:createItem(43,1,333,0);
+    User:createItem(43,1,3,0, 33);
 
     if common.ToolBreaks( User, SourceItem, true ) then
         common.InformNLS(User,

@@ -12,19 +12,19 @@ autointroduce = on
 useMsgDE = "Finger weg!"
 useMsgUS = "Don't you touch me!"
 
-sellItem = id(553), price(2), stack(1), quality(333)
+sellItem = id(553), price(2), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(553), price(1)
-sellItem = id(2934), price(2), stack(1), quality(333)
+sellItem = id(2934), price(2), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(2934), price(1)
-sellItem = id(552), price(2), stack(1), quality(333)
+sellItem = id(552), price(2), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(552), price(1)
-sellItem = id(307), price(2), stack(1), quality(333)
+sellItem = id(307), price(2), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(307), price(1)
-sellItem = id(306), price(3), stack(1), quality(333)
+sellItem = id(306), price(3), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(306), price(2)
-sellItem = id(2940), price(3), stack(1), quality(333)
+sellItem = id(2940), price(3), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(2940), price(2)
-sellItem = id(3051), price(3), stack(1), quality(333)
+sellItem = id(3051), price(3), stack(1), quality(3), durability(33)
 buyPrimaryItem = id(3051), price(2)
 
 "was.+verkaufe", "[ww]as.+verkauf" -> "Ich verkaufe alle Arten von Fleisch: Kaninchen, Lamm, Rehe und Schweinefleisch für nur 2 Kupfer jeder. Schinken, Steak und Würste kosten 3 jeder.", trade_buy

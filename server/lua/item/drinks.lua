@@ -27,7 +27,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
         common.InformNLS( User, "Das alte Geschirr ist nicht mehr brauchbar.", "The old dishes are no longer usable.");
     else
         local leftover = assert(Registries.findByName("illarion:items", food.leftover));
-        world:swap( SourceItem,leftover:getMetadata("id"),333);
+        world:swap( SourceItem,leftover:getMetadata("id"),3);
     end
     if ( food.alcohol == 0 ) then -- dein Alkohol
         if ( foodLevel > 40000 ) then 

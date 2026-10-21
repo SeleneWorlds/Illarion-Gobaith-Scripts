@@ -74,56 +74,56 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 
   if bottleInHand  == true and objectInHand == true then
 --   Dura-Wert ermitteln
-     qual = math.floor(TargetItem.quality/100)
-     dura = TargetItem.quality - qual*100
+     qual = TargetItem.quality
+     dura = TargetItem.durability
 
 --   Effekte für Metall:
      for zaehler = 1,#ListeObjMetall do
          if ListeObjMetall[zaehler]==TargetItem.id then
             wert = dataZList[1] -5
-            dura = dura + (wert*25*((Character:getSkill("smithing")+math.floor(SourceItem.quality/10))/100))
+            dura = dura + (wert*25*((Character:getSkill("smithing")+SourceItem.quality * 10)/100))
          end
      end
 --   Effekte für Nahrung:
      for zaehler = 1,#ListeObjNahrung do
          if ListeObjNahrung[zaehler]==TargetItem.id then
             wert = dataZList[2] -5
-            dura = dura + (wert*25*((Character:getSkill("baking")+math.floor(SourceItem.quality/10))/100))
+            dura = dura + (wert*25*((Character:getSkill("baking")+SourceItem.quality * 10)/100))
          end
      end
 --   Effekte für Leder:
      for zaehler = 1,#ListeObjLeder do
          if ListeObjLeder[zaehler]==TargetItem.id then
             wert = dataZList[3] -5
-            dura = dura + (wert*25*((Character:getSkill("tailoring")+math.floor(SourceItem.quality/10))/100))
+            dura = dura + (wert*25*((Character:getSkill("tailoring")+SourceItem.quality * 10)/100))
          end
      end
 --   Effekte für Edelsteine:
      for zaehler = 1,#ListeObjEdelstein do
          if ListeObjEdelstein[zaehler]==TargetItem.id then
             wert = dataZList[4] -5
-                   dura = dura + (wert*25*((Character:getSkill("goldsmithing")+math.floor(SourceItem.quality/10))/100))
+                   dura = dura + (wert*25*((Character:getSkill("goldsmithing")+SourceItem.quality * 10)/100))
          end
      end
 --   Effekte für Edelmetalle:
      for zaehler = 1,#ListeObjEdelMet do
          if ListeObjEdelMet[zaehler]==TargetItem.id then
             wert = dataZList[5] -5
-                   dura = dura + (wert*25*((Character:getSkill("smithing")+math.floor(SourceItem.quality/10))/100))
+                   dura = dura + (wert*25*((Character:getSkill("smithing")+SourceItem.quality * 10)/100))
          end
      end
 --   Effekte für Holz:
      for zaehler = 1,#ListeObjHolz do
          if ListeObjHolz[zaehler]==TargetItem.id then
             wert = dataZList[6] -5
-                   dura = dura + (wert*25*((Character:getSkill("carpentry")+math.floor(SourceItem.quality/10))/100))
+                   dura = dura + (wert*25*((Character:getSkill("carpentry")+SourceItem.quality * 10)/100))
          end
      end
 --   Effekte für Stoff:
      for zaehler = 1,#ListeObjStoff do
          if ListeObjStoff[zaehler]==TargetItem.id then
             wert = dataZList[7] -5
-                   dura = dura + (wert*25*((Character:getSkill("tailoring")+math.floor(SourceItem.quality/10))/100))
+                   dura = dura + (wert*25*((Character:getSkill("tailoring")+SourceItem.quality * 10)/100))
          end
      end
 --
@@ -131,7 +131,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
      for zaehler = 1,#ListeObjHorn do
          if ListeObjHorn[zaehler]==TargetItem.id then
             wert = dataZList[8] -5
-                   dura = dura + (wert*25*((Character:getSkill("tailoring")+math.floor(SourceItem.quality/10))/100))
+                   dura = dura + (wert*25*((Character:getSkill("tailoring")+SourceItem.quality * 10)/100))
          end
      end
 --
@@ -142,7 +142,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
         dura = 0
      end
 --
-     TargetItem.quality = qual*100 + dura
+     TargetItem.durability = math.min(99, dura)
      world:changeItem(TargetItem)
 --
   else
@@ -177,7 +177,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
         else
             -- Our lucky Character gets a empty bottle
             -- Lets create 1 bottle with ID 164, quality 333 and data 0
-            Character:createItem( 164, 1, 333,0);
+            Character:createItem( 164, 1, 3,0, 33);
         end
 
         -- since the Character failed to drink the potion we are done now
@@ -233,7 +233,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
     else
         -- Our lucky Character gets an empty bottle
         -- Lets create 1 bottle with ID 164, quality 333 and data 0
-        Character:createItem( 164, 1, 333,0);
+        Character:createItem( 164, 1, 3,0, 33);
     end
 
     -- now we slowly give the Character some mana
@@ -287,7 +287,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        if( math.random( 20 ) <= 1 ) then
          common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
        else
-         Character:createItem( 164, 1, 333,0);
+         Character:createItem( 164, 1, 3,0, 33);
        end
 
        Character.movepoints=Character.movepoints-50;

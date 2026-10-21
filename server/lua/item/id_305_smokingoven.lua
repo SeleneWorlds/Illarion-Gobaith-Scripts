@@ -94,9 +94,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if (User:countItemAt("all",307) > 0) then
         User:eraseItem( 307, 1 );
-        local notcreated = User:createItem(306, 1, 333 ,0 );
+        local notcreated = User:createItem(306, 1, 3 ,0 , 33);
         if (notcreated > 0) then
-            world:createItemFromId( 306, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 306, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
@@ -108,9 +108,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         end
     elseif (User:countItemAt("all",355) > 0) then
         User:eraseItem( 355, 1 );
-        local notcreated = User:createItem(455, 1, 333 ,0 );
+        local notcreated = User:createItem(455, 1, 3 ,0 , 33);
         if (notcreated > 0) then
-            world:createItemFromId( 455, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 455, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");
@@ -122,9 +122,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         end
     elseif (User:countItemAt("all",73) > 0) then
         User:eraseItem( 73, 1 );
-        local notcreated = User:createItem(455, 1, 333 ,0 );
+        local notcreated = User:createItem(455, 1, 3 ,0 , 33);
         if (notcreated > 0) then
-            world:createItemFromId( 455, 1, User.pos, true, 333 ,0);
+            world:createItemFromId( 455, 1, User.pos, true, 3 ,0, 33);
             common.InformNLS(User,
             "Du kannst nichts mehr halten.",
             "You can't carry any more.");

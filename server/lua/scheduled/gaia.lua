@@ -30,7 +30,7 @@ herbRolls:registerType("herb", function(entry, context)
         "Unknown Gaia herb item: " .. tostring(herb.item))
     local itemId = assert(item:getMetadata("id"), "Missing item ID: " .. herb.item)
     world:createItemFromId(itemId, 1, context.position, false,
-        math.random(111, 999), herb.data or 0)
+        math.random(1, 9), herb.data or 0)
 end, { type = "object", properties = {
     item = { type = "registry", registry = "illarion:items" },
     data = { type = "integer", optional = true }

@@ -65,7 +65,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
                         -- fill drink
                         if (TargetItem.number > 1) then
                             world:erase( TargetItem, 1 );
-                            User:createItem( combo[2], 1, 333,0);
+                            User:createItem( combo[2], 1, 3,0, 33);
                         else
                             TargetItem.id = combo[2];
                             world:changeItem(TargetItem);
@@ -73,9 +73,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
                         world:makeSound(10,User.pos)
 
                         -- create leftovers
-                        if( SourceItem.quality > 199 ) then
+                        if( SourceItem.quality > 1 ) then
                             -- reduce one portion
-                            world:changeQuality( SourceItem, -100 );
+                            world:changeQuality( SourceItem, -1 );
                         else
                             if( math.random( 50 ) <= 1 ) then
                                 common.InformNLS( User,
@@ -84,7 +84,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
                                 world:erase(SourceItem,1);
                             else
                                 SourceItem.id = food[3];
-                                SourceItem.quality = 333;
+                                SourceItem.quality = 3;
                                 world:changeItem(SourceItem);
                             end
                         end
@@ -140,8 +140,8 @@ function M.LookAtItem(User,Item)
         end
 
         -- decode item quality, extract duration
-        local itemDura=(Item.quality % 100);
-        local itemQual=(Item.quality-itemDura)/100;
+        local itemDura=Item.durability;
+        local itemQual=Item.quality;
         --User:inform("portions "..itemQual);
 
         -- build description

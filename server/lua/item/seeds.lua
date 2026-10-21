@@ -150,11 +150,11 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param )
     local chance = math.random( 100 );
       
     if( chance  < ( skillwert+seed[4] ) ) then
-        world:createItemFromId( seed[1], 1, TargetPos, false, 233 ,3);
+        world:createItemFromId( seed[1], 1, TargetPos, false, 2 ,3, 33);
     elseif ( chance  < ( skillwert+seed[3] ) ) then
-        world:createItemFromId( seed[1], 1, TargetPos, false, 233 ,2);
+        world:createItemFromId( seed[1], 1, TargetPos, false, 2 ,2, 33);
     else
-        world:createItemFromId( seed[1], 1, TargetPos, false, 233 ,1);
+        world:createItemFromId( seed[1], 1, TargetPos, false, 2 ,1, 33);
     end
 
     User:learn( 2, "peasantry", 2, 100 );
@@ -184,7 +184,7 @@ end
 
 function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
     if (SourceItem.data > 0) then
-        User:createItem( SourceItem.id, SourceItem.number * SourceItem.data, 333, 0 );
+        User:createItem( SourceItem.id, SourceItem.number * SourceItem.data, 3, 0 , 33);
 	world:erase( SourceItem, SourceItem.number );
 	return true;
     end

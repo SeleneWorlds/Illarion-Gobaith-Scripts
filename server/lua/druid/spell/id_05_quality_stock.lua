@@ -24,7 +24,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 --Caster:inform("debug #05.4")
 --Analyse eines Sudes auf Quality
   if TargetItem.id == 331 and TargetItem.data ~=0 then
-    qualstat = math.floor(TargetItem.quality/100)
+    qualstat = TargetItem.quality
 
 --  common.InformNLS(Caster,
 --     "#b|0|0|Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualität",

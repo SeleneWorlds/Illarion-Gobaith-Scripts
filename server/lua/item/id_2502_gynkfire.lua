@@ -5,9 +5,9 @@ local M = {}
 
 function M.LookAtItem(User,Item)
     if (User:getPlayerLanguage() == 0) then
-        world:itemInform(User,Item,( math.floor(Item.quality/100) == 2 and " brennendes " or "" ).."Gynkesisches Feuer.");
+        world:itemInform(User,Item,( Item.quality == 2 and " brennendes " or "" ).."Gynkesisches Feuer.");
     else
-        world:itemInform(User,Item,( math.floor(Item.quality/100) == 2 and " burning " or "" ).."Gynkese Fire.");
+        world:itemInform(User,Item,( Item.quality == 2 and " burning " or "" ).."Gynkese Fire.");
     end;
 end;
 
@@ -21,7 +21,7 @@ function M.Drop(User,Item)
 end;
 
 function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
-    if (math.floor(SourceItem.quality/100)==2) then
+    if (SourceItem.quality==2) then
         if (SourceItem:getType()==4 and (SourceItem.itempos==5 or SourceItem.itempos==6)) then
             return true;
         elseif (TargetItem:getType()~=3) then
@@ -38,7 +38,7 @@ function M.MoveItemBeforeMove(User, SourceItem, TargetItem)
 end;
 
 function M.MoveItemAfterMove(User, SourceItem, TargetItem)
-    if (math.floor(SourceItem.quality/100)==2) then
+    if (SourceItem.quality==2) then
         if (SourceItem:getType()==4 and (SourceItem.itempos==5 or SourceItem.itempos==6)) then
             if (TargetItem:getType()==3) then
                 M.Explode(TargetItem);
@@ -58,22 +58,22 @@ end;
 
 function M.UseItem(User,SourceItem,TargetItem,counter,param)
     local lang=User:getPlayerLanguage();
-    if (math.floor(SourceItem.quality/100)==2) then
+    if (SourceItem.quality==2) then
         M.InformChar(User,
         "Du löschst das Gynkesische Feuer.",
         "You put the Gynkese Fire out.");
-        SourceItem.quality=300+(SourceItem.quality-(math.floor(SourceItem.quality/100)*100));
+        SourceItem.quality=3;
     else
         M.InformChar(User,
         "Du zündest das Gynkesische Feuer an. Vorsicht damit.",
         "You light the Gynkese Fire up. Be careful with it.");
-        SourceItem.quality=200+(SourceItem.quality-(math.floor(SourceItem.quality/100)*100));        
+        SourceItem.quality=2;
     end;
     world:changeItem( SourceItem );
 end;
 
 function M.Explode(Item)    
-    local Strength=Item.quality - (math.floor(Item.quality/100)*100);
+    local Strength=Item.durability;
     M.CreateCircle( 1,M.Scale(  20, 100,Strength),Item.pos,3);
     M.CreateCircle( 9,M.Scale( 100, 500,Strength),Item.pos,2);
     M.CreateCircle(44,M.Scale(1000,3000,Strength),Item.pos,1);

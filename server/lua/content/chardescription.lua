@@ -135,9 +135,9 @@ function M.getClothesFactor(Char)
             multi=0;
         end
         itCount=itCount+multi;
-        thisQual=math.floor(thisIt.quality/100);
+        thisQual=thisIt.quality;
         sumQual=sumQual+multi*thisQual;
-        thisDura=thisIt.quality-100*thisQual;
+        thisDura=thisIt.durability;
         sumDura=sumDura+multi*thisDura;
     end
     return math.floor(sumQual/itCount), math.floor(sumDura/itCount);

@@ -30,14 +30,14 @@ M.SpellEffects = {
         ["removeItem"] = {  -- informations about the item(s) that shall be removed
             ["id"] = 359,            -- id of the item that should be created
             ["minSkill"] = {         -- values of the item at the minimal skill
-                ["quality"] = -200,  -- Item quality
+                ["strength"] = -200,  -- Spell strength
                 ["data"] = 0,        -- Item data
                 ["wear"] = 0,        -- Item wear
                 ["number"] = 0,      -- Item number
                 ["chance"] = 50      -- Chance that this Item is created
             },
             ["maxSkill"] = {         -- values of the item at the maximal skill
-                ["quality"] = -1000, -- Item quality
+                ["strength"] = -1000, -- Spell strength
                 ["data"] = 0,        -- Item data
                 ["wear"] = 0,        -- Item wear
                 ["number"] = 0,      -- Item number

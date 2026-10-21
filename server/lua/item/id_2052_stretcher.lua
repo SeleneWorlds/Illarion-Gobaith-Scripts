@@ -107,9 +107,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end;
 
             User:eraseItem(i,1); -- Rohleder oder Felle entfernen
-            notCreated = User:createItem(Leather,1,333,0); -- Leder erstellen
+            notCreated = User:createItem(Leather,1,3,0, 33); -- Leder erstellen
             if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-                world:createItemFromId( Leather, notCreated, User.pos, true, 333 ,0);
+                world:createItemFromId( Leather, notCreated, User.pos, true, 3 ,0, 33);
                 common.InformNLS(User,
                 "Du kannst nichts mehr halten.",
                 "You can't carry any more.");

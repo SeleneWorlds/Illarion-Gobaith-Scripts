@@ -51,6 +51,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
                 if SourceItem.data == 1 or (seasons[season] == 0 and not onNoobia) then
                     SourceItem.id = depleted
                     SourceItem.quality = output.quality
+                    SourceItem.durability = output.durability
                     SourceItem.data = 0
                     SourceItem.wear = onNoobia and 1 or math.floor(-3.6 * seasons[season] + 42)
                 elseif SourceItem.data == 0 then
@@ -61,6 +62,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
             else
                 SourceItem.id = depleted
                 SourceItem.quality = output.quality
+                    SourceItem.durability = output.durability
                 SourceItem.wear = math.floor(2 * seasons[season] + 22)
             end
             world:changeItem(SourceItem)

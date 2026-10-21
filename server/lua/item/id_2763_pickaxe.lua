@@ -61,14 +61,13 @@ end
 
 function M.breakRock(Rock, deposit)
     local RockPos=Rock.pos;
-    local RockQual=Rock.quality;
+    local RockQual=tonumber(Rock:getData("rockHealth")) or 333;
     local HitDMG=math.random(6,8);
     if (RockQual<HitDMG) then
-        world:swap(Rock,deposit:getField("depletedRock"),333);
+        world:swap(Rock,deposit:getField("depletedRock"),3);
         return true;
     else
-        if ((RockQual-HitDMG)==(math.floor(RockQual/100))*100) then HitDMG=HitDMG-1 end
-        world:changeQuality(Rock,-HitDMG)
+        Rock:setData("rockHealth", RockQual-HitDMG)
     end
     return false;
 end

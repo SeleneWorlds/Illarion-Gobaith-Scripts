@@ -57,7 +57,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
 --
     myEffect:addValue("illness",diagnose)
 --  Laufzeit nach Quality berechnen, maximal 999 Runden
-    myEffect:addValue("zaehler",SourceItem.quality)
+    myEffect:addValue("zaehler",SourceItem.quality * 100)
 
 --  Effekt an Char binden
     Character.effects:addEffect(myEffect);
@@ -78,6 +78,7 @@ function M.DoPoisoning(Character,SourceItem,TargetItem,Counter,Param)
       if TargetItem.id == ListPo[i] then
          TargetItem.data = SourceItem.data
          TargetItem.quality = SourceItem.quality
+         TargetItem.durability = SourceItem.durability
          world:changeItem(TargetItem)
          world:makeSound(12,Character.pos);
          world:gfx(5,Character.pos)
@@ -108,7 +109,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
 	 if( math.random( 20 ) <= 1 ) then
        common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
      else
-       Character:createItem( 164, 1, 333,0);
+       Character:createItem( 164, 1, 3,0, 33);
      end
 
      Character.movepoints=Character.movepoints-50;
@@ -149,7 +150,7 @@ function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
                     if( math.random( 50 ) <= 1 ) then
                         common.InformNLS( User, "Die Flasche zerbricht.", "The bottle breaks.");
                     else
-                        User:createItem( 164, 1, 333,0);
+                        User:createItem( 164, 1, 3,0, 33);
                     end
                     User:learn(5,SkillName,1,(3*AttribValDef)+40);
                     User.movepoints=User.movepoints-10;

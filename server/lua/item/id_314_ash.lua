@@ -12,31 +12,31 @@ function M.LookAtItem(User,Item)
     -- Skulls		-> 211
     -- Ghostskeleton    -> 231
 
-    if ( Item.quality == 101) then -- Mummie
+    if ( (tonumber(Item:getData("creature")) or 0) == 101) then -- Mummie
         if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"grünliche Asche");
         else
             world:itemInform(User,Item,"greenish ash");
         end
-    elseif ( Item.quality == 111 ) then -- Skeleton
+    elseif ( (tonumber(Item:getData("creature")) or 0) == 111 ) then -- Skeleton
         if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"rein weiße Asche");
         else
             world:itemInform(User,Item,"pure white ash");
         end
-    elseif ( Item.quality == 171 ) then -- Demonskeleton
+    elseif ( (tonumber(Item:getData("creature")) or 0) == 171 ) then -- Demonskeleton
         if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"rötliche Asche");
         else
             world:itemInform(User,Item,"reddish ash");
         end
-    elseif ( Item.quality == 211 ) then --Skulls
+    elseif ( (tonumber(Item:getData("creature")) or 0) == 211 ) then --Skulls
         if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"silbrige Asche");
         else
             world:itemInform(User,Item,"silverish ash");
         end
-    elseif ( Item.quality == 231 ) then --Ghostskeleton
+    elseif ( (tonumber(Item:getData("creature")) or 0) == 231 ) then --Ghostskeleton
         if (User:getPlayerLanguage() == 0) then
             world:itemInform(User,Item,"bläuliche Asche");
         else

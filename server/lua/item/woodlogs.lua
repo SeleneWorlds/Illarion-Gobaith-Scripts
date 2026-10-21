@@ -39,7 +39,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param)
     end
 
     if (SourceItem.number == 1) then
-        world:swap(SourceItem,298,333);
+        world:swap(SourceItem,298,3);
     else
         common.InformNLS( User,
         "Du kannst immer nur einen Stapel Holz aufschlichten.",

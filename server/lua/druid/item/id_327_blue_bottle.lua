@@ -53,7 +53,7 @@ function M.windtrank(User,SourceItem,TargetItem)
 	--Umwandlung normale Pfeile in Windpfeile
     world:erase(SourceItem,1)
     User:erase(TargetItem.id,5)
-    User:createItem(322,5,333,0)
+    User:createItem(322,5,3,0, 33)
 end
 
 function M.Explode(User,Item)
@@ -182,7 +182,7 @@ function M.MoveItemAfterMove(User, SourceItem, TargetItem)
         return; -- kein Wurfkörper
     end
 
-    if (math.floor(SourceItem.quality/1000)==1) then
+    if (SourceItem:getData("secured") == "true") then
         return; -- Wurfkörper gesichert
     end
 
@@ -212,7 +212,7 @@ function M.MoveItemBeforeMove( User, SourceItem, TargetItem )
         return true; -- kein Wurfkörper
     end
 
-    if (math.floor(SourceItem.quality/1000)==1) then
+    if (SourceItem:getData("secured") == "true") then
         return true; -- Wurfkörper gesichert
     end
 
@@ -237,7 +237,7 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 		if ( TargetItem.id == 64 ) and (User:countItem(64)>9) and (User:countItem(327)>0) then
 			User:eraseItem(64,10)
 			User:eraseItem(327,1)
-	        User:createItem(322,10,333,0);
+            User:createItem(322,10,3,0, 33);
 		else
 			common.InformNLS(User,"Du brauchst 10 Pfeile pro Windtrank und den Windtrank in deiner Tasche","You need 10 arrows per wind potion and the wind potion in your pocket!");
 		end
@@ -247,17 +247,17 @@ function M.UseItem(User,SourceItem,TargetItem,counter,param)
 			M.windtrank(User, SourceItem, TargetItem);
 
 		elseif M.checkMissile(SourceItem.data) then --das ist ein Wurfkörper
-			if (math.floor(SourceItem.quality/1000)==1) then -- Wurfkörper gesichert (qual: 1xxx) --> entsichern (qual: xxx)
+            if (SourceItem:getData("secured") == "true") then -- Wurfkörper gesichert (qual: 1xxx) --> entsichern (qual: xxx)
 				common.TempInformNLS( User,
 				"Du entsicherst des Wurfkörper. Vorsicht damit.",
 				"You activate the missle. Careful with it.");
-				SourceItem.quality = ( SourceItem.quality % 1000 );
+                SourceItem:setData("secured", nil);
 				world:changeItem( SourceItem );
 			else -- Wurfkörper entsichert --> sichern
 				common.TempInformNLS( User,
 				"Du sicherst den Wurfkörper.",
 				"You deactivate the missile.");
-				SourceItem.quality = ( SourceItem.quality % 1000 ) + 1000;
+                SourceItem:setData("secured", "true");
 				world:changeItem( SourceItem );
 			end
 		else

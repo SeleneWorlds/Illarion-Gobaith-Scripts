@@ -28,7 +28,7 @@ function M.CharacterOnField(User)
 			break
 		end
 	end
-    if (FieldItem.quality>100) then
+    if ((tonumber(FieldItem:getData("magicStrength")) or 333)>100) then
         UserRace=User:get_race();                  -- Char Rasse
         for i,theRace in pairs(AffectedRaces) do   -- Rassenliste durchlaufen
             if UserRace==theRace then              -- User Rasse finden
@@ -42,9 +42,9 @@ function M.CharacterOnField(User)
             PoisStrength=100;
         end
         resist=M.SpellResistence(User);      -- Magie Resistenz prüfen
-        if (resist<FieldItem.quality) then
-            damageDealt=math.random(math.floor((7/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)),math.floor((9/1000)*math.floor((FieldItem.quality-resist)*RaceStrenght)));--AffectedStren[i]
-            poisonDealt=math.random(math.floor((2/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))),math.floor((5/100)*math.floor((FieldItem.quality-resist)*(PoisStrength/20))));
+        if (resist<(tonumber(FieldItem:getData("magicStrength")) or 333)) then
+            damageDealt=math.random(math.floor((7/1000)*math.floor(((tonumber(FieldItem:getData("magicStrength")) or 333)-resist)*RaceStrenght)),math.floor((9/1000)*math.floor(((tonumber(FieldItem:getData("magicStrength")) or 333)-resist)*RaceStrenght)));--AffectedStren[i]
+            poisonDealt=math.random(math.floor((2/100)*math.floor(((tonumber(FieldItem:getData("magicStrength")) or 333)-resist)*(PoisStrength/20))),math.floor((5/100)*math.floor(((tonumber(FieldItem:getData("magicStrength")) or 333)-resist)*(PoisStrength/20))));
             User:increaseAttrib("hitpoints",-damageDealt);
 		User:setPoisonValue( common.Limit( (User:getPoisonValue() + poisonDealt) , 0, 10000) );
             --User:increasePoisonValue(poisonDealt);

@@ -12,8 +12,8 @@ local M = {}
 ]]
 function M.LockDoor(Door)
     if doors.CheckClosedDoor(Door.id) then
-        if (Door.quality == 233 and Door.data ~= 0) then
-            Door.quality = 333;
+        if (Door:getData("locked") ~= "true" and Door.data ~= 0) then
+            Door:setData("locked", "true");
             world:changeItem(Door);
             world:makeSound(19, Door.pos);
             return true;
@@ -33,8 +33,8 @@ end
 ]]
 function M.UnlockDoor(Door)
     if doors.CheckClosedDoor(Door.id) then
-        if (Door.quality ~= 233 and Door.data ~= 0) then
-            Door.quality = 233;
+        if (Door:getData("locked") == "true" and Door.data ~= 0) then
+            Door:setData("locked", nil);
             world:changeItem(Door);
             world:makeSound(20, Door.pos);
             return true;

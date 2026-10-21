@@ -309,12 +309,12 @@ function M.removeItemFromMap( ItemData, Target, CasterVal )
         return false;
     end
 
-    if ItemData.killIllusions and theItem.quality == 100 then
+    if ItemData.killIllusions and theItem:getData("illusion") == "true" then
         world:erase( theItem, theItem.number );
         return true;
     end
 
-    local qual = common.Round( common.Scale( ItemData.minSkill.quality, ItemData.maxSkill.quality, CasterVal ) );
+    local qual = common.Round( common.Scale( ItemData.minSkill.strength, ItemData.maxSkill.strength, CasterVal ) );
     local data = common.Round( common.Scale( ItemData.minSkill.data,    ItemData.maxSkill.data,    CasterVal ) );
     local wear = common.Round( common.Scale( ItemData.minSkill.wear,    ItemData.maxSkill.wear,    CasterVal ) );
     local numb = common.Round( common.Scale( ItemData.minSkill.number,  ItemData.maxSkill.number,  CasterVal ) );
@@ -325,8 +325,8 @@ function M.removeItemFromMap( ItemData, Target, CasterVal )
     end
 
     if (qual ~= 0 ) then
-        if ( theItem.quality + qual > 101 ) then
-            theItem.quality = theItem.quality + qual;
+        if ( (tonumber(theItem:getData("magicStrength")) or 333) + qual > 101 ) then
+            theItem:setData("magicStrength", (tonumber(theItem:getData("magicStrength")) or 333) + qual);
         else
             world:erase( theItem, theItem.number );
             return true;

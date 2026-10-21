@@ -65,14 +65,14 @@ end
 function M.GetQuality(level)
     local profile = definition(level)
     local quality, durability = profile:getField("quality"), profile:getField("durability")
-    return math.random(quality.min, quality.max) * 100 + math.random(durability.min, durability.max)
+    return math.random(quality.min, quality.max), math.random(durability.min, durability.max)
 end
 
 local function spawnItem(item, profile, pos)
     local quality = item.quality or profile:getField("quality")
     local durability = item.durability or profile:getField("durability")
     world:createItemFromId(item[1], item[2], pos, true,
-        math.random(quality.min, quality.max) * 100 + math.random(durability.min, durability.max), item[3])
+        math.random(quality.min, quality.max), item[3], math.random(durability.min, durability.max))
 end
 
     local treasureMonsters = {};
@@ -221,7 +221,7 @@ end
         local MapQuality
         if type(level) == "number" and level == math.floor(level)
             and Registries.findByMetadata("illarion:treasure_maps", "id", level) then
-            MapQuality = level * 100 + 99
+            MapQuality = level
         else
             local entries = {}
             for _, profile in pairs(Registries.findAll("illarion:treasure_maps")) do
@@ -231,7 +231,7 @@ end
             table.sort(entries, function(a, b) return a.data < b.data end)
             local selected = mapLevels:roll({ pools = {{ entries = entries }} })
             local selectedLevel = assert(selected[1], "No treasure levels available for maps").value
-            MapQuality = selectedLevel * 100 + 99
+            MapQuality = selectedLevel
         end
         common.CreateItem(Char, 505, 1, MapQuality, {x = MapPosition.x, y = MapPosition.y, z = MapPosition.z});
 		return true;
@@ -271,7 +271,7 @@ end
             return false;
         end
 
-        local treasureLevel = math.floor( mapItem.quality / 100 );
+        local treasureLevel = mapItem.quality;
         if ( treasureLevel > maxToFind ) then
             common.TempInformNLS( User,
             "Du bist nicht erfahren genug in der Bergarbeit um diesen Schatz auszugraben.",
@@ -321,9 +321,9 @@ end
     end
 
     function M.analyzeMap( Item )
-        local mapDiff=math.floor(Item.quality/100);
-        local mapPartsMax=math.floor((Item.quality % 100)/10);
-        local mapPartsThis=(Item.quality % 10);
+        local mapDiff=Item.quality;
+        local mapPartsMax=math.floor(Item.durability/10);
+        local mapPartsThis=(Item.durability % 10);
 
         return mapDiff, mapPartsMax, mapPartsThis
     end

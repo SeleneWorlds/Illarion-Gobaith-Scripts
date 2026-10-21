@@ -48,9 +48,9 @@ function M.CharacterOnField( User )
                 "You travel by the realm of magic." );
 
                 if ( SourceItem.wear ~= 255 ) then
-                    if ( SourceItem.quality < 900 ) then
-                        if ( SourceItem.quality > 200 ) then
-                            SourceItem.quality = SourceItem.quality - 100;
+                    if ( SourceItem.quality < 9 ) then
+                        if ( SourceItem.quality > 2 ) then
+                            SourceItem.quality = SourceItem.quality - 1;
                             world:changeItem( SourceItem );
                         else
                             world:erase( SourceItem, SourceItem.number );

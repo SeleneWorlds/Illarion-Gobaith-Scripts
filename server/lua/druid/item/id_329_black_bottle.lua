@@ -45,7 +45,7 @@ function M.DoDruidism(Character,SourceItem,TargetItem,Counter,Param)
            Character:move(6,true)
 
 --         Laufzeit nach Quality berechnen
-           myEffect:addValue("zaehler",SourceItem.quality)
+           myEffect:addValue("zaehler",SourceItem.quality * 100)
 
 --         Effekt an Char binden
            Character.effects:addEffect(myEffect);
@@ -76,7 +76,7 @@ function M.UseItem(Character,SourceItem,TargetItem,Counter,Param)
        if( math.random( 20 ) <= 1 ) then
          common.InformNLS( Character, "Die Flasche zerbricht.", "The bottle breaks.");
        else
-         Character:createItem( 164, 1, 333,0);
+         Character:createItem( 164, 1, 3,0, 33);
        end
 
        Character.movepoints=Character.movepoints-50;

@@ -48,24 +48,24 @@ function M.createdeathtree(Tree,User,Qual)
                 local createpos=position(Tree.pos.x-1,Tree.pos.y,Tree.pos.z)
                 M.CheckAndHit(position(Tree.pos.x-1,Tree.pos.y,Tree.pos.z));
                 M.CheckAndHit(createpos);
-                world:createItemFromId(fallen.west,1,createpos,true,Qual,0);
+                world:createItemFromId(fallen.west,1,createpos,true,3,{logCount = Qual});
             elseif (User.pos.x>Tree.pos.x) then
                 local createpos=position(Tree.pos.x+1,Tree.pos.y,Tree.pos.z);
                 M.CheckAndHit(createpos);
                 M.CheckAndHit(position(Tree.pos.x+2,Tree.pos.y,Tree.pos.z));
-                world:createItemFromId(fallen.east,1,createpos,true,Qual,0);
+                world:createItemFromId(fallen.east,1,createpos,true,3,{logCount = Qual});
             end
         else
             if (User.pos.y<Tree.pos.y) then
                 local createpos=position(Tree.pos.x,Tree.pos.y-1,Tree.pos.z)
                 M.CheckAndHit(createpos);
                 M.CheckAndHit(position(Tree.pos.x,Tree.pos.y-2,Tree.pos.z));
-                world:createItemFromId(fallen.north,1,createpos,true,Qual,0);
+                world:createItemFromId(fallen.north,1,createpos,true,3,{logCount = Qual});
             elseif (User.pos.y>Tree.pos.y) then
                 local createpos=position(Tree.pos.x,Tree.pos.y+1,Tree.pos.z)
                 M.CheckAndHit(position(Tree.pos.x,Tree.pos.y+1,Tree.pos.z));
                 M.CheckAndHit(createpos);
-                world:createItemFromId(fallen.south,1,createpos,true,Qual,0);
+                world:createItemFromId(fallen.south,1,createpos,true,3,{logCount = Qual});
             end
         end
     elseif DiffX then
@@ -74,9 +74,9 @@ function M.createdeathtree(Tree,User,Qual)
         M.CheckAndHit(createpos);
         M.CheckAndHit(position(createpos.x,createpos.y-1,createpos.z));
         if (Choose==0) then
-            world:createItemFromId(fallen.north,1,createpos,true,Qual,0);
+            world:createItemFromId(fallen.north,1,createpos,true,3,{logCount = Qual});
         else
-            world:createItemFromId(fallen.south,1,createpos,true,Qual,0);
+            world:createItemFromId(fallen.south,1,createpos,true,3,{logCount = Qual});
         end
     else
         local Choose=math.random(0,1);
@@ -84,9 +84,9 @@ function M.createdeathtree(Tree,User,Qual)
         M.CheckAndHit(createpos);
         M.CheckAndHit(position(createpos.x+1,createpos.y,createpos.z));
         if (Choose==1) then
-            world:createItemFromId(fallen.east,1,createpos,true,Qual,0);
+            world:createItemFromId(fallen.east,1,createpos,true,3,{logCount = Qual});
         else
-            world:createItemFromId(fallen.west,1,createpos,true,Qual,0);
+            world:createItemFromId(fallen.west,1,createpos,true,3,{logCount = Qual});
         end
     end
 end
@@ -236,18 +236,18 @@ function M.Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
 	end
     if (logs[ TargetItem.id ] == nil) then
 	    --if TargetItem.quality < 999 then
-	    --    TargetItem.quality = 999
+        --    TargetItem.quality = 9
 		--    world:changeItem(TargetItem);
         --end
         local Strength=User:increaseAttrib("strength",0);
         local DecreaseQual=math.floor((0.6*(Skill+Strength)+37)*math.random(8,12)/10);
-        local NewBaumQual=TargetItem.quality-DecreaseQual;
+        local NewBaumQual=(tonumber(TargetItem:getData("treeHealth")) or 333)-DecreaseQual;
         if (NewBaumQual<=100) then
-            local GenericQual=math.max(1,math.ceil((Skill/100)*trees[TargetItem.id]:getField("maxLogs")))+300;
+            local GenericQual=math.max(1,math.ceil((Skill/100)*trees[TargetItem.id]:getField("maxLogs")));
             M.createdeathtree(TargetItem,User,GenericQual);
             world:erase(TargetItem,1);
             if (math.random(100)>5) or User.pos.z == 100 or User.pos.z == 101 then -- no dying trees on Noobia!
-                world:createItemFromId(trees[TargetItem.id]:getField("stump"),1,TargetItem.pos,true,333,0)
+                world:createItemFromId(trees[TargetItem.id]:getField("stump"),1,TargetItem.pos,true,3,0, 33)
             else
                 common.InformNLS( User,
                 "Der Baum ist zu schwach um erneut zu wachsen. Er stirbt.",
@@ -255,24 +255,22 @@ function M.Lumberjack( User, SourceItem, TargetItem, Counter, Param, ltstate )
             end
             return false;
         else
-            if ((NewBaumQual/100) == math.floor(NewBaumQual/100)) then
-                NewBaumQual = NewBaumQual - 1;
-            end
-            TargetItem.quality=NewBaumQual;
+            TargetItem:setData("treeHealth", NewBaumQual);
             world:changeItem(TargetItem);
             return true;
         end
     else
-        if (TargetItem.quality>300) then
+        local logCount = tonumber(TargetItem:getData("logCount")) or 1;
+        if logCount > 0 then
             local output = { user = User, skill = Skill }
             timber:roll(logs[TargetItem.id]:getField("timber"), output)
             if output.produced then
                 local retVal = not output.overflow
-                if (TargetItem.quality-1<=300) then
+                if logCount <= 1 then
                     world:erase(TargetItem,1);
                     retVal = false;
                 else
-                    TargetItem.quality = TargetItem.quality - 1;
+                    TargetItem:setData("logCount", logCount - 1);
                     world:changeItem(TargetItem);
                 end
                 return retVal;

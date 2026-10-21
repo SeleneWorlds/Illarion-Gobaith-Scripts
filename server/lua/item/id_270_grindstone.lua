@@ -91,9 +91,9 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end
             User:eraseItem(i,1); -- Rohen Edelstein entfernen
             if M.CheckSuccess(User,Gem[1]) then -- Erfolgsprüfung
-                local notCreated = User:createItem(Gem[2],1,333,0); -- geschliffenen Edelstein erstellen
+                local notCreated = User:createItem(Gem[2],1,3,0, 33); -- geschliffenen Edelstein erstellen
                 if ( notCreated > 0 ) then -- Zu viele Items erstellt --> Char überladen
-                    world:createItemFromId( Gem[2], notCreated, User.pos, true, 333 ,0);
+                    world:createItemFromId( Gem[2], notCreated, User.pos, true, 3 ,0, 33);
                     common.InformNLS(User,
                     "Du kannst nichts mehr halten.",
                     "You can't carry any more.");

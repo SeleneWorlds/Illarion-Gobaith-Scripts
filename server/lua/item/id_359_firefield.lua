@@ -27,7 +27,7 @@ function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
 			break
 		end
 	end
-    if (FieldItem.quality>100) then
+    if ((tonumber(FieldItem:getData("magicStrength")) or 333)>100) then
         UserRace=User:get_race();                  -- Char Rasse
         for i,theRace in pairs(M.AffectedRaces) do   -- Rassenliste durchlaufen
             if UserRace==theRace then              -- User Rasse finden
@@ -39,8 +39,8 @@ function M.CharacterOnField(User)  -- geht los wenn ein Char auf das Feld tritt
             RaceStrenght=100;
         end
         resist=M.SpellResistence(User);      -- Magie Resistenz prüfen
-        if (resist<FieldItem.quality) then   -- Qualität des Items --> Stärke mit Magie Resistenz vergleichen
-            damageDealt=math.random(math.floor((3/100)*math.floor((FieldItem.quality-resist)*RaceStrenght)),math.floor((5/100)*math.floor((FieldItem.quality-resist)*RaceStrenght)));--AffectedStren[i]
+        if (resist<(tonumber(FieldItem:getData("magicStrength")) or 333)) then   -- Qualität des Items --> Stärke mit Magie Resistenz vergleichen
+            damageDealt=math.random(math.floor((3/100)*math.floor(((tonumber(FieldItem:getData("magicStrength")) or 333)-resist)*RaceStrenght)),math.floor((5/100)*math.floor(((tonumber(FieldItem:getData("magicStrength")) or 333)-resist)*RaceStrenght)));--AffectedStren[i]
             User:increaseAttrib("hitpoints",-damageDealt); -- Schaden berechnen und bewirken
             -- Added by abcfantasy, inform user
             if (User:getPlayerLanguage()==0) then
