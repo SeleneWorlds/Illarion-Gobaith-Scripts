@@ -192,35 +192,31 @@ end
 
 function M.LookAtItem(User, Item)
 	local ItemName = world:getItemName(Item, User:GetPlayerLanguage());
-	local TimeLeftI;
-	local TimeLeft;
-	if(LightsOn[Item.id]) then
-		TimeLeftI = Item.wear;
-	elseif (LightsOff[Item.id]) then
-		if (Item.data >= 1000) then
-			TimeLeftI = Item.data - 1000;
-		else
-			TimeLeftI = PORTABLE_WEAR;
-		end
+	if not LightsOn[Item.id] then
+		world:itemInform(User, Item, ItemName);
+		return;
 	end
+
+	local TimeLeftI = Item.wear;
+	local TimeLeft;
 	
 	if(TimeLeftI == 255) then
 		TimeLeft = common.GetNLS(User, "nie", "never");
 	elseif (TimeLeftI == 0) then
-		TimeLeft = common.GetNLS(User, "sofort", "immediatly");
+		TimeLeft = common.GetNLS(User, "erlischt jeden Moment", "about to burn out");
 	elseif (TimeLeftI == 1) then
-		TimeLeft = common.GetNLS(User, "demnächst", "anytime soon");
+		TimeLeft = common.GetNLS(User, "flackert schwach", "flickering weakly");
 	elseif (TimeLeftI == 2) then
-		TimeLeft = common.GetNLS(User, "bald", "soon");	
+		TimeLeft = common.GetNLS(User, "brennt noch eine Weile", "burning for a while longer");
 	elseif (TimeLeftI <= 4) then
-		TimeLeft = common.GetNLS(User, "nach einer Weile", "in a while");
+		TimeLeft = common.GetNLS(User, "brennt noch lange", "plenty of burn time left");
 	elseif (TimeLeftI <= PORTABLE_WEAR) then
-		TimeLeft = common.GetNLS(User, "nicht allzu bald", "not anytime soon");
+		TimeLeft = common.GetNLS(User, "ist frisch entzündet", "freshly lit");
 	elseif (TimeLeftI >= PORTABLE_WEAR) then
-		TimeLeft = common.GetNLS(User, "nach langer Zeit", "in a long time");
+		TimeLeft = common.GetNLS(User, "brennt noch sehr lange", "will burn for a very long time");
 	end	
 	
-	world:itemInform(User, Item, common.GetNLS(User, ItemName..". Sie wird "..TimeLeft.." ausbrennen.", ItemName..". It will burn down "..TimeLeft.."."));
+	world:itemInform(User, Item, common.GetNLS(User, ItemName.." ("..TimeLeft..")", ItemName.." ("..TimeLeft..")"));
 end
 
 return M
