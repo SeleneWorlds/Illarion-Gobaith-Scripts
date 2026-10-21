@@ -132,9 +132,6 @@
     "druid.base.outfit": {
       "file": "server/lua/druid/base/outfit.lua"
     },
-    "druid.base.plants": {
-      "file": "server/lua/druid/base/plants.lua"
-    },
     "druid.content.amethyst": {
       "file": "server/lua/druid/content/amethyst.lua"
     },
@@ -170,9 +167,6 @@
     },
     "druid.item.id_167_yellow_bottle": {
       "file": "server/lua/druid/item/id_167_yellow_bottle.lua"
-    },
-    "druid.item.id_2952_plate": {
-      "file": "server/lua/druid/item/id_2952_plate.lua"
     },
     "druid.item.id_3105_bookrest": {
       "file": "server/lua/druid/item/id_3105_bookrest.lua"

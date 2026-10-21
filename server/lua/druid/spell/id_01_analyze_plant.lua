@@ -4,7 +4,6 @@
 
 local common = require("base.common")
 local alchemy = require("druid.base.alchemy")
-local plants = require("druid.base.plants")
 
 local M = {}
 -- INSERT INTO spells VALUES (2^0,3,'druid.spell.id_01_analyze_plant');
@@ -28,26 +27,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
 	if (alchemy.IsThatAPlant(TargetItem) == true) then
 
 		language = Caster:getPlayerLanguage()
-		pflanzenname = world:getItemName(TargetItem.id,language)
-
-		-- Manche Pflanzen haben Doppelfunktionen und bekommen eine neue ID
-		if TargetItem.data >9000 and TargetItem.data < 9017 then
-			dummy = TargetItem.data
-
-			for i=1,16 do
-				if plants.dummyIDList[i] == dummy then
-					if language == 0 then
-						pflanzenname = plants.dummyNameListDE[i]
-					else
-						pflanzenname = plants.dummyNameListEN[i]
-					end
-				end
-			end
-		else
-			dummy =TargetItem.id
-		end
-
-		plusWertPos,minusWertPos = alchemy.SplitPlantData(dummy)
+        local plantId = TargetItem.id
+        local pflanzenname = world:getItemName(plantId, language)
+        local plusWertPos,minusWertPos = alchemy.SplitPlantData(plantId)
 
 		textDE= pflanzenname.." hat Einfluss auf den Gehalt an "..alchemy.wirkstoff[plusWertPos].." und "..alchemy.wirkstoff[minusWertPos].." eines Trankes"
 		textEN= pflanzenname.." exert influence to the assay of "..alchemy.wirkstoff[plusWertPos].." and "..alchemy.wirkstoff[minusWertPos].." of a potion"

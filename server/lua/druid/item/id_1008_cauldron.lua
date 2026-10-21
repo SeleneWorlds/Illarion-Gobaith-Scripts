@@ -38,13 +38,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         end
         -- Flasche und Planze wurden gefunden. Also spalten wir den Wert auf der die Effektinformationen enthält
 
-		-- Manche Pflanzen haben Doppelfunktionen und bekommen eine neue ID
-        if plantInHand.data >9000 and plantInHand.data < 9017 then
-			dummy = plantInHand.data
-        else
-			dummy =plantInHand.id
-        end
-        local plusWertPos,minusWertPos = alchemy.SplitPlantData(dummy);
+        local plantId = plantInHand.id;
+        local plusWertPos,minusWertPos = alchemy.SplitPlantData(plantId);
 
         -- Wenn es eine leere Flasche ist werden default Werte verwendet.
         local bottleData = ( bottleInHand.id == 164 and 55555555 or bottleInHand.data );
