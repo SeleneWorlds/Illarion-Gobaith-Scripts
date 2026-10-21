@@ -286,7 +286,10 @@ end
 ]]
 function M.CheckItem(User, Item, altIDs)
     local ItemCheck = nil;
-    if (Item:getType() == 3) then
+    if Item.inside then
+        local found;
+        found, ItemCheck = Item.inside:viewItemNr(Item.itempos);
+    elseif (Item:getType() == 3) then
         if world:isItemOnField(Item.pos) then
             ItemCheck = world:getItemOnField(Item.pos);
         end;
