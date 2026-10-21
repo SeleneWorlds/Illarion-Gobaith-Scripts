@@ -4,8 +4,8 @@ local M = setmetatable({}, { __index = parent })
 
 function M.LookAtItem(user, item)
     world:itemInform(user, item, common.GetNLS(user,
-        "Du siehst einen Ring mit dem Wappen der magischen Akademie Gobaiths.",
-        "You see the ring with the emblem of the magical academy Gobaith."))
+        "Ring mit dem Wappen der magischen Akademie Gobaiths.",
+        "Ring with the emblem of the magical academy Gobaith."))
 end
 
 function M.MoveItemBeforeMove(user, sourceItem, targetItem)

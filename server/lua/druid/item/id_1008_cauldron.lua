@@ -211,7 +211,7 @@ end
 
 function M.LookAtItem(User,Item)
     if (User:getPlayerLanguage()==0) then
-        world:itemInform(User,Item,"Du siehst einen Kupferkessel")
+        world:itemInform(User,Item,"einen Kupferkessel")
     else
         world:itemInform(User,Item,"You look at a copper kettle")
     end

@@ -161,16 +161,16 @@ end
 function M.LookAtItem(User,Item)
     if (Item.data == 55555555) then
         world:itemInform( User, Item, common.GetNLS( User,
-        "Du siehst ein Flaschenetikett mit der Aufschrift: \"Druidentrunk\"",
-        "You look at a sticker telling: \"Druids drink \"" ) );
+        "Flasche mit der Aufschrift: \"Druidentrunk\"",
+        "Bottle with a sticker that says: \"Druids drink\"" ) );
     elseif (Item.data == 0) then
         world:itemInform( User, Item, common.GetNLS( User,
-        "Du siehst ein Flaschenetikett mit der Aufschrift: \"Heiltrank\"",
-        "You look at a sticker telling: \"Healing Potion \"" ) );
+        "Flasche mit der Aufschrift: \"Heiltrank\"",
+        "Bottle with a sticker that says: \"Healing Potion\"" ) );
     else
         world:itemInform( User, Item, common.GetNLS( User,
-        "Du siehst ein Flaschenetikett mit der Aufschrift: \"Kräutersud\"",
-        "You look at a sticker telling: \"Herbage Broth\"" ) );
+        "Flasche mit der Aufschrift: \"Kräutersud\"",
+        "Bottle with a sticker that says: \"Herbage Broth\"" ) );
     end
 end
 

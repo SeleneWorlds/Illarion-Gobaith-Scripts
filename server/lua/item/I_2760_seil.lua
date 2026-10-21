@@ -14,8 +14,8 @@ tyingQuality[1] = {"strong", "stable", "", "threadbare", "weak"};
 tyingQuality["limits"] = {15,10,5,2,0};
 
 function M.LookAtItem(User,Item)
-    local gText = "Du siehst ";
-	local eText = "You see ";
+    local gText = "";
+	local eText = "";
 	if Item.data == 1 then
 		local eQual, gQual;
 		local minutes = (Item.quality - 100)/120;

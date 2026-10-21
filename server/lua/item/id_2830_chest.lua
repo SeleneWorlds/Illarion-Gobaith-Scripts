@@ -6,7 +6,7 @@ local common = require("base.common")
 local base_treasure = require("base.treasure")
 function M.LookAtItem(User, Item)
     local TreasureName = base_treasure.GetTreasureName( Item.data, User:getPlayerLanguage(), false );
-    world:itemInform( User, Item, common.GetNLS( User,"Du siehst "..TreasureName..".","You see "..TreasureName.."." ) );
+    world:itemInform( User, Item, common.GetNLS( User,TreasureName..".",TreasureName.."." ) );
 end
 
 function M.UseItem(User,SourceItem)

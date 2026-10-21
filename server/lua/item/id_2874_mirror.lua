@@ -13,9 +13,9 @@ local getHPText = chardescription.getHPText
 
 function M.LookAtItem(User, Item)
     if User:getPlayerLanguage() == 0 then
-        world:itemInform(User, Item, "Du siehst Spiegel")
+        world:itemInform(User, Item, "Spiegel")
     else
-        world:itemInform(User, Item, "You see mirror")
+        world:itemInform(User, Item, "mirror")
     end
 end
 

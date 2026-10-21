@@ -310,15 +310,15 @@ function M.LookAtItem(Character,Item)
 
   if (Character:getPlayerLanguage()==0) then
     if Item.data==0 then
-      world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: \"Manatrunk\"")
+      world:itemInform(Character,Item,"Flasche mit der Aufschrift: \"Manatrunk\"")
     else
-      world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: \"Wunderpaste\"")
+      world:itemInform(Character,Item,"Flasche mit der Aufschrift: \"Wunderpaste\"")
     end
   else
     if Item.data==0 then
-      world:itemInform(Character,Item,"You look at a sticker telling: \"Mana Potion\"")
+      world:itemInform(Character,Item,"Bottle with a sticker that says: \"Mana Potion\"")
     else
-      world:itemInform(Character,Item,"You look at a sticker telling: \"Marvel Paste\"")
+      world:itemInform(Character,Item,"Bottle with a sticker that says: \"Marvel Paste\"")
     end
   end
 

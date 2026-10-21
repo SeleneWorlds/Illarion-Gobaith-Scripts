@@ -229,9 +229,9 @@ function M.GetItemDescription(User,Item,material,Weapon,Priest)
 			Suffix="";
 		end
 
-		DisplayText=common.GetNLS( User,"Du siehst","You see").." "..Praefix.." "..DisplayText.." "..ItemName.." "..Suffix;
+		DisplayText=Praefix.." "..DisplayText.." "..ItemName.." "..Suffix;
 	else
-        DisplayText=common.GetNLS( User,"Du siehst","You see").." "..DisplayText.." "..ItemName.." "..customText;
+        DisplayText=DisplayText.." "..ItemName.." "..customText;
     end;
     return DisplayText;
 end

@@ -91,7 +91,7 @@ end
 function M.LookAtItem( User, Item )
 
     if (Item.data == 0) then
-        world:itemInform( User, Item, common.GetNLS( User, "Du siehst einen leeren ", "You see a empty " )
+        world:itemInform( User, Item, common.GetNLS( User, "einen leeren ", "a empty " )
         .. world:getItemName( Item.id, User:getPlayerLanguage() ).."." );
 
     else
@@ -116,7 +116,7 @@ function M.LookAtItem( User, Item )
         local itemName = M.Sonderpflanzen(User,basket_id,basket_data,User:getPlayerLanguage())
 
         world:itemInform( User, Item,
-           common.GetNLS( User, "Du siehst einen ", "You see a " )
+           common.GetNLS( User, "einen ", "a " )
         .. world:getItemName( Item.id, User:getPlayerLanguage() )
         .. common.GetNLS( User, " mit ", " with " )
         .. count .. " "

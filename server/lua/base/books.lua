@@ -79,15 +79,15 @@ end
 function M.GetBookItemInform(User,Item)
     if (User:getPlayerLanguage()==0) then
         if (gBookTitle[Item.data] == nil) then
-            world:itemInform(User,Item,"Du siehst "..world:getItemName(Item.id,0));
+            world:itemInform(User,Item,world:getItemName(Item.id,0));
         else
-            world:itemInform(User,Item,"Du siehst "..gBookTitle[Item.data]);
+            world:itemInform(User,Item,gBookTitle[Item.data]);
         end
     else
         if (eBookTitle[Item.data] == nil) then
-            world:itemInform(User,Item,"You see "..world:getItemName(Item.id,1));
+            world:itemInform(User,Item,world:getItemName(Item.id,1));
         else
-            world:itemInform(User,Item,"You see "..eBookTitle[Item.data]);
+            world:itemInform(User,Item,eBookTitle[Item.data]);
         end
     end
 end

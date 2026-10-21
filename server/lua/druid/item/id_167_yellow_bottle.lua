@@ -202,9 +202,9 @@ function M.LookAtItem(User,Item)
   end
 
   if (User:getPlayerLanguage()==0) then
-    world:itemInform(User,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: "..Etikett)
+    world:itemInform(User,Item,"Flasche mit der Aufschrift: \""..Etikett.."\"")
   else
-    world:itemInform(User,Item,"You look at a sticker telling: "..Etikett)
+    world:itemInform(User,Item,"Bottle with a sticker that says: \""..Etikett.."\"")
   end
 
 end

@@ -269,21 +269,21 @@ end
 function M.LookAtItem(Character,Item)
 	if (Item.data == 63321157) then
 		if (Character:getPlayerLanguage()==0) then
-			world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: 'Windtrank'")
+			world:itemInform(Character,Item,"Flasche mit der Aufschrift: \"Windtrank\"")
 		else
-			world:itemInform(Character,Item,"You look at a sticker telling: 'Wind Potion'")
+			world:itemInform(Character,Item,"Bottle with a sticker that says: \"Wind Potion\"")
 		end
 	elseif (Item.data == 0) then
 		if (Character:getPlayerLanguage()==0) then
-			world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: 'Windtrank'")
+			world:itemInform(Character,Item,"Flasche mit der Aufschrift: \"Windtrank\"")
 		else
-			world:itemInform(Character,Item,"You look at a sticker telling: 'Wind Potion'")
+			world:itemInform(Character,Item,"Bottle with a sticker that says: \"Wind Potion\"")
 		end
 	else
 		if (Character:getPlayerLanguage()==0) then
-			world:itemInform(Character,Item,"Du siehst ein Flaschenetikett mit der Aufschrift: 'Wurfkörper'")
+			world:itemInform(Character,Item,"Flasche mit der Aufschrift: \"Wurfkörper\"")
 		else
-			world:itemInform(Character,Item,"You look at a sticker telling: 'Missile'")
+			world:itemInform(Character,Item,"Bottle with a sticker that says: \"Missile\"")
 		end
 	end
 end

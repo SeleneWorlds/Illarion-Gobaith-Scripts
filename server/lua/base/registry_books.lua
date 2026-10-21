@@ -45,7 +45,7 @@ function M.LookAtItem(User, Item)
     local german = User:getPlayerLanguage() == 0
     local description = book and book:getField(german and "de" or "en")
         or world:getItemName(Item.id, german and 0 or 1)
-    world:itemInform(User, Item, (german and "Du siehst " or "You see ") .. description)
+    world:itemInform(User, Item, description)
 end
 
 return M

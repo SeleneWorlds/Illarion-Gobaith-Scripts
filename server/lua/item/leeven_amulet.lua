@@ -3,7 +3,7 @@ local common = require("base.common")
 local M = setmetatable({}, { __index = parent })
 
 function M.LookAtItem(user, item)
-    world:itemInform(user, item, common.GetNLS(user, "Du siehst Leeven's Amulett", "You see Leeven's amulet"))
+    world:itemInform(user, item, common.GetNLS(user, "Leeven's Amulett", "Leeven's amulet"))
 end
 
 function M.MoveItemBeforeMove(user, sourceItem, targetItem)

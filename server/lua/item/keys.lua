@@ -35,7 +35,7 @@ function M.LookAtItem(User, Item)
     if name and name ~= "" then
         description = description .. ' "' .. name .. '"'
     end
-    world:itemInform(User, Item, (lang == 0 and "Du siehst " or "You see ") .. description)
+    world:itemInform(User, Item, description)
 end
 
 function M.MoveItemBeforeMove(User, SourceItem, TargetItem)

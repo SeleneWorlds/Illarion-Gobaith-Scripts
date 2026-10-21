@@ -5,9 +5,9 @@ local M = {}
 function M.LookAtItem(User, Item)
     local txt;
     if User:getPlayerLanguage() == 0 then
-        txt = "Du siehst Ledertasche";
+        txt = "Ledertasche";
     else
-        txt = "You see leather bag";
+        txt = "leather bag";
     end;
 
     local lbl = Item:getData("Label");
