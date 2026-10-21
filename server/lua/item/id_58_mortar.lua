@@ -80,13 +80,6 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if ( SourceItem:getType() ~= 4 ) then -- Glasblasrohr in der Hand
-        common.InformNLS( User, 
-        "Du mußt den Mörser in die Hand nehmen um damit zu arbeiten.", 
-        "You have to take the mortar in your hand, to work with it." )
-        return
-    end
-
     if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
         "Deine Rüstung behindert beim Farben herstellen.",

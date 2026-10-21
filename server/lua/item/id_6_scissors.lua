@@ -25,13 +25,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
     
-    if (SourceItem:getType()~=4) then
-        common.InformNLS(User,
-        "Du musst die Schere in der Hand halten.",
-        "You have to hold the scissors in your hands!");
-        return
-    end
-    
     if not common.CheckItem( User, SourceItem ) then
         return
     end
@@ -105,13 +98,6 @@ function M.UseItemWithCharacter(User,SourceItem, Character, Counter, Param,ltsta
         end
         User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
         User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
-        return
-    end
-    
-    if (SourceItem:getType()~=4) then
-        common.InformNLS(User,
-        "Du musst die Schere in der Hand halten.",
-        "You have to hold the scissors in your hands!");
         return
     end
     

@@ -41,13 +41,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end
 
-    if (SourceItem:getType()~=4) then
-        common.InformNLS(User,
-        "Du musst die Kerzenform in der Hand halten.",
-        "You have to hold the candle mold in your hands!");
-        return
-    end
-
     if not common.CheckItem( User, SourceItem ) then
         return
     end

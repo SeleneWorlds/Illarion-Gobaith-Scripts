@@ -31,13 +31,11 @@ end
 
 -- common bucket filling function
 function M.FillBucket( User, SourceItem )
-    -- bucket in hand
-    cntBuckets = User:countItemAt( "body", 51 );
-    if ( cntBuckets > 1 ) then
+    if (SourceItem.number ~= 1) then
         common.InformNLS( User, 
         "Du kannst immer nur einen Eimer befüllen.",
         "You can only fill one bucket at once.");
-    elseif ( cntBuckets == 1 ) and (SourceItem.number == 1) then
+    else
         if common.FitForWork( User ) then
             local getWater = 40*(21/User:increaseAttrib("dexterity",0))+60;
             if (math.random(0,100) < getWater) then
@@ -53,11 +51,7 @@ function M.FillBucket( User, SourceItem )
             end
             common.GetHungry( User, 200 );
         end
-    else
-        common.InformNLS( User, 
-        "Du musst den Eimer in die Hand nehmen.", 
-        "You need to hold the bucket in your hand." );
-    end        
+    end
 end
 
 return M

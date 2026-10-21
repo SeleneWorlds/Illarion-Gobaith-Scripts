@@ -40,13 +40,6 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
     
-    if (SourceItem:getType() ~= 4) then -- Dreschflegel in der Hand
-        common.InformNLS( User,
-        "Du musst den Meisel in der Hand haben!",
-        "You need to hold the chisel in your hand!" );
-        return
-    end
-    
     if not common.FitForWork( User ) then -- Nicht erschöpft
         return
     end

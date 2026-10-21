@@ -102,13 +102,6 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )  -- 
         return
     end
     
-    if ( SourceItem:getType() ~= 4 ) then -- Hammer in der Hand
-        common.InformNLS( User, 
-        "Du mußt die Nagel in die Hand nehmen um damit zu arbeiten.", 
-        "You have to take the needle in your hand, to work with it." )
-        return
-    end
-
     if common.Encumbrence(User) then -- Sehr streife Rüstung?
         common.InformNLS( User,
         "Deine Rüstung behindert beim schneidern.",
