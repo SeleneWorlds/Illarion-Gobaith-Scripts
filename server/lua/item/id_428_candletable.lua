@@ -4,7 +4,6 @@ local M = {}
 
 -- Honigwaben (2529) zu Wachs (431)
 -- Arbeitscyclus: 2s
--- Zusätzliches Werkzeug: Zange mit Tiegel ( 2751 )
 
 -- UPDATE common SET com_script='item.id_428_candletable' WHERE com_itemid IN (428);
 
@@ -41,25 +40,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if not common.FitForWork( User ) then
-        return
-    end
-    
-    if (User:countItemAt("body",2751)==0) then -- Tiegelzange
-        common.InformNLS( User,
-        "Du benötigst eine Tiegelzange um Wachs zu schmelzen.",
-        "You need a crucible-pincers to smelt wax." );
-        return
-    end
-    
-    local Tool = User:getItemAt(CCharacter.left_tool); -- Item in Linker Hand auslesen
-    if ((Tool == nil) or (Tool.id ~= 2751)) then -- Wenn das Item nicht die Tiegelzange ist
-        Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
-    end
-    
-    if common.ToolBreaks( User, Tool, true) then -- Tiegelzange beschädigen
-        common.InformNLS( User, 
-        "Die Zange geht zu Bruch.", 
-        "The pincers break." );
         return
     end
     

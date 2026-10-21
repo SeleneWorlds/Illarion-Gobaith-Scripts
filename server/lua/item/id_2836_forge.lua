@@ -5,7 +5,6 @@ local M = {}
 -- Erz  --> Barren
 
 -- Arbeitscyclus: 1s - 7s
--- Zusätzliches Werkzeug: Zange mit Tiegel ( 2751 )
 
 -- UPDATE common SET com_script='item.id_2836_forge' WHERE com_itemid IN (2835,2836);
 -- UPDATE common SET com_objectafterrot=2836 WHERE com_itemid = 2835;
@@ -51,30 +50,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         common.TurnTo( User, SourceItem.pos );
     end
     
-    if (User:countItemAt("body",2751)==0) then -- Zange mit Tiegel
-        common.InformNLS( User,
-        "Du benötigst eine Zange mit Tiegel um Metal zu schmelzen.",
-        "You need pincers with crucible to melt the ores." );
-        return
-    end
-    
-    local Tool = User:getItemAt(CCharacter.left_tool); -- Item in Linker Hand auslesen
-    if ((Tool == nil) or (Tool.id ~= 2751)) then -- Wenn das Item nicht die Zange ist
-        Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
-    end
-    
-    if common.ToolBreaks( User, Tool ) then -- Zange beschädigen
-        common.InformNLS( User, 
-        "Die Zange geht zu Bruch.", 
-        "The pincers break." );
-		if (SourceItem.id == 2835) then
-           SourceItem.wear = 255;
-           SourceItem.id = 2836;
-           world:changeItem(SourceItem);
-        end
-        return
-    end
-
     if not common.FitForWork( User ) then
         if (SourceItem.id == 2835) then
            SourceItem.wear = 255;
