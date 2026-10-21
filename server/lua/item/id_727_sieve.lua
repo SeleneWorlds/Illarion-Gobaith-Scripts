@@ -5,7 +5,6 @@ local M = {}
 -- grober Sand (726) --> Quarz Sand (316)
 
 -- Arbeitscyclus: 1s - 4s
--- Zusätzliches Werkzeug: Holzkelle ( 312 )
 
 -- UPDATE common SET com_script='item.id_727_sieve' WHERE com_itemid IN (727);
 
@@ -42,25 +41,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if not common.FitForWork( User ) then
-        return
-    end
-    
-    if (User:countItemAt("body",312)==0) then -- Schere
-        common.InformNLS( User,
-        "Du brauchst eine Holzkelle um den Sand auf das Sieb zu schaufeln.",
-        "You need a wooden shovel to put the sand on the sieve" );
-        return
-    end
-    
-    local Tool = User:getItemAt(CCharacter.left_tool); -- Item in Linker Hand auslesen
-    if ((Tool == nil) or (Tool.id ~= 312)) then -- Wenn das Item nicht die Zange ist
-        Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
-    end
-    
-    if common.ToolBreaks( User, Tool, true ) then -- Schere beschädigen
-        common.InformNLS( User, 
-        "Die Holzkelle bricht ab.", 
-        "The wooden shovel breaks." );
         return
     end
     

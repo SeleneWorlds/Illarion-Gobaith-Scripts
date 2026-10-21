@@ -5,7 +5,6 @@ local M = {}
 -- Getreidekörner  --> Mehl
 
 -- Arbeitscyclus: 0.5s - 3s
--- Zusätzliches Werkzeug: Holzkelle ( 312 )
 
 -- UPDATE common SET com_script='item.id_250_mill' WHERE com_itemid IN (250);
 
@@ -54,25 +53,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         return
     end 
     
-    if (User:countItemAt("body",312)==0) then -- Holzkelle
-        common.InformNLS( User,
-        "Du benötigst eine Holzkelle um das Getreide in die Mühle zu bekommen.",
-        "You need a wooden shovel to get the grain into the mill." );
-        return
-    end
-    
-    local Tool = User:getItemAt(CCharacter.left_tool); -- Item in Linker Hand auslesen
-    if ((Tool == nil) or (Tool.id ~= 312)) then -- Wenn das Item nicht die Zange ist
-        Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
-    end
-    
-    if common.ToolBreaks( User, Tool ) then -- Holzkelle beschädigen
-        common.InformNLS( User, 
-        "Die Holzkelle zerbricht.", 
-        "The wooden shovel breaks." );
-        return
-    end  
-    
     if ( ltstate == Action.none ) then
         User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
         User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Getreide zu mahlen.");
@@ -81,20 +61,16 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     end
     
     if common.IsInterrupted( User ) then
-        local selectMessage = math.random(1,5);
+        local selectMessage = math.random(1,4);
         if ( selectMessage == 1 ) then
             common.InformNLS(User,
             "Du wischst dir den Schweiß von der Stirn.",
             "You wipe sweat off your forehead.");
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
-            "Dir rutscht die Holzkelle aus der Hand und fällt in den Mühlstein. Nach einigen Versuchen kannst du sie wieder heraus holen.",
-            "Your wooden shovel falls into the mill stone. After some tries you are able to get it out again.");
-        elseif ( selectMessage == 3 ) then
-            common.InformNLS(User,
             "Du klopfst dir das Mehl aus der Kleidung, da du das Gefühl hast wie ein Geist auszusehen.",
             "You beat the flour out of your clothes so that you do not look like a ghost anymore.");
-        elseif ( selectMessage == 4 ) then
+        elseif ( selectMessage == 3 ) then
             common.InformNLS(User,
             "Du säuberst kurz den Mühlstein um eine bessere Qualität des Mehls zu erreichen.",
             "You clean the millstone.");
