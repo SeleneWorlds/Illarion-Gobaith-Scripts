@@ -5,7 +5,6 @@ local M = {}
 -- Rohleder und Felle zu Leder
 
 -- Arbeitscyclus: 2s - 5s
--- Zusätzliches Werkzeug: Rasiermesser ( 2746 )
 
 -- UPDATE common SET com_script='item.id_2052_stretcher' WHERE com_itemid = 2052;
 
@@ -32,25 +31,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
 
     if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
         common.TurnTo( User, SourceItem.pos ); -- Drehen wenn nötig
-    end
-
-    if (User:countItemAt("body",2746)==0) then -- Rasiermesser
-        common.InformNLS( User,
-        "Du benötigst ein Rasiermesser um das Leder zu gerben.",
-        "You need a razor blade to tan the leather." );
-        return
-    end
-
-    local Tool = User:getItemAt(CCharacter.left_tool); -- Item in Linker Hand auslesen
-    if ((Tool == nil) or (Tool.id ~= 2746)) then -- Wenn das Item nicht das Rasiermesser ist
-        Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
-    end
-
-    if common.ToolBreaks( User, Tool, true ) then -- Rasiermesser beschädigen
-        common.InformNLS( User,
-        "Das Rasiermesser wird stumpf.",
-        "The razor blade wents blunt" );
-        return
     end
 
     if ( ltstate == Action.abort ) then -- Arbeit unterbrochen
@@ -81,7 +61,7 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             end
 
             if common.IsInterrupted( User ) then
-                local selectMessage = math.random(1,5);
+                local selectMessage = math.random(1,4);
                 if ( selectMessage == 1 ) then
                     common.InformNLS(User,
                     "Du wischst dir den Schweiß von der Stirn.",
@@ -94,10 +74,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
                     common.InformNLS(User,
                     "Du überprüfst kurz die bereits gegerbte Stelle auf Unebenheiten",
                     "You briefly check the quality of the leather.");
-                elseif ( selectMessage == 4 ) then
-                    common.InformNLS(User,
-                    "Du hälst kurz inne um das Messer ein wenig nachzuschleifen.",
-                    "You breaks to sharp your tool a bit.");
                 else
                     common.InformNLS(User,
                     "Du entfernst kurz Fell- und Knochenreste vom Leder bevor du weitermachst.",

@@ -5,7 +5,6 @@ local M = {}
 -- Rohe Edelsteine  --> geschliffene Edelsteine
 
 -- Arbeitscyclus: 1s - 5s
--- Zusätzliches Werkzeug: Zange ( 2140 )
 
 -- UPDATE common SET com_script='item.id_270_grindstone' WHERE com_itemid IN (270);
 
@@ -37,25 +36,6 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if not common.IsLookingAt( User, SourceItem.pos ) then -- Blickrichtung
         common.TurnTo( User, SourceItem.pos ); -- Drehen wenn nötig
-    end
-    
-    if (User:countItemAt("body",2140)==0) then -- kleine Zange
-        common.InformNLS( User,
-        "Du benötigst eine kleine Zange um den Edelstein zu halten.",
-        "You need small tongs to cut the gems." );
-        return
-    end
-    
-    local Tool = User:getItemAt(CCharacter.left_tool); -- Item in Linker Hand auslesen
-    if ((Tool == nil) or (Tool.id ~= 2140)) then -- Wenn das Item nicht die Zange ist
-        Tool = User:getItemAt(CCharacter.right_tool); -- In anderer Hand nachsehen
-    end
-    
-    if common.ToolBreaks( User, Tool ) then -- Zange beschädigen
-        common.InformNLS( User, 
-        "Die Zange bricht am Schleifstein ab.", 
-        "The tongs break at the gem grinder." );
-        return
     end
     
     if ( ltstate == Action.abort ) then -- Arbeit unterbrochen

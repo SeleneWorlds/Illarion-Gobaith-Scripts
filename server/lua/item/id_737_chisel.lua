@@ -47,13 +47,6 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         return
     end
     
-    if ( User:countItemAt( "body", 23 ) == 0 ) then
-        common.InformNLS( User,
-        "Du brauchst einen Hammer in der Hand um die Steine zu behauen.",
-        "You need a hammer in your hand to work the stones." );
-        return
-    end
-    
     if not common.FitForWork( User ) then -- Nicht erschöpft
         return
     end
@@ -80,8 +73,8 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
     
     if common.IsInterrupted( User ) then
         common.InformNLS(User,
-        "Du schlägst daneben und triffst mit dem Hammer deine Finger.",
-        "You miss the chisel and hit your fingers.");
+        "Der Meißel rutscht dir ab. Du musst ihn neu ansetzen.",
+        "Your chisel slips. You need to reposition it.");
         return
     end
     
