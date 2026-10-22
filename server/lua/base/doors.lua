@@ -18,6 +18,10 @@ end
 AddToDoorList(86, 497);
 AddToDoorList(87, 922);
 AddToDoorList(927, 925);
+-- Not sure why there are three different doors of the same type; probably why VBU replaced them with new items.
+M.OpenDoors[928] = 925;
+M.OpenDoors[929] = 925;
+M.OpenDoors[930] = 925;
 AddToDoorList(317, 926);
 AddToDoorList(476, 480);
 AddToDoorList(477, 481);
