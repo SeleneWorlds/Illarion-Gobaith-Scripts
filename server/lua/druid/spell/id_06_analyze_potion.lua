@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 local firsttime
 --ds_druidspell_06.lua / 6. Rune des Lehrlings
 --Druidensystem
@@ -483,9 +484,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 	end
 	if textDE then
     if Caster:getPlayerLanguage() == 0 then
-		  Caster:inform("#b|0|0|".."In der Flasche befindet sich "..textDE)
+		  Books.show(Caster, "In der Flasche befindet sich "..textDE, 0)
 	  else
-	    Caster:inform("#b|0|0|".."The bottle contains "..textEN)
+	    Books.show(Caster, "The bottle contains "..textEN, 0)
     end
   else
 	  common.InformNLS(Caster,"Das ist kein Druiden-Trank","This is not a potion");

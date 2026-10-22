@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_19.lua / 5. Rune des Meisters
 --Druidensystem
 --Falk
@@ -29,9 +30,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   textDE="Dieser Gegenstand verrottet in "..TargetItem.wear.." druidischen Zerfallseinheiten"
   textEN="This item rots within "..TargetItem.wear.." druid rotting-units"
 	if Caster:getPlayerLanguage() == 0 then
-		Caster:inform("#b|0|0|"..textDE)
+		Books.show(Caster, textDE, 0)
 	else
-		Caster:inform("#b|0|0|"..textEN)
+		Books.show(Caster, textEN, 0)
 	end
 
 end

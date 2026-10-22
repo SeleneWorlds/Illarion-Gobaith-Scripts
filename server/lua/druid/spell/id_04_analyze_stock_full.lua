@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_04.lua / 4. Rune des Lehrlings
 --Druidensystem
 --Falk
@@ -44,9 +45,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
 	Caster:learn(6,"exquirere",3,100)
 
 	  if Caster:getPlayerLanguage() == 0 then
-		Caster:inform("#b|0|0|"..TextDE)
+		Books.show(Caster, TextDE, 0)
 	else
-		Caster:inform("#b|0|0|"..TextEN)
+		Books.show(Caster, TextEN, 0)
 	end
 
   end

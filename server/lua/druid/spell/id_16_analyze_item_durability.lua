@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 local firsttime
 --ds_druidspell_16.lua / 2. Rune des Meisters
 --Druidensystem
@@ -38,9 +39,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   ergebnis = math.floor(ergebnis/10)+1
   --Caster:inform("ergebnis: "..ergebnis)
 
-  common.InformNLS( Caster,
-                "#b|0|0|die Prüfung ergibt eine "..ListDE[ergebnis].." Haltbarkeit",
-                "#b|0|0|this inspection results a "..ListEN[ergebnis].." durability" )
+  Books.show(Caster, Caster:getPlayerLanguage() == 0 and "die Prüfung ergibt eine "..ListDE[ergebnis].." Haltbarkeit" or "this inspection results a "..ListEN[ergebnis].." durability")
 
 end
 

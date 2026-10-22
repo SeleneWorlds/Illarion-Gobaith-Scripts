@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 local firsttime
 -- Pergament für das Druidensystem
 -- Falk
@@ -424,21 +425,19 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
 
 					if User:getPlayerLanguage() == 0 then
 						local metaDE=M.MetamorphosisDE(User,langSkill,langType)
-						--User:inform("#b|0|1008|"..rNameDE[i].."\n\n"..alchemy.wirkung_de[dataZList[1]].." "..alchemy.wirkstoff[1].."\n"..alchemy.wirkung_de[dataZList[2]].." "..alchemy.wirkstoff[2].."\n"..alchemy.wirkung_de[dataZList[3]].." "..alchemy.wirkstoff[3].."\n"..alchemy.wirkung_de[dataZList[4]].." "..alchemy.wirkstoff[4].."\n"..alchemy.wirkung_de[dataZList[5]].." "..alchemy.wirkstoff[5].."\n"..alchemy.wirkung_de[dataZList[6]].." "..alchemy.wirkstoff[6].."\n"..alchemy.wirkung_de[dataZList[7]].." "..alchemy.wirkstoff[7].."\n"..alchemy.wirkung_de[dataZList[8]].." "..alchemy.wirkstoff[8]);
-						User:inform("#b|0|1008|"..metaDE)
+						Books.show(User, metaDE, 1008)
 
 					else
 						local metaEN=M.MetamorphosisEN(User,langSkill,langType)
-						--User:inform("#b|0|1008|"..rNameEN[i].."\n\n"..alchemy.wirkung_en[dataZList[1]].." "..alchemy.wirkstoff[1].."\n"..alchemy.wirkung_en[dataZList[2]].." "..alchemy.wirkstoff[2].."\n"..alchemy.wirkung_en[dataZList[3]].." "..alchemy.wirkstoff[3].."\n"..alchemy.wirkung_en[dataZList[4]].." "..alchemy.wirkstoff[4].."\n"..alchemy.wirkung_en[dataZList[5]].." "..alchemy.wirkstoff[5].."\n"..alchemy.wirkung_en[dataZList[6]].." "..alchemy.wirkstoff[6].."\n"..alchemy.wirkung_en[dataZList[7]].." "..alchemy.wirkstoff[7].."\n"..alchemy.wirkung_en[dataZList[8]].." "..alchemy.wirkstoff[8]);
-						User:inform("#b|0|1008|"..metaEN)
+						Books.show(User, metaEN, 1008)
 
 					end
 					common.InformNLS(User,"Vorsicht, der Gebrauch dieser Pergamente ist nicht kostenlos. Du bezahlst Dein geheimes Wissen mit dem Verlust anderer Fähigkeiten","Be careful! The usage of these parchments is not for free. You pay for that secret knowledge with the loss of other abilities!")
 				else
 					if User:getPlayerLanguage() == 0 then
-						User:inform("#b|0|1008|Dies Geheimnis bleibe Dir verborgen");
+						Books.show(User, "Dies Geheimnis bleibe Dir verborgen", 1008);
 					else
-						User:inform("#b|0|1008|This Riddle Was Not Made For You!");
+						Books.show(User, "This Riddle Was Not Made For You!", 1008);
 					end
 				end
 			end	--rezepte auf pergamentrollen

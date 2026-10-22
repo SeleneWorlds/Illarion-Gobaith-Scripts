@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_10.lua / 3. Rune des Gesellen
 --Druidensystem
 --Falk
@@ -30,9 +31,9 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 	      textDE="Ein Befund auf "..G[diagnose].." ["..L[diagnose].."]"
 	      textEN="Medical result for"..E[diagnose].." ["..L[diagnose].."]"
 				if Caster:getPlayerLanguage() == 0 then
-		    	Caster:inform("#b|0|0|"..textDE)
+		    	Books.show(Caster, textDE, 0)
 		  	else
-		    	Caster:inform("#b|0|0|"..textEN)
+		    	Books.show(Caster, textEN, 0)
 		  	end
 
 	    else
@@ -43,9 +44,9 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 			textDE="Keine Virus-Erkrankung festgestellt"
 			textEN="No viral infection diagnosed"
 			if Caster:getPlayerLanguage() == 0 then
-	    	Caster:inform("#b|0|0|"..textDE)
+	    	Books.show(Caster, textDE, 0)
 	  	else
-	    	Caster:inform("#b|0|0|"..textEN)
+	    	Books.show(Caster, textEN, 0)
 	  	end
 
 	  end

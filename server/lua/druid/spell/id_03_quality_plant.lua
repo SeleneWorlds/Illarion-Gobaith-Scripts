@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_03.lua / 3. Rune des Lehrlings
 --Druidensystem
 --Falk
@@ -32,9 +33,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
     textEN= "This plant has a "..alchemy.qListEn[qualstat].." quality"
 
     if Caster:getPlayerLanguage() == 0 then
-		Caster:inform("#b|0|0|"..textDE)
+		Books.show(Caster, textDE, 0)
 	else
-		Caster:inform("#b|0|0|"..textEN)
+		Books.show(Caster, textEN, 0)
 	end
 
 	Caster:learn(6,"vegetabilistia",3,100)

@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_17.lua / 3. Rune des Meisters
 --Druidensystem
 --Falk
@@ -49,9 +50,9 @@ latiGrad = math.floor(latitude/60)
 latiMin = latitude - latiGrad*60
 
   if Caster:getPlayerLanguage() == 0 then
-    Caster:inform("#b|0|0|"..longGrad.."°, "..longMin.."\' "..text1DE.."\n"..latiGrad.."°, "..latiMin.."\' "..text2DE)
+    Books.show(Caster, longGrad.."°, "..longMin.."\' "..text1DE.."\n"..latiGrad.."°, "..latiMin.."\' "..text2DE, 0)
   else
-    Caster:inform("#b|0|0|"..longGrad.."°, "..longMin.."\' "..text1EN.."\n"..latiGrad.."°, "..latiMin.."\' "..text2EN)
+    Books.show(Caster, longGrad.."°, "..longMin.."\' "..text1EN.."\n"..latiGrad.."°, "..latiMin.."\' "..text2EN, 0)
   end
 end
 
@@ -66,9 +67,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
 	textDE="Dieser Gegenstand hat ein Gewicht von "..myItem.Weight.." druidischen Gewichtseinheiten"
 	textEN="This item weights "..myItem.Weight.." druid weight-units"
 	if Caster:getPlayerLanguage() == 0 then
-		Caster:inform("#b|0|0|"..textDE)
+		Books.show(Caster, textDE, 0)
 	else
-		Caster:inform("#b|0|0|"..textEN)
+		Books.show(Caster, textEN, 0)
 	end
 
 end

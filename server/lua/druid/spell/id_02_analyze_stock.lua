@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 -- ds_druidspell_02.lua / 2. Rune des Lehrlings
 --Druidensystem
 --Falk
@@ -32,9 +33,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param)
     textEN= "This stock contains "..alchemy.wirkung_en[dataZList[i]].." "..alchemy.wirkstoff[i]
 
     if Caster:getPlayerLanguage() == 0 then
-      Caster:inform("#b|0|0|"..textDE)
+      Books.show(Caster, textDE, 0)
     else
-      Caster:inform("#b|0|0|"..textEN)
+      Books.show(Caster, textEN, 0)
     end
       Caster:learn(6,"exquirere",3,100)
 

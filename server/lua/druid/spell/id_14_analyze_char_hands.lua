@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_14.lua / 7. Rune des Gesellen
 --Druidensystem
 --Falk
@@ -22,12 +23,12 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 			leftHand=world:getItemName(lH.id,0)
 			rightHand=world:getItemName(rH.id,0)
 			textDE="In der linken Hand:\n"..leftHand.."\nIn der rechten Hand:\n"..rightHand
-			Caster:inform("#b|0|0|"..textDE)
+			Books.show(Caster, textDE, 0)
 		else
 			leftHand=world:getItemName(lH.id,1)
 			rightHand=world:getItemName(rH.id,1)
 			textEN="At the left hand:\n"..leftHand.."\nAt the right hand:\n"..rightHand
-			Caster:inform("#b|0|0|"..textEN)
+			Books.show(Caster, textEN, 0)
 		end
 
 			Caster:learn(6,"ars magica",3,100)

@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 local firsttime
 --ds_druidspell_15.lua / 1. Rune des Meisters
 --Druidensystem
@@ -35,9 +36,7 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   --Quality eines Items feststellen
   M.unitDecleration()
   ergebnis = TargetItem.quality
-  common.InformNLS( Caster,
-                "#b|0|0|die Prüfung ergibt eine "..ListDE[ergebnis].." Qualität",
-                "#b|0|0|this inspection results a "..ListEN[ergebnis].." quality" )
+  Books.show(Caster, Caster:getPlayerLanguage() == 0 and "die Prüfung ergibt eine "..ListDE[ergebnis].." Qualität" or "this inspection results a "..ListEN[ergebnis].." quality")
 end
 
 return M

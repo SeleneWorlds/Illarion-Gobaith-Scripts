@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 -- Testskript 1 für Weiterentwicklung Druidenmagie
 -- 2007 by Falk
 -- 2009 by Nitram
@@ -93,14 +94,10 @@ function M.UseItem( User, SourceItem, TargetItem, Counter, Param, ltstate )
         if (User:getMagicType( ) ~= 3) then -- user is not a druid
             if not Security[ User.id ] then
                 if ( ( User:getSkill( "commotio" ) + User:getSkill( "desicio" ) + User:getSkill( "pervestigatio" )+User:getSkill( "transformo" )+User:getSkill( "transfreto" ) ) > 40 ) then
-                    common.InformNLS( User,
-                    "#b|0|1008|Mit Deiner Magie-Erfahrung bleibt Dir die Pforte der Druiden verschlossen.",
-                    "#b|0|1008|Your magic skills keep the gate of druids closed for you." );
+                    Books.show(User, User:getPlayerLanguage() == 0 and "Mit Deiner Magie-Erfahrung bleibt Dir die Pforte der Druiden verschlossen." or "Your magic skills keep the gate of druids closed for you.", 1008);
                     return;
                 else
-                    common.InformNLS( User,
-                    "#b|0|1008|Vorsicht! Von diesem Schritt ins Druidentum führt kein Weg zurück.",
-                    "#b|0|1008|Attention! There is no way back from this path to druidism." );
+                    Books.show(User, User:getPlayerLanguage() == 0 and "Vorsicht! Von diesem Schritt ins Druidentum führt kein Weg zurück." or "Attention! There is no way back from this path to druidism.", 1008);
                 end
                 Security[ User.id ] = true;
                 return;

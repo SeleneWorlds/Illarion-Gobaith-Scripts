@@ -1,4 +1,4 @@
-local common = require("base.common")
+local Books = require("illarion-script-loader.server.lua.lib.books")
 local M = {}
 
 function M.InitBook()
@@ -55,25 +55,16 @@ function M.SendBookPage(User,DataVal,Counter)
     else
         BookTexts=eBookText[DataVal];
     end
-    if (BookTexts == nil) then
-        User:inform("#b|1|0| ");
-    else
-        local pages=#BookTexts;
-        if ( Counter > pages ) then
-            common.InformNLS(User,
-            "Dieses Buch hat nur " .. pages .. " Seiten.",
-            "This book only has " .. pages .. " pages.");
-            return;
-        end
-        local SendText=BookTexts[Counter][1];
-        local PicID=BookTexts[Counter][2];
-        if (SendText==nil) then SendText="" end
-        if (PicID==nil) then PicID=0 end
-        if (BookLang[DataVal] == nil) then BookLang[DataVal]="common language" end
-        SendText=M.ModifyText(User,SendText,BookTexts[Counter][3],BookLang[DataVal]);
-        User:inform("#b|"..Counter.."|"..PicID.."|"..SendText);
-        User:learn(4,"library research",2,100)
+    if not BookTexts or #BookTexts == 0 then
+        Books.show(User, " ")
+        return
     end
+    Books.open(User, #BookTexts, function(page)
+        local content = BookTexts[page]
+        local text = M.ModifyText(User, content[1] or "", content[3], BookLang[DataVal] or "common language")
+        User:learn(4, "library research", 2, 100)
+        return { text = text, itemId = content[2] or 0 }
+    end, Counter)
 end
 
 function M.GetBookItemInform(User,Item)

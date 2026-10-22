@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_9.lua / 2. Rune des Gesellen
 --Druidensystem
 --Falk
@@ -17,24 +18,22 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 		--TargetChar auf "PoisonValue" abprüfen
 	  if TargetCharacter:getPoisonValue() ~= 0 then
 
-	--  Caster:inform("#b|0|0|Der Patient hat eine Vergiftung, wovon auch immer")
 	    textDE="Der Patient hat eine Vergiftung, wovon auch immer"
 	    textEN="The patient has an intoxication, whatever about"
 		if Caster:getPlayerLanguage() == 0 then
-			Caster:inform("#b|0|0|"..textDE)
+			Books.show(Caster, textDE, 0)
 		else
-			Caster:inform("#b|0|0|"..textEN)
+			Books.show(Caster, textEN, 0)
 		end
 
 	  else
 
-	--  Caster:inform("#b|0|0|Keine Vergiftung, offenbar bumperlg'sund")
 	textDE="Keine Vergiftung, offenbar bumperlg'sund"
 	textEN="Intoxication undiscernible"
 	if Caster:getPlayerLanguage() == 0 then
-		Caster:inform("#b|0|0|"..textDE)
+		Books.show(Caster, textDE, 0)
 	else
-		Caster:inform("#b|0|0|"..textEN)
+		Books.show(Caster, textEN, 0)
 	end
 
 	  end

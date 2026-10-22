@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_11.lua / 4. Rune des Gesellen
 --Druidensystem
 --Falk
@@ -21,9 +22,9 @@ function M.CastMagicOnCharacter(Caster,TargetCharacter,counter,param,ltstate)
 		textDE="Magiezugehörigkeit: "..klassenDE[magieklasse+1]
 		textEN="Magic classification: "..klassenEN[magieklasse+1]
 		if Caster:getPlayerLanguage() == 0 then
-			Caster:inform("#b|0|0|"..textDE)
+			Books.show(Caster, textDE, 0)
 		else
-			Caster:inform("#b|0|0|"..textEN)
+			Books.show(Caster, textEN, 0)
 		end
 
 	Caster:learn(6,"ars magica",3,100)

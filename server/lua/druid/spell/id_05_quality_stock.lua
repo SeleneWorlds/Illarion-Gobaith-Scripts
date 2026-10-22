@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_05.lua / 5. Rune des Lehrlings
 --Druidensystem
 --Falk
@@ -27,14 +28,12 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
     qualstat = TargetItem.quality
 
 --  common.InformNLS(Caster,
---     "#b|0|0|Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualität",
---     "#b|0|0|This stock has a "..alchemy.qListEn[qualstat].." quality")
     textDE="Dieser Sud hat eine "..alchemy.qListDe[qualstat].." Qualität"
     textEN="This stock has a "..alchemy.qListEn[qualstat].." quality"
     if Caster:getPlayerLanguage() == 0 then
-		Caster:inform("#b|0|0|"..textDE)
+		Books.show(Caster, textDE, 0)
 	else
-		Caster:inform("#b|0|0|"..textEN)
+		Books.show(Caster, textEN, 0)
 	end
 
 	Caster:learn(6,"exquirere",3,100)

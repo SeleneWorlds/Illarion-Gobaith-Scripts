@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 local M = {}
 
 -- UPDATE common SET com_script='item.book.id_105_selfawareness' WHERE com_itemid = 105;
@@ -119,7 +120,6 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
             M.AddEnglishBookText("\n It seems you are ~level~ in the Art of parry",0,"parry");
         end
         M.SendBookPage(User,Counter)
-        User:learn(4,"library research",2,100)
     end
 end
 
@@ -152,13 +152,11 @@ function M.SendBookPage(User,Counter)
     else
         BookTexts=eBookText;
     end
-    local pages=#BookTexts;
-    local SendText=BookTexts[math.min(Counter,pages)][1];
-    local PicID=BookTexts[math.min(Counter,pages)][2];
-    if (SendText==nil) then SendText="" end
-    if (PicID==nil) then PicID=0 end
-    SendText=M.ModifyText(User,SendText,BookTexts[math.min(Counter,pages)][3])
-    User:inform("#b|"..math.min(Counter,pages).."|"..PicID.."|"..SendText);
+    Books.open(User, #BookTexts, function(page)
+        local content = BookTexts[page]
+        User:learn(4, "library research", 2, 100)
+        return { text = M.ModifyText(User, content[1] or "", content[3]), itemId = content[2] or 0 }
+    end, Counter)
 end
 
 function M.AddToTable(TargetList,Text,ItemID,Difficult)

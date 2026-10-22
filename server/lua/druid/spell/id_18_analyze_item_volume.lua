@@ -1,3 +1,4 @@
+local Books = require("illarion-script-loader.server.lua.lib.books")
 --ds_druidspell_18.lua / 4. Rune des Meisters
 --Druidensystem
 --Falk
@@ -31,9 +32,9 @@ function M.CastMagicOnItem(Caster,TargetItem,counter,param,ltstate)
   textDE="Dieser Gegenstand hat ein Volumen von "..myItem.Volume.." druidischen Volumeneinheiten"
   textEN="This item has a volume of "..myItem.Volume.." druid volume-units"
 	if Caster:getPlayerLanguage() == 0 then
-		Caster:inform("#b|0|0|"..textDE)
+		Books.show(Caster, textDE, 0)
 	else
-		Caster:inform("#b|0|0|"..textEN)
+		Books.show(Caster, textEN, 0)
 	end
 
 end

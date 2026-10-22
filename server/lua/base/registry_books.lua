@@ -1,5 +1,5 @@
 local Registries = require("selene.registries")
-local common = require("base.common")
+local Books = require("illarion-script-loader.server.lua.lib.books")
 local books = require("base.books")
 local M = {}
 
@@ -15,7 +15,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
 
     local book = findBook(SourceItem)
     if not book then
-        User:inform("#b|1|0| ")
+        Books.show(User, " ")
         return
     end
 
@@ -25,19 +25,15 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
         books.AddToTable(pages, section.text, section.image, section.difficulty)
     end
     if #pages == 0 then
-        User:inform("#b|1|0| ")
+        Books.show(User, " ")
         return
     end
-    if Counter > #pages then
-        common.InformNLS(User, "Dieses Buch hat nur " .. #pages .. " Seiten.",
-            "This book only has " .. #pages .. " pages.")
-        return
-    end
-    local page = pages[Counter]
-    if not page then return end
-    local text = books.ModifyText(User, page[1], page[3], book:getField("language"))
-    User:inform("#b|" .. Counter .. "|" .. page[2] .. "|" .. text)
-    User:learn(4, "library research", 2, 100)
+    Books.open(User, #pages, function(pageNumber)
+        local page = pages[pageNumber]
+        local text = books.ModifyText(User, page[1], page[3], book:getField("language"))
+        User:learn(4, "library research", 2, 100)
+        return { text = text, itemId = page[2] or 0 }
+    end, Counter)
 end
 
 function M.LookAtItem(User, Item)
