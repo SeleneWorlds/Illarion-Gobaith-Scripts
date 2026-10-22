@@ -156,7 +156,7 @@ function M.SendBookPage(User,Counter)
         local content = BookTexts[page]
         User:learn(4, "library research", 2, 100)
         return { text = M.ModifyText(User, content[1] or "", content[3]), itemId = content[2] or 0 }
-    end, Counter)
+    end)
 end
 
 function M.AddToTable(TargetList,Text,ItemID,Difficult)

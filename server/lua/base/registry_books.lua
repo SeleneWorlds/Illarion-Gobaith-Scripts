@@ -33,7 +33,7 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param)
         local text = books.ModifyText(User, page[1], page[3], book:getField("language"))
         User:learn(4, "library research", 2, 100)
         return { text = text, itemId = page[2] or 0 }
-    end, Counter)
+    end)
 end
 
 function M.LookAtItem(User, Item)

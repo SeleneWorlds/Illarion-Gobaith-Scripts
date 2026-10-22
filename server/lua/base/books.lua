@@ -64,7 +64,7 @@ function M.SendBookPage(User,DataVal,Counter)
         local text = M.ModifyText(User, content[1] or "", content[3], BookLang[DataVal] or "common language")
         User:learn(4, "library research", 2, 100)
         return { text = text, itemId = content[2] or 0 }
-    end, Counter)
+    end)
 end
 
 function M.GetBookItemInform(User,Item)
