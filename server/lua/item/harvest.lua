@@ -28,8 +28,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     local harvest = findHarvest(SourceItem, ground)
     if not harvest then return end
     if ltstate == Action.none then
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me fängt an Früchte zu sammeln")
-        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to collect fruits")
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me fängt an Früchte zu sammeln", { showInChat = false })
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to collect fruits", { showInChat = false })
         User:startAction(7, 0, 0, 0, 0)
         return
     end

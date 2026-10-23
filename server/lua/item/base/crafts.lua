@@ -575,8 +575,8 @@ end
 function Craft:RepairItem( User, Item, ltstate ,toolItem)
     if (ltstate == Action.none) then
         User:startAction( self:GenWorkTime( User, Item.id, toolItem ), self.Products[ Item.id ].GfxEffect[1], self.Products[ Item.id ].GfxEffect[2], self.Products[ Item.id ].SfxEffect[1], self.Products[ Item.id ].SfxEffect[2]);
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt mit der Reparatur.");
-        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to repair.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt mit der Reparatur.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to repair.", { showInChat = false });
         self:SwapToActiveItem( User );
         return
     end
@@ -619,12 +619,11 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
         end
 		User:startAction( self:GenWorkTime( User, ItemID,toolItem ), self.Products[ ItemID ].GfxEffect[1], self.Products[ ItemID ].GfxEffect[2], self.Products[ ItemID ].SfxEffect[1], self.Products[ ItemID ].SfxEffect[2]);
         if (Step == 1) then
-            User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu arbeiten.");
-            User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to work.");
+            User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu arbeiten.", { showInChat = false });
+            User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to work.", { showInChat = false });
         else
-            common.TempInformNLS(User,
-				"Du setzt die Arbeit fort.",
-				"You continue the work.");
+            User:talkLanguage(CCharacter.say, CPlayer.german, "#me setzt die Arbeit fort.", { showInChat = false });
+            User:talkLanguage(CCharacter.say, CPlayer.english, "#me continues the work.", { showInChat = false });
         end
         self:SwapToActiveItem( User );
         return

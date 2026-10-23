@@ -102,13 +102,13 @@ function M.teleportUseItem( User, SourceItem, TargetItem, Counter, Param , ltsta
                 local destination = M.teleportTarget( SourceItem );
                 world:gfx(41,destination);
                     
-                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt konzentriert auf eine Pergamentrolle zu starren.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me begins to stare at a scroll of parchment intensely.");
+                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt konzentriert auf eine Pergamentrolle zu starren.", { showInChat = false });
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me begins to stare at a scroll of parchment intensely.", { showInChat = false });
             
             elseif ( ltstate == Action.abort ) then
                 
-                User:talkLanguage(CCharacter.say, CPlayer.german, "#me wird abgelenkt.");
-                User:talkLanguage(CCharacter.say, CPlayer.english,"#me gets distracted.");
+                User:talkLanguage(CCharacter.say, CPlayer.german, "#me wird abgelenkt.", { showInChat = false });
+                User:talkLanguage(CCharacter.say, CPlayer.english,"#me gets distracted.", { showInChat = false });
                 
             end
 end

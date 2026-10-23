@@ -20,8 +20,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
     
@@ -55,8 +55,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if ( ltstate == Action.none ) then
         User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Getreide zu mahlen.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to grind grain.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Getreide zu mahlen.", { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to grind grain.", { showInChat = false });
         return
     end
     

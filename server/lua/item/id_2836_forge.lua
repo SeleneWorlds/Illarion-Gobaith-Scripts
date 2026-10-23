@@ -25,8 +25,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         if (SourceItem.id == 2835) then
            SourceItem.wear = 255;
            SourceItem.id = 2836;
@@ -89,8 +89,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if ( ltstate == Action.none ) then
         if (SourceItem.id == 2836) then
             User:startAction( M.GenWorkTime(User), 0, 0, 7, 15);
-            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt an der Esse Erze einzuschmelzen.");
-            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt ore at the furnace.");
+            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt an der Esse Erze einzuschmelzen.", { showInChat = false });
+            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt ore at the furnace.", { showInChat = false });
             SourceItem.wear = 1;
             SourceItem.id = 2835;
             world:changeItem(SourceItem);

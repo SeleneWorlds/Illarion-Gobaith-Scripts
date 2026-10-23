@@ -73,8 +73,8 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
 
@@ -148,11 +148,11 @@ function M.UseItemWithField( User, SourceItem, TargetPos, Counter, Param, ltstat
     if ( ltstate == Action.none ) then
         User:startAction( M.GenWorkTime(User,SourceItem), 0, 0, 0, 0);
         if ( world:getField( TargetPos ):tile() == 3 ) then
-            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt nach Sand zu graben.");
-            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dig for sand.");
+            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt nach Sand zu graben.", { showInChat = false });
+            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dig for sand.", { showInChat = false });
         else
-            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt nach Lehm zu graben.");
-            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dig for clay.");
+            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt nach Lehm zu graben.", { showInChat = false });
+            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to dig for clay.", { showInChat = false });
         end
         return
     end

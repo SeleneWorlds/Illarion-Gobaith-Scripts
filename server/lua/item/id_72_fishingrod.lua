@@ -28,8 +28,8 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
 
@@ -60,8 +60,8 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
 	
 	if (ltstate == Action.none) then -- Untätig: Starte Angeln!
         User:startAction(work.time(User, "fishing", SourceItem), 0, 0, 0, 0);
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu fischen.");
-        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts fishing.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt zu fischen.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts fishing.", { showInChat = false });
         return
     end
 	
@@ -80,8 +80,8 @@ function M.UseItemWithField(User, SourceItem, TargetPos, Counter, Param, ltstate
     world:makeSound(9,TargetPos);
 	
 	if common.ToolBreaks(User, SourceItem, true) then -- Angel beschädigen
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me lässt die Angel aus den Händen rutschen und die Angel sinkt auf den Grund.");
-        User:talkLanguage(CCharacter.say, CPlayer.english, "#me lets the fishing rod slip out of the hands and it sinks to the ground.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me lässt die Angel aus den Händen rutschen und die Angel sinkt auf den Grund.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me lets the fishing rod slip out of the hands and it sinks to the ground.", { showInChat = false });
         return
     end
 	

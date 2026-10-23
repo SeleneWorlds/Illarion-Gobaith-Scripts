@@ -29,8 +29,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     if ltstate == Action.abort then
         local germanPronoun = User:increaseAttrib("sex", 0) == 0 and "seine" or "ihre"
         local englishPronoun = User:increaseAttrib("sex", 0) == 0 and "his" or "her"
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht " .. germanPronoun .. " Arbeit.")
-        User:talkLanguage(CCharacter.say, CPlayer.english, "#me interrupts " .. englishPronoun .. " work.")
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht " .. germanPronoun .. " Arbeit.", { showInChat = false })
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me interrupts " .. englishPronoun .. " work.", { showInChat = false })
         return
     end
     if not common.CheckItem(User, SourceItem) then return end
@@ -61,8 +61,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
 
     if ltstate == Action.none then
         User:startAction(math.max(1, work.time(User, "herbgathering", SourceItem)), 0, 0, 0, 0)
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt nach Kräutern zu suchen.")
-        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to search for herbs.")
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me beginnt nach Kräutern zu suchen.", { showInChat = false })
+        User:talkLanguage(CCharacter.say, CPlayer.english, "#me starts to search for herbs.", { showInChat = false })
         return
     end
     if ltstate ~= Action.success then return end

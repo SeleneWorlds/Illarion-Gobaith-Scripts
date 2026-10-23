@@ -9,8 +9,8 @@ function M.MoveItemAfterMove(User, SourceItem, TargetItem)
 		Round=1;
 	end
 	if Round==1 then
-        User:talkLanguage(CCharacter.say,CPlayer.german,"#me wirft einen Schneeball.");
-        User:talkLanguage(CCharacter.say,CPlayer.english,"#me throws a snowball.");
+        User:talkLanguage(CCharacter.say,CPlayer.german,"#me wirft einen Schneeball.", { showInChat = false });
+        User:talkLanguage(CCharacter.say,CPlayer.english,"#me throws a snowball.", { showInChat = false });
 		Round=2;
 	else
 		Round=nil;

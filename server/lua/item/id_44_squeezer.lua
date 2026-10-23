@@ -38,8 +38,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
     
@@ -47,8 +47,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     if (User:countItemAt("all",141)>1) then
         if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
             User:startAction( 30, 0, 0, 0, 0 );
-            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Öl zu pressen.");
-            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to squeeze out oil.");
+            User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Öl zu pressen.", { showInChat = false });
+            User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to squeeze out oil.", { showInChat = false });
             return;
         end
         if common.IsInterrupted( User ) then

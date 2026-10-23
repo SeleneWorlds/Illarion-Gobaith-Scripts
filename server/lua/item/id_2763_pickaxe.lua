@@ -90,8 +90,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
 
@@ -131,8 +131,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     end
 
     if (ltstate == Action.none) then
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt mit der Spitzhacke auf den Stein zu schlagen.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to hit the stone with a pick axe.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt mit der Spitzhacke auf den Stein zu schlagen.", { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to hit the stone with a pick axe.", { showInChat = false });
         User:startAction( M.GenWorkTime(User), 0, 0, 8, 15);
         return
     end
@@ -145,8 +145,8 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
     end
 
     if M.breakRock(TargetItem, deposit) then
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me zertrümmert den Stein.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me destroys the rock.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me zertrümmert den Stein.", { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me destroys the rock.", { showInChat = false });
         return
     end
 

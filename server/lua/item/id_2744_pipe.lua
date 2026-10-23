@@ -29,8 +29,8 @@ function M.UseItem( Character, SourceItem, TargetItem, Counter, Param)
 	Character.effects:addEffect( CLongTimeEffect(19,10) );
     end
 
-    Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me nimmt einen tiefen Zug von der Pfeife.");
-    Character:talkLanguage(CCharacter.say,CPlayer.english,"#me takes a deep drag from the pipe.");
+    Character:talkLanguage(CCharacter.say,CPlayer.german ,"#me nimmt einen tiefen Zug von der Pfeife.", { showInChat = false });
+    Character:talkLanguage(CCharacter.say,CPlayer.english,"#me takes a deep drag from the pipe.", { showInChat = false });
     
     Character:eraseItem( 155, 1 );
 

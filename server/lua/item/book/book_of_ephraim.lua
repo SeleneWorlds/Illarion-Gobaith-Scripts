@@ -7,11 +7,11 @@ function M.UseItem(User, SourceItem, TargetItem, Counter, Param, ltstate)
         User:warp(position(-243,-340,-3));
     elseif ( ltstate == Action.none ) then
         User:startAction( 100,53, 4, 0, 0);
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt in einem Buch zu lesen.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts reading in a book.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt in einem Buch zu lesen.", { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts reading in a book.", { showInChat = false });
     elseif ( ltstate == Action.abort ) then
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me hört auf in dem Buch zu lesen.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me stops reading in the book.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me hört auf in dem Buch zu lesen.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me stops reading in the book.", { showInChat = false });
     end
 end
 

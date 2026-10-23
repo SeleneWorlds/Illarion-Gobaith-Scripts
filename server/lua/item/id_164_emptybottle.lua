@@ -16,6 +16,8 @@ function M.UseItemWithCharacter(User,SourceItem,Character,Counter,Param)
             -- replace by bottle with sheep milk
             world:erase(SourceItem,1)
             User:createItem(330,1,3,0, 33)
+            User:talkLanguage(CCharacter.say, CPlayer.german, "#me melkt das Schaf.", { showInChat = false })
+            User:talkLanguage(CCharacter.say, CPlayer.english, "#me milks the sheep.", { showInChat = false })
         end
     end
 end

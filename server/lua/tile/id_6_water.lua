@@ -42,8 +42,8 @@ function M.useTile(User,Position,counter,param,ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
 
@@ -66,8 +66,8 @@ function M.useTile(User,Position,counter,param,ltstate)
 
     if ( ltstate == Action.none ) then -- Arbeit noch nicht begonnen -> Los gehts
         User:startAction( M.GenWorkTime(User), 0, 0, 0, 0);
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu fischen.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts fishing.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt zu fischen.", { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts fishing.", { showInChat = false });
         return
     end
 

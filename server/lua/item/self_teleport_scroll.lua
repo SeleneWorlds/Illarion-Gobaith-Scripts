@@ -33,8 +33,8 @@ function M.UseItem( Caster, Item )
     TelePos.x = TelePos.x - dx;
     TelePos.y = TelePos.y - dy;
     
-    Caster:talkLanguage( CCharacter.say, CPlayer.german, "#me starrt konzentriert auf eine Pergamentrolle.");
-    Caster:talkLanguage( CCharacter.say, CPlayer.english, "#me stares at a scroll of parchment intensely.");
+    Caster:talkLanguage( CCharacter.say, CPlayer.german, "#me starrt konzentriert auf eine Pergamentrolle.", { showInChat = false });
+    Caster:talkLanguage( CCharacter.say, CPlayer.english, "#me stares at a scroll of parchment intensely.", { showInChat = false });
                    
     world:gfx(41,Caster.pos);
     world:gfx(41,TelePos);

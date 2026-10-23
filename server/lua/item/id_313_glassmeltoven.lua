@@ -43,8 +43,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
     
@@ -56,8 +56,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         if ((User:countItemAt("belt",316)>0) and (User:countItemAt("belt",314)>0)) then
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                 User:startAction( M.GenWorkTime(User,"glass blowing"), 0, 0, 0, 0 );
-                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Glas zu schmelzen.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt glass.");
+                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Glas zu schmelzen.", { showInChat = false });
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to melt glass.", { showInChat = false });
                 return                
             end
             if common.IsInterrupted( User ) then
@@ -124,8 +124,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         if (User:countItemAt("belt",736)>4) then
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                 User:startAction( M.GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
-                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Ziegel zu brennen.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.");
+                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Ziegel zu brennen.", { showInChat = false });
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.", { showInChat = false });
                 return                
             end
             if common.IsInterrupted( User ) then
@@ -165,8 +165,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         elseif (User:countItemAt("belt",26)>0) then
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                 User:startAction( M.GenWorkTime(User,"fireing bricks"), 0, 0, 0, 0 );
-                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Ziegel zu brennen.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.");
+                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Ziegel zu brennen.", { showInChat = false });
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to fire bricks.", { showInChat = false });
                 return              
             end
             if common.IsInterrupted( User ) then

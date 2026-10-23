@@ -157,8 +157,8 @@ function M.UseItemWithCharacter( User, SourceItem, Target, Counter, Param, ltsta
 		
 		gText = M.GetRaceGenderText(0,Target);
 		eText = M.GetRaceGenderText(1,Target);
-		User:talkLanguage(CCharacter.say, CPlayer.german, "#me versucht "..gText.." zu fesseln.");
-		User:talkLanguage(CCharacter.say, CPlayer.english, "#me tries to tie up "..eText..".");
+		User:talkLanguage(CCharacter.say, CPlayer.german, "#me versucht "..gText.." zu fesseln.", { showInChat = false });
+		User:talkLanguage(CCharacter.say, CPlayer.english, "#me tries to tie up "..eText..".", { showInChat = false });
 		
 		common.TempInformNLS(Target,
 			"Jemand versucht dich zu fesseln!",
@@ -290,8 +290,8 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 					Tying:removeValue("escape");
 					Tying:removeValue("success");
 				end
-				User:talkLanguage(CCharacter.say, CPlayer.german, "#me zieht das Seil straff.");
-				User:talkLanguage(CCharacter.say, CPlayer.english, "#me tightens the rope.");
+				User:talkLanguage(CCharacter.say, CPlayer.german, "#me zieht das Seil straff.", { showInChat = false });
+				User:talkLanguage(CCharacter.say, CPlayer.english, "#me tightens the rope.", { showInChat = false });
 				local rope = tyingCapturer.GetRope(User);
 				if rope then
                     rope:setData("tyingDuration", math.max(104,(tonumber(rope:getData("tyingDuration")) or 100)-60));
@@ -304,8 +304,8 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 		if Target.id == Captive then
 			gText = M.GetRaceGenderText(0,Target);
 			eText = M.GetRaceGenderText(1,Target);
-			User:talkLanguage(CCharacter.say, CPlayer.german, "#me bindet "..gText.." los.");
-			User:talkLanguage(CCharacter.say, CPlayer.english, "#me unties "..eText..".");
+			User:talkLanguage(CCharacter.say, CPlayer.german, "#me bindet "..gText.." los.", { showInChat = false });
+			User:talkLanguage(CCharacter.say, CPlayer.english, "#me unties "..eText..".", { showInChat = false });
 			foundEffect, Tying = Target.effects:find(24);
 			if foundEffect then
 				Tying:removeValue("Capturer");
@@ -328,8 +328,8 @@ function M.TyingDataHandler(User, Rope, Target, TargetItem)
 										Tying:addValue("Capturer", Target.id);
 										gText = M.GetRaceGenderText(0,Target);
 										eText = M.GetRaceGenderText(1,Target);
-										User:talkLanguage(CCharacter.say, CPlayer.german, "#me übergibt das Seil an "..gText..".");
-										User:talkLanguage(CCharacter.say, CPlayer.english, "#me hands the rope to "..eText..".");
+										User:talkLanguage(CCharacter.say, CPlayer.german, "#me übergibt das Seil an "..gText..".", { showInChat = false });
+										User:talkLanguage(CCharacter.say, CPlayer.english, "#me hands the rope to "..eText..".", { showInChat = false });
 										common.TempInformNLS(User,
 											"Der Gefangene folgt dir nun nicht mehr.",
 											"Now the captive doesn't follow you any more.");

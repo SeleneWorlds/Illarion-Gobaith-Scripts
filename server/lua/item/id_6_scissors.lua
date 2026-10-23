@@ -20,8 +20,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
     
@@ -47,8 +47,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
     
     if ( ltstate == Action.none ) then
         User:startAction( 16, 0, 0, 0, 0);
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Eingeweide zu zerschneiden.");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to cut entrails.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Eingeweide zu zerschneiden.", { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to cut entrails.", { showInChat = false });
         return
     end
     
@@ -96,8 +96,8 @@ function M.UseItemWithCharacter(User,SourceItem, Character, Counter, Param,ltsta
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
     
@@ -125,8 +125,8 @@ function M.UseItemWithCharacter(User,SourceItem, Character, Counter, Param,ltsta
     
     if ( ltstate == Action.none ) then
         User:startAction( 13, 0, 0, 0, 0);
-        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt das Schaf zu scheren");
-        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to shear the sheep.");
+        User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt das Schaf zu scheren", { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to shear the sheep.", { showInChat = false });
         Character.movepoints = Character.movepoints - 30;
         return
     end

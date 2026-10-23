@@ -46,8 +46,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
             gText = "ihre";
             eText = "her";
         end
-        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.");
-        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.");
+        User:talkLanguage(CCharacter.say, CPlayer.german, "#me unterbricht "..gText.." Arbeit.", { showInChat = false });
+        User:talkLanguage(CCharacter.say, CPlayer.english,"#me interrupts "..eText.." work.", { showInChat = false });
         return
     end
 
@@ -59,8 +59,8 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         if (User:countItemAt("belt",i)>0) then -- Edelsteine gefunden
             if ( ltstate == Action.none ) then -- Arbeit nicht gestartet -> Starten
                 User:startAction( M.GenWorkTime(User,Gem[1]), 0, 0, 0, 0 );
-                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Edelsteine zu schleifen.");
-                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to cut gemstones.");
+                User:talkLanguage( CCharacter.say, CPlayer.german, "#me beginnt Edelsteine zu schleifen.", { showInChat = false });
+                User:talkLanguage( CCharacter.say, CPlayer.english, "#me starts to cut gemstones.", { showInChat = false });
                 return                
             end
             if common.IsInterrupted( User ) then
