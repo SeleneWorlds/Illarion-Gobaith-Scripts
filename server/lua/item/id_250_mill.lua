@@ -69,15 +69,15 @@ function M.UseItem(User,SourceItem,TargetItem,Counter,Param,ltstate)
         elseif ( selectMessage == 2 ) then
             common.InformNLS(User,
             "Du klopfst dir das Mehl aus der Kleidung, da du das Gefühl hast wie ein Geist auszusehen.",
-            "You beat the flour out of your clothes so that you do not look like a ghost anymore.");
+            "You beat the flour out of your clothes, since you were starting to look like a ghost.");
         elseif ( selectMessage == 3 ) then
             common.InformNLS(User,
             "Du säuberst kurz den Mühlstein um eine bessere Qualität des Mehls zu erreichen.",
-            "You clean the millstone.");
+            "You clean the millstone to ensure good quality flour.");
         else
             common.InformNLS(User,
             "Gerade noch kannst du verhindern, dass ein Stein, der sich wohl ins Korn gemogelt hatte, in den Mühlstein fällt.",
-            "You made it to get a stone out the the grain short time before it falls into the millstone");
+            "You just barely manage to stop a little rock amongst the grains from falling into the millstone.");
         end
         
         return
