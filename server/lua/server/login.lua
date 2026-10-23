@@ -231,7 +231,7 @@ function AttribMessage( Char, attrib, value )
     local Race = Char:get_race();
     local msg = dailymessage.GetMessage( Char:getPlayerLanguage(), attrib, Race, value );
     if msg then
-		Char:inform( common.GetNLS( Char, "#w Deine heutige Verfassung: ", "#w Your condition today: " )..msg );
+		Char:inform(msg);
 	end
 end
 
