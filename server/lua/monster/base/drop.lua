@@ -15,7 +15,7 @@ function M.Dropping(Char)
                 local quality = math.random(item.minQuality, item.maxQuality)
                 local durability = math.random(item.minDurability, item.maxDurability)
                 world:createItemFromId(item.itemId, amount, Char.pos, true,
-                    quality, item.data, durability)
+                    quality, item.data, durability, item.wear)
             end
         end
         if FirstThief then
