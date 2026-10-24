@@ -5,9 +5,9 @@ local M = {}
 
 function M.LookAtItem(User,Item)
     if (User:getPlayerLanguage() == 0) then
-        world:itemInform(User,Item,( Item.quality == 2 and " brennendes " or "" ).."Gynkesisches Feuer.");
+        world:itemInform(User,Item,( Item.quality == 2 and " brennendes " or "" ).."Gynkesisches Feuer");
     else
-        world:itemInform(User,Item,( Item.quality == 2 and " burning " or "" ).."Gynkese Fire.");
+        world:itemInform(User,Item,( Item.quality == 2 and " burning " or "" ).."Gynkese Fire");
     end;
 end;
 
