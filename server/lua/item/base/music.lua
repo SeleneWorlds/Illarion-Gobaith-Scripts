@@ -17,8 +17,8 @@ function M.new()
         local Skl=User:getSkill(Skill);
         local Qual=Item.quality;
         local PlayVal=common.Limit(math.floor((Skl+(Qual*5))/120*#talkTexts*(math.random(8,13)/10)),1,#talkTexts);
-        User:talkLanguage( CCharacter.say, CPlayer.german, talkTexts[PlayVal][2]);
-        User:talkLanguage( CCharacter.say, CPlayer.english, talkTexts[PlayVal][1]);
+        User:talkLanguage( CCharacter.say, CPlayer.german, talkTexts[PlayVal][2], { showInChat = false });
+        User:talkLanguage( CCharacter.say, CPlayer.english, talkTexts[PlayVal][1], { showInChat = false });
         User:learn(8,Skill,3,100);
     end
 
