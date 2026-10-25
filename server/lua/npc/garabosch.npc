@@ -41,8 +41,6 @@ sellItem = id(23), price(25), stack(1), quality(5), durability(83)
 buyPrimaryItem = id(23), price(5)
 sellItem = id(2763), price(25), stack(1), quality(5), durability(83)
 buyPrimaryItem = id(2763), price(5)
-sellItem = id(2751), price(25), stack(1), quality(5), durability(83)
-buyPrimaryItem = id(2751), price(5)
 sellItem = id(2140), price(25), stack(1), quality(5), durability(83)
 buyPrimaryItem = id(2140), price(5)
 

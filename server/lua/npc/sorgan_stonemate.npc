@@ -46,7 +46,6 @@ buyPrimaryItem = id(324), price(10)
 sellItem = id(2290), price(200), stack(1), quality(7), durability(77)
 buyPrimaryItem = id(2290), price(10)
 sellItem = id(23), price(30), stack(1), quality(6), durability(83)
-sellItem = id(2751), price(50), stack(1), quality(6), durability(83)
 sellItem = id(2140), price(40), stack(1), quality(4), durability(83)
 buyPrimaryItem = id(2140), price(3)
 
