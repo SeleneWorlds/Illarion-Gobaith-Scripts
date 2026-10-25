@@ -297,7 +297,7 @@ function M.InitializeHelpList()
     PraeLBon[18]={-10  ,-10  ,-10  ,-10  ,-5  ,-10 ,-10  ,-10  ,0   ,-15   ,0    ,0    ,-5   ,-10  ,-10  ,-5   };
     -- Tools II
 	-- {rasp, crucible, crucible, carpenter hammer, mould, lumberjack axe, slicer, pins, razor blade, crucible, crucible, crucible-pincers, carving tools, pick-axe, hatchet }
-    PraeList[19]={2697 ,2699 ,2700 ,2709 ,2710 ,2711 ,2715 ,2738 ,2746 ,2747 ,2748 ,2751 ,2752 ,2763 ,2946  };
+    PraeList[19]={2697 ,2699 ,2700 ,2709 ,2710 ,2711 ,2715 ,2738 ,2746 ,2751 ,2752 ,2763 ,2946  };
     PraeLBon[19]={-10  ,-10  ,-10  ,-10  ,-10  ,-10  ,-5   ,-1   ,-10  ,-10  ,-10  ,-10  ,-10  ,-10  ,-10   };
     -- other Iron items
 	-- {iron ore, iron goblet, handcuffs, ore, iron ingot, iron plate }
