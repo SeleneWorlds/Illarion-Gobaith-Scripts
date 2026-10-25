@@ -691,7 +691,8 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                 CraftProduct = tostring(ItemID),
                 CraftStep = tostring(Step),
                 CraftSteps = tostring(#self.Products[ ItemID ].ProductionSteps),
-                SeleneVisual = definition:getField("visual")
+                SeleneVisual = definition:getField("visual"),
+                SeleneLabel = string.format("%d%%", math.floor(Step * 100 / #self.Products[ ItemID ].ProductionSteps))
             };
         end
         if (WorkOnItem == nil) then
@@ -731,11 +732,13 @@ function Craft:CraftNewItem( User, ItemID, WorkOnItem, Step, ltstate, toolItem )
                 WorkOnItem:setData("CraftStep", createdData.CraftStep);
                 WorkOnItem:setData("CraftSteps", createdData.CraftSteps);
                 WorkOnItem:setData("SeleneVisual", createdData.SeleneVisual);
+                WorkOnItem:setData("SeleneLabel", createdData.SeleneLabel);
             else
                 WorkOnItem:setData("CraftProduct", nil);
                 WorkOnItem:setData("CraftStep", nil);
                 WorkOnItem:setData("CraftSteps", nil);
                 WorkOnItem:setData("SeleneVisual", nil);
+                WorkOnItem:setData("SeleneLabel", nil);
             end
             WorkOnItem.quality = ItemQual;
             WorkOnItem.durability = 99;
