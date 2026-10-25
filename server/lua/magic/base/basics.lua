@@ -292,9 +292,9 @@ function M.InitializeHelpList()
     PraeList[17]={68  ,235  ,277  ,278  ,279  ,280  ,281  ,282  ,2559  };
     PraeLBon[17]={20  ,0    ,20   ,20   ,30   ,30   ,20   ,30   ,50    };
     -- Tools I
-	-- {scissors, saw, hammer, shovel, needle, hatchet, finesmithing hammer, sickle, flail, scythe, wooden shovel, chisel, tongs, pan, nail board }
-    PraeList[18]={6    ,9    ,23   ,24   ,47  ,74  ,122  ,126  ,258  ,271  ,311  ,312  ,737  ,2140 ,2495 ,2659 };
-    PraeLBon[18]={-10  ,-10  ,-10  ,-10  ,-5  ,-10 ,-10  ,-10  ,0   ,-15   ,0    ,0    ,-5   ,-10  ,-10  ,-5   };
+	-- {scissors, saw, hammer, shovel, needle, hatchet, finesmithing hammer, sickle, flail, scythe, wooden shovel, chisel, tongs, pan }
+    PraeList[18]={6    ,9    ,23   ,24   ,47  ,74  ,122  ,126  ,258  ,271  ,311  ,312  ,737  ,2140 ,2495 };
+    PraeLBon[18]={-10  ,-10  ,-10  ,-10  ,-5  ,-10 ,-10  ,-10  ,0   ,-15   ,0    ,0    ,-5   ,-10  ,-10   };
     -- Tools II
 	-- {rasp, crucible, crucible, lumberjack axe, slicer, pins, razor blade, crucible, crucible, carving tools, pick-axe, hatchet }
     PraeList[19]={2697 ,2699 ,2700 ,2711 ,2715 ,2738 ,2746 ,2752 ,2763 ,2946  };
